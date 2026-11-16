@@ -2,30 +2,18 @@
 
 - **Task ID:** BSEC-028
 - **Title:** Secure material upload, preview and download paths
-- **Status:** implementation committed; PostgreSQL asset-delivery workflow and backend/mobile typechecks pending
+- **Status:** merged; focused verification passed
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
-- **Working branch:** agent/backend-file-delivery-security-bsec028-20261116
-- **Repository finding:** there is no public multipart/binary upload endpoint in this repository. The material upload UI submits an external URL to POST /learning/materials. Lesson image assets are imported into topic_assets by the controlled attachTopicAssets CLI. SS1/SS23 curriculum assets are repository-backed, SHA-256-verified packages. The implementation hardens the real upload/preview/download surfaces rather than inventing a new upload API.
-- **Changed files:**
-  - backend/src/routes/learning.ts
-  - backend/src/db/attachTopicAssets.ts
-  - backend/src/utils/materialUrl.ts
-  - mobile/src/screens/MaterialsScreen.tsx
-  - mobile/src/utils/materialDownload.ts
-  - tests/topic-assets.db.test.mts
-  - tests/topic-assets-svg.test.mts
-  - tests/topic-assets-metadata.test.mts
-  - tests/material-url-security.test.mts
-  - tests/material-download-security.test.mts
-  - .github/workflows/backend-file-delivery-security.yml
-  - this checkpoint
-- **Material upload controls:** server accepts only PDF/video/DOC/link types and HTTPS URLs with public DNS hostnames; rejects IP literals, local/internal suffixes, DNS-to-IP alias services, userinfo and non-443 ports. Legacy unsafe URLs are returned as null so clients cannot open/download them. Mobile uses the same policy, only downloads matching PDF/Word extensions, sanitizes filenames, caps downloads at 25 MB and checks the downloaded file's size and MIME type before sharing.
-- **Ownership and tenant scope:** school-bound administrators are pinned to their assigned school for material creation, listing, deletion and topic-asset preview/download. Global admins must explicitly select a school for school-scoped reads. Teachers can delete only their own material in their assigned school; school-bound admins can remove material only within their school; global admins retain cross-school removal.
-- **Topic asset ingestion:** manifest rows are bounded and validated; asset keys, order, sort order, display flags, captions, alt text, MIME, SHA-256 and file size are checked. File paths must remain within the selected asset directory, including symlink resolution. Only safe PNG/JPEG/GIF/SVG signatures are accepted; SVG active content remains rejected. Prepared bytes are revalidated immediately before DB writes.
-- **Preview/download delivery:** topic asset byte reads repeat the same school/topic/class visibility predicate as metadata lookup; stored bytes are checked against recorded MIME and SHA-256 before every response. Protected material/asset endpoints use private no-store cache headers. Responses set nosniff, inline disposition and sandbox CSP for SVG. Conditional 304 responses were removed from topic-asset downloads so they cannot bypass byte-integrity verification.
-- **SS1/SS23 assets:** student delivery bytes are rechecked against SHA-256 and supported image/audio signatures, use no-store caching, nosniff and safe inline/SVG sandbox headers; existing term-PIN gates remain in place.
-- **Regression coverage:** PostgreSQL tests cover school-bound admin material/asset scope, cross-school denial, teacher uploader ownership, unsafe URL rejection, private no-store delivery, tampered-byte rejection and restoration. Static tests cover manifest traversal, symlink/path containment, MIME spoofing, oversized assets and mobile download URL/filename rules.
-- **CI:** new workflow provisions disposable PostgreSQL 16, runs asset/URL tests, DB integration and backend+mobile typechecks, then validates SS1/SS23 asset packages. No production database or files were accessed or changed.
-- **Verification:** pending GitHub Actions on this branch.
-- **Remaining:** review workflow results, fix genuine failures without weakening assertions, then merge only after current-head checks pass.
+- **Implementation PR:** #934 (merged)
+- **Verification fixture PR:** #939 (merged)
+- **CI follow-up:** #940 (merged)
+- **Verification:** The dedicated Backend file upload, preview and download security workflow passed on PR #939. Related backend learning-content reference scope, Android mobile readiness, SS1 Agricultural Science, SS1/SS23 package integrity and JSS3 workflows also passed on the follow-up verification sequence (#939/#943).
+- **Implementation:** The repository has no public multipart/binary upload endpoint. The material upload UI submits an external URL to POST /learning/materials; lesson image assets are imported through the controlled attachTopicAssets CLI. The implementation hardens these real surfaces rather than inventing a new upload API.
+- **Material URL controls:** Only supported material types and HTTPS URLs with public DNS hostnames are accepted; IP literals, local/internal suffixes, DNS-to-IP alias services, userinfo and non-443 ports are rejected. Legacy unsafe URLs are not returned as openable/downloadable links.
+- **Mobile download controls:** Downloads are limited to supported PDF/Word extensions, sanitized filenames, a 25 MB size cap, and post-download size/MIME verification before sharing.
+- **Ownership and tenant scope:** School-bound administrators are pinned to their school for material creation, listing, deletion and topic-asset preview/download. Teachers can delete only their own material in their assigned school.
+- **Topic asset ingestion:** Manifest rows, file paths, symlink resolution, MIME signatures, SVG active content, SHA-256 and file size are validated before writes and again before delivery.
+- **Preview/download delivery:** Byte reads repeat school/topic/class visibility predicates; stored bytes are checked against recorded MIME and SHA-256. Protected responses use private no-store caching, nosniff and safe inline/SVG sandbox headers.
+- **Production impact:** No production database or files were accessed or changed.
+- **Remaining:** No outstanding BSEC-028 implementation or focused verification blockers.
