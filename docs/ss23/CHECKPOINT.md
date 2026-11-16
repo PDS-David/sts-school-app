@@ -22,8 +22,8 @@ This section supersedes the historical branch/PR status in the checkpoint below.
 - Original T3 printed pages 12-16 were visually reviewed. Page 12 fertilizer/maize yield values were independently recalculated; page 13 confirms the Week 7-8 Farm Records heading; pages 14-15 show an egg-sales label discrepancy in the profit-and-loss example; page 16 confirms the straight-line depreciation formula.
 - Source/content blockers remain explicit: disease taxonomy, ornamental and weed nomenclature, obsolete pesticide guidance, insecticide classification, Mendelian-law nuance, account-table transcription, animal nutrient classification, feed thresholds, full assessment-answer reconciliation and teacher review.
 - Pre-rebase GitHub Actions run `43790097181`: locked install passed; `npm run ss23:refresh-hashes` refreshed 11 body hashes; `npm run validate:ss23` passed with zero errors; `npm run test:ss23` passed 38/38; `npm run validate:ss1` passed; backend typecheck passed. This run predates the three merges above; current-master PR CI is required.
-- Current PR checks queued: SS23 integrity gate, package-contract, SS1 Biology integrity, general integrity, SS1 workflow and SS23 source tests. Current-base results are not yet available.
-- Exact next action: verify all six current-master PR checks, fix failures, then continue blocker resolution. Do not move to Biology until Agricultural Science passes the full readiness gate. Do not merge.
+- Current-master checks on commit `3abe0e06bb90ecb7003c07154528f2fbb11f9684`: SS23 integrity gate `43790632810` SUCCESS (38/38 SS23 tests, hash check, package validation, backend typecheck, SS1 validation); package-contract `43790632965` SUCCESS (25/25, including all 19 approved-fixture SS2 units reachable and SS3 isolation); SS2/SS3 source validation `43790632910` SUCCESS (11 tests); SS1 integrity gate `43790632799` SUCCESS. JSS3 workflow `43790632575` was still running and is unrelated.
+- Exact next action: continue the Agricultural Science technical and assessment-answer blockers. Do not move to Biology until all Agricultural Science terms pass source, assessment and teacher-approval gates. Do not merge.
 
 
 
