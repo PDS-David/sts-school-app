@@ -80,15 +80,17 @@ if (!SERVER_URL) {
   const subjectTeacher = await createUser('teacher', 'primary');
   const studentUser = await createUser('student', 'primary');
   const otherStudentUser = await createUser('student', 'primary');
+  const outsideStudentUser = await createUser('student', 'primary');
   const parentUser = await createUser('parent', 'primary');
   const unrelatedParent = await createUser('parent', 'primary');
 
   const studentInsert = await query(
-    'INSERT INTO students(school_code,full_name,class_name,user_id,admission_number) VALUES($1,$2,$3,$4,$5),($1,$6,$7,$8,$9) RETURNING id,user_id',
-    ['primary', 'SMM Student', 'Primary 4', studentUser.id, 'SMM-' + suffix, 'Other Class Student', 'Primary 5', otherStudentUser.id, 'SMM-OTHER-' + suffix],
+    'INSERT INTO students(school_code,full_name,class_name,user_id,admission_number) VALUES($1,$2,$3,$4,$5),($1,$6,$3,$7,$8),($1,$9,$10,$11,$12) RETURNING id,user_id',
+    ['primary', 'SMM Student', 'Primary 4', studentUser.id, 'SMM-' + suffix, 'Second Primary 4 Student', otherStudentUser.id, 'SMM-SECOND-' + suffix, 'Other Class Student', 'Primary 5', outsideStudentUser.id, 'SMM-OTHER-' + suffix],
   );
   const studentId = studentInsert.rows.find((r: any) => r.user_id === studentUser.id).id as string;
   const otherStudentId = studentInsert.rows.find((r: any) => r.user_id === otherStudentUser.id).id as string;
+  const outsideStudentId = studentInsert.rows.find((r: any) => r.user_id === outsideStudentUser.id).id as string;
   await query('INSERT INTO parent_wards(parent_id,student_id) VALUES($1,$2)', [parentUser.id, studentId]);
 
   const subjectInsert = await query(
