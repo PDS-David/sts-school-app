@@ -83,7 +83,7 @@ export default function ParentHomeScreen({ navigation }: any) {
               {wards.map(w => {
                 const active = w.id === selectedWardId;
                 return (
-                  <TouchableOpacity key={w.id} style={[styles.wardChip, active && styles.wardChipActive]} onPress={() => selectWard(w.id)} activeOpacity={0.8}>
+                  <TouchableOpacity key={w.id} style={[styles.wardChip, active && styles.wardChipActive]} onPress={() => selectWard(w.id)} activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={`Select ${w.full_name}, ${w.class_name}`} accessibilityState={{ selected: active }}>
                     <Text style={[styles.wardChipText, active && styles.wardChipTextActive]} numberOfLines={1}>{w.full_name}</Text>
                     <Text style={[styles.wardChipSub, active && styles.wardChipTextActive]} numberOfLines={1}>{w.class_name}</Text>
                   </TouchableOpacity>
