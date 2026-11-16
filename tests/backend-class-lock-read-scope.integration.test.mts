@@ -244,7 +244,7 @@ test('school-bound administrators cannot override academic school scope', async 
 
     const started = await startServer();
     server = started.server;
-    const academicBase = started.baseUrl.replace(/\\/class-locks$/, '');
+    const academicBase = started.baseUrl.slice(0, -'/class-locks'.length);
     const getAcademic = (token: string, path: string) => fetch(`${academicBase}${path}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
