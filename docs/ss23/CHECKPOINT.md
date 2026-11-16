@@ -11,13 +11,15 @@
   - Existing PostgreSQL workflow extension: `a0345fff0aa84132cf65cdef686477d2686717b5`
   - Failure-safe fixture cleanup: `e3994e60f1e9a949dfee2875591ff2fe193ef1c7`
   - Identifier-length correction: `ff436df80265cc56e02296a4f426d5a1aa37c27c`
+- PR: [#855](https://github.com/PDS-David/sts-school-app/pull/855), base `master`, head branch `agent/ss23-route-delivery-integration-20261116`, current checkpoint head `c879d1898cc188ff55b034ec0af6f17252b19174`.
 - Test results:
   - Local execution: NOT RUN (GitHub DNS unavailable in this execution environment).
   - PostgreSQL HTTP integration run `43788785465`: SUCCESS on commit `ff436df80265cc56e02296a4f426d5a1aa37c27c`; dependency install, PostgreSQL bootstrap, both HTTP integration test files and backend typecheck passed on Node 24.19.0.
   - SS23 integrity gate `43788785535`: SUCCESS on the same commit; backend typecheck, hash check, package validation, validator tests and SS1 validation passed.
   - SS2/SS3 source validation `43788785431`: SUCCESS; SS1 integrity gate `43788785415`: SUCCESS.
   - Positive reachability of all eight approved-fixture units and no-draft leakage at the delivery-service layer is covered by stacked PR #854 (70/70 tests passed on its tested code commit).
-- Exact next action: retain route-level HTTP integration as verified; no merge or deployment. Continue subject packages when source archives and required owner decisions are available.
+- Superseded standalone workflow draft run `43788699166` failed before creating a job; its workflow file was deleted. The active existing PostgreSQL workflow run `43788785465` passed.
+- Exact next action: retain route-level HTTP integration as verified; no merge or deployment. Continue SS2 Agricultural Science T2/T3 when the original source archives and outstanding source decisions are available.
 
 ---
 
