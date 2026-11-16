@@ -303,6 +303,20 @@ test('loads the SS2 Agricultural Science package with source assessment coverage
   assert.ok(pkg.coverage.some(row => row.id === 'COV-SS2-AG-T2-APS-CASSAVA-PATHOGEN' && row.status === 'SUPPORTED'));
   assert.ok(pkg.assets.some(asset => asset.path === 'backend/src/db/ss23/assets/agricultural-science/irrigation-systems.svg' && asset.state.implementation === 'IMPLEMENTED'));
   assert.ok(pkg.assets.some(asset => asset.path === 'backend/src/db/ss23/assets/agricultural-science/drainage-systems.svg' && asset.state.implementation === 'IMPLEMENTED'));
+  const irrigationFigureReview = pkg.open_items.find(item => item.id === 'AG2-T1-W06-FIGURE-RIGHTS');
+  assert.ok(irrigationFigureReview);
+  assert.equal(irrigationFigureReview.blocks_delivery, true);
+  assert.match(irrigationFigureReview.detail, /Three school-authored alternatives are now stored/);
+  for (const id of ['ASSET-AG2-T1-W06-IRRIGATION-SYSTEMS-DIAGRAM', 'ASSET-AG2-T1-W06-DRAINAGE-SYSTEMS-DIAGRAM', 'ASSET-AG2-T1-W06-IRRIGATION-SYSTEMS-SCHEMATIC']) {
+    assert.ok(irrigationFigureReview.affected_ids.includes(id), 'irrigation review must track ' + id);
+  }
+  const cycleFigureReview = pkg.open_items.find(item => item.id === 'AG2-T1-W08-09-FIGURE-RIGHTS');
+  assert.ok(cycleFigureReview);
+  assert.equal(cycleFigureReview.blocks_delivery, true);
+  assert.match(cycleFigureReview.detail, /Three school-authored alternatives are now stored/);
+  for (const id of ['ASSET-AG2-T1-W08-09-NITROGEN-CYCLE-AUTHORED', 'ASSET-AG2-T1-W08-09-CARBON-WATER-CYCLES-AUTHORED', 'ASSET-AG2-T1-W08-09-NUTRIENT-CYCLES-SCHOOL-SCHEMATIC']) {
+    assert.ok(cycleFigureReview.affected_ids.includes(id), 'cycle review must track ' + id);
+  }
   assert.ok(pkg.assets.some(asset => asset.path === 'backend/src/db/ss23/assets/agricultural-science/nitrogen-cycle.svg' && asset.state.implementation === 'IMPLEMENTED'));
   assert.ok(pkg.assets.some(asset => asset.path === 'backend/src/db/ss23/assets/agricultural-science/carbon-water-cycles.svg' && asset.state.implementation === 'IMPLEMENTED'));
   assert.ok(pkg.units.every(unit => unit.state.content_approval === 'PENDING'));
