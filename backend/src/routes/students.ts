@@ -7,9 +7,47 @@ import { audit } from '../utils/audit.js';
 import { checkTeacherDeleteScope, checkTeacherRosterScope } from '../utils/scope.js';
 import { resolveStudentRosterScope } from '../utils/studentRosterScope.js';
 import { createStudentWithParent } from '../utils/parentProvisioning.js';
+import type { PoolClient } from 'pg';
+import type { AuthUser } from '../types/index.js';
 
 const router = Router();
 router.use(requireAuth);
+
+type WardMutationScope =
+  | { ok: true }
+  | { ok: false; status: number; error: string };
+
+/**
+ * Lock the student row while changing its parent relationship. This makes
+ * school/class authorization and the parent_wards write one consistent
+ * operation with respect to concurrent student reassignment or soft-delete.
+ */
+async function lockWardMutationStudent(
+  client: PoolClient,
+  user: AuthUser,
+  studentId: string,
+): Promise<WardMutationScope> {
+  const { rows } = await client.query(
+    'SELECT school_code, class_name, deleted_at FROM students WHERE id=$1 FOR UPDATE',
+    [studentId],
+  );
+  const student = rows[0];
+  if (!student || student.deleted_at) {
+    return { ok: false, status: 404, error: 'Active student not found' };
+  }
+
+  if (user.role === 'admin') return { ok: true };
+  if (user.role !== 'teacher') {
+    return { ok: false, status: 403, error: 'Not authorized to manage parent links' };
+  }
+  if (!user.school_code || student.school_code !== user.school_code) {
+    return { ok: false, status: 403, error: "You can't manage parent links outside your school" };
+  }
+  if (user.assigned_class && student.class_name !== user.assigned_class) {
+    return { ok: false, status: 403, error: "You can't manage parent links outside your assigned class" };
+  }
+  return { ok: true };
+}
 
 // ── GET /students  ────────────────────────────────────────────────────────────
 router.get('/', requirePerm('students.read'), async (req, res) => {
@@ -381,22 +419,64 @@ router.post('/:id/restore', requireRole('admin'), async (req, res) => {
 
 // ── POST /students/:id/link-parent ────────────────────────────────────────────
 router.post('/:id/link-parent', requirePerm('grades.write'), async (req, res) => {
-  const { parent_id } = req.body as { parent_id: string };
-  const { rows: pu } = await query(`SELECT role FROM users WHERE id=$1`, [parent_id]);
-  if (pu[0]?.role !== 'parent') return res.status(400).json({ error: 'That user is not a parent account' });
-  await query(
-    `INSERT INTO parent_wards(parent_id,student_id) VALUES($1,$2) ON CONFLICT DO NOTHING`,
-    [parent_id, req.params.id],
-  );
-  await audit(req.user!, 'link_parent', 'student', req.params.id, `parent ${parent_id}`);
-  return res.json({ ok: true });
+  const studentId = z.string().uuid().safeParse(req.params.id);
+  const body = z.object({ parent_id: z.string().uuid() }).safeParse(req.body);
+  if (!studentId.success || !body.success) {
+    return res.status(400).json({ error: 'A valid student id and parent_id are required' });
+  }
+  const parentId = body.data.parent_id;
+
+  const result = await withTransaction(async (client) => {
+    const { rows: parentRows } = await client.query(
+      'SELECT role, is_active FROM users WHERE id=$1 FOR SHARE',
+      [parentId],
+    );
+    if (parentRows[0]?.role !== 'parent' || !parentRows[0]?.is_active) {
+      return { ok: false as const, status: 400, error: 'That user is not an active parent account' };
+    }
+
+    const scope = await lockWardMutationStudent(client, req.user!, studentId.data);
+    if (!scope.ok) return scope;
+
+    const { rows } = await client.query(
+      `INSERT INTO parent_wards(parent_id,student_id)
+       VALUES($1,$2) ON CONFLICT DO NOTHING RETURNING parent_id`,
+      [parentId, studentId.data],
+    );
+    return { ok: true as const, linked: rows.length > 0 };
+  });
+
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  if (result.linked) {
+    await audit(req.user!, 'link_parent', 'student', studentId.data, `parent ${parentId}`);
+  }
+  return res.json({ ok: true, linked: result.linked });
 });
 
 // ── DELETE /students/:id/unlink-parent/:parentId ──────────────────────────────
 router.delete('/:id/unlink-parent/:parentId', requirePerm('grades.write'), async (req, res) => {
-  await query(`DELETE FROM parent_wards WHERE student_id=$1 AND parent_id=$2`, [req.params.id, req.params.parentId]);
-  await audit(req.user!, 'unlink_parent', 'student', req.params.id, `parent ${req.params.parentId}`);
-  return res.json({ ok: true });
+  const studentId = z.string().uuid().safeParse(req.params.id);
+  const parentId = z.string().uuid().safeParse(req.params.parentId);
+  if (!studentId.success || !parentId.success) {
+    return res.status(400).json({ error: 'Valid student and parent ids are required' });
+  }
+
+  const result = await withTransaction(async (client) => {
+    const scope = await lockWardMutationStudent(client, req.user!, studentId.data);
+    if (!scope.ok) return scope;
+
+    const { rows } = await client.query(
+      'DELETE FROM parent_wards WHERE student_id=$1 AND parent_id=$2 RETURNING parent_id',
+      [studentId.data, parentId.data],
+    );
+    return { ok: true as const, unlinked: rows.length > 0 };
+  });
+
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  if (result.unlinked) {
+    await audit(req.user!, 'unlink_parent', 'student', studentId.data, `parent ${parentId.data}`);
+  }
+  return res.json({ ok: true, unlinked: result.unlinked });
 });
 
 // ── POST /students/:id/link-user  (attach a student's own login) ─────────────
