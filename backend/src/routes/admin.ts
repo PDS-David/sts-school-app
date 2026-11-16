@@ -8,15 +8,45 @@ import * as XLSX from 'xlsx';
 import { generateTempPassword, generateNumericPin } from '../utils/password.js';
 import { getBackupStatus, runBackup, BackupConfigError } from '../utils/backup.js';
 import { normalizeTeacherSubjectIds, TeacherAssignmentValidationError, validateTeacherAssignments } from '../utils/teacherAssignments.js';
+import type { AuthUser } from '../types/index.js';
 
 const router = Router();
 router.use(requireAuth, requireRole('admin'));
+
+type AdminSchoolScope =
+  | { ok: true; schoolCode: string | null }
+  | { ok: false; status: 400 | 403; error: string };
+
+// A school-bound administrator is never allowed to widen their tenant by
+// supplying a query/body school_code. A global administrator (school_code NULL)
+// retains the existing cross-school behavior and may optionally narrow reads.
+function resolveAdminSchoolScope(
+  user: AuthUser,
+  requested: unknown,
+): AdminSchoolScope {
+  if (user.school_code) {
+    if (requested !== undefined && requested !== null && requested !== '' &&
+        (typeof requested !== 'string' || requested.trim() !== user.school_code)) {
+      return { ok: false, status: 403, error: "You can't access another school's records" };
+    }
+    return { ok: true, schoolCode: user.school_code };
+  }
+  if (requested === undefined || requested === null || requested === '') {
+    return { ok: true, schoolCode: null };
+  }
+  if (typeof requested !== 'string' || !requested.trim() || requested.trim().length > 50) {
+    return { ok: false, status: 400, error: 'Invalid school_code' };
+  }
+  return { ok: true, schoolCode: requested.trim() };
+}
 
 // ══════════════════════════════════════════
 // USER MANAGEMENT
 // ══════════════════════════════════════════
 router.get('/users', async (req, res) => {
   const { school_code, role } = req.query as Record<string, string>;
+  const scope = resolveAdminSchoolScope(req.user!, school_code);
+  if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
   let sql = `SELECT u.id,u.username,u.full_name,u.role,u.school_code,u.assigned_class,
                     u.is_active,u.must_change_pw,u.access_expires_at,u.created_at,
                     u.phone,u.email,
@@ -27,8 +57,8 @@ router.get('/users', async (req, res) => {
              LEFT JOIN teacher_subjects ts ON ts.user_id = u.id
              WHERE 1=1`;
   const params: unknown[] = [];
-  if (school_code) { params.push(school_code); sql += ` AND u.school_code=$${params.length}`; }
-  if (role)        { params.push(role);        sql += ` AND u.role=$${params.length}`; }
+  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND u.school_code=${params.length}`; }
+  if (role)             { params.push(role);              sql += ` AND u.role=${params.length}`; }
   sql += ' GROUP BY u.id ORDER BY u.role,u.full_name';
   const { rows } = await query(sql, params);
   return res.json({ users: rows });
@@ -37,11 +67,13 @@ router.get('/users', async (req, res) => {
 // ── GET /admin/students-without-login  (helper for the "link login" picker) ──
 router.get('/students-without-login', async (req, res) => {
   const { school_code, class_name } = req.query as Record<string, string>;
+  const scope = resolveAdminSchoolScope(req.user!, school_code);
+  if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
   let sql = `SELECT id, full_name, class_name, school_code, admission_number
              FROM students WHERE user_id IS NULL`;
   const params: unknown[] = [];
-  if (school_code) { params.push(school_code); sql += ` AND school_code=$${params.length}`; }
-  if (class_name)  { params.push(class_name);  sql += ` AND class_name=$${params.length}`; }
+  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND school_code=${params.length}`; }
+  if (class_name)       { params.push(class_name);        sql += ` AND class_name=${params.length}`; }
   sql += ' ORDER BY full_name';
   const { rows } = await query(sql, params);
   return res.json({ students: rows });
@@ -51,10 +83,12 @@ router.get('/students-without-login', async (req, res) => {
 //    accounts in Users that aren't yet attached to a students row) ──────────
 router.get('/student-logins-without-link', async (req, res) => {
   const { school_code } = req.query as Record<string, string>;
+  const scope = resolveAdminSchoolScope(req.user!, school_code);
+  if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
   let sql = `SELECT id, username, full_name, school_code FROM users
              WHERE role='student' AND NOT EXISTS (SELECT 1 FROM students st WHERE st.user_id = users.id)`;
   const params: unknown[] = [];
-  if (school_code) { params.push(school_code); sql += ` AND school_code=$${params.length}`; }
+  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND school_code=${params.length}`; }
   sql += ' ORDER BY full_name';
   const { rows } = await query(sql, params);
   return res.json({ users: rows });
@@ -64,9 +98,11 @@ router.get('/student-logins-without-link', async (req, res) => {
 //    be linked to several children, so no "unlinked" filtering here) ────────
 router.get('/parent-logins', async (req, res) => {
   const { school_code } = req.query as Record<string, string>;
+  const scope = resolveAdminSchoolScope(req.user!, school_code);
+  if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
   let sql = `SELECT id, username, full_name, phone FROM users WHERE role='parent'`;
   const params: unknown[] = [];
-  if (school_code) { params.push(school_code); sql += ` AND school_code=$${params.length}`; }
+  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND school_code=${params.length}`; }
   sql += ' ORDER BY full_name';
   const { rows } = await query(sql, params);
   return res.json({ users: rows });
