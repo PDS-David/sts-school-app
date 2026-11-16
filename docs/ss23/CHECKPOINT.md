@@ -1,20 +1,21 @@
 # Latest execution update — 2026-11-16
 
-This section supersedes earlier live-status wording below. Historical entries remain for audit only.
+> This section supersedes earlier live-status wording below. Historical entries remain for audit only.
 
 ## Live repository and PR state
 
-- Current master: e426a824d7d39a9b039dae0152de5ec92dbcd292.
+- Current master: 90a718a0fab35b2500f6e532242689d4fa8b28cd.
 - PRs #867, #868, #869, #870 and #871 are merged.
-- PR #869 merged at 04:37:24Z; PR #870 at 04:36:02Z; PR #871 at 04:36:05Z.
 - PR #870 adds a server-side exclusion for unresolved source-extract placeholders before student asset listing or reading. Its negative-control test confirms placeholders remain invisible even when approval metadata is erroneously advanced.
-- All four workflows passed on PR #871 final head 1cbe7efbb2b0b9d2a729674c73e661b5e713ea4e: SS23 package contract 43804755967; SS23 integrity 43804755981; SS1 integrity 43804755877; JSS3 implementation and asset checks 43804755894.
+- PR #871 final head 1cbe7efbb2b0b9d2a729674c73e661b5e713ea4e passed all four workflows: SS23 package contract 43804755967; SS23 integrity 43804755981; SS1 integrity 43804755877; JSS3 implementation/asset checks 43804755894.
+- PR #872 (this documentation correction) is open/mergeable and three commits ahead, zero behind master.
+- PR #873 is open/mergeable and proposes an aligned update to irrigation and nutrient-cycle visual blockers. On its current head, SS23 package contract 43805636778, SS23 integrity 43805636775 and SS1 integrity 43805636772 passed; JSS3 checks 43805636802 were still running.
 - No further merge, deployment, production import or student release is authorised. The owner retains those decisions.
 
 ## Agricultural Science — current merged master state
 
 - 19 units: First Term 8, Second Term 6, Third Term 5.
-- 195 practice and assessment records.
+- 195 practice/assessment records.
 - 52 asset records: 42 unresolved source-extract placeholders and 10 locally stored school-authored SVGs.
 - 48 external factual references.
 - 116 coverage rows: 82 SUPPORTED, 25 PARTIAL, 5 UNRESOLVED, 4 MARKER.
@@ -24,13 +25,14 @@ This section supersedes earlier live-status wording below. Historical entries re
 ## Source and asset corrections now on master
 
 - Tractor/PTO/drawbar provenance is First-Term and cites Penn State PTO Safety, matching the Week Three lesson.
-- Generalized soil-profile provenance and coverage cite USDA NRCS "A Soil Profile", not the unrelated jar-test source. It illustrates possible O, A, E, B, C and R horizons, noting horizon presence and depth vary; it is not a universal profile.
-- All 10 local SVG byte counts and SHA-256 values match committed file contents. Package states remain approval PENDING and verification DEFERRED; hash checks are technical evidence only.
+- Generalized soil-profile provenance and coverage cite USDA NRCS "A Soil Profile". The diagram shows possible O, A, E, B, C and R horizons and explicitly notes horizon presence and depth vary; it is not a universal profile.
+- All 10 local SVG byte counts and SHA-256 values match committed file contents. Their package states remain approval PENDING and verification DEFERRED; hash checks are technical evidence only.
 - The merged student-delivery API rejects unresolved source-extract placeholders before listing or reading, even if metadata is erroneously advanced to APPROVED/IMPLEMENTED/VERIFIED/PERMITTED.
 - Watermarked, third-party and rights-unverified source images remain provenance-only and non-deliverable unless written reuse rights and attribution are recorded.
 - Cassava bacterial blight uses Xanthomonas phaseoli pv. manihotis as the preferred name and retains X. axonopodis pv. manihotis as a synonym; EPPO and a 2024 Plant Disease source are registered. Full disease-table specialist review remains open.
 - Floriculture and pest decisions are clarified without guessing the unresolved source spelling "carnality" or approving pesticide products.
 - Five soil practical procedures are review drafts only; apparatus, safety, expected observations, mark-by-mark guides and teacher approval remain outstanding.
+- PR #873 refines the irrigation and nutrient-cycle visual blockers to list all three school-authored alternatives for each topic; both items remain blocking pending approval and rights review of source figures.
 
 ## Assessment integrity and provenance
 
