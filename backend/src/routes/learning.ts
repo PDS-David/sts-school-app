@@ -350,7 +350,10 @@ router.get('/ss23/assets/:assetId', requirePerm('topics.read'), async (req, res)
 router.get('/materials', requirePerm('materials.read'), async (req, res) => {
   const { subject_id, class_name, term_id, school_code } = req.query as Record<string, string>;
   const user = req.user!;
-  const sc = (school_code && user.role === 'admin') ? school_code : user.school_code;
+  const schoolScope = resolveLearningAssetSchool(user, school_code);
+  if ('error' in schoolScope) return res.status(schoolScope.status).json({ error: schoolScope.error });
+  const sc = schoolScope.schoolCode;
+  res.set('Cache-Control', 'private, no-store');
 
   // Students/parents can't be trusted to pass class_name themselves (no
   // screen does), so their viewable classes are resolved server-side and
@@ -398,7 +401,11 @@ router.get('/materials', requirePerm('materials.read'), async (req, res) => {
   sql += ' ORDER BY m.created_at DESC';
 
   const { rows } = await query(sql, params);
-  return res.json({ materials: rows });
+  return res.json({ materials: rows.map((material: any) => ({
+    ...material,
+    // Legacy unsafe URLs remain visible as metadata but cannot be opened or downloaded.
+    url: isSafeExternalMaterialUrl(material.url) ? material.url : null,
+  })) });
 });
 
 const materialCreateSchema = z.object({
@@ -406,8 +413,8 @@ const materialCreateSchema = z.object({
   class_name: z.string().trim().min(1).max(100).nullable().optional(),
   term_id: z.coerce.number().int().positive().nullable().optional(),
   title: z.string().trim().min(1).max(255),
-  type: z.string().trim().min(1).max(40),
-  url: z.string().trim().min(1).max(2048),
+  type: z.enum(['pdf', 'video', 'doc', 'link']),
+  url: z.string().min(1).max(2048).refine(isSafeExternalMaterialUrl, 'Material URL must be a safe HTTPS link to a public hostname.'),
   school_code: z.string().trim().min(1).max(50).optional(),
 });
 
@@ -415,7 +422,11 @@ router.post('/materials', requirePerm('materials.write'), async (req, res) => {
   const parsed = materialCreateSchema.safeParse(req.body);
   if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
   const data = parsed.data;
-  const target = resolveContentSchool(req.user!, data.school_code);
+  const user = req.user!;
+  if (user.role === 'admin' && user.school_code && data.school_code && data.school_code !== user.school_code) {
+    return res.status(403).json({ error: 'This administrator is restricted to their assigned school.' });
+  }
+  const target = resolveContentSchool(user, user.school_code ?? data.school_code);
   if ('error' in target) return res.status(target.status).json({ error: target.error });
 
   const scopeError = await checkTeacherContentScope(req.user!, {
@@ -444,18 +455,26 @@ router.post('/materials', requirePerm('materials.write'), async (req, res) => {
 
 router.delete('/materials/:id', requirePerm('materials.write'), async (req, res) => {
   const user = req.user!;
-  // Found in the Pass 20 comparison audit: this only ever deleted `WHERE
-  // created_by=$2` — meaning even admin could not remove a material some
-  // other teacher had uploaded (e.g. to take it down after that teacher
-  // left the school). Admin now bypasses the created_by check entirely,
-  // matching the "admin is unrestricted" pattern used everywhere else in
-  // the app; a non-admin teacher is still limited to their own uploads.
-  const { rows } = await query(
-    user.role === 'admin'
-      ? 'DELETE FROM materials WHERE id=$1 RETURNING id'
-      : 'DELETE FROM materials WHERE id=$1 AND created_by=$2 RETURNING id',
-    user.role === 'admin' ? [req.params.id] : [req.params.id, user.id],
-  );
+  const materialId = Number(req.params.id);
+  if (!Number.isSafeInteger(materialId) || materialId <= 0) return res.status(400).json({ error: 'Invalid material id' });
+
+  let sql: string;
+  let params: unknown[];
+  if (user.role === 'admin' && !user.school_code) {
+    // Global administrators may remove material from any school.
+    sql = 'DELETE FROM materials WHERE id=$1 RETURNING id';
+    params = [materialId];
+  } else if (user.role === 'admin') {
+    // School-bound administrators can remove any material in their own school only.
+    sql = 'DELETE FROM materials WHERE id=$1 AND school_code=$2 RETURNING id';
+    params = [materialId, user.school_code];
+  } else {
+    // Teachers can remove only their own uploads within their assigned school.
+    if (!user.school_code) return res.status(403).json({ error: 'Your account is not assigned to a school.' });
+    sql = 'DELETE FROM materials WHERE id=$1 AND school_code=$2 AND created_by=$3 RETURNING id';
+    params = [materialId, user.school_code, user.id];
+  }
+  const { rows } = await query(sql, params);
   if (!rows[0]) return res.status(404).json({ error: 'Material not found' });
   return res.json({ ok: true });
 });
