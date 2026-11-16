@@ -11,7 +11,7 @@ const KIND_ICON: Record<string, string> = {
 };
 
 export default function NotificationsScreen({ navigation }: any) {
-  const { notifications, markAllRead, markRead, unreadCount, loading, feedErrors, readIds, refresh } = useNotifications();
+  const { notifications, markAllRead, markRead, unreadCount, loading, feedErrors, readIds, readStateReady, refresh } = useNotifications();
 
   const openNotification = (notification: (typeof notifications)[number]) => {
     if (!notification.target) return;
@@ -36,7 +36,7 @@ export default function NotificationsScreen({ navigation }: any) {
           <Ionicons name="arrow-back" size={22} color={Colors.white} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Notifications</Text>
-        <TouchableOpacity onPress={markAllRead} disabled={unreadCount === 0} accessibilityRole="button" accessibilityLabel="Mark all notifications as read" accessibilityState={{ disabled: unreadCount === 0 }} style={{ padding: 6, opacity: unreadCount === 0 ? 0.55 : 1 }}>
+        <TouchableOpacity onPress={markAllRead} disabled={unreadCount === 0 || !readStateReady} accessibilityRole="button" accessibilityLabel="Mark all notifications as read" accessibilityState={{ disabled: unreadCount === 0 || !readStateReady }} style={{ padding: 6, opacity: unreadCount === 0 || !readStateReady ? 0.55 : 1 }}>
           <Text style={styles.markRead}>Mark all read</Text>
         </TouchableOpacity>
       </View>
@@ -72,7 +72,7 @@ export default function NotificationsScreen({ navigation }: any) {
             </View>
           );
           return n.target ? (
-            <TouchableOpacity onPress={() => openNotification(n)} activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={`Open ${n.title}`}>
+            <TouchableOpacity onPress={() => openNotification(n)} disabled={!readStateReady} activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={`Open ${n.title}`} accessibilityState={{ disabled: !readStateReady }}>
               {card}
             </TouchableOpacity>
           ) : card;
