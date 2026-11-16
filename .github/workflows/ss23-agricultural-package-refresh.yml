@@ -6,7 +6,7 @@ on:
       - agent/ss23-agricultural-science-terms2-3-20261116
     paths:
       - "backend/src/db/ss23/subjects/agricultural-science.json"
-      - "tests/ss23/agricultural-science.terms2-3.package.test.mts"
+      - "tests/ss23/**"
       - ".github/workflows/ss23-agricultural-package-refresh.yml"
 
 permissions:
