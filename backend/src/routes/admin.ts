@@ -250,10 +250,12 @@ router.post('/users/:id/reissue-activation-code', async (req, res) => {
     return res.status(400).json({ error: 'This account has already been activated — there is no activation code to reissue.' });
   }
   const activationCode = generateNumericPin();
-  await query(
-    `UPDATE users SET activation_code=$1, activation_fail_count=0, activation_locked_until=NULL WHERE id=$2`,
-    [activationCode, req.params.id],
+  const { rows: updated } = await query(
+    `UPDATE users SET activation_code=$1, activation_fail_count=0, activation_locked_until=NULL
+      WHERE id=$2 AND ($3::text IS NULL OR school_code=$3) RETURNING id`,
+    [activationCode, req.params.id, req.user!.school_code ?? null],
   );
+  if (!updated[0]) return res.status(404).json({ error: 'User not found' });
   await audit(req.user!, 'reissue_activation_code', 'user', req.params.id);
   return res.json({ activation_code: activationCode });
 });
