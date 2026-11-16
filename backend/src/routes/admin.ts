@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import type { Request, Response, NextFunction } from 'express';
 import bcrypt from 'bcryptjs';
 import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requireRole } from '../middleware/auth.js';
@@ -20,6 +21,13 @@ type AdminSchoolScope =
 // A school-bound administrator is never allowed to widen their tenant by
 // supplying a query/body school_code. A global administrator (school_code NULL)
 // retains the existing cross-school behavior and may optionally narrow reads.
+function requireGlobalAdmin(req: Request, res: Response, next: NextFunction) {
+  if (req.user?.school_code) {
+    return res.status(403).json({ error: 'Only a global administrator can access this operation' });
+  }
+  next();
+}
+
 function resolveAdminSchoolScope(
   user: AuthUser,
   requested: unknown,
@@ -399,13 +407,19 @@ router.delete('/users/:id', async (req, res) => {
 // ══════════════════════════════════════════
 router.get('/audit-log', async (req, res) => {
   const { school_code, limit = '100' } = req.query as Record<string, string>;
+  const scope = resolveAdminSchoolScope(req.user!, school_code);
+  if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
+  const parsedLimit = Number(limit);
+  if (!Number.isSafeInteger(parsedLimit) || parsedLimit < 1) {
+    return res.status(400).json({ error: 'limit must be a positive whole number' });
+  }
   let sql = `SELECT al.*,u.username AS actor_username
              FROM audit_log al LEFT JOIN users u ON u.id=al.actor_id
              WHERE 1=1`;
   const params: unknown[] = [];
-  if (school_code) { params.push(school_code); sql += ` AND al.school_code=$${params.length}`; }
+  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND al.school_code=$${params.length}`; }
   sql += ` ORDER BY al.created_at DESC LIMIT $${params.length + 1}`;
-  params.push(Number(limit));
+  params.push(Math.min(parsedLimit, 500));
   const { rows } = await query(sql, params);
   return res.json({ audit_log: rows });
 });
@@ -413,7 +427,7 @@ router.get('/audit-log', async (req, res) => {
 // ══════════════════════════════════════════
 // EMAIL LOG TRIGGER
 // ══════════════════════════════════════════
-router.post('/log-email', async (req, res) => {
+router.post('/log-email', requireGlobalAdmin, async (req, res) => {
   const { level = 'INFO', event = 'manual', payload = {} } = req.body;
   await query(
     `INSERT INTO email_log_queue(level,event,payload) VALUES($1,$2,$3)`,
@@ -433,7 +447,9 @@ router.post('/log-email', async (req, res) => {
 // ══════════════════════════════════════════
 router.get('/export/excel', async (req, res) => {
   const { school_code } = req.query as { school_code?: string };
-  const sc = school_code ?? req.user!.school_code;
+  const scope = resolveAdminSchoolScope(req.user!, school_code);
+  if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
+  const sc = scope.schoolCode;
 
   // Found in QA Pass 8: admin's own `school_code` is NULL (same root cause as
   // the Pass 7 contacts bug), so hitting this route with no `?school_code=`
@@ -511,30 +527,32 @@ const TERM_LABELS = ['1st Term', '2nd Term', '3rd Term'];
 // ── POST /admin/term-pins — generate (or re-issue) a PIN ───────────────────────
 router.post('/term-pins', async (req, res) => {
   const { student_id, term_label } = req.body as { student_id?: string; term_label?: string };
-  if (!student_id || !term_label) {
-    return res.status(400).json({ error: 'student_id and term_label are required' });
+  if (typeof student_id !== 'string' || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(student_id) || !term_label) {
+    return res.status(400).json({ error: 'A valid student_id and term_label are required' });
   }
   if (!TERM_LABELS.includes(term_label)) {
     return res.status(400).json({ error: `term_label must be one of: ${TERM_LABELS.join(', ')}` });
   }
 
-  const { rows: stRows } = await query('SELECT id FROM students WHERE id=$1', [student_id]);
-  if (!stRows[0]) return res.status(404).json({ error: 'Student not found' });
-
   const pin = generateNumericPin();
-  // Upsert on (student_id, term_label): re-issuing (a lost slip, or a
-  // deliberate reset) replaces the existing PIN and clears any prior
-  // redemption, rather than erroring or accumulating rows — there is only
-  // ever meant to be one live PIN per student per term_label at a time.
-  const { rows } = await query(
-    `INSERT INTO term_access_pins(student_id, term_label, pin, created_by)
-     VALUES($1,$2,$3,$4)
-     ON CONFLICT (student_id, term_label)
-     DO UPDATE SET pin=EXCLUDED.pin, redeemed_at=NULL, created_by=EXCLUDED.created_by, created_at=now()
-     RETURNING *`,
-    [student_id, term_label, pin, req.user!.id],
-  );
-  return res.status(201).json({ term_pin: rows[0] });
+  const result = await withTransaction(async (client) => {
+    const { rows: stRows } = await client.query(
+      'SELECT id FROM students WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) FOR SHARE',
+      [student_id, req.user!.school_code ?? null],
+    );
+    if (!stRows[0]) return { ok: false as const };
+    const { rows } = await client.query(
+      `INSERT INTO term_access_pins(student_id, term_label, pin, created_by)
+       VALUES($1,$2,$3,$4)
+       ON CONFLICT (student_id, term_label)
+       DO UPDATE SET pin=EXCLUDED.pin, redeemed_at=NULL, created_by=EXCLUDED.created_by, created_at=now()
+       RETURNING *`,
+      [student_id, term_label, pin, req.user!.id],
+    );
+    return { ok: true as const, termPin: rows[0] };
+  });
+  if (!result.ok) return res.status(404).json({ error: 'Student not found' });
+  return res.status(201).json({ term_pin: result.termPin });
 });
 
 // ── GET /admin/term-pins?student_id=&term_label= — view issued/redeemed status ──
@@ -543,10 +561,20 @@ router.post('/term-pins', async (req, res) => {
 // needs to be able to read it back, same as `POST /admin/users`'s
 // `temporary_password` being visible to admin, not just the recipient.
 router.get('/term-pins', async (req, res) => {
-  const { student_id, term_label } = req.query as Record<string, string>;
+  const { student_id, term_label, school_code } = req.query as Record<string, string>;
+  const scope = resolveAdminSchoolScope(req.user!, school_code);
+  if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
+  if (student_id && (typeof student_id !== 'string' ||
+      !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(student_id))) {
+    return res.status(400).json({ error: 'Invalid student_id' });
+  }
+  if (term_label && !TERM_LABELS.includes(term_label)) {
+    return res.status(400).json({ error: 'Invalid term_label' });
+  }
   let sql = `SELECT tp.*, st.full_name AS student_name, st.class_name
              FROM term_access_pins tp JOIN students st ON st.id=tp.student_id WHERE 1=1`;
   const params: unknown[] = [];
+  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND st.school_code=$${params.length}`; }
   if (student_id) { params.push(student_id); sql += ` AND tp.student_id=$${params.length}`; }
   if (term_label) { params.push(term_label); sql += ` AND tp.term_label=$${params.length}`; }
   sql += ' ORDER BY st.full_name, tp.term_label';
@@ -557,9 +585,18 @@ router.get('/term-pins', async (req, res) => {
 // ── POST /admin/class-codes — generate (or re-issue) a class's code ────────────
 router.post('/class-codes', async (req, res) => {
   const { school_code, class_name } = req.body as { school_code?: string; class_name?: string };
-  if (!school_code || !class_name) {
-    return res.status(400).json({ error: 'school_code and class_name are required' });
+  const scope = resolveAdminSchoolScope(req.user!, school_code);
+  if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
+  const sc = scope.schoolCode;
+  if (!sc) return res.status(400).json({ error: 'school_code is required for global administrators' });
+  if (typeof class_name !== 'string' || !class_name.trim() || class_name.trim().length > 100) {
+    return res.status(400).json({ error: 'A valid class_name is required' });
   }
+  const { rows: classes } = await query(
+    'SELECT 1 FROM classes WHERE school_code=$1 AND name=$2',
+    [sc, class_name.trim()],
+  );
+  if (!classes[0]) return res.status(400).json({ error: 'Unknown class for this school' });
 
   const code = generateNumericPin();
   // Upsert on (school_code, class_name): re-issuing (the code leaked, or a
@@ -574,7 +611,7 @@ router.post('/class-codes', async (req, res) => {
      ON CONFLICT (school_code, class_name)
      DO UPDATE SET code=EXCLUDED.code, fail_count=0, locked_until=NULL, created_by=EXCLUDED.created_by, created_at=now()
      RETURNING *`,
-    [school_code, class_name, code, req.user!.id],
+    [sc, class_name.trim(), code, req.user!.id],
   );
   return res.status(201).json({ class_code: rows[0] });
 });
@@ -584,13 +621,18 @@ router.post('/class-codes', async (req, res) => {
 // without cross-referencing the Users list separately.
 router.get('/class-codes', async (req, res) => {
   const { school_code, class_name } = req.query as Record<string, string>;
+  const scope = resolveAdminSchoolScope(req.user!, school_code);
+  if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
+  if (class_name && (typeof class_name !== 'string' || class_name.trim().length > 100)) {
+    return res.status(400).json({ error: 'Invalid class_name' });
+  }
   let sql = `SELECT cc.*,
                     (SELECT COUNT(*) FROM students st WHERE st.school_code=cc.school_code AND st.class_name=cc.class_name AND st.user_id IS NOT NULL) AS claimed_count,
                     (SELECT COUNT(*) FROM students st WHERE st.school_code=cc.school_code AND st.class_name=cc.class_name AND st.user_id IS NULL) AS unclaimed_count
              FROM class_access_codes cc WHERE 1=1`;
   const params: unknown[] = [];
-  if (school_code) { params.push(school_code); sql += ` AND cc.school_code=$${params.length}`; }
-  if (class_name)  { params.push(class_name);  sql += ` AND cc.class_name=$${params.length}`; }
+  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND cc.school_code=$${params.length}`; }
+  if (class_name)       { params.push(class_name);        sql += ` AND cc.class_name=$${params.length}`; }
   sql += ' ORDER BY cc.school_code, cc.class_name';
   const { rows } = await query(sql, params);
   return res.json({ class_codes: rows });
@@ -599,12 +641,12 @@ router.get('/class-codes', async (req, res) => {
 // ══════════════════════════════════════════
 // DATABASE BACKUP (encrypted, emailed to ADMIN_LOG_RECIPIENTS)
 // ══════════════════════════════════════════
-router.get('/backups/status', async (_req, res) => {
+router.get('/backups/status', requireGlobalAdmin, async (_req, res) => {
   return res.json(await getBackupStatus());
 });
 
 let backupRunning = false;
-router.post('/backups/run', async (req, res) => {
+router.post('/backups/run', requireGlobalAdmin, async (req, res) => {
   if (backupRunning) return res.status(409).json({ error: 'A backup is already running.' });
   backupRunning = true;
   try {
