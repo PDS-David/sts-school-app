@@ -80,7 +80,7 @@ export default function FinanceScreen({ navigation }: any) {
     } catch { errors.push('invoices'); }
     try {
       // finance_admin has no school of its own — fee items are school-scoped.
-      const { data } = await api.get('/finance/fee-items', { params: { school_code: isFinanceAdmin ? (schoolCode ?? undefined) : undefined } });
+      const { data } = await api.get('/finance/fee-items', { params: { school_code: isFinanceAdmin ? (schoolCode ?? undefined) : isParent ? (selectedWard?.school_code ?? undefined) : undefined } });
       nextFeeItems = data.fee_items ?? [];
     } catch { errors.push('fee schedule'); }
     if (requestId !== dataRequestRef.current) return;
