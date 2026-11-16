@@ -92,7 +92,7 @@ export default function FinanceScreen({ navigation }: any) {
   useEffect(() => {
     void fetch();
     return () => { dataRequestRef.current += 1; };
-  }, [selectedWardId, selectedSchoolCode]);
+  }, [selectedWardId, selectedSchoolCode, selectedWard?.school_code]);
 
   const markPaid = async () => {
     if (!confirmPaid || updatingInvoiceId !== null) return;
