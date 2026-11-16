@@ -16,6 +16,8 @@ test('backend material URL validation requires HTTPS public DNS hosts', () => {
     'https://[::1]/lesson.pdf',
     'https://server.local/lesson.pdf',
     'https://service.internal/lesson.pdf',
+    'https://127.0.0.1.nip.io/lesson.pdf',
+    'https://999.999.999.999/lesson.pdf',
     'https://example.com:8443/lesson.pdf',
     ' https://example.com/lesson.pdf',
     'https://example.com/lesson.pdf ',
