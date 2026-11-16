@@ -2,15 +2,17 @@
 
 This supplement supersedes earlier live-state claims in this historical handoff.
 
-- Current `master`: `658c1f7b7dcee9ecdf73a972d2dfdc36b1842560`; PRs #867/#868 merged.
-- PR #869 remains open and unmerged, with the current checkpoint/handoff correction, a 47-item Agricultural Science teacher/specialist decision register and a draft correction/assessment audit.
-- PR #870 remains open and unmerged at `a9c8345ac8f8a588b810f73c60023be000b3473d`; it explicitly blocks unresolved `source-extract://` placeholders from student asset listings even if approval metadata is wrongly advanced. Its strengthened test simulates that bad state; current-head CI is running.
-- PR #871 remains open and unmerged at `73e8889ead006b1edcfd232b0f76287f11796d43`; its four CI workflows passed. It corrects the Agriculture soil-practical blocker wording without reducing the 47 open items or enabling delivery.
+- Current master: `658c1f7b7dcee9ecdf73a972d2dfdc36b1842560`; PRs #867/#868 merged.
+- PR #869 (checkpoint/handoff and Agriculture review documents) remains open/unmerged at `2d110494b76174b95fad6267a95882f9aa6340ed`.
+- PR #870 remains open/unmerged at `a9c8345ac8f8a588b810f73c60023be000b3473d`; all four workflows passed. It explicitly excludes `source-extract://` placeholders from student asset listings even if approval metadata is erroneously advanced; its negative-control test simulates that state.
+- PR #871 remains open/unmerged at `361b0f5659f3654b89d6c6d8590fbbafd641532d`. SS23 contract (43802113031), SS23 integrity (43802113039) and SS1 gate (43802113001) passed; JSS3 verification (43802113022) was still running at last check. It updates the practical blocker, current cassava blight nomenclature, two hashed external sources and two supported coverage rows.
 - Agricultural Science master remains 19 draft units, 195 practice/assessment items, 45 external factual references, 47 asset records, 109 coverage records and 47 open items (46 blocking). Package `PENDING`, units `DRAFT`, approval `PENDING`, verification `DEFERRED`; no student delivery.
-- The five supplementary practical procedures are documented on master in `SOIL_PRACTICALS_REVIEW_DRAFT.md`; they remain unapproved and have no official marking guide. The teacher/specialist register explicitly records the decisions required for all 47 blockers.
-- Structural package audit: 195 unique question IDs, no missing question/answer/explanation/locators/provenance, no unresolved provenance IDs, and all declared marks reconcile arithmetically. This is not answer accuracy or teacher approval. T2/T3 practice questions are authored supplements, not original-source question transcriptions. Four repeated First-Term prompt groups at separate locators are preserved pending source confirmation.
-- Original SS2/SS3 ZIPs are present as private Library archives, but their members were not readable through the text interface in this session. No new page-level verification is claimed. The four content-version differences remain owner decisions.
-- Keep the no-merge/no-deploy/no-import/no-student-release rules. Do not start Biology until Agriculture's source, assessment and teacher-approval gates pass.
+- PR #871 branch has 47 external references and 111 coverage rows; still 47 open items (46 blocking). Not on master until owner merges.
+- The five supplemental soil practical procedures are on master in `SOIL_PRACTICALS_REVIEW_DRAFT.md`; not teacher-approved and no official marking guide.
+- Assessment structure audit: 195 unique question IDs; required question/answer/explanation/locators/provenance are present; provenance references resolve; declared mark totals reconcile. This is not answer accuracy or teacher approval. T2/T3 practice questions are authored supplements, not original-source transcriptions. Four repeated First-Term prompt groups remain pending source confirmation.
+- The teacher/specialist review register and draft correction/assessment audit are in PR #869. These documents help reviewers, but they do not grant approvals.
+- The combined original ZIP archives are private Library files, but their contents were not readable through the Files text interface this session. No new page-level verification is claimed. The four source-version differences remain owner decisions.
+- Keep no-merge/no-deploy/no-import/no-student-release rules. Do not start Biology until Agriculture's source, assessment and teacher-approval gates pass.
 - Continue SS2 alphabetically after Agriculture is genuinely clear; complete SS3 examination preparation only after SS2, without introducing new instructional topics.
 
 ---
