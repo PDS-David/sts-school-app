@@ -4,7 +4,7 @@ This addendum supersedes outdated branch/PR pointers in the historical checkpoin
 
 - Current implementation PR: [#867](https://github.com/PDS-David/sts-school-app/pull/867), branch `agent/ss23-agricultural-science-hashfix-20261116`.
 - Base: `master` at `70cd4a8cb1a5f7fcbd1a103e6812bbe96d4e711e`.
-- This addendum commit: `eb5ca6d339425be4a5e8a0a846eb56e9e67bc67f`.
+- Soil-practical review draft added in commit `eb5ca6d339425be4a5e8a0a846eb56e9e67bc67f`; this checkpoint addendum committed in `d850b46b675e5e8e2b83b56ba9d9c026c463dba5`.
 - Current Agricultural Science package remains 19 units (8/6/5), 195 practice items, 45 external references, 47 asset records, 109 coverage rows and 47 open items (46 blocking, one non-blocking). Package remains `PENDING`; units remain `DRAFT`; no student delivery.
 - PR #867 workflows on the prior implementation head `140abf9bc8b67a28d849e002258ee66b83ed1783` passed. This documentation-only commit changes the PR head, so current-head checks must be rerun before review.
 - A new review-only file, [`SOIL_PRACTICALS_REVIEW_DRAFT.md`](SOIL_PRACTICALS_REVIEW_DRAFT.md), now contains draft procedures for moisture, porosity, capillarity, soil-organism observation and organic-matter observation/estimation. It is a teacher-review aid, not yet part of an approved student package. It does not establish source equivalence or teacher approval.
