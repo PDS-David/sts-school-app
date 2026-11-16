@@ -1,3 +1,15 @@
+
+## Live execution update — 2026-11-16
+
+### SS23-02 Agricultural Science (current branch state)
+
+- PR [#857](https://github.com/PDS-David/sts-school-app/pull/857) remains open and unmerged. Branch `agent/ss23-agricultural-science-terms2-3-r2-20261116`; verified code head `1377fdaa116143fcf9add283bfb9580a22537d11`; base master `2b3ec92b99d016b450858cce5b87d5d6056d990b`.
+- SS2 Agricultural Science now has 19 implemented draft units across T1/T2/T3 (8/6/5), 195 practice/assessment items, 45 newly authored/source-derived practice items, 22 added assessment answer guides and nine external factual references.
+- Current-head GitHub Actions [run 43791853155](https://github.com/PDS-David/sts-school-app/actions/runs/43791853155) is GREEN: hash check, SS23 validation (zero errors), SS23 tests (39/39), package/student-delivery contract tests (37/37), SS2/SS3 source-map tests (11/11), SS1 validation and backend typecheck all passed.
+- The package remains `PENDING`; all new lessons are `DRAFT`. Readiness reports T1/T2/T3 as `IN_PROGRESS`, with 14/9/7 unresolved coverage rows and 24 blocking open items per term. No teacher approval or owner acceptance has been granted. Do not release or merge.
+- Earlier run 43791400716 failed 38/39 on a stale expected count after assessment expansion; corrected without weakening validation. The current-head run above passes.
+- Exact next action: continue Agricultural Science source assessment reconciliation and remaining technical blockers. Do not advance to Biology until the full Agricultural Science readiness and approval gates pass.
+
 ## Live-state update — 2026-11-16
 
 This section supersedes the historical branch/PR status in the checkpoint below. Historical source-receipt evidence is retained.
