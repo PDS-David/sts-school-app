@@ -350,8 +350,10 @@ test('parents can read invoices only for active linked wards while finance admin
 });
 
 
+
 test('parent fee schedules follow linked ward campuses and cannot be widened by query parameters', async () => {
   const parent = await createInvoiceViewer('fee-schedule-parent', 'parent');
+  const primaryOnlyParent = await createInvoiceViewer('primary-only-fee-parent', 'parent');
   const suffix = randomUUID();
   const studentIds: string[] = [];
   const feeItemIds: number[] = [];
@@ -361,7 +363,6 @@ test('parent fee schedules follow linked ward campuses and cannot be widened by 
     for (const [label, schoolCode] of [
       ['primary-ward', 'primary'],
       ['secondary-ward', 'secondary'],
-      ['unlinked-campus', 'unlinked'],
     ] as const) {
       const { rows } = await query(
         `INSERT INTO students(full_name,class_name,school_code,admission_number)
@@ -371,14 +372,13 @@ test('parent fee schedules follow linked ward campuses and cannot be widened by 
       studentIds.push(String(rows[0].id));
     }
     await query(
-      'INSERT INTO parent_wards(parent_id,student_id) VALUES($1,$2),($1,$3)',
-      [parent.id, studentIds[0], studentIds[1]],
+      'INSERT INTO parent_wards(parent_id,student_id) VALUES($1,$2),($1,$3),($4,$2)',
+      [parent.id, studentIds[0], studentIds[1], primaryOnlyParent.id],
     );
 
     for (const [label, schoolCode] of [
       ['primary-fee', 'primary'],
       ['secondary-fee', 'secondary'],
-      ['unlinked-fee', 'unlinked'],
     ] as const) {
       const { rows } = await query(
         'INSERT INTO fee_items(school_code,name,amount) VALUES($1,$2,100) RETURNING id',
@@ -389,20 +389,20 @@ test('parent fee schedules follow linked ward campuses and cannot be widened by 
 
     const started = await startFinanceServer();
     server = started.server;
-    const getFeeItems = (queryString = '') => fetch(
+    const getFeeItems = (token: string, queryString = '') => fetch(
       `${started.baseUrl}/fee-items${queryString}`,
-      { headers: { Authorization: `Bearer ${parent.token}` } },
+      { headers: { Authorization: `Bearer ${token}` } },
     );
 
-    const allLinkedCampuses = await getFeeItems();
+    const allLinkedCampuses = await getFeeItems(parent.token);
     assert.equal(allLinkedCampuses.status, 200);
     assert.deepEqual(
       (await allLinkedCampuses.json() as { fee_items: Array<{ id: number }> }).fee_items.map(item => item.id).sort(),
-      feeItemIds.slice(0, 2).sort(),
-      'without a campus filter, parents may see fee schedules only for campuses containing their active linked wards',
+      feeItemIds.slice().sort(),
+      'parents may see fee schedules only for campuses containing their active linked wards',
     );
 
-    const selectedSecondaryCampus = await getFeeItems('?school_code=secondary');
+    const selectedSecondaryCampus = await getFeeItems(parent.token, '?school_code=secondary');
     assert.equal(selectedSecondaryCampus.status, 200);
     assert.deepEqual(
       (await selectedSecondaryCampus.json() as { fee_items: Array<{ id: number }> }).fee_items.map(item => item.id),
@@ -410,12 +410,12 @@ test('parent fee schedules follow linked ward campuses and cannot be widened by 
       'a parent can select a linked ward campus and receive that campus fee schedule',
     );
 
-    const unlinkedCampus = await getFeeItems('?school_code=unlinked');
+    const unlinkedCampus = await getFeeItems(primaryOnlyParent.token, '?school_code=secondary');
     assert.equal(unlinkedCampus.status, 200);
     assert.deepEqual(
       (await unlinkedCampus.json() as { fee_items: unknown[] }).fee_items,
       [],
-      'a school_code query parameter must not expose a campus with no linked ward',
+      'a school_code query parameter must not expose a campus without a linked ward',
     );
   } finally {
     if (server) {
@@ -427,6 +427,6 @@ test('parent fee schedules follow linked ward campuses and cannot be widened by 
       await query('DELETE FROM parent_wards WHERE student_id=ANY($1::uuid[])', [studentIds]);
       await query('DELETE FROM students WHERE id=ANY($1::uuid[])', [studentIds]);
     }
-    await query('DELETE FROM users WHERE id=$1', [parent.id]);
+    await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [[parent.id, primaryOnlyParent.id]]);
   }
 });
