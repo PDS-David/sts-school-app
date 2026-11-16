@@ -267,6 +267,17 @@ function main() {
       if (slug && file !== slug + '.json') continue;
       const raw = JSON.parse(readFileSync(path.join(dir, file), 'utf8')) as unknown;
       const expectedClass = 'SS ' + directory.slice(-1);
+      if (directory === 'ss3' && unitPackageSchema.safeParse(raw).success) {
+        errors.push(...checkUnitPackage(file, raw, registry, expectedClass));
+        const parsedUnit = unitPackageSchema.safeParse(raw);
+        if (parsedUnit.success) {
+          const key = parsedUnit.data.class_name + '/' + parsedUnit.data.subject_slug;
+          if (packageKeys.has(key)) errors.push('DUPLICATE_PACKAGE ' + key);
+          packageKeys.add(key);
+          unitPackages.push(parsedUnit.data);
+        }
+        continue;
+      }
       errors.push(...checkPackage(file, raw, registry, expectedClass));
       const parsed = legacyPackageSchema.safeParse(raw);
       if (parsed.success) {

@@ -137,7 +137,7 @@ export function createSs23StudentDelivery(
   function listAssets(unitId: string, className: Ss23ClassName): StudentSs23Asset[] {
     const unit = getUnit(unitId, className);
     if (!unit) return [];
-    const subjectPackage = packages.find(pkg => pkg.subject_slug === unit.subject_slug);
+    const subjectPackage = packages.find(pkg => pkg.subject_slug === unit.subject_slug && pkg.class_name === unit.class_name);
     if (!subjectPackage) return [];
     return subjectPackage.assets
       .filter(asset => asset.unit_id === unitId && isStudentDeliverableAsset(asset))

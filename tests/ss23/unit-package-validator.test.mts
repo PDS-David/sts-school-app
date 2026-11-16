@@ -10,6 +10,7 @@ import { loadSs23Packages } from '../../backend/src/db/ss23/loader.js';
 const registry = loadRegistry();
 const packages = loadSs23Packages();
 const agriculture = packages.find(pkg => pkg.class_name === 'SS 2' && pkg.subject_slug === 'agricultural-science');
+const ss3Agriculture = packages.find(pkg => pkg.class_name === 'SS 3' && pkg.subject_slug === 'agricultural-science');
 
 test('validator reads the current root-level unit package and matches its source inventory', () => {
   assert.ok(agriculture, 'the registered Agricultural Science package should load');
@@ -91,8 +92,9 @@ test('readiness remains explicit when a package is filtered to a different class
     item.class_name === 'SS 3' && item.subject === 'agricultural-science' && item.term === '1st Term',
   );
   assert.ok(ss3);
-  assert.equal(ss3.package, false);
-  assert.equal(ss3.state, 'MISSING_PACKAGE');
+  assert.equal(ss3.package, true);
+  assert.equal(ss3.lessons, ss3Agriculture?.units.filter(unit => unit.term === '1st Term').length);
+  assert.equal(ss3.state, 'IN_PROGRESS', 'SS3 exam-preparation package remains pending and fail-closed');
 });
 
 test('does not treat a subject-level package as term coverage when the term has no source or unit', () => {
@@ -111,4 +113,17 @@ test('does not treat a subject-level package as term coverage when the term has 
     assert.equal(row.lessons, 0);
     assert.equal(row.state, 'MISSING_TERM_PACKAGE');
   }
+});
+
+test('SS3 Agricultural Science is registered as exam preparation only', () => {
+  assert.ok(ss3Agriculture);
+  assert.deepEqual(checkUnitPackage('agricultural-science.json', ss3Agriculture, registry, 'SS 3'), []);
+  assert.equal(ss3Agriculture.delivery_mode, 'EXAM_PREPARATION');
+  assert.equal(ss3Agriculture.units.length, 12);
+  assert.equal(ss3Agriculture.units.reduce((count, unit) => count + unit.practice.length, 0), 24);
+  assert.ok(ss3Agriculture.units.every(unit => unit.delivery_mode === 'EXAM_PREPARATION'));
+  assert.ok(ss3Agriculture.units.every(unit => unit.unit_type === 'REVISION_UNIT'));
+  assert.ok(ss3Agriculture.units.every(unit => unit.exam_targets.join(',') === 'WAEC,NECO,JAMB'));
+  assert.ok(ss3Agriculture.units.every(unit => unit.term === '1st Term' || unit.term === '2nd Term'));
+  assert.equal(ss3Agriculture.units.some(unit => unit.week_label === '9' && unit.term === '2nd Term'), false);
 });
