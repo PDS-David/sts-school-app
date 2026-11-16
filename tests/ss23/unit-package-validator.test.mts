@@ -94,3 +94,17 @@ test('readiness remains explicit when a package is filtered to a different class
   assert.equal(ss3.package, false);
   assert.equal(ss3.state, 'MISSING_PACKAGE');
 });
+
+test('does not treat a subject-level package as term coverage when the term has no source or unit', () => {
+  assert.ok(agriculture);
+  const matrix = readinessForUnitPackages(registry, packages);
+  for (const term of ['2nd Term', '3rd Term']) {
+    const row = matrix.find(item =>
+      item.class_name === 'SS 2' && item.subject === 'agricultural-science' && item.term === term,
+    );
+    assert.ok(row);
+    assert.equal(row.package, true, 'the subject package exists');
+    assert.equal(row.lessons, 0);
+    assert.equal(row.state, 'MISSING_TERM_PACKAGE');
+  }
+});
