@@ -33,7 +33,7 @@ The table above is the historical 30 October snapshot, not a live status board. 
 | Admin announcement authoring | Merged | PR #768; SMM-005 |
 | Repeatable root test/typecheck scripts | Merged | PR #771 |
 
-School-management feature-specific PostgreSQL route tests are in PR #894 and all required CI workflows passed on head `3898b90277ae8cb046876f4eb3f137ed41f5c119` (JSS3 verify `43940628882`, SS1 integrity `43940628889`, SS23 integrity `43940628962`, backend student report term-scope `43940628830`). They cover event and announcement audience/school scoping, parent upcoming tests, achievement thresholds and teacher marking counts. PR #894 remains open for review.
+School-management feature-specific PostgreSQL route tests were merged in PR #894 as `554688b372f6b9f1b74adf64dd4fcf817ca690e2`. All five required CI workflows passed on PR head `434111153ae1aafcfedfa85ae7d6240f48468cb2`: JSS3 verify `43941196109`, SS1 integrity `43941196090`, SS23 integrity `43941196059`, backend student report term-scope `43941196004`, and backend score subject-scope/batch atomicity `43941196025`. Tests cover event and announcement audience/school scoping, parent upcoming tests, achievement thresholds and teacher marking counts.
 
 ### Still open or gated
 
@@ -44,7 +44,7 @@ School-management feature-specific PostgreSQL route tests are in PR #894 and all
 - **ASM-01 / ASM-02, SEC-02, DATA-03, OPS-03, OPS-04, PRD-02** remain gated by owner decisions D1, D2, D4, D5, D6, D7 or D9 respectively. Do not invent approvals or policy choices.
 - **OPS-05, VER-03, VER-04, JSS3-01, JSS3-02** remain gated by owner credentials, testing/device access or source/approval evidence.
 
-PRs #737, #764, #766, #768 and #771 are merged. PR #894 is the current school-management verification follow-up.
+PRs #737, #764, #766, #768, #771 and #894 are merged. The requested school-management feature implementation and automated route verification are complete on master.
 
 ## How to use
 
