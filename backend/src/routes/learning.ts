@@ -846,13 +846,7 @@ router.get('/mathematics-assets/:assetKey', requirePerm('topics.read'), async (r
     console.error('[assets] mathematics asset failed MIME/SHA-256 verification', { assetKey });
     return res.status(500).json({ error: 'Asset integrity verification failed.' });
   }
-  const etag = `"${file.sha256}"`;
-  res.setHeader('ETag', etag);
   res.setHeader('Cache-Control', 'private, no-store, max-age=0');
-  const inm = String(req.headers['if-none-match'] ?? '');
-  if (inm && inm.split(',').map(value => value.trim().replace(/^W\//, '')).includes(etag)) {
-    return res.status(304).end();
-  }
   res.setHeader('Content-Type', file.mime);
   res.setHeader('Content-Length', String(file.bytes.length));
   res.setHeader('X-Content-Type-Options', 'nosniff');
@@ -890,13 +884,7 @@ router.get('/assets/:id', requirePerm('topics.read'), async (req, res) => {
   if (meta[0].school_code === 'secondary' && meta[0].class_name === 'SS 1' && meta[0].subject_name === 'Mathematics' &&
       !mathematicsAssetDeliverable(meta[0], meta[0])) return res.status(404).json({ error: 'Asset not found' });
 
-  const etag = `"${meta[0].sha256}"`;
-  res.setHeader('ETag', etag);
   res.setHeader('Cache-Control', 'private, no-store, max-age=0');
-  const inm = String(req.headers['if-none-match'] ?? '');
-  if (inm && inm.split(',').map((s) => s.trim().replace(/^W\//, '')).includes(etag)) {
-    return res.status(304).end();
-  }
 
   const bytesParams = [...params, meta[0].topic_id];
   const { rows } = await query(
