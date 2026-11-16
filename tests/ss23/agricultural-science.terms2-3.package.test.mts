@@ -78,6 +78,13 @@ test('external factual corrections are source-bound and covered', () => {
     'SS23-EXT-NCSU-BALSAM',
     'SS23-EXT-UFIFAS-CAULIFLOWER',
     'SS23-EXT-KEW-MEGATHYRSUS-MAXIMUS',
+    'SS23-EXT-APSNET-MAIZE-SMUT',
+    'SS23-EXT-NCSU-MAIZE-RUST',
+    'SS23-EXT-APSNET-CASSAVA-MOSAIC',
+    'SS23-EXT-CABI-CASSAVA-BLIGHT',
+    'SS23-EXT-ICCO-COCOA-BLACK-POD',
+    'SS23-EXT-CABI-PHYTOPHTHORA-OOMYCETE',
+    'SS23-EXT-UCIPM-ROOT-KNOT',
   ];
   for (const id of expected) {
     assert.ok(external.has(id), 'missing external reference ' + id);
@@ -90,6 +97,24 @@ test('external factual corrections are source-bound and covered', () => {
   }
 });
 
+
+
+test('crop-disease examples use externally supported causal agents and retain the full-review blocker', () => {
+  const disease = pkg.units.find(unit => unit.id === 'SUP-SS2-AGRICULTURAL-SCIENCE-T2-W05-06-CROP-DISEASES');
+  assert.ok(disease);
+  assert.match(disease.body, /Ustilago maydis/);
+  assert.match(disease.body, /Puccinia sorghi.*Puccinia polysora/);
+  assert.match(disease.body, /Bemisia tabaci/);
+  assert.match(disease.body, /Xanthomonas axonopodis.*manihotis/);
+  assert.match(disease.body, /Phytophthora palmivora.*P. megakarya/);
+  assert.match(disease.body, /Meloidogyne.*species/);
+  const ids = ['SS23-EXT-APSNET-MAIZE-SMUT', 'SS23-EXT-NCSU-MAIZE-RUST', 'SS23-EXT-APSNET-CASSAVA-MOSAIC', 'SS23-EXT-CABI-CASSAVA-BLIGHT', 'SS23-EXT-ICCO-COCOA-BLACK-POD', 'SS23-EXT-CABI-PHYTOPHTHORA-OOMYCETE', 'SS23-EXT-UCIPM-ROOT-KNOT'];
+  for (const id of ids) {
+    assert.ok(disease.provenance.some(ref => ref.source_id === id));
+    assert.ok(pkg.coverage.some(row => row.source_id === id && row.status === 'SUPPORTED' && row.unit_ids.includes(disease.id)));
+  }
+  assert.ok(pkg.open_items.some(item => item.id === 'AG2-T2-DISEASE-TAXONOMY' && item.blocks_delivery));
+});
 
 test('floriculture botanical clarifications are externally sourced and preserve the unresolved source spelling', () => {
   const floriculture = pkg.units.find(unit => unit.id === 'SUP-SS2-AGRICULTURAL-SCIENCE-T2-W04-FLORICULTURE');
