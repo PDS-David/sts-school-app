@@ -15,7 +15,7 @@
   - `npm run test:ss23`: pending PR CI; expected to include validator, schema and student-delivery tests.
   - Route-level HTTP integration tests are still outstanding; these tests exercise the delivery service called by the SS2/SS3 routes.
 - PR: [#854](https://github.com/PDS-David/sts-school-app/pull/854), base `agent/ss23-validator-contract-alignment-20261116` (PR #853); head branch `agent/ss23-student-delivery-regression-20261116`; code commits `3471ec3856884be719627b8c9754669147c305b6`, `2ef7a138cd5200e8f2839099ce76713a21663e5e`, `d1be5aaa435e2306cc5ba62d16fe99e3fa43c206`.
-- CI: SS23 package-contract run `43788396221` completed SUCCESS on commit `0414325dbe38e27ec669fae8837628beb6e9f835`: locked install passed, backend typecheck passed, unified `npm run test:ss23` passed **70/70** (0 failed, 0 skipped). SS2/SS3 source-validation run `43788396255` also passed. The earlier run `43788373905` was cancelled by a newer branch commit; it was not a test failure.
+- CI: Latest SS23 package-contract run `43788488389` completed SUCCESS on the current PR #854 head `e8fdb2ab4113710bdfdde6fc7c4e1af08edd395b`: locked install passed, backend typecheck passed, unified `npm run test:ss23` passed **70/70** (0 failed, 0 skipped). SS2/SS3 source-validation run `43788396255` also passed. Earlier runs `43788373905` and `43788396221` were superseded by newer commits; no current test failure.
 - Exact next action: retain route-level HTTP integration as a separate outstanding check; do not merge either PR.
 
 ---
