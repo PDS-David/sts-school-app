@@ -480,35 +480,103 @@ router.delete('/:id/unlink-parent/:parentId', requirePerm('grades.write'), async
 });
 
 // ── POST /students/:id/link-user  (attach a student's own login) ─────────────
-// Without this, a "student" role account created in Admin > Users has no way
-// to be connected to an actual students row — every screen that looks the
-// student up via their user id (taking assessments, viewing their own report
-// card, messaging contacts) would come back empty for that account.
+// A login and a student record must have a one-to-one relationship. Lock the
+// user and all affected student rows in a stable order so concurrent admin
+// requests cannot silently overwrite a link or attach one login twice.
 router.post('/:id/link-user', requireRole('admin'), async (req, res) => {
-  const { user_id } = req.body as { user_id: string };
-  const { rows: uRows } = await query(`SELECT role FROM users WHERE id=$1`, [user_id]);
-  if (uRows[0]?.role !== 'student') {
-    return res.status(400).json({ error: 'That user is not a student account' });
+  const studentId = z.string().uuid().safeParse(req.params.id);
+  const body = z.object({ user_id: z.string().uuid() }).safeParse(req.body);
+  if (!studentId.success || !body.success) {
+    return res.status(400).json({ error: 'A valid student id and user_id are required' });
   }
-  const { rows: already } = await query(`SELECT id FROM students WHERE user_id=$1`, [user_id]);
-  if (already[0] && already[0].id !== req.params.id) {
-    return res.status(409).json({ error: 'That login is already linked to a different student' });
+  const userId = body.data.user_id;
+
+  let result: {
+    ok: true;
+    student: { id: string; user_id: string };
+    linked: boolean;
+  } | {
+    ok: false;
+    status: number;
+    error: string;
+  };
+  try {
+    result = await withTransaction(async (client) => {
+      const { rows: userRows } = await client.query(
+        'SELECT role, is_active FROM users WHERE id=$1 FOR UPDATE',
+        [userId],
+      );
+      if (userRows[0]?.role !== 'student' || !userRows[0]?.is_active) {
+        return { ok: false as const, status: 400, error: 'That user is not an active student account' };
+      }
+
+      // Lock the requested student and any existing link for this user.
+      // ORDER BY gives conflicting assignments the same lock order and avoids
+      // deadlocks when two administrators submit competing requests.
+      const { rows: affectedStudents } = await client.query(
+        `SELECT id, user_id, deleted_at
+           FROM students
+          WHERE id=$1 OR user_id=$2
+          ORDER BY id
+          FOR UPDATE`,
+        [studentId.data, userId],
+      );
+      const target = affectedStudents.find(row => row.id === studentId.data);
+      if (!target || target.deleted_at) {
+        return { ok: false as const, status: 404, error: 'Active student not found' };
+      }
+      if (target.user_id && target.user_id !== userId) {
+        return { ok: false as const, status: 409, error: 'This student is already linked to a different login; unlink it first' };
+      }
+      const existing = affectedStudents.find(row => row.id !== studentId.data && row.user_id === userId);
+      if (existing) {
+        return { ok: false as const, status: 409, error: 'That login is already linked to a different student' };
+      }
+
+      if (target.user_id === userId) {
+        return { ok: true as const, student: { id: target.id, user_id: target.user_id }, linked: false };
+      }
+      const { rows } = await client.query(
+        'UPDATE students SET user_id=$1 WHERE id=$2 RETURNING id, user_id',
+        [userId, studentId.data],
+      );
+      return { ok: true as const, student: rows[0], linked: true };
+    });
+  } catch (error) {
+    const dbError = error as { code?: string; constraint?: string };
+    if (dbError.code === '23505' && dbError.constraint === 'students_user_id_key') {
+      return res.status(409).json({ error: 'That login is already linked to a different student' });
+    }
+    throw error;
   }
-  const { rows } = await query(
-    `UPDATE students SET user_id=$1 WHERE id=$2 RETURNING id, user_id`,
-    [user_id, req.params.id],
-  );
-  if (!rows[0]) return res.status(404).json({ error: 'Student not found' });
-  await audit(req.user!, 'link_student_user', 'student', req.params.id, `user ${user_id}`);
-  return res.json({ ok: true, student: rows[0] });
+
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  if (result.linked) {
+    await audit(req.user!, 'link_student_user', 'student', studentId.data, `user ${userId}`);
+  }
+  return res.json({ ok: true, student: result.student, linked: result.linked });
 });
 
 // ── DELETE /students/:id/unlink-user ──────────────────────────────────────────
 router.delete('/:id/unlink-user', requireRole('admin'), async (req, res) => {
-  const { rows } = await query(`UPDATE students SET user_id=NULL WHERE id=$1 RETURNING id`, [req.params.id]);
-  if (!rows[0]) return res.status(404).json({ error: 'Student not found' });
-  await audit(req.user!, 'unlink_student_user', 'student', req.params.id, '');
-  return res.json({ ok: true });
+  const studentId = z.string().uuid().safeParse(req.params.id);
+  if (!studentId.success) return res.status(400).json({ error: 'A valid student id is required' });
+
+  const result = await withTransaction(async (client) => {
+    const { rows } = await client.query(
+      'SELECT user_id FROM students WHERE id=$1 FOR UPDATE',
+      [studentId.data],
+    );
+    if (!rows[0]) return { ok: false as const, status: 404, error: 'Student not found' };
+    if (!rows[0].user_id) return { ok: true as const, unlinked: false };
+    await client.query('UPDATE students SET user_id=NULL WHERE id=$1', [studentId.data]);
+    return { ok: true as const, unlinked: true };
+  });
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  if (result.unlinked) {
+    await audit(req.user!, 'unlink_student_user', 'student', studentId.data, '');
+  }
+  return res.json({ ok: true, unlinked: result.unlinked });
 });
 
 // ── POST /students/:id/erasure  (admin only) ──────────────────────────────────
