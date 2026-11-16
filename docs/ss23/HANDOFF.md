@@ -109,6 +109,14 @@ The 100-row register's `mapping_status` field currently records 96 rows as `FILE
 
 Separately, the received archive comparison found 96 exact member matches against the earlier 100-row inventory and four different-content versions pending owner version decision. These are separate checks and must not be conflated. Preserve both versions of each disputed file until the owner resolves the version choice.
 
+## 4B. Current Agricultural Science continuation snapshot (2026-11-16)
+
+At this checkpoint, PR #862 is open and unmerged. It adds source-hashed external clarifications for T2 floriculture, crop-disease examples and safe pest-control/IPM guidance, plus tests and an updated Agricultural Science checkpoint. Its SS23 package-contract, source-validation and integrity checks have passed. Recheck the live PR and CI state before relying on this snapshot.
+
+The PR branch records 44 external factual references and 103 coverage rows (69 SUPPORTED, 25 PARTIAL, 5 UNRESOLVED and 4 MARKER). The package remains `PENDING`, all 19 units remain `DRAFT`, and 53 open items remain (46 delivery-blocking). The full original source tables, disputed text, assessment reconciliation and subject-specialist approvals are not complete. These external supplements do not certify the subject or make it student-deliverable.
+
+Do not advance to SS2 Biology until Agricultural Science's source, assessment and required teacher-approval gates are satisfied. Never merge PR #862 without owner authorisation.
+
 ## 5. Work queue
 
 | ID | Task | Status / next action |
