@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { View, Text, ScrollView, RefreshControl } from 'react-native';
 import api from '../../api/client';
 import { useAuth } from '../../api/AuthContext';
@@ -110,24 +110,35 @@ export default function AdminDashboardHomeScreen() {
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState('');
   const [refreshing, setRefreshing] = useState(false);
+  const requestGenerationRef = useRef(0);
 
   const load = useCallback(async () => {
+    const generation = ++requestGenerationRef.current;
+    const isCurrentRequest = () => generation === requestGenerationRef.current;
     setLoadError('');
     const errors: string[] = [];
     const sc = selectedSchoolCode ?? undefined;
     try {
       const { data } = await api.get('/students', { params: { school_code: sc } });
-      setStudentCount(data.students?.length ?? null);
-    } catch { errors.push('student count'); }
+      if (isCurrentRequest()) setStudentCount(data.students?.length ?? null);
+    } catch { if (isCurrentRequest()) errors.push('student count'); }
     try {
       const { data } = await api.get('/academic/terms/current', { params: { school_code: sc } });
-      setTerm(data.term);
-    } catch { errors.push('current term'); }
+      if (isCurrentRequest()) setTerm(data.term);
+    } catch { if (isCurrentRequest()) errors.push('current term'); }
+    if (!isCurrentRequest()) return;
     if (errors.length) setLoadError(`Could not refresh ${errors.join(' and ')} for the selected school.`);
     setLoading(false);
   }, [selectedSchoolCode]);
 
-  useEffect(() => { load(); }, [load]);
+  useEffect(() => {
+    setTerm(null);
+    setStudentCount(null);
+    setLoadError('');
+    setLoading(true);
+    void load();
+    return () => { requestGenerationRef.current += 1; };
+  }, [load]);
 
   if (loading) return <Loader />;
 
