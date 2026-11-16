@@ -57,7 +57,7 @@ router.get('/users', async (req, res) => {
              LEFT JOIN teacher_subjects ts ON ts.user_id = u.id
              WHERE 1=1`;
   const params: unknown[] = [];
-  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND u.school_code=${params.length}`; }
+  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND u.school_code=$${params.length}`; }
   if (role)             { params.push(role);              sql += ` AND u.role=${params.length}`; }
   sql += ' GROUP BY u.id ORDER BY u.role,u.full_name';
   const { rows } = await query(sql, params);
@@ -72,7 +72,7 @@ router.get('/students-without-login', async (req, res) => {
   let sql = `SELECT id, full_name, class_name, school_code, admission_number
              FROM students WHERE user_id IS NULL`;
   const params: unknown[] = [];
-  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND school_code=${params.length}`; }
+  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND school_code=$${params.length}`; }
   if (class_name)       { params.push(class_name);        sql += ` AND class_name=${params.length}`; }
   sql += ' ORDER BY full_name';
   const { rows } = await query(sql, params);
@@ -88,7 +88,7 @@ router.get('/student-logins-without-link', async (req, res) => {
   let sql = `SELECT id, username, full_name, school_code FROM users
              WHERE role='student' AND NOT EXISTS (SELECT 1 FROM students st WHERE st.user_id = users.id)`;
   const params: unknown[] = [];
-  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND school_code=${params.length}`; }
+  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND school_code=$${params.length}`; }
   sql += ' ORDER BY full_name';
   const { rows } = await query(sql, params);
   return res.json({ users: rows });
@@ -102,7 +102,7 @@ router.get('/parent-logins', async (req, res) => {
   if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
   let sql = `SELECT id, username, full_name, phone FROM users WHERE role='parent'`;
   const params: unknown[] = [];
-  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND school_code=${params.length}`; }
+  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND school_code=$${params.length}`; }
   sql += ' ORDER BY full_name';
   const { rows } = await query(sql, params);
   return res.json({ users: rows });
