@@ -15,4 +15,4 @@
 - **Checkpoint hygiene:** out-of-sequence endpoint-scope work is preserved under BSEC-031-01 through BSEC-031-05: class-lock reads, admin account management, admin operational records, academic route scope, and student roster/account mutation scope. The original BSEC-026/027/028/029/030 task identifiers are now reserved for reconciliation, shared Redis rate limiting, upload/download security, sensitive-action audit logging, and backup/disaster recovery.
 - **Production safety:** all tests used disposable PostgreSQL 16. No production database, production data, secrets or deployment settings were accessed or changed.
 - **Remaining:** none for BSEC-026.
-- **Next assigned task:** BSEC-027 — replace process-local sender/auth rate-limit stores with a shared Redis-backed store; verify cross-instance quota consistency, per-account isolation and explicit Redis outage behavior.
+- **Next assigned task:** BSEC-028 — harden upload, preview and download handling, including MIME verification, storage-path confinement, ownership and school-level authorization.

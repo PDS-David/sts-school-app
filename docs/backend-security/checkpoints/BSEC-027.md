@@ -2,10 +2,13 @@
 
 - **Task ID:** BSEC-027
 - **Title:** Introduce distributed Redis-backed rate limiting
-- **Status:** implementation committed; Redis integration workflow and backend typecheck pending
+- **Status:** merged; all targeted integration workflows and backend typechecks passed
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
-- **Working branch:** agent/backend-redis-rate-limit-bsec027-20261116
+- **Implementation PR:** https://github.com/PDS-David/sts-school-app/pull/923
+- **Implementation merge commit:** 1d7b148a1bacb150bdc0c48e117d4bd6d528433a
+- **CI workflow correction PR:** https://github.com/PDS-David/sts-school-app/pull/931
+- **CI correction merge commit:** b7a3e52aaefdc101fc3c853a57be514ea4454fe0
 - **Changed files:**
   - backend/src/utils/redisRateLimitStore.ts
   - backend/src/index.ts
@@ -15,14 +18,22 @@
   - backend/src/utils/ai.ts
   - backend/.env.example
   - tests/backend-redis-rate-limit.integration.test.mts
+  - tests/backend-ai-rate-limit.integration.test.mts
   - .github/workflows/backend-redis-rate-limit.yml
   - .github/workflows/backend-ai-rate-limit.yml
+  - .github/workflows/backend-credential-attempt-locking.yml
+  - .github/workflows/backend-messaging-input-abuse-controls.yml
   - this checkpoint
-- **Defect:** express-rate-limit used its process-local memory store for the global auth/IP, login-account, AI HTTP and message-sender quotas. The AI generation hub also had optional Redis code that silently disabled itself when the optional ioredis package was absent and failed open on Redis errors. Limits therefore did not reliably apply across horizontally scaled API instances.
-- **Implementation:** add a small RESP2 Redis client using Node's built-in TCP/TLS modules (no new runtime dependency or lockfile churn). A single process-level connection is multiplexed safely across independent namespaced stores. Atomic Lua INCR/PEXPIRE counters implement shared windows; decrement/reset preserve express-rate-limit's successful-request semantics. Redis URLs support redis:// and certificate-verified rediss://, ACL authentication and database selection. Production startup now refuses to run without a valid RATE_LIMIT_REDIS_URL or backward-compatible REDIS_URL; local/test mode retains MemoryStore when Redis is not configured. Redis command failures fail closed as HTTP 503 rather than silently bypassing quotas. AI generation calls use the same shared Redis quota even when invoked by learning routes outside /ai.
-- **Preserved policies:** auth/IP 30 per 15 minutes; login account 10 per 15 minutes with successful-request decrement; AI HTTP 20 per minute with admin bypass; message sender 30 per minute; AI generation 20 per minute with admin bypass. Namespaces isolate counters and user-keyed quotas remain tied to authenticated user IDs or the normalized account hash.
-- **Regression coverage:** two independent Express instances share one account quota; separate accounts do not consume each other's quotas; AI-generation counters are shared; decrement and reset semantics work; Redis outage returns the explicit 503 store error; production refuses to start without a Redis URL.
-- **CI:** new workflow runs against disposable Redis 7 and backend TypeScript. Existing AI/PostgreSQL workflow now also provisions Redis 7. No external service credentials are committed.
-- **Production configuration required:** set RATE_LIMIT_REDIS_URL on the Render API service to a private Redis URL or TLS URL. The API will intentionally fail startup in production until this is configured. Do not put the value in Git.
-- **Verification:** pending GitHub Actions on this branch. No production Redis connection, database, secrets or deployment settings were accessed or changed.
-- **Remaining:** review Redis client protocol/error handling, pass the Redis integration workflow and backend typecheck, then merge only after all required checks pass.
+- **Defect:** express-rate-limit used process-local memory stores for the global auth/IP, login-account, AI HTTP and message-sender quotas. The AI generation hub also had optional Redis code that could silently disable itself and fail open on Redis errors. Limits therefore did not reliably apply across horizontally scaled API instances.
+- **Implementation:** use a shared, namespaced Redis-backed store for auth/IP, login-account, AI HTTP and message-sender limits, and use the same Redis connection for AI-generation quotas. Atomic Lua INCR/PEXPIRE counters implement shared windows; decrement/reset preserve successful-request semantics. Redis URLs support redis:// and certificate-verified rediss://, ACL authentication and database selection. A process-level RESP2 client multiplexes commands without adding a runtime dependency. Production startup refuses to run without a valid RATE_LIMIT_REDIS_URL or backward-compatible REDIS_URL; local/test mode retains the in-memory store only when Redis is not configured. Redis command failures fail closed as HTTP 503 rather than silently bypassing quotas.
+- **Preserved policies:** auth/IP 30 per 15 minutes; login account 10 per 15 minutes with successful-request decrement; AI HTTP 20 per minute with admin bypass; message sender 30 per minute; AI generation 20 per minute with admin bypass. User-keyed quotas are tied to authenticated user IDs or the normalized login-account hash. Keys are namespaced by application environment.
+- **Regression coverage:** independent Express instances share one account quota; separate accounts do not consume each other's quotas; AI-generation counters are shared; decrement/reset semantics work; Redis outage returns HTTP 503; production refuses to start without a Redis URL.
+- **Verification:**
+  - Redis shared-quota integration and backend typecheck — workflow run `43952551994`, all steps passed.
+  - AI per-account Redis/PostgreSQL regression and backend typecheck — workflow run `43952552262`, all steps passed.
+  - Authentication credential/activation regressions and backend typecheck with Redis 7 — workflow run `43953238862`, all steps passed.
+  - Messaging input/abuse-control regressions and backend typecheck with Redis 7 — workflow run `43953238920`, all steps passed.
+  - PR #931 removed duplicate Redis service declarations from the credential and messaging workflows; both corrected workflows passed.
+- **Production configuration required:** set RATE_LIMIT_REDIS_URL on the Render API service to a private Redis URL or TLS URL. REDIS_URL remains a supported fallback. The API intentionally fails startup in production until Redis is configured. Keep credentials in the deployment environment, never in Git.
+- **Production safety:** no production Redis connection, database, secrets or deployment settings were accessed or changed.
+- **Remaining:** configure the production Redis URL and verify the deployed API readiness/health after deployment. No further BSEC-027 code changes remain.
