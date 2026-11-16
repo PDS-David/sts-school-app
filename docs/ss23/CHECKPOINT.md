@@ -14,6 +14,7 @@ This section supersedes the historical branch/PR status in the checkpoint below.
 ### SS23-02 — SS2 Agricultural Science Terms 2 and 3
 
 - Branch: `agent/ss23-agricultural-science-terms2-3-r2-20261116`.
+- PR: [#857](https://github.com/PDS-David/sts-school-app/pull/857), open, unmerged; head `6a653bff4c61fa1657cf5a7b7742a0b5ad7cf87a`.
 - Base: `master` @ `2b3ec92b99d016b450858cce5b87d5d6056d990b`.
 - Status: **11 new lessons implemented as drafts; source identities verified; pre-rebase tests passed; current-master PR CI pending; teacher approval and acceptance outstanding.**
 - Package now contains 19 SS2 Agricultural Science units (8 T1, 6 T2, 5 T3), 173 practice/assessment items, 47 asset records and 57 open items (50 blocking, 7 non-blocking). Package and new unit approval states remain PENDING/DRAFT.
@@ -21,7 +22,8 @@ This section supersedes the historical branch/PR status in the checkpoint below.
 - Original T3 printed pages 12-16 were visually reviewed. Page 12 fertilizer/maize yield values were independently recalculated; page 13 confirms the Week 7-8 Farm Records heading; pages 14-15 show an egg-sales label discrepancy in the profit-and-loss example; page 16 confirms the straight-line depreciation formula.
 - Source/content blockers remain explicit: disease taxonomy, ornamental and weed nomenclature, obsolete pesticide guidance, insecticide classification, Mendelian-law nuance, account-table transcription, animal nutrient classification, feed thresholds, full assessment-answer reconciliation and teacher review.
 - Pre-rebase GitHub Actions run `43790097181`: locked install passed; `npm run ss23:refresh-hashes` refreshed 11 body hashes; `npm run validate:ss23` passed with zero errors; `npm run test:ss23` passed 38/38; `npm run validate:ss1` passed; backend typecheck passed. This run predates the three merges above; current-master PR CI is required.
-- Exact next action: open the subject PR against current master and verify the expanded current-base integrity/test workflow. Continue resolving blockers; do not move to Biology until Agricultural Science passes the full readiness gate. Do not merge.
+- Current PR checks queued: SS23 integrity gate, package-contract, SS1 Biology integrity, general integrity, SS1 workflow and SS23 source tests. Current-base results are not yet available.
+- Exact next action: verify all six current-master PR checks, fix failures, then continue blocker resolution. Do not move to Biology until Agricultural Science passes the full readiness gate. Do not merge.
 
 
 
