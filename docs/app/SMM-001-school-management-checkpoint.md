@@ -20,7 +20,7 @@ Status: IMPLEMENTED ON MASTER — feature-specific integration coverage in PR #8
 
 ## Verification
 - Current master commit `209a960ace30a8026e722e71e1b7f727347fef0c` passed SS1 package integrity, SS23 package integrity, SS23 package contract tests and JSS3 implementation/asset checks.
-- PR #894 adds real PostgreSQL route integration coverage for events, announcements, parent upcoming tests, achievements and teacher analytics. Its CI is pending at checkpoint time.
+- PR #894 adds real PostgreSQL route integration coverage for events, announcements, parent upcoming tests, achievements and teacher analytics. All four required CI workflows passed on head `3898b90277ae8cb046876f4eb3f137ed41f5c119`: JSS3 verify `43940628882`, SS1 integrity `43940628889`, SS23 integrity `43940628962`, and backend student report term-scope `43940628830`. The route suite itself passed all four integration tests.
 - No physical-device acceptance or production migration/deployment has been performed.
 
 ## Remaining
