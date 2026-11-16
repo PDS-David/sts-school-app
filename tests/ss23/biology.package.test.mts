@@ -15,14 +15,18 @@ test('SS2 Biology First-Term draft loads and matches the registered source ident
   assert.ok(biology);
   assert.deepEqual(checkUnitPackage('biology.json', biology, registry), []);
   assert.equal(biology.package_status, 'PENDING');
-  assert.equal(biology.units.length, 9);
-  assert.equal(biology.units.reduce((count, unit) => count + unit.practice.length, 0), 18);
+  assert.equal(biology.units.length, 25);
+  assert.equal(biology.units.reduce((count, unit) => count + unit.practice.length, 0), 50);
 });
 
 test('SS2 Biology preserves the source combined Weeks 9-10 body section', () => {
   assert.ok(biology);
   assert.ok(biology.units.some(unit => unit.term === '1st Term' && unit.week_label === '9-10'));
   assert.equal(biology.units.filter(unit => unit.term === '1st Term' && unit.week_label === '10').length, 0);
+  assert.ok(biology.units.some(unit => unit.term === '2nd Term' && unit.week_label === '1-2'));
+  assert.ok(biology.units.some(unit => unit.term === '2nd Term' && unit.week_label === '4-5'));
+  assert.ok(biology.units.some(unit => unit.term === '3rd Term' && unit.week_label === '3-4'));
+  assert.ok(biology.units.some(unit => unit.term === '3rd Term' && unit.week_label === '9-10'));
 });
 
 test('original source assessment reconciliation and visual review remain explicit delivery blockers', () => {
