@@ -85,10 +85,10 @@ if (!URL_) {
   async function residue() {
     return {
       topic_assets: await assetRows(),
-      topics: await count('SELECT count(*) n FROM topics WHERE school_code=$1', [TEST_SC]),
-      assessments: await count('SELECT count(*) n FROM assessments WHERE school_code=$1', [TEST_SC]),
-      subjects: await count('SELECT count(*) n FROM subjects WHERE school_code=$1', [TEST_SC]),
-      students: await count('SELECT count(*) n FROM students WHERE school_code=$1', [TEST_SC]),
+      topics: await count('SELECT count(*) n FROM topics WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]),
+      assessments: await count('SELECT count(*) n FROM assessments WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]),
+      subjects: await count('SELECT count(*) n FROM subjects WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]),
+      students: await count('SELECT count(*) n FROM students WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]),
       users: await count("SELECT count(*) n FROM users WHERE school_code=$1 OR username LIKE 'zz_t2test_%'", [TEST_SC]),
       schools: await count('SELECT count(*) n FROM schools WHERE code = ANY($1)', [[TEST_SC, TEST_SC_B]]),
       materials: await count('SELECT count(*) n FROM materials WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]),
