@@ -190,12 +190,15 @@ export function readiness(registry: RegistryRow[], packages: LegacyPackage[]): T
     const srcs = registry.filter(r => r.class_name === cls && r.assigned_subject_slug === subject && r.term === term);
     const pkg = packages.find(x => x.class_name === cls && x.subject_slug === subject);
     const lessons = pkg ? pkg.lessons.filter(l => l.term === term).length : 0;
+    const packageHasTermSource = pkg ? pkg.sources.some(source => source.term === term) : false;
+    const hasTermContent = packageHasTermSource || lessons > 0;
     const termSrc = new Set(srcs.map(s => s.source_id));
     const unresolved = pkg ? pkg.coverage.filter(c => termSrc.has(c.source_id) && (c.status === 'UNRESOLVED' || c.status === 'PARTIAL')).length : 0;
     const blocking = pkg ? pkg.open_items.filter(i => i.blocks_delivery).length : 0;
     let state = 'READY_FOR_REVIEW';
     if (!srcs.length) state = 'SOURCE_MISSING';
     else if (!pkg) state = 'MISSING_PACKAGE';
+    else if (!hasTermContent) state = 'MISSING_TERM_PACKAGE';
     else if (pkg.package_status !== 'IMPLEMENTED' || unresolved || blocking) state = 'IN_PROGRESS';
     out.push({ class_name: cls, subject, term, sources: srcs.length, package: !!pkg, lessons, unresolved_coverage: unresolved, blocking_open_items: blocking, state });
   }
@@ -210,12 +213,15 @@ export function readinessForUnitPackages(registry: RegistryRow[], packages: Unit
     const srcs = registry.filter(r => r.class_name === cls && r.assigned_subject_slug === subject && r.term === term);
     const pkg = packages.find(x => x.class_name === cls && x.subject_slug === subject);
     const lessons = pkg ? pkg.units.filter(unit => unit.term === term).length : 0;
+    const packageHasTermSource = pkg ? pkg.sources.some(source => source.term === term) : false;
+    const hasTermContent = packageHasTermSource || lessons > 0;
     const termSrc = new Set(srcs.map(s => s.source_id));
     const unresolved = pkg ? pkg.coverage.filter(row => termSrc.has(row.source_id) && (row.status === 'UNRESOLVED' || row.status === 'PARTIAL')).length : 0;
     const blocking = pkg ? pkg.open_items.filter(item => item.blocks_delivery).length : 0;
     let state = 'READY_FOR_REVIEW';
     if (!srcs.length) state = 'SOURCE_MISSING';
     else if (!pkg) state = 'MISSING_PACKAGE';
+    else if (!hasTermContent) state = 'MISSING_TERM_PACKAGE';
     else if (pkg.package_status !== 'IMPLEMENTED' || unresolved || blocking) state = 'IN_PROGRESS';
     out.push({ class_name: cls, subject, term, sources: srcs.length, package: !!pkg, lessons, unresolved_coverage: unresolved, blocking_open_items: blocking, state });
   }
