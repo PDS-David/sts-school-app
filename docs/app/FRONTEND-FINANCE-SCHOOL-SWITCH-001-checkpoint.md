@@ -18,8 +18,12 @@
 
 Parent accounts can have wards in both STS campuses. The prior fee-schedule route always used the parent account's original `users.school_code`, even when the parent selected a ward at the other campus; this disagreed with the cross-campus `parent_wards` model used by invoices. The screen now requests the selected ward's campus. The backend verifies that campus against the parent's active linked wards before returning fee items, and an unfiltered parent request returns only fee items from campuses containing their active wards. A new integration test covers both linked campuses and rejects an unlinked-campus query.
 
+## Additional fee-item validation
+
+The fee-item creation API now validates a nonblank bounded name, a finite positive amount, and a nonblank campus code; it confirms the campus exists before inserting. This prevents malformed fee schedule records and avoids relying solely on mobile-side validation. Integration coverage checks missing campus, zero amount, unknown campus, and a successful normalized insert.
+
 ## Verification
 
 - Static review against `backend/src/routes/finance.ts`: invoice creation independently checks that the student, term, fee items, school, and class are compatible.
-- Mobile TypeScript CI passed on the initial screen change; backend build and the extended finance integration test are pending after the latest commits.
+- Mobile TypeScript and Android readiness passed on earlier heads; the final backend finance integration test and full latest-head checks are pending.
 - No live payment or production database action performed.
