@@ -9,6 +9,10 @@ on:
       - "backend/src/routes/academic.ts"
       - "backend/src/utils/scope.ts"
       - "tests/backend-class-lock-read-scope.integration.test.mts"
+      - "tests/backend-messaging-input-abuse-controls.integration.test.mts"
+      - "docs/backend-security/checkpoints/BSEC-024.md"
+      - "docs/backend-security/checkpoints/BSEC-025.md"
+      - "docs/backend-security/checkpoints/BSEC-026.md"
       - ".github/workflows/backend-class-lock-read-scope.yml"
 
 permissions:
@@ -52,7 +56,9 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Bootstrap disposable PostgreSQL schema
         run: npm run db:bootstrap --workspace=backend
-      - name: Run class lock read authorization regressions
+      - name: Run BSEC-024 messaging abuse-control regressions
+        run: node --import tsx --test tests/backend-messaging-input-abuse-controls.integration.test.mts
+      - name: Run BSEC-025 class-lock read authorization regressions
         run: node --import tsx --test tests/backend-class-lock-read-scope.integration.test.mts
       - name: Typecheck backend
         run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
