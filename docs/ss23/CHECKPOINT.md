@@ -1,3 +1,23 @@
+## SS23-Q-DELIVERY-TESTS-01 — 2026-11-16
+
+- Status: **IMPLEMENTED; STACKED PR / CI PENDING.**
+- Base: `agent/ss23-validator-contract-alignment-20261116` (PR #853), which is based on `master`.
+- Changed files:
+  - `backend/src/db/ss23/studentDelivery.test.ts` — every approved SS2 unit must be retrievable by ID; no unit may be retrieved as SS3; every current pending draft unit must remain unavailable to both classes; student projections must omit answers, explanations, marking criteria and provenance for every question.
+  - `package.json` — `test:ss23` now runs validator tests plus all `backend/src/db/ss23/*.test.ts` package and delivery tests.
+  - `.github/workflows/ss23-package-schema.yml` — invokes the unified `npm run test:ss23` command rather than only the schema test.
+- Commits:
+  - Delivery regression tests: `3471ec3856884be719627b8c9754669147c305b6`
+  - Unified SS23 test command: `2ef7a138cd5200e8f2839099ce76713a21663e5e`
+  - Package-contract workflow: `d1be5aaa435e2306cc5ba62d16fe99e3fa43c206`
+- Test results:
+  - Local execution: NOT RUN (GitHub DNS unavailable in this execution environment).
+  - `npm run test:ss23`: pending PR CI; expected to include validator, schema and student-delivery tests.
+  - Route-level HTTP integration tests are still outstanding; these tests exercise the delivery service called by the SS2/SS3 routes.
+- Exact next action: open stacked PR #854 against PR #853, then confirm the expanded SS23 test command passes in GitHub Actions. Do not merge either PR.
+
+---
+
 ## Live-state update — 2026-11-16
 
 This section supersedes the historical branch/PR status in the checkpoint below. Historical source-receipt evidence is retained.
