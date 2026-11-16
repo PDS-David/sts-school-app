@@ -1,3 +1,36 @@
+# Live-state correction after PRs #872 and #873 — 2026-11-16
+
+> This addendum supersedes stale PR-state and master-SHA statements in earlier supplements. Historical entries remain for audit only.
+
+## Repository state
+- Current master at this checkpoint: `1ed6a20f29b8fc8c8c1c25489ddf59fb47e0549b` (merge commit for PR #872).
+- PR #873 merged at 2026-11-16 04:55:38Z (merge commit `f5fd06be603762edbf34f95d437c603994351242`).
+- PR #872 merged at 2026-11-16 04:55:42Z (merge commit `1ed6a20f29b8fc8c8c1c25489ddf59fb47e0549b`).
+- PRs #867–#873 are merged; there are no open SS23 PRs confirmed in the latest repository search.
+- The merge of #872/#873 was owner-side; it does not grant an agent authority to merge subsequent PRs.
+- No production import, deployment, package approval or student release is authorised.
+
+## SS2 Agricultural Science — current verified package state
+- 19 draft units (T1 8, T2 6, T3 5); 195 practice/assessment records.
+- 52 assets: 42 unresolved source-extract placeholders and 10 local school-authored SVGs.
+- 48 external factual references; 116 coverage rows (82 SUPPORTED, 25 PARTIAL, 5 UNRESOLVED, 4 MARKER).
+- 47 open items: 46 delivery-blocking, one non-blocking.
+- Package PENDING; all units DRAFT; content approvals PENDING; verification DEFERRED; student delivery disabled.
+- PR #873 aligns the irrigation/drainage and nutrient-cycle visual blockers with all three authored diagram alternatives per topic. Those blockers remain open pending subject-lead approval and rights clearance for original source images.
+- The 42 source-extract placeholders remain non-deliverable; server-side exclusion is merged in PR #870.
+
+## Remaining gates and sequence
+1. Finish Agriculture source fidelity, original assessment inventory and answer/mark reconciliation, practical apparatus/safety/marking, asset rights, specialist corrections and teacher approval. Structural tests and arithmetic do not certify answer accuracy or content approval.
+2. Do not start SS2 Biology until those Agriculture gates genuinely pass.
+3. Then complete remaining SS2 subjects alphabetically, one focused PR per subject.
+4. Complete SS3 only as WAEC/NECO/JAMB examination preparation (revision, verified past-question practice, mocks, marking, feedback and reassessment); do not add instructional-topic lessons.
+5. Preserve the four source-version decisions for the owner: SS2 T2 Economics, SS2 T3 Further Mathematics, SS3 T1 Mathematics and SS3 T1 Economics. Do not silently select a version.
+
+## Source access boundary
+The combined owner-supplied ZIPs are registered by hash and member inventory, but their exact member-page content was not available to this agent through the Library search/text interface in this session. No new page-level source inspection is claimed. Keep source-dependent work blocked until original member content is actually accessible.
+
+---
+
 # Latest execution update — 2026-11-16
 
 > This section supersedes earlier live-status wording below. Historical entries remain for audit only.
