@@ -275,19 +275,24 @@ router.put('/:id', requirePerm('grades.write'), async (req, res) => {
   if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
 
   const { full_name, class_name, gender, date_of_birth, admission_number } = req.body;
-  const { rows } = await query(
-    `UPDATE students SET full_name=COALESCE($1,full_name), class_name=COALESCE($2,class_name),
-            gender=COALESCE($3,gender), date_of_birth=COALESCE($4,date_of_birth),
-            admission_number=COALESCE($5,admission_number)
-     WHERE id=$6 AND deleted_at IS NULL AND ($7::text IS NULL OR school_code=$7) RETURNING *`,
-    [full_name, class_name, gender, date_of_birth, admission_number, req.params.id, req.user!.school_code ?? null],
-  );
-  // A soft-deleted record can't be edited until it's restored — the same
-  // WHERE ... AND deleted_at IS NULL above means this 404 also covers "id
-  // doesn't exist", exactly like every other scoped lookup in this file.
-  if (!rows[0]) return res.status(404).json({ error: 'Student not found' });
-  await audit(req.user!, 'edit_student', 'student', rows[0].id, full_name);
-  return res.json({ student: rows[0] });
+  const updated = await withTransaction(async (client) => {
+    const { rows } = await client.query(
+      `UPDATE students SET full_name=COALESCE($1,full_name), class_name=COALESCE($2,class_name),
+              gender=COALESCE($3,gender), date_of_birth=COALESCE($4,date_of_birth),
+              admission_number=COALESCE($5,admission_number)
+       WHERE id=$6 AND deleted_at IS NULL AND ($7::text IS NULL OR school_code=$7) RETURNING *`,
+      [full_name, class_name, gender, date_of_birth, admission_number, req.params.id, req.user!.school_code ?? null],
+    );
+    if (!rows[0]) return null;
+    await auditInTransaction(
+      client, req.user!, 'edit_student', 'student', rows[0].id, 'student record updated',
+      auditContextFromRequest(req, { schoolCode: rows[0].school_code, metadata: { changed_fields: Object.keys(req.body ?? {}).filter(key => !/password|token|secret|pin/i.test(key)) } }),
+    );
+    return rows[0];
+  });
+  // A soft-deleted record can't be edited until it's restored.
+  if (!updated) return res.status(404).json({ error: 'Student not found' });
+  return res.json({ student: updated });
 });
 
 // ── POST /students/:id/promotion ──────────────────────────────────────────────
@@ -344,7 +349,7 @@ router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
   }
 
   if (action === 'retain') {
-    await audit(user, 'retain_class', 'student', student.id, `${student.full_name} retained in ${student.class_name}`);
+    await auditStrict(user, 'retain_class', 'student', student.id, 'student retained in current class', auditContextFromRequest(req, { schoolCode: student.school_code, metadata: { class_name: student.class_name } }));
     return res.json({ ok: true, action, from_class: student.class_name, to_class: student.class_name });
   }
 
@@ -371,15 +376,21 @@ router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
   }
   const toClass = names[targetIdx];
 
-  const { rows } = await query(
-    'UPDATE students SET class_name=$1 WHERE id=$2 RETURNING *',
-    [toClass, student.id],
-  );
-  await audit(
-    user, action === 'promote' ? 'promote_class' : 'demote_class', 'student', student.id,
-    `${student.full_name}: ${student.class_name} -> ${toClass}`,
-  );
-  return res.json({ ok: true, action, from_class: student.class_name, to_class: toClass, student: rows[0] });
+  const updated = await withTransaction(async (client) => {
+    const { rows } = await client.query(
+      'UPDATE students SET class_name=$1 WHERE id=$2 RETURNING *',
+      [toClass, student.id],
+    );
+    if (!rows[0]) return null;
+    await auditInTransaction(
+      client, user, action === 'promote' ? 'promote_class' : 'demote_class', 'student', student.id,
+      'student class placement changed',
+      auditContextFromRequest(req, { schoolCode: student.school_code, metadata: { from_class: student.class_name, to_class: toClass } }),
+    );
+    return rows[0];
+  });
+  if (!updated) return res.status(404).json({ error: 'Student not found' });
+  return res.json({ ok: true, action, from_class: student.class_name, to_class: toClass, student: updated });
 });
 
 // ── DELETE /students/:id ──────────────────────────────────────────────────────
