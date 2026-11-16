@@ -264,7 +264,7 @@ router.get('/classes', async (req, res) => {
 // GET  /academic/class-locks?class_name=&term_id=&school_code=
 router.get('/class-locks', requireRole('teacher', 'admin'), async (req, res) => {
   const { class_name, term_id, school_code } = req.query as Record<string, string>;
-  if (!class_name || class_name.trim().length > 100 || !term_id) {
+  if (typeof class_name !== 'string' || !class_name.trim() || class_name.trim().length > 100 || !term_id) {
     return res.status(400).json({ error: 'A valid class_name and term_id are required' });
   }
   const parsedTermId = Number(term_id);
@@ -357,9 +357,6 @@ router.put('/class-locks', requireRole('teacher', 'admin'), async (req, res) => 
     }
     sc = user.school_code ?? '';
     if (!sc) return res.status(403).json({ error: 'Your teacher account is not assigned to a school.' });
-    if (school_code !== undefined && school_code !== sc) {
-      return res.status(403).json({ error: "You can't change class locks outside your school" });
-    }
   }
 
   const termScopeError = await checkTermSchoolScope(sc, parsedTermId);
