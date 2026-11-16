@@ -4,7 +4,7 @@ on:
   push:
     branches: [agent/backend-admin-user-school-scope-20261116]
   pull_request:
-    branches: [master]
+    branches: [master, agent/backend-admin-user-school-scope-20261116]
     paths:
       - "backend/src/routes/admin.ts"
       - "tests/backend-admin-user-school-scope.integration.test.mts"
