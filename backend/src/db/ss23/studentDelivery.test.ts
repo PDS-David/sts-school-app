@@ -119,10 +119,24 @@ test('student projection omits model answers, explanations, marking and provenan
   assert.equal('marking' in safe.practice[0], false);
 });
 
-test('never exposes unresolved source-extract assets even when their lesson is otherwise approved', () => {
+test('never lists unresolved source-extract assets even when erroneous approval metadata is present', () => {
   const pkg = approvedPackage();
   const sourceExtractAssets = pkg.assets.filter((asset: any) => asset.path.startsWith('source-extract://'));
   assert.equal(sourceExtractAssets.length, 42);
+
+  // Exercise the defensive path gate, not only the ordinary PENDING state.
+  // A future edit or import must not make a placeholder appear in the student UI
+  // merely by advancing its approval/reuse metadata without storing its bytes.
+  for (const asset of sourceExtractAssets) {
+    asset.state = {
+      content_approval: 'APPROVED',
+      approval_reference: 'NEGATIVE-CONTROL-ONLY',
+      implementation: 'IMPLEMENTED',
+      verification: 'VERIFIED',
+      verification_reference: 'NEGATIVE-CONTROL-ONLY',
+    };
+    asset.provenance.reuse_status = 'PERMITTED';
+  }
 
   const delivery = createSs23StudentDelivery([pkg]);
   for (const asset of sourceExtractAssets) {
@@ -130,12 +144,12 @@ test('never exposes unresolved source-extract assets even when their lesson is o
     assert.equal(
       delivery.listAssets(asset.unit_id, 'SS 2').some(item => item.id === asset.id),
       false,
-      'unresolved source extraction must not appear in student asset listings: ' + asset.id,
+      'source-extract placeholders must not appear in student asset listings: ' + asset.id,
     );
     assert.equal(
       delivery.readAsset(asset.id, 'SS 2'),
       null,
-      'unresolved source extraction must not be readable by students: ' + asset.id,
+      'source-extract placeholders must not be readable by students: ' + asset.id,
     );
   }
 });
