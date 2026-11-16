@@ -757,6 +757,23 @@
       "reuse_status": "PERMITTED"
     },
     {
+      "source_id": "SS23-EXT-USDA-NRCS-SOIL-PROFILE",
+      "sha256": "49138213fc8451ea82071684b3e2d7ddf37b760f3dd751d16f05c806b02145ba",
+      "class_name": "SS 2",
+      "term": "1st Term",
+      "canonical_subject": "Agricultural Science",
+      "title": "A Soil Profile — USDA Natural Resources Conservation Service",
+      "url": "https://www.nrcs.usda.gov/resources/education-and-teaching-materials/a-soil-profile",
+      "content": "USDA NRCS explains that soil horizons form a soil profile and uses O, A, B, C and E as master-horizon symbols. Most soils have A, B and C horizons; an O horizon may be present at the surface or buried; E identifies a subsurface horizon with mineral loss; and R denotes hard bedrock, not soil. Horizon presence, thickness and arrangement vary among soils, so a generalized teaching diagram must not be read as a universal sequence.",
+      "evidence": {
+        "locator": "Background: horizon symbols, common A/B/C sequence, O and E horizons, and R as hard bedrock",
+        "explanation": "USDA NRCS explains that soil horizons form a soil profile and uses O, A, B, C and E as master-horizon symbols. Most soils have A, B and C horizons; an O horizon may be present at the surface or buried; E identifies a subsurface horizon with mineral loss; and R denotes hard bedrock, not soil. Horizon presence, thickness and arrangement vary among soils, so a generalized teaching diagram must not be read as a universal sequence."
+      },
+      "rights": "Factual summary paraphrased for educational context; no protected text or figures reproduced.",
+      "attribution": "USDA Natural Resources Conservation Service, A Soil Profile.",
+      "reuse_status": "PERMITTED"
+    },
+    {
       "source_id": "SS23-EXT-USDA-SOIL-BIOLOGY-PRIMER",
       "sha256": "efafdd36dbf86879ee09a823a0e55c8cd6aa8eb5cb890eec1c463bac7e951c36",
       "class_name": "SS 2",
@@ -2222,12 +2239,12 @@
       "order": 51,
       "source_locator": "Authored replacement schematic for the source tractor/PTO/drawbar illustration; original source figure is retained only as a non-deliverable provenance record.",
       "provenance": {
-        "source_id": "SS23-EXT-APS-CASSAVA-BLIGHT-2024",
-        "source_sha256": "86c66ef832660266d36e7cecc70fb2c1f4f0d808bece42469643abac027136b4",
+        "source_id": "SS23-EXT-PSU-PTO-SAFETY",
+        "source_sha256": "acb5c42f7c4bb19ff5ec5c6242dd63bb63981ea91272069074c961767d0b869b",
         "role": "AUTHORED_SUPPLEMENT",
-        "locator": "Abstract: causal agent and disease symptoms",
-        "rights": "Original SVG authored for this curriculum; no source illustration is reproduced. It is not a machine-specific service diagram.",
-        "attribution": "Original Sow the Seed School SS2 Agricultural Science teaching schematic.",
+        "locator": "PTO Safety Practices",
+        "rights": "Original SVG authored for this curriculum; its technical distinction between PTO rotary-power transfer and drawbar pulling is informed by the cited First-Term PTO safety reference; no source illustration is reproduced.",
+        "attribution": "Original Sow the Seed School SS2 Agricultural Science teaching schematic, informed by Penn State Extension Power Take-Off (PTO) Safety.",
         "reuse_status": "PERMITTED"
       },
       "state": {
@@ -2249,12 +2266,12 @@
       "order": 52,
       "source_locator": "Original school-authored alternative to the soil-profile source image; not copied from the source figure.",
       "provenance": {
-        "source_id": "SS23-EXT-CLEMSON-SOIL-JAR-TEST",
-        "source_sha256": "888587e5ebc3f930b36bf99dd79d82f148277f37505a75fe09bef2d5d121dd32",
+        "source_id": "SS23-EXT-USDA-NRCS-SOIL-PROFILE",
+        "source_sha256": "49138213fc8451ea82071684b3e2d7ddf37b760f3dd751d16f05c806b02145ba",
         "role": "AUTHORED_SUPPLEMENT",
-        "locator": "Soil Texture Analysis — The Jar Test, Procedure",
-        "rights": "Original SVG authored for this curriculum; no source diagram reproduced. Diagram is generalized and not a soil survey.",
-        "attribution": "Original Sow the Seed School SS2 Agricultural Science teaching schematic, informed by registered soil-profile reference.",
+        "locator": "Background: horizon symbols, common A/B/C sequence, O and E horizons, and R as hard bedrock",
+        "rights": "Original SVG authored for this curriculum; horizon descriptions are a generalized educational synthesis based on the cited USDA NRCS soil-profile guidance; no source diagram is reproduced.",
+        "attribution": "Original Sow the Seed School SS2 Agricultural Science teaching schematic, informed by USDA NRCS A Soil Profile.",
         "reuse_status": "PERMITTED"
       },
       "state": {
@@ -4908,6 +4925,15 @@
           "locator": "Procedure section",
           "rights": "Factual summary paraphrased for educational context; no protected text or figures reproduced.",
           "attribution": "Clemson Cooperative Extension, Home & Garden Information Center, Soil Texture Analysis — The Jar Test.",
+          "reuse_status": "PERMITTED"
+        },
+        {
+          "source_id": "SS23-EXT-USDA-NRCS-SOIL-PROFILE",
+          "source_sha256": "49138213fc8451ea82071684b3e2d7ddf37b760f3dd751d16f05c806b02145ba",
+          "role": "AUTHORED_SUPPLEMENT",
+          "locator": "Background: horizon symbols, common A/B/C sequence, O and E horizons, and R as hard bedrock",
+          "rights": "Factual summary paraphrased for educational context; no protected text or figures reproduced.",
+          "attribution": "USDA Natural Resources Conservation Service, A Soil Profile.",
           "reuse_status": "PERMITTED"
         }
       ],
@@ -18124,7 +18150,7 @@
     },
     {
       "id": "COV-SS2-AG-T1-SOIL-PROFILE-SCHOOL-SCHEMATIC",
-      "source_id": "SS23-EXT-CLEMSON-SOIL-JAR-TEST",
+      "source_id": "SS23-EXT-USDA-NRCS-SOIL-PROFILE",
       "objective": "Identify generalized soil-profile horizons and understand that horizon presence and thickness vary among soils.",
       "objective_locator": "First Term, Weeks 1-2, supplementary school-authored soil-profile diagram.",
       "status": "SUPPORTED",
@@ -18133,8 +18159,12 @@
       ],
       "evidence": [
         {
-          "locator": "Soil Texture Analysis — The Jar Test, Procedure",
-          "explanation": "Original generalized profile diagram labels possible O, A, E, B, C and R horizons and explicitly notes that horizons are not universal."
+          "locator": "Background: horizon symbols, common A/B/C sequence, O and E horizons, and R as hard bedrock",
+          "explanation": "USDA NRCS explains that soil horizons form a soil profile and uses O, A, B, C and E as master-horizon symbols. Most soils have A, B and C horizons; an O horizon may be present at the surface or buried; E identifies a subsurface horizon with mineral loss; and R denotes hard bedrock, not soil. Horizon presence, thickness and arrangement vary among soils, so a generalized teaching diagram must not be read as a universal sequence."
+        },
+        {
+          "locator": "backend/src/db/ss23/assets/agricultural-science/soil-profile-school.svg",
+          "explanation": "The original generalized SVG labels possible O, A, E, B, C and R horizons; it explicitly explains that not every soil contains every horizon and that horizon depths vary."
         }
       ]
     }
