@@ -144,7 +144,7 @@ test('learning content writes and reads reject cross-school subject, term and qu
 
     const validMaterial = await post('/materials', {
       subject_id: subjectIds[0], term_id: termIds[0], class_name: 'Primary 4',
-      title: 'Valid material', type: 'pdf', url: 'https://example.test/valid.pdf',
+      title: 'Valid material', type: 'pdf', url: 'https://example.org/valid.pdf',
     });
     assert.equal(validMaterial.status, 201);
     const validMaterialPayload = await validMaterial.json() as { material: { id: number } };
