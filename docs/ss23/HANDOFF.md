@@ -29,26 +29,38 @@ Preserve original-source provenance and distinguish authored supplements. Never 
 
 ## 4. Source archive status and limitations
 
-The six original SS2/SS3 archives were supplied in an earlier session but are not committed to the repository and are not currently available in this working session. Their archive hashes and 100 per-member records are preserved in `sources/README.md` and `sources/SOURCE_ASSIGNMENTS.csv`. Re-attach the original archives before attempting source-page extraction or source-header re-verification. Verify each archive SHA-256 against the receipt before extraction.
+The owner re-attached the two combined archives on 2026-11-16. They remain private and are not committed to the repository. Direct inspection confirms:
 
-Historical archive-audit findings that must be rechecked against the actual files before they are used to make curriculum decisions:
+| Archive | SHA-256 | Members | Term folders |
+|---|---|---:|---|
+| `SSS 2-20260507T072840Z-3-001.zip` | `a97506c7f030a6e9604a13ae0aab30f59563a1473ec682f647459549dd9e1153` | 61 | T1 19; T2 22; T3 20 |
+| `SSS 3-20260507T072839Z-3-001.zip` | `045e261aba9475b32b4cb963a2495faf3ddd503860b205aa1e89f0ac07d3c741` | 39 | T1 19; T2 20; T3 0 |
 
-1. The SS3 Third-Term archive appeared empty apart from a folder entry.
-2. No source member was found for Technical Drawing SS2 T1 and SS3 T1; Catering Craft SS2 T1, SS2 T3 and SS3 T1; and Food & Nutrition SS3 T2.
-3. SS3 Literature T1 and T2 appeared byte-identical. The SS2 Food & Nutrition file named `F _ N (1) (1).docx` in the T2 folder appeared to be the T1 file; `F _ N (1).docx` appeared to be the actual T2 file.
-4. Book-keeping T1 and T2 appeared identical after the title line for SS2 and SS3.
-5. Some source files use term labels such as Alpha/Sigma, and SS2 T1 Data Processing is a PowerPoint. Verify document headers and contents rather than trusting filenames.
-6. The previous week-marker heuristic was unreliable because schemes are stored in tables. Read tables and inspect original pages/figures; do not reuse that heuristic.
+Both ZIP integrity checks pass. These exact outer hashes and member counts match the combined-archive receipt in `sources/RECEIPT_20261113.md`. Its multiset comparison reports 96 exact member matches against the 100-row `SOURCE_ASSIGNMENTS.csv`; four received documents are alternate content versions and must remain separately identified pending owner choice:
 
-Do not treat these historical findings as newly verified facts until the archives are reattached and checked.
+- SS2 T2 `ECONOMICS (1).docx`
+- SS2 T3 `3RD TERM S2 FURTHER MATHEMATICS.docx`
+- SS3 T1 `MATHS.docx`
+- SS3 T1 `1ST TERM S3 ECONOMICS.docx`
+
+Do not silently overwrite the old register or choose between these versions. The exact old/new hashes and byte counts are in `RECEIPT_20261113.md` and `RECEIPT_DIFFS_20261113.csv`.
+
+Direct duplicate-content checks on the re-attached archives confirm:
+1. SS3 Literature in English T1 and T2 are byte-identical; this does not establish a distinct T2 source.
+2. SS2 `F _ N (1) (1).docx` in the T2 folder is byte-identical to T1 `F _ N (1).docx`; the other SS2 T2 Food & Nutrition file is a distinct version.
+3. Historical register notes also identify repeated Book-keeping bodies across T1/T2; verify actual body/header distinctions before treating them as separate instructional coverage.
+
+The received SS3 archive contains no Third-Term source. SS3 scope is exam preparation ONLY (WAEC, NECO and JAMB): revision, verified past-question practice, mocks, marking, feedback and reassessment. Do not create or import new SS3 instructional-topic lessons. This is a fixed owner instruction, not an open policy decision.
+
+Source filenames are not sufficient to certify subject/class/term. Continue document-header and body verification, including tables, embedded visuals, equations and week/topic labels. Do not infer missing content or invent replacements.
 
 ## 5. Work queue
 
 | ID | Task | Status / next action |
 |---|---|---|
 | SS23-00 | Baseline and package-contract infrastructure | Implemented and merged; see PR history in `CHECKPOINT.md`. |
-| SS23-S0 | Archive hash and member inventory | Historical inventory recorded; reverify archive hashes when the owner reattaches the six zips. |
-| SS23-S1 | Verify each member's document-header subject/class/term against its assignment | Pending re-verification from the original archives. Update `mapping_status` only with direct evidence. |
+| SS23-S0 | Archive hash and member inventory | Combined archives re-received and outer hashes/member counts verified; 96/100 member identities match, with four alternate versions explicitly held. Continue source-header verification. |
+| SS23-S1 | Verify each member's document-header subject/class/term against its assignment | In progress from re-attached combined archives; 96 member matches are pinned, four alternate versions are held, and document-header/body mapping remains to be verified. Update `mapping_status` only with direct evidence. |
 | SS23-Q | Student-delivery safeguards | Implemented and merged; pending SS2/SS3 lessons remain fail-closed. Re-run integration checks after package changes. |
 | SS23-02 | SS2 Agricultural Science | Draft package implemented and merged; technical, source, assessment and teacher-approval blockers remain. Continue closing these from original pages and documented subject-lead decisions. |
 | SS23-03 | SS2 Biology | Next subject after the Agriculture gate and source archive availability. Do not create a package from filenames or inferred topics. |
@@ -58,8 +70,8 @@ Do not treat these historical findings as newly verified facts until the archive
 ## 6. Exact resume procedure
 
 1. Check current master, open PRs, and active branches before touching files. Avoid overlapping another agent's work.
-2. Obtain the six original source archives in the current session. Verify archive hashes against `sources/README.md` before extracting.
-3. Re-run the source-member inventory/header verification; preserve source files privately and inspect DOCX tables, PPTX slides, images, equations, and page references directly.
+2. Use the two re-attached combined archives. Their outer hashes are pinned in `sources/RECEIPT_20261113.md`; preserve the four alternate member versions without silent substitution.
+3. Continue member/header verification from the re-attached archives; preserve source files privately and inspect DOC/DOCX tables, PPTX slides, images, equations, and page references directly.
 4. Continue the Agricultural Science open blockers first. Do not advance the subject sequence until its source, assessment, and teacher-approval gates are satisfied.
 5. Then proceed to SS2 Biology and subsequent subjects alphabetically. Keep each task small, tested, and in a dedicated branch/PR.
 6. For SS3, build only the approved exam-preparation scope. Keep pending packages inaccessible to students.
