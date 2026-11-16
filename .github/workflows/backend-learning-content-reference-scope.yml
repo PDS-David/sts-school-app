@@ -6,6 +6,7 @@ on:
     paths:
       - "backend/src/routes/learning.ts"
       - "tests/backend-learning-content-reference-scope.integration.test.mts"
+      - "tests/backend-ss23-student-delivery.integration.test.mts"
       - ".github/workflows/backend-learning-content-reference-scope.yml"
 
 permissions:
@@ -43,13 +44,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: "24.19.0"
           cache: npm
       - name: Install locked workspace dependencies
         run: npm ci --ignore-scripts
       - name: Bootstrap disposable PostgreSQL schema
         run: npm run db:bootstrap --workspace=backend
-      - name: Run learning content reference integrity regressions
-        run: node --import tsx --test tests/backend-learning-content-reference-scope.integration.test.mts
+      - name: Run learning content and SS23 student-delivery HTTP regressions
+        run: node --import tsx --test tests/backend-learning-content-reference-scope.integration.test.mts tests/backend-ss23-student-delivery.integration.test.mts
       - name: Typecheck backend
         run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
