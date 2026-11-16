@@ -54,16 +54,17 @@ async function startServer(): Promise<{ server: Server; baseUrl: string }> {
 }
 
 test('SS2 and SS3 HTTP routes fail closed for every unapproved SS23 unit and asset', async () => {
-  const ss2 = await createStudent('ss2', 'SS 2');
-  const ss3 = await createStudent('ss3', 'SS 3');
-  const users = [ss2, ss3];
-  const packages = loadSs23Packages();
-  const draft = packages.find(pkg => pkg.class_name === 'SS 2' && pkg.subject_slug === 'agricultural-science');
-  assert.ok(draft, 'the current Agricultural Science package must be loaded');
-  assert.equal(draft.package_status, 'PENDING');
-
+  const users: Array<{ id: string; token: string }> = [];
   let server: Server | undefined;
   try {
+    users.push(await createStudent('ss2', 'SS 2'));
+    users.push(await createStudent('ss3', 'SS 3'));
+    const [ss2, ss3] = users;
+    const packages = loadSs23Packages();
+    const draft = packages.find(pkg => pkg.class_name === 'SS 2' && pkg.subject_slug === 'agricultural-science');
+    assert.ok(draft, 'the current Agricultural Science package must be loaded');
+    assert.equal(draft.package_status, 'PENDING');
+
     const started = await startServer();
     server = started.server;
     const get = (route: string, token: string) => fetch(started.baseUrl + route, {
@@ -101,7 +102,7 @@ test('SS2 and SS3 HTTP routes fail closed for every unapproved SS23 unit and ass
       assert.equal(response.status, 404, 'unapproved asset leaked: ' + pendingAsset.id);
     }
   } finally {
-    if (server) await new Promise<void>(resolve => server!.close(() => resolve()));
+    if (server) await new Promise<void>(resolve => server.close(() => resolve()));
     for (const student of users) {
       await query('DELETE FROM students WHERE user_id=$1', [student.id]);
       await query('DELETE FROM users WHERE id=$1', [student.id]);
