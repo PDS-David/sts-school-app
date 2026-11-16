@@ -52,9 +52,9 @@ const approvedPackage = () => {
 };
 
 test('loads only registered, schema-valid SS23 packages across both classes', () => {
-  assert.equal(loaded.length, 4);
+  assert.equal(loaded.length, 5);
   const packages = loaded.map(pkg => `${pkg.class_name}/${pkg.subject_slug}`).sort();
-  assert.deepEqual(packages, ['SS 2/agricultural-science', 'SS 2/biology', 'SS 2/chemistry', 'SS 3/agricultural-science']);
+  assert.deepEqual(packages, ['SS 2/agricultural-science', 'SS 2/biology', 'SS 2/chemistry', 'SS 3/agricultural-science', 'SS 3/biology']);
   for (const pkg of loaded.filter(item => item.class_name === 'SS 2')) {
     assert.equal(pkg.delivery_mode, 'INSTRUCTIONAL');
   }
