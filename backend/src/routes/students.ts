@@ -162,10 +162,10 @@ router.get('/deleted', requireRole('admin'), async (req, res) => {
 });
 
 // ── GET /students/:id ─────────────────────────────────────────────────────────
-// Scoped the same way as GET /students: admin sees any student, everyone
-// else (teacher) is restricted to their own school_code. A non-admin
-// requesting a student outside their school gets 404 rather than 403, so
-// the endpoint doesn't confirm the record exists at all.
+// Scoped the same way as GET /students: global admins see any student;
+// school-bound admins and teachers are restricted to their own school_code.
+// A requester outside that school gets 404 rather than 403, so the endpoint
+// doesn't confirm that the record exists at all.
 router.get('/:id', requirePerm('students.read'), async (req, res) => {
   const user = req.user!;
   const params: unknown[] = [req.params.id];
@@ -201,7 +201,8 @@ router.get('/:id', requirePerm('students.read'), async (req, res) => {
 // student in any class, in any school, using only the generic grades.write
 // permission every teacher has. checkTeacherRosterScope() now limits a
 // non-admin teacher to their own school and (if they have one) their own
-// assigned class. Admin is unrestricted.
+// assigned class. A school-bound admin is pinned to their school; only a
+// global admin (school_code NULL) is unrestricted.
 router.post('/', requirePerm('grades.write'), async (req, res) => {
   const schema = z.object({
     full_name:        z.string().min(2),
@@ -386,9 +387,10 @@ router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
 //   1. checkTeacherDeleteScope() (an alias of the same scope check used for
 //      score/attendance writes) now gates this — a teacher may delete a
 //      student's record on their own, without admin approval, exactly when
-//      that student is under their class or subject care; admin is always
-//      allowed. A teacher outside that relationship gets a 403, and (for a
-//      cross-school id) a 404, matching the existing pattern elsewhere.
+//      that student is under their class or subject care; global admins are
+//      unrestricted and school-bound admins are pinned to their school. A
+//      teacher outside that relationship gets a 403, and (for a cross-school
+//      id) a 404, matching the existing pattern elsewhere.
 //   2. The delete itself is now a soft delete — the row stays, tagged
 //      deleted_at/deleted_by, so historical scores/attendance still resolve
 //      correctly and an admin can bring it back via POST /:id/restore. Every
