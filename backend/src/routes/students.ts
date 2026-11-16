@@ -425,7 +425,6 @@ router.post('/:id/restore', requireRole('admin'), async (req, res) => {
   await audit(req.user!, 'restore_student', 'student', req.params.id, rows[0].full_name);
   return res.json({ ok: true, student: rows[0] });
 });
-});
 
 // ── POST /students/:id/link-parent ────────────────────────────────────────────
 router.post('/:id/link-parent', requirePerm('grades.write'), async (req, res) => {
