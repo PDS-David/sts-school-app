@@ -152,6 +152,8 @@ export const checkTeacherDeleteScope = checkTeacherStudentScope;
  * another) — this was simply a gap none of them covered, since none of them
  * happen to run on a create with no existing row.
  *
+ * A school-bound administrator is pinned to their own school; only a global
+ * administrator (school_code NULL) may create a student in either school.
  * Mirrors checkTeacherStudentScope()'s existing class-check shape (a
  * subject-only teacher, with no assigned_class, is not restricted by class
  * here either, consistent with how that function already treats subject
