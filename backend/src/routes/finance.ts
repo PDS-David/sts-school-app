@@ -36,11 +36,12 @@ router.use(blockNonFinanceRoles);
 // Omitting school_code returns the union of fee schedules for all active linked wards.
 router.get('/fee-items', async (req, res) => {
   const { school_code } = req.query as { school_code?: string };
+  const requestedSchoolCode = typeof school_code === 'string' ? school_code.trim() : undefined;
   if (req.user!.role === 'parent') {
     const params: unknown[] = [req.user!.id];
     let schoolFilter = '';
-    if (school_code) {
-      params.push(school_code);
+    if (requestedSchoolCode) {
+      params.push(requestedSchoolCode);
       schoolFilter = ` AND fi.school_code=${params.length}`;
     }
     const { rows } = await query(
@@ -59,7 +60,7 @@ router.get('/fee-items', async (req, res) => {
 
   // finance_admin has no school of its own (manages both schools) — it
   // needs an explicit school_code from the client, e.g. the school switcher.
-  const sc = req.user!.role === 'finance_admin' ? (school_code ?? req.user!.school_code) : req.user!.school_code;
+  const sc = req.user!.role === 'finance_admin' ? (requestedSchoolCode ?? req.user!.school_code) : req.user!.school_code;
   const { rows } = await query('SELECT * FROM fee_items WHERE school_code=$1 ORDER BY id', [sc]);
   return res.json({ fee_items: rows });
 });
