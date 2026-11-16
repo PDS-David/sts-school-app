@@ -15,11 +15,11 @@ export default function NotificationsScreen({ navigation }: any) {
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={{ padding: 6 }}>
+        <TouchableOpacity onPress={() => navigation.goBack()} accessibilityRole="button" accessibilityLabel="Go back" style={{ padding: 6 }}>
           <Ionicons name="arrow-back" size={22} color={Colors.white} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Notifications</Text>
-        <TouchableOpacity onPress={markAllRead} disabled={unreadCount === 0} style={{ padding: 6, opacity: unreadCount === 0 ? 0.55 : 1 }}>
+        <TouchableOpacity onPress={markAllRead} disabled={unreadCount === 0} accessibilityRole="button" accessibilityLabel="Mark all notifications as read" accessibilityState={{ disabled: unreadCount === 0 }} style={{ padding: 6, opacity: unreadCount === 0 ? 0.55 : 1 }}>
           <Text style={styles.markRead}>Mark all read</Text>
         </TouchableOpacity>
       </View>
