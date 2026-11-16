@@ -7,6 +7,7 @@ import {
   packageSchema,
   sha256,
 } from './subjectPackageSchema.js';
+import { loadSs23Packages } from './loader.js';
 
 const longBody = ('Soil is a natural resource that supports plant growth. It contains mineral particles, organic matter, water, air and living organisms. Farmers study soil properties to choose suitable crops and manage water and nutrients. ').repeat(5);
 const sourceHash = 'a'.repeat(64);
@@ -338,4 +339,20 @@ test('loads the source-mapped SS2 Chemistry package without overstating term cov
   assert.equal(pkg.coverage.find(row => row.id === 'SS2CHEM-COV-T3')?.status, 'UNRESOLVED');
   assert.ok(pkg.open_items.some(item => item.id === 'SS2CHEM-REMAINING-CURRICULUM' && item.blocks_delivery));
   assert.ok(pkg.units.every(unit => unit.state.implementation === 'DRAFT' && unit.state.verification === 'DEFERRED'));
+});
+
+
+test('registered SS2/SS3 packages preserve class-specific delivery modes and SS3 has no third term', () => {
+  const packages = loadSs23Packages();
+  assert.ok(packages.some(pkg => pkg.class_name === 'SS 2' && pkg.subject_slug === 'chemistry'));
+  for (const pkg of packages) {
+    if (pkg.class_name === 'SS 2') {
+      assert.equal(pkg.delivery_mode, 'INSTRUCTIONAL', pkg.subject_slug);
+    } else {
+      assert.equal(pkg.class_name, 'SS 3');
+      assert.equal(pkg.delivery_mode, 'EXAM_PREPARATION', pkg.subject_slug);
+      assert.ok(pkg.units.every(unit => unit.term !== '3rd Term'), pkg.subject_slug);
+      assert.ok(pkg.sources.every(source => source.term !== '3rd Term'), pkg.subject_slug);
+    }
+  }
 });
