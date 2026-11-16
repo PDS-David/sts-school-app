@@ -1,38 +1,25 @@
 # SMM-005 — Admin announcement authoring checkpoint
 
 Task ID: SMM-005
-Status: IMPLEMENTED — stacked on current-master calendar and achievements
-Base: `agent/student-achievements-master-merged-ops-20261113` (PR #766)
-Branch: `agent/announcements-admin-ui-master-merged-ops-20261113`
+Status: IMPLEMENTED ON MASTER — role and school-scope tests in PR #894
+Merged implementation: PR #768
 
 ## Scope delivered
-- Reused the existing announcement schema, scoped read API, admin-only validated writes, audit logging and notification feed.
-- Added Admin > More authoring/management UI to publish, target by school/role/class, set optional expiry, list notices and delete them.
-- Included `school_code` in admin list response for global-admin cross-school distinction.
-- Removed `finance_admin` as an accepted audience because it has no matching announcement read path.
-- Registered the screen in Admin navigation; no duplicate announcement table or notification mechanism.
-
-## Changed files
-- `backend/src/routes/announcements.ts`
-- `mobile/src/screens/admin/AdminAnnouncementsScreen.tsx` (new)
-- `mobile/src/screens/admin/AdminMoreScreen.tsx`
-- `mobile/src/navigation/AdminTabs.tsx`
-- This checkpoint.
-
-## Commits
-- Backend: `7ba026137c3a04a8c17d313025bc2ca9d2eb719f`.
-- Navigation: `530812502c499ca3c88ca9e7e498faf4946df04b`.
-- Admin More link: `9b5cb7d1c9c1b4c46071c1cb792958b5ee28ab19`.
-- Screen: `43a2d23a1b1a5ab66893da0907bf1044849b9cbe`.
+- Reuses existing announcement schema, scoped read API, admin-only validated writes, audit logging and notification feed.
+- Adds Admin > More authoring/management screen to publish, target by school/role/class, set optional expiry, list notices and delete them.
+- Includes `school_code` in admin feed for global-admin cross-school distinction.
+- Rejects `finance_admin` as an audience because that role has no matching announcement read path.
+- Registers the screen in Admin navigation; no duplicate announcement table or notification mechanism.
 
 ## Verification
-- Static review confirms admin-only backend writes, school/class validation, future expiry validation and school-bound deletion.
-- Client validates title/body/school and future ISO expiry; server validation remains authoritative.
-- Mobile TypeScript passed in run `43457696034`. The package integrity gate is blocked by the unrelated stale Financial Accounting lesson hash in `backend/src/db/ss1/subjects/financial-accounting.json`; this file is outside the announcement feature and belongs to another agent's active work. Role-specific API tests and device acceptance remain outstanding.
+- PR #768 merged on 2026-11-13; mobile TypeScript passed in run `43457696034`.
+- Current master validation on commit `209a960ace30a8026e722e71e1b7f727347fef0c` passed package integrity and curriculum contract gates.
+- PR #894 adds DB-backed checks for parent ward/class/audience filtering, unrelated-parent isolation and school-admin/global-admin write scope. The route suite passed in run `43940628882`; all required workflows passed on head `3898b90277ae8cb046876f4eb3f137ed41f5c119`.
+- No physical-device acceptance has been performed.
 
 ## Remaining
-- Add API tests for global-admin vs school-admin isolation and role/class visibility.
-- Verify publish/delete and audience delivery on actual admin/student/parent/teacher accounts.
+- Merge PR #894 after CI passes.
+- Verify publish/delete and audience delivery on actual admin/student/parent/teacher staging accounts.
 
 ## Exact next action
-Open this PR against the achievements branch, run full CI and focused API tests. Merge #764, then #766, then this announcements PR.
+Complete PR #894 CI and test announcement publishing and delivery with role-specific staging accounts.

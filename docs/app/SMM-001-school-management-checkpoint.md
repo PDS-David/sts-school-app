@@ -1,46 +1,33 @@
 # SMM-001 — School-management feature completion checkpoint
 
 Task ID: SMM-001
-Status: PRIMARY FEATURES IMPLEMENTED — current PRs open for calendar, achievements and admin authoring
-Current status:
-- OPS-01 migration ledger merged to master in PR #737.
-- Calendar/events and parent upcoming tests: PR #764.
-- Student badges and achievements: PR #766.
-- Admin announcement authoring: PR #768.
-- Teacher marking overview/analytics and student/parent announcement feed integration are already on master.
+Status: IMPLEMENTED ON MASTER — feature-specific integration coverage in PR #894
 
-## Completed on current master
-- Existing school announcements schema/API and notification feed are reused; no duplicate announcements feature.
-- Parent and student dashboards consume the authenticated announcement feed. Failed refreshes preserve cached notices and show an error state. Parent refresh also runs when no ward is selected.
-- Teacher marking overview/analytics returns aggregate expected/entered/pending marks, average/pass rate and per-subject progress. Class/subject scoping uses existing permissions; subject-only teachers do not receive whole-class attendance/effort aggregates.
-- Existing admin announcement reads/writes are school/class/role scoped.
-- Versioned PostgreSQL migration runner is merged: numbered migrations, SHA-256 checksums, advisory lock, transactional apply, read-only status, clean-only fresh schema path and disposable PostgreSQL integration tests.
+## Merged implementation
+- OPS-01 migration ledger: PR #737 merged.
+- Calendar, school events and parent upcoming tests: PR #764 merged.
+- Student badges and achievements: PR #766 merged.
+- Admin announcement authoring: PR #768 merged.
+- Root test/typecheck scripts: PR #771 merged.
+- Teacher marking backlog and analytics, plus student/parent announcement feeds, were already on master.
 
-## Implemented in open PRs
-- PR #764: migration `0002_school_events.sql`, school events API, admin event management, student/teacher calendar and parent upcoming tests.
-- PR #766: student-only achievements endpoint and screen, excluding provisional AI essay grades.
-- PR #768: admin announcement authoring, role/class/school targeting, expiry and deletion.
-
-## Durable checkpoints
-- `docs/app/remaining-20261030/evidence/OPS-01.md`
-- `docs/app/SMM-002-calendar-events-checkpoint.md`
-- `docs/app/SMM-003-teacher-analytics-checkpoint.md`
-- `docs/app/SMM-004-student-achievements-checkpoint.md`
-- `docs/app/SMM-005-announcements-admin-ui-checkpoint.md`
+## Current feature behavior
+- Announcements reuse the existing schema, scoped read API and notification feed. Admin authoring supports school/role/class targeting, expiry and deletion.
+- Teacher overview returns expected, marked and pending score-entry counts, average/pass rate and per-subject progress. Class teachers are class-scoped; subject-only teachers are subject-scoped and do not receive whole-class attendance/effort aggregates.
+- Calendar events use numbered migration 0002, fresh-schema DDL, school/class/audience scoping, admin-only writes and audit records.
+- Parents receive upcoming open assessments and school events for their active linked wards; assessment question content is not exposed by the parent summary endpoint.
+- Student achievements are derived from passed topic completions and fully graded assessment submissions; provisional AI essay grades are excluded.
 
 ## Verification
-- OPS-01 PR #737 passed the backend/mobile typechecks, static regressions, PostgreSQL schema replay and all 3 disposable migration-ledger integration tests (run `43454501343`).
-- Calendar PR #764 has passing TypeScript/static/package jobs; the JSS3 verify job is still queued. An earlier iteration's JSX/state defects in Parent Activities were fixed.
-- Achievements PR #766 mobile TypeScript passed, but the cumulative JSS3/static and package-integrity jobs are blocked by an unrelated stale Financial Accounting lesson hash in `backend/src/db/ss1/subjects/financial-accounting.json`. That file is under another agent's active work and was not changed.
-- Admin announcement PR #768 mobile TypeScript passed; its package-integrity gate is blocked by the same unrelated Financial Accounting hash.
-- No physical-device acceptance or production database migration has been performed.
+- Current master commit `209a960ace30a8026e722e71e1b7f727347fef0c` passed SS1 package integrity, SS23 package integrity, SS23 package contract tests and JSS3 implementation/asset checks.
+- PR #894 adds real PostgreSQL route integration coverage for events, announcements, parent upcoming tests, achievements and teacher analytics. All four required CI workflows passed on head `3898b90277ae8cb046876f4eb3f137ed41f5c119`: JSS3 verify `43940628882`, SS1 integrity `43940628889`, SS23 integrity `43940628962`, and backend student report term-scope `43940628830`. The route suite itself passed all four integration tests.
+- No physical-device acceptance or production migration/deployment has been performed.
 
 ## Remaining
-- Complete the latest CI runs for #764, #766 and #768 after the separate Financial Accounting hash issue is resolved by its owner.
-- Add focused route tests for school-event visibility, parent ward scoping, student achievement thresholds and announcement role/class audience behavior.
-- Test admin event/announcement operations and student/parent/teacher views on actual accounts/devices.
-- Merge order: #764 → #766 → #768. OPS-01 is already merged.
-- DATA-02 offline replay idempotency and VER-02 manual CI coverage remain additional backlog tasks; owner-gated tasks remain blocked.
+- Merge PR #894 after all required CI checks pass.
+- Perform role-account/device acceptance for admin, teacher, student and parent screens.
+- Confirm migration 0002 is applied through the reviewed deployment process before enabling calendar features in any production database.
+- DATA-02 offline replay idempotency and VER-02 manual CI coverage remain separate documented backlog items, outside this school-management feature scope.
 
 ## Exact next action
-Wait for the active Financial Accounting owner to repair the stale body hash, then rerun the package/JSS3 gates for #766 and #768. Finish route/device acceptance before marking the feature set production-ready.
+Finish PR #894 CI, repair any test failures without weakening assertions, merge it, then complete the role-account/device acceptance checklist.
