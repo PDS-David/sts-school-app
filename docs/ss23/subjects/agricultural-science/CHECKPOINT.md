@@ -1,3 +1,54 @@
+# Structured package audit — 2026-11-16
+
+This snapshot reflects the Agricultural Science draft as updated on PR #862, based on master `70cd4a8cb1a5f7fcbd1a103e6812bbe96d4e711e`. It checks structured package fields; it does **not** certify source-page completeness, subject correctness, specialist approval, owner acceptance or student-release readiness.
+
+## Practice and answer-guide audit
+
+The package contains 19 draft units and 195 practice items:
+
+| Term | Units | Practice items | Original-source questions | Authored-supplement questions |
+|---|---:|---:|---:|---:|
+| First Term | 8 | 150 | 128 | 22 |
+| Second Term | 6 | 24 | 0 | 24 |
+| Third Term | 5 | 21 | 0 | 21 |
+| **Total** | **19** | **195** | **128** | **67** |
+
+A programmatic inspection of all 195 items found:
+- no missing answer;
+- no missing explanation;
+- no missing positive mark allocation;
+- no empty marking-guide array;
+- every marking-guide total equals the question's stated marks (195/195).
+
+This confirms that answer-guide fields exist and their mark totals are internally consistent. It does **not** establish that answers are factually correct, that all original source assessment questions have been captured, or that a subject specialist has approved them.
+
+The package now records 41 external factual references (10 additional source-hashed references in this PR) and 10 additional supported coverage rows for the T2 floriculture and crop-disease clarifications. The supplements distinguish verified facts from the original school wording. The complete source tables and all remaining taxonomic or source-text questions still require original-page reconciliation and specialist review.
+
+In particular, all 45 Second- and Third-Term practice items are labelled `AUTHORED_SUPPLEMENT`; none is labelled `ORIGINAL_SOURCE`. Their source assessment coverage remains incomplete and must be reconciled against the original school documents. Do not represent these 45 authored items as copied past questions or original source assessment items.
+
+## Coverage and open-item audit
+
+Current package coverage rows:
+- `SUPPORTED`: 66
+- `PARTIAL`: 25
+- `UNRESOLVED`: 5
+- `MARKER`: 4
+
+The package has 53 open items: 46 delivery-blocking and 7 non-blocking.
+
+| Term | Open items | Blocking | Non-blocking |
+|---|---:|---:|---:|
+| First Term | 43 | 37 | 6 |
+| Second Term | 5 | 5 | 0 |
+| Third Term | 5 | 4 | 1 |
+| **Total** | **53** | **46** | **7** |
+
+The 53 items comprise 30 FACT, 11 VERIFICATION, 6 CONTENT, 4 PERMISSION, 1 OWNER_ACTION and 1 VISUAL item. First-Term review remains substantial; the newer Second- and Third-Term drafts do not close those earlier approval gates.
+
+## Current gate
+
+Package status remains `PENDING`; all 19 units remain `DRAFT`, with content approval `PENDING` and verification `DEFERRED`. Keep the package blocked from student delivery. Do not mark the subject complete based on this structural audit or CI results.
+
 # Agricultural Science — SS2 / SS3 subject checkpoint
 
 Updated: 2026-11-16
