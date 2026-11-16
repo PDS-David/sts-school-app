@@ -36,12 +36,13 @@ class AgriculturalScienceSourceMapTests(unittest.TestCase):
         self.assertEqual(source["bytes"], 10759168)
         self.assertTrue(source["archive_member"].endswith("1ST TERM S2 AGRICULTURAL SCIENCE.doc"))
 
-    def test_ss2_third_term_farm_records_is_separated_from_week_five_six(self):
+    def test_ss2_third_term_farm_records_heading_is_verified_in_original_page_layout(self):
         source = next(s for s in self.data["sources"] if s["source_id"] == "SS23-SRC-6abb32818845")
         mapping = next(m for m in source["body_mapping"] if m["weeks"] == "7-8")
-        self.assertEqual(mapping["status"], "BODY_PRESENT_HEADING_MISSING")
-        self.assertIn("Balance Sheet or Networth Statement", mapping["anchors"][0])
-        self.assertIn("distinct Week 7-8 mapping", mapping["decision"])
+        self.assertEqual(mapping["status"], "SOURCE_BODY_MAPPED")
+        self.assertIn("WEEK SEVEN AND EIGHT", mapping["anchors"])
+        self.assertIn("TOPIC: FARM RECORD AND FARM ACCOUNT", mapping["anchors"])
+        self.assertTrue(any("printed page 13" in item for item in source["open_items"]))
 
     def test_ss3_second_term_preparation_gaps_remain_explicit(self):
         source = next(s for s in self.data["sources"] if s["source_id"] == "SS23-SRC-b12f41490179")
