@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { createHash } from 'node:crypto';
 import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
-import { audit } from '../utils/audit.js';
+import { auditContextFromRequest, auditInTransaction, auditStrict } from '../utils/audit.js';
 import { checkTeacherDeleteScope, checkTeacherRosterScope } from '../utils/scope.js';
 import { resolveStudentRosterScope } from '../utils/studentRosterScope.js';
 import { createStudentWithParent } from '../utils/parentProvisioning.js';
@@ -241,18 +241,25 @@ router.post('/', requirePerm('grades.write'), async (req, res) => {
       parent_phone: d.parent_phone,
       parent_email: d.parent_email ?? null,
     } : undefined,
+    async (client, student, parentRecord) => {
+      await auditInTransaction(
+        client, req.user!, 'add_student', 'student', String(student.id), 'student record created',
+        auditContextFromRequest(req, { schoolCode: d.school_code, metadata: { class_name: d.class_name, parent_linked: !!parentRecord } }),
+      );
+      if (parentRecord?.created) {
+        await auditInTransaction(
+          client, req.user!, 'add_parent_auto', 'user', parentRecord.id, 'parent account auto-provisioned',
+          auditContextFromRequest(req, { schoolCode: d.school_code, metadata: { linked_student_id: String(student.id) } }),
+        );
+      }
+    },
   );
 
   const studentId = String(result.student.id);
-  await audit(req.user!, 'add_student', 'student', studentId, d.full_name);
-
   let parent: { id: string; username: string; temporary_password?: string } | undefined;
   if (result.parent) {
     const { created, ...parentDetails } = result.parent;
     parent = parentDetails;
-    if (created) {
-      await audit(req.user!, 'add_parent_auto', 'user', parent.id, `auto-provisioned for phone ${d.parent_phone}`);
-    }
   }
 
   return res.status(201).json({ student: result.student, parent });
