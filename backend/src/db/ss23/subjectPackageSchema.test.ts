@@ -240,7 +240,7 @@ test('loads the SS2 Agricultural Science package with source assessment coverage
   assert.equal(pkg.units[5].practice.filter(question => question.question_origin === 'ORIGINAL_SOURCE').length, 16);
   assert.equal(pkg.units[6].practice.filter(question => question.question_origin === 'ORIGINAL_SOURCE').length, 18);
   assert.equal(pkg.units[7].practice.filter(question => question.question_origin === 'ORIGINAL_SOURCE').length, 19);
-  assert.equal(pkg.units.reduce((total, unit) => total + unit.practice.length, 0), 173);
+  assert.equal(pkg.units.reduce((total, unit) => total + unit.practice.length, 0), 195);
   assert.equal(pkg.units.reduce((total, unit) => total + unit.practice.filter(question => question.question_origin === 'ORIGINAL_SOURCE').length, 0), 128);
   assert.ok(pkg.units.every(unit => unit.practice.every(question => question.answer_origin === 'AUTHORED_SUPPLEMENT')));
   assert.equal(pkg.sources[0].source_id, 'SS23-SRC-225f920d3751');
