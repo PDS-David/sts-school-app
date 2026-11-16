@@ -425,7 +425,7 @@ router.delete('/:id', requirePerm('grades.write'), async (req, res) => {
   );
   if (!rows[0]) return res.status(404).json({ error: 'Student not found' });
 
-  await audit(
+  await auditStrict(
     user, 'delete_student', 'student', req.params.id,
     `${rows[0].full_name} (deleted by ${user.role}; recoverable via restore)`,
   );
@@ -440,7 +440,7 @@ router.post('/:id/restore', requireRole('admin'), async (req, res) => {
     [req.params.id, req.user!.school_code ?? null],
   );
   if (!rows[0]) return res.status(404).json({ error: 'No deleted student found with that id' });
-  await audit(req.user!, 'restore_student', 'student', req.params.id, rows[0].full_name);
+  await auditStrict(req.user!, 'restore_student', 'student', req.params.id, rows[0].full_name);
   return res.json({ ok: true, student: rows[0] });
 });
 
@@ -475,7 +475,7 @@ router.post('/:id/link-parent', requirePerm('grades.write'), async (req, res) =>
 
   if (!result.ok) return res.status(result.status).json({ error: result.error });
   if (result.linked) {
-    await audit(req.user!, 'link_parent', 'student', studentId.data, `parent ${parentId}`);
+    await auditStrict(req.user!, 'link_parent', 'student', studentId.data, `parent ${parentId}`);
   }
   return res.json({ ok: true, linked: result.linked });
 });
@@ -501,7 +501,7 @@ router.delete('/:id/unlink-parent/:parentId', requirePerm('grades.write'), async
 
   if (!result.ok) return res.status(result.status).json({ error: result.error });
   if (result.unlinked) {
-    await audit(req.user!, 'unlink_parent', 'student', studentId.data, `parent ${parentId.data}`);
+    await auditStrict(req.user!, 'unlink_parent', 'student', studentId.data, `parent ${parentId.data}`);
   }
   return res.json({ ok: true, unlinked: result.unlinked });
 });
@@ -583,7 +583,7 @@ router.post('/:id/link-user', requireRole('admin'), async (req, res) => {
 
   if (!result.ok) return res.status(result.status).json({ error: result.error });
   if (result.linked) {
-    await audit(req.user!, 'link_student_user', 'student', studentId.data, `user ${userId}`);
+    await auditStrict(req.user!, 'link_student_user', 'student', studentId.data, `user ${userId}`);
   }
   return res.json({ ok: true, student: result.student, linked: result.linked });
 });
@@ -605,7 +605,7 @@ router.delete('/:id/unlink-user', requireRole('admin'), async (req, res) => {
   });
   if (!result.ok) return res.status(result.status).json({ error: result.error });
   if (result.unlinked) {
-    await audit(req.user!, 'unlink_student_user', 'student', studentId.data, '');
+    await auditStrict(req.user!, 'unlink_student_user', 'student', studentId.data, '');
   }
   return res.json({ ok: true, unlinked: result.unlinked });
 });
