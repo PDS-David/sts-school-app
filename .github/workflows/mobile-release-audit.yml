@@ -60,6 +60,20 @@ jobs:
           npm audit --omit=dev --json > artifacts/npm-audit-production.json || true
           npm audit fix --dry-run --json > artifacts/npm-audit-fix-plan.json || true
           npm ls expo @expo/cli expo-sharing expo-splash-screen glob image-size minimatch zod --all --json > artifacts/audit-dependency-tree.json || true
+      - name: Evaluate Expo SDK 57 dependency alignment
+        working-directory: mobile
+        run: npx expo install expo@^57.0.0 --fix
+      - name: Validate Expo SDK 57 candidate
+        run: |
+          mkdir -p artifacts
+          npx expo-doctor@latest --json > artifacts/expo-doctor-sdk57.json || npx expo-doctor@latest > artifacts/expo-doctor-sdk57.txt || true
+          npm run test:mobile:offline
+          npm run test:mobile:frontend-contracts
+          npx tsc --noEmit -p mobile/tsconfig.json
+          npx expo export --platform android --output-dir ../artifacts/mobile-android-sdk57
+          npm audit --json > artifacts/npm-audit-sdk57.json || true
+          npm ls expo @expo/cli expo-sharing expo-splash-screen glob image-size minimatch zod --all --json > artifacts/audit-dependency-tree-sdk57.json || true
+          git diff --binary -- mobile/package.json package-lock.json > artifacts/expo-sdk57-upgrade.patch
       - name: Build staging Android APK with EAS
         if: github.event_name == 'push' && env.EXPO_TOKEN != ''
         run: npx eas-cli@latest build --platform android --profile staging --non-interactive --json > artifacts/eas-staging-apk.json
