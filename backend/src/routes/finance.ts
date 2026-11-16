@@ -33,6 +33,7 @@ router.use(blockNonFinanceRoles);
 // Fee schedules are school-scoped. A parent may have wards across both STS
 // campuses, so their requested school must be proven against parent_wards
 // rather than silently falling back to the parent's original home school.
+// Omitting school_code returns the union of fee schedules for all active linked wards.
 router.get('/fee-items', async (req, res) => {
   const { school_code } = req.query as { school_code?: string };
   if (req.user!.role === 'parent') {
