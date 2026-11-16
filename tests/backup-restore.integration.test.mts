@@ -163,6 +163,36 @@ test('restore preserves audit history and re-enables append-only protection', as
   assert.equal(integrity.valid, true, 'restored audit hash chain must remain verifiable');
 });
 
+test('restore failure after truncation rolls back data and restores audit trigger state', async () => {
+  const payload = await collectPayload();
+  const { rows: databaseRows } = await query('SELECT current_database() AS name');
+  const database = String(databaseRows[0].name);
+  const schools = payload.tables.find(table => table.name === 'schools');
+  assert.ok(schools?.rows.length, 'bootstrap must provide at least one school row');
+  const { rows: before } = await query('SELECT code, name FROM schools ORDER BY code');
+
+  // A duplicate primary/unique key fails after the restore has begun inserting,
+  // proving the earlier TRUNCATE is rolled back with the rest of the transaction.
+  schools.rows.push([...schools.rows[0]]);
+  await assert.rejects(
+    restore(payload, { apply: true, confirmDatabase: database }),
+    /duplicate key|unique constraint/i,
+  );
+
+  const { rows: afterRows } = await query('SELECT code, name FROM schools ORDER BY code');
+  assert.deepEqual(afterRows, before, 'pre-restore rows must survive a mid-restore insert failure');
+  const { rows: triggerRows } = await query(
+    `SELECT tgenabled FROM pg_trigger
+      WHERE tgrelid='public.audit_log'::regclass
+        AND tgname='audit_log_append_only_truncate'`,
+  );
+  assert.equal(triggerRows[0]?.tgenabled, 'O', 'rollback must leave the audit truncate trigger enabled');
+  await assert.rejects(
+    query('TRUNCATE audit_log'),
+    (error: unknown) => (error as { code?: string }).code === '42501',
+  );
+});
+
 test('restore rejects malformed row widths before connecting to the target database', async () => {
   const payload = await collectPayload();
   const table = payload.tables[0];
