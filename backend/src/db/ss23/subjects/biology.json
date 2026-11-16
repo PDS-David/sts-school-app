@@ -246,6 +246,22 @@
           "explanation": "The unit preserves the source's combined-week structure and maps the principal animal tissue and skeleton content. Plant-support detail and all source questions require full source-page reconciliation."
         }
       ]
+    },
+    {
+      "id": "BIO2-COV-T2-W03",
+      "source_id": "SS23-SRC-9e65e0d4e3ff",
+      "objective": "Mammalian Teeth (Week 3): source lesson represented by an instructional draft covering tooth types, structure, dentition and dental formula.",
+      "objective_locator": "Second-Term scheme Week 3; WEEK THREE body section, extracted lines 354–461.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-BIO-T2-W03"
+      ],
+      "evidence": [
+        {
+          "locator": "Second-Term source, WEEK THREE Mammalian Teeth, extracted lines 354–461",
+          "explanation": "Lesson body and two source-located prompts have been implemented as a draft; source diagrams, complete assignment mapping and independent answer review remain open."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -288,11 +304,11 @@
     {
       "id": "BIO2-T2-IMPLEMENTATION",
       "kind": "CONTENT",
-      "detail": "Second-Term Biology is only partially implemented: the combined Weeks 1–2 unit is drafted; the remaining scheme weeks and the remaining 48 labelled assessment/assignment blocks are not yet implemented/reconciled.",
+      "detail": "Second-Term Biology is partially implemented: combined Weeks 1–2 and Week 3 have instructional drafts; combined Weeks 4–5 and Weeks 6–10 plus full assessment reconciliation remain.",
       "required_action": "Implement Week 3, combined Weeks 4–5 and Weeks 6–10; reconcile all 48 labelled blocks and inspect source diagrams/tables.",
       "affected_ids": [
         "SUP-SS2-BIO-T2-W01-02",
-        "BIO2-T2-W03",
+        "SUP-SS2-BIO-T2-W03",
         "BIO2-T2-W04-05",
         "BIO2-T2-W06",
         "BIO2-T2-W07",
@@ -1332,6 +1348,110 @@
           "source_sha256": "9e65e0d4e3ff0e30caf805f7124a4d420ca1a952b05472e61f0c8a7a67876659",
           "role": "ORIGINAL_SOURCE",
           "locator": "Second-Term source, combined WEEK ONE & TWO section; extracted source lines 29–353; evaluation anchors within this section",
+          "rights": "Owner-supplied source archive; reuse status for redistributed extracts has not been independently established.",
+          "attribution": "Owner-supplied SS2 Second Term Biology source document.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction that the supplied curriculum is already approved; recorded in https://github.com/PDS-David/sts-school-app/pull/881",
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-BIO-T2-W03",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "2nd Term",
+      "subject": "Biology",
+      "title": "Mammalian Teeth",
+      "week_label": "3",
+      "objectives": [
+        "Identify the four mammalian tooth types and explain their functions.",
+        "Describe tooth structure, distinguish homodont and heterodont dentition, and interpret a dental formula."
+      ],
+      "body": "Mammalian Teeth (Week 3)\n\nMammals generally have four types of teeth: incisors, canines, premolars and molars. Incisors have flat, chisel-shaped cutting edges and are used for biting and cutting. Canines are pointed and help tear flesh or catch prey. Premolars have broad, firm surfaces for chewing, while molars grind and chew food with the premolars. Humans develop two sets of teeth: about twenty milk teeth in childhood, later replaced by up to thirty-two permanent teeth in adults. The source notes that milk dentition lacks molars, while permanent dentition includes all four tooth types.\n\nA mammalian tooth has a crown above the gum, a root embedded in the jaw and a neck at the junction of crown and root. The pulp cavity contains blood vessels and nerves. Dentine surrounds the pulp and forms the main hard body of the tooth. Enamel covers the dentine at the crown and protects the inner tissues; it is the hardest material produced by animals. Cement covers the dentine in the root region.\n\nDentition describes the number, arrangement and form of teeth. Homodont dentition has teeth that are similar in shape and function and is described in the source for fishes, amphibians and reptiles. Heterodont dentition has different tooth forms with different functions and is characteristic of mammals. A dental formula expresses the numbers and kinds of teeth in the upper and lower jaws, conventionally showing one side and multiplying by two for both sides. The source provides examples for humans, dogs, cows, lions, rabbits, sheep and rats. Tooth form and arrangement are related to an animal's feeding habits.",
+      "body_sha256": "58d01649ed2cebede7d0ef9965ac7cacae41cb6e25db3eb656f95cc24774a32c",
+      "practice": [
+        {
+          "id": "BIO2-T2-W03-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term source, WEEK THREE, EVALUATION after TYPES OF TEETH",
+          "question": "Mention four types of teeth in human and their functions",
+          "answer": "Incisors bite and cut food; canines tear flesh and help catch prey; premolars chew food; molars grind and chew food together with premolars.",
+          "explanation": "Each tooth type is matched with its function as described in the source lesson.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Incisors: biting/cutting.",
+              "marks": 1
+            },
+            {
+              "criterion": "Canines: tearing/catching prey.",
+              "marks": 1
+            },
+            {
+              "criterion": "Premolars: chewing.",
+              "marks": 1
+            },
+            {
+              "criterion": "Molars: grinding and chewing.",
+              "marks": 1
+            }
+          ],
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer checked against the source lesson; not represented as a source-provided answer key.",
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-9e65e0d4e3ff",
+              "source_sha256": "9e65e0d4e3ff0e30caf805f7124a4d420ca1a952b05472e61f0c8a7a67876659",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term source, WEEK THREE Mammalian Teeth; extracted lines 354–461",
+              "rights": "Owner-supplied source archive; reuse status for redistributed extracts has not been independently established.",
+              "attribution": "Owner-supplied SS2 Second Term Biology source document.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "BIO2-T2-W03-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term source, WEEK THREE, WEEKEND ASSIGNMENT Section A Question 1",
+          "question": "The dental formula 2[I 3/3, C 1/1, PM 4/4, M 2/3] is that of A. goat B. dog C. rabbit D. man",
+          "answer": "B. dog.",
+          "explanation": "The source's dog dental formula is 2[I=3/3, C=1/1, P=4/4, M=2/3], matching the formula in the question.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Selects option B, dog.",
+              "marks": 1
+            }
+          ],
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer checked against the source lesson; not represented as a source-provided answer key.",
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-9e65e0d4e3ff",
+              "source_sha256": "9e65e0d4e3ff0e30caf805f7124a4d420ca1a952b05472e61f0c8a7a67876659",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term source, WEEK THREE Mammalian Teeth; extracted lines 354–461",
+              "rights": "Owner-supplied source archive; reuse status for redistributed extracts has not been independently established.",
+              "attribution": "Owner-supplied SS2 Second Term Biology source document.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-9e65e0d4e3ff",
+          "source_sha256": "9e65e0d4e3ff0e30caf805f7124a4d420ca1a952b05472e61f0c8a7a67876659",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Second-Term source, WEEK THREE Mammalian Teeth; extracted lines 354–461",
           "rights": "Owner-supplied source archive; reuse status for redistributed extracts has not been independently established.",
           "attribution": "Owner-supplied SS2 Second Term Biology source document.",
           "reuse_status": "PENDING"
