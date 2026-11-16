@@ -4,48 +4,50 @@
 
 ## Live repository and PR state
 
-- Current `master`: `11a7d388d230ad290ede392f44a9e8470438eeeb`. PRs #870 and #871 have now merged; earlier #867 and #868 were also merged.
-- PR #870 merged at 2026-11-16 04:36:02Z. It adds the server-side exclusion for `source-extract://` placeholders and the negative-control regression test for erroneous approval metadata.
-- PR #871 merged at 2026-11-16 04:36:05Z. It adds the Agriculture source/content updates and authored diagrams; its final head was `1cbe7efbb2b0b9d2a729674c73e661b5e713ea4e`.
-- All four workflows passed on PR #871's final head: package contract 43804755967; SS23 integrity 43804755981; SS1 integrity 43804755877; JSS3 implementation/asset checks 43804755894.
-- PR #869 remains open and mergeable; its documentation branch has been synchronised with master by merge commit `62fa28acc0e509692b31ae66916f9adb500c64ac`. It is `0` commits ahead and `1` behind master.
+- Current master: `90a718a0fab35b2500f6e532242689d4fa8b28cd`.
+- PRs #867, #868, #869, #870 and #871 are merged.
+- PR #870 adds a server-side exclusion for unresolved source-extract placeholders before student asset listing or reading. Its negative-control test confirms placeholders remain invisible even if their approval metadata is erroneously advanced.
+- PR #871 final head `1cbe7efbb2b0b9d2a729674c73e661b5e713ea4e` passed all four workflows: SS23 package contract 43804755967; SS23 integrity 43804755981; SS1 integrity 43804755877; JSS3 implementation/asset checks 43804755894.
+- PR #872 (this checkpoint correction) is open and mergeable, five commits ahead and zero behind master.
+- PR #873 is open and mergeable; it updates the Week Six irrigation and Weeks Eight-Nine cycle visual blockers to list all three authored alternatives per topic, without changing approval or delivery state. All four workflows passed on its current head `0d7977c00b6a9261ed58500af50434f2aaf95e6c`: SS23 contract 43805636778; SS23 integrity 43805636775; SS1 integrity 43805636772; JSS3 checks 43805636802.
 - No further merge, deployment, production import or student release is authorised. The owner retains those decisions.
 
 ## Agricultural Science — current merged master state
 
 - 19 units: First Term 8, Second Term 6, Third Term 5.
 - 195 practice/assessment records.
-- 52 asset records: 42 unresolved `source-extract://` placeholders and 10 locally stored school-authored SVGs.
+- 52 asset records: 42 unresolved source-extract placeholders and 10 locally stored school-authored SVGs.
 - 48 external factual references.
 - 116 coverage rows: 82 SUPPORTED, 25 PARTIAL, 5 UNRESOLVED, 4 MARKER.
-- 47 open items: 46 delivery-blocking, one non-blocking.
-- Package `PENDING`; all units `DRAFT`; content approvals `PENDING`; package verification `DEFERRED`; no student delivery.
+- 47 open items: 46 delivery-blocking and one non-blocking.
+- Package PENDING; all units DRAFT; content approvals PENDING; package verification DEFERRED; no student delivery.
 
 ## Source and asset corrections now on master
 
-- Tractor/PTO/drawbar asset provenance is First-Term and cites Penn State PTO Safety, matching the Week Three unit.
-- Generalized soil-profile asset provenance and its coverage row cite USDA NRCS `A Soil Profile`, not the jar-test source. It illustrates possible O, A, E, B, C and R horizons, explicitly noting horizon presence/depth vary; it is not a universal profile.
-- The 10 local SVG byte counts and SHA-256 values have been matched against their committed file contents. All package states remain approval `PENDING` and verification `DEFERRED`; hash checks are technical evidence only.
-- The merged student-delivery API rejects all unresolved `source-extract://` placeholders before listing or reading, even if their metadata is erroneously advanced to APPROVED/IMPLEMENTED/VERIFIED/PERMITTED.
+- Tractor/PTO/drawbar provenance is First-Term and cites Penn State PTO Safety, matching the Week Three lesson.
+- Generalized soil-profile provenance and coverage cite USDA NRCS "A Soil Profile". The diagram shows possible O, A, E, B, C and R horizons and explicitly notes horizon presence and depth vary; it is not a universal profile.
+- All 10 local SVG byte counts and SHA-256 values match committed file contents. Their package states remain approval PENDING and verification DEFERRED; hash checks are technical evidence only.
+- The merged student-delivery API rejects unresolved source-extract placeholders before listing or reading, even if metadata is erroneously advanced to APPROVED/IMPLEMENTED/VERIFIED/PERMITTED.
 - Watermarked, third-party and rights-unverified source images remain provenance-only and non-deliverable unless written reuse rights and attribution are recorded.
-- Cassava bacterial blight uses `Xanthomonas phaseoli pv. manihotis` as the preferred name and retains `X. axonopodis pv. manihotis` as a synonym; EPPO and a 2024 *Plant Disease* source are registered. The full disease-table specialist blocker remains open.
-- Floriculture and pest decisions have been clarified without guessing the unresolved source spelling “carnality” or approving pesticides.
-- Five soil practical procedures are review drafts only; apparatus, safety, observations, mark-by-mark guides and teacher approval remain outstanding.
+- Cassava bacterial blight uses Xanthomonas phaseoli pv. manihotis as the preferred name and retains X. axonopodis pv. manihotis as a synonym; EPPO and a 2024 Plant Disease source are registered. Full disease-table specialist review remains open.
+- Floriculture and pest decisions are clarified without guessing the unresolved source spelling "carnality" or approving pesticide products.
+- Five soil practical procedures are review drafts only; apparatus, safety, expected observations, mark-by-mark guides and teacher approval remain outstanding.
+- PR #873's remaining text alignment keeps the irrigation and nutrient-cycle visual blockers open until all three authored alternatives per topic receive subject-lead approval and source-image rights are documented.
 
 ## Assessment integrity and provenance
 
 - 195 unique question IDs; no missing question, answer, explanation, question/answer locator or provenance.
 - No unknown provenance IDs; all marking-criterion totals reconcile arithmetically.
 - Question origin: T1 128 ORIGINAL_SOURCE + 22 AUTHORED_SUPPLEMENT; T2 24 AUTHORED_SUPPLEMENT; T3 21 AUTHORED_SUPPLEMENT.
-- T2/T3 records are not source-verbatim past questions. One-to-one original assessment inventory and answer/mark reconciliation remain open.
-- Four repeated T1 prompt wordings occur at distinct source locators; preserve them until original-page confirmation.
+- T2/T3 items are authored supplements, not source-verbatim past questions. One-to-one original assessment inventory and answer/mark reconciliation remain open.
+- Four repeated T1 prompt wordings occur at distinct source locators; preserve them pending original-page confirmation.
 - Structural checks do not certify substantive answer accuracy, source fidelity or teacher approval.
 
 ## Source archive boundary and next gate
 
 The combined SS2/SS3 owner-supplied ZIPs remain private Library files with registered hashes/member inventories, but their member pages were not readable through the Files text interface in this session. No new original-page inspection is claimed. Four source-version choices remain for the owner: SS2 T2 Economics, SS2 T3 Further Mathematics, SS3 T1 Mathematics and SS3 T1 Economics.
 
-Do not proceed to SS2 Biology until Agriculture's original-source, assessment and teacher-approval gates genuinely pass. Then continue SS2 subjects alphabetically, one focused PR per subject. SS3 remains WAEC/NECO/JAMB examination preparation only, after SS2, with answer-key protection and no new instructional topics.
+Do not proceed to SS2 Biology until Agriculture original-source, assessment and teacher-approval gates genuinely pass. Then continue SS2 subjects alphabetically, one focused PR per subject. SS3 remains WAEC/NECO/JAMB examination preparation only, after SS2, with answer-key protection and no new instructional topics.
 
 ---
 
