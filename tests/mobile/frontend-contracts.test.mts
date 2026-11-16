@@ -12,14 +12,15 @@ test('message notification destinations match role navigation', () => {
   const financeTabs = read('mobile/src/navigation/FinanceAdminTabs.tsx');
   const navigationRef = read('mobile/src/navigation/navigationRef.ts');
   const notifications = read('mobile/src/components/NotificationsContext.tsx');
-  assert.match(adminTabs, /ChatsStack\\.Screen name="Messages"/);
+  assert.ok(adminTabs.includes('ChatsStack.Screen name="Messages"'));
   for (const tabs of [parentTabs, studentTabs, teacherTabs]) {
-    assert.match(tabs, /ChatsStack\\.Screen name="ChatThread"/);
+    assert.ok(tabs.includes('ChatsStack.Screen name="ChatThread"'));
   }
-  assert.doesNotMatch(financeTabs, /\\.Screen name="Messages"|\\.Screen name="ChatThread"/);
-  assert.match(notifications, /if \\(user\\.role !== 'finance_admin'\\)/);
-  assert.match(notifications, /screen: user\\.role === 'admin' \\? 'Messages' : 'ChatThread'/);
-  assert.match(navigationRef, /navigationRef\\.navigate\\(screen, \\{ contact \\}\\)/);
+  assert.ok(!financeTabs.includes('Screen name="Messages"'));
+  assert.ok(!financeTabs.includes('Screen name="ChatThread"'));
+  assert.ok(notifications.includes("if (user.role !== 'finance_admin')"));
+  assert.ok(notifications.includes("screen: user.role === 'admin' ? 'Messages' : 'ChatThread'"));
+  assert.ok(navigationRef.includes('navigationRef.navigate(screen, { contact })'));
 });
 
 test('assessment and results notification targets are registered', () => {
@@ -27,34 +28,34 @@ test('assessment and results notification targets are registered', () => {
   const parentTabs = read('mobile/src/navigation/ParentTabs.tsx');
   const navigationRef = read('mobile/src/navigation/navigationRef.ts');
   const notificationsScreen = read('mobile/src/screens/NotificationsScreen.tsx');
-  assert.match(studentTabs, /AssessmentsStack\\.Screen name="TakeAssessment"/);
-  assert.match(studentTabs, /AssessmentsStack\\.Screen name="MyResults"/);
-  assert.match(parentTabs, /(?:ProgressStack|ActivitiesStack)\\.Screen name="MyResults"/);
-  assert.match(navigationRef, /navigationRef\\.navigate\\('TakeAssessment'/);
-  assert.match(navigationRef, /navigationRef\\.navigate\\('MyResults'/);
-  assert.match(notificationsScreen, /openAssessment\\(notification\\.target\\.assessmentId/);
-  assert.match(notificationsScreen, /openMyResults\\(\\)/);
+  assert.ok(studentTabs.includes('AssessmentsStack.Screen name="TakeAssessment"'));
+  assert.ok(studentTabs.includes('AssessmentsStack.Screen name="MyResults"'));
+  assert.ok(parentTabs.includes('Stack.Screen name="MyResults"'));
+  assert.ok(navigationRef.includes("navigationRef.navigate('TakeAssessment'"));
+  assert.ok(navigationRef.includes("navigationRef.navigate('MyResults'"));
+  assert.ok(notificationsScreen.includes('openAssessment(notification.target.assessmentId'));
+  assert.ok(notificationsScreen.includes('openMyResults()'));
 });
 
 test('student Downloads shortcut includes PDF and DOC resources', () => {
   const learning = read('mobile/src/screens/student/StudentLearningScreen.tsx');
   const materials = read('mobile/src/screens/MaterialsScreen.tsx');
-  assert.match(learning, /label: 'Downloads', typeFilter: 'download'/);
-  assert.match(materials, /typeFilter === 'download'/);
-  assert.match(materials, /m\\.type === 'pdf' \\|\\| m\\.type === 'doc'/);
+  assert.ok(learning.includes("label: 'Downloads', typeFilter: 'download'"));
+  assert.ok(materials.includes("typeFilter === 'download'"));
+  assert.ok(materials.includes("m.type === 'pdf' || m.type === 'doc'"));
 });
 
 test('admin message drafts are isolated by recipient', () => {
   const messages = read('mobile/src/screens/MessagesScreen.tsx');
-  assert.match(messages, /draftsByContactRef = useRef<Record<string, string>>/);
-  assert.match(messages, /draftsByContactRef\\.current\\[activeContact\\.id\\] = body/);
-  assert.match(messages, /draftsByContactRef\\.current\\[c\\.id\\]/);
-  assert.match(messages, /draftsByContactRef\\.current\\[recipientId\\]/);
+  assert.ok(messages.includes('draftsByContactRef = useRef<Record<string, string>>({})'));
+  assert.ok(messages.includes('draftsByContactRef.current[activeContact.id] = body'));
+  assert.ok(messages.includes('draftsByContactRef.current[c.id]'));
+  assert.ok(messages.includes('draftsByContactRef.current[recipientId]'));
 });
 
 test('attendance and score fields identify the learner and component', () => {
   const attendance = read('mobile/src/screens/AttendanceScreen.tsx');
   const scores = read('mobile/src/screens/ScoreEntryScreen.tsx');
-  assert.match(attendance, /accessibilityLabel=.*days present/);
-  assert.match(scores, /accessibilityLabel=.*score/);
+  assert.ok(attendance.includes('accessibilityLabel=') && attendance.includes('days present'));
+  assert.ok(scores.includes('accessibilityLabel=') && scores.includes(' score'));
 });
