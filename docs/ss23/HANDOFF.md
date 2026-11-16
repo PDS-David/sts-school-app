@@ -5,7 +5,8 @@ This supplement supersedes earlier live-status claims in the historical handoff.
 - Current master: 90a718a0fab35b2500f6e532242689d4fa8b28cd. PRs #867 through #871 are merged.
 - PR #870 excludes unresolved source-extract placeholders at the student asset API even if approval metadata is erroneously advanced.
 - PR #871 all four final-head workflows passed: SS23 contract 43804755967; SS23 integrity 43804755981; SS1 gate 43804755877; JSS3 checks 43804755894.
-- PR #872 is open/mergeable for checkpoint correction. PR #873 is open/mergeable for irrigation/cycle visual blocker reconciliation; its SS23 contract, SS23 integrity and SS1 checks passed, while JSS3 checks were pending at the last check.
+- PR #872 is open/mergeable for checkpoint correction, five commits ahead and zero behind master.
+- PR #873 is open/mergeable for irrigation/cycle visual blocker reconciliation; all four workflows passed: SS23 contract 43805636778, SS23 integrity 43805636775, SS1 integrity 43805636772 and JSS3 checks 43805636802.
 - Current Agriculture master: 19 units (8/6/5), 195 practice/assessment records, 52 assets (42 placeholders + 10 local school-authored SVGs), 48 external references, 116 coverage rows and 47 open items (46 blocking). Package PENDING, units DRAFT, approvals PENDING, verification DEFERRED; no student delivery.
 - All 10 local SVG byte counts and SHA-256 values match committed file contents. Package approval remains pending and verification deferred.
 - Tractor/PTO provenance uses the First-Term Penn State PTO safety reference. Soil-profile provenance and coverage use USDA NRCS A Soil Profile.
