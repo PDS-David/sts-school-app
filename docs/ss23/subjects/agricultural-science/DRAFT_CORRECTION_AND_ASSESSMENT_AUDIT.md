@@ -94,7 +94,7 @@ The following still require direct evidence/authority:
 - Original source assessment question-by-question reconciliation for T2 and T3: inventory every original prompt and external textbook/WAEC task, preserve exact locators, verify answer/marking evidence, and inspect the Third-Term input-output table from its original page image. The structured 24 T2 and 21 T3 questions are authored supplements, not source transcriptions.
 - Exact “carnality” wording from the original printed assessment.
 - Weed nomenclature against the actual school source table.
-- Verify the new school-authored farmstead layout schematic as a rights-safe substitute for the watermarked source farmstead image; confirm teacher acceptance and the formula figures' text equivalents. Other figure-to-paragraph mappings and reproduction/replacement decisions for source images, screenshots and watermarked assets remain open.
+- The new school-authored farmstead layout schematic is now stored as a local SVG with its exact byte count and SHA-256 verified; formula graphics are represented as lesson text. The original watermarked farmstead figure remains evidence-only. Subject-lead acceptance of the authored schematic is still pending. Irrigation/drainage and nitrogen/carbon/water cycle subjects also have school-authored replacement SVGs whose bytes/hashes are verified; content approval remains pending. Soil-profile and farm-machinery source images still need figure mapping, rights or approved original replacements.
 - Five newly drafted soil investigation procedures and the jar-test method: school apparatus, safety, actual procedure, expected observations, mark-by-mark guides and teacher approval.
 - Owner's formal approval and reuse decision for the adapted source content.
 - Specialist approval of the corrected factual content and assessment expectations.
@@ -103,7 +103,7 @@ The following still require direct evidence/authority:
 
 - Keep all 47 Agriculture open items as recorded unless a specific source/evidence and required approval are added and the package is revalidated.
 - Keep package status `PENDING`, units `DRAFT`, verification `DEFERRED` and student delivery blocked while any blocking item remains.
-- The asset API must continue to reject unresolved `source-extract://` placeholders. The five local authored SVGs remain subject to their own approval/verification state.
+- The asset API must continue to reject unresolved `source-extract://` placeholders. The package now has 48 asset records: 42 source-extract placeholders and 6 locally stored school-authored SVGs. All six local files have exact byte counts and SHA-256 values verified; each remains content-approval PENDING, so verification does not enable student delivery.
 - Do not infer that a question is source-verbatim simply because it has source provenance. The `question_origin` field controls this distinction.
 - Do not deduplicate repeated source prompts without source-page confirmation.
 - Do not move to SS2 Biology until the project's Agriculture gate is genuinely satisfied.
