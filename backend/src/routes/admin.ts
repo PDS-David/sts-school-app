@@ -417,7 +417,7 @@ router.get('/audit-log', async (req, res) => {
              FROM audit_log al LEFT JOIN users u ON u.id=al.actor_id
              WHERE 1=1`;
   const params: unknown[] = [];
-  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND al.school_code=${params.length}`; }
+  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND al.school_code=$${params.length}`; }
   sql += ` ORDER BY al.created_at DESC LIMIT ${params.length + 1}`;
   params.push(Math.min(parsedLimit, 500));
   const { rows } = await query(sql, params);
@@ -567,9 +567,9 @@ router.get('/term-pins', async (req, res) => {
   let sql = `SELECT tp.*, st.full_name AS student_name, st.class_name
              FROM term_access_pins tp JOIN students st ON st.id=tp.student_id WHERE 1=1`;
   const params: unknown[] = [];
-  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND st.school_code=${params.length}`; }
-  if (student_id) { params.push(student_id); sql += ` AND tp.student_id=${params.length}`; }
-  if (term_label) { params.push(term_label); sql += ` AND tp.term_label=${params.length}`; }
+  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND st.school_code=$${params.length}`; }
+  if (student_id) { params.push(student_id); sql += ` AND tp.student_id=$${params.length}`; }
+  if (term_label) { params.push(term_label); sql += ` AND tp.term_label=$${params.length}`; }
   sql += ' ORDER BY st.full_name, tp.term_label';
   const { rows } = await query(sql, params);
   return res.json({ term_pins: rows });
@@ -621,8 +621,8 @@ router.get('/class-codes', async (req, res) => {
                     (SELECT COUNT(*) FROM students st WHERE st.school_code=cc.school_code AND st.class_name=cc.class_name AND st.user_id IS NULL) AS unclaimed_count
              FROM class_access_codes cc WHERE 1=1`;
   const params: unknown[] = [];
-  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND cc.school_code=${params.length}`; }
-  if (class_name)       { params.push(class_name);        sql += ` AND cc.class_name=${params.length}`; }
+  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND cc.school_code=$${params.length}`; }
+  if (class_name)       { params.push(class_name);        sql += ` AND cc.class_name=$${params.length}`; }
   sql += ' ORDER BY cc.school_code, cc.class_name';
   const { rows } = await query(sql, params);
   return res.json({ class_codes: rows });
