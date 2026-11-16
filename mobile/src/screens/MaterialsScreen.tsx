@@ -88,18 +88,35 @@ export default function MaterialsScreen({ route }: any) {
       return;
     }
     setDownloadingId(String(material.id));
+    let downloaded: File | null = null;
+    let createdDuringDownload = false;
     try {
       const directory = new Directory(Paths.document, 'learning-materials');
       directory.create({ idempotent: true, intermediates: true });
-      let downloaded = new File(directory, target.fileName);
+      downloaded = new File(directory, target.fileName);
+      if (downloaded.exists && (!Number.isFinite(downloaded.size) || downloaded.size <= 0 || downloaded.size > target.maxBytes)) {
+        downloaded.delete();
+      }
       if (!downloaded.exists) {
+        createdDuringDownload = true;
         const task = File.createDownloadTask(target.url, downloaded);
         const result = await task.downloadAsync();
         if (!result || !result.exists) throw new Error('The download did not produce a file.');
         downloaded = result;
       }
+
+      if (!Number.isFinite(downloaded.size) || downloaded.size <= 0 || downloaded.size > target.maxBytes) {
+        downloaded.delete();
+        throw new Error('Downloaded material is empty or exceeds the 25 MB size limit.');
+      }
+      const actualMime = typeof downloaded.type === 'string' ? downloaded.type.toLowerCase() : '';
+      if (!actualMime || (actualMime !== target.mimeType && actualMime !== 'application/octet-stream')) {
+        downloaded.delete();
+        throw new Error('Downloaded content type does not match the declared material type.');
+      }
+
       if (!(await Sharing.isAvailableAsync())) {
-        setDialog({ title: 'Download complete', message: 'The file is saved in the app documents folder, but sharing is unavailable on this device.', hideCancel: true });
+        setDialog({ title: 'Download complete', message: 'The verified file is saved in the app documents folder, but sharing is unavailable on this device.', hideCancel: true });
         return;
       }
       await Sharing.shareAsync(downloaded.uri, {
@@ -107,7 +124,8 @@ export default function MaterialsScreen({ route }: any) {
         dialogTitle: 'Save or open learning material',
       });
     } catch {
-      setDialog({ title: 'Download failed', message: 'The link may require sign-in or may not point directly to a downloadable file. Try opening the link instead.', hideCancel: true });
+      if (createdDuringDownload && downloaded?.exists) downloaded.delete();
+      setDialog({ title: 'Download failed', message: 'The link may require sign-in, exceed the 25 MB limit, or return content that does not match its declared file type. Try opening the link instead.', hideCancel: true });
     } finally {
       setDownloadingId(null);
     }
@@ -158,13 +176,13 @@ export default function MaterialsScreen({ route }: any) {
       {/* Filter */}
       <View style={styles.filterRow}>
         <View style={[styles.pickerWrap, { flex: 1 }]}>
-          <Picker selectedValue={filterSub} onValueChange={setFilterSub}>
+          <Picker selectedValue={filterSub} onValueChange={setFilterSub} accessibilityLabel="Filter materials by subject">
             <Picker.Item label="All Subjects" value="" />
             {subjects.map(s => <Picker.Item key={s.id} label={s.name} value={String(s.id)} />)}
           </Picker>
         </View>
         {canWrite && (
-          <TouchableOpacity style={styles.addBtn} onPress={() => setModal(true)}>
+          <TouchableOpacity style={styles.addBtn} onPress={() => setModal(true)} accessibilityRole="button" accessibilityLabel="Add learning material">
             <Ionicons name="add" size={22} color={Colors.white} />
           </TouchableOpacity>
         )}
@@ -195,7 +213,7 @@ export default function MaterialsScreen({ route }: any) {
                 <Text style={styles.matBy}>By {m.uploaded_by}</Text>
               </View>
               <View style={{ gap: 4 }}>
-                <TouchableOpacity onPress={() => handleOpen(m.url)} style={styles.openBtn}>
+                <TouchableOpacity onPress={() => handleOpen(m.url)} style={styles.openBtn} accessibilityRole="button" accessibilityLabel={`Open ${m.title}`}>
                   <Ionicons name="open-outline" size={18} color={Colors.primary} />
                 </TouchableOpacity>
                 {(m.type === 'pdf' || m.type === 'doc') && (
@@ -214,7 +232,7 @@ export default function MaterialsScreen({ route }: any) {
                   </TouchableOpacity>
                 )}
                 {canWrite && (
-                  <TouchableOpacity onPress={() => handleDelete(m.id)}>
+                  <TouchableOpacity onPress={() => handleDelete(m.id)} accessibilityRole="button" accessibilityLabel={`Delete ${m.title}`}>
                     <Ionicons name="trash-outline" size={18} color={Colors.error} />
                   </TouchableOpacity>
                 )}
@@ -233,14 +251,14 @@ export default function MaterialsScreen({ route }: any) {
           <Input label="Class (optional)" value={form.class_name} onChangeText={v => setForm(f => ({ ...f, class_name: v }))} placeholder="e.g. JSS 1" />
           <Text style={styles.lbl}>Subject</Text>
           <View style={styles.pickerWrap}>
-            <Picker selectedValue={form.subject_id} onValueChange={v => setForm(f => ({ ...f, subject_id: v }))}>
+            <Picker selectedValue={form.subject_id} onValueChange={v => setForm(f => ({ ...f, subject_id: v }))} accessibilityLabel="Select subject for material">
               <Picker.Item label="All subjects" value="" />
               {subjects.map(s => <Picker.Item key={s.id} label={s.name} value={String(s.id)} />)}
             </Picker>
           </View>
           <Text style={styles.lbl}>Type</Text>
           <View style={styles.pickerWrap}>
-            <Picker selectedValue={form.type} onValueChange={v => setForm(f => ({ ...f, type: v }))}>
+            <Picker selectedValue={form.type} onValueChange={v => setForm(f => ({ ...f, type: v }))} accessibilityLabel="Select material type">
               {['pdf','video','doc','link'].map(t => <Picker.Item key={t} label={t.toUpperCase()} value={t} />)}
             </Picker>
           </View>

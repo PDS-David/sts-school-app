@@ -162,7 +162,7 @@ export default function MessagesScreen() {
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         {/* Header */}
         <View style={styles.threadHeader}>
-          <TouchableOpacity onPress={() => { threadRequestRef.current += 1; setThreadLoading(false); draftsByContactRef.current[activeContact.id] = body; setBody(''); setActiveContact(null); }} style={{ padding: 6 }}>
+          <TouchableOpacity onPress={() => { threadRequestRef.current += 1; setThreadLoading(false); setActiveContact(null); }} style={{ padding: 6 }} accessibilityRole="button" accessibilityLabel="Back to contacts">
             <Ionicons name="arrow-back" size={22} color={Colors.white} />
           </TouchableOpacity>
           <View style={styles.threadAvatar}>

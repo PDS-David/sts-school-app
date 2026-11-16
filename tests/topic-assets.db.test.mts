@@ -33,6 +33,7 @@ if (!URL_) {
   process.env.TERM_PIN_ENFORCED = 'false';
 
   const TEST_SC = 'zz_t2test';
+  const TEST_SC_B = 'zz_t2test_other';
   const sha = (b: Buffer) => createHash('sha256').update(b).digest('hex');
 
   // Tiny but signature-valid images.
@@ -52,6 +53,8 @@ if (!URL_) {
   let server: ReturnType<ReturnType<typeof express>['listen']>;
   let base = '';
   let tokenA = '', tokenB = '';
+  let tokenAdminA = '', tokenAdminB = '', tokenAdminGlobal = '', tokenTeacherA = '', tokenTeacherB = '';
+  let subjectA = 0, subjectB = 0;
   let generatedAssessmentId = '';
   const topicId: Record<string, number> = {}; // "Music|2" → id
   let topicSnapshot: any[] = [];
@@ -70,23 +73,25 @@ if (!URL_) {
   }
 
   async function cleanup() {
-    await query('DELETE FROM topics WHERE school_code=$1', [TEST_SC]);            // cascades topic_assets
-    await query('DELETE FROM assessments WHERE school_code=$1', [TEST_SC]);         // topic-generated assessment fixture
-    await query('DELETE FROM subjects WHERE school_code=$1', [TEST_SC]);
-    await query('DELETE FROM students WHERE school_code=$1', [TEST_SC]);
-    await query('DELETE FROM users WHERE school_code=$1 OR username LIKE $2', [TEST_SC, 'zz_t2test_%']);
-    await query('DELETE FROM schools WHERE code=$1', [TEST_SC]);
+    await query('DELETE FROM materials WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
+    await query('DELETE FROM topics WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]); // cascades topic_assets
+    await query('DELETE FROM assessments WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
+    await query('DELETE FROM subjects WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
+    await query('DELETE FROM students WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
+    await query('DELETE FROM users WHERE school_code = ANY($1) OR username LIKE $2', [[TEST_SC, TEST_SC_B], 'zz_t2test_%']);
+    await query('DELETE FROM schools WHERE code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
   }
 
   async function residue() {
     return {
       topic_assets: await assetRows(),
-      topics: await count('SELECT count(*) n FROM topics WHERE school_code=$1', [TEST_SC]),
-      assessments: await count('SELECT count(*) n FROM assessments WHERE school_code=$1', [TEST_SC]),
-      subjects: await count('SELECT count(*) n FROM subjects WHERE school_code=$1', [TEST_SC]),
-      students: await count('SELECT count(*) n FROM students WHERE school_code=$1', [TEST_SC]),
+      topics: await count('SELECT count(*) n FROM topics WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]),
+      assessments: await count('SELECT count(*) n FROM assessments WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]),
+      subjects: await count('SELECT count(*) n FROM subjects WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]),
+      students: await count('SELECT count(*) n FROM students WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]),
       users: await count("SELECT count(*) n FROM users WHERE school_code=$1 OR username LIKE 'zz_t2test_%'", [TEST_SC]),
-      schools: await count('SELECT count(*) n FROM schools WHERE code=$1', [TEST_SC]),
+      schools: await count('SELECT count(*) n FROM schools WHERE code = ANY($1)', [[TEST_SC, TEST_SC_B]]),
+      materials: await count('SELECT count(*) n FROM materials WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]),
     };
   }
 
@@ -95,11 +100,13 @@ if (!URL_) {
     await query(schemaSql);
     await cleanup(); // clear any residue from an earlier aborted run
     // Same statement migrate.ts sends — run twice below in the first test.
-    await query('INSERT INTO schools(code, name) VALUES($1,$2)', [TEST_SC, 'T2 TEST SCHOOL (delete me)']);
+    await query('INSERT INTO schools(code, name) VALUES($1,$2),($3,$4)', [TEST_SC, 'T2 TEST SCHOOL (delete me)', TEST_SC_B, 'T2 TEST OTHER SCHOOL (delete me)']);
     const subj: Record<string, number> = {};
     for (const name of ['Music', 'Basic Technology']) {
       subj[name] = (await query('INSERT INTO subjects(school_code, name) VALUES($1,$2) RETURNING id', [TEST_SC, name])).rows[0].id;
     }
+    subjectA = subj.Music;
+    subjectB = (await query('INSERT INTO subjects(school_code, name) VALUES($1,$2) RETURNING id', [TEST_SC_B, 'Music'])).rows[0].id;
     const ins = async (subject: string, term: string, order: number, title: string) => {
       const r = await query(
         `INSERT INTO topics(school_code, subject_id, class_name, term_label, title, description, source_reference, source_file, order_index)
@@ -124,6 +131,24 @@ if (!URL_) {
     };
     tokenA = await mk('A', 'JSS 3');
     tokenB = await mk('B', 'JSS 1');
+    const mkStaff = async (tag: string, role: 'admin' | 'teacher', schoolCode: string | null, subjectIds: number[] = []) => {
+      const username = 'zz_t2test_' + tag;
+      const u = await query(
+        'INSERT INTO users(username,password_hash,role,school_code,full_name) VALUES($1,\'x\',$2,$3,$4) RETURNING id',
+        [username, role, schoolCode, 'T2 TEST ' + tag],
+      );
+      created.userIds.push(u.rows[0].id);
+      return signAccess({
+        id: u.rows[0].id, username, role, school_code: schoolCode,
+        assigned_class: role === 'teacher' ? 'JSS 3' : null,
+        assigned_subject_ids: subjectIds,
+      });
+    };
+    tokenAdminA = await mkStaff('ADMIN_A', 'admin', TEST_SC);
+    tokenAdminB = await mkStaff('ADMIN_B', 'admin', TEST_SC_B);
+    tokenAdminGlobal = await mkStaff('ADMIN_GLOBAL', 'admin', null);
+    tokenTeacherA = await mkStaff('TEACHER_A', 'teacher', TEST_SC, [subjectA]);
+    tokenTeacherB = await mkStaff('TEACHER_B', 'teacher', TEST_SC, [subjectA]);
     topicSnapshot = await snapshot();
     const linkedTopic = (await query('SELECT subject_id FROM topics WHERE id=$1', [topicId['Music|4']])).rows[0];
     generatedAssessmentId = (await query(
@@ -181,6 +206,14 @@ if (!URL_) {
     ({ schoolCode: TEST_SC, subject: 'Music', className: 'JSS 3', termLabel: '1st Term', apply, skipTitleCheck: false, ...extra });
   const get = async (p: string, token?: string, headers: Record<string, string> = {}) =>
     fetch(`${base}${p}`, { headers: { ...(token ? { Authorization: `Bearer ${token}` } : {}), ...headers } });
+  const postJson = async (p: string, token: string, body: unknown) =>
+    fetch(`${base}${p}`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+  const del = async (p: string, token: string) =>
+    fetch(`${base}${p}`, { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } });
 
   // ── tests ──────────────────────────────────────────────────────────────────
   test('DDL: running schema.sql twice (as migrate.ts does) is idempotent', async () => {
@@ -353,17 +386,108 @@ if (!URL_) {
     assert.deepEqual(none.assets, []);
   });
 
-  test('endpoint: bytes are identical to the source, with Content-Type and ETag; 304 on revalidation', async () => {
+  test('endpoint: private asset bytes are verified on every no-store response', async () => {
     const meta: any = await (await get(`/learning/topics/${topicId['Music|4']}/assets`, tokenA)).json();
     const a = meta.assets[0];
     const r = await get(a.url, tokenA);
     assert.equal(r.status, 200);
     assert.equal(r.headers.get('content-type'), 'image/gif');
-    assert.equal(r.headers.get('etag'), `"${a.sha256}"`);
+    assert.equal(r.headers.get('etag'), null);
     assert.equal(r.headers.get('x-content-type-options'), 'nosniff');
+    assert.equal(r.headers.get('content-disposition'), 'inline');
+    assert.equal(r.headers.get('cache-control'), 'private, no-store, max-age=0');
     assert.equal(sha(Buffer.from(await r.arrayBuffer())), sha(GIF));
     const again = await get(a.url, tokenA, { 'If-None-Match': `"${a.sha256}"` });
-    assert.equal(again.status, 304);
+    assert.equal(again.status, 200, 'no-store assets are re-read and integrity-checked instead of returning a cached 304');
+    assert.equal(sha(Buffer.from(await again.arrayBuffer())), sha(GIF));
+  });
+
+  test('asset delivery is school-pinned for school-bound administrators and disables private caching', async () => {
+    const assetId = (await query(
+      `SELECT a.id FROM topic_assets a JOIN topics t ON t.id=a.topic_id WHERE t.school_code=$1 AND a.asset_key='W2-1'`,
+      [TEST_SC],
+    )).rows[0].id;
+    const own = await get(`/learning/assets/${assetId}`, tokenAdminA);
+    assert.equal(own.status, 200);
+    assert.equal(own.headers.get('cache-control'), 'private, no-store, max-age=0');
+    assert.equal(own.headers.get('x-content-type-options'), 'nosniff');
+    assert.equal(own.headers.get('content-disposition'), 'inline');
+
+    assert.equal((await get(`/learning/assets/${assetId}?school_code=${TEST_SC_B}`, tokenAdminA)).status, 403);
+    assert.equal((await get(`/learning/topics/${topicId['Music|2']}/assets?school_code=${TEST_SC_B}`, tokenAdminA)).status, 403);
+    assert.equal((await get(`/learning/mathematics-assets/any?topicId=${topicId['Music|2']}&school_code=${TEST_SC_B}`, tokenAdminA)).status, 403);
+    assert.equal((await get(`/learning/assets/${assetId}?school_code=${TEST_SC}`, tokenAdminGlobal)).status, 200);
+  });
+
+  test('material link creation rejects unsafe URLs and conflicting school targets', async () => {
+    const baseBody = {
+      subject_id: subjectA, class_name: 'JSS 3', title: 'BSEC-028 material',
+      type: 'pdf', url: 'https://drive.google.com/file/d/abc/view', school_code: TEST_SC,
+    };
+    for (const url of [
+      'http://example.com/lesson.pdf',
+      'https://localhost/lesson.pdf',
+      'https://127.0.0.1/lesson.pdf',
+      'https://user:pass@example.com/lesson.pdf',
+      'https://example.com:8443/lesson.pdf',
+      'javascript:alert(1)',
+    ]) {
+      const response = await postJson('/learning/materials', tokenAdminA, { ...baseBody, url });
+      assert.equal(response.status, 400, url);
+    }
+    const crossSchool = await postJson('/learning/materials', tokenAdminA, { ...baseBody, school_code: TEST_SC_B });
+    assert.equal(crossSchool.status, 403);
+    const created = await postJson('/learning/materials', tokenAdminA, baseBody);
+    assert.equal(created.status, 201);
+    const body: any = await created.json();
+    const otherSchoolCreated = await postJson('/learning/materials', tokenAdminB, {
+      ...baseBody, subject_id: subjectB, school_code: TEST_SC_B, title: 'Other school material',
+    });
+    assert.equal(otherSchoolCreated.status, 201);
+    const otherSchoolBody: any = await otherSchoolCreated.json();
+    const globalList = await get(`/learning/materials?school_code=${TEST_SC_B}`, tokenAdminGlobal);
+    assert.equal(globalList.status, 200);
+    assert.ok(((await globalList.json()) as any).materials.some((material: any) => material.id === otherSchoolBody.material.id));
+    assert.equal(body.material.school_code, TEST_SC);
+    assert.equal(body.material.url, baseBody.url);
+    const listed = await get('/learning/materials', tokenAdminA);
+    assert.equal(listed.status, 200);
+    assert.equal(listed.headers.get('cache-control'), 'private, no-store');
+    const listBody: any = await listed.json();
+    assert.ok(listBody.materials.some((material: any) => material.id === body.material.id));
+    assert.equal((await get(`/learning/materials?school_code=${TEST_SC_B}`, tokenAdminA)).status, 403);
+    assert.equal((await del(`/learning/materials/${body.material.id}`, tokenAdminB)).status, 404);
+    assert.equal((await del(`/learning/materials/${body.material.id}`, tokenAdminA)).status, 200);
+    assert.equal((await del(`/learning/materials/${otherSchoolBody.material.id}`, tokenAdminA)).status, 404);
+    assert.equal((await del(`/learning/materials/${otherSchoolBody.material.id}`, tokenAdminGlobal)).status, 200);
+  });
+
+  test('teacher material deletion is limited to the uploader within the same school', async () => {
+    const created = await postJson('/learning/materials', tokenTeacherA, {
+      subject_id: subjectA, class_name: 'JSS 3', title: 'Teacher-owned material',
+      type: 'doc', url: 'https://example.org/lesson.docx',
+    });
+    assert.equal(created.status, 201);
+    const body: any = await created.json();
+    assert.equal((await del(`/learning/materials/${body.material.id}`, tokenTeacherB)).status, 404);
+    assert.equal((await del(`/learning/materials/${body.material.id}`, tokenAdminA)).status, 200);
+  });
+
+  test('endpoint: tampered stored bytes fail MIME/SHA-256 verification before delivery', async () => {
+    const assetId = (await query(
+      `SELECT a.id, a.bytes FROM topic_assets a JOIN topics t ON t.id=a.topic_id WHERE t.school_code=$1 AND a.asset_key='W2-1'`,
+      [TEST_SC],
+    )).rows[0];
+    const original = assetId.bytes as Buffer;
+    try {
+      await query('UPDATE topic_assets SET bytes=$1 WHERE id=$2', [Buffer.from('<html>malicious content</html>'), assetId.id]);
+      const response = await get(`/learning/assets/${assetId.id}`, tokenA);
+      assert.equal(response.status, 500);
+      assert.deepEqual(await response.json(), { error: 'Asset integrity verification failed.' });
+    } finally {
+      await query('UPDATE topic_assets SET bytes=$1 WHERE id=$2', [original, assetId.id]);
+    }
+    assert.equal((await get(`/learning/assets/${assetId.id}`, tokenA)).status, 200);
   });
 
   test('endpoint: a hidden (displayed=false) asset is not listed and not served', async () => {

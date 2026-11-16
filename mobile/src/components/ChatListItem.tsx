@@ -12,7 +12,7 @@ interface ChatListItemProps {
 
 export function ChatListItem({ name, subtitle, timeLabel, unread, onPress }: ChatListItemProps) {
   return (
-    <TouchableOpacity style={styles.row} onPress={onPress} activeOpacity={0.7}>
+    <TouchableOpacity style={styles.row} onPress={onPress} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={`Open conversation with ${name}`}>
       <View style={styles.avatar}>
         <Text style={styles.avatarText}>{name?.[0]?.toUpperCase() ?? '?'}</Text>
       </View>
