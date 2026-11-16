@@ -46,8 +46,8 @@ Continue the Agricultural Science readiness work: complete the T2/T3 source-asse
 
 ## SS23-AGRIC-SS2-T2-T3 — 2026-11-16
 
-- Status: **IMPLEMENTED AS DRAFT; SOURCE-VERIFIED; PRE-REBASE TESTS GREEN; CURRENT-MASTER PR CI QUEUED; TEACHER APPROVAL NOT GRANTED.** Package remains `PENDING`; all new units remain `DRAFT`, unapproved and unverified.
-- Branch: `agent/ss23-agricultural-science-terms2-3-r2-20261116`; base `master` @ `2b3ec92b99d016b450858cce5b87d5d6056d990b`; PR [#857](https://github.com/PDS-David/sts-school-app/pull/857) open; head `6a653bff4c61fa1657cf5a7b7742a0b5ad7cf87a`.
+- Status: **IMPLEMENTED AS DRAFT; SOURCE-VERIFIED; CURRENT-MASTER PR CI GREEN; TEACHER APPROVAL NOT GRANTED; TEACHER APPROVAL NOT GRANTED.** Package remains `PENDING`; all new units remain `DRAFT`, unapproved and unverified.
+- Branch: `agent/ss23-agricultural-science-terms2-3-r2-20261116`; base `master` @ `2b3ec92b99d016b450858cce5b87d5d6056d990b`; PR [#857](https://github.com/PDS-David/sts-school-app/pull/857) open; current head `3abe0e06bb90ecb7003c07154528f2fbb11f9684`.
 - Changed files:
   - `backend/src/db/ss23/subjects/agricultural-science.json`: 19 units across all three SS2 terms (8 existing T1, 6 new T2, 5 new T3); 173 total practice/assessment items; 15 added term/topic coverage rows; two added original-source records; 23 new authored/source-derived practice items with answers, explanations and marking; 14 new explicit blockers. Package remains PENDING.
   - `docs/ss23/subjects/agricultural-science/SOURCE_MAP.json`: corrected Week 7-8 Farm Records mapping after original DOC-to-PDF inspection; recorded the profit-and-loss transcription discrepancy and page-level review results.
