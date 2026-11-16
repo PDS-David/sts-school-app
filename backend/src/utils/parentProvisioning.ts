@@ -120,6 +120,7 @@ export async function linkParentToStudent(
 export async function createStudentWithParent(
   student: NewStudentRecord,
   parentInput?: ParentProvisioningInput,
+  onCreated?: (client: PoolClient, student: Record<string, unknown>, parent?: ProvisionedParent) => Promise<void>,
 ): Promise<{ student: Record<string, unknown>; parent?: ProvisionedParent }> {
   return withTransaction(async (client) => {
     const { rows } = await client.query(
@@ -141,6 +142,7 @@ export async function createStudentWithParent(
       await linkParentToStudent(client, parent.id, String(rows[0].id));
     }
 
+    if (onCreated) await onCreated(client, rows[0], parent);
     return { student: rows[0], parent };
   });
 }
