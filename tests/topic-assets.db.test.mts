@@ -76,6 +76,7 @@ if (!URL_) {
     await query('DELETE FROM materials WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
     await query('DELETE FROM topics WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]); // cascades topic_assets
     await query('DELETE FROM assessments WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
+    await query('DELETE FROM teacher_subjects WHERE user_id IN (SELECT id FROM users WHERE school_code = ANY($1) OR username LIKE $2)', [[TEST_SC, TEST_SC_B], 'zz_t2test_%']);
     await query('DELETE FROM subjects WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
     await query('DELETE FROM students WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
     await query('DELETE FROM users WHERE school_code = ANY($1) OR username LIKE $2', [[TEST_SC, TEST_SC_B], 'zz_t2test_%']);
@@ -134,10 +135,13 @@ if (!URL_) {
     const mkStaff = async (tag: string, role: 'admin' | 'teacher', schoolCode: string | null, subjectIds: number[] = []) => {
       const username = 'zz_t2test_' + tag;
       const u = await query(
-        'INSERT INTO users(username,password_hash,role,school_code,full_name) VALUES($1,\'x\',$2,$3,$4) RETURNING id',
-        [username, role, schoolCode, 'T2 TEST ' + tag],
+        'INSERT INTO users(username,password_hash,role,school_code,full_name,assigned_class) VALUES($1,\'x\',$2,$3,$4,$5) RETURNING id',
+        [username, role, schoolCode, 'T2 TEST ' + tag, role === 'teacher' ? 'JSS 3' : null],
       );
       created.userIds.push(u.rows[0].id);
+      for (const subjectId of subjectIds) {
+        await query('INSERT INTO teacher_subjects(user_id,subject_id) VALUES($1,$2) ON CONFLICT DO NOTHING', [u.rows[0].id, subjectId]);
+      }
       return signAccess({
         id: u.rows[0].id, username, role, school_code: schoolCode,
         assigned_class: role === 'teacher' ? 'JSS 3' : null,
