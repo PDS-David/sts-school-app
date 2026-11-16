@@ -172,7 +172,7 @@ router.get('/:id', requirePerm('students.read'), async (req, res) => {
   let schoolClause = '';
   if (user.role !== 'admin' || user.school_code) {
     params.push(user.school_code);
-    schoolClause = ` AND s.school_code=${params.length}`;
+    schoolClause = ` AND s.school_code=$${params.length}`;
   }
   // Admin can still open a soft-deleted student's detail page (needed to
   // show the "Restore" action) — everyone else gets a 404, same as if the
