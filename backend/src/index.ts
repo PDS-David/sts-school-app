@@ -22,7 +22,11 @@ import healthRouter from './routes/health.js';
 import { startBackupScheduler } from './utils/backup.js';
 import { pool } from './db/pool.js';
 import { installFatalProcessHandlers } from './utils/fatalProcessHandlers.js';
-import { assertRateLimitRedisConfigured, createRedisRateLimitStore } from './utils/redisRateLimitStore.js';
+import {
+  assertRateLimitRedisConfigured,
+  createRedisRateLimitStore,
+  disconnectRedisRateLimitStore,
+} from './utils/redisRateLimitStore.js';
 
 dotenv.config();
 assertRateLimitRedisConfigured();
@@ -152,5 +156,6 @@ const server = app.listen(port, () => {
 
 installFatalProcessHandlers(server, async () => {
   await stopBackupScheduler();
+  disconnectRedisRateLimitStore();
   await pool.end();
 });
