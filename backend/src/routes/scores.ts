@@ -227,7 +227,7 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
   // Teachers see only their school
   if (user.role === 'teacher') {
     if (!user.school_code) return res.status(403).json({ error: 'Your teacher account is not assigned to a school.' });
-    params.push(user.school_code); sql += ` AND s.school_code=${params.length}`;
+    params.push(user.school_code); sql += ` AND s.school_code=$${params.length}`;
     if (user.assigned_class) {
       params.push(user.assigned_class); sql += ` AND s.class_name=$${params.length}`;
     } else if (user.assigned_subject_ids && user.assigned_subject_ids.length > 0) {
