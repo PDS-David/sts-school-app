@@ -34,6 +34,7 @@ The shared header/sidebar/FAB controls had already received accessible names, bu
 - `mobile/src/screens/AttendanceScreen.tsx`
 - `mobile/src/screens/ScoreEntryScreen.tsx`
 - `mobile/src/screens/AdminUsersScreen.tsx`
+- `mobile/src/components/ChatListItem.tsx`
 
 ## Verification
 
