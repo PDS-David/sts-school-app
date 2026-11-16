@@ -2,12 +2,27 @@
 
 - **Task ID:** BSEC-027
 - **Title:** Introduce distributed Redis-backed rate limiting
-- **Status:** reserved for the assigned task; implementation not yet started
-- **Assignment:** replace process-local-only request quotas with a shared Redis-backed store so limits remain effective across multiple API instances.
-- **Scope:** authentication/login attempts, AI request quotas, authenticated message sending, and other abuse-sensitive request limiters. Preserve each route's existing thresholds, key semantics, response headers and 429 payloads unless a security review justifies a change.
-- **Constraints:** keep Redis credentials out of source control; handle Redis startup and outage behavior deliberately; do not silently claim distributed enforcement when the shared store is absent; retain deterministic tests using a disposable Redis service or a controlled store adapter.
-- **Acceptance:** two independent app instances share the same quota; account-keyed limits remain keyed to authenticated identities; IP/account normalization behavior remains correct; Redis failure behavior is explicit and observable; focused integration tests and backend typecheck pass.
-- **Next action:** inspect the existing optional Redis logic in `backend/src/utils/ai.ts`, current express-rate-limit configurations, package lock and environment configuration before selecting the shared-store implementation.
-- **Related work:** earlier academic route tenant-isolation changes are preserved in BSEC-031-04.
-- **Reclassification:** The previous checkpoint content described school-bound administrator academic term, subject and class authorization. It has been preserved as `BSEC-031-04.md` and merged through PR #918.
-- **Replacement record:** docs/backend-security/checkpoints/BSEC-031-04.md
+- **Status:** implementation committed; Redis integration workflow and backend typecheck pending
+- **Owner:** ChatGPT implementation worker
+- **Base branch:** master
+- **Working branch:** agent/backend-redis-rate-limit-bsec027-20261116
+- **Changed files:**
+  - backend/src/utils/redisRateLimitStore.ts
+  - backend/src/index.ts
+  - backend/src/routes/auth.ts
+  - backend/src/routes/ai.ts
+  - backend/src/routes/messages.ts
+  - backend/src/utils/ai.ts
+  - backend/.env.example
+  - tests/backend-redis-rate-limit.integration.test.mts
+  - .github/workflows/backend-redis-rate-limit.yml
+  - .github/workflows/backend-ai-rate-limit.yml
+  - this checkpoint
+- **Defect:** express-rate-limit used its process-local memory store for the global auth/IP, login-account, AI HTTP and message-sender quotas. The AI generation hub also had optional Redis code that silently disabled itself when the optional ioredis package was absent and failed open on Redis errors. Limits therefore did not reliably apply across horizontally scaled API instances.
+- **Implementation:** add a small RESP2 Redis client using Node's built-in TCP/TLS modules (no new runtime dependency or lockfile churn). A single process-level connection is multiplexed safely across independent namespaced stores. Atomic Lua INCR/PEXPIRE counters implement shared windows; decrement/reset preserve express-rate-limit's successful-request semantics. Redis URLs support redis:// and certificate-verified rediss://, ACL authentication and database selection. Production startup now refuses to run without a valid RATE_LIMIT_REDIS_URL or backward-compatible REDIS_URL; local/test mode retains MemoryStore when Redis is not configured. Redis command failures fail closed as HTTP 503 rather than silently bypassing quotas. AI generation calls use the same shared Redis quota even when invoked by learning routes outside /ai.
+- **Preserved policies:** auth/IP 30 per 15 minutes; login account 10 per 15 minutes with successful-request decrement; AI HTTP 20 per minute with admin bypass; message sender 30 per minute; AI generation 20 per minute with admin bypass. Namespaces isolate counters and user-keyed quotas remain tied to authenticated user IDs or the normalized account hash.
+- **Regression coverage:** two independent Express instances share one account quota; separate accounts do not consume each other's quotas; AI-generation counters are shared; decrement and reset semantics work; Redis outage returns the explicit 503 store error; production refuses to start without a Redis URL.
+- **CI:** new workflow runs against disposable Redis 7 and backend TypeScript. Existing AI/PostgreSQL workflow now also provisions Redis 7. No external service credentials are committed.
+- **Production configuration required:** set RATE_LIMIT_REDIS_URL on the Render API service to a private Redis URL or TLS URL. The API will intentionally fail startup in production until this is configured. Do not put the value in Git.
+- **Verification:** pending GitHub Actions on this branch. No production Redis connection, database, secrets or deployment settings were accessed or changed.
+- **Remaining:** review Redis client protocol/error handling, pass the Redis integration workflow and backend typecheck, then merge only after all required checks pass.
