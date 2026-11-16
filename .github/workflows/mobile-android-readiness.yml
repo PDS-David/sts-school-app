@@ -45,6 +45,8 @@ jobs:
         run: npm ci
       - name: Offline outbox regression tests
         run: npm run test:mobile:offline
+      - name: Frontend navigation and recovery contract tests
+        run: npm run test:mobile:frontend-contracts
       - name: Validate mobile TypeScript
         working-directory: mobile
         run: npx tsc --noEmit -p tsconfig.json

@@ -34,7 +34,7 @@ The frontend also had no automated contract test covering role-specific notifica
 - Static review confirms finance_admin has no registered Chats/Messages route in `FinanceAdminTabs`.
 - Static review confirms all other message target names correspond to registered role-stack screens.
 - The contract test command is wired into the Android readiness workflow after offline outbox tests.
-- The first test execution is pending PR CI; no pass is claimed.
+- The first CI run exposed two stale material-download test expectations: the helper correctly rejects reserved `.test`/`.example` hosts and returns `maxBytes`. The fixtures and expected result were corrected; rerun is pending PR CI, so no pass is claimed.
 - No backend permissions, endpoints or user data changed.
 
 ## Remaining
