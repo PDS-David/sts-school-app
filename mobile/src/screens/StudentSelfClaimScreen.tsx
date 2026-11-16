@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View, Text, StyleSheet, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import api from '../api/client';
@@ -41,7 +41,7 @@ export default function StudentSelfClaimScreen({ navigation }: any) {
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState<{ username: string } | null>(null);
 
-  const loadSchools = async () => {
+  const loadSchools = useCallback(async () => {
     setLoadingSchools(true);
     setLoadError(null);
     try {
@@ -53,9 +53,9 @@ export default function StudentSelfClaimScreen({ navigation }: any) {
     } finally {
       setLoadingSchools(false);
     }
-  };
+  }, []);
 
-  useEffect(() => { void loadSchools(); }, []);
+  useEffect(() => { void loadSchools(); }, [loadSchools]);
 
   const handleSchoolNext = async () => {
     if (!schoolCode) { setError('Select your school'); return; }
