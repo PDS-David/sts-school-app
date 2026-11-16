@@ -531,13 +531,13 @@ ALTER TABLE audit_log ADD COLUMN IF NOT EXISTS previous_hash TEXT;
 ALTER TABLE audit_log ADD COLUMN IF NOT EXISTS event_hash TEXT;
 UPDATE audit_log SET created_at=now() WHERE created_at IS NULL;
 
-DO $
+DO $$
 BEGIN
   IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname='audit_log_outcome_check') THEN
     ALTER TABLE audit_log ADD CONSTRAINT audit_log_outcome_check
       CHECK (outcome IN ('success', 'failure', 'denied'));
   END IF;
-END $;
+END $$;
 
 CREATE INDEX IF NOT EXISTS idx_audit_log_school_id_desc ON audit_log(school_code, id DESC);
 CREATE INDEX IF NOT EXISTS idx_audit_log_actor_id_desc ON audit_log(actor_id, id DESC);
@@ -548,12 +548,12 @@ CREATE UNIQUE INDEX IF NOT EXISTS idx_audit_log_event_hash_unique
 CREATE OR REPLACE FUNCTION audit_log_reject_mutation()
 RETURNS trigger
 LANGUAGE plpgsql
-AS $
+AS $$
 BEGIN
   RAISE EXCEPTION 'audit_log is append-only; mutation rejected'
     USING ERRCODE = '42501';
 END;
-$;
+$$;
 
 DROP TRIGGER IF EXISTS audit_log_append_only_update_delete ON audit_log;
 CREATE TRIGGER audit_log_append_only_update_delete
