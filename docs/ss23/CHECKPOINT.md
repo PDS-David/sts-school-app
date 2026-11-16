@@ -1,56 +1,51 @@
 # Latest execution update — 2026-11-16
 
-> This section is the newest status record and supersedes earlier current-state sections below. Historical entries are retained for audit history only.
+> This section supersedes earlier live-status wording below. Historical entries remain for audit only.
 
 ## Live repository and PR state
 
-- Current `master`: `63f948738a26ab807cdf569a7dd283842338e067`. This is a documentation-only commit that added/refreshed the Agriculture teacher/specialist register; it did not change the curriculum package or approval state.
-- PRs #867 and #868 are merged.
-- PR #869 (this documentation PR) is open, unmerged and mergeable at `2062269546e2a5f4e6e0437ca01df5fc485bd1e8`; it is 11 commits ahead and 0 behind master.
-- PR #870 is open/unmerged at `a9c8345ac8f8a588b810f73c60023be000b3473d`. It adds a server-side exclusion for unresolved `source-extract://` placeholders and a negative-control test that simulates erroneously approved/implemented/verified/permitted metadata for all 42 placeholders. All four workflows passed: package contract 43801471584; SS23 integrity 43801471471; SS1 integrity 43801471646; JSS3 checks 43801471562.
-- PR #871 is open/unmerged at `361b0f5659f3654b89d6c6d8590fbbafd641532d`. It updates the soil-practical blocker and cassava bacterial blight nomenclature, adds two hashed sources and two supported coverage rows, and refreshes the contract test. All four workflows passed: SS23 contract 43802113031; SS23 integrity 43802113039; SS1 gate 43802113001; JSS3 checks 43802113022.
-- Do not merge these PRs as an agent. Owner retains merge authority.
+- Current `master`: `63f948738a26ab807cdf569a7dd283842338e067`; PRs #867 and #868 are merged.
+- PR #869 is open/mergeable at `bf8075645ea3e1f3f8fc45461488201d6630d293`; documentation/review packet only, based on current master.
+- PR #870 is open/mergeable at `a9c8345ac8f8a588b810f73c60023be000b3473d`; it explicitly prevents all 42 `source-extract://` placeholders from appearing in student asset listings even if approval metadata is erroneously advanced. All four workflows passed: package contract 43801471584; SS23 integrity 43801471471; SS1 integrity 43801471646; JSS3 checks 43801471562.
+- PR #871 is open/mergeable at `1cbe7efbb2b0b9d2a729674c73e661b5e713ea4e`; it contains the current SS2 Agricultural Science package changes. Current checks: package contract 43804755967 PASSED; SS23 integrity 43804755981 PASSED; SS1 integrity 43804755877 PASSED; JSS3 verification 43804755894 was still running at the latest check.
+- No agent merge, deployment, production import or student release is authorised. The owner retains merge authority.
 
-## Agricultural Science state
+## Agricultural Science — merged master versus active PR branch
 
-**Merged master (package content unchanged):**
-- 19 draft units (T1 8, T2 6, T3 5).
-- 195 practice/assessment records; 45 external factual references; 47 asset records.
-- 109 coverage rows: 75 SUPPORTED, 25 PARTIAL, 5 UNRESOLVED, 4 MARKER.
+**Merged master (unchanged package):**
+- 19 draft units (T1 8, T2 6, T3 5); 195 practice/assessment records.
+- 45 external references; 47 asset records; 109 coverage rows (75 SUPPORTED, 25 PARTIAL, 5 UNRESOLVED, 4 MARKER).
 - 47 open items: 46 delivery-blocking and one non-blocking.
-- Package `PENDING`; units `DRAFT`; approval `PENDING`; verification `DEFERRED`; no student delivery.
+- Package `PENDING`; all units `DRAFT`; approvals pending; verification deferred; no student delivery.
 
-**PR #871 branch only (not on master until owner merges):**
-- 47 external references; 111 coverage rows.
-- 47 open items remain: 46 blocking, one non-blocking.
-- Package remains pending and all units remain draft.
-- Cassava bacterial blight uses `Xanthomonas phaseoli pv. manihotis` as current preferred name; `X. axonopodis pv. manihotis` remains recorded as an earlier synonym. This is supported by EPPO and a 2024 *Plant Disease* report, but does not close the full disease-table specialist-review blocker.
+**PR #871 branch only — not merged:**
+- 19 units; 195 practice/assessment records.
+- 52 asset records: 42 `source-extract://` placeholders and 10 locally stored school-authored SVGs.
+- 48 external references; 116 coverage rows (82 SUPPORTED, 25 PARTIAL, 5 UNRESOLVED, 4 MARKER).
+- 47 open items remain: 46 blocking and one non-blocking. No blocker is closed by the diagrams or provenance corrections.
+- Package remains `PENDING`; units remain `DRAFT`; all 10 local SVGs have content approval `PENDING` and package verification `DEFERRED`.
 
-## Review artifacts
+## Source and asset corrections in PR #871
 
-- The 47-item teacher/specialist decision register is on master at `docs/ss23/subjects/agricultural-science/TEACHER_SPECIALIST_REVIEW_REGISTER.md`.
-- `DRAFT_CORRECTION_AND_ASSESSMENT_AUDIT.md` is in PR #869. It records structural question/answer/locator/provenance checks and maps existing draft corrections; it is not answer certification.
-- `SOIL_PRACTICALS_REVIEW_DRAFT.md` is on master via PR #867. It contains five review-only procedures; it has no teacher-approved marking guide and does not close the practical blocker.
+- Tractor/PTO/drawbar schematic provenance now points to the First-Term Penn State PTO safety reference, matching its Week Three unit. This fixed the source class/term schema error.
+- Generalized soil-profile schematic provenance and coverage now point to USDA NRCS `A Soil Profile`, not the unrelated soil jar-test source. The diagram shows possible O, A, E, B, C and R horizons and says horizon presence/depth vary; it is not presented as a universal profile.
+- Farmstead, tractor/PTO, soil-profile, irrigation-methods, irrigation-systems, drainage, nitrogen-cycle, carbon/water-cycle, nutrient-cycle and soil-jar SVGs are the 10 local files. Their byte counts and SHA-256 hashes were independently matched against the committed file contents. This is file-integrity evidence only, not content approval.
+- Watermarked, third-party or rights-unverified source images remain provenance-only and non-deliverable unless written reuse rights and attribution are established.
+- Cassava blight now uses `Xanthomonas phaseoli pv. manihotis` as the preferred name and retains `X. axonopodis pv. manihotis` as a synonym; two hashed external references and two supported coverage rows are added. Full disease-table specialist review remains open.
 
-## Assessment integrity findings
+## Existing review and assessment evidence
 
-- 195 unique question IDs.
-- No missing question, answer, explanation, question/answer locator or provenance record.
-- No unregistered provenance IDs; all declared marking totals reconcile.
-- Term origin: T1 128 original-source questions + 22 authored supplements; T2 24 authored supplements; T3 21 authored supplements.
-- Four repeated First-Term prompt wording groups exist at separate source locators; preserve them pending original-page confirmation.
-- Structural checks are not answer-accuracy verification, source-page fidelity or teacher approval. T2/T3 authored supplements are not source-transcribed questions.
+- `TEACHER_SPECIALIST_REVIEW_REGISTER.md` carries all 47 open items and has been refreshed for the authored farmstead, tractor/PTO, soil-profile, irrigation/drainage and cycle replacements.
+- `DRAFT_CORRECTION_AND_ASSESSMENT_AUDIT.md` records 195 unique question IDs, no missing required question/answer/explanation/locator/provenance fields, no unregistered provenance IDs and reconciled marking totals. These are structural checks, not answer accuracy or teacher approval.
+- Term origin: T1 128 original-source questions + 22 authored supplements; T2 24 authored supplements; T3 21 authored supplements. T2/T3 authored items are not source-verbatim past questions. Four repeated T1 prompt groups remain pending source-page confirmation.
+- `SOIL_PRACTICALS_REVIEW_DRAFT.md` has five supplementary procedures; apparatus, safety, expected observations, mark-by-mark guides and teacher sign-off remain outstanding.
 
-## Source archive boundary
+## Hard gate and next work
 
-The owner-supplied combined SS2/SS3 ZIPs remain private Library files with hashes/member receipts recorded. Their member contents were not readable through the Files text interface in this session. No new source-page/header verification is claimed. Four source-version differences remain owner decisions: SS2 T2 Economics; SS2 T3 Further Mathematics; SS3 T1 Mathematics; SS3 T1 Economics.
-
-## Next work and hard gate
-
-1. Continue source-supported Agricultural Science work while retaining every approval-dependent blocker.
-2. Resolve original assessment questions, ambiguous source wording and image rights only when the relevant source pages or permissions are actually accessible.
-3. Do not advance to Biology until Agriculture's source, assessment and teacher-approval gates genuinely pass.
-4. Then complete remaining SS2 subjects alphabetically, one focused PR per subject.
+1. Keep all 47 open items and every approval state unchanged until authentic evidence and the appropriate teacher/specialist/owner decision are recorded.
+2. Resolve the original source assessment inventories, four competing source-version choices and third-party image rights only when those source pages/permissions are accessible.
+3. Do not advance to SS2 Biology until Agriculture's source, assessment and required teacher-approval gates genuinely pass.
+4. After Agriculture is cleared, continue remaining SS2 subjects alphabetically, one focused PR per subject.
 5. Complete SS3 only as WAEC/NECO/JAMB examination preparation, after SS2, with answer-key protection and no new instructional topics.
 
 ---
