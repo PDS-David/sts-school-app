@@ -389,7 +389,7 @@ router.put('/class-locks', requireRole('teacher', 'admin'), async (req, res) => 
   } else {
     const { rows } = await query(
       'DELETE FROM class_locks WHERE school_code=$1 AND class_name=$2 AND term_id=$3 RETURNING id',
-      [sc, class_name, term_id],
+      [sc, className, parsedTermId],
     );
     if (rows[0]) {
       await audit(user, 'unlock_class', 'class_lock', String(rows[0].id), `${class_name} — term ${term_id}`);
