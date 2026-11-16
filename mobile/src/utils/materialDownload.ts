@@ -7,7 +7,7 @@ export interface MaterialDownloadTarget {
 
 const BLOCKED_HOST_SUFFIXES = [
   '.localhost', '.local', '.internal', '.lan', '.home', '.test', '.invalid',
-  '.example', '.onion', '.arpa',
+  '.example', '.onion', '.arpa', '.nip.io', '.sslip.io', '.xip.io', '.localtest.me',
 ];
 
 function parseSafeHttpsUrl(value: unknown): URL | null {
