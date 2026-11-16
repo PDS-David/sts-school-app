@@ -1,7 +1,9 @@
 import assert from 'node:assert/strict';
-import { randomInt } from 'node:crypto';
+import { randomInt, randomUUID } from 'node:crypto';
 import test, { after } from 'node:test';
 import { collectPayload } from '../backend/src/utils/backup.js';
+import { auditStrict, verifyAuditLogIntegrity } from '../backend/src/utils/audit.js';
+import type { AuthUser } from '../backend/src/types/index.js';
 import { pool, query } from '../backend/src/db/pool.js';
 import { restore, validateBackupPayloadShape } from '../backend/src/db/restoreBackup.ts';
 
@@ -93,6 +95,53 @@ test('backup and restore preserve the target migration ledger', async () => {
 
   const { rows } = await query('SELECT version FROM public.schema_migrations ORDER BY version');
   assert.deepEqual(rows.map(row => row.version), ['0001', '0002']);
+});
+
+test('restore preserves audit history and re-enables append-only protection', async () => {
+  const user: AuthUser = {
+    id: randomUUID(),
+    username: 'bsec030-restore-test',
+    role: 'admin',
+    school_code: 'primary',
+    assigned_class: null,
+    assigned_subject_ids: [],
+  };
+  const marker = `BSEC030-${suffix()}`;
+  const beforeBackup = await auditStrict(
+    user, 'BSEC030_BACKUP_SNAPSHOT', 'backup_test', marker, 'included in backup',
+    { schoolCode: 'primary', metadata: { marker } },
+  );
+  assert.ok(beforeBackup?.id);
+
+  const payload = await collectPayload();
+  const { rows: databaseRows } = await query('SELECT current_database() AS name');
+  const database = String(databaseRows[0].name);
+
+  const afterBackup = await auditStrict(
+    user, 'BSEC030_AFTER_SNAPSHOT', 'backup_test', marker, 'must disappear after restore',
+    { schoolCode: 'primary', metadata: { marker } },
+  );
+  assert.ok(afterBackup?.id);
+
+  await restore(payload, { apply: true, confirmDatabase: database });
+
+  const { rows: restored } = await query('SELECT event_hash FROM audit_log WHERE id=$1', [beforeBackup.id]);
+  assert.equal(restored.length, 1, 'the snapshot audit event must be restored');
+  assert.ok(restored[0].event_hash);
+  const { rows: removed } = await query('SELECT id FROM audit_log WHERE id=$1', [afterBackup.id]);
+  assert.equal(removed.length, 0, 'events created after the backup snapshot must not survive the restore');
+
+  await assert.rejects(
+    query('DELETE FROM audit_log WHERE id=$1', [beforeBackup.id]),
+    (error: unknown) => (error as { code?: string }).code === '42501',
+  );
+  await assert.rejects(
+    query('TRUNCATE audit_log'),
+    (error: unknown) => (error as { code?: string }).code === '42501',
+  );
+
+  const integrity = await verifyAuditLogIntegrity('primary');
+  assert.equal(integrity.valid, true, 'restored audit hash chain must remain verifiable');
 });
 
 test('restore rejects malformed row widths before connecting to the target database', async () => {
