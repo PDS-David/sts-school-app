@@ -34,7 +34,7 @@
 //   order_index  ← topic_order_index | destination_order_index | order_index (required)
 //   caption, alt_text, kind, displayed, sort_order, expected_title|lesson_title_per_R2_R2V (optional)
 
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, realpathSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -84,6 +84,9 @@ export function parseCsv(text: string): string[][] {
   if (row.some((f) => f.trim() !== '')) rows.push(row);
   return rows;
 }
+
+const MAX_TOPIC_ASSET_BYTES = 10 * 1024 * 1024;
+const SHA256_PATTERN = /^[a-f0-9]{64}$/;
 
 const pick = (hdr: string[], ...names: string[]): number => {
   for (const n of names) { const i = hdr.indexOf(n); if (i >= 0) return i; }
