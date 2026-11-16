@@ -461,6 +461,23 @@ if (!URL_) {
     assert.equal((await del(`/learning/materials/${body.material.id}`, tokenAdminA)).status, 200);
   });
 
+  test('endpoint: tampered stored bytes fail MIME/SHA-256 verification before delivery', async () => {
+    const assetId = (await query(
+      `SELECT a.id, a.bytes FROM topic_assets a JOIN topics t ON t.id=a.topic_id WHERE t.school_code=$1 AND a.asset_key='W2-1'`,
+      [TEST_SC],
+    )).rows[0];
+    const original = assetId.bytes as Buffer;
+    try {
+      await query('UPDATE topic_assets SET bytes=$1 WHERE id=$2', [Buffer.from('<html>malicious content</html>'), assetId.id]);
+      const response = await get(`/learning/assets/${assetId.id}`, tokenA);
+      assert.equal(response.status, 500);
+      assert.deepEqual(await response.json(), { error: 'Asset integrity verification failed.' });
+    } finally {
+      await query('UPDATE topic_assets SET bytes=$1 WHERE id=$2', [original, assetId.id]);
+    }
+    assert.equal((await get(`/learning/assets/${assetId.id}`, tokenA)).status, 200);
+  });
+
   test('endpoint: a hidden (displayed=false) asset is not listed and not served', async () => {
     const id = (await query(`SELECT a.id FROM topic_assets a JOIN topics t ON t.id=a.topic_id WHERE t.school_code=$1 AND a.asset_key='W4-4'`, [TEST_SC])).rows[0].id;
     assert.equal((await get(`/learning/assets/${id}`, tokenA)).status, 404);
