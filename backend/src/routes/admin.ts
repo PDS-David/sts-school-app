@@ -3,7 +3,7 @@ import type { Request, Response, NextFunction } from 'express';
 import bcrypt from 'bcryptjs';
 import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requireRole } from '../middleware/auth.js';
-import { audit } from '../utils/audit.js';
+import { audit, auditContextFromRequest, auditInTransaction, auditStrict, verifyAuditLogIntegrity } from '../utils/audit.js';
 import { sendAdminLogEmail } from '../utils/email.js';
 import * as XLSX from 'xlsx';
 import { generateTempPassword, generateNumericPin } from '../utils/password.js';
@@ -211,6 +211,11 @@ router.post('/users', async (req, res) => {
             [rows[0].id, sid],
           );
         }
+        await auditInTransaction(
+          client, req.user!, 'add_user', 'user', rows[0].id,
+          'teacher account created with admin-set password',
+          auditContextFromRequest(req, { schoolCode: schoolCodeN, metadata: { target_user_id: rows[0].id, assigned_subject_count: subjectIds.length } }),
+        );
         return rows[0];
       });
     } catch (error) {
@@ -220,7 +225,6 @@ router.post('/users', async (req, res) => {
       throw error;
     }
 
-    await audit(req.user!, 'add_user', 'user', createdUser.id, `teacher: ${full_name} (admin-set password)`);
     return res.status(201).json({ user: createdUser });
   }
 
@@ -232,15 +236,22 @@ router.post('/users', async (req, res) => {
   // accounts created before this under the old temp-password flow are
   // untouched.
   const activationCode = generateNumericPin();
-  const { rows } = await query(
-    `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,
-       phone,email,must_change_pw,access_expires_at,activation_code)
-     VALUES($1,NULL,$2,$3,$4,$5,$6,$7,FALSE,$8,$9) RETURNING id,username,role,school_code,access_expires_at`,
-    [uname, role, full_name, schoolCodeN,
-     assignedClassN, phoneN, emailN, expiresAt, activationCode],
-  );
-  await audit(req.user!, 'add_user', 'user', rows[0].id, `${role}: ${full_name}`);
-  return res.status(201).json({ user: { ...rows[0], activation_code: activationCode } });
+  const createdUser = await withTransaction(async (client) => {
+    const { rows } = await client.query(
+      `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,
+         phone,email,must_change_pw,access_expires_at,activation_code)
+       VALUES($1,NULL,$2,$3,$4,$5,$6,$7,FALSE,$8,$9) RETURNING id,username,role,school_code,access_expires_at`,
+      [uname, role, full_name, schoolCodeN,
+       assignedClassN, phoneN, emailN, expiresAt, activationCode],
+    );
+    await auditInTransaction(
+      client, req.user!, 'add_user', 'user', rows[0].id,
+      role + ' account created pending activation',
+      auditContextFromRequest(req, { schoolCode: schoolCodeN, metadata: { target_user_id: rows[0].id, target_role: role } }),
+    );
+    return rows[0];
+  });
+  return res.status(201).json({ user: { ...createdUser, activation_code: activationCode } });
 });
 
 // ── POST /admin/users/:id/reissue-activation-code — lost/expired code ───────
@@ -249,23 +260,32 @@ router.post('/users', async (req, res) => {
 // re-issue. Also clears any lockout from prior failed attempts, same as
 // re-issuing a class code does for class_access_codes.
 router.post('/users/:id/reissue-activation-code', async (req, res) => {
-  const { rows: existing } = await query(
-    'SELECT id, password_hash FROM users WHERE id=$1 AND ($2::text IS NULL OR school_code=$2)',
-    [req.params.id, req.user!.school_code ?? null],
-  );
-  if (!existing[0]) return res.status(404).json({ error: 'User not found' });
-  if (existing[0].password_hash) {
+  const result = await withTransaction(async (client) => {
+    const { rows: existing } = await client.query(
+      'SELECT id, password_hash, school_code FROM users WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) FOR UPDATE',
+      [req.params.id, req.user!.school_code ?? null],
+    );
+    if (!existing[0]) return { status: 404 as const };
+    if (existing[0].password_hash) return { status: 400 as const };
+    const activationCode = generateNumericPin();
+    const { rows: updated } = await client.query(
+      `UPDATE users SET activation_code=$1, activation_fail_count=0, activation_locked_until=NULL
+        WHERE id=$2 AND ($3::text IS NULL OR school_code=$3) RETURNING id, school_code`,
+      [activationCode, req.params.id, req.user!.school_code ?? null],
+    );
+    if (!updated[0]) return { status: 404 as const };
+    await auditInTransaction(
+      client, req.user!, 'reissue_activation_code', 'user', req.params.id,
+      'pending account activation code reissued',
+      auditContextFromRequest(req, { schoolCode: updated[0].school_code, metadata: { target_user_id: req.params.id } }),
+    );
+    return { status: 200 as const, activationCode };
+  });
+  if (result.status === 404) return res.status(404).json({ error: 'User not found' });
+  if (result.status === 400) {
     return res.status(400).json({ error: 'This account has already been activated — there is no activation code to reissue.' });
   }
-  const activationCode = generateNumericPin();
-  const { rows: updated } = await query(
-    `UPDATE users SET activation_code=$1, activation_fail_count=0, activation_locked_until=NULL
-      WHERE id=$2 AND ($3::text IS NULL OR school_code=$3) RETURNING id`,
-    [activationCode, req.params.id, req.user!.school_code ?? null],
-  );
-  if (!updated[0]) return res.status(404).json({ error: 'User not found' });
-  await audit(req.user!, 'reissue_activation_code', 'user', req.params.id);
-  return res.json({ activation_code: activationCode });
+  return res.json({ activation_code: result.activationCode });
 });
 
 router.put('/users/:id', async (req, res) => {
@@ -342,6 +362,11 @@ router.put('/users/:id', async (req, res) => {
           );
         }
       }
+      await auditInTransaction(
+        client, req.user!, 'edit_user', 'user', req.params.id,
+        'user account and access assignments updated',
+        auditContextFromRequest(req, { schoolCode: nextSchool, metadata: { target_user_id: req.params.id, changed_fields: Object.keys(req.body ?? {}).filter(key => !/password|token|secret|pin/i.test(key)) } }),
+      );
 
       return { user: rows[0] };
     });
@@ -354,19 +379,26 @@ router.put('/users/:id', async (req, res) => {
 
   if (result.forbidden) return res.status(403).json({ error: "You can't change an account outside your school or create a global finance administrator" });
   if (!result.user) return res.status(404).json({ error: 'User not found' });
-  await audit(req.user!, 'edit_user', 'user', req.params.id);
   return res.json({ user: result.user });
 });
 
 router.post('/users/:id/reset-password', async (req, res) => {
   const pw = generateTempPassword();
   const hash = await bcrypt.hash(pw, 10);
-  const { rows } = await query(
-    'UPDATE users SET password_hash=$1, must_change_pw=TRUE WHERE id=$2 AND ($3::text IS NULL OR school_code=$3) RETURNING id',
-    [hash, req.params.id, req.user!.school_code ?? null],
-  );
-  if (!rows[0]) return res.status(404).json({ error: 'User not found' });
-  await audit(req.user!, 'reset_password', 'user', req.params.id);
+  const result = await withTransaction(async (client) => {
+    const { rows } = await client.query(
+      'UPDATE users SET password_hash=$1, must_change_pw=TRUE WHERE id=$2 AND ($3::text IS NULL OR school_code=$3) RETURNING id, school_code',
+      [hash, req.params.id, req.user!.school_code ?? null],
+    );
+    if (!rows[0]) return null;
+    await auditInTransaction(
+      client, req.user!, 'reset_password', 'user', req.params.id,
+      'administrator reset user password; forced password change on next login',
+      auditContextFromRequest(req, { schoolCode: rows[0].school_code, metadata: { target_user_id: req.params.id, must_change_password: true } }),
+    );
+    return rows[0];
+  });
+  if (!result) return res.status(404).json({ error: 'User not found' });
   return res.json({ ok: true, temporary_password: pw });
 });
 
@@ -376,29 +408,46 @@ router.post('/users/:id/reset-password', async (req, res) => {
 // gate to lift. Admin should have already checked/edited the account's
 // class/subject assignment via the normal Edit Details flow before this.
 router.post('/users/:id/approve', async (req, res) => {
-  const { rows } = await query(
-    'UPDATE users SET pending_admin_review=FALSE WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) RETURNING id',
-    [req.params.id, req.user!.school_code ?? null],
-  );
-  if (!rows[0]) return res.status(404).json({ error: 'User not found' });
-  await audit(req.user!, 'approve_self_registered_user', 'user', req.params.id);
+  const result = await withTransaction(async (client) => {
+    const { rows } = await client.query(
+      'UPDATE users SET pending_admin_review=FALSE WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) RETURNING id, school_code',
+      [req.params.id, req.user!.school_code ?? null],
+    );
+    if (!rows[0]) return null;
+    await auditInTransaction(
+      client, req.user!, 'approve_self_registered_user', 'user', req.params.id,
+      'administrator approved self-registered account',
+      auditContextFromRequest(req, { schoolCode: rows[0].school_code, metadata: { target_user_id: req.params.id } }),
+    );
+    return rows[0];
+  });
+  if (!result) return res.status(404).json({ error: 'User not found' });
   return res.json({ ok: true });
 });
 
 router.delete('/users/:id', async (req, res) => {
   if (req.params.id === req.user!.id) return res.status(400).json({ error: 'Cannot delete yourself' });
-  const { rows: targetRows } = await query(
-    'SELECT role FROM users WHERE id=$1 AND ($2::text IS NULL OR school_code=$2)',
-    [req.params.id, req.user!.school_code ?? null],
-  );
-  if (!targetRows[0]) return res.status(404).json({ error: 'User not found' });
-  if (targetRows[0].role === 'admin') return res.status(400).json({ error: 'Admin accounts cannot be deleted' });
-  const { rows } = await query(
-    'DELETE FROM users WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) RETURNING username',
-    [req.params.id, req.user!.school_code ?? null],
-  );
-  if (!rows[0]) return res.status(404).json({ error: 'User not found' });
-  await audit(req.user!, 'delete_user', 'user', req.params.id, rows[0].username);
+  const result = await withTransaction(async (client) => {
+    const { rows: targetRows } = await client.query(
+      'SELECT role, username, school_code FROM users WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) FOR UPDATE',
+      [req.params.id, req.user!.school_code ?? null],
+    );
+    if (!targetRows[0]) return { status: 404 as const };
+    if (targetRows[0].role === 'admin') return { status: 400 as const };
+    const { rows } = await client.query(
+      'DELETE FROM users WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) RETURNING username',
+      [req.params.id, req.user!.school_code ?? null],
+    );
+    if (!rows[0]) return { status: 404 as const };
+    await auditInTransaction(
+      client, req.user!, 'delete_user', 'user', req.params.id,
+      'administrator deleted user account ' + rows[0].username,
+      auditContextFromRequest(req, { schoolCode: targetRows[0].school_code, metadata: { target_user_id: req.params.id, target_role: targetRows[0].role } }),
+    );
+    return { status: 200 as const };
+  });
+  if (result.status === 404) return res.status(404).json({ error: 'User not found' });
+  if (result.status === 400) return res.status(400).json({ error: 'Admin accounts cannot be deleted' });
   return res.json({ ok: true });
 });
 
