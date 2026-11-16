@@ -1,3 +1,121 @@
+# Latest execution update — 2026-11-16
+
+> This section supersedes earlier live-status wording below. Historical entries remain for audit only.
+
+## Live repository and PR state
+
+- Current `master`: `63f948738a26ab807cdf569a7dd283842338e067`; PRs #867 and #868 are merged.
+- PR #869 is open/mergeable at `bf8075645ea3e1f3f8fc45461488201d6630d293`; documentation/review packet only, based on current master.
+- PR #870 is open/mergeable at `a9c8345ac8f8a588b810f73c60023be000b3473d`; it explicitly prevents all 42 `source-extract://` placeholders from appearing in student asset listings even if approval metadata is erroneously advanced. All four workflows passed: package contract 43801471584; SS23 integrity 43801471471; SS1 integrity 43801471646; JSS3 checks 43801471562.
+- PR #871 is open/mergeable at `1cbe7efbb2b0b9d2a729674c73e661b5e713ea4e`; it contains the current SS2 Agricultural Science package changes. Current checks: package contract 43804755967 PASSED; SS23 integrity 43804755981 PASSED; SS1 integrity 43804755877 PASSED; JSS3 verification 43804755894 was still running at the latest check.
+- No agent merge, deployment, production import or student release is authorised. The owner retains merge authority.
+
+## Agricultural Science — merged master versus active PR branch
+
+**Merged master (unchanged package):**
+- 19 draft units (T1 8, T2 6, T3 5); 195 practice/assessment records.
+- 45 external references; 47 asset records; 109 coverage rows (75 SUPPORTED, 25 PARTIAL, 5 UNRESOLVED, 4 MARKER).
+- 47 open items: 46 delivery-blocking and one non-blocking.
+- Package `PENDING`; all units `DRAFT`; approvals pending; verification deferred; no student delivery.
+
+**PR #871 branch only — not merged:**
+- 19 units; 195 practice/assessment records.
+- 52 asset records: 42 `source-extract://` placeholders and 10 locally stored school-authored SVGs.
+- 48 external references; 116 coverage rows (82 SUPPORTED, 25 PARTIAL, 5 UNRESOLVED, 4 MARKER).
+- 47 open items remain: 46 blocking and one non-blocking. No blocker is closed by the diagrams or provenance corrections.
+- Package remains `PENDING`; units remain `DRAFT`; all 10 local SVGs have content approval `PENDING` and package verification `DEFERRED`.
+
+## Source and asset corrections in PR #871
+
+- Tractor/PTO/drawbar schematic provenance now points to the First-Term Penn State PTO safety reference, matching its Week Three unit. This fixed the source class/term schema error.
+- Generalized soil-profile schematic provenance and coverage now point to USDA NRCS `A Soil Profile`, not the unrelated soil jar-test source. The diagram shows possible O, A, E, B, C and R horizons and says horizon presence/depth vary; it is not presented as a universal profile.
+- Farmstead, tractor/PTO, soil-profile, irrigation-methods, irrigation-systems, drainage, nitrogen-cycle, carbon/water-cycle, nutrient-cycle and soil-jar SVGs are the 10 local files. Their byte counts and SHA-256 hashes were independently matched against the committed file contents. This is file-integrity evidence only, not content approval.
+- Watermarked, third-party or rights-unverified source images remain provenance-only and non-deliverable unless written reuse rights and attribution are established.
+- Cassava blight now uses `Xanthomonas phaseoli pv. manihotis` as the preferred name and retains `X. axonopodis pv. manihotis` as a synonym; two hashed external references and two supported coverage rows are added. Full disease-table specialist review remains open.
+
+## Existing review and assessment evidence
+
+- `TEACHER_SPECIALIST_REVIEW_REGISTER.md` carries all 47 open items and has been refreshed for the authored farmstead, tractor/PTO, soil-profile, irrigation/drainage and cycle replacements.
+- `DRAFT_CORRECTION_AND_ASSESSMENT_AUDIT.md` records 195 unique question IDs, no missing required question/answer/explanation/locator/provenance fields, no unregistered provenance IDs and reconciled marking totals. These are structural checks, not answer accuracy or teacher approval.
+- Term origin: T1 128 original-source questions + 22 authored supplements; T2 24 authored supplements; T3 21 authored supplements. T2/T3 authored items are not source-verbatim past questions. Four repeated T1 prompt groups remain pending source-page confirmation.
+- `SOIL_PRACTICALS_REVIEW_DRAFT.md` has five supplementary procedures; apparatus, safety, expected observations, mark-by-mark guides and teacher sign-off remain outstanding.
+
+## Hard gate and next work
+
+1. Keep all 47 open items and every approval state unchanged until authentic evidence and the appropriate teacher/specialist/owner decision are recorded.
+2. Resolve the original source assessment inventories, four competing source-version choices and third-party image rights only when those source pages/permissions are accessible.
+3. Do not advance to SS2 Biology until Agriculture's source, assessment and required teacher-approval gates genuinely pass.
+4. After Agriculture is cleared, continue remaining SS2 subjects alphabetically, one focused PR per subject.
+5. Complete SS3 only as WAEC/NECO/JAMB examination preparation, after SS2, with answer-key protection and no new instructional topics.
+
+---
+
+
+# Authoritative state after PRs #867 and #868 — 2026-11-16
+
+> This addendum supersedes the earlier live-state section below. Historical entries remain for audit purposes; do not reuse their old PR states, master SHA or readiness figures as current facts.
+
+## Repository state
+
+- Current `master` merge commit: `658c1f7b7dcee9ecdf73a972d2dfdc36b1842560` — Merge pull request #867.
+- PR #868 (subject inventory and checkpoint) merged at 2026-11-16 03:50:05Z.
+- PR #867 (Agricultural Science source-verified draft updates) merged at 2026-11-16 03:51:18Z.
+- PR #867 branch head: `d850b46b675e5e8e2b83b56ba9d9c026c463dba5`.
+- PR #868 branch head: `b80f8aa3d733578b051e1646741692b0408b715a`.
+- Agents must continue to follow the no-merge rule. These merges occurred outside this agent's actions; do not infer permission to merge future PRs.
+
+## Agricultural Science state on merged master
+
+The merged package has:
+- 19 draft units: T1 8, T2 6, T3 5.
+- 195 practice/assessment items.
+- 45 external factual references.
+- 47 asset records.
+- 109 coverage rows: 75 SUPPORTED, 25 PARTIAL, 5 UNRESOLVED, 4 MARKER.
+- 47 open items: 46 delivery-blocking and 1 non-blocking.
+
+Package status remains `PENDING`; all units remain `DRAFT`; content approval remains `PENDING`; verification remains `DEFERRED`. No student delivery is permitted.
+
+## Soil practical procedures — new review draft
+
+`docs/ss23/subjects/agricultural-science/SOIL_PRACTICALS_REVIEW_DRAFT.md` adds review-only draft procedures for:
+1. soil moisture content (gravimetric);
+2. soil porosity (comparative saturation);
+3. capillary movement;
+4. visible soil-organism observation; and
+5. qualitative soil-organic-matter observation, with quantitative loss-on-ignition reserved for a properly equipped, trained laboratory.
+
+This is an authored review aid. It is not a teacher-approved practical scheme, not an approved marking guide and not included in the subject package as an approved lesson. `AG2-T1-SOIL-PRACTICALS` remains open and delivery-blocking until the subject lead confirms source equivalence, apparatus, safety, method, observations and marking requirements.
+
+## CI evidence
+
+On the final PR #867 head `d850b46b675e5e8e2b83b56ba9d9c026c463dba5`, all five associated GitHub Actions workflows completed successfully:
+- SS2/SS3 source validation — run 43800366597.
+- SS23 package contract — run 43800366507.
+- SS23 integrity gate — run 43800366581.
+- SS1 regression/integrity gate — run 43800366585.
+- JSS3 implementation and asset checks — run 43800366501.
+
+These are checks on the final PR head, not teacher approval or curriculum certification. Do not claim the package is ready for students.
+
+## Source archive and evidence boundary
+
+The two combined owner-supplied ZIPs are present in the private Library, not committed to the repository:
+- SS2: `SSS 2-20260507T072840Z-3-001.zip`, SHA-256 `a97506c7f030a6e9604a13ae0aab30f59563a1473ec682f647459549dd9e1153`, 61 members.
+- SS3: `SSS 3-20260507T072839Z-3-001.zip`, SHA-256 `045e261aba9475b32b4b963a2495faf3ddd503860b205aa1e89f0ac07d3c741`, 39 members.
+
+The ZIP archives cannot be semantically searched or read through the Files text reader. Use the committed receipt, member inventory and source maps for facts already recorded, but do not claim new page/header inspection until actual member content is accessible to the agent. Four competing member versions remain pending owner choice (SS2 T2 Economics, SS2 T3 Further Mathematics, SS3 T1 Mathematics, SS3 T1 Economics). Preserve both identities.
+
+## Next execution
+
+1. Continue Agricultural Science only where source evidence supports safe completion; do not move to Biology until the source, assessment and required teacher-approval gates are satisfied.
+2. Resolve original-source assessment reconciliation and outstanding source-page questions when readable source members are available.
+3. Keep asset-rights, teacher approval, owner approval and unresolved source-version decisions blocked; do not fabricate clearance.
+4. After Agricultural Science has passed its gates, continue the remaining SS2 subjects alphabetically, one focused PR per subject, and only then complete SS3 examination preparation (WAEC/NECO/JAMB) without new instructional topics.
+5. Maintain answer-key protection, fail-closed student delivery, certified curriculum outside scope, and no unauthorized merges/imports/deployments.
+
+---
+
 # Authoritative live state — 2026-11-16
 
 > **This section supersedes every historical live-update section below.** Older entries are retained as an audit trail; do not use their old branch names, PR states, counts or next-action claims as the current state.

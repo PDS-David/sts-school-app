@@ -1,3 +1,49 @@
+# Latest handoff supplement — 2026-11-16
+
+This supplement supersedes earlier live-state claims in the historical handoff.
+
+- Current master: `63f948738a26ab807cdf569a7dd283842338e067`; PRs #867/#868 merged.
+- PR #869 is open/mergeable at `bf8075645ea3e1f3f8fc45461488201d6630d293` and contains documentation/review artifacts only.
+- PR #870 is open/mergeable at `a9c8345ac8f8a588b810f73c60023be000b3473d`; its four workflows passed. It blocks unresolved `source-extract://` placeholders even if their approval metadata is mistakenly advanced.
+- PR #871 is open/mergeable at `1cbe7efbb2b0b9d2a729674c73e661b5e713ea4e`. Latest run state: SS23 package contract 43804755967 PASSED; SS23 integrity 43804755981 PASSED; SS1 integrity 43804755877 PASSED; JSS3 check 43804755894 still running at the last check. Do not describe #871 checks as all green until JSS3 completes.
+- Agriculture on merged master remains 19 draft units, 195 practice/assessment records, 45 external references, 47 asset records, 109 coverage rows and 47 open items (46 blocking). Package `PENDING`; units `DRAFT`; no student delivery.
+- Agriculture on PR #871 only: 19 units, 195 practice records, 52 assets (42 unresolved placeholders + 10 local SVGs), 48 external references, 116 coverage rows, 47 open items (46 blocking). All local SVG package verification states remain DEFERRED and all content approvals PENDING.
+- The latest tractor/PTO and soil-profile source provenance schema mismatch is fixed: tractor/PTO uses First-Term PSU PTO safety; soil-profile uses USDA NRCS A Soil Profile. No source content or teacher approval has been invented.
+- All 10 local SVG byte counts and SHA-256 values have been matched to committed content. That check does not grant package verification or content approval.
+- The 47-item teacher/specialist register and the draft correction/assessment audit are being maintained in PR #869. The five soil practicals remain review drafts, not approved marking schemes.
+- The original SS2/SS3 ZIP members were not readable through the Files text reader in this session. No new original page-level verification is claimed. Four source-version choices remain for the owner.
+- Keep no-merge/no-deploy/no-import/no-student-release rules. Do not start Biology until Agriculture source, assessment and teacher-approval gates pass.
+- Then continue SS2 alphabetically, one focused PR per subject; after SS2, complete SS3 examination preparation only.
+
+---
+
+
+# Current handoff correction — post PR #867/#868 merges — 2026-11-16
+
+This section supersedes stale repository/PR/current-status claims below. Keep the remainder as historical context unless a newer verified record supersedes it.
+
+- Current master merge commit: `658c1f7b7dcee9ecdf73a972d2dfdc36b1842560` (Merge pull request #867).
+- PR #868 merged at 2026-11-16 03:50:05Z. PR #867 merged at 03:51:18Z.
+- PR #867 final branch head was `d850b46b675e5e8e2b83b56ba9d9c026c463dba5`; PR #868 final branch head was `b80f8aa3d733578b051e1646741692b0408b715a`.
+- Do not merge any future PR. These merges happened outside this agent's actions and do not change the owner's no-merge instruction.
+- Agricultural Science on master: 19 draft units (8/6/5), 195 practice items, 45 external factual references, 47 asset records, 109 coverage rows and 47 open items (46 delivery-blocking, one non-blocking). Package `PENDING`; all units `DRAFT`; no student delivery.
+- New review-only document: `docs/ss23/subjects/agricultural-science/SOIL_PRACTICALS_REVIEW_DRAFT.md`, covering moisture, porosity, capillarity, soil-organism observation and organic-matter observation. It is not teacher-approved, does not assign an official mark scheme and does not close `AG2-T1-SOIL-PRACTICALS`.
+- Final PR #867 head workflows 43800366597, 43800366507, 43800366581, 43800366585 and 43800366501 all passed. This is technical CI only.
+- The original combined SS2 and SS3 ZIPs are present in the private Library but are not committed to the repository. The Files text reader cannot read ZIP contents; do not claim new direct document/page inspection from the archive until member content is actually available. Keep the archive receipt, source assignments and the four old/new version differences authoritative. The four disputed members require an owner source-version decision.
+- Keep SS2 alphabetical. Do not proceed to Biology until Agriculture's source, assessment and required teacher-approval gates are satisfied.
+- SS3 remains examination preparation only (WAEC/NECO/JAMB); no new instructional topics.
+
+## Exact next steps
+
+1. Continue source-supported Agriculture work; preserve all 47 open items unless a specific item is genuinely resolved by evidence and the package/checkpoint are updated together.
+2. Complete item-by-item source-question and answer/mark reconciliation only when the original assessment text is accessible. Current 45 T2/T3 answers are authored supplements, not original-source answer keys.
+3. Resolve practical apparatus/safety/marking decisions, image rights and specialist corrections through genuine teacher/specialist approval; never impersonate the approver.
+4. Recheck the merged package integrity and CI when code/package files change.
+5. After Agriculture passes, proceed through SS2 subjects alphabetically, one focused PR per subject.
+6. Complete SS3 examination-preparation materials only after SS2 is complete; preserve answer-key protection and verified past-question provenance.
+
+---
+
 # SS2 / SS3 curriculum — agent handoff
 
 Updated: 2026-11-16. Repository: `PDS-David/sts-school-app`; primary branch: `master`. Read this file, `CHECKPOINT.md`, and `sources/README.md` before resuming. The historical 2026-11-13 instructions below are superseded where marked.
