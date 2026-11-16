@@ -66,12 +66,26 @@ router.get('/fee-items', async (req, res) => {
 });
 
 // ── POST /finance/fee-items — finance_admin only ────────────────────────────────
+const createFeeItemSchema = z.object({
+  name: z.string().trim().min(1).max(120),
+  amount: z.coerce.number().finite().positive(),
+  class_name: z.string().trim().max(100).nullable().optional(),
+  school_code: z.string().trim().min(1).max(32),
+});
+
 router.post('/fee-items', requireRole('finance_admin'), async (req, res) => {
-  const { name, amount, class_name, school_code } = req.body;
-  const sc = school_code ?? req.user!.school_code;
+  const parsed = createFeeItemSchema.safeParse(req.body);
+  if (!parsed.success) {
+    return res.status(400).json({
+      error: 'Invalid fee item: ' + parsed.error.issues.map(issue => issue.path.join('.') || 'body').join(', '),
+    });
+  }
+  const { name, amount, class_name, school_code } = parsed.data;
+  const { rows: schools } = await query('SELECT 1 FROM schools WHERE code=$1', [school_code]);
+  if (!schools[0]) return res.status(400).json({ error: 'Select a valid school for this fee item.' });
   const { rows } = await query(
     'INSERT INTO fee_items(school_code,name,amount,class_name) VALUES($1,$2,$3,$4) RETURNING *',
-    [sc, name, amount, class_name ?? null],
+    [school_code, name, amount, class_name || null],
   );
   return res.status(201).json({ fee_item: rows[0] });
 });
