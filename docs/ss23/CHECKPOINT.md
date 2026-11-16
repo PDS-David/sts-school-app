@@ -4,12 +4,12 @@
 
 ## Live repository and PR state
 
-- Current master: 90a718a0fab35b2500f6e532242689d4fa8b28cd.
+- Current master: `90a718a0fab35b2500f6e532242689d4fa8b28cd`.
 - PRs #867, #868, #869, #870 and #871 are merged.
-- PR #870 adds a server-side exclusion for unresolved source-extract placeholders before student asset listing or reading. Its negative-control test confirms placeholders remain invisible even when approval metadata is erroneously advanced.
-- PR #871 final head 1cbe7efbb2b0b9d2a729674c73e661b5e713ea4e passed all four workflows: SS23 package contract 43804755967; SS23 integrity 43804755981; SS1 integrity 43804755877; JSS3 implementation/asset checks 43804755894.
-- PR #872 (this documentation correction) is open/mergeable and three commits ahead, zero behind master.
-- PR #873 is open/mergeable and proposes an aligned update to irrigation and nutrient-cycle visual blockers. On its current head, SS23 package contract 43805636778, SS23 integrity 43805636775 and SS1 integrity 43805636772 passed; JSS3 checks 43805636802 were still running.
+- PR #870 adds a server-side exclusion for unresolved source-extract placeholders before student asset listing or reading. Its negative-control test confirms placeholders remain invisible even if their approval metadata is erroneously advanced.
+- PR #871 final head `1cbe7efbb2b0b9d2a729674c73e661b5e713ea4e` passed all four workflows: SS23 package contract 43804755967; SS23 integrity 43804755981; SS1 integrity 43804755877; JSS3 implementation/asset checks 43804755894.
+- PR #872 (this checkpoint correction) is open and mergeable, five commits ahead and zero behind master.
+- PR #873 is open and mergeable; it updates the Week Six irrigation and Weeks Eight-Nine cycle visual blockers to list all three authored alternatives per topic, without changing approval or delivery state. All four workflows passed on its current head `0d7977c00b6a9261ed58500af50434f2aaf95e6c`: SS23 contract 43805636778; SS23 integrity 43805636775; SS1 integrity 43805636772; JSS3 checks 43805636802.
 - No further merge, deployment, production import or student release is authorised. The owner retains those decisions.
 
 ## Agricultural Science — current merged master state
@@ -32,7 +32,7 @@
 - Cassava bacterial blight uses Xanthomonas phaseoli pv. manihotis as the preferred name and retains X. axonopodis pv. manihotis as a synonym; EPPO and a 2024 Plant Disease source are registered. Full disease-table specialist review remains open.
 - Floriculture and pest decisions are clarified without guessing the unresolved source spelling "carnality" or approving pesticide products.
 - Five soil practical procedures are review drafts only; apparatus, safety, expected observations, mark-by-mark guides and teacher approval remain outstanding.
-- PR #873 refines the irrigation and nutrient-cycle visual blockers to list all three school-authored alternatives for each topic; both items remain blocking pending approval and rights review of source figures.
+- PR #873's remaining text alignment keeps the irrigation and nutrient-cycle visual blockers open until all three authored alternatives per topic receive subject-lead approval and source-image rights are documented.
 
 ## Assessment integrity and provenance
 
