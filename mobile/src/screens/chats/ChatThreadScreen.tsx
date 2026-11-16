@@ -26,8 +26,15 @@ export default function ChatThreadScreen({ route, navigation }: any) {
   const [sending, setSending] = useState(false);
   const [sendError, setSendError] = useState('');
   const flatRef = useRef<FlatList>(null);
+  const currentContactIdRef = useRef(contact.id);
+  currentContactIdRef.current = contact.id;
+  const sendGenerationRef = useRef(0);
 
   useEffect(() => {
+    // A new contact (or an explicit reload) invalidates sends started for the
+    // previous thread. Their late responses must not enter this conversation.
+    sendGenerationRef.current += 1;
+    setSending(false);
     let cancelled = false;
     setLoading(true);
     setLoadError('');
@@ -50,18 +57,29 @@ export default function ChatThreadScreen({ route, navigation }: any) {
   const sendMessage = async () => {
     if (!body.trim() || sending) return;
     const outgoing = body.trim();
+    const recipientId = contact.id;
+    const generation = sendGenerationRef.current;
+    const isCurrentSend = () => generation === sendGenerationRef.current && currentContactIdRef.current === recipientId;
     setSending(true);
     setSendError('');
     try {
-      const { data } = await api.post('/messages', { recipient_id: contact.id, body: outgoing });
-      setBody('');
+      const { data } = await api.post('/messages', { recipient_id: recipientId, body: outgoing });
+      if (!isCurrentSend()) return;
+      // Do not erase text the user typed while this send was in flight.
+      setBody(current => current === outgoing ? '' : current);
       if (data?.message) {
         setThread(prev => [...prev, data.message]);
       }
-      setTimeout(() => flatRef.current?.scrollToEnd({ animated: true }), 100);
+      setTimeout(() => {
+        if (isCurrentSend()) flatRef.current?.scrollToEnd({ animated: true });
+      }, 100);
     } catch (e: any) {
-      setSendError(e?.response?.data?.error ?? 'Could not send message. Your draft is still here; retry when connected.');
-    } finally { setSending(false); }
+      if (isCurrentSend()) {
+        setSendError(e?.response?.data?.error ?? 'Could not send message. Your draft is still here; retry when connected.');
+      }
+    } finally {
+      if (isCurrentSend()) setSending(false);
+    }
   };
 
   if (loading) return <Loader />;
