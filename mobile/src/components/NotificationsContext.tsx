@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from '../api/client';
 import { useAuth } from '../api/AuthContext';
 
@@ -39,6 +40,43 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
   const previousAnnouncementsRef = useRef<AppNotification[]>([]);
   const lastUserKeyRef = useRef<string | null>(null);
   const refreshGenerationRef = useRef(0);
+  const readStateGenerationRef = useRef(0);
+  const hydratedReadStorageKeyRef = useRef<string | null>(null);
+  const notificationUserKey = user
+    ? [user.id, user.role, user.school_code ?? '', user.assigned_class ?? ''].join(':')
+    : null;
+  const readStorageKey = notificationUserKey ? `notification_read_ids:${notificationUserKey}` : null;
+
+  // Read state survives app restarts, but remains isolated by signed-in user
+  // and role/school scope. Do not persist the initial empty state until the
+  // corresponding key has finished hydrating.
+  useEffect(() => {
+    const key = readStorageKey;
+    const generation = ++readStateGenerationRef.current;
+    hydratedReadStorageKeyRef.current = null;
+    if (!key) {
+      setReadIds(new Set());
+      return;
+    }
+    setReadIds(new Set());
+    AsyncStorage.getItem(key).then(raw => {
+      if (generation !== readStateGenerationRef.current) return;
+      let parsed: unknown = [];
+      try { parsed = raw ? JSON.parse(raw) : []; } catch { parsed = []; }
+      const ids = Array.isArray(parsed) ? parsed.filter((id): id is string => typeof id === 'string') : [];
+      setReadIds(new Set(ids));
+      hydratedReadStorageKeyRef.current = key;
+    }).catch(() => {
+      if (generation !== readStateGenerationRef.current) return;
+      hydratedReadStorageKeyRef.current = key;
+    });
+    return () => { readStateGenerationRef.current += 1; };
+  }, [readStorageKey]);
+
+  useEffect(() => {
+    if (!readStorageKey || hydratedReadStorageKeyRef.current !== readStorageKey) return;
+    AsyncStorage.setItem(readStorageKey, JSON.stringify([...readIds])).catch(() => {});
+  }, [readStorageKey, readIds]);
 
   const refresh = useCallback(async () => {
     const generation = ++refreshGenerationRef.current;
@@ -54,7 +92,7 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
       return;
     }
 
-    const userKey = [user.id, user.role, user.school_code ?? '', user.assigned_class ?? ''].join(':');
+    const userKey = notificationUserKey!;
     if (lastUserKeyRef.current !== userKey) {
       lastUserKeyRef.current = userKey;
       previousAnnouncementsRef.current = [];
@@ -91,7 +129,10 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
       const withUnread = (data.contacts ?? []).filter((c: any) => (c.unread_count ?? 0) > 0);
       for (const c of withUnread) {
         items.push({
-          id: `message-${c.id}`,
+          // Include the latest message marker/count so a genuinely new
+          // unread message creates a fresh notification even after the
+          // previous conversation alert was marked read.
+          id: `message-${c.id}-${c.last_message_at ?? ''}-${c.unread_count}`,
           kind: 'message',
           title: `New message from ${c.full_name}`,
           body: c.unread_count === 1 ? '1 unread message' : `${c.unread_count} unread messages`,
