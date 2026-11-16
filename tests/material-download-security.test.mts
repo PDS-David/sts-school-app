@@ -16,6 +16,8 @@ test('only public HTTPS hostnames without credentials or non-standard ports are 
     'https://[::1]/file.pdf',
     'https://school.local/file.pdf',
     'https://db.internal/file.pdf',
+    'https://127.0.0.1.nip.io/file.pdf',
+    'https://999.999.999.999/file.pdf',
     'https://example.com:8443/file.pdf',
     'https://example.com/file.pdf ',
     'https://example.com\\\\@evil.test/file.pdf',
