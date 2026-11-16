@@ -36,6 +36,8 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
   const [notifications, setNotifications] = useState<AppNotification[]>([]);
   const [loading, setLoading] = useState(false);
   const [readIds, setReadIds] = useState<Set<string>>(new Set());
+  const [readStateReady, setReadStateReady] = useState(false);
+  const readStateReadyRef = useRef(false);
   const [announcementsLoaded, setAnnouncementsLoaded] = useState(false);
   const [announcementsError, setAnnouncementsError] = useState(false);
   const [feedErrors, setFeedErrors] = useState<string[]>([]);
@@ -59,8 +61,12 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
     const key = readStorageKey;
     const generation = ++readStateGenerationRef.current;
     hydratedReadStorageKeyRef.current = null;
+    readStateReadyRef.current = false;
+    setReadStateReady(false);
     if (!key) {
       setReadIds(new Set());
+      readStateReadyRef.current = true;
+      setReadStateReady(true);
       return;
     }
     setReadIds(new Set());
@@ -71,17 +77,21 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
       const ids = Array.isArray(parsed) ? parsed.filter((id): id is string => typeof id === 'string') : [];
       setReadIds(new Set(ids));
       hydratedReadStorageKeyRef.current = key;
+      readStateReadyRef.current = true;
+      setReadStateReady(true);
     }).catch(() => {
       if (generation !== readStateGenerationRef.current) return;
       hydratedReadStorageKeyRef.current = key;
+      readStateReadyRef.current = true;
+      setReadStateReady(true);
     });
     return () => { readStateGenerationRef.current += 1; };
   }, [readStorageKey]);
 
   useEffect(() => {
-    if (!readStorageKey || hydratedReadStorageKeyRef.current !== readStorageKey) return;
+    if (!readStorageKey || !readStateReady || hydratedReadStorageKeyRef.current !== readStorageKey) return;
     AsyncStorage.setItem(readStorageKey, JSON.stringify([...readIds])).catch(() => {});
-  }, [readStorageKey, readIds]);
+  }, [readStorageKey, readIds, readStateReady]);
 
   const refresh = useCallback(async () => {
     const generation = ++refreshGenerationRef.current;
@@ -187,8 +197,12 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
   }, [refresh]);
 
   const unreadCount = notifications.filter(n => !readIds.has(n.id)).length;
-  const markAllRead = () => setReadIds(new Set(notifications.map(n => n.id)));
+  const markAllRead = () => {
+    if (!readStateReadyRef.current) return;
+    setReadIds(new Set(notifications.map(n => n.id)));
+  };
   const markRead = useCallback((id: string) => {
+    if (!readStateReadyRef.current) return;
     setReadIds(current => {
       if (current.has(id)) return current;
       const next = new Set(current);
@@ -199,7 +213,7 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
 
   return (
     <NotificationsContext.Provider value={{
-      notifications, unreadCount, loading, announcementsLoaded, announcementsError, feedErrors, readIds, refresh, markAllRead, markRead,
+      notifications, unreadCount, loading, announcementsLoaded, announcementsError, feedErrors, readIds, readStateReady, refresh, markAllRead, markRead,
     }}>
       {children}
     </NotificationsContext.Provider>
