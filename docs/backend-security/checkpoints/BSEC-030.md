@@ -1,0 +1,21 @@
+# Checkpoint — BSEC-030
+
+- **Task ID:** BSEC-030
+- **Title:** Enforce school-bound administrator scope on student rosters and student-account mutations
+- **Status:** implementation committed; focused CI verification pending
+- **Owner:** ChatGPT implementation worker
+- **Base branch:** master
+- **Base commit:** 32d4d1677e4cd236f05bcb2c4fb4a86022dfaed8
+- **Working branch:** agent/backend-student-school-admin-scope-20261116
+- **Changed files:**
+  - backend/src/utils/studentRosterScope.ts
+  - backend/src/utils/scope.ts
+  - backend/src/routes/students.ts
+  - tests/backend-parent-ward-link-scope.integration.test.mts
+  - docs/backend-security/checkpoints/BSEC-030.md
+- **Defect:** student roster and mutation helpers treated every admin as global. School-bound administrators could enumerate other schools' student rosters and deleted students, inspect student details, create/edit/delete/restore students, link parents, link/unlink student logins, and invoke erasure outside their assigned school.
+- **Implementation:** pin roster reads and deleted-student lists to a school-bound admin's authenticated school; preserve cross-school access only for global admins (school_code NULL). Apply school checks to student detail, create, edit, delete, restore, parent-link and student-login-link operations. Retain school predicates in mutation SQL and row-lock relationship updates. Require a student login to belong to the same school as its student record. Preserve existing teacher class/school scope and the existing erasure school check.
+- **Regression coverage added:** PostgreSQL HTTP tests cover roster and deleted-roster filtering, cross-school detail/create/edit/delete/restore denials, parent link/unlink isolation, student-login link/unlink isolation, cross-school student-login mismatch, erasure denial, and global-admin cross-school roster access.
+- **Verification:** source, test and scope helper files fetched back from the dedicated branch and statically reviewed. The existing PostgreSQL 16 parent-ward workflow runs the extended test file and backend TypeScript check on the PR. No local test pass is claimed. No production database or data was accessed or changed.
+- **Remaining:** open a focused PR; inspect PostgreSQL parent-ward/student scope regressions and backend typecheck; resolve genuine failures without weakening assertions; record actual CI evidence.
+- **Exact next action:** open the BSEC-030 PR and verify its PostgreSQL workflow.
