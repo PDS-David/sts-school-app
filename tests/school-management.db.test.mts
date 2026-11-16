@@ -248,10 +248,11 @@ if (!SERVER_URL) {
 
     const subjectOnlyOverview = await request('/scores/teacher/overview', subjectTeacher);
     assert.equal(subjectOnlyOverview.status, 200, JSON.stringify(subjectOnlyOverview.payload));
-    assert.equal(Number(subjectOnlyOverview.payload.summary.student_count), 2);
-    assert.equal(Number(subjectOnlyOverview.payload.summary.expected_score_entries), 2);
+    // Subject-only teachers see their assigned subject across their school, not just one class.
+    assert.equal(Number(subjectOnlyOverview.payload.summary.student_count), 3);
+    assert.equal(Number(subjectOnlyOverview.payload.summary.expected_score_entries), 3);
     assert.equal(Number(subjectOnlyOverview.payload.summary.marked_score_entries), 1);
-    assert.equal(Number(subjectOnlyOverview.payload.summary.pending_score_entries), 1);
+    assert.equal(Number(subjectOnlyOverview.payload.summary.pending_score_entries), 2);
     assert.equal(subjectOnlyOverview.payload.summary.attendance_rate, null);
     assert.equal(subjectOnlyOverview.payload.summary.attendance_records, 0);
     assert.equal(subjectOnlyOverview.payload.summary.weekly_effort_entries, 0);
