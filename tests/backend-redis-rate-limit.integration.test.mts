@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { randomUUID } from 'node:crypto';
 import type { AddressInfo } from 'node:net';
 import type { Server } from 'node:http';
 import express from 'express';
@@ -50,7 +51,7 @@ after(async () => {
 });
 
 test('independent API instances enforce one shared account quota', async () => {
-  const namespace = `bsec027-http-${crypto.randomUUID()}`;
+  const namespace = `bsec027-http-${randomUUID()}`;
   const [urlA, urlB] = await Promise.all([
     startLimiterApp(namespace),
     startLimiterApp(namespace),
@@ -66,14 +67,14 @@ test('independent API instances enforce one shared account quota', async () => {
 });
 
 test('shared AI-generation quota is atomic across calls and resets with its own key', async () => {
-  const key = `bsec027-ai-${crypto.randomUUID()}`;
+  const key = `bsec027-ai-${randomUUID()}`;
   assert.equal(await consumeRedisQuota(key, 2, 60_000), true);
   assert.equal(await consumeRedisQuota(key, 2, 60_000), true);
   assert.equal(await consumeRedisQuota(key, 2, 60_000), false);
 });
 
 test('successful-request decrement and explicit reset preserve shared-store semantics', async () => {
-  const store = createRedisRateLimitStore(`bsec027-store-${crypto.randomUUID()}`);
+  const store = createRedisRateLimitStore(`bsec027-store-${randomUUID()}`);
   assert.ok(store);
   store.init({ windowMs: 60_000 });
   const first = await store.increment('account');
