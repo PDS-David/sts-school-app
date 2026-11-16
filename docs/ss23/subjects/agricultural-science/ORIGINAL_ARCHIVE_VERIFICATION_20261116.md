@@ -85,6 +85,26 @@ The extracted text also exposes source defects requiring correction/review, not 
 
 **Disposition:** do not classify Weeks 7–8 as wholly absent. Treat the body as present but structurally under-labelled, and keep its exact package mapping and assessment/source reconciliation open until checked against the original rendered pages.
 
+
+## Cross-check against the merged Agriculture package
+
+I also fetched and parsed the package blob at master (`a61d1fff21ffe09f122eab69db734fef6b781841`) and reconciled its top-level source/question inventory with the package register:
+
+| Term | Units | Practice records | Marked ORIGINAL_SOURCE | Marked AUTHORED_SUPPLEMENT |
+|---|---:|---:|---:|---:|
+| First | 8 | 150 | 128 | 22 |
+| Second | 6 | 24 | 0 | 24 |
+| Third | 5 | 21 | 0 | 21 |
+| **Total** | **19** | **195** | **128** | **67** |
+
+Structural checks on the fetched JSON found:
+- 195 practice records with unique question IDs;
+- no marking-total mismatches (criterion marks sum to the question's declared marks);
+- no missing question or answer locator fields;
+- 3 registered original source records, 48 external factual references, 52 asset records and 47 open items.
+
+These checks confirm record structure and the package's own origin labels only. They do not establish answer accuracy, completeness of source-question transcription, correctness of source locators, rights, teacher approval or release readiness. In particular, the Second- and Third-Term source assessment inventories remain open because their 45 current practice records are explicitly authored supplements, not source-verbatim questions.
+
 ## Decisions this audit does not make
 
 - It does not select between conflicting source versions for other SS2 subjects.
