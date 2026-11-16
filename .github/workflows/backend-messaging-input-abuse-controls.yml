@@ -5,6 +5,7 @@ on:
     branches: [master]
     paths:
       - "backend/src/routes/messages.ts"
+      - "backend/src/utils/redisRateLimitStore.ts"
       - "tests/backend-messaging-input-abuse-controls.integration.test.mts"
       - ".github/workflows/backend-messaging-input-abuse-controls.yml"
 
@@ -21,15 +22,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     services:
-      redis:
-        image: redis:7-alpine
-        ports:
-          - 6379:6379
-        options: >-
-          --health-cmd "redis-cli ping"
-          --health-interval 5s
-          --health-timeout 3s
-          --health-retries 10
       redis:
         image: redis:7-alpine
         ports:
