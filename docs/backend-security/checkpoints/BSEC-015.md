@@ -2,11 +2,13 @@
 
 - **Task ID:** BSEC-015
 - **Title:** Enforce invoice fee-item class compatibility and lock financial references during invoice creation
-- **Status:** implementation and all required CI checks passed; PR review/merge pending
+- **Status:** merged
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Base commit:** 7451e263136b4fedc5fd876f5822c755b6c7b1c7
 - **Working branch:** agent/backend-finance-invoice-integrity-refresh-20261113
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/825 (merged 2026-11-13T17:38:09Z)
+- **Merge commit:** c998933ad14de3a37e54b9c36b40a67931b2be96
 - **Latest implementation commit:** 8467c9397852b781d3a4e409aa05a60aa14a4132
 - **Current PR head:** 26d0e01362b7d29f6fc7b6e754cafb7ffd50915e
 - **Changed files planned:** backend/src/routes/finance.ts; PostgreSQL HTTP integration test; focused workflow; this checkpoint.
@@ -20,5 +22,5 @@
   5. Add PostgreSQL HTTP integration regressions for class mismatch, school mismatch, duplicate/malformed IDs, successful invoice and rollback on line-item failure where feasible.
   6. Run focused PostgreSQL tests and backend typecheck; no production data changes.
 - **Verification:** PR #825 workflows 43473174236 (PostgreSQL invoice integration and backend typecheck), 43473174380 (SS1 package/type/hash integrity), and 43473174246 (JSS3/backend/mobile checks) all passed.
-- **Remaining:** merge PR #825 after refreshed head checks pass; no production database or data was changed.
-- **Exact next action:** merge PR #825 using expected head SHA 26d0e01362b7d29f6fc7b6e754cafb7ffd50915e after its checkpoint-only update is reverified.
+- **Remaining:** none for BSEC-015. No production database or data was changed.
+- **Exact next action:** continue with the next independently scoped backend defect.
