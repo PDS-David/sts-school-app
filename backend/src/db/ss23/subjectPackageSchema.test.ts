@@ -261,7 +261,11 @@ test('loads the SS2 Agricultural Science package with source assessment coverage
   assert.match(soilPracticals.detail, /draft procedures for moisture, porosity, capillarity, soil organisms and organic-matter observation now exist/);
   assert.match(soilPracticals.required_action, /mark-by-mark guides/);
   assert.equal(soilPracticals.blocks_delivery, true);
-  assert.equal(pkg.external_sources.length, 45);
+  assert.equal(pkg.external_sources.length, 47);
+  assert.ok(pkg.external_sources.some(source => source.source_id === 'SS23-EXT-EPPO-CASSAVA-BLIGHT-NOMENCLATURE'));
+  assert.ok(pkg.external_sources.some(source => source.source_id === 'SS23-EXT-APS-CASSAVA-BLIGHT-2024'));
+  assert.ok(pkg.coverage.some(row => row.id === 'COV-SS2-AG-T2-EPPO-CASSAVA-NAME' && row.status === 'SUPPORTED'));
+  assert.ok(pkg.coverage.some(row => row.id === 'COV-SS2-AG-T2-APS-CASSAVA-PATHOGEN' && row.status === 'SUPPORTED'));
   assert.ok(pkg.assets.some(asset => asset.path === 'backend/src/db/ss23/assets/agricultural-science/irrigation-systems.svg' && asset.state.implementation === 'IMPLEMENTED'));
   assert.ok(pkg.assets.some(asset => asset.path === 'backend/src/db/ss23/assets/agricultural-science/drainage-systems.svg' && asset.state.implementation === 'IMPLEMENTED'));
   assert.ok(pkg.assets.some(asset => asset.path === 'backend/src/db/ss23/assets/agricultural-science/nitrogen-cycle.svg' && asset.state.implementation === 'IMPLEMENTED'));
