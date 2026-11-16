@@ -5,7 +5,7 @@
 - **Status:** implementation committed; focused CI verification pending
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** agent/backend-admin-user-school-scope-20261116 (stacked on BSEC-028)
-- **Working branch:** agent/backend-admin-operational-school-scope-20261116
+- **Working branch:** agent/backend-admin-operational-school-scope-refresh-20261116
 - **Changed files:**
   - backend/src/routes/admin.ts
   - tests/backend-admin-user-school-scope.integration.test.mts (extended)
