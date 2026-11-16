@@ -1,3 +1,56 @@
+## Live-state update — 2026-11-16
+
+This section supersedes the historical branch/PR status in the checkpoint below. Historical source-receipt evidence is retained.
+
+### Current master and merged work
+
+- Current master baseline at task start: `28c0f808565aae243b113ab5b0c261d9d34a90d5`.
+- PR #791 Agricultural Science source map merged: `8176e6e27b8ea30261d9464c89748f0c5a09845c`.
+- PR #794 SS2/SS3 unit package contract merged: `53ceca40c70c1ea8634cfbffe86fe12bdf9ba884`.
+- PR #819 Agricultural Science package, loader and gated SS2/SS3 student delivery merged: `d341acf855c9eb240e51991aa9e6eaa62fe0efe5`.
+- PR #846 source registry, validator and integrity workflow merged: `02081f769999d1d6be33b97be5b11f6d7a8d86d1`.
+- SS3 policy is settled in the merged package contract: exam preparation only (WAEC/NECO/JAMB), Terms 1-2; no normal SS3 instructional curriculum or Third-Term package.
+
+### Current curriculum status
+
+- SS2 Agricultural Science has one root-level package with 8 units (First Term), 150 practice/assessment items, 47 asset records (42 pending source-extract references and 5 stored SVGs), and 43 open items (37 delivery-blocking, 6 non-blocking). Package and unit approvals remain PENDING. This is not student-release readiness.
+- The package's First-Term source member SHA/byte identity matches the source registry. The merged source map provides week/topic mapping. Subject-lead decisions and figure/source-use blockers remain.
+- No other SS2 subject package is recorded as implemented. SS3 exam-preparation subject packages remain outstanding.
+- SS23-Q student delivery is already implemented in master by PR #819: class-resolved routes, term PIN gating, approval/verification/reuse gates, asset integrity checks, and student projections that omit answers, explanations, marking criteria and provenance. PR #819 workflow run 43476440171 completed successfully (backend typecheck and package-contract validation). Route-level HTTP reachability still requires focused verification.
+
+### SS23-VALIDATOR-ALIGN-01 — current task
+
+- Branch: `agent/ss23-validator-contract-alignment-20261116`
+- Status: **IMPLEMENTED; CI NOT YET RUN ON THIS BRANCH.**
+- Changed files:
+  - `backend/src/db/ss23/validateSubjectPackages.ts` — validates current root-level unit packages with the merged unit schema and registry, while retaining legacy audit-package validation; readiness now counts the current package.
+  - `backend/src/db/ss23/refreshIntegrityHashes.ts` — checks root-level unit packages and legacy class subdirectories; refreshes unit/lesson body hashes and stored asset hashes; missing unapproved source-extract references remain non-deliverable metadata, while approved missing assets fail.
+  - `tests/ss23/unit-package-validator.test.mts` — regression coverage for root package discovery, readiness, source hash/byte mismatch, pending assets, approved missing assets, path traversal and consolidated-archive member path variants.
+- Commits:
+  - Validator: `407d5d57c0e42cb1060472e9c682806f2753e969`
+  - Hash refresh (final): `0bb5c2740b004e35bc00df86a852a77e24730a4c`
+  - Regression tests (final): `5b0373917dd253db480fae31c03860a846b8237b`
+- Test evidence:
+  - Local clone/install could not run: `git clone` failed because this execution environment could not resolve `github.com`.
+  - `npm ci --ignore-scripts --workspace backend`: NOT RUN.
+  - `npm run ss23:refresh-hashes -- --check`: NOT RUN locally.
+  - `npm run validate:ss23`: NOT RUN locally.
+  - `npm run test:ss23`: NOT RUN locally.
+  - Backend TypeScript typecheck: NOT RUN locally.
+  - PR CI: pending; do not describe this task as tested until the SS23 integrity gate passes.
+- Exact next action: open a PR against `master`, inspect the SS23 integrity-gate run, fix any failure on this branch, and update this checkpoint with the resulting run and commit.
+
+### Owner decisions and source limitations
+
+- The SS3 policy decision is already resolved by merged PR #794; do not ask again.
+- The live source-receipt checkpoint records two consolidated archives, with 96/100 exact member matches and four different-content versions: SS2 T2 Economics, SS2 T3 Further Mathematics, SS3 T1 Mathematics and SS3 T1 Economics. Owner decision is still required before substituting any of those four versions.
+- SS2 T2 Geography still has a header/class mismatch requiring confirmation that it is SS2 content with a header typo.
+- Missing source terms remain explicit: SS3 Third-Term archive; Technical Drawing SS2 T1 and SS3 T1; Catering Craft SS2 T1, SS2 T3 and SS3 T1; Food & Nutrition SS3 T2. SS3 Literature T1/T2 and Book-keeping term duplicates remain unresolved source distinctions.
+- SS2 T2 Data Processing starts at Week 2 without a scheme; SS2 T2 Food & Nutrition has a T1 duplicate. Do not invent missing original source material.
+- No curriculum approval, acceptance or student-release approval is inferred from merged code or CI success.
+
+---
+
 # SS2 / SS3 curriculum readiness — checkpoint
 
 Task: SS23-00 baseline inspection and SS23-S0 source receipt. Updated: 2026-11-13.
