@@ -1,4 +1,5 @@
-import { connect as connectNet, type Socket } from 'node:net';
+import 'dotenv/config';
+import { connect as connectNet, isIP, type Socket } from 'node:net';
 import { connect as connectTls } from 'node:tls';
 
 type RedisValue = string | number | null | RedisValue[];
@@ -146,7 +147,11 @@ class RedisClient {
 
   private async openAndAuthenticate(): Promise<void> {
     const socket = this.config.tls
-      ? connectTls({ host: this.config.host, port: this.config.port })
+      ? connectTls({
+          host: this.config.host,
+          port: this.config.port,
+          ...(isIP(this.config.host) ? {} : { servername: this.config.host }),
+        })
       : connectNet({ host: this.config.host, port: this.config.port });
 
     await new Promise<void>((resolve, reject) => {
@@ -170,7 +175,8 @@ class RedisClient {
     socket.on('data', chunk => this.handleData(chunk));
     socket.on('error', error => { if (this.socket === socket) this.fail(error); });
     socket.on('close', () => { if (this.socket === socket) this.fail(new Error('Redis connection closed.')); });
-    socket.setTimeout(3000, () => socket.destroy(new Error('Redis command timed out.')));
+    // Keep the shared connection warm between requests, but discard a genuinely
+    // idle socket after 30 seconds. The 3-second timeout above is connect-only.
 
     try {
       if (this.config.password) {
@@ -197,7 +203,10 @@ class RedisClient {
       socket.ref();
       this.pending.push({ resolve, reject });
       socket.write(encodeCommand(args), error => {
-        if (error) this.fail(error);
+        if (error) {
+          socket.destroy(error);
+          this.fail(error);
+        }
       });
     });
   }
@@ -296,8 +305,12 @@ function responsePair(value: RedisValue): [number, number] {
 
 export function createRedisRateLimitStore(namespace: string) {
   if (!configuredRedisUrl()) return undefined;
+  if (!/^[a-z0-9:_-]{1,64}$/i.test(namespace)) {
+    throw new Error('Rate-limit namespace must be 1–64 safe characters.');
+  }
   let windowMs = 60_000;
-  const prefix = `sts:rate-limit:${namespace}:`;
+  const environment = process.env.APP_ENV?.trim() || process.env.NODE_ENV?.trim() || 'development';
+  const prefix = `sts:${environment}:rate-limit:${namespace}:`;
 
   return {
     init(options: { windowMs?: number }) {
@@ -333,7 +346,8 @@ export async function consumeRedisQuota(key: string, limit: number, windowMs: nu
   if (!Number.isSafeInteger(limit) || limit < 1 || !Number.isFinite(windowMs) || windowMs < 1) {
     throw new Error('Invalid Redis quota configuration.');
   }
-  const safeKey = `sts:quota:${key}`;
+  const environment = process.env.APP_ENV?.trim() || process.env.NODE_ENV?.trim() || 'development';
+  const safeKey = `sts:${environment}:quota:${key}`;
   try {
     const result = await redisCommand(['EVAL', INCREMENT_SCRIPT, 1, safeKey, Math.ceil(windowMs)]);
     const [totalHits] = responsePair(result);
