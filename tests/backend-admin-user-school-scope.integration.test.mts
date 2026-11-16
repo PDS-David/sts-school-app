@@ -181,3 +181,121 @@ test('school-bound administrators cannot manage accounts outside their school', 
     if (createdUserId) await query('DELETE FROM users WHERE id=$1', [createdUserId]);
   }
 });
+
+
+test('school-bound administrators cannot access operational records outside their school', async () => {
+  const suffix = randomUUID().slice(0, 8);
+  const globalAdmin = await createUser('global-ops-admin', 'admin', null, 'test-hash');
+  const primaryAdmin = await createUser('primary-ops-admin', 'admin', 'primary', 'test-hash');
+  const studentIds: string[] = [];
+  const classIds: number[] = [];
+  const auditIds: number[] = [];
+  let server: Server | undefined;
+  const className = `BSEC29-${suffix}`;
+
+  try {
+    for (const schoolCode of ['primary', 'secondary']) {
+      const classRow = await query(
+        'INSERT INTO classes(school_code,name) VALUES($1,$2) RETURNING id',
+        [schoolCode, className],
+      );
+      classIds.push(Number(classRow.rows[0].id));
+      const studentRow = await query(
+        `INSERT INTO students(school_code,admission_number,full_name,class_name)
+         VALUES($1,$2,$3,$4) RETURNING id`,
+        [schoolCode, `BSEC29-${suffix}-${schoolCode}`, `BSEC29 ${schoolCode}`, className],
+      );
+      studentIds.push(String(studentRow.rows[0].id));
+      const actorId = schoolCode === 'primary' ? primaryAdmin.id : globalAdmin.id;
+      const auditRow = await query(
+        `INSERT INTO audit_log(actor_id,actor_name,action,entity,entity_id,school_code,detail)
+         VALUES($1,$2,'BSEC29_TEST','security_test',$3,$4,$5) RETURNING id`,
+        [actorId, `BSEC29 ${schoolCode}`, suffix, schoolCode, `BSEC29 ${schoolCode} audit`],
+      );
+      auditIds.push(Number(auditRow.rows[0].id));
+    }
+    const [primaryStudentId, secondaryStudentId] = studentIds;
+
+    const started = await startServer();
+    server = started.server;
+    const get = (token: string, path: string) => fetch(`${started.baseUrl}${path}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const post = (token: string, path: string, body: Record<string, unknown>) => fetch(`${started.baseUrl}${path}`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+
+    const deniedClassCode = await post(primaryAdmin.token, '/class-codes', {
+      school_code: 'secondary', class_name: className,
+    });
+    assert.equal(deniedClassCode.status, 403);
+    const ownClassCode = await post(primaryAdmin.token, '/class-codes', { class_name: className });
+    assert.equal(ownClassCode.status, 201);
+    assert.equal((await ownClassCode.json() as { class_code: { school_code: string } }).class_code.school_code, 'primary');
+    const globalSecondaryClassCode = await post(globalAdmin.token, '/class-codes', {
+      school_code: 'secondary', class_name: className,
+    });
+    assert.equal(globalSecondaryClassCode.status, 201);
+
+    const classCodes = await get(primaryAdmin.token, `/class-codes?class_name=${encodeURIComponent(className)}`);
+    assert.equal(classCodes.status, 200);
+    assert.ok((await classCodes.json() as { class_codes: Array<{ school_code: string }> }).class_codes
+      .every(row => row.school_code === 'primary'));
+    assert.equal((await get(primaryAdmin.token, '/class-codes?school_code=secondary')).status, 403);
+    const globalClassCodes = await get(globalAdmin.token, `/class-codes?class_name=${encodeURIComponent(className)}`);
+    assert.equal(globalClassCodes.status, 200);
+    const globalCodes = (await globalClassCodes.json() as { class_codes: Array<{ school_code: string; class_name: string }> }).class_codes;
+    assert.ok(globalCodes.some(row => row.school_code === 'primary' && row.class_name === className));
+    assert.ok(globalCodes.some(row => row.school_code === 'secondary' && row.class_name === className));
+
+    assert.equal((await post(primaryAdmin.token, '/term-pins', {
+      student_id: secondaryStudentId, term_label: '1st Term',
+    })).status, 404);
+    assert.equal((await post(primaryAdmin.token, '/term-pins', {
+      student_id: primaryStudentId, term_label: '1st Term',
+    })).status, 201);
+    assert.equal((await post(globalAdmin.token, '/term-pins', {
+      student_id: secondaryStudentId, term_label: '1st Term',
+    })).status, 201);
+
+    const termPins = await get(primaryAdmin.token, `/term-pins?student_id=${primaryStudentId}`);
+    assert.equal(termPins.status, 200);
+    assert.ok((await termPins.json() as { term_pins: Array<{ school_code?: string; student_id: string }> }).term_pins
+      .every(row => row.student_id === primaryStudentId));
+    assert.equal((await get(primaryAdmin.token, '/term-pins?school_code=secondary')).status, 403);
+    const globalPins = await get(globalAdmin.token, `/term-pins?student_id=${secondaryStudentId}`);
+    assert.equal(globalPins.status, 200);
+    const allPins = (await globalPins.json() as { term_pins: Array<{ student_id: string }> }).term_pins;
+    assert.ok(allPins.some(row => row.student_id === secondaryStudentId));
+
+    const auditLog = await get(primaryAdmin.token, '/audit-log');
+    assert.equal(auditLog.status, 200);
+    const primaryAudit = (await auditLog.json() as { audit_log: Array<{ detail: string }> }).audit_log;
+    assert.ok(primaryAudit.some(row => row.detail === `BSEC29 primary audit`));
+    assert.ok(!primaryAudit.some(row => row.detail === `BSEC29 secondary audit`));
+    assert.equal((await get(primaryAdmin.token, '/audit-log?school_code=secondary')).status, 403);
+    const globalAudit = await get(globalAdmin.token, '/audit-log');
+    assert.ok((await globalAudit.json() as { audit_log: Array<{ detail: string }> }).audit_log
+      .some(row => row.detail === `BSEC29 secondary audit`));
+
+    assert.equal((await get(primaryAdmin.token, '/export/excel?school_code=secondary')).status, 403);
+    assert.equal((await get(primaryAdmin.token, '/backups/status')).status, 403);
+    assert.equal((await post(primaryAdmin.token, '/backups/run', {})).status, 403);
+    assert.equal((await post(primaryAdmin.token, '/log-email', {})).status, 403);
+  } finally {
+    if (server) {
+      server.closeAllConnections();
+      await new Promise<void>(resolve => server!.close(() => resolve()));
+    }
+    if (studentIds.length) {
+      await query('DELETE FROM term_access_pins WHERE student_id=ANY($1::uuid[])', [studentIds]);
+      await query('DELETE FROM students WHERE id=ANY($1::uuid[])', [studentIds]);
+    }
+    if (classIds.length) await query('DELETE FROM class_access_codes WHERE school_code IN (\'primary\',\'secondary\') AND class_name=$1', [className]);
+    if (auditIds.length) await query('DELETE FROM audit_log WHERE id=ANY($1::bigint[])', [auditIds]);
+    if (classIds.length) await query('DELETE FROM classes WHERE id=ANY($1::int[])', [classIds]);
+    await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [[globalAdmin.id, primaryAdmin.id]]);
+  }
+});
