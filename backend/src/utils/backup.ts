@@ -242,6 +242,45 @@ export async function runBackup(actor: string): Promise<{ status: string; emaile
   }
 }
 
+/**
+ * Automatically attempt an encrypted off-host backup when the last emailed
+ * backup is overdue. A session advisory lock prevents duplicate runs across
+ * multiple API instances. Failed/not-emailed attempts are logged by runBackup
+ * and retried no more than once per 24 hours.
+ */
+export async function runScheduledBackupIfDue(): Promise<boolean> {
+  await ensureBackupLog();
+  const client = await pool.connect();
+  let locked = false;
+  try {
+    const { rows: lock } = await client.query(
+      'SELECT pg_try_advisory_lock(1937001, 6) AS ok',
+    );
+    locked = Boolean(lock[0]?.ok);
+    if (!locked) return false;
+
+    const { rows } = await client.query(
+      `SELECT
+         (SELECT max(created_at) FROM backup_log WHERE kind='backup' AND status='emailed') AS last_success,
+         (SELECT max(created_at) FROM backup_log WHERE kind='backup') AS last_attempt`,
+    );
+    const now = Date.now();
+    const lastSuccess = rows[0]?.last_success ? new Date(rows[0].last_success).getTime() : null;
+    const lastAttempt = rows[0]?.last_attempt ? new Date(rows[0].last_attempt).getTime() : null;
+
+    if (lastSuccess !== null && now - lastSuccess < BACKUP_INTERVAL_DAYS * 86_400_000) return false;
+    if (lastAttempt !== null && now - lastAttempt < 24 * 60 * 60 * 1000) return false;
+
+    await runBackup('system-scheduler');
+    return true;
+  } finally {
+    if (locked) {
+      await client.query('SELECT pg_advisory_unlock(1937001, 6)').catch(() => {});
+    }
+    client.release();
+  }
+}
+
 /** Sends the weekly reminder (email + push to admins) if a backup is overdue and no reminder went out in the last 7 days. */
 export async function sendReminderIfDue(): Promise<boolean> {
   await ensureBackupLog();
@@ -289,12 +328,19 @@ export function startBackupScheduler(): () => Promise<void> {
   let inFlight: Promise<void> | undefined;
   const tick = () => {
     if (stopped || inFlight) return;
-    inFlight = sendReminderIfDue()
-      .then(
-        () => undefined,
-        (e) => { console.error('[backup] reminder check failed:', e?.message); },
-      )
-      .finally(() => { inFlight = undefined; });
+    inFlight = (async () => {
+      try {
+        await runScheduledBackupIfDue();
+      } catch (e: any) {
+        // runBackup records a failed attempt in backup_log before rejecting.
+        console.error('[backup] scheduled backup failed:', e?.message);
+      }
+      try {
+        await sendReminderIfDue();
+      } catch (e: any) {
+        console.error('[backup] reminder check failed:', e?.message);
+      }
+    })().finally(() => { inFlight = undefined; });
   };
   const initial = setTimeout(tick, 60_000);
   const interval = setInterval(tick, 60 * 60 * 1000);
