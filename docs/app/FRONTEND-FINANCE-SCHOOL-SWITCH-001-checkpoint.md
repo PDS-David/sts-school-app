@@ -14,8 +14,12 @@
 - Added the same latest-request guard to student/term option loading for new invoices.
 - On Finance Admin campus changes, invalidate outstanding option loads, close campus-specific modals, clear stale student/term/fee selections, and dismiss a pending payment confirmation.
 
+## Additional parent cross-campus finding and fix
+
+Parent accounts can have wards in both STS campuses. The prior fee-schedule route always used the parent account's original `users.school_code`, even when the parent selected a ward at the other campus; this disagreed with the cross-campus `parent_wards` model used by invoices. The screen now requests the selected ward's campus. The backend verifies that campus against the parent's active linked wards before returning fee items, and an unfiltered parent request returns only fee items from campuses containing their active wards. A new integration test covers both linked campuses and rejects an unlinked-campus query.
+
 ## Verification
 
-- Static review against current `backend/src/routes/finance.ts`: invoice creation independently checks that the student, term, fee items, school, and class are compatible; this frontend change prevents stale campus data from reaching that validation path.
-- TypeScript / CI: pending after PR creation.
+- Static review against `backend/src/routes/finance.ts`: invoice creation independently checks that the student, term, fee items, school, and class are compatible.
+- Mobile TypeScript CI passed on the initial screen change; backend build and the extended finance integration test are pending after the latest commits.
 - No live payment or production database action performed.
