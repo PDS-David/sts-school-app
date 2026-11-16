@@ -8,7 +8,7 @@ const moduleDir = path.dirname(fileURLToPath(import.meta.url));
 // SS2 instructional packages live at subjects/<slug>.json.
 // SS3 exam-preparation packages live at subjects/ss3/<slug>.json.
 export const registeredSs23Subjects = ['agricultural-science', 'biology'] as const;
-export const registeredSs23ExamSubjects = ['agricultural-science'] as const;
+export const registeredSs23ExamSubjects = ['agricultural-science', 'biology'] as const;
 export type RegisteredSs23Subject = typeof registeredSs23Subjects[number];
 
 export function loadSs23Packages(
