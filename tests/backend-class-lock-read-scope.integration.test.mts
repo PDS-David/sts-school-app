@@ -66,6 +66,7 @@ test('class lock reads are restricted to class teachers and administrators', asy
   const parent = await createUser('parent', 'parent', null);
   const financeAdmin = await createUser('finance-admin', 'finance_admin', null);
   const termIds: number[] = [];
+  const classIds: number[] = [];
   const lockIds: number[] = [];
   let server: Server | undefined;
 
@@ -80,6 +81,11 @@ test('class lock reads are restricted to class teachers and administrators', asy
       termIds.push(Number(rows[0].id));
     }
     const [primaryTerm, secondaryTerm] = termIds;
+    const secondaryClass = await query(
+      `INSERT INTO classes(school_code,name) VALUES('secondary','Primary 4')
+       ON CONFLICT(school_code,name) DO NOTHING RETURNING id`,
+    );
+    if (secondaryClass.rows[0]) classIds.push(Number(secondaryClass.rows[0].id));
     for (const [schoolCode, className, termId] of [
       ['primary', 'Primary 4', primaryTerm],
       ['primary', 'Primary 5', primaryTerm],
@@ -209,6 +215,7 @@ test('class lock reads are restricted to class teachers and administrators', asy
       await new Promise<void>(resolve => server!.close(() => resolve()));
     }
     if (lockIds.length) await query('DELETE FROM class_locks WHERE id=ANY($1::int[])', [lockIds]);
+    if (classIds.length) await query('DELETE FROM classes WHERE id=ANY($1::int[])', [classIds]);
     if (termIds.length) await query('DELETE FROM terms WHERE id=ANY($1::int[])', [termIds]);
     await query('DELETE FROM users WHERE id=ANY($1::uuid[])',
       [[admin.id, primaryAdmin.id, primaryTeacher.id, secondaryTeacher.id, subjectOnlyTeacher.id, student.id, parent.id, financeAdmin.id]]);
