@@ -10,7 +10,7 @@ import { openNotifications } from '../../navigation/navigationRef';
 const SHORTCUTS: { icon: keyof typeof Ionicons.glyphMap; label: string; typeFilter?: string; color: string }[] = [
   { icon: 'document-text', label: 'Resources', color: '#6A1B9A' },
   { icon: 'videocam',      label: 'Videos',    typeFilter: 'video', color: '#1565C0' },
-  { icon: 'download',      label: 'Downloads', typeFilter: 'doc',   color: '#2E7D32' },
+  { icon: 'download',      label: 'Downloads', typeFilter: 'download', color: '#2E7D32' },
 ];
 
 export default function StudentLearningScreen({ navigation }: any) {
