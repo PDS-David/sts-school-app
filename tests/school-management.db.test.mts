@@ -185,7 +185,7 @@ if (!SERVER_URL) {
       title: 'Secondary event', start_at: future(12), school_code: 'secondary',
     });
     assert.equal(foreignEvent.status, 201);
-    const forbiddenDelete = await request('/school-events/' + parentEvent.payload.event.id, schoolAdmin, 'DELETE');
+    const forbiddenDelete = await request('/school-events/' + foreignEvent.payload.event.id, schoolAdmin, 'DELETE');
     assert.equal(forbiddenDelete.status, 404);
     const globalDelete = await request('/school-events/' + foreignEvent.payload.event.id, globalAdmin, 'DELETE');
     assert.equal(globalDelete.status, 200);
