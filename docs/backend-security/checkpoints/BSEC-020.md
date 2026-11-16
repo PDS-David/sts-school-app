@@ -23,6 +23,8 @@
 - **Merged implementation:** PR #826 contains locked student/subject/term validation, subject-only teacher authorization, class-teacher class restrictions, all-or-nothing bulk score writes, and school-safe score/report joins. Source is present on current master.
 - **Verification gap discovered on reconnection:** the PostgreSQL regression test was merged but no dedicated workflow ran it. Its report assertion expected the wrong JSON shape (`class_size` and `subjects` at the root); the actual endpoint returns `summary.class_size` and score rows under `scores`. The regression also lacked a successful-bulk commit assertion.
 - **Correction:** fixed the report response assertions, added a valid-batch persistence assertion, and added a PostgreSQL 16 workflow that bootstraps the disposable schema, runs this integration test and typechecks the backend.
-- **Verification status:** workflow pending; the previous PR #826 required repository-wide JSS3 static and SS1 hash gates failed on unrelated package/content checks. Its backend student-report term-scope workflow passed. Do not count those repository-wide failures as score-specific regressions.
-- **Remaining:** obtain passing dedicated PostgreSQL integration and backend typecheck results; fix any genuine score-specific failures; merge the focused verification PR; continue the backend audit.
-- **Exact next action:** open a focused PR from agent/backend-score-subject-scope-verification-20261116 and inspect its PostgreSQL workflow logs.
+- **Verification status:** first dedicated run 43937683365 exposed a test harness defect, not an application defect: the raw-score GET used a query-only URL and Node fetch rejected it (`Failed to parse URL from ?term_id=7`). The test now uses the server's absolute base URL. Typecheck was skipped because the test step failed. Repository-wide SS1, SS23 and JSS3 gates passed on the first verification head.
+- **Correction commit:** c7512accb38b4b7c93a10c4b5c16535854aa1527
+- **Follow-up PR:** https://github.com/PDS-David/sts-school-app/pull/891
+- **Current verification:** rerun is queued on the correction commit; backend integration and typecheck must pass before merge.
+- **Exact next action:** inspect the latest run for PR #891, fix any score-specific regression failures, and merge only after the dedicated workflow and repository-wide gates pass.
