@@ -2,7 +2,7 @@
 
 - **Task ID:** BSEC-026
 - **Title:** Reconcile BSEC-024 and BSEC-025 checkpoint records with merged GitHub state
-- **Status:** reconciliation committed; PostgreSQL rerun pending
+- **Status:** merged; BSEC-024 and BSEC-025 PostgreSQL regressions and backend typecheck passed
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Base commit:** b24ef36285c4ac481951209e6ac32857c3e405a4
@@ -26,5 +26,5 @@
   - BSEC-025's class-lock test fixture already seeds and cleans up the Secondary `Primary 4` class on current master.
 - **Changes:** reconcile BSEC-024 checkpoint to merged/verified; reconcile BSEC-025 checkpoint to merged with post-merge verification pending; preserve the extra endpoint-scope work under BSEC-031; reserve BSEC-026/028/029 for the assigned sequence; extend the existing PostgreSQL 16 class-lock workflow to rerun both prior regression suites and backend TypeScript checking.
 - **Production safety:** verification uses a disposable PostgreSQL 16 service. No production database, production data, secrets or deployment settings were accessed or changed.
-- **Remaining:** inspect the reconciliation workflow; if both suites and typecheck pass, update BSEC-025 checkpoint with actual run evidence; open a focused PR and verify current-head checks.
-- **Exact next action:** inspect the PostgreSQL class-lock workflow run for the BSEC-026 reconciliation PR.
+- **Verification:** PR #921 merged at `a873b8b10fe9e375cee59cfd347cd930a0d72470`. PostgreSQL 16 workflow run `43950695156` passed BSEC-024 messaging abuse-control regressions, BSEC-025 class-lock read authorization regressions, and backend TypeScript typecheck. SS1 `43950695268` and SS23 `43950695119` integrity gates passed. JSS3 workflow `43950695094` was still running at this checkpoint update.
+- **Remaining:** none for BSEC-026 reconciliation. The broader assigned sequence continues with BSEC-028 upload/download security and BSEC-029 sensitive-action audit logging.
