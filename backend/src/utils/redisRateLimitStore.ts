@@ -165,8 +165,8 @@ class RedisClient {
     this.buffer = Buffer.alloc(0);
     socket.unref();
     socket.on('data', chunk => this.handleData(chunk));
-    socket.on('error', error => this.fail(error));
-    socket.on('close', () => this.fail(new Error('Redis connection closed.')));
+    socket.on('error', error => { if (this.socket === socket) this.fail(error); });
+    socket.on('close', () => { if (this.socket === socket) this.fail(new Error('Redis connection closed.')); });
     socket.setTimeout(3000, () => socket.destroy(new Error('Redis command timed out.')));
 
     try {
@@ -206,9 +206,10 @@ class RedisClient {
       try {
         parsed = parseResp(this.buffer);
       } catch (error) {
-        const pending = this.pending.shift();
-        pending?.reject(error instanceof Error ? error : new Error('Invalid Redis response.'));
-        continue;
+        const failure = error instanceof Error ? error : new Error('Invalid Redis response.');
+        this.socket?.destroy(failure);
+        this.fail(failure);
+        return;
       }
       if (!parsed) return;
       this.buffer = this.buffer.subarray(parsed.next);
