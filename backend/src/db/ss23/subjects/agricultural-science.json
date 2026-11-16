@@ -2183,6 +2183,33 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "ASSET-AG2-T1-W08-09-NUTRIENT-CYCLES-SCHOOL-SCHEMATIC",
+      "unit_id": "SUP-SS2-AGRICULTURAL-SCIENCE-T1-W08-09-PLANT-NUTRIENTS-CYCLES",
+      "path": "backend/src/db/ss23/assets/agricultural-science/nutrient-cycles-school.svg",
+      "sha256": "618fc09bd94fab87258efa3186c88c4d6b90a89999246e958752ae7b129b62b3",
+      "bytes": 5122,
+      "media_type": "image/svg+xml",
+      "alt": "Original school-authored three-panel teaching schematic comparing nitrogen, carbon and water cycles and their major agricultural pathways.",
+      "order": 50,
+      "source_locator": "Authored alternative to the source nutrient-cycle figures; not a reproduction of the source illustrations.",
+      "provenance": {
+        "source_id": "SS23-EXT-USDA-SOIL-BIOLOGY-PRIMER",
+        "source_sha256": "efafdd36dbf86879ee09a823a0e55c8cd6aa8eb5cb890eec1c463bac7e951c36",
+        "role": "AUTHORED_SUPPLEMENT",
+        "locator": "USDA NRCS soil biology primer; see also the package's NOAA carbon-cycle and USGS water-cycle references",
+        "rights": "Original SVG authored for this curriculum; no source figure reproduced.",
+        "attribution": "Original Sow the Seed School SS2 Agricultural Science teaching schematic informed by USDA NRCS, NOAA and USGS educational references.",
+        "reuse_status": "PERMITTED"
+      },
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "units": [
@@ -18008,6 +18035,22 @@
           "explanation": "Original schematic compares how surface furrows, overhead sprinklers and drip emitters deliver water; the lesson separately explains that drainage removes excess water."
         }
       ]
+    },
+    {
+      "id": "COV-SS2-AG-T1-NUTRIENT-CYCLES-SCHOOL-SCHEMATIC",
+      "source_id": "SS23-EXT-USDA-SOIL-BIOLOGY-PRIMER",
+      "objective": "Recognise the major stores and transformations in nitrogen, carbon and water cycles and distinguish transformation pathways from nutrient losses.",
+      "objective_locator": "First Term, Weeks 8-9, supplementary school-authored cycle schematic.",
+      "status": "SUPPORTED",
+      "unit_ids": [
+        "SUP-SS2-AGRICULTURAL-SCIENCE-T1-W08-09-PLANT-NUTRIENTS-CYCLES"
+      ],
+      "evidence": [
+        {
+          "locator": "USDA NRCS soil biology primer; package also contains NOAA carbon-cycle and USGS water-cycle references",
+          "explanation": "Original diagrams condense major stores and transformations from registered scientific references and explicitly distinguish runoff, leaching and gaseous losses."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -18352,13 +18395,14 @@
     {
       "id": "AG2-T1-W08-09-FIGURE-RIGHTS",
       "kind": "PERMISSION",
-      "detail": "Original school-authored nitrogen-cycle and carbon/water-cycle SVG diagrams now provide teaching alternatives for the three source figures. Their stored bytes and SHA-256 values are verified; content approval remains pending. The source nitrogen figure has an external credit, the source carbon figure carries an Alamy watermark, and rights for the water-cycle image are not established. The original images must remain evidence-only unless permission is documented.",
-      "required_action": "Have the subject lead review and approve the authored nitrogen, carbon and water-cycle diagrams, including the accuracy of labels and pathways. Keep the source figures out of student delivery unless written reuse permission and attribution are verified. Keep this issue blocking until the authored diagrams are approved and selected assets have documented rights.",
+      "detail": "An original school-authored three-panel schematic comparing the nitrogen, carbon and water cycles has been added to the Weeks 8-9 lesson as a teaching supplement. It distinguishes major stores and transformations and notes that runoff, leaching and gaseous losses are separate pathways. The watermarked source cycle images remain provenance-only and non-deliverable. The new diagram still requires scientific review, stored-asset verification and subject-lead approval.",
+      "required_action": "Check every labelled store, transformation and arrow against the lesson and registered USDA/NOAA/USGS references; confirm the diagram's simplification is suitable for SS2; verify the stored SVG; and record subject-lead approval. Keep source watermarked images non-deliverable unless separately licensed. Keep the item blocking until verification and approval are recorded.",
       "affected_ids": [
         "SUP-SS2-AGRICULTURAL-SCIENCE-T1-W08-09-PLANT-NUTRIENTS-CYCLES",
         "ASSET-AG2-T1-W08-09-NITROGEN-CYCLE-SOURCE",
         "ASSET-AG2-T1-W08-09-CARBON-CYCLE-SOURCE",
-        "ASSET-AG2-T1-W08-09-WATER-CYCLE-SOURCE"
+        "ASSET-AG2-T1-W08-09-WATER-CYCLE-SOURCE",
+        "ASSET-AG2-T1-W08-09-NUTRIENT-CYCLES-SCHOOL-SCHEMATIC"
       ],
       "blocks_delivery": true
     },
