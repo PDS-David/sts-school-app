@@ -22,6 +22,7 @@ const messageSendLimiter = rateLimit({
   legacyHeaders: false,
   handler: (_req, res) => res.status(429).json({ error: 'Too many messages; try again shortly' }),
   store: createRedisRateLimitStore('message-send'),
+  passOnStoreError: false,
 });
 
 const sendMessageSchema = z.object({
