@@ -9,3 +9,5 @@
 - **Acceptance:** encrypted backup integrity and authentication validated; malformed, partial, wrong-key and wrong-schema backups rejected before destructive writes; restore is transactionally all-or-nothing and requires explicit target database confirmation; scheduled backup failure is observable; documented off-host retention and recovery steps are actionable.
 - **Next action:** audit current backup/export/restore implementation and existing tests, identify gaps, then add isolated PostgreSQL integration coverage and a repeatable restore drill.
 - **Related work:** earlier student-roster authorization changes are preserved in BSEC-031-05.
+- **Reclassification:** The previous checkpoint content described school-bound administrator student-roster and student-account mutation isolation. It has been preserved as `BSEC-031-05.md` and merged through PR #915.
+- **Replacement record:** docs/backend-security/checkpoints/BSEC-031-05.md
