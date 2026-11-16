@@ -193,13 +193,34 @@ test('restore failure after truncation rolls back data and restores audit trigge
   );
 });
 
-test('restore rejects malformed row widths before connecting to the target database', async () => {
+test('restore rejects malformed row widths before any destructive write', async () => {
   const payload = await collectPayload();
   const table = payload.tables[0];
   table.rows.push([]);
+  const { rows: databaseRows } = await query('SELECT current_database() AS name');
+  const database = String(databaseRows[0].name);
+  const { rows: before } = await query('SELECT COUNT(*)::int AS count FROM schools');
 
   assert.throws(
     () => validateBackupPayloadShape(payload),
     /does not match its column count/,
   );
+  await assert.rejects(
+    restore(payload, { apply: true, confirmDatabase: database }),
+    /does not match its column count/,
+  );
+  const { rows: afterRows } = await query('SELECT COUNT(*)::int AS count FROM schools');
+  assert.equal(afterRows[0].count, before[0].count);
+});
+
+test('restore requires the exact target database name before destructive writes', async () => {
+  const payload = await collectPayload();
+  const { rows: before } = await query('SELECT COUNT(*)::int AS count FROM schools');
+
+  await assert.rejects(
+    restore(payload, { apply: true, confirmDatabase: 'not-the-connected-database' }),
+    /--confirm-database must equal the connected database name/,
+  );
+  const { rows: afterRows } = await query('SELECT COUNT(*)::int AS count FROM schools');
+  assert.equal(afterRows[0].count, before[0].count);
 });
