@@ -1,3 +1,68 @@
+# Authoritative state after PRs #867 and #868 — 2026-11-16
+
+> This addendum supersedes the earlier live-state section below. Historical entries remain for audit purposes; do not reuse their old PR states, master SHA or readiness figures as current facts.
+
+## Repository state
+
+- Current `master` merge commit: `658c1f7b7dcee9ecdf73a972d2dfdc36b1842560` — Merge pull request #867.
+- PR #868 (subject inventory and checkpoint) merged at 2026-11-16 03:50:05Z.
+- PR #867 (Agricultural Science source-verified draft updates) merged at 2026-11-16 03:51:18Z.
+- PR #867 branch head: `d850b46b675e5e8e2b83b56ba9d9c026c463dba5`.
+- PR #868 branch head: `b80f8aa3d733578b051e1646741692b0408b715a`.
+- Agents must continue to follow the no-merge rule. These merges occurred outside this agent's actions; do not infer permission to merge future PRs.
+
+## Agricultural Science state on merged master
+
+The merged package has:
+- 19 draft units: T1 8, T2 6, T3 5.
+- 195 practice/assessment items.
+- 45 external factual references.
+- 47 asset records.
+- 109 coverage rows: 75 SUPPORTED, 25 PARTIAL, 5 UNRESOLVED, 4 MARKER.
+- 47 open items: 46 delivery-blocking and 1 non-blocking.
+
+Package status remains `PENDING`; all units remain `DRAFT`; content approval remains `PENDING`; verification remains `DEFERRED`. No student delivery is permitted.
+
+## Soil practical procedures — new review draft
+
+`docs/ss23/subjects/agricultural-science/SOIL_PRACTICALS_REVIEW_DRAFT.md` adds review-only draft procedures for:
+1. soil moisture content (gravimetric);
+2. soil porosity (comparative saturation);
+3. capillary movement;
+4. visible soil-organism observation; and
+5. qualitative soil-organic-matter observation, with quantitative loss-on-ignition reserved for a properly equipped, trained laboratory.
+
+This is an authored review aid. It is not a teacher-approved practical scheme, not an approved marking guide and not included in the subject package as an approved lesson. `AG2-T1-SOIL-PRACTICALS` remains open and delivery-blocking until the subject lead confirms source equivalence, apparatus, safety, method, observations and marking requirements.
+
+## CI evidence
+
+On the final PR #867 head `d850b46b675e5e8e2b83b56ba9d9c026c463dba5`, all five associated GitHub Actions workflows completed successfully:
+- SS2/SS3 source validation — run 43800366597.
+- SS23 package contract — run 43800366507.
+- SS23 integrity gate — run 43800366581.
+- SS1 regression/integrity gate — run 43800366585.
+- JSS3 implementation and asset checks — run 43800366501.
+
+These are checks on the final PR head, not teacher approval or curriculum certification. Do not claim the package is ready for students.
+
+## Source archive and evidence boundary
+
+The two combined owner-supplied ZIPs are present in the private Library, not committed to the repository:
+- SS2: `SSS 2-20260507T072840Z-3-001.zip`, SHA-256 `a97506c7f030a6e9604a13ae0aab30f59563a1473ec682f647459549dd9e1153`, 61 members.
+- SS3: `SSS 3-20260507T072839Z-3-001.zip`, SHA-256 `045e261aba9475b32b4b963a2495faf3ddd503860b205aa1e89f0ac07d3c741`, 39 members.
+
+The ZIP archives cannot be semantically searched or read through the Files text reader. Use the committed receipt, member inventory and source maps for facts already recorded, but do not claim new page/header inspection until actual member content is accessible to the agent. Four competing member versions remain pending owner choice (SS2 T2 Economics, SS2 T3 Further Mathematics, SS3 T1 Mathematics, SS3 T1 Economics). Preserve both identities.
+
+## Next execution
+
+1. Continue Agricultural Science only where source evidence supports safe completion; do not move to Biology until the source, assessment and required teacher-approval gates are satisfied.
+2. Resolve original-source assessment reconciliation and outstanding source-page questions when readable source members are available.
+3. Keep asset-rights, teacher approval, owner approval and unresolved source-version decisions blocked; do not fabricate clearance.
+4. After Agricultural Science has passed its gates, continue the remaining SS2 subjects alphabetically, one focused PR per subject, and only then complete SS3 examination preparation (WAEC/NECO/JAMB) without new instructional topics.
+5. Maintain answer-key protection, fail-closed student delivery, certified curriculum outside scope, and no unauthorized merges/imports/deployments.
+
+---
+
 # Authoritative live state — 2026-11-16
 
 > **This section supersedes every historical live-update section below.** Older entries are retained as an audit trail; do not use their old branch names, PR states, counts or next-action claims as the current state.
