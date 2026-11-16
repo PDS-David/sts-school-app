@@ -30,7 +30,7 @@ Question-origin breakdown:
 | Third Term | 21 | 0 | 21 |
 | **Total** | **195** | **128** | **67** |
 
-The Second- and Third-Term question sets are authored supplements based on the identified source lessons/schemes. Their provenance points to the original source as topic/context evidence; this does **not** mean the questions were transcribed from those documents. They must remain labelled as authored supplements.
+All 24 Second-Term and all 21 Third-Term practice records are labelled `AUTHORED_SUPPLEMENT`; neither term currently has a structured practice question labelled `ORIGINAL_SOURCE`. Their provenance points to the school source as topic/context evidence, not as proof that the question text was transcribed. The draft answers/marking criteria apply to these authored supplements only. The original source assessment prompts for T2 Weeks 1–9 and T3 Weeks 1–10 still need a page-by-page inventory, exact locators, one-to-one mapping and checked answer/marking guide. Until that work is done, do not describe the 45 authored questions or their answers as completed source-assessment reconciliation.
 
 These checks establish structural completeness and arithmetic consistency only. They do not establish that an answer is factually correct, that the question is a faithful transcription, or that a teacher has approved the marking scheme.
 
@@ -91,7 +91,7 @@ The following still require direct evidence/authority:
 - Original document page for malformed First-Term General Evaluation Q5 (“List five factors coupled implements”).
 - Whether the First-Term Week Eight source body covers both Weeks 8–9.
 - Whether Second-Term examination event in Weeks 11–12 has a separate timetable/assessment record.
-- Original source assessment question-by-question reconciliation for all T2 and T3 material, including external textbook/WAEC assignments and the Third-Term input-output table.
+- Original source assessment question-by-question reconciliation for T2 and T3: inventory every original prompt and external textbook/WAEC task, preserve exact locators, verify answer/marking evidence, and inspect the Third-Term input-output table from its original page image. The structured 24 T2 and 21 T3 questions are authored supplements, not source transcriptions.
 - Exact “carnality” wording from the original printed assessment.
 - Weed nomenclature against the actual school source table.
 - All figure-to-paragraph mappings and reproduction rights for source images/screenshots/watermarked assets.
