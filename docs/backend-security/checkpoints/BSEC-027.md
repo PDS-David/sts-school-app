@@ -2,7 +2,7 @@
 
 - **Task ID:** BSEC-027
 - **Title:** Introduce distributed Redis-backed rate limiting
-- **Status:** implementation committed; Redis integration workflow and backend typecheck pending
+- **Status:** implementation and focused CI verification passed; merge/deployment gated on Render Redis configuration
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Working branch:** agent/backend-redis-rate-limit-bsec027-20261116
@@ -24,5 +24,5 @@
 - **Regression coverage:** two independent Express instances share one account quota; separate accounts do not consume each other's quotas; AI-generation counters are shared; decrement and reset semantics work; Redis outage returns the explicit 503 store error; production refuses to start without a Redis URL.
 - **CI:** new workflow runs against disposable Redis 7 and backend TypeScript. Existing AI/PostgreSQL workflow now also provisions Redis 7. No external service credentials are committed.
 - **Production configuration required:** set RATE_LIMIT_REDIS_URL on the Render API service to a private Redis URL or TLS URL. The API will intentionally fail startup in production until this is configured. Do not put the value in Git.
-- **Verification:** pending GitHub Actions on this branch. No production Redis connection, database, secrets or deployment settings were accessed or changed.
-- **Remaining:** review Redis client protocol/error handling, pass the Redis integration workflow and backend typecheck, then merge only after all required checks pass.
+- **Verification:** PR #923 current head `faa3d7b5e979b387c2f9dab59e2d9081589138b6`: distributed Redis integration + backend typecheck `43952551994` passed; AI/PostgreSQL rate-limit regression `43952552262` passed; SS1 `43952551804`, SS23 `43952551866`, JSS3 `43952552173`, backend health `43952551836`, fatal-process `43952551801`, and self-registration `43952552005` gates passed. No production Redis connection, database, secrets or deployment settings were accessed or changed.
+- **Remaining:** confirm RATE_LIMIT_REDIS_URL is configured and healthy on the Render API service before merge/deploy. Do not merge while production Redis configuration is unknown; production startup intentionally fails closed without it.
