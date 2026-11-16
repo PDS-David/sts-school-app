@@ -90,7 +90,6 @@ if (!SERVER_URL) {
   );
   const studentId = studentInsert.rows.find((r: any) => r.user_id === studentUser.id).id as string;
   const otherStudentId = studentInsert.rows.find((r: any) => r.user_id === otherStudentUser.id).id as string;
-  const outsideStudentId = studentInsert.rows.find((r: any) => r.user_id === outsideStudentUser.id).id as string;
   await query('INSERT INTO parent_wards(parent_id,student_id) VALUES($1,$2)', [parentUser.id, studentId]);
 
   const subjectInsert = await query(
