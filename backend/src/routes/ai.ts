@@ -5,6 +5,7 @@ import { query } from '../db/pool.js';
 import { requireAuth, requireRole, requirePerm } from '../middleware/auth.js';
 import { generate, generateJSON } from '../utils/ai.js';
 import { validateTextStudyRequest, buildTextStudyPrompt } from '../utils/textStudy.js';
+import { createRedisRateLimitStore } from '../utils/redisRateLimitStore.js';
 
 const router = Router();
 router.use(requireAuth);
@@ -23,6 +24,7 @@ const aiRequestLimiter = rateLimit({
   keyGenerator: (req) => req.user!.id,
   skip: (req) => req.user?.role === 'admin',
   message: { error: 'AI request limit exceeded. Try again in one minute.' },
+  store: createRedisRateLimitStore('ai-http'),
 });
 router.use(aiRequestLimiter);
 
