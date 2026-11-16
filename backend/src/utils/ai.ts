@@ -57,6 +57,7 @@
 
 import { GoogleGenAI } from '@google/genai';
 import dotenv from 'dotenv';
+import { consumeRedisQuota } from './redisRateLimitStore.js';
 dotenv.config();
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -267,95 +268,25 @@ async function _callAI(prompt: string, task: string): Promise<string> {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// OPTIONAL REDIS RATE LIMITING — fully fail-open
+// SHARED REDIS RATE LIMITING
 // ═══════════════════════════════════════════════════════════════════════════
-// Caps a user to RATE_LIMIT_MAX requests per RATE_LIMIT_WINDOW seconds.
-// Applies regardless of shared-service vs. direct mode — this protects THIS
-// app's own backend/users, independent of whatever the shared service does
-// on its own side.
-//
-// This is entirely optional and safe to ignore if this project doesn't use
-// Redis:
-//   - If REDIS_URL isn't set, rate limiting is skipped entirely (every
-//     request is allowed) — no Redis connection is even attempted.
-//   - If REDIS_URL is set but the optional 'ioredis' package isn't
-//     installed, this logs one warning and then behaves the same as above.
-//   - If Redis is reachable but a single command fails for any reason
-//     (network blip, Redis restart, etc.), that one request is allowed
-//     through rather than blocking a real user because of an infra hiccup.
-// In short: this can only ever make a request MORE permissive on failure,
-// never less. Install ioredis (`npm install ioredis`) and set REDIS_URL to
-// turn rate limiting on.
-//
-// NOTE FOR THIS PROJECT: this project's existing routes don't use Redis
-// anywhere else — this stays fully no-op (REDIS_URL unset) unless you
-// deliberately opt in.
+// This quota covers AI generation initiated by learning routes as well as the
+// dedicated /ai HTTP routes. It shares Redis with the HTTP-boundary limiters.
+// Production startup requires Redis; local/test environments without Redis
+// retain the route-level process-local limiter for development convenience.
 
-const RATE_LIMIT_MAX    = 20;  // requests per window
-const RATE_LIMIT_WINDOW = 60;  // seconds
-
-let _redis: any          = null;
-let _redisInitTried      = false;
-let _warnedNoIoredis     = false;
-
-async function _getRedis(): Promise<any> {
-  if (_redisInitTried) return _redis;
-  _redisInitTried = true;
-
-  if (!process.env.REDIS_URL) {
-    // No REDIS_URL configured — rate limiting is intentionally a no-op.
-    return null;
-  }
-
-  try {
-    // Dynamic import (not require) — this project's backend runs as an ESM
-    // package ("type": "module" in package.json), so a CommonJS `require`
-    // isn't available here the way it was in the source file. The module
-    // name is passed through a variable (rather than a string literal) on
-    // purpose: 'ioredis' is an optional dependency this project doesn't
-    // install by default, so a literal import specifier would fail
-    // `tsc --noEmit` with "cannot find module" even though the try/catch
-    // handles it fine at runtime.
-    const ioredisModuleName = 'ioredis';
-    const { default: Redis } = await import(ioredisModuleName);
-    _redis = new Redis(process.env.REDIS_URL);
-    _redis.on('error', () => { /* swallowed — see fail-open note above */ });
-  } catch {
-    if (!_warnedNoIoredis) {
-      _warnedNoIoredis = true;
-      console.warn(
-        "[ai.ts] REDIS_URL is set but the optional 'ioredis' package isn't " +
-        "installed — rate limiting is disabled. Run `npm install ioredis` " +
-        "to enable it."
-      );
-    }
-    _redis = null;
-  }
-
-  return _redis;
-}
+const RATE_LIMIT_MAX = 20;
+const RATE_LIMIT_WINDOW_MS = 60_000;
 
 async function _checkRateLimit(
   userId?: string,
   role?: string,
 ): Promise<{ allowed: boolean; error?: string }> {
-  if (!userId)          return { allowed: true };
-  if (role === 'admin') return { allowed: true };
-
-  const redis = await _getRedis();
-  if (!redis) return { allowed: true };
-
-  try {
-    const key   = `ai_rate:${userId}`;
-    const count = await redis.incr(key);
-    if (count === 1) await redis.expire(key, RATE_LIMIT_WINDOW);
-    if (count > RATE_LIMIT_MAX) {
-      return { allowed: false, error: 'Rate limit exceeded. Try again shortly.' };
-    }
-    return { allowed: true };
-  } catch {
-    return { allowed: true }; // fail-open
-  }
+  if (!userId || role === 'admin') return { allowed: true };
+  const allowed = await consumeRedisQuota(`ai-generation:${userId}`, RATE_LIMIT_MAX, RATE_LIMIT_WINDOW_MS);
+  return allowed
+    ? { allowed: true }
+    : { allowed: false, error: 'Rate limit exceeded. Try again shortly.' };
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
