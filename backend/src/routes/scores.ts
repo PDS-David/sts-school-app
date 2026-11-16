@@ -184,7 +184,7 @@ router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => 
          FROM weekly_efforts we JOIN students st ON st.id=we.student_id
         WHERE st.school_code=$1 AND st.deleted_at IS NULL
           AND ($2::text IS NULL OR st.class_name=$2) AND we.term_id=$3`,
-      classParams,
+      classParams.slice(0, 3),
     );
     weeklyEffortEntries = effortRows[0]?.weekly_effort_entries ?? 0;
   }
