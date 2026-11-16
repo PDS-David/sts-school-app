@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, RefreshControl } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../api/client';
@@ -22,15 +22,23 @@ export default function ParentHomeScreen({ navigation }: any) {
   const [reportLoading, setReportLoading] = useState(false);
   const [reportError, setReportError] = useState('');
   const [refreshing, setRefreshing] = useState(false);
+  const reportRequestGenerationRef = useRef(0);
 
   const load = useCallback(async () => {
+    // A ward switch or a newer retry supersedes every older report request.
+    // This prevents a slow response for the previous child from replacing the
+    // report (or error state) belonging to the currently selected child.
+    const generation = ++reportRequestGenerationRef.current;
+    const isCurrentRequest = () => generation === reportRequestGenerationRef.current;
+
     if (!selectedWardId) {
       // Announcements are account-scoped, not ward-scoped. Refresh them even
       // when no child is linked/selected so the dashboard's retry message works.
       setReport(null);
       setReportError('');
+      setReportLoading(false);
       await refreshNotifications();
-      setLoading(false);
+      if (isCurrentRequest()) setLoading(false);
       return;
     }
     setReportLoading(true);
@@ -38,17 +46,22 @@ export default function ParentHomeScreen({ navigation }: any) {
     setReport(null);
     try {
       const { data } = await api.get(`/scores/report/${selectedWardId}`);
-      setReport(data);
+      if (isCurrentRequest()) setReport(data);
     } catch (e: any) {
-      setReportError(e?.response?.data?.error ?? 'Could not load this child’s report. Check your connection and retry.');
+      if (isCurrentRequest()) {
+        setReportError(e?.response?.data?.error ?? 'Could not load this child’s report. Check your connection and retry.');
+      }
     } finally {
-      setReportLoading(false);
+      if (isCurrentRequest()) setReportLoading(false);
     }
     await refreshNotifications();
-    setLoading(false);
+    if (isCurrentRequest()) setLoading(false);
   }, [selectedWardId, refreshNotifications]);
 
-  useEffect(() => { load(); }, [load]);
+  useEffect(() => {
+    void load();
+    return () => { reportRequestGenerationRef.current += 1; };
+  }, [load]);
 
   if (wardsLoading || loading) return <Loader />;
 
