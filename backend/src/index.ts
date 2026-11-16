@@ -42,6 +42,7 @@ app.use('/auth', rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 30,
   store: createRedisRateLimitStore('auth-ip'),
+  passOnStoreError: false,
 }));
 
 // Routes
