@@ -2,7 +2,7 @@
 
 - **Task ID:** BSEC-024
 - **Title:** Validate direct-message inputs and rate-limit authenticated senders
-- **Status:** implementation committed; CI verification pending
+- **Status:** implementation and all required CI checks passed; PR review pending
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Base commit:** b9354546b7ae77213e91a084b3af2ce48aa6b4c6
@@ -16,6 +16,7 @@
 - **Implementation:** validate recipient UUID, trimmed body length (1–10,000 characters), context type length and scalar context ID; validate conversation participant UUID before querying; limit each authenticated sender to 30 send requests per 60-second window, keyed by authenticated user ID rather than client-supplied network headers. Invalid inputs are rejected before database writes.
 - **Rate-limit note:** uses express-rate-limit's process-local memory store, consistent with existing auth rate limiting. If the API is horizontally scaled, a shared Redis store should replace this store before relying on the limit as a cluster-wide quota.
 - **Regression coverage:** PostgreSQL HTTP test covers malformed recipient, empty and oversized bodies, malformed conversation IDs, numeric context ID normalization, 30-request acceptance and 31st-request HTTP 429, and confirms rejected requests are not persisted.
-- **Verification:** implementation and regression files committed to dedicated branch. PostgreSQL 16 workflow and backend typecheck pending. No production database or data was accessed or changed.
-- **Remaining:** run focused tests and backend typecheck; verify repository-wide gates; open a focused PR; resolve any failures without weakening validation.
-- **Exact next action:** open a PR from this branch and inspect PostgreSQL workflow and typecheck results.
+- **Verification:** Backend messaging input and abuse controls workflow 43940770785 passed: PostgreSQL 16 bootstrap, input validation/rate-limit integration test, and backend TypeScript typecheck. SS1 package integrity 43940770704, SS23 integrity 43940770808 and JSS3 implementation/asset checks 43940770674 also passed on implementation head eb6bf158e6a186a1244359300f87f07cc969f73f. No production database or data was accessed or changed.
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/897
+- **Remaining:** PR review/merge; continue the broader backend audit.
+- **Exact next action:** review PR #897 against its passing head and continue with the next independently scoped backend defect.
