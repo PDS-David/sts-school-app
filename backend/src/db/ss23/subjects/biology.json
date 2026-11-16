@@ -22,6 +22,23 @@
       "rights": "Owner-supplied source archive; reuse status not independently established for redistributed extracts.",
       "attribution": "Owner-supplied SS2 First Term Biology source document; source objectives are mapped, while the teaching text in this package is newly authored.",
       "reuse_status": "PENDING"
+    },
+    {
+      "source_id": "SS23-SRC-9e65e0d4e3ff",
+      "sha256": "9e65e0d4e3ff0e30caf805f7124a4d420ca1a952b05472e61f0c8a7a67876659",
+      "bytes": 1621928,
+      "archive_member": "2nd Term SS2 /2ND TERM S2 BIOLOGY.docx",
+      "class_name": "SS 2",
+      "term": "2nd Term",
+      "canonical_subject": "Biology",
+      "header_text": "SS2 Biology (source-registry header verification)",
+      "header_evidence": {
+        "locator": "backend/src/db/ss23/sourceRegistry.json: SS23-SRC-9e65e0d4e3ff",
+        "explanation": "The registered source inventory records this exact Second-Term member and SHA-256 as HEADER_VERIFIED."
+      },
+      "rights": "Owner-supplied source archive; reuse status for redistributed extracts has not been independently established.",
+      "attribution": "Owner-supplied SS2 Second Term Biology source document.",
+      "reuse_status": "PENDING"
     }
   ],
   "external_sources": [
@@ -213,6 +230,22 @@
           "explanation": "OpenStax provides relevant explanations of ecology, ecosystems, habitats and biogeochemical cycles used to inform this original draft."
         }
       ]
+    },
+    {
+      "id": "BIO2-COV-T2-W01-02",
+      "source_id": "SS23-SRC-9e65e0d4e3ff",
+      "objective": "Tissue and Supporting System (Weeks 1–2): combined source section represented by a source-derived instructional draft; plant-support subsection and full assessment reconciliation remain open.",
+      "objective_locator": "Second-Term scheme and combined WEEK ONE & TWO body section; source audit lines 29–353.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-BIO-T2-W01-02"
+      ],
+      "evidence": [
+        {
+          "locator": "Second-Term source, combined WEEK ONE & TWO; extracted lines 29–353",
+          "explanation": "The unit preserves the source's combined-week structure and maps the principal animal tissue and skeleton content. Plant-support detail and all source questions require full source-page reconciliation."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -255,10 +288,17 @@
     {
       "id": "BIO2-T2-IMPLEMENTATION",
       "kind": "CONTENT",
-      "detail": "Second-Term Biology source coverage is mapped in the source audit but its instructional units have not yet been drafted.",
-      "required_action": "Implement the ten scheme weeks while preserving combined body sections for Weeks 1-2 and 4-5; map all 48 labelled assessment blocks.",
+      "detail": "Second-Term Biology is only partially implemented: the combined Weeks 1–2 unit is drafted; the remaining scheme weeks and the remaining 48 labelled assessment/assignment blocks are not yet implemented/reconciled.",
+      "required_action": "Implement Week 3, combined Weeks 4–5 and Weeks 6–10; reconcile all 48 labelled blocks and inspect source diagrams/tables.",
       "affected_ids": [
-        "BIO2-T2"
+        "SUP-SS2-BIO-T2-W01-02",
+        "BIO2-T2-W03",
+        "BIO2-T2-W04-05",
+        "BIO2-T2-W06",
+        "BIO2-T2-W07",
+        "BIO2-T2-W08",
+        "BIO2-T2-W09",
+        "BIO2-T2-W10"
       ],
       "blocks_delivery": true
     },
@@ -1191,6 +1231,110 @@
           "rights": "OpenStax Biology 2e is published under Creative Commons Attribution 4.0; this package uses original paraphrased teaching and attribution, not copied figures.",
           "attribution": "OpenStax, Biology 2e, Rice University; https://openstax.org/books/biology-2e (accessed 2026-11-16).",
           "reuse_status": "PERMITTED"
+        }
+      ],
+      "state": {
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction that the supplied curriculum is already approved; recorded in https://github.com/PDS-David/sts-school-app/pull/881",
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-BIO-T2-W01-02",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "2nd Term",
+      "subject": "Biology",
+      "title": "Tissue and Supporting System",
+      "week_label": "1-2",
+      "objectives": [
+        "Explain the meaning and functions of tissues and the skeleton, and distinguish chitin, cartilage and bone.",
+        "Compare hydrostatic skeleton, exoskeleton and endoskeleton, and identify axial and appendicular components of the vertebrate skeleton."
+      ],
+      "body": "Tissue and Supporting System (Weeks 1–2)\n\nTissues are groups of similar cells that carry out specific functions. The skeleton is the body framework that supports the body, gives it shape and protects soft tissues and organs. The source identifies three skeletal materials in animals: chitin, cartilage and bone. Chitin is a tough, light and flexible non-living material forming the outer covering of arthropods; in some crustaceans it is strengthened by calcium carbonate and proteins. Cartilage is a connective tissue with a firm matrix and fibres; chondroblasts secrete the matrix and mature into chondrocytes in lacunae. It is flexible and acts as a shock absorber at joints. The source describes hyaline cartilage at movable joint surfaces, the trachea, bronchi and nose; white fibrous cartilage in intervertebral discs; and yellow elastic cartilage in the pinna and epiglottis. Bone contains living osteocytes, collagen fibres and mineral salts, making it rigid and strong. During development, cartilage is replaced by bone through ossification.\n\nThe three animal skeleton types are hydrostatic, exoskeleton and endoskeleton. A hydrostatic skeleton uses fluid pressure against a muscular body wall, as in earthworms and sea anemones. An exoskeleton is an external covering, commonly containing chitin, that supports and protects arthropods; growth requires shedding the old covering by moulting or ecdysis. An endoskeleton is internal, occurs in vertebrates and is made mainly of bones and cartilage. Ligaments connect bones at joints, while tendons attach muscles to bones.\n\nThe skeleton supports the body, provides its framework, protects delicate organs, enables locomotion, assists breathing through rib movement and houses bone marrow involved in blood-cell production. Vertebrate skeletons are divided into axial and appendicular parts. The axial skeleton includes the skull, ribs, sternum and vertebral column. The appendicular skeleton includes the pectoral and pelvic girdles and the fore and hind limbs. The source also includes supporting tissues in plants in this combined section; the plant subsection remains to be reconciled against the complete rendered source before this unit can be marked complete.",
+      "body_sha256": "cd13304dc8b397dc8544471f616cf98a931f6633cc9248d84042f90d14e093cc",
+      "practice": [
+        {
+          "id": "BIO2-T2-W01-02-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term source, extracted line 54 onward; first EVALUATION in combined WEEK ONE & TWO section",
+          "question": "What is skeleton?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer based on the source lesson content; not presented as a verbatim source answer",
+          "answer": "A skeleton is the framework of an animal's body that supports the body, gives it shape and protects soft tissues and organs.",
+          "explanation": "The answer identifies the skeleton as the body's supporting framework and states its principal roles.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Defines skeleton as the body's supporting framework.",
+              "marks": 1
+            },
+            {
+              "criterion": "States support, shape or protection as a function.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-9e65e0d4e3ff",
+              "source_sha256": "9e65e0d4e3ff0e30caf805f7124a4d420ca1a952b05472e61f0c8a7a67876659",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term source, combined WEEK ONE & TWO section; extracted source lines 29–353; evaluation anchors within this section",
+              "rights": "Owner-supplied source archive; reuse status for redistributed extracts has not been independently established.",
+              "attribution": "Owner-supplied SS2 Second Term Biology source document.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "BIO2-T2-W01-02-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term source, first EVALUATION in combined WEEK ONE & TWO section",
+          "question": "Mention the three types of skeleton.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer based on the source lesson content; not presented as a verbatim source answer",
+          "answer": "Hydrostatic skeleton, exoskeleton and endoskeleton.",
+          "explanation": "The three categories are explicitly listed in the source lesson's types-of-skeleton section.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Hydrostatic skeleton.",
+              "marks": 1
+            },
+            {
+              "criterion": "Exoskeleton.",
+              "marks": 1
+            },
+            {
+              "criterion": "Endoskeleton.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-9e65e0d4e3ff",
+              "source_sha256": "9e65e0d4e3ff0e30caf805f7124a4d420ca1a952b05472e61f0c8a7a67876659",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term source, combined WEEK ONE & TWO section; extracted source lines 29–353; evaluation anchors within this section",
+              "rights": "Owner-supplied source archive; reuse status for redistributed extracts has not been independently established.",
+              "attribution": "Owner-supplied SS2 Second Term Biology source document.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-9e65e0d4e3ff",
+          "source_sha256": "9e65e0d4e3ff0e30caf805f7124a4d420ca1a952b05472e61f0c8a7a67876659",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Second-Term source, combined WEEK ONE & TWO section; extracted source lines 29–353; evaluation anchors within this section",
+          "rights": "Owner-supplied source archive; reuse status for redistributed extracts has not been independently established.",
+          "attribution": "Owner-supplied SS2 Second Term Biology source document.",
+          "reuse_status": "PENDING"
         }
       ],
       "state": {
