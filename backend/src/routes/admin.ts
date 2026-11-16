@@ -418,7 +418,7 @@ router.get('/audit-log', async (req, res) => {
              WHERE 1=1`;
   const params: unknown[] = [];
   if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND al.school_code=$${params.length}`; }
-  sql += ` ORDER BY al.created_at DESC LIMIT ${params.length + 1}`;
+  sql += ` ORDER BY al.created_at DESC LIMIT $${params.length + 1}`;
   params.push(Math.min(parsedLimit, 500));
   const { rows } = await query(sql, params);
   return res.json({ audit_log: rows });
