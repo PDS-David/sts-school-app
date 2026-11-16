@@ -58,7 +58,7 @@ router.get('/users', async (req, res) => {
              WHERE 1=1`;
   const params: unknown[] = [];
   if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND u.school_code=$${params.length}`; }
-  if (role)             { params.push(role);              sql += ` AND u.role=${params.length}`; }
+  if (role)             { params.push(role);              sql += ` AND u.role=$${params.length}`; }
   sql += ' GROUP BY u.id ORDER BY u.role,u.full_name';
   const { rows } = await query(sql, params);
   return res.json({ users: rows });
@@ -73,7 +73,7 @@ router.get('/students-without-login', async (req, res) => {
              FROM students WHERE user_id IS NULL`;
   const params: unknown[] = [];
   if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND school_code=$${params.length}`; }
-  if (class_name)       { params.push(class_name);        sql += ` AND class_name=${params.length}`; }
+  if (class_name)       { params.push(class_name);        sql += ` AND class_name=$${params.length}`; }
   sql += ' ORDER BY full_name';
   const { rows } = await query(sql, params);
   return res.json({ students: rows });
