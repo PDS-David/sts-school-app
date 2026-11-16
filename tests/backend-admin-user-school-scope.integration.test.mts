@@ -190,7 +190,6 @@ test('school-bound administrators cannot access operational records outside thei
   const primaryAdmin = await createUser('primary-ops-admin', 'admin', 'primary', 'test-hash');
   const studentIds: string[] = [];
   const classIds: number[] = [];
-  const auditIds: number[] = [];
   let server: Server | undefined;
   const className = `BSEC29-${suffix}`;
 
@@ -208,12 +207,13 @@ test('school-bound administrators cannot access operational records outside thei
       );
       studentIds.push(String(studentRow.rows[0].id));
       const actorId = schoolCode === 'primary' ? primaryAdmin.id : globalAdmin.id;
-      const auditRow = await query(
+      // The audit table is deliberately append-only. Keep this uniquely
+      // tagged fixture event rather than deleting it during test cleanup.
+      await query(
         `INSERT INTO audit_log(actor_id,actor_name,action,entity,entity_id,school_code,detail)
-         VALUES($1,$2,'BSEC29_TEST','security_test',$3,$4,$5) RETURNING id`,
+         VALUES($1,$2,'BSEC29_TEST','security_test',$3,$4,$5)`,
         [actorId, `BSEC29 ${schoolCode}`, suffix, schoolCode, `BSEC29 ${schoolCode} audit`],
       );
-      auditIds.push(Number(auditRow.rows[0].id));
     }
     const [primaryStudentId, secondaryStudentId] = studentIds;
 
@@ -295,7 +295,6 @@ test('school-bound administrators cannot access operational records outside thei
       await query('DELETE FROM students WHERE id=ANY($1::uuid[])', [studentIds]);
     }
     if (classIds.length) await query('DELETE FROM class_access_codes WHERE school_code IN (\'primary\',\'secondary\') AND class_name=$1', [className]);
-    if (auditIds.length) await query('DELETE FROM audit_log WHERE id=ANY($1::bigint[])', [auditIds]);
     if (classIds.length) await query('DELETE FROM classes WHERE id=ANY($1::int[])', [classIds]);
     await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [[globalAdmin.id, primaryAdmin.id]]);
   }
