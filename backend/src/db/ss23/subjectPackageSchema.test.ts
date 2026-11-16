@@ -293,7 +293,10 @@ test('loads the SS2 Agricultural Science package with source assessment coverage
   assert.match(soilPracticals.detail, /draft procedures for moisture, porosity, capillarity, soil organisms and organic-matter observation now exist/);
   assert.match(soilPracticals.required_action, /mark-by-mark guides/);
   assert.equal(soilPracticals.blocks_delivery, true);
-  assert.equal(pkg.external_sources.length, 47);
+  assert.equal(pkg.external_sources.length, 48);
+  assert.ok(pkg.external_sources.some(source => source.source_id === 'SS23-EXT-USDA-NRCS-SOIL-PROFILE'));
+  assert.equal(soilProfileReplacement.provenance.source_id, 'SS23-EXT-USDA-NRCS-SOIL-PROFILE');
+  assert.ok(pkg.coverage.some(row => row.id === 'COV-SS2-AG-T1-SOIL-PROFILE-SCHOOL-SCHEMATIC' && row.source_id === 'SS23-EXT-USDA-NRCS-SOIL-PROFILE'));
   assert.ok(pkg.external_sources.some(source => source.source_id === 'SS23-EXT-EPPO-CASSAVA-BLIGHT-NOMENCLATURE'));
   assert.ok(pkg.external_sources.some(source => source.source_id === 'SS23-EXT-APS-CASSAVA-BLIGHT-2024'));
   assert.ok(pkg.coverage.some(row => row.id === 'COV-SS2-AG-T2-EPPO-CASSAVA-NAME' && row.status === 'SUPPORTED'));
