@@ -205,6 +205,14 @@ if (!URL_) {
     ({ schoolCode: TEST_SC, subject: 'Music', className: 'JSS 3', termLabel: '1st Term', apply, skipTitleCheck: false, ...extra });
   const get = async (p: string, token?: string, headers: Record<string, string> = {}) =>
     fetch(`${base}${p}`, { headers: { ...(token ? { Authorization: `Bearer ${token}` } : {}), ...headers } });
+  const postJson = async (p: string, token: string, body: unknown) =>
+    fetch(`${base}${p}`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+  const del = async (p: string, token: string) =>
+    fetch(`${base}${p}`, { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } });
 
   // ── tests ──────────────────────────────────────────────────────────────────
   test('DDL: running schema.sql twice (as migrate.ts does) is idempotent', async () => {
@@ -388,6 +396,66 @@ if (!URL_) {
     assert.equal(sha(Buffer.from(await r.arrayBuffer())), sha(GIF));
     const again = await get(a.url, tokenA, { 'If-None-Match': `"${a.sha256}"` });
     assert.equal(again.status, 304);
+  });
+
+  test('asset delivery is school-pinned for school-bound administrators and disables private caching', async () => {
+    const assetId = (await query(
+      `SELECT a.id FROM topic_assets a JOIN topics t ON t.id=a.topic_id WHERE t.school_code=$1 AND a.asset_key='W2-1'`,
+      [TEST_SC],
+    )).rows[0].id;
+    const own = await get(`/learning/assets/${assetId}`, tokenAdminA);
+    assert.equal(own.status, 200);
+    assert.equal(own.headers.get('cache-control'), 'private, no-store, max-age=0');
+    assert.equal(own.headers.get('x-content-type-options'), 'nosniff');
+    assert.equal(own.headers.get('content-disposition'), 'inline');
+
+    assert.equal((await get(`/learning/assets/${assetId}?school_code=${TEST_SC_B}`, tokenAdminA)).status, 403);
+    assert.equal((await get(`/learning/topics/${topicId['Music|2']}/assets?school_code=${TEST_SC_B}`, tokenAdminA)).status, 403);
+    assert.equal((await get(`/learning/mathematics-assets/any?topicId=${topicId['Music|2']}&school_code=${TEST_SC_B}`, tokenAdminA)).status, 403);
+  });
+
+  test('material link creation rejects unsafe URLs and conflicting school targets', async () => {
+    const baseBody = {
+      subject_id: subjectA, class_name: 'JSS 3', title: 'BSEC-028 material',
+      type: 'pdf', url: 'https://drive.google.com/file/d/abc/view', school_code: TEST_SC,
+    };
+    for (const url of [
+      'http://example.com/lesson.pdf',
+      'https://localhost/lesson.pdf',
+      'https://127.0.0.1/lesson.pdf',
+      'https://user:pass@example.com/lesson.pdf',
+      'https://example.com:8443/lesson.pdf',
+      'javascript:alert(1)',
+    ]) {
+      const response = await postJson('/learning/materials', tokenAdminA, { ...baseBody, url });
+      assert.equal(response.status, 400, url);
+    }
+    const crossSchool = await postJson('/learning/materials', tokenAdminA, { ...baseBody, school_code: TEST_SC_B });
+    assert.equal(crossSchool.status, 403);
+    const created = await postJson('/learning/materials', tokenAdminA, baseBody);
+    assert.equal(created.status, 201);
+    const body: any = await created.json();
+    assert.equal(body.material.school_code, TEST_SC);
+    assert.equal(body.material.url, baseBody.url);
+    const listed = await get('/learning/materials', tokenAdminA);
+    assert.equal(listed.status, 200);
+    assert.equal(listed.headers.get('cache-control'), 'private, no-store');
+    const listBody: any = await listed.json();
+    assert.ok(listBody.materials.some((material: any) => material.id === body.material.id));
+    assert.equal((await get(`/learning/materials?school_code=${TEST_SC_B}`, tokenAdminA)).status, 403);
+    assert.equal((await del(`/learning/materials/${body.material.id}`, tokenAdminB)).status, 404);
+    assert.equal((await del(`/learning/materials/${body.material.id}`, tokenAdminA)).status, 200);
+  });
+
+  test('teacher material deletion is limited to the uploader within the same school', async () => {
+    const created = await postJson('/learning/materials', tokenTeacherA, {
+      subject_id: subjectA, class_name: 'JSS 3', title: 'Teacher-owned material',
+      type: 'doc', url: 'https://example.org/lesson.docx',
+    });
+    assert.equal(created.status, 201);
+    const body: any = await created.json();
+    assert.equal((await del(`/learning/materials/${body.material.id}`, tokenTeacherB)).status, 404);
+    assert.equal((await del(`/learning/materials/${body.material.id}`, tokenAdminA)).status, 200);
   });
 
   test('endpoint: a hidden (displayed=false) asset is not listed and not served', async () => {
