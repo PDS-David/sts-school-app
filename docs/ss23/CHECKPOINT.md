@@ -2,9 +2,32 @@
 
 This section supersedes the historical branch/PR status in the checkpoint below. Historical source-receipt evidence is retained.
 
+### Latest master state after delivery integration
+
+- Current master: `2b3ec92b99d016b450858cce5b87d5d6056d990b`.
+- PR #853 validator alignment merged (merge commit `1afbb5cafb7cbb770dfe90b9ac54f29dd3880eba`).
+- PR #854 student-delivery service regression tests merged (merge commit `6a03ad0f9875a7c949cd8f6511571f797961fef0`).
+- PR #855 PostgreSQL HTTP student-delivery regression merged (merge commit `326860f5464eaf8fbfa564c771a0402c69d5c9cd`).
+- SS23-Q delivery and its service/HTTP regression coverage are now in master. The approved-fixture service test checks positive SS2 reachability and SS3 isolation; the HTTP integration test verifies pending SS23 content fails closed for real SS2/SS3 student tokens.
+- The current task branch is rebased from this master; it does not depend on the older pre-merge validator base.
+
+### SS23-02 — SS2 Agricultural Science Terms 2 and 3
+
+- Branch: `agent/ss23-agricultural-science-terms2-3-r2-20261116`.
+- Base: `master` @ `2b3ec92b99d016b450858cce5b87d5d6056d990b`.
+- Status: **11 new lessons implemented as drafts; source identities verified; pre-rebase tests passed; current-master PR CI pending; teacher approval and acceptance outstanding.**
+- Package now contains 19 SS2 Agricultural Science units (8 T1, 6 T2, 5 T3), 173 practice/assessment items, 47 asset records and 57 open items (50 blocking, 7 non-blocking). Package and new unit approval states remain PENDING/DRAFT.
+- Added 15 coverage rows and two original-source records for SS2 T2/T3. The two combined archive hashes match the November 13 source receipt; the extracted Agricultural Science T2/T3 members match their registered SHA-256 values and byte counts.
+- Original T3 printed pages 12-16 were visually reviewed. Page 12 fertilizer/maize yield values were independently recalculated; page 13 confirms the Week 7-8 Farm Records heading; pages 14-15 show an egg-sales label discrepancy in the profit-and-loss example; page 16 confirms the straight-line depreciation formula.
+- Source/content blockers remain explicit: disease taxonomy, ornamental and weed nomenclature, obsolete pesticide guidance, insecticide classification, Mendelian-law nuance, account-table transcription, animal nutrient classification, feed thresholds, full assessment-answer reconciliation and teacher review.
+- Pre-rebase GitHub Actions run `43790097181`: locked install passed; `npm run ss23:refresh-hashes` refreshed 11 body hashes; `npm run validate:ss23` passed with zero errors; `npm run test:ss23` passed 38/38; `npm run validate:ss1` passed; backend typecheck passed. This run predates the three merges above; current-master PR CI is required.
+- Exact next action: open the subject PR against current master and verify the expanded current-base integrity/test workflow. Continue resolving blockers; do not move to Biology until Agricultural Science passes the full readiness gate. Do not merge.
+
+
+
 ### Current master and merged work
 
-- Current master baseline at task start: `28c0f808565aae243b113ab5b0c261d9d34a90d5`.
+- Current master baseline before PRs #853-855 merged: `28c0f808565aae243b113ab5b0c261d9d34a90d5`; current master after those merges: `2b3ec92b99d016b450858cce5b87d5d6056d990b`.
 - PR #791 Agricultural Science source map merged: `8176e6e27b8ea30261d9464c89748f0c5a09845c`.
 - PR #794 SS2/SS3 unit package contract merged: `53ceca40c70c1ea8634cfbffe86fe12bdf9ba884`.
 - PR #819 Agricultural Science package, loader and gated SS2/SS3 student delivery merged: `d341acf855c9eb240e51991aa9e6eaa62fe0efe5`.
@@ -13,7 +36,7 @@ This section supersedes the historical branch/PR status in the checkpoint below.
 
 ### Current curriculum status
 
-- SS2 Agricultural Science has one root-level package with 8 units (First Term), 150 practice/assessment items, 47 asset records (42 pending source-extract references and 5 stored SVGs), and 43 open items (37 delivery-blocking, 6 non-blocking). Package and unit approvals remain PENDING. This is not student-release readiness.
+- SS2 Agricultural Science has one root-level package with 19 units across First, Second and Third Terms (8/6/5), 173 practice/assessment items, 47 asset records (42 pending source-extract references and 5 stored SVGs), and 57 open items (50 delivery-blocking, 7 non-blocking). Package and unit approvals remain PENDING. This is not student-release readiness.
 - The package's First-Term source member SHA/byte identity matches the source registry. The merged source map provides week/topic mapping. Subject-lead decisions and figure/source-use blockers remain.
 - No other SS2 subject package is recorded as implemented. SS3 exam-preparation subject packages remain outstanding.
 - SS23-Q student delivery is already implemented in master by PR #819: class-resolved routes, term PIN gating, approval/verification/reuse gates, asset integrity checks, and student projections that omit answers, explanations, marking criteria and provenance. PR #819 workflow run 43476440171 passed backend typecheck and all 25 SS23 tests. The current SS23 integrity workflow also revalidated the backend after the validator fix. Route-level HTTP reachability still requires focused verification.
