@@ -564,6 +564,13 @@ router.get('/term-pins', async (req, res) => {
   const { student_id, term_label, school_code } = req.query as Record<string, string>;
   const scope = resolveAdminSchoolScope(req.user!, school_code);
   if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
+  if (student_id && (typeof student_id !== 'string' ||
+      !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(student_id))) {
+    return res.status(400).json({ error: 'Invalid student_id' });
+  }
+  if (term_label && !TERM_LABELS.includes(term_label)) {
+    return res.status(400).json({ error: 'Invalid term_label' });
+  }
   let sql = `SELECT tp.*, st.full_name AS student_name, st.class_name
              FROM term_access_pins tp JOIN students st ON st.id=tp.student_id WHERE 1=1`;
   const params: unknown[] = [];
@@ -616,6 +623,9 @@ router.get('/class-codes', async (req, res) => {
   const { school_code, class_name } = req.query as Record<string, string>;
   const scope = resolveAdminSchoolScope(req.user!, school_code);
   if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
+  if (class_name && (typeof class_name !== 'string' || class_name.trim().length > 100)) {
+    return res.status(400).json({ error: 'Invalid class_name' });
+  }
   let sql = `SELECT cc.*,
                     (SELECT COUNT(*) FROM students st WHERE st.school_code=cc.school_code AND st.class_name=cc.class_name AND st.user_id IS NOT NULL) AS claimed_count,
                     (SELECT COUNT(*) FROM students st WHERE st.school_code=cc.school_code AND st.class_name=cc.class_name AND st.user_id IS NULL) AS unclaimed_count
