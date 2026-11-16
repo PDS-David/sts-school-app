@@ -1,0 +1,79 @@
+name: Mobile release and dependency audit
+
+on:
+  push:
+    branches:
+      - "agent/mobile-release-audit-*"
+    paths:
+      - ".github/workflows/mobile-release-audit.yml"
+      - "mobile/**"
+      - "package.json"
+      - "package-lock.json"
+      - "tests/mobile/**"
+  pull_request:
+    paths:
+      - ".github/workflows/mobile-release-audit.yml"
+      - "mobile/**"
+      - "package.json"
+      - "package-lock.json"
+      - "tests/mobile/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mobile-release-audit-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate-audit-build:
+    name: Mobile validation, npm audit and Android release builds
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install locked workspace dependencies
+        run: npm ci
+      - name: Offline queue regression tests
+        run: npm run test:mobile:offline
+      - name: Frontend contract regression tests
+        run: npm run test:mobile:frontend-contracts
+      - name: Mobile TypeScript validation
+        working-directory: mobile
+        run: npx tsc --noEmit -p tsconfig.json
+      - name: Export Android JavaScript bundle
+        working-directory: mobile
+        env:
+          CI: "1"
+        run: npx expo export --platform android --output-dir ../artifacts/mobile-android
+      - name: Capture complete dependency audit
+        run: |
+          mkdir -p artifacts
+          npm audit --json > artifacts/npm-audit-all.json || true
+          npm audit --omit=dev --json > artifacts/npm-audit-production.json || true
+      - name: Build staging Android APK with EAS
+        if: github.event_name == 'push' && env.EXPO_TOKEN != ''
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: npx eas-cli@latest build --platform android --profile staging --non-interactive --json > artifacts/eas-staging-apk.json
+      - name: Build production Android AAB with EAS
+        if: github.event_name == 'push' && env.EXPO_TOKEN != ''
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: npx eas-cli@latest build --platform android --profile production --non-interactive --json > artifacts/eas-production-aab.json
+      - name: Record unavailable EAS credentials
+        if: github.event_name == 'push' && env.EXPO_TOKEN == ''
+        run: echo "EAS builds were not started because the repository EXPO_TOKEN secret is not configured." > artifacts/eas-build-blocker.txt
+      - name: Upload audit, bundle and EAS build evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-release-audit-evidence
+          path: artifacts/
+          if-no-files-found: warn
+          retention-days: 14
