@@ -15,7 +15,7 @@ after(async () => {
 
 async function createStudent(label: string, className: 'SS 2' | 'SS 3') {
   const suffix = randomUUID();
-  const username = 'ss23-route-' + label + '-' + suffix;
+  const username = 's23-' + label + '-' + suffix;
   const { rows } = await query(
     'INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,is_active,pending_admin_review) ' +
     'VALUES($1,$2,$3,$4,$5,$6,TRUE,FALSE) RETURNING id',
@@ -25,7 +25,7 @@ async function createStudent(label: string, className: 'SS 2' | 'SS 3') {
   await query(
     'INSERT INTO students(full_name,class_name,school_code,admission_number,user_id) ' +
     'VALUES($1,$2,$3,$4,$5)',
-    ['SS23 Route ' + label, className, 'secondary', 'SS23-ROUTE-' + suffix, id],
+    ['SS23 Route ' + label, className, 'secondary', 'S23-' + suffix, id],
   );
   return {
     id,
