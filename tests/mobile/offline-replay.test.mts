@@ -129,7 +129,7 @@ test('material downloads accept HTTPS and generate safe local filenames', () => 
     'pdf',
   );
   assert.deepEqual(target, {
-    url: 'https://cdn.example.test/files/lesson-notes.pdf?download=1',
+    url: 'https://cdn.example.org/files/lesson-notes.pdf?download=1',
     fileName: 'Lesson_Notes.pdf',
     mimeType: 'application/pdf',
     maxBytes: 25 * 1024 * 1024,
