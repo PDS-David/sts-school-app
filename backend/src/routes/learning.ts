@@ -1,12 +1,15 @@
 import { Router } from 'express';
+import { createHash } from 'node:crypto';
 import { z } from 'zod';
 import type { PoolClient } from 'pg';
 import { query, withTransaction } from '../db/pool.js';
+import { verifyTopicAssetPayload } from '../db/attachTopicAssets.js';
 import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
 import { resolveViewerClassNames, checkTeacherContentScope } from '../utils/scope.js';
 import { generate, generateJSON } from '../utils/ai.js';
 import { sendPushToClass } from '../utils/push.js';
 import type { AuthUser } from '../types/index.js';
+import { isSafeExternalMaterialUrl } from '../utils/materialUrl.js';
 import { attributionsForTopic, publicAttribution } from '../db/jss3Attributions.js';
 import { resolveSequenceGroup, studentTopicPreview } from '../utils/jss3Sequence.js';
 import { resolveDelivery, safeJss3Topic, retireStaleJss3Cache, assessmentDeliverable, withdrawnAssessmentIds } from '../utils/jss3DeliveryCorrection.js';
@@ -23,6 +26,18 @@ import { resolvePrimary4SourceDelivery, safePrimary4Topic, primary4WithdrawnAsse
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
 // Read per request (value is constant in a running server) so tests can exercise PIN on and off in one process.
 const termPinEnforced = () => process.env.TERM_PIN_ENFORCED === 'true';
+
+function verifyStudentDeliveryAsset(bytes: Buffer, mediaType: string, expectedSha256: string): boolean {
+  if (!Buffer.isBuffer(bytes) || bytes.length === 0 || bytes.length > 10 * 1024 * 1024) return false;
+  const actualHash = createHash('sha256').update(bytes).digest('hex');
+  if (actualHash !== expectedSha256.toLowerCase()) return false;
+  if (mediaType === 'audio/mpeg') {
+    const hasId3 = bytes.length >= 3 && bytes.subarray(0, 3).toString('ascii') === 'ID3';
+    const hasMpegFrame = bytes.length >= 2 && bytes[0] === 0xff && (bytes[1] & 0xe0) === 0xe0;
+    return hasId3 || hasMpegFrame;
+  }
+  return verifyTopicAssetPayload(bytes, mediaType, expectedSha256);
+}
 
 const router = Router();
 router.use(requireAuth);
@@ -75,6 +90,28 @@ function resolveContentSchool(
   const schoolCode = user.school_code?.trim();
   return schoolCode
     ? { schoolCode }
+    : { status: 403, error: 'Your account is not assigned to a school.' };
+}
+
+function resolveLearningAssetSchool(
+  user: AuthUser,
+  requestedSchoolCode?: string,
+): { schoolCode: string } | { status: 400 | 403; error: string } {
+  const ownSchool = user.school_code?.trim();
+  if (user.role === 'admin') {
+    if (ownSchool) {
+      if (requestedSchoolCode?.trim() && requestedSchoolCode.trim() !== ownSchool) {
+        return { status: 403, error: 'This administrator is restricted to their assigned school.' };
+      }
+      return { schoolCode: ownSchool };
+    }
+    const requested = requestedSchoolCode?.trim();
+    return requested
+      ? { schoolCode: requested }
+      : { status: 400, error: 'school_code is required for a global administrator to access school assets.' };
+  }
+  return ownSchool
+    ? { schoolCode: ownSchool }
     : { status: 403, error: 'Your account is not assigned to a school.' };
 }
 
@@ -202,10 +239,17 @@ router.get('/ss1/assets/:assetId', requirePerm('topics.read'), async (req, res) 
   if (!unlockedTerms.has(result.asset.term)) {
     return res.status(423).json({ error: 'Redeem the Term PIN to unlock this lesson asset.' });
   }
+  if (!verifyStudentDeliveryAsset(result.bytes, result.asset.media_type, result.asset.sha256)) {
+    console.error('[assets] SS1 student asset failed MIME/SHA-256 verification', { assetId: result.asset.id });
+    return res.status(500).json({ error: 'Asset integrity verification failed.' });
+  }
   res.set('Content-Type', result.asset.media_type);
   res.set('Content-Length', String(result.bytes.length));
   res.set('ETag', `"${result.asset.sha256}"`);
-  res.set('Cache-Control', 'private, max-age=3600');
+  res.set('X-Content-Type-Options', 'nosniff');
+  res.set('Content-Disposition', 'inline');
+  if (result.asset.media_type === 'image/svg+xml') res.set('Content-Security-Policy', "default-src 'none'; sandbox");
+  res.set('Cache-Control', 'private, no-store, max-age=0');
   return res.send(result.bytes);
 });
 
@@ -312,10 +356,17 @@ router.get('/ss23/assets/:assetId', requirePerm('topics.read'), async (req, res)
   if (!unlockedTerms.has(result.asset.term)) {
     return res.status(423).json({ error: 'Redeem the Term PIN to unlock this curriculum asset.' });
   }
+  if (!verifyStudentDeliveryAsset(result.bytes, result.asset.media_type, result.asset.sha256)) {
+    console.error('[assets] SS23 student asset failed MIME/SHA-256 verification', { assetId: result.asset.id });
+    return res.status(500).json({ error: 'Asset integrity verification failed.' });
+  }
   res.set('Content-Type', result.asset.media_type);
   res.set('Content-Length', String(result.bytes.length));
   res.set('ETag', `"${result.asset.sha256}"`);
-  res.set('Cache-Control', 'private, max-age=3600');
+  res.set('X-Content-Type-Options', 'nosniff');
+  res.set('Content-Disposition', 'inline');
+  if (result.asset.media_type === 'image/svg+xml') res.set('Content-Security-Policy', "default-src 'none'; sandbox");
+  res.set('Cache-Control', 'private, no-store, max-age=0');
   return res.send(result.bytes);
 });
 
@@ -326,7 +377,10 @@ router.get('/ss23/assets/:assetId', requirePerm('topics.read'), async (req, res)
 router.get('/materials', requirePerm('materials.read'), async (req, res) => {
   const { subject_id, class_name, term_id, school_code } = req.query as Record<string, string>;
   const user = req.user!;
-  const sc = (school_code && user.role === 'admin') ? school_code : user.school_code;
+  const schoolScope = resolveLearningAssetSchool(user, school_code);
+  if ('error' in schoolScope) return res.status(schoolScope.status).json({ error: schoolScope.error });
+  const sc = schoolScope.schoolCode;
+  res.set('Cache-Control', 'private, no-store');
 
   // Students/parents can't be trusted to pass class_name themselves (no
   // screen does), so their viewable classes are resolved server-side and
@@ -374,7 +428,11 @@ router.get('/materials', requirePerm('materials.read'), async (req, res) => {
   sql += ' ORDER BY m.created_at DESC';
 
   const { rows } = await query(sql, params);
-  return res.json({ materials: rows });
+  return res.json({ materials: rows.map((material: any) => ({
+    ...material,
+    // Legacy unsafe URLs remain visible as metadata but cannot be opened or downloaded.
+    url: isSafeExternalMaterialUrl(material.url) ? material.url : null,
+  })) });
 });
 
 const materialCreateSchema = z.object({
@@ -382,8 +440,8 @@ const materialCreateSchema = z.object({
   class_name: z.string().trim().min(1).max(100).nullable().optional(),
   term_id: z.coerce.number().int().positive().nullable().optional(),
   title: z.string().trim().min(1).max(255),
-  type: z.string().trim().min(1).max(40),
-  url: z.string().trim().min(1).max(2048),
+  type: z.enum(['pdf', 'video', 'doc', 'link']),
+  url: z.string().min(1).max(2048).refine(isSafeExternalMaterialUrl, 'Material URL must be a safe HTTPS link to a public hostname.'),
   school_code: z.string().trim().min(1).max(50).optional(),
 });
 
@@ -391,7 +449,11 @@ router.post('/materials', requirePerm('materials.write'), async (req, res) => {
   const parsed = materialCreateSchema.safeParse(req.body);
   if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
   const data = parsed.data;
-  const target = resolveContentSchool(req.user!, data.school_code);
+  const user = req.user!;
+  if (user.role === 'admin' && user.school_code && data.school_code && data.school_code !== user.school_code) {
+    return res.status(403).json({ error: 'This administrator is restricted to their assigned school.' });
+  }
+  const target = resolveContentSchool(user, user.school_code ?? data.school_code);
   if ('error' in target) return res.status(target.status).json({ error: target.error });
 
   const scopeError = await checkTeacherContentScope(req.user!, {
@@ -420,18 +482,26 @@ router.post('/materials', requirePerm('materials.write'), async (req, res) => {
 
 router.delete('/materials/:id', requirePerm('materials.write'), async (req, res) => {
   const user = req.user!;
-  // Found in the Pass 20 comparison audit: this only ever deleted `WHERE
-  // created_by=$2` — meaning even admin could not remove a material some
-  // other teacher had uploaded (e.g. to take it down after that teacher
-  // left the school). Admin now bypasses the created_by check entirely,
-  // matching the "admin is unrestricted" pattern used everywhere else in
-  // the app; a non-admin teacher is still limited to their own uploads.
-  const { rows } = await query(
-    user.role === 'admin'
-      ? 'DELETE FROM materials WHERE id=$1 RETURNING id'
-      : 'DELETE FROM materials WHERE id=$1 AND created_by=$2 RETURNING id',
-    user.role === 'admin' ? [req.params.id] : [req.params.id, user.id],
-  );
+  const materialId = Number(req.params.id);
+  if (!Number.isSafeInteger(materialId) || materialId <= 0) return res.status(400).json({ error: 'Invalid material id' });
+
+  let sql: string;
+  let params: unknown[];
+  if (user.role === 'admin' && !user.school_code) {
+    // Global administrators may remove material from any school.
+    sql = 'DELETE FROM materials WHERE id=$1 RETURNING id';
+    params = [materialId];
+  } else if (user.role === 'admin') {
+    // School-bound administrators can remove any material in their own school only.
+    sql = 'DELETE FROM materials WHERE id=$1 AND school_code=$2 RETURNING id';
+    params = [materialId, user.school_code];
+  } else {
+    // Teachers can remove only their own uploads within their assigned school.
+    if (!user.school_code) return res.status(403).json({ error: 'Your account is not assigned to a school.' });
+    sql = 'DELETE FROM materials WHERE id=$1 AND school_code=$2 AND created_by=$3 RETURNING id';
+    params = [materialId, user.school_code, user.id];
+  }
+  const { rows } = await query(sql, params);
   if (!rows[0]) return res.status(404).json({ error: 'Material not found' });
   return res.json({ ok: true });
 });
@@ -695,7 +765,10 @@ router.get('/topics/:id/assets', requirePerm('topics.read'), async (req, res) =>
   if (!Number.isInteger(topicId) || topicId <= 0) return res.status(400).json({ error: 'Invalid topic id' });
   const user = req.user!;
   const { school_code } = req.query as Record<string, string>;
-  const sc = (school_code && user.role === 'admin') ? school_code : user.school_code;
+  const schoolScope = resolveLearningAssetSchool(user, school_code);
+  if ('error' in schoolScope) return res.status(schoolScope.status).json({ error: schoolScope.error });
+  const sc = schoolScope.schoolCode;
+  res.set('Cache-Control', 'private, no-store, max-age=0');
 
   const params: unknown[] = [topicId, sc];
   const scope = await topicVisibilitySql(user, params);
@@ -715,11 +788,12 @@ router.get('/topics/:id/assets', requirePerm('topics.read'), async (req, res) =>
 
   // Metadata only — `bytes` is never selected here.
   const { rows: storedAssets } = await query(
-    `SELECT id, asset_key, kind, mime, sha256, caption, alt_text, sort_order
-       FROM topic_assets
-      WHERE topic_id=$1 AND displayed=true
-      ORDER BY sort_order, id`,
-    [topicId],
+    `SELECT a.id, a.asset_key, a.kind, a.mime, a.sha256, a.caption, a.alt_text, a.sort_order
+       FROM topic_assets a
+       JOIN topics t ON t.id=a.topic_id
+      WHERE a.topic_id=$1 AND t.school_code=$2 AND a.displayed=true${scope}
+      ORDER BY a.sort_order, a.id`,
+    params,
   );
   const rows = visible[0].school_code === 'secondary' && visible[0].class_name === 'SS 1' && visible[0].subject_name === 'Agricultural Science'
     ? storedAssets.filter((asset: any) => agriculturalScienceAssetDeliverable(visible[0], asset))
@@ -747,7 +821,10 @@ router.get('/mathematics-assets/:assetKey', requirePerm('topics.read'), async (r
   if (!assetKey || !Number.isInteger(topicId) || topicId <= 0) return res.status(404).json({ error: 'Asset not found' });
   const user = req.user!;
   const { school_code } = req.query as Record<string, string>;
-  const sc = (school_code && user.role === 'admin') ? school_code : user.school_code;
+  const schoolScope = resolveLearningAssetSchool(user, school_code);
+  if ('error' in schoolScope) return res.status(schoolScope.status).json({ error: schoolScope.error });
+  const sc = schoolScope.schoolCode;
+  res.set('Cache-Control', 'private, no-store, max-age=0');
   const params: unknown[] = [topicId, sc];
   const scope = await topicVisibilitySql(user, params);
   if (scope === null) return res.status(404).json({ error: 'Asset not found' });
@@ -765,16 +842,15 @@ router.get('/mathematics-assets/:assetKey', requirePerm('topics.read'), async (r
   if (!asset) return res.status(404).json({ error: 'Asset not found' });
   const file = readMathematicsAsset(assetKey);
   if (!file) return res.status(404).json({ error: 'Asset not found' });
-  const etag = `"${file.sha256}"`;
-  res.setHeader('ETag', etag);
-  res.setHeader('Cache-Control', 'private, max-age=86400');
-  const inm = String(req.headers['if-none-match'] ?? '');
-  if (inm && inm.split(',').map(value => value.trim().replace(/^W\//, '')).includes(etag)) {
-    return res.status(304).end();
+  if (!verifyTopicAssetPayload(file.bytes, file.mime, file.sha256)) {
+    console.error('[assets] mathematics asset failed MIME/SHA-256 verification', { assetKey });
+    return res.status(500).json({ error: 'Asset integrity verification failed.' });
   }
+  res.setHeader('Cache-Control', 'private, no-store, max-age=0');
   res.setHeader('Content-Type', file.mime);
   res.setHeader('Content-Length', String(file.bytes.length));
   res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('Content-Disposition', 'inline');
   if (file.mime === 'image/svg+xml') res.setHeader('Content-Security-Policy', "default-src 'none'; sandbox");
   return res.end(file.bytes);
 });
@@ -784,12 +860,15 @@ router.get('/assets/:id', requirePerm('topics.read'), async (req, res) => {
   if (!Number.isInteger(assetId) || assetId <= 0) return res.status(400).json({ error: 'Invalid asset id' });
   const user = req.user!;
   const { school_code } = req.query as Record<string, string>;
-  const sc = (school_code && user.role === 'admin') ? school_code : user.school_code;
+  const schoolScope = resolveLearningAssetSchool(user, school_code);
+  if ('error' in schoolScope) return res.status(schoolScope.status).json({ error: schoolScope.error });
+  const sc = schoolScope.schoolCode;
+  res.set('Cache-Control', 'private, no-store, max-age=0');
 
   const params: unknown[] = [assetId, sc];
   const scope = await topicVisibilitySql(user, params);
   if (scope === null) return res.status(404).json({ error: 'Asset not found' });
-  // Scope + metadata first (no bytes), so a 304 never reads the image.
+  // Resolve authorization metadata first, then fetch and verify the bytes under the same school/topic scope.
   const { rows: meta } = await query(
     `SELECT a.mime, a.sha256, a.asset_key, t.id AS topic_id, t.school_code, t.subject_id, (to_jsonb(t)->>'sequence_rank')::numeric AS sequence_rank, t.class_name, t.term_label, t.title,
             t.source_file, t.source_reference, t.order_index, s.name AS subject_name
@@ -805,20 +884,26 @@ router.get('/assets/:id', requirePerm('topics.read'), async (req, res) => {
   if (meta[0].school_code === 'secondary' && meta[0].class_name === 'SS 1' && meta[0].subject_name === 'Mathematics' &&
       !mathematicsAssetDeliverable(meta[0], meta[0])) return res.status(404).json({ error: 'Asset not found' });
 
-  const etag = `"${meta[0].sha256}"`;
-  res.setHeader('ETag', etag);
-  res.setHeader('Cache-Control', 'private, max-age=86400');
-  const inm = String(req.headers['if-none-match'] ?? '');
-  if (inm && inm.split(',').map((s) => s.trim().replace(/^W\//, '')).includes(etag)) {
-    return res.status(304).end();
-  }
+  res.setHeader('Cache-Control', 'private, no-store, max-age=0');
 
-  const { rows } = await query('SELECT bytes FROM topic_assets WHERE id=$1', [assetId]);
+  const bytesParams = [...params, meta[0].topic_id];
+  const { rows } = await query(
+    `SELECT a.bytes
+       FROM topic_assets a
+       JOIN topics t ON t.id=a.topic_id
+      WHERE a.id=$1 AND a.displayed=true AND t.school_code=$2 AND t.id=$${bytesParams.length}${scope}`,
+    bytesParams,
+  );
   if (!rows[0]) return res.status(404).json({ error: 'Asset not found' });
   const buf: Buffer = rows[0].bytes;
+  if (!verifyTopicAssetPayload(buf, meta[0].mime, meta[0].sha256)) {
+    console.error('[assets] topic asset failed MIME/SHA-256 verification', { assetId, topicId: meta[0].topic_id });
+    return res.status(500).json({ error: 'Asset integrity verification failed.' });
+  }
   res.setHeader('Content-Type', meta[0].mime);
   res.setHeader('Content-Length', String(buf.length));
   res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('Content-Disposition', 'inline');
   if (meta[0].mime === 'image/svg+xml') res.setHeader('Content-Security-Policy', "default-src 'none'; sandbox");
   return res.end(buf);
 });
