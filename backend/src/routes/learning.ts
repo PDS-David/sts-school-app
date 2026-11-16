@@ -363,6 +363,9 @@ router.get('/ss23/assets/:assetId', requirePerm('topics.read'), async (req, res)
   res.set('Content-Type', result.asset.media_type);
   res.set('Content-Length', String(result.bytes.length));
   res.set('ETag', `"${result.asset.sha256}"`);
+  res.set('X-Content-Type-Options', 'nosniff');
+  res.set('Content-Disposition', 'inline');
+  if (result.asset.media_type === 'image/svg+xml') res.set('Content-Security-Policy', "default-src 'none'; sandbox");
   res.set('Cache-Control', 'private, no-store, max-age=0');
   return res.send(result.bytes);
 });
