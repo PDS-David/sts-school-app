@@ -70,11 +70,11 @@ router.get('/invoices', async (req, res) => {
   if (user.role === 'parent') {
     params.push(user.id);
     sql += ` AND st.deleted_at IS NULL
-              AND i.student_id IN (SELECT student_id FROM parent_wards WHERE parent_id=${params.length})`;
+              AND i.student_id IN (SELECT student_id FROM parent_wards WHERE parent_id=$${params.length})`;
   } else if (user.role === 'student') {
     params.push(user.id);
     sql += ` AND st.deleted_at IS NULL
-              AND i.student_id = (SELECT id FROM students WHERE user_id=${params.length} AND deleted_at IS NULL LIMIT 1)`;
+              AND i.student_id = (SELECT id FROM students WHERE user_id=$${params.length} AND deleted_at IS NULL LIMIT 1)`;
   }
   // finance_admin: no extra scoping beyond optional filters below
 
