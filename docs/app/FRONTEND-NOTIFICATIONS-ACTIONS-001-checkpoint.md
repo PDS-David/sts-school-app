@@ -16,6 +16,7 @@ The Notifications screen displayed unread message and assessment alerts as stati
 - Attach the authorized contact record and role-specific screen name to unread-message alerts.
 - Make destination-bearing notification cards accessible buttons.
 - Mark a tapped actionable alert as read before navigating.
+- Disable read-state mutations until account-scoped AsyncStorage hydration completes, preventing early taps from being overwritten by the initial storage read.
 - Route message alerts to the existing ChatThread screen for parent/student/teacher and Messages screen for admin/finance_admin.
 - Route assessment alerts through the existing assessment deep-link helper.
 - Keep announcements and other alerts without a supported destination as non-interactive cards.
@@ -30,6 +31,7 @@ The Notifications screen displayed unread message and assessment alerts as stati
 - Static review confirms message destinations use the existing server-authorized contacts response and preserve the role-specific route names.
 - Static review confirms assessment alerts use the existing TakeAssessment navigation helper.
 - Read-state persistence remains account/role/school/class scoped.
+- Read-all and notification navigation controls remain disabled until the active account's read state is hydrated.
 - No backend endpoint or message authorization changed.
 - TypeScript, automated, browser and device checks are pending PR CI/runtime access; no pass is claimed.
 
