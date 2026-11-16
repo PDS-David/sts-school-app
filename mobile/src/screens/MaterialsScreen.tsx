@@ -100,7 +100,7 @@ export default function MaterialsScreen({ route }: any) {
         throw new Error('Downloaded material is empty or exceeds the 25 MB size limit.');
       }
       const actualMime = typeof downloaded.type === 'string' ? downloaded.type.toLowerCase() : '';
-      if (actualMime && actualMime !== target.mimeType && actualMime !== 'application/octet-stream') {
+      if (!actualMime || (actualMime !== target.mimeType && actualMime !== 'application/octet-stream')) {
         downloaded.delete();
         throw new Error('Downloaded content type does not match the declared material type.');
       }
