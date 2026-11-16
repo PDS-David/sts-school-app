@@ -66,8 +66,9 @@ jobs:
         working-directory: mobile
         run: npx expo prebuild --platform android --non-interactive
       - name: Build installable Android debug APK
+        timeout-minutes: 25
         working-directory: mobile/android
-        run: ./gradlew --no-daemon assembleDebug
+        run: ./gradlew --no-daemon --console=plain --stacktrace assembleDebug
       - name: Install and launch APK on Android emulator
         uses: reactivecircus/android-emulator-runner@v2
         with:
