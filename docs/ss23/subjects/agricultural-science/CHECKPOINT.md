@@ -22,14 +22,14 @@ A programmatic inspection of all 195 items found:
 
 This confirms that answer-guide fields exist and their mark totals are internally consistent. It does **not** establish that answers are factually correct, that all original source assessment questions have been captured, or that a subject specialist has approved them.
 
-The package now records 41 external factual references (10 additional source-hashed references in this PR) and 10 additional supported coverage rows for the T2 floriculture and crop-disease clarifications. The supplements distinguish verified facts from the original school wording. The complete source tables and all remaining taxonomic or source-text questions still require original-page reconciliation and specialist review.
+The package now records 44 external factual references (13 additional source-hashed references in this PR) and 13 additional supported coverage rows for the T2 floriculture, crop-disease and safe pest-control clarifications. The supplements distinguish verified facts from the original school wording. The complete source tables and all remaining taxonomic or source-text questions still require original-page reconciliation and specialist review.
 
 In particular, all 45 Second- and Third-Term practice items are labelled `AUTHORED_SUPPLEMENT`; none is labelled `ORIGINAL_SOURCE`. Their source assessment coverage remains incomplete and must be reconciled against the original school documents. Do not represent these 45 authored items as copied past questions or original source assessment items.
 
 ## Coverage and open-item audit
 
 Current package coverage rows:
-- `SUPPORTED`: 66
+- `SUPPORTED`: 69
 - `PARTIAL`: 25
 - `UNRESOLVED`: 5
 - `MARKER`: 4

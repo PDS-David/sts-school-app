@@ -255,7 +255,7 @@ test('loads the SS2 Agricultural Science package with source assessment coverage
   assert.ok(pkg.open_items.some(item => item.blocks_delivery));
   assert.ok(pkg.open_items.some(item => !item.blocks_delivery));
   assert.equal(pkg.open_items.length, 53);
-  assert.equal(pkg.external_sources.length, 41);
+  assert.equal(pkg.external_sources.length, 44);
   assert.ok(pkg.assets.some(asset => asset.path === 'backend/src/db/ss23/assets/agricultural-science/irrigation-systems.svg' && asset.state.implementation === 'IMPLEMENTED'));
   assert.ok(pkg.assets.some(asset => asset.path === 'backend/src/db/ss23/assets/agricultural-science/drainage-systems.svg' && asset.state.implementation === 'IMPLEMENTED'));
   assert.ok(pkg.assets.some(asset => asset.path === 'backend/src/db/ss23/assets/agricultural-science/nitrogen-cycle.svg' && asset.state.implementation === 'IMPLEMENTED'));

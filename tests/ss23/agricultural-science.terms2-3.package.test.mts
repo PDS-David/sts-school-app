@@ -85,6 +85,9 @@ test('external factual corrections are source-bound and covered', () => {
     'SS23-EXT-ICCO-COCOA-BLACK-POD',
     'SS23-EXT-CABI-PHYTOPHTHORA-OOMYCETE',
     'SS23-EXT-UCIPM-ROOT-KNOT',
+    'SS23-EXT-FAO-IPM',
+    'SS23-EXT-NAFDAC-PESTICIDE-REG',
+    'SS23-EXT-NAFDAC-BANNED-PESTICIDES-2026',
   ];
   for (const id of expected) {
     assert.ok(external.has(id), 'missing external reference ' + id);
@@ -98,6 +101,24 @@ test('external factual corrections are source-bound and covered', () => {
 });
 
 
+
+
+test('pest-control supplement requires monitoring-led IPM and current Nigerian pesticide registration', () => {
+  const pests = pkg.units.find(unit => unit.id === 'SUP-SS2-AGRICULTURAL-SCIENCE-T2-W07-08-CROP-PESTS');
+  assert.ok(pests);
+  assert.match(pests.body, /non-chemical methods first/);
+  assert.match(pests.body, /registered for the intended crop and use in Nigeria/);
+  assert.match(pests.body, /pre-harvest interval/);
+  assert.match(pests.body, /NAFDAC.*banned-pesticide list/);
+  const question = pests.practice.find(item => item.question.includes('five pest multiple-choice'));
+  assert.ok(question);
+  assert.match(question.answer, /currently registered for the intended crop and target pest in Nigeria/);
+  for (const id of ['SS23-EXT-FAO-IPM', 'SS23-EXT-NAFDAC-PESTICIDE-REG', 'SS23-EXT-NAFDAC-BANNED-PESTICIDES-2026']) {
+    assert.ok(pests.provenance.some(ref => ref.source_id === id));
+    assert.ok(pkg.coverage.some(row => row.source_id === id && row.status === 'SUPPORTED' && row.unit_ids.includes(pests.id)));
+  }
+  assert.ok(pkg.open_items.some(item => item.id === 'AG2-T2-PEST-TABLE' && item.blocks_delivery));
+});
 
 test('crop-disease examples use externally supported causal agents and retain the full-review blocker', () => {
   const disease = pkg.units.find(unit => unit.id === 'SUP-SS2-AGRICULTURAL-SCIENCE-T2-W05-06-CROP-DISEASES');
