@@ -3,6 +3,7 @@ name: Web mobile bundle readiness
 on:
   push:
     branches:
+      - master
       - "agent/mobile-web-readiness-*"
     paths:
       - "mobile/**"
