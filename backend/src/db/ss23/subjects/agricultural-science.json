@@ -2156,6 +2156,33 @@
         "verification": "VERIFIED",
         "verification_reference": "Committed bytes verified against recorded SHA-256 and byte count at backend/src/db/ss23/assets/agricultural-science/farmstead-layout-school.svg on 2026-11-16; exact Git blob and file contents checked in PR #871."
       }
+    },
+    {
+      "id": "ASSET-AG2-T1-W06-IRRIGATION-SYSTEMS-SCHEMATIC",
+      "unit_id": "SUP-SS2-AGRICULTURAL-SCIENCE-T1-W06-IRRIGATION-DRAINAGE",
+      "path": "backend/src/db/ss23/assets/agricultural-science/irrigation-methods-school.svg",
+      "sha256": "0162556a1893e33e9b418ea760f211236477dbcafa53a40edcffd847e1a1030a",
+      "bytes": 3731,
+      "media_type": "image/svg+xml",
+      "alt": "Original school-authored comparison of surface furrow, overhead sprinkler and drip or micro-irrigation methods, with the distinction between irrigation and drainage.",
+      "order": 49,
+      "source_locator": "Authored replacement schematic for the source's irrigation-method figure; the original source image remains inventory-only until reuse rights are established.",
+      "provenance": {
+        "source_id": "SS23-EXT-USDA-NRCS-IRRIGATION-METHODS",
+        "source_sha256": "ec440b89e480d81acedb15c891de132dfa7db8bdf9ed9311c2bf38e8ad066ceb",
+        "role": "AUTHORED_SUPPLEMENT",
+        "locator": "USDA NRCS, Irrigation methods and systems guidance",
+        "rights": "Original SVG authored for this curriculum; no source image is reproduced.",
+        "attribution": "Original Sow the Seed School SS2 Agricultural Science teaching schematic, informed by USDA NRCS irrigation-method guidance.",
+        "reuse_status": "PERMITTED"
+      },
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "units": [
@@ -17965,6 +17992,22 @@
           "explanation": "Original diagram groups residential, machinery, livestock, storage, horticulture and crop-production functions as a not-to-scale example; FAO reference supports functional farmstead planning and zone arrangement."
         }
       ]
+    },
+    {
+      "id": "COV-SS2-AG-T1-IRRIGATION-SCHOOL-SCHEMATIC",
+      "source_id": "SS23-EXT-USDA-NRCS-IRRIGATION-METHODS",
+      "objective": "Compare surface/furrow, sprinkler and drip/micro-irrigation and distinguish irrigation water application from drainage.",
+      "objective_locator": "First Term, Week 6, supplementary school-authored irrigation schematic.",
+      "status": "SUPPORTED",
+      "unit_ids": [
+        "SUP-SS2-AGRICULTURAL-SCIENCE-T1-W06-IRRIGATION-DRAINAGE"
+      ],
+      "evidence": [
+        {
+          "locator": "USDA NRCS irrigation methods and systems guidance",
+          "explanation": "Original schematic compares how surface furrows, overhead sprinklers and drip emitters deliver water; the lesson separately explains that drainage removes excess water."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -18182,8 +18225,8 @@
     {
       "id": "AG2-T1-W06-FIGURE-RIGHTS",
       "kind": "PERMISSION",
-      "detail": "Original school-authored irrigation-method and drainage-system SVG diagrams now provide accessible teaching alternatives for the main classifications. Their stored bytes and SHA-256 values are verified; content approval remains pending. The original source set includes third-party screenshots and an Alamy stock image whose reuse rights and exact figure mapping are not established. Those source images must remain evidence-only unless permission is documented.",
-      "required_action": "Have the subject lead review the authored irrigation and drainage diagrams for technical accuracy, local terminology and fit with the source lesson; record approval or amendments. Keep third-party screenshots and watermarked stock images out of student delivery unless written permission and attribution are verified. Keep the issue blocking until the authored diagrams are approved and all selected figures have a documented rights status.",
+      "detail": "A new original school-authored comparison schematic for surface/furrow, overhead sprinkler and drip/micro-irrigation has been added and is mapped to the lesson with the registered USDA NRCS irrigation-method reference. The watermarked/rights-unverified source figure remains retained only as a non-deliverable provenance record. The new diagram is a teaching supplement, not a substitute for site-specific system design; it still requires asset verification and subject-lead approval.",
+      "required_action": "Review the school-authored irrigation schematic for technical accuracy and alignment with the lesson; confirm the source distinctions, labels and classroom usefulness; verify the stored SVG and approve its use. Keep the original rights-unverified figure non-deliverable unless separately licensed. Keep the item blocking until the replacement's verification and subject-lead approval are recorded.",
       "affected_ids": [
         "SUP-SS2-AGRICULTURAL-SCIENCE-T1-W06-IRRIGATION-DRAINAGE",
         "ASSET-AG2-T1-W06-SPRINKLER-FIELD",
@@ -18201,7 +18244,8 @@
         "ASSET-AG2-T1-W06-DRIP-ORCHARD",
         "ASSET-AG2-T1-W06-CENTRE-PIVOT",
         "ASSET-AG2-T1-W06-SURFACE-DRAINAGE-DITCH",
-        "ASSET-AG2-T1-W06-SUBSURFACE-DRAINAGE-SCREENSHOT"
+        "ASSET-AG2-T1-W06-SUBSURFACE-DRAINAGE-SCREENSHOT",
+        "ASSET-AG2-T1-W06-IRRIGATION-SYSTEMS-SCHEMATIC"
       ],
       "blocks_delivery": true
     },
