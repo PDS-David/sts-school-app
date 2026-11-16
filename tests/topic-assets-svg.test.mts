@@ -58,3 +58,54 @@ test('safe SVG is accepted by the real topic asset manifest preparation path', a
     assert.deepEqual(prepared[0].bytes, bytes);
   } finally { rmSync(root, { recursive:true, force:true }); }
 });
+
+
+test('asset manifest paths cannot escape the selected assets directory', async () => {
+  const { createHash } = await import('node:crypto');
+  const { mkdtempSync, writeFileSync, rmSync } = await import('node:fs');
+  const path = await import('node:path');
+  const { tmpdir } = await import('node:os');
+  const root = mkdtempSync(path.join(tmpdir(), 'topic-path-'));
+  const outside = mkdtempSync(path.join(tmpdir(), 'topic-outside-'));
+  const bytes = Buffer.from('outside secret');
+  try {
+    writeFileSync(path.join(outside, 'secret.png'), bytes);
+    const sha256 = createHash('sha256').update(bytes).digest('hex');
+    assert.throws(() => prepareAssets([{
+      asset_key:'escape', file:'../topic-outside-secret.png', sha256, order_index:1,
+      caption:null, alt_text:null, kind:'image', displayed:true, sort_order:1, expected_title:null,
+    }], root), /asset path must stay inside/);
+    assert.throws(() => prepareAssets([{
+      asset_key:'absolute', file:path.join(outside, 'secret.png'), sha256, order_index:1,
+      caption:null, alt_text:null, kind:'image', displayed:true, sort_order:1, expected_title:null,
+    }], root), /asset path must stay inside/);
+  } finally {
+    rmSync(root, { recursive:true, force:true });
+    rmSync(outside, { recursive:true, force:true });
+  }
+});
+
+test('asset manifest preparation rejects MIME spoofing and files over 10 MB', async () => {
+  const { createHash } = await import('node:crypto');
+  const { mkdtempSync, writeFileSync, rmSync } = await import('node:fs');
+  const path = await import('node:path');
+  const { tmpdir } = await import('node:os');
+  const root = mkdtempSync(path.join(tmpdir(), 'topic-size-'));
+  try {
+    const spoof = Buffer.from('<html>not an image</html>');
+    writeFileSync(path.join(root, 'spoof.png'), spoof);
+    const spoofHash = createHash('sha256').update(spoof).digest('hex');
+    assert.throws(() => prepareAssets([{
+      asset_key:'spoof', file:'spoof.png', sha256:spoofHash, order_index:1,
+      caption:null, alt_text:null, kind:'image', displayed:true, sort_order:1, expected_title:null,
+    }], root), /not a supported safe PNG\/JPEG\/GIF\/SVG/);
+
+    const large = Buffer.alloc(10 * 1024 * 1024 + 1, 0x41);
+    writeFileSync(path.join(root, 'large.png'), large);
+    const largeHash = createHash('sha256').update(large).digest('hex');
+    assert.throws(() => prepareAssets([{
+      asset_key:'large', file:'large.png', sha256:largeHash, order_index:1,
+      caption:null, alt_text:null, kind:'image', displayed:true, sort_order:1, expected_title:null,
+    }], root), /10 MB size limit/);
+  } finally { rmSync(root, { recursive:true, force:true }); }
+});
