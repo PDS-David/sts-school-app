@@ -262,22 +262,47 @@ router.get('/classes', async (req, res) => {
 // actually enforced; these two routes just manage the class_locks row.
 //
 // GET  /academic/class-locks?class_name=&term_id=&school_code=
-router.get('/class-locks', async (req, res) => {
+router.get('/class-locks', requireRole('teacher', 'admin'), async (req, res) => {
   const { class_name, term_id, school_code } = req.query as Record<string, string>;
-  if (!class_name || !term_id) {
-    return res.status(400).json({ error: 'class_name and term_id are required' });
+  if (!class_name || class_name.trim().length > 100 || !term_id) {
+    return res.status(400).json({ error: 'A valid class_name and term_id are required' });
   }
-  const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
-  if (!sc) return res.status(400).json({ error: 'school_code is required' });
   const parsedTermId = Number(term_id);
-  const termScopeError = await checkTermSchoolScope(sc, parsedTermId);
+  if (!Number.isSafeInteger(parsedTermId) || parsedTermId <= 0 || parsedTermId > 2_147_483_647) {
+    return res.status(400).json({ error: 'A valid term_id is required' });
+  }
+
+  const user = req.user!;
+  let schoolCode: string;
+  if (user.role === 'admin') {
+    if (!school_code || !school_code.trim() || school_code.length > 50) {
+      return res.status(400).json({ error: 'school_code is required for administrators' });
+    }
+    schoolCode = school_code.trim();
+  } else {
+    if (!user.school_code || !user.assigned_class) {
+      return res.status(403).json({ error: 'Only class teachers can view class lock status' });
+    }
+    if (class_name.trim() !== user.assigned_class) {
+      return res.status(403).json({ error: 'You can only view the lock status of your assigned class' });
+    }
+    schoolCode = user.school_code;
+  }
+
+  const termScopeError = await checkTermSchoolScope(schoolCode, parsedTermId);
   if (termScopeError) return res.status(termScopeError.status).json({ error: termScopeError.error });
+
+  const { rows: classRows } = await query(
+    'SELECT 1 FROM classes WHERE school_code=$1 AND name=$2',
+    [schoolCode, class_name.trim()],
+  );
+  if (!classRows[0]) return res.status(400).json({ error: 'Unknown class for this school' });
 
   const { rows } = await query(
     `SELECT cl.*, u.full_name AS locked_by_name
      FROM class_locks cl LEFT JOIN users u ON u.id = cl.locked_by
      WHERE cl.school_code=$1 AND cl.class_name=$2 AND cl.term_id=$3`,
-    [sc, class_name, parsedTermId],
+    [schoolCode, class_name.trim(), parsedTermId],
   );
   return res.json({ lock: rows[0] ?? null });
 });
