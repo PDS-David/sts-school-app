@@ -121,8 +121,9 @@ test('school-bound administrators cannot manage accounts outside their school', 
 
     const parentLogins = await get(primaryAdmin.token, '/parent-logins');
     assert.equal(parentLogins.status, 200);
-    assert.ok((await parentLogins.json() as { users: Array<{ school_code: string }> }).users
-      .every(user => user.school_code === 'primary'));
+    const scopedParents = (await parentLogins.json() as { users: Array<{ username: string }> }).users;
+    assert.ok(scopedParents.some(user => user.username === primaryParent.username));
+    assert.ok(!scopedParents.some(user => user.username === secondaryParent.username));
 
     const globalUsers = await get(globalAdmin.token, '/users');
     assert.equal(globalUsers.status, 200);
