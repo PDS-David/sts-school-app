@@ -229,7 +229,7 @@ router.get('/ss1/assets/:assetId', requirePerm('topics.read'), async (req, res) 
   res.set('Content-Type', result.asset.media_type);
   res.set('Content-Length', String(result.bytes.length));
   res.set('ETag', `"${result.asset.sha256}"`);
-  res.set('Cache-Control', 'private, max-age=3600');
+  res.set('Cache-Control', 'private, no-store, max-age=0');
   return res.send(result.bytes);
 });
 
@@ -339,7 +339,7 @@ router.get('/ss23/assets/:assetId', requirePerm('topics.read'), async (req, res)
   res.set('Content-Type', result.asset.media_type);
   res.set('Content-Length', String(result.bytes.length));
   res.set('ETag', `"${result.asset.sha256}"`);
-  res.set('Cache-Control', 'private, max-age=3600');
+  res.set('Cache-Control', 'private, no-store, max-age=0');
   return res.send(result.bytes);
 });
 
@@ -738,7 +738,10 @@ router.get('/topics/:id/assets', requirePerm('topics.read'), async (req, res) =>
   if (!Number.isInteger(topicId) || topicId <= 0) return res.status(400).json({ error: 'Invalid topic id' });
   const user = req.user!;
   const { school_code } = req.query as Record<string, string>;
-  const sc = (school_code && user.role === 'admin') ? school_code : user.school_code;
+  const schoolScope = resolveLearningAssetSchool(user, school_code);
+  if ('error' in schoolScope) return res.status(schoolScope.status).json({ error: schoolScope.error });
+  const sc = schoolScope.schoolCode;
+  res.set('Cache-Control', 'private, no-store, max-age=0');
 
   const params: unknown[] = [topicId, sc];
   const scope = await topicVisibilitySql(user, params);
@@ -758,11 +761,12 @@ router.get('/topics/:id/assets', requirePerm('topics.read'), async (req, res) =>
 
   // Metadata only — `bytes` is never selected here.
   const { rows: storedAssets } = await query(
-    `SELECT id, asset_key, kind, mime, sha256, caption, alt_text, sort_order
-       FROM topic_assets
-      WHERE topic_id=$1 AND displayed=true
-      ORDER BY sort_order, id`,
-    [topicId],
+    `SELECT a.id, a.asset_key, a.kind, a.mime, a.sha256, a.caption, a.alt_text, a.sort_order
+       FROM topic_assets a
+       JOIN topics t ON t.id=a.topic_id
+      WHERE a.topic_id=$1 AND t.school_code=$2 AND a.displayed=true${scope}
+      ORDER BY a.sort_order, a.id`,
+    params,
   );
   const rows = visible[0].school_code === 'secondary' && visible[0].class_name === 'SS 1' && visible[0].subject_name === 'Agricultural Science'
     ? storedAssets.filter((asset: any) => agriculturalScienceAssetDeliverable(visible[0], asset))
@@ -790,7 +794,10 @@ router.get('/mathematics-assets/:assetKey', requirePerm('topics.read'), async (r
   if (!assetKey || !Number.isInteger(topicId) || topicId <= 0) return res.status(404).json({ error: 'Asset not found' });
   const user = req.user!;
   const { school_code } = req.query as Record<string, string>;
-  const sc = (school_code && user.role === 'admin') ? school_code : user.school_code;
+  const schoolScope = resolveLearningAssetSchool(user, school_code);
+  if ('error' in schoolScope) return res.status(schoolScope.status).json({ error: schoolScope.error });
+  const sc = schoolScope.schoolCode;
+  res.set('Cache-Control', 'private, no-store, max-age=0');
   const params: unknown[] = [topicId, sc];
   const scope = await topicVisibilitySql(user, params);
   if (scope === null) return res.status(404).json({ error: 'Asset not found' });
@@ -808,9 +815,13 @@ router.get('/mathematics-assets/:assetKey', requirePerm('topics.read'), async (r
   if (!asset) return res.status(404).json({ error: 'Asset not found' });
   const file = readMathematicsAsset(assetKey);
   if (!file) return res.status(404).json({ error: 'Asset not found' });
+  if (!verifyTopicAssetPayload(file.bytes, file.mime, file.sha256)) {
+    console.error('[assets] mathematics asset failed MIME/SHA-256 verification', { assetKey });
+    return res.status(500).json({ error: 'Asset integrity verification failed.' });
+  }
   const etag = `"${file.sha256}"`;
   res.setHeader('ETag', etag);
-  res.setHeader('Cache-Control', 'private, max-age=86400');
+  res.setHeader('Cache-Control', 'private, no-store, max-age=0');
   const inm = String(req.headers['if-none-match'] ?? '');
   if (inm && inm.split(',').map(value => value.trim().replace(/^W\//, '')).includes(etag)) {
     return res.status(304).end();
@@ -818,6 +829,7 @@ router.get('/mathematics-assets/:assetKey', requirePerm('topics.read'), async (r
   res.setHeader('Content-Type', file.mime);
   res.setHeader('Content-Length', String(file.bytes.length));
   res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('Content-Disposition', 'inline');
   if (file.mime === 'image/svg+xml') res.setHeader('Content-Security-Policy', "default-src 'none'; sandbox");
   return res.end(file.bytes);
 });
@@ -827,7 +839,10 @@ router.get('/assets/:id', requirePerm('topics.read'), async (req, res) => {
   if (!Number.isInteger(assetId) || assetId <= 0) return res.status(400).json({ error: 'Invalid asset id' });
   const user = req.user!;
   const { school_code } = req.query as Record<string, string>;
-  const sc = (school_code && user.role === 'admin') ? school_code : user.school_code;
+  const schoolScope = resolveLearningAssetSchool(user, school_code);
+  if ('error' in schoolScope) return res.status(schoolScope.status).json({ error: schoolScope.error });
+  const sc = schoolScope.schoolCode;
+  res.set('Cache-Control', 'private, no-store, max-age=0');
 
   const params: unknown[] = [assetId, sc];
   const scope = await topicVisibilitySql(user, params);
@@ -850,18 +865,30 @@ router.get('/assets/:id', requirePerm('topics.read'), async (req, res) => {
 
   const etag = `"${meta[0].sha256}"`;
   res.setHeader('ETag', etag);
-  res.setHeader('Cache-Control', 'private, max-age=86400');
+  res.setHeader('Cache-Control', 'private, no-store, max-age=0');
   const inm = String(req.headers['if-none-match'] ?? '');
   if (inm && inm.split(',').map((s) => s.trim().replace(/^W\//, '')).includes(etag)) {
     return res.status(304).end();
   }
 
-  const { rows } = await query('SELECT bytes FROM topic_assets WHERE id=$1', [assetId]);
+  const bytesParams = [...params, meta[0].topic_id];
+  const { rows } = await query(
+    `SELECT a.bytes
+       FROM topic_assets a
+       JOIN topics t ON t.id=a.topic_id
+      WHERE a.id=$1 AND a.displayed=true AND t.school_code=$2 AND t.id=${bytesParams.length}${scope}`,
+    bytesParams,
+  );
   if (!rows[0]) return res.status(404).json({ error: 'Asset not found' });
   const buf: Buffer = rows[0].bytes;
+  if (!verifyTopicAssetPayload(buf, meta[0].mime, meta[0].sha256)) {
+    console.error('[assets] topic asset failed MIME/SHA-256 verification', { assetId, topicId: meta[0].topic_id });
+    return res.status(500).json({ error: 'Asset integrity verification failed.' });
+  }
   res.setHeader('Content-Type', meta[0].mime);
   res.setHeader('Content-Length', String(buf.length));
   res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('Content-Disposition', 'inline');
   if (meta[0].mime === 'image/svg+xml') res.setHeader('Content-Security-Policy', "default-src 'none'; sandbox");
   return res.end(buf);
 });
