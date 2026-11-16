@@ -14,7 +14,7 @@ Merged implementation: PR #768
 ## Verification
 - PR #768 merged on 2026-11-13; mobile TypeScript passed in run `43457696034`.
 - Current master validation on commit `209a960ace30a8026e722e71e1b7f727347fef0c` passed package integrity and curriculum contract gates.
-- PR #894 adds DB-backed checks for parent ward/class/audience filtering, unrelated-parent isolation and school-admin/global-admin write scope. CI is pending.
+- PR #894 adds DB-backed checks for parent ward/class/audience filtering, unrelated-parent isolation and school-admin/global-admin write scope. The route suite passed in run `43940628882`; all required workflows passed on head `3898b90277ae8cb046876f4eb3f137ed41f5c119`.
 - No physical-device acceptance has been performed.
 
 ## Remaining
