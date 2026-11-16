@@ -33,7 +33,7 @@ The table above is the historical 30 October snapshot, not a live status board. 
 | Admin announcement authoring | Merged | PR #768; SMM-005 |
 | Repeatable root test/typecheck scripts | Merged | PR #771 |
 
-School-management feature-specific PostgreSQL route tests are proposed in PR #894. They cover event and announcement audience/school scoping, parent upcoming tests, achievement thresholds and teacher marking counts. Do not mark that test work complete until CI passes.
+School-management feature-specific PostgreSQL route tests are in PR #894 and all required CI workflows passed on head `3898b90277ae8cb046876f4eb3f137ed41f5c119` (JSS3 verify `43940628882`, SS1 integrity `43940628889`, SS23 integrity `43940628962`, backend student report term-scope `43940628830`). They cover event and announcement audience/school scoping, parent upcoming tests, achievement thresholds and teacher marking counts. PR #894 remains open for review.
 
 ### Still open or gated
 
