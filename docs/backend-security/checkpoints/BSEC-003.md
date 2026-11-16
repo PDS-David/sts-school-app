@@ -2,12 +2,13 @@
 
 - **Task ID:** BSEC-003
 - **Title:** Fail closed when finance administrators list students without selecting a school
-- **Status:** review
+- **Status:** merged
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Base commit:** 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
 - **Working branch:** agent/backend-finance-student-roster-scope-20261113
-- **PR:** https://github.com/PDS-David/sts-school-app/pull/703
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/703 (merged 2026-11-13T15:51:35Z)
+- **Merge commit:** 1ef7de9c095e4393b8bd43c9863cf81acd00eebb
 - **Latest implementation commit:** 3513870392fc7f55d8820243a87e548cce95193c
 - **Checkpoint commit:** pending
 - **Changed files:**
@@ -22,5 +23,5 @@
 - **Commits:** ceacf2c06165b9eb7f2e747fa757bff9529aa121; c7fd7f86e7ed52cad6e2afe0d0f24b4125667fd8; 8b59c5cde0936264ba277fbbf06cdc253e916c98; 1845ed7653901c7568c44a058ee8d2a4d00c443f; 3513870392fc7f55d8820243a87e548cce95193c; 473649a055fce922df9a3e5f414b64ab9bbd4f5d.
 - **Verification:** GitHub Actions run https://github.com/PDS-David/sts-school-app/actions/runs/43445428668 completed successfully. Passed: locked workspace dependency installation, all seven roster-scope regression tests and backend TypeScript typecheck. Branch comparison before PR: 5 commits ahead of master, 0 behind; five changed paths. No production database or data was accessed or changed.
 - **Concurrency:** PR #702 edits only the POST /students workflow later in backend/src/routes/students.ts; this PR changes only the GET /students scope block near the top. The edits are in separate hunks. PR #692 changes auth middleware/claims only.
-- **Remaining:** PR review/merge. Do not mark the overall backend/security assignment complete.
-- **Exact next action:** review PR #703 and merge only after owner approval; then refresh from master and continue the backend audit.
+- **Remaining:** none for BSEC-003. Continue the broader backend/security audit.
+- **Exact next action:** continue with the next independently scoped backend defect.

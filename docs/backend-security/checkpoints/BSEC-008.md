@@ -2,14 +2,15 @@
 
 - **Task ID:** BSEC-008
 - **Title:** Make public student/parent registration and student self-claim atomic and concurrency-safe
-- **Status:** implementation verified; PR review pending
+- **Status:** merged
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Base commit:** 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
 - **Working branch:** agent/backend-self-registration-atomicity-20261113
 - **Latest branch commit:** 77ca93654c57ed2d9e6ade98ced4f13d3d9d823f
 - **Functional test commit:** f0d61158068041a04fb21de5ec94dc6c3d75e2b7
-- **PR:** https://github.com/PDS-David/sts-school-app/pull/715
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/715 (merged 2026-11-13T15:51:39Z)
+- **Merge commit:** c23861add2399d4f828016c1f7f134806f34b89a
 - **Changed files:**
   - backend/src/routes/auth.ts
   - backend/src/utils/selfRegistration.ts
@@ -20,5 +21,5 @@
 - **Implementation:** self-registration and self-claim now use PostgreSQL transactions. Student rows and class-code rows are locked with FOR UPDATE; user creation, enrollment/ward linking, class-code counter reset, and audit-log insertion commit together. Transaction-scoped advisory locks serialize normalized parent phone suffixes using the same key as admin-side parent provisioning, and serialize generated usernames. Student/parent registration rejects soft-deleted enrollment rows. Existing public roles, minimum password length, pending-admin-review behavior, and response semantics are preserved.
 - **Regression coverage:** disposable PostgreSQL integration tests cover concurrent student self-registration, concurrent normalized-phone parent registration, concurrent class-code claims, and rollback when student linking fails after user insertion.
 - **Verification:** Latest branch head 85db0200acd81c88c16c5773d9c6e7036d37d282 passed focused PostgreSQL workflow 43451748111 (schema bootstrap, all four concurrency/rollback tests, backend TypeScript typecheck), JSS3 checks 43451747893 and SS1 package integrity 43451748108. No production database or production account data was accessed or changed.
-- **Remaining:** confirm latest-head repository-wide CI; PR review/merge. Do not mark the overall backend/security assignment complete.
-- **Exact next action:** inspect the current branch head and run Backend public self-registration integrity workflow; fetch logs and fix any failures without weakening assertions.
+- **Remaining:** none for BSEC-008. Continue the broader backend/security audit.
+- **Exact next action:** continue with the next independently scoped backend defect.

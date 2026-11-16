@@ -2,10 +2,12 @@
 
 - **Task ID:** BSEC-019
 - **Title:** Enforce same-school subject/term/question references for learning content
-- **Status:** implementation and focused verification passed; PR review/merge pending
+- **Status:** merged
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Working branch:** agent/backend-learning-content-reference-scope-20261113
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/822 (merged 2026-11-13T17:38:01Z)
+- **Merge commit:** b8dcab90e72e3d01f336dc1ef2e1238f1e428494
 - **Base commit:** af35f2f669d10e9b56b2abeae71e7abb3b0a8862
 - **Latest implementation commit:** 911621deee4049b15bbb1f3aafa27132f0c327ce
 - **Changed files planned:** backend/src/routes/learning.ts; PostgreSQL HTTP integration test; focused workflow; this checkpoint.
@@ -19,6 +21,6 @@
   5. Filter legacy cross-school subject/question links from learner-facing reads.
   6. Add PostgreSQL HTTP regression coverage for teacher/admin, cross-school subject/term/question rejection and valid same-school content.
   7. Backend TypeScript and focused PostgreSQL tests pass; no production data changes.
-- **Verification:** Backend learning content reference scope workflow 43473868652 passed (PostgreSQL 16 HTTP regression suite and backend TypeScript typecheck); SS1 package integrity workflow 43473868607 passed. JSS3 implementation/asset checks 43473868642 are still running.
-- **Remaining:** complete the JSS3 repository-wide check, then merge PR #822 after all required checks pass. No production data was changed.
-- **Exact next action:** review PR #822 and verify remaining repository-wide check before merge.
+- **Verification:** Backend learning content reference scope workflow 43473868652 passed (PostgreSQL 16 HTTP regression suite and backend TypeScript typecheck); SS1 package integrity workflow 43473868607 passed. JSS3 implementation/asset checks 43473868642 completed successfully.
+- **Remaining:** none for BSEC-019. No production data was changed.
+- **Exact next action:** continue with the next independently scoped backend defect.
