@@ -35,7 +35,7 @@ test('Every Yoruba lesson has a unique ID, exact UTF-8 body hash and complete ma
   }
 });
 
-test('First-Term Weeks One to Five have EDE, ASA and LITIRESO drafts linked from coverage', () => {
+test('First-Term Weeks One to Five have EDE, ASA and LITIRESO drafts linked from coverage, with Week Seven orthography', () => {
   for (const week of ['W01', 'W02', 'W03', 'W04', 'W05']) {
     for (const strand of ['EDE', 'ASA', 'LIT']) {
       const lessonId = `SUP-SS1-YORUBA-T1-${week}-${strand}`;
@@ -49,8 +49,11 @@ test('First-Term Weeks One to Five have EDE, ASA and LITIRESO drafts linked from
     assert(p.lessons.some(item => item.id === lessonId), `missing ${lessonId}`);
     assert(p.coverage.some(item => item.lesson_ids.includes(lessonId)), `no coverage link for ${lessonId}`);
   }
+  const orthographyId = 'SUP-SS1-YORUBA-T1-W07-EDE-ORTHOGRAPHY';
+  assert(p.lessons.some(item => item.id === orthographyId), `missing ${orthographyId}`);
+  assert(p.coverage.some(item => item.lesson_ids.includes(orthographyId)), `no coverage link for ${orthographyId}`);
   const firstTermDrafts = p.lessons.filter(lesson => lesson.term === '1st Term');
-  assert.equal(firstTermDrafts.length, 18);
+  assert.equal(firstTermDrafts.length, 19);
 });
 
 test('Yoruba drafts preserve under-dotted letters, tone marks and the taught sound inventories', () => {
@@ -73,12 +76,13 @@ test('Uncertain source wording is tracked instead of being silently repaired', (
 
 test('New lesson drafts are not misrepresented as approved or verified', () => {
   const drafts = p.lessons.filter(lesson => lesson.id.startsWith('SUP-SS1-YORUBA-T1-W'));
-  assert.equal(drafts.length, 18);
-  // Lessons whose content and assessments are written (Weeks 5 and 6). Written is not approved:
+  assert.equal(drafts.length, 19);
+  // Lessons whose content and assessments are written (Weeks 5-7). Written is not approved:
   // content_approval stays PENDING and verification DEFERRED, so student delivery still excludes them.
   const written = new Set([
     'SUP-SS1-YORUBA-T1-W05-EDE', 'SUP-SS1-YORUBA-T1-W05-ASA', 'SUP-SS1-YORUBA-T1-W05-LIT-PRACTICE',
     'SUP-SS1-YORUBA-T1-W06-EDE', 'SUP-SS1-YORUBA-T1-W06-ASA',
+    'SUP-SS1-YORUBA-T1-W07-EDE-ORTHOGRAPHY',
   ]);
   for (const lesson of drafts) {
     assert.equal(lesson.state.content_approval, 'PENDING', lesson.id);
@@ -86,7 +90,11 @@ test('New lesson drafts are not misrepresented as approved or verified', () => {
     assert.equal(lesson.state.verification, 'DEFERRED', lesson.id);
     assert.equal(lesson.state.approval_reference, null);
     assert.equal(lesson.state.verification_reference, null);
-    assert(lesson.provenance.every(source => source.reuse_status === 'PERMITTED'));
+    if (lesson.id === 'SUP-SS1-YORUBA-T1-W07-EDE-ORTHOGRAPHY') {
+      assert(lesson.provenance.every(source => source.reuse_status === 'PENDING'));
+    } else {
+      assert(lesson.provenance.every(source => source.reuse_status === 'PERMITTED'));
+    }
   }
 });
 
