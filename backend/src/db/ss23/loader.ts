@@ -6,7 +6,7 @@ import { packageSchema, type Ss23Package } from './subjectPackageSchema.js';
 const moduleDir = path.dirname(fileURLToPath(import.meta.url));
 
 // Add a subject here only after its source map and package task have been registered.
-export const registeredSs23Subjects = ['agricultural-science'] as const;
+export const registeredSs23Subjects = ['agricultural-science', 'biology'] as const;
 export type RegisteredSs23Subject = typeof registeredSs23Subjects[number];
 
 export function loadSs23Packages(
