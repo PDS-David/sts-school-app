@@ -53,7 +53,7 @@ if (!URL_) {
   let server: ReturnType<ReturnType<typeof express>['listen']>;
   let base = '';
   let tokenA = '', tokenB = '';
-  let tokenAdminA = '', tokenAdminB = '', tokenTeacherA = '', tokenTeacherB = '';
+  let tokenAdminA = '', tokenAdminB = '', tokenAdminGlobal = '', tokenTeacherA = '', tokenTeacherB = '';
   let subjectA = 0, subjectB = 0;
   let generatedAssessmentId = '';
   const topicId: Record<string, number> = {}; // "Music|2" → id
@@ -131,7 +131,7 @@ if (!URL_) {
     };
     tokenA = await mk('A', 'JSS 3');
     tokenB = await mk('B', 'JSS 1');
-    const mkStaff = async (tag: string, role: 'admin' | 'teacher', schoolCode: string, subjectIds: number[] = []) => {
+    const mkStaff = async (tag: string, role: 'admin' | 'teacher', schoolCode: string | null, subjectIds: number[] = []) => {
       const username = 'zz_t2test_' + tag;
       const u = await query(
         'INSERT INTO users(username,password_hash,role,school_code,full_name) VALUES($1,\'x\',$2,$3,$4) RETURNING id',
@@ -146,6 +146,7 @@ if (!URL_) {
     };
     tokenAdminA = await mkStaff('ADMIN_A', 'admin', TEST_SC);
     tokenAdminB = await mkStaff('ADMIN_B', 'admin', TEST_SC_B);
+    tokenAdminGlobal = await mkStaff('ADMIN_GLOBAL', 'admin', null);
     tokenTeacherA = await mkStaff('TEACHER_A', 'teacher', TEST_SC, [subjectA]);
     tokenTeacherB = await mkStaff('TEACHER_B', 'teacher', TEST_SC, [subjectA]);
     topicSnapshot = await snapshot();
@@ -415,6 +416,7 @@ if (!URL_) {
     assert.equal((await get(`/learning/assets/${assetId}?school_code=${TEST_SC_B}`, tokenAdminA)).status, 403);
     assert.equal((await get(`/learning/topics/${topicId['Music|2']}/assets?school_code=${TEST_SC_B}`, tokenAdminA)).status, 403);
     assert.equal((await get(`/learning/mathematics-assets/any?topicId=${topicId['Music|2']}&school_code=${TEST_SC_B}`, tokenAdminA)).status, 403);
+    assert.equal((await get(`/learning/assets/${assetId}?school_code=${TEST_SC}`, tokenAdminGlobal)).status, 200);
   });
 
   test('material link creation rejects unsafe URLs and conflicting school targets', async () => {
@@ -438,6 +440,14 @@ if (!URL_) {
     const created = await postJson('/learning/materials', tokenAdminA, baseBody);
     assert.equal(created.status, 201);
     const body: any = await created.json();
+    const otherSchoolCreated = await postJson('/learning/materials', tokenAdminB, {
+      ...baseBody, subject_id: subjectB, school_code: TEST_SC_B, title: 'Other school material',
+    });
+    assert.equal(otherSchoolCreated.status, 201);
+    const otherSchoolBody: any = await otherSchoolCreated.json();
+    const globalList = await get(`/learning/materials?school_code=${TEST_SC_B}`, tokenAdminGlobal);
+    assert.equal(globalList.status, 200);
+    assert.ok(((await globalList.json()) as any).materials.some((material: any) => material.id === otherSchoolBody.material.id));
     assert.equal(body.material.school_code, TEST_SC);
     assert.equal(body.material.url, baseBody.url);
     const listed = await get('/learning/materials', tokenAdminA);
@@ -448,6 +458,8 @@ if (!URL_) {
     assert.equal((await get(`/learning/materials?school_code=${TEST_SC_B}`, tokenAdminA)).status, 403);
     assert.equal((await del(`/learning/materials/${body.material.id}`, tokenAdminB)).status, 404);
     assert.equal((await del(`/learning/materials/${body.material.id}`, tokenAdminA)).status, 200);
+    assert.equal((await del(`/learning/materials/${otherSchoolBody.material.id}`, tokenAdminA)).status, 404);
+    assert.equal((await del(`/learning/materials/${otherSchoolBody.material.id}`, tokenAdminGlobal)).status, 200);
   });
 
   test('teacher material deletion is limited to the uploader within the same school', async () => {
