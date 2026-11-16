@@ -2,7 +2,7 @@
 
 - **Task ID:** BSEC-026
 - **Title:** Reconcile BSEC-024 and BSEC-025 checkpoint records with merged GitHub state
-- **Status:** <badge>complete</badge> reconciliation merged and verified
+- **Status:** complete — reconciliation merged and verified
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **PR:** https://github.com/PDS-David/sts-school-app/pull/921
