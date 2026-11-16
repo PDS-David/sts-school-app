@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
   View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, ScrollView, Linking,
 } from 'react-native';
@@ -44,20 +44,30 @@ export default function MaterialsScreen({ route }: any) {
   const [modal,     setModal]     = useState(false);
   const [filterSub, setFilterSub] = useState(initialSubjectId ?? '');
   const [form, setForm] = useState({ title: '', type: 'pdf', url: '', subject_id: '', class_name: '' });
+  const fetchGenerationRef = useRef(0);
 
   const fetch = async () => {
+    const generation = ++fetchGenerationRef.current;
     setLoading(true);
     setLoadError('');
     try {
       const params = filterSub ? `?subject_id=${encodeURIComponent(filterSub)}` : '';
       const [m, s] = await Promise.all([api.get(`/learning/materials${params}`), api.get('/academic/subjects')]);
+      if (generation !== fetchGenerationRef.current) return;
       setMaterials(m.data.materials ?? []);
       setSubjects(s.data.subjects ?? []);
     } catch (e: any) {
-      setLoadError(e?.response?.data?.error ?? 'Could not load learning materials and subjects. Check your connection and retry.');
-    } finally { setLoading(false); }
+      if (generation === fetchGenerationRef.current) {
+        setLoadError(e?.response?.data?.error ?? 'Could not load learning materials and subjects. Check your connection and retry.');
+      }
+    } finally {
+      if (generation === fetchGenerationRef.current) setLoading(false);
+    }
   };
-  useEffect(() => { fetch(); }, [filterSub]);
+  useEffect(() => {
+    void fetch();
+    return () => { fetchGenerationRef.current += 1; };
+  }, [filterSub]);
 
   const handleOpen = async (url: string) => {
     if (!isSafeMaterialUrl(url)) {
@@ -103,7 +113,9 @@ export default function MaterialsScreen({ route }: any) {
     }
   };
 
-  const visibleMaterials = typeFilter ? materials.filter((m) => m.type === typeFilter) : materials;
+  const visibleMaterials = typeFilter === 'download'
+    ? materials.filter((m) => m.type === 'pdf' || m.type === 'doc')
+    : typeFilter ? materials.filter((m) => m.type === typeFilter) : materials;
 
   const handleSave = async () => {
     if (saving) return;
