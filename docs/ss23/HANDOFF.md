@@ -1,52 +1,76 @@
 # SS2 / SS3 curriculum — agent handoff
 
-Written 2026-11-13. Repo: `PDS-David/sts-school-app`. Branch: `agent/ss2-ss3-readiness-checkpoint-20261113` (PR #684, never merge without owner review). Read `CHECKPOINT.md` and `sources/README.md` first. Do not restart the investigation.
+Updated: 2026-11-16. Repository: `PDS-David/sts-school-app`; primary branch: `master`. Read this file, `CHECKPOINT.md`, and `sources/README.md` before resuming. The historical 2026-11-13 instructions below are superseded where marked.
 
-## 1. Assignment (from owner)
-Audit and complete SS2 and SS3 curriculum content. Find and fix: missing terms/weeks, superficial lessons, wrong topic associations, missing assessment answers/explanations/marking guidance, broken source references, invalid content hashes, lessons students cannot access. Subject by subject, small tasks, focused PRs, validation workflows run. Preserve provenance; keep authored supplementary content distinct from original source. Never claim SS1 readiness proves SS2/SS3.
+## 1. Assignment
+
+Complete SS2 instructional curriculum and SS3 exam-preparation curriculum, subject by subject, in small independently verifiable tasks. Find and resolve missing terms/weeks, shallow lessons, incorrect topic associations, incomplete assessment answers/explanations/marking guidance, broken source references, invalid hashes, and inaccessible lessons.
+
+Preserve original-source provenance and distinguish authored supplements. Never fabricate source text or claim completion from tests alone. Implementation, source verification, assessment reconciliation, teacher approval, owner acceptance, and student release are separate gates.
 
 ## 2. Standing rules
-- One scoped PR per subject; never merge; never weaken tests/validation; never mark done without evidence.
-- Never fabricate source text. Say "not tested" when not run. "Implemented", "source verified", "tested", "teacher-approved", "accepted" are different statuses.
-- Do not commit extracted source files or conversions. Keep them in private scratch.
-- Owner preferences: sequential steps, show the change before applying, complete corrected files (not diffs), shell one-liners, concise docs, all questions in ONE message, never say "complete" unless every gate passed.
 
-## 3. Verified state of the repository (master @ 982c1d2)
-- No SS2/SS3 subject packages, registry rows, branches or workflows existed. SS1 has 22 packages in `backend/src/db/ss1/subjects/`.
-- SS1 tooling: `backend/src/db/ss1/` (`validateSubjectPackages.ts`, `refreshIntegrityHashes.ts`, `compiler.ts`, `studentDelivery.ts`, `subjectPackageSchema.ts`, `sourceRegistry.json`). npm: `validate:ss1`, `ss1:refresh-hashes`. CI: `.github/workflows/ss1-integrity-gate.yml`. SS1 rules to copy: `docs/ss1/AGENT_EXECUTION_MASTER_INSTRUCTION.md` section 8a (merge master, refresh hashes, validate, never hand-compute hashes).
-- `ingestTopics.ts` treats `SS 3` as audit-only (excluded from normal curriculum). `SS 2`/`SS 3` exist as class names in `seed.ts`/`bootstrap.ts`.
-- Not run by me: any validator, any test, any DB check, `npm install`.
+- One scoped PR per subject or independent infrastructure task. Do not merge PRs or deploy/import without explicit owner authorization.
+- Never weaken validation or tests to make a package pass.
+- Do not commit extracted source archives or private conversions; retain them in private scratch.
+- Do not invent curriculum content, source page references, answers, or teacher decisions. If evidence is absent, record the blocker.
+- Keep all new units in draft/pending states until the source, assessment, approval, and release gates pass.
+- Owner prefers sequential small steps, concise prompts and reports, and a clear account of completed work versus remaining work.
 
-## 4. Source archives (supplied in-session, NOT in the repo)
-Hashes and per-member SHA-256 are in `docs/ss23/sources/SOURCE_ASSIGNMENTS.csv` (100 members). The owner must re-attach the six zips; verify each archive SHA-256 against `sources/README.md` before use. Extract each to its own empty scratch directory; run Python with `-I`. `soffice --convert-to txt` works but is slow (about 10 minutes for 100 files; run in batches with a long timeout) and loses tables, where the week/topic schemes live. Use python-docx for tables and inspect originals for equations/figures.
+## 3. Current verified repository state
 
-Findings so far:
-1. SS3 Third Term zip is empty (folder entry only).
-2. No source file at all for: Technical Drawing SS2 T1 and SS3 T1; Catering Craft SS2 T1, SS2 T3, SS3 T1; Food & Nutrition SS3 T2.
-3. SS3 Literature T1 and T2 are byte-identical. SS2 Food & Nutrition `F _ N (1) (1).docx` (in the T2 folder) is the T1 file; real T2 is `F _ N (1).docx`.
-4. Book-keeping T1 and T2 are identical after the title line for SS2 and SS3.
-5. Some terms are titled "Alpha"/"Sigma" and `data.pptx` (SS2 T1 Data Processing) is a PowerPoint. Filename-to-subject mapping is unverified against document headers.
-6. My week-marker heuristic was unreliable (tables); do not reuse it.
+- Current master at this handoff: `5e0df2da9e322a31ded7641cef3081207574edf8`.
+- SS23 package contract, validator, integrity workflow, and fail-closed student-delivery integration are merged. The delivery service has service and HTTP regression coverage. Pending SS2/SS3 content is not served to students.
+- SS2 Agricultural Science is the only subject package currently implemented. PR #857 merged on 2026-11-16 (merge commit `5e0df2da9e322a31ded7641cef3081207574edf8`). It contains 19 draft units across T1/T2/T3 (8/6/5), with assessment/practice content and explicit open blockers. Package status remains `PENDING`; units remain `DRAFT`. Passing CI does not certify the curriculum or authorize delivery.
+- The SS23 integrity, package-contract, source-map, SS1 integrity, and backend typecheck workflows passed for the latest Agricultural Science changes. See `CHECKPOINT.md` for run IDs and detailed blocker counts.
+- No other SS2 subject package and no SS3 exam-preparation package is currently recorded as implemented.
+- SS3 scope is exam preparation (WAEC/NECO/JAMB), not normal instructional progression. Substantive teaching ends by SS2. This is an owner-supplied project decision already reflected in the package contract; do not reopen it as an unresolved choice.
+- The evidence-register documentation PR #858 is separate and must be reviewed before merge; it does not close any curriculum blocker.
 
-## 5. Open owner decisions (ask once, in one message)
-1. Keep SS3 audit-only, or deliver as normal curriculum?
-2. For the empty SS3 T3 and the missing/duplicated subject-terms in section 4: supply real files, or authorise clearly labelled authored supplementary content from the national syllabus?
+## 4. Source archive status and limitations
 
-## 6. Task queue (resume here)
-| ID | Task | Status |
+The six original SS2/SS3 archives were supplied in an earlier session but are not committed to the repository and are not currently available in this working session. Their archive hashes and 100 per-member records are preserved in `sources/README.md` and `sources/SOURCE_ASSIGNMENTS.csv`. Re-attach the original archives before attempting source-page extraction or source-header re-verification. Verify each archive SHA-256 against the receipt before extraction.
+
+Historical archive-audit findings that must be rechecked against the actual files before they are used to make curriculum decisions:
+
+1. The SS3 Third-Term archive appeared empty apart from a folder entry.
+2. No source member was found for Technical Drawing SS2 T1 and SS3 T1; Catering Craft SS2 T1, SS2 T3 and SS3 T1; and Food & Nutrition SS3 T2.
+3. SS3 Literature T1 and T2 appeared byte-identical. The SS2 Food & Nutrition file named `F _ N (1) (1).docx` in the T2 folder appeared to be the T1 file; `F _ N (1).docx` appeared to be the actual T2 file.
+4. Book-keeping T1 and T2 appeared identical after the title line for SS2 and SS3.
+5. Some source files use term labels such as Alpha/Sigma, and SS2 T1 Data Processing is a PowerPoint. Verify document headers and contents rather than trusting filenames.
+6. The previous week-marker heuristic was unreliable because schemes are stored in tables. Read tables and inspect original pages/figures; do not reuse that heuristic.
+
+Do not treat these historical findings as newly verified facts until the archives are reattached and checked.
+
+## 5. Work queue
+
+| ID | Task | Status / next action |
 |---|---|---|
-| SS23-00 | Baseline inspection | done |
-| SS23-S0 | Hash + inventory sources | done |
-| SS23-S1 | Verify each member's header subject/term/class against filename mapping; update CSV `mapping_status` | next |
-| SS23-01 | Generalise SS1 validator/schema/registry to SS2/SS3 (new `ss2`/`ss3` package dirs or a class field) | blocked on decision 1 (can design while waiting) |
-| SS23-02+ | Per-subject packages, SS2 alphabetical (agricultural-science first), one PR each: extract weeks/topics from tables, build lessons with objectives, examples, exercises, answers, marking guidance; coverage records; provenance flags (`original` vs `supplement`) | after SS23-01 |
-| SS23-Q | Student delivery check: confirm each lesson resolves through `studentDelivery.ts`, hashes valid via `ss1:refresh-hashes` equivalent, no unreachable lessons | after packages |
+| SS23-00 | Baseline and package-contract infrastructure | Implemented and merged; see PR history in `CHECKPOINT.md`. |
+| SS23-S0 | Archive hash and member inventory | Historical inventory recorded; reverify archive hashes when the owner reattaches the six zips. |
+| SS23-S1 | Verify each member's document-header subject/class/term against its assignment | Pending re-verification from the original archives. Update `mapping_status` only with direct evidence. |
+| SS23-Q | Student-delivery safeguards | Implemented and merged; pending SS2/SS3 lessons remain fail-closed. Re-run integration checks after package changes. |
+| SS23-02 | SS2 Agricultural Science | Draft package implemented and merged; technical, source, assessment and teacher-approval blockers remain. Continue closing these from original pages and documented subject-lead decisions. |
+| SS23-03 | SS2 Biology | Next subject after the Agriculture gate and source archive availability. Do not create a package from filenames or inferred topics. |
+| SS23-04+ | Remaining SS2 subjects | Continue alphabetically, one subject per focused PR, only after source files are available and assigned. |
+| SS23-SS3 | SS3 exam preparation | Build exam-preparation packages only, with declared WAEC/NECO/JAMB targets and verified past-question sources. No normal SS3 instructional lessons. |
 
-Exact next action: re-attach the zips, verify hashes, run SS23-S1, and in parallel read `subjectPackageSchema.ts` and `validateSubjectPackages.ts` to plan SS23-01.
+## 6. Exact resume procedure
 
-## 7. Commands (one-liners)
-- Clone: `git clone --depth 1 https://github.com/PDS-David/sts-school-app && cd sts-school-app && git fetch --depth 50 origin agent/ss2-ss3-readiness-checkpoint-20261113 && git checkout agent/ss2-ss3-readiness-checkpoint-20261113`
-- Rebuild inventory: `python3 -I scripts/ss23/build_source_inventory.py <dir-of-zips> docs/ss23/sources/SOURCE_ASSIGNMENTS.csv`
-- Validate (SS1 baseline): `npm run validate:ss1`
-- Push: `git -c push.negotiate=true push -u origin <branch>`; open PRs with `gh api repos/PDS-David/sts-school-app/pulls -f base=master -f head=<branch> -f title=...` (`gh pr create` fails: GraphQL blocked).
-- The session's stop hook may report "unpushed commits" falsely; check with `git ls-remote --heads origin <branch>`.
+1. Check current master, open PRs, and active branches before touching files. Avoid overlapping another agent's work.
+2. Obtain the six original source archives in the current session. Verify archive hashes against `sources/README.md` before extracting.
+3. Re-run the source-member inventory/header verification; preserve source files privately and inspect DOCX tables, PPTX slides, images, equations, and page references directly.
+4. Continue the Agricultural Science open blockers first. Do not advance the subject sequence until its source, assessment, and teacher-approval gates are satisfied.
+5. Then proceed to SS2 Biology and subsequent subjects alphabetically. Keep each task small, tested, and in a dedicated branch/PR.
+6. For SS3, build only the approved exam-preparation scope. Keep pending packages inaccessible to students.
+
+## 7. Useful commands
+
+- Rebuild source inventory: `python3 -I scripts/ss23/build_source_inventory.py <dir-of-zips> docs/ss23/sources/SOURCE_ASSIGNMENTS.csv`
+- SS23 validation: `npm run validate:ss23`
+- SS23 tests: `npm run test:ss23`
+- SS23 hash check: `npm run ss23:refresh-hashes -- --check`
+- SS1 regression gate: `npm run validate:ss1`
+- Backend typecheck: `npm run typecheck --workspace backend`
+
+Record commands actually run and their outcomes; never report a check as passed if it was not run.
