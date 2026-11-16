@@ -144,24 +144,24 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
     if (user.role !== 'finance_admin') {
       try {
         const { data } = await api.get('/messages/contacts');
-      const withUnread = (data.contacts ?? []).filter((c: any) => (c.unread_count ?? 0) > 0);
-      for (const c of withUnread) {
-        items.push({
-          // Include the latest message marker/count so a genuinely new
-          // unread message creates a fresh notification even after the
-          // previous conversation alert was marked read.
-          id: `message-${c.id}-${c.last_message_at ?? ''}-${c.unread_count}`,
-          kind: 'message',
-          title: `New message from ${c.full_name}`,
-          body: c.unread_count === 1 ? '1 unread message' : `${c.unread_count} unread messages`,
-          createdAt: c.last_message_at ?? new Date().toISOString(),
-          target: {
-            type: 'message',
-            contact: { id: c.id, username: c.username, full_name: c.full_name, role: c.role },
-            screen: user.role === 'admin' ? 'Messages' : 'ChatThread',
-          },
-        });
-      }
+        const withUnread = (data.contacts ?? []).filter((c: any) => (c.unread_count ?? 0) > 0);
+        for (const c of withUnread) {
+          items.push({
+            // Include the latest message marker/count so a genuinely new
+            // unread message creates a fresh notification even after the
+            // previous conversation alert was marked read.
+            id: `message-${c.id}-${c.last_message_at ?? ''}-${c.unread_count}`,
+            kind: 'message',
+            title: `New message from ${c.full_name}`,
+            body: c.unread_count === 1 ? '1 unread message' : `${c.unread_count} unread messages`,
+            createdAt: c.last_message_at ?? new Date().toISOString(),
+            target: {
+              type: 'message',
+              contact: { id: c.id, username: c.username, full_name: c.full_name, role: c.role },
+              screen: user.role === 'admin' ? 'Messages' : 'ChatThread',
+            },
+          });
+        }
       } catch { failedSources.push('message alerts'); }
     }
 
