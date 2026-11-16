@@ -15,6 +15,11 @@ test('SS2 Agricultural Science includes all mapped Second- and Third-Term instru
   assert.deepEqual(second.map(unit => unit.week_label), ['1-2', '3', '4', '5-6', '7-8', '9']);
   assert.equal(third.length, 5);
   assert.deepEqual(third.map(unit => unit.week_label), ['1-2', '3-4', '5-6', '7-8', '9-10']);
+  const economics = third.find(unit => unit.id.endsWith('T3-W05-06-ECONOMIC-PRINCIPLES'));
+  assert.ok(economics);
+  assert.equal(economics.practice.length, 3);
+  assert.match(economics.practice[2].answer, /8 kg per bag/);
+  assert.match(economics.practice[2].answer, /6\.67 kg per bag/);
 });
 
 test('new terms are bound to the exact registered original source files', () => {
