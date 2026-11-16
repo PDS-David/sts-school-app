@@ -78,7 +78,7 @@ test('routes: list endpoint is metadata-only and never selects bytes', () => {
   assert.match(body, /displayed=true/);
   assert.match(body, /ORDER BY a\.sort_order, a\.id/);
   assert.doesNotMatch(body, /\bbytes\b/);
-  assert.match(body, /\bcaption, alt_text\b/, 'list endpoint returns alt_text with the caption');
+  assert.match(body, /a\.caption, a\.alt_text/, 'list endpoint returns alt_text with the caption');
 });
 
 test('routes: bytes endpoint repeats school scope and verifies MIME/SHA before no-store delivery', () => {
