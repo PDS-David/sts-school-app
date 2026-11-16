@@ -75,6 +75,9 @@ test('external factual corrections are source-bound and covered', () => {
     'SS23-EXT-USDA-NRCS-FEED',
     'SS23-EXT-UMD-ANIMAL-MINERALS',
     'SS23-EXT-WHO-ANTIMICROBIALS',
+    'SS23-EXT-NCSU-BALSAM',
+    'SS23-EXT-UFIFAS-CAULIFLOWER',
+    'SS23-EXT-KEW-MEGATHYRSUS-MAXIMUS',
   ];
   for (const id of expected) {
     assert.ok(external.has(id), 'missing external reference ' + id);
@@ -85,6 +88,25 @@ test('external factual corrections are source-bound and covered', () => {
       assert.equal(external.get(ref.source_id)?.sha256, ref.source_sha256);
     }
   }
+});
+
+
+test('floriculture botanical clarifications are externally sourced and preserve the unresolved source spelling', () => {
+  const floriculture = pkg.units.find(unit => unit.id === 'SUP-SS2-AGRICULTURAL-SCIENCE-T2-W04-FLORICULTURE');
+  assert.ok(floriculture);
+  assert.match(floriculture.body, /Impatiens balsamina.*herbaceous annual/);
+  assert.match(floriculture.body, /cauliflower.*vegetable crop/);
+  assert.match(floriculture.body, /Panicum maximum.*Megathyrsus maximus/);
+  assert.match(floriculture.body, /"carnality".*remains unresolved/);
+  const mcq = floriculture.practice.find(question => question.id.endsWith('T2-FLORICULTURE-MCQ'));
+  assert.ok(mcq);
+  assert.match(mcq.answer, /herbaceous annual/);
+  assert.match(mcq.answer, /grass, not a legume/);
+  for (const id of ['SS23-EXT-NCSU-BALSAM', 'SS23-EXT-UFIFAS-CAULIFLOWER', 'SS23-EXT-KEW-MEGATHYRSUS-MAXIMUS']) {
+    assert.ok(floriculture.provenance.some(ref => ref.source_id === id));
+    assert.ok(pkg.coverage.some(row => row.source_id === id && row.status === 'SUPPORTED' && row.unit_ids.includes(floriculture.id)));
+  }
+  assert.ok(pkg.open_items.some(item => item.id === 'AG2-T2-FLORICULTURE-SPECIES' && item.blocks_delivery));
 });
 
 function addedPracticeCount() {
