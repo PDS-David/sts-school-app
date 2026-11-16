@@ -1,7 +1,7 @@
 # SMM-001 — School-management feature completion checkpoint
 
 Task ID: SMM-001
-Status: IMPLEMENTED ON MASTER — feature-specific integration coverage in PR #894
+Status: IMPLEMENTED AND MERGED — feature-specific PostgreSQL integration coverage merged in PR #894
 
 ## Merged implementation
 - OPS-01 migration ledger: PR #737 merged.
@@ -20,14 +20,13 @@ Status: IMPLEMENTED ON MASTER — feature-specific integration coverage in PR #8
 
 ## Verification
 - Current master commit `209a960ace30a8026e722e71e1b7f727347fef0c` passed SS1 package integrity, SS23 package integrity, SS23 package contract tests and JSS3 implementation/asset checks.
-- PR #894 adds real PostgreSQL route integration coverage for events, announcements, parent upcoming tests, achievements and teacher analytics. All four required CI workflows passed on head `3898b90277ae8cb046876f4eb3f137ed41f5c119`: JSS3 verify `43940628882`, SS1 integrity `43940628889`, SS23 integrity `43940628962`, and backend student report term-scope `43940628830`. The route suite itself passed all four integration tests.
+- PR #894 adds real PostgreSQL route integration coverage for events, announcements, parent upcoming tests, achievements and teacher analytics. All five required CI workflows passed on PR #894 head `434111153ae1aafcfedfa85ae7d6240f48468cb2`: JSS3 verify `43941196109`, SS1 integrity `43941196090`, SS23 integrity `43941196059`, backend student report term-scope `43941196004`, and backend score subject-scope/batch atomicity `43941196025`. The school-management PostgreSQL route suite passed. PR #894 merged to master as `554688b372f6b9f1b74adf64dd4fcf817ca690e2`.
 - No physical-device acceptance or production migration/deployment has been performed.
 
 ## Remaining
-- Merge PR #894 after all required CI checks pass.
 - Perform role-account/device acceptance for admin, teacher, student and parent screens.
 - Confirm migration 0002 is applied through the reviewed deployment process before enabling calendar features in any production database.
 - DATA-02 offline replay idempotency and VER-02 manual CI coverage remain separate documented backlog items, outside this school-management feature scope.
 
 ## Exact next action
-Finish PR #894 CI, repair any test failures without weakening assertions, merge it, then complete the role-account/device acceptance checklist.
+Complete role-account/device acceptance and the reviewed production migration rollout before declaring production readiness.
