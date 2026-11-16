@@ -14,7 +14,7 @@ const router = Router();
 router.use(requireAuth);
 
 type WardMutationScope =
-  | { ok: true }
+  | { ok: true; schoolCode: string }
   | { ok: false; status: number; error: string };
 
 /**
@@ -36,7 +36,12 @@ async function lockWardMutationStudent(
     return { ok: false, status: 404, error: 'Active student not found' };
   }
 
-  if (user.role === 'admin') return { ok: true };
+  if (user.role === 'admin') {
+    if (user.school_code && student.school_code !== user.school_code) {
+      return { ok: false, status: 404, error: 'Active student not found' };
+    }
+    return { ok: true, schoolCode: student.school_code };
+  }
   if (user.role !== 'teacher') {
     return { ok: false, status: 403, error: 'Not authorized to manage parent links' };
   }
@@ -46,7 +51,7 @@ async function lockWardMutationStudent(
   if (user.assigned_class && student.class_name !== user.assigned_class) {
     return { ok: false, status: 403, error: "You can't manage parent links outside your assigned class" };
   }
-  return { ok: true };
+  return { ok: true, schoolCode: student.school_code };
 }
 
 // ── GET /students  ────────────────────────────────────────────────────────────
@@ -142,16 +147,19 @@ router.get('/me', async (req, res) => {
 // GET /:id, not after).
 router.get('/deleted', requireRole('admin'), async (req, res) => {
   const { school_code } = req.query as Record<string, string>;
+  const scope = resolveStudentRosterScope(req.user!, { school_code });
+  if ('error' in scope) return res.status(scope.status).json({ error: scope.error });
   let sql = `SELECT s.id, s.admission_number, s.full_name, s.class_name, s.school_code,
-                    s.deleted_at, u.full_name AS deleted_by_name, u.role AS deleted_by_role
-             FROM students s
-             LEFT JOIN users u ON u.id = s.deleted_by
-             WHERE s.deleted_at IS NOT NULL`;
+                     s.deleted_at, u.full_name AS deleted_by_name, u.role AS deleted_by_role
+              FROM students s
+              LEFT JOIN users u ON u.id = s.deleted_by
+              WHERE s.deleted_at IS NOT NULL`;
   const params: unknown[] = [];
-  if (school_code) { params.push(school_code); sql += ` AND s.school_code=$${params.length}`; }
+  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND s.school_code=$${params.length}`; }
   sql += ' ORDER BY s.deleted_at DESC';
   const { rows } = await query(sql, params);
   return res.json({ students: rows });
+});
 });
 
 // ── GET /students/:id ─────────────────────────────────────────────────────────
@@ -163,9 +171,9 @@ router.get('/:id', requirePerm('students.read'), async (req, res) => {
   const user = req.user!;
   const params: unknown[] = [req.params.id];
   let schoolClause = '';
-  if (user.role !== 'admin') {
+  if (user.role !== 'admin' || user.school_code) {
     params.push(user.school_code);
-    schoolClause = ` AND s.school_code=$${params.length}`;
+    schoolClause = ` AND s.school_code=${params.length}`;
   }
   // Admin can still open a soft-deleted student's detail page (needed to
   // show the "Restore" action) — everyone else gets a 404, same as if the
@@ -264,8 +272,8 @@ router.put('/:id', requirePerm('grades.write'), async (req, res) => {
     `UPDATE students SET full_name=COALESCE($1,full_name), class_name=COALESCE($2,class_name),
             gender=COALESCE($3,gender), date_of_birth=COALESCE($4,date_of_birth),
             admission_number=COALESCE($5,admission_number)
-     WHERE id=$6 AND deleted_at IS NULL RETURNING *`,
-    [full_name, class_name, gender, date_of_birth, admission_number, req.params.id],
+     WHERE id=$6 AND deleted_at IS NULL AND ($7::text IS NULL OR school_code=$7) RETURNING *`,
+    [full_name, class_name, gender, date_of_birth, admission_number, req.params.id, req.user!.school_code ?? null],
   );
   // A soft-deleted record can't be edited until it's restored — the same
   // WHERE ... AND deleted_at IS NULL above means this 404 also covers "id
@@ -393,8 +401,8 @@ router.delete('/:id', requirePerm('grades.write'), async (req, res) => {
 
   const { rows } = await query(
     `UPDATE students SET deleted_at=now(), deleted_by=$1
-     WHERE id=$2 AND deleted_at IS NULL RETURNING full_name`,
-    [user.id, req.params.id],
+     WHERE id=$2 AND deleted_at IS NULL AND ($3::text IS NULL OR school_code=$3) RETURNING full_name`,
+    [user.id, req.params.id, user.school_code ?? null],
   );
   if (!rows[0]) return res.status(404).json({ error: 'Student not found' });
 
@@ -409,12 +417,13 @@ router.delete('/:id', requirePerm('grades.write'), async (req, res) => {
 router.post('/:id/restore', requireRole('admin'), async (req, res) => {
   const { rows } = await query(
     `UPDATE students SET deleted_at=NULL, deleted_by=NULL
-     WHERE id=$1 AND deleted_at IS NOT NULL RETURNING full_name`,
-    [req.params.id],
+     WHERE id=$1 AND deleted_at IS NOT NULL AND ($2::text IS NULL OR school_code=$2) RETURNING full_name`,
+    [req.params.id, req.user!.school_code ?? null],
   );
   if (!rows[0]) return res.status(404).json({ error: 'No deleted student found with that id' });
   await audit(req.user!, 'restore_student', 'student', req.params.id, rows[0].full_name);
   return res.json({ ok: true, student: rows[0] });
+});
 });
 
 // ── POST /students/:id/link-parent ────────────────────────────────────────────
@@ -503,7 +512,7 @@ router.post('/:id/link-user', requireRole('admin'), async (req, res) => {
   try {
     result = await withTransaction(async (client) => {
       const { rows: userRows } = await client.query(
-        'SELECT role, is_active FROM users WHERE id=$1 FOR UPDATE',
+        'SELECT role, is_active, school_code FROM users WHERE id=$1 FOR UPDATE',
         [userId],
       );
       if (userRows[0]?.role !== 'student' || !userRows[0]?.is_active) {
@@ -522,8 +531,12 @@ router.post('/:id/link-user', requireRole('admin'), async (req, res) => {
         [studentId.data, userId],
       );
       const target = affectedStudents.find(row => row.id === studentId.data);
-      if (!target || target.deleted_at) {
+      if (!target || target.deleted_at ||
+          (req.user!.school_code && target.school_code !== req.user!.school_code)) {
         return { ok: false as const, status: 404, error: 'Active student not found' };
+      }
+      if (userRows[0].school_code !== target.school_code) {
+        return { ok: false as const, status: 400, error: 'The student login belongs to a different school' };
       }
       if (target.user_id && target.user_id !== userId) {
         return { ok: false as const, status: 409, error: 'This student is already linked to a different login; unlink it first' };
@@ -564,8 +577,8 @@ router.delete('/:id/unlink-user', requireRole('admin'), async (req, res) => {
 
   const result = await withTransaction(async (client) => {
     const { rows } = await client.query(
-      'SELECT user_id FROM students WHERE id=$1 FOR UPDATE',
-      [studentId.data],
+      'SELECT user_id FROM students WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) FOR UPDATE',
+      [studentId.data, req.user!.school_code ?? null],
     );
     if (!rows[0]) return { ok: false as const, status: 404, error: 'Student not found' };
     if (!rows[0].user_id) return { ok: true as const, unlinked: false };
