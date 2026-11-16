@@ -1,5 +1,4 @@
-// Drafted only. Owner has deferred execution until the later authorised verification stage.
-// Do NOT run this file as part of source indexing or implementation.
+// Structural contract and source-marker regression tests for the registered Chemistry package.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
