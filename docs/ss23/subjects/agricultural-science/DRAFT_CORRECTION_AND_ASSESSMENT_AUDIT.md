@@ -94,7 +94,7 @@ The following still require direct evidence/authority:
 - Original source assessment question-by-question reconciliation for T2 and T3: inventory every original prompt and external textbook/WAEC task, preserve exact locators, verify answer/marking evidence, and inspect the Third-Term input-output table from its original page image. The structured 24 T2 and 21 T3 questions are authored supplements, not source transcriptions.
 - Exact “carnality” wording from the original printed assessment.
 - Weed nomenclature against the actual school source table.
-- All figure-to-paragraph mappings and reproduction rights for source images/screenshots/watermarked assets.
+- Verify the new school-authored farmstead layout schematic as a rights-safe substitute for the watermarked source farmstead image; confirm teacher acceptance and the formula figures' text equivalents. Other figure-to-paragraph mappings and reproduction/replacement decisions for source images, screenshots and watermarked assets remain open.
 - Five newly drafted soil investigation procedures and the jar-test method: school apparatus, safety, actual procedure, expected observations, mark-by-mark guides and teacher approval.
 - Owner's formal approval and reuse decision for the adapted source content.
 - Specialist approval of the corrected factual content and assessment expectations.
