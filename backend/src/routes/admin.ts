@@ -132,8 +132,13 @@ function blankToNull<T>(v: T): T | null {
 }
 
 router.post('/users', async (req, res) => {
-  const { username, full_name, role, school_code, assigned_class, assigned_subject_ids, phone, email, access_expires_at, initial_password } = req.body;
-  const schoolCodeN = blankToNull(school_code);
+  const { username, full_name, role, school_code, assigned_class, assigned_subject_ids, phone, email, access_expires_at, initial_password } = req.body ?? {};
+  const scope = resolveAdminSchoolScope(req.user!, school_code);
+  if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
+  if (req.user!.school_code && role === 'finance_admin') {
+    return res.status(403).json({ error: 'Only a global administrator can create a finance administrator' });
+  }
+  const schoolCodeN = scope.schoolCode;
   const assignedClassN = blankToNull(assigned_class);
   const phoneN = blankToNull(phone);
   const emailN = blankToNull(email);
@@ -236,7 +241,10 @@ router.post('/users', async (req, res) => {
 // re-issue. Also clears any lockout from prior failed attempts, same as
 // re-issuing a class code does for class_access_codes.
 router.post('/users/:id/reissue-activation-code', async (req, res) => {
-  const { rows: existing } = await query('SELECT id, password_hash FROM users WHERE id=$1', [req.params.id]);
+  const { rows: existing } = await query(
+    'SELECT id, password_hash FROM users WHERE id=$1 AND ($2::text IS NULL OR school_code=$2)',
+    [req.params.id, req.user!.school_code ?? null],
+  );
   if (!existing[0]) return res.status(404).json({ error: 'User not found' });
   if (existing[0].password_hash) {
     return res.status(400).json({ error: 'This account has already been activated — there is no activation code to reissue.' });
@@ -251,20 +259,24 @@ router.post('/users/:id/reissue-activation-code', async (req, res) => {
 });
 
 router.put('/users/:id', async (req, res) => {
-  const { full_name, role, school_code, assigned_class, assigned_subject_ids, is_active, phone, email, access_expires_at, clear_expiry, revocation_reason } = req.body;
+  const { full_name, role, school_code, assigned_class, assigned_subject_ids, is_active, phone, email, access_expires_at, clear_expiry, revocation_reason } = req.body ?? {};
   const schoolCodeN = blankToNull(school_code);
   const assignedClassN = blankToNull(assigned_class);
   const phoneN = blankToNull(phone);
   const emailN = blankToNull(email);
   const reactivating = is_active === true;
   const hasSubjectIds = assigned_subject_ids !== undefined;
+  if (req.user!.school_code && school_code != null && school_code !== '' &&
+      (typeof school_code !== 'string' || school_code.trim() !== req.user!.school_code)) {
+    return res.status(403).json({ error: "You can't move an account outside your school" });
+  }
 
-  let result: { user: any | null };
+  let result: { user: any | null; forbidden?: boolean };
   try {
     result = await withTransaction(async (client) => {
       const { rows: currentRows } = await client.query(
-        'SELECT role,school_code,assigned_class FROM users WHERE id=$1 FOR UPDATE',
-        [req.params.id],
+        'SELECT role,school_code,assigned_class FROM users WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) FOR UPDATE',
+        [req.params.id, req.user!.school_code ?? null],
       );
       if (!currentRows[0]) return { user: null };
 
@@ -274,6 +286,11 @@ router.put('/users/:id', async (req, res) => {
       const nextClass = (nextRole === 'admin' || nextRole === 'finance_admin')
         ? null
         : (assignedClassN ?? current.assigned_class);
+
+      if (req.user!.school_code &&
+          (nextRole === 'finance_admin' || nextSchool !== req.user!.school_code)) {
+        return { user: null, forbidden: true };
+      }
 
       let nextSubjectIds: number[] = [];
       if (nextRole === 'teacher') {
@@ -325,6 +342,7 @@ router.put('/users/:id', async (req, res) => {
     throw error;
   }
 
+  if (result.forbidden) return res.status(403).json({ error: "You can't change an account outside your school or create a global finance administrator" });
   if (!result.user) return res.status(404).json({ error: 'User not found' });
   await audit(req.user!, 'edit_user', 'user', req.params.id);
   return res.json({ user: result.user });
@@ -333,7 +351,11 @@ router.put('/users/:id', async (req, res) => {
 router.post('/users/:id/reset-password', async (req, res) => {
   const pw = generateTempPassword();
   const hash = await bcrypt.hash(pw, 10);
-  await query('UPDATE users SET password_hash=$1, must_change_pw=TRUE WHERE id=$2', [hash, req.params.id]);
+  const { rows } = await query(
+    'UPDATE users SET password_hash=$1, must_change_pw=TRUE WHERE id=$2 AND ($3::text IS NULL OR school_code=$3) RETURNING id',
+    [hash, req.params.id, req.user!.school_code ?? null],
+  );
+  if (!rows[0]) return res.status(404).json({ error: 'User not found' });
   await audit(req.user!, 'reset_password', 'user', req.params.id);
   return res.json({ ok: true, temporary_password: pw });
 });
@@ -344,17 +366,28 @@ router.post('/users/:id/reset-password', async (req, res) => {
 // gate to lift. Admin should have already checked/edited the account's
 // class/subject assignment via the normal Edit Details flow before this.
 router.post('/users/:id/approve', async (req, res) => {
-  await query('UPDATE users SET pending_admin_review=FALSE WHERE id=$1', [req.params.id]);
+  const { rows } = await query(
+    'UPDATE users SET pending_admin_review=FALSE WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) RETURNING id',
+    [req.params.id, req.user!.school_code ?? null],
+  );
+  if (!rows[0]) return res.status(404).json({ error: 'User not found' });
   await audit(req.user!, 'approve_self_registered_user', 'user', req.params.id);
   return res.json({ ok: true });
 });
 
 router.delete('/users/:id', async (req, res) => {
   if (req.params.id === req.user!.id) return res.status(400).json({ error: 'Cannot delete yourself' });
-  const { rows: targetRows } = await query('SELECT role FROM users WHERE id=$1', [req.params.id]);
+  const { rows: targetRows } = await query(
+    'SELECT role FROM users WHERE id=$1 AND ($2::text IS NULL OR school_code=$2)',
+    [req.params.id, req.user!.school_code ?? null],
+  );
   if (!targetRows[0]) return res.status(404).json({ error: 'User not found' });
   if (targetRows[0].role === 'admin') return res.status(400).json({ error: 'Admin accounts cannot be deleted' });
-  const { rows } = await query('DELETE FROM users WHERE id=$1 RETURNING username', [req.params.id]);
+  const { rows } = await query(
+    'DELETE FROM users WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) RETURNING username',
+    [req.params.id, req.user!.school_code ?? null],
+  );
+  if (!rows[0]) return res.status(404).json({ error: 'User not found' });
   await audit(req.user!, 'delete_user', 'user', req.params.id, rows[0].username);
   return res.json({ ok: true });
 });
