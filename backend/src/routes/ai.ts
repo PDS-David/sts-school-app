@@ -25,6 +25,7 @@ const aiRequestLimiter = rateLimit({
   skip: (req) => req.user?.role === 'admin',
   message: { error: 'AI request limit exceeded. Try again in one minute.' },
   store: createRedisRateLimitStore('ai-http'),
+  passOnStoreError: false,
 });
 router.use(aiRequestLimiter);
 
