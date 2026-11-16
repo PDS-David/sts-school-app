@@ -16,7 +16,7 @@
   - docs/backend-security/checkpoints/BSEC-031-01.md
   - docs/backend-security/checkpoints/BSEC-031-02.md
   - docs/backend-security/checkpoints/BSEC-031-03.md
-  - .github/workflows/backend-security-reconciliation.yml
+  - .github/workflows/backend-class-lock-read-scope.yml
 - **Reconciliation findings:**
   - BSEC-024 implementation PR #897 is merged at `50b61ed850d414951c9bf614d06b678a1985354e`; its focused PostgreSQL and backend typecheck workflow `43940770785` passed.
   - BSEC-025 implementation PR #900 is merged at `4287d6af058d892a692a6c8cc375911411423c3f`.
@@ -24,7 +24,7 @@
   - BSEC-025's old checkpoint still said CI pending. No workflow run was recorded for its implementation commit because its workflow was introduced in that PR. The reconciliation workflow reruns the BSEC-024 and BSEC-025 PostgreSQL suites and backend typecheck; no pass is claimed until it completes.
   - Existing endpoint-scope work had been assigned the BSEC-026/BSEC-028/BSEC-029 numbers out of sequence. Those merged findings are preserved as BSEC-031-01/02/03. BSEC-026, BSEC-028 and BSEC-029 are now reserved for the assigned reconciliation, upload/download security and audit-logging tasks.
   - BSEC-025's class-lock test fixture already seeds and cleans up the Secondary `Primary 4` class on current master.
-- **Changes:** reconcile BSEC-024 checkpoint to merged/verified; reconcile BSEC-025 checkpoint to merged with post-merge verification pending; preserve the extra endpoint-scope work under BSEC-031; reserve BSEC-026/028/029 for the assigned sequence; add a PostgreSQL 16 workflow to rerun both prior regression suites and backend TypeScript checking.
+- **Changes:** reconcile BSEC-024 checkpoint to merged/verified; reconcile BSEC-025 checkpoint to merged with post-merge verification pending; preserve the extra endpoint-scope work under BSEC-031; reserve BSEC-026/028/029 for the assigned sequence; extend the existing PostgreSQL 16 class-lock workflow to rerun both prior regression suites and backend TypeScript checking.
 - **Production safety:** verification uses a disposable PostgreSQL 16 service. No production database, production data, secrets or deployment settings were accessed or changed.
 - **Remaining:** inspect the reconciliation workflow; if both suites and typecheck pass, update BSEC-025 checkpoint with actual run evidence; open a focused PR and verify current-head checks.
-- **Exact next action:** inspect the PostgreSQL BSEC-024/BSEC-025 reconciliation workflow run for this branch head.
+- **Exact next action:** inspect the PostgreSQL class-lock workflow run for the BSEC-026 reconciliation PR.
