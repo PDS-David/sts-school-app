@@ -149,6 +149,16 @@ test('class lock reads are restricted to class teachers and administrators', asy
     });
     assert.equal(globalAdminSecondaryWrite.status, 200, 'global admins retain explicit cross-school management');
 
+    const invalidWriteTerm = await put(admin.token, {
+      class_name: 'Primary 4', term_id: 'not-a-number', school_code: 'primary', locked: true,
+    });
+    assert.equal(invalidWriteTerm.status, 400, 'invalid term IDs are rejected before SQL');
+
+    const unknownWriteClass = await put(admin.token, {
+      class_name: 'NotAClass', term_id: primaryTerm, school_code: 'primary', locked: true,
+    });
+    assert.equal(unknownWriteClass.status, 400, 'class locks cannot be created for unknown school classes');
+
     const secondaryLockStillExists = await query(
       'SELECT id FROM class_locks WHERE school_code=$1 AND class_name=$2 AND term_id=$3',
       ['secondary', 'Primary 4', secondaryTerm],
