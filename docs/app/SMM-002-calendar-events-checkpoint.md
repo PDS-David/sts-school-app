@@ -15,7 +15,7 @@ Migration: `backend/migrations/0002_school_events.sql`
 ## Verification
 - PR #764 merged on 2026-11-13.
 - Current master CI on commit `209a960ace30a8026e722e71e1b7f727347fef0c` passed the package integrity, SS23 contract and JSS3 implementation/asset gates.
-- PR #894 adds disposable-PostgreSQL tests for event audience/class/school visibility, admin school isolation, date validation and parent upcoming-test ward scoping. CI is pending.
+- PR #894 adds disposable-PostgreSQL tests for event audience/class/school visibility, admin school isolation, date validation and parent upcoming-test ward scoping. The route suite passed in JSS3 verify run `43940628882`; all required workflows passed on head `3898b90277ae8cb046876f4eb3f137ed41f5c119`.
 - No production database has been migrated and no physical-device acceptance has been performed.
 
 ## Remaining
