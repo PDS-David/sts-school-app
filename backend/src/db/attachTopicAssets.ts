@@ -112,29 +112,47 @@ export function loadManifest(manifestPath: string): ManifestRow[] {
   for (const [name, i] of Object.entries({ asset_key: ix.key, file: ix.file, sha256: ix.sha, order_index: ix.ord })) {
     if (i < 0) throw new Error(`Manifest is missing a required column: ${name}`);
   }
+  if (rows.length - 1 > 500) throw new Error('Manifest exceeds the 500-asset safety limit');
   const perTopic = new Map<number, number>();
   const seen = new Set<string>();
   return rows.slice(1).map((r, n) => {
     const get = (i: number) => (i >= 0 ? (r[i] ?? '').trim() : '');
     const order = Number(get(ix.ord));
-    if (!Number.isInteger(order)) throw new Error(`Manifest row ${n + 2}: order_index "${get(ix.ord)}" is not an integer`);
+    if (!Number.isSafeInteger(order) || order < 1) throw new Error('Manifest row ' + (n + 2) + ': order_index must be a positive safe integer');
     const key = get(ix.key);
-    if (!key) throw new Error(`Manifest row ${n + 2}: empty asset_key`);
-    if (seen.has(`${order}|${key}`)) throw new Error(`Manifest row ${n + 2}: duplicate asset_key ${key} for order_index ${order}`);
-    seen.add(`${order}|${key}`);
+    if (!/^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/.test(key)) throw new Error('Manifest row ' + (n + 2) + ': asset_key must be 1-128 safe identifier characters');
+    if (seen.has(order + '|' + key)) throw new Error('Manifest row ' + (n + 2) + ': duplicate asset_key ' + key + ' for order_index ' + order);
+    seen.add(order + '|' + key);
+    const file = get(ix.file);
+    if (!file || file.length > 512 || file.includes(String.fromCharCode(0))) throw new Error('Manifest row ' + (n + 2) + ': invalid asset file path');
+    const sha = get(ix.sha).toLowerCase();
+    if (!SHA256_PATTERN.test(sha)) throw new Error('Manifest row ' + (n + 2) + ': sha256 must be 64 hexadecimal characters');
     const seq = (perTopic.get(order) ?? 0) + 1;
     perTopic.set(order, seq);
     const dispRaw = get(ix.disp).toLowerCase();
+    if (dispRaw && !['true', 't', '1', 'yes', 'false', 'f', '0', 'no'].includes(dispRaw)) {
+      throw new Error('Manifest row ' + (n + 2) + ': displayed must be a boolean value');
+    }
+    const sortRaw = get(ix.sort);
+    const sortOrder = sortRaw !== '' ? Number(sortRaw) : seq * 10;
+    if (!Number.isSafeInteger(sortOrder) || sortOrder < 0) throw new Error('Manifest row ' + (n + 2) + ': sort_order must be a non-negative safe integer');
+    const kind = get(ix.kind) || 'image';
+    if (!/^[a-z][a-z0-9_-]{0,39}$/i.test(kind)) throw new Error('Manifest row ' + (n + 2) + ': invalid kind');
+    const caption = get(ix.cap) || null;
+    const altText = get(ix.alt) || null;
+    if ((caption?.length ?? 0) > 1000 || (altText?.length ?? 0) > 2000) {
+      throw new Error('Manifest row ' + (n + 2) + ': caption or alt_text exceeds the allowed length');
+    }
     return {
       asset_key: key,
-      file: get(ix.file),
-      sha256: get(ix.sha).toLowerCase(),
+      file,
+      sha256: sha,
       order_index: order,
-      caption: get(ix.cap) || null,
-      alt_text: get(ix.alt) || null,
-      kind: get(ix.kind) || 'image',
+      caption,
+      alt_text: altText,
+      kind,
       displayed: dispRaw === '' ? true : ['true', 't', '1', 'yes'].includes(dispRaw),
-      sort_order: get(ix.sort) !== '' ? Number(get(ix.sort)) : seq * 10,
+      sort_order: sortOrder,
       expected_title: get(ix.title) || null,
     };
   });
