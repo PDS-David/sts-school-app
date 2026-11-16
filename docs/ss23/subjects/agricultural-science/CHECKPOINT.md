@@ -38,12 +38,12 @@ The package has 47 open items: 46 delivery-blocking and 1 non-blocking. Six non-
 
 | Term | Open items | Blocking | Non-blocking |
 |---|---:|---:|---:|
-| First Term | 43 | 37 | 6 |
+| First Term | 37 | 37 | 0 |
 | Second Term | 5 | 5 | 0 |
 | Third Term | 5 | 4 | 1 |
 | **Total** | **47** | **46** | **1** |
 
-The 53 items comprise 30 FACT, 11 VERIFICATION, 6 CONTENT, 4 PERMISSION, 1 OWNER_ACTION and 1 VISUAL item. First-Term review remains substantial; the newer Second- and Third-Term drafts do not close those earlier approval gates.
+The 47 items comprise 30 FACT, 5 VERIFICATION, 6 CONTENT, 4 PERMISSION, 1 OWNER_ACTION and 1 VISUAL item. First-Term review remains substantial; the newer Second- and Third-Term drafts do not close those earlier approval gates.
 
 ## Current gate
 
