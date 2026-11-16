@@ -454,6 +454,17 @@ router.delete('/users/:id', async (req, res) => {
 // ══════════════════════════════════════════
 // AUDIT LOG
 // ══════════════════════════════════════════
+router.get('/audit-log/integrity', async (req, res) => {
+  const { school_code } = req.query as Record<string, string>;
+  const scope = resolveAdminSchoolScope(req.user!, school_code);
+  if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
+  const integrity = await verifyAuditLogIntegrity(scope.schoolCode ?? undefined);
+  if (!integrity.valid) {
+    return res.status(500).json({ error: 'Audit log integrity verification failed.', integrity });
+  }
+  return res.json({ integrity });
+});
+
 router.get('/audit-log', async (req, res) => {
   const { school_code, limit = '100' } = req.query as Record<string, string>;
   const scope = resolveAdminSchoolScope(req.user!, school_code);
