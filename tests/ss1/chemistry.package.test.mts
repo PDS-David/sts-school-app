@@ -71,9 +71,16 @@ test('All current coverage and lesson references resolve within the package', ()
   const p = packageSchema.parse(raw);
   const sourceIds = new Set(p.sources.map(s => s.source_id));
   const lessonIds = new Set(p.lessons.map(l => l.id));
+  const sourceRuleIds = new Set(p.source_rules.map(rule => rule.id));
   for (const coverage of p.coverage) {
     assert(sourceIds.has(coverage.source_id), `unknown coverage source: ${coverage.id}`);
-    for (const lessonId of coverage.lesson_ids) assert(lessonIds.has(lessonId), `unknown lesson: ${lessonId}`);
+    for (const referenceId of coverage.lesson_ids) {
+      if (coverage.status === 'MARKER') {
+        assert(sourceRuleIds.has(referenceId), `unknown source rule: ${referenceId}`);
+      } else {
+        assert(lessonIds.has(referenceId), `unknown lesson: ${referenceId}`);
+      }
+    }
   }
   assert.equal(p.lessons.length, 9);
   assert.equal(p.assets.length, 0);
