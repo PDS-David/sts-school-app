@@ -1,0 +1,44 @@
+name: SS23 Agricultural Science assessment answer verification
+
+on:
+  push:
+    branches:
+      - agent/ss23-agricultural-science-terms2-3-r2-20261116
+    paths:
+      - "backend/src/db/ss23/**"
+      - "tests/ss23/**"
+      - "tests/test_ss23_*.py"
+      - ".github/workflows/ss23-agriculture-assessment-answer-verification.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24.19.0"
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts
+      - name: Check SS23 hashes
+        run: npm run ss23:refresh-hashes -- --check
+      - name: Validate SS23 packages
+        run: npm run validate:ss23
+      - name: Run SS23 tests
+        run: npm run test:ss23
+      - name: Run SS23 package and delivery contract tests
+        run: node --import tsx --test backend/src/db/ss23/subjectPackageSchema.test.ts backend/src/db/ss23/studentDelivery.test.ts
+      - name: Run SS23 source-map tests
+        run: python -m unittest discover -s tests -p 'test_ss23_*.py'
+      - name: Validate SS1
+        run: npm run validate:ss1
+      - name: Backend typecheck
+        run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
