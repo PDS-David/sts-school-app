@@ -59,3 +59,25 @@ Continue the Agricultural Science readiness work: complete the T2/T3 source-asse
 - The package is not ready: 50 delivery-blocking and 7 non-blocking open items remain. Main blockers include crop-disease taxonomy, ornamental and weed nomenclature, obsolete pesticide recommendations/classification, Mendelian-law nuance, farm-account transcription, animal nutrient classification, feed thresholds, and exhaustive answer/marking reconciliation.
 - Exact next action: open the subject PR against current `master`; require the current SS23 integrity gate and expanded student-delivery tests to pass before treating this implementation as tested on the current base. Then continue blocker resolution; do not merge.
 
+
+## Live task checkpoint — SS23-02 Agricultural Science — 2026-11-16
+
+- Task ID: `SS23-02 / SS23-AGRIC-SS2-T2-T3`
+- Status: **Implemented as draft; source identity verified; current-head CI green; not teacher-approved; not accepted for student delivery.**
+- Branch: `agent/ss23-agricultural-science-terms2-3-r2-20261116`; current head before this checkpoint update: `1377fdaa116143fcf9add283bfb9580a22537d11`.
+- PR: [#857](https://github.com/PDS-David/sts-school-app/pull/857), open and unmerged; base master `2b3ec92b99d016b450858cce5b87d5d6056d990b`.
+- Changed implementation: package has 19 SS2 lesson units (8 T1, 6 T2, 5 T3), 195 total practice/assessment items, 45 new authored/source-derived practice items, 22 added assessment answer guides, 9 external factual references, 24 total coverage rows added for assessment clusters and topic reconciliation (package coverage now includes the source map plus these additions). Four technical blockers were closed with authoritative citations; other technical/source and assessment blockers remain. Package status stays `PENDING`; all new lesson states remain `DRAFT`.
+- Tests and evidence on current head `1377fdaa116143fcf9add283bfb9580a22537d11`, GitHub Actions [run 43791853155](https://github.com/PDS-David/sts-school-app/actions/runs/43791853155):
+  - locked `npm ci --ignore-scripts`: PASS
+  - `npm run ss23:refresh-hashes -- --check`: PASS
+  - `npm run validate:ss23`: PASS, zero errors
+  - `npm run test:ss23`: PASS, 39/39
+  - package schema + student-delivery contract tests: PASS, 37/37
+  - SS2/SS3 source-map Python tests: PASS, 11/11
+  - `npm run validate:ss1`: PASS
+  - backend TypeScript typecheck: PASS
+  - Earlier assessment-verification run 43791400716 failed 38/39 because the economics test expected three practice items after assessment expansion; the assertion was corrected and current-head run above passes 39/39. No validation rule was weakened.
+- Readiness output on current head: SS2 Agricultural Science T1/T2/T3 each report `IN_PROGRESS`; 14, 9 and 7 unresolved coverage rows respectively, and 24 blocking open items per term. This is not readiness certification.
+- Source verification: SS2 T2 source `SS23-SRC-cd612ad10f40` (344,064 bytes) and T3 source `SS23-SRC-6abb32818845` (408,064 bytes) match the registered hashes and document headers. Original T3 pages 12-16 were inspected; Week 7-8 Farm Records heading is on printed page 13. Assessment answer guides are authored supplements, not original source answers.
+- Remaining work: complete item-by-item answer reconciliation for every source evaluation, practical and external textbook/WAEC assignment; resolve disease/ornamental/weed/pesticide/feed/accounting uncertainties; review every lesson body against source; finish practical procedures; obtain teacher approval and owner acceptance. No student release, production import, merge or deployment.
+- Exact next action: continue resolving the remaining Agricultural Science source/assessment blockers using the original school files and authoritative references; update this checkpoint after the next independently verified task. Do not move to Biology until all three Agricultural Science terms pass the source, content, assessment, delivery and approval gates.
