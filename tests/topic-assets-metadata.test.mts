@@ -1,10 +1,13 @@
 // Transaction-control tests with a fake PG client; not a live PostgreSQL test.
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { pool } from '../backend/src/db/pool.ts';
 import { attachAssets, type PreparedAsset } from '../backend/src/db/attachTopicAssets.ts';
-const asset: PreparedAsset = {asset_key:'A',file:'a.png',sha256:'abc',order_index:2,caption:'new',alt_text:null,kind:'image',displayed:true,sort_order:10,expected_title:'Lesson',bytes:Buffer.from('image'),mime:'image/png'};
-const existing = {sha256:'abc',mime:'image/png',caption:'old',alt_text:null,kind:'image',displayed:false,sort_order:20};
+const PNG = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==', 'base64');
+const sha = createHash('sha256').update(PNG).digest('hex');
+const asset: PreparedAsset = {asset_key:'A',file:'a.png',sha256:sha,order_index:2,caption:'new',alt_text:null,kind:'image',displayed:true,sort_order:10,expected_title:'Lesson',bytes:PNG,mime:'image/png'};
+const existing = {sha256:sha,mime:'image/png',caption:'old',alt_text:null,kind:'image',displayed:false,sort_order:20};
 const options = {schoolCode:'test',subject:'Music',className:'JSS 3',termLabel:'1st Term',apply:false,skipTitleCheck:false};
 function stub(t: any, row = existing, failUpdate = false) {
   const calls: Array<{sql:string,params:any[]}> = [];
@@ -39,7 +42,7 @@ test('explicit apply updates metadata only, retaining byte/hash/MIME and topic i
   const r=await attachAssets([asset],{...options,apply:true,updateMetadata:true});
   assert.equal(r.metadataUpdated,1);
   const update=s.calls.find(c=>c.sql.startsWith('UPDATE'))!;
-  assert.deepEqual(update.params,[7,'A','image','new',null,10,true,'abc','image/png']);
+  assert.deepEqual(update.params,[7,'A','image','new',null,10,true,sha,'image/png']);
   assert.doesNotMatch(update.sql.split('WHERE')[0],/\b(bytes|sha256|mime|topic_id|asset_key)\s*=/);
   assert.ok(s.calls.some(c=>c.sql==='COMMIT'));
   assert.match(s.calls.find(c=>c.sql.includes('SELECT t.id'))!.sql,/FOR UPDATE OF t/);
