@@ -30,25 +30,62 @@ function blockNonFinanceRoles(req: Request, res: Response, next: NextFunction) {
 router.use(blockNonFinanceRoles);
 
 // ── GET /finance/fee-items ─────────────────────────────────────────────────────
-// Fee schedule is not sensitive per-student data, just scoped to the caller's school.
+// Fee schedules are school-scoped. A parent may have wards across both STS
+// campuses, so their requested school must be proven against parent_wards
+// rather than silently falling back to the parent's original home school.
+// Omitting school_code returns the union of fee schedules for all active linked wards.
 router.get('/fee-items', async (req, res) => {
   const { school_code } = req.query as { school_code?: string };
-  // finance_admin has no school of its own (manages both schools, same as
-  // Operations Admin used to for this data) — needs an explicit school_code
-  // from the client (e.g. a school switcher), same pattern as everywhere
-  // else an admin-shaped role has school_code = NULL.
-  const sc = req.user!.role === 'finance_admin' ? (school_code ?? req.user!.school_code) : req.user!.school_code;
+  const requestedSchoolCode = typeof school_code === 'string' ? school_code.trim() : undefined;
+  if (req.user!.role === 'parent') {
+    const params: unknown[] = [req.user!.id];
+    let schoolFilter = '';
+    if (requestedSchoolCode) {
+      params.push(requestedSchoolCode);
+      schoolFilter = ` AND fi.school_code=$${params.length}`;
+    }
+    const { rows } = await query(
+      `SELECT fi.* FROM fee_items fi
+       WHERE fi.school_code IN (
+         SELECT DISTINCT st.school_code
+         FROM parent_wards pw
+         JOIN students st ON st.id=pw.student_id
+         WHERE pw.parent_id=$1 AND st.deleted_at IS NULL
+       )${schoolFilter}
+       ORDER BY fi.id`,
+      params,
+    );
+    return res.json({ fee_items: rows });
+  }
+
+  // finance_admin has no school of its own (manages both schools) — it
+  // needs an explicit school_code from the client, e.g. the school switcher.
+  const sc = req.user!.role === 'finance_admin' ? (requestedSchoolCode ?? req.user!.school_code) : req.user!.school_code;
   const { rows } = await query('SELECT * FROM fee_items WHERE school_code=$1 ORDER BY id', [sc]);
   return res.json({ fee_items: rows });
 });
 
 // ── POST /finance/fee-items — finance_admin only ────────────────────────────────
+const createFeeItemSchema = z.object({
+  name: z.string().trim().min(1).max(120),
+  amount: z.coerce.number().finite().positive(),
+  class_name: z.string().trim().max(100).nullable().optional(),
+  school_code: z.string().trim().min(1).max(32),
+});
+
 router.post('/fee-items', requireRole('finance_admin'), async (req, res) => {
-  const { name, amount, class_name, school_code } = req.body;
-  const sc = school_code ?? req.user!.school_code;
+  const parsed = createFeeItemSchema.safeParse(req.body);
+  if (!parsed.success) {
+    return res.status(400).json({
+      error: 'Invalid fee item: ' + parsed.error.issues.map(issue => issue.path.join('.') || 'body').join(', '),
+    });
+  }
+  const { name, amount, class_name, school_code } = parsed.data;
+  const { rows: schools } = await query('SELECT 1 FROM schools WHERE code=$1', [school_code]);
+  if (!schools[0]) return res.status(400).json({ error: 'Select a valid school for this fee item.' });
   const { rows } = await query(
     'INSERT INTO fee_items(school_code,name,amount,class_name) VALUES($1,$2,$3,$4) RETURNING *',
-    [sc, name, amount, class_name ?? null],
+    [school_code, name, amount, class_name || null],
   );
   return res.status(201).json({ fee_item: rows[0] });
 });
