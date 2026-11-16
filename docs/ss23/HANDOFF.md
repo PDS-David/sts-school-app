@@ -71,6 +71,6 @@ Do not treat these historical findings as newly verified facts until the archive
 - SS23 tests: `npm run test:ss23`
 - SS23 hash check: `npm run ss23:refresh-hashes -- --check`
 - SS1 regression gate: `npm run validate:ss1`
-- Backend typecheck: `npm run typecheck --workspace backend`
+- Backend typecheck (as CI runs it): `./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json` (the root `npm run typecheck` also checks mobile; the backend package has no `typecheck` script)
 
 Record commands actually run and their outcomes; never report a check as passed if it was not run.
