@@ -1,6 +1,6 @@
 # Structured package audit — 2026-11-16
 
-This is a repository-data audit of the merged Agricultural Science package on master. It checks the structured package fields; it does **not** certify source-page completeness, subject correctness, specialist approval, owner acceptance or student-release readiness.
+This is a repository-data snapshot of the merged Agricultural Science package at base master commit `70cd4a8cb1a5f7fcbd1a103e6812bbe96d4e711e`. It checks structured package fields at that commit; it does **not** certify source-page completeness, subject correctness, specialist approval, owner acceptance or student-release readiness. PR #862 is a separate, still-unmerged draft update that adds further sourced clarifications and coverage rows; its counts are not included in this snapshot.
 
 ## Practice and answer-guide audit
 
