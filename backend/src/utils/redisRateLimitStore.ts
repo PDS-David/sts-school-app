@@ -177,6 +177,7 @@ class RedisClient {
     socket.on('close', () => { if (this.socket === socket) this.fail(new Error('Redis connection closed.')); });
     // Keep the shared connection warm between requests, but discard a genuinely
     // idle socket after 30 seconds. The 3-second timeout above is connect-only.
+    socket.setTimeout(30_000, () => socket.destroy(new Error('Redis idle connection timed out.')));
 
     try {
       if (this.config.password) {
