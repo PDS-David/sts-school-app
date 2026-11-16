@@ -166,6 +166,20 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     assert.equal(invalidBatchRows.length, 2,
       'invalid bulk batch must not change any score; only the two earlier single writes remain');
 
+    const validBatch = await post('/bulk', {
+      scores: [
+        score(studentIds[0], subjectIds[0], termIds[0]),
+        score(studentIds[1], subjectIds[0], termIds[0]),
+      ],
+    }, subjectTeacher.token);
+    assert.equal(validBatch.status, 200, 'a valid batch of assigned-subject scores must commit');
+    assert.deepEqual(await validBatch.json(), { saved: 2 });
+    const { rows: validBatchRows } = await query(
+      'SELECT id FROM scores WHERE student_id=ANY($1::uuid[]) AND subject_id=$2 AND term_id=$3',
+      [[studentIds[0], studentIds[1]], subjectIds[0], termIds[0]],
+    );
+    assert.equal(validBatchRows.length, 2, 'every row in a valid batch must be committed');
+
     // Force a database failure on the second insert after the first row has
     // already been written inside the batch transaction.
     const targetId = rollbackIds[1];
@@ -218,13 +232,21 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     );
     assert.equal(report.status, 200);
     const reportPayload = await report.json() as {
-      class_size: number;
-      subjects: Array<{ class_average: number; class_highest: number; subject_position: number }>;
+      summary: { class_size: number };
+      scores: Array<{
+        subject_id: number;
+        class_average: number;
+        class_highest: number;
+        subject_position: number;
+      }>;
     };
-    assert.equal(reportPayload.class_size, 1, 'class size must exclude another school with the same class label');
-    assert.equal(Number(reportPayload.subjects[0].class_average), 50);
-    assert.equal(Number(reportPayload.subjects[0].class_highest), 50);
-    assert.equal(Number(reportPayload.subjects[0].subject_position), 1);
+    assert.equal(reportPayload.summary.class_size, 1,
+      'class size must exclude another school with the same class label');
+    const primarySubjectReport = reportPayload.scores.find(row => row.subject_id === subjectIds[0]);
+    assert.ok(primarySubjectReport, 'the report must contain the same-school subject score');
+    assert.equal(Number(primarySubjectReport.class_average), 50);
+    assert.equal(Number(primarySubjectReport.class_highest), 50);
+    assert.equal(Number(primarySubjectReport.subject_position), 1);
 
     const rawScores = await fetch(
       `?term_id=${termIds[0]}`,
