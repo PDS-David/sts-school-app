@@ -69,7 +69,10 @@ if (!SERVER_URL) {
       headers: { authorization: 'Bearer ' + user.token, ...(body === undefined ? {} : { 'content-type': 'application/json' }) },
       ...(body === undefined ? {} : { body: JSON.stringify(body) }),
     });
-    const payload = await response.json() as any;
+    const raw = await response.text();
+    let payload: any;
+    try { payload = JSON.parse(raw); }
+    catch { payload = { non_json_response: raw.slice(0, 500) }; }
     return { status: response.status, payload };
   }
 
