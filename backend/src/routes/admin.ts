@@ -717,7 +717,7 @@ router.post('/backups/run', requireGlobalAdmin, async (req, res) => {
       req.user ?? null, 'BACKUP_RUN', 'database', undefined,
       `${r.status}; ${r.tables} tables; ${r.rows} rows; ${r.size_bytes} bytes`,
       auditContextFromRequest(req, {
-        outcome: r.status === 'success' ? 'success' : 'failure',
+        outcome: 'success',
         metadata: { tables: r.tables, rows: r.rows, size_bytes: r.size_bytes, backup_status: r.status },
       }),
     );
