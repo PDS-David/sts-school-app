@@ -46,3 +46,12 @@ test('readiness reports Biology as in progress rather than student-ready', () =>
   assert.equal(row.lessons, 9);
   assert.equal(row.state, 'IN_PROGRESS');
 });
+
+test('Biology preserves the four source-located Second-Term assessment prompts', () => {
+  assert.ok(biology);
+  const original = biology.units.flatMap(unit => unit.practice)
+    .filter(item => item.question_origin === 'ORIGINAL_SOURCE');
+  assert.equal(original.length, 4);
+  assert.ok(original.every(item => item.answer_origin === 'AUTHORED_SUPPLEMENT'));
+  assert.ok(original.every(item => item.question_locator.includes('Second-Term source')));
+});
