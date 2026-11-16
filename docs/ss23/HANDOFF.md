@@ -1,19 +1,19 @@
 # Latest handoff supplement — 2026-11-16
 
-This supplement supersedes earlier live-state claims in this historical handoff.
+This supplement supersedes earlier live-state claims in the historical handoff.
 
-- Current `master`: `63f948738a26ab807cdf569a7dd283842338e067`; PRs #867/#868 merged. Current master changes after those merges are documentation-only and do not change Agriculture package state.
-- PR #869 remains open/unmerged and mergeable at `2062269546e2a5f4e6e0437ca01df5fc485bd1e8`; 11 commits ahead and 0 behind master. No merge is requested.
-- PR #870 remains open/unmerged at `a9c8345ac8f8a588b810f73c60023be000b3473d`; all four workflows passed. It prevents `source-extract://` placeholders from appearing in student asset listings even if their approval metadata is erroneously advanced.
-- PR #871 remains open/unmerged at `361b0f5659f3654b89d6c6d8590fbbafd641532d`; all four workflows passed. It updates the soil-practical blocker and cassava blight nomenclature, adds two hashed external references and two supported coverage rows.
-- Agricultural Science package on master: 19 draft units (8/6/5), 195 practice/assessment items, 45 external references, 47 asset records, 109 coverage rows and 47 open items (46 blocking, one non-blocking). Package `PENDING`, units `DRAFT`, approval `PENDING`, verification `DEFERRED`; no student delivery.
-- PR #871 branch only: 47 external references, 111 coverage rows, same 47 open items. Do not treat these changes as merged.
-- Five soil investigation procedures are documented in `SOIL_PRACTICALS_REVIEW_DRAFT.md`; not teacher-approved and no official marking guide.
-- Assessment structure checks show 195 unique IDs, required fields/locators/provenance present, provenance references resolve and marking totals reconcile. This does not verify answer correctness. T2/T3 question sets are authored supplements. Four repeated T1 prompt groups await original-page confirmation.
-- The 47-item teacher/specialist register is on master; the correction/assessment audit is in PR #869.
-- Original SS2/SS3 ZIPs remain private Library archives but were not readable through the Files text reader in this session. No new page-level source verification is claimed. Four competing source versions still require the owner's decision.
-- No merge, deployment, production import or student release. Do not progress to Biology before Agriculture's source, assessment and teacher-approval gates pass.
-- After Agriculture is genuinely cleared, continue SS2 alphabetically one focused PR per subject; then complete SS3 examination preparation only, protecting answer keys and introducing no instructional topics.
+- Current master: `63f948738a26ab807cdf569a7dd283842338e067`; PRs #867/#868 merged.
+- PR #869 is open/mergeable at `bf8075645ea3e1f3f8fc45461488201d6630d293` and contains documentation/review artifacts only.
+- PR #870 is open/mergeable at `a9c8345ac8f8a588b810f73c60023be000b3473d`; its four workflows passed. It blocks unresolved `source-extract://` placeholders even if their approval metadata is mistakenly advanced.
+- PR #871 is open/mergeable at `1cbe7efbb2b0b9d2a729674c73e661b5e713ea4e`. Latest run state: SS23 package contract 43804755967 PASSED; SS23 integrity 43804755981 PASSED; SS1 integrity 43804755877 PASSED; JSS3 check 43804755894 still running at the last check. Do not describe #871 checks as all green until JSS3 completes.
+- Agriculture on merged master remains 19 draft units, 195 practice/assessment records, 45 external references, 47 asset records, 109 coverage rows and 47 open items (46 blocking). Package `PENDING`; units `DRAFT`; no student delivery.
+- Agriculture on PR #871 only: 19 units, 195 practice records, 52 assets (42 unresolved placeholders + 10 local SVGs), 48 external references, 116 coverage rows, 47 open items (46 blocking). All local SVG package verification states remain DEFERRED and all content approvals PENDING.
+- The latest tractor/PTO and soil-profile source provenance schema mismatch is fixed: tractor/PTO uses First-Term PSU PTO safety; soil-profile uses USDA NRCS A Soil Profile. No source content or teacher approval has been invented.
+- All 10 local SVG byte counts and SHA-256 values have been matched to committed content. That check does not grant package verification or content approval.
+- The 47-item teacher/specialist register and the draft correction/assessment audit are being maintained in PR #869. The five soil practicals remain review drafts, not approved marking schemes.
+- The original SS2/SS3 ZIP members were not readable through the Files text reader in this session. No new original page-level verification is claimed. Four source-version choices remain for the owner.
+- Keep no-merge/no-deploy/no-import/no-student-release rules. Do not start Biology until Agriculture source, assessment and teacher-approval gates pass.
+- Then continue SS2 alphabetically, one focused PR per subject; after SS2, complete SS3 examination preparation only.
 
 ---
 
