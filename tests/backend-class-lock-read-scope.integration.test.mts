@@ -221,3 +221,124 @@ test('class lock reads are restricted to class teachers and administrators', asy
       [[admin.id, primaryAdmin.id, primaryTeacher.id, secondaryTeacher.id, subjectOnlyTeacher.id, student.id, parent.id, financeAdmin.id]]);
   }
 });
+
+
+test('school-bound administrators cannot override academic school scope', async () => {
+  const suffix = randomUUID().slice(0, 8);
+  const globalAdmin = await createUser('global-admin', 'admin', null);
+  const primaryAdmin = await createUser('primary-admin', 'admin', 'primary');
+  const termIds: number[] = [];
+  const subjectIds: number[] = [];
+  let server: Server | undefined;
+
+  try {
+    for (const schoolCode of ['primary', 'secondary']) {
+      const { rows } = await query(
+        `INSERT INTO terms(name,academic_year,school_code,start_date,end_date,days_opened)
+         VALUES('First Term',$1,$2,CURRENT_DATE,CURRENT_DATE + INTERVAL '90 days',0)
+         RETURNING id`,
+        [`BSEC27-${suffix}`, schoolCode],
+      );
+      termIds.push(Number(rows[0].id));
+      const subject = await query(
+        'INSERT INTO subjects(name,code,school_code) VALUES($1,$2,$3) RETURNING id',
+        [`BSEC27 Subject ${suffix}`, `BSEC27-${suffix}`, schoolCode],
+      );
+      subjectIds.push(Number(subject.rows[0].id));
+    }
+    const [primaryTerm, secondaryTerm] = termIds;
+    const [primarySubject, secondarySubject] = subjectIds;
+
+    const started = await startServer();
+    server = started.server;
+    const academicBase = started.baseUrl.slice(0, -'/class-locks'.length);
+    const getAcademic = (token: string, path: string) => fetch(`${academicBase}${path}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const postAcademic = (token: string, path: string, body: Record<string, unknown>) => fetch(`${academicBase}${path}`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const putAcademic = (token: string, path: string, body: Record<string, unknown>) => fetch(`${academicBase}${path}`, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const deleteAcademic = (token: string, path: string) => fetch(`${academicBase}${path}`, {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    const terms = await getAcademic(primaryAdmin.token, '/terms');
+    assert.equal(terms.status, 200);
+    const primaryTerms = (await terms.json() as { terms: Array<{ school_code: string }> }).terms;
+    assert.ok(primaryTerms.length > 0);
+    assert.ok(primaryTerms.every(row => row.school_code === 'primary'));
+
+    assert.equal((await getAcademic(primaryAdmin.token, '/terms?school_code=secondary')).status, 403);
+    assert.equal((await getAcademic(primaryAdmin.token, '/terms/current?school_code=secondary')).status, 403);
+
+    const globalSecondaryTerms = await getAcademic(globalAdmin.token, '/terms?school_code=secondary');
+    assert.equal(globalSecondaryTerms.status, 200);
+    assert.ok((await globalSecondaryTerms.json() as { terms: Array<{ school_code: string }> }).terms
+      .every(row => row.school_code === 'secondary'));
+
+    const subjects = await getAcademic(primaryAdmin.token, '/subjects');
+    assert.equal(subjects.status, 200);
+    assert.ok((await subjects.json() as { subjects: Array<{ school_code: string }> }).subjects
+      .every(row => row.school_code === 'primary'));
+    assert.equal((await getAcademic(primaryAdmin.token, '/subjects?school_code=secondary')).status, 403);
+
+    const classes = await getAcademic(primaryAdmin.token, '/classes');
+    assert.equal(classes.status, 200);
+    assert.ok((await classes.json() as { classes: Array<{ school_code: string }> }).classes
+      .every(row => row.school_code === 'primary'));
+    assert.equal((await getAcademic(primaryAdmin.token, '/classes?school_code=secondary')).status, 403);
+
+    const deniedTermCreate = await postAcademic(primaryAdmin.token, '/terms', {
+      name: 'Second Term', academic_year: `B27-${suffix}`, school_code: 'secondary',
+    });
+    assert.equal(deniedTermCreate.status, 403);
+
+    const ownTermCreate = await postAcademic(primaryAdmin.token, '/terms', {
+      name: 'Second Term', academic_year: `B27-${suffix}`, school_code: 'primary',
+    });
+    assert.equal(ownTermCreate.status, 201);
+    const createdTerm = (await ownTermCreate.json() as { term: { id: number; school_code: string } }).term;
+    termIds.push(Number(createdTerm.id));
+    assert.equal(createdTerm.school_code, 'primary');
+
+    assert.equal((await putAcademic(primaryAdmin.token, `/terms/${secondaryTerm}`, { days_opened: 3 })).status, 404);
+    assert.equal((await putAcademic(primaryAdmin.token, `/terms/${primaryTerm}`, { days_opened: 3 })).status, 200);
+
+    const deniedSubjectCreate = await postAcademic(primaryAdmin.token, '/subjects', {
+      name: `BSEC27 Forbidden ${suffix}`, school_code: 'secondary',
+    });
+    assert.equal(deniedSubjectCreate.status, 403);
+
+    const ownSubjectCreate = await postAcademic(primaryAdmin.token, '/subjects', {
+      name: `BSEC27 Created ${suffix}`, code: `BSEC27-CREATED-${suffix}`,
+    });
+    assert.equal(ownSubjectCreate.status, 200);
+    const createdSubject = (await ownSubjectCreate.json() as { subject: { id: number; school_code: string } }).subject;
+    subjectIds.push(Number(createdSubject.id));
+    assert.equal(createdSubject.school_code, 'primary');
+
+    assert.equal((await deleteAcademic(primaryAdmin.token, `/subjects/${secondarySubject}`)).status, 404);
+    const secondarySubjectStillExists = await query('SELECT id FROM subjects WHERE id=$1', [secondarySubject]);
+    assert.equal(secondarySubjectStillExists.rows.length, 1);
+
+    assert.equal((await deleteAcademic(primaryAdmin.token, `/subjects/${primarySubject}`)).status, 200);
+    subjectIds.splice(subjectIds.indexOf(primarySubject), 1);
+  } finally {
+    if (server) {
+      server.closeAllConnections();
+      await new Promise<void>(resolve => server!.close(() => resolve()));
+    }
+    if (subjectIds.length) await query('DELETE FROM subjects WHERE id=ANY($1::int[])', [subjectIds]);
+    if (termIds.length) await query('DELETE FROM terms WHERE id=ANY($1::int[])', [termIds]);
+    await query('DELETE FROM users WHERE id=ANY($1::uuid[])',
+      [[globalAdmin.id, primaryAdmin.id]]);
+  }
+});
