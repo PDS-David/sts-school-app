@@ -9,7 +9,7 @@ This section supersedes the historical branch/PR status in the checkpoint below.
 - PR #794 SS2/SS3 unit package contract merged: `53ceca40c70c1ea8634cfbffe86fe12bdf9ba884`.
 - PR #819 Agricultural Science package, loader and gated SS2/SS3 student delivery merged: `d341acf855c9eb240e51991aa9e6eaa62fe0efe5`.
 - PR #846 source registry, validator and integrity workflow merged: `02081f769999d1d6be33b97be5b11f6d7a8d86d1`.
-- Current SS3 code policy in merged PR #794 is exam preparation only (WAEC/NECO/JAMB), Terms 1-2; no normal SS3 instructional curriculum or Third-Term package. This is an implemented contract rule, not evidence of direct owner approval; the owner confirmation requested in the resume brief remains pending.
+- SS3 scope is owner-authorized exam preparation only (WAEC/NECO/JAMB), not normal instructional progression. This is stated in the owner-supplied `STS_School_Completion_Plan_and_Required_Files.docx` and enforced by merged PR #794; substantive teaching ends by SS2. No SS3 audit-only vs normal-curriculum decision is outstanding.
 
 ### Current curriculum status
 
@@ -47,7 +47,7 @@ This section supersedes the historical branch/PR status in the checkpoint below.
 
 ### Owner decisions and source limitations
 
-- SS3 policy: merged PR #794 currently enforces exam-preparation-only Terms 1-2, but that code decision is not direct owner approval. Keep explicit owner confirmation pending; do not silently switch to normal instructional delivery or audit-only.
+- SS3 scope: resolved by the owner-supplied completion plan. Deliver exam-preparation only (WAEC/NECO/JAMB); do not add normal SS3 instructional topics. The empty SS3 Third-Term archive is not a reason to invent teaching content.
 - The live source-receipt checkpoint records two consolidated archives, with 96/100 exact member matches and four different-content versions: SS2 T2 Economics, SS2 T3 Further Mathematics, SS3 T1 Mathematics and SS3 T1 Economics. Owner decision is still required before substituting any of those four versions.
 - SS2 T2 Geography still has a header/class mismatch requiring confirmation that it is SS2 content with a header typo.
 - Missing source terms remain explicit: SS3 Third-Term archive; Technical Drawing SS2 T1 and SS3 T1; Catering Craft SS2 T1, SS2 T3 and SS3 T1; Food & Nutrition SS3 T2. SS3 Literature T1/T2 and Book-keeping term duplicates remain unresolved source distinctions.
