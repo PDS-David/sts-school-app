@@ -1,7 +1,7 @@
 # SMM-004 — Student badges and achievements checkpoint
 
 Task ID: SMM-004
-Status: IMPLEMENTED ON MASTER — threshold and authorization tests in PR #894
+Status: IMPLEMENTED AND MERGED — threshold and authorization tests merged in PR #894
 Merged implementation: PR #766
 
 ## Scope delivered
@@ -16,12 +16,11 @@ Merged implementation: PR #766
 ## Verification
 - PR #766 merged on 2026-11-13; mobile TypeScript passed in run `43457559359`.
 - Current master validation on commit `209a960ace30a8026e722e71e1b7f727347fef0c` passed package integrity and curriculum contract gates.
-- PR #894 adds DB-backed checks for 10-topic milestone thresholds, fully graded 80%/perfect scores and student-only authorization. The route suite passed in run `43940628882`; all required workflows passed on head `3898b90277ae8cb046876f4eb3f137ed41f5c119`.
+- PR #894 adds DB-backed checks for 10-topic milestone thresholds, fully graded 80%/perfect scores and student-only authorization. The route suite passed in run `43941196109`; all five required workflows passed on PR #894 head `434111153ae1aafcfedfa85ae7d6240f48468cb2`. PR #894 merged to master as `554688b372f6b9f1b74adf64dd4fcf817ca690e2`.
 - No physical-device acceptance has been performed.
 
 ## Remaining
-- Merge PR #894 after CI passes.
 - Verify loading/error/empty states and navigation on student devices/accounts.
 
 ## Exact next action
-Complete PR #894 CI and test the achievements screen using a real student staging account.
+Test the achievements screen using a real student staging account and verify loading, error, empty and earned states.
