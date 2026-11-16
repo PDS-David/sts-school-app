@@ -23,6 +23,7 @@ interface NotificationsState {
   announcementsError: boolean;
   feedErrors: string[];
   readIds: Set<string>;
+  readStateReady: boolean;
   refresh: () => Promise<void>;
   markAllRead: () => void;
   markRead: (id: string) => void;
