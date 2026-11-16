@@ -1,0 +1,21 @@
+# Checkpoint — BSEC-024
+
+- **Task ID:** BSEC-024
+- **Title:** Validate direct-message inputs and rate-limit authenticated senders
+- **Status:** implementation committed; CI verification pending
+- **Owner:** ChatGPT implementation worker
+- **Base branch:** master
+- **Base commit:** b9354546b7ae77213e91a084b3af2ce48aa6b4c6
+- **Working branch:** agent/backend-messaging-input-abuse-controls-20261116
+- **Changed files:**
+  - backend/src/routes/messages.ts
+  - tests/backend-messaging-input-abuse-controls.integration.test.mts
+  - .github/workflows/backend-messaging-input-abuse-controls.yml
+  - docs/backend-security/checkpoints/BSEC-024.md
+- **Defects:** direct-message creation accepted unbounded message text and unchecked recipient/context values; malformed conversation UUIDs reached PostgreSQL and could become HTTP 500 errors. The authenticated write endpoint had no sender-specific rate limit, allowing one account to flood another user's inbox and grow the messages table without a per-account throttle.
+- **Implementation:** validate recipient UUID, trimmed body length (1–10,000 characters), context type length and scalar context ID; validate conversation participant UUID before querying; limit each authenticated sender to 30 send requests per 60-second window, keyed by authenticated user ID rather than client-supplied network headers. Invalid inputs are rejected before database writes.
+- **Rate-limit note:** uses express-rate-limit's process-local memory store, consistent with existing auth rate limiting. If the API is horizontally scaled, a shared Redis store should replace this store before relying on the limit as a cluster-wide quota.
+- **Regression coverage:** PostgreSQL HTTP test covers malformed recipient, empty and oversized bodies, malformed conversation IDs, numeric context ID normalization, 30-request acceptance and 31st-request HTTP 429, and confirms rejected requests are not persisted.
+- **Verification:** implementation and regression files committed to dedicated branch. PostgreSQL 16 workflow and backend typecheck pending. No production database or data was accessed or changed.
+- **Remaining:** run focused tests and backend typecheck; verify repository-wide gates; open a focused PR; resolve any failures without weakening validation.
+- **Exact next action:** open a PR from this branch and inspect PostgreSQL workflow and typecheck results.
