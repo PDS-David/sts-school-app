@@ -58,6 +58,8 @@ jobs:
           mkdir -p artifacts
           npm audit --json > artifacts/npm-audit-all.json || true
           npm audit --omit=dev --json > artifacts/npm-audit-production.json || true
+          npm audit fix --dry-run --json > artifacts/npm-audit-fix-plan.json || true
+          npm ls expo @expo/cli expo-sharing expo-splash-screen glob image-size minimatch zod --all --json > artifacts/audit-dependency-tree.json || true
       - name: Build staging Android APK with EAS
         if: github.event_name == 'push' && env.EXPO_TOKEN != ''
         run: npx eas-cli@latest build --platform android --profile staging --non-interactive --json > artifacts/eas-staging-apk.json
