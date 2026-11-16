@@ -2,8 +2,8 @@
 
 Updated: 2026-11-16
 Task family: SS23-AGRIC
-Branch: `agent/ss23-agricultural-science-source-map-20261113`
-Base: `master` @ `b8651cebaa480097fd1c40c9b02c11b228187caa`
+Branch: `agent/ss23-agricultural-science-terms2-3-r2-20261116`
+Base: `master` @ `2b3ec92b99d016b450858cce5b87d5d6056d990b`
 
 ## Status
 
@@ -33,26 +33,29 @@ The manifest was retrieved from the branch and parsed. Checks passed for 5 uniqu
 
 ## Open work
 
-1. Complete the original-source page/image review for SS2 T3 worked examples and tables before using them in lessons or answer keys.
-2. Audit every assessment item for correct answers, explanations, mark allocations and marking guidance; do not assume the source's “WAEC past questions and answers” reference supplies an answer key.
-3. Build substantive SS2 lesson packages term by term from the source text, preserving provenance and generating independently checked answer/explanation material.
-4. Build SS3 exam-preparation resources only (WAEC / NECO / JAMB). Resolve the Week 9 practical, Week 10 revision and Week 11-12 mock-exam material from real source evidence; do not create a normal SS3 instructional term.
-5. Validate lesson, answer and asset hashes and verify student-facing retrieval through the actual delivery route.
-6. Keep this subject marked NOT READY until all checks pass.
+1. Complete original-page review of the remaining SS2 T2 disease/pest tables and all embedded figures; SS2 T3 printed pages 12-16 have now been inspected.
+2. Reconcile every T2/T3 evaluation, general evaluation, weekend assignment and theory activity to a checked answer, explanation and mark-by-mark marking guide.
+3. Review all 19 lesson bodies for source coverage, technical accuracy and assessment alignment; retain all open issues as explicit blockers.
+4. Prepare SS3 exam-preparation resources only (WAEC / NECO / JAMB) after the SS2 Agricultural Science package has passed its readiness gate; do not create normal SS3 instructional progression.
+5. Run the integrity/hash check and all SS23 tests on the current master base; verify positive student retrieval only after teacher-approved content exists. The current pending package must remain blocked.
+6. Obtain teacher approval and owner acceptance without changing approval states on the strength of CI alone.
 
 ## Exact next action
 
-Continue SS2 Agricultural Science First Term, Week 1-2 (Soil): extract and review the full source lesson including embedded figures/tables, create a lesson package with source provenance, practice questions, answer explanations and mark-by-mark marking guidance, then run its package and student-delivery tests. Do not move to the next subject until Agricultural Science has passed the full readiness gate.
+Continue the Agricultural Science readiness work: complete the T2/T3 source-assessment inventory and technical corrections, then run the full SS23 integrity workflow on the current master base. Do not move to Biology until all three Agricultural Science terms have passed source, assessment, testing and teacher-approval gates.
 
 ## SS23-AGRIC-SS2-T2-T3 — 2026-11-16
 
-- Status: **IMPLEMENTED AS DRAFT; SOURCE-VERIFIED; TESTING / TEACHER APPROVAL PENDING.** Package remains `PENDING`; every new unit remains `DRAFT`, unapproved and unverified.
-- Branch: `agent/ss23-agricultural-science-terms2-3-20261116`.
+- Status: **IMPLEMENTED AS DRAFT; SOURCE-VERIFIED; PRE-REBASE TESTS GREEN; CURRENT-MASTER PR CI PENDING; TEACHER APPROVAL NOT GRANTED.** Package remains `PENDING`; all new units remain `DRAFT`, unapproved and unverified.
+- Branch: `agent/ss23-agricultural-science-terms2-3-r2-20261116`; base `master` @ `2b3ec92b99d016b450858cce5b87d5d6056d990b`; current head `9bba963760cf4c7ea1cee023c506b7587918154b`.
 - Changed files:
-  - `backend/src/db/ss23/subjects/agricultural-science.json`: added 11 source-grounded lesson drafts (six Second-Term lessons and five Third-Term lessons), 15 term/topic coverage rows, two original-source records, 22 authored practice items with answers/explanations/marking, and 14 explicit blockers.
+  - `backend/src/db/ss23/subjects/agricultural-science.json`: 19 units across all three SS2 terms (8 existing T1, 6 new T2, 5 new T3); 173 total practice/assessment items; 15 added term/topic coverage rows; two added original-source records; 23 new authored/source-derived practice items with answers, explanations and marking; 14 new explicit blockers. Package remains PENDING.
   - `docs/ss23/subjects/agricultural-science/SOURCE_MAP.json`: corrected Week 7-8 Farm Records mapping after original DOC-to-PDF inspection; recorded the profit-and-loss transcription discrepancy and page-level review results.
-- Source checks: both combined ZIP SHA-256 hashes match `RECEIPT_20261113.md`; extracted SS2 Agricultural Science T2/T3 member hashes and byte counts match the registered source IDs exactly. Header text confirms SS2 and the relevant term. The original T3 PDF rendering confirms the Week 7-8 heading on printed page 13 and the depreciation formula on printed page 16.
+  - `tests/ss23/agricultural-science.terms2-3.package.test.mts`: package/source/coverage/state and worked-calculation regression tests.
+  - `tests/ss23/unit-package-validator.test.mts`: preserved the empty-term readiness regression using a synthetic package with later terms removed, rather than weakening its assertion.
+- Source checks: both combined ZIP SHA-256 hashes match `RECEIPT_20261113.md`; SS2 T2 source `SS23-SRC-cd612ad10f40` (344,064 bytes) and T3 source `SS23-SRC-6abb32818845` (408,064 bytes) match their registered SHA-256 values exactly. Header text confirms SS2 and the relevant term. Original T3 PDF pages 12-16 were inspected: page 12 fertilizer/maize input-output table; page 13 Week 7-8 Farm Records heading; pages 14-15 account tables and the egg-sales label discrepancy; page 16 depreciation formula.
 - Content blockers: disease taxonomy, ornamental species names, weed nomenclature, pesticide guidance, Mendelian-law nuance, farm-account table transcription, nutrient classification, feed thresholds, and exhaustive assessment answer/marking reconciliation. Do not mark any unit approved or verified.
-- Test results: package schema/validator, integrity refresh, full SS23 tests and SS1 validation are pending the refresh workflow. No local npm execution was possible in this environment.
-- Exact next action: run the repository hash refresher, package validator, SS23 tests, backend typecheck and SS1 validation on GitHub Actions; fix all failures before opening the subject PR.
+- Pre-rebase GitHub Actions run `43790097181` on the previous branch base: locked install PASSED; `npm run ss23:refresh-hashes` refreshed 11 body hashes; `npm run validate:ss23` PASSED with zero errors; `npm run test:ss23` PASSED 38/38; `npm run validate:ss1` PASSED; backend TypeScript typecheck PASSED. This run predates the latest master merges and is not a substitute for current-base PR CI.
+- The package is not ready: 50 delivery-blocking and 7 non-blocking open items remain. Main blockers include crop-disease taxonomy, ornamental and weed nomenclature, obsolete pesticide recommendations/classification, Mendelian-law nuance, farm-account transcription, animal nutrient classification, feed thresholds, and exhaustive answer/marking reconciliation.
+- Exact next action: open the subject PR against current `master`; require the current SS23 integrity gate and expanded student-delivery tests to pass before treating this implementation as tested on the current base. Then continue blocker resolution; do not merge.
 
