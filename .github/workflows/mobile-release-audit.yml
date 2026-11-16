@@ -108,6 +108,7 @@ jobs:
           npx tsc --noEmit -p mobile/tsconfig.json
           npx expo export --platform android --output-dir ../artifacts/mobile-android-sdk57
           npm audit --json > artifacts/npm-audit-sdk57.json || true
+          npm audit --omit=dev --json > artifacts/npm-audit-sdk57-production.json || true
           npm ls expo @expo/cli expo-sharing expo-splash-screen glob image-size minimatch zod --all --json > artifacts/audit-dependency-tree-sdk57.json || true
           git diff --binary -- mobile/package.json package-lock.json > artifacts/expo-sdk57-upgrade.patch
           mkdir -p artifacts/expo-sdk57-candidate
