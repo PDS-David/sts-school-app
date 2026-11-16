@@ -145,7 +145,8 @@ test('material downloads reject insecure and non-web URL schemes', () => {
 
 test('material links require a valid HTTPS URL', () => {
   assert.equal(isSafeMaterialUrl('https://school.example.com/material.pdf'), true);
-  assert.equal(isSafeMaterialUrl('https://school.example.com:8443/files/material.pdf'), true);
+  assert.equal(isSafeMaterialUrl('https://school.example.com:443/material.pdf'), true);
+  assert.equal(isSafeMaterialUrl('https://school.example.com:8443/files/material.pdf'), false);
   assert.equal(isSafeMaterialUrl('http://school.example.com/material.pdf'), false);
   assert.equal(isSafeMaterialUrl('https://school.example/material.pdf'), false);
   assert.equal(isSafeMaterialUrl('https://cdn.example.test/files/material.pdf'), false);
