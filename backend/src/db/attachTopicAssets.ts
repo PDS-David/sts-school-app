@@ -294,6 +294,11 @@ export interface AttachResult {
 }
 
 export async function attachAssets(assets: PreparedAsset[], opt: AttachOptions): Promise<AttachResult> {
+  for (const asset of assets) {
+    if (!verifyTopicAssetPayload(asset.bytes, asset.mime, asset.sha256)) {
+      throw new Error('Prepared asset ' + asset.asset_key + ' failed MIME/signature/SHA-256 validation; nothing was written.');
+    }
+  }
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
