@@ -15,7 +15,7 @@ if (!SERVER_URL) {
   assert.ok(['localhost', '127.0.0.1', '::1', '[::1]'].includes(serverUrl.hostname), 'refusing non-loopback database host');
 
   const suffix = randomBytes(4).toString('hex');
-  const databaseName = 'sts_test_school_mgmt_' + suffix;
+  const databaseName = 'jss3_test_school_mgmt_' + suffix;
   const databaseUrl = new URL(SERVER_URL);
   databaseUrl.pathname = '/' + databaseName;
   const adminClient = new pg.Client({ connectionString: SERVER_URL });
