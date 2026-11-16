@@ -94,7 +94,7 @@ export default function ChatThreadScreen({ route, navigation }: any) {
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
       <View style={styles.threadHeader}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={{ padding: 6 }}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={{ padding: 6 }} accessibilityRole="button" accessibilityLabel="Back to chats">
           <Ionicons name="arrow-back" size={22} color={Colors.white} />
         </TouchableOpacity>
         <View style={styles.threadAvatar}>
