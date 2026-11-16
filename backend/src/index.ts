@@ -79,6 +79,12 @@ app.use((err: any, _req: express.Request, res: express.Response, _next: express.
     return res.status(400).json({ error: 'Malformed JSON in request body' });
   }
 
+  if (err?.code === 'AUDIT_PERSISTENCE_FAILED') {
+    console.error('[audit] sensitive operation blocked because the audit record could not be persisted', err?.cause ?? err);
+    res.set('Retry-After', '5');
+    return res.status(503).json({ error: 'Security audit storage is temporarily unavailable. Sensitive changes cannot be completed right now.' });
+  }
+
   if (err?.code === 'RATE_LIMIT_STORE_UNAVAILABLE') {
     console.error('[rate-limit] shared Redis store unavailable; request denied', err?.cause ?? err);
     res.set('Retry-After', '5');
