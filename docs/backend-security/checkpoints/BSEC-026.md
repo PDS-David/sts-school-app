@@ -27,4 +27,4 @@
 - **Changes:** reconcile BSEC-024 checkpoint to merged/verified; reconcile BSEC-025 checkpoint to merged with post-merge verification pending; preserve the extra endpoint-scope work under BSEC-031; reserve BSEC-026/028/029 for the assigned sequence; add a PostgreSQL 16 workflow to rerun both prior regression suites and backend TypeScript checking.
 - **Production safety:** verification uses a disposable PostgreSQL 16 service. No production database, production data, secrets or deployment settings were accessed or changed.
 - **Remaining:** inspect the reconciliation workflow; if both suites and typecheck pass, update BSEC-025 checkpoint with actual run evidence; open a focused PR and verify current-head checks.
-- **Exact next action:** inspect the PostgreSQL BSEC-024/BSEC-025 reconciliation workflow result.
+- **Exact next action:** inspect the PostgreSQL BSEC-024/BSEC-025 reconciliation workflow run for this branch head.
