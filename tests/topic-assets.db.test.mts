@@ -76,6 +76,7 @@ if (!URL_) {
     await query('DELETE FROM materials WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
     await query('DELETE FROM topics WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]); // cascades topic_assets
     await query('DELETE FROM assessments WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
+    await query('DELETE FROM teacher_subjects WHERE user_id IN (SELECT id FROM users WHERE school_code = ANY($1) OR username LIKE $2)', [[TEST_SC, TEST_SC_B], 'zz_t2test_%']);
     await query('DELETE FROM subjects WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
     await query('DELETE FROM students WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
     await query('DELETE FROM users WHERE school_code = ANY($1) OR username LIKE $2', [[TEST_SC, TEST_SC_B], 'zz_t2test_%']);
