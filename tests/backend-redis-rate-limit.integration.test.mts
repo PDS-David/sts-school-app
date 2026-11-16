@@ -130,3 +130,56 @@ test('production refuses to start without a shared Redis URL', () => {
     else process.env.REDIS_URL = previousLegacy;
   }
 });
+
+
+test('rate-limit middleware returns HTTP 503 when Redis is unavailable', async () => {
+  const previousPreferred = process.env.RATE_LIMIT_REDIS_URL;
+  const previousLegacy = process.env.REDIS_URL;
+  let server: Server | undefined;
+  try {
+    process.env.RATE_LIMIT_REDIS_URL = 'redis://127.0.0.1:1';
+    delete process.env.REDIS_URL;
+    disconnectRedisRateLimitStore();
+    const store = createRedisRateLimitStore(`bsec027-http-outage-${randomUUID()}`);
+    assert.ok(store);
+
+    const app = express();
+    app.use(rateLimit({
+      windowMs: 60_000,
+      limit: 2,
+      store,
+      passOnStoreError: false,
+    }));
+    app.get('/limited', (_req, res) => res.json({ ok: true }));
+    app.use((error: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
+      if ((error as { code?: string })?.code === 'RATE_LIMIT_STORE_UNAVAILABLE') {
+        res.setHeader('Retry-After', '5');
+        return res.status(503).json({ error: 'Request protection is temporarily unavailable.' });
+      }
+      return res.status(500).json({ error: 'Unexpected test error' });
+    });
+
+    server = app.listen(0, '127.0.0.1');
+    await new Promise<void>((resolve, reject) => {
+      server!.once('listening', resolve);
+      server!.once('error', reject);
+    });
+    const port = (server.address() as AddressInfo).port;
+    const response = await fetch(`http://127.0.0.1:${port}/limited`);
+    assert.equal(response.status, 503);
+    assert.equal(response.headers.get('retry-after'), '5');
+    assert.deepEqual(await response.json(), {
+      error: 'Request protection is temporarily unavailable.',
+    });
+  } finally {
+    if (server) {
+      server.closeAllConnections();
+      await new Promise<void>(resolve => server!.close(() => resolve()));
+    }
+    if (previousPreferred === undefined) delete process.env.RATE_LIMIT_REDIS_URL;
+    else process.env.RATE_LIMIT_REDIS_URL = previousPreferred;
+    if (previousLegacy === undefined) delete process.env.REDIS_URL;
+    else process.env.REDIS_URL = previousLegacy;
+    disconnectRedisRateLimitStore();
+  }
+});
