@@ -2156,6 +2156,33 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "ASSET-AG2-T1-W04-05-FARMSTEAD-LAYOUT-AUTHORED",
+      "unit_id": "SUP-SS2-AGRICULTURAL-SCIENCE-T1-W04-05-FARM-SURVEY-PLANNING",
+      "path": "backend/src/db/ss23/assets/agricultural-science/farmstead-layout-school.svg",
+      "sha256": "fb208caa90d4f2745d48b9c8682ecb6ed731027b468e085546d675bc5138397b",
+      "bytes": 6065,
+      "media_type": "image/svg+xml",
+      "alt": "Original not-to-scale farmstead teaching schematic showing residence and administration, machinery shed and workshop, livestock and dairy, horticulture, storage, crop plots, orchard, water point, drainage route and access road.",
+      "order": 48,
+      "source_locator": "Authored school-owned replacement schematic for the Week Four and Five farmstead-planning figure; not a reproduction of the watermarked school-source screenshot.",
+      "provenance": {
+        "source_id": "SS23-EXT-FAO-FARMSTEAD-PLANNING",
+        "source_sha256": "2a83e4dab32b35ec64e5b2bd29929636c91f5928e1ce08e1dc0f7a980097f600",
+        "role": "AUTHORED_SUPPLEMENT",
+        "locator": "FAO, Rural Structures in the Tropics, farmstead planning and zone planning sections",
+        "rights": "Original diagram authored for this curriculum from general farmstead-planning concepts; no source figure or protected layout is reproduced. Owner/teacher content approval remains pending.",
+        "attribution": "Original Sow the Seed School SS23 educational diagram, informed by FAO Rural Structures in the Tropics: Design and Development.",
+        "reuse_status": "PERMITTED"
+      },
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "units": [
@@ -16571,6 +16598,10 @@
         {
           "locator": "Converted DOCX media image23.jpeg, image24.png and image25.png",
           "explanation": "Three source figures are identified and hashed; image23 contains a third-party watermark and rights remain pending."
+        },
+        {
+          "locator": "backend/src/db/ss23/assets/agricultural-science/farmstead-layout-school.svg",
+          "explanation": "An original school-authored replacement farmstead schematic is committed for review; the watermarked source image remains evidence-only and owner/teacher approval is pending."
         }
       ]
     },
@@ -18120,13 +18151,14 @@
     {
       "id": "AG2-T1-W04-05-FIGURE-RIGHTS",
       "kind": "PERMISSION",
-      "detail": "A visible third-party watermark remains on the original source farmstead image, whose reuse is pending. A new original, school-authored, not-to-scale SVG alternative is implemented and mapped to the farmstead lesson using the registered FAO planning reference. The two simple area/formula source images are redundant with the formulas and worked calculation already rendered as text in the lesson. The source image remains an inventory-only, non-deliverable placeholder; the replacement diagram still needs lesson/asset verification and subject-lead approval before delivery.",
-      "required_action": "Review and verify the new school-authored farmstead SVG against the lesson and FAO planning concepts; confirm it is an adequate instructional substitute; approve its labels and classroom use; and confirm the two formula images are adequately represented by the text formulas and worked example. Keep the watermarked original image non-deliverable and do not seek reuse unless separately licensed. Keep the item blocking until the replacement asset and text coverage are approved and verified.",
+      "detail": "The original source farmstead layout image is watermarked and remains an evidence-only source-extract record. An original, not-to-scale school-authored farmstead schematic is now committed as a separate asset linked to this lesson. The two source calculation graphics are not required as images because area formulas and the worked population example are already represented as lesson text. The authored schematic is implemented but awaits owner/teacher content approval and technical asset verification; the original watermarked image must never be delivered.",
+      "required_action": "Review the school-authored farmstead schematic for local teaching accuracy, siting, hygiene, access and drainage; record owner/subject-lead approval or amendments; verify its committed bytes and SHA-256; retain the watermarked source image as evidence only; keep formula and worked-example content as text rather than reusing the source graphics. Keep this item blocking until the authored asset is approved and its verification is recorded.",
       "affected_ids": [
         "SUP-SS2-AGRICULTURAL-SCIENCE-T1-W04-05-FARM-SURVEY-PLANNING",
         "ASSET-AG2-T1-W04-05-FARMSTEAD-PLAN",
         "ASSET-AG2-T1-W04-05-AREA-FORMULA",
-        "ASSET-AG2-T1-W04-05-AREA-EXAMPLE"
+        "ASSET-AG2-T1-W04-05-AREA-EXAMPLE",
+        "ASSET-AG2-T1-W04-05-FARMSTEAD-LAYOUT-AUTHORED"
       ],
       "blocks_delivery": true
     },
