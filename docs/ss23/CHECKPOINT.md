@@ -4,58 +4,57 @@
 
 ## Live repository and PR state
 
-- Current `master`: `658c1f7b7dcee9ecdf73a972d2dfdc36b1842560`.
+- Current `master`: `63f948738a26ab807cdf569a7dd283842338e067`. This is a documentation-only commit that added/refreshed the Agriculture teacher/specialist register; it did not change the curriculum package or approval state.
 - PRs #867 and #868 are merged.
-- PR #869 (this documentation PR) is open and unmerged at `2d110494b76174b95fad6267a95882f9aa6340ed`.
-- PR #870 is open/unmerged at `a9c8345ac8f8a588b810f73c60023be000b3473d`. It adds a server-side `source-extract://` asset exclusion and a negative-control test simulating erroneous APPROVED/IMPLEMENTED/VERIFIED/PERMITTED metadata. All four workflows passed: package contract 43801471584; SS23 integrity 43801471471; SS1 integrity 43801471646; JSS3 checks 43801471562.
-- PR #871 is open/unmerged at `361b0f5659f3654b89d6c6d8590fbbafd641532d`, title `fix(ss23): update Agriculture practical blocker and disease taxonomy`. It updates the soil-practical blocker and the cassava bacterial blight preferred nomenclature, adds two hashed source references and two supported coverage records, and refreshes the contract test. Current SS23 contract (43802113031), SS23 integrity (43802113039) and SS1 gate (43802113001) passed. JSS3 verification (43802113022) was still running at the last check; recheck the final result.
+- PR #869 (this documentation PR) is open, unmerged and mergeable at `2062269546e2a5f4e6e0437ca01df5fc485bd1e8`; it is 11 commits ahead and 0 behind master.
+- PR #870 is open/unmerged at `a9c8345ac8f8a588b810f73c60023be000b3473d`. It adds a server-side exclusion for unresolved `source-extract://` placeholders and a negative-control test that simulates erroneously approved/implemented/verified/permitted metadata for all 42 placeholders. All four workflows passed: package contract 43801471584; SS23 integrity 43801471471; SS1 integrity 43801471646; JSS3 checks 43801471562.
+- PR #871 is open/unmerged at `361b0f5659f3654b89d6c6d8590fbbafd641532d`. It updates the soil-practical blocker and cassava bacterial blight nomenclature, adds two hashed sources and two supported coverage rows, and refreshes the contract test. All four workflows passed: SS23 contract 43802113031; SS23 integrity 43802113039; SS1 gate 43802113001; JSS3 checks 43802113022.
 - Do not merge these PRs as an agent. Owner retains merge authority.
 
 ## Agricultural Science state
 
-**Merged master (unchanged):**
+**Merged master (package content unchanged):**
 - 19 draft units (T1 8, T2 6, T3 5).
 - 195 practice/assessment records; 45 external factual references; 47 asset records.
 - 109 coverage rows: 75 SUPPORTED, 25 PARTIAL, 5 UNRESOLVED, 4 MARKER.
 - 47 open items: 46 delivery-blocking and one non-blocking.
 - Package `PENDING`; units `DRAFT`; approval `PENDING`; verification `DEFERRED`; no student delivery.
 
-**PR #871 branch only (not on master until merged):**
-- 47 external references and 111 coverage rows.
+**PR #871 branch only (not on master until owner merges):**
+- 47 external references; 111 coverage rows.
 - 47 open items remain: 46 blocking, one non-blocking.
-- Package remains pending and every unit remains draft.
-- Cassava bacterial blight now uses `Xanthomonas phaseoli pv. manihotis` as the current preferred name; `X. axonopodis pv. manihotis` is preserved as an earlier synonym. The change is supported by EPPO and a 2024 Plant Disease report. This does not close the full disease-table specialist-review blocker.
+- Package remains pending and all units remain draft.
+- Cassava bacterial blight uses `Xanthomonas phaseoli pv. manihotis` as current preferred name; `X. axonopodis pv. manihotis` remains recorded as an earlier synonym. This is supported by EPPO and a 2024 *Plant Disease* report, but does not close the full disease-table specialist-review blocker.
 
-## Review artifacts in PR #869
+## Review artifacts
 
-- `TEACHER_SPECIALIST_REVIEW_REGISTER.md`: all 47 blockers/non-blockers grouped by term (T1 37, T2 5, T3 5), with affected package IDs, mapped source/reference IDs, required decisions and human review fields.
-- `DRAFT_CORRECTION_AND_ASSESSMENT_AUDIT.md`: structural package audit and a reviewer map of existing draft corrections. It is not curriculum certification.
-- `SOIL_PRACTICALS_REVIEW_DRAFT.md` is already on master via PR #867. Five additional methods are draft-only, lack teacher-approved marking guides and do not close the practical blocker.
+- The 47-item teacher/specialist decision register is on master at `docs/ss23/subjects/agricultural-science/TEACHER_SPECIALIST_REVIEW_REGISTER.md`.
+- `DRAFT_CORRECTION_AND_ASSESSMENT_AUDIT.md` is in PR #869. It records structural question/answer/locator/provenance checks and maps existing draft corrections; it is not answer certification.
+- `SOIL_PRACTICALS_REVIEW_DRAFT.md` is on master via PR #867. It contains five review-only procedures; it has no teacher-approved marking guide and does not close the practical blocker.
 
 ## Assessment integrity findings
 
-The merged Agriculture package was structurally checked:
 - 195 unique question IDs.
-- No missing question, answer, explanation, question/answer locator or provenance entry.
-- No unknown provenance IDs.
-- All marking-criterion totals equal each question's declared marks.
+- No missing question, answer, explanation, question/answer locator or provenance record.
+- No unregistered provenance IDs; all declared marking totals reconcile.
 - Term origin: T1 128 original-source questions + 22 authored supplements; T2 24 authored supplements; T3 21 authored supplements.
-- Four repeated First-Term prompt-wording groups have separate source locators. Preserve them pending confirmation from the original source pages.
-- Structural integrity does not certify answer accuracy, source-page fidelity or teacher approval. T2/T3 authored supplements are not source-transcribed past questions.
+- Four repeated First-Term prompt wording groups exist at separate source locators; preserve them pending original-page confirmation.
+- Structural checks are not answer-accuracy verification, source-page fidelity or teacher approval. T2/T3 authored supplements are not source-transcribed questions.
 
 ## Source archive boundary
 
-The owner-supplied combined SS2/SS3 ZIPs are stored in the private Library and their hashes/member inventories are recorded in the receipt. Their member contents were not readable through the Files text interface in this session. Do not claim new header/page inspection. Four source-version differences remain owner decisions: SS2 T2 Economics, SS2 T3 Further Mathematics, SS3 T1 Mathematics and SS3 T1 Economics. Preserve both identities.
+The owner-supplied combined SS2/SS3 ZIPs remain private Library files with hashes/member receipts recorded. Their member contents were not readable through the Files text interface in this session. No new source-page/header verification is claimed. Four source-version differences remain owner decisions: SS2 T2 Economics; SS2 T3 Further Mathematics; SS3 T1 Mathematics; SS3 T1 Economics.
 
 ## Next work and hard gate
 
-1. Recheck the final JSS3 workflow on PR #871.
-2. Continue source-supported Agriculture work without closing approval-dependent blockers or inventing source pages.
-3. Resolve the original question/answer reconciliation, ambiguous wording and image rights when original source members and permission evidence are actually accessible.
-4. Do not proceed to Biology until Agriculture's source, assessment and teacher-approval gates genuinely pass.
-5. Then continue SS2 alphabetically, one focused PR per subject, and only afterwards SS3 WAEC/NECO/JAMB examination preparation, with answer-key protection and no new instructional topics.
+1. Continue source-supported Agricultural Science work while retaining every approval-dependent blocker.
+2. Resolve original assessment questions, ambiguous source wording and image rights only when the relevant source pages or permissions are actually accessible.
+3. Do not advance to Biology until Agriculture's source, assessment and teacher-approval gates genuinely pass.
+4. Then complete remaining SS2 subjects alphabetically, one focused PR per subject.
+5. Complete SS3 only as WAEC/NECO/JAMB examination preparation, after SS2, with answer-key protection and no new instructional topics.
 
 ---
+
 
 # Authoritative state after PRs #867 and #868 — 2026-11-16
 
