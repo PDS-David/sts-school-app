@@ -55,6 +55,9 @@ function parseRedisConfig(raw: string): RedisConfig {
     throw new Error('Redis URL must use redis:// or rediss://.');
   }
   if (!url.hostname) throw new Error('Redis URL must include a host.');
+  if (url.username && !url.password) throw new Error('Redis ACL username requires a password.');
+  const port = url.port ? Number(url.port) : 6379;
+  if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error('Redis URL port must be between 1 and 65535.');
   const databaseText = url.pathname.replace(/^\//, '');
   const database = databaseText ? Number(databaseText) : 0;
   if (!Number.isSafeInteger(database) || database < 0) {
@@ -62,7 +65,7 @@ function parseRedisConfig(raw: string): RedisConfig {
   }
   return {
     host: url.hostname,
-    port: url.port ? Number(url.port) : 6379,
+    port,
     tls: url.protocol === 'rediss:',
     ...(url.username ? { username: decodeURIComponent(url.username) } : {}),
     ...(url.password ? { password: decodeURIComponent(url.password) } : {}),
