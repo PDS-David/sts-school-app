@@ -9,19 +9,19 @@ This section supersedes the historical branch/PR status in the checkpoint below.
 - PR #794 SS2/SS3 unit package contract merged: `53ceca40c70c1ea8634cfbffe86fe12bdf9ba884`.
 - PR #819 Agricultural Science package, loader and gated SS2/SS3 student delivery merged: `d341acf855c9eb240e51991aa9e6eaa62fe0efe5`.
 - PR #846 source registry, validator and integrity workflow merged: `02081f769999d1d6be33b97be5b11f6d7a8d86d1`.
-- SS3 policy is settled in the merged package contract: exam preparation only (WAEC/NECO/JAMB), Terms 1-2; no normal SS3 instructional curriculum or Third-Term package.
+- Current SS3 code policy in merged PR #794 is exam preparation only (WAEC/NECO/JAMB), Terms 1-2; no normal SS3 instructional curriculum or Third-Term package. This is an implemented contract rule, not evidence of direct owner approval; the owner confirmation requested in the resume brief remains pending.
 
 ### Current curriculum status
 
 - SS2 Agricultural Science has one root-level package with 8 units (First Term), 150 practice/assessment items, 47 asset records (42 pending source-extract references and 5 stored SVGs), and 43 open items (37 delivery-blocking, 6 non-blocking). Package and unit approvals remain PENDING. This is not student-release readiness.
 - The package's First-Term source member SHA/byte identity matches the source registry. The merged source map provides week/topic mapping. Subject-lead decisions and figure/source-use blockers remain.
 - No other SS2 subject package is recorded as implemented. SS3 exam-preparation subject packages remain outstanding.
-- SS23-Q student delivery is already implemented in master by PR #819: class-resolved routes, term PIN gating, approval/verification/reuse gates, asset integrity checks, and student projections that omit answers, explanations, marking criteria and provenance. PR #819 workflow run 43476440171 completed successfully (backend typecheck and package-contract validation). Route-level HTTP reachability still requires focused verification.
+- SS23-Q student delivery is already implemented in master by PR #819: class-resolved routes, term PIN gating, approval/verification/reuse gates, asset integrity checks, and student projections that omit answers, explanations, marking criteria and provenance. PR #819 workflow run 43476440171 passed backend typecheck and all 25 SS23 tests. The current SS23 integrity workflow also revalidated the backend after the validator fix. Route-level HTTP reachability still requires focused verification.
 
 ### SS23-VALIDATOR-ALIGN-01 — current task
 
 - Branch: `agent/ss23-validator-contract-alignment-20261116`
-- Status: **PR OPEN (#853); FIRST CI RUN PASSED, READINESS CLASSIFICATION REFINED, RERUN PENDING.**
+- Status: **PR OPEN (#853); SS23 INTEGRITY GATE GREEN.**
 - Changed files:
   - `backend/src/db/ss23/validateSubjectPackages.ts` — validates current root-level unit packages with the merged unit schema and registry, while retaining legacy audit-package validation; readiness now counts the current package.
   - `backend/src/db/ss23/refreshIntegrityHashes.ts` — checks root-level unit packages and legacy class subdirectories; refreshes unit/lesson body hashes and stored asset hashes; missing unapproved source-extract references remain non-deliverable metadata, while approved missing assets fail.
@@ -39,12 +39,15 @@ This section supersedes the historical branch/PR status in the checkpoint below.
   - Backend TypeScript typecheck: NOT RUN locally.
   - PR CI: pending; do not describe this task as tested until the SS23 integrity gate passes.
 - PR: [#853](https://github.com/PDS-David/sts-school-app/pull/853), base `master`, head `agent/ss23-validator-contract-alignment-20261116`; latest code commit before this checkpoint update: `e9308bc131eaec34cfba50b6e8fa2b22b7771b14`.
-- First CI run `43787842843` passed backend typecheck, hash check, package validation, SS23 tests (32/32) and SS1 validation. Its readiness output exposed that one subject package made all three terms appear `IN_PROGRESS`, even though only T1 had sources/units. The validator now reports T2/T3 as `MISSING_TERM_PACKAGE`; a regression test was added. The first run predates that correction.
-- Exact next action: inspect the rerun for the latest PR #853 head, confirm the readiness summary is `IN_PROGRESS: 1`, `MISSING_TERM_PACKAGE: 2`, `MISSING_PACKAGE: 96`, `SOURCE_MISSING: 27`, and update this checkpoint with the final run and commit.
+- Initial run `43787842843` passed but exposed a term-classification defect; the fix and regression test were committed before the successful rerun.
+- Latest SS23 integrity-gate run `43787952505` on commit `44ee7e4306f5405b16fc4f592ddb1fe0339f9c58` completed SUCCESS. `npm ci --ignore-scripts`, backend typecheck, `npm run ss23:refresh-hashes -- --check`, `npm run validate:ss23`, `npm run test:ss23` (33 passed, 0 failed, 0 skipped) and `npm run validate:ss1` all passed.
+- `validate:ss23` returned valid=true, errors=[], packages=1; readiness summary: `IN_PROGRESS: 1`, `MISSING_TERM_PACKAGE: 2`, `MISSING_PACKAGE: 96`, `SOURCE_MISSING: 27` (126 term rows). SS2 Agricultural Science T1 is the only in-progress term; T2/T3 are explicitly missing term packages.
+- Additional PR checks: SS23 package contract tests run `43787952618` SUCCESS; SS2/SS3 source validation run `43787952587` SUCCESS; SS1 integrity gate run `43787952572` SUCCESS. JSS3 workflow run `43787952603` was still running at this checkpoint and is outside this task's scope.
+- Exact next action: continue SS2 Agricultural Science Terms 2-3 only after the original source files and owner decisions are available; then continue SS2 alphabetical. Keep SS3 exam-preparation scope pending explicit owner confirmation. Do not merge PR #853.
 
 ### Owner decisions and source limitations
 
-- The SS3 policy decision is already resolved by merged PR #794; do not ask again.
+- SS3 policy: merged PR #794 currently enforces exam-preparation-only Terms 1-2, but that code decision is not direct owner approval. Keep explicit owner confirmation pending; do not silently switch to normal instructional delivery or audit-only.
 - The live source-receipt checkpoint records two consolidated archives, with 96/100 exact member matches and four different-content versions: SS2 T2 Economics, SS2 T3 Further Mathematics, SS3 T1 Mathematics and SS3 T1 Economics. Owner decision is still required before substituting any of those four versions.
 - SS2 T2 Geography still has a header/class mismatch requiring confirmation that it is SS2 content with a header typo.
 - Missing source terms remain explicit: SS3 Third-Term archive; Technical Drawing SS2 T1 and SS3 T1; Catering Craft SS2 T1, SS2 T3 and SS3 T1; Food & Nutrition SS3 T2. SS3 Literature T1/T2 and Book-keeping term duplicates remain unresolved source distinctions.
