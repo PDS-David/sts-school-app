@@ -2,29 +2,16 @@
 
 - **Task ID:** BSEC-026
 - **Title:** Reconcile BSEC-024 and BSEC-025 checkpoint records with merged GitHub state
-- **Status:** reconciliation committed; PostgreSQL rerun pending
+- **Status:** <badge>complete</badge> reconciliation merged and verified
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
-- **Base commit:** b24ef36285c4ac481951209e6ac32857c3e405a4
-- **Working branch:** agent/backend-security-bsec026-reconciliation-final-20261116
-- **Changed files:**
-  - docs/backend-security/checkpoints/BSEC-024.md
-  - docs/backend-security/checkpoints/BSEC-025.md
-  - docs/backend-security/checkpoints/BSEC-026.md
-  - docs/backend-security/checkpoints/BSEC-028.md
-  - docs/backend-security/checkpoints/BSEC-029.md
-  - docs/backend-security/checkpoints/BSEC-031-01.md
-  - docs/backend-security/checkpoints/BSEC-031-02.md
-  - docs/backend-security/checkpoints/BSEC-031-03.md
-  - .github/workflows/backend-class-lock-read-scope.yml
-- **Reconciliation findings:**
-  - BSEC-024 implementation PR #897 is merged at `50b61ed850d414951c9bf614d06b678a1985354e`; its focused PostgreSQL and backend typecheck workflow `43940770785` passed.
-  - BSEC-025 implementation PR #900 is merged at `4287d6af058d892a692a6c8cc375911411423c3f`.
-  - Both merge commits are ancestors of current master `b24ef36285c4ac481951209e6ac32857c3e405a4`.
-  - BSEC-025's old checkpoint still said CI pending. No workflow run was recorded for its implementation commit because its workflow was introduced in that PR. The reconciliation workflow reruns the BSEC-024 and BSEC-025 PostgreSQL suites and backend typecheck; no pass is claimed until it completes.
-  - Existing endpoint-scope work had been assigned the BSEC-026/BSEC-028/BSEC-029 numbers out of sequence. Those merged findings are preserved as BSEC-031-01/02/03. BSEC-026, BSEC-028 and BSEC-029 are now reserved for the assigned reconciliation, upload/download security and audit-logging tasks.
-  - BSEC-025's class-lock test fixture already seeds and cleans up the Secondary `Primary 4` class on current master.
-- **Changes:** reconcile BSEC-024 checkpoint to merged/verified; reconcile BSEC-025 checkpoint to merged with post-merge verification pending; preserve the extra endpoint-scope work under BSEC-031; reserve BSEC-026/028/029 for the assigned sequence; extend the existing PostgreSQL 16 class-lock workflow to rerun both prior regression suites and backend TypeScript checking.
-- **Production safety:** verification uses a disposable PostgreSQL 16 service. No production database, production data, secrets or deployment settings were accessed or changed.
-- **Remaining:** inspect the reconciliation workflow; if both suites and typecheck pass, update BSEC-025 checkpoint with actual run evidence; open a focused PR and verify current-head checks.
-- **Exact next action:** inspect the PostgreSQL class-lock workflow run for the BSEC-026 reconciliation PR.
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/921
+- **Merge commit:** a873b8b10fe9e375cee59cfd347cd930a0d72470
+- **Reconciled records:**
+  - BSEC-024 PR #897 merged at `50b61ed850d414951c9bf614d06b678a1985354e`; original focused workflow `43940770785` passed.
+  - BSEC-025 PR #900 merged at `4287d6af058d892a692a6c8cc375911411423c3f`.
+  - Both implementation merge commits are ancestors of current master.
+- **Post-merge verification:** workflow `43950695156` passed all steps on 2026-11-16: PostgreSQL 16 bootstrap, BSEC-024 messaging input/abuse-control integration tests, BSEC-025 class-lock read authorization integration tests, and backend TypeScript typecheck.
+- **Checkpoint hygiene:** out-of-sequence endpoint-scope work is preserved under BSEC-031-01 through BSEC-031-05. BSEC-026/027/028/029/030 are reserved for the assigned reconciliation, Redis shared rate limiting, upload/download security, sensitive-action audit logging, and backup/disaster-recovery tasks.
+- **Production safety:** tests used disposable PostgreSQL 16. No production database, production data, secrets or deployment settings were accessed or changed.
+- **Remaining:** none for BSEC-026. Proceed to BSEC-027: replace process-local sender/auth rate-limit stores with a shared Redis-backed store, verify cross-instance quota consistency and define explicit Redis outage behavior.
