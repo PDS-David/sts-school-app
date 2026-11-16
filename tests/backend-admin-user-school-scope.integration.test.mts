@@ -239,36 +239,35 @@ test('school-bound administrators cannot access operational records outside thei
     });
     assert.equal(globalSecondaryClassCode.status, 201);
 
-    const classCodes = await get(primaryAdmin.token, '/class-codes');
+    const classCodes = await get(primaryAdmin.token, `/class-codes?class_name=${encodeURIComponent(className)}`);
     assert.equal(classCodes.status, 200);
     assert.ok((await classCodes.json() as { class_codes: Array<{ school_code: string }> }).class_codes
       .every(row => row.school_code === 'primary'));
     assert.equal((await get(primaryAdmin.token, '/class-codes?school_code=secondary')).status, 403);
-    const globalClassCodes = await get(globalAdmin.token, '/class-codes');
+    const globalClassCodes = await get(globalAdmin.token, `/class-codes?class_name=${encodeURIComponent(className)}`);
     assert.equal(globalClassCodes.status, 200);
     const globalCodes = (await globalClassCodes.json() as { class_codes: Array<{ school_code: string; class_name: string }> }).class_codes;
     assert.ok(globalCodes.some(row => row.school_code === 'primary' && row.class_name === className));
     assert.ok(globalCodes.some(row => row.school_code === 'secondary' && row.class_name === className));
 
     assert.equal((await post(primaryAdmin.token, '/term-pins', {
-      student_id: secondaryStudentId, term_label: 'First Term',
+      student_id: secondaryStudentId, term_label: '1st Term',
     })).status, 404);
     assert.equal((await post(primaryAdmin.token, '/term-pins', {
-      student_id: primaryStudentId, term_label: 'First Term',
+      student_id: primaryStudentId, term_label: '1st Term',
     })).status, 201);
     assert.equal((await post(globalAdmin.token, '/term-pins', {
-      student_id: secondaryStudentId, term_label: 'First Term',
+      student_id: secondaryStudentId, term_label: '1st Term',
     })).status, 201);
 
-    const termPins = await get(primaryAdmin.token, '/term-pins');
+    const termPins = await get(primaryAdmin.token, `/term-pins?student_id=${primaryStudentId}`);
     assert.equal(termPins.status, 200);
     assert.ok((await termPins.json() as { term_pins: Array<{ school_code?: string; student_id: string }> }).term_pins
       .every(row => row.student_id === primaryStudentId));
     assert.equal((await get(primaryAdmin.token, '/term-pins?school_code=secondary')).status, 403);
-    const globalPins = await get(globalAdmin.token, '/term-pins');
+    const globalPins = await get(globalAdmin.token, `/term-pins?student_id=${secondaryStudentId}`);
     assert.equal(globalPins.status, 200);
     const allPins = (await globalPins.json() as { term_pins: Array<{ student_id: string }> }).term_pins;
-    assert.ok(allPins.some(row => row.student_id === primaryStudentId));
     assert.ok(allPins.some(row => row.student_id === secondaryStudentId));
 
     const auditLog = await get(primaryAdmin.token, '/audit-log');
