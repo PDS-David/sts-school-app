@@ -97,7 +97,10 @@ test('readiness remains explicit when a package is filtered to a different class
 
 test('does not treat a subject-level package as term coverage when the term has no source or unit', () => {
   assert.ok(agriculture);
-  const matrix = readinessForUnitPackages(registry, packages);
+  const packageWithoutLaterTerms = structuredClone(agriculture);
+  packageWithoutLaterTerms.sources = packageWithoutLaterTerms.sources.filter(source => source.term === '1st Term');
+  packageWithoutLaterTerms.units = packageWithoutLaterTerms.units.filter(unit => unit.term === '1st Term');
+  const matrix = readinessForUnitPackages(registry, [packageWithoutLaterTerms]);
   for (const term of ['2nd Term', '3rd Term']) {
     const row = matrix.find(item =>
       item.class_name === 'SS 2' && item.subject === 'agricultural-science' && item.term === term,
