@@ -1,3 +1,53 @@
+# Latest execution update — 2026-11-16
+
+> This section is the newest status record and supersedes earlier current-state sections below. Historical entries are retained for audit history only.
+
+## Live repository state
+
+- Current `master`: `658c1f7b7dcee9ecdf73a972d2dfdc36b1842560`.
+- PR #867 and PR #868 are merged.
+- PR #869 remains open and unmerged; it carries this checkpoint/handoff correction plus the Agricultural Science teacher/specialist decision register and draft correction/assessment audit.
+- PR #870 remains open and unmerged; current head `a9c8345ac8f8a588b810f73c60023be000b3473d`. It adds a server-side exclusion for unresolved `source-extract://` asset placeholders and tests the exclusion even when their metadata is deliberately changed to an approved state. CI is running on this strengthened head.
+- PR #871 remains open and unmerged; head `73e8889ead006b1edcfd232b0f76287f11796d43`. It updates the `AG2-T1-SOIL-PRACTICALS` blocker to acknowledge the five draft procedures while keeping teacher apparatus, safety, observation, marking and approval requirements blocking.
+- Do not merge any of these PRs as an agent. The owner retains merge authority.
+
+## Agricultural Science state
+
+The merged master package remains unchanged and pending:
+- 19 draft units (T1 8, T2 6, T3 5).
+- 195 assessment/practice records; 45 external references; 47 asset records.
+- 109 coverage rows: 75 SUPPORTED, 25 PARTIAL, 5 UNRESOLVED, 4 MARKER.
+- 47 open items: 46 delivery-blocking and one non-blocking.
+- Package `PENDING`; units `DRAFT`; approval `PENDING`; verification `DEFERRED`; no student delivery.
+
+The PR #871 package wording correction is not on master until the owner merges it. The 47 open items are not reduced by any documentation or test PR.
+
+## New review artifacts in PR #869
+
+- `docs/ss23/subjects/agricultural-science/TEACHER_SPECIALIST_REVIEW_REGISTER.md`: all 47 current open items grouped T1 37 / T2 5 / T3 5, with required decisions, affected package IDs and mapped source/reference evidence.
+- `docs/ss23/subjects/agricultural-science/DRAFT_CORRECTION_AND_ASSESSMENT_AUDIT.md`: structural assessment audit and a map of corrections already present in the draft. It does not certify answers or close blockers.
+- `docs/ss23/subjects/agricultural-science/SOIL_PRACTICALS_REVIEW_DRAFT.md` is already on master via PR #867. It contains five review-only procedures; it is not teacher-approved and supplies no official marking scheme.
+- The package scan found 195 unique question IDs; all records have question, answer, explanation, question/answer locators and provenance; all provenance IDs resolve to registered sources; all marking totals equal the declared question marks. Four sets of repeated First-Term prompt wording exist at separate source locators and are retained pending source-page confirmation.
+- By term, question origin is T1 128 original-source + 22 authored supplements; T2 24 authored supplements; T3 21 authored supplements. T2/T3 questions must not be described as verbatim source questions.
+
+## Delivery safeguard work in PR #870
+
+The merged master delivery service already gates assets by approval, implementation, verification, reuse permission and on-disk hash/path validation. PR #870 adds a stronger explicit `source-extract://` scheme exclusion before student asset listings, protecting against an erroneous approval-state change that could otherwise advertise a placeholder before its file read fails. This improvement is pending PR review/merge; do not describe it as already on master.
+
+## Source archive boundary
+
+The original SS2/SS3 combined ZIPs remain private Library files with hashes and member receipts recorded earlier. The Files text reader did not expose ZIP members for semantic/header/page inspection in this session. Do not claim additional source-page verification. Preserve the four old/new member-version disputes for owner decision. Use source text already committed in package/register evidence only within its stated limits.
+
+## Next work and hard gate
+
+1. Review the current-head CI for PR #870; review the final-head CI for PR #871.
+2. Continue only source-supported Agricultural Science corrections, package integrity fixes and review evidence. Do not change approval or delivery states without authentic teacher/specialist/owner evidence.
+3. Resolve original assessment questions, malformed wording and asset rights only when the necessary source pages/permissions are accessible.
+4. Do not advance to Biology until Agriculture's source, assessment and required teacher-approval gates are genuinely satisfied.
+5. After that gate, proceed through remaining SS2 subjects alphabetically, one focused PR per subject, then SS3 examination preparation only (WAEC/NECO/JAMB), with answer-key protection and no new instructional topics.
+
+---
+
 # Authoritative state after PRs #867 and #868 — 2026-11-16
 
 > This addendum supersedes the earlier live-state section below. Historical entries remain for audit purposes; do not reuse their old PR states, master SHA or readiness figures as current facts.
