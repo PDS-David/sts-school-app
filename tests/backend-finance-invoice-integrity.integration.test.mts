@@ -245,3 +245,106 @@ test('invoice creation rechecks fee-item class ownership after a concurrent upda
     await cleanupFixture(fixture);
   }
 });
+
+
+async function createInvoiceViewer(
+  label: string,
+  role: 'parent' | 'finance_admin',
+): Promise<{ id: string; token: string }> {
+  const username = `bsec22-${label}-${randomUUID()}`;
+  const { rows } = await query(
+    `INSERT INTO users(username,password_hash,role,full_name,school_code,is_active,pending_admin_review)
+     VALUES($1,'test-hash',$2,$3,NULL,TRUE,FALSE) RETURNING id`,
+    [username, role, `BSEC22 ${label}`],
+  );
+  const id = String(rows[0].id);
+  return {
+    id,
+    token: signAccess({
+      id,
+      username,
+      role,
+      school_code: null,
+      assigned_class: null,
+      assigned_subject_ids: [],
+    }),
+  };
+}
+
+test('parents can read invoices only for active linked wards while finance admins retain historical access', async () => {
+  const parent = await createInvoiceViewer('parent', 'parent');
+  const financeAdmin = await createInvoiceViewer('finance-admin', 'finance_admin');
+  const suffix = randomUUID();
+  const studentIds: string[] = [];
+  const invoiceIds: string[] = [];
+  let server: Server | undefined;
+
+  try {
+    for (const label of ['active-ward', 'deleted-ward', 'unrelated-student']) {
+      const { rows } = await query(
+        `INSERT INTO students(full_name,class_name,school_code,admission_number)
+         VALUES($1,'Primary 4','primary',$2) RETURNING id`,
+        [`BSEC22 ${label}`, `BSEC22-${label}-${suffix}`],
+      );
+      studentIds.push(String(rows[0].id));
+    }
+    await query('UPDATE students SET deleted_at=now() WHERE id=$1', [studentIds[1]]);
+    await query(
+      'INSERT INTO parent_wards(parent_id,student_id) VALUES($1,$2),($1,$3)',
+      [parent.id, studentIds[0], studentIds[1]],
+    );
+
+    for (const [studentId, total] of [[studentIds[0], 125], [studentIds[1], 250], [studentIds[2], 375]] as const) {
+      const { rows } = await query(
+        'INSERT INTO invoices(student_id,total,status) VALUES($1,$2,\'unpaid\') RETURNING id',
+        [studentId, total],
+      );
+      invoiceIds.push(String(rows[0].id));
+    }
+
+    const started = await startFinanceServer();
+    server = started.server;
+    const getInvoices = (token: string, queryString = '') => fetch(
+      `${started.baseUrl}/invoices${queryString}`,
+      { headers: { Authorization: `Bearer ${token}` } },
+    );
+
+    const parentResponse = await getInvoices(parent.token);
+    assert.equal(parentResponse.status, 200);
+    const parentPayload = await parentResponse.json() as {
+      invoices: Array<{ id: string; student_id: string }>;
+    };
+    assert.deepEqual(parentPayload.invoices.map(invoice => invoice.id), [invoiceIds[0]],
+      'parent must not see invoices for deleted or unlinked students');
+
+    const deletedWardFilter = await getInvoices(parent.token, `?student_id=${studentIds[1]}`);
+    assert.equal(deletedWardFilter.status, 200);
+    assert.deepEqual((await deletedWardFilter.json() as { invoices: unknown[] }).invoices, [],
+      'a student_id filter must not bypass active-ward scoping');
+
+    const unrelatedWardFilter = await getInvoices(parent.token, `?student_id=${studentIds[2]}`);
+    assert.equal(unrelatedWardFilter.status, 200);
+    assert.deepEqual((await unrelatedWardFilter.json() as { invoices: unknown[] }).invoices, [],
+      'a parent cannot request an invoice for an unlinked student');
+
+    const financeResponse = await getInvoices(financeAdmin.token);
+    assert.equal(financeResponse.status, 200);
+    const financePayload = await financeResponse.json() as { invoices: Array<{ id: string }> };
+    assert.deepEqual(
+      financePayload.invoices.map(invoice => invoice.id).sort(),
+      invoiceIds.slice().sort(),
+      'finance administrators retain access to historical invoices for deleted wards',
+    );
+  } finally {
+    if (server) {
+      server.closeAllConnections();
+      await new Promise<void>(resolve => server!.close(() => resolve()));
+    }
+    if (invoiceIds.length) await query('DELETE FROM invoices WHERE id=ANY($1::uuid[])', [invoiceIds]);
+    if (studentIds.length) {
+      await query('DELETE FROM parent_wards WHERE student_id=ANY($1::uuid[])', [studentIds]);
+      await query('DELETE FROM students WHERE id=ANY($1::uuid[])', [studentIds]);
+    }
+    await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [[parent.id, financeAdmin.id]]);
+  }
+});
