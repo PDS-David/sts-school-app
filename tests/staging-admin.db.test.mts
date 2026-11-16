@@ -227,7 +227,7 @@ if (!SERVER_URL) {
     assert.equal((await run()).mode, 'applied'); // the guard did not leave the target locked or half-provisioned
   });
   test('cleanup: no residue after the suite state is reset', async () => {
-    await query('DELETE FROM audit_log'); await query('DELETE FROM users');
+    await query('DELETE FROM users');
     assert.deepEqual(await counts(), { u: 0, a: 0 });
   });
 }
