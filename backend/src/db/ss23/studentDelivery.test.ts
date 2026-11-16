@@ -119,22 +119,64 @@ test('student projection omits model answers, explanations, marking and provenan
   assert.equal('marking' in safe.practice[0], false);
 });
 
+test('never lists unresolved source-extract assets even when erroneous approval metadata is present', () => {
+  const pkg = approvedPackage();
+  const sourceExtractAssets = pkg.assets.filter((asset: any) => asset.path.startsWith('source-extract://'));
+  assert.equal(sourceExtractAssets.length, 42);
+
+  // Exercise the defensive path gate, not only the ordinary PENDING state.
+  // A future edit or import must not make a placeholder appear in the student UI
+  // merely by advancing its approval/reuse metadata without storing its bytes.
+  for (const asset of sourceExtractAssets) {
+    asset.state = {
+      content_approval: 'APPROVED',
+      approval_reference: 'NEGATIVE-CONTROL-ONLY',
+      implementation: 'IMPLEMENTED',
+      verification: 'VERIFIED',
+      verification_reference: 'NEGATIVE-CONTROL-ONLY',
+    };
+    asset.provenance.reuse_status = 'PERMITTED';
+  }
+
+  const delivery = createSs23StudentDelivery([pkg]);
+  for (const asset of sourceExtractAssets) {
+    assert.ok(delivery.getUnit(asset.unit_id, 'SS 2'), 'the approved test fixture should expose the containing lesson');
+    assert.equal(
+      delivery.listAssets(asset.unit_id, 'SS 2').some(item => item.id === asset.id),
+      false,
+      'source-extract placeholders must not appear in student asset listings: ' + asset.id,
+    );
+    assert.equal(
+      delivery.readAsset(asset.id, 'SS 2'),
+      null,
+      'source-extract placeholders must not be readable by students: ' + asset.id,
+    );
+  }
+});
+
 test('serves only verified, permitted assets and verifies file bytes and SHA-256', () => {
   const delivery = createSs23StudentDelivery([approvedPackage()]);
   const unit = delivery.listUnits('SS 2').find(item => item.title.includes('Soil Formation'))!;
   const assets = delivery.listAssets(unit.id, 'SS 2');
-  assert.equal(assets.length, 1);
-  const result = delivery.readAsset(assets[0].id, 'SS 2');
-  assert.ok(result);
-  assert.equal(result.bytes.length, result.asset.bytes);
-  assert.equal(result.asset.sha256, 'f8bbbe5d682198aa5517c4d206186c8104935df6ae8d06aaf06634e68cca5406');
+  assert.equal(assets.length, 2);
+  const expectedHashes = new Map([
+    ['ASSET-AG2-T1-SOIL-SEDIMENTATION-JAR', 'f8bbbe5d682198aa5517c4d206186c8104935df6ae8d06aaf06634e68cca5406'],
+    ['ASSET-AG2-T1-SOIL-PROFILE-SCHOOL-SCHEMATIC', 'fee369b144b1c16626d21ff8bef36b1e31c48cf68a8c4202f3a8174cb2d06fc5'],
+  ]);
+  assert.deepEqual(new Set(assets.map(asset => asset.id)), new Set(expectedHashes.keys()));
+  for (const asset of assets) {
+    const result = delivery.readAsset(asset.id, 'SS 2');
+    assert.ok(result);
+    assert.equal(result.bytes.length, result.asset.bytes);
+    assert.equal(result.asset.sha256, expectedHashes.get(asset.id));
+  }
 });
 
 test('verifies the stored bytes and SHA-256 for every authored SVG asset', () => {
   const pkg = approvedPackage();
   const delivery = createSs23StudentDelivery([pkg]);
   const svgAssets = pkg.assets.filter((asset: any) => asset.path.endsWith('.svg'));
-  assert.equal(svgAssets.length, 5);
+  assert.equal(svgAssets.length, 10);
   for (const asset of svgAssets) {
     const result = delivery.readAsset(asset.id, 'SS 2');
     assert.ok(result);
