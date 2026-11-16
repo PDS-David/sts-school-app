@@ -3,7 +3,7 @@ import type { Request, Response, NextFunction } from 'express';
 import bcrypt from 'bcryptjs';
 import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requireRole } from '../middleware/auth.js';
-import { audit, auditContextFromRequest, auditInTransaction, auditStrict, verifyAuditLogIntegrity } from '../utils/audit.js';
+import { auditContextFromRequest, auditInTransaction, auditStrict, verifyAuditLogIntegrity, AuditPersistenceError } from '../utils/audit.js';
 import { sendAdminLogEmail } from '../utils/email.js';
 import * as XLSX from 'xlsx';
 import { generateTempPassword, generateNumericPin } from '../utils/password.js';
@@ -710,10 +710,28 @@ router.post('/backups/run', requireGlobalAdmin, async (req, res) => {
   if (backupRunning) return res.status(409).json({ error: 'A backup is already running.' });
   backupRunning = true;
   try {
+    const context = auditContextFromRequest(req, { metadata: { backup_requested_by: req.user?.username ?? 'admin' } });
+    await auditStrict(req.user ?? null, 'BACKUP_STARTED', 'database', undefined, 'database backup started', context);
     const r = await runBackup(req.user?.username ?? 'admin');
-    await audit(req.user ?? null, 'BACKUP_RUN', 'database', undefined, `${r.status}; ${r.tables} tables; ${r.rows} rows; ${r.size_bytes} bytes`);
+    await auditStrict(
+      req.user ?? null, 'BACKUP_RUN', 'database', undefined,
+      `${r.status}; ${r.tables} tables; ${r.rows} rows; ${r.size_bytes} bytes`,
+      auditContextFromRequest(req, {
+        outcome: r.status === 'success' ? 'success' : 'failure',
+        metadata: { tables: r.tables, rows: r.rows, size_bytes: r.size_bytes, backup_status: r.status },
+      }),
+    );
     return res.json({ ...r, ...(await getBackupStatus()) });
   } catch (e: any) {
+    if (e instanceof AuditPersistenceError) throw e;
+    try {
+      await auditStrict(
+        req.user ?? null, 'BACKUP_RUN', 'database', undefined, 'database backup failed',
+        auditContextFromRequest(req, { outcome: 'failure', metadata: { error_code: e?.code ?? null, error_type: e?.name ?? 'Error' } }),
+      );
+    } catch (auditError) {
+      console.error('[audit] unable to record backup failure', auditError);
+    }
     if (e instanceof BackupConfigError) return res.status(503).json({ error: e.message });
     return res.status(500).json({ error: 'Backup failed. See server logs.' });
   } finally {
