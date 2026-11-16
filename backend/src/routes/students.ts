@@ -160,7 +160,6 @@ router.get('/deleted', requireRole('admin'), async (req, res) => {
   const { rows } = await query(sql, params);
   return res.json({ students: rows });
 });
-});
 
 // ── GET /students/:id ─────────────────────────────────────────────────────────
 // Scoped the same way as GET /students: admin sees any student, everyone
@@ -523,7 +522,7 @@ router.post('/:id/link-user', requireRole('admin'), async (req, res) => {
       // ORDER BY gives conflicting assignments the same lock order and avoids
       // deadlocks when two administrators submit competing requests.
       const { rows: affectedStudents } = await client.query(
-        `SELECT id, user_id, deleted_at
+        `SELECT id, user_id, deleted_at, school_code
            FROM students
           WHERE id=$1 OR user_id=$2
           ORDER BY id
