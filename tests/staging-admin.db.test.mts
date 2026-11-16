@@ -62,8 +62,11 @@ if (!SERVER_URL) {
     await c.connect();
     try { return await lib.createStagingAdmin(c, o); } finally { await c.end(); }
   };
+  let auditStartId = 0;
   const counts = async () => (await query(
-    `SELECT (SELECT count(*) FROM users)::int u, (SELECT count(*) FROM audit_log WHERE action='bootstrap_first_admin')::int a`,
+    `SELECT (SELECT count(*) FROM users)::int u,
+            (SELECT count(*) FROM audit_log WHERE action='bootstrap_first_admin' AND id > $1)::int a`,
+    [auditStartId],
   )).rows[0] as { u: number; a: number };
   const refused = (re: RegExp) => (e: unknown) => e instanceof lib.FirstAdminRefusal && re.test(e.message);
   const cli = (args: string[], env: Record<string, string> = {}, db = DB) => spawnSync(
@@ -72,7 +75,11 @@ if (!SERVER_URL) {
   );
 
   before(() => assert.deepEqual(created.length, 3));
-  beforeEach(async () => { await query('DELETE FROM audit_log'); await query('DELETE FROM users'); });
+  beforeEach(async () => {
+    const { rows } = await query('SELECT COALESCE(MAX(id),0)::bigint AS id FROM audit_log');
+    auditStartId = Number(rows[0].id);
+    await query('DELETE FROM users');
+  });
   after(async () => {
     await pool.end();
     for (const db of created) await adminClient.query(`DROP DATABASE IF EXISTS "${db}" WITH (FORCE)`);
