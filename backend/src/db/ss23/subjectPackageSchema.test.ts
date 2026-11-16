@@ -351,8 +351,9 @@ test('registered SS2/SS3 packages preserve class-specific delivery modes and SS3
     } else {
       assert.equal(pkg.class_name, 'SS 3');
       assert.equal(pkg.delivery_mode, 'EXAM_PREPARATION', pkg.subject_slug);
-      assert.ok(pkg.units.every(unit => unit.term !== '3rd Term'), pkg.subject_slug);
-      assert.ok(pkg.sources.every(source => source.term !== '3rd Term'), pkg.subject_slug);
+      // Compared as strings: the SS 3 schema types already exclude '3rd Term'; this guards the runtime data.
+      assert.ok(pkg.units.every(unit => String(unit.term) !== '3rd Term'), pkg.subject_slug);
+      assert.ok(pkg.sources.every(source => String(source.term) !== '3rd Term'), pkg.subject_slug);
     }
   }
 });
