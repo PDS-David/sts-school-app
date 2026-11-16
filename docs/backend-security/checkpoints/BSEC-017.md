@@ -2,10 +2,12 @@
 
 - **Task ID:** BSEC-017
 - **Title:** Serialize academic term creation and current-term updates
-- **Status:** implementation and all required CI checks passed; PR review/merge pending
+- **Status:** merged
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Working branch:** agent/backend-term-session-atomicity-20261113
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/809 (merged 2026-11-13T17:37:05Z)
+- **Merge commit:** ce40f55454879919d2843bfca13f8044381aeb32
 - **Base commit:** af35f2f669d10e9b56b2abeae71e7abb3b0a8862
 - **Changed files planned:** backend/src/routes/academic.ts; PostgreSQL HTTP integration test; focused workflow; this checkpoint.
 - **Agent coordination:** no other active PR changes academic.ts or the term-session integration test.
@@ -19,5 +21,5 @@
   6. Add PostgreSQL HTTP integration regressions for concurrent duplicate creation and current-term switching rollback/consistency.
   7. Backend TypeScript and focused PostgreSQL tests pass; no production data changes.
 - **Verification:** Backend term session atomicity workflow 43473286881, academic term tenant-isolation workflow 43473286970, SS1 package integrity gate 43473287221, and JSS3 implementation/asset checks 43473287382 all passed against the current master merge base. PostgreSQL 16 tests cover concurrent final-term creation, concurrent current-term switches, forced mid-switch rollback, school authorization, and input validation.
-- **Remaining:** merge PR #809 after its checkpoint-only update is reverified; no production data or database was changed.
-- **Exact next action:** review PR #809 and merge using its current expected head SHA once all checks pass.
+- **Remaining:** none for BSEC-017. No production data or database was changed.
+- **Exact next action:** continue with the next independently scoped backend defect.
