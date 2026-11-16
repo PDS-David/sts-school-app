@@ -248,15 +248,21 @@ test('loads the SS2 Agricultural Science package with source assessment coverage
   assert.equal(pkg.units.reduce((total, unit) => total + unit.practice.length, 0), 195);
   assert.ok(pkg.units.every(unit => unit.practice.every(question => question.answer_origin === 'AUTHORED_SUPPLEMENT')));
   assert.equal(pkg.sources[0].source_id, 'SS23-SRC-225f920d3751');
-  assert.equal(pkg.assets.length, 48);
+  assert.equal(pkg.assets.length, 50);
   const farmsteadReplacement = pkg.assets.find(asset => asset.id === 'ASSET-AG2-T1-W04-05-FARMSTEAD-SCHOOL-SCHEMATIC');
   assert.ok(farmsteadReplacement);
   assert.equal(farmsteadReplacement.path, 'backend/src/db/ss23/assets/agricultural-science/farmstead-layout-school.svg');
   assert.equal(farmsteadReplacement.sha256, 'fb208caa90d4f2745d48b9c8682ecb6ed731027b468e085546d675bc5138397b');
   assert.equal(farmsteadReplacement.state.content_approval, 'PENDING');
   assert.equal(farmsteadReplacement.state.verification, 'DEFERRED');
+  const irrigationReplacement = pkg.assets.find(asset => asset.id === 'ASSET-AG2-T1-W06-IRRIGATION-SYSTEMS-SCHEMATIC');
+  assert.ok(irrigationReplacement);
+  assert.equal(irrigationReplacement.path, 'backend/src/db/ss23/assets/agricultural-science/irrigation-methods-school.svg');
+  assert.equal(irrigationReplacement.sha256, '0162556a1893e33e9b418ea760f211236477dbcafa53a40edcffd847e1a1030a');
+  assert.equal(irrigationReplacement.state.content_approval, 'PENDING');
+  assert.equal(irrigationReplacement.state.verification, 'DEFERRED');
   const authoredAssets = pkg.assets.filter(asset => asset.path.startsWith('backend/src/db/ss23/assets/agricultural-science/'));
-  assert.equal(authoredAssets.length, 7);
+  assert.equal(authoredAssets.length, 8);
   assert.ok(authoredAssets.every(asset =>
     asset.state.verification === 'DEFERRED' &&
     asset.state.content_approval === 'PENDING' &&
