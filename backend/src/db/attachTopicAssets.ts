@@ -219,23 +219,53 @@ const SIGNATURES: Array<{ mime: string; test: (b: Buffer) => boolean }> = [
   { mime: 'image/svg+xml', test: isSafeSvg },
 ];
 
+export function detectSafeTopicAssetMime(bytes: Buffer): string | null {
+  if (!Buffer.isBuffer(bytes) || bytes.length === 0 || bytes.length > MAX_TOPIC_ASSET_BYTES) return null;
+  return SIGNATURES.find(signature => signature.test(bytes))?.mime ?? null;
+}
+
+export function verifyTopicAssetPayload(bytes: Buffer, mime: string, expectedSha256: string): boolean {
+  const detectedMime = detectSafeTopicAssetMime(bytes);
+  if (!detectedMime || detectedMime !== mime || !SHA256_PATTERN.test(expectedSha256)) return false;
+  return createHash('sha256').update(bytes).digest('hex') === expectedSha256.toLowerCase();
+}
+
 /** Reads every file, checks sha256 against the manifest, and sniffs the real
  *  image type from the file's magic bytes. Throws on the first problem. */
 export function prepareAssets(rows: ManifestRow[], assetsDir: string): PreparedAsset[] {
   const problems: string[] = [];
   const out: PreparedAsset[] = [];
   for (const r of rows) {
-    const p = path.join(assetsDir, r.file);
-    if (!existsSync(p)) { problems.push(`${r.asset_key}: file not found: ${p}`); continue; }
+    let p: string;
+    try {
+      const root = realpathSync(path.resolve(assetsDir));
+      const normalized = r.file.replace(/\\/g, '/');
+      if (normalized.startsWith('/') || /^[A-Za-z]:/.test(normalized) || normalized.split('/').some(part => part === '..' || part === '.')) {
+        throw new Error('asset path must stay inside the supplied assets directory');
+      }
+      const candidate = path.resolve(root, ...normalized.split('/'));
+      const relative = path.relative(root, candidate);
+      if (!relative || relative.startsWith('..') || path.isAbsolute(relative)) throw new Error('asset path escapes the supplied assets directory');
+      if (!existsSync(candidate)) throw new Error('asset file not found');
+      p = realpathSync(candidate);
+      const realRelative = path.relative(root, p);
+      if (!realRelative || realRelative.startsWith('..') || path.isAbsolute(realRelative) || !statSync(p).isFile()) {
+        throw new Error('asset file or symlink escapes the supplied assets directory');
+      }
+      if (statSync(p).size > MAX_TOPIC_ASSET_BYTES) throw new Error('asset exceeds the 10 MB size limit');
+    } catch (error) {
+      problems.push(r.asset_key + ': ' + (error instanceof Error ? error.message : 'invalid asset path'));
+      continue;
+    }
     const bytes = readFileSync(p);
     const actual = createHash('sha256').update(bytes).digest('hex');
     if (actual !== r.sha256) {
       problems.push(`${r.asset_key}: sha256 mismatch for ${r.file} (manifest ${r.sha256}, file ${actual})`);
       continue;
     }
-    const sig = SIGNATURES.find((s) => s.test(bytes));
-    if (!sig) { problems.push(`${r.asset_key}: ${r.file} is not a supported safe PNG/JPEG/GIF/SVG`); continue; }
-    out.push({ ...r, bytes, mime: sig.mime });
+    const mime = detectSafeTopicAssetMime(bytes);
+    if (!mime) { problems.push(`${r.asset_key}: ${r.file} is not a supported safe PNG/JPEG/GIF/SVG within the size limit`); continue; }
+    out.push({ ...r, bytes, mime });
   }
   if (problems.length) {
     throw new Error(`Asset verification failed — nothing was written:\n  ${problems.join('\n  ')}`);
