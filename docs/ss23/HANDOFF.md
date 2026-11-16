@@ -54,6 +54,61 @@ The received SS3 archive contains no Third-Term source. SS3 scope is exam prepar
 
 Source filenames are not sufficient to certify subject/class/term. Continue document-header and body verification, including tables, embedded visuals, equations and week/topic labels. Do not infer missing content or invent replacements.
 
+## 4A. Registered subject and term inventory
+
+The following is derived from the 100-row `sources/SOURCE_ASSIGNMENTS.csv` register and the re-attached archive member inventory. It records **file/member presence only**; it does not certify document headers, subject identity, instructional content, week coverage or assessment completeness. Continue direct document-header and body verification before changing source mapping status.
+
+### SS2 — alphabetical execution order
+
+The register contains 61 SS2 source members and 21 subject labels. Use this order for the SS2 subject queue:
+
+1. Agricultural Science
+2. Biology
+3. Bookkeeping
+4. Catering Craft
+5. Chemistry
+6. Civic Education
+7. Commerce
+8. Data Processing
+9. Economics
+10. English
+11. Financial Accounting
+12. Food & Nutrition
+13. French
+14. Further Mathematics
+15. Geography
+16. Government
+17. Literature in English
+18. Mathematics
+19. Physics
+20. Technical Drawing
+21. Yoruba
+
+Term-member gaps recorded for SS2:
+- Catering Craft: no First-Term or Third-Term source member.
+- Technical Drawing: no First-Term source member.
+- All other registered subject labels have at least one member in each term; Food & Nutrition has a duplicate-looking T2 member that must not be counted as extra content without header/body verification.
+
+### SS3 — examination-preparation inventory
+
+The register contains 39 SS3 source members and 21 subject labels. It includes First- and Second-Term archive members only; the received combined archive has no Third-Term folder. The subject labels are:
+
+Agricultural Science; Biology; Bookkeeping; Catering Craft; Chemistry; Civic Education; Commerce; Data Processing; Economics; English; Financial Accounting; Food & Nutrition; French; Further Mathematics; Geography; Government; Literature in English; Mathematics; Physics; Technical Drawing; Yoruba.
+
+Term-member gaps/anomalies recorded for SS3:
+- First Term: no Catering Craft or Technical Drawing source member.
+- Second Term: no Food & Nutrition source member.
+- Third Term: no source members for any subject.
+- SS3 Literature in English First- and Second-Term files are byte-identical; this does not establish distinct Second-Term instructional content.
+
+SS3 remains examination preparation ONLY (WAEC, NECO and JAMB). Do not fill missing terms with new instructional lessons.
+
+### Source-mapping status — do not confuse the separate audits
+
+The 100-row register's `mapping_status` field currently records 96 rows as `FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER` and four duplicate-across-members records (two SS2 and two SS3). This means most registered members still need direct header/body mapping.
+
+Separately, the received archive comparison found 96 exact member matches against the earlier 100-row inventory and four different-content versions pending owner version decision. These are separate checks and must not be conflated. Preserve both versions of each disputed file until the owner resolves the version choice.
+
 ## 5. Work queue
 
 | ID | Task | Status / next action |
