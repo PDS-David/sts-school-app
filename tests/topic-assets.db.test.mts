@@ -385,19 +385,20 @@ if (!URL_) {
     assert.deepEqual(none.assets, []);
   });
 
-  test('endpoint: bytes are identical to the source, with Content-Type and ETag; 304 on revalidation', async () => {
+  test('endpoint: private asset bytes are verified on every no-store response', async () => {
     const meta: any = await (await get(`/learning/topics/${topicId['Music|4']}/assets`, tokenA)).json();
     const a = meta.assets[0];
     const r = await get(a.url, tokenA);
     assert.equal(r.status, 200);
     assert.equal(r.headers.get('content-type'), 'image/gif');
-    assert.equal(r.headers.get('etag'), `"${a.sha256}"`);
+    assert.equal(r.headers.get('etag'), null);
     assert.equal(r.headers.get('x-content-type-options'), 'nosniff');
     assert.equal(r.headers.get('content-disposition'), 'inline');
     assert.equal(r.headers.get('cache-control'), 'private, no-store, max-age=0');
     assert.equal(sha(Buffer.from(await r.arrayBuffer())), sha(GIF));
     const again = await get(a.url, tokenA, { 'If-None-Match': `"${a.sha256}"` });
-    assert.equal(again.status, 304);
+    assert.equal(again.status, 200, 'no-store assets are re-read and integrity-checked instead of returning a cached 304');
+    assert.equal(sha(Buffer.from(await again.arrayBuffer())), sha(GIF));
   });
 
   test('asset delivery is school-pinned for school-bound administrators and disables private caching', async () => {
