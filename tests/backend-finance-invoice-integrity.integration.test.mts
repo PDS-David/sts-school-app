@@ -348,3 +348,85 @@ test('parents can read invoices only for active linked wards while finance admin
     await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [[parent.id, financeAdmin.id]]);
   }
 });
+
+
+test('parent fee schedules follow linked ward campuses and cannot be widened by query parameters', async () => {
+  const parent = await createInvoiceViewer('fee-schedule-parent', 'parent');
+  const suffix = randomUUID();
+  const studentIds: string[] = [];
+  const feeItemIds: number[] = [];
+  let server: Server | undefined;
+
+  try {
+    for (const [label, schoolCode] of [
+      ['primary-ward', 'primary'],
+      ['secondary-ward', 'secondary'],
+      ['unlinked-campus', 'unlinked'],
+    ] as const) {
+      const { rows } = await query(
+        `INSERT INTO students(full_name,class_name,school_code,admission_number)
+         VALUES($1,'Primary 4',$2,$3) RETURNING id`,
+        [`BSEC22 ${label}`, schoolCode, `BSEC22-${label}-${suffix}`],
+      );
+      studentIds.push(String(rows[0].id));
+    }
+    await query(
+      'INSERT INTO parent_wards(parent_id,student_id) VALUES($1,$2),($1,$3)',
+      [parent.id, studentIds[0], studentIds[1]],
+    );
+
+    for (const [label, schoolCode] of [
+      ['primary-fee', 'primary'],
+      ['secondary-fee', 'secondary'],
+      ['unlinked-fee', 'unlinked'],
+    ] as const) {
+      const { rows } = await query(
+        'INSERT INTO fee_items(school_code,name,amount) VALUES($1,$2,100) RETURNING id',
+        [schoolCode, `BSEC22 ${label} ${suffix}`],
+      );
+      feeItemIds.push(Number(rows[0].id));
+    }
+
+    const started = await startFinanceServer();
+    server = started.server;
+    const getFeeItems = (queryString = '') => fetch(
+      `${started.baseUrl}/fee-items${queryString}`,
+      { headers: { Authorization: `Bearer ${parent.token}` } },
+    );
+
+    const allLinkedCampuses = await getFeeItems();
+    assert.equal(allLinkedCampuses.status, 200);
+    assert.deepEqual(
+      (await allLinkedCampuses.json() as { fee_items: Array<{ id: number }> }).fee_items.map(item => item.id).sort(),
+      feeItemIds.slice(0, 2).sort(),
+      'without a campus filter, parents may see fee schedules only for campuses containing their active linked wards',
+    );
+
+    const selectedSecondaryCampus = await getFeeItems('?school_code=secondary');
+    assert.equal(selectedSecondaryCampus.status, 200);
+    assert.deepEqual(
+      (await selectedSecondaryCampus.json() as { fee_items: Array<{ id: number }> }).fee_items.map(item => item.id),
+      [feeItemIds[1]],
+      'a parent can select a linked ward campus and receive that campus fee schedule',
+    );
+
+    const unlinkedCampus = await getFeeItems('?school_code=unlinked');
+    assert.equal(unlinkedCampus.status, 200);
+    assert.deepEqual(
+      (await unlinkedCampus.json() as { fee_items: unknown[] }).fee_items,
+      [],
+      'a school_code query parameter must not expose a campus with no linked ward',
+    );
+  } finally {
+    if (server) {
+      server.closeAllConnections();
+      await new Promise<void>(resolve => server!.close(() => resolve()));
+    }
+    if (feeItemIds.length) await query('DELETE FROM fee_items WHERE id=ANY($1::int[])', [feeItemIds]);
+    if (studentIds.length) {
+      await query('DELETE FROM parent_wards WHERE student_id=ANY($1::uuid[])', [studentIds]);
+      await query('DELETE FROM students WHERE id=ANY($1::uuid[])', [studentIds]);
+    }
+    await query('DELETE FROM users WHERE id=$1', [parent.id]);
+  }
+});
