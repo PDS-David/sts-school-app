@@ -1,3 +1,75 @@
+# Authoritative live state — 2026-11-16
+
+> **This section supersedes every historical live-update section below.** Older entries are retained as an audit trail; do not use their old branch names, PR states, counts or next-action claims as the current state.
+
+## Repository and pull requests
+
+- Current `master`: `70cd4a8cb1a5f7fcbd1a103e6812bbe96d4e711e` (includes PRs #857, #858, #859 and #860).
+- PR #857 — SS2 Agricultural Science Terms 2 and 3 drafts: **merged**.
+- PR #858 — Agricultural Science evidence register: **merged**.
+- PR #859 — refreshed SS2/SS3 handoff and execution queue: **merged**.
+- PR #860 — re-supplied source archives and exam-only SS3 scope: **merged** at the current master SHA above.
+- PR #861 — temporary Agricultural Science audit-only PR: **closed unmerged**; its checkpoint work was consolidated into PR #862.
+- PR #862 — source-verified Agricultural Science clarifications and checkpoint: **open, unmerged**. Head `e35e404203b5584ffbdfd00dbdd80fa6b29e0fee`. Relevant checks passed: SS23 package contract, SS23 integrity, SS2/SS3 source validation, SS1 integrity and JSS3 workflow.
+- PR #863 — subject order, archive term gaps and this checkpoint correction: **open, unmerged**. Always recheck its live head and CI before relying on this snapshot.
+
+No PR may be merged by an agent. Owner retains merge and release authority.
+
+## SS2 Agricultural Science
+
+### State on master
+
+- 19 draft units: First Term 8, Second Term 6, Third Term 5.
+- 195 practice/assessment items.
+- 31 external factual references.
+- 47 asset records.
+- 53 open items: 46 delivery-blocking and 7 non-blocking.
+- Coverage rows: 56 SUPPORTED, 25 PARTIAL, 5 UNRESOLVED, 4 MARKER.
+- Package remains `PENDING`; every unit remains `DRAFT`. It is not student-deliverable.
+
+### Additional draft state in unmerged PR #862
+
+PR #862 adds 13 source-hashed external references and 13 supported coverage rows for T2 floriculture, crop-disease examples and safe pest-control/IPM guidance. On that branch:
+- 44 external factual references.
+- 103 coverage rows: 69 SUPPORTED, 25 PARTIAL, 5 UNRESOLVED, 4 MARKER.
+- 53 open items remain: 46 delivery-blocking and 7 non-blocking.
+- Package remains `PENDING`; all 19 units remain `DRAFT`.
+
+The PR preserves the unresolved floriculture spelling `carnality`, the complete crop-disease table review, pest-species verification, source-assessment reconciliation and specialist approvals. The new external supplements do not certify the subject or close the readiness gate. Do not treat PR #862's branch state as merged master state.
+
+**Do not advance to SS2 Biology until the Agricultural Science source, assessment and required teacher-approval gates are satisfied.**
+
+## Registered source inventory and alphabetical SS2 queue
+
+The 100-row source register contains 61 SS2 members across 21 subject labels and 39 SS3 members across 21 subject labels. The complete alphabetical SS2 subject order is:
+
+Agricultural Science; Biology; Bookkeeping; Catering Craft; Chemistry; Civic Education; Commerce; Data Processing; Economics; English; Financial Accounting; Food & Nutrition; French; Further Mathematics; Geography; Government; Literature in English; Mathematics; Physics; Technical Drawing; Yoruba.
+
+SS2 member gaps:
+- Catering Craft: no First-Term or Third-Term member.
+- Technical Drawing: no First-Term member.
+- Food & Nutrition has a duplicate-looking T2 member; do not count it as additional content without header/body verification.
+
+SS3 member gaps:
+- No Third-Term source members in the received archive.
+- First Term: no Catering Craft or Technical Drawing member.
+- Second Term: no Food & Nutrition member.
+- SS3 Literature in English T1 and T2 files are byte-identical; this does not establish distinct T2 content.
+
+The register's `mapping_status` currently records 96 members as `FILENAME_ASSIGNMENT_VERIFY_DOCUMENT_HEADER` and four duplicate-across-members records (two SS2, two SS3). Separately, the archive-to-register comparison reports 96 exact member matches out of 100 and four different-content versions pending owner version decisions. These are separate checks; do not conflate them. Preserve both versions of each disputed file.
+
+## SS3 policy
+
+SS3 is examination preparation ONLY (WAEC, NECO and JAMB): revision, verified past-question practice, mocks, marking, feedback and reassessment. Do not create or import new SS3 instructional-topic lessons. No Third-Term archive source was supplied.
+
+## Next execution
+
+1. Continue SS2 Agricultural Science from the live PR #862 branch and resolve every source-supported task that does not require owner/specialist authority.
+2. Keep genuine source-version, content-approval, asset-rights and specialist decisions explicitly blocked; continue independent work.
+3. After Agricultural Science passes its source, assessment and teacher-approval gates, proceed through the SS2 subject list alphabetically, one focused PR per subject.
+4. Then complete SS3 examination preparation only.
+5. Preserve fail-closed student delivery, answer-key protection, certified curriculum outside scope and all production/merge restrictions.
+
 
 ## Live execution update — 2026-11-16
 
