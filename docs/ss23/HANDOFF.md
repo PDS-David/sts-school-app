@@ -2,15 +2,15 @@
 
 This supplement supersedes earlier live-status claims in the historical handoff.
 
-- Current master: e426a824d7d39a9b039dae0152de5ec92dbcd292. PRs #867, #868, #869, #870 and #871 are merged.
-- PR #869 merged at 04:37:24Z; PR #870 at 04:36:02Z; PR #871 at 04:36:05Z.
-- PR #870 adds a student-delivery guard that excludes unresolved source-extract placeholders even if approval metadata is erroneously advanced.
-- All four workflows passed on PR #871 final head 1cbe7efbb2b0b9d2a729674c73e661b5e713ea4e: SS23 contract 43804755967; SS23 integrity 43804755981; SS1 gate 43804755877; JSS3 checks 43804755894.
-- Current Agriculture master: 19 units (8/6/5), 195 practice and assessment records, 52 assets (42 placeholders + 10 local school-authored SVGs), 48 external references, 116 coverage rows and 47 open items (46 blocking). Package PENDING, units DRAFT, approvals PENDING, verification DEFERRED; no student delivery.
-- All 10 local SVG byte counts and SHA-256 values match committed file contents. Package verification remains DEFERRED and content approval remains PENDING.
+- Current master: 90a718a0fab35b2500f6e532242689d4fa8b28cd. PRs #867 through #871 are merged.
+- PR #870 excludes unresolved source-extract placeholders at the student asset API even if approval metadata is erroneously advanced.
+- PR #871 all four final-head workflows passed: SS23 contract 43804755967; SS23 integrity 43804755981; SS1 gate 43804755877; JSS3 checks 43804755894.
+- PR #872 is open/mergeable for checkpoint correction. PR #873 is open/mergeable for irrigation/cycle visual blocker reconciliation; its SS23 contract, SS23 integrity and SS1 checks passed, while JSS3 checks were pending at the last check.
+- Current Agriculture master: 19 units (8/6/5), 195 practice/assessment records, 52 assets (42 placeholders + 10 local school-authored SVGs), 48 external references, 116 coverage rows and 47 open items (46 blocking). Package PENDING, units DRAFT, approvals PENDING, verification DEFERRED; no student delivery.
+- All 10 local SVG byte counts and SHA-256 values match committed file contents. Package approval remains pending and verification deferred.
 - Tractor/PTO provenance uses the First-Term Penn State PTO safety reference. Soil-profile provenance and coverage use USDA NRCS A Soil Profile.
 - The teacher/specialist review register and draft correction/assessment audit are on master. The five soil practical procedures remain review drafts requiring school apparatus, safety, observations, marking and teacher approval.
-- 195 question IDs and all required structural fields, locators and provenance are present; references resolve and marking totals reconcile. This does not prove answer correctness. T2/T3 are authored supplements. Four repeated T1 prompt groups await original-page confirmation.
+- 195 question IDs and all required structural fields, locators and provenance are present; source references resolve and marking totals reconcile. This does not prove answer correctness. T2/T3 are authored supplements. Four repeated T1 prompt groups await original-page confirmation.
 - Original SS2/SS3 ZIP members were not readable through the text interface in this session. No new page-level verification is claimed. Four source-version choices remain for the owner.
 - Keep no-merge/no-deploy/no-import/no-student-release rules. Do not proceed to Biology before Agriculture source, assessment and teacher-approval gates pass. Complete remaining SS2 subjects alphabetically after that; complete SS3 exam preparation only after SS2.
 
