@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { View, Text, ScrollView, RefreshControl, TouchableOpacity } from 'react-native';
 import api from '../../api/client';
 import { useAuth } from '../../api/AuthContext';
@@ -22,24 +22,39 @@ export default function TeacherDashboardHomeScreen({ navigation }: any) {
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState('');
   const [refreshing, setRefreshing] = useState(false);
+  const requestGenerationRef = useRef(0);
+  const teacherScopeKey = [user?.id ?? '', user?.school_code ?? '', user?.assigned_class ?? ''].join(':');
 
   const load = useCallback(async () => {
+    const generation = ++requestGenerationRef.current;
+    const isCurrentRequest = () => generation === requestGenerationRef.current;
     setLoadError('');
     const errors: string[] = [];
     try {
       const { data } = await api.get('/academic/terms/current');
-      setTerm(data.term);
-    } catch { errors.push('term details'); }
+      if (isCurrentRequest()) setTerm(data.term);
+    } catch { if (isCurrentRequest()) errors.push('term details'); }
     try {
       const { data } = await api.get('/scores/teacher/overview');
-      setOverview(data);
-      setStudentCount(data.summary?.student_count ?? 0);
-    } catch { errors.push('marking analytics'); }
+      if (isCurrentRequest()) {
+        setOverview(data);
+        setStudentCount(data.summary?.student_count ?? 0);
+      }
+    } catch { if (isCurrentRequest()) errors.push('marking analytics'); }
+    if (!isCurrentRequest()) return;
     if (errors.length) setLoadError(`Could not refresh ${errors.join(' and ')}. Pull down or retry to try again.`);
     setLoading(false);
-  }, [user?.assigned_class]);
+  }, [teacherScopeKey]);
 
-  useEffect(() => { load(); }, [load]);
+  useEffect(() => {
+    setTerm(null);
+    setOverview(null);
+    setStudentCount(null);
+    setLoadError('');
+    setLoading(true);
+    void load();
+    return () => { requestGenerationRef.current += 1; };
+  }, [load]);
 
   if (loading) return <Loader />;
 
