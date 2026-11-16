@@ -12,8 +12,9 @@ function nonBlank(value: string | null | undefined): string | null {
 /**
  * Resolve the school/class filters for GET /students.
  *
- * Operations administrators may intentionally browse all schools. Finance
- * administrators may select either campus, but must select one explicitly.
+ * Global administrators (school_code NULL) may browse all schools or select
+ * a campus. School-bound administrators are pinned to their own school.
+ * Finance administrators may select either campus, but must select one explicitly.
  * Teachers are always pinned to their own school and, when assigned, class.
  * Missing teacher school assignment is a configuration error, never a reason
  * to fall back to an unfiltered cross-school roster.
@@ -26,6 +27,18 @@ export function resolveStudentRosterScope(
   const requestedClass = nonBlank(requested.class_name);
 
   if (user.role === 'admin') {
+    const ownSchool = nonBlank(user.school_code);
+    if (ownSchool) {
+      if (requestedSchool && requestedSchool !== ownSchool) {
+        return {
+          status: 403,
+          error: "You can't browse student records outside your school.",
+        };
+      }
+      return { schoolCode: ownSchool, className: requestedClass };
+    }
+    // Only an admin with school_code NULL is global and may choose a school
+    // filter or browse across both schools.
     return { schoolCode: requestedSchool, className: requestedClass };
   }
 

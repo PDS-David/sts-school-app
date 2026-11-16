@@ -165,3 +165,134 @@ test('parent ward links enforce teacher school/class scope and mutate atomically
       [[admin.id, classTeacher.id, otherSchoolTeacher.id, parent.id, inactiveParent.id, nonParent.id]]);
   }
 });
+
+
+test('school-bound administrators are confined to their student roster and mutations', async () => {
+  const suffix = randomUUID().slice(0, 8);
+  const primaryAdmin = await createUser('school-admin', 'admin', 'primary');
+  const globalAdmin = await createUser('global-admin', 'admin', null);
+  const parent = await createUser('school-parent', 'parent', 'primary');
+  const primaryLogin = await createUser('primary-student-login', 'student', 'primary');
+  const secondaryLogin = await createUser('secondary-student-login', 'student', 'secondary');
+  const primaryActive = await createStudent('primary-active', 'primary', 'Primary 4', suffix);
+  const secondaryActive = await createStudent('secondary-active', 'secondary', 'Primary 4', suffix);
+  const primaryDeleted = await createStudent('primary-deleted', 'primary', 'Primary 4', suffix);
+  const secondaryDeleted = await createStudent('secondary-deleted', 'secondary', 'Primary 4', suffix);
+  const primaryLinkTarget = await createStudent('primary-link-target', 'primary', 'Primary 4', suffix);
+  const secondaryLinkTarget = await createStudent('secondary-link-target', 'secondary', 'Primary 4', suffix);
+  const studentIds = [
+    primaryActive, secondaryActive, primaryDeleted, secondaryDeleted,
+    primaryLinkTarget, secondaryLinkTarget,
+  ];
+  const userIds = [
+    primaryAdmin.id, globalAdmin.id, parent.id, primaryLogin.id, secondaryLogin.id,
+  ];
+  let createdStudentId: string | undefined;
+  let server: Server | undefined;
+
+  try {
+    await query('UPDATE students SET deleted_at=now(), deleted_by=$1 WHERE id=$2', [primaryAdmin.id, primaryDeleted]);
+    await query('UPDATE students SET deleted_at=now(), deleted_by=$1 WHERE id=$2', [globalAdmin.id, secondaryDeleted]);
+
+    const started = await startServer();
+    server = started.server;
+    const headers = (token: string) => ({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
+    const get = (token: string, path: string) => fetch(`${started.baseUrl}${path}`, {
+      headers: headers(token),
+    });
+    const post = (token: string, path: string, body: Record<string, unknown>) => fetch(`${started.baseUrl}${path}`, {
+      method: 'POST', headers: headers(token), body: JSON.stringify(body),
+    });
+    const put = (token: string, path: string, body: Record<string, unknown>) => fetch(`${started.baseUrl}${path}`, {
+      method: 'PUT', headers: headers(token), body: JSON.stringify(body),
+    });
+    const del = (token: string, path: string) => fetch(`${started.baseUrl}${path}`, {
+      method: 'DELETE', headers: headers(token),
+    });
+
+    const roster = await get(primaryAdmin.token, '/');
+    assert.equal(roster.status, 200);
+    assert.ok((await roster.json() as { students: Array<{ school_code: string }> }).students
+      .every(row => row.school_code === 'primary'));
+    assert.equal((await get(primaryAdmin.token, '/?school_code=secondary')).status, 403);
+
+    const globalSecondaryRoster = await get(globalAdmin.token, '/?school_code=secondary');
+    assert.equal(globalSecondaryRoster.status, 200);
+    assert.ok((await globalSecondaryRoster.json() as { students: Array<{ school_code: string }> }).students
+      .every(row => row.school_code === 'secondary'));
+
+    assert.equal((await get(primaryAdmin.token, `/${secondaryActive}`)).status, 404);
+    assert.equal((await get(primaryAdmin.token, `/${primaryActive}`)).status, 200);
+    assert.equal((await get(primaryAdmin.token, '/deleted?school_code=secondary')).status, 403);
+
+    const deletedRoster = await get(primaryAdmin.token, '/deleted');
+    assert.equal(deletedRoster.status, 200);
+    assert.ok((await deletedRoster.json() as { students: Array<{ school_code: string }> }).students
+      .every(row => row.school_code === 'primary'));
+
+    const globalSecondaryDeleted = await get(globalAdmin.token, '/deleted?school_code=secondary');
+    assert.equal(globalSecondaryDeleted.status, 200);
+    assert.ok((await globalSecondaryDeleted.json() as { students: Array<{ school_code: string }> }).students
+      .every(row => row.school_code === 'secondary'));
+
+    const crossSchoolCreate = await post(primaryAdmin.token, '/', {
+      full_name: 'BSEC30 Forbidden Student', class_name: 'Primary 4', school_code: 'secondary',
+    });
+    assert.equal(crossSchoolCreate.status, 403);
+
+    const ownCreate = await post(primaryAdmin.token, '/', {
+      full_name: 'BSEC30 Own School Student', class_name: 'Primary 4', school_code: 'primary',
+    });
+    assert.equal(ownCreate.status, 201);
+    createdStudentId = String((await ownCreate.json() as { student: { id: string } }).student.id);
+    studentIds.push(createdStudentId);
+
+    assert.equal((await put(primaryAdmin.token, `/${secondaryActive}`, { full_name: 'Cross School Edit' })).status, 404);
+    assert.equal((await put(primaryAdmin.token, `/${primaryActive}`, { full_name: 'Primary Student Updated' })).status, 200);
+
+    assert.equal((await del(primaryAdmin.token, `/${secondaryActive}`)).status, 404);
+    assert.equal((await del(primaryAdmin.token, `/${primaryActive}`)).status, 200);
+    assert.equal((await post(primaryAdmin.token, `/${secondaryDeleted}/restore`, {})).status, 404);
+    assert.equal((await post(primaryAdmin.token, `/${primaryDeleted}/restore`, {})).status, 200);
+
+    assert.equal((await post(primaryAdmin.token, `/${secondaryLinkTarget}/link-parent`, {
+      parent_id: parent.id,
+    })).status, 404);
+    assert.equal((await post(primaryAdmin.token, `/${primaryLinkTarget}/link-parent`, {
+      parent_id: parent.id,
+    })).status, 200);
+    assert.equal((await del(primaryAdmin.token, `/${secondaryLinkTarget}/unlink-parent/${parent.id}`)).status, 404);
+    assert.equal((await del(primaryAdmin.token, `/${primaryLinkTarget}/unlink-parent/${parent.id}`)).status, 200);
+
+    assert.equal((await post(primaryAdmin.token, `/${secondaryLinkTarget}/link-user`, {
+      user_id: secondaryLogin.id,
+    })).status, 404);
+    assert.equal((await post(primaryAdmin.token, `/${primaryLinkTarget}/link-user`, {
+      user_id: secondaryLogin.id,
+    })).status, 400, 'student logins must belong to the same school as their student record');
+    assert.equal((await post(primaryAdmin.token, `/${primaryLinkTarget}/link-user`, {
+      user_id: primaryLogin.id,
+    })).status, 200);
+    assert.equal((await del(primaryAdmin.token, `/${secondaryLinkTarget}/unlink-user`)).status, 404);
+    assert.equal((await del(primaryAdmin.token, `/${primaryLinkTarget}/unlink-user`)).status, 200);
+
+    const secondaryAdmission = await query('SELECT admission_number FROM students WHERE id=$1', [secondaryActive]);
+    const crossSchoolErasure = await post(primaryAdmin.token, `/${secondaryActive}/erasure`, {
+      confirmation: secondaryAdmission.rows[0].admission_number,
+      reason: 'BSEC30 cross-school authorization regression',
+    });
+    assert.equal(crossSchoolErasure.status, 403);
+  } finally {
+    if (server) {
+      server.closeAllConnections();
+      await new Promise<void>(resolve => server!.close(() => resolve()));
+    }
+    await query('DELETE FROM parent_wards WHERE student_id=ANY($1::uuid[]) OR parent_id=ANY($2::uuid[])',
+      [studentIds, [parent.id]]);
+    if (studentIds.length) await query('DELETE FROM students WHERE id=ANY($1::uuid[])', [studentIds]);
+    await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [userIds]);
+  }
+});

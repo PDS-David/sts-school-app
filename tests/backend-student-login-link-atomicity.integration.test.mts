@@ -14,10 +14,13 @@ after(async () => {
 
 async function createUser(label: string, role: 'admin' | 'student' | 'parent', isActive = true) {
   const username = `bsec23-${label}-${randomUUID()}`;
+  // Student login accounts must belong to the same school as the student
+  // record they are linked to. Admin remains global for this atomicity test.
+  const schoolCode = role === 'student' ? 'primary' : null;
   const { rows } = await query(
     `INSERT INTO users(username,password_hash,role,full_name,school_code,is_active,pending_admin_review)
-     VALUES($1,'test-hash',$2,$3,NULL,$4,FALSE) RETURNING id`,
-    [username, role, `BSEC23 ${label}`, isActive],
+     VALUES($1,'test-hash',$2,$3,$5,$4,FALSE) RETURNING id`,
+    [username, role, `BSEC23 ${label}`, isActive, schoolCode],
   );
   const id = String(rows[0].id);
   return {
@@ -26,7 +29,7 @@ async function createUser(label: string, role: 'admin' | 'student' | 'parent', i
       id,
       username,
       role,
-      school_code: null,
+      school_code: schoolCode,
       assigned_class: null,
       assigned_subject_ids: [],
     }),
