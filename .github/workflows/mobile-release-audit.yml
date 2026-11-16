@@ -53,6 +53,39 @@ jobs:
         env:
           CI: "1"
         run: npx expo export --platform android --output-dir ../artifacts/mobile-android
+      - name: Set up Java for Android build
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+      - name: Generate Android native project
+        working-directory: mobile
+        run: npx expo prebuild --platform android --non-interactive
+      - name: Build installable Android debug APK
+        working-directory: mobile/android
+        run: ./gradlew --no-daemon assembleDebug
+      - name: Install and launch APK on Android emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          profile: pixel_2
+          script: |
+            mkdir -p artifacts
+            adb install -r mobile/android/app/build/outputs/apk/debug/app-debug.apk
+            adb shell am force-stop ng.edu.sowtheseed.school
+            adb shell monkey -p ng.edu.sowtheseed.school 1
+            for attempt in $(seq 1 30); do
+              if adb shell pidof ng.edu.sowtheseed.school >/dev/null 2>&1; then
+                adb logcat -d -t 3000 > artifacts/android-emulator-logcat.txt
+                exit 0
+              fi
+              sleep 1
+            done
+            adb logcat -d -t 5000 > artifacts/android-emulator-logcat.txt
+            exit 1
       - name: Capture complete dependency audit
         run: |
           mkdir -p artifacts
@@ -88,6 +121,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: mobile-release-audit-evidence
-          path: artifacts/
+          path: |
+            artifacts/
+            mobile/android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: warn
           retention-days: 14
