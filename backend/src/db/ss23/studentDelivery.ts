@@ -50,7 +50,10 @@ function isStudentDeliverableUnit(subjectPackage: Ss23Package, unit: Ss23Unit): 
 }
 
 function isStudentDeliverableAsset(asset: Ss23Asset): boolean {
-  return asset.state.content_approval === 'APPROVED' &&
+  // Source-extract URIs are inventory placeholders, not repository-backed asset files.
+  // Never advertise them to students even if approval metadata is accidentally advanced.
+  return !asset.path.startsWith('source-extract://') &&
+    asset.state.content_approval === 'APPROVED' &&
     Boolean(asset.state.approval_reference?.trim()) &&
     asset.state.implementation === 'IMPLEMENTED' &&
     asset.state.verification === 'VERIFIED' &&
