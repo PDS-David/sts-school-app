@@ -1,7 +1,7 @@
 # SMM-005 — Admin announcement authoring checkpoint
 
 Task ID: SMM-005
-Status: IMPLEMENTED ON MASTER — role and school-scope tests in PR #894
+Status: IMPLEMENTED AND MERGED — role and school-scope tests merged in PR #894
 Merged implementation: PR #768
 
 ## Scope delivered
@@ -14,12 +14,11 @@ Merged implementation: PR #768
 ## Verification
 - PR #768 merged on 2026-11-13; mobile TypeScript passed in run `43457696034`.
 - Current master validation on commit `209a960ace30a8026e722e71e1b7f727347fef0c` passed package integrity and curriculum contract gates.
-- PR #894 adds DB-backed checks for parent ward/class/audience filtering, unrelated-parent isolation and school-admin/global-admin write scope. The route suite passed in run `43940628882`; all required workflows passed on head `3898b90277ae8cb046876f4eb3f137ed41f5c119`.
+- PR #894 adds DB-backed checks for parent ward/class/audience filtering, unrelated-parent isolation and school-admin/global-admin write scope. The route suite passed in run `43941196109`; all five required workflows passed on PR #894 head `434111153ae1aafcfedfa85ae7d6240f48468cb2`. PR #894 merged to master as `554688b372f6b9f1b74adf64dd4fcf817ca690e2`.
 - No physical-device acceptance has been performed.
 
 ## Remaining
-- Merge PR #894 after CI passes.
 - Verify publish/delete and audience delivery on actual admin/student/parent/teacher staging accounts.
 
 ## Exact next action
-Complete PR #894 CI and test announcement publishing and delivery with role-specific staging accounts.
+Test announcement publishing, deletion and role/class/school audience delivery with role-specific staging accounts.
