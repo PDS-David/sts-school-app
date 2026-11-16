@@ -2,12 +2,13 @@
 
 - **Task ID:** BSEC-010
 - **Title:** Serialize activation and forgotten-password attempts to enforce account lockouts
-- **Status:** implementation verified; PR review pending
+- **Status:** merged
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Working branch:** agent/backend-credential-attempt-locking-20261113
 - **Latest branch commit:** 66247c9f03c633cce1f957872c4e76a7808ccdeb
-- **PR:** https://github.com/PDS-David/sts-school-app/pull/731
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/731 (merged 2026-11-13T15:52:14Z)
+- **Merge commit:** a24f6654e8832dee919d3d9cdfb0e68f234b1c48
 - **Changed files:**
   - backend/src/routes/auth.ts
   - backend/src/utils/credentialAttempts.ts
@@ -18,6 +19,6 @@
 - **Implementation:** both flows now select the user row FOR UPDATE inside a PostgreSQL transaction. Failed-attempt increments, lockout timestamps and audit records commit atomically. Activation code consumption and initial password creation are one transaction, so only one request can consume the code. Password reset preserves existing active/expiry/security-question checks and response behavior.
 - **Regression coverage:** PostgreSQL tests cover six simultaneous wrong activation codes, concurrent one-time activation, six simultaneous wrong recovery answers, and successful recovery clearing lockout state.
 - **Verification:** GitHub Actions run 43452877003 passed: locked dependency installation, PostgreSQL 16 bootstrap, all four credential lockout/activation regressions and backend TypeScript typecheck. Repository-wide JSS3 checks 43452876515 and SS1 package integrity 43452876468 also passed. No production accounts or data were accessed or changed.
-- **Remaining:** confirm repository-wide JSS3 and SS1 gates; PR review/merge. Do not mark the overall backend/security assignment complete.
-- **Exact next action:** inspect current branch head and CI run for Backend credential attempt locking.
-- **Repository hygiene note:** one helper-file creation was accidentally sent to master without its branch argument; the file was immediately removed in commit 3e0f985972ad485f60fe5940c8cee60535e774b6. The helper exists only on this dedicated branch. Verify master no longer contains that path.
+- **Remaining:** none for BSEC-010. Continue the broader backend/security audit.
+- **Exact next action:** continue with the next independently scoped backend defect.
+- **Repository hygiene:** the temporary helper-file path was removed before the task PR merged; the final implementation is contained in PR #731.
