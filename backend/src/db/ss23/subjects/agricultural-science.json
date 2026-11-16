@@ -16655,6 +16655,10 @@
         {
           "locator": "Converted DOCX media image26.jpeg through image41.png",
           "explanation": "Sixteen embedded figures are identified and hashed; several are third-party screenshots or stock images with visible watermarks. Two original diagrams are authored as supplements."
+        },
+        {
+          "locator": "backend/src/db/ss23/assets/agricultural-science/irrigation-systems.svg and drainage-systems.svg",
+          "explanation": "Original school-authored irrigation-method and drainage-system diagrams are implemented and their bytes/hashes are verified; content approval remains pending."
         }
       ]
     },
@@ -18124,8 +18128,8 @@
     {
       "id": "AG2-T1-W04-05-FIGURE-RIGHTS",
       "kind": "PERMISSION",
-      "detail": "The original source farmstead layout image is watermarked and remains an evidence-only source-extract record. An original, not-to-scale school-authored farmstead schematic is now committed as a separate asset linked to this lesson. The two source calculation graphics are not required as images because area formulas and the worked population example are already represented as lesson text. The authored schematic is implemented but awaits owner/teacher content approval and technical asset verification; the original watermarked image must never be delivered.",
-      "required_action": "Review the school-authored farmstead schematic for local teaching accuracy, siting, hygiene, access and drainage; record owner/subject-lead approval or amendments; verify its committed bytes and SHA-256; retain the watermarked source image as evidence only; keep formula and worked-example content as text rather than reusing the source graphics. Keep this item blocking until the authored asset is approved and its verification is recorded.",
+      "detail": "The original source farmstead layout image is watermarked and remains an evidence-only source-extract record. An original, not-to-scale school-authored replacement schematic is committed as a separate lesson asset; its file bytes and SHA-256 are verified. The two source calculation graphics are not required as images because the formulas and worked population example are represented as lesson text. The replacement schematic still awaits owner/teacher content approval; the watermarked source image must never be delivered.",
+      "required_action": "Review the school-authored farmstead schematic for local teaching accuracy, siting, hygiene, access and drainage; record owner/subject-lead approval or amendments. Retain the watermarked source image as evidence only and keep formula/worked-example content as text. Keep this item blocking until the authored diagram is approved.",
       "affected_ids": [
         "SUP-SS2-AGRICULTURAL-SCIENCE-T1-W04-05-FARM-SURVEY-PLANNING",
         "ASSET-AG2-T1-W04-05-FARMSTEAD-PLAN",
@@ -18178,8 +18182,8 @@
     {
       "id": "AG2-T1-W06-FIGURE-RIGHTS",
       "kind": "PERMISSION",
-      "detail": "Sixteen Week Six figures were found. Several are mobile screenshots of third-party pages and two drainage images include an Alamy stock photograph or screenshot; exact attribution and reuse permissions are not established.",
-      "required_action": "Obtain permission or replace third-party screenshots and watermarked stock images with original school-owned diagrams before student delivery.",
+      "detail": "Original school-authored irrigation-method and drainage-system SVG diagrams now provide accessible teaching alternatives for the main classifications. Their stored bytes and SHA-256 values are verified; content approval remains pending. The original source set includes third-party screenshots and an Alamy stock image whose reuse rights and exact figure mapping are not established. Those source images must remain evidence-only unless permission is documented.",
+      "required_action": "Have the subject lead review the authored irrigation and drainage diagrams for technical accuracy, local terminology and fit with the source lesson; record approval or amendments. Keep third-party screenshots and watermarked stock images out of student delivery unless written permission and attribution are verified. Keep the issue blocking until the authored diagrams are approved and all selected figures have a documented rights status.",
       "affected_ids": [
         "SUP-SS2-AGRICULTURAL-SCIENCE-T1-W06-IRRIGATION-DRAINAGE",
         "ASSET-AG2-T1-W06-SPRINKLER-FIELD",
@@ -18304,8 +18308,8 @@
     {
       "id": "AG2-T1-W08-09-FIGURE-RIGHTS",
       "kind": "PERMISSION",
-      "detail": "Three source figures are embedded for the nitrogen, carbon and water cycles. The nitrogen diagram includes FLRC 2014 credit, the carbon diagram carries an Alamy stock watermark, and the water-cycle image has no verified rights record.",
-      "required_action": "Obtain permissions or replace the source figures with original school-owned diagrams before student delivery.",
+      "detail": "Original school-authored nitrogen-cycle and carbon/water-cycle SVG diagrams now provide teaching alternatives for the three source figures. Their stored bytes and SHA-256 values are verified; content approval remains pending. The source nitrogen figure has an external credit, the source carbon figure carries an Alamy watermark, and rights for the water-cycle image are not established. The original images must remain evidence-only unless permission is documented.",
+      "required_action": "Have the subject lead review and approve the authored nitrogen, carbon and water-cycle diagrams, including the accuracy of labels and pathways. Keep the source figures out of student delivery unless written reuse permission and attribution are verified. Keep this issue blocking until the authored diagrams are approved and selected assets have documented rights.",
       "affected_ids": [
         "SUP-SS2-AGRICULTURAL-SCIENCE-T1-W08-09-PLANT-NUTRIENTS-CYCLES",
         "ASSET-AG2-T1-W08-09-NITROGEN-CYCLE-SOURCE",
