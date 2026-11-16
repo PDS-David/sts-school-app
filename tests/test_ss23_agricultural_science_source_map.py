@@ -38,10 +38,14 @@ class AgriculturalScienceSourceMapTests(unittest.TestCase):
 
     def test_ss2_third_term_farm_records_is_separated_from_week_five_six(self):
         source = next(s for s in self.data["sources"] if s["source_id"] == "SS23-SRC-6abb32818845")
-        mapping = next(m for m in source["body_mapping"] if m["weeks"] == "7-8")
-        self.assertEqual(mapping["status"], "BODY_PRESENT_HEADING_MISSING")
-        self.assertIn("Balance Sheet or Networth Statement", mapping["anchors"][0])
-        self.assertIn("distinct Week 7-8 mapping", mapping["decision"])
+        by_weeks = {m["weeks"]: m for m in source["body_mapping"]}
+        mapping = by_weeks["7-8"]
+        # The Week 7-8 heading was confirmed in the DOC-to-PDF rendering (printed page 13), so it is a
+        # mapped source body with its own anchors, separate from the Week 5-6 economics lesson.
+        self.assertEqual(mapping["status"], "SOURCE_BODY_MAPPED")
+        self.assertIn("TOPIC: FARM RECORD AND FARM ACCOUNT", mapping["anchors"])
+        self.assertNotEqual(mapping["topic"], by_weeks["5-6"]["topic"])
+        self.assertTrue(set(mapping["anchors"]).isdisjoint(by_weeks["5-6"]["anchors"]))
 
     def test_ss3_second_term_preparation_gaps_remain_explicit(self):
         source = next(s for s in self.data["sources"] if s["source_id"] == "SS23-SRC-b12f41490179")
