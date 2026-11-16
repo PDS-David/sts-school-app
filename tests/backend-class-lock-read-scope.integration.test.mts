@@ -297,12 +297,12 @@ test('school-bound administrators cannot override academic school scope', async 
     assert.equal((await getAcademic(primaryAdmin.token, '/classes?school_code=secondary')).status, 403);
 
     const deniedTermCreate = await postAcademic(primaryAdmin.token, '/terms', {
-      name: 'Second Term', academic_year: `B27-${suffix}`, school_code: 'secondary',
+      name: '2nd Term', academic_year: `B27-${suffix}`, school_code: 'secondary',
     });
     assert.equal(deniedTermCreate.status, 403);
 
     const ownTermCreate = await postAcademic(primaryAdmin.token, '/terms', {
-      name: 'Second Term', academic_year: `B27-${suffix}`, school_code: 'primary',
+      name: '2nd Term', academic_year: `B27-${suffix}`, school_code: 'primary',
     });
     assert.equal(ownTermCreate.status, 201);
     const createdTerm = (await ownTermCreate.json() as { term: { id: number; school_code: string } }).term;
