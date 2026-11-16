@@ -80,12 +80,15 @@ test('rejects package filename and subject slug mismatches', () => {
   }
 });
 
-test('never serves the current pending Agriculture draft to SS2 or SS3 students', () => {
+test('never serves any current pending Agriculture unit to SS2 or SS3 students', () => {
   assert.deepEqual(listStudentSs23Units('SS 2'), []);
   assert.deepEqual(listStudentSs23Units('SS 3'), []);
-  assert.equal(getStudentSs23Unit(draft.units[0].id, 'SS 2'), null);
-  assert.equal(getStudentSs23Unit(draft.units[0].id, 'SS 3'), null);
-  assert.deepEqual(listStudentSs23Assets(draft.units[1].id, 'SS 2'), []);
+  for (const unit of draft.units) {
+    assert.equal(getStudentSs23Unit(unit.id, 'SS 2'), null, 'pending unit must not leak to SS2');
+    assert.equal(getStudentSs23Unit(unit.id, 'SS 3'), null, 'SS2 unit must not leak to SS3');
+    assert.deepEqual(listStudentSs23Assets(unit.id, 'SS 2'), []);
+    assert.deepEqual(listStudentSs23Assets(unit.id, 'SS 3'), []);
+  }
 });
 
 test('blocks approved-looking content while package-level open items remain', () => {
@@ -95,24 +98,36 @@ test('blocks approved-looking content while package-level open items remain', ()
   assert.deepEqual(delivery.listUnits('SS 2'), []);
 });
 
-test('keeps SS2 and SS3 delivery class-separated', () => {
+test('every approved SS2 unit is reachable by id and cannot be retrieved as SS3', () => {
   const delivery = createSs23StudentDelivery([approvedPackage()]);
   const ss2Units = delivery.listUnits('SS 2');
   assert.equal(ss2Units.length, 8);
   assert.deepEqual(delivery.listUnits('SS 3'), []);
-  assert.equal(delivery.getUnit(ss2Units[0].id, 'SS 3'), null);
+  assert.equal(new Set(ss2Units.map(unit => unit.id)).size, ss2Units.length);
+  for (const listed of ss2Units) {
+    const reachable = delivery.getUnit(listed.id, 'SS 2');
+    assert.ok(reachable, 'listed unit must be retrievable: ' + listed.id);
+    assert.equal(reachable.id, listed.id);
+    assert.equal(delivery.getUnit(listed.id, 'SS 3'), null, 'cross-class retrieval must fail: ' + listed.id);
+  }
 });
 
-test('student projection omits model answers, explanations, marking and provenance', () => {
+test('student projection omits answers, explanations, marking and provenance for every unit and question', () => {
   const delivery = createSs23StudentDelivery([approvedPackage()]);
-  const unit = delivery.listUnits('SS 2')[0];
-  const safe = delivery.safeStudentUnit(unit);
-  assert.equal(typeof safe.body, 'string');
-  assert.ok(safe.practice.length > 0);
-  assert.equal('provenance' in safe, false);
-  assert.equal('answer' in safe.practice[0], false);
-  assert.equal('explanation' in safe.practice[0], false);
-  assert.equal('marking' in safe.practice[0], false);
+  const units = delivery.listUnits('SS 2');
+  assert.equal(units.length, 8);
+  for (const unit of units) {
+    const safe = delivery.safeStudentUnit(unit);
+    assert.equal(typeof safe.body, 'string');
+    assert.ok(safe.practice.length > 0);
+    assert.equal('provenance' in safe, false);
+    for (const question of safe.practice) {
+      assert.equal('answer' in question, false);
+      assert.equal('explanation' in question, false);
+      assert.equal('marking' in question, false);
+      assert.equal('provenance' in question, false);
+    }
+  }
 });
 
 test('serves only verified, permitted assets and verifies file bytes and SHA-256', () => {

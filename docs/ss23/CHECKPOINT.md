@@ -1,3 +1,25 @@
+## SS23-Q-DELIVERY-TESTS-01 — 2026-11-16
+
+- Status: **PR OPEN (#854), STACKED ON #853; EXPANDED SS23 TESTS GREEN.**
+- Base: `agent/ss23-validator-contract-alignment-20261116` (PR #853), which is based on `master`.
+- Changed files:
+  - `backend/src/db/ss23/studentDelivery.test.ts` — every approved SS2 unit must be retrievable by ID; no unit may be retrieved as SS3; every current pending draft unit must remain unavailable to both classes; student projections must omit answers, explanations, marking criteria and provenance for every question.
+  - `package.json` — `test:ss23` now runs validator tests plus all `backend/src/db/ss23/*.test.ts` package and delivery tests.
+  - `.github/workflows/ss23-package-schema.yml` — invokes the unified `npm run test:ss23` command rather than only the schema test.
+- Commits:
+  - Delivery regression tests: `3471ec3856884be719627b8c9754669147c305b6`
+  - Unified SS23 test command: `2ef7a138cd5200e8f2839099ce76713a21663e5e`
+  - Package-contract workflow: `d1be5aaa435e2306cc5ba62d16fe99e3fa43c206`
+- Test results:
+  - Local execution: NOT RUN (GitHub DNS unavailable in this execution environment).
+  - `npm run test:ss23`: pending PR CI; expected to include validator, schema and student-delivery tests.
+  - Route-level HTTP integration tests are still outstanding; these tests exercise the delivery service called by the SS2/SS3 routes.
+- PR: [#854](https://github.com/PDS-David/sts-school-app/pull/854), base `agent/ss23-validator-contract-alignment-20261116` (PR #853); head branch `agent/ss23-student-delivery-regression-20261116`; code commits `3471ec3856884be719627b8c9754669147c305b6`, `2ef7a138cd5200e8f2839099ce76713a21663e5e`, `d1be5aaa435e2306cc5ba62d16fe99e3fa43c206`.
+- CI: Latest SS23 package-contract run `43788488389` completed SUCCESS on the current PR #854 head `e8fdb2ab4113710bdfdde6fc7c4e1af08edd395b`: locked install passed, backend typecheck passed, unified `npm run test:ss23` passed **70/70** (0 failed, 0 skipped). SS2/SS3 source-validation run `43788396255` also passed. Earlier runs `43788373905` and `43788396221` were superseded by newer commits; no current test failure.
+- Exact next action: retain route-level HTTP integration as a separate outstanding check; do not merge either PR.
+
+---
+
 ## Live-state update — 2026-11-16
 
 This section supersedes the historical branch/PR status in the checkpoint below. Historical source-receipt evidence is retained.

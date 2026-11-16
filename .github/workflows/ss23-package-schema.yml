@@ -33,4 +33,4 @@ jobs:
       - name: Type-check backend
         run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
       - name: Validate SS2 and SS3 package contracts
-        run: node --import tsx --test backend/src/db/ss23/subjectPackageSchema.test.ts
+        run: npm run test:ss23
