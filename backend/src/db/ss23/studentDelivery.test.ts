@@ -119,6 +119,27 @@ test('student projection omits model answers, explanations, marking and provenan
   assert.equal('marking' in safe.practice[0], false);
 });
 
+test('never exposes unresolved source-extract assets even when their lesson is otherwise approved', () => {
+  const pkg = approvedPackage();
+  const sourceExtractAssets = pkg.assets.filter((asset: any) => asset.path.startsWith('source-extract://'));
+  assert.equal(sourceExtractAssets.length, 42);
+
+  const delivery = createSs23StudentDelivery([pkg]);
+  for (const asset of sourceExtractAssets) {
+    assert.ok(delivery.getUnit(asset.unit_id, 'SS 2'), 'the approved test fixture should expose the containing lesson');
+    assert.equal(
+      delivery.listAssets(asset.unit_id, 'SS 2').some(item => item.id === asset.id),
+      false,
+      'unresolved source extraction must not appear in student asset listings: ' + asset.id,
+    );
+    assert.equal(
+      delivery.readAsset(asset.id, 'SS 2'),
+      null,
+      'unresolved source extraction must not be readable by students: ' + asset.id,
+    );
+  }
+});
+
 test('serves only verified, permitted assets and verifies file bytes and SHA-256', () => {
   const delivery = createSs23StudentDelivery([approvedPackage()]);
   const unit = delivery.listUnits('SS 2').find(item => item.title.includes('Soil Formation'))!;
