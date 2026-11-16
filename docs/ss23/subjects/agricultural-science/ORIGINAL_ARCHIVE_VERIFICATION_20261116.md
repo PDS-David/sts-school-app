@@ -68,6 +68,23 @@ Scheme topics:
 
 The source body includes lesson sections for Weeks One and Two (weeds), Three and Four (crop improvement), Five and Six (economic principles), and Nine and Ten (animal nutrition). The source's scheme lists Weeks 7–8 farm records/accounts; that body section must be reconciled against the original pages and package mapping. Revision and examination are markers, not new instructional topics.
 
+
+## Follow-up inspection: Third-Term farm-records body is present
+
+A full-text extraction of the exact Third-Term member (`6abb32818845fa3739f287d2cc3e274149313bfb381074a623a2bce8c02b2811`) confirms that the Weeks 7–8 farm-records/accounts teaching body is present even though the extracted text does not show a distinct `WEEK SEVEN AND EIGHT` heading.
+
+The body begins after the economic-principles material and includes:
+- farm records and farm accounts;
+- balance sheet/net-worth statement and profit-and-loss account;
+- a worked Segun Farms profit-and-loss example;
+- definitions of assets, fixed/current assets, costs, liabilities, owner equity, liquidity, solvency, appreciation, depreciation, salvage value and useful life;
+- total and annual depreciation calculations;
+- evaluation questions, class activity, general evaluation, reading assignment and weekend assignment.
+
+The extracted text also exposes source defects requiring correction/review, not silent acceptance: the example's credit-side table labels a ₦2,000 receipt as sales of spent layers although the input list says sales of eggs; “value of stick left” appears where “stock” may be intended; and an input-output table is interleaved with the economic-principles class activity. These observations support the existing accounting-example and assessment-reconciliation holds. They do not authorize changing the source or approving the model answer.
+
+**Disposition:** do not classify Weeks 7–8 as wholly absent. Treat the body as present but structurally under-labelled, and keep its exact package mapping and assessment/source reconciliation open until checked against the original rendered pages.
+
 ## Decisions this audit does not make
 
 - It does not select between conflicting source versions for other SS2 subjects.
