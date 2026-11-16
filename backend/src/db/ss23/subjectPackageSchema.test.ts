@@ -223,7 +223,7 @@ test('rejects question-level provenance with a mismatched source hash', () => {
   assert.equal(packageSchema.safeParse(invalid).success, false);
 });
 
-test('loads the SS2 Agricultural Science soil package with source assessment coverage and blocked delivery', () => {
+test('loads the SS2 Agricultural Science package with source assessment coverage and blocked delivery', () => {
   const raw = readFileSync(new URL('./subjects/agricultural-science.json', import.meta.url), 'utf8');
   const pkg = packageSchema.parse(JSON.parse(raw));
   assert.equal(pkg.class_name, 'SS 2');
@@ -233,6 +233,8 @@ test('loads the SS2 Agricultural Science soil package with source assessment cov
   assert.equal(firstTerm.length, 8);
   assert.deepEqual(pkg.units.slice(0, 8).map(unit => unit.id), firstTerm.map(unit => unit.id));
   assert.equal(pkg.units.length, 19);
+  assert.equal(pkg.units.filter(unit => unit.term === '2nd Term').length, 6);
+  assert.equal(pkg.units.filter(unit => unit.term === '3rd Term').length, 5);
   assert.equal(pkg.units[0].practice.filter(question => question.question_origin === 'ORIGINAL_SOURCE').length, 14);
   assert.equal(pkg.units[1].practice.filter(question => question.question_origin === 'ORIGINAL_SOURCE').length, 13);
   assert.equal(pkg.units[2].practice.filter(question => question.question_origin === 'ORIGINAL_SOURCE').length, 17);
@@ -243,7 +245,7 @@ test('loads the SS2 Agricultural Science soil package with source assessment cov
   assert.equal(pkg.units[7].practice.filter(question => question.question_origin === 'ORIGINAL_SOURCE').length, 19);
   assert.equal(firstTerm.reduce((total, unit) => total + unit.practice.length, 0), 150);
   assert.equal(firstTerm.reduce((total, unit) => total + unit.practice.filter(question => question.question_origin === 'ORIGINAL_SOURCE').length, 0), 128);
-  assert.equal(pkg.units.reduce((total, unit) => total + unit.practice.length, 0), 173);
+  assert.equal(pkg.units.reduce((total, unit) => total + unit.practice.length, 0), 195);
   assert.ok(pkg.units.every(unit => unit.practice.every(question => question.answer_origin === 'AUTHORED_SUPPLEMENT')));
   assert.equal(pkg.sources[0].source_id, 'SS23-SRC-225f920d3751');
   assert.equal(pkg.assets.length, 47);
@@ -252,8 +254,8 @@ test('loads the SS2 Agricultural Science soil package with source assessment cov
   assert.ok(pkg.open_items.length >= 5);
   assert.ok(pkg.open_items.some(item => item.blocks_delivery));
   assert.ok(pkg.open_items.some(item => !item.blocks_delivery));
-  assert.equal(pkg.open_items.length, 57);
-  assert.equal(pkg.external_sources.length, 22);
+  assert.equal(pkg.open_items.length, 53);
+  assert.equal(pkg.external_sources.length, 31);
   assert.ok(pkg.assets.some(asset => asset.path === 'backend/src/db/ss23/assets/agricultural-science/irrigation-systems.svg' && asset.state.implementation === 'IMPLEMENTED'));
   assert.ok(pkg.assets.some(asset => asset.path === 'backend/src/db/ss23/assets/agricultural-science/drainage-systems.svg' && asset.state.implementation === 'IMPLEMENTED'));
   assert.ok(pkg.assets.some(asset => asset.path === 'backend/src/db/ss23/assets/agricultural-science/nitrogen-cycle.svg' && asset.state.implementation === 'IMPLEMENTED'));

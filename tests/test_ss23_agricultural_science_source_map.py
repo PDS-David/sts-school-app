@@ -36,7 +36,7 @@ class AgriculturalScienceSourceMapTests(unittest.TestCase):
         self.assertEqual(source["bytes"], 10759168)
         self.assertTrue(source["archive_member"].endswith("1ST TERM S2 AGRICULTURAL SCIENCE.doc"))
 
-    def test_ss2_third_term_farm_records_is_separated_from_week_five_six(self):
+    def test_ss2_third_term_farm_records_heading_is_verified_in_original_page_layout(self):
         source = next(s for s in self.data["sources"] if s["source_id"] == "SS23-SRC-6abb32818845")
         by_weeks = {m["weeks"]: m for m in source["body_mapping"]}
         mapping = by_weeks["7-8"]
@@ -46,6 +46,8 @@ class AgriculturalScienceSourceMapTests(unittest.TestCase):
         self.assertIn("TOPIC: FARM RECORD AND FARM ACCOUNT", mapping["anchors"])
         self.assertNotEqual(mapping["topic"], by_weeks["5-6"]["topic"])
         self.assertTrue(set(mapping["anchors"]).isdisjoint(by_weeks["5-6"]["anchors"]))
+        self.assertIn("WEEK SEVEN AND EIGHT", mapping["anchors"])
+        self.assertTrue(any("printed page 13" in item for item in source["open_items"]))
 
     def test_ss3_second_term_preparation_gaps_remain_explicit(self):
         source = next(s for s in self.data["sources"] if s["source_id"] == "SS23-SRC-b12f41490179")

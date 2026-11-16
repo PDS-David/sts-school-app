@@ -95,13 +95,16 @@ test('blocks approved-looking content while package-level open items remain', ()
   assert.deepEqual(delivery.listUnits('SS 2'), []);
 });
 
-test('keeps SS2 and SS3 delivery class-separated', () => {
+test('keeps all three SS2 terms reachable and SS3 delivery class-separated', () => {
   const delivery = createSs23StudentDelivery([approvedPackage()]);
   const ss2Units = delivery.listUnits('SS 2');
   assert.equal(ss2Units.length, draft.units.length);
   assert.ok(ss2Units.length > 0);
+  for (const unit of ss2Units) {
+    assert.equal(delivery.getUnit(unit.id, 'SS 2')?.id, unit.id, 'SS2 unit must be reachable: ' + unit.id);
+    assert.equal(delivery.getUnit(unit.id, 'SS 3'), null, 'SS3 must not retrieve SS2 unit: ' + unit.id);
+  }
   assert.deepEqual(delivery.listUnits('SS 3'), []);
-  assert.equal(delivery.getUnit(ss2Units[0].id, 'SS 3'), null);
 });
 
 test('student projection omits model answers, explanations, marking and provenance', () => {

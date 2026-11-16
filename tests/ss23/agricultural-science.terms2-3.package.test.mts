@@ -17,7 +17,7 @@ test('SS2 Agricultural Science includes all mapped Second- and Third-Term instru
   assert.deepEqual(third.map(unit => unit.week_label), ['1-2', '3-4', '5-6', '7-8', '9-10']);
   const economics = third.find(unit => unit.id.endsWith('T3-W05-06-ECONOMIC-PRINCIPLES'));
   assert.ok(economics);
-  assert.equal(economics.practice.length, 3);
+  assert.equal(economics.practice.length, 5);
   assert.match(economics.practice[2].answer, /8 kg per bag/);
   assert.match(economics.practice[2].answer, /6\.67 kg per bag/);
 });
@@ -52,7 +52,7 @@ test('new lessons have substantive bodies, authored answer guidance and no false
     assert.equal(unit.state.content_approval, 'PENDING');
     assert.equal(unit.state.implementation, 'DRAFT');
     assert.equal(unit.state.verification, 'DEFERRED');
-    assert.ok(unit.practice.length >= 2);
+    assert.ok(unit.practice.length >= 4);
     for (const question of unit.practice) {
       assert.equal(question.answer_origin, 'AUTHORED_SUPPLEMENT');
       assert.ok(question.explanation.trim().length >= 30);
@@ -62,12 +62,43 @@ test('new lessons have substantive bodies, authored answer guidance and no false
   assert.equal(pkg.package_status, 'PENDING');
 });
 
+
+test('external factual corrections are source-bound and covered', () => {
+  const external = new Map(pkg.external_sources.map(source => [source.source_id, source]));
+  const expected = [
+    'SS23-EXT-FAO-SILVICULTURE',
+    'SS23-EXT-WHO-PESTICIDE-FORMULATION',
+    'SS23-EXT-NAFDAC-PESTICIDE-REGS',
+    'SS23-EXT-UMN-PHYTOPHTHORA',
+    'SS23-EXT-PENNSTATE-PLANT-DISEASE-SIGNS',
+    'SS23-EXT-OPENSTAX-GENETICS',
+    'SS23-EXT-USDA-NRCS-FEED',
+    'SS23-EXT-UMD-ANIMAL-MINERALS',
+    'SS23-EXT-WHO-ANTIMICROBIALS',
+  ];
+  for (const id of expected) {
+    assert.ok(external.has(id), 'missing external reference ' + id);
+    assert.ok(pkg.coverage.some(row => row.source_id === id && row.status === 'SUPPORTED' && row.unit_ids.length === 1));
+  }
+  for (const unit of pkg.units.filter(unit => unit.term !== '1st Term')) {
+    for (const ref of unit.provenance.filter(ref => ref.source_id.startsWith('SS23-EXT-'))) {
+      assert.equal(external.get(ref.source_id)?.sha256, ref.source_sha256);
+    }
+  }
+});
+
+function addedPracticeCount() {
+  return pkg.units.filter(unit => unit.term !== '1st Term').reduce((total, unit) => total + unit.practice.length, 0);
+}
+
 test('revision and examination remain assessment markers, not invented lessons', () => {
   const markerCoverage = pkg.coverage.filter(row =>
     row.id.includes('T2-W10') || row.id.includes('T2-W11-12') ||
     row.id.includes('T3-W11') || row.id.includes('T3-W12'),
   );
   assert.equal(markerCoverage.length, 4);
+  assert.equal(pkg.coverage.filter(row => row.id.startsWith('AG2-ASSESS-')).length, 11);
+  assert.equal(addedPracticeCount(), 45);
   assert.ok(markerCoverage.every(row => row.status === 'MARKER' && row.unit_ids.length === 0));
   const added = pkg.units.filter(unit => unit.term !== '1st Term');
   assert.ok(!added.some(unit => unit.title.toLowerCase().includes('revision')));
@@ -78,10 +109,9 @@ test('known technical and assessment blockers remain explicit', () => {
   const ids = new Set(pkg.open_items.map(item => item.id));
   for (const id of [
     'AG2-T2-DISEASE-TAXONOMY',
-    'AG2-T2-INSECTICIDE-CLASSIFICATION',
     'AG2-T2-ASSESSMENT-KEYS',
     'AG2-T3-ACCOUNTING-EXAMPLE',
-    'AG2-T3-ANIMAL-NUTRIENT-CLASSIFICATION',
+    'AG2-T3-FEED-THRESHOLD-ANTIBIOTICS',
     'AG2-T3-ASSESSMENT-KEYS',
   ]) assert.ok(ids.has(id), 'missing blocker ' + id);
   const farm = sourceMap.sources.find(source => source.source_id === 'SS23-SRC-6abb32818845');
