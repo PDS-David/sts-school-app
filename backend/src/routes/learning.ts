@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { createHash } from 'node:crypto';
 import { z } from 'zod';
 import type { PoolClient } from 'pg';
 import { query, withTransaction } from '../db/pool.js';
@@ -25,6 +26,18 @@ import { resolvePrimary4SourceDelivery, safePrimary4Topic, primary4WithdrawnAsse
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
 // Read per request (value is constant in a running server) so tests can exercise PIN on and off in one process.
 const termPinEnforced = () => process.env.TERM_PIN_ENFORCED === 'true';
+
+function verifyStudentDeliveryAsset(bytes: Buffer, mediaType: string, expectedSha256: string): boolean {
+  if (!Buffer.isBuffer(bytes) || bytes.length === 0 || bytes.length > 10 * 1024 * 1024) return false;
+  const actualHash = createHash('sha256').update(bytes).digest('hex');
+  if (actualHash !== expectedSha256.toLowerCase()) return false;
+  if (mediaType === 'audio/mpeg') {
+    const hasId3 = bytes.length >= 3 && bytes.subarray(0, 3).toString('ascii') === 'ID3';
+    const hasMpegFrame = bytes.length >= 2 && bytes[0] === 0xff && (bytes[1] & 0xe0) === 0xe0;
+    return hasId3 || hasMpegFrame;
+  }
+  return verifyTopicAssetPayload(bytes, mediaType, expectedSha256);
+}
 
 const router = Router();
 router.use(requireAuth);
@@ -226,9 +239,16 @@ router.get('/ss1/assets/:assetId', requirePerm('topics.read'), async (req, res) 
   if (!unlockedTerms.has(result.asset.term)) {
     return res.status(423).json({ error: 'Redeem the Term PIN to unlock this lesson asset.' });
   }
+  if (!verifyStudentDeliveryAsset(result.bytes, result.asset.media_type, result.asset.sha256)) {
+    console.error('[assets] SS1 student asset failed MIME/SHA-256 verification', { assetId: result.asset.id });
+    return res.status(500).json({ error: 'Asset integrity verification failed.' });
+  }
   res.set('Content-Type', result.asset.media_type);
   res.set('Content-Length', String(result.bytes.length));
   res.set('ETag', `"${result.asset.sha256}"`);
+  res.set('X-Content-Type-Options', 'nosniff');
+  res.set('Content-Disposition', 'inline');
+  if (result.asset.media_type === 'image/svg+xml') res.set('Content-Security-Policy', "default-src 'none'; sandbox");
   res.set('Cache-Control', 'private, no-store, max-age=0');
   return res.send(result.bytes);
 });
@@ -335,6 +355,10 @@ router.get('/ss23/assets/:assetId', requirePerm('topics.read'), async (req, res)
   const unlockedTerms = await redeemedSs23Terms(context.studentId);
   if (!unlockedTerms.has(result.asset.term)) {
     return res.status(423).json({ error: 'Redeem the Term PIN to unlock this curriculum asset.' });
+  }
+  if (!verifyStudentDeliveryAsset(result.bytes, result.asset.media_type, result.asset.sha256)) {
+    console.error('[assets] SS23 student asset failed MIME/SHA-256 verification', { assetId: result.asset.id });
+    return res.status(500).json({ error: 'Asset integrity verification failed.' });
   }
   res.set('Content-Type', result.asset.media_type);
   res.set('Content-Length', String(result.bytes.length));
