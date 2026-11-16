@@ -1,3 +1,19 @@
+# Live handoff correction after PRs #872 and #873 — 2026-11-16
+
+This addendum supersedes stale live PR-state claims below; retain historical records for audit.
+
+- Current master checkpoint: `1ed6a20f29b8fc8c8c1c25489ddf59fb47e0549b` (PR #872 merge commit).
+- PR #873 merged at 04:55:38Z, merge commit `f5fd06be603762edbf34f95d437c603994351242`; PR #872 merged at 04:55:42Z, merge commit `1ed6a20f29b8fc8c8c1c25489ddf59fb47e0549b`.
+- PRs #867–#873 are merged. No open SS23 PR was found in the latest repository search. Owner-side merges do not grant agent merge authority.
+- Agriculture remains 19 DRAFT units (8/6/5), 195 practice/assessment records, 52 assets (42 unresolved placeholders + 10 local SVGs), 48 external references, 116 coverage rows and 47 open items (46 blocking). Package PENDING; approvals PENDING; verification DEFERRED; no student delivery.
+- PR #873 only aligns visual-blocker records with the three authored alternatives for irrigation/drainage and nutrient/cycle topics. Subject-lead approval and original-image rights remain unresolved.
+- Next: continue Agriculture source/assessment/practical/rights/specialist/teacher gates. Do not begin Biology until Agriculture passes. Then SS2 alphabetical; then SS3 examination preparation only (WAEC/NECO/JAMB), no new instructional topics.
+- Preserve four owner source-version decisions (SS2 T2 Economics; SS2 T3 Further Mathematics; SS3 T1 Mathematics; SS3 T1 Economics).
+- The combined source ZIPs' member pages were not accessible through the Library text interface in this session; do not claim page-level inspection. Keep source-dependent claims blocked until actual member content is accessible.
+- No merge, import, deployment, approval or student release without explicit owner authorization.
+
+---
+
 # Latest handoff supplement — 2026-11-16
 
 This supplement supersedes earlier live-status claims in the historical handoff.
