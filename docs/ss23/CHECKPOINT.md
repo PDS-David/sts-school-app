@@ -1,3 +1,22 @@
+## SS23-Q-HTTP-01 — 2026-11-16
+
+- Status: **IMPLEMENTED; PR / CI PENDING.**
+- Base: `master`.
+- Changed files:
+  - `tests/backend-ss23-student-delivery.integration.test.mts` — PostgreSQL-backed HTTP regression for SS2 and SS3 student contexts; checks class-specific list endpoints, cross-mode requests, every pending unit ID and a pending asset return no student content.
+  - `.github/workflows/backend-ss23-student-delivery.yml` — disposable PostgreSQL 16, schema bootstrap, HTTP regression and backend typecheck.
+- Commits:
+  - HTTP regression test: `c4df0e5db9167886416c63507eb95d661a2c0dfa`
+  - PostgreSQL workflow: `75784d9fdb318fdf963268a0fa2ac893052e83ee`
+  - Failure-safe fixture cleanup: `e3994e60f1e9a949dfee2875591ff2fe193ef1c7`
+- Test results:
+  - Local execution: NOT RUN (GitHub DNS unavailable in this execution environment).
+  - PostgreSQL route integration and backend typecheck: pending PR CI.
+  - Positive reachability of all eight approved-fixture units and no-draft leakage at the delivery-service layer is covered by stacked PR #854 (70/70 tests passed on its tested code commit).
+- Exact next action: open PR against `master`, verify the new PostgreSQL HTTP test and backend typecheck, then update this checkpoint with the CI run. Do not merge.
+
+---
+
 # SS2 / SS3 curriculum readiness — checkpoint
 
 Task: SS23-00 baseline inspection and SS23-S0 source receipt. Updated: 2026-11-13.
