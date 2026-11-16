@@ -107,6 +107,10 @@ jobs:
           npm audit --json > artifacts/npm-audit-sdk57.json || true
           npm ls expo @expo/cli expo-sharing expo-splash-screen glob image-size minimatch zod --all --json > artifacts/audit-dependency-tree-sdk57.json || true
           git diff --binary -- mobile/package.json package-lock.json > artifacts/expo-sdk57-upgrade.patch
+          mkdir -p artifacts/expo-sdk57-candidate
+          cp mobile/package.json artifacts/expo-sdk57-candidate/mobile-package.json
+          cp package-lock.json artifacts/expo-sdk57-candidate/package-lock.json
+          cp mobile/app.config.js artifacts/expo-sdk57-candidate/app.config.js
       - name: Build staging Android APK with EAS
         if: github.event_name == 'push' && env.EXPO_TOKEN != ''
         run: npx eas-cli@latest build --platform android --profile staging --non-interactive --json > artifacts/eas-staging-apk.json
