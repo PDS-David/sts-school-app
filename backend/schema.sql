@@ -516,6 +516,59 @@ CREATE TABLE IF NOT EXISTS audit_log (
   created_at  TIMESTAMPTZ DEFAULT now()
 );
 
+-- BSEC-029: retain actor snapshots, request attribution and a verifiable
+-- append-only hash chain. actor_id is deliberately not an FK: deleting a user
+-- must never rewrite historical audit events.
+ALTER TABLE audit_log DROP CONSTRAINT IF EXISTS audit_log_actor_id_fkey;
+ALTER TABLE audit_log ADD COLUMN IF NOT EXISTS actor_role TEXT;
+ALTER TABLE audit_log ADD COLUMN IF NOT EXISTS actor_school_code TEXT;
+ALTER TABLE audit_log ADD COLUMN IF NOT EXISTS actor_ip TEXT;
+ALTER TABLE audit_log ADD COLUMN IF NOT EXISTS request_id UUID;
+ALTER TABLE audit_log ADD COLUMN IF NOT EXISTS user_agent TEXT;
+ALTER TABLE audit_log ADD COLUMN IF NOT EXISTS metadata JSONB NOT NULL DEFAULT '{}'::jsonb;
+ALTER TABLE audit_log ADD COLUMN IF NOT EXISTS outcome TEXT NOT NULL DEFAULT 'success';
+ALTER TABLE audit_log ADD COLUMN IF NOT EXISTS previous_hash TEXT;
+ALTER TABLE audit_log ADD COLUMN IF NOT EXISTS event_hash TEXT;
+UPDATE audit_log SET created_at=now() WHERE created_at IS NULL;
+
+DO $
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname='audit_log_outcome_check') THEN
+    ALTER TABLE audit_log ADD CONSTRAINT audit_log_outcome_check
+      CHECK (outcome IN ('success', 'failure', 'denied'));
+  END IF;
+END $;
+
+CREATE INDEX IF NOT EXISTS idx_audit_log_school_id_desc ON audit_log(school_code, id DESC);
+CREATE INDEX IF NOT EXISTS idx_audit_log_actor_id_desc ON audit_log(actor_id, id DESC);
+CREATE INDEX IF NOT EXISTS idx_audit_log_action_id_desc ON audit_log(action, id DESC);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_audit_log_event_hash_unique
+  ON audit_log(event_hash) WHERE event_hash IS NOT NULL;
+
+CREATE OR REPLACE FUNCTION audit_log_reject_mutation()
+RETURNS trigger
+LANGUAGE plpgsql
+AS $
+BEGIN
+  RAISE EXCEPTION 'audit_log is append-only; mutation rejected'
+    USING ERRCODE = '42501';
+END;
+$;
+
+DROP TRIGGER IF EXISTS audit_log_append_only_update_delete ON audit_log;
+CREATE TRIGGER audit_log_append_only_update_delete
+  BEFORE UPDATE OR DELETE ON audit_log
+  FOR EACH ROW EXECUTE FUNCTION audit_log_reject_mutation();
+
+DROP TRIGGER IF EXISTS audit_log_append_only_truncate ON audit_log;
+CREATE TRIGGER audit_log_append_only_truncate
+  BEFORE TRUNCATE ON audit_log
+  FOR EACH STATEMENT EXECUTE FUNCTION audit_log_reject_mutation();
+
+REVOKE UPDATE, DELETE, TRUNCATE ON TABLE audit_log FROM PUBLIC;
+COMMENT ON TABLE audit_log IS 'Append-only, school-attributed, SHA-256 hash-chained security audit events.';
+
+
 -- ── Email Log Queue ───────────────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS email_log_queue (
   id           BIGSERIAL PRIMARY KEY,
