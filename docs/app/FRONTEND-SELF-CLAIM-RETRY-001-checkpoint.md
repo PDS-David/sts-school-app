@@ -12,13 +12,14 @@ The public student self-claim flow had no recovery path for transient lookup fai
 
 ## Change
 
-- Separate lookup failures from form-validation errors.
+- Separate lookup failures from form-validation errors in student self-claim.
 - Add retry controls for school, class, and roster lookups.
 - Distinguish a successful empty school/class/roster result from a network/API failure.
 - Disable Next until a valid school, class, or student has been selected.
+- Add a retryable school lookup state to public self-registration as well; distinguish a successful empty school list from a network failure and prevent submission until a school is available.
 
 ## Verification
 
 - Confirmed the screen's lookup endpoints exist in `backend/src/routes/auth.ts`.
-- Mobile TypeScript and Android readiness checks pending after PR creation.
+- Mobile TypeScript and Android readiness checks pending for the expanded onboarding changes.
 - No account or production data was created or modified.
