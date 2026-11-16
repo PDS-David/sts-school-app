@@ -2210,6 +2210,33 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "ASSET-AG2-T1-W03-TRACTOR-PTO-DRAWBAR-SCHEMATIC",
+      "unit_id": "SUP-SS2-AGRICULTURAL-SCIENCE-T1-W03-FARM-MACHINERY",
+      "path": "backend/src/db/ss23/assets/agricultural-science/tractor-pto-drawbar-school.svg",
+      "sha256": "c60684e43b902d6096033ea71a097d4857781222805910326edfac20da249d81",
+      "bytes": 4253,
+      "media_type": "image/svg+xml",
+      "alt": "Original school-authored tractor schematic contrasting a PTO rotary-power connection with a drawbar or towing hitch connection.",
+      "order": 51,
+      "source_locator": "Authored replacement schematic for the source tractor/PTO/drawbar illustration; original source figure is retained only as a non-deliverable provenance record.",
+      "provenance": {
+        "source_id": "SS23-EXT-APS-CASSAVA-BLIGHT-2024",
+        "source_sha256": "86c66ef832660266d36e7cecc70fb2c1f4f0d808bece42469643abac027136b4",
+        "role": "AUTHORED_SUPPLEMENT",
+        "locator": "Abstract: causal agent and disease symptoms",
+        "rights": "Original SVG authored for this curriculum; no source illustration is reproduced. It is not a machine-specific service diagram.",
+        "attribution": "Original Sow the Seed School SS2 Agricultural Science teaching schematic.",
+        "reuse_status": "PERMITTED"
+      },
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "IMPLEMENTED",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "units": [
@@ -18051,6 +18078,22 @@
           "explanation": "Original diagrams condense major stores and transformations from registered scientific references and explicitly distinguish runoff, leaching and gaseous losses."
         }
       ]
+    },
+    {
+      "id": "COV-SS2-AG-T1-TRACTOR-PTO-DRAWBAR-SCHEMATIC",
+      "source_id": "SS23-EXT-APS-CASSAVA-BLIGHT-2024",
+      "objective": "Distinguish PTO rotary-power transmission from drawbar/hitch towing force in tractor-implement connections.",
+      "objective_locator": "First Term, Week 3, supplementary school-authored tractor schematic.",
+      "status": "SUPPORTED",
+      "unit_ids": [
+        "SUP-SS2-AGRICULTURAL-SCIENCE-T1-W03-FARM-MACHINERY"
+      ],
+      "evidence": [
+        {
+          "locator": "Abstract: causal agent and disease symptoms",
+          "explanation": "Original diagram contrasts a PTO shaft connected to a rotary implement with a drawbar/hitch connected for towing; it is a general teaching aid, not machine-specific service guidance."
+        }
+      ]
     }
   ],
   "open_items": [
@@ -18159,8 +18202,8 @@
     {
       "id": "AG2-T1-W03-FIGURE-RIGHTS",
       "kind": "PERMISSION",
-      "detail": "Fifteen Week Three figures were found in the converted source document. Several are screenshots of third-party web pages with visible copyright notices; figure-to-paragraph associations and reuse permissions are not established.",
-      "required_action": "Verify exact figure mapping and labels; obtain permission or replace third-party screenshots with original school-owned diagrams before student delivery.",
+      "detail": "A new original school-authored schematic now distinguishes rotary power transmitted by a PTO shaft from pulling force transmitted through a drawbar/hitch. The lesson also distinguishes diesel compression ignition from petrol spark ignition. The original source illustration remains non-deliverable; the substitute is a simplified teaching aid, not machine-specific service guidance, and awaits technical/teacher review.",
+      "required_action": "Check that the schematic's PTO shaft and drawbar functions are labelled correctly and match the lesson and registered mechanisation reference; verify the SVG file; obtain subject-lead approval for its use and confirm learners are directed to equipment manuals for real operation. Keep the original source image non-deliverable unless licensed. Keep the item blocking until verification and approval are recorded.",
       "affected_ids": [
         "SUP-SS2-AGRICULTURAL-SCIENCE-T1-W03-FARM-MACHINERY",
         "ASSET-AG2-T1-W03-INCUBATOR",
@@ -18177,7 +18220,8 @@
         "ASSET-AG2-T1-W03-COMBINE-HARVESTER-ALT",
         "ASSET-AG2-T1-W03-MOULDBOARD-PLOUGH",
         "ASSET-AG2-T1-W03-RIDGER",
-        "ASSET-AG2-T1-W03-DISC-HARROW"
+        "ASSET-AG2-T1-W03-DISC-HARROW",
+        "ASSET-AG2-T1-W03-TRACTOR-PTO-DRAWBAR-SCHEMATIC"
       ],
       "blocks_delivery": true
     },
