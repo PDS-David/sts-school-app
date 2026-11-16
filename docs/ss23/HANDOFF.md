@@ -111,11 +111,11 @@ Separately, the received archive comparison found 96 exact member matches agains
 
 ## 4B. Current Agricultural Science continuation snapshot (2026-11-16)
 
-At this checkpoint, PR #865 is open and unmerged. It adds source-hashed external clarifications for T2 floriculture, crop-disease examples and safe pest-control/IPM guidance, plus six accessible T1 further-reading alternatives, regression tests and an updated Agricultural Science checkpoint. Fresh CI is running on its final head; recheck the live PR and all required checks before relying on this snapshot.
+At this checkpoint, PR #867 is open and unmerged. It adds source-hashed external clarifications for T2 floriculture, crop-disease examples and safe pest-control/IPM guidance, plus six accessible T1 further-reading alternatives, regression tests and an updated Agricultural Science checkpoint. Fresh CI is running on its final head; recheck the live PR and all required checks before relying on this snapshot.
 
 The PR branch records 45 external factual references and 109 coverage rows (75 SUPPORTED, 25 PARTIAL, 5 UNRESOLVED and 4 MARKER). The package remains `PENDING`, all 19 units remain `DRAFT`, and 47 open items remain (46 delivery-blocking). The full original source tables, disputed text, assessment reconciliation and subject-specialist approvals are not complete. These external supplements do not certify the subject or make it student-deliverable.
 
-Do not advance to SS2 Biology until Agricultural Science's source, assessment and required teacher-approval gates are satisfied. Never merge PR #865 without owner authorisation.
+Do not advance to SS2 Biology until Agricultural Science's source, assessment and required teacher-approval gates are satisfied. Never merge PR #867 without owner authorisation.
 
 ## 5. Work queue
 

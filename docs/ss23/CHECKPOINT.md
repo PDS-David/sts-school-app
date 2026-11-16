@@ -9,12 +9,9 @@
 - PR #858 — Agricultural Science evidence register: **merged**.
 - PR #859 — refreshed SS2/SS3 handoff and execution queue: **merged**.
 - PR #860 — re-supplied source archives and exam-only SS3 scope: **merged** at the current master SHA above.
-- PR #861 — temporary Agricultural Science audit-only PR: **closed unmerged**; its checkpoint work was consolidated into the Agriculture implementation work.
-- PR #862 — earlier Agricultural Science draft PR: **closed unmerged**, superseded by later branch updates.
-- PR #863 — earlier subject-inventory/checkpoint PR: **closed unmerged**, superseded by PR #866.
-- PR #864 — intermediate Agricultural Science PR: **closed unmerged**, superseded by PR #865.
-- PR #865 — final Agricultural Science implementation PR: **open, unmerged**. Head `a79a956f41c259f9af0f17357cbf8dca35266ab1`; fresh CI is running. Recheck its live head and all required checks before review.
-- PR #866 — final subject-inventory and live-checkpoint documentation PR: **open, unmerged**. Recheck its live head and CI before review.
+- PRs #861, #862, #863, #864, #865 and #866 — intermediate Agricultural Science or handoff PRs: **closed unmerged** and superseded; no changes from those closed PRs were merged independently.
+- PR #867 — final Agricultural Science implementation PR: **open, unmerged**. Head `140abf9bc8b67a28d849e002258ee66b83ed1783`; fresh package-contract and integrity CI is running. Recheck its live head and all required checks before review.
+- PR #868 — final subject-inventory and live-checkpoint documentation PR: **open, unmerged**. Recheck its live head and CI before review.
 
 No PR may be merged by an agent. Owner retains merge and release authority.
 
@@ -32,13 +29,13 @@ No PR may be merged by an agent. Owner retains merge and release authority.
 
 ### Additional draft state in unmerged PR #862
 
-PR #865 adds 14 source-hashed external references and 19 supported coverage rows for T2 floriculture, crop-disease examples, safe pest-control/IPM guidance and six accessible T1 reading alternatives. On that branch:
+PR #867 adds 14 source-hashed external references and 19 supported coverage rows for T2 floriculture, crop-disease examples, safe pest-control/IPM guidance and six accessible T1 reading alternatives. On that branch:
 - 45 external factual references.
 - 109 coverage rows: 75 SUPPORTED, 25 PARTIAL, 5 UNRESOLVED, 4 MARKER.
 - 47 open items remain: 46 delivery-blocking and 1 non-blocking.
 - Package remains `PENDING`; all 19 units remain `DRAFT`.
 
-The PR preserves the unresolved floriculture spelling `carnality`, the complete crop-disease table review, pest-species verification, source-assessment reconciliation and specialist approvals. The new external supplements do not certify the subject or close the readiness gate. Do not treat PR #865's branch state as merged master state.
+The PR preserves the unresolved floriculture spelling `carnality`, the complete crop-disease table review, pest-species verification, source-assessment reconciliation and specialist approvals. The new external supplements do not certify the subject or close the readiness gate. Do not treat PR #867's branch state as merged master state.
 
 **Do not advance to SS2 Biology until the Agricultural Science source, assessment and required teacher-approval gates are satisfied.**
 
