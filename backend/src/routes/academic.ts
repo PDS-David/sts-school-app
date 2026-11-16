@@ -392,7 +392,7 @@ router.put('/class-locks', requireRole('teacher', 'admin'), async (req, res) => 
       [sc, className, parsedTermId],
     );
     if (rows[0]) {
-      await audit(user, 'unlock_class', 'class_lock', String(rows[0].id), `${class_name} — term ${term_id}`);
+      await audit(user, 'unlock_class', 'class_lock', String(rows[0].id), `${className} — term ${parsedTermId}`);
     }
     return res.json({ lock: null });
   }
