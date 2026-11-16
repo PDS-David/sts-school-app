@@ -12,7 +12,7 @@ import {
 import { loadSs23Packages } from './loader.js';
 
 const loaded = loadSs23Packages();
-const draft = loaded[0];
+const draft = loaded.find(pkg => pkg.class_name === 'SS 2' && pkg.subject_slug === 'agricultural-science')!;
 const approvedPackage = () => {
   const pkg: any = structuredClone(draft);
   pkg.package_status = 'IMPLEMENTED';
@@ -51,14 +51,16 @@ const approvedPackage = () => {
   return pkg;
 };
 
-test('loads only registered, schema-valid SS23 packages', () => {
-  assert.equal(loaded.length, 2);
-  const subjects = loaded.map(pkg => pkg.subject_slug).sort();
-  assert.deepEqual(subjects, ['agricultural-science', 'biology']);
-  for (const pkg of loaded) {
-    assert.equal(pkg.class_name, 'SS 2');
+test('loads only registered, schema-valid SS23 packages across both classes', () => {
+  assert.equal(loaded.length, 3);
+  const packages = loaded.map(pkg => `${pkg.class_name}/${pkg.subject_slug}`).sort();
+  assert.deepEqual(packages, ['SS 2/agricultural-science', 'SS 2/biology', 'SS 3/agricultural-science']);
+  for (const pkg of loaded.filter(item => item.class_name === 'SS 2')) {
     assert.equal(pkg.delivery_mode, 'INSTRUCTIONAL');
   }
+  const ss3 = loaded.find(item => item.class_name === 'SS 3');
+  assert.ok(ss3);
+  assert.equal(ss3.delivery_mode, 'EXAM_PREPARATION');
 });
 
 test('rejects unregistered package files', () => {
