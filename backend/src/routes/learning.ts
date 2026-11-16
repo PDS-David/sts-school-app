@@ -876,7 +876,7 @@ router.get('/assets/:id', requirePerm('topics.read'), async (req, res) => {
     `SELECT a.bytes
        FROM topic_assets a
        JOIN topics t ON t.id=a.topic_id
-      WHERE a.id=$1 AND a.displayed=true AND t.school_code=$2 AND t.id=${bytesParams.length}${scope}`,
+      WHERE a.id=$1 AND a.displayed=true AND t.school_code=$2 AND t.id=$${bytesParams.length}${scope}`,
     bytesParams,
   );
   if (!rows[0]) return res.status(404).json({ error: 'Asset not found' });
