@@ -16,7 +16,7 @@ Merged implementation: PR #766
 ## Verification
 - PR #766 merged on 2026-11-13; mobile TypeScript passed in run `43457559359`.
 - Current master validation on commit `209a960ace30a8026e722e71e1b7f727347fef0c` passed package integrity and curriculum contract gates.
-- PR #894 adds DB-backed checks for 10-topic milestone thresholds, fully graded 80%/perfect scores and student-only authorization. CI is pending.
+- PR #894 adds DB-backed checks for 10-topic milestone thresholds, fully graded 80%/perfect scores and student-only authorization. The route suite passed in run `43940628882`; all required workflows passed on head `3898b90277ae8cb046876f4eb3f137ed41f5c119`.
 - No physical-device acceptance has been performed.
 
 ## Remaining
