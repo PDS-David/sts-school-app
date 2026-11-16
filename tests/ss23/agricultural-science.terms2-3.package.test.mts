@@ -52,7 +52,7 @@ test('new lessons have substantive bodies, authored answer guidance and no false
     assert.equal(unit.state.content_approval, 'PENDING');
     assert.equal(unit.state.implementation, 'DRAFT');
     assert.equal(unit.state.verification, 'DEFERRED');
-    assert.ok(unit.practice.length >= 2);
+    assert.ok(unit.practice.length >= 4);
     for (const question of unit.practice) {
       assert.equal(question.answer_origin, 'AUTHORED_SUPPLEMENT');
       assert.ok(question.explanation.trim().length >= 30);
@@ -87,12 +87,18 @@ test('external factual corrections are source-bound and covered', () => {
   }
 });
 
+function addedPracticeCount() {
+  return pkg.units.filter(unit => unit.term !== '1st Term').reduce((total, unit) => total + unit.practice.length, 0);
+}
+
 test('revision and examination remain assessment markers, not invented lessons', () => {
   const markerCoverage = pkg.coverage.filter(row =>
     row.id.includes('T2-W10') || row.id.includes('T2-W11-12') ||
     row.id.includes('T3-W11') || row.id.includes('T3-W12'),
   );
   assert.equal(markerCoverage.length, 4);
+  assert.equal(pkg.coverage.filter(row => row.id.startsWith('AG2-ASSESS-')).length, 11);
+  assert.equal(addedPracticeCount(), 45);
   assert.ok(markerCoverage.every(row => row.status === 'MARKER' && row.unit_ids.length === 0));
   const added = pkg.units.filter(unit => unit.term !== '1st Term');
   assert.ok(!added.some(unit => unit.title.toLowerCase().includes('revision')));
