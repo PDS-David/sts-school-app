@@ -42,7 +42,7 @@ router.get('/fee-items', async (req, res) => {
     let schoolFilter = '';
     if (requestedSchoolCode) {
       params.push(requestedSchoolCode);
-      schoolFilter = ` AND fi.school_code=${params.length}`;
+      schoolFilter = ` AND fi.school_code=$${params.length}`;
     }
     const { rows } = await query(
       `SELECT fi.* FROM fee_items fi
