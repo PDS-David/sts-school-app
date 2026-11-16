@@ -21,15 +21,15 @@ This section supersedes the historical branch/PR status in the checkpoint below.
 ### SS23-VALIDATOR-ALIGN-01 — current task
 
 - Branch: `agent/ss23-validator-contract-alignment-20261116`
-- Status: **PR OPEN (#853); CI RUN NOT YET OBSERVED.**
+- Status: **PR OPEN (#853); FIRST CI RUN PASSED, READINESS CLASSIFICATION REFINED, RERUN PENDING.**
 - Changed files:
   - `backend/src/db/ss23/validateSubjectPackages.ts` — validates current root-level unit packages with the merged unit schema and registry, while retaining legacy audit-package validation; readiness now counts the current package.
   - `backend/src/db/ss23/refreshIntegrityHashes.ts` — checks root-level unit packages and legacy class subdirectories; refreshes unit/lesson body hashes and stored asset hashes; missing unapproved source-extract references remain non-deliverable metadata, while approved missing assets fail.
   - `tests/ss23/unit-package-validator.test.mts` — regression coverage for root package discovery, readiness, source hash/byte mismatch, pending assets, approved missing assets, path traversal and consolidated-archive member path variants.
 - Commits:
-  - Validator: `407d5d57c0e42cb1060472e9c682806f2753e969`
+  - Validator initial alignment: `407d5d57c0e42cb1060472e9c682806f2753e969`; term-readiness correction: `aea1b6c920e8a96bbd13e2dddbb4a3f0ab79786e`
   - Hash refresh (final): `0bb5c2740b004e35bc00df86a852a77e24730a4c`
-  - Regression tests (final): `5b0373917dd253db480fae31c03860a846b8237b`
+  - Regression tests initial: `5b0373917dd253db480fae31c03860a846b8237b`; term-readiness regression: `e9308bc131eaec34cfba50b6e8fa2b22b7771b14`
 - Test evidence:
   - Local clone/install could not run: `git clone` failed because this execution environment could not resolve `github.com`.
   - `npm ci --ignore-scripts --workspace backend`: NOT RUN.
@@ -38,9 +38,9 @@ This section supersedes the historical branch/PR status in the checkpoint below.
   - `npm run test:ss23`: NOT RUN locally.
   - Backend TypeScript typecheck: NOT RUN locally.
   - PR CI: pending; do not describe this task as tested until the SS23 integrity gate passes.
-- PR: [#853](https://github.com/PDS-David/sts-school-app/pull/853), base `master`, head `agent/ss23-validator-contract-alignment-20261116`; PR head before this checkpoint update: `de8b163427e90212791808d24f036ff4bb073aba`.
-- CI: `fetch_commit_workflow_runs` returned no run for that head at the time of this update. Do not mark the gate passed; inspect the PR checks and record the run when available.
-- Exact next action: inspect the SS23 integrity-gate run for PR #853, fix any failure on this branch, then update this checkpoint with the resulting run and commit.
+- PR: [#853](https://github.com/PDS-David/sts-school-app/pull/853), base `master`, head `agent/ss23-validator-contract-alignment-20261116`; latest code commit before this checkpoint update: `e9308bc131eaec34cfba50b6e8fa2b22b7771b14`.
+- First CI run `43787842843` passed backend typecheck, hash check, package validation, SS23 tests (32/32) and SS1 validation. Its readiness output exposed that one subject package made all three terms appear `IN_PROGRESS`, even though only T1 had sources/units. The validator now reports T2/T3 as `MISSING_TERM_PACKAGE`; a regression test was added. The first run predates that correction.
+- Exact next action: inspect the rerun for the latest PR #853 head, confirm the readiness summary is `IN_PROGRESS: 1`, `MISSING_TERM_PACKAGE: 2`, `MISSING_PACKAGE: 96`, `SOURCE_MISSING: 27`, and update this checkpoint with the final run and commit.
 
 ### Owner decisions and source limitations
 
