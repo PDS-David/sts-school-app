@@ -35,11 +35,21 @@ function validateDaysOpened(days_opened: unknown): string | null {
   return null;
 }
 router.get('/terms', async (req, res) => {
-  const { school_code } = req.query as { school_code?: string };
-  // finance_admin also has school_code=NULL (manages both schools, same as
-  // admin) and needs to pick a term when creating an invoice — same override
-  // pattern as admin, extended to cover it.
-  const sc = (school_code && (req.user!.role === 'admin' || req.user!.role === 'finance_admin')) ? school_code : req.user!.school_code;
+  const requested = typeof req.query.school_code === 'string' ? req.query.school_code.trim() : undefined;
+  const user = req.user!;
+  let sc = user.school_code;
+  if (user.role === 'admin') {
+    if (user.school_code) {
+      if (requested !== undefined && requested !== user.school_code) {
+        return res.status(403).json({ error: "You can't view terms outside your school" });
+      }
+      sc = user.school_code;
+    } else {
+      sc = requested ?? null;
+    }
+  } else if (user.role === 'finance_admin' && requested) {
+    sc = requested;
+  }
   const { rows } = await query(
     'SELECT * FROM terms WHERE school_code=$1 ORDER BY academic_year DESC, id', [sc],
   );
@@ -47,8 +57,19 @@ router.get('/terms', async (req, res) => {
 });
 
 router.get('/terms/current', async (req, res) => {
-  const { school_code } = req.query as { school_code?: string };
-  const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
+  const requested = typeof req.query.school_code === 'string' ? req.query.school_code.trim() : undefined;
+  const user = req.user!;
+  let sc = user.school_code;
+  if (user.role === 'admin') {
+    if (user.school_code) {
+      if (requested !== undefined && requested !== user.school_code) {
+        return res.status(403).json({ error: "You can't view terms outside your school" });
+      }
+      sc = user.school_code;
+    } else {
+      sc = requested ?? null;
+    }
+  }
   const { rows } = await query(
     'SELECT * FROM terms WHERE school_code=$1 AND is_current=TRUE LIMIT 1', [sc],
   );
@@ -72,7 +93,11 @@ router.post('/terms', requireRole('admin'), async (req, res) => {
   const daysOpenedError = validateDaysOpened(days_opened);
   if (daysOpenedError) return res.status(400).json({ error: daysOpenedError });
 
+  const user = req.user!;
   const schoolCode = school_code.trim();
+  if (user.school_code && user.school_code !== schoolCode) {
+    return res.status(403).json({ error: "You can't create a term for another school" });
+  }
   const academicYear = academic_year.trim();
 
   // Serialize term mutations for this school. The schema's unique constraint
@@ -171,7 +196,8 @@ router.put('/terms/:id', requireRole('admin', 'teacher'), async (req, res) => {
     const term = lockedRows[0];
     if (!term) return { ok: false as const, status: 404, error: 'Term not found' };
 
-    if (user.role === 'teacher' && term.school_code !== user.school_code) {
+    if ((user.role === 'teacher' || (user.role === 'admin' && user.school_code)) &&
+        term.school_code !== user.school_code) {
       return { ok: false as const, status: 404, error: 'Term not found' };
     }
 
@@ -213,8 +239,19 @@ router.put('/terms/:id', requireRole('admin', 'teacher'), async (req, res) => {
 // SUBJECTS
 // ════════════════════════════════════════
 router.get('/subjects', async (req, res) => {
-  const { school_code } = req.query as { school_code?: string };
-  const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
+  const requested = typeof req.query.school_code === 'string' ? req.query.school_code.trim() : undefined;
+  const user = req.user!;
+  let sc = user.school_code;
+  if (user.role === 'admin') {
+    if (user.school_code) {
+      if (requested !== undefined && requested !== user.school_code) {
+        return res.status(403).json({ error: "You can't view subjects outside your school" });
+      }
+      sc = user.school_code;
+    } else {
+      sc = requested ?? null;
+    }
+  }
   const { rows } = await query(
     'SELECT * FROM subjects WHERE school_code=$1 ORDER BY name', [sc],
   );
@@ -222,18 +259,40 @@ router.get('/subjects', async (req, res) => {
 });
 
 router.post('/subjects', requireRole('admin','teacher'), async (req, res) => {
-  const { name, code, school_code } = req.body;
-  const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
+  const { name, code, school_code } = req.body ?? {};
+  const user = req.user!;
+  let sc = user.school_code;
+  if (user.role === 'admin') {
+    const requested = typeof school_code === 'string' ? school_code.trim() : '';
+    if (user.school_code) {
+      if (school_code !== undefined && requested !== user.school_code) {
+        return res.status(403).json({ error: "You can't create a subject for another school" });
+      }
+      sc = user.school_code;
+    } else {
+      if (!requested || requested.length > 50) {
+        return res.status(400).json({ error: 'school_code is required for global administrators' });
+      }
+      sc = requested;
+    }
+  }
+  if (typeof name !== 'string' || !name.trim() || name.trim().length > 120) {
+    return res.status(400).json({ error: 'A valid subject name is required' });
+  }
   const { rows } = await query(
     `INSERT INTO subjects(name,code,school_code) VALUES($1,$2,$3)
      ON CONFLICT(school_code,name) DO UPDATE SET code=$2 RETURNING *`,
-    [name, code ?? null, sc],
+    [name.trim(), typeof code === 'string' && code.trim() ? code.trim() : null, sc],
   );
   return res.json({ subject: rows[0] });
 });
 
 router.delete('/subjects/:id', requireRole('admin'), async (req, res) => {
-  await query('DELETE FROM subjects WHERE id=$1', [req.params.id]);
+  const { rows } = await query(
+    'DELETE FROM subjects WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) RETURNING id',
+    [req.params.id, req.user!.school_code ?? null],
+  );
+  if (!rows[0]) return res.status(404).json({ error: 'Subject not found' });
   return res.json({ ok: true });
 });
 
@@ -241,8 +300,19 @@ router.delete('/subjects/:id', requireRole('admin'), async (req, res) => {
 // CLASSES
 // ════════════════════════════════════════
 router.get('/classes', async (req, res) => {
-  const { school_code } = req.query as { school_code?: string };
-  const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
+  const requested = typeof req.query.school_code === 'string' ? req.query.school_code.trim() : undefined;
+  const user = req.user!;
+  let sc = user.school_code;
+  if (user.role === 'admin') {
+    if (user.school_code) {
+      if (requested !== undefined && requested !== user.school_code) {
+        return res.status(403).json({ error: "You can't view classes outside your school" });
+      }
+      sc = user.school_code;
+    } else {
+      sc = requested ?? null;
+    }
+  }
   const { rows } = await query(
     'SELECT * FROM classes WHERE school_code=$1 ORDER BY id', [sc],
   );
