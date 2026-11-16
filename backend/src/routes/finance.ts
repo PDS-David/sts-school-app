@@ -30,13 +30,34 @@ function blockNonFinanceRoles(req: Request, res: Response, next: NextFunction) {
 router.use(blockNonFinanceRoles);
 
 // ── GET /finance/fee-items ─────────────────────────────────────────────────────
-// Fee schedule is not sensitive per-student data, just scoped to the caller's school.
+// Fee schedules are school-scoped. A parent may have wards across both STS
+// campuses, so their requested school must be proven against parent_wards
+// rather than silently falling back to the parent's original home school.
 router.get('/fee-items', async (req, res) => {
   const { school_code } = req.query as { school_code?: string };
-  // finance_admin has no school of its own (manages both schools, same as
-  // Operations Admin used to for this data) — needs an explicit school_code
-  // from the client (e.g. a school switcher), same pattern as everywhere
-  // else an admin-shaped role has school_code = NULL.
+  if (req.user!.role === 'parent') {
+    const params: unknown[] = [req.user!.id];
+    let schoolFilter = '';
+    if (school_code) {
+      params.push(school_code);
+      schoolFilter = ` AND fi.school_code=${params.length}`;
+    }
+    const { rows } = await query(
+      `SELECT fi.* FROM fee_items fi
+       WHERE fi.school_code IN (
+         SELECT DISTINCT st.school_code
+         FROM parent_wards pw
+         JOIN students st ON st.id=pw.student_id
+         WHERE pw.parent_id=$1 AND st.deleted_at IS NULL
+       )${schoolFilter}
+       ORDER BY fi.id`,
+      params,
+    );
+    return res.json({ fee_items: rows });
+  }
+
+  // finance_admin has no school of its own (manages both schools) — it
+  // needs an explicit school_code from the client, e.g. the school switcher.
   const sc = req.user!.role === 'finance_admin' ? (school_code ?? req.user!.school_code) : req.user!.school_code;
   const { rows } = await query('SELECT * FROM fee_items WHERE school_code=$1 ORDER BY id', [sc]);
   return res.json({ fee_items: rows });
