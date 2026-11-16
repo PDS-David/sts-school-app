@@ -117,9 +117,9 @@ export default function MessagesScreen() {
       // Drafts belong to a recipient, not to the shared admin thread screen.
       // Clear only the exact text accepted by the server/outbox; newer text
       // typed while the request was pending remains saved for this contact.
-      if (draftsByContactRef.current[recipientId] === outgoing) {
+      if ((draftsByContactRef.current[recipientId] ?? '').trim() === outgoing) {
         draftsByContactRef.current[recipientId] = '';
-        if (activeContact?.id === recipientId) setBody(current => current === outgoing ? '' : current);
+        if (activeContact?.id === recipientId) setBody(current => current.trim() === outgoing ? '' : current);
       }
       // Append directly instead of re-fetching: works the same whether the
       // message reached the server or was queued offline (pending=true).
