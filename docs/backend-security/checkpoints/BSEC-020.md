@@ -2,7 +2,7 @@
 
 - **Task ID:** BSEC-020
 - **Title:** Enforce score subject ownership and make bulk score writes atomic
-- **Status:** implementation and focused verification passed; repository-wide CI review pending
+- **Status:** merged
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Original implementation PR:** https://github.com/PDS-David/sts-school-app/pull/826 (merged 2026-11-13; merge SHA recorded by GitHub)
@@ -25,7 +25,8 @@
 - **Correction:** fixed the report response assertions, added a valid-batch persistence assertion, and added a PostgreSQL 16 workflow that bootstraps the disposable schema, runs this integration test and typechecks the backend.
 - **Verification status:** first dedicated run 43937683365 exposed a test harness defect, not an application defect: the raw-score GET used a query-only URL and Node fetch rejected it (`Failed to parse URL from ?term_id=7`). The test now uses the server's absolute base URL. Typecheck was skipped because the test step failed. Repository-wide SS1, SS23 and JSS3 gates passed on the first verification head.
 - **Correction commits:** c7512accb38b4b7c93a10c4b5c16535854aa1527 (absolute test URL); 9aba07d32493efd04296852b04ea0ac30a3ec63d (teacher SQL placeholder fix)
-- **Follow-up PR:** https://github.com/PDS-David/sts-school-app/pull/891
+- **Follow-up PR:** https://github.com/PDS-David/sts-school-app/pull/891 (merged 2026-11-16T19:34:02Z)
+- **Merge commit:** 787014e6442f264040a3da79f8f0d296c82f2e3b
 - **Additional defect found by the regression:** GET /scores constructed the teacher school filter as `s.school_code=1` rather than a bound `$1` parameter, causing HTTP 500 for teacher score-list requests. Corrected to a proper PostgreSQL bind placeholder; the existing raw-score assertion now exercises the route successfully.
-- **Focused verification:** Backend score subject scope and batch atomicity workflow 43938982030 passed all steps, including PostgreSQL 16 schema bootstrap, score authorization/batch rollback/report-scope integration tests and backend TypeScript typecheck. SS1 43938981980, SS23 43938981949 and student report term-scope 43938981981 also passed on the current head; JSS3 remains in progress.
-- **Exact next action:** inspect JSS3 verification on PR #891's current head; if green, merge PR #891 and record the merge SHA.
+- **Final verification:** Backend score subject scope and batch atomicity workflow 43938982030 passed all steps, including PostgreSQL 16 schema bootstrap, score authorization/batch rollback/report-scope integration tests and backend TypeScript typecheck. On final PR head 85ea9d7137339636e8944c385d168ff54027452b, SS1 43939295415, SS23 43939295538, student report term-scope 43939295125, JSS3 43939295145, verify 43939295079 and integrity gates all passed. The same source/test tree was exercised by the passing focused run 43938982030.
+- **Remaining:** none for BSEC-020. Continue the broader backend/security audit.

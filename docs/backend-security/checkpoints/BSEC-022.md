@@ -2,7 +2,7 @@
 
 - **Task ID:** BSEC-022
 - **Title:** Restrict parent invoice reads to active linked wards
-- **Status:** implementation and all required CI checks passed; PR review pending
+- **Status:** merged
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Base commit:** e96ab3437e1804f4e9cdac782b03c94531538c3d
@@ -15,6 +15,7 @@
 - **Implementation:** parent invoice queries now require st.deleted_at IS NULL in addition to the parent_wards relationship. Student invoice queries also explicitly require a non-deleted student row. Finance administrators retain access to historical invoices, including invoices for deleted students, so school financial records remain available for administration.
 - **Regression coverage:** extend the existing PostgreSQL finance invoice integration suite to prove parents see active linked wards only, cannot bypass the rule with a student_id filter, cannot see unrelated students, and finance administrators retain historical invoice access.
 - **Verification:** Backend finance invoice integrity workflow 43939552354 passed: PostgreSQL 16 schema bootstrap, all three finance invoice integration tests and backend TypeScript typecheck. Repository-wide SS23 integrity 43939552213, SS1 package integrity 43939552270 and JSS3 implementation/asset checks 43939552228 also passed on implementation head 4476409b049aa274a143d1a9d8ddcc1cfe047cee. No production database or data was accessed or changed.
-- **PR:** https://github.com/PDS-David/sts-school-app/pull/893
-- **Remaining:** PR review/merge; continue the broader backend audit.
-- **Exact next action:** review PR #893 against its passing head and continue with the next backend defect.
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/893 (merged 2026-11-16T19:35:01Z)
+- **Merge commit:** b31b1f86de082648576287b12006175ab297bcd6
+- **Remaining:** none for BSEC-022. Continue the broader backend audit.
+- **Exact next action:** continue with the next independently scoped backend defect.
