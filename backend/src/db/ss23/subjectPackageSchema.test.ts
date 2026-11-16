@@ -248,7 +248,7 @@ test('loads the SS2 Agricultural Science package with source assessment coverage
   assert.equal(pkg.units.reduce((total, unit) => total + unit.practice.length, 0), 195);
   assert.ok(pkg.units.every(unit => unit.practice.every(question => question.answer_origin === 'AUTHORED_SUPPLEMENT')));
   assert.equal(pkg.sources[0].source_id, 'SS23-SRC-225f920d3751');
-  assert.equal(pkg.assets.length, 51);
+  assert.equal(pkg.assets.length, 52);
   const farmsteadReplacement = pkg.assets.find(asset => asset.id === 'ASSET-AG2-T1-W04-05-FARMSTEAD-SCHOOL-SCHEMATIC');
   assert.ok(farmsteadReplacement);
   assert.equal(farmsteadReplacement.path, 'backend/src/db/ss23/assets/agricultural-science/farmstead-layout-school.svg');
@@ -267,8 +267,14 @@ test('loads the SS2 Agricultural Science package with source assessment coverage
   assert.equal(tractorPtoReplacement.sha256, 'c60684e43b902d6096033ea71a097d4857781222805910326edfac20da249d81');
   assert.equal(tractorPtoReplacement.state.content_approval, 'PENDING');
   assert.equal(tractorPtoReplacement.state.verification, 'DEFERRED');
+  const soilProfileReplacement = pkg.assets.find(asset => asset.id === 'ASSET-AG2-T1-SOIL-PROFILE-SCHOOL-SCHEMATIC');
+  assert.ok(soilProfileReplacement);
+  assert.equal(soilProfileReplacement.path, 'backend/src/db/ss23/assets/agricultural-science/soil-profile-school.svg');
+  assert.equal(soilProfileReplacement.sha256, 'fee369b144b1c16626d21ff8bef36b1e31c48cf68a8c4202f3a8174cb2d06fc5');
+  assert.equal(soilProfileReplacement.state.content_approval, 'PENDING');
+  assert.equal(soilProfileReplacement.state.verification, 'DEFERRED');
   const authoredAssets = pkg.assets.filter(asset => asset.path.startsWith('backend/src/db/ss23/assets/agricultural-science/'));
-  assert.equal(authoredAssets.length, 9);
+  assert.equal(authoredAssets.length, 10);
   assert.ok(authoredAssets.every(asset =>
     asset.state.verification === 'DEFERRED' &&
     asset.state.content_approval === 'PENDING' &&
