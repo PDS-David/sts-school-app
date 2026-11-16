@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { randomInt, randomUUID } from 'node:crypto';
 import test, { after } from 'node:test';
-import { collectPayload } from '../backend/src/utils/backup.js';
+import { BackupConfigError, collectPayload, runScheduledBackupIfDue } from '../backend/src/utils/backup.js';
 import { auditStrict, verifyAuditLogIntegrity } from '../backend/src/utils/audit.js';
 import type { AuthUser } from '../backend/src/types/index.js';
 import { pool, query } from '../backend/src/db/pool.js';
@@ -95,6 +95,25 @@ test('backup and restore preserve the target migration ledger', async () => {
 
   const { rows } = await query('SELECT version FROM public.schema_migrations ORDER BY version');
   assert.deepEqual(rows.map(row => row.version), ['0001', '0002']);
+});
+
+test('scheduled backup failure is persisted and retried no more than daily', async () => {
+  const previousPassphrase = process.env.BACKUP_PASSPHRASE;
+  delete process.env.BACKUP_PASSPHRASE;
+  try {
+    await assert.rejects(runScheduledBackupIfDue(), BackupConfigError);
+    const { rows } = await query(
+      `SELECT status, detail FROM backup_log
+        WHERE kind='backup' AND created_by='system-scheduler'
+        ORDER BY id DESC LIMIT 1`,
+    );
+    assert.equal(rows[0]?.status, 'failed');
+    assert.match(rows[0]?.detail ?? '', /BACKUP_PASSPHRASE/);
+    assert.equal(await runScheduledBackupIfDue(), false, 'a failed attempt must not retry within 24 hours');
+  } finally {
+    if (previousPassphrase === undefined) delete process.env.BACKUP_PASSPHRASE;
+    else process.env.BACKUP_PASSPHRASE = previousPassphrase;
+  }
 });
 
 test('restore preserves audit history and re-enables append-only protection', async () => {
