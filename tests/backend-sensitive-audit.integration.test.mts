@@ -97,7 +97,7 @@ test('strict audit rejects oversized metadata and reports persistence failure', 
   await assert.rejects(
     auditStrict(actor(), 'BSEC029_OVERSIZE_TEST', 'security_test', randomUUID(), 'oversize', {
       schoolCode: 'primary',
-      metadata: { payload: 'x'.repeat(17 * 1024) },
+      metadata: Object.fromEntries(Array.from({ length: 20 }, (_, index) => [`safe_${index}`, 'x'.repeat(1000)])),
     }),
     (error: unknown) => error instanceof AuditPersistenceError
       && error.code === 'AUDIT_PERSISTENCE_FAILED',
