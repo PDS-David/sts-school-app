@@ -2,7 +2,7 @@ import { isIP } from 'node:net';
 
 const BLOCKED_HOST_SUFFIXES = [
   '.localhost', '.local', '.internal', '.lan', '.home', '.test', '.invalid',
-  '.example', '.onion', '.arpa',
+  '.example', '.onion', '.arpa', '.nip.io', '.sslip.io', '.xip.io', '.localtest.me',
 ];
 
 export function isSafeExternalMaterialUrl(value: unknown): value is string {
