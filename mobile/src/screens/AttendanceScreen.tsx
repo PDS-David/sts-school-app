@@ -197,7 +197,7 @@ export default function AttendanceScreen({ navigation }: any) {
             <View style={isWide ? styles.filterCol : undefined}>
               <Text style={styles.filterLabel}>Class</Text>
               <View style={styles.pickerWrap}>
-                <Picker selectedValue={selClass} onValueChange={setSelClass}>
+                <Picker selectedValue={selClass} onValueChange={setSelClass} accessibilityLabel="Select attendance class">
                   {classes.map(c => <Picker.Item key={c} label={c} value={c} />)}
                 </Picker>
               </View>
@@ -205,7 +205,7 @@ export default function AttendanceScreen({ navigation }: any) {
             <View style={isWide ? styles.filterCol : undefined}>
               <Text style={styles.filterLabel}>Term</Text>
               <View style={styles.pickerWrap}>
-                <Picker selectedValue={selTerm} onValueChange={v => setSelTerm(Number(v))}>
+                <Picker selectedValue={selTerm} onValueChange={v => setSelTerm(Number(v))} accessibilityLabel="Select attendance term">
                   {terms.map(t => <Picker.Item key={t.id} label={`${t.name} – ${t.academic_year}`} value={t.id} />)}
                 </Picker>
               </View>
@@ -256,6 +256,7 @@ export default function AttendanceScreen({ navigation }: any) {
                 onChangeText={v => setEntries(prev => ({ ...prev, [s.id]: v }))}
                 keyboardType="numeric"
                 placeholder="0"
+                accessibilityLabel={`${s.full_name} days present`}
                 style={{ flex: 1, marginBottom: 0 }}
               />
             </View>
