@@ -418,7 +418,14 @@ async function authoriseReportAccess(
       break;
     }
     case 'teacher':
-      denied = await checkTeacherStudentScope(user, student.id);
+      // Teachers generate reports only for their assigned physical class.
+      // Subject-only accounts without a class assignment must not use a known
+      // student UUID to inspect another class's full report.
+      denied = !user.school_code || !user.assigned_class ||
+        student.school_code !== user.school_code ||
+        student.class_name !== user.assigned_class
+        ? { status: 403, error: 'Report access is limited to your assigned physical class' }
+        : null;
       break;
     case 'admin':
       denied = null;
