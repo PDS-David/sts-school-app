@@ -55,7 +55,7 @@ async function startServer(): Promise<{ server: Server; baseUrl: string }> {
   return { server, baseUrl: `http://127.0.0.1:${port}/academic/class-locks` };
 }
 
-test('class lock reads are restricted to class teachers and administrators', async () => {
+test('class lock management is restricted to administrators', async () => {
   const suffix = randomUUID().slice(0, 8);
   const admin = await createUser('admin', 'admin', null);
   const primaryAdmin = await createUser('primary-admin', 'admin', 'primary');
@@ -147,8 +147,7 @@ test('class lock reads are restricted to class teachers and administrators', asy
     const teacherSpoofedWrite = await put(primaryTeacher.token, {
       class_name: 'Primary 4', term_id: primaryTerm, school_code: 'secondary', locked: true,
     });
-    assert.equal(teacherSpoofedWrite.status, 200, 'teacher-supplied school_code remains ignored in favour of authenticated school');
-    assert.equal((await teacherSpoofedWrite.json() as { lock: { school_code: string } }).lock.school_code, 'primary');
+    assert.equal(teacherSpoofedWrite.status, 403, 'teachers cannot manage class locks');
 
     const globalAdminSecondaryWrite = await put(admin.token, {
       class_name: 'Primary 4', term_id: secondaryTerm, school_code: 'secondary', locked: true,
@@ -172,8 +171,7 @@ test('class lock reads are restricted to class teachers and administrators', asy
     assert.equal(secondaryLockStillExists.rows.length, 1, 'denied school-bound admin write must not mutate the other school lock');
 
     const teacherOwnClass = await get(primaryTeacher.token, primaryQuery);
-    assert.equal(teacherOwnClass.status, 200);
-    assert.equal((await teacherOwnClass.json() as { lock: { school_code: string } }).lock.school_code, 'primary');
+    assert.equal(teacherOwnClass.status, 403, 'teachers cannot inspect class-lock administration state');
 
     const teacherOtherClass = await get(
       primaryTeacher.token,
@@ -185,12 +183,10 @@ test('class lock reads are restricted to class teachers and administrators', asy
       primaryTeacher.token,
       `${primaryQuery}&school_code=secondary`,
     );
-    assert.equal(teacherSpoofedSchool.status, 200);
-    assert.equal((await teacherSpoofedSchool.json() as { lock: { school_code: string } }).lock.school_code, 'primary',
-      'teacher-supplied school_code must never override the authenticated school');
+    assert.equal(teacherSpoofedSchool.status, 403, 'teachers cannot inspect class-lock administration state');
 
     const foreignTerm = await get(primaryTeacher.token, `?class_name=Primary%204&term_id=${secondaryTerm}`);
-    assert.equal(foreignTerm.status, 400, 'teacher cannot inspect a lock for a term in another school');
+    assert.equal(foreignTerm.status, 403, 'teachers cannot inspect class locks');
 
     const noClassAssignment = await get(subjectOnlyTeacher.token, primaryQuery);
     assert.equal(noClassAssignment.status, 403, 'subject-only teachers cannot inspect class-wide lock state');
