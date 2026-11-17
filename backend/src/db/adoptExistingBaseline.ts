@@ -121,7 +121,7 @@ async function preflight(client: PoolClient): Promise<{ database: string; versio
   for (const name of contract.expected.enum_types) if (!enumRows.rows.some(row => row.typname === name)) errors.push(`Missing required enum type ${name}`);
 
   const pendingRows = await client.query<{ name: string }>(
-    `SELECT name FROM unnest($1::text[]) AS name WHERE to_regclass('public.' || name) IS NOT NULL`,
+    `SELECT pending_name AS name FROM unnest($1::text[]) AS pending(pending_name) WHERE to_regclass('public.' || pending_name) IS NOT NULL`,
     [contract.expected.pending_tables],
   );
   if (pendingRows.rows.length) errors.push(`Pending migration tables already exist: ${pendingRows.rows.map(row => row.name).join(', ')}`);
@@ -182,6 +182,7 @@ async function main(): Promise<void> {
   const confirmIndex = args.indexOf('--confirm-database');
   const confirmation = confirmIndex >= 0 ? args[confirmIndex + 1] : undefined;
   if (confirmation !== DATABASE_NAME) fail(`Pass --confirm-database ${DATABASE_NAME} to run this production-specific preflight.`);
+  if (baselineChecksum !== contract.baseline_migration.sha256) fail('The 0001 baseline migration checksum does not match the pinned contract.');
   if (apply && confirmation !== DATABASE_NAME) fail('Production baseline adoption requires the exact database confirmation.');
 
   const client = await pool.connect();
