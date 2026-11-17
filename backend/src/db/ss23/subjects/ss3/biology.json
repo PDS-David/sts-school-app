@@ -50,12 +50,18 @@
       "source_id": "SS23-SRC-729c2d303759",
       "objective": "First-Term SS3 Biology source is registered, but no source-mapped exam-preparation topic has yet been verified against previously taught SS1/SS2 Biology.",
       "objective_locator": "SS3 First-Term Biology source registry record.",
-      "status": "UNRESOLVED",
-      "unit_ids": [],
+      "status": "PARTIAL",
+      "unit_ids": [
+        "PREP-SS3-BIOLOGY-T1-W2-EXCRETION"
+      ],
       "evidence": [
         {
           "locator": "Source registry HEADER_VERIFIED record.",
           "explanation": "Source content requires term-by-term prior-learning comparison before any revision unit is created."
+        },
+        {
+          "locator": "SS3 First-Term Biology source Week 2, plus prior-learning anchor SS2 source SS23-SRC-4589be4d53c8 (SHA-256 4589be4d53c8e0f756297b9c2d9579f0afc39a79b4facb57d8b2b040fef25605), Third-Term Week 2.",
+          "explanation": "Only the excretory functions of liver and skin are supported by the earlier SS2 source and included as exam revision. The rest of SS3 First-Term content remains unresolved pending prior-learning evidence."
         }
       ]
     },
@@ -160,13 +166,29 @@
           "explanation": "Not imported as instruction because prior SS1/SS2 coverage has not yet been established."
         }
       ]
+    },
+    {
+      "id": "SS3BIO-COV-T1-W2-EXCRETION",
+      "source_id": "SS23-SRC-729c2d303759",
+      "objective": "Revision-only mapping of liver and skin excretory functions previously taught in SS2 Biology Third-Term Week 2.",
+      "objective_locator": "SS3 First-Term Biology source Week 2, excretory functions; prior-learning source SS2 Third-Term Biology Week 2.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "PREP-SS3-BIOLOGY-T1-W2-EXCRETION"
+      ],
+      "evidence": [
+        {
+          "locator": "SS2 prior-learning source SS23-SRC-4589be4d53c8, SHA-256 4589be4d53c8e0f756297b9c2d9579f0afc39a79b4facb57d8b2b040fef25605; Week 2 section states liver excretes bilirubin and skin excretes water, salts and urea through sweat.",
+          "explanation": "This exact prior-learning anchor supports only the excretory-function slice. Detailed anatomy, disease and thermoregulation content remains excluded."
+        }
+      ]
     }
   ],
   "open_items": [
     {
       "id": "SS3BIO-PRIOR-LEARNING-MAP",
       "kind": "CONTENT",
-      "detail": "Only adaptation and adaptive colouration/behaviour have a clear prior-learning match in the available SS2 Biology source. Fruit structure/types, variation, evolution, genetics, chromosomes and probability remain unverified as prior learning.",
+      "detail": "SS3 T2 Weeks 3–4 adaptation has a prior SS2 First-Term match. SS3 T1 Week 2 excretory functions of liver/skin now have a narrow SS2 Third-Term Week 2 match. Homeostasis beyond the SS2 water-balance mention, detailed liver/skin anatomy and disease, hormonal/nervous/sense-organ topics, fruit, variation, evolution, genetics and chromosomes remain unverified as prior learning.",
       "required_action": "Compare each remaining SS3 scheme topic against the authoritative SS1 and SS2 source curriculum before creating revision-only material; do not introduce new instruction in SS3.",
       "affected_ids": [
         "SS3BIO-COV-T2-W1",
@@ -195,6 +217,11 @@
       "affected_ids": [
         "PREP-SS3-BIOLOGY-T2-W3-4"
       ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "SS3BIO-T1-W2-EXCLUDED-CONTENT",
+      "detail": "The SS3 First-Term Week 2 source also covers liver/skin anatomy, diseases and care, sensory receptors and temperature regulation. The available SS2 source supports only liver/skin excretory functions; all other Week 2 material is excluded from this revision unit and remains unresolved.",
       "blocks_delivery": true
     }
   ],
@@ -309,6 +336,107 @@
           "locator": "SS3 Second-Term scheme Weeks 3–4; adaptation for survival and adaptive colouration/behaviour.",
           "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
           "attribution": "Owner-supplied SS3 2nd Term Biology source document; this package provides exam-preparation revision, not new instructional lessons or verbatim transcription.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "APPROVED",
+        "approval_reference": "Owner instruction that supplied curriculum is already approved; recorded in PR #881.",
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "PREP-SS3-BIOLOGY-T1-W2-EXCRETION",
+      "class_name": "SS 3",
+      "delivery_mode": "EXAM_PREPARATION",
+      "unit_type": "REVISION_UNIT",
+      "term": "1st Term",
+      "exam_targets": [
+        "WAEC",
+        "NECO",
+        "JAMB"
+      ],
+      "subject": "Biology",
+      "title": "Exam Revision: Excretory Roles of the Liver and Skin",
+      "week_label": "2",
+      "objectives": [
+        "Recall the previously taught excretory roles of the mammalian liver and skin.",
+        "Answer examination questions identifying excretory organs and their waste products without introducing new organ anatomy or disease content."
+      ],
+      "body": "EXAM-PREPARATION REVISION BRIEF — PRIOR-LEARNING ONLY\n\nThis unit revises the excretory roles of the mammalian liver and skin that were already covered in SS2 Biology Third Term, Week 2 (excretory system in mammals and plants). It does not introduce the new SS3 source sections on detailed organ anatomy, liver or skin diseases, skin receptors, or temperature regulation.\n\nThe prior SS2 source states that the liver excretes bile pigment (bilirubin), while the skin removes water, salts and a small amount of urea through sweat. The kidney also excretes water, mineral salts and urea. For examination questions, identify the organ and the waste product it removes; distinguish the skin's excretory role from the separate roles of sensory reception and temperature regulation unless those topics are independently verified as earlier learning.\n\nEXAM RESPONSE METHOD\nFor a question about the skin as an excretory organ, name the sweat glands and state that sweat carries water, dissolved salts and a small amount of urea to the skin surface. For a comparison question, state the excretory product associated with each organ. Do not add disease descriptions or anatomical detail not established in the prior SS2 source.\n\nSOURCE BOUNDARY\nSS3 First-Term Week 2 includes liver and skin structure, functions, diseases and care. Only the excretory-function portion is included here because that portion is supported by the supplied SS2 Third-Term Biology source. The remaining Week 2 material is still unresolved as prior learning and is not taught as new SS3 content.",
+      "body_sha256": "5122ac1dbd9ecabf8bf74149c14d2c41ff854d1ea386ed720746dce73dc97fb5",
+      "practice": [
+        {
+          "id": "SS3BIO-T1-W2-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "SS3 First-Term Biology source, Week Two weekend assignment, item 5.",
+          "question": "Which part of mammalian skin is directly involved in excretion? (a) sebaceous gland (b) sweat gland (c) horny layer (d) blood capillaries.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; the source provides the question but not a verified answer key.",
+          "answer": "The sweat gland.",
+          "explanation": "Sweat glands produce sweat containing water, dissolved salts and a small amount of urea, which are removed through the skin.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Identifies the sweat gland.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-729c2d303759",
+              "source_sha256": "729c2d303759bb923189fb99ea518cbe09486ebde1d610acc380b1f888d0ad41",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "SS3 First-Term Biology source, Week Two weekend assignment item 5 and theory question, part (b).",
+              "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
+              "attribution": "Owner-supplied SS3 1st Term Biology source document; this package provides exam-preparation revision, not new instructional lessons or verbatim transcription.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS3BIO-T1-W2-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "SS3 First-Term Biology source, Week Two theory weekend assignment, part (b).",
+          "question": "Explain how the skin acts as an excretory organ.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer cross-checked against the supplied SS2 Third-Term Biology prior-learning source.",
+          "answer": "The skin removes water, dissolved mineral salts and a small amount of urea from the blood through sweat glands. Sweat is released onto the skin surface and evaporates.",
+          "explanation": "This answer is restricted to the excretory role explicitly described in SS2 Biology Third Term, Week 2; it does not expand into new anatomy or disease teaching.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies sweat glands as the route of excretion.",
+              "marks": 1
+            },
+            {
+              "criterion": "Names water, salts and urea as sweat constituents removed.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-729c2d303759",
+              "source_sha256": "729c2d303759bb923189fb99ea518cbe09486ebde1d610acc380b1f888d0ad41",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "SS3 First-Term Biology source, Week Two weekend assignment item 5 and theory question, part (b).",
+              "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
+              "attribution": "Owner-supplied SS3 1st Term Biology source document; this package provides exam-preparation revision, not new instructional lessons or verbatim transcription.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-729c2d303759",
+          "source_sha256": "729c2d303759bb923189fb99ea518cbe09486ebde1d610acc380b1f888d0ad41",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "SS3 First-Term Biology source, Week Two weekend assignment item 5 and theory question, part (b).",
+          "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
+          "attribution": "Owner-supplied SS3 1st Term Biology source document; this package provides exam-preparation revision, not new instructional lessons or verbatim transcription.",
           "reuse_status": "PENDING"
         }
       ],
