@@ -106,7 +106,8 @@ api.interceptors.request.use(async (config) => {
   if (requestNamespace !== getCacheNamespace()) {
     throw new axios.CanceledError('Session changed before request could be sent');
   }
-  if (await isOnline()) {
+  const online = await isOnline().catch(() => false);
+  if (online) {
     try {
       await backendReadiness.ensureReady(BASE_URL);
     } catch (error) {
