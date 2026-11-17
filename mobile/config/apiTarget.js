@@ -52,6 +52,17 @@ function assertStagingApiUrl(url, productionUrl) {
   return u.origin;
 }
 
+/** Fail a production EAS build if an injected API URL overrides the canonical app.json origin. */
+function assertProductionApiUrl(url, productionUrl) {
+  if (url === undefined || url === '') return;
+  if (typeof productionUrl !== 'string' || !hostOf(productionUrl)) {
+    throw new Error('[production build] app.json does not contain a valid canonical API URL.');
+  }
+  if (typeof url !== 'string' || url !== productionUrl) {
+    throw new Error(`[production build] EXPO_PUBLIC_API_URL must exactly match the canonical app.json API URL (${productionUrl}); refusing a build pointed at a different service.`);
+  }
+  return url;
+}
 /**
  * The runtime resolution used by src/api/client.ts (kept here so tests execute the exact code the app runs).
  * @param {{envUrl?: string, configuredUrl?: string, extra?: Record<string, unknown>}} p
@@ -77,4 +88,4 @@ function assertKnownTarget(env) {
   }
 }
 
-module.exports = { assertStagingApiUrl, resolveApiBaseUrl, isStagingBuild, assertKnownTarget, STAGING };
+module.exports = { assertStagingApiUrl, assertProductionApiUrl, resolveApiBaseUrl, isStagingBuild, assertKnownTarget, STAGING };

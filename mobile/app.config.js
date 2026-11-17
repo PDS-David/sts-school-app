@@ -1,7 +1,7 @@
 // Wraps app.json (still the single source of truth for a normal/production build).
 // Only a designated staging build (STS_BUILD_TARGET=staging, set by the `staging` profile in eas.json)
 // is altered: it must receive EXPO_PUBLIC_API_URL and may not resolve to the production host.
-const { assertStagingApiUrl, isStagingBuild, assertKnownTarget } = require('./config/apiTarget');
+const { assertStagingApiUrl, assertProductionApiUrl, isStagingBuild, assertKnownTarget } = require('./config/apiTarget');
 
 const REQUIRED_CONFIG_PLUGINS = [
   'expo-asset',
@@ -13,6 +13,12 @@ const REQUIRED_CONFIG_PLUGINS = [
 
 module.exports = ({ config }) => {
   assertKnownTarget(process.env);
+
+  // A production EAS environment may define EXPO_PUBLIC_API_URL independently of app.json.
+  // Refuse a stale override rather than silently shipping a binary pointed at the suspended backend.
+  if (process.env.EAS_BUILD_PROFILE === 'production') {
+    assertProductionApiUrl(process.env.EXPO_PUBLIC_API_URL, config.extra && config.extra.apiUrl);
+  }
 
   // Dynamic Expo config cannot be auto-edited by `expo install --fix`.
   // Keep the SDK-required config plugins explicit and merge them with app.json plugins.
