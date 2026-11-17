@@ -16,7 +16,7 @@ Added three lessons to `backend/src/db/ss1/subjects/yoruba.json`:
 - `SUP-SS1-YORUBA-T3-W08-ASA`: source-described funeral customs, careful cultural attribution, and respectful critical reading.
 - `SUP-SS1-YORUBA-T3-W08-LIT`: oral poetry, oku-pipe, iremoje and an analysis method.
 
-Each lesson has two original practice questions, complete answers and marking criteria whose marks add exactly to the question totals. Each lesson has a body SHA-256, source locator, attribution and PENDING content approval / DEFERRED verification state.
+EDE now includes a complete original model argumentative essay and four practice questions worth 20 marks, with answers and item-level marking. ASA and LITIRESO retain two practice questions each with answers and marking. All three lessons have body SHA-256 values, source locators, attribution and PENDING content approval / DEFERRED verification state.
 
 Added three Week 8 strand coverage entries. They remain PARTIAL because the scheme contains material not adequately taught by the supplied body. Added explicit blockers:
 - ASA: the scheme names child/adult burial, care of the dead and adult burial inside a house without adequate body teaching.
@@ -24,9 +24,9 @@ Added three Week 8 strand coverage entries. They remain PARTIAL because the sche
 - Orthography: the source is unmarked ASCII; tone marks, sub-dotted vowels and lexical choices in all three authored lessons require competent Yoruba-language review.
 
 ## Integrity and limits
-- EDE body SHA-256: `6fd9554a6bfa112f52e4d06f6c1722a5784bec549e41f4f94c67db8a6d81e671`.
+- EDE body SHA-256: `7d6f5cbc5dce373a28767181a8d91d9fb68975f22a1ea7e42e10e860e0d5c21f`.
 - ASA body SHA-256: `383eec001a9006d8bed80d81e2dbd46c0dac3a892f91ca2e8f71b654e4e055ad`.
 - LITIRESO body SHA-256: `8ce9bfd2d74b87086502d7d585b47ce699f09ca2033eadeee9cabc356920ceb2`.
-- JSON parsed after each update; lesson IDs checked for uniqueness; all six practice marking totals checked (4/4 and 6/6 per strand).
+- No typecheck, test suite, importer, database, student API/UI or device test was run in this continuation. Verification remains DEFERRED.
 - No typecheck, test suite, importer, database, student API/UI or device test was run. Verification remains DEFERRED.
 - This is one teaching slice only; other weeks and both earlier terms remain to be implemented and audited.

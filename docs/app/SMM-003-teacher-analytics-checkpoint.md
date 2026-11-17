@@ -1,0 +1,26 @@
+# SMM-003 — Teacher marking backlog and analytics checkpoint
+
+Task ID: SMM-003
+Status: IMPLEMENTED AND MERGED — feature-specific query integration tests merged in PR #894
+
+## Scope delivered
+- Adds `GET /scores/teacher/overview`, protected by `grades.read`.
+- Calculates expected score-entry slots from active students × in-scope subjects for the current term; missing score rows count as pending marks.
+- Returns aggregate-only metrics: student count, expected/entered/pending marks, average score, pass rate and per-subject counts.
+- Attendance and weekly-effort aggregates are returned only for class teachers/admins; subject-only teachers do not receive class-register aggregates.
+- Class teachers are limited to their assigned class; subject-only teachers are limited to assigned subject IDs within their school. Subject rows are constrained to the same school.
+- Adds dashboard pending-mark summary and a dedicated Teacher Analytics screen with per-subject marking progress.
+- Does not expose AI essay answers, AI marks or admin-only grading permissions.
+
+## Verification
+- Implementation is present on current master.
+- Earlier repository CI run `43445698487` passed backend/mobile typechecks, static/focused regressions and PostgreSQL checks.
+- PR #894 adds database-backed assertions for class-teacher and subject-only expected/marked/pending counts and verifies that subject-only teachers receive no class attendance/effort aggregates. Its first run exposed a real PostgreSQL bind-parameter bug: the weekly-effort query accepted the attendance query's fourth parameter although it only references three. Fixed by passing the first three parameters. The integration test now verifies class-teacher counts (2 students × 2 subjects) and subject-only counts across the teacher's school (3 students × 1 assigned subject), and verifies that subject-only teachers receive no class attendance/effort aggregates. All five required CI workflows passed on PR #894 head `434111153ae1aafcfedfa85ae7d6240f48468cb2`, including the route suite in run `43941196109`. PR #894 merged to master as `554688b372f6b9f1b74adf64dd4fcf817ca690e2`.
+- No live school-account or device verification has been performed.
+
+## Remaining
+- Confirm with school operations whether a partially entered CA1/CA2/Exam should count as pending; current calculation treats a score row as entered.
+- Verify dashboard and analytics navigation with class-teacher and subject-teacher accounts.
+
+## Exact next action
+Validate with school operations whether partially entered CA1/CA2/Exam values should count as pending, then perform class-teacher and subject-teacher staging acceptance.

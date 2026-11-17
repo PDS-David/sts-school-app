@@ -1,12 +1,35 @@
 import { Router } from 'express';
+import rateLimit from 'express-rate-limit';
+import { z } from 'zod';
 import { query } from '../db/pool.js';
 import { requireAuth } from '../middleware/auth.js';
 import { hasPerm } from '../utils/rbac.js';
 import { getMessageableUsers } from '../utils/scope.js';
 import { sendPushToUser } from '../utils/push.js';
+import { createRedisRateLimitStore } from '../utils/redisRateLimitStore.js';
 
 const router = Router();
 router.use(requireAuth);
+
+// Direct messages are a user-generated write surface. Key the limiter by the
+// authenticated account (not client-supplied IP headers) so a sender cannot
+// evade the limit by changing network addresses.
+const messageSendLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  limit: 30,
+  keyGenerator: (req) => req.user!.id,
+  standardHeaders: true,
+  legacyHeaders: false,
+  handler: (_req, res) => res.status(429).json({ error: 'Too many messages; try again shortly' }),
+  store: createRedisRateLimitStore('message-send'),
+});
+
+const sendMessageSchema = z.object({
+  recipient_id: z.string().uuid(),
+  body: z.string().trim().min(1).max(10_000),
+  context_type: z.string().trim().min(1).max(50).optional(),
+  context_id: z.union([z.string().max(128), z.number().int().safe()]).nullable().optional(),
+});
 
 const RECIPIENT_ERROR: Record<string, string> = {
   student: 'You may only message your teachers, admin, your parent(s), or a classmate',
@@ -16,18 +39,17 @@ const RECIPIENT_ERROR: Record<string, string> = {
 };
 
 // ── POST /messages ────────────────────────────────────────────────────────────
-router.post('/', async (req, res) => {
+router.post('/', messageSendLimiter, async (req, res) => {
   const user = req.user!;
   if (!hasPerm(user.role, 'messages.write')) {
     return res.status(403).json({ error: 'Not allowed to send messages' });
   }
 
-  const { recipient_id, body, context_type, context_id } = req.body as {
-    recipient_id: string; body: string; context_type?: string; context_id?: string;
-  };
-  if (!recipient_id || !body?.trim()) {
-    return res.status(400).json({ error: 'recipient_id and body required' });
+  const parsed = sendMessageSchema.safeParse(req.body);
+  if (!parsed.success) {
+    return res.status(400).json({ error: 'A valid recipient_id, message body (1–10000 characters), and optional context are required' });
   }
+  const { recipient_id, body, context_type, context_id } = parsed.data;
 
   // Found live in QA Pass 7: this used to only enforce scope for `student`
   // senders — `parent`/`teacher`/`admin` sends were gated on `messages.write`
@@ -47,7 +69,7 @@ router.post('/', async (req, res) => {
   const { rows } = await query(
     `INSERT INTO messages(sender_id,recipient_id,body,context_type,context_id)
      VALUES($1,$2,$3,$4,$5) RETURNING *`,
-    [user.id, recipient_id, body.trim(), context_type ?? 'general', context_id ?? null],
+    [user.id, recipient_id, body, context_type ?? 'general', context_id == null ? null : String(context_id)],
   );
 
   // Fire-and-forget: push failures shouldn't fail the message send itself
@@ -104,7 +126,9 @@ router.get('/', async (req, res) => {
 // ── GET /messages/conversation/:other_user_id ─────────────────────────────────
 router.get('/conversation/:other', async (req, res) => {
   const user = req.user!;
-  const other = req.params.other;
+  const parsedOther = z.string().uuid().safeParse(req.params.other);
+  if (!parsedOther.success) return res.status(400).json({ error: 'A valid other_user_id is required' });
+  const other = parsedOther.data;
   const { rows } = await query(
     `SELECT m.*,
             s.username AS sender_name, s.full_name AS sender_fullname

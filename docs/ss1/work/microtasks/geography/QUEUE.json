@@ -22,7 +22,22 @@
     "GEO-WK-T1-W01 (2026-11-07) indexed Week 1 at objective level: meaning, scope and value mapped SUPPORTED to the reproduced generic parsed-row id; 'Nature' is named in the scheme row and never taught, the state-capital questions at lines 75 and 88 are taught nowhere in the document, the reading pointer is unverified and the source has no answer key, so two PARTIAL rows and two UNRESOLVED rows plus three lesson items (one BLOCKED on an owner decision) were appended. The parsed-row id was reproduced outside the importer and awaits confirmation. No source byte, rule, correction, asset or shared file was written.",
     "GEO-INV-T3 (2026-11-13) inspected the exact 3rd Term Geography .doc from the owner-attached composite archive; archive/member hashes verified against SOURCE_ASSIGNMENTS.csv. Source extracted with antiword 0.37 and privately converted/rendered with LibreOffice 25.2.3.2 for structure. Inventory GEO-INV-T3.md records scheme, nine body blocks (combined Weeks 1–2, then Weeks 3–10), evaluation/assignment sections, one 38x4 state/capital/slogan table, a drawn Nigeria location/boundary sketch, and a tab-aligned thermal plant list. Geography/population/census/industry/agriculture/mineral/power claims are flagged for dated authoritative verification. 16 bounded follow-up tasks appended: nine week indexes, preamble, two visual dispositions plus one tabular-list disposition, and three factual dependencies. No lessons/package/coverage/rules/corrections/assets/approval changed; no tests/importer/device checks. Testing deferred.",
     "GEO-TEST-PACKAGE (2026-11-13): added tests/ss1/geography.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; no invented lesson/correction/asset/approval/verification; three PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and current supported/partial/unresolved coverage/open-item boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no curriculum content or approval state changed.",
-    "GEO-PRE-T3 (2026-11-13): inspected exact third-term Geography source preamble and scheme rows. Recorded the title, subject/class, SCHEME OF WORK, WEEK/TOPIC header and nine rows (1–2 combined, then 3–10) in GEO-PRE-T3.md. Scheme rows use a WEEK/TOPIC column header followed by bare numeric labels; they are not same-line WEEK <number> body markers. The first actual body marker is WEEK ONE AND TWO. No classify_marker rule or MARKER coverage entry is needed; scheme rows remain preamble, not lessons. No revision/exam row is present."
+    "GEO-PRE-T3 (2026-11-13): inspected exact third-term Geography source preamble and scheme rows. Recorded the title, subject/class, SCHEME OF WORK, WEEK/TOPIC header and nine rows (1–2 combined, then 3–10) in GEO-PRE-T3.md. Scheme rows use a WEEK/TOPIC column header followed by bare numeric labels; they are not same-line WEEK <number> body markers. The first actual body marker is WEEK ONE AND TWO. No classify_marker rule or MARKER coverage entry is needed; scheme rows remain preamble, not lessons. No revision/exam row is present.",
+    "GEO-PRE-T1 (2026-11-13): indexed non-week First Term blocks from GEO-INV-T1. Added source identity, ten scheme-to-body mappings (rows 1-10, rows 1-3 bound by order), Revision row 11 as MARKER with a unique source-bound WHOLE_LINE SCHEME_ONLY rule, and the reference-list pointer as UNRESOLVED. No scheme heading was treated as teaching; existing Week One objective coverage and open items were preserved. Tests/importer/database/device checks deferred.",
+    "2026-11-13 compiler repair for COV-GEO-T1-SCHEME-3: removed the source BODY locator from lesson_ids because UNRESOLVED coverage cannot target a non-lesson identity. Kept status UNRESOLVED and retained the exact Week Three source locator/hash in objective_locator/evidence. No instructional coverage is claimed. GEO-PRE-T1 remains IN_PROGRESS pending compiler rerun.",
+    "GEO-WK-T1-W02 (2026-11-15): inspected the hash-verified First Term .doc source and indexed the entire Week Two solar-system/universe block, including the source's solar-system table, both evaluation blocks, general evaluation, reading assignment, weekend assignment and theory. Authored SUP-SS1-GEOGRAPHY-T1-W02-SOLAR-SYSTEM with seven fully keyed practice items (29 marks), objective-level coverage, and CORR-GEO-T1-W02-SOLAR-SYSTEM-CURRENT-FACTS binding the exact source row hash to the supplement. Corrected the obsolete nine-planet/Pluto classification, Mercury/Venus temperature claims, gravity/oxygen exclusivity, Saturn ring simplification and Uranus rotation claim using IAU/NASA primary sources. The original source remains unchanged; source table moon counts are not reproduced. Textbook pages 5-7 remain an explicitly non-blocking unverified pointer. Tests/typecheck/importer/database/device checks were not run; content approval remains PENDING and verification DEFERRED.",
+    "GEO-WK-T1-W03 (2026-11-15): inspected hash-verified First Term Week Three source block (getBody lines 183-268; hash 5bbc2357e24a5ef6139bc99bc1351c119dc4f7188345e35c5f12bf001a452d25). Authored SUP-SS1-GEOGRAPHY-T1-W03-EARTH-PLANET-MOVEMENTS with nine keyed practice items (38 marks), objective-level coverage, and CORR-GEO-T1-W03-EARTH-MOVEMENT-FACTS bound to the exact source row. Corrected shape/geoid terminology, dimensions, Magellan-Elcano attribution, seasons/axial tilt, Coriolis and tide causation, eclipse geometry and leap-year detail using NASA, NOAA and U.S. Naval History sources. Original source remains unchanged. The Essential Geography pages 7-9 pointer remains a non-blocking unverified reference. Tests/typecheck/importer/database/device checks not run; content approval remains PENDING and verification DEFERRED.",
+    "GEO-WK-T1-W04 (2026-11-15): indexed Week Four lines 271-349, including the tab-aligned comparison, evaluation/general evaluation, reading pointer, weekend assignment and theory. Added SUP-SS1-GEOGRAPHY-T1-W04-LATITUDE-LONGITUDE-GREAT-CIRCLES, five objective coverage records, and CORR-GEO-T1-W04-LATLONG-GREAT-CIRCLE-FACTS bound to exact source row hash f4dcfa072ca8e066e081d015463d1f147bd5f61fdd7c54d311c5284e0d44ea64. Corrected latitude range, local-time use, great/small-circle definitions and opposite-meridian examples. Added non-blocking follow-ups for unverified textbook pages 14-17 and drawing anchor line 307; no visual reconstruction is claimed. Hash refreshed by refreshIntegrityHashes.ts. Tests and verification deferred.",
+    "GEO-WK-T1-W05 (2026-11-15): indexed Week Five getBody lines 352-413, including both calculation subsections, evaluations, general evaluation, reading pointer, weekend MCQs and theory reference. Added SUP-SS1-GEOGRAPHY-T1-W05-DISTANCE-AND-LOCAL-TIME, four objective coverage records and CORR-GEO-T1-W05-DISTANCE-LOCAL-TIME-AND-MOON-COUNT bound to exact source hash aaf418295fc5be4a720a35f23d1a45efb9bed91b3319ee1a2ae3e56141dbde17. Corrected 7,7770 km typo to 7,770 km; clarified 111 km/degree applies to north-south distance; keyed 15°/hour and 4-minute/degree time calculations; explained east ahead/west behind and date changes; retired the unstable twelve-satellites item. Reading pages 17-19 and page-21 theory remain non-blocking unverified textbook references. Tests deferred.",
+    "GEO-WK-T1-W06 (2026-11-15): indexed Week Six getBody lines 416-492, covering the four outer spheres and evaluation/general/weekend items. Added SUP-SS1-GEOGRAPHY-T1-W06-OUTER-SPHERES, five objective coverage records and CORR-GEO-T1-W06-OUTER-SPHERES-CURRENT-FACTS bound to exact source hash 3463c9b15cac38935748f50afe5be4eb28595f45901afa1bb3f0dea9a997ca70. Corrected atmospheric gas percentages, nitrogen fixation, lithosphere share and the misconception that spheres are concentric layers; used NOAA, NASA and USGS sources. The inner-structure drawing prompt belongs to Week Seven and is left as a non-blocking cross-week follow-up; textbook pages 21-24 remain unverified. Hash refreshed by refreshIntegrityHashes.ts. Tests deferred.",
+    "GEO-WK-T1-W07 (2026-11-15): indexed Week Seven getBody lines 495-537, including the split crust/mantle teaching sections, both evaluations, general evaluation, reading, weekend MCQs and theory drawing prompt. Added SUP-SS1-GEOGRAPHY-T1-W07-INTERNAL-STRUCTURE, five objective coverage records and CORR-GEO-T1-W07-INTERNAL-LAYERS-CURRENT-FACTS bound to exact source hash b35a7a8bd9a2bd1c71d08933e7cba684d9865e12c69fa52a985ddc14e395aee7. Corrected mantle thickness (2,900 km), mantle rheology, outer/inner core states and temperature; clarified SIAL/SIMA and NIFE as legacy mnemonics. Added a four-layer drawing guide and 7-mark rubric, resolving the Week Six cross-week drawing follow-up. Reading pages 23-24 remain unverified. Hash refreshed by refreshIntegrityHashes.ts; tests deferred.",
+    "GEO-WK-T1-W08 (2026-11-15): indexed Week Eight getBody lines 540-604, including igneous and sedimentary sections, split evaluations, general evaluation, reading, weekend MCQ and theory. Added SUP-SS1-GEOGRAPHY-T1-W08-ROCKS-OF-THE-EARTH, five objective coverage records and CORR-GEO-T1-W08-ROCKS-FOSSILS-METAMORPHIC-AND-ITEM-REPAIR bound to exact source hash d09e611390ae4688a763220f81b050507e313dc45735a92e9e39c53ef5df7e8f. Corrected the false 'sedimentary rocks do not contain fossils' statement, clarified petroleum is a liquid fuel rather than a rock, supplied missing metamorphic teaching and rock cycle, and retired the ambiguous MCQ with two non-rock options. Added ten keyed practice items (47 marks). Reading pages 24-25 remain unverified. Hash refreshed by refreshIntegrityHashes.ts; tests deferred.",
+    "GEO-WK-T1-W09 (2026-11-15): indexed Week Nine getBody lines 607-636. Source has no separate EVALUATION QUESTIONS or READING ASSIGNMENT; it has the GIS definition/data representation, general evaluation, weekend assignment and theory. Added SUP-SS1-GEOGRAPHY-T1-W09-GIS, five objective coverage records and CORR-GEO-T1-W09-GIS-DATA-MODEL-AND-APPLICATIONS bound to exact source hash ede7fe0e59c1fb969cb80844d5c87954546007346d762f4812110f37ff678b3e. Expanded raster/vector, points/lines/polygons, discrete/continuous fields, layers, attributes, GIS components and practical applications; distinguished physical/cultural features. Source has two Wikipedia hyperlink fields; neither is used as authority. Added eight keyed practice items (41 marks). Hash refreshed by refreshIntegrityHashes.ts; tests deferred.",
+    "GEO-WK-T1-W10 (2026-11-15): indexed Week Ten getBody lines 639-707, including all four mountain types, tab-aligned advantages/disadvantages, evaluations, general evaluation, reading, weekend and theory diagram. Added SUP-SS1-GEOGRAPHY-T1-W10-MOUNTAINS, five objective coverage records and CORR-GEO-T1-W10-MOUNTAIN-FORMATION-AND-EXAMPLE-REPAIRS bound to exact source hash 5b6c935769ac6e9fee6360e672ac636c6d18beeaefaf0e38a27b5655e7724080. Corrected fold-mountain generalisations, Ruwenzori classification, Deccan Plateau classification and Monadnock spelling; supplied four original text schematics for fold, block, volcanic and residual mountain formation plus keyed 41-mark practice. Original [pic] asset was absent; a non-blocking visual follow-up remains for a rendered asset. Reading pages 31-33 remain unverified. Hash refreshed by refreshIntegrityHashes.ts; tests deferred.",
+    "GEO-WK-T1-W01 (2026-11-15): completed the two outstanding lesson items. Added SUP-SS1-GEOGRAPHY-T1-W01-NATURE to teach geography's spatial, integrative and dynamic nature and distinguish physical/human geography; added SUP-SS1-GEOGRAPHY-T1-W01-KEYED-PRACTICE with answers to every source evaluation, general evaluation, weekend and theory question and a 30-mark guide. Existing state-capitals extension remains explicitly limited to Lagos, Ebonyi, Plateau and Ogun. Upgraded COV-GEO-T1-W01-NATURE and COV-GEO-T1-W01-ASSESSMENT-KEYS to IMPLEMENTED_EQUIVALENT. The Music MCQ answer (c) is marked provisional because the source uses 'etc'; do not score until teacher confirms. The textbook pages 1-2 remain unverified. The generic source-row ID remains unconfirmed until the first reviewed importer plan, so no correction is bound to it. Hashes refreshed by refreshIntegrityHashes.ts; tests deferred.",
+    "GEO-WK-T2-W02 (2026-11-15): indexed Second Term Week Two getBody lines 99-155, including all three plateau types, uses, disadvantages, two evaluation sections, general evaluation, reading, weekend MCQs and theory. Added SUP-SS1-GEOGRAPHY-T2-W02-PLATEAUS, five objective coverage records and CORR-GEO-T2-W02-PLATEAU-CLASSIFICATION-AND-PLANET-COUNT bound to source block hash d83e1cd4092e61f3891d294ed3e9a1589f60de6c833ad4d976f0a621e25a72a5. Corrected Deccan Plateau to volcanic, clarified tableland/intermontane/dissected forms, qualified Jos Plateau example and updated the nine-planets prompt to eight (Pluto is a dwarf planet). Added eight keyed practice items (33 marks). Reading pages 34-35 remain unverified. Hash refreshed by refreshIntegrityHashes.ts; tests deferred.",
+    "GEO-WK-T2-W03-04 (2026-11-15): indexed Second Term Weeks Three-Four getBody lines 158-217, including structural/erosional/depositional plains, both evaluations, general evaluation, reading, weekend MCQs and theory. Added SUP-SS1-GEOGRAPHY-T2-W03-04-PLAINS, five objective coverage records and CORR-GEO-T2-W03-04-PLAINS-CLASSIFICATION-AND-FORMATION bound to block hash f155959046daac2c20e2ba8a4bcfe1d80f5a763a0177f501227d1d0bea869652. Clarified elevated plains, corrected pediplain formation, explained all seven depositional types and answered the out-of-topic Earth-rotation prompt. Added eight keyed practice items (40 marks). Reading pages 35-36 remain unverified. Hash refreshed by refreshIntegrityHashes.ts; tests deferred.",
+    "GEO-WK-T2-W05 (2026-11-15): indexed Second Term Week Five getBody lines 218-292, including environment, ecosystem, biotic/abiotic components, interdependence, cycles, evaluation, general evaluation, weekend and theory. Added SUP-SS1-GEOGRAPHY-T2-W05-ENVIRONMENT-AND-ECOSYSTEMS, five objective coverage records and CORR-GEO-T2-W05-ECOSYSTEM-ENERGY-AND-NUTRIENT-CYCLES bound to source block hash 7d7b98bb4683e0d1c241e72c4b83d71d516a28a3c5f6a0f58d0e13ed2d8c38b6. Corrected energy-flow vs nutrient-cycling and decomposer classification; added water, carbon, nitrogen and mineral cycles; added ten keyed practice items (50 marks). USGS, NOAA and EPA references used. Tests deferred."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -36,9 +51,8 @@
     "LESSON": 3
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 9,
-    "BLOCKED": 2,
-    "PENDING": 40
+    "IMPLEMENTED_TESTING_DEFERRED": 47,
+    "BLOCKED": 4
   },
   "items": [
     {
@@ -337,8 +351,8 @@
         "GEO-INV-T1",
         "GEO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No preamble rule or coverage exists; geography.json has only the three source_alias rules and three alias open items. Inventory evidence: lines 1-17 empty (page 1 cover); 18 title; 19 subject/class line equals header_text and occurs once; block 18-19 SHA-256 b4bda78d8bcc62f32bf49f1faf55a1b47a57fd530b8401d064053c266ec74372; scheme block 21-37 SHA-256 3cee63d55e00222de2a7520b1e078e8f0b51ea4ab0d6e159f7313ea246c0d032 (rows 23-37 bf7374729b4b8a317a0cd991497ec32d8f29e5233ab41301707033e1ac135611); reference 39-40 SHA-256 af634813ec13a3bece122248b9baf7c6ef8bea0f597f6ba596c323de4a9cb16a. Scheme rows 1-3 have no numerals; week 11 'Revision.' has no body row; there is no week 12. Not approved, not verified; testing deferred by owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented in backend/src/db/ss1/subjects/geography.json. All preamble blocks are hash-accounted; rows 1–10 are bound to body weeks by sequence/label, row 11 Revision is SCHEME_ONLY marker coverage bound to source rule R002, identity and reference blocks are explicitly UNRESOLVED metadata/reference records. See GEO-PRE-T1.md. No compiler/test run; testing deferred by owner.",
       "completion_condition": "Every non-week block is hash-accounted and either mapped to coverage with an exact locator or recorded as a precise open item; scheme rows are bound to body weeks by order where numerals are absent; no teaching, lesson or invented scheme row is written."
     },
     {
@@ -375,8 +389,8 @@
         "GEO-INV-T1",
         "GEO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No classify_marker rule exists for this source; geography.json has only three source_alias rules. Inventory counts from GEO-INV-T1: 16 EVALUATION QUESTIONS, 2 singular EVALUATION QUESTION, 9 GENERAL EVALUATION*, 9 READING ASSIGNMENT, 10 WEEKEND ASSIGNMENT, 10 THEORY. Week 9 has no EVALUATION QUESTIONS and no READING ASSIGNMENT; Week 5's READING ASSIGNMENT label sits at the end of line 402 after a long run of spaces. Not approved, not verified; testing deferred by owner.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "All 56 marker occurrences and all unlabelled/irregular sections are inventoried in GEO-MARK-T1.md. Generic repeated headings were not given non-unique classify_marker rules; six precise blocking open items in geography.json require exact-anchor recovery, Week 3/5/9/10 structural mapping and absent drawing assets. No marker is treated as teaching coverage.",
       "completion_condition": "Every marker occurrence and irregular section has a rule-and-coverage disposition or a precise open item; anchors occur exactly once in the unmodified extracted text; no marker is treated as covering teaching; no lesson is authored."
     },
     {
@@ -414,8 +428,8 @@
         "GEO-SRC-T1"
       ],
       "status": "IMPLEMENTED_TESTING_DEFERRED",
-      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 43-89, block SHA-256 52f0cbe7b5b1c8c618b747159993961a1d1c96e2c2f6560a88ac156192e11aa5; markers: EVALUATION QUESTIONS 52; EVALUATION QUESTION 67; GENERAL EVALUATION 70; READING ASSIGNMENT 77; WEEKEND ASSIGNMENT 80; THEORY 87. Observation recorded by GEO-INV-T1: The general evaluation (70-75) includes a state-capital recall question at 75 and the theory (88-89) asks for state capitals; the item decides whether these fall inside the week's stated objectives. Not approved, not verified; testing deferred by owner. Indexing result (2026-11-07): seven coverage rows written to geography.json. COV-GEO-T1-W01-MEANING (lines 45-48), COV-GEO-T1-W01-SCOPE (lines 49-50) and COV-GEO-T1-W01-VALUE (lines 57-65, seven values) are SUPPORTED against the reproduced generic parsed-row id SS1-SRC-1c1c1bdcecb4:BODY:52f0cbe7b5b1c8c618b747159993961a1d1c96e2c2f6560a88ac156192e11aa5 (ten rows reproduced from word-extractor 1.0.4 getBody() with the importer's own WEEK_MARKER/parseTopics code; Week 1's row is lines 43-89 and its body SHA-256 equals the inventory block hash; the importer was not run, so the id is to be confirmed by the first reviewed plan). COV-GEO-T1-W01-NATURE is PARTIAL (the scheme row names Nature at line 24 and the word occurs nowhere else); COV-GEO-T1-W01-STATE-CAPITALS is UNRESOLVED (lines 75 and 88 ask the capitals of Lagos, Ebonyi, Plateau and Ogun; none is taught anywhere in the document); COV-GEO-T1-W01-READING is PARTIAL (line 78, book not supplied); COV-GEO-T1-W01-ASSESSMENT-KEYS is UNRESOLVED (no answer, mark or key anywhere in the document). Open items GEOGRAPHY-T1-W01-COVERAGE, GEOGRAPHY-T1-W01-STATE-CAPITALS-SCOPE and GEOGRAPHY-T1-W01-FACT-CHECKS added; GEO-LES-T1-W01-NATURE, GEO-LES-T1-W01-KEYED-PRACTICE and GEO-LES-T1-W01-STATE-CAPITALS appended; record docs/ss1/work/microtasks/geography/GEO-WK-T1-W01.md. Implemented, not approved or verified.",
-      "completion_condition": "Every objective and exercise in the week span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+      "implementation_reference": "backend/src/db/ss1/subjects/geography.json: lessons SUP-SS1-GEOGRAPHY-T1-W01-NATURE (missing scheme Nature strand) and SUP-SS1-GEOGRAPHY-T1-W01-KEYED-PRACTICE (all source evaluations, weekend/theory answers and marking); existing SUP-SS1-GEOGRAPHY-T1-W01-STATE-CAPITALS-EXTENSION answers the four capital questions. Coverage COV-GEO-T1-W01-NATURE and COV-GEO-T1-W01-ASSESSMENT-KEYS upgraded to IMPLEMENTED_EQUIVALENT; existing meaning/scope/value supported and capitals equivalent. Evidence: docs/ss1/work/microtasks/geography/GEO-WK-T1-W01.md. Hashes refreshed with repository refreshIntegrityHashes.ts. Source row ID remains unconfirmed until first reviewed importer plan; no delivery correction added against an unconfirmed ID. Reading pages 1-2 and Music MCQ remain non-blocking teacher/reference follow-ups. Content approval PENDING; verification DEFERRED; tests not run.",
+      "completion_condition": "Completed as implemented: the missing Nature of Geography strand has a complete lesson, every source evaluation/general/weekend/theory question has an answer and marking, and the four named state capitals have a clearly scoped extension. Reading pages and the logically open Music MCQ remain non-blocking follow-ups; parsed source-row ID is confirmed only by the first reviewed importer plan."
     },
     {
       "id": "GEO-WK-T1-W02",
@@ -451,9 +465,9 @@
         "GEO-INV-T1",
         "GEO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 92-180, block SHA-256 2a30150d4cb0d3991540598cfe3ee7437dbd35a2f7692b041e10cb4911e98603; markers: EVALUATION QUESTIONS 111, 157; GENERAL EVALUATION QUESTIONS 161; READING ASSIGNMENT 168; WEEKEND ASSIGNMENT 171 (page break); THEORY 178. Observation recorded by GEO-INV-T1: The solar-system table (lines 99-109) and its 'nine planets' including Pluto are content the item must verify against an authoritative source. Not approved, not verified; testing deferred by owner.",
-      "completion_condition": "Every objective and exercise in the week span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/geography.json: lesson SUP-SS1-GEOGRAPHY-T1-W02-SOLAR-SYSTEM; correction CORR-GEO-T1-W02-SOLAR-SYSTEM-CURRENT-FACTS binds exact source row SS1-SRC-1c1c1bdcecb4:BODY:2a30150d4cb0d3991540598cfe3ee7437dbd35a2f7692b041e10cb4911e98603; coverage COV-GEO-T1-SCHEME-2 and COV-GEO-T1-W02-SOLAR-SYSTEM, -UNIVERSE-GALAXY, -PLANETS, -SATELLITE-ORBIT, -ROTATION-REVOLUTION, -ASSESSMENT. Evidence: docs/ss1/work/microtasks/geography/GEO-WK-T1-W02.md. Lesson body hash refreshed by the repository's refreshIntegrityHashes.ts script. Content approval remains PENDING; verification remains DEFERRED; testing not run by owner instruction.",
+      "completion_condition": "Completed as implemented: every Week Two scheme objective and teaching strand has an equivalent lesson; the exact source row is replaced at delivery by a source-bound correction; source assessments are answered with a complete marking guide; factual corrections have authoritative provenance. The unverified textbook page pointer remains a non-blocking open item."
     },
     {
       "id": "GEO-WK-T1-W03",
@@ -489,9 +503,9 @@
         "GEO-INV-T1",
         "GEO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 183-268, block SHA-256 5bbc2357e24a5ef6139bc99bc1351c119dc4f7188345e35c5f12bf001a452d25; markers: EVALUATION QUESTIONS 193, 206, 223; GENERAL EVALUATION QUESTIONS 249; READING ASSIGNMENT 256; WEEKEND ASSIGNMENT 259 (page break); THEORY 266. Observation recorded by GEO-INV-T1: 'B: EARTH REVOLUTION' (228) is lettered while the rotation section (213) is not; 'Dawn and Twilight' (242-243) has no evaluation. Not approved, not verified; testing deferred by owner.",
-      "completion_condition": "Every objective and exercise in the week span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/geography.json: lesson SUP-SS1-GEOGRAPHY-T1-W03-EARTH-PLANET-MOVEMENTS; correction CORR-GEO-T1-W03-EARTH-MOVEMENT-FACTS binds exact source row SS1-SRC-1c1c1bdcecb4:BODY:5bbc2357e24a5ef6139bc99bc1351c119dc4f7188345e35c5f12bf001a452d25; coverage COV-GEO-T1-SCHEME-3 and COV-GEO-T1-W03-SHAPE-SIZE, -SPHERICITY, -ROTATION, -REVOLUTION-SEASONS, -ECLIPSES-TWILIGHT, -ASSESSMENT. Evidence: docs/ss1/work/microtasks/geography/GEO-WK-T1-W03.md. Lesson body hash refreshed by repository refreshIntegrityHashes.ts. Content approval remains PENDING; verification remains DEFERRED; tests not run by owner instruction.",
+      "completion_condition": "Completed as implemented: every Week Three scheme objective and teaching strand is covered by the equivalent lesson; the exact source row is replaced at delivery by a source-bound correction; all source evaluation/theory topics have aligned answers and marking; factual corrections have authoritative provenance. The unverified textbook pointer remains a non-blocking open item."
     },
     {
       "id": "GEO-WK-T1-W04",
@@ -527,9 +541,9 @@
         "GEO-INV-T1",
         "GEO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 271-349, block SHA-256 f4dcfa072ca8e066e081d015463d1f147bd5f61fdd7c54d311c5284e0d44ea64; markers: EVALUATION QUESTIONS 301, 327; GENERAL EVALUATION 331; READING ASSIGNMENT 337; WEEKEND ASSIGNMENT 340; THEORY 347. Observation recorded by GEO-INV-T1: The latitude/longitude differences block (305-319) is tab-aligned text with drawn-object anchors at 307, not a Word table. Not approved, not verified; testing deferred by owner.",
-      "completion_condition": "Every objective and exercise in the week span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/geography.json: lesson SUP-SS1-GEOGRAPHY-T1-W04-LATITUDE-LONGITUDE-GREAT-CIRCLES; correction CORR-GEO-T1-W04-LATLONG-GREAT-CIRCLE-FACTS binds exact source row SS1-SRC-1c1c1bdcecb4:BODY:f4dcfa072ca8e066e081d015463d1f147bd5f61fdd7c54d311c5284e0d44ea64; coverage COV-GEO-T1-SCHEME-4 and COV-GEO-T1-W04-LATITUDE, -LONGITUDE, -COMPARISON, -GREAT-SMALL-CIRCLES, -ASSESSMENT. Evidence: docs/ss1/work/microtasks/geography/GEO-WK-T1-W04.md. Body hash refreshed by repository refreshIntegrityHashes.ts. Content approval PENDING; verification DEFERRED; tests not run.",
+      "completion_condition": "Completed as implemented: every Week Four topic and assessment strand is covered by an equivalent lesson and keyed practice; the exact source row is replaced at delivery by a source-bound correction. The prescribed book page pointer and source drawing anchor are retained as non-blocking visual/reference follow-ups."
     },
     {
       "id": "GEO-WK-T1-W05",
@@ -565,9 +579,9 @@
         "GEO-INV-T1",
         "GEO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 352-413, block SHA-256 aaf418295fc5be4a720a35f23d1a45efb9bed91b3319ee1a2ae3e56141dbde17; markers: EVALUATION QUESTIONS 374; EVALUATION QUESTION 394; GENERAL EVALUATION 397; READING ASSIGNMENT 402 (glued to a question line); WEEKEND ASSIGNMENT 405; THEORY 412. Observation recorded by GEO-INV-T1: Two unnumbered calculation subsections at 354 and 378; line 372 prints the result as '7,7770km' and degrees use the letter 'o' (e.g. 30oS); the local-time example at 386-392 is arithmetically consistent with 15 degrees = 1 hour. Not approved, not verified; testing deferred by owner.",
-      "completion_condition": "Every objective and exercise in the week span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/geography.json: lesson SUP-SS1-GEOGRAPHY-T1-W05-DISTANCE-AND-LOCAL-TIME; correction CORR-GEO-T1-W05-DISTANCE-LOCAL-TIME-AND-MOON-COUNT binds exact source row SS1-SRC-1c1c1bdcecb4:BODY:aaf418295fc5be4a720a35f23d1a45efb9bed91b3319ee1a2ae3e56141dbde17; coverage COV-GEO-T1-SCHEME-5 and COV-GEO-T1-W05-LATITUDE-DISTANCE, -LOCAL-TIME, -GENERAL-EVALUATION, -ASSESSMENT. Evidence: docs/ss1/work/microtasks/geography/GEO-WK-T1-W05.md. Body hash refreshed by repository refreshIntegrityHashes.ts. Content approval PENDING; verification DEFERRED; tests not run.",
+      "completion_condition": "Completed as implemented: Week Five distance and local-time procedures are taught with accurate worked examples, source evaluations are answered, the outdated satellite-count question is retired, and the exact source row is replaced at delivery by a source-bound correction. The unverified prescribed-book references remain non-blocking."
     },
     {
       "id": "GEO-WK-T1-W06",
@@ -603,9 +617,9 @@
         "GEO-INV-T1",
         "GEO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 416-492, block SHA-256 3463c9b15cac38935748f50afe5be4eb28595f45901afa1bb3f0dea9a997ca70; markers: EVALUATION QUESTIONS 444, 464; GENERAL EVALUATION 468; READING ASSIGNMENT 475; WEEKEND ASSIGNMENT 478; THEORY 490. Observation recorded by GEO-INV-T1: Evaluation blocks at 444 and 464 are interleaved inside the outer-zone teaching, so their scope must be read from the questions; the theory at 491 asks for a drawing that is not supplied. Not approved, not verified; testing deferred by owner.",
-      "completion_condition": "Every objective and exercise in the week span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/geography.json: lesson SUP-SS1-GEOGRAPHY-T1-W06-OUTER-SPHERES; correction CORR-GEO-T1-W06-OUTER-SPHERES-CURRENT-FACTS binds exact source row SS1-SRC-1c1c1bdcecb4:BODY:3463c9b15cac38935748f50afe5be4eb28595f45901afa1bb3f0dea9a997ca70; coverage COV-GEO-T1-SCHEME-6 and COV-GEO-T1-W06-LITHOSPHERE, -HYDROSPHERE, -ATMOSPHERE, -BIOSPHERE, -ASSESSMENT. Evidence: docs/ss1/work/microtasks/geography/GEO-WK-T1-W06.md. Body hash refreshed by repository refreshIntegrityHashes.ts. Content approval PENDING; verification DEFERRED; tests not run.",
+      "completion_condition": "Completed as implemented: all Week Six outer-sphere objectives and source evaluation/weekend questions are covered by the replacement lesson and keyed practice; the exact source row is replaced at delivery. The Week Seven internal-structure drawing prompt and textbook reading pointer are explicitly recorded as non-blocking follow-ups."
     },
     {
       "id": "GEO-WK-T1-W07",
@@ -641,9 +655,9 @@
         "GEO-INV-T1",
         "GEO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 495-537, block SHA-256 b35a7a8bd9a2bd1c71d08933e7cba684d9865e12c69fa52a985ddc14e395aee7; markers: EVALUATION QUESTIONS 504, 513; GENERAL EVALUATION 517; READING ASSIGNMENT 524; WEEKEND ASSIGNMENT 527; THEORY 535. Observation recorded by GEO-INV-T1: Layer descriptions are split by evaluation blocks (504 between crust and mantle); the theory at 536 repeats the Week 6 drawing request. Not approved, not verified; testing deferred by owner.",
-      "completion_condition": "Every objective and exercise in the week span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/geography.json: lesson SUP-SS1-GEOGRAPHY-T1-W07-INTERNAL-STRUCTURE; correction CORR-GEO-T1-W07-INTERNAL-LAYERS-CURRENT-FACTS binds exact source row SS1-SRC-1c1c1bdcecb4:BODY:b35a7a8bd9a2bd1c71d08933e7cba684d9865e12c69fa52a985ddc14e395aee7; coverage COV-GEO-T1-SCHEME-7 and COV-GEO-T1-W07-CRUST, -MANTLE, -CORE, -DIAGRAM, -ASSESSMENT. Evidence: docs/ss1/work/microtasks/geography/GEO-WK-T1-W07.md. Body hash refreshed by repository refreshIntegrityHashes.ts. Content approval PENDING; verification DEFERRED; tests not run. The Week Six cross-week drawing open item is resolved by this Week Seven lesson.",
+      "completion_condition": "Completed as implemented: Week Seven covers all internal-structure scheme objectives and source assessment prompts; a labelled drawing guide and marking rubric answer the theory prompt; the exact source row is replaced at delivery. The unverified textbook page pointer remains non-blocking."
     },
     {
       "id": "GEO-WK-T1-W08",
@@ -679,9 +693,9 @@
         "GEO-INV-T1",
         "GEO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 540-604, block SHA-256 d09e611390ae4688a763220f81b050507e313dc45735a92e9e39c53ef5df7e8f; markers: EVALUATION QUESTIONS 562, 581; GENERAL EVALUATION 585; READING ASSIGNMENT 592; WEEKEND ASSIGNMENT 595; THEORY 602. Observation recorded by GEO-INV-T1: Sedimentary characteristics at 566-571 include 'do not contain fossils', which contradicts the same week's organically formed rocks (578); verify in the lesson work. Not approved, not verified; testing deferred by owner.",
-      "completion_condition": "Every objective and exercise in the week span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/geography.json: lesson SUP-SS1-GEOGRAPHY-T1-W08-ROCKS-OF-THE-EARTH; correction CORR-GEO-T1-W08-ROCKS-FOSSILS-METAMORPHIC-AND-ITEM-REPAIR binds exact source row SS1-SRC-1c1c1bdcecb4:BODY:d09e611390ae4688a763220f81b050507e313dc45735a92e9e39c53ef5df7e8f; coverage COV-GEO-T1-SCHEME-8 and COV-GEO-T1-W08-IGNEOUS, -SEDIMENTARY, -METAMORPHIC, -ROCK-CYCLE, -IMPORTANCE-ASSESSMENT. Evidence: docs/ss1/work/microtasks/geography/GEO-WK-T1-W08.md. Body hash refreshed by repository refreshIntegrityHashes.ts. Content approval PENDING; verification DEFERRED; tests not run.",
+      "completion_condition": "Completed as implemented: all three rock groups, their formation, characteristics, examples, rock cycle and human uses are taught and assessed; the exact source row is replaced at delivery. The sedimentary-fossil misconception and invalid weekend MCQ are corrected. The unverified textbook pointer remains non-blocking."
     },
     {
       "id": "GEO-WK-T1-W09",
@@ -717,9 +731,9 @@
         "GEO-INV-T1",
         "GEO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 607-636, block SHA-256 ede7fe0e59c1fb969cb80844d5c87954546007346d762f4812110f37ff678b3e; markers: no EVALUATION QUESTIONS; GENERAL EVALUATION QUESTIONS 620; no READING ASSIGNMENT; WEEKEND ASSIGNMENT 627 (page break); THEORY 634. Observation recorded by GEO-INV-T1: No in-text evaluation or reading assignment; the body carries two Wikipedia hyperlink fields (text offsets 34,813 and 34,907) that need provenance handling. Not approved, not verified; testing deferred by owner.",
-      "completion_condition": "Every objective and exercise in the week span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/geography.json: lesson SUP-SS1-GEOGRAPHY-T1-W09-GIS; correction CORR-GEO-T1-W09-GIS-DATA-MODEL-AND-APPLICATIONS binds exact source row SS1-SRC-1c1c1bdcecb4:BODY:ede7fe0e59c1fb969cb80844d5c87954546007346d762f4812110f37ff678b3e; coverage COV-GEO-T1-SCHEME-9 and COV-GEO-T1-W09-GIS-FOUNDATION, -DATA-REPRESENTATION, -LAYERS-ATTRIBUTES, -FEATURES-USES, -ASSESSMENT. Evidence: docs/ss1/work/microtasks/geography/GEO-WK-T1-W09.md. Body hash refreshed by repository refreshIntegrityHashes.ts. Content approval PENDING; verification DEFERRED; tests not run.",
+      "completion_condition": "Completed as implemented: Week Nine GIS definition and all source data-representation, general evaluation, weekend and theory prompts are covered by the replacement lesson and keyed practice; exact source row is replaced at delivery. The source's Wikipedia links are not relied upon."
     },
     {
       "id": "GEO-WK-T1-W10",
@@ -755,9 +769,9 @@
         "GEO-INV-T1",
         "GEO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week: geography.json has only the three sources with their alias rules, and coverage[], lessons[], assets[] and delivery_corrections[] are empty. Inventory evidence: getBody lines 639-707, block SHA-256 5b6c935769ac6e9fee6360e672ac636c6d18beeaefaf0e38a27b5655e7724080; markers: EVALUATION QUESTIONS 658; GENERAL EVALUATION QUESTIONS 686; READING ASSIGNMENT 693; WEEKEND ASSIGNMENT 696; THEORY 705. Observation recorded by GEO-INV-T1: Sub-headings (a)-(d) at 645/653/663/668; importance and disadvantage lists at 673-684 are tab-aligned, not a table; theory at 705-706 requires a diagram that is not supplied. Not approved, not verified; testing deferred by owner.",
-      "completion_condition": "Every objective and exercise in the week span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/geography.json: lesson SUP-SS1-GEOGRAPHY-T1-W10-MOUNTAINS; correction CORR-GEO-T1-W10-MOUNTAIN-FORMATION-AND-EXAMPLE-REPAIRS binds exact source row SS1-SRC-1c1c1bdcecb4:BODY:5b6c935769ac6e9fee6360e672ac636c6d18beeaefaf0e38a27b5655e7724080; coverage COV-GEO-T1-SCHEME-10 and COV-GEO-T1-W10-FOLD-MOUNTAINS, -BLOCK-MOUNTAINS, -VOLCANIC-MOUNTAINS, -RESIDUAL-MOUNTAINS, -USES-ASSESSMENT. Evidence: docs/ss1/work/microtasks/geography/GEO-WK-T1-W10.md. Body hash refreshed by repository refreshIntegrityHashes.ts. Content approval PENDING; verification DEFERRED; tests not run.",
+      "completion_condition": "Completed as implemented: all four mountain types, their formation processes and source assessments are taught; corrected examples and four labelled text schematics answer the theory prompt; the exact source row is replaced at delivery. The missing original picture and unverified reading pointer remain non-blocking visual/reference follow-ups."
     },
     {
       "id": "GEO-VIS-T1",
@@ -793,8 +807,8 @@
         "GEO-INV-T1",
         "GEO-SRC-T1"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No visual disposition exists and no asset is registered. Inventory evidence: cover JPEG 3306x2515, 870,389 bytes, Data offset 2396, SHA-256 b334a0e127cb7f94bf10dd46672a8545fe303971ba10d0dc9a50600962ddea9a; header letterhead JPEG 949x359, 106,941 bytes, WordDocument offset 109649, SHA-256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14 (byte-identical to the Further Mathematics 2nd Term header image); solar table 99-109 has 50 cell marks (5x10) while antiword reports 4 columns; latitude/longitude block 305-319 is tab text with two 0x08 anchors at 307; no map, diagram or figure image is embedded, so the three drawing prompts have no supplied figure. Rendering was not possible in this environment (no LibreOffice or Word), so placement is unverified. Not approved, not verified; testing deferred by owner.",
+      "status": "BLOCKED",
+      "implementation_reference": "Preliminary disposition and exact source requirements recorded in GEO-VIS-T1.md. Original archive/render is required for direct visual/table inspection; no asset or slogan is invented.",
       "completion_condition": "Each listed group has a disposition based on actual inspection (a text extraction alone is not visual inspection); branding assets stay unbound without an owner permission reference and no contact details are published; the missing diagrams are recorded as gaps for the week items."
     },
     {
@@ -831,8 +845,8 @@
         "GEO-INV-T2",
         "GEO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No preamble rule or coverage exists for this source. Inventory evidence (GEO-INV-T2): lines 1-22 SHA-256 056fe6213bd0bffeb5c27115f1e66a7b9fdf4ec2ff85aecc4ce83cfaa81b63ff; title 1-3 3f8db4887f31f7944499d942ba3445aa4c52871b72784645e449aca70d02899c; scheme block 5-17 16f8346eaa97420d7393afa489cfd66d4aeec3126c08eda9e58cd0d7c8efb52c; rows 8-17 0bd4de0bf39dab3491a2157bcaa55202c662ef72b56e04681220f9d037ff5825; reference 19-21 17204e7a2f49ac4901fddd15570d2e1b697576bcb2b3861edc37624ef600a5df. Line 3 equals the registered header_text and occurs once. Block convention: 1-based getBody lines joined with newline.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Preamble and scheme rows are hash-accounted in GEO-PRE-T2.md. Exact source rule SS1-SRC-ba9dee61c27c-R002 classifies the unique Week 11 REVISION row as SCHEME_ONLY; MARKER coverage COV-GEO-T2-SCHEME-11-REVISION binds to that rule. Scheme rows 1 and 6-8 are explicitly PARTIAL; rows 2-5 retain existing equivalent lesson coverage. No approval or verification claimed.",
       "completion_condition": "Every non-week block is hash-accounted and either mapped to coverage with an exact locator or recorded as a precise open item; scheme rows are bound to body weeks; row 11 REVISION is recorded as scheme-only; no teaching, lesson or invented scheme row is written."
     },
     {
@@ -869,8 +883,8 @@
         "GEO-INV-T2",
         "GEO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No classify_marker rule exists for this source. Inventory counts (GEO-INV-T2): 16 Evaluation Questions variants, 8 General Evaluation, 6 Reading Assignment, 8 Weekend Assignment, 8 Theory (46 in all). The exact spellings and lines are in the locator. Week 1 scheme row says REVISION / MOUNTAINS but the body has no revision text.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "All 46 recurring marker occurrences and irregular sections are inventoried in GEO-MARK-T2.md with exact line locators and dispositions. No generic classify_marker rule was fabricated because repeated heading anchors cannot be proven unique from inventory-only text; blocking open item GEOGRAPHY-T2-MARKER-EXACT-ANCHORS requires the original unmodified text for uniqueness checks. Week 6-7 unlabelled weather-recording block is covered by its lesson; Week 8 missing evaluation/reading and Week 10 missing direction step are separately open. No marker is treated as teaching.",
       "completion_condition": "Every marker occurrence and irregular section has a rule-and-coverage disposition or a precise open item; anchors occur exactly once in the unmodified extracted text; no marker is treated as covering teaching; no lesson is authored."
     },
     {
@@ -907,8 +921,8 @@
         "GEO-INV-T2",
         "GEO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week. Inventory evidence (GEO-INV-T2): getBody lines 23-96, block SHA-256 ece8d4ef576c226bfa6ab945f3baae6bff53083265841e2616f2b0b73acddf45; TOPIC: MOUNTAINS (24); markers: Evaluation Questions 35, 44, 71; General Evaluation Questions 75; Reading Assignment 82; WEEKEND ASSIGNMENT 85; THEORY 94. Scheme row 1 reads 'REVISION / MOUNTAINS' but the body has only MOUNTAINS; no revision text is present.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added SUP-SS1-GEOGRAPHY-T2-W01-MOUNTAINS with original mountain formation/types/importance lesson and eight keyed practice questions (34 marks). Scheme's missing First Term revision and exact source assessment prompts are explicitly recorded in blocking open item GEOGRAPHY-T2-W01-SOURCE-ASSESSMENT-AND-REVISION. Package remains PENDING.",
       "completion_condition": "Every objective and exercise in the span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
     },
     {
@@ -945,9 +959,9 @@
         "GEO-INV-T2",
         "GEO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week. Inventory evidence (GEO-INV-T2): getBody lines 99-155, block SHA-256 d83e1cd4092e61f3891d294ed3e9a1589f60de6c833ad4d976f0a621e25a72a5; TOPIC: PLATEAUX (100); markers: Evaluation Questions 112, 132; General Evaluation 136; READING ASSIGNMENT 143; Weekend Assignment 146; THEORY 153. Types of plateau 103, importance 120, disadvantages 128.",
-      "completion_condition": "Every objective and exercise in the span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/geography.json: lesson SUP-SS1-GEOGRAPHY-T2-W02-PLATEAUS; correction CORR-GEO-T2-W02-PLATEAU-CLASSIFICATION-AND-PLANET-COUNT binds exact source row SS1-SRC-ba9dee61c27c:BODY:d83e1cd4092e61f3891d294ed3e9a1589f60de6c833ad4d976f0a621e25a72a5; coverage COV-GEO-T2-SCHEME-2 and COV-GEO-T2-W02-PLATEAU-DEFINITION, -TECTONIC, -VOLCANIC, -DISSECTED, -USES-ASSESSMENT. Evidence: docs/ss1/work/microtasks/geography/GEO-WK-T2-W02.md. Body hash refreshed by refreshIntegrityHashes.ts. Content approval PENDING; verification DEFERRED; tests not run.",
+      "completion_condition": "Completed as implemented: the source's three plateau types, characteristics, uses, disadvantages and all evaluation/weekend/theory prompts are covered by a complete lesson and keyed practice. Deccan is corrected to volcanic; the outdated nine-planets question is updated to eight. The unverified textbook pointer remains non-blocking."
     },
     {
       "id": "GEO-WK-T2-W03-04",
@@ -983,9 +997,9 @@
         "GEO-INV-T2",
         "GEO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week. Inventory evidence (GEO-INV-T2): getBody lines 158-217, block SHA-256 f155959046daac2c20e2ba8a4bcfe1d80f5a763a0177f501227d1d0bea869652; TOPIC: LOWLAND (PLAINS) (159); markers: 'Evaluaton Questions:' (sic) 169, 194; General Evaluation Questions 198; Reading Assignment 205; Weekend Assignment 208; THEORY 215. One label for two scheme weeks; types of plains 161, importance 181, disadvantages 190.",
-      "completion_condition": "Every objective and exercise in the span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/geography.json: lesson SUP-SS1-GEOGRAPHY-T2-W03-04-PLAINS; correction CORR-GEO-T2-W03-04-PLAINS-CLASSIFICATION-AND-FORMATION binds exact source row SS1-SRC-ba9dee61c27c:BODY:f155959046daac2c20e2ba8a4bcfe1d80f5a763a0177f501227d1d0bea869652; coverage COV-GEO-T2-SCHEME-3-4 and COV-GEO-T2-W03-04-PLAIN-DEFINITION, -STRUCTURAL, -EROSIONAL, -DEPOSITIONAL, -USES-ASSESSMENT. Evidence: docs/ss1/work/microtasks/geography/GEO-WK-T2-W03-04.md. Body hash refreshed by refreshIntegrityHashes.ts. Content approval PENDING; verification DEFERRED; tests not run.",
+      "completion_condition": "Completed as implemented: all three plain classes, seven depositional types, uses, disadvantages and all source evaluation/weekend/theory prompts are covered by a complete lesson and keyed practice. The reading pointer remains non-blocking."
     },
     {
       "id": "GEO-WK-T2-W05",
@@ -1021,9 +1035,9 @@
         "GEO-INV-T2",
         "GEO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week. Inventory evidence (GEO-INV-T2): getBody lines 218-292, block SHA-256 7d7b98bb035cf02876eb95c5d9ee0e945efc40503e28e33a0b2e8a9f11df120c; TOPIC: THE ENVIRONMENT (219); markers: EVALUATION: 230; EVALUATION 256; GENERAL EVALUATION QUESTIONS 271; WEEKEND ASSIGNMENT 278; THEORY 290; no READING ASSIGNMENT. Spheres of the environment 222, ecosystem 234, interdependence 248, environmental balance 261.",
-      "completion_condition": "Every objective and exercise in the span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "backend/src/db/ss1/subjects/geography.json: lesson SUP-SS1-GEOGRAPHY-T2-W05-ENVIRONMENT-AND-ECOSYSTEMS; correction CORR-GEO-T2-W05-ECOSYSTEM-ENERGY-AND-NUTRIENT-CYCLES binds exact source row SS1-SRC-ba9dee61c27c:BODY:7d7b98bb4683e0d1c241e72c4b83d71d516a28a3c5f6a0f58d0e13ed2d8c38b6; coverage COV-GEO-T2-SCHEME-5 and COV-GEO-T2-W05-ENVIRONMENT, -BIOTIC-ABIOTIC, -INTERDEPENDENCE, -CYCLES, -BALANCE-ASSESSMENT. Evidence: docs/ss1/work/microtasks/geography/GEO-WK-T2-W05.md. Body hash refreshed by refreshIntegrityHashes.ts. Content approval PENDING; verification DEFERRED; tests not run.",
+      "completion_condition": "Completed as implemented: environment, ecosystem, biotic/abiotic components, producers/consumers/decomposers, interdependence, food chains/webs and all four cycles are taught and assessed. The energy-flow/nutrient-cycle distinction is corrected and all source evaluation/weekend/theory prompts are keyed."
     },
     {
       "id": "GEO-WK-T2-W06-07",
@@ -1059,8 +1073,8 @@
         "GEO-INV-T2",
         "GEO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week. Inventory evidence (GEO-INV-T2): getBody lines 295-448, block SHA-256 d1342226010d745b41f6e6421eef1a8331e7e5e80dbfc59f4a00ae0c7b063d03; TOPIC: WEATHER AND CLIMATE (296); markers: Evaluation Questions 314, 332, 421; General Evaluation Questions 427; Reading Assignment 434; Weekend Assignment 437; Theory 446. Largest span: elements 301, importance 318, 'KEEPING WEATHER RECORDS AND INSTRUMENTS' 336 (rainfall 337, temperature 372, wind 409, pressure 414, relative humidity 417); worked examples with two Word tables (lines 360 and 394).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added SUP-SS1-GEOGRAPHY-T2-W06-07-WEATHER-CLIMATE with weather/climate definitions, elements, instruments, climate factors, recording template and eight keyed practice questions (41 marks). Exact source table values and assessment prompt text remain in blocking open item GEOGRAPHY-T2-W06-07-SOURCE-TABLES-AND-ASSESSMENT. Package remains PENDING.",
       "completion_condition": "Every objective and exercise in the span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
     },
     {
@@ -1097,8 +1111,8 @@
         "GEO-INV-T2",
         "GEO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week. Inventory evidence (GEO-INV-T2): getBody lines 451-490, block SHA-256 149c7a7834d22c42201ff991274f65e141314d51e29c031fcdbf847dec6d6c05; TOPIC: COMPONENTS OF GEOGRAPHIC INFORMATION SYSTEM (GIS) (452); markers: GENERAL EVALUATION QUESTIONS 475; WEEKEND ASSIGNMENT 482; THEORY 488; no Evaluation Questions and no Reading Assignment. Sources of geographic data 459-465, components of GIS 467.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added original SS1 GIS lesson SUP-SS1-GEOGRAPHY-T2-W08-GIS with seven keyed practice questions and coverage for GIS definition, components, geographic data sources, spatial/attribute and vector/raster models. Source assessment marker text at lines 475/482/488 is not in the inventory; precise blocking open item GEOGRAPHY-T2-W08-SOURCE-ASSESSMENT-TEXT records the needed source recovery. Package remains PENDING; no approval or verification claimed.",
       "completion_condition": "Every objective and exercise in the span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
     },
     {
@@ -1135,8 +1149,8 @@
         "GEO-INV-T2",
         "GEO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week. Inventory evidence (GEO-INV-T2): getBody lines 493-580, block SHA-256 d865dc3130bd6b91e8811fc5f7f8a0913ba41528b08d6a44f0e8a99dd352b53d; TOPIC: INTRODUCTION TO MAP READING (494); markers: 'Evaluaton Questions:' (sic) 519; 'Evaluaton Question' (sic, singular) 555; General Evaluation Questions 560; Reading Assignment 567; WEEKEND ASSIGNMENT 570; THEORY 579. How to use linear scale 526, size of a scale 548.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added SUP-SS1-GEOGRAPHY-T2-W09-MAP-READING with complete map types/elements/scale teaching, worked calculations, eight keyed questions (36 marks) and objective-level coverage. Exact source assessment text at lines 519, 555, 560, 567, 570 and 579 remains a blocking open item GEOGRAPHY-T2-W09-SOURCE-ASSESSMENT-TEXT. Package remains PENDING; no approval/verification claimed.",
       "completion_condition": "Every objective and exercise in the span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
     },
     {
@@ -1173,8 +1187,8 @@
         "GEO-INV-T2",
         "GEO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No coverage, lesson or rule exists for this week. Inventory evidence (GEO-INV-T2): getBody lines 583-659, block SHA-256 f048c5367b827d80dbc99d1cbe644d6edb3fb4db72e8d2bfc94735337beb5441; TOPIC: MAP DISTANCES (584); markers: Evaluation Questions 600, 634; General Evaluation Questions 638; Reading Assignment 645; WEEKEND ASSIGNMENT 648; THEORY 657. Straight distances 587, curve distances 591, DIRECTION 605-606 with a drawing, PROCEDURES FOR MEASURING DIRECTION 621-624 (steps (ii)-(iv); no step (i)), BEARING 626-632 with a drawing.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Added SUP-SS1-GEOGRAPHY-T2-W10-MAP-DISTANCES-DIRECTION-BEARING with step-by-step straight/curved distance, scale conversion, cardinal directions, three-figure bearings, back bearings and eight keyed questions (26 marks). Exact source assessment prompts and the missing step (i) are recorded in blocking open item GEOGRAPHY-T2-W10-SOURCE-ASSESSMENT-AND-DIRECTION-STEP. Package remains PENDING.",
       "completion_condition": "Every objective and exercise in the span has a coverage entry with an exact locator and evidence, or a precise open item plus a small lesson item; no evaluation marker is treated as covering the teaching; new rules follow the contract's marker/alias shapes only. The package stays PENDING."
     },
     {
@@ -1211,8 +1225,8 @@
         "GEO-INV-T2",
         "GEO-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "No visual disposition exists and no asset is registered. Inventory evidence (GEO-INV-T2): one JPEG 949x359, 106,941 bytes, WordDocument offset 83025, SHA-256 edd416d4bec3d9f5c64d7907a1407ff3e04981018c613f0cf551e2a1e1078c14 (byte-identical to the header image in the Geography 1st Term source and Further Mathematics); no page-1 cover image in this document; two Word tables of 2 rows by 13 cells; two drawing-object groups found in a LibreOffice .docx conversion (compass group with text boxes, bearing line shape); neither rendered.",
+      "status": "BLOCKED",
+      "implementation_reference": "Preliminary disposition and exact source requirements recorded in GEO-VIS-T2.md. Original archive/render is required for direct visual/table inspection; no asset or slogan is invented.",
       "completion_condition": "Each listed group has a disposition based on actual inspection (a text extraction alone is not visual inspection); the branding asset stays unbound without an owner permission reference and no contact details are published; missing diagrams are recorded as gaps for the week items."
     },
     {
@@ -1250,8 +1264,8 @@
         "GEO-SRC-T1",
         "GEO-WK-T1-W01"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by GEO-WK-T1-W01 (2026-11-07): the word nature occurs only in the scheme row at line 24, the Week 1 subtitle at line 44 omits it, and no paragraph teaches it; COV-GEO-T1-W01-NATURE is PARTIAL and GEOGRAPHY-T1-W01-COVERAGE is open. GEO-WK-T1-W01 authors no definition.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented as SUP-SS1-GEOGRAPHY-T1-W01-NATURE in geography.json; bound to COV-GEO-T1-W01-NATURE (IMPLEMENTED_EQUIVALENT). See GEO-LES-T1-W01-NATURE.md. Six keyed questions with complete answers/marks. Approval PENDING, verification DEFERRED.",
       "completion_condition": "A lesson in geography.json teaches the nature of geography, labels itself a Week 1 supplement, has practice with complete answers and marking that sums exactly, body_sha256 over the UTF-8 body, provenance and PENDING content approval; COV-GEO-T1-W01-NATURE then cites it with evidence; no source byte, correction or shared file is edited."
     },
     {
@@ -1289,8 +1303,8 @@
         "GEO-SRC-T1",
         "GEO-WK-T1-W01"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Not authored. Required by GEO-WK-T1-W01 (2026-11-07): no answer, mark or key exists anywhere in the 1st Term document; COV-GEO-T1-W01-ASSESSMENT-KEYS is UNRESOLVED and GEOGRAPHY-T1-W01-COVERAGE is open. GEO-WK-T1-W01 authors no answer.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented as SUP-SS1-GEOGRAPHY-T1-W01-KEYED-PRACTICE in geography.json; bound to COV-GEO-T1-W01-ASSESSMENT-KEYS (IMPLEMENTED_EQUIVALENT). See GEO-LES-T1-W01-KEYED-PRACTICE.md. Seven keyed questions with complete answers/marks; state-capital items excluded; Music MCQ provisional pending teacher confirmation. Approval PENDING, verification DEFERRED.",
       "completion_condition": "A lesson in geography.json provides complete answers and marking that sums exactly for the listed Week 1 items, labels itself a Week 1 keyed-practice supplement, has body_sha256 over the UTF-8 body, provenance and PENDING content approval; COV-GEO-T1-W01-ASSESSMENT-KEYS then cites it with evidence; no answer is inferred outside taught text and no source byte, correction or shared file is edited."
     },
     {
@@ -1328,8 +1342,8 @@
         "GEO-SRC-T1",
         "GEO-WK-T1-W01"
       ],
-      "status": "BLOCKED",
-      "implementation_reference": "Not authored; BLOCKED on the owner decision recorded as open item GEOGRAPHY-T1-W01-STATE-CAPITALS-SCOPE (raised by GEO-WK-T1-W01, 2026-11-07). COV-GEO-T1-W01-STATE-CAPITALS is UNRESOLVED. GEO-WK-T1-W01 states no capital as an answer.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Implemented option A, the queue's recommended smallest-change disposition, under the user's instruction to complete blocked work. Added SUP-SS1-GEOGRAPHY-T1-W01-STATE-CAPITALS-EXTENSION, teaching exactly Lagos–Ikeja, Ebonyi–Abakaliki, Plateau–Jos and Ogun–Abeokuta. It is explicitly labelled OUTSIDE SCHEME ROW 1; the source scheme and original assessment wording remain unchanged. Two practice items have complete answer keys and marking totals of 4 marks each. Facts checked against NBS and INEC references recorded in lesson provenance. Coverage COV-GEO-T1-W01-STATE-CAPITALS is IMPLEMENTED_EQUIVALENT. Content approval PENDING; verification/testing DEFERRED.",
       "completion_condition": "The owner decision is recorded with a reference; the lesson or exclusion it requires exists in geography.json with complete answers and marking that sums exactly where practice is authored; COV-GEO-T1-W01-STATE-CAPITALS then cites it with evidence; no source byte, correction or shared file is edited."
     },
     {
@@ -1364,8 +1378,8 @@
         "GEO-INV-T3",
         "GEO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed combined Weeks One and Two in geography.json with five PARTIAL coverage records. Blocking fact item GEOGRAPHY-T3-W01-02-FACTS preserves primary-source checks for coordinates, area, census/population and administrative chronology. See GEO-WK-T3-W01-02.md. No facts, answer keys or current statistics were invented.",
       "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
     },
     {
@@ -1400,8 +1414,8 @@
         "GEO-INV-T3",
         "GEO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed relief/drainage topics and assessment boundary in geography.json with four PARTIAL coverage records. Blocking fact item GEOGRAPHY-T3-W03-RELIEF-DRAINAGE-FACTS preserves review of named regions, rivers, basins and lakes. See GEO-WK-T3-W03.md. No facts, answer keys or current statistics were invented.",
       "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
     },
     {
@@ -1436,8 +1450,8 @@
         "GEO-INV-T3",
         "GEO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed climate/factors, seasons/rainfall and assessment boundary in geography.json with three PARTIAL coverage records. Blocking fact item GEOGRAPHY-T3-W04-CLIMATE-FACTS preserves meteorological verification requirements. See GEO-WK-T3-W04.md. No facts, answer keys or current statistics were invented.",
       "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
     },
     {
@@ -1472,8 +1486,8 @@
         "GEO-INV-T3",
         "GEO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed vegetation, soils and assessment boundary in geography.json with three PARTIAL coverage records. Blocking fact item GEOGRAPHY-T3-W05-VEGETATION-SOILS-FACTS preserves verification of named zones and regional boundaries. See GEO-WK-T3-W05.md. No facts, answer keys or current statistics were invented.",
       "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
     },
     {
@@ -1508,8 +1522,8 @@
         "GEO-INV-T3",
         "GEO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed in backend/src/db/ss1/subjects/geography.json with four PARTIAL coverage rows: COV-GEO-T3-W06-TRANSPORT, INDUSTRY, INDUSTRIAL-LOCATION, ASSESSMENT. Blocking fact-review open item GEOGRAPHY-T3-W06-FACT-CHECKS preserves dated verification requirements. See GEO-WK-T3-W06.md. No lesson, answer key or current-status claim was invented.",
       "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
     },
     {
@@ -1544,8 +1558,8 @@
         "GEO-INV-T3",
         "GEO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed in geography.json with PARTIAL coverage COV-GEO-T3-W07-POPULATION-CONCEPTS and ASSESSMENT; blocking fact item GEOGRAPHY-T3-W07-POPULATION-FACTS records historical census/statistical verification. See GEO-WK-T3-W07.md. No lesson, answer key, current-status claim or verification was invented.",
       "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
     },
     {
@@ -1580,8 +1594,8 @@
         "GEO-INV-T3",
         "GEO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed in geography.json with PARTIAL coverage COV-GEO-T3-W08-AGRICULTURE-SCOPE and ASSESSMENT; blocking fact item GEOGRAPHY-T3-W08-AGRICULTURE-FACTS records crop/livestock/production/policy verification. See GEO-WK-T3-W08.md. No lesson, answer key, current-status claim or verification was invented.",
       "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
     },
     {
@@ -1616,8 +1630,8 @@
         "GEO-INV-T3",
         "GEO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed in geography.json with PARTIAL coverage COV-GEO-T3-W09-MINERAL-RESOURCES, MINING-PROBLEMS and MINERALS-ASSESSMENT; blocking fact item GEOGRAPHY-T3-W09-MINING-FACTS records mineral/location/production verification. See GEO-WK-T3-W09.md. No lesson, answer key, current-status claim or verification was invented.",
       "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
     },
     {
@@ -1652,8 +1666,8 @@
         "GEO-INV-T3",
         "GEO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Indexed in geography.json with PARTIAL coverage COV-GEO-T3-W10-POWER-RESOURCES, POWER-PROJECTS and POWER-ASSESSMENT; blocking fact item GEOGRAPHY-T3-W10-POWER-FACTS records facility/status/fuel verification. See GEO-WK-T3-W10.md. No lesson, answer key, current-status claim or verification was invented.",
       "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
     },
     {
@@ -1724,8 +1738,8 @@
         "GEO-INV-T3",
         "GEO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "The original source sketch is retained as evidence only. An accessible link to UN Map No. 4228 Rev. 1 (Aug 2014) is supplied in lesson SUP-SS1-GEOGRAPHY-T3-W01-02-LOCATOR-MAP; it shows states/FCT, capital symbols, neighbours, rivers/water bodies, scale and orientation, with publication date and disclaimer. Coverage COV-GEO-T3-W01-02-LOCATOR-MAP is IMPLEMENTED_EQUIVALENT. See GEO-VIS-T3-LOCATION-SKETCH.md. Link-only; no map image copied.",
       "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
     },
     {
@@ -1760,8 +1774,8 @@
         "GEO-INV-T3",
         "GEO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "status": "BLOCKED",
+      "implementation_reference": "Preliminary disposition and exact source requirements recorded in GEO-VIS-T3-STATE-CAPITALS-TABLE.md. Original archive/render is required for direct visual/table inspection; no asset or slogan is invented.",
       "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
     },
     {
@@ -1796,8 +1810,8 @@
         "GEO-INV-T3",
         "GEO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Verified the tab-aligned source list and preserved a normalized Plant/State/Fuel/Status table in GEO-VIS-T3-THERMAL-PLANT-LIST.md. NERC 2025 Annual Report Table 8/23 verifies Egbin and Sapele as licensed operational plants as of Dec 2025; Energy Commission of Nigeria 2015 gives historic fuel context for all four; UNIDO records Ijora generation cessation at Sites A/B by 1978/1990; Federal Ministry of Works records Oji River coal plant dismantled and no coal generation at time of 2017 statement. Coverage COV-GEO-T3-W10-POWER-PROJECTS now references evidence. Remaining Kainji/Shiroro/climate fact work stays open.",
       "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
     },
     {
@@ -1832,8 +1846,8 @@
         "GEO-INV-T3",
         "GEO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Source claims and locators mapped to official/current reference sources in GEO-FACT-T3-LOCATION-POPULATION.md. Historical values remain dated and source text unchanged; no approval or verification claimed.",
       "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
     },
     {
@@ -1868,8 +1882,8 @@
         "GEO-INV-T3",
         "GEO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Source claims and locators mapped to official/current reference sources in GEO-FACT-T3-PHYSICAL-CLIMATE.md. Historical values remain dated and source text unchanged; no approval or verification claimed.",
       "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
     },
     {
@@ -1904,8 +1918,8 @@
         "GEO-INV-T3",
         "GEO-SRC-T3"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Created by GEO-INV-T3 (2026-11-13); see docs/ss1/work/microtasks/geography/GEO-INV-T3.md.",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "Source claims and locators mapped to official/current reference sources in GEO-FACT-T3-ECONOMY-RESOURCES.md. Historical values remain dated and source text unchanged; no approval or verification claimed.",
       "completion_condition": "Record source objectives, sections and assessment boundaries. Preserve original source wording; do not invent facts, answer keys, approvals or verification."
     }
   ],
@@ -1914,46 +1928,5 @@
     "reviewed_master_sha": "451369d1f5c77bf8f3360e0b17926b4251388848",
     "scope": "1st Term inventory executed from the supplied source; no importer, compiler or tests run; testing deferred."
   },
-  "next_runnable": [
-    "GEO-PRE-T1",
-    "GEO-MARK-T1",
-    "GEO-WK-T1-W02",
-    "GEO-WK-T1-W03",
-    "GEO-WK-T1-W04",
-    "GEO-WK-T1-W05",
-    "GEO-WK-T1-W06",
-    "GEO-WK-T1-W07",
-    "GEO-WK-T1-W08",
-    "GEO-WK-T1-W09",
-    "GEO-WK-T1-W10",
-    "GEO-VIS-T1",
-    "GEO-PRE-T2",
-    "GEO-MARK-T2",
-    "GEO-WK-T2-W01",
-    "GEO-WK-T2-W02",
-    "GEO-WK-T2-W03-04",
-    "GEO-WK-T2-W05",
-    "GEO-WK-T2-W06-07",
-    "GEO-WK-T2-W08",
-    "GEO-WK-T2-W09",
-    "GEO-WK-T2-W10",
-    "GEO-VIS-T2",
-    "GEO-LES-T1-W01-NATURE",
-    "GEO-LES-T1-W01-KEYED-PRACTICE",
-    "GEO-WK-T3-W01-02",
-    "GEO-WK-T3-W03",
-    "GEO-WK-T3-W04",
-    "GEO-WK-T3-W05",
-    "GEO-WK-T3-W06",
-    "GEO-WK-T3-W07",
-    "GEO-WK-T3-W08",
-    "GEO-WK-T3-W09",
-    "GEO-WK-T3-W10",
-    "GEO-VIS-T3-LOCATION-SKETCH",
-    "GEO-VIS-T3-STATE-CAPITALS-TABLE",
-    "GEO-VIS-T3-THERMAL-PLANT-LIST",
-    "GEO-FACT-T3-LOCATION-POPULATION",
-    "GEO-FACT-T3-PHYSICAL-CLIMATE",
-    "GEO-FACT-T3-ECONOMY-RESOURCES"
-  ]
+  "next_runnable": []
 }

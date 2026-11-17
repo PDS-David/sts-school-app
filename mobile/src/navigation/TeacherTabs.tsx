@@ -17,8 +17,10 @@ import { useIsWide } from '../components/layout';
 // teacher's grading surface is only ScoreEntryScreen — CA1/CA2/Exam scores
 // for their own subject or class — reached from the Classes tab below.
 import TeacherDashboardHomeScreen from '../screens/teacher/TeacherDashboardHomeScreen';
+import SchoolCalendarScreen from '../screens/SchoolCalendarScreen';
 import TeacherClassesScreen from '../screens/teacher/TeacherClassesScreen';
 import TeacherMoreScreen from '../screens/teacher/TeacherMoreScreen';
+import TeacherAnalyticsScreen from '../screens/teacher/TeacherAnalyticsScreen';
 import ChatsScreen from '../screens/chats/ChatsScreen';
 import ChatThreadScreen from '../screens/chats/ChatThreadScreen';
 
@@ -82,6 +84,7 @@ function MoreStackNavigator() {
   return (
     <MoreStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
       <MoreStack.Screen name="More" component={TeacherMoreScreen} />
+      <MoreStack.Screen name="TeacherAnalytics" component={TeacherAnalyticsScreen} />
       <MoreStack.Screen name="WeeklyEfforts" component={WeeklyEffortsScreen} options={{ headerShown: true, title: 'Weekly Efforts', ...opts }} />
       <MoreStack.Screen name="ChangePassword" component={ChangePasswordScreen} options={{ headerShown: true, title: 'Change Password', ...opts }} />
       {/* No local "SecurityQuestionSetup" registration (deliberately removed
@@ -89,6 +92,7 @@ function MoreStackNavigator() {
           anymore — see TeacherMoreScreen.tsx's removal note. The root-level
           registration in RootNavigator.tsx still exists for other roles;
           it's simply unreachable from anywhere in this stack now. */}
+      <MoreStack.Screen name="SchoolCalendar" component={SchoolCalendarScreen} options={{ headerShown: false }} />
     </MoreStack.Navigator>
   );
 }

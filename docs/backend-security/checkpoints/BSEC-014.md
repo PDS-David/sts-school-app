@@ -1,0 +1,21 @@
+# Checkpoint — BSEC-014
+
+- **Task ID:** BSEC-014
+- **Title:** Add normalized per-account login brute-force protection
+- **Status:** merged
+- **Owner:** ChatGPT implementation worker
+- **Base branch:** master
+- **Working branch:** agent/backend-login-account-rate-limit-20261113
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/770 (merged 2026-11-13T16:08:53Z)
+- **Merge commit:** a83af17aa9cd1b73eeccb1dce913da75bda21bed
+- **Latest implementation commits:** auth route 4cc0d54278dd759514182ef5c7548b630afb104b; integration tests 7b4e170a2b6c394627f916d7e88b312816b0f439
+- **Changed files:**
+  - backend/src/routes/auth.ts
+  - tests/backend-credential-attempts.integration.test.mts
+  - this checkpoint
+- **Finding:** the global /auth limiter is IP-based. There was no independent login-attempt limit per account, so a distributed attacker could make repeated guesses against one username, and a shared school IP could consume a common quota for unrelated accounts.
+- **Implementation:** add an express-rate-limit login middleware keyed by SHA-256 of the normalized lowercase username (bounded to 128 characters). Allow 10 failed requests per 15 minutes; successful logins are skipped. Add strict username/password type and username-length validation. The existing global IP limiter remains as defense-in-depth; this change does not modify proxy trust or its global quota.
+- **Regression coverage:** PostgreSQL HTTP integration tests verify case/whitespace-normalized usernames share one quota, a second account has an independent quota, the 11th failed attempt returns 429, and a successful login does not consume the failed-attempt quota.
+- **Verification:** Backend credential attempt locking workflow 43457782174 and public self-registration integrity workflow 43457782196 passed, including PostgreSQL 16 tests and backend TypeScript typecheck. The first JSS3/SS1 runs failed on an unrelated SS1 package body-hash mismatch for financial-accounting.json; subsequent JSS3 implementation/asset check 43940770674 and SS1 package integrity check 43940770704 passed on a later master-derived PR head containing this auth implementation. No production accounts or data were accessed.
+- **Remaining:** none for BSEC-014. Continue the broader backend/security audit.
+- **Exact next action:** continue with the next independently scoped backend defect.

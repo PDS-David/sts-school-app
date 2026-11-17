@@ -66,6 +66,9 @@ export function Sidebar({ items, activeRouteName, quickActions }: {
               style={[styles.item, active && styles.itemActive]}
               onPress={() => { if (navigationRef.isReady()) navigationRef.navigate(item.routeName); }}
               activeOpacity={0.7}
+              accessibilityRole='button'
+              accessibilityLabel={item.label}
+              accessibilityState={{ selected: active }}
             >
               <Ionicons name={item.icon} size={20} color={active ? Colors.primary : Colors.textSub} />
               <Text style={[styles.label, active && styles.labelActive]}>{item.label}</Text>
@@ -77,7 +80,7 @@ export function Sidebar({ items, activeRouteName, quickActions }: {
           <>
             <Text style={styles.sectionLabel}>Quick Actions</Text>
             {quickActions.map((a) => (
-              <TouchableOpacity key={a.label} style={styles.item} onPress={a.onPress} activeOpacity={0.7}>
+              <TouchableOpacity key={a.label} style={styles.item} onPress={a.onPress} activeOpacity={0.7} accessibilityRole='button' accessibilityLabel={a.label}>
                 <Ionicons name={a.icon} size={20} color={Colors.textSub} />
                 <Text style={styles.label}>{a.label}</Text>
               </TouchableOpacity>
@@ -89,7 +92,7 @@ export function Sidebar({ items, activeRouteName, quickActions }: {
       {/* Pinned to the bottom via the flex:1 wrapper above pushing this
           down — found in live testing to need its own clearly-labeled
           spot (not just an icon) separate from the primary nav items. */}
-      <TouchableOpacity style={[styles.item, styles.logoutItem]} onPress={() => setConfirmingLogout(true)} activeOpacity={0.7}>
+      <TouchableOpacity style={[styles.item, styles.logoutItem]} onPress={() => setConfirmingLogout(true)} activeOpacity={0.7} accessibilityRole='button' accessibilityLabel='Log out'>
         <Ionicons name="log-out-outline" size={20} color={Colors.error} />
         <Text style={[styles.label, styles.logoutLabel]}>Log out</Text>
       </TouchableOpacity>
@@ -147,6 +150,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: Spacing.sm,
+    minHeight: 44,
     paddingVertical: 10,
     paddingHorizontal: Spacing.sm,
     borderRadius: Radius.md,

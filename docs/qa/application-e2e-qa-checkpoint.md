@@ -4,9 +4,9 @@
 - Status: BLOCKED — repository inspection started; acceptance journeys NOT RUN
 - Repository: PDS-David/sts-school-app
 - Target branch: master
-- QA branch: agent/application-e2e-qa-20261113
-- Baseline master HEAD observed: 982c1d2d94e9bfbbb890d027c620b8a16e7f3f26
-- Checkpoint date: 2026-11-13
+- QA branch: agent/application-e2e-qa-render-20261117
+- Baseline master HEAD observed: 7dd1b3e1697662d6a1194c3bae5c353ff66edd0b (follow-up branch creation)
+- Checkpoint date: 2026-11-17
 - Commit SHA: populated by this checkpoint commit; see branch history
 - Test result: No end-to-end, unit, integration, device, or database test has been executed in this session.
 
@@ -107,7 +107,10 @@ Run the suite from a full repository checkout with a configured non-production b
 - Severity: P1.
 - Both Render services repeatedly failed to start on 2026-11-16. Their build stages succeeded, but deployment events ended `update_failed` with `nonZeroExit: 1`.
 - Runtime logs explicitly report missing `RATE_LIMIT_REDIS_URL` / `REDIS_URL`. Source inspection confirms `backend/src/index.ts` calls `assertRateLimitRedisConfigured()` before starting Express, and `backend/src/utils/redisRateLimitStore.ts` deliberately refuses production startup without shared Redis.
-- Latest deployment at inspection (commit `4377def33080a198d4e93ce50abd04ddbc5010ac`, 2026-11-17 00:17 UTC) was still `update_in_progress`; terminal result must be checked before reporting its outcome.
+- Follow-up deployment of commit `4377def33080a198d4e93ce50abd04ddbc5010ac` also failed on both services:
+  - `sts-school-app`: `dep-dbtppvlckfvc73bptgug`, finished 2026-11-17 00:17:58 UTC.
+  - `sts-school-backend`: `dep-dbtppvlckfvc73bpth4g`, finished 2026-11-17 00:18:01 UTC.
+- Runtime logs at 00:17:59–00:18:18 UTC again show the exact missing Redis configuration refusal and process exit code 1. The issue is current, not limited to an earlier commit.
 - Defect record: https://github.com/PDS-David/sts-school-app/issues/951
 - No bypass was made. Process-local rate limiting is explicitly rejected by the implementation.
 - Render's Free Key Value plan is 25 MB and in-memory only; data is lost on restarts and Render says free instances are not for production. Paid 256 MB plan is listed at $10/month. No paid resource was created and no billing change was made without explicit cost approval.
@@ -128,7 +131,17 @@ Run the suite from a full repository checkout with a configured non-production b
 
 ### Updated remaining work / exact next action
 1. Owner authorizes a persistent paid Render Key Value plan (published entry plan $10/month) or provides an existing production-grade Redis-compatible endpoint. Then configure `RATE_LIMIT_REDIS_URL` on the canonical API service; resolve whether the duplicate backend service is intentionally retained before configuring it.
-2. Re-check both deployments triggered at 2026-11-17 00:17 UTC and verify terminal state and health only after Redis is configured.
-3. Perform OPS-05 read-only schema drift review and obtain owner approval for baseline adoption; then apply the reviewed migration path, including `0002_school_events.sql`.
-4. Provide an isolated staging database and service with test-only credentials and an execution-capable runner (CI or checkout) plus Android emulator/device access.
-5. Run existing automated suites, add missing E2E regression coverage and execute all 12 journeys. Record evidence and create/route defects without using production data.
+2. Perform OPS-05 read-only schema drift review and obtain owner approval for baseline adoption; then apply the reviewed migration path, including `0002_school_events.sql`.
+3. Provide an isolated staging database and service with test-only credentials and an execution-capable runner (CI or checkout) plus Android emulator/device access.
+4. Run existing automated suites, add missing E2E regression coverage and execute all 12 journeys. Record evidence and create/route defects without using production data.
+
+
+### Additional production database risks
+- **QA-RENDER-003 — P1, expiring database / no recorded backup:** Render reports the connected production Postgres is on the Free plan and expires 2026-12-12 01:30 UTC. The application's `backup_log` contains only one reminder row and no backup rows. Render's official Free Postgres documentation states that free databases expire after 30 days and do not support backups. Defect record: https://github.com/PDS-David/sts-school-app/issues/954. No export, restore, plan change or database write was performed.
+- **QA-RENDER-004 — P2, broad external database allowlist:** Render reports the Postgres IP allowlist as `0.0.0.0/0` (everywhere). This confirms public-source IP access is permitted; it does not prove unauthorized access or authentication bypass. Defect record: https://github.com/PDS-David/sts-school-app/issues/955. No network setting was changed.
+
+### Current GitHub checkpoint
+- Follow-up branch: `agent/application-e2e-qa-render-20261117`.
+- Latest checkpoint commit before these additional risk records: `b07f5e357bd504cdf3aecdca9eaf0c8552774a3a`.
+- PR: https://github.com/PDS-David/sts-school-app/pull/953 (draft).
+- All four Render findings are now recorded as issues #951, #952, #954 and #955. Acceptance suite remains incomplete; all 12 journeys are NOT RUN.

@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { query } from '../db/pool.js';
+import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requireRole } from '../middleware/auth.js';
 import { SESSION_TERM_NAMES, isValidSessionTermName } from '../utils/terms.js';
 import { audit } from '../utils/audit.js';
+import { checkTermSchoolScope } from '../utils/scope.js';
 
 const router = Router();
 router.use(requireAuth);
@@ -34,11 +35,21 @@ function validateDaysOpened(days_opened: unknown): string | null {
   return null;
 }
 router.get('/terms', async (req, res) => {
-  const { school_code } = req.query as { school_code?: string };
-  // finance_admin also has school_code=NULL (manages both schools, same as
-  // admin) and needs to pick a term when creating an invoice — same override
-  // pattern as admin, extended to cover it.
-  const sc = (school_code && (req.user!.role === 'admin' || req.user!.role === 'finance_admin')) ? school_code : req.user!.school_code;
+  const requested = typeof req.query.school_code === 'string' ? req.query.school_code.trim() : undefined;
+  const user = req.user!;
+  let sc = user.school_code;
+  if (user.role === 'admin') {
+    if (user.school_code) {
+      if (requested !== undefined && requested !== user.school_code) {
+        return res.status(403).json({ error: "You can't view terms outside your school" });
+      }
+      sc = user.school_code;
+    } else {
+      sc = requested ?? null;
+    }
+  } else if (user.role === 'finance_admin' && requested) {
+    sc = requested;
+  }
   const { rows } = await query(
     'SELECT * FROM terms WHERE school_code=$1 ORDER BY academic_year DESC, id', [sc],
   );
@@ -46,8 +57,19 @@ router.get('/terms', async (req, res) => {
 });
 
 router.get('/terms/current', async (req, res) => {
-  const { school_code } = req.query as { school_code?: string };
-  const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
+  const requested = typeof req.query.school_code === 'string' ? req.query.school_code.trim() : undefined;
+  const user = req.user!;
+  let sc = user.school_code;
+  if (user.role === 'admin') {
+    if (user.school_code) {
+      if (requested !== undefined && requested !== user.school_code) {
+        return res.status(403).json({ error: "You can't view terms outside your school" });
+      }
+      sc = user.school_code;
+    } else {
+      sc = requested ?? null;
+    }
+  }
   const { rows } = await query(
     'SELECT * FROM terms WHERE school_code=$1 AND is_current=TRUE LIMIT 1', [sc],
   );
@@ -55,55 +77,84 @@ router.get('/terms/current', async (req, res) => {
 });
 
 router.post('/terms', requireRole('admin'), async (req, res) => {
-  const { name, academic_year, school_code, start_date, end_date, days_opened, next_term_begins } = req.body;
+  const { name, academic_year, school_code, start_date, end_date, days_opened, next_term_begins } = req.body ?? {};
 
-  // A session is fixed at exactly 3 terms (1st, 2nd, 3rd). This is enforced
-  // here rather than only in the UI, since /terms can be called directly.
   if (!isValidSessionTermName(name)) {
     return res.status(400).json({
       error: `Term name must be one of: ${SESSION_TERM_NAMES.join(', ')}`,
     });
   }
-  const { rows: existingTerms } = await query(
-    'SELECT id, name FROM terms WHERE school_code=$1 AND academic_year=$2',
-    [school_code, academic_year],
-  );
-  if (existingTerms.length >= 3) {
-    return res.status(409).json({
-      error: `${academic_year} for ${school_code} already has all 3 terms of a session ` +
-             `(${existingTerms.map((t: any) => t.name).join(', ')}). A session cannot exceed 3 terms.`,
-    });
+  if (typeof academic_year !== 'string' || !academic_year.trim() || academic_year.length > 20) {
+    return res.status(400).json({ error: 'A valid academic_year is required (maximum 20 characters).' });
   }
-  if (existingTerms.some((t: any) => t.name === name)) {
-    return res.status(409).json({ error: `${name} already exists for ${academic_year}.` });
+  if (typeof school_code !== 'string' || !school_code.trim() || school_code.length > 50) {
+    return res.status(400).json({ error: 'A valid school_code is required.' });
   }
   const daysOpenedError = validateDaysOpened(days_opened);
   if (daysOpenedError) return res.status(400).json({ error: daysOpenedError });
 
-  const { rows } = await query(
-    `INSERT INTO terms(name,academic_year,school_code,start_date,end_date,days_opened,next_term_begins)
-     VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *`,
-    [name, academic_year, school_code, start_date ?? null, end_date ?? null,
-     days_opened ?? 0, next_term_begins ?? null],
-  );
-  return res.status(201).json({ term: rows[0] });
+  const user = req.user!;
+  const schoolCode = school_code.trim();
+  if (user.school_code && user.school_code !== schoolCode) {
+    return res.status(403).json({ error: "You can't create a term for another school" });
+  }
+  const academicYear = academic_year.trim();
+
+  // Serialize term mutations for this school. The schema's unique constraint
+  // remains the final duplicate-name guard; this lock makes the read/check/
+  // write path deterministic and lets concurrent duplicates return HTTP 409.
+  const result = await withTransaction(async (client) => {
+    const { rows: schoolRows } = await client.query(
+      'SELECT 1 FROM schools WHERE code=$1 FOR SHARE',
+      [schoolCode],
+    );
+    if (!schoolRows[0]) {
+      return { ok: false as const, status: 400, error: 'Unknown school_code.' };
+    }
+    await client.query(
+      "SELECT pg_advisory_xact_lock(hashtext('academic-terms'), hashtext($1))",
+      [schoolCode],
+    );
+    const { rows: existingTerms } = await client.query(
+      'SELECT id, name FROM terms WHERE school_code=$1 AND academic_year=$2 ORDER BY id FOR UPDATE',
+      [schoolCode, academicYear],
+    );
+    if (existingTerms.length >= 3) {
+      return {
+        ok: false as const,
+        status: 409,
+        error: `${academicYear} for ${schoolCode} already has all 3 terms of a session (${existingTerms.map((t: any) => t.name).join(', ')}).`,
+      };
+    }
+    if (existingTerms.some((term: any) => term.name === name)) {
+      return { ok: false as const, status: 409, error: `${name} already exists for ${academicYear}.` };
+    }
+
+    const { rows } = await client.query(
+      `INSERT INTO terms(name,academic_year,school_code,start_date,end_date,days_opened,next_term_begins)
+       VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *`,
+      [name, academicYear, schoolCode, start_date ?? null, end_date ?? null,
+       days_opened ?? 0, next_term_begins ?? null],
+    );
+    return { ok: true as const, term: rows[0] };
+  });
+
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  return res.status(201).json({ term: result.term });
 });
 
 router.put('/terms/:id', requireRole('admin', 'teacher'), async (req, res) => {
-  const { name, academic_year, is_current, start_date, end_date, days_opened, next_term_begins } = req.body;
+  const termId = Number(req.params.id);
+  if (!Number.isSafeInteger(termId) || termId <= 0 || termId > 2_147_483_647) {
+    return res.status(404).json({ error: 'Term not found' });
+  }
+  const { name, academic_year, is_current, start_date, end_date, days_opened, next_term_begins } = req.body ?? {};
+  const user = req.user!;
 
-  // Teachers may touch days_opened and next_term_begins here (both
-  // requested by the school as teacher-filled fields on the report), for a
-  // term in their own school only. Still can't rename terms, change which
-  // term is current, or edit start/end dates through this endpoint.
-  if (req.user!.role === 'teacher') {
+  if (user.role === 'teacher') {
     if (name !== undefined || academic_year !== undefined || is_current !== undefined ||
         start_date !== undefined || end_date !== undefined) {
       return res.status(403).json({ error: 'Teachers can only update days-opened and next-term-begins for a term.' });
-    }
-    const { rows: owned } = await query('SELECT school_code FROM terms WHERE id=$1', [req.params.id]);
-    if (!owned[0] || owned[0].school_code !== req.user!.school_code) {
-      return res.status(404).json({ error: 'Term not found' });
     }
   }
 
@@ -112,44 +163,95 @@ router.put('/terms/:id', requireRole('admin', 'teacher'), async (req, res) => {
       error: `Term name must be one of: ${SESSION_TERM_NAMES.join(', ')}`,
     });
   }
-  if (name !== undefined) {
-    const { rows: t } = await query('SELECT school_code, academic_year FROM terms WHERE id=$1', [req.params.id]);
-    if (t[0]) {
-      const yr = academic_year ?? t[0].academic_year;
-      const { rows: clash } = await query(
-        'SELECT id FROM terms WHERE school_code=$1 AND academic_year=$2 AND name=$3 AND id<>$4',
-        [t[0].school_code, yr, name, req.params.id],
-      );
-      if (clash.length) {
-        return res.status(409).json({ error: `${name} already exists for ${yr}.` });
-      }
-    }
+  if (academic_year !== undefined &&
+      (typeof academic_year !== 'string' || !academic_year.trim() || academic_year.length > 20)) {
+    return res.status(400).json({ error: 'academic_year must be a non-empty string of at most 20 characters.' });
+  }
+  if (is_current !== undefined && typeof is_current !== 'boolean') {
+    return res.status(400).json({ error: 'is_current must be a boolean.' });
   }
   const daysOpenedError = validateDaysOpened(days_opened);
   if (daysOpenedError) return res.status(400).json({ error: daysOpenedError });
 
-  if (is_current) {
-    // Unset others first
-    const { rows: t } = await query('SELECT school_code FROM terms WHERE id=$1', [req.params.id]);
-    if (t[0]) await query('UPDATE terms SET is_current=FALSE WHERE school_code=$1', [t[0].school_code]);
-  }
-  const { rows } = await query(
-    `UPDATE terms SET name=COALESCE($1,name), academic_year=COALESCE($2,academic_year),
-            is_current=COALESCE($3,is_current), start_date=COALESCE($4,start_date),
-            end_date=COALESCE($5,end_date), days_opened=COALESCE($6,days_opened),
-            next_term_begins=COALESCE($7,next_term_begins)
-     WHERE id=$8 RETURNING *`,
-    [name, academic_year, is_current, start_date, end_date, days_opened, next_term_begins, req.params.id],
-  );
-  return res.json({ term: rows[0] });
+  const result = await withTransaction(async (client) => {
+    // school_code is immutable through this endpoint. Read it to select the
+    // per-school advisory lock, then lock/re-read the row before authorizing
+    // or writing. This lock is shared with POST /terms.
+    const { rows: initialRows } = await client.query(
+      'SELECT school_code FROM terms WHERE id=$1',
+      [termId],
+    );
+    if (!initialRows[0]) return { ok: false as const, status: 404, error: 'Term not found' };
+    const schoolCode = initialRows[0].school_code as string | null;
+    if (!schoolCode) return { ok: false as const, status: 409, error: 'Term has no school assignment and cannot be updated.' };
+
+    await client.query(
+      "SELECT pg_advisory_xact_lock(hashtext('academic-terms'), hashtext($1))",
+      [schoolCode],
+    );
+    const { rows: lockedRows } = await client.query(
+      'SELECT * FROM terms WHERE id=$1 FOR UPDATE',
+      [termId],
+    );
+    const term = lockedRows[0];
+    if (!term) return { ok: false as const, status: 404, error: 'Term not found' };
+
+    if ((user.role === 'teacher' || (user.role === 'admin' && user.school_code)) &&
+        term.school_code !== user.school_code) {
+      return { ok: false as const, status: 404, error: 'Term not found' };
+    }
+
+    const targetYear = academic_year ?? term.academic_year;
+    if (name !== undefined || academic_year !== undefined) {
+      const { rows: clash } = await client.query(
+        'SELECT id FROM terms WHERE school_code=$1 AND academic_year=$2 AND name=$3 AND id<>$4',
+        [term.school_code, targetYear, name ?? term.name, termId],
+      );
+      if (clash.length) {
+        return { ok: false as const, status: 409, error: `${name ?? term.name} already exists for ${targetYear}.` };
+      }
+    }
+
+    if (is_current === true) {
+      await client.query(
+        'UPDATE terms SET is_current=FALSE WHERE school_code=$1 AND id<>$2',
+        [term.school_code, termId],
+      );
+    }
+
+    const { rows } = await client.query(
+      `UPDATE terms SET name=COALESCE($1,name), academic_year=COALESCE($2,academic_year),
+              is_current=COALESCE($3,is_current), start_date=COALESCE($4,start_date),
+              end_date=COALESCE($5,end_date), days_opened=COALESCE($6,days_opened),
+              next_term_begins=COALESCE($7,next_term_begins)
+       WHERE id=$8 RETURNING *`,
+      [name, academic_year?.trim(), is_current, start_date, end_date, days_opened, next_term_begins, termId],
+    );
+    if (!rows[0]) return { ok: false as const, status: 404, error: 'Term not found' };
+    return { ok: true as const, term: rows[0] };
+  });
+
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  return res.json({ term: result.term });
 });
 
 // ════════════════════════════════════════
 // SUBJECTS
 // ════════════════════════════════════════
 router.get('/subjects', async (req, res) => {
-  const { school_code } = req.query as { school_code?: string };
-  const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
+  const requested = typeof req.query.school_code === 'string' ? req.query.school_code.trim() : undefined;
+  const user = req.user!;
+  let sc = user.school_code;
+  if (user.role === 'admin') {
+    if (user.school_code) {
+      if (requested !== undefined && requested !== user.school_code) {
+        return res.status(403).json({ error: "You can't view subjects outside your school" });
+      }
+      sc = user.school_code;
+    } else {
+      sc = requested ?? null;
+    }
+  }
   const { rows } = await query(
     'SELECT * FROM subjects WHERE school_code=$1 ORDER BY name', [sc],
   );
@@ -157,18 +259,40 @@ router.get('/subjects', async (req, res) => {
 });
 
 router.post('/subjects', requireRole('admin','teacher'), async (req, res) => {
-  const { name, code, school_code } = req.body;
-  const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
+  const { name, code, school_code } = req.body ?? {};
+  const user = req.user!;
+  let sc = user.school_code;
+  if (user.role === 'admin') {
+    const requested = typeof school_code === 'string' ? school_code.trim() : '';
+    if (user.school_code) {
+      if (school_code !== undefined && requested !== user.school_code) {
+        return res.status(403).json({ error: "You can't create a subject for another school" });
+      }
+      sc = user.school_code;
+    } else {
+      if (!requested || requested.length > 50) {
+        return res.status(400).json({ error: 'school_code is required for global administrators' });
+      }
+      sc = requested;
+    }
+  }
+  if (typeof name !== 'string' || !name.trim() || name.trim().length > 120) {
+    return res.status(400).json({ error: 'A valid subject name is required' });
+  }
   const { rows } = await query(
     `INSERT INTO subjects(name,code,school_code) VALUES($1,$2,$3)
      ON CONFLICT(school_code,name) DO UPDATE SET code=$2 RETURNING *`,
-    [name, code ?? null, sc],
+    [name.trim(), typeof code === 'string' && code.trim() ? code.trim() : null, sc],
   );
   return res.json({ subject: rows[0] });
 });
 
 router.delete('/subjects/:id', requireRole('admin'), async (req, res) => {
-  await query('DELETE FROM subjects WHERE id=$1', [req.params.id]);
+  const { rows } = await query(
+    'DELETE FROM subjects WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) RETURNING id',
+    [req.params.id, req.user!.school_code ?? null],
+  );
+  if (!rows[0]) return res.status(404).json({ error: 'Subject not found' });
   return res.json({ ok: true });
 });
 
@@ -176,8 +300,19 @@ router.delete('/subjects/:id', requireRole('admin'), async (req, res) => {
 // CLASSES
 // ════════════════════════════════════════
 router.get('/classes', async (req, res) => {
-  const { school_code } = req.query as { school_code?: string };
-  const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
+  const requested = typeof req.query.school_code === 'string' ? req.query.school_code.trim() : undefined;
+  const user = req.user!;
+  let sc = user.school_code;
+  if (user.role === 'admin') {
+    if (user.school_code) {
+      if (requested !== undefined && requested !== user.school_code) {
+        return res.status(403).json({ error: "You can't view classes outside your school" });
+      }
+      sc = user.school_code;
+    } else {
+      sc = requested ?? null;
+    }
+  }
   const { rows } = await query(
     'SELECT * FROM classes WHERE school_code=$1 ORDER BY id', [sc],
   );
@@ -197,19 +332,55 @@ router.get('/classes', async (req, res) => {
 // actually enforced; these two routes just manage the class_locks row.
 //
 // GET  /academic/class-locks?class_name=&term_id=&school_code=
-router.get('/class-locks', async (req, res) => {
+router.get('/class-locks', requireRole('teacher', 'admin'), async (req, res) => {
   const { class_name, term_id, school_code } = req.query as Record<string, string>;
-  if (!class_name || !term_id) {
-    return res.status(400).json({ error: 'class_name and term_id are required' });
+  if (typeof class_name !== 'string' || !class_name.trim() || class_name.trim().length > 100 || !term_id) {
+    return res.status(400).json({ error: 'A valid class_name and term_id are required' });
   }
-  const sc = (school_code && req.user!.role === 'admin') ? school_code : req.user!.school_code;
-  if (!sc) return res.status(400).json({ error: 'school_code is required' });
+  const parsedTermId = Number(term_id);
+  if (!Number.isSafeInteger(parsedTermId) || parsedTermId <= 0 || parsedTermId > 2_147_483_647) {
+    return res.status(400).json({ error: 'A valid term_id is required' });
+  }
+
+  const user = req.user!;
+  let schoolCode: string;
+  if (user.role === 'admin') {
+    const requestedSchool = typeof school_code === 'string' ? school_code.trim() : '';
+    if (user.school_code) {
+      if (school_code !== undefined && requestedSchool !== user.school_code) {
+        return res.status(403).json({ error: "You can't view class locks outside your school" });
+      }
+      schoolCode = user.school_code;
+    } else {
+      if (!requestedSchool || requestedSchool.length > 50) {
+        return res.status(400).json({ error: 'school_code is required for global administrators' });
+      }
+      schoolCode = requestedSchool;
+    }
+  } else {
+    if (!user.school_code || !user.assigned_class) {
+      return res.status(403).json({ error: 'Only class teachers can view class lock status' });
+    }
+    if (class_name.trim() !== user.assigned_class) {
+      return res.status(403).json({ error: 'You can only view the lock status of your assigned class' });
+    }
+    schoolCode = user.school_code;
+  }
+
+  const termScopeError = await checkTermSchoolScope(schoolCode, parsedTermId);
+  if (termScopeError) return res.status(termScopeError.status).json({ error: termScopeError.error });
+
+  const { rows: classRows } = await query(
+    'SELECT 1 FROM classes WHERE school_code=$1 AND name=$2',
+    [schoolCode, class_name.trim()],
+  );
+  if (!classRows[0]) return res.status(400).json({ error: 'Unknown class for this school' });
 
   const { rows } = await query(
     `SELECT cl.*, u.full_name AS locked_by_name
      FROM class_locks cl LEFT JOIN users u ON u.id = cl.locked_by
      WHERE cl.school_code=$1 AND cl.class_name=$2 AND cl.term_id=$3`,
-    [sc, class_name, Number(term_id)],
+    [schoolCode, class_name.trim(), parsedTermId],
   );
   return res.json({ lock: rows[0] ?? null });
 });
@@ -219,18 +390,29 @@ router.put('/class-locks', requireRole('teacher', 'admin'), async (req, res) => 
   const { class_name, term_id, school_code, locked } = req.body as {
     class_name?: string; term_id?: number; school_code?: string; locked?: boolean;
   };
-  if (!class_name || !term_id || typeof locked !== 'boolean') {
-    return res.status(400).json({ error: 'class_name, term_id, and locked (boolean) are required' });
+  const parsedTermId = Number(term_id);
+  if (typeof class_name !== 'string' || !class_name.trim() || class_name.trim().length > 100 ||
+      !Number.isSafeInteger(parsedTermId) || parsedTermId <= 0 || parsedTermId > 2_147_483_647 ||
+      typeof locked !== 'boolean') {
+    return res.status(400).json({ error: 'A valid class_name, positive term_id, and locked (boolean) are required' });
   }
+  const className = class_name.trim();
   const user = req.user!;
 
-  let sc: string | null;
+  let sc: string;
   if (user.role === 'admin') {
-    // Admin has no school_code of their own — they must say which school's
-    // class they mean, same pattern as every other admin-facing endpoint in
-    // this file (GET /terms, GET /classes above).
-    if (!school_code) return res.status(400).json({ error: 'school_code is required for admin' });
-    sc = school_code;
+    const requestedSchool = typeof school_code === 'string' ? school_code.trim() : '';
+    if (user.school_code) {
+      if (school_code !== undefined && requestedSchool !== user.school_code) {
+        return res.status(403).json({ error: "You can't change class locks outside your school" });
+      }
+      sc = user.school_code;
+    } else {
+      if (!requestedSchool || requestedSchool.length > 50) {
+        return res.status(400).json({ error: 'school_code is required for global administrators' });
+      }
+      sc = requestedSchool;
+    }
   } else {
     // Teacher: only their own assigned class, own school. A subject-only
     // teacher (no assigned_class) or a teacher naming a class that isn't
@@ -240,11 +422,21 @@ router.put('/class-locks', requireRole('teacher', 'admin'), async (req, res) => 
     // school); locking is a bigger, more disruptive action than a single
     // record write, so it's restricted to the one person whose job it
     // actually is to close out a class.
-    if (!user.assigned_class || user.assigned_class !== class_name) {
+    if (!user.assigned_class || user.assigned_class !== className) {
       return res.status(403).json({ error: 'You can only lock or unlock your own assigned class' });
     }
-    sc = user.school_code;
+    sc = user.school_code ?? '';
+    if (!sc) return res.status(403).json({ error: 'Your teacher account is not assigned to a school.' });
   }
+
+  const termScopeError = await checkTermSchoolScope(sc, parsedTermId);
+  if (termScopeError) return res.status(termScopeError.status).json({ error: termScopeError.error });
+
+  const { rows: classRows } = await query(
+    'SELECT 1 FROM classes WHERE school_code=$1 AND name=$2',
+    [sc, className],
+  );
+  if (!classRows[0]) return res.status(400).json({ error: 'Unknown class for this school' });
 
   if (locked) {
     const { rows } = await query(
@@ -252,25 +444,25 @@ router.put('/class-locks', requireRole('teacher', 'admin'), async (req, res) => 
        VALUES($1,$2,$3,$4)
        ON CONFLICT(school_code, class_name, term_id) DO NOTHING
        RETURNING *`,
-      [sc, class_name, term_id, user.id],
+      [sc, className, parsedTermId, user.id],
     );
     // Locking an already-locked class (re-tap, or someone else beat them to
     // it) is a no-op, not an error — just report whichever lock exists.
     const lock = rows[0] ?? (await query(
       'SELECT * FROM class_locks WHERE school_code=$1 AND class_name=$2 AND term_id=$3',
-      [sc, class_name, term_id],
+      [sc, className, parsedTermId],
     )).rows[0];
     if (rows[0]) {
-      await audit(user, 'lock_class', 'class_lock', String(lock.id), `${class_name} — term ${term_id}`);
+      await audit(user, 'lock_class', 'class_lock', String(lock.id), `${className} — term ${parsedTermId}`);
     }
     return res.json({ lock });
   } else {
     const { rows } = await query(
       'DELETE FROM class_locks WHERE school_code=$1 AND class_name=$2 AND term_id=$3 RETURNING id',
-      [sc, class_name, term_id],
+      [sc, className, parsedTermId],
     );
     if (rows[0]) {
-      await audit(user, 'unlock_class', 'class_lock', String(rows[0].id), `${class_name} — term ${term_id}`);
+      await audit(user, 'unlock_class', 'class_lock', String(rows[0].id), `${className} — term ${parsedTermId}`);
     }
     return res.json({ lock: null });
   }

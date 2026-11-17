@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, RefreshControl } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../api/client';
 import { useAuth } from '../../api/AuthContext';
 import { useWards } from '../../api/WardContext';
-import { Card, Loader } from '../../components/UI';
+import { useNotifications } from '../../components/NotificationsContext';
+import { Card, Loader, Btn } from '../../components/UI';
 import { PageContainer, StatChipRow, StatChip } from '../../components/layout';
 import { Colors, Spacing, Fonts, Radius } from '../../theme';
 import { AppHeader } from '../../components/AppHeader';
@@ -14,20 +15,53 @@ import { openNotifications } from '../../navigation/navigationRef';
 export default function ParentHomeScreen({ navigation }: any) {
   const { user } = useAuth();
   const { wards, selectedWardId, selectWard, loading: wardsLoading } = useWards();
+  const { notifications, refresh: refreshNotifications, announcementsLoaded, announcementsError } = useNotifications();
+  const announcements = notifications.filter(n => n.kind === 'announcement').slice(0, 3);
   const [report, setReport] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [reportLoading, setReportLoading] = useState(false);
+  const [reportError, setReportError] = useState('');
   const [refreshing, setRefreshing] = useState(false);
+  const reportRequestGenerationRef = useRef(0);
 
   const load = useCallback(async () => {
-    if (!selectedWardId) { setLoading(false); return; }
+    // A ward switch or a newer retry supersedes every older report request.
+    // This prevents a slow response for the previous child from replacing the
+    // report (or error state) belonging to the currently selected child.
+    const generation = ++reportRequestGenerationRef.current;
+    const isCurrentRequest = () => generation === reportRequestGenerationRef.current;
+
+    if (!selectedWardId) {
+      // Announcements are account-scoped, not ward-scoped. Refresh them even
+      // when no child is linked/selected so the dashboard's retry message works.
+      setReport(null);
+      setReportError('');
+      setReportLoading(false);
+      await refreshNotifications();
+      if (isCurrentRequest()) setLoading(false);
+      return;
+    }
+    setReportLoading(true);
+    setReportError('');
+    setReport(null);
     try {
       const { data } = await api.get(`/scores/report/${selectedWardId}`);
-      setReport(data);
-    } catch { /* offline or not yet loaded */ }
-    setLoading(false);
-  }, [selectedWardId]);
+      if (isCurrentRequest()) setReport(data);
+    } catch (e: any) {
+      if (isCurrentRequest()) {
+        setReportError(e?.response?.data?.error ?? 'Could not load this child’s report. Check your connection and retry.');
+      }
+    } finally {
+      if (isCurrentRequest()) setReportLoading(false);
+    }
+    await refreshNotifications();
+    if (isCurrentRequest()) setLoading(false);
+  }, [selectedWardId, refreshNotifications]);
 
-  useEffect(() => { load(); }, [load]);
+  useEffect(() => {
+    void load();
+    return () => { reportRequestGenerationRef.current += 1; };
+  }, [load]);
 
   if (wardsLoading || loading) return <Loader />;
 
@@ -49,7 +83,7 @@ export default function ParentHomeScreen({ navigation }: any) {
               {wards.map(w => {
                 const active = w.id === selectedWardId;
                 return (
-                  <TouchableOpacity key={w.id} style={[styles.wardChip, active && styles.wardChipActive]} onPress={() => selectWard(w.id)} activeOpacity={0.8}>
+                  <TouchableOpacity key={w.id} style={[styles.wardChip, active && styles.wardChipActive]} onPress={() => selectWard(w.id)} activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={`Select ${w.full_name}, ${w.class_name}`} accessibilityState={{ selected: active }}>
                     <Text style={[styles.wardChipText, active && styles.wardChipTextActive]} numberOfLines={1}>{w.full_name}</Text>
                     <Text style={[styles.wardChipSub, active && styles.wardChipTextActive]} numberOfLines={1}>{w.class_name}</Text>
                   </TouchableOpacity>
@@ -64,7 +98,14 @@ export default function ParentHomeScreen({ navigation }: any) {
         )}
 
         <Text style={styles.sectionLabel}>Child Summary</Text>
-        {report?.summary ? (
+        {reportError ? (
+          <Card style={{ marginHorizontal: Spacing.md }}>
+            <Text style={styles.hint}>{reportError}</Text>
+            <Btn label="Retry report" variant="outline" onPress={() => load()} style={{ marginTop: Spacing.sm }} />
+          </Card>
+        ) : reportLoading ? (
+          <Card style={{ marginHorizontal: Spacing.md }}><Text style={styles.hint}>Loading this child’s report…</Text></Card>
+        ) : report?.summary ? (
           <StatChipRow>
             <StatChip value={report.summary.average ?? '—'} label="Average" />
             <StatChip value={report.attendance?.days_present ?? '—'} label="Days Present" />
@@ -76,9 +117,26 @@ export default function ParentHomeScreen({ navigation }: any) {
         )}
 
         <Text style={styles.sectionLabel}>School Announcements</Text>
-        <Card style={{ marginHorizontal: Spacing.md }}>
-          <Text style={styles.hint}>No announcements yet. Your school admin can post updates here.</Text>
-        </Card>
+        {announcementsError ? (
+          <Card style={{ marginHorizontal: Spacing.md }}>
+            <Text style={styles.hint}>{announcements.length ? 'Could not refresh announcements. Showing the last available notices.' : 'Could not load announcements. Pull down to retry.'}</Text>
+          </Card>
+        ) : null}
+        {!announcementsError && !announcementsLoaded ? (
+          <Card style={{ marginHorizontal: Spacing.md }}><Text style={styles.hint}>Loading announcements…</Text></Card>
+        ) : null}
+        {!announcementsError && announcementsLoaded && announcements.length === 0 ? (
+          <Card style={{ marginHorizontal: Spacing.md }}>
+            <Text style={styles.hint}>No announcements yet. Your school admin can post updates here.</Text>
+          </Card>
+        ) : null}
+        {announcements.map(item => (
+          <Card key={item.id} style={{ marginHorizontal: Spacing.md }}>
+            <Text style={styles.announcementTitle}>{item.title}</Text>
+            <Text style={styles.hint}>{item.body}</Text>
+            <Text style={styles.announcementDate}>{new Date(item.createdAt).toLocaleDateString()}</Text>
+          </Card>
+        ))}
         </PageContainer>
 
         <View style={{ height: Spacing.xl * 2 }} />
@@ -88,7 +146,6 @@ export default function ParentHomeScreen({ navigation }: any) {
         icon="add"
         actions={[
           { icon: 'chatbubble-outline', label: 'Message teacher', onPress: () => navigation.getParent()?.navigate('ChatsTab') },
-          { icon: 'alert-circle-outline', label: 'Report absence', onPress: () => navigation.getParent()?.navigate('ChatsTab') },
           { icon: 'document-text-outline', label: 'View report', onPress: () => navigation.getParent()?.navigate('ProgressTab') },
         ]}
       />
@@ -106,4 +163,6 @@ const styles = StyleSheet.create({
   wardChipSub: { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginTop: 1 },
   wardChipTextActive: { color: Colors.white },
   hint: { fontSize: Fonts.sizes.sm, color: Colors.textSub },
+  announcementTitle: { fontSize: Fonts.sizes.md, fontWeight: '700', color: Colors.text, marginBottom: 4 },
+  announcementDate: { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginTop: 6 },
 });

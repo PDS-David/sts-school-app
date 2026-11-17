@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
 import {
   View, Text, StyleSheet, FlatList, TouchableOpacity,
-  KeyboardAvoidingView, Platform, Alert,
+  KeyboardAvoidingView, Platform,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../api/client';
-import { Loader, Empty, Input } from '../../components/UI';
+import { Loader, Empty, Input, Btn } from '../../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../../theme';
 import { useAuth } from '../../api/AuthContext';
 
@@ -21,42 +21,80 @@ export default function ChatThreadScreen({ route, navigation }: any) {
   const [thread, setThread] = useState<Msg[]>([]);
   const [body, setBody] = useState('');
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
+  const [loadRetry, setLoadRetry] = useState(0);
   const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState('');
   const flatRef = useRef<FlatList>(null);
+  const currentContactIdRef = useRef(contact.id);
+  currentContactIdRef.current = contact.id;
+  const sendGenerationRef = useRef(0);
 
   useEffect(() => {
+    // A new contact (or an explicit reload) invalidates sends started for the
+    // previous thread. Their late responses must not enter this conversation.
+    sendGenerationRef.current += 1;
+    setSending(false);
+    let cancelled = false;
+    setLoading(true);
+    setLoadError('');
+    setSendError('');
     navigation.setOptions({ title: contact.full_name });
     api.get(`/messages/conversation/${contact.id}`)
       .then(({ data }) => {
+        if (cancelled) return;
         setThread(data.messages ?? []);
         setTimeout(() => flatRef.current?.scrollToEnd({ animated: false }), 100);
       })
-      .catch(() => {})
-      .finally(() => setLoading(false));
-  }, [contact.id]);
+      .catch((e: any) => {
+        if (cancelled) return;
+        setLoadError(e?.response?.data?.error ?? 'Could not load this conversation. Check your connection and try again.');
+      })
+      .finally(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
+  }, [contact.id, loadRetry]);
 
   const sendMessage = async () => {
-    if (!body.trim()) return;
+    if (!body.trim() || sending) return;
     const outgoing = body.trim();
+    const recipientId = contact.id;
+    const generation = sendGenerationRef.current;
+    const isCurrentSend = () => generation === sendGenerationRef.current && currentContactIdRef.current === recipientId;
     setSending(true);
+    setSendError('');
     try {
-      const { data } = await api.post('/messages', { recipient_id: contact.id, body: outgoing });
-      setBody('');
+      const { data } = await api.post('/messages', { recipient_id: recipientId, body: outgoing });
+      if (!isCurrentSend()) return;
+      // Do not erase text the user typed while this send was in flight.
+      setBody(current => current === outgoing ? '' : current);
       if (data?.message) {
         setThread(prev => [...prev, data.message]);
       }
-      setTimeout(() => flatRef.current?.scrollToEnd({ animated: true }), 100);
+      setTimeout(() => {
+        if (isCurrentSend()) flatRef.current?.scrollToEnd({ animated: true });
+      }, 100);
     } catch (e: any) {
-      Alert.alert('Error', e?.response?.data?.error ?? 'Could not send message');
-    } finally { setSending(false); }
+      if (isCurrentSend()) {
+        setSendError(e?.response?.data?.error ?? 'Could not send message. Your draft is still here; retry when connected.');
+      }
+    } finally {
+      if (isCurrentSend()) setSending(false);
+    }
   };
 
   if (loading) return <Loader />;
+  if (loadError) return (
+    <View style={{ flex: 1, backgroundColor: Colors.background, justifyContent: 'center', padding: Spacing.md }}>
+      <Empty message={loadError} />
+      <Btn label="Retry loading conversation" onPress={() => setLoadRetry(v => v + 1)} variant="outline" />
+      <Btn label="Back to chats" onPress={() => navigation.goBack()} variant="ghost" style={{ marginTop: Spacing.sm }} />
+    </View>
+  );
 
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
       <View style={styles.threadHeader}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={{ padding: 6 }}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={{ padding: 6 }} accessibilityRole="button" accessibilityLabel="Back to chats">
           <Ionicons name="arrow-back" size={22} color={Colors.white} />
         </TouchableOpacity>
         <View style={styles.threadAvatar}>
@@ -68,6 +106,7 @@ export default function ChatThreadScreen({ route, navigation }: any) {
         </View>
       </View>
 
+      {!!sendError && <Text style={{ color: Colors.error, paddingHorizontal: Spacing.md, paddingTop: Spacing.xs }}>{sendError}</Text>}
       <FlatList
         ref={flatRef}
         data={thread}
@@ -93,13 +132,13 @@ export default function ChatThreadScreen({ route, navigation }: any) {
       <View style={styles.inputRow}>
         <Input
           value={body}
-          onChangeText={setBody}
+          onChangeText={(value) => { setBody(value); setSendError(''); }}
           placeholder="Type a message…"
           style={{ flex: 1, marginBottom: 0 }}
           multiline
           numberOfLines={2}
         />
-        <TouchableOpacity style={styles.sendBtn} onPress={sendMessage} disabled={sending}>
+        <TouchableOpacity style={[styles.sendBtn, (!body.trim() || sending) && { opacity: 0.5 }]} onPress={sendMessage} disabled={sending || !body.trim()} accessibilityRole='button' accessibilityLabel='Send message'>
           <Ionicons name="send" size={20} color={Colors.white} />
         </TouchableOpacity>
       </View>

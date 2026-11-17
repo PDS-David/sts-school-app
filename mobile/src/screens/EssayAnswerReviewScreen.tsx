@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { View, Text, StyleSheet, ScrollView, RefreshControl } from 'react-native';
 import api from '../api/client';
-import { Card, Loader, Btn, Input, Badge } from '../components/UI';
+import { Card, Loader, Empty, Btn, Input, Badge } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 
 interface Answer {
@@ -23,43 +23,68 @@ export default function EssayAnswerReviewScreen({ route }: any) {
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [loadError, setLoadError] = useState('');
   const [drafts, setDrafts] = useState<Record<number, string>>({});
+  const [saveErrors, setSaveErrors] = useState<Record<number, string>>({});
   const [saving, setSaving] = useState<number | null>(null);
 
   const load = useCallback(async () => {
+    setLoadError('');
     try {
       const { data } = await api.get(`/learning/submissions/${submissionId}/answers`);
       setAnswers(data.answers ?? []);
-    } catch { /* offline or error — screen just stays empty */ }
-    setLoading(false);
-    setRefreshing(false);
+    } catch (e: any) {
+      setLoadError(e?.response?.data?.error ?? 'Could not load submission answers. Check your connection and retry.');
+    } finally {
+      setLoading(false);
+      setRefreshing(false);
+    }
   }, [submissionId]);
 
   useEffect(() => { load(); }, [load]);
 
-  const save = async (answer: Answer) => {
-    const raw = drafts[answer.id] ?? answer.awarded_points ?? answer.ai_suggested_points ?? '0';
-    const points = Math.max(0, Math.min(Number(answer.max_points), Number(raw) || 0));
+  const save = async (answer: Answer, rawOverride?: string) => {
+    if (saving !== null) return;
+    const raw = rawOverride ?? drafts[answer.id] ?? answer.awarded_points ?? answer.ai_suggested_points ?? '0';
+    const points = Number(raw);
+    const maxPoints = Number(answer.max_points);
+    if (!String(raw).trim() || !Number.isFinite(points) || !Number.isFinite(maxPoints) || points < 0 || points > maxPoints) {
+      setSaveErrors((errors) => ({ ...errors, [answer.id]: `Enter a valid score between 0 and ${answer.max_points}.` }));
+      return;
+    }
     setSaving(answer.id);
+    setSaveErrors((errors) => ({ ...errors, [answer.id]: '' }));
     try {
       await api.put(`/learning/submissions/${submissionId}/answers/${answer.id}/review`, { awarded_points: points });
       await load();
-    } catch { /* keep the draft on screen so the teacher can retry */ }
-    setSaving(null);
+    } catch (e: any) {
+      setSaveErrors((errors) => ({ ...errors, [answer.id]: e?.response?.data?.error ?? 'Could not save this score. Your draft is preserved; retry when connected.' }));
+    } finally {
+      setSaving(null);
+    }
   };
 
   const acceptSuggestion = (answer: Answer) => {
-    setDrafts((d) => ({ ...d, [answer.id]: answer.ai_suggested_points ?? '0' }));
-    save({ ...answer, awarded_points: answer.ai_suggested_points });
+    const suggested = answer.ai_suggested_points ?? '0';
+    setDrafts((d) => ({ ...d, [answer.id]: suggested }));
+    save(answer, suggested);
   };
 
-  if (loading) return <Loader />;
+  if (loading && answers.length === 0) return <Loader />;
+  if (loadError && answers.length === 0) return (
+    <View style={{ flex: 1, justifyContent: 'center', padding: Spacing.md, backgroundColor: Colors.background }}>
+      <Empty message={loadError} />
+      <Btn label='Retry loading answers' variant='outline' onPress={() => { setLoading(true); load(); }} />
+    </View>
+  );
 
   return (
     <ScrollView
       contentContainerStyle={{ padding: Spacing.md }}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); load(); }} />}
     >
+      {!!loadError && <Card style={{ marginBottom: Spacing.md }}><Text style={{ color: Colors.error }}>{loadError}</Text><Btn label='Retry loading answers' variant='outline' onPress={() => load()} style={{ marginTop: Spacing.sm }} /></Card>}
+      {answers.length === 0 && !loadError ? <Empty message='No answers are awaiting review.' /> : null}
       {answers.map((a) => (
         <Card key={a.id} style={styles.card}>
           <View style={styles.headerRow}>
@@ -98,19 +123,21 @@ export default function EssayAnswerReviewScreen({ route }: any) {
               <View style={styles.gradeRow}>
                 <Input
                   value={drafts[a.id] ?? a.awarded_points ?? a.ai_suggested_points ?? ''}
-                  onChangeText={(v) => setDrafts((d) => ({ ...d, [a.id]: v }))}
+                  onChangeText={(v) => { setDrafts((d) => ({ ...d, [a.id]: v })); setSaveErrors((e) => ({ ...e, [a.id]: '' })); }}
                   placeholder={`0 - ${a.max_points}`}
                   keyboardType="numeric"
                   style={{ width: 90 }}
                 />
-                <Btn label="Save score" onPress={() => save(a)} loading={saving === a.id} style={{ flex: 1 }} />
+                <Btn label="Save score" onPress={() => save(a)} loading={saving === a.id} disabled={saving !== null} style={{ flex: 1 }} />
               </View>
+              {!!saveErrors[a.id] && <Text style={styles.warnText}>{saveErrors[a.id]}</Text>}
               {a.grading_status === 'ai_graded' && (
                 <Btn
                   label={`Accept Brainee's ${a.ai_suggested_points}/${a.max_points}`}
                   onPress={() => acceptSuggestion(a)}
                   variant="outline"
                   loading={saving === a.id}
+                  disabled={saving !== null}
                   style={{ marginTop: Spacing.xs }}
                 />
               )}

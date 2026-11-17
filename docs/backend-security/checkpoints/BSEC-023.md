@@ -1,0 +1,23 @@
+# Checkpoint — BSEC-023
+
+- **Task ID:** BSEC-023
+- **Title:** Make student login linking atomic and enforce one-to-one relationships
+- **Status:** merged
+- **Owner:** ChatGPT implementation worker
+- **Base branch:** master
+- **Base commit:** b9354546b7ae77213e91a084b3af2ce48aa6b4c6
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/896 (merged 2026-11-16T19:35:27Z)
+- **Merge commit:** 76de8bb3a8c6c1e91dfca21b4f8975599104ce04
+- **Working branch:** agent/backend-student-login-link-atomicity-20261116
+- **Changed files:**
+  - backend/src/routes/students.ts
+  - tests/backend-student-login-link-atomicity.integration.test.mts
+  - .github/workflows/backend-student-login-link-atomicity.yml
+  - docs/backend-security/checkpoints/BSEC-023.md
+- **Defect:** admin-only student login linking performed a role lookup, duplicate-link lookup and student update as separate autocommit statements. It could silently overwrite a student's existing login, return a database 500 on concurrent duplicate assignments, accept malformed IDs as database errors, and link inactive student accounts or soft-deleted student records. The inverse unlink route was also a standalone update without serialization.
+- **Database invariant:** backend/schema.sql defines students_user_id_key UNIQUE(user_id), but the route did not translate unique conflicts into a stable API conflict response and did not serialize conflicting changes.
+- **Implementation:** validate UUIDs; lock the student user row and all affected student rows in deterministic order inside one transaction; require an active student account and active target student; reject replacing a different login or attaching one login to another student; keep same-link requests idempotent; map the named unique constraint violation to HTTP 409; transact unlink operations and audit only actual changes.
+- **Regression coverage:** PostgreSQL HTTP tests cover admin vs student permissions, malformed IDs, wrong role, inactive account, deleted student, duplicate/idempotent link, no silent overwrite, one-login/two-student conflicts, concurrent same-user and same-student attempts, and idempotent unlink.
+- **Verification:** PostgreSQL student login relationship integrity workflow 43940219572 passed: PostgreSQL 16 bootstrap, concurrent link/unlink HTTP regressions and backend TypeScript typecheck. Student roster scope 43940219521, parent ward scope 43940219167, parent provisioning 43940219331, SS1 43940219378 and SS23 43940219429 all passed. JSS3 implementation/asset check 43940219152 also passed after the PR merged. No production data or database was accessed or changed.
+- **Remaining:** monitor the JSS3 implementation/asset gate that was still running at merge; continue the broader backend audit.
+- **Exact next action:** inspect JSS3 workflow 43940219152 and continue with the next independently scoped backend defect.

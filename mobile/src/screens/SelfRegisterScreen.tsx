@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View, Text, StyleSheet, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import api from '../api/client';
-import { Btn, Input, Card, Loader } from '../components/UI';
+import { Btn, Input, Card, Loader, Empty } from '../components/UI';
 import { Colors, Spacing, Fonts } from '../theme';
 
 // Public (no login) — POST /auth/self-register. Student, parent, and
@@ -21,6 +21,7 @@ export default function SelfRegisterScreen({ navigation }: any) {
   const [schools, setSchools] = useState<{ code: string; name: string }[]>([]);
   const [schoolCode, setSchoolCode] = useState('');
   const [loadingSchools, setLoadingSchools] = useState(true);
+  const [schoolsError, setSchoolsError] = useState('');
 
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
@@ -36,15 +37,21 @@ export default function SelfRegisterScreen({ navigation }: any) {
 
   // Reuses the existing, already-public self-claim schools endpoint rather
   // than adding a near-duplicate one.
-  useEffect(() => {
-    api.get('/auth/self-claim/schools')
-      .then(({ data }) => {
-        setSchools(data.schools ?? []);
-        if (data.schools?.length === 1) setSchoolCode(data.schools[0].code);
-      })
-      .catch(() => setError('Could not load schools. Check your connection and try again.'))
-      .finally(() => setLoadingSchools(false));
+  const loadSchools = useCallback(async () => {
+    setLoadingSchools(true);
+    setSchoolsError('');
+    try {
+      const { data } = await api.get('/auth/self-claim/schools');
+      setSchools(data.schools ?? []);
+      if (data.schools?.length === 1) setSchoolCode(data.schools[0].code);
+    } catch {
+      setSchoolsError('Could not load schools. Check your connection and try again.');
+    } finally {
+      setLoadingSchools(false);
+    }
   }, []);
+
+  useEffect(() => { void loadSchools(); }, [loadSchools]);
 
   const handleSubmit = async () => {
     setError('');
@@ -113,10 +120,17 @@ export default function SelfRegisterScreen({ navigation }: any) {
             <Picker.Item label="Teacher" value="teacher" />
           </Picker>
 
-          {loadingSchools ? <Loader /> : (
+          {loadingSchools ? <Loader /> : schoolsError ? (
+            <>
+              <Text style={styles.error}>{schoolsError}</Text>
+              <Btn label="Retry loading schools" variant="outline" onPress={loadSchools} />
+            </>
+          ) : schools.length === 0 ? (
+            <Empty message="No schools are available for account setup. Please contact your school admin." />
+          ) : (
             <>
               <Text style={styles.label}>School</Text>
-              <Picker selectedValue={schoolCode} onValueChange={setSchoolCode} style={styles.picker}>
+              <Picker selectedValue={schoolCode} onValueChange={(value) => { setSchoolCode(value); setError(''); }} style={styles.picker}>
                 <Picker.Item label="Select your school…" value="" />
                 {schools.map((s) => <Picker.Item key={s.code} label={s.name} value={s.code} />)}
               </Picker>
@@ -138,7 +152,7 @@ export default function SelfRegisterScreen({ navigation }: any) {
           <Input label="Confirm Password" value={confirm} onChangeText={setConfirm} placeholder="Re-enter password" secureTextEntry />
 
           {error ? <Text style={styles.error}>{error}</Text> : null}
-          <Btn label="Create My Account" onPress={handleSubmit} loading={loading} style={{ marginTop: Spacing.md }} />
+          <Btn label="Create My Account" onPress={handleSubmit} loading={loading} disabled={loadingSchools || schools.length === 0 || !schoolCode} style={{ marginTop: Spacing.md }} />
         </Card>
 
         <Btn label="Back to Sign In" variant="outline" onPress={() => navigation.replace('Login')} style={{ marginTop: Spacing.md }} />

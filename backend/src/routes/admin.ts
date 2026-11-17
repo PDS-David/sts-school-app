@@ -1,21 +1,60 @@
 import { Router } from 'express';
+import type { Request, Response, NextFunction } from 'express';
 import bcrypt from 'bcryptjs';
-import { query } from '../db/pool.js';
+import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requireRole } from '../middleware/auth.js';
-import { audit } from '../utils/audit.js';
+import { auditContextFromRequest, auditInTransaction, auditStrict, verifyAuditLogIntegrity, AuditPersistenceError } from '../utils/audit.js';
 import { sendAdminLogEmail } from '../utils/email.js';
 import * as XLSX from 'xlsx';
 import { generateTempPassword, generateNumericPin } from '../utils/password.js';
 import { getBackupStatus, runBackup, BackupConfigError } from '../utils/backup.js';
+import { normalizeTeacherSubjectIds, TeacherAssignmentValidationError, validateTeacherAssignments } from '../utils/teacherAssignments.js';
+import type { AuthUser } from '../types/index.js';
 
 const router = Router();
 router.use(requireAuth, requireRole('admin'));
+
+type AdminSchoolScope =
+  | { ok: true; schoolCode: string | null }
+  | { ok: false; status: 400 | 403; error: string };
+
+// A school-bound administrator is never allowed to widen their tenant by
+// supplying a query/body school_code. A global administrator (school_code NULL)
+// retains the existing cross-school behavior and may optionally narrow reads.
+function requireGlobalAdmin(req: Request, res: Response, next: NextFunction) {
+  if (req.user?.school_code) {
+    return res.status(403).json({ error: 'Only a global administrator can access this operation' });
+  }
+  next();
+}
+
+function resolveAdminSchoolScope(
+  user: AuthUser,
+  requested: unknown,
+): AdminSchoolScope {
+  if (user.school_code) {
+    if (requested !== undefined && requested !== null && requested !== '' &&
+        (typeof requested !== 'string' || requested.trim() !== user.school_code)) {
+      return { ok: false, status: 403, error: "You can't access another school's records" };
+    }
+    return { ok: true, schoolCode: user.school_code };
+  }
+  if (requested === undefined || requested === null || requested === '') {
+    return { ok: true, schoolCode: null };
+  }
+  if (typeof requested !== 'string' || !requested.trim() || requested.trim().length > 50) {
+    return { ok: false, status: 400, error: 'Invalid school_code' };
+  }
+  return { ok: true, schoolCode: requested.trim() };
+}
 
 // ══════════════════════════════════════════
 // USER MANAGEMENT
 // ══════════════════════════════════════════
 router.get('/users', async (req, res) => {
   const { school_code, role } = req.query as Record<string, string>;
+  const scope = resolveAdminSchoolScope(req.user!, school_code);
+  if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
   let sql = `SELECT u.id,u.username,u.full_name,u.role,u.school_code,u.assigned_class,
                     u.is_active,u.must_change_pw,u.access_expires_at,u.created_at,
                     u.phone,u.email,
@@ -26,8 +65,8 @@ router.get('/users', async (req, res) => {
              LEFT JOIN teacher_subjects ts ON ts.user_id = u.id
              WHERE 1=1`;
   const params: unknown[] = [];
-  if (school_code) { params.push(school_code); sql += ` AND u.school_code=$${params.length}`; }
-  if (role)        { params.push(role);        sql += ` AND u.role=$${params.length}`; }
+  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND u.school_code=$${params.length}`; }
+  if (role)             { params.push(role);              sql += ` AND u.role=$${params.length}`; }
   sql += ' GROUP BY u.id ORDER BY u.role,u.full_name';
   const { rows } = await query(sql, params);
   return res.json({ users: rows });
@@ -36,11 +75,13 @@ router.get('/users', async (req, res) => {
 // ── GET /admin/students-without-login  (helper for the "link login" picker) ──
 router.get('/students-without-login', async (req, res) => {
   const { school_code, class_name } = req.query as Record<string, string>;
+  const scope = resolveAdminSchoolScope(req.user!, school_code);
+  if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
   let sql = `SELECT id, full_name, class_name, school_code, admission_number
              FROM students WHERE user_id IS NULL`;
   const params: unknown[] = [];
-  if (school_code) { params.push(school_code); sql += ` AND school_code=$${params.length}`; }
-  if (class_name)  { params.push(class_name);  sql += ` AND class_name=$${params.length}`; }
+  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND school_code=$${params.length}`; }
+  if (class_name)       { params.push(class_name);        sql += ` AND class_name=$${params.length}`; }
   sql += ' ORDER BY full_name';
   const { rows } = await query(sql, params);
   return res.json({ students: rows });
@@ -50,10 +91,12 @@ router.get('/students-without-login', async (req, res) => {
 //    accounts in Users that aren't yet attached to a students row) ──────────
 router.get('/student-logins-without-link', async (req, res) => {
   const { school_code } = req.query as Record<string, string>;
+  const scope = resolveAdminSchoolScope(req.user!, school_code);
+  if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
   let sql = `SELECT id, username, full_name, school_code FROM users
              WHERE role='student' AND NOT EXISTS (SELECT 1 FROM students st WHERE st.user_id = users.id)`;
   const params: unknown[] = [];
-  if (school_code) { params.push(school_code); sql += ` AND school_code=$${params.length}`; }
+  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND school_code=$${params.length}`; }
   sql += ' ORDER BY full_name';
   const { rows } = await query(sql, params);
   return res.json({ users: rows });
@@ -63,9 +106,11 @@ router.get('/student-logins-without-link', async (req, res) => {
 //    be linked to several children, so no "unlinked" filtering here) ────────
 router.get('/parent-logins', async (req, res) => {
   const { school_code } = req.query as Record<string, string>;
+  const scope = resolveAdminSchoolScope(req.user!, school_code);
+  if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
   let sql = `SELECT id, username, full_name, phone FROM users WHERE role='parent'`;
   const params: unknown[] = [];
-  if (school_code) { params.push(school_code); sql += ` AND school_code=$${params.length}`; }
+  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND school_code=$${params.length}`; }
   sql += ' ORDER BY full_name';
   const { rows } = await query(sql, params);
   return res.json({ users: rows });
@@ -95,8 +140,13 @@ function blankToNull<T>(v: T): T | null {
 }
 
 router.post('/users', async (req, res) => {
-  const { username, full_name, role, school_code, assigned_class, assigned_subject_ids, phone, email, access_expires_at, initial_password } = req.body;
-  const schoolCodeN = blankToNull(school_code);
+  const { username, full_name, role, school_code, assigned_class, assigned_subject_ids, phone, email, access_expires_at, initial_password } = req.body ?? {};
+  const scope = resolveAdminSchoolScope(req.user!, school_code);
+  if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
+  if (req.user!.school_code && role === 'finance_admin') {
+    return res.status(403).json({ error: 'Only a global administrator can create a finance administrator' });
+  }
+  const schoolCodeN = scope.schoolCode;
   const assignedClassN = blankToNull(assigned_class);
   const phoneN = blankToNull(phone);
   const emailN = blankToNull(email);
@@ -133,20 +183,49 @@ router.post('/users', async (req, res) => {
     if (!initial_password || String(initial_password).length < 8) {
       return res.status(400).json({ error: 'initial_password is required for a teacher and must be at least 8 characters' });
     }
-    const hash = await bcrypt.hash(String(initial_password), 10);
-    const { rows } = await query(
-      `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,
-         phone,email,must_change_pw,access_expires_at,activation_code)
-       VALUES($1,$2,'teacher',$3,$4,$5,$6,$7,TRUE,$8,NULL) RETURNING id,username,role,school_code,access_expires_at`,
-      [uname, hash, full_name, schoolCodeN,
-       assignedClassN, phoneN, emailN, expiresAt],
-    );
-    const subjectIds: number[] = Array.isArray(assigned_subject_ids) ? assigned_subject_ids : [];
-    for (const sid of subjectIds) {
-      await query('INSERT INTO teacher_subjects(user_id, subject_id) VALUES($1,$2) ON CONFLICT DO NOTHING', [rows[0].id, sid]);
+
+    let subjectIds: number[];
+    try {
+      subjectIds = normalizeTeacherSubjectIds(assigned_subject_ids);
+    } catch (error) {
+      if (error instanceof TeacherAssignmentValidationError) {
+        return res.status(400).json({ error: error.message });
+      }
+      throw error;
     }
-    await audit(req.user!, 'add_user', 'user', rows[0].id, `teacher: ${full_name} (admin-set password)`);
-    return res.status(201).json({ user: rows[0] });
+
+    const hash = await bcrypt.hash(String(initial_password), 10);
+    let createdUser;
+    try {
+      createdUser = await withTransaction(async (client) => {
+        await validateTeacherAssignments(client, schoolCodeN, assignedClassN, subjectIds);
+        const { rows } = await client.query(
+          `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,
+             phone,email,must_change_pw,access_expires_at,activation_code)
+           VALUES($1,$2,'teacher',$3,$4,$5,$6,$7,TRUE,$8,NULL) RETURNING id,username,role,school_code,access_expires_at`,
+          [uname, hash, full_name, schoolCodeN, assignedClassN, phoneN, emailN, expiresAt],
+        );
+        for (const sid of subjectIds) {
+          await client.query(
+            'INSERT INTO teacher_subjects(user_id, subject_id) VALUES($1,$2)',
+            [rows[0].id, sid],
+          );
+        }
+        await auditInTransaction(
+          client, req.user!, 'add_user', 'user', rows[0].id,
+          'teacher account created with admin-set password',
+          auditContextFromRequest(req, { schoolCode: schoolCodeN, metadata: { target_user_id: rows[0].id, assigned_subject_count: subjectIds.length } }),
+        );
+        return rows[0];
+      });
+    } catch (error) {
+      if (error instanceof TeacherAssignmentValidationError) {
+        return res.status(400).json({ error: error.message });
+      }
+      throw error;
+    }
+
+    return res.status(201).json({ user: createdUser });
   }
 
   // Task C: admin no longer generates a temp password to hand out — the
@@ -157,19 +236,22 @@ router.post('/users', async (req, res) => {
   // accounts created before this under the old temp-password flow are
   // untouched.
   const activationCode = generateNumericPin();
-  const { rows } = await query(
-    `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,
-       phone,email,must_change_pw,access_expires_at,activation_code)
-     VALUES($1,NULL,$2,$3,$4,$5,$6,$7,FALSE,$8,$9) RETURNING id,username,role,school_code,access_expires_at`,
-    [uname, role, full_name, schoolCodeN,
-     assignedClassN, phoneN, emailN, expiresAt, activationCode],
-  );
-  const subjectIds: number[] = Array.isArray(assigned_subject_ids) ? assigned_subject_ids : [];
-  for (const sid of subjectIds) {
-    await query('INSERT INTO teacher_subjects(user_id, subject_id) VALUES($1,$2) ON CONFLICT DO NOTHING', [rows[0].id, sid]);
-  }
-  await audit(req.user!, 'add_user', 'user', rows[0].id, `${role}: ${full_name}`);
-  return res.status(201).json({ user: { ...rows[0], activation_code: activationCode } });
+  const createdUser = await withTransaction(async (client) => {
+    const { rows } = await client.query(
+      `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,
+         phone,email,must_change_pw,access_expires_at,activation_code)
+       VALUES($1,NULL,$2,$3,$4,$5,$6,$7,FALSE,$8,$9) RETURNING id,username,role,school_code,access_expires_at`,
+      [uname, role, full_name, schoolCodeN,
+       assignedClassN, phoneN, emailN, expiresAt, activationCode],
+    );
+    await auditInTransaction(
+      client, req.user!, 'add_user', 'user', rows[0].id,
+      role + ' account created pending activation',
+      auditContextFromRequest(req, { schoolCode: schoolCodeN, metadata: { target_user_id: rows[0].id, target_role: role } }),
+    );
+    return rows[0];
+  });
+  return res.status(201).json({ user: { ...createdUser, activation_code: activationCode } });
 });
 
 // ── POST /admin/users/:id/reissue-activation-code — lost/expired code ───────
@@ -178,69 +260,145 @@ router.post('/users', async (req, res) => {
 // re-issue. Also clears any lockout from prior failed attempts, same as
 // re-issuing a class code does for class_access_codes.
 router.post('/users/:id/reissue-activation-code', async (req, res) => {
-  const { rows: existing } = await query('SELECT id, password_hash FROM users WHERE id=$1', [req.params.id]);
-  if (!existing[0]) return res.status(404).json({ error: 'User not found' });
-  if (existing[0].password_hash) {
+  const result = await withTransaction(async (client) => {
+    const { rows: existing } = await client.query(
+      'SELECT id, password_hash, school_code FROM users WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) FOR UPDATE',
+      [req.params.id, req.user!.school_code ?? null],
+    );
+    if (!existing[0]) return { status: 404 as const };
+    if (existing[0].password_hash) return { status: 400 as const };
+    const activationCode = generateNumericPin();
+    const { rows: updated } = await client.query(
+      `UPDATE users SET activation_code=$1, activation_fail_count=0, activation_locked_until=NULL
+        WHERE id=$2 AND ($3::text IS NULL OR school_code=$3) RETURNING id, school_code`,
+      [activationCode, req.params.id, req.user!.school_code ?? null],
+    );
+    if (!updated[0]) return { status: 404 as const };
+    await auditInTransaction(
+      client, req.user!, 'reissue_activation_code', 'user', req.params.id,
+      'pending account activation code reissued',
+      auditContextFromRequest(req, { schoolCode: updated[0].school_code, metadata: { target_user_id: req.params.id } }),
+    );
+    return { status: 200 as const, activationCode };
+  });
+  if (result.status === 404) return res.status(404).json({ error: 'User not found' });
+  if (result.status === 400) {
     return res.status(400).json({ error: 'This account has already been activated — there is no activation code to reissue.' });
   }
-  const activationCode = generateNumericPin();
-  await query(
-    `UPDATE users SET activation_code=$1, activation_fail_count=0, activation_locked_until=NULL WHERE id=$2`,
-    [activationCode, req.params.id],
-  );
-  await audit(req.user!, 'reissue_activation_code', 'user', req.params.id);
-  return res.json({ activation_code: activationCode });
+  return res.json({ activation_code: result.activationCode });
 });
 
 router.put('/users/:id', async (req, res) => {
-  const { full_name, role, school_code, assigned_class, assigned_subject_ids, is_active, phone, email, access_expires_at, clear_expiry, revocation_reason } = req.body;
-  // Blank text must never be persisted: COALESCE would write '' over the stored
-  // value. Normalised here to null, which COALESCE treats as "leave unchanged".
+  const { full_name, role, school_code, assigned_class, assigned_subject_ids, is_active, phone, email, access_expires_at, clear_expiry, revocation_reason } = req.body ?? {};
   const schoolCodeN = blankToNull(school_code);
   const assignedClassN = blankToNull(assigned_class);
   const phoneN = blankToNull(phone);
   const emailN = blankToNull(email);
-  // clear_expiry: true lets the admin explicitly remove an expiry (grant indefinite access)
-  // without that being confused with "field simply not sent" (which COALESCE would ignore).
-  //
-  // revocation_reason: optional note admin attaches when deactivating a user
-  // or ending their access — surfaced back to the user at login/refresh and
-  // in the forgot-password flow instead of a generic "contact admin"
-  // message. Auto-cleared whenever this same request reactivates the user
-  // (is_active=true), since a reason for a revocation that's just been
-  // undone is stale and would otherwise keep showing on their next login.
   const reactivating = is_active === true;
-  const { rows } = await query(
-    `UPDATE users SET full_name=COALESCE($1,full_name), role=COALESCE($2,role),
-       school_code=COALESCE($3,school_code),
-       -- Staff accounts (admin, finance_admin) have no class: clear it explicitly,
-       -- because a null parameter alone would leave an existing value in place.
-       assigned_class=CASE WHEN COALESCE($2,role) IN ('admin','finance_admin') THEN NULL
-                           ELSE COALESCE($4,assigned_class) END,
-       is_active=COALESCE($5,is_active),
-       phone=COALESCE($6,phone), email=COALESCE($7,email),
-       access_expires_at = CASE WHEN $9 THEN NULL ELSE COALESCE($8, access_expires_at) END,
-       revocation_reason = CASE WHEN $11 THEN NULL ELSE COALESCE($12, revocation_reason) END
-     WHERE id=$10 RETURNING id,username,role,is_active,access_expires_at,revocation_reason`,
-    [full_name, role, schoolCodeN, assignedClassN, is_active, phoneN, emailN,
-     access_expires_at ?? null, !!clear_expiry, req.params.id, reactivating, revocation_reason ?? null],
-  );
-  if (!rows[0]) return res.status(404).json({ error: 'User not found' });
-  if (Array.isArray(assigned_subject_ids)) {
-    await query('DELETE FROM teacher_subjects WHERE user_id=$1', [req.params.id]);
-    for (const sid of assigned_subject_ids) {
-      await query('INSERT INTO teacher_subjects(user_id, subject_id) VALUES($1,$2) ON CONFLICT DO NOTHING', [req.params.id, sid]);
-    }
+  const hasSubjectIds = assigned_subject_ids !== undefined;
+  if (req.user!.school_code && school_code != null && school_code !== '' &&
+      (typeof school_code !== 'string' || school_code.trim() !== req.user!.school_code)) {
+    return res.status(403).json({ error: "You can't move an account outside your school" });
   }
-  await audit(req.user!, 'edit_user', 'user', req.params.id);
-  return res.json({ user: rows[0] });
+
+  let result: { user: any | null; forbidden?: boolean };
+  try {
+    result = await withTransaction(async (client) => {
+      const { rows: currentRows } = await client.query(
+        'SELECT role,school_code,assigned_class FROM users WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) FOR UPDATE',
+        [req.params.id, req.user!.school_code ?? null],
+      );
+      if (!currentRows[0]) return { user: null };
+
+      const current = currentRows[0];
+      const nextRole = role ?? current.role;
+      const nextSchool = schoolCodeN ?? current.school_code;
+      const nextClass = (nextRole === 'admin' || nextRole === 'finance_admin')
+        ? null
+        : (assignedClassN ?? current.assigned_class);
+
+      if (req.user!.school_code &&
+          (nextRole === 'finance_admin' || nextSchool !== req.user!.school_code)) {
+        return { user: null, forbidden: true };
+      }
+
+      let nextSubjectIds: number[] = [];
+      if (nextRole === 'teacher') {
+        if (hasSubjectIds) {
+          nextSubjectIds = normalizeTeacherSubjectIds(assigned_subject_ids);
+        } else {
+          const { rows: existingSubjects } = await client.query(
+            'SELECT subject_id FROM teacher_subjects WHERE user_id=$1 ORDER BY subject_id',
+            [req.params.id],
+          );
+          nextSubjectIds = existingSubjects.map((row) => Number(row.subject_id));
+        }
+        await validateTeacherAssignments(client, nextSchool, nextClass, nextSubjectIds);
+      }
+
+      const { rows } = await client.query(
+        `UPDATE users SET full_name=COALESCE($1,full_name), role=COALESCE($2,role),
+           school_code=COALESCE($3,school_code),
+           assigned_class=CASE WHEN COALESCE($2,role) IN ('admin','finance_admin') THEN NULL
+                               ELSE COALESCE($4,assigned_class) END,
+           is_active=COALESCE($5,is_active),
+           phone=COALESCE($6,phone), email=COALESCE($7,email),
+           access_expires_at = CASE WHEN $9 THEN NULL ELSE COALESCE($8, access_expires_at) END,
+           revocation_reason = CASE WHEN $11 THEN NULL ELSE COALESCE($12, revocation_reason) END
+         WHERE id=$10 RETURNING id,username,role,is_active,access_expires_at,revocation_reason`,
+        [full_name, role, schoolCodeN, assignedClassN, is_active, phoneN, emailN,
+         access_expires_at ?? null, !!clear_expiry, req.params.id, reactivating, revocation_reason ?? null],
+      );
+      if (!rows[0]) return { user: null };
+
+      // Replace assignments in the same transaction as the user update.
+      // Changing away from teacher always removes now-irrelevant grants.
+      if (nextRole !== 'teacher' || hasSubjectIds) {
+        await client.query('DELETE FROM teacher_subjects WHERE user_id=$1', [req.params.id]);
+        for (const sid of nextSubjectIds) {
+          await client.query(
+            'INSERT INTO teacher_subjects(user_id, subject_id) VALUES($1,$2)',
+            [req.params.id, sid],
+          );
+        }
+      }
+      await auditInTransaction(
+        client, req.user!, 'edit_user', 'user', req.params.id,
+        'user account and access assignments updated',
+        auditContextFromRequest(req, { schoolCode: nextSchool, metadata: { target_user_id: req.params.id, changed_fields: Object.keys(req.body ?? {}).filter(key => !/password|token|secret|pin/i.test(key)) } }),
+      );
+
+      return { user: rows[0] };
+    });
+  } catch (error) {
+    if (error instanceof TeacherAssignmentValidationError) {
+      return res.status(400).json({ error: error.message });
+    }
+    throw error;
+  }
+
+  if (result.forbidden) return res.status(403).json({ error: "You can't change an account outside your school or create a global finance administrator" });
+  if (!result.user) return res.status(404).json({ error: 'User not found' });
+  return res.json({ user: result.user });
 });
 
 router.post('/users/:id/reset-password', async (req, res) => {
   const pw = generateTempPassword();
   const hash = await bcrypt.hash(pw, 10);
-  await query('UPDATE users SET password_hash=$1, must_change_pw=TRUE WHERE id=$2', [hash, req.params.id]);
-  await audit(req.user!, 'reset_password', 'user', req.params.id);
+  const result = await withTransaction(async (client) => {
+    const { rows } = await client.query(
+      'UPDATE users SET password_hash=$1, must_change_pw=TRUE WHERE id=$2 AND ($3::text IS NULL OR school_code=$3) RETURNING id, school_code',
+      [hash, req.params.id, req.user!.school_code ?? null],
+    );
+    if (!rows[0]) return null;
+    await auditInTransaction(
+      client, req.user!, 'reset_password', 'user', req.params.id,
+      'administrator reset user password; forced password change on next login',
+      auditContextFromRequest(req, { schoolCode: rows[0].school_code, metadata: { target_user_id: req.params.id, must_change_password: true } }),
+    );
+    return rows[0];
+  });
+  if (!result) return res.status(404).json({ error: 'User not found' });
   return res.json({ ok: true, temporary_password: pw });
 });
 
@@ -250,33 +408,78 @@ router.post('/users/:id/reset-password', async (req, res) => {
 // gate to lift. Admin should have already checked/edited the account's
 // class/subject assignment via the normal Edit Details flow before this.
 router.post('/users/:id/approve', async (req, res) => {
-  await query('UPDATE users SET pending_admin_review=FALSE WHERE id=$1', [req.params.id]);
-  await audit(req.user!, 'approve_self_registered_user', 'user', req.params.id);
+  const result = await withTransaction(async (client) => {
+    const { rows } = await client.query(
+      'UPDATE users SET pending_admin_review=FALSE WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) RETURNING id, school_code',
+      [req.params.id, req.user!.school_code ?? null],
+    );
+    if (!rows[0]) return null;
+    await auditInTransaction(
+      client, req.user!, 'approve_self_registered_user', 'user', req.params.id,
+      'administrator approved self-registered account',
+      auditContextFromRequest(req, { schoolCode: rows[0].school_code, metadata: { target_user_id: req.params.id } }),
+    );
+    return rows[0];
+  });
+  if (!result) return res.status(404).json({ error: 'User not found' });
   return res.json({ ok: true });
 });
 
 router.delete('/users/:id', async (req, res) => {
   if (req.params.id === req.user!.id) return res.status(400).json({ error: 'Cannot delete yourself' });
-  const { rows: targetRows } = await query('SELECT role FROM users WHERE id=$1', [req.params.id]);
-  if (!targetRows[0]) return res.status(404).json({ error: 'User not found' });
-  if (targetRows[0].role === 'admin') return res.status(400).json({ error: 'Admin accounts cannot be deleted' });
-  const { rows } = await query('DELETE FROM users WHERE id=$1 RETURNING username', [req.params.id]);
-  await audit(req.user!, 'delete_user', 'user', req.params.id, rows[0].username);
+  const result = await withTransaction(async (client) => {
+    const { rows: targetRows } = await client.query(
+      'SELECT role, username, school_code FROM users WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) FOR UPDATE',
+      [req.params.id, req.user!.school_code ?? null],
+    );
+    if (!targetRows[0]) return { status: 404 as const };
+    if (targetRows[0].role === 'admin') return { status: 400 as const };
+    const { rows } = await client.query(
+      'DELETE FROM users WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) RETURNING username',
+      [req.params.id, req.user!.school_code ?? null],
+    );
+    if (!rows[0]) return { status: 404 as const };
+    await auditInTransaction(
+      client, req.user!, 'delete_user', 'user', req.params.id,
+      'administrator deleted user account ' + rows[0].username,
+      auditContextFromRequest(req, { schoolCode: targetRows[0].school_code, metadata: { target_user_id: req.params.id, target_role: targetRows[0].role } }),
+    );
+    return { status: 200 as const };
+  });
+  if (result.status === 404) return res.status(404).json({ error: 'User not found' });
+  if (result.status === 400) return res.status(400).json({ error: 'Admin accounts cannot be deleted' });
   return res.json({ ok: true });
 });
 
 // ══════════════════════════════════════════
 // AUDIT LOG
 // ══════════════════════════════════════════
+router.get('/audit-log/integrity', async (req, res) => {
+  const { school_code } = req.query as Record<string, string>;
+  const scope = resolveAdminSchoolScope(req.user!, school_code);
+  if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
+  const integrity = await verifyAuditLogIntegrity(scope.schoolCode ?? undefined);
+  if (!integrity.valid) {
+    return res.status(500).json({ error: 'Audit log integrity verification failed.', integrity });
+  }
+  return res.json({ integrity });
+});
+
 router.get('/audit-log', async (req, res) => {
   const { school_code, limit = '100' } = req.query as Record<string, string>;
+  const scope = resolveAdminSchoolScope(req.user!, school_code);
+  if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
+  const parsedLimit = Number(limit);
+  if (!Number.isSafeInteger(parsedLimit) || parsedLimit < 1) {
+    return res.status(400).json({ error: 'limit must be a positive whole number' });
+  }
   let sql = `SELECT al.*,u.username AS actor_username
              FROM audit_log al LEFT JOIN users u ON u.id=al.actor_id
              WHERE 1=1`;
   const params: unknown[] = [];
-  if (school_code) { params.push(school_code); sql += ` AND al.school_code=$${params.length}`; }
+  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND al.school_code=$${params.length}`; }
   sql += ` ORDER BY al.created_at DESC LIMIT $${params.length + 1}`;
-  params.push(Number(limit));
+  params.push(Math.min(parsedLimit, 500));
   const { rows } = await query(sql, params);
   return res.json({ audit_log: rows });
 });
@@ -284,7 +487,7 @@ router.get('/audit-log', async (req, res) => {
 // ══════════════════════════════════════════
 // EMAIL LOG TRIGGER
 // ══════════════════════════════════════════
-router.post('/log-email', async (req, res) => {
+router.post('/log-email', requireGlobalAdmin, async (req, res) => {
   const { level = 'INFO', event = 'manual', payload = {} } = req.body;
   await query(
     `INSERT INTO email_log_queue(level,event,payload) VALUES($1,$2,$3)`,
@@ -304,7 +507,9 @@ router.post('/log-email', async (req, res) => {
 // ══════════════════════════════════════════
 router.get('/export/excel', async (req, res) => {
   const { school_code } = req.query as { school_code?: string };
-  const sc = school_code ?? req.user!.school_code;
+  const scope = resolveAdminSchoolScope(req.user!, school_code);
+  if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
+  const sc = scope.schoolCode;
 
   // Found in QA Pass 8: admin's own `school_code` is NULL (same root cause as
   // the Pass 7 contacts bug), so hitting this route with no `?school_code=`
@@ -382,30 +587,32 @@ const TERM_LABELS = ['1st Term', '2nd Term', '3rd Term'];
 // ── POST /admin/term-pins — generate (or re-issue) a PIN ───────────────────────
 router.post('/term-pins', async (req, res) => {
   const { student_id, term_label } = req.body as { student_id?: string; term_label?: string };
-  if (!student_id || !term_label) {
-    return res.status(400).json({ error: 'student_id and term_label are required' });
+  if (typeof student_id !== 'string' || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(student_id) || !term_label) {
+    return res.status(400).json({ error: 'A valid student_id and term_label are required' });
   }
   if (!TERM_LABELS.includes(term_label)) {
     return res.status(400).json({ error: `term_label must be one of: ${TERM_LABELS.join(', ')}` });
   }
 
-  const { rows: stRows } = await query('SELECT id FROM students WHERE id=$1', [student_id]);
-  if (!stRows[0]) return res.status(404).json({ error: 'Student not found' });
-
   const pin = generateNumericPin();
-  // Upsert on (student_id, term_label): re-issuing (a lost slip, or a
-  // deliberate reset) replaces the existing PIN and clears any prior
-  // redemption, rather than erroring or accumulating rows — there is only
-  // ever meant to be one live PIN per student per term_label at a time.
-  const { rows } = await query(
-    `INSERT INTO term_access_pins(student_id, term_label, pin, created_by)
-     VALUES($1,$2,$3,$4)
-     ON CONFLICT (student_id, term_label)
-     DO UPDATE SET pin=EXCLUDED.pin, redeemed_at=NULL, created_by=EXCLUDED.created_by, created_at=now()
-     RETURNING *`,
-    [student_id, term_label, pin, req.user!.id],
-  );
-  return res.status(201).json({ term_pin: rows[0] });
+  const result = await withTransaction(async (client) => {
+    const { rows: stRows } = await client.query(
+      'SELECT id FROM students WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) FOR SHARE',
+      [student_id, req.user!.school_code ?? null],
+    );
+    if (!stRows[0]) return { ok: false as const };
+    const { rows } = await client.query(
+      `INSERT INTO term_access_pins(student_id, term_label, pin, created_by)
+       VALUES($1,$2,$3,$4)
+       ON CONFLICT (student_id, term_label)
+       DO UPDATE SET pin=EXCLUDED.pin, redeemed_at=NULL, created_by=EXCLUDED.created_by, created_at=now()
+       RETURNING *`,
+      [student_id, term_label, pin, req.user!.id],
+    );
+    return { ok: true as const, termPin: rows[0] };
+  });
+  if (!result.ok) return res.status(404).json({ error: 'Student not found' });
+  return res.status(201).json({ term_pin: result.termPin });
 });
 
 // ── GET /admin/term-pins?student_id=&term_label= — view issued/redeemed status ──
@@ -414,10 +621,20 @@ router.post('/term-pins', async (req, res) => {
 // needs to be able to read it back, same as `POST /admin/users`'s
 // `temporary_password` being visible to admin, not just the recipient.
 router.get('/term-pins', async (req, res) => {
-  const { student_id, term_label } = req.query as Record<string, string>;
+  const { student_id, term_label, school_code } = req.query as Record<string, string>;
+  const scope = resolveAdminSchoolScope(req.user!, school_code);
+  if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
+  if (student_id && (typeof student_id !== 'string' ||
+      !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(student_id))) {
+    return res.status(400).json({ error: 'Invalid student_id' });
+  }
+  if (term_label && !TERM_LABELS.includes(term_label)) {
+    return res.status(400).json({ error: 'Invalid term_label' });
+  }
   let sql = `SELECT tp.*, st.full_name AS student_name, st.class_name
              FROM term_access_pins tp JOIN students st ON st.id=tp.student_id WHERE 1=1`;
   const params: unknown[] = [];
+  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND st.school_code=$${params.length}`; }
   if (student_id) { params.push(student_id); sql += ` AND tp.student_id=$${params.length}`; }
   if (term_label) { params.push(term_label); sql += ` AND tp.term_label=$${params.length}`; }
   sql += ' ORDER BY st.full_name, tp.term_label';
@@ -428,9 +645,18 @@ router.get('/term-pins', async (req, res) => {
 // ── POST /admin/class-codes — generate (or re-issue) a class's code ────────────
 router.post('/class-codes', async (req, res) => {
   const { school_code, class_name } = req.body as { school_code?: string; class_name?: string };
-  if (!school_code || !class_name) {
-    return res.status(400).json({ error: 'school_code and class_name are required' });
+  const scope = resolveAdminSchoolScope(req.user!, school_code);
+  if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
+  const sc = scope.schoolCode;
+  if (!sc) return res.status(400).json({ error: 'school_code is required for global administrators' });
+  if (typeof class_name !== 'string' || !class_name.trim() || class_name.trim().length > 100) {
+    return res.status(400).json({ error: 'A valid class_name is required' });
   }
+  const { rows: classes } = await query(
+    'SELECT 1 FROM classes WHERE school_code=$1 AND name=$2',
+    [sc, class_name.trim()],
+  );
+  if (!classes[0]) return res.status(400).json({ error: 'Unknown class for this school' });
 
   const code = generateNumericPin();
   // Upsert on (school_code, class_name): re-issuing (the code leaked, or a
@@ -445,7 +671,7 @@ router.post('/class-codes', async (req, res) => {
      ON CONFLICT (school_code, class_name)
      DO UPDATE SET code=EXCLUDED.code, fail_count=0, locked_until=NULL, created_by=EXCLUDED.created_by, created_at=now()
      RETURNING *`,
-    [school_code, class_name, code, req.user!.id],
+    [sc, class_name.trim(), code, req.user!.id],
   );
   return res.status(201).json({ class_code: rows[0] });
 });
@@ -455,13 +681,18 @@ router.post('/class-codes', async (req, res) => {
 // without cross-referencing the Users list separately.
 router.get('/class-codes', async (req, res) => {
   const { school_code, class_name } = req.query as Record<string, string>;
+  const scope = resolveAdminSchoolScope(req.user!, school_code);
+  if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
+  if (class_name && (typeof class_name !== 'string' || class_name.trim().length > 100)) {
+    return res.status(400).json({ error: 'Invalid class_name' });
+  }
   let sql = `SELECT cc.*,
                     (SELECT COUNT(*) FROM students st WHERE st.school_code=cc.school_code AND st.class_name=cc.class_name AND st.user_id IS NOT NULL) AS claimed_count,
                     (SELECT COUNT(*) FROM students st WHERE st.school_code=cc.school_code AND st.class_name=cc.class_name AND st.user_id IS NULL) AS unclaimed_count
              FROM class_access_codes cc WHERE 1=1`;
   const params: unknown[] = [];
-  if (school_code) { params.push(school_code); sql += ` AND cc.school_code=$${params.length}`; }
-  if (class_name)  { params.push(class_name);  sql += ` AND cc.class_name=$${params.length}`; }
+  if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND cc.school_code=$${params.length}`; }
+  if (class_name)       { params.push(class_name);        sql += ` AND cc.class_name=$${params.length}`; }
   sql += ' ORDER BY cc.school_code, cc.class_name';
   const { rows } = await query(sql, params);
   return res.json({ class_codes: rows });
@@ -470,19 +701,37 @@ router.get('/class-codes', async (req, res) => {
 // ══════════════════════════════════════════
 // DATABASE BACKUP (encrypted, emailed to ADMIN_LOG_RECIPIENTS)
 // ══════════════════════════════════════════
-router.get('/backups/status', async (_req, res) => {
+router.get('/backups/status', requireGlobalAdmin, async (_req, res) => {
   return res.json(await getBackupStatus());
 });
 
 let backupRunning = false;
-router.post('/backups/run', async (req, res) => {
+router.post('/backups/run', requireGlobalAdmin, async (req, res) => {
   if (backupRunning) return res.status(409).json({ error: 'A backup is already running.' });
   backupRunning = true;
   try {
+    const context = auditContextFromRequest(req, { metadata: { backup_requested_by: req.user?.username ?? 'admin' } });
+    await auditStrict(req.user ?? null, 'BACKUP_STARTED', 'database', undefined, 'database backup started', context);
     const r = await runBackup(req.user?.username ?? 'admin');
-    await audit(req.user ?? null, 'BACKUP_RUN', 'database', undefined, `${r.status}; ${r.tables} tables; ${r.rows} rows; ${r.size_bytes} bytes`);
+    await auditStrict(
+      req.user ?? null, 'BACKUP_RUN', 'database', undefined,
+      `${r.status}; ${r.tables} tables; ${r.rows} rows; ${r.size_bytes} bytes`,
+      auditContextFromRequest(req, {
+        outcome: 'success',
+        metadata: { tables: r.tables, rows: r.rows, size_bytes: r.size_bytes, backup_status: r.status },
+      }),
+    );
     return res.json({ ...r, ...(await getBackupStatus()) });
   } catch (e: any) {
+    if (e instanceof AuditPersistenceError) throw e;
+    try {
+      await auditStrict(
+        req.user ?? null, 'BACKUP_RUN', 'database', undefined, 'database backup failed',
+        auditContextFromRequest(req, { outcome: 'failure', metadata: { error_code: e?.code ?? null, error_type: e?.name ?? 'Error' } }),
+      );
+    } catch (auditError) {
+      console.error('[audit] unable to record backup failure', auditError);
+    }
     if (e instanceof BackupConfigError) return res.status(503).json({ error: e.message });
     return res.status(500).json({ error: 'Backup failed. See server logs.' });
   } finally {

@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
-  View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, Alert, ScrollView, Linking,
+  View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, ScrollView, Linking,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { Directory, File, Paths } from 'expo-file-system';
+import * as Sharing from 'expo-sharing';
 import { Picker } from '@react-native-picker/picker';
 import api from '../api/client';
 import { useAuth } from '../api/AuthContext';
 import { Card, Btn, Input, Loader, Empty, SectionHeader, Badge } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
+import { getMaterialDownloadTarget, isSafeMaterialUrl } from '../utils/materialDownload';
+import { ConfirmDialog } from '../components/ConfirmDialog';
 
 const TYPE_ICON: Record<string, string> = {
   pdf: 'document-text', video: 'videocam', doc: 'document', link: 'link',
@@ -33,39 +37,136 @@ export default function MaterialsScreen({ route }: any) {
   const [materials, setMaterials] = useState<any[]>([]);
   const [subjects,  setSubjects]  = useState<any[]>([]);
   const [loading,   setLoading]   = useState(true);
+  const [loadError, setLoadError] = useState('');
+  const [saving, setSaving] = useState(false);
+  const [dialog, setDialog] = useState<{ title: string; message: string; confirmLabel?: string; destructive?: boolean; hideCancel?: boolean; onConfirm?: () => void } | null>(null);
+  const [downloadingId, setDownloadingId] = useState<string | null>(null);
   const [modal,     setModal]     = useState(false);
   const [filterSub, setFilterSub] = useState(initialSubjectId ?? '');
   const [form, setForm] = useState({ title: '', type: 'pdf', url: '', subject_id: '', class_name: '' });
+  const fetchGenerationRef = useRef(0);
 
   const fetch = async () => {
+    const generation = ++fetchGenerationRef.current;
+    setLoading(true);
+    setLoadError('');
     try {
-      const params = filterSub ? `?subject_id=${filterSub}` : '';
+      const params = filterSub ? `?subject_id=${encodeURIComponent(filterSub)}` : '';
       const [m, s] = await Promise.all([api.get(`/learning/materials${params}`), api.get('/academic/subjects')]);
-      setMaterials(m.data.materials);
-      setSubjects(s.data.subjects);
-    } catch { } finally { setLoading(false); }
+      if (generation !== fetchGenerationRef.current) return;
+      setMaterials(m.data.materials ?? []);
+      setSubjects(s.data.subjects ?? []);
+    } catch (e: any) {
+      if (generation === fetchGenerationRef.current) {
+        setLoadError(e?.response?.data?.error ?? 'Could not load learning materials and subjects. Check your connection and retry.');
+      }
+    } finally {
+      if (generation === fetchGenerationRef.current) setLoading(false);
+    }
   };
-  useEffect(() => { fetch(); }, [filterSub]);
+  useEffect(() => {
+    void fetch();
+    return () => { fetchGenerationRef.current += 1; };
+  }, [filterSub]);
 
-  const visibleMaterials = typeFilter ? materials.filter((m) => m.type === typeFilter) : materials;
+  const handleOpen = async (url: string) => {
+    if (!isSafeMaterialUrl(url)) {
+      setDialog({ title: 'Invalid material link', message: 'Only secure HTTPS links can be opened.', hideCancel: true });
+      return;
+    }
+    try {
+      await Linking.openURL(url);
+    } catch {
+      setDialog({ title: 'Unable to open link', message: 'This material link could not be opened on this device.', hideCancel: true });
+    }
+  };
+
+  const handleDownload = async (material: any) => {
+    const target = getMaterialDownloadTarget(material.url, material.title, material.type);
+    if (!target) {
+      setDialog({ title: 'Invalid download link', message: 'Only secure HTTPS file links can be downloaded.', hideCancel: true });
+      return;
+    }
+    setDownloadingId(String(material.id));
+    let downloaded: File | null = null;
+    let createdDuringDownload = false;
+    try {
+      const directory = new Directory(Paths.document, 'learning-materials');
+      directory.create({ idempotent: true, intermediates: true });
+      downloaded = new File(directory, target.fileName);
+      if (downloaded.exists && (!Number.isFinite(downloaded.size) || downloaded.size <= 0 || downloaded.size > target.maxBytes)) {
+        downloaded.delete();
+      }
+      if (!downloaded.exists) {
+        createdDuringDownload = true;
+        const task = File.createDownloadTask(target.url, downloaded);
+        const result = await task.downloadAsync();
+        if (!result || !result.exists) throw new Error('The download did not produce a file.');
+        downloaded = result;
+      }
+
+      if (!Number.isFinite(downloaded.size) || downloaded.size <= 0 || downloaded.size > target.maxBytes) {
+        downloaded.delete();
+        throw new Error('Downloaded material is empty or exceeds the 25 MB size limit.');
+      }
+      const actualMime = typeof downloaded.type === 'string' ? downloaded.type.toLowerCase() : '';
+      if (!actualMime || (actualMime !== target.mimeType && actualMime !== 'application/octet-stream')) {
+        downloaded.delete();
+        throw new Error('Downloaded content type does not match the declared material type.');
+      }
+
+      if (!(await Sharing.isAvailableAsync())) {
+        setDialog({ title: 'Download complete', message: 'The verified file is saved in the app documents folder, but sharing is unavailable on this device.', hideCancel: true });
+        return;
+      }
+      await Sharing.shareAsync(downloaded.uri, {
+        mimeType: target.mimeType,
+        dialogTitle: 'Save or open learning material',
+      });
+    } catch {
+      if (createdDuringDownload && downloaded?.exists) downloaded.delete();
+      setDialog({ title: 'Download failed', message: 'The link may require sign-in, exceed the 25 MB limit, or return content that does not match its declared file type. Try opening the link instead.', hideCancel: true });
+    } finally {
+      setDownloadingId(null);
+    }
+  };
+
+  const visibleMaterials = typeFilter === 'download'
+    ? materials.filter((m) => m.type === 'pdf' || m.type === 'doc')
+    : typeFilter ? materials.filter((m) => m.type === typeFilter) : materials;
 
   const handleSave = async () => {
-    if (!form.title || !form.url) { Alert.alert('Title and URL required'); return; }
+    if (saving) return;
+    if (!form.title.trim() || !form.url.trim()) { setDialog({ title: 'Required fields', message: 'Enter a material title and URL.', hideCancel: true }); return; }
+    if (!isSafeMaterialUrl(form.url.trim())) { setDialog({ title: 'Invalid URL', message: 'Material links must use a valid HTTPS address.', hideCancel: true }); return; }
+    setSaving(true);
     try {
-      await api.post('/learning/materials', { ...form, subject_id: Number(form.subject_id) || null });
+      await api.post('/learning/materials', { ...form, title: form.title.trim(), url: form.url.trim(), subject_id: Number(form.subject_id) || null });
       setModal(false);
-      fetch();
-    } catch (e: any) { Alert.alert('Error', e?.response?.data?.error ?? 'Save failed'); }
+      await fetch();
+      setDialog({ title: 'Material uploaded', message: 'The learning material has been added.', hideCancel: true });
+    } catch (e: any) {
+      setDialog({ title: 'Could not upload material', message: e?.response?.data?.error ?? 'Save failed. Check your connection and try again.', hideCancel: true });
+    } finally { setSaving(false); }
   };
 
-  const handleDelete = async (id: number) => {
-    Alert.alert('Delete material?', '', [
-      { text: 'Cancel', style: 'cancel' },
-      { text: 'Delete', style: 'destructive', onPress: async () => {
-        await api.delete(`/learning/materials/${id}`);
-        fetch();
-      }},
-    ]);
+  const handleDelete = (id: number) => {
+    setDialog({
+      title: 'Delete material?',
+      message: 'Students will no longer be able to access this material from the learning library.',
+      confirmLabel: 'Delete',
+      destructive: true,
+      onConfirm: async () => {
+        setDialog(null);
+        try {
+          await api.delete(`/learning/materials/${id}`);
+          await fetch();
+          setDialog({ title: 'Material deleted', message: 'The material was removed from the learning library.', hideCancel: true });
+        } catch (e: any) {
+          setDialog({ title: 'Could not delete material', message: e?.response?.data?.error ?? 'Please check your connection and try again.', hideCancel: true });
+        }
+      },
+    });
   };
 
   if (loading) return <Loader />;
@@ -75,18 +176,26 @@ export default function MaterialsScreen({ route }: any) {
       {/* Filter */}
       <View style={styles.filterRow}>
         <View style={[styles.pickerWrap, { flex: 1 }]}>
-          <Picker selectedValue={filterSub} onValueChange={setFilterSub}>
+          <Picker selectedValue={filterSub} onValueChange={setFilterSub} accessibilityLabel="Filter materials by subject">
             <Picker.Item label="All Subjects" value="" />
             {subjects.map(s => <Picker.Item key={s.id} label={s.name} value={String(s.id)} />)}
           </Picker>
         </View>
         {canWrite && (
-          <TouchableOpacity style={styles.addBtn} onPress={() => setModal(true)}>
+          <TouchableOpacity style={styles.addBtn} onPress={() => setModal(true)} accessibilityRole="button" accessibilityLabel="Add learning material">
             <Ionicons name="add" size={22} color={Colors.white} />
           </TouchableOpacity>
         )}
       </View>
 
+      {loadError ? (
+        <View style={{ paddingHorizontal: Spacing.sm }}>
+          <Card>
+            <Text style={{ color: Colors.error, marginBottom: Spacing.sm }}>{loadError}</Text>
+            <Btn label="Retry loading materials" onPress={fetch} variant="outline" />
+          </Card>
+        </View>
+      ) : null}
       <FlatList
         data={visibleMaterials}
         keyExtractor={m => String(m.id)}
@@ -104,11 +213,26 @@ export default function MaterialsScreen({ route }: any) {
                 <Text style={styles.matBy}>By {m.uploaded_by}</Text>
               </View>
               <View style={{ gap: 4 }}>
-                <TouchableOpacity onPress={() => Linking.openURL(m.url)} style={styles.openBtn}>
+                <TouchableOpacity onPress={() => handleOpen(m.url)} style={styles.openBtn} accessibilityRole="button" accessibilityLabel={`Open ${m.title}`}>
                   <Ionicons name="open-outline" size={18} color={Colors.primary} />
                 </TouchableOpacity>
+                {(m.type === 'pdf' || m.type === 'doc') && (
+                  <TouchableOpacity
+                    onPress={() => handleDownload(m)}
+                    disabled={downloadingId === String(m.id)}
+                    style={styles.openBtn}
+                    accessibilityRole="button"
+                    accessibilityLabel={downloadingId === String(m.id) ? 'Downloading material' : 'Download material'}
+                  >
+                    <Ionicons
+                      name={downloadingId === String(m.id) ? 'hourglass-outline' : 'download-outline'}
+                      size={18}
+                      color={downloadingId === String(m.id) ? Colors.textSub : Colors.primary}
+                    />
+                  </TouchableOpacity>
+                )}
                 {canWrite && (
-                  <TouchableOpacity onPress={() => handleDelete(m.id)}>
+                  <TouchableOpacity onPress={() => handleDelete(m.id)} accessibilityRole="button" accessibilityLabel={`Delete ${m.title}`}>
                     <Ionicons name="trash-outline" size={18} color={Colors.error} />
                   </TouchableOpacity>
                 )}
@@ -127,23 +251,24 @@ export default function MaterialsScreen({ route }: any) {
           <Input label="Class (optional)" value={form.class_name} onChangeText={v => setForm(f => ({ ...f, class_name: v }))} placeholder="e.g. JSS 1" />
           <Text style={styles.lbl}>Subject</Text>
           <View style={styles.pickerWrap}>
-            <Picker selectedValue={form.subject_id} onValueChange={v => setForm(f => ({ ...f, subject_id: v }))}>
+            <Picker selectedValue={form.subject_id} onValueChange={v => setForm(f => ({ ...f, subject_id: v }))} accessibilityLabel="Select subject for material">
               <Picker.Item label="All subjects" value="" />
               {subjects.map(s => <Picker.Item key={s.id} label={s.name} value={String(s.id)} />)}
             </Picker>
           </View>
           <Text style={styles.lbl}>Type</Text>
           <View style={styles.pickerWrap}>
-            <Picker selectedValue={form.type} onValueChange={v => setForm(f => ({ ...f, type: v }))}>
+            <Picker selectedValue={form.type} onValueChange={v => setForm(f => ({ ...f, type: v }))} accessibilityLabel="Select material type">
               {['pdf','video','doc','link'].map(t => <Picker.Item key={t} label={t.toUpperCase()} value={t} />)}
             </Picker>
           </View>
           <View style={{ flexDirection: 'row', gap: Spacing.sm, marginTop: Spacing.md }}>
             <Btn label="Cancel" onPress={() => setModal(false)} variant="outline" style={{ flex: 1 }} />
-            <Btn label="Upload" onPress={handleSave} style={{ flex: 1 }} />
+            <Btn label={saving ? 'Uploading…' : 'Upload'} onPress={handleSave} loading={saving} disabled={saving} style={{ flex: 1 }} />
           </View>
         </ScrollView>
       </Modal>
+      <ConfirmDialog visible={!!dialog} title={dialog?.title ?? ''} message={dialog?.message ?? ''} confirmLabel={dialog?.confirmLabel} destructive={dialog?.destructive} hideCancel={dialog?.hideCancel} onConfirm={() => { const action = dialog?.onConfirm; if (action) action(); else setDialog(null); }} onCancel={() => setDialog(null)} />
     </View>
   );
 }

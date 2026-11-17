@@ -7,10 +7,15 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   biology-verify:
     name: SS1 Biology package and delivery integrity
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -45,6 +50,7 @@ jobs:
           '
   verify:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     services:
       postgres:
         image: postgres:16
@@ -114,3 +120,13 @@ jobs:
         env:
           JSS3_LOCAL_TEST_DATABASE_URL: postgres://postgres:test_only_password@127.0.0.1:5432/jss3_test_ci
         run: node --import tsx --test tests/staging-admin.db.test.mts
+
+      - name: Versioned migration ledger PostgreSQL integration (disposable databases)
+        env:
+          MIGRATION_TEST_DATABASE_URL: postgres://postgres:test_only_password@127.0.0.1:5432/jss3_test_ci
+        run: node --import tsx --test tests/migration-ledger.db.test.mts
+
+      - name: School-management route integration (disposable database)
+        env:
+          SCHOOL_MANAGEMENT_TEST_DATABASE_URL: postgres://postgres:test_only_password@127.0.0.1:5432/jss3_test_ci
+        run: node --import tsx --test tests/school-management.db.test.mts

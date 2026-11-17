@@ -16,6 +16,36 @@ It is **not** an approval, a test result, a queue status change, or a claim that
 
 Counts are implementation counts. They are not content completeness, curriculum approval or test evidence.
 
+## Current implementation status — 16 November 2026
+
+The table above is the historical 30 October snapshot, not a live status board. The following later work has landed on current master:
+
+| Task | Current status | Evidence |
+|---|---|---|
+| SEC-01, SEC-03, SEC-04, SEC-05 | Implemented on master | Existing authorization and account-scope fixes |
+| ASM-03, ASM-04 | Implemented on master | Assessment transactions and shared marking backlog query |
+| DATA-01, DATA-04 | Implemented on master | Invoice transaction and push-delivery receipts |
+| OPS-01 | Merged | PR #737; migration ledger and PostgreSQL integration tests |
+| OPS-02 | Implemented | Database TLS validation in `backend/src/db/pool.ts` |
+| Teacher marking backlog / analytics | Implemented | `GET /scores/teacher/overview`, teacher dashboard and analytics screen; SMM-003 |
+| Calendar, school events, parent upcoming tests | Merged | PR #764; SMM-002 |
+| Student badges and achievements | Merged | PR #766; SMM-004 |
+| Admin announcement authoring | Merged | PR #768; SMM-005 |
+| Repeatable root test/typecheck scripts | Merged | PR #771 |
+
+School-management feature-specific PostgreSQL route tests were merged in PR #894 as `554688b372f6b9f1b74adf64dd4fcf817ca690e2`. All five required CI workflows passed on PR head `434111153ae1aafcfedfa85ae7d6240f48468cb2`: JSS3 verify `43941196109`, SS1 integrity `43941196090`, SS23 integrity `43941196059`, backend student report term-scope `43941196004`, and backend score subject-scope/batch atomicity `43941196025`. Tests cover event and announcement audience/school scoping, parent upcoming tests, achievement thresholds and teacher marking counts.
+
+### Still open or gated
+
+- **DATA-02** offline replay idempotency — not implemented; OPS-01 dependency is satisfied.
+- **VER-02** manual CI coverage for tests not in push verification — still open.
+- **SMM role/device acceptance** — real admin, teacher, student and parent account/device checks remain outstanding; no such tests are claimed here.
+- **Production calendar rollout** — apply migration `0002_school_events.sql` to each target database through the reviewed migration procedure; merging code does not migrate production databases.
+- **ASM-01 / ASM-02, SEC-02, DATA-03, OPS-03, OPS-04, PRD-02** remain gated by owner decisions D1, D2, D4, D5, D6, D7 or D9 respectively. Do not invent approvals or policy choices.
+- **OPS-05, VER-03, VER-04, JSS3-01, JSS3-02** remain gated by owner credentials, testing/device access or source/approval evidence.
+
+PRs #737, #764, #766, #768, #771 and #894 are merged. The requested school-management feature implementation and automated route verification are complete on master.
+
 ## How to use
 
 1. Read `PROTOCOL.md` once. It overrides every prompt on safety.

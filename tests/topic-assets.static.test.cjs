@@ -76,26 +76,29 @@ test('routes: list endpoint is metadata-only and never selects bytes', () => {
   const body = routeBody(s, "router.get('/topics/:id/assets'");
   assert.match(body, /requirePerm\('topics\.read'\)/);
   assert.match(body, /displayed=true/);
-  assert.match(body, /ORDER BY sort_order, id/);
+  assert.match(body, /ORDER BY a\.sort_order, a\.id/);
   assert.doesNotMatch(body, /\bbytes\b/);
-  assert.match(body, /\bcaption, alt_text\b/, 'list endpoint returns alt_text with the caption');
+  assert.match(body, /a\.caption, a\.alt_text/, 'list endpoint returns alt_text with the caption');
 });
 
-test('routes: bytes endpoint scopes like GET /topics, sets Content-Type + ETag, 304 before reading bytes', () => {
+test('routes: bytes endpoint repeats school scope and verifies MIME/SHA before no-store delivery', () => {
   const s = read('backend/src/routes/learning.ts');
   const body = routeBody(s, "router.get('/assets/:id'");
   assert.match(body, /requirePerm\('topics\.read'\)/);
   assert.match(body, /topicVisibilitySql\(user, params\)/);
   assert.match(body, /Content-Type/);
-  assert.match(body, /ETag/);
+  assert.match(body, /verifyTopicAssetPayload\(buf, meta\[0\]\.mime, meta\[0\]\.sha256\)/);
   assert.match(body, /X-Content-Type-Options', 'nosniff'/);
   assert.match(body, /Content-Security-Policy/);
   assert.match(body, /agriculturalScienceAssetDeliverable\(meta\[0\], meta\[0\]\)/);
-  assert.match(body, /status\(304\)/);
+  assert.match(body, /Cache-Control', 'private, no-store, max-age=0'/);
+  assert.match(body, /Content-Disposition', 'inline'/);
+  assert.doesNotMatch(body, /status\(304\)/);
   // The scope/metadata query must not read the image; bytes come from a second query.
   const firstQuery = body.slice(body.indexOf('SELECT a.mime'), body.indexOf('params,'));
   assert.doesNotMatch(firstQuery, /\bbytes\b/);
-  assert.ok(body.indexOf("status(304)") < body.indexOf('SELECT bytes FROM topic_assets'));
+  assert.match(body, /JOIN topics t ON t\.id=a\.topic_id/);
+  assert.match(body, /t\.id=\$\$\{bytesParams\.length\}/);
 });
 
 test('routes: visibility helper mirrors GET /topics (teacher class/subject, viewer classes)', () => {

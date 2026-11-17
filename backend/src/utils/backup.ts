@@ -19,7 +19,18 @@ export const BACKUP_INTERVAL_DAYS = 7;
 
 export interface BackupTable {
   name: string;
-  columns: { name: string; type: string }[];
+  columns: {
+    name: string;
+    type: string;
+    udt_name?: string;
+    character_maximum_length?: number | null;
+    numeric_precision?: number | null;
+    numeric_scale?: number | null;
+    is_nullable?: string;
+    column_default?: string | null;
+    is_identity?: string;
+    is_generated?: string;
+  }[];
   rows: unknown[][];
 }
 export interface BackupPayload {
@@ -83,9 +94,12 @@ export async function collectPayload(): Promise<BackupPayload> {
       `SELECT table_name FROM information_schema.tables
         WHERE table_schema='public' AND table_type='BASE TABLE' ORDER BY table_name`);
     const tables: BackupTable[] = [];
+    const excludedTables = new Set(['app_bootstrap', 'backup_log', 'schema_migrations']);
     for (const { table_name } of tbls) {
+      if (excludedTables.has(table_name)) continue;
       const { rows: cols } = await client.query(
-        `SELECT column_name, data_type FROM information_schema.columns
+        `SELECT column_name, data_type, udt_name, character_maximum_length, numeric_precision, numeric_scale,
+               is_nullable, column_default, is_identity, is_generated FROM information_schema.columns
           WHERE table_schema='public' AND table_name=$1 ORDER BY ordinal_position`, [table_name]);
       const ident = '"' + String(table_name).replace(/"/g, '""') + '"';
       // Anything the JS driver would round or reformat (timestamps keep microseconds, dates, numerics,
@@ -98,7 +112,18 @@ export async function collectPayload(): Promise<BackupPayload> {
       const res = await client.query({ text: `SELECT ${select} FROM public.${ident}`, rowMode: 'array' });
       tables.push({
         name: table_name,
-        columns: cols.map((c: any) => ({ name: c.column_name, type: c.data_type })),
+        columns: cols.map((c: any) => ({
+          name: c.column_name,
+          type: c.data_type,
+          udt_name: c.udt_name,
+          character_maximum_length: c.character_maximum_length,
+          numeric_precision: c.numeric_precision,
+          numeric_scale: c.numeric_scale,
+          is_nullable: c.is_nullable,
+          column_default: c.column_default,
+          is_identity: c.is_identity,
+          is_generated: c.is_generated,
+        })),
         rows: res.rows as unknown[][],
       });
     }
@@ -217,6 +242,45 @@ export async function runBackup(actor: string): Promise<{ status: string; emaile
   }
 }
 
+/**
+ * Automatically attempt an encrypted off-host backup when the last emailed
+ * backup is overdue. A session advisory lock prevents duplicate runs across
+ * multiple API instances. Failed/not-emailed attempts are logged by runBackup
+ * and retried no more than once per 24 hours.
+ */
+export async function runScheduledBackupIfDue(): Promise<boolean> {
+  await ensureBackupLog();
+  const client = await pool.connect();
+  let locked = false;
+  try {
+    const { rows: lock } = await client.query(
+      'SELECT pg_try_advisory_lock(1937001, 6) AS ok',
+    );
+    locked = Boolean(lock[0]?.ok);
+    if (!locked) return false;
+
+    const { rows } = await client.query(
+      `SELECT
+         (SELECT max(created_at) FROM backup_log WHERE kind='backup' AND status='emailed') AS last_success,
+         (SELECT max(created_at) FROM backup_log WHERE kind='backup') AS last_attempt`,
+    );
+    const now = Date.now();
+    const lastSuccess = rows[0]?.last_success ? new Date(rows[0].last_success).getTime() : null;
+    const lastAttempt = rows[0]?.last_attempt ? new Date(rows[0].last_attempt).getTime() : null;
+
+    if (lastSuccess !== null && now - lastSuccess < BACKUP_INTERVAL_DAYS * 86_400_000) return false;
+    if (lastAttempt !== null && now - lastAttempt < 24 * 60 * 60 * 1000) return false;
+
+    await runBackup('system-scheduler');
+    return true;
+  } finally {
+    if (locked) {
+      await client.query('SELECT pg_advisory_unlock(1937001, 6)').catch(() => {});
+    }
+    client.release();
+  }
+}
+
 /** Sends the weekly reminder (email + push to admins) if a backup is overdue and no reminder went out in the last 7 days. */
 export async function sendReminderIfDue(): Promise<boolean> {
   await ensureBackupLog();
@@ -259,8 +323,34 @@ export async function sendReminderIfDue(): Promise<boolean> {
 }
 
 /** Hourly check. Safe on a single instance; the advisory lock also protects against duplicate instances. */
-export function startBackupScheduler() {
-  const tick = () => sendReminderIfDue().catch(e => console.error('[backup] reminder check failed:', e?.message));
-  setTimeout(tick, 60_000).unref();
-  setInterval(tick, 60 * 60 * 1000).unref();
+export function startBackupScheduler(): () => Promise<void> {
+  let stopped = false;
+  let inFlight: Promise<void> | undefined;
+  const tick = () => {
+    if (stopped || inFlight) return;
+    inFlight = (async () => {
+      try {
+        await runScheduledBackupIfDue();
+      } catch (e: any) {
+        // runBackup records a failed attempt in backup_log before rejecting.
+        console.error('[backup] scheduled backup failed:', e?.message);
+      }
+      try {
+        await sendReminderIfDue();
+      } catch (e: any) {
+        console.error('[backup] reminder check failed:', e?.message);
+      }
+    })().finally(() => { inFlight = undefined; });
+  };
+  const initial = setTimeout(tick, 60_000);
+  const interval = setInterval(tick, 60 * 60 * 1000);
+  initial.unref();
+  interval.unref();
+
+  return async () => {
+    stopped = true;
+    clearTimeout(initial);
+    clearInterval(interval);
+    await inFlight;
+  };
 }

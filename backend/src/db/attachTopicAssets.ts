@@ -34,7 +34,7 @@
 //   order_index  ← topic_order_index | destination_order_index | order_index (required)
 //   caption, alt_text, kind, displayed, sort_order, expected_title|lesson_title_per_R2_R2V (optional)
 
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, realpathSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -85,6 +85,9 @@ export function parseCsv(text: string): string[][] {
   return rows;
 }
 
+const MAX_TOPIC_ASSET_BYTES = 10 * 1024 * 1024;
+const SHA256_PATTERN = /^[a-f0-9]{64}$/;
+
 const pick = (hdr: string[], ...names: string[]): number => {
   for (const n of names) { const i = hdr.indexOf(n); if (i >= 0) return i; }
   return -1;
@@ -109,29 +112,47 @@ export function loadManifest(manifestPath: string): ManifestRow[] {
   for (const [name, i] of Object.entries({ asset_key: ix.key, file: ix.file, sha256: ix.sha, order_index: ix.ord })) {
     if (i < 0) throw new Error(`Manifest is missing a required column: ${name}`);
   }
+  if (rows.length - 1 > 500) throw new Error('Manifest exceeds the 500-asset safety limit');
   const perTopic = new Map<number, number>();
   const seen = new Set<string>();
   return rows.slice(1).map((r, n) => {
     const get = (i: number) => (i >= 0 ? (r[i] ?? '').trim() : '');
     const order = Number(get(ix.ord));
-    if (!Number.isInteger(order)) throw new Error(`Manifest row ${n + 2}: order_index "${get(ix.ord)}" is not an integer`);
+    if (!Number.isSafeInteger(order) || order < 1) throw new Error('Manifest row ' + (n + 2) + ': order_index must be a positive safe integer');
     const key = get(ix.key);
-    if (!key) throw new Error(`Manifest row ${n + 2}: empty asset_key`);
-    if (seen.has(`${order}|${key}`)) throw new Error(`Manifest row ${n + 2}: duplicate asset_key ${key} for order_index ${order}`);
-    seen.add(`${order}|${key}`);
+    if (!/^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/.test(key)) throw new Error('Manifest row ' + (n + 2) + ': asset_key must be 1-128 safe identifier characters');
+    if (seen.has(order + '|' + key)) throw new Error('Manifest row ' + (n + 2) + ': duplicate asset_key ' + key + ' for order_index ' + order);
+    seen.add(order + '|' + key);
+    const file = get(ix.file);
+    if (!file || file.length > 512 || file.includes(String.fromCharCode(0))) throw new Error('Manifest row ' + (n + 2) + ': invalid asset file path');
+    const sha = get(ix.sha).toLowerCase();
+    if (!SHA256_PATTERN.test(sha)) throw new Error('Manifest row ' + (n + 2) + ': sha256 must be 64 hexadecimal characters');
     const seq = (perTopic.get(order) ?? 0) + 1;
     perTopic.set(order, seq);
     const dispRaw = get(ix.disp).toLowerCase();
+    if (dispRaw && !['true', 't', '1', 'yes', 'false', 'f', '0', 'no'].includes(dispRaw)) {
+      throw new Error('Manifest row ' + (n + 2) + ': displayed must be a boolean value');
+    }
+    const sortRaw = get(ix.sort);
+    const sortOrder = sortRaw !== '' ? Number(sortRaw) : seq * 10;
+    if (!Number.isSafeInteger(sortOrder) || sortOrder < 0) throw new Error('Manifest row ' + (n + 2) + ': sort_order must be a non-negative safe integer');
+    const kind = get(ix.kind) || 'image';
+    if (!/^[a-z][a-z0-9_-]{0,39}$/i.test(kind)) throw new Error('Manifest row ' + (n + 2) + ': invalid kind');
+    const caption = get(ix.cap) || null;
+    const altText = get(ix.alt) || null;
+    if ((caption?.length ?? 0) > 1000 || (altText?.length ?? 0) > 2000) {
+      throw new Error('Manifest row ' + (n + 2) + ': caption or alt_text exceeds the allowed length');
+    }
     return {
       asset_key: key,
-      file: get(ix.file),
-      sha256: get(ix.sha).toLowerCase(),
+      file,
+      sha256: sha,
       order_index: order,
-      caption: get(ix.cap) || null,
-      alt_text: get(ix.alt) || null,
-      kind: get(ix.kind) || 'image',
+      caption,
+      alt_text: altText,
+      kind,
       displayed: dispRaw === '' ? true : ['true', 't', '1', 'yes'].includes(dispRaw),
-      sort_order: get(ix.sort) !== '' ? Number(get(ix.sort)) : seq * 10,
+      sort_order: sortOrder,
       expected_title: get(ix.title) || null,
     };
   });
@@ -198,23 +219,53 @@ const SIGNATURES: Array<{ mime: string; test: (b: Buffer) => boolean }> = [
   { mime: 'image/svg+xml', test: isSafeSvg },
 ];
 
+export function detectSafeTopicAssetMime(bytes: Buffer): string | null {
+  if (!Buffer.isBuffer(bytes) || bytes.length === 0 || bytes.length > MAX_TOPIC_ASSET_BYTES) return null;
+  return SIGNATURES.find(signature => signature.test(bytes))?.mime ?? null;
+}
+
+export function verifyTopicAssetPayload(bytes: Buffer, mime: string, expectedSha256: string): boolean {
+  const detectedMime = detectSafeTopicAssetMime(bytes);
+  if (!detectedMime || detectedMime !== mime || !SHA256_PATTERN.test(expectedSha256)) return false;
+  return createHash('sha256').update(bytes).digest('hex') === expectedSha256.toLowerCase();
+}
+
 /** Reads every file, checks sha256 against the manifest, and sniffs the real
  *  image type from the file's magic bytes. Throws on the first problem. */
 export function prepareAssets(rows: ManifestRow[], assetsDir: string): PreparedAsset[] {
   const problems: string[] = [];
   const out: PreparedAsset[] = [];
   for (const r of rows) {
-    const p = path.join(assetsDir, r.file);
-    if (!existsSync(p)) { problems.push(`${r.asset_key}: file not found: ${p}`); continue; }
+    let p: string;
+    try {
+      const root = realpathSync(path.resolve(assetsDir));
+      const normalized = r.file.replace(/\\/g, '/');
+      if (normalized.startsWith('/') || /^[A-Za-z]:/.test(normalized) || normalized.split('/').some(part => part === '..' || part === '.')) {
+        throw new Error('asset path must stay inside the supplied assets directory');
+      }
+      const candidate = path.resolve(root, ...normalized.split('/'));
+      const relative = path.relative(root, candidate);
+      if (!relative || relative.startsWith('..') || path.isAbsolute(relative)) throw new Error('asset path escapes the supplied assets directory');
+      if (!existsSync(candidate)) throw new Error('asset file not found');
+      p = realpathSync(candidate);
+      const realRelative = path.relative(root, p);
+      if (!realRelative || realRelative.startsWith('..') || path.isAbsolute(realRelative) || !statSync(p).isFile()) {
+        throw new Error('asset file or symlink escapes the supplied assets directory');
+      }
+      if (statSync(p).size > MAX_TOPIC_ASSET_BYTES) throw new Error('asset exceeds the 10 MB size limit');
+    } catch (error) {
+      problems.push(r.asset_key + ': ' + (error instanceof Error ? error.message : 'invalid asset path'));
+      continue;
+    }
     const bytes = readFileSync(p);
     const actual = createHash('sha256').update(bytes).digest('hex');
     if (actual !== r.sha256) {
       problems.push(`${r.asset_key}: sha256 mismatch for ${r.file} (manifest ${r.sha256}, file ${actual})`);
       continue;
     }
-    const sig = SIGNATURES.find((s) => s.test(bytes));
-    if (!sig) { problems.push(`${r.asset_key}: ${r.file} is not a supported safe PNG/JPEG/GIF/SVG`); continue; }
-    out.push({ ...r, bytes, mime: sig.mime });
+    const mime = detectSafeTopicAssetMime(bytes);
+    if (!mime) { problems.push(`${r.asset_key}: ${r.file} is not a supported safe PNG/JPEG/GIF/SVG within the size limit`); continue; }
+    out.push({ ...r, bytes, mime });
   }
   if (problems.length) {
     throw new Error(`Asset verification failed — nothing was written:\n  ${problems.join('\n  ')}`);
@@ -243,6 +294,11 @@ export interface AttachResult {
 }
 
 export async function attachAssets(assets: PreparedAsset[], opt: AttachOptions): Promise<AttachResult> {
+  for (const asset of assets) {
+    if (!verifyTopicAssetPayload(asset.bytes, asset.mime, asset.sha256)) {
+      throw new Error('Prepared asset ' + asset.asset_key + ' failed MIME/signature/SHA-256 validation; nothing was written.');
+    }
+  }
   const client = await pool.connect();
   try {
     await client.query('BEGIN');

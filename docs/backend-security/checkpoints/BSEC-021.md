@@ -1,0 +1,22 @@
+# Checkpoint — BSEC-021
+
+- **Task ID:** BSEC-021
+- **Title:** Enforce school/class authorization and transactional integrity on parent-ward link mutations
+- **Status:** merged
+- **Owner:** ChatGPT implementation worker
+- **Base branch:** master
+- **Base commit:** e96ab3437e1804f4e9cdac782b03c94531538c3d
+- **PR:** https://github.com/PDS-David/sts-school-app/pull/892 (merged 2026-11-16T19:21:50Z)
+- **Merge commit:** b9354546b7ae77213e91a084b3af2ce48aa6b4c6
+- **Working branch:** agent/backend-parent-ward-link-scope-20261116
+- **Changed files:**
+  - backend/src/routes/students.ts
+  - tests/backend-parent-ward-link-scope.integration.test.mts
+  - .github/workflows/backend-parent-ward-link-scope.yml
+  - docs/backend-security/checkpoints/BSEC-021.md
+- **Defect:** POST /students/:id/link-parent and DELETE /students/:id/unlink-parent/:parentId required only the generic grades.write permission. They did not verify the target student was active, nor check the caller's school/class. A teacher could therefore attach or detach parent accounts on another school's students or another class by supplying IDs. Link validation and the write were separate autocommit queries, leaving a race with student reassignment/soft deletion. Linking also accepted inactive parent accounts.
+- **Implementation:** both routes validate UUIDs and use a single transaction. The target student row is locked FOR UPDATE before checking active state and caller scope. Admin retains global access; teachers are pinned to their current school and, when assigned, their class. Linking locks and validates an active parent account, inserts idempotently and audits only an actual change. Unlinking is transactional and audits only when a relationship was removed.
+- **Regression coverage:** PostgreSQL HTTP tests cover allowed class-teacher link/unlink, duplicate-link idempotency, cross-class and cross-school teacher denial, another-school teacher unlink denial, invalid IDs, non-parent and inactive-parent rejection, deleted-student denial, and administrator cross-school operations.
+- **Verification:** PostgreSQL parent ward link authorization workflow 43938046477 passed (schema bootstrap, HTTP permission regressions, backend typecheck). Repository-wide SS1 package integrity 43938046283, SS23 integrity 43938046887, backend student roster scope 43938046231, backend parent provisioning 43938046299, and JSS3 implementation/asset checks 43938046402 all passed on implementation head 477b7f9c2ed49d0dddf305f7750a214ea0d70827. No production data or database was accessed or changed.
+- **Remaining:** none for BSEC-021. Continue the broader backend/security audit.
+- **Exact next action:** continue with the next independently scoped backend defect.
