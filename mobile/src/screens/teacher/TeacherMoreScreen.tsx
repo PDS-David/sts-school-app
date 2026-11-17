@@ -10,43 +10,29 @@ import { openNotifications } from '../../navigation/navigationRef';
 export default function TeacherMoreScreen({ navigation }: any) {
   const { user, logout } = useAuth();
 
-  const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string; onPress?: () => void }[] = [
-    { icon: 'calendar-outline', label: 'School Calendar', sub: 'View school events and important dates', onPress: () => navigation.navigate('SchoolCalendar') },
-    { icon: 'trending-up-outline', label: 'Weekly Efforts', sub: 'Log weekly student effort', onPress: () => navigation.navigate('WeeklyEfforts') },
-    { icon: 'bar-chart-outline', label: 'Analytics & Marking', sub: 'Review pending marks and class performance', onPress: () => navigation.navigate('TeacherAnalytics') },
-    { icon: 'settings-outline', label: 'Settings', sub: 'Change password and preferences', onPress: () => navigation.navigate('ChangePassword') },
-    // No "Security Question" entry here (deliberately, not an omission):
-    // per explicit school-owner policy, a teacher who forgets their
-    // password has admin reset it directly — self-service recovery
-    // doesn't apply to this role (see auth.ts POST /login, which now
-    // suppresses must_set_security_question for role==='teacher'). This
-    // menu item used to say "Used to reset your password if you forget
-    // it," which would have been actively misleading now that path is
-    // dead for teachers by design.
-  ];
-
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
       <AppHeader title="More" onPressBell={() => openNotifications()} />
       <ScrollView contentContainerStyle={{ padding: Spacing.md }}>
         <Card style={styles.identity}>
-          <View style={styles.bigAvatar}><Text style={styles.bigAvatarText}>{(user?.username?.[0] ?? '?').toUpperCase()}</Text></View>
+          <View style={styles.bigAvatar}>
+            <Text style={styles.bigAvatarText}>{(user?.username?.[0] ?? '?').toUpperCase()}</Text>
+          </View>
           <Text style={styles.name}>{user?.username}</Text>
           <Badge label="teacher" color={Colors.roleBadge.teacher} />
+          <Text style={styles.sub}>{user?.assigned_class ?? 'No physical class assigned'}</Text>
         </Card>
 
-        {ITEMS.map((it) => (
-          <TouchableOpacity key={it.label} disabled={!it.onPress} onPress={it.onPress} activeOpacity={0.8}>
-            <Card style={styles.row}>
-              <View style={styles.iconWrap}><Ionicons name={it.icon} size={20} color={Colors.primary} /></View>
-              <View style={{ flex: 1 }}>
-                <Text style={styles.title}>{it.label}</Text>
-                <Text style={styles.sub}>{it.sub}</Text>
-              </View>
-              {it.onPress && <Ionicons name="chevron-forward" size={18} color={Colors.textSub} />}
-            </Card>
-          </TouchableOpacity>
-        ))}
+        <TouchableOpacity onPress={() => navigation.navigate('ChangePassword')} activeOpacity={0.8}>
+          <Card style={styles.row}>
+            <View style={styles.iconWrap}><Ionicons name="settings-outline" size={20} color={Colors.primary} /></View>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.title}>Change Password</Text>
+              <Text style={styles.sub}>Update your account password</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={18} color={Colors.textSub} />
+          </Card>
+        </TouchableOpacity>
 
         <TouchableOpacity onPress={logout} activeOpacity={0.8}>
           <Card style={[styles.row, { justifyContent: 'center' }]}>
@@ -60,7 +46,7 @@ export default function TeacherMoreScreen({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
-  identity: { alignItems: 'center', gap: 6, paddingVertical: Spacing.lg },
+  identity: { alignItems: 'center', gap: 6, paddingVertical: Spacing.lg, marginBottom: Spacing.sm },
   bigAvatar: { width: 72, height: 72, borderRadius: 36, backgroundColor: Colors.primary, alignItems: 'center', justifyContent: 'center', marginBottom: 4 },
   bigAvatarText: { color: Colors.white, fontWeight: '800', fontSize: Fonts.sizes.xxl },
   name: { fontSize: Fonts.sizes.lg, fontWeight: '700', color: Colors.text },
