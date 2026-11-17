@@ -20,7 +20,7 @@ import { resolveSs1MathematicsDelivery, safeSs1MathematicsTopic, mathematicsAsse
 import { resolveAgriculturalScienceDelivery, resolveAgriculturalScienceSupplement, resolveAgriculturalScienceSourceProjection, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, retireStaleAgriculturalScienceSupplementCache, retireStaleAgriculturalScienceSourceCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds, agriculturalScienceAssetDeliverable } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
 import { resolveEnglishDelivery, safeEnglishTopic, safeEnglishSupplementTopic, retireStaleEnglishCache, englishAssessmentDeliverable, englishWithdrawnAssessmentIds } from '../utils/ss1EnglishDeliveryCorrection.js';
 import { listStudentSs1Lessons, getStudentSs1Lesson, listStudentSs1Assets, readStudentSs1Asset, studentSs1LessonPreview } from '../db/ss1/studentDelivery.js';
-import { listStudentSs23Units, getStudentSs23Unit, listStudentSs23Assets, readStudentSs23Asset, studentSs23UnitPreview, safeStudentSs23Unit, type Ss23ClassName } from '../db/ss23/studentDelivery.js';
+import { listStudentSs23Units, listStudentSs23Subjects, getStudentSs23Unit, listStudentSs23Assets, readStudentSs23Asset, studentSs23UnitPreview, safeStudentSs23Unit, type Ss23ClassName } from '../db/ss23/studentDelivery.js';
 import { resolvePrimary4SourceDelivery, safePrimary4Topic, primary4WithdrawnAssessmentIds, primary4AssessmentDeliverable, retireStalePrimary4Cache } from '../utils/primary4Delivery.js';
 
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
@@ -288,6 +288,15 @@ function studentSs23Assets(unitId: string, className: Ss23ClassName) {
     order: asset.order,
   }));
 }
+
+router.get('/ss23/subjects', requirePerm('topics.read'), async (req, res) => {
+  const context = await ss23StudentContext(req.user!);
+  if (!context) return res.json({ subjects: [] });
+  // This list is derived from the same server-side delivery gate as lesson
+  // delivery. Draft, unverified, rights-pending or otherwise blocked packages
+  // must not create visible subject tiles in the student app.
+  return res.json({ subjects: listStudentSs23Subjects(context.className) });
+});
 
 router.get('/ss23/lessons', requirePerm('topics.read'), async (req, res) => {
   const context = await ss23StudentContext(req.user!);

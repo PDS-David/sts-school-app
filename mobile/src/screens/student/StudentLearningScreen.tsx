@@ -24,7 +24,31 @@ export default function StudentLearningScreen({ navigation }: any) {
     setLoading(true);
     setLoadError('');
     api.get('/academic/subjects')
-      .then(({ data }) => { if (!cancelled) setSubjects(data.subjects ?? []); })
+      .then(async ({ data }) => {
+        const available = [...(data.subjects ?? [])];
+        try {
+          // SS2/SS3 subjects come from the same server-side package delivery
+          // gate as their lessons, not from an unverified database subject row.
+          const packageRes: any = await api.get('/learning/ss23/subjects');
+          const seen = new Set(available.map((subject: any) => String(subject.name ?? '').trim().toLocaleLowerCase('en')));
+          for (const subject of packageRes.data.subjects ?? []) {
+            const key = String(subject.canonical_subject ?? '').trim().toLocaleLowerCase('en');
+            if (key && !seen.has(key)) {
+              available.push({
+                id: null,
+                name: subject.canonical_subject,
+                subject_slug: subject.subject_slug,
+                delivery_mode: subject.delivery_mode,
+                class_name: subject.class_name,
+              });
+              seen.add(key);
+            }
+          }
+        } catch {
+          // Existing database subjects remain available if package discovery is offline.
+        }
+        if (!cancelled) setSubjects(available);
+      })
       .catch(() => { if (!cancelled) setLoadError('Could not load your subjects. Check your connection and try again.'); })
       .finally(() => { if (!cancelled) setLoading(false); });
     return () => { cancelled = true; };
@@ -65,7 +89,7 @@ export default function StudentLearningScreen({ navigation }: any) {
             </Card>
           )}
           {subjects.map((s) => (
-            <TouchableOpacity key={s.id} style={styles.tile} onPress={() => navigation.navigate('SubjectTopics', { subjectId: s.id, subjectName: s.name })} activeOpacity={0.8}>
+            <TouchableOpacity key={s.id ?? s.subject_slug ?? s.name} style={styles.tile} onPress={() => navigation.navigate('SubjectTopics', { subjectId: s.id ?? null, subjectName: s.name })} activeOpacity={0.8}>
               <View style={styles.tileIcon}><Ionicons name="school" size={22} color={Colors.primary} /></View>
               <Text style={styles.tileLabel} numberOfLines={2}>{s.name}</Text>
             </TouchableOpacity>

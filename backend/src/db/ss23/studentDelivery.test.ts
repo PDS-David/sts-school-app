@@ -6,6 +6,7 @@ import { test } from 'node:test';
 import {
   createSs23StudentDelivery,
   listStudentSs23Units,
+  listStudentSs23Subjects,
   getStudentSs23Unit,
   listStudentSs23Assets,
 } from './studentDelivery.js';
@@ -108,6 +109,31 @@ test('never serves the current pending Agriculture draft to SS2 or SS3 students'
   assert.equal(getStudentSs23Unit(draft.units[0].id, 'SS 2'), null);
   assert.equal(getStudentSs23Unit(draft.units[0].id, 'SS 3'), null);
   assert.deepEqual(listStudentSs23Assets(draft.units[1].id, 'SS 2'), []);
+});
+
+test('discovers only SS2/SS3 subjects with fully deliverable package content', () => {
+  assert.deepEqual(listStudentSs23Subjects('SS 2'), []);
+  assert.deepEqual(listStudentSs23Subjects('SS 3'), []);
+
+  const delivery = createSs23StudentDelivery([approvedPackage()]);
+  assert.deepEqual(delivery.listSubjects('SS 2'), [{
+    subject_slug: 'agricultural-science',
+    canonical_subject: 'Agricultural Science',
+    class_name: 'SS 2',
+    delivery_mode: 'INSTRUCTIONAL',
+  }]);
+  assert.deepEqual(delivery.listSubjects('SS 3'), []);
+
+  const blocked = approvedPackage();
+  blocked.open_items = [{
+    id: 'BLOCK',
+    kind: 'OWNER_ACTION',
+    detail: 'Pending owner action',
+    required_action: 'Resolve',
+    affected_ids: [blocked.units[0].id],
+    blocks_delivery: true,
+  }];
+  assert.deepEqual(createSs23StudentDelivery([blocked]).listSubjects('SS 2'), []);
 });
 
 test('blocks approved-looking content while package-level open items remain', () => {
