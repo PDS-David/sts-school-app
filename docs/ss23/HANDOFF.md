@@ -211,3 +211,10 @@ Do not advance to SS2 Biology until Agricultural Science's source, assessment an
 - Backend typecheck (as CI runs it): `./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json` (the root `npm run typecheck` also checks mobile; the backend package has no `typecheck` script)
 
 Record commands actually run and their outcomes; never report a check as passed if it was not run.
+
+
+## 2026-11-17 source archive recovery handoff
+
+Do not request another archive upload. The exact SS2/SS3 combined source archives were recovered from the connected Library and their SHA-256 values match the existing receipts. The member-level extraction and anomaly register is `docs/ss23/SOURCE_ARCHIVE_RECOVERY_20261117.md`. The four received-vs-earlier source versions remain held pending a defensible version decision; the SS2 Second-Term Geography header/class mismatch and the Food & Nutrition duplicate must not be silently treated as valid source. SS3 Third Term has zero source members.
+
+Continue from the exact recovered source documents, preserving original week labels, assessments, tables, equations, diagrams and source rights. SS2 Mathematics T2/T3 draft expansion is PR #980; no delivery approval or production import is implied. Keep SS3 exam-only and verify prior learning before creating any revision package.

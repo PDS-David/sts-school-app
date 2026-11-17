@@ -1,12 +1,12 @@
 # Android/mobile readiness checkpoint
 
 - Task ID: MOB-ANDROID-001
-- Status: IN PROGRESS — core mobile hardening is merged; current Android release/audit follow-up is PR #947.
+- Status: IN PROGRESS — core mobile hardening and PR #947 are merged; the SDK 57 AppEntry fix is PR #972.
 - Base branch: `master` at `53f6d1d2498e77e5744bdc1f52e460afa5e50a8f` when PR #947 was opened.
 - Core implementation PR [#727](https://github.com/PDS-David/sts-school-app/pull/727) merged on 2026-11-13 (merge commit `2542dd1bc8910b2d7ce53ebf5663ae82c94f86ad`).
 - Follow-up PR [#792](https://github.com/PDS-David/sts-school-app/pull/792) was closed without merge. The two TypeScript fixes from that work are present on current `master`: per-account flush-promise cleanup in `mobile/src/api/client.ts`, and supported button styling in `mobile/src/screens/NotificationsScreen.tsx`.
-- Current follow-up PR [#947](https://github.com/PDS-David/sts-school-app/pull/947) is open, mergeable and not merged. Branch: `agent/mobile-release-audit-20261116`; latest head at this checkpoint update: `31b757b05cfe98349f2eabbadbbd804e02a48b37`.
-- PR #947 adds `.github/workflows/mobile-release-audit.yml` and explicit SDK-required config plugins in `mobile/app.config.js`. It does not yet contain the SDK 57 dependency/lockfile upgrade.
+- PR [#947](https://github.com/PDS-David/sts-school-app/pull/947) is merged (head `1388705e9416bd0bf9b128667c9bfb93e20d59bf`). Follow-up [#972](https://github.com/PDS-David/sts-school-app/pull/972) adds a conventional `mobile/App.tsx` entrypoint after the SDK 57 candidate export failed to resolve `../../App`.
+- PR #947 adds `.github/workflows/mobile-release-audit.yml`, an Android debug APK build, emulator smoke validation, dependency audits and an isolated SDK 57 candidate check. The SDK 57 package/lockfile upgrade is still not committed.
 - The previous PR #696 was closed as superseded by #727.
 
 ## Core implementation already merged
@@ -78,3 +78,14 @@ Finish the active Android build/emulator and SDK 57 candidate workflows. If they
 - New exact-head checks must complete before PR #947 is mergeable for release. The branch has not been merged and no signed production AAB or physical-device acceptance is claimed.
 
 **Next action:** inspect the fresh CI runs for commit `55b641b0ebd92b5b3ffd96bd92e619ace81b3b68`, resolve any failure, then rebase/refresh against current master and rerun before considering merge. Separately obtain owner authorization for a production Key Value instance and EAS credentials; do not create billable resources or alter production service configuration without approval.
+
+
+## Continuation update — 2026-11-17 01:15 UTC
+
+- PR #947 is merged. The latest exact-head run `43984569495` completed locked install, offline tests, frontend-contract tests, mobile TypeScript, Android JS export, native prebuild and **Gradle debug APK build successfully**.
+- The emulator smoke step failed before install because the action executed an inline Bash loop through `/usr/bin/sh` (`Syntax error: end of file unexpected (expecting "done")`). The current master workflow now invokes the dedicated Bash script `.github/scripts/android-emulator-smoke.sh`; this exact path still needs a fresh CI run to prove install/launch.
+- The SDK 57 candidate alignment reduced the audit count from 15 (4 high, 11 moderate) to 3 moderate findings, but its Android export failed with `Unable to resolve module ../../App from node_modules/expo/AppEntry.js`.
+- PR #972 adds `mobile/App.tsx` as a default re-export of the existing `src/App`, retaining `mobile/index.js` registration while satisfying Expo's conventional AppEntry fallback. The PR must pass mobile typecheck, SDK 56 export, debug APK build, emulator smoke and SDK 57 export before merge.
+- EAS staging APK and signed production AAB remain skipped because repository secret `EXPO_TOKEN` is not configured.
+- The app's production API URL remains `https://sts-school-backend.onrender.com`; that Render service currently fails startup due a stale database hostname. The alternate `sts-school-app` service also fails startup because `rate_limit_counters` is missing. Do not release a build against either until service health is restored.
+- No physical-device acceptance, actual FCM delivery, authenticated end-to-end role journeys or production AAB has been verified.

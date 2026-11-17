@@ -1,0 +1,33 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { requirePerm } from '../backend/src/middleware/auth.js';
+
+function runPermission(role: string, permission: string) {
+  const req = { user: { role } } as any;
+  const res: any = {
+    statusCode: 200,
+    body: null,
+    status(code: number) { this.statusCode = code; return this; },
+    json(body: unknown) { this.body = body; return this; },
+  };
+  let nextCalled = false;
+  requirePerm(permission)(req, res, (() => { nextCalled = true; }) as any);
+  return { statusCode: res.statusCode, body: res.body, nextCalled };
+}
+
+test('finance_admin cannot access message inbox, conversations or contacts', () => {
+  for (const endpoint of ['messages.read']) {
+    const result = runPermission('finance_admin', endpoint);
+    assert.equal(result.statusCode, 403);
+    assert.equal(result.nextCalled, false);
+    assert.deepEqual(result.body, { error: `Permission denied: ${endpoint}` });
+  }
+});
+
+test('roles with messages.read continue through the message read guard', () => {
+  for (const role of ['student', 'parent', 'teacher', 'admin']) {
+    const result = runPermission(role, 'messages.read');
+    assert.equal(result.statusCode, 200);
+    assert.equal(result.nextCalled, true);
+  }
+});

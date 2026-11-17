@@ -130,6 +130,26 @@ export function createSs23StudentDelivery(
     });
   }
 
+  function listSubjects(className: Ss23ClassName) {
+    const subjects = new Map<string, {
+      subject_slug: string;
+      canonical_subject: string;
+      class_name: Ss23ClassName;
+      delivery_mode: 'INSTRUCTIONAL' | 'EXAM_PREPARATION';
+    }>();
+    for (const unit of listUnits(className)) {
+      if (!subjects.has(unit.subject_slug)) {
+        subjects.set(unit.subject_slug, {
+          subject_slug: unit.subject_slug,
+          canonical_subject: unit.canonical_subject,
+          class_name: unit.class_name,
+          delivery_mode: unit.delivery_mode,
+        });
+      }
+    }
+    return [...subjects.values()].sort((a, b) => a.canonical_subject.localeCompare(b.canonical_subject));
+  }
+
   function getUnit(unitId: string, className: Ss23ClassName): StudentSs23Unit | null {
     return listUnits(className).find(unit => unit.id === unitId) ?? null;
   }
@@ -168,12 +188,13 @@ export function createSs23StudentDelivery(
     return null;
   }
 
-  return { listUnits, getUnit, listAssets, readAsset, safeStudentUnit };
+  return { listUnits, listSubjects, getUnit, listAssets, readAsset, safeStudentUnit };
 }
 
 const defaultDelivery = createSs23StudentDelivery();
 
 export const listStudentSs23Units = defaultDelivery.listUnits;
+export const listStudentSs23Subjects = defaultDelivery.listSubjects;
 export const getStudentSs23Unit = defaultDelivery.getUnit;
 export const listStudentSs23Assets = defaultDelivery.listAssets;
 export const readStudentSs23Asset = defaultDelivery.readAsset;

@@ -423,3 +423,12 @@ A subject is not ready until evidence demonstrates:
 4. Finish all SS2 Agricultural Science terms before moving to the next SS2 subject. After SS2, complete SS3 exam-preparation resources only (WAEC/NECO/JAMB), without a normal third term.
 
 The reconciliation utility and its five focused unit tests are in branch `agent/ss2-ss3-readiness-source-receipt-20261113`. The test logic was executed in an isolated Python run (5/5 passed). The actual uploaded archives were also checked for class/term path classification (100/100 members; zero path errors). GitHub workflows triggered for PR #789 completed with failures in unrelated mobile TypeScript code: `mobile/src/screens/NotificationsScreen.tsx:35` passes a `size` prop not declared by `BtnProps`. Both the SS1 package integrity gate (run 43467409098) and JSS3 implementation checks (run 43467409239) stopped at the same typecheck error; their later checks were skipped. No mobile file was changed because it is outside SS2/SS3 scope. The dedicated SS23 workflow is introduced separately in PR #791 and is not yet available on master. Member-vs-register reconciliation remains pending.
+
+
+## 2026-11-17 source archive recovery addendum
+
+The original combined SS2 and SS3 source ZIPs were recovered from the connected Library, materialised for analysis, and verified against their recorded outer SHA-256 values. SS2: `a97506c7f030a6e9604a13ae0aab30f59563a1473ec682f647459549dd9e1153` (61 members: 47 DOCX, 13 DOC, 1 PPTX). SS3: `045e261aba9475b32b4cb963a2495faf3ddd503860b205aa1e89f0ac07d3c741` (39 members: 28 DOCX, 11 DOC). Both ZIP integrity tests pass. See `docs/ss23/SOURCE_ARCHIVE_RECOVERY_20261117.md` for the full member/header/version register.
+
+The source-access blocker is removed. The source register has 100 member records across 21 subjects; 96 members match earlier hashes and four received candidates remain in version-decision hold. Header verification currently reports 84 fully verified, 11 with term unstated internally, and five additional class/term anomalies. SS3 Third Term remains empty. Rights and independent subject QA remain separate gates.
+
+SS2 Mathematics now has 31 draft units across three terms and 62 practice records on PR #980. Second-Term Week 2 remains unresolved; Weeks 10–11 have a scheme/body mismatch; source assessments and rendered visuals remain under reconciliation. Package remains PENDING, all units DRAFT, verification DEFERRED, reuse PENDING and student delivery disabled.
