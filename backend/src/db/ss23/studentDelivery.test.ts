@@ -52,15 +52,27 @@ const approvedPackage = () => {
 };
 
 test('loads only registered, schema-valid SS23 packages across both classes', () => {
-  assert.equal(loaded.length, 7);
+  assert.equal(loaded.length, 8);
   const packages = loaded.map(pkg => `${pkg.class_name}/${pkg.subject_slug}`).sort();
-  assert.deepEqual(packages, ['SS 2/agricultural-science', 'SS 2/biology', 'SS 2/chemistry', 'SS 2/mathematics', 'SS 2/physics', 'SS 3/agricultural-science', 'SS 3/biology']);
+  assert.deepEqual(packages, ['SS 2/agricultural-science', 'SS 2/biology', 'SS 2/chemistry', 'SS 2/government', 'SS 2/mathematics', 'SS 2/physics', 'SS 3/agricultural-science', 'SS 3/biology']);
   for (const pkg of loaded.filter(item => item.class_name === 'SS 2')) {
     assert.equal(pkg.delivery_mode, 'INSTRUCTIONAL');
   }
   const ss3 = loaded.find(item => item.class_name === 'SS 3');
   assert.ok(ss3);
   assert.equal(ss3.delivery_mode, 'EXAM_PREPARATION');
+});
+
+test('loads SS2 Government First-Term drafts while explicitly holding later terms', () => {
+  const pkg = loaded.find(item => item.class_name === 'SS 2' && item.subject_slug === 'government');
+  assert.ok(pkg);
+  assert.equal(pkg.delivery_mode, 'INSTRUCTIONAL');
+  assert.equal(pkg.units.length, 10);
+  assert.equal(pkg.units.reduce((count, unit) => count + unit.practice.length, 0), 20);
+  assert.deepEqual(pkg.coverage.map(row => row.status), ['PARTIAL', 'UNRESOLVED', 'UNRESOLVED', 'SUPPORTED']);
+  assert.ok(pkg.open_items.some(item => item.id === 'GOV-SS2-T2-IMPLEMENTATION'));
+  assert.ok(pkg.open_items.some(item => item.id === 'GOV-SS2-T3-IMPLEMENTATION'));
+  assert.ok(pkg.units.every(unit => unit.state.implementation === 'DRAFT' && unit.state.verification === 'DEFERRED'));
 });
 
 test('rejects unregistered package files', () => {
