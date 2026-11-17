@@ -9,7 +9,7 @@ import {
   getStudentSs23Unit,
   listStudentSs23Assets,
 } from './studentDelivery.js';
-import { loadSs23Packages } from './loader.js';
+import { loadSs23Packages, registeredSs23Subjects, registeredSs23ExamSubjects } from './loader.js';
 
 const loaded = loadSs23Packages();
 const draft = loaded.find(pkg => pkg.class_name === 'SS 2' && pkg.subject_slug === 'agricultural-science')!;
@@ -52,15 +52,32 @@ const approvedPackage = () => {
 };
 
 test('loads only registered, schema-valid SS23 packages across both classes', () => {
-  assert.equal(loaded.length, 7);
+  assert.equal(loaded.length, registeredSs23Subjects.length + registeredSs23ExamSubjects.length);
   const packages = loaded.map(pkg => `${pkg.class_name}/${pkg.subject_slug}`).sort();
-  assert.deepEqual(packages, ['SS 2/agricultural-science', 'SS 2/biology', 'SS 2/chemistry', 'SS 2/mathematics', 'SS 2/physics', 'SS 3/agricultural-science', 'SS 3/biology']);
+  assert.deepEqual(packages, [
+    ...registeredSs23Subjects.map(subject => `SS 2/${subject}`),
+    ...registeredSs23ExamSubjects.map(subject => `SS 3/${subject}`),
+  ].sort());
   for (const pkg of loaded.filter(item => item.class_name === 'SS 2')) {
     assert.equal(pkg.delivery_mode, 'INSTRUCTIONAL');
   }
   const ss3 = loaded.find(item => item.class_name === 'SS 3');
   assert.ok(ss3);
   assert.equal(ss3.delivery_mode, 'EXAM_PREPARATION');
+});
+
+test('loads SS2 Civic Education source-mapped First-Term drafts without overstating later terms', () => {
+  const pkg = loaded.find(item => item.class_name === 'SS 2' && item.subject_slug === 'civic-education');
+  assert.ok(pkg);
+  assert.equal(pkg.delivery_mode, 'INSTRUCTIONAL');
+  assert.equal(pkg.units.length, 26);
+  assert.deepEqual(pkg.units.reduce((terms, unit) => { terms[unit.term] = (terms[unit.term] ?? 0) + 1; return terms; }, {} as Record<string, number>), { '1st Term': 9, '2nd Term': 9, '3rd Term': 8 });
+  assert.equal(pkg.units.reduce((count, unit) => count + unit.practice.length, 0), 52);
+  assert.deepEqual(pkg.coverage.map(row => row.status), ['PARTIAL', 'PARTIAL', 'PARTIAL', 'SUPPORTED', 'SUPPORTED', 'SUPPORTED', 'SUPPORTED', 'SUPPORTED']);
+  assert.ok(pkg.open_items.some(item => item.id === 'CIV-SS2-T2-ASSESSMENT-RECONCILIATION'));
+  assert.ok(pkg.open_items.some(item => item.id === 'CIV-SS2-T3-ASSESSMENT-RECONCILIATION'));
+  assert.ok(!pkg.open_items.some(item => item.id === 'CIV-SS2-T2-IMPLEMENTATION' || item.id === 'CIV-SS2-T3-IMPLEMENTATION'));
+  assert.ok(pkg.units.every(unit => unit.state.implementation === 'DRAFT' && unit.state.verification === 'DEFERRED'));
 });
 
 test('rejects unregistered package files', () => {
