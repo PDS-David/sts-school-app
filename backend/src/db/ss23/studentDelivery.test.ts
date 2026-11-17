@@ -9,7 +9,7 @@ import {
   getStudentSs23Unit,
   listStudentSs23Assets,
 } from './studentDelivery.js';
-import { loadSs23Packages } from './loader.js';
+import { loadSs23Packages, registeredSs23Subjects, registeredSs23ExamSubjects } from './loader.js';
 
 const loaded = loadSs23Packages();
 const draft = loaded.find(pkg => pkg.class_name === 'SS 2' && pkg.subject_slug === 'agricultural-science')!;
@@ -52,9 +52,12 @@ const approvedPackage = () => {
 };
 
 test('loads only registered, schema-valid SS23 packages across both classes', () => {
-  assert.equal(loaded.length, 8);
+  assert.equal(loaded.length, registeredSs23Subjects.length + registeredSs23ExamSubjects.length);
   const packages = loaded.map(pkg => `${pkg.class_name}/${pkg.subject_slug}`).sort();
-  assert.deepEqual(packages, ['SS 2/agricultural-science', 'SS 2/biology', 'SS 2/chemistry', 'SS 2/government', 'SS 2/mathematics', 'SS 2/physics', 'SS 3/agricultural-science', 'SS 3/biology']);
+  assert.deepEqual(packages, [
+    ...registeredSs23Subjects.map(subject => `SS 2/${subject}`),
+    ...registeredSs23ExamSubjects.map(subject => `SS 3/${subject}`),
+  ].sort());
   for (const pkg of loaded.filter(item => item.class_name === 'SS 2')) {
     assert.equal(pkg.delivery_mode, 'INSTRUCTIONAL');
   }
