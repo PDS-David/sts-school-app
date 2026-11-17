@@ -67,11 +67,13 @@ test('loads SS2 Civic Education source-mapped First-Term drafts without overstat
   const pkg = loaded.find(item => item.class_name === 'SS 2' && item.subject_slug === 'civic-education');
   assert.ok(pkg);
   assert.equal(pkg.delivery_mode, 'INSTRUCTIONAL');
-  assert.equal(pkg.units.length, 9);
-  assert.equal(pkg.units.reduce((count, unit) => count + unit.practice.length, 0), 18);
-  assert.deepEqual(pkg.coverage.map(row => row.status), ['PARTIAL', 'UNRESOLVED', 'UNRESOLVED', 'SUPPORTED']);
-  assert.ok(pkg.open_items.some(item => item.id === 'CIV-SS2-T2-IMPLEMENTATION'));
-  assert.ok(pkg.open_items.some(item => item.id === 'CIV-SS2-T3-IMPLEMENTATION'));
+  assert.equal(pkg.units.length, 26);
+  assert.deepEqual(pkg.units.reduce((terms, unit) => { terms[unit.term] = (terms[unit.term] ?? 0) + 1; return terms; }, {} as Record<string, number>), { '1st Term': 9, '2nd Term': 9, '3rd Term': 8 });
+  assert.equal(pkg.units.reduce((count, unit) => count + unit.practice.length, 0), 52);
+  assert.deepEqual(pkg.coverage.map(row => row.status), ['PARTIAL', 'PARTIAL', 'PARTIAL', 'SUPPORTED', 'SUPPORTED', 'SUPPORTED', 'SUPPORTED', 'SUPPORTED']);
+  assert.ok(pkg.open_items.some(item => item.id === 'CIV-SS2-T2-ASSESSMENT-RECONCILIATION'));
+  assert.ok(pkg.open_items.some(item => item.id === 'CIV-SS2-T3-ASSESSMENT-RECONCILIATION'));
+  assert.ok(!pkg.open_items.some(item => item.id === 'CIV-SS2-T2-IMPLEMENTATION' || item.id === 'CIV-SS2-T3-IMPLEMENTATION'));
   assert.ok(pkg.units.every(unit => unit.state.implementation === 'DRAFT' && unit.state.verification === 'DEFERRED'));
 });
 
