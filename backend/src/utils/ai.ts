@@ -57,7 +57,7 @@
 
 import { GoogleGenAI } from '@google/genai';
 import dotenv from 'dotenv';
-import { consumeRedisQuota } from './redisRateLimitStore.js';
+import { consumePostgresQuota } from './redisRateLimitStore.js';
 dotenv.config();
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -268,10 +268,10 @@ async function _callAI(prompt: string, task: string): Promise<string> {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// SHARED REDIS RATE LIMITING
+// SHARED POSTGRESQL RATE LIMITING
 // ═══════════════════════════════════════════════════════════════════════════
 // This quota covers AI generation initiated by learning routes as well as the
-// dedicated /ai HTTP routes. It shares Redis with the HTTP-boundary limiters.
+// dedicated /ai HTTP routes. It shares PostgreSQL with the HTTP-boundary limiters.
 // Production startup requires Redis; local/test environments without Redis
 // retain the route-level process-local limiter for development convenience.
 
@@ -283,7 +283,7 @@ async function _checkRateLimit(
   role?: string,
 ): Promise<{ allowed: boolean; error?: string }> {
   if (!userId || role === 'admin') return { allowed: true };
-  const allowed = await consumeRedisQuota(`ai-generation:${userId}`, RATE_LIMIT_MAX, RATE_LIMIT_WINDOW_MS);
+  const allowed = await consumePostgresQuota(userId, RATE_LIMIT_MAX, RATE_LIMIT_WINDOW_MS);
   return allowed
     ? { allowed: true }
     : { allowed: false, error: 'Rate limit exceeded. Try again shortly.' };
