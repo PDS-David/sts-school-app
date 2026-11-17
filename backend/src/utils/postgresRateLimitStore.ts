@@ -28,7 +28,7 @@ export async function verifyPostgresRateLimitStore(): Promise<void> {
     await pool.query('SELECT 1 FROM public.rate_limit_counters LIMIT 0');
   } catch (error) {
     throw new Error(
-      'Production startup refused: the PostgreSQL rate-limit store is not ready. Apply the approved 0002_rate_limit_counters migration before starting the API.',
+      'Production startup refused: the PostgreSQL rate-limit store is not ready. Apply the approved 0003_rate_limit_counters migration before starting the API.',
       { cause: error },
     );
   }
