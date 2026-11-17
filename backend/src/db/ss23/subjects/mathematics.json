@@ -1025,16 +1025,16 @@
           "question": "For y=6x-x^2, find the gradient at x=3.",
           "answer_origin": "AUTHORED_SUPPLEMENT",
           "answer_locator": "Authored model answer; not represented as an answer printed in the source.",
-          "answer": "The derivative is dy/dx=6-2x. At x=3, gradient=6-6=0.",
-          "explanation": "The source asks for the gradient of the curve at a specified x-value; use the tangent gradient, represented analytically by the derivative.",
+          "answer": "At x=3, y=6(3)-3^2=9. On the source graph this is the turning point, where the tangent is horizontal. Therefore the gradient at x=3 is 0.",
+          "explanation": "The source teaches gradient of a curve by drawing a tangent. At the turning point x=3, the tangent is horizontal, so its gradient is zero; no differentiation method is introduced.",
           "marks": 2,
           "marking": [
             {
-              "criterion": "Differentiates to 6-2x.",
+              "criterion": "Identifies the point on the curve as (3,9).",
               "marks": 1
             },
             {
-              "criterion": "Obtains gradient 0 at x=3.",
+              "criterion": "Uses the horizontal tangent at the turning point to obtain gradient 0.",
               "marks": 1
             }
           ],
