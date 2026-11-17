@@ -107,7 +107,30 @@ The inspected Render database `sts_school_db_2` is PostgreSQL 18 on the Free pla
 - `app_bootstrap` contains version 1 with checksum `e910acd83dc81786f370311f97e0d1e7aae6a3e6bc8a430188e49dc57cc1d7f6`; it is not a `schema_migrations` ledger.
 - `backup_log` contains one reminder record and zero backup records.
 
-A read-only row-count query returned zero for students, attendance, scores, invoices and messages in this database. Confirm that this is the intended production database before any migration or service cutover.
+A read-only row-count query returned zero for students, parent wards, teacher-subject assignments, scores, attendance, weekly efforts, class records, questions, assessments, submissions, materials, invoices, fee items, messages and announcements. Confirm that this is the intended production database before any migration or service cutover.
+
+The replacement database is **not completely empty**. Current read-only counts are:
+
+| Entity | Count |
+|---|---:|
+| Schools | 2 |
+| Classes | 18 (12 Primary campus classes, JSS 1–3 and SS 1–3 at the secondary campus) |
+| Subjects | 12 |
+| Terms | 6 |
+| Users | 1 (admin) |
+| Students / parent wards / teacher-subject assignments | 0 |
+| Curriculum topics | 1,408 |
+| Topic completions / term PINs / class access codes | 0 |
+| Questions / assessments / assessment questions / submissions | 0 |
+| Materials | 0 |
+| Scores / attendance / weekly efforts / class records | 0 |
+| Fee items / invoices / messages / announcements | 0 |
+
+All 1,408 imported topics are for **Primary 1–6 only** (all three terms). There are no imported JSS or SS topics in the replacement database. The 12 subject rows are Cultural & Creative Arts, English Language, Civic Education, Computer Studies, Mathematics, Physical & Health Education, Social Studies, Agricultural Science, Basic Science, Home Economics, Basic Technology and Basic Science and Technology. The database has the JSS 1–3 and SS 1–3 class rows, but no secondary topic, assessment, material or student records.
+
+This indicates that the replacement DB has retained/imported Primary curriculum topics and basic school/class setup, but it is not a restored copy of the previous operational school database. The SS2/SS3 JSON packages in the repository are not yet imported into the live topics system.
+
+
 
 No production schema or data has been changed. Do not run `--fresh`, stamp a baseline, drop live-only columns or apply pending migrations until the historical baseline and backup are verified and the owner approves the exact plan.
 
