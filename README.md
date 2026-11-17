@@ -34,14 +34,15 @@ sts-school-app/
 
 ---
 
-## Roles (4 only)
+## Roles (5)
 
 | Role      | Can do                                                                 |
 |-----------|------------------------------------------------------------------------|
 | **student**  | View own report card, take assessments, view materials, message their class teacher, subject teachers, admin, their own parent(s), and their classmates (same class, same school) |
 | **parent**   | View ward's report card, weekly efforts, messages, fee invoices        |
 | **teacher**  | Read/write students, enter/edit scores for any subject, add new subjects (not delete), attendance, weekly efforts, upload materials, create assessments, read/write class-record remarks, message all staff |
-| **admin**    | Everything above + manage users, terms, subjects, finance, Excel export, audit log |
+| **admin**    | Manage users, terms, subjects, school-wide settings, Excel export and audit functions |
+| **finance_admin** | Dedicated finance workflows for invoices, payment records and financial reporting, with role-scoped access |
 
 > Super-Admin and Admin1/Admin2 from the original ecosystem are **merged into the single `admin` role**.
 
