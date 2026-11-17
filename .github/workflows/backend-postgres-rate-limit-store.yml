@@ -56,3 +56,5 @@ jobs:
       - name: Typecheck backend
         run: npm run build
         working-directory: backend
+
+# Keep this workflow scoped to the PostgreSQL limiter, its migration, and its direct callers.
