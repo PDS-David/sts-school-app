@@ -67,7 +67,7 @@ async function startServer(): Promise<{ server: Server; baseUrl: string }> {
   return { server, baseUrl: `http://127.0.0.1:${port}/attendance` };
 }
 
-test('whole-class attendance and class-record reads enforce school and term ownership', async () => {
+test('teacher role cannot use standalone attendance or class-record feeds; administrators retain access', async () => {
   const suffix = randomUUID();
   const year = `BSEC18/${suffix}`;
   const classTeacher = await createUser('class-teacher', 'primary', 'Shared Class');
@@ -129,38 +129,31 @@ test('whole-class attendance and class-record reads enforce school and term owne
       `?class_name=Shared%20Class&term_id=${primaryTermId}`,
       classTeacher.token,
     );
-    assert.equal(primaryAttendance.status, 200);
-    const primaryAttendanceRows = await primaryAttendance.json() as { attendance: Array<{ student_id: string }> };
-    assert.deepEqual(primaryAttendanceRows.attendance.map(row => row.student_id), [studentIds[0]],
-      'teacher attendance read must be restricted to active students in their own school');
+    assert.equal(primaryAttendance.status, 403, 'teachers obtain attendance through the report document, not a standalone attendance feed');
 
     const primaryRecords = await get(
       `/class-records?class_name=Shared%20Class&term_id=${primaryTermId}`,
       classTeacher.token,
     );
-    assert.equal(primaryRecords.status, 200);
-    const primaryRecordRows = await primaryRecords.json() as { class_records: Array<{ student_id: string }> };
-    assert.deepEqual(primaryRecordRows.class_records.map(row => row.student_id), [studentIds[0]],
-      'class-record read must be restricted to active students in their own school');
+    assert.equal(primaryRecords.status, 403, 'teachers obtain report remarks through the report document, not a standalone class-record feed');
 
     const foreignAttendanceTerm = await get(
       `?class_name=Shared%20Class&term_id=${secondaryTermId}`,
       classTeacher.token,
     );
-    assert.equal(foreignAttendanceTerm.status, 400);
+    assert.equal(foreignAttendanceTerm.status, 403);
     const foreignClassRecordTerm = await get(
       `/class-records?class_name=Shared%20Class&term_id=${secondaryTermId}`,
       classTeacher.token,
     );
-    assert.equal(foreignClassRecordTerm.status, 400);
+    assert.equal(foreignClassRecordTerm.status, 403);
 
     const subjectAttendance = await get(
       `?class_name=Shared%20Class&term_id=${primaryTermId}`,
       subjectTeacher.token,
     );
-    assert.equal(subjectAttendance.status, 200, 'subject-only teacher may explicitly select a class in their own school');
-    assert.equal((await get(`?term_id=${primaryTermId}`, subjectTeacher.token)).status, 400,
-      'subject-only teacher must supply a class');
+    assert.equal(subjectAttendance.status, 403, 'subject-only teacher cannot use standalone attendance feeds');
+    assert.equal((await get(`?term_id=${primaryTermId}`, subjectTeacher.token)).status, 403);
     assert.equal((await get(`?class_name=Shared%20Class&term_id=${primaryTermId}`, unassignedTeacher.token)).status, 403,
       'teacher without a school must fail closed');
     assert.equal((await get(`/class-records?class_name=Shared%20Class&term_id=${primaryTermId}`, unassignedTeacher.token)).status, 403);
