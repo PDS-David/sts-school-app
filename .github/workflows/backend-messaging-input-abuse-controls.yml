@@ -60,6 +60,8 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Bootstrap disposable PostgreSQL schema
         run: npm run db:bootstrap --workspace=backend
+      - name: Apply numbered migrations to disposable PostgreSQL schema
+        run: npm run db:migrate --workspace=backend -- --all
       - name: Run messaging input and abuse-control regressions
         run: node --import tsx --test tests/backend-messaging-input-abuse-controls.integration.test.mts
       - name: Typecheck backend
