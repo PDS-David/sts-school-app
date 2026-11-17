@@ -48,9 +48,6 @@ async function preflight(client: PoolClient): Promise<{ database: string; versio
   if (Math.floor(db.version_num / 10000) !== 18) errors.push(`Expected PostgreSQL 18, found ${db.version}`);
   if (db.encoding !== 'UTF8') errors.push(`Expected UTF8 encoding, found ${db.encoding}`);
 
-  const ledger = await client.query<{ present: boolean }>(`SELECT to_regclass('public.schema_migrations') IS NOT NULL AS present`);
-  if (ledger.rows[0]?.present) errors.push('public.schema_migrations already exists; this database is not in the expected pre-adoption state');
-
   const tableRows = await client.query<{ table_name: string }>(
     `SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE' ORDER BY table_name`,
   );
@@ -192,27 +189,42 @@ async function main(): Promise<void> {
     await client.query('BEGIN');
     transactionOpen = true;
     await client.query('SELECT pg_advisory_xact_lock($1, $2)', [LOCK_NAMESPACE, LOCK_ID]);
-    const result = await preflight(client);
-    console.log(`Baseline preflight passed for ${result.database} (PostgreSQL ${result.version}); verified ${result.columns} original baseline columns.`);
-    console.log('Preserved operational tables: app_bootstrap, backup_log. Pending migrations: 0002_school_events, 0003_rate_limit_counters, 0004_audit_log_integrity.');
-    if (apply) {
-      await client.query(`CREATE TABLE public.schema_migrations (
-        version TEXT PRIMARY KEY,
-        name TEXT NOT NULL,
-        checksum TEXT NOT NULL,
-        applied_at TIMESTAMPTZ NOT NULL DEFAULT now()
-      )`);
-      await client.query(
-        'INSERT INTO public.schema_migrations(version,name,checksum) VALUES($1,$2,$3)',
-        [contract.baseline_migration.version, contract.baseline_migration.name, baselineChecksum],
+    const ledgerState = await client.query<{ present: boolean }>(`SELECT to_regclass('public.schema_migrations') IS NOT NULL AS present`);
+    if (ledgerState.rows[0]?.present) {
+      const baselineRows = await client.query<{ version: string; name: string; checksum: string }>(
+        `SELECT version,name,checksum FROM public.schema_migrations WHERE version=$1`,
+        [contract.baseline_migration.version],
       );
-      await client.query('COMMIT');
-      transactionOpen = false;
-      console.log('Baseline ledger created and 0001 recorded. No application migrations were run by this command.');
-    } else {
+      const baselineRow = baselineRows.rows[0];
+      if (!baselineRow || baselineRow.name !== contract.baseline_migration.name || baselineRow.checksum !== baselineChecksum) {
+        fail('schema_migrations exists, but its 0001 baseline record does not match the verified baseline. Refusing to continue.');
+      }
+      console.log('The verified 0001 baseline is already adopted. No ledger changes were made; the migration runner will validate the complete history.');
       await client.query('ROLLBACK');
       transactionOpen = false;
-      console.log('DRY RUN ONLY: no database changes were made.');
+    } else {
+      const result = await preflight(client);
+      console.log(`Baseline preflight passed for ${result.database} (PostgreSQL ${result.version}); verified ${result.columns} original baseline columns.`);
+      console.log('Preserved operational tables: app_bootstrap, backup_log. Pending migrations: 0002_school_events, 0003_rate_limit_counters, 0004_audit_log_integrity.');
+      if (apply) {
+        await client.query(`CREATE TABLE public.schema_migrations (
+          version TEXT PRIMARY KEY,
+          name TEXT NOT NULL,
+          checksum TEXT NOT NULL,
+          applied_at TIMESTAMPTZ NOT NULL DEFAULT now()
+        )`);
+        await client.query(
+          'INSERT INTO public.schema_migrations(version,name,checksum) VALUES($1,$2,$3)',
+          [contract.baseline_migration.version, contract.baseline_migration.name, baselineChecksum],
+        );
+        await client.query('COMMIT');
+        transactionOpen = false;
+        console.log('Baseline ledger created and 0001 recorded. No application migrations were run by this command.');
+      } else {
+        await client.query('ROLLBACK');
+        transactionOpen = false;
+        console.log('DRY RUN ONLY: no database changes were made.');
+      }
     }
   } catch (error) {
     if (transactionOpen) {
