@@ -54,6 +54,52 @@ async function writeSecurityAudit(
   );
 }
 
+type ClassAccessCodeCheck =
+  | { kind: 'valid' }
+  | { kind: 'invalid_code' }
+  | { kind: 'locked'; retryAfterMinutes: number };
+
+/** Verify and serialize class-code attempts before any student names are read. */
+async function verifyClassAccessCode(client: PoolClient, schoolCode: string, className: string, accessCode: string): Promise<ClassAccessCodeCheck> {
+  const { rows } = await client.query(
+    `SELECT id, code, fail_count, locked_until FROM class_access_codes WHERE school_code=$1 AND class_name=$2 FOR UPDATE`,
+    [schoolCode, className],
+  );
+  const code = rows[0];
+  if (!code) return { kind: 'invalid_code' };
+  if (code.locked_until && new Date(code.locked_until).getTime() > Date.now()) {
+    return { kind: 'locked', retryAfterMinutes: Math.ceil((new Date(code.locked_until).getTime() - Date.now()) / 60_000) };
+  }
+  if (code.code !== accessCode.trim()) {
+    const failures = (code.fail_count ?? 0) + 1;
+    if (failures >= 5) {
+      await client.query(`UPDATE class_access_codes SET fail_count=0, locked_until=now() + interval '1 hour' WHERE id=$1`, [code.id]);
+    } else {
+      await client.query('UPDATE class_access_codes SET fail_count=$1 WHERE id=$2', [failures, code.id]);
+    }
+    await writeSecurityAudit(client, 'self_claim_failed', 'class_access_code', String(code.id), schoolCode, `attempt ${failures}`);
+    return { kind: 'invalid_code' };
+  }
+  await client.query('UPDATE class_access_codes SET fail_count=0 WHERE id=$1', [code.id]);
+  return { kind: 'valid' };
+}
+
+export type UnclaimedStudent = { id: string; full_name: string };
+export type SelfClaimRosterResult = { kind: 'listed'; students: UnclaimedStudent[] } | Exclude<ClassAccessCodeCheck, { kind: 'valid' }>;
+
+/** Return minimum roster fields only after the per-class access code passes. */
+export async function listUnclaimedStudentRoster(input: { schoolCode: string; className: string; accessCode: string }): Promise<SelfClaimRosterResult> {
+  return withTransaction(async (client) => {
+    const check = await verifyClassAccessCode(client, input.schoolCode, input.className, input.accessCode);
+    if (check.kind !== 'valid') return check;
+    const { rows } = await client.query(
+      `SELECT id, full_name FROM students WHERE school_code=$1 AND class_name=$2 AND user_id IS NULL AND deleted_at IS NULL ORDER BY full_name, id`,
+      [input.schoolCode, input.className],
+    );
+    return { kind: 'listed', students: rows as UnclaimedStudent[] };
+  });
+}
+
 /**
  * Claim an unlinked student account as one serializable unit of work.
  * The class-code row serializes failed-attempt counters; the student row
@@ -61,48 +107,9 @@ async function writeSecurityAudit(
  */
 export async function claimStudentAccount(input: SelfClaimInput): Promise<SelfClaimResult> {
   return withTransaction(async (client) => {
-    const { rows: codeRows } = await client.query(
-      `SELECT id, code, fail_count, locked_until
-       FROM class_access_codes
-       WHERE school_code=$1 AND class_name=$2
-       FOR UPDATE`,
-      [input.schoolCode, input.className],
-    );
-    const code = codeRows[0];
-    if (!code) return { kind: 'invalid_code' };
+    const codeCheck = await verifyClassAccessCode(client, input.schoolCode, input.className, input.accessCode);
+    if (codeCheck.kind !== 'valid') return codeCheck;
 
-    if (code.locked_until && new Date(code.locked_until).getTime() > Date.now()) {
-      const retryAfterMinutes = Math.ceil(
-        (new Date(code.locked_until).getTime() - Date.now()) / 60_000,
-      );
-      return { kind: 'locked', retryAfterMinutes };
-    }
-
-    if (code.code !== input.accessCode.trim()) {
-      const failures = (code.fail_count ?? 0) + 1;
-      if (failures >= 5) {
-        await client.query(
-          `UPDATE class_access_codes
-           SET fail_count=0, locked_until=now() + interval '1 hour'
-           WHERE id=$1`,
-          [code.id],
-        );
-      } else {
-        await client.query(
-          'UPDATE class_access_codes SET fail_count=$1 WHERE id=$2',
-          [failures, code.id],
-        );
-      }
-      await writeSecurityAudit(
-        client,
-        'self_claim_failed',
-        'class_access_code',
-        String(code.id),
-        input.schoolCode,
-        `attempt ${failures}`,
-      );
-      return { kind: 'invalid_code' };
-    }
 
     const { rows: studentRows } = await client.query(
       `SELECT id, full_name
@@ -138,7 +145,6 @@ export async function claimStudentAccount(input: SelfClaimInput): Promise<SelfCl
     );
     if (!linked[0]) throw new Error('Student was claimed concurrently; account creation rolled back.');
 
-    await client.query('UPDATE class_access_codes SET fail_count=0 WHERE id=$1', [code.id]);
     await writeSecurityAudit(
       client,
       'self_claim_success',
