@@ -25,9 +25,18 @@ test('finance_admin cannot access message inbox, conversations or contacts', () 
 });
 
 test('roles with messages.read continue through the message read guard', () => {
-  for (const role of ['student', 'parent', 'teacher', 'admin']) {
+  for (const role of ['student', 'parent', 'admin']) {
     const result = runPermission(role, 'messages.read');
     assert.equal(result.statusCode, 200);
     assert.equal(result.nextCalled, true);
+  }
+});
+
+test('teacher accounts cannot use the messaging surface', () => {
+  for (const endpoint of ['messages.read', 'messages.write']) {
+    const result = runPermission('teacher', endpoint);
+    assert.equal(result.statusCode, 403);
+    assert.equal(result.nextCalled, false);
+    assert.deepEqual(result.body, { error: `Permission denied: ${endpoint}` });
   }
 });
