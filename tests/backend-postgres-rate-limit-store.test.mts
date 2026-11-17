@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { after, test } from 'node:test';
 import { setTimeout as delay } from 'node:timers/promises';
 import { pool } from '../backend/src/db/pool.js';
@@ -61,8 +62,8 @@ test('PostgreSQL rate limits are shared, atomic, isolated, expiring and fail clo
     assert.equal(await consumePostgresQuota(quotaKey, 2, 60_000), true);
     assert.equal(await consumePostgresQuota(quotaKey, 2, 60_000), false);
     await pool.query(
-      'DELETE FROM public.rate_limit_counters WHERE namespace = $1 AND key_hash = encode(digest($2, \'sha256\'), \'hex\')',
-      ['ai-generation', quotaKey],
+      'DELETE FROM public.rate_limit_counters WHERE namespace = $1 AND key_hash = $2',
+      ['ai-generation', createHash('sha256').update(quotaKey).digest('hex')],
     );
   } finally {
     await first.resetAll();
