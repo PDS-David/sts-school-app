@@ -1,22 +1,19 @@
-name: Render Free-Tier Keep Alive
+name: Render Free-Tier Manual Wake and Readiness Check
 
 on:
   pull_request:
     paths:
       - '.github/workflows/render-free-tier-keepalive.yml'
-  # Render Free web services spin down after 15 minutes without inbound traffic.
-  # A five-minute readiness request reduces idle spin-down while this service
-  # remains on the Free plan. GitHub scheduled runs can be delayed, so this is
-  # a mitigation rather than an uptime guarantee.
-  schedule:
-    - cron: '*/5 * * * *'
+  # Manual dispatch wakes the Free service on demand. There is deliberately no
+  # recurring schedule: keeping it continuously warm would consume nearly all
+  # of the workspace's shared Free web-service instance-hours.
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: render-free-tier-keepalive
+  group: render-free-tier-manual-wake
   cancel-in-progress: false
 
 jobs:
@@ -27,10 +24,11 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-      - name: Validate workflow syntax and intended cadence
+      - name: Validate workflow syntax and manual-only trigger
         run: |
           ruby -e "require 'yaml'; YAML.load_file('.github/workflows/render-free-tier-keepalive.yml', aliases: true)"
-          grep -Fq "cron: '*/5 * * * *'" .github/workflows/render-free-tier-keepalive.yml
+          grep -Fq 'workflow_dispatch:' .github/workflows/render-free-tier-keepalive.yml
+          ! grep -Fq 'schedule:' .github/workflows/render-free-tier-keepalive.yml
           grep -Fq '/health/ready' .github/workflows/render-free-tier-keepalive.yml
       - name: Verify live API and PostgreSQL readiness
         env:
@@ -47,12 +45,12 @@ jobs:
           printf '%s\n' "$body"
           printf '%s' "$body" | grep -Fq '"database":"ok"'
 
-  keep-alive:
-    if: github.event_name != 'pull_request'
+  manual-wake:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
-      - name: Wake the API if idle and verify database readiness
+      - name: Wake the API and verify database readiness
         env:
           API_BASE_URL: https://sts-school-app.onrender.com
         run: |
@@ -66,4 +64,4 @@ jobs:
             --retry-all-errors \
             "$API_BASE_URL/health/ready"
           printf '\n'
-          echo "API liveness/readiness request completed." >> "$GITHUB_STEP_SUMMARY"
+          echo "API wake-up and PostgreSQL readiness request completed." >> "$GITHUB_STEP_SUMMARY"
