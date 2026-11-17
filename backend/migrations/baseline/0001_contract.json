@@ -60,7 +60,26 @@
       "previous_hash",
       "event_hash"
     ],
-    "pending_audit_log_fk_to_drop": "audit_log_actor_id_fkey"
+    "pending_audit_log_fk_to_drop": "audit_log_actor_id_fkey",
+    "pending_indexes": [
+      "idx_school_events_school_start",
+      "idx_school_events_class_start",
+      "idx_rate_limit_counters_expiry",
+      "idx_audit_log_school_id_desc",
+      "idx_audit_log_actor_id_desc",
+      "idx_audit_log_action_id_desc",
+      "idx_audit_log_event_hash_unique"
+    ],
+    "pending_functions": [
+      "audit_log_reject_mutation"
+    ],
+    "pending_triggers": [
+      "audit_log_append_only_update_delete",
+      "audit_log_append_only_truncate"
+    ],
+    "pending_constraints": [
+      "audit_log_outcome_check"
+    ]
   },
   "tables": {
     "schools": {
