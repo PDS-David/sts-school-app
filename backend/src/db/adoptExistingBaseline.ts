@@ -13,6 +13,7 @@ const LOCK_NAMESPACE = 1937001;
 const LOCK_ID = 3;
 
 type ColumnContract = { data_type: string; udt_name: string; is_nullable: 'YES' | 'NO'; has_default: boolean };
+type ActualColumnRow = { table_name: string; column_name: string; data_type: string; udt_name: string; is_nullable: 'YES' | 'NO'; column_default: string | null };
 type Contract = {
   baseline_migration: { version: string; name: string; sha256: string };
   original_schema: { bootstrap_checksum: string; commit: string; blob_sha: string };
@@ -59,18 +60,18 @@ async function preflight(client: PoolClient): Promise<{ database: string; versio
   }
   if (baselineTables.length !== contract.expected.baseline_table_count) errors.push('Baseline contract table count is internally inconsistent');
 
-  const columnRows = await client.query<{ table_name: string; column_name: string; data_type: string; udt_name: string; is_nullable: 'YES' | 'NO'; column_default: string | null }>(
+  const columnRows = await client.query<ActualColumnRow>(
     `SELECT table_name,column_name,data_type,udt_name,is_nullable,column_default
        FROM information_schema.columns WHERE table_schema='public' ORDER BY table_name,ordinal_position`,
   );
-  const actualByTable = new Map<string, Map<string, typeof columnRows.rows[number]>>();
+  const actualByTable = new Map<string, Map<string, ActualColumnRow>>();
   for (const row of columnRows.rows) {
     if (!actualByTable.has(row.table_name)) actualByTable.set(row.table_name, new Map());
     actualByTable.get(row.table_name)!.set(row.column_name, row);
   }
   let checkedColumns = 0;
   for (const [table, expectedColumns] of Object.entries(contract.tables)) {
-    const actualColumns = actualByTable.get(table) ?? new Map();
+    const actualColumns = actualByTable.get(table) ?? new Map<string, ActualColumnRow>();
     if (!sameList([...actualColumns.keys()], Object.keys(expectedColumns))) {
       errors.push(`${table}: baseline column names differ (expected ${Object.keys(expectedColumns).length}, found ${actualColumns.size})`);
     }
