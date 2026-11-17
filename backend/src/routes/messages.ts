@@ -6,7 +6,7 @@ import { requireAuth } from '../middleware/auth.js';
 import { hasPerm } from '../utils/rbac.js';
 import { getMessageableUsers } from '../utils/scope.js';
 import { sendPushToUser } from '../utils/push.js';
-import { createRedisRateLimitStore } from '../utils/redisRateLimitStore.js';
+import { createPostgresRateLimitStore } from '../utils/postgresRateLimitStore.js';
 
 const router = Router();
 router.use(requireAuth);
@@ -21,7 +21,7 @@ const messageSendLimiter = rateLimit({
   standardHeaders: true,
   legacyHeaders: false,
   handler: (_req, res) => res.status(429).json({ error: 'Too many messages; try again shortly' }),
-  store: createRedisRateLimitStore('message-send'),
+  store: createPostgresRateLimitStore('message-send'),
 });
 
 const sendMessageSchema = z.object({

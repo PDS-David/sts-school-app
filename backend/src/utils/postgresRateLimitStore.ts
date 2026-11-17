@@ -28,7 +28,7 @@ export async function verifyPostgresRateLimitStore(): Promise<void> {
     await pool.query('SELECT 1 FROM public.rate_limit_counters LIMIT 0');
   } catch (error) {
     throw new Error(
-      'Production startup refused: the PostgreSQL rate-limit store is not ready. Apply the approved 0002_rate_limit_counters migration before starting the API.',
+      'Production startup refused: the PostgreSQL rate-limit store is not ready. Apply the approved 0003_rate_limit_counters migration before starting the API.',
       { cause: error },
     );
   }
@@ -166,13 +166,6 @@ export async function consumePostgresQuota(key: string, limit: number, windowMs:
   }
 }
 
-// Temporary source-compatibility aliases keep all existing route modules on
-// the same PostgreSQL implementation while their imports are migrated.
-export const createRedisRateLimitStore = createPostgresRateLimitStore;
-export const consumeRedisQuota = consumePostgresQuota;
-export const assertRateLimitRedisConfigured = assertRateLimitPostgresConfigured;
 export function disconnectPostgresRateLimitStore(): void {
   // PostgreSQL pool lifecycle is owned by db/pool.ts.
 }
-
-// PostgreSQL is pooled by db/pool.ts; retained as a no-op lifecycle hook for callers.
