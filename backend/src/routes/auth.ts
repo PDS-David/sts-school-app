@@ -32,7 +32,7 @@ const loginAttemptLimiter = rateLimit({
   },
   skipSuccessfulRequests: true,
   message: { error: 'Too many failed login attempts for this username. Try again in 15 minutes.' },
-  store: createRedisRateLimitStore('auth-login'),
+  store: createPostgresRateLimitStore('auth-login'),
 });
 
 // ── POST /auth/login ──────────────────────────────────────────────────────────
