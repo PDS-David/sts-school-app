@@ -167,6 +167,7 @@ This is consistent with the former Free database expiring and being deleted. It 
 | [#952](https://github.com/PDS-David/sts-school-app/issues/952) | P1 | Production schema drift, absent migration ledger, missing school-events/rate-limit tables and audit controls. | Recover historical migration origin, verify encrypted backup/restore, prepare exact baseline plan and apply only after owner approval. |
 | [#954](https://github.com/PDS-David/sts-school-app/issues/954) | P1 | Free database expires 2026-12-12; Free plan has no backups/PITR. | Configure encrypted backups, pass restore rehearsal, then approve paid-plan upgrade or replacement migration before expiry. |
 | [#955](https://github.com/PDS-David/sts-school-app/issues/955) | P2 | External database allowlist is `0.0.0.0/0`. | Inventory legitimate external clients, move service traffic to private networking and restrict external CIDRs. |
+| [#976](https://github.com/PDS-David/sts-school-app/issues/976) | P1 | Previous production database `sts-school-db` is absent; current replacement has zero key records. Backup recovery is not yet ruled in or out. | Search encrypted email backups, local exports and off-host storage; verify and restore only into an isolated database. |
 
 ### Open PRs (none merged by this work)
 
