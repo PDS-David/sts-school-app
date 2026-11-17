@@ -6,7 +6,7 @@ import { query } from '../db/pool.js';
 import { signAccess, signRefresh, verifyRefresh } from '../utils/jwt.js';
 import { requireAuth } from '../middleware/auth.js';
 import { audit } from '../utils/audit.js';
-import { claimStudentAccount, registerSelfServiceAccount } from '../utils/selfRegistration.js';
+import { claimStudentAccount, listUnclaimedStudentRoster, registerSelfServiceAccount } from '../utils/selfRegistration.js';
 import { normalizeAnswer, usernameBaseFromName } from '../utils/password.js';
 import { activateAccount, resetPasswordWithSecurityAnswer } from '../utils/credentialAttempts.js';
 import type { AuthUser, Role } from '../types/index.js';
@@ -382,20 +382,31 @@ router.get('/self-claim/classes', async (req, res) => {
   return res.json({ classes: rows.map((r) => r.name) });
 });
 
-// Only students not yet linked to a login account (user_id IS NULL) — once
-// claimed, a student no longer appears here, which is also what makes a
-// second claim attempt for the same student fail cleanly at the roster step
-// (they simply won't find their own name anymore) rather than only at the
-// final POST.
-router.get('/self-claim/roster', async (req, res) => {
-  const schoolCode = String(req.query.school_code ?? '').trim();
-  const className = String(req.query.class_name ?? '').trim();
-  if (!schoolCode || !className) return res.status(400).json({ error: 'school_code and class_name are required' });
-  const { rows } = await query(
-    'SELECT id, full_name FROM students WHERE school_code=$1 AND class_name=$2 AND user_id IS NULL AND deleted_at IS NULL ORDER BY full_name',
-    [schoolCode, className],
-  );
-  return res.json({ students: rows });
+// Verify the class code before any unclaimed student names or identifiers are
+// returned. POST keeps the code out of URLs; no-store prevents caching.
+router.post('/self-claim/roster', async (req, res) => {
+  res.set('Cache-Control', 'no-store');
+  const { school_code, class_name, code } = req.body as {
+    school_code?: string; class_name?: string; code?: string;
+  };
+  if (!school_code?.trim() || !class_name?.trim() || !code?.trim()) {
+    return res.status(400).json({ error: 'school_code, class_name, and code are required' });
+  }
+
+  const result = await listUnclaimedStudentRoster({
+    schoolCode: school_code.trim(),
+    className: class_name.trim(),
+    accessCode: code,
+  });
+  if (result.kind === 'locked') {
+    return res.status(429).json({
+      error: `Too many incorrect attempts for this class. Try again in about ${result.retryAfterMinutes} minute(s), or ask your school admin.`,
+    });
+  }
+  if (result.kind === 'invalid_code') {
+    return res.status(401).json({ error: 'Incorrect class code, or self-claim is not available for this class.' });
+  }
+  return res.json({ students: result.students });
 });
 
 router.post('/self-claim', async (req, res) => {

@@ -5,17 +5,10 @@ import api from '../api/client';
 import { Btn, Input, Card, Loader, Empty } from '../components/UI';
 import { Colors, Spacing, Fonts } from '../theme';
 
-// Public (no login) — Task B: a student finds their own name and sets their
-// own password. Gated by TWO checks, not one: a per-class code a teacher
-// reads out once (proves "a teacher told this person to do this" — but
-// it's shared with the whole class, so on its own it can't prove WHICH
-// student this is), and that student's own admission number (private to
-// them, never sent by the roster endpoint below — proves they're claiming
-// their own record, not a classmate's). See POST /auth/self-claim in
-// backend/src/routes/auth.ts. Four steps in one screen, mirroring
-// ForgotPasswordScreen.tsx's single-screen-with-steps shape rather than a
-// multi-screen wizard.
-type Step = 'school' | 'class' | 'name' | 'code';
+// Public (no login) — Task B. The per-class code is verified before the
+// roster endpoint returns any names; the student's private admission number
+// is checked again during the final claim and never appears in the roster.
+type Step = 'school' | 'class' | 'code' | 'name' | 'claim';
 
 export default function StudentSelfClaimScreen({ navigation }: any) {
   const [step, setStep] = useState<Step>('school');
@@ -73,17 +66,31 @@ export default function StudentSelfClaimScreen({ navigation }: any) {
     }
   };
 
-  const handleClassNext = async () => {
+  const handleClassNext = () => {
     if (!className) { setError('Select your class'); return; }
     setError('');
     setLoadError(null);
+    setRoster([]);
+    setStudentId('');
+    setCode('');
+    setStep('code');
+  };
+
+  const handleCodeNext = async () => {
+    if (!code.trim()) { setError('Enter the class code your teacher gave you'); return; }
+    setError('');
     setLoadingRoster(true);
-    setStep('name');
     try {
-      const { data } = await api.get('/auth/self-claim/roster', { params: { school_code: schoolCode, class_name: className } });
+      const { data } = await api.post('/auth/self-claim/roster', {
+        school_code: schoolCode,
+        class_name: className,
+        code: code.trim(),
+      });
       setRoster(data.students ?? []);
-    } catch {
-      setLoadError({ step: 'name', message: 'Could not load the class list. Check your connection and try again.' });
+      setStudentId('');
+      setStep('name');
+    } catch (e: any) {
+      setError(e?.response?.data?.error ?? (!e?.response ? 'No internet connection.' : 'Could not verify the class code. Try again.'));
     } finally {
       setLoadingRoster(false);
     }
@@ -92,7 +99,7 @@ export default function StudentSelfClaimScreen({ navigation }: any) {
   const handleNameNext = () => {
     if (!studentId) { setError('Select your name'); return; }
     setError('');
-    setStep('code');
+    setStep('claim');
   };
 
   const handleClaim = async () => {
@@ -177,12 +184,7 @@ export default function StudentSelfClaimScreen({ navigation }: any) {
           )}
 
           {step === 'name' && (
-            loadingRoster ? <Loader /> : loadError?.step === 'name' ? (
-              <>
-                <Empty message={loadError.message} />
-                <Btn label="Retry loading class list" variant="outline" onPress={handleClassNext} />
-              </>
-            ) : roster.length === 0 ? (
+            roster.length === 0 ? (
               <Empty message="No unclaimed students found in this class. If you already have an account, use Forgot Password on the sign-in screen instead. Otherwise, ask your school admin." />
             ) : (
               <>
@@ -199,9 +201,16 @@ export default function StudentSelfClaimScreen({ navigation }: any) {
 
           {step === 'code' && (
             <>
-              <Text style={styles.helper}>Ask your teacher for this term's class code.</Text>
+              <Text style={styles.helper}>Ask your teacher for this class's access code. Your class list appears only after the code is verified.</Text>
               <Input label="Class Code" value={code} onChangeText={setCode} placeholder="Enter the code your teacher gave you" keyboardType="numeric" />
-              <Text style={styles.helper}>Now confirm it's really you — enter your own admission number (not shared with your class).</Text>
+              {error ? <Text style={styles.error}>{error}</Text> : null}
+              <Btn label="Verify Code and Continue" onPress={handleCodeNext} loading={loadingRoster} style={{ marginTop: Spacing.md }} />
+            </>
+          )}
+
+          {step === 'claim' && (
+            <>
+              <Text style={styles.helper}>Confirm it's really you by entering your own admission number (not shared with your class).</Text>
               <Input label="Admission Number" value={admissionNumber} onChangeText={setAdmissionNumber} placeholder="Your admission number" />
               <Input label="New Password" value={newPw} onChangeText={setNewPw} placeholder="At least 8 characters" secureTextEntry />
               <Input label="Confirm New Password" value={conf} onChangeText={setConf} placeholder="Re-enter new password" secureTextEntry />
