@@ -206,38 +206,36 @@ This is consistent with the former Free database expiring and being deleted. It 
 | [#977](https://github.com/PDS-David/sts-school-app/pull/977) | Connect delivery-gated SS2/SS3 packages to student subject discovery and lesson screens. | Open; backend, mobile, package and cross-project CI running. |
 
 
-## 8. Additional product and administration gaps recorded in the existing app audit
+## 8. Additional product and administration gaps
 
-These items were present in `APP_WIDE_AUDIT.md`, `AGENT_CONTINUATION.md` and `TODO.md`. They are distinct from the SS2/SS3 curriculum work and from the four current GitHub Issues.
+### Verified implemented — do not count as outstanding
 
-### Not implemented or not complete
+The current codebase already contains these features; older TODO/handoff notes describing them as missing are stale:
 
-1. **Student creation UI:** `POST /students` and parent auto-provisioning exist, but the mobile Students screen is read-only. There is no Add Student form to collect the student and parent details; current creation relies on legacy import scripts.
-2. **Fee-item and invoice creation UI:** backend endpoints exist and have validation, but Finance screens can only view existing fee items/invoices and mark an invoice paid. There is no in-app form to create fee items or invoices.
-3. **Announcements:** no complete announcements/school-notice backend endpoint and delivery workflow is present; Student/Parent Home currently shows an empty-state placeholder.
-4. **Teacher marking backlog:** submissions have no graded/ungraded marker, so the teacher dashboard's open-assessment count is not a true pending-marking count.
-5. **Coming-soon modules:** Teacher Analytics and Calendar, Student Badges, Parent Upcoming Tests, Parent Calendar and School Events do not have complete backing data/workflows.
-6. **Parent messaging scope decision:** parent messaging is scoped to the ward's class teacher. Whether parents should also contact subject teachers or school admins (for example, for billing) remains a product decision.
-7. **Admin Edit User data integrity:** the edit modal still sends empty strings for nullable `school_code` and `assigned_class`. For admin/finance-admin accounts this can replace intended SQL NULL values with empty strings. This was flagged in `APP_WIDE_AUDIT.md` Part 4 and not fixed.
-8. **Finance-admin role audit:** student, parent, teacher and admin surfaces were audited in `APP_WIDE_AUDIT.md`; the separate `finance_admin` role was explicitly out of scope and has not had the same full screen-to-route, RBAC and data-scope audit.
-9. **Pre-login flow audit:** `StudentSelfClaimScreen` and `ActivateAccountScreen` were not included in the completed student-role audit; their full error-path and abuse-case review remains unverified.
-10. **Report-card school details:** the term-report PDF code now implements the agreed layout (position included; motto is embedded in the crest; attendance/remarks/next-term are excluded), but the Primary school's address and phone in `mobile/src/schoolBranding.ts` are still placeholders copied from Model College.
-11. **Report position/permission decision:** the term report currently always includes subject and overall position. The older TODO's requested optional position-column setting and the question of whether teachers should gain print/export access were not evidenced as implemented. Current print/export remains intentionally restricted to admin and parent.
-12. **Class management:** classes are seed-defined; there is no create/edit class route or admin workflow. The existing admin class-summary ranking query uses class name without school code, which is not currently reachable as a cross-school bug because class names are seed-defined and non-overlapping, but must be fixed if class management or overlapping names are introduced.
-13. **School onboarding:** the app is configured around the two seeded campuses (`primary` and `secondary`). No self-service workflow for onboarding a new school/campus and its branding, users, classes and fee configuration is verified.
-14. **PDF acceptance:** report PDF HTML has A4/one-page styling and the owner-approved content decisions are reflected in code comments, but a fresh physical-device print/export acceptance with the actual Primary and Secondary logos/contact details is not recorded.
+- Student enrolment: `AddStudentScreen` is registered in Admin navigation and calls the student creation workflow.
+- Finance administration: `FinanceScreen` has Add Fee Item and New Invoice modals; finance admins can mark invoices paid. This is manual reconciliation, not an online payment gateway.
+- Announcements: admin create/delete UI, role/class-scoped API and Student/Parent home feeds exist. Owner decision D8 explicitly excludes push/SMS for announcements.
+- School events: admin create/edit/delete UI, API, teacher calendar and parent Activities feed exist. The current replacement database is missing the `school_events` table, so this implemented feature is blocked by schema repair, not absent code.
+- Teacher Analytics and School Calendar screens exist.
+- Parent Upcoming Tests, School Calendar & Events, and Assignments/Results sections exist.
+- Student Achievements screen and backend badge calculations exist.
+- Teacher pending-marking analytics exist; the API tracks answer-level grading status and pending review counts.
 
-### Intentionally restricted — do not build these as missing features
+### Remaining product and administration gaps
 
-- Students view their own attendance; they do not enter or edit physical-classroom attendance. Teachers enter attendance from the physical register.
-- Students may view their report card on-screen but cannot print/export it. Report-card printing/export is admin and parent only.
-- Teachers do not create assessments or question prompts; these are admin/Brainee responsibilities under the explicit RBAC policy.
-- Teachers do not use security-question self-service password recovery; password reset is admin-managed.
-- Topic-completion AI content is available once the account is active; there is no per-item admin approval gate.
-- Locked curriculum topics are deliberately disabled until the required PIN/prior-topic completion condition is satisfied.
-
-
-15. **SS2/SS3 mobile curriculum integration:** backend routes `GET /learning/ss23/lessons` and `GET /learning/ss23/preparation` already exist and enforce the package delivery gates, but the current mobile app does not call them and has no SS23 lesson screen. PR #977 adds a gated subject-discovery endpoint, merges approved package subjects into the Learning screen, and adds a student lesson view that omits model answers and marking. The PR is open and its full CI is running; until it is merged, secondary students have no SS23 package subject tiles. The current database also has zero subject rows for the `secondary` school.
+1. **Class management:** `GET /academic/classes` exists, but there is no `POST` or `PUT` class endpoint and no create/edit class screen. Classes are seed-defined.
+2. **School onboarding:** `GET /academic/schools` exists, but no create-school/onboard-campus workflow is present for adding a new school, its branding, users, classes and fee configuration.
+3. **Class-specific subject availability:** `GET /academic/subjects` returns the school's subject catalogue, not a class-specific catalogue. The current database has zero subject rows for the secondary school. PR #977 exposes only approved SS2/SS3 package subjects; the remaining class/subject catalogue and teacher-subject assignments still need population and verification.
+4. **Admin Edit User data integrity:** the edit modal sends empty strings for nullable `school_code` and `assigned_class`. For admin/finance-admin accounts this can replace intended SQL NULL values with empty strings. This was flagged in `APP_WIDE_AUDIT.md` Part 4 and is not yet fixed.
+5. **Finance-admin role audit:** student, parent, teacher and admin surfaces were audited in `APP_WIDE_AUDIT.md`; the separate `finance_admin` role was explicitly out of scope and still needs a full screen-to-route, RBAC and data-scope audit.
+6. **Pre-login flow QA:** `StudentSelfClaimScreen` and `ActivateAccountScreen` were not included in the completed student-role audit. Their full error-path, enumeration-resistance, rate-limit and abuse-case review remains unverified.
+7. **Report-card school details:** the term-report PDF code reflects the agreed layout (position included; motto embedded in the crest; attendance/remarks/next-term excluded), but the Primary school's address and phone in `mobile/src/schoolBranding.ts` remain placeholders copied from Model College.
+8. **Report position/permission decision:** the term report currently always includes subject and overall position. The older TODO's optional position-column setting is not implemented. Print/export remains admin and parent only; whether teachers should gain access remains an unresolved product decision.
+9. **PDF acceptance:** the report PDF has A4/one-page styling, but a fresh physical-device print/export acceptance with the actual Primary and Secondary logos/contact details is not recorded.
+10. **Online payments:** finance admins can create fee items/invoices and manually mark invoices paid. No payment gateway, automated payment confirmation or reconciliation integration is present.
+11. **Resource file upload:** materials can be managed as records/links, but there is no verified in-app binary file upload/storage workflow; current resources are linked by URL.
+12. **Offline completeness:** topic caching exists, but login/logout, password changes, AI actions and Excel exports require a live connection. A user-facing offline conflict/reconciliation workflow is not established.
+13. **Parent messaging scope:** parent messaging is scoped to the ward's class teacher. Whether parents should also contact subject teachers or school admins (for example, for billing) remains a product decision.
 
 ## 9. Existing app-wide audit status
 
