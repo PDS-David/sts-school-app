@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { randomInt } from 'node:crypto';
 import test, { after } from 'node:test';
 import { pool, query } from '../backend/src/db/pool.js';
-import { claimStudentAccount, registerSelfServiceAccount } from '../backend/src/utils/selfRegistration.ts';
+import { claimStudentAccount, listUnclaimedStudentRoster, registerSelfServiceAccount } from '../backend/src/utils/selfRegistration.ts';
 
 const suffix = () => randomInt(100_000_000, 999_999_999).toString();
 const admission = (label: string) => `BSEC8-${label}-${suffix()}`;
@@ -153,6 +153,66 @@ test('concurrent class-code claims can link one student to only one account', as
   }
 });
 
+test('self-claim roster requires a valid class code and returns only unclaimed minimal fields', async () => {
+  const className = `BSEC8 Roster ${suffix()}`;
+  const admissionNumber = admission('ROSTER');
+  const accessCode = `roster-${suffix()}`;
+  let studentId: string | undefined;
+  let deletedStudentId: string | undefined;
+  let accessCodeId: number | undefined;
+  try {
+    const { rows: active } = await query(
+      `INSERT INTO students(full_name,class_name,school_code,admission_number) VALUES($1,$2,'primary',$3) RETURNING id`,
+      ['BSEC8 Roster Student', className, admissionNumber],
+    );
+    studentId = active[0].id;
+    const { rows: deleted } = await query(
+      `INSERT INTO students(full_name,class_name,school_code,admission_number,deleted_at) VALUES($1,$2,'primary',$3,now()) RETURNING id`,
+      ['BSEC8 Deleted Roster Student', className, admission('ROSTER-DELETED')],
+    );
+    deletedStudentId = deleted[0].id;
+    const { rows: codes } = await query(
+      `INSERT INTO class_access_codes(school_code,class_name,code) VALUES('primary',$1,$2) RETURNING id`,
+      [className, accessCode],
+    );
+    accessCodeId = codes[0].id;
+    const denied = await listUnclaimedStudentRoster({ schoolCode: 'primary', className, accessCode: 'wrong-code' });
+    assert.deepEqual(denied, { kind: 'invalid_code' });
+    const allowed = await listUnclaimedStudentRoster({ schoolCode: 'primary', className, accessCode });
+    assert.equal(allowed.kind, 'listed');
+    if (allowed.kind === 'listed') {
+      assert.deepEqual(allowed.students, [{ id: studentId, full_name: 'BSEC8 Roster Student' }]);
+      assert.equal('admission_number' in allowed.students[0], false);
+      assert.equal('user_id' in allowed.students[0], false);
+    }
+  } finally {
+    if (studentId) await query('DELETE FROM students WHERE id=$1', [studentId]);
+    if (deletedStudentId) await query('DELETE FROM students WHERE id=$1', [deletedStudentId]);
+    if (accessCodeId) await query('DELETE FROM class_access_codes WHERE id=$1', [accessCodeId]);
+  }
+});
+
+test('self-claim roster applies the five-attempt class-code lockout before listing names', async () => {
+  const className = `BSEC8 Lockout ${suffix()}`;
+  const accessCode = `lockout-${suffix()}`;
+  let accessCodeId: number | undefined;
+  try {
+    const { rows } = await query(
+      `INSERT INTO class_access_codes(school_code,class_name,code) VALUES('primary',$1,$2) RETURNING id`,
+      [className, accessCode],
+    );
+    accessCodeId = rows[0].id;
+    for (let attempt = 0; attempt < 5; attempt++) {
+      const result = await listUnclaimedStudentRoster({ schoolCode: 'primary', className, accessCode: 'wrong-code' });
+      assert.deepEqual(result, { kind: 'invalid_code' });
+    }
+    const locked = await listUnclaimedStudentRoster({ schoolCode: 'primary', className, accessCode });
+    assert.equal(locked.kind, 'locked');
+    if (locked.kind === 'locked') assert.ok(locked.retryAfterMinutes >= 1);
+  } finally {
+    if (accessCodeId) await query('DELETE FROM class_access_codes WHERE id=$1', [accessCodeId]);
+  }
+});
 test('soft-deleted enrollment records cannot be claimed through public self-registration', async () => {
   const admissionNumber = admission('DELETED');
   const username = `bsec8-deleted-${suffix()}`;
