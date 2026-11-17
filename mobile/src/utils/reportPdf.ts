@@ -3,6 +3,7 @@ import * as Print from 'expo-print';
 import * as Sharing from 'expo-sharing';
 import { Asset } from 'expo-asset';
 import type { SchoolBrand } from '../schoolBranding';
+import { renderTermReportHtml } from './reportTemplate';
 
 // Print/Export is deliberately restricted to admin and parent — see the
 // buttons in MyResultsScreen.tsx / SessionReportScreen.tsx, gated on
@@ -75,97 +76,10 @@ const baseStyles = `
   .footer-note { font-size: 11px; color: #888; text-align: center; margin-top: 12px; }
 `;
 
-function gradeClass(grade: string | undefined): string {
-  if (!grade) return 'grade-other';
-  const g = grade.trim().toUpperCase();
-  if (g === 'A') return 'grade-A';
-  if (g === 'B') return 'grade-B';
-  if (g === 'C') return 'grade-C';
-  return 'grade-other';
-}
-
-// ── Term report card (MyResultsScreen's `report` shape) ─────────────────────
-// Rebuilt to be an exact, one-page replica of the school's actual in-use
-// report format (reference PDF Grace supplied, already commended by
-// parents) — see: separate CA1/CA2 columns (not combined), a per-subject
-// Position column, and an "Overall Position X out of Y students" stat
-// alongside Total Score/Average. Position/overall position/class_size come
-// from backend/src/routes/scores.ts's GET /report/:student_id.
-//
-// No separate motto line: confirmed with Grace that the crest image itself
-// (brand.logo) already has the school's motto worked into the artwork —
-// there's nothing else to render here beyond the logo displaying correctly.
-//
-// Attendance, Class Teacher/Head remarks, and "Next term begins" are
-// deliberately NOT on this document — confirmed with Grace they don't
-// belong here, to keep this an exact match of the reference and strictly
-// one page. If a use for them resurfaces, it should be a separate report,
-// not added back onto this one.
+// ── Term report card — mirrors the supplied Nursery/Primary and Secondary sheets.
 export async function buildTermReportHtml(report: any, brand: SchoolBrand | null): Promise<string> {
-  const { student, term, scores, summary } = report;
   const logo = await logoDataUri(brand);
-  const rows = (scores ?? []).map((s: any) => `
-    <tr>
-      <td>${escapeHtml(s.subject_name)}</td>
-      <td>${escapeHtml(s.ca1)}</td>
-      <td>${escapeHtml(s.ca2)}</td>
-      <td>${escapeHtml(s.exam)}</td>
-      <td class="total-cell">${escapeHtml(s.total)}</td>
-      <td class="${gradeClass(s.grade)}">${escapeHtml(s.grade ?? '—')}</td>
-      <td>${s.subject_position ?? '—'}</td>
-      <td>${s.class_highest ?? '—'}</td>
-      <td>${s.class_average ?? '—'}</td>
-      <td>${s.subject_remark ? escapeHtml(s.subject_remark) : '-'}</td>
-    </tr>`).join('');
-
-  return `<!DOCTYPE html><html><head><meta charset="utf-8" /><style>${baseStyles}</style></head><body>
-    <div class="letterhead">
-      ${logo ? `<img src="${logo}" />` : ''}
-      <div class="school-name">${escapeHtml(brand?.name ?? '')}</div>
-      <div class="doc-subtitle">Student Report Card</div>
-      ${(brand?.address || brand?.phone) ? `<div class="contact-line">📍 ${escapeHtml(brand?.address ?? '')}${brand?.address && brand?.phone ? ' | ' : ''}${brand?.phone ? `📞 ${escapeHtml(brand.phone)}` : ''}</div>` : ''}
-    </div>
-    <hr class="header-rule" />
-    <div class="info-block">
-      <div class="info-row">
-        <div class="info-item"><span class="info-label">Student Name:</span><span class="info-value">${escapeHtml(student.full_name)}</span></div>
-        <div class="info-item"><span class="info-label">Admission No:</span><span class="info-value">${escapeHtml(student.admission_number ?? '—')}</span></div>
-      </div>
-      <div class="info-row">
-        <div class="info-item"><span class="info-label">Class:</span><span class="info-value">${escapeHtml(student.class_name)}</span></div>
-        <div class="info-item"><span class="info-label">Term:</span><span class="info-value">${escapeHtml(term?.name ?? '')} ${escapeHtml(term?.academic_year ?? '')}</span></div>
-      </div>
-    </div>
-    <table>
-      <tr>
-        <th>Subject</th>
-        <th>CA1<small>(15)</small></th>
-        <th>CA2<small>(15)</small></th>
-        <th>Exam<small>(70)</small></th>
-        <th>Total<small>(100)</small></th>
-        <th>Grade</th>
-        <th>Position</th>
-        <th>Highest</th>
-        <th>Average</th>
-        <th>Remark</th>
-      </tr>
-      ${rows || '<tr><td colspan="10">No scores entered yet for this term.</td></tr>'}
-    </table>
-    <div class="stats-row">
-      <div class="stat">
-        <div class="stat-label">Overall Position</div>
-        <div class="stat-value">${summary.overall_position ?? '—'}${summary.class_size ? ` out of ${summary.class_size} students` : ''}</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Total Score</div>
-        <div class="stat-value">${summary.total_score}</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Average</div>
-        <div class="stat-value">${summary.average}%</div>
-      </div>
-    </div>
-  </body></html>`;
+  return renderTermReportHtml(report, brand, logo);
 }
 
 // ── Session report (SessionReportScreen's `report` shape) ───────────────────
