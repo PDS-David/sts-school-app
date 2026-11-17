@@ -87,7 +87,7 @@ jobs:
           manifest="${manifests[0]}"
           [[ -s "$archive" ]] || { echo "::error::Encrypted archive is empty."; exit 1; }
           [[ "$(head -n 1 "$archive")" == "age-encryption.org/v1" ]] || { echo "::error::Artifact does not have an age encryption header."; exit 1; }
-          grep -Fxq 'database=sts-school-db-2' "$manifest" || { echo "::error::Backup manifest names a different database."; exit 1; }
+          grep -Fxq 'database=sts_school_db_2' "$manifest" || { echo "::error::Backup manifest names a different database."; exit 1; }
           archive_name="$(basename "$archive")"
           grep -Fxq "encrypted_file=$archive_name" "$manifest" || { echo "::error::Manifest does not identify the encrypted archive."; exit 1; }
           expected_hash="$(awk 'NR==1 {print $1}' "$checksum_file")"
