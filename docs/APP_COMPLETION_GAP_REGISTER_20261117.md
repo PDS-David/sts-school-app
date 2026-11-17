@@ -44,7 +44,7 @@ The source registry contains 61 SS2 and 39 SS3 members because some class/term s
 | Mathematics | 10 | 20 | First Term only. Second- and Third-Term implementation is absent; coverage has UNRESOLVED rows. Three open items; no assets. |
 | Physics | 26 | 52 | Three terms represented. All coverage rows remain PARTIAL; three open items and no assets. Full source assessment, equation, diagram, practical and independent QA reconciliation remains open. |
 | Civic Education (PR #969) | 26 | 52 | Nine First-Term, nine Second-Term and eight Third-Term draft units. Source-located evaluation prompts and authored practice are distinct. Seven open items remain for full assignment reconciliation, visuals, source rights and independent QA. PR is open and not merged. |
-| Government (PR #974) | 10 | 20 | First-Term only. Ten source-week draft units and ten source-located evaluation prompts. Second/Third Terms explicitly unresolved; seven open items remain for assessment reconciliation, historical fact-check, visuals, rights and independent QA. |
+| Government (PR #974) | 30 | 60 | Ten source-week draft units per term. Source-located evaluation prompts and authored practice are distinct. Seven open items remain for complete assignment reconciliation, historical fact-check, visuals, rights and independent QA. |
 
 All authored answers and supplementary practice must remain separately attributed from original source questions. Package counts are implementation counts, not proof of full source coverage.
 
