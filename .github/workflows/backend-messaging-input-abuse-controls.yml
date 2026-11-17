@@ -6,6 +6,10 @@ on:
     paths:
       - "backend/src/routes/messages.ts"
       - "backend/src/utils/redisRateLimitStore.ts"
+      - "backend/src/utils/postgresRateLimitStore.ts"
+      - "backend/src/db/migrate.ts"
+      - "backend/schema.sql"
+      - "backend/migrations/0003_rate_limit_counters.sql"
       - "tests/backend-messaging-input-abuse-controls.integration.test.mts"
       - ".github/workflows/backend-messaging-input-abuse-controls.yml"
 
