@@ -10,7 +10,7 @@ import { claimStudentAccount, registerSelfServiceAccount } from '../utils/selfRe
 import { normalizeAnswer, usernameBaseFromName } from '../utils/password.js';
 import { activateAccount, resetPasswordWithSecurityAnswer } from '../utils/credentialAttempts.js';
 import type { AuthUser, Role } from '../types/index.js';
-import { createRedisRateLimitStore } from '../utils/redisRateLimitStore.js';
+import { createPostgresRateLimitStore } from '../utils/postgresRateLimitStore.js';
 
 const router = Router();
 
