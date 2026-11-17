@@ -43,7 +43,7 @@ jobs:
             --retry 1 \
             --retry-delay 5 \
             --retry-all-errors \
-            "\${API_BASE_URL}/health/ready")"
+            "$API_BASE_URL/health/ready")"
           printf '%s\n' "$body"
           printf '%s' "$body" | grep -Fq '"database":"ok"'
 
@@ -64,6 +64,6 @@ jobs:
             --retry 2 \
             --retry-delay 5 \
             --retry-all-errors \
-            "\${API_BASE_URL}/health/ready"
+            "$API_BASE_URL/health/ready"
           printf '\n'
           echo "API liveness/readiness request completed." >> "$GITHUB_STEP_SUMMARY"
