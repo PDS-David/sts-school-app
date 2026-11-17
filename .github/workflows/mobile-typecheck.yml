@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'mobile/**'
+      - 'tests/mobile/**'
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/mobile-typecheck.yml'
@@ -41,3 +42,5 @@ jobs:
         run: npm ci
       - name: Type-check mobile application
         run: npm run mobile:typecheck
+      - name: Test report template fidelity
+        run: node --import tsx --test tests/mobile/report-template.test.mts
