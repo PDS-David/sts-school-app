@@ -167,6 +167,7 @@ The database's external IP allowlist is `0.0.0.0/0`. No complete inventory of ex
 | [#971](https://github.com/PDS-David/sts-school-app/pull/971) | Encrypted scheduled Render Postgres backup workflow and restore instructions. | Open; requires two repository secrets before first successful run. |
 | [#972](https://github.com/PDS-David/sts-school-app/pull/972) | Conventional Expo App entrypoint and updated Android readiness notes. | Open; Android debug APK build and emulator verification are running. |
 | [#973](https://github.com/PDS-David/sts-school-app/pull/973) | This evidence-based application completion gap register. | Open; documentation only. |
+| [#974](https://github.com/PDS-David/sts-school-app/pull/974) | SS2 Government First-Term: 10 draft units and 20 practice records; T2/T3 explicitly unresolved. | Open; package/loader regression checks pending. |
 
 ## 6. Work order to finish
 
