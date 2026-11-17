@@ -90,9 +90,14 @@ const api = axios.create({ baseURL: BASE_URL, timeout: 15000 });
 // Render Free services can take about a minute to wake after idle. Probe the
 // public readiness endpoint before dispatching the user's request so the
 // normal 15-second API timeout does not misclassify a cold start as offline.
-const backendReadiness = createBackendReadinessGate(
-  (url, timeoutMs) => axios.get(url, { timeout: timeoutMs }),
-);
+const backendReadiness = createBackendReadinessGate(async (url, timeoutMs) => {
+  // Check connectivity only when a readiness probe is due, not on every API
+  // request. If offline, let the existing cache/outbox policy handle it quickly.
+  if (!await isOnline().catch(() => false)) {
+    throw new Error('Network unavailable before backend readiness check');
+  }
+  return axios.get(url, { timeout: timeoutMs });
+});
 
 // ── Request interceptor: attach access token ──────────────────────────────────
 api.interceptors.request.use(async (config) => {
@@ -106,16 +111,13 @@ api.interceptors.request.use(async (config) => {
   if (requestNamespace !== getCacheNamespace()) {
     throw new axios.CanceledError('Session changed before request could be sent');
   }
-  const online = await isOnline().catch(() => false);
-  if (online) {
-    try {
-      await backendReadiness.ensureReady(BASE_URL);
-    } catch (error) {
-      // Preserve the original API request context so the existing offline/cache
-      // policy handles a failed wake-up exactly as it handles other network loss.
-      if (error && typeof error === 'object') (error as any).config = config;
-      throw error;
-    }
+  try {
+    await backendReadiness.ensureReady(BASE_URL);
+  } catch (error) {
+    // Preserve the original API request context so the existing offline/cache
+    // policy handles a failed wake-up exactly as it handles other network loss.
+    if (error && typeof error === 'object') (error as any).config = config;
+    throw error;
   }
   if (requestNamespace !== getCacheNamespace()) {
     throw new axios.CanceledError('Session changed before request could be sent');
