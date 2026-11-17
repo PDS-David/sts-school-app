@@ -9,6 +9,14 @@ import { createRedisRateLimitStore } from '../utils/redisRateLimitStore.js';
 
 const router = Router();
 router.use(requireAuth);
+// Teachers use the school app for physical-class report generation, not
+// student-facing Brainee study/chat tools or AI-assisted content creation.
+router.use((req, res, next) => {
+  if (req.user?.role === 'teacher') {
+    return res.status(403).json({ error: 'Teacher accounts are limited to report-generation workflows.' });
+  }
+  next();
+});
 
 // The optional Redis limiter in utils/ai.ts is distributed when configured,
 // but deliberately fails open during Redis outages or when Redis is absent.
