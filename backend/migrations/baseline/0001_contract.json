@@ -1,0 +1,2034 @@
+{
+  "contract_version": 1,
+  "baseline_migration": {
+    "version": "0001",
+    "name": "0001_baseline.sql",
+    "sha256": "c7fa9116e76019f76391377e5ec99054bc9f996a61472026b1cced5351e2348e"
+  },
+  "original_schema": {
+    "commit": "68753fb30524894e5098553ba18c1271cea9b954",
+    "blob_sha": "dd215897dd90be329dcd88f817c17169493805b6",
+    "bootstrap_checksum": "e910acd83dc81786f370311f97e0d1e7aae6a3e6bc8a430188e49dc57cc1d7f6",
+    "line_ending_at_bootstrap": "CRLF"
+  },
+  "expected": {
+    "baseline_table_count": 38,
+    "baseline_column_count": 312,
+    "operational_tables": [
+      "app_bootstrap",
+      "backup_log"
+    ],
+    "public_table_count": 40,
+    "explicit_indexes": [
+      "idx_one_current_term",
+      "idx_device_push_tokens_user",
+      "idx_push_deliveries_user",
+      "idx_push_deliveries_token",
+      "idx_students_deleted_at",
+      "idx_submission_answers_submission",
+      "idx_submission_answers_needs_review",
+      "idx_topic_sequence_audit_scope",
+      "idx_topic_assets_topic_id",
+      "idx_announcements_school"
+    ],
+    "constraint_counts": {
+      "c": 4,
+      "f": 76,
+      "n": 103,
+      "p": 38,
+      "u": 21
+    },
+    "extensions": [
+      "pgcrypto"
+    ],
+    "enum_types": [
+      "user_role"
+    ],
+    "pending_tables": [
+      "schema_migrations",
+      "school_events",
+      "rate_limit_counters"
+    ],
+    "pending_audit_log_columns": [
+      "actor_role",
+      "actor_school_code",
+      "actor_ip",
+      "request_id",
+      "user_agent",
+      "metadata",
+      "outcome",
+      "previous_hash",
+      "event_hash"
+    ],
+    "pending_audit_log_fk_to_drop": "audit_log_actor_id_fkey",
+    "pending_indexes": [
+      "idx_school_events_school_start",
+      "idx_school_events_class_start",
+      "idx_rate_limit_counters_expiry",
+      "idx_audit_log_school_id_desc",
+      "idx_audit_log_actor_id_desc",
+      "idx_audit_log_action_id_desc",
+      "idx_audit_log_event_hash_unique"
+    ],
+    "pending_functions": [
+      "audit_log_reject_mutation"
+    ],
+    "pending_triggers": [
+      "audit_log_append_only_update_delete",
+      "audit_log_append_only_truncate"
+    ],
+    "pending_constraints": [
+      "audit_log_outcome_check"
+    ]
+  },
+  "tables": {
+    "schools": {
+      "id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "code": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "name": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "address": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "phone": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "motto": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "logo_url": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "head_title": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "ca1_max": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "ca2_max": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "exam_max": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "admission_prefix": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": true
+      }
+    },
+    "users": {
+      "id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "username": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "password_hash": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "role": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "school_code": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "full_name": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "email": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "phone": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "assigned_class": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "assigned_subject_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "is_active": {
+        "data_type": "boolean",
+        "udt_name": "bool",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "must_change_pw": {
+        "data_type": "boolean",
+        "udt_name": "bool",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "refresh_token": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "access_expires_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "created_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "security_question": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "security_answer_hash": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "must_set_security_question": {
+        "data_type": "boolean",
+        "udt_name": "bool",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "security_answer_fail_count": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "security_answer_locked_until": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "revocation_reason": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "activation_code": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "activation_fail_count": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "activation_locked_until": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "pending_admin_review": {
+        "data_type": "boolean",
+        "udt_name": "bool",
+        "is_nullable": "YES",
+        "has_default": true
+      }
+    },
+    "terms": {
+      "id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "name": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "academic_year": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "school_code": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "is_current": {
+        "data_type": "boolean",
+        "udt_name": "bool",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "start_date": {
+        "data_type": "date",
+        "udt_name": "date",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "end_date": {
+        "data_type": "date",
+        "udt_name": "date",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "days_opened": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "next_term_begins": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      }
+    },
+    "classes": {
+      "id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "school_code": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "name": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "arm": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      }
+    },
+    "subjects": {
+      "id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "school_code": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "name": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "code": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      }
+    },
+    "teacher_subjects": {
+      "user_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "subject_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": false
+      }
+    },
+    "students": {
+      "id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "school_code": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "admission_number": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "full_name": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "class_name": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "gender": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "date_of_birth": {
+        "data_type": "date",
+        "udt_name": "date",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "user_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "created_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "deleted_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "deleted_by": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      }
+    },
+    "parent_wards": {
+      "parent_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "student_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "NO",
+        "has_default": false
+      }
+    },
+    "scores": {
+      "id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "student_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "subject_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "term_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "ca1": {
+        "data_type": "numeric",
+        "udt_name": "numeric",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "ca2": {
+        "data_type": "numeric",
+        "udt_name": "numeric",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "exam": {
+        "data_type": "numeric",
+        "udt_name": "numeric",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "total": {
+        "data_type": "numeric",
+        "udt_name": "numeric",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "grade": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "teacher_remark": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "entered_by": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "updated_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "class_name": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      }
+    },
+    "attendance": {
+      "id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "student_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "term_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "days_present": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": true
+      }
+    },
+    "class_records": {
+      "id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "student_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "term_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "class_teacher_remark": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "admin_remark": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "updated_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      }
+    },
+    "class_locks": {
+      "id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "school_code": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "class_name": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "term_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "locked_by": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "locked_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      }
+    },
+    "weekly_efforts": {
+      "id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "student_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "subject_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "term_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "week": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "attendance_percent": {
+        "data_type": "numeric",
+        "udt_name": "numeric",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "tasks_completed": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "tasks_assigned": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "mcq_avg": {
+        "data_type": "numeric",
+        "udt_name": "numeric",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "teacher_comment": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "flags": {
+        "data_type": "ARRAY",
+        "udt_name": "_text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "teacher_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "created_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "ai_summary": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "ai_summary_generated_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": false
+      }
+    },
+    "weekly_feedback": {
+      "id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "weekly_effort_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "sender_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "body": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "created_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      }
+    },
+    "materials": {
+      "id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "school_code": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "subject_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "class_name": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "term_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "title": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "type": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "url": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "created_by": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "created_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      }
+    },
+    "questions": {
+      "id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "school_code": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "subject_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "class_name": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "term_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "type": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "stem": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "options": {
+        "data_type": "jsonb",
+        "udt_name": "jsonb",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "correct_keys": {
+        "data_type": "ARRAY",
+        "udt_name": "_text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "marks": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "created_by": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "created_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      }
+    },
+    "assessments": {
+      "id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "school_code": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "subject_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "class_name": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "term_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "title": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "total_marks": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "start_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "end_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "shuffle": {
+        "data_type": "boolean",
+        "udt_name": "bool",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "status": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "created_by": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "created_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "content_fingerprint": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      }
+    },
+    "assessment_questions": {
+      "assessment_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "question_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "points": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "order_index": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      }
+    },
+    "submissions": {
+      "id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "assessment_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "student_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "answers": {
+        "data_type": "jsonb",
+        "udt_name": "jsonb",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "auto_score": {
+        "data_type": "numeric",
+        "udt_name": "numeric",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "total_score": {
+        "data_type": "numeric",
+        "udt_name": "numeric",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "started_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "submitted_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "fully_graded": {
+        "data_type": "boolean",
+        "udt_name": "bool",
+        "is_nullable": "NO",
+        "has_default": true
+      }
+    },
+    "topics": {
+      "id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "school_code": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "subject_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "class_name": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "term_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "title": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "description": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "summary": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "generated_assessment_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "created_by": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "created_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "term_label": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "source_reference": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "order_index": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "source_file": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "sequence_rank": {
+        "data_type": "numeric",
+        "udt_name": "numeric",
+        "is_nullable": "YES",
+        "has_default": false
+      }
+    },
+    "topic_completions": {
+      "id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "topic_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "student_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "completed_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "passed": {
+        "data_type": "boolean",
+        "udt_name": "bool",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "score_percent": {
+        "data_type": "numeric",
+        "udt_name": "numeric",
+        "is_nullable": "YES",
+        "has_default": false
+      }
+    },
+    "messages": {
+      "id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "sender_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "recipient_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "body": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "is_read": {
+        "data_type": "boolean",
+        "udt_name": "bool",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "context_type": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "context_id": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "created_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      }
+    },
+    "fee_items": {
+      "id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "school_code": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "name": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "amount": {
+        "data_type": "numeric",
+        "udt_name": "numeric",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "class_name": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      }
+    },
+    "invoices": {
+      "id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "student_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "term_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "total": {
+        "data_type": "numeric",
+        "udt_name": "numeric",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "status": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "issued_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      }
+    },
+    "invoice_items": {
+      "invoice_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "fee_item_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "amount": {
+        "data_type": "numeric",
+        "udt_name": "numeric",
+        "is_nullable": "NO",
+        "has_default": false
+      }
+    },
+    "notification_settings": {
+      "user_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "push_enabled": {
+        "data_type": "boolean",
+        "udt_name": "bool",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "sms_enabled": {
+        "data_type": "boolean",
+        "udt_name": "bool",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "email_enabled": {
+        "data_type": "boolean",
+        "udt_name": "bool",
+        "is_nullable": "YES",
+        "has_default": true
+      }
+    },
+    "device_push_tokens": {
+      "id": {
+        "data_type": "bigint",
+        "udt_name": "int8",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "user_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "expo_push_token": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "platform": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "last_seen_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "created_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      }
+    },
+    "push_deliveries": {
+      "id": {
+        "data_type": "bigint",
+        "udt_name": "int8",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "user_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "token": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "title": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "body_preview": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "status": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "provider_ticket_id": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "error": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "message_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "created_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "updated_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      }
+    },
+    "audit_log": {
+      "id": {
+        "data_type": "bigint",
+        "udt_name": "int8",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "actor_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "actor_name": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "action": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "entity": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "entity_id": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "school_code": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "detail": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "created_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      }
+    },
+    "email_log_queue": {
+      "id": {
+        "data_type": "bigint",
+        "udt_name": "int8",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "level": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "event": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "payload": {
+        "data_type": "jsonb",
+        "udt_name": "jsonb",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "processed_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "created_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      }
+    },
+    "submission_answers": {
+      "id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "submission_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "question_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "question_type": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "selected_key": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "answer_text": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "max_points": {
+        "data_type": "numeric",
+        "udt_name": "numeric",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "awarded_points": {
+        "data_type": "numeric",
+        "udt_name": "numeric",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "ai_suggested_points": {
+        "data_type": "numeric",
+        "udt_name": "numeric",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "ai_feedback": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "grading_status": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "graded_by": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "graded_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "created_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      }
+    },
+    "term_access_pins": {
+      "id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "student_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "term_label": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "pin": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "redeemed_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "created_by": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "created_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      }
+    },
+    "student_study_settings": {
+      "student_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "daily_minutes": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "updated_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      }
+    },
+    "student_study_subjects": {
+      "student_id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "subject_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "included": {
+        "data_type": "boolean",
+        "udt_name": "bool",
+        "is_nullable": "NO",
+        "has_default": true
+      }
+    },
+    "class_access_codes": {
+      "id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "school_code": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "class_name": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "code": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "created_by": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "created_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "fail_count": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "locked_until": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": false
+      }
+    },
+    "topic_sequence_audit": {
+      "id": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "plan_version": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "plan_hash": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "school_code": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "topic_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "previous_rank": {
+        "data_type": "numeric",
+        "udt_name": "numeric",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "new_rank": {
+        "data_type": "numeric",
+        "udt_name": "numeric",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "applied_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "rolled_back_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": false
+      }
+    },
+    "topic_assets": {
+      "id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "topic_id": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "asset_key": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "kind": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "mime": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "sha256": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "caption": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "sort_order": {
+        "data_type": "integer",
+        "udt_name": "int4",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "displayed": {
+        "data_type": "boolean",
+        "udt_name": "bool",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "bytes": {
+        "data_type": "bytea",
+        "udt_name": "bytea",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "created_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "alt_text": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      }
+    },
+    "announcements": {
+      "id": {
+        "data_type": "bigint",
+        "udt_name": "int8",
+        "is_nullable": "NO",
+        "has_default": true
+      },
+      "school_code": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "title": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "body": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "NO",
+        "has_default": false
+      },
+      "audience_role": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "class_name": {
+        "data_type": "text",
+        "udt_name": "text",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "created_by": {
+        "data_type": "uuid",
+        "udt_name": "uuid",
+        "is_nullable": "YES",
+        "has_default": false
+      },
+      "created_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": true
+      },
+      "expires_at": {
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz",
+        "is_nullable": "YES",
+        "has_default": false
+      }
+    }
+  }
+}

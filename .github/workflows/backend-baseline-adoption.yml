@@ -1,0 +1,44 @@
+name: Backend production baseline adoption guard
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/backend-baseline-adoption.yml'
+      - '.github/workflows/production-db-migrations.yml'
+      - 'backend/src/db/adoptExistingBaseline.ts'
+      - 'backend/migrations/baseline/0001_contract.json'
+      - 'backend/migrations/0001_baseline.sql'
+      - 'backend/package.json'
+      - 'tests/db-baseline-adoption.contract.test.cjs'
+  push:
+    branches: [master]
+    paths:
+      - '.github/workflows/backend-baseline-adoption.yml'
+      - '.github/workflows/production-db-migrations.yml'
+      - 'backend/src/db/adoptExistingBaseline.ts'
+      - 'backend/migrations/baseline/0001_contract.json'
+      - 'backend/migrations/0001_baseline.sql'
+      - 'backend/package.json'
+      - 'tests/db-baseline-adoption.contract.test.cjs'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build backend
+        run: npm run build --workspace backend
+      - name: Verify immutable baseline contract
+        run: node --test tests/db-baseline-adoption.contract.test.cjs
+      - name: Validate production migration workflow syntax
+        run: docker run --rm -v "$GITHUB_WORKSPACE:/repo" -w /repo rhysd/actionlint:1.7.7 -color .github/workflows/production-db-migrations.yml

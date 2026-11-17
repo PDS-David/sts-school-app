@@ -1,0 +1,175 @@
+name: Production PostgreSQL baseline adoption and migrations
+
+on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: Run a read-only preflight, or adopt the verified baseline and apply migrations.
+        required: true
+        type: choice
+        default: preflight
+        options:
+          - preflight
+          - apply
+      confirm_database_name:
+        description: Type the exact production database name.
+        required: true
+        type: string
+      backup_run_id:
+        description: Successful run ID from Render PostgreSQL encrypted backup.
+        required: true
+        type: string
+      backup_decryption_verified:
+        description: Confirm you decrypted the age artifact locally and verified its checksum and pg_restore archive listing.
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: production-postgres-migrations
+  cancel-in-progress: false
+
+jobs:
+  production-migration:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    environment: production
+    timeout-minutes: 30
+    env:
+      DATABASE_URL: ${{ secrets.RENDER_POSTGRES_EXTERNAL_URL }}
+      NODE_ENV: production
+      OPERATION: ${{ inputs.operation }}
+      CONFIRM_DATABASE_NAME: ${{ inputs.confirm_database_name }}
+      BACKUP_RUN_ID: ${{ inputs.backup_run_id }}
+      BACKUP_DECRYPTION_VERIFIED: ${{ inputs.backup_decryption_verified }}
+    steps:
+      - name: Validate explicit confirmation and backup secret
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$CONFIRM_DATABASE_NAME" = "sts_school_db_2" || { echo "::error::Database confirmation must be exactly sts_school_db_2"; exit 1; }
+          test -n "$DATABASE_URL" || { echo "::error::Missing RENDER_POSTGRES_EXTERNAL_URL repository secret"; exit 1; }
+          case "$DATABASE_URL" in *sslmode=require*) ;; *) echo "::error::External PostgreSQL URL must include sslmode=require"; exit 1 ;; esac
+          [[ "$BACKUP_RUN_ID" =~ ^[0-9]+$ ]] || { echo "::error::backup_run_id must be a numeric GitHub Actions run ID"; exit 1; }
+          if [[ "$OPERATION" == "apply" && "$BACKUP_DECRYPTION_VERIFIED" != "true" ]]; then
+            echo "::error::Apply requires explicit confirmation that the encrypted backup was decrypted and verified locally."
+            exit 1
+          fi
+
+      - name: Verify successful encrypted PostgreSQL backup artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          run_json="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${BACKUP_RUN_ID}")"
+          [[ "$(jq -r '.path' <<< "$run_json")" == ".github/workflows/render-postgres-backup.yml" ]] || { echo "::error::The supplied run ID is not the Render PostgreSQL backup workflow."; exit 1; }
+          [[ "$(jq -r '.status' <<< "$run_json")" == "completed" ]] || { echo "::error::The backup workflow has not completed."; exit 1; }
+          [[ "$(jq -r '.conclusion' <<< "$run_json")" == "success" ]] || { echo "::error::The backup workflow did not succeed."; exit 1; }
+          [[ "$(jq -r '.head_branch' <<< "$run_json")" == "master" ]] || { echo "::error::The backup was not created from master."; exit 1; }
+          created_at="$(jq -r '.created_at' <<< "$run_json")"
+          created_epoch="$(date -u -d "$created_at" +%s)"
+          now_epoch="$(date -u +%s)"
+          (( now_epoch - created_epoch <= 604800 )) || { echo "::error::The encrypted backup run is older than seven days; create a fresh one."; exit 1; }
+          artifact_dir="$RUNNER_TEMP/verified-postgres-backup"
+          mkdir -p "$artifact_dir"
+          gh run download "$BACKUP_RUN_ID" --repo "$GITHUB_REPOSITORY" --dir "$artifact_dir"
+          mapfile -t archives < <(find "$artifact_dir" -type f -name '*.dump.age')
+          mapfile -t checksums < <(find "$artifact_dir" -type f -name '*.dump.age.sha256')
+          mapfile -t manifests < <(find "$artifact_dir" -type f -name 'manifest.txt')
+          [[ ${#archives[@]} -eq 1 && ${#checksums[@]} -eq 1 && ${#manifests[@]} -eq 1 ]] || { echo "::error::Expected exactly one encrypted dump, checksum file and manifest."; exit 1; }
+          archive="${archives[0]}"
+          checksum_file="${checksums[0]}"
+          manifest="${manifests[0]}"
+          [[ -s "$archive" ]] || { echo "::error::Encrypted archive is empty."; exit 1; }
+          [[ "$(head -n 1 "$archive")" == "age-encryption.org/v1" ]] || { echo "::error::Artifact does not have an age encryption header."; exit 1; }
+          grep -Fxq 'database=sts-school-db-2' "$manifest" || { echo "::error::Backup manifest names a different database."; exit 1; }
+          archive_name="$(basename "$archive")"
+          grep -Fxq "encrypted_file=$archive_name" "$manifest" || { echo "::error::Manifest does not identify the encrypted archive."; exit 1; }
+          expected_hash="$(awk 'NR==1 {print $1}' "$checksum_file")"
+          manifest_hash="$(awk -F= '/^sha256=/{print $2; exit}' "$manifest")"
+          actual_hash="$(sha256sum "$archive" | awk '{print $1}')"
+          [[ -n "$expected_hash" && "$expected_hash" == "$actual_hash" ]] || { echo "::error::Encrypted artifact SHA-256 verification failed."; exit 1; }
+          if [[ -n "$manifest_hash" && "$manifest_hash" != "$actual_hash" ]]; then
+            echo "::error::Manifest SHA-256 does not match the encrypted artifact."
+            exit 1
+          fi
+          echo "Verified encrypted backup artifact: $archive_name ($actual_hash)" >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install repository dependencies
+        run: npm ci
+
+      - name: Capture pre-migration row counts
+        id: snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          row_count_sql="SELECT string_agg(format('%I=%s', table_name, (xpath('//c/text()', query_to_xml(format('SELECT count(*) AS c FROM public.%I', table_name), false, true, '')))[1]::text), E'\n' ORDER BY table_name) FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE' AND table_name NOT IN ('schema_migrations','school_events','rate_limit_counters')"
+          counts="$(docker run --rm --env DATABASE_URL --env ROW_COUNT_SQL="$row_count_sql" postgres:18 sh -ceu 'psql "$DATABASE_URL" -X -A -t -v ON_ERROR_STOP=1 -c "$ROW_COUNT_SQL"')"
+          test -n "$counts"
+          echo "counts_b64=$(printf '%s' "$counts" | base64 -w0)" >> "$GITHUB_OUTPUT"
+          echo 'Captured row counts for all existing application and operational tables.' >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Run guarded baseline preflight
+        if: inputs.operation == 'preflight'
+        run: npx tsx backend/src/db/adoptExistingBaseline.ts --confirm-database "$CONFIRM_DATABASE_NAME"
+
+      - name: Adopt the verified baseline
+        if: inputs.operation == 'apply'
+        run: npx tsx backend/src/db/adoptExistingBaseline.ts --apply --confirm-database "$CONFIRM_DATABASE_NAME"
+
+      - name: Apply numbered migrations
+        if: inputs.operation == 'apply'
+        run: npm run db:migrate --workspace backend -- --all
+
+      - name: Verify migration ledger with the application runner
+        if: inputs.operation == 'apply'
+        run: npm run db:migrate:status --workspace backend
+      - name: Verify migration ledger and database integrity
+        if: inputs.operation == 'apply'
+        env:
+          BEFORE_COUNTS_B64: ${{ steps.snapshot.outputs.counts_b64 }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          row_count_sql="SELECT string_agg(format('%I=%s', table_name, (xpath('//c/text()', query_to_xml(format('SELECT count(*) AS c FROM public.%I', table_name), false, true, '')))[1]::text), E'\n' ORDER BY table_name) FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE' AND table_name NOT IN ('schema_migrations','school_events','rate_limit_counters')"
+          after_counts="$(docker run --rm --env DATABASE_URL --env ROW_COUNT_SQL="$row_count_sql" postgres:18 sh -ceu 'psql "$DATABASE_URL" -X -A -t -v ON_ERROR_STOP=1 -c "$ROW_COUNT_SQL"')"
+          before_counts="$(printf '%s' "$BEFORE_COUNTS_B64" | base64 -d)"
+          if [[ "$before_counts" != "$after_counts" ]]; then
+            echo "::error::Existing table row counts changed during migration."
+            diff -u <(printf '%s\n' "$before_counts") <(printf '%s\n' "$after_counts") || true
+            exit 1
+          fi
+          verification_sql="DO \$\$ BEGIN
+            IF (SELECT count(*) FROM public.schema_migrations WHERE version IN ('0001','0002','0003','0004')) <> 4 THEN RAISE EXCEPTION 'Expected migrations 0001-0004'; END IF;
+            IF to_regclass('public.school_events') IS NULL THEN RAISE EXCEPTION 'school_events missing'; END IF;
+            IF to_regclass('public.rate_limit_counters') IS NULL THEN RAISE EXCEPTION 'rate_limit_counters missing'; END IF;
+            IF (SELECT count(*) FROM information_schema.columns WHERE table_schema='public' AND table_name='audit_log' AND column_name IN ('actor_role','actor_school_code','actor_ip','request_id','user_agent','metadata','outcome','previous_hash','event_hash')) <> 9 THEN RAISE EXCEPTION 'Audit columns incomplete'; END IF;
+            IF EXISTS (SELECT 1 FROM pg_constraint WHERE connamespace='public'::regnamespace AND NOT convalidated) THEN RAISE EXCEPTION 'Unvalidated constraints remain'; END IF;
+            IF EXISTS (SELECT 1 FROM pg_index i JOIN pg_class t ON t.oid=i.indrelid JOIN pg_namespace n ON n.oid=t.relnamespace WHERE n.nspname='public' AND (NOT i.indisvalid OR NOT i.indisready)) THEN RAISE EXCEPTION 'Invalid indexes remain'; END IF;
+            IF (SELECT count(*) FROM pg_indexes WHERE schemaname='public' AND indexname IN ('idx_school_events_school_start','idx_school_events_class_start','idx_rate_limit_counters_expiry','idx_audit_log_school_id_desc','idx_audit_log_actor_id_desc','idx_audit_log_action_id_desc','idx_audit_log_event_hash_unique')) <> 7 THEN RAISE EXCEPTION 'Required migration indexes missing'; END IF;
+            IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conrelid='public.audit_log'::regclass AND conname='audit_log_outcome_check' AND convalidated) THEN RAISE EXCEPTION 'Audit outcome check constraint missing or unvalidated'; END IF;
+            IF (SELECT count(*) FROM pg_trigger WHERE tgrelid='public.audit_log'::regclass AND NOT tgisinternal) <> 2 THEN RAISE EXCEPTION 'Audit append-only triggers missing'; END IF;
+            IF NOT EXISTS (SELECT 1 FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname='public' AND p.proname='audit_log_reject_mutation') THEN RAISE EXCEPTION 'Audit append-only function missing'; END IF;
+            IF EXISTS (SELECT 1 FROM pg_constraint WHERE conrelid='public.audit_log'::regclass AND conname='audit_log_actor_id_fkey') THEN RAISE EXCEPTION 'Obsolete audit actor FK remains'; END IF;
+          END \$\$; SELECT version,name,checksum FROM public.schema_migrations ORDER BY version"
+          docker run --rm --env DATABASE_URL --env VERIFICATION_SQL="$verification_sql" postgres:18 sh -ceu 'psql "$DATABASE_URL" -X -v ON_ERROR_STOP=1 -c "$VERIFICATION_SQL"'
+          {
+            echo '### Production migration verification'
+            echo '- Migration ledger contains 0001-0004.'
+            echo '- school_events, rate_limit_counters and all nine audit columns exist.'
+            echo '- Audit append-only function and two triggers exist.'
+            echo '- No unvalidated constraints or invalid indexes.'
+            echo '- Existing table row counts are unchanged.'
+          } >> "$GITHUB_STEP_SUMMARY"
