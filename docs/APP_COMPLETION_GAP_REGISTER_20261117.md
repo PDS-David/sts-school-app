@@ -25,7 +25,7 @@ Agricultural Science, Biology, Bookkeeping, Catering Craft, Chemistry, Civic Edu
 
 | Class | Subjects with a package on master | Additional package in open PR | No package yet |
 |---|---:|---:|---:|
-| SS2 | 5 of 21 | 2 (Civic Education, PR #969; Government, PR #974) | 14 |
+| SS2 | 5 of 21 | 3 (Civic Education, PR #969; Government, PR #974; Mathematics T2/T3 extension, draft PR #980) | 14 |
 | SS3 | 2 of 21 | 0 | 19 |
 
 **SS2 subjects with no package yet:** Bookkeeping, Catering Craft, Commerce, Data Processing, Economics, English, Financial Accounting, Food & Nutrition, French, Further Mathematics, Geography, Literature, Technical Drawing and Yoruba.
@@ -41,7 +41,7 @@ The source registry contains 61 SS2 and 39 SS3 members because some class/term s
 | Agricultural Science | 19 | 195 | Three terms represented, but 47 open items remain. The package has 52 asset records, including 42 unresolved source-extract placeholders. Original question reconciliation, source visuals, practical safety/marking, rights and independent QA remain open. |
 | Biology | 25 | 50 | Three terms represented. Source audit maps 139 labelled assessment/assignment blocks, but this is not proof that every original prompt, answer and visual is implemented. Seven open items; no package assets. Source question reconciliation, examples/answers, rights and independent QA remain open. |
 | Chemistry | 28 | 56 | Three terms represented. All 28 coverage rows remain PARTIAL; four open items and no assets. Full source question/answer, worked-example, equation, visual and practical reconciliation remains open. |
-| Mathematics | 10 | 20 | First Term only. Second- and Third-Term implementation is absent; coverage has UNRESOLVED rows. Three open items; no assets. |
+| Mathematics | 10 | 20 | Master contains First-Term only. Draft PR #980 adds 11 Second-Term and 10 Third-Term units (31 total; 62 practice records), but original assessments, Week 2/Week 10–11 discrepancies, visuals and independent QA remain open. |
 | Physics | 26 | 52 | Three terms represented. All coverage rows remain PARTIAL; three open items and no assets. Full source assessment, equation, diagram, practical and independent QA reconciliation remains open. |
 | Civic Education (PR #969) | 26 | 52 | Nine First-Term, nine Second-Term and eight Third-Term draft units. Source-located evaluation prompts and authored practice are distinct. Seven open items remain for full assignment reconciliation, visuals, source rights and independent QA. PR is open and not merged. |
 | Government (PR #974) | 30 | 60 | Ten source-week draft units per term. Source-located evaluation prompts and authored practice are distinct. Seven open items remain for complete assignment reconciliation, historical fact-check, visuals, rights and independent QA. |
@@ -183,7 +183,7 @@ This is consistent with the former Free database expiring and being deleted. It 
 
 ## 5. GitHub Issues and active PRs
 
-### Open issues (five currently open; #975 consolidated as duplicate of #976)
+### Open issues (six currently open; #975 consolidated as duplicate of #976)
 
 | Issue | Severity | Current finding | Required resolution |
 |---|---|---|---|
@@ -191,7 +191,8 @@ This is consistent with the former Free database expiring and being deleted. It 
 | [#952](https://github.com/PDS-David/sts-school-app/issues/952) | P1 | Production schema drift, absent migration ledger, missing school-events/rate-limit tables and audit controls. | Recover historical migration origin, verify encrypted backup/restore, prepare exact baseline plan and apply only after owner approval. |
 | [#954](https://github.com/PDS-David/sts-school-app/issues/954) | P1 | Free database expires 2026-12-12; Free plan has no backups/PITR. | Configure encrypted backups, pass restore rehearsal, then approve paid-plan upgrade or replacement migration before expiry. |
 | [#955](https://github.com/PDS-David/sts-school-app/issues/955) | P2 | External database allowlist is `0.0.0.0/0`. | Inventory legitimate external clients, move service traffic to private networking and restrict external CIDRs. |
-| [#976](https://github.com/PDS-David/sts-school-app/issues/976) | P1 | Previous production database `sts-school-db` is absent; current replacement has zero student/attendance/score/invoice/message rows, 1 admin user and 1,408 Primary-only curriculum topics. Backup recovery is not yet ruled in or out. Duplicate #975 is closed as duplicate of this canonical issue. | Search encrypted email backups, local exports and off-host storage; verify and restore only into an isolated database. |
+| [#976](https://github.com/PDS-David/sts-school-app/issues/976) | P1 | Previous production database `sts-school-db` is absent; current replacement has zero student/attendance/score/invoice/message rows, 1 admin user and 1,408 Primary-only curriculum topics. Curriculum archives are recovered; database/roster backup recovery remains open. Duplicate #975 is closed as duplicate of this canonical issue. | Search encrypted email backups, local exports and off-host storage; verify and restore only into an isolated database. |
+| [#979](https://github.com/PDS-David/sts-school-app/issues/979) | P1 | Public self-claim roster endpoint exposes unclaimed student names/UUIDs before checking the class code. | Require class code before roster lookup or use a single-student lookup; add no-store and regression tests. |
 
 ### Open PRs (none merged by this work)
 
@@ -204,6 +205,8 @@ This is consistent with the former Free database expiring and being deleted. It 
 | [#973](https://github.com/PDS-David/sts-school-app/pull/973) | This evidence-based application completion gap register. | Open; documentation only. |
 | [#974](https://github.com/PDS-David/sts-school-app/pull/974) | SS2 Government: 30 draft units and 60 practice records across all three terms. | Open; SS23 contract, SS23 integrity and SS1 integrity pass on head `67f6b241c6bb174454f8075a825916712c498d5b`; shared JSS3 workflow fails on `tests/jss3-yo-license.db.test.mts` assertion `prompts.length >= 2`. |
 | [#977](https://github.com/PDS-David/sts-school-app/pull/977) | Connect delivery-gated SS2/SS3 packages to student subject discovery and lesson screens. | Open; backend, mobile, package and cross-project CI running. |
+| [#978](https://github.com/PDS-David/sts-school-app/pull/978) | Finance-admin role audit; enforce `messages.read` on inbox/conversation/contacts; align messaging and shared-quota CI with PostgreSQL migrations. | Open; focused Messages RBAC test passes on latest run; PostgreSQL integration workflows rerun after harness repair. |
+| [#980](https://github.com/PDS-David/sts-school-app/pull/980) | Extend SS2 Mathematics to 31 draft units across all three terms and record rendered-source reconciliation. | Draft; all 31 body hashes match; source assessment, Week 2/Week 10–11 and visual QA remain blocking. |
 
 
 ## 8. Additional product and administration gaps
@@ -246,7 +249,7 @@ The four-role audit does not include `finance_admin`. The old app-wide audit als
 
 1. Complete PR #972 mobile CI; fix any actual export/emulator failures without masking them.
 2. Complete PR #969's remaining SS2 Civic Education assessment/visual/QA work; keep it blocked from student delivery until those gates pass.
-3. Add the next source-backed SS2 subject package and tests, then continue subject-by-subject through the 15 remaining SS2 subjects.
+3. Complete PR #980's original-assessment and visual reconciliation; then add the next source-backed SS2 subject package and tests, continuing subject-by-subject through the 14 subjects without a package.
 4. Complete SS3 revision packages only after the corresponding prior-learning topics are implemented and verified in earlier classes.
 5. Complete all source assessment, answer, marking, visual, rights and independent QA reconciliation for existing packages.
 6. Configure and run the encrypted backup workflow; download and restore into an isolated database.
@@ -297,22 +300,22 @@ This addendum supersedes the earlier counts and CI descriptions above where they
 
 ## 11. Source archive recovery and curriculum continuation — 2026-11-17
 
-The SS2 and SS3 combined source archives have now been recovered from the connected Library and verified against their exact recorded SHA-256 values. The original source-access blocker is removed; no re-upload is required. See [SS23 source archive recovery register](../ss23/SOURCE_ARCHIVE_RECOVERY_20261117.md) on the Mathematics continuation branch / PR #980 for the full 100-member inventory, hashes, internal-header status and four version conflicts.
+The SS2 and SS3 combined source archives have now been recovered from the existing execution workspace and verified against their exact recorded SHA-256 values. The original source-access blocker is removed; no re-upload is required. See [SS23 source archive recovery register](../ss23/SOURCE_ARCHIVE_RECOVERY_20261117.md) on the Mathematics continuation branch / PR #980 for the full 100-member inventory, hashes, internal-header status and four version conflicts.
 
 - SS2 archive: 61 members (47 DOCX, 13 DOC, 1 PPTX), SHA-256 `a97506c7f030a6e9604a13ae0aab30f59563a1473ec682f647459549dd9e1153`.
 - SS3 archive: 39 members (28 DOCX, 11 DOC), SHA-256 `045e261aba9475b32b4cb963a2495faf3ddd503860b205aa1e89f0ac07d3c741`.
-- The 100 member records span 21 subjects. 96 match earlier registered hashes; four received candidate versions remain on hold pending a defensible version decision.
-- Header reconciliation: 84 fully verified; 11 do not state term internally; five additional class/term anomalies require quarantine or review.
+- The 100 member records span 21 subjects. All 100 archive members match the extraction manifest by byte count and SHA-256; 96 also match the earlier register, while four received candidate versions remain on hold pending a defensible version decision.
+- Header reconciliation: 84 fully verified; 11 do not state term internally; five additional class/term anomalies require quarantine or review. The malformed SS2 T3 Mathematics DOCX was recovered from its exact OpenXML package (27 tables, 3 images and one embedded worksheet); visual reconciliation remains open.
 - SS3 Third Term remains empty. Missing SS2/SS3 term sources remain missing and must not be fabricated.
 - PR #980 extends SS2 Mathematics to 31 draft units across all three terms and 62 practice records. It retains unresolved source Week 2 and Week 10/11 sequence discrepancies, and does not clear assessments, visuals, rights or independent QA.
 
-The remaining curriculum work is now source-backed and can proceed subject by subject. Packages remain pending until source assessments, visuals, answer marking, rights and independent subject QA are reconciled.
+The remaining curriculum work is now source-backed and can proceed subject by subject. PR #980 is the current Mathematics continuation; the next subject work should follow the recovered source inventory. Packages remain pending until source assessments, visuals, answer marking, rights and independent subject QA are reconciled.
 
 
 ## 12. Latest PR and source implementation state — 2026-11-17 01:42 UTC
 
 - PR #980 is now open: [SS2 Mathematics T2/T3 implementation and source archive recovery](https://github.com/PDS-David/sts-school-app/pull/980). It extends Mathematics from 10 First-Term units to 31 draft units across all three terms and 62 practice records. It also commits the recovered archive verification report and updates the SS23 checkpoint/handoff.
-- PR #980 head `837a9c497c98782e2797a1b1bb3f982eebc52386`: SS23 package integrity, package contract tests, source validation and SS1 integrity have passed. The cross-project JSS3 verification workflow was still running at the latest check; no JSS3 files were changed.
+- PR #980 current head is the source-reconciliation update; all 31 Mathematics unit body hashes independently match. The current CI run must be checked against that latest head; the earlier head's SS23 package integrity, package contract tests, source validation and SS1 integrity passed. No JSS3 files were changed.
 - Mathematics remains PENDING with all units DRAFT and verification DEFERRED. T2 Week 2 is explicitly unresolved; T2 Week 10/11 scheme/body mismatch remains blocking; all original assessment blocks and visual items remain to be reconciled.
-- Open PRs now include #969, #970, #971, #972, #973, #974, #977 and #980 (eight total). The owner retains merge authority; no PR has been merged by this execution.
+- Open PRs now include #969, #970, #971, #972, #973, #974, #977, #978 and #980 (nine total: eight implementation/operations PRs plus this gap-register PR). The owner retains merge authority; no PR has been merged by this execution.
 - The two original curriculum archives are verified and available. The remaining source blockers are not archive access: they are the four unresolved version differences, five header anomalies, missing source terms, assessment/visual reconciliation, rights and independent subject QA.
