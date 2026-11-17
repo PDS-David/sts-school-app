@@ -57,7 +57,7 @@
 
 import { GoogleGenAI } from '@google/genai';
 import dotenv from 'dotenv';
-import { consumePostgresQuota } from './redisRateLimitStore.js';
+import { consumePostgresQuota } from './postgresRateLimitStore.js';
 dotenv.config();
 
 // ═══════════════════════════════════════════════════════════════════════════
