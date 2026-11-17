@@ -15,7 +15,7 @@ export default function MyResultsScreen({ route, navigation }: any) {
   // detail link); otherwise we fall back to whichever child is selected in the
   // dashboard's child-switcher, so "Ward's Results" always shows exactly one
   // child's report — never a blend of siblings.
-  const { parentStudentId } = route?.params ?? {};
+  const { parentStudentId, termId } = route?.params ?? {};
   const { user } = useAuth();
   const { selectedWardId } = useWards();
   const effectiveWardId = parentStudentId ?? selectedWardId;
@@ -55,7 +55,7 @@ export default function MyResultsScreen({ route, navigation }: any) {
         if (!myStudent) { setError('No student record linked to your account.'); return; }
         url = `/scores/report/${myStudent.id}`;
       } else if ((user?.role === 'admin' || user?.role === 'teacher') && parentStudentId) {
-        url = `/scores/report/${parentStudentId}`;
+        url = `/scores/report/${parentStudentId}${termId ? `?term_id=${encodeURIComponent(String(termId))}` : ''}`;
       } else if (user?.role === 'admin' || user?.role === 'teacher') {
         setError('No student selected.');
         return;
@@ -95,11 +95,9 @@ export default function MyResultsScreen({ route, navigation }: any) {
   const { student, term, scores, attendance, class_record, summary } = report;
   const brand = getSchoolBrand(student.school_code);
 
-  // Print/Export is deliberately admin + parent only — this is a report
-  // TEACHERS generate the underlying data for, but the school's own decision
-  // was that printing/exporting the finished document is an admin/parent
-  // action, not something a teacher or the student themselves does from here.
-  const canPrintExport = user?.role === 'admin' || user?.role === 'parent';
+  // Teachers generate and export reports for students in their assigned
+  // physical class. Backend report access independently enforces that scope.
+  const canPrintExport = user?.role === 'admin' || user?.role === 'parent' || user?.role === 'teacher';
 
 
   const handlePrint = async () => {
@@ -173,7 +171,7 @@ export default function MyResultsScreen({ route, navigation }: any) {
       <Btn
         label="View Session Report (1st + 2nd + 3rd Term)"
         variant="outline"
-        onPress={() => navigation.navigate('SessionReport', { parentStudentId })}
+        onPress={() => navigation.navigate('SessionReport', { parentStudentId, academic_year: term?.academic_year })}
         style={{ marginBottom: Spacing.sm }}
       />
 
