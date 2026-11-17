@@ -168,11 +168,22 @@ router.get('/deleted', requireRole('admin'), async (req, res) => {
 // doesn't confirm that the record exists at all.
 router.get('/:id', requirePerm('students.read'), async (req, res) => {
   const user = req.user!;
+  if (user.role === 'teacher') {
+    const scopeError = await checkTeacherDeleteScope(user, req.params.id);
+    if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
+    if (!user.assigned_class) {
+      return res.status(403).json({ error: 'Report access requires an assigned physical class.' });
+    }
+  }
   const params: unknown[] = [req.params.id];
   let schoolClause = '';
   if (user.role !== 'admin' || user.school_code) {
     params.push(user.school_code);
-    schoolClause = ` AND s.school_code=$${params.length}`;
+    schoolClause = ` AND s.school_code=${params.length}`;
+  }
+  if (user.role === 'teacher') {
+    params.push(user.assigned_class);
+    schoolClause += ` AND s.class_name=${params.length}`;
   }
   // Admin can still open a soft-deleted student's detail page (needed to
   // show the "Restore" action) — everyone else gets a 404, same as if the
@@ -413,7 +424,7 @@ router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
 //      deleted_at/deleted_by, so historical scores/attendance still resolve
 //      correctly and an admin can bring it back via POST /:id/restore. Every
 //      audit entry records exactly who did it and what was deleted.
-router.delete('/:id', requirePerm('grades.write'), async (req, res) => {
+router.delete('/:id', requireRole('admin', 'teacher'), async (req, res) => {
   const user = req.user!;
   const scopeError = await checkTeacherDeleteScope(user, req.params.id);
   if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
