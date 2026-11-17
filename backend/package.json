@@ -12,6 +12,7 @@
     "db:create-staging-admin": "node --import tsx src/db/createStagingAdmin.ts",
     "db:create-first-admin": "node --import tsx src/db/createFirstAdmin.ts",
     "db:migrate": "tsx src/db/migrate.ts",
+    "db:adopt-baseline": "node --import tsx src/db/adoptExistingBaseline.ts",
     "db:seed": "tsx src/db/seed.ts",
     "db:curriculum-audit": "node --import tsx src/db/ingestTopics.ts",
     "db:curriculum-coverage": "node --import tsx src/db/topicsCoverageReport.ts",
