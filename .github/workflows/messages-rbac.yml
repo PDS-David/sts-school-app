@@ -1,0 +1,37 @@
+name: Messages RBAC tests
+
+on:
+  pull_request:
+    paths:
+      - 'backend/src/routes/messages.ts'
+      - 'backend/src/middleware/auth.ts'
+      - 'backend/src/utils/rbac.ts'
+      - 'backend/package.json'
+      - 'backend/package-lock.json'
+      - 'tests/backend-messages-rbac.test.mts'
+      - '.github/workflows/messages-rbac.yml'
+  push:
+    branches: [master]
+    paths:
+      - 'backend/src/routes/messages.ts'
+      - 'backend/src/middleware/auth.ts'
+      - 'backend/src/utils/rbac.ts'
+      - 'backend/package.json'
+      - 'backend/package-lock.json'
+      - 'tests/backend-messages-rbac.test.mts'
+      - '.github/workflows/messages-rbac.yml'
+
+jobs:
+  messages-rbac:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+      - run: npm ci
+        working-directory: backend
+      - run: npm run test:messages-rbac
+        working-directory: backend
