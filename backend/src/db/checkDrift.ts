@@ -117,6 +117,7 @@ async function main() {
   const issues: string[] = [];
   let client: PoolClient | undefined;
   let transactionStarted = false;
+  let rollbackFailed = false;
 
   try {
     client = await pool.connect();
@@ -131,7 +132,7 @@ async function main() {
     const schemaSql = readFileSync(path.resolve(__dirname, '../../schema.sql'), 'utf-8');
     await client.query(schemaSql);
 
-    console.log('Introspecting expected (throwaway) vs actual (public) schema…\\n');
+    console.log('Introspecting expected (throwaway) vs actual (public) schema…\n');
 
     const expectedTables = await getTables(client, tempSchema);
     const actualTables = await getTables(client, 'public');
@@ -217,13 +218,13 @@ async function main() {
     } else {
       const blocking = issues.filter((i) => !i.includes('(informational)'));
       const informational = issues.filter((i) => i.includes('(informational)'));
-      console.log(`⚠️  ${issues.length} irregularit${issues.length === 1 ? 'y' : 'ies'} found:\\n`);
+      console.log(`⚠️  ${issues.length} irregularit${issues.length === 1 ? 'y' : 'ies'} found:\n`);
       if (blocking.length) {
         console.log(`--- ${blocking.length} likely to cause real errors (run "npm run db:migrate" to fix missing tables/columns/enums/indexes; missing constraints need a manual ALTER) ---`);
         blocking.forEach((i) => console.log(`  • ${i}`));
       }
       if (informational.length) {
-        console.log(`\\n--- ${informational.length} informational (production has extra stuff not in schema.sql — not necessarily a problem, just worth knowing about) ---`);
+        console.log(`\n--- ${informational.length} informational (production has extra stuff not in schema.sql — not necessarily a problem, just worth knowing about) ---`);
         informational.forEach((i) => console.log(`  • ${i}`));
       }
     }
@@ -241,12 +242,19 @@ async function main() {
         transactionStarted = false;
         console.log('Rollback complete after drift-check failure.');
       } catch (rollbackErr) {
+        rollbackFailed = true;
         console.error('CRITICAL: drift-check transaction rollback failed; inspect database connection and transaction state immediately.', rollbackErr);
       }
     }
     process.exitCode = 1;
   } finally {
-    if (client) client.release();
+    if (client) {
+      client.release(
+        rollbackFailed
+          ? new Error('Drift-check rollback failed; discard this database connection.')
+          : undefined,
+      );
+    }
     await pool.end();
   }
 }
