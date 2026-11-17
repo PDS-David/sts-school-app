@@ -23,13 +23,13 @@ import { startBackupScheduler } from './utils/backup.js';
 import { pool } from './db/pool.js';
 import { installFatalProcessHandlers } from './utils/fatalProcessHandlers.js';
 import {
-  assertRateLimitRedisConfigured,
-  createRedisRateLimitStore,
-  disconnectRedisRateLimitStore,
-} from './utils/redisRateLimitStore.js';
+  assertRateLimitPostgresConfigured,
+  createPostgresRateLimitStore,
+  disconnectPostgresRateLimitStore,
+} from './utils/postgresRateLimitStore.js';
 
 dotenv.config();
-assertRateLimitRedisConfigured();
+await assertRateLimitPostgresConfigured();
 
 const app = express();
 
@@ -41,7 +41,7 @@ app.use(express.json({ limit: '5mb' }));
 app.use('/auth', rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 30,
-  store: createRedisRateLimitStore('auth-ip'),
+  store: createPostgresRateLimitStore('auth-ip'),
 }));
 
 // Routes
@@ -86,7 +86,7 @@ app.use((err: any, _req: express.Request, res: express.Response, _next: express.
   }
 
   if (err?.code === 'RATE_LIMIT_STORE_UNAVAILABLE') {
-    console.error('[rate-limit] shared Redis store unavailable; request denied', err?.cause ?? err);
+    console.error('[rate-limit] shared PostgreSQL store unavailable; request denied', err?.cause ?? err);
     res.set('Retry-After', '5');
     return res.status(503).json({ error: 'Request protection is temporarily unavailable. Please retry shortly.' });
   }
@@ -162,6 +162,6 @@ const server = app.listen(port, () => {
 
 installFatalProcessHandlers(server, async () => {
   await stopBackupScheduler();
-  disconnectRedisRateLimitStore();
+  disconnectPostgresRateLimitStore();
   await pool.end();
 });
