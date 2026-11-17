@@ -1,0 +1,100 @@
+name: Render PostgreSQL encrypted backup
+
+on:
+  schedule:
+    - cron: "20 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: render-postgres-backup
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      RENDER_POSTGRES_EXTERNAL_URL: ${{ secrets.RENDER_POSTGRES_EXTERNAL_URL }}
+      BACKUP_AGE_RECIPIENT: ${{ secrets.BACKUP_AGE_RECIPIENT }}
+    steps:
+      - name: Validate required secrets and TLS
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$RENDER_POSTGRES_EXTERNAL_URL" || { echo "::error::Missing RENDER_POSTGRES_EXTERNAL_URL repository secret"; exit 1; }
+          test -n "$BACKUP_AGE_RECIPIENT" || { echo "::error::Missing BACKUP_AGE_RECIPIENT repository secret"; exit 1; }
+          case "$RENDER_POSTGRES_EXTERNAL_URL" in
+            *sslmode=require*) ;;
+            *) echo "::error::The external PostgreSQL URL must include sslmode=require"; exit 1 ;;
+          esac
+          case "$BACKUP_AGE_RECIPIENT" in
+            age1*) ;;
+            *) echo "::error::BACKUP_AGE_RECIPIENT must be an age public recipient"; exit 1 ;;
+          esac
+
+      - name: Install age
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes age
+
+      - name: Dump PostgreSQL 18 and encrypt immediately
+        id: backup
+        shell: bash
+        run: |
+          set -euo pipefail
+          umask 077
+          backup_dir="$RUNNER_TEMP/render-postgres-backup"
+          mkdir -p "$backup_dir"
+          timestamp="$(date -u +'%Y%m%dT%H%M%SZ')"
+          encrypted_file="$backup_dir/sts-school-db-${timestamp}.dump.age"
+
+          docker run --rm \
+            --env RENDER_POSTGRES_EXTERNAL_URL \
+            --volume "$backup_dir:/backup" \
+            postgres:18 sh -ceu '
+              pg_dump "$RENDER_POSTGRES_EXTERNAL_URL" \
+                --format=custom --no-owner --no-acl --verbose \
+                --file=/backup/database.dump
+              psql "$RENDER_POSTGRES_EXTERNAL_URL" -X -A -t \
+                -c "SELECT current_database() || E''\\t'' || current_setting(''server_version'')" \
+                > /backup/database-info.txt
+            '
+
+          age --recipient "$BACKUP_AGE_RECIPIENT" --output "$encrypted_file" "$backup_dir/database.dump"
+          rm -f "$backup_dir/database.dump"
+          test -s "$encrypted_file"
+          sha256sum "$encrypted_file" > "$encrypted_file.sha256"
+
+          {
+            echo "created_at_utc=$timestamp"
+            echo "database=sts_school_db_2"
+            echo "postgres_client_image=postgres:18"
+            cat "$backup_dir/database-info.txt"
+            echo "encrypted_file=$(basename "$encrypted_file")"
+            cat "$encrypted_file.sha256"
+          } > "$backup_dir/manifest.txt"
+
+          echo "artifact_dir=$backup_dir" >> "$GITHUB_OUTPUT"
+          echo "artifact_name=render-postgres-backup-${timestamp}" >> "$GITHUB_OUTPUT"
+          {
+            echo "### Render PostgreSQL backup created"
+            echo "- UTC timestamp: $timestamp"
+            echo "- Encrypted archive: $(basename "$encrypted_file")"
+            echo "- SHA-256: $(cut -d' ' -f1 "$encrypted_file.sha256")"
+            echo "- Plaintext dump removed from the runner workspace."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload encrypted backup artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.backup.outputs.artifact_name }}
+          path: |
+            ${{ steps.backup.outputs.artifact_dir }}/*.dump.age
+            ${{ steps.backup.outputs.artifact_dir }}/*.dump.age.sha256
+            ${{ steps.backup.outputs.artifact_dir }}/manifest.txt
+          if-no-files-found: error
+          retention-days: 90
