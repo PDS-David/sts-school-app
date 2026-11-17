@@ -74,3 +74,7 @@ After the Redis-backed rate-limit dependency is supplied and the service can sta
 - The full schema drift script was not run because it performs temporary DDL.
 - This report does not claim that all differences between `schema.sql` and production have been found.
 - No production schema changes or migrations were applied.
+
+## Additional Render log finding — 2026-11-17 00:35 UTC
+
+A backend instance emitted `[backup] reminder check failed: getaddrinfo ENOTFOUND dpg-dad2f32jnfac73e5j6r0-a`. This hostname does not match the current Render PostgreSQL instance inspected for this report (`dpg-dbqhddbrjlhs738a4s4g-a`). This is consistent with at least one running service process using a stale database hostname in its connection configuration. The exact environment value was not read, copied or changed. The affected service's `DATABASE_URL`/database connection setting must be reconciled against the current database before backup scheduling or live API health can be trusted. This is a log-based finding; the precise environment variable source remains unconfirmed.
