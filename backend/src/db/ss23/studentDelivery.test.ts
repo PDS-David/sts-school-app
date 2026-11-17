@@ -226,6 +226,20 @@ test('keeps SS3 Agriculture exam-only and links each revision unit to prior lear
   assert.equal(pkg.units.length, 12);
   assert.deepEqual([...new Set(pkg.units.map(unit => unit.term))].sort(), ['1st Term', '2nd Term']);
   assert.ok(pkg.units.every(unit => unit.unit_type === 'REVISION_UNIT'));
+  assert.deepEqual(pkg.units.map(unit => unit.practice[0].question), [
+    'What is malnutrition in farm animals?',
+    'State seven objectives of agricultural extension.',
+    'Define fishery.',
+    'What is animal improvement?',
+    'What is artificial Insemination?',
+    'What is agricultural finance?',
+    'Define agricultural insurance.',
+    'What is agricultural marketing?',
+    'Differentiate between progeny and pedigree selection.',
+    'Define livestock diseases.',
+    'a. Name the causative agent of Newcastle disease. b. What are the symptoms? c. How can it be controlled?',
+    'What are endoparasites?',
+  ]);
   assert.equal(pkg.external_sources.filter(source => source.source_id.startsWith('SS23-EXT-SS1-AGRI-PRIOR-')).length, 2);
   for (const unit of pkg.units) {
     const priorId = unit.term === '1st Term' ? 'SS23-EXT-SS1-AGRI-PRIOR-T1' : 'SS23-EXT-SS1-AGRI-PRIOR-T2';
