@@ -66,3 +66,15 @@
 ## Exact next action
 
 Finish the active Android build/emulator and SDK 57 candidate workflows. If they pass, export the generated SDK 57 package files into a dedicated code change, rerun CI, review PR #947 and merge only after all required checks pass. The remaining external gates are the EAS token, staging test accounts and a physical Android device. Do not mark this task complete until those acceptance results are recorded.
+
+
+## Continuation update — 2026-11-17
+
+- PR #947 head before this update was `2b05ccecf014b86639189406b5e9d1ac66a9f61b`. On that exact head, locked install, offline queue tests, frontend contract tests, mobile TypeScript, Android JS export, native prebuild and debug APK build passed.
+- The emulator booted, but `adb install` failed with Android package-manager `Broken pipe (32)`. The workflow then skipped dependency audit and SDK 57 candidate work because these steps were in the same fail-fast job. The workflow failure is a real failed device smoke test, not a pass.
+- The other seven workflow groups on that PR head passed: SS1 French source/package/hash/regression, SS23 package integrity, Mobile TypeScript, SS1 package integrity, JSS3 implementation/assets, Android mobile readiness and web mobile bundle readiness.
+- The failed emulator job did not reach full/production npm audit or the SDK 57 candidate evaluation. The earlier missing `EXPO_TOKEN` condition remains an external gate for EAS staging APK and production AAB builds.
+- Follow-up commit `55b641b0ebd92b5b3ffd96bd92e619ace81b3b68` updates `.github/workflows/mobile-release-audit.yml`: wait for Android's package manager, retry ADB installation up to four times, allow independent audit/SDK-candidate steps and evidence upload to complete even if emulator smoke fails, then preserve the emulator failure as the final job result. This does not turn a failed device test green or suppress its failure.
+- New exact-head checks must complete before PR #947 is mergeable for release. The branch has not been merged and no signed production AAB or physical-device acceptance is claimed.
+
+**Next action:** inspect the fresh CI runs for commit `55b641b0ebd92b5b3ffd96bd92e619ace81b3b68`, resolve any failure, then rebase/refresh against current master and rerun before considering merge. Separately obtain owner authorization for a production Key Value instance and EAS credentials; do not create billable resources or alter production service configuration without approval.
