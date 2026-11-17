@@ -45,13 +45,13 @@ The Week 2 and Week 10/11 discrepancies are retained as blocking open items. The
 
 ## Package state
 
-The draft package now contains 31 units: 10 First-Term, 11 Second-Term and 10 Third-Term records, with 62 authored supplementary practice records. All 31 body hashes were independently recomputed using UTF-8 SHA-256 and match the committed values.
+The draft package now contains 31 units: 10 First-Term, 11 Second-Term and 10 Third-Term records, with 82 practice records. This includes 62 authored supplementary prompts and 20 original source prompts transcribed from Third-Term Weeks 8-9 (PDF pages 24-31). The 20 source prompts have authored model answers and marking; they are not represented as source-provided answers. All 31 body hashes were independently recomputed using UTF-8 SHA-256 and match the committed values.
 
-The 42 Second-/Third-Term practice records are labelled `AUTHORED_SUPPLEMENT`; none is represented as an original source question. The source assessment blocks, textbook-referenced exercises, original evaluation prompts, and all worked examples still require item-by-item reconciliation. Coverage remains partial/marker/unresolved; four open items block delivery. The package remains `PENDING`, all units remain `DRAFT`, and student delivery remains disabled.
+The existing 42 Second-/Third-Term authored practice prompts remain labelled `AUTHORED_SUPPLEMENT`. The 20 newly transcribed original prompts are labelled `ORIGINAL_SOURCE`, with authored answers clearly distinguished. Remaining source assessment blocks, textbook-referenced exercises, original evaluation prompts and worked examples still require item-by-item reconciliation. Two source option sets omit the independently calculated correct answer (yellow-ball probability and two-dice sum); one source item omits the number of black balls; and one marble question is ambiguous about whether 'two black' means exactly two. Coverage remains partial/marker/unresolved; nine open items block delivery. The package remains `PENDING`, all units remain `DRAFT`, and student delivery remains disabled.
 
 ## Required next QA
 
-1. Reconcile every original evaluation, general-evaluation, ticket-out, weekend-assignment and textbook-referenced exercise block across all three terms.
+1. Reconcile every remaining original evaluation, general-evaluation, ticket-out, weekend-assignment and textbook-referenced exercise block across all three terms; 20 original prompts from T3 Weeks 8-9 are now transcribed.
 2. Inspect rendered diagrams, Word drawing shapes, fraction notation, angle/degree symbols, graph scales, tables and the three T3 embedded images.
 3. Independently verify every authored answer and marking allocation.
 4. Resolve the Week 2 and Week 10/11 source discrepancies without inventing a missing lesson.
