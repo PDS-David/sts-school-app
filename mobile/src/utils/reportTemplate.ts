@@ -121,13 +121,11 @@ export function renderTermReportHtml(
   td { font-size: 8px; line-height: 1.05; text-align: center; padding: 4px 2px; border: 1px solid #d0d0d0; overflow-wrap: anywhere; }
   tbody tr:nth-child(even) { background: #f0f0f0; }
   th:nth-child(1), td:nth-child(1) { width: 25%; text-align: left; padding-left: 5px; }
-  th:nth-child(2), td:nth-child(2), th:nth-child(3), td:nth-child(3),
-  th:nth-child(4), td:nth-child(4) { width: 6.5%; }
-  th:nth-child(5), td:nth-child(5) { width: 7%; }
+  th:nth-child(2), td:nth-child(2), th:nth-child(3), td:nth-child(3) { width: 7%; }
+  th:nth-child(4), td:nth-child(4), th:nth-child(5), td:nth-child(5) { width: 8%; }
   th:nth-child(6), td:nth-child(6) { width: 7%; }
-  th:nth-child(7), td:nth-child(7) { width: 10%; }
-  th:nth-child(8), td:nth-child(8) { width: 10%; }
-  th:nth-child(9), td:nth-child(9) { width: 15%; }
+  th:nth-child(7), td:nth-child(7), th:nth-child(8), td:nth-child(8) { width: 10%; }
+  th:nth-child(9), td:nth-child(9) { width: 18%; }
   .total { font-weight: 800; }
   .grade-a, .grade-b, .grade-c, .grade-other { font-weight: 800; }
   .summary { display: grid; grid-template-columns: 1fr 1fr 1fr; background: #eee; border: 1px solid #111; border-top: 0; }
