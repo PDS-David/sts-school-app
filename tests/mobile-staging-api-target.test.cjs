@@ -14,7 +14,7 @@ const mobile = path.join(root, 'mobile');
 const appJson = JSON.parse(fs.readFileSync(path.join(mobile, 'app.json'), 'utf8'));
 const PROD = appJson.expo.extra.apiUrl; // read, never hard-coded
 const eas = JSON.parse(fs.readFileSync(path.join(mobile, 'eas.json'), 'utf8'));
-const { assertStagingApiUrl, assertKnownTarget, resolveApiBaseUrl } = require(path.join(mobile, 'config', 'apiTarget.js'));
+const { assertStagingApiUrl, assertProductionApiUrl, assertKnownTarget, resolveApiBaseUrl } = require(path.join(mobile, 'config', 'apiTarget.js'));
 const STG = 'https://staging-api.invalid'; // reserved .invalid TLD: syntactically valid, resolves nowhere
 
 function expoConfig(env) {
@@ -59,6 +59,23 @@ test('normal build with EXPO_PUBLIC_API_URL set: manifest unchanged (override ha
   assert.equal(r.json().extra.apiUrl, PROD);
 });
 
+test('production EAS build refuses an EXPO_PUBLIC_API_URL that differs from app.json', () => {
+  const r = expoConfig({ EAS_BUILD_PROFILE: 'production', EXPO_PUBLIC_API_URL: STG });
+  assert.notEqual(r.status, 0);
+  assert.match(r.err + r.out, /EXPO_PUBLIC_API_URL must exactly match the canonical app.json API URL/);
+});
+
+test('production EAS build accepts an explicit EXPO_PUBLIC_API_URL only when it matches app.json', () => {
+  const r = expoConfig({ EAS_BUILD_PROFILE: 'production', EXPO_PUBLIC_API_URL: PROD });
+  assert.equal(r.status, 0, r.err);
+  assert.equal(r.json().extra.apiUrl, PROD);
+});
+
+test('production URL guard accepts an unset override and rejects a different service', () => {
+  assert.equal(assertProductionApiUrl(undefined, PROD), undefined);
+  assert.equal(assertProductionApiUrl(PROD, PROD), PROD);
+  assert.throws(() => assertProductionApiUrl(STG, PROD), /canonical app.json API URL/);
+});
 test('staging build, URL absent: config evaluation fails (cannot silently use production)', () => {
   const r = expoConfig({ STS_BUILD_TARGET: 'staging' });
   assert.notEqual(r.status, 0);
