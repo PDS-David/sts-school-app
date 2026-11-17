@@ -13,7 +13,7 @@ This register records verified implementation gaps in the repository and the liv
   - SS3 `SSS 3-20260507T072839Z-3-001.zip`: `045e261aba9475b32b4cb963a2495faf3ddd503860b205aa1e89f0ac07d3c741` (39 members).
 - Current master registers five SS2 subject packages and two SS3 subject packages. SS2 Civic Education is implemented on PR #969 but is not yet merged. No student-delivery gate has been opened.
 - All seven packages on master are still `PENDING`; lesson implementation is draft and verification is deferred. The additional Civic Education PR preserves the same release gates.
-- There are four open GitHub issues and four open implementation/operations PRs at the time of this register.
+- There are four open GitHub issues, four active implementation/operations PRs, and this gap-register PR.
 
 ## 2. SS2 and SS3 curriculum work remaining
 
@@ -165,7 +165,8 @@ The database's external IP allowlist is `0.0.0.0/0`. No complete inventory of ex
 | [#969](https://github.com/PDS-David/sts-school-app/pull/969) | SS2 Civic Education, all three terms: 26 draft units and 52 practice records. | Open; SS23 contract/integrity and SS1 integrity pass. An unrelated JSS3 check fails on its existing prompt-count assertion; JSS3 was not changed. |
 | [#970](https://github.com/PDS-David/sts-school-app/pull/970) | Full read-only Render schema-drift inventory. | Open; documentation only. |
 | [#971](https://github.com/PDS-David/sts-school-app/pull/971) | Encrypted scheduled Render Postgres backup workflow and restore instructions. | Open; requires two repository secrets before first successful run. |
-| [#972](https://github.com/PDS-David/sts-school-app/pull/972) | Conventional Expo App entrypoint and updated Android readiness notes. | Open; fresh mobile CI verification is pending. |
+| [#972](https://github.com/PDS-David/sts-school-app/pull/972) | Conventional Expo App entrypoint and updated Android readiness notes. | Open; Android debug APK build and emulator verification are running. |
+| [#973](https://github.com/PDS-David/sts-school-app/pull/973) | This evidence-based application completion gap register. | Open; documentation only. |
 
 ## 6. Work order to finish
 
