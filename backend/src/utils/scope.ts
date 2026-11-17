@@ -92,10 +92,13 @@ export async function checkTeacherStudentScope(
     return { status: 403, error: 'Not authorized to write records for this student' };
   }
 
+  if (!user.assigned_class) {
+    return { status: 403, error: 'This action requires an assigned physical class.' };
+  }
   if (student.school_code !== user.school_code) {
     return { status: 403, error: "You can't write records for a student outside your school" };
   }
-  if (user.assigned_class && student.class_name !== user.assigned_class) {
+  if (student.class_name !== user.assigned_class) {
     return { status: 403, error: "You can't write records for a student outside your assigned class" };
   }
 
