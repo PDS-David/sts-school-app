@@ -29,7 +29,7 @@ export function createBackendReadinessGate(
     }
     if (inFlight) return inFlight;
 
-    const url = `${baseUrl.replace(/\\/+$/, '')}/health/ready`;
+    const url = baseUrl.replace(/\/+$/, '') + '/health/ready';
     const pending = request(url, timeoutMs)
       .then(() => {
         lastReadyAt = now();
