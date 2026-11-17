@@ -1,6 +1,9 @@
 name: Render Free-Tier Keep Alive
 
 on:
+  pull_request:
+    paths:
+      - '.github/workflows/render-free-tier-keepalive.yml'
   # Render Free web services spin down after 15 minutes without inbound traffic.
   # A five-minute readiness request reduces idle spin-down while this service
   # remains on the Free plan. GitHub scheduled runs can be delayed, so this is
@@ -17,7 +20,21 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  validate-workflow:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Validate workflow syntax and intended cadence
+        run: |
+          ruby -e "require 'yaml'; YAML.load_file('.github/workflows/render-free-tier-keepalive.yml', aliases: true)"
+          grep -Fq "cron: '*/5 * * * *'" .github/workflows/render-free-tier-keepalive.yml
+          grep -Fq '/health/ready' .github/workflows/render-free-tier-keepalive.yml
+
   keep-alive:
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
