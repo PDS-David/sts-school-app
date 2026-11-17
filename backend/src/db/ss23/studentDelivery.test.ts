@@ -6,10 +6,11 @@ import { test } from 'node:test';
 import {
   createSs23StudentDelivery,
   listStudentSs23Units,
+  listStudentSs23Subjects,
   getStudentSs23Unit,
   listStudentSs23Assets,
 } from './studentDelivery.js';
-import { loadSs23Packages } from './loader.js';
+import { loadSs23Packages, registeredSs23Subjects, registeredSs23ExamSubjects } from './loader.js';
 
 const loaded = loadSs23Packages();
 const draft = loaded.find(pkg => pkg.class_name === 'SS 2' && pkg.subject_slug === 'agricultural-science')!;
@@ -52,15 +53,32 @@ const approvedPackage = () => {
 };
 
 test('loads only registered, schema-valid SS23 packages across both classes', () => {
-  assert.equal(loaded.length, 7);
+  assert.equal(loaded.length, registeredSs23Subjects.length + registeredSs23ExamSubjects.length);
   const packages = loaded.map(pkg => `${pkg.class_name}/${pkg.subject_slug}`).sort();
-  assert.deepEqual(packages, ['SS 2/agricultural-science', 'SS 2/biology', 'SS 2/chemistry', 'SS 2/mathematics', 'SS 2/physics', 'SS 3/agricultural-science', 'SS 3/biology']);
+  assert.deepEqual(packages, [
+    ...registeredSs23Subjects.map(subject => `SS 2/${subject}`),
+    ...registeredSs23ExamSubjects.map(subject => `SS 3/${subject}`),
+  ].sort());
   for (const pkg of loaded.filter(item => item.class_name === 'SS 2')) {
     assert.equal(pkg.delivery_mode, 'INSTRUCTIONAL');
   }
   const ss3 = loaded.find(item => item.class_name === 'SS 3');
   assert.ok(ss3);
   assert.equal(ss3.delivery_mode, 'EXAM_PREPARATION');
+});
+
+test('loads SS2 Civic Education source-mapped First-Term drafts without overstating later terms', () => {
+  const pkg = loaded.find(item => item.class_name === 'SS 2' && item.subject_slug === 'civic-education');
+  assert.ok(pkg);
+  assert.equal(pkg.delivery_mode, 'INSTRUCTIONAL');
+  assert.equal(pkg.units.length, 26);
+  assert.deepEqual(pkg.units.reduce((terms, unit) => { terms[unit.term] = (terms[unit.term] ?? 0) + 1; return terms; }, {} as Record<string, number>), { '1st Term': 9, '2nd Term': 9, '3rd Term': 8 });
+  assert.equal(pkg.units.reduce((count, unit) => count + unit.practice.length, 0), 52);
+  assert.deepEqual(pkg.coverage.map(row => row.status), ['PARTIAL', 'PARTIAL', 'PARTIAL', 'SUPPORTED', 'SUPPORTED', 'SUPPORTED', 'SUPPORTED', 'SUPPORTED']);
+  assert.ok(pkg.open_items.some(item => item.id === 'CIV-SS2-T2-ASSESSMENT-RECONCILIATION'));
+  assert.ok(pkg.open_items.some(item => item.id === 'CIV-SS2-T3-ASSESSMENT-RECONCILIATION'));
+  assert.ok(!pkg.open_items.some(item => item.id === 'CIV-SS2-T2-IMPLEMENTATION' || item.id === 'CIV-SS2-T3-IMPLEMENTATION'));
+  assert.ok(pkg.units.every(unit => unit.state.implementation === 'DRAFT' && unit.state.verification === 'DEFERRED'));
 });
 
 test('rejects unregistered package files', () => {
@@ -91,6 +109,31 @@ test('never serves the current pending Agriculture draft to SS2 or SS3 students'
   assert.equal(getStudentSs23Unit(draft.units[0].id, 'SS 2'), null);
   assert.equal(getStudentSs23Unit(draft.units[0].id, 'SS 3'), null);
   assert.deepEqual(listStudentSs23Assets(draft.units[1].id, 'SS 2'), []);
+});
+
+test('discovers only SS2/SS3 subjects with fully deliverable package content', () => {
+  assert.deepEqual(listStudentSs23Subjects('SS 2'), []);
+  assert.deepEqual(listStudentSs23Subjects('SS 3'), []);
+
+  const delivery = createSs23StudentDelivery([approvedPackage()]);
+  assert.deepEqual(delivery.listSubjects('SS 2'), [{
+    subject_slug: 'agricultural-science',
+    canonical_subject: 'Agricultural Science',
+    class_name: 'SS 2',
+    delivery_mode: 'INSTRUCTIONAL',
+  }]);
+  assert.deepEqual(delivery.listSubjects('SS 3'), []);
+
+  const blocked = approvedPackage();
+  blocked.open_items = [{
+    id: 'BLOCK',
+    kind: 'OWNER_ACTION',
+    detail: 'Pending owner action',
+    required_action: 'Resolve',
+    affected_ids: [blocked.units[0].id],
+    blocks_delivery: true,
+  }];
+  assert.deepEqual(createSs23StudentDelivery([blocked]).listSubjects('SS 2'), []);
 });
 
 test('blocks approved-looking content while package-level open items remain', () => {
@@ -253,4 +296,27 @@ test('keeps SS3 Agriculture exam-only and links each revision unit to prior lear
   assert.equal(pkg.coverage.find(row => row.id === 'SS3AG-PRIOR-LEARNING-T2')?.status, 'PARTIAL');
   assert.ok(pkg.open_items.some(item => item.id === 'SS3AG-PRIOR-LEARNING-DEPTH-REVIEW' && item.blocks_delivery));
   assert.ok(pkg.open_items.some(item => item.id === 'SS3AG-T1-EXTENSION-OBJECTIVE-COUNT' && item.blocks_delivery));
+});
+
+test('keeps SS3 Biology revision prompts source-exact and excludes unsupported new instruction', () => {
+  const pkg = loaded.find(item => item.class_name === 'SS 3' && item.subject_slug === 'biology');
+  assert.ok(pkg);
+  assert.equal(pkg.delivery_mode, 'EXAM_PREPARATION');
+  assert.equal(pkg.package_status, 'PENDING');
+  const excretion = pkg.units.find(unit => unit.id === 'PREP-SS3-BIOLOGY-T1-W2-EXCRETION');
+  assert.ok(excretion);
+  assert.deepEqual(excretion.practice.map(question => question.question), [
+    'Which of the following parts of mammalian skin is directly involved in excretion? (a) Sebaceous gland (b) sweat gland (c) horny layer (d) blood capillaries',
+    '(b) Explain how skin acts as an excretory organ.',
+  ]);
+  assert.ok(excretion.practice.every(question => question.question_origin === 'ORIGINAL_SOURCE' && question.answer_origin === 'AUTHORED_SUPPLEMENT'));
+  const adaptation = pkg.units.find(unit => unit.id === 'PREP-SS3-BIOLOGY-T2-W3-4');
+  assert.ok(adaptation);
+  assert.deepEqual(adaptation.practice.map(question => question.question), [
+    'Give three examples of structural adaptation for obtaining food in animals.',
+    'Give five examples of animals and their adaptive colouration.',
+  ]);
+  assert.ok(pkg.coverage.some(row => row.id === 'SS3BIO-COV-T2-W5' && row.status === 'UNRESOLVED'));
+  assert.ok(pkg.coverage.some(row => row.id === 'SS3BIO-COV-T2-W6' && row.status === 'UNRESOLVED'));
+  assert.ok(pkg.open_items.some(item => item.id === 'SS3BIO-PRIOR-LEARNING-MAP' && item.blocks_delivery));
 });

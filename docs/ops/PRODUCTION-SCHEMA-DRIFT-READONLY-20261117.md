@@ -78,3 +78,84 @@ After the Redis-backed rate-limit dependency is supplied and the service can sta
 ## Additional Render log finding — 2026-11-17 00:35 UTC
 
 A backend instance emitted `[backup] reminder check failed: getaddrinfo ENOTFOUND dpg-dad2f32jnfac73e5j6r0-a`. This hostname does not match the current Render PostgreSQL instance inspected for this report (`dpg-dbqhddbrjlhs738a4s4g-a`). This is consistent with at least one running service process using a stale database hostname in its connection configuration. The exact environment value was not read, copied or changed. The affected service's `DATABASE_URL`/database connection setting must be reconciled against the current database before backup scheduling or live API health can be trusted. This is a log-based finding; the precise environment variable source remains unconfirmed.
+
+
+## Full catalog comparison — 2026-11-17 01:10 UTC
+
+A second read-only comparison was completed against the current `backend/schema.sql` plus migrations `0002_school_events.sql` and `0003_rate_limit_counters.sql`. It enumerated public columns, constraints, indexes, triggers and user-defined functions. It did not execute the repository's temporary-DDL drift script.
+
+### Object inventory
+
+| Object | Expected from current schema + migrations | Live production | Difference |
+|---|---:|---:|---|
+| Public base tables | 41 | 40 | 3 expected tables absent; 2 live tables are not in the current schema/migration sequence |
+| Columns | 325 | 325 | Same aggregate count, but column placement differs across tables |
+| Indexes | 77 | 71 | 6 expected indexes absent |
+| Constraints | — | 254 | Inventory captured; no claim of full semantic equivalence |
+| User-defined triggers | 2 | 0 | Both expected append-only audit triggers absent |
+| User-defined functions | 1 | 0 | `audit_log_reject_mutation()` absent |
+
+The 41 expected tables include the migration ledger and both current migrations. Missing live tables are:
+- `schema_migrations`
+- `school_events`
+- `rate_limit_counters`
+
+Live-only tables not present in the current schema/migration sequence are:
+- `app_bootstrap` (the existing version-1 bootstrap marker)
+- `backup_log` (created on demand by the backup implementation)
+
+### Column drift
+
+**Expected by the current schema but absent in production — `audit_log`:**
+- `actor_role`
+- `actor_school_code`
+- `actor_ip`
+- `request_id`
+- `user_agent`
+- `metadata`
+- `outcome`
+- `previous_hash`
+- `event_hash`
+
+**Present in production but not declared by current `backend/schema.sql`:**
+- `users`: `security_question`, `security_answer_hash`, `must_set_security_question`, `security_answer_fail_count`, `security_answer_locked_until`, `revocation_reason`, `activation_code`, `activation_fail_count`, `activation_locked_until`, `pending_admin_review`
+- `students`: `deleted_at`, `deleted_by`
+- `scores`: `class_name`
+- `weekly_efforts`: `ai_summary`, `ai_summary_generated_at`
+- `assessments`: `content_fingerprint`
+- `submissions`: `fully_graded`
+- `topics`: `term_label`, `source_reference`, `order_index`, `source_file`, `sequence_rank`
+- `topic_completions`: `passed`, `score_percent`
+- `topic_assets`: `alt_text`
+
+These live-only columns must not be dropped. Their originating migrations or historical schema versions must be recovered and reconciled into a forward-only migration history before adoption. The equal aggregate column count does not imply equivalence.
+
+### Missing indexes and audit controls
+
+Expected indexes absent from the live catalog:
+- `idx_audit_log_school_id_desc`
+- `idx_audit_log_actor_id_desc`
+- `idx_audit_log_action_id_desc`
+- `idx_audit_log_event_hash_unique`
+- `idx_school_events_school_start`
+- `idx_school_events_class_start`
+
+The two missing triggers are `audit_log_append_only_update_delete` and `audit_log_append_only_truncate`. The function `audit_log_reject_mutation()` is also absent. Therefore BSEC-029's tamper-evident audit chain and append-only database enforcement are **not installed in production**, despite being implemented and tested in the repository.
+
+### Existing bootstrap and backup evidence
+
+The existing `app_bootstrap` row is version `1`, checksum `e910acd83dc81786f370311f97e0d1e7aae6a3e6bc8a430188e49dc57cc1d7f6`, applied at `2026-11-12T07:19:49.857762Z`. This is not a row in `schema_migrations` and does not prove that the current migration baseline is adopted.
+
+The live `backup_log` has one reminder record and zero backup records. The read-only row-count check returned zero students, attendance, scores, invoices and messages. No production data was exported or changed.
+
+### Service connection observations
+
+At approximately 2026-11-17 00:43 UTC:
+- `sts-school-app` reached the inspected current database but failed startup because `public.rate_limit_counters` is absent (PostgreSQL SQLSTATE `42P01`).
+- `sts-school-backend` failed its startup verification because its connection configuration attempted to resolve stale host `dpg-dad2f32jnfac73e5j6r0-a`, which does not match current database `dpg-dbqhddbrjlhs738a4s4g-a` (DNS `ENOTFOUND`).
+
+No connection string or secret value was read or changed.
+
+### OPS-05 conclusion
+
+This is now a substantially more complete catalog inventory, but it still does **not** authorize automatic baseline adoption. The live-only columns and bootstrap checksum require historical migration/source recovery; the exact original schema version behind checksum `e910...` has not yet been proven. The safe sequence remains: verified encrypted backup and restore rehearsal, reconcile the historical schema deltas, prepare an exact baseline-plus-pending-migrations plan, obtain explicit owner approval, then apply transactionally. Do not run `--fresh`, manually stamp `schema_migrations`, drop live-only columns, or apply migrations as an unreviewed shortcut.

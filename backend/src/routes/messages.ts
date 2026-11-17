@@ -2,7 +2,7 @@ import { Router } from 'express';
 import rateLimit from 'express-rate-limit';
 import { z } from 'zod';
 import { query } from '../db/pool.js';
-import { requireAuth } from '../middleware/auth.js';
+import { requireAuth, requirePerm } from '../middleware/auth.js';
 import { hasPerm } from '../utils/rbac.js';
 import { getMessageableUsers } from '../utils/scope.js';
 import { sendPushToUser } from '../utils/push.js';
@@ -107,7 +107,7 @@ router.post('/', messageSendLimiter, async (req, res) => {
 });
 
 // ── GET /messages  (inbox) ────────────────────────────────────────────────────
-router.get('/', async (req, res) => {
+router.get('/', requirePerm('messages.read'), async (req, res) => {
   const user = req.user!;
   const { rows } = await query(
     `SELECT m.*,
@@ -124,7 +124,7 @@ router.get('/', async (req, res) => {
 });
 
 // ── GET /messages/conversation/:other_user_id ─────────────────────────────────
-router.get('/conversation/:other', async (req, res) => {
+router.get('/conversation/:other', requirePerm('messages.read'), async (req, res) => {
   const user = req.user!;
   const parsedOther = z.string().uuid().safeParse(req.params.other);
   if (!parsedOther.success) return res.status(400).json({ error: 'A valid other_user_id is required' });
@@ -154,7 +154,7 @@ router.get('/conversation/:other', async (req, res) => {
 // props — neither was ever populated. Attaching `unread_count` and
 // `last_message_at` here per contact, computed from a single grouped query
 // rather than one round-trip per contact.
-router.get('/contacts', async (req, res) => {
+router.get('/contacts', requirePerm('messages.read'), async (req, res) => {
   const user = req.user!;
   const contacts = await getMessageableUsers(user);
   if (!contacts.length) return res.json({ contacts: [] });

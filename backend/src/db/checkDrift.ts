@@ -5,34 +5,30 @@
 // ran against the live DB, and nobody had a way to know until a real user
 // hit it).
 //
-// HOW: rather than parsing schema.sql's SQL by hand (fragile — comments,
-// DO-blocks, multi-line statements), we run the real schema.sql file
-// verbatim into a disposable schema inside THIS SAME DATABASE, then diff
-// that schema's tables/columns/enums/indexes/constraints against the real
-// `public` schema using Postgres's own information_schema/pg_catalog. That
-// disposable schema is dropped at the end (in a `finally`, so it's cleaned
-// up even if the script crashes mid-run).
+// HOW: replay the real schema.sql inside a transaction on one dedicated client,
+// with a unique throwaway schema first on search_path. All introspection queries
+// use that same client. The script always ROLLBACKs before releasing the client;
+// this is essential because schema.sql contains public-qualified DDL and a
+// public.schema_migrations baseline stamp. Transaction rollback also undoes
+// extension creation and any other writes performed by the replay.
 //
-// SAFETY: schema.sql has no `public.`-qualified statements anywhere (checked
-// before writing this) — every CREATE/INSERT in it resolves against whatever
-// schema is first on the session's search_path. We set search_path to the
-// throwaway schema before running it, so schema.sql's two INSERTs (schools,
-// teacher_subjects) write into empty tables in the throwaway schema only —
-// never into the real public.schools / public.teacher_subjects. This script
-// never writes to `public` at all; it only reads from it to compare.
+// SAFETY: this is a rollback-only schema comparison, not a write-free SQL
+// execution. Never remove the transaction or replace ROLLBACK with COMMIT.
+// A successful rollback leaves the inspected database unchanged.
 //
-// USAGE (same pattern as db:migrate — run locally against production):
+// USAGE (same pattern as db:migrate — use only after reviewing this rollback guard):
 //   cd backend
 //   $env:NODE_ENV="production"          (PowerShell)  or  export NODE_ENV=production (bash)
 //   $env:DATABASE_URL="<the EXTERNAL Render Postgres URL>"
 //   npx tsx src/db/checkDrift.ts
 //
 // Exit code 0 = clean (no drift). Exit code 1 = drift found (see report).
-// Safe to run against production at any time — read-only against `public`.
+// The replay executes DDL/DML but must be fully undone by ROLLBACK before exit.
 
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import type { PoolClient } from 'pg';
 import { pool } from './pool.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -50,8 +46,8 @@ type EnumRow = { enum_name: string; labels: string[] };
 type IndexRow = { table_name: string; indexdef: string };
 type ConstraintRow = { table_name: string; constraint_type: string; columns: string[] };
 
-async function getColumns(schema: string): Promise<ColumnRow[]> {
-  const { rows } = await pool.query(
+async function getColumns(client: PoolClient, schema: string): Promise<ColumnRow[]> {
+  const { rows } = await client.query(
     `SELECT table_name, column_name, data_type, is_nullable, column_default, character_maximum_length
      FROM information_schema.columns
      WHERE table_schema = $1
@@ -61,16 +57,16 @@ async function getColumns(schema: string): Promise<ColumnRow[]> {
   return rows;
 }
 
-async function getTables(schema: string): Promise<string[]> {
-  const { rows } = await pool.query(
+async function getTables(client: PoolClient, schema: string): Promise<string[]> {
+  const { rows } = await client.query(
     `SELECT table_name FROM information_schema.tables WHERE table_schema = $1 AND table_type = 'BASE TABLE' ORDER BY table_name`,
     [schema],
   );
   return rows.map((r) => r.table_name);
 }
 
-async function getEnums(schema: string): Promise<EnumRow[]> {
-  const { rows } = await pool.query(
+async function getEnums(client: PoolClient, schema: string): Promise<EnumRow[]> {
+  const { rows } = await client.query(
     `SELECT t.typname AS enum_name, array_agg(e.enumlabel ORDER BY e.enumsortorder) AS labels
      FROM pg_type t
      JOIN pg_enum e ON t.oid = e.enumtypid
@@ -83,8 +79,8 @@ async function getEnums(schema: string): Promise<EnumRow[]> {
   return rows;
 }
 
-async function getIndexes(schema: string): Promise<IndexRow[]> {
-  const { rows } = await pool.query(
+async function getIndexes(client: PoolClient, schema: string): Promise<IndexRow[]> {
+  const { rows } = await client.query(
     `SELECT tablename AS table_name, indexdef FROM pg_indexes WHERE schemaname = $1 ORDER BY tablename, indexname`,
     [schema],
   );
@@ -97,8 +93,8 @@ async function getIndexes(schema: string): Promise<IndexRow[]> {
   }));
 }
 
-async function getConstraints(schema: string): Promise<ConstraintRow[]> {
-  const { rows } = await pool.query(
+async function getConstraints(client: PoolClient, schema: string): Promise<ConstraintRow[]> {
+  const { rows } = await client.query(
     `SELECT tc.table_name, tc.constraint_type,
             array_agg(kcu.column_name::text ORDER BY kcu.ordinal_position) AS columns
      FROM information_schema.table_constraints tc
@@ -117,39 +113,43 @@ function key(row: ConstraintRow): string {
 }
 
 async function main() {
-  const tempSchema = `_drift_check_${Date.now()}`;
+  const tempSchema = `_drift_check_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
   const issues: string[] = [];
-  let client;
+  let client: PoolClient | undefined;
+  let transactionStarted = false;
 
   try {
     client = await pool.connect();
-    console.log(`Creating throwaway schema "${tempSchema}"…`);
-    await client.query(`CREATE SCHEMA "${tempSchema}"`);
-    // temp schema first on search_path (so unqualified CREATEs land there),
-    // public second (so extension functions like gen_random_uuid() still resolve).
-    await client.query(`SET search_path TO "${tempSchema}", public`);
+    await client.query('BEGIN');
+    transactionStarted = true;
 
-    console.log('Applying schema.sql into the throwaway schema…');
+    console.log(`Creating transactional throwaway schema "${tempSchema}"…`);
+    await client.query(`CREATE SCHEMA "${tempSchema}"`);
+    await client.query(`SET LOCAL search_path TO "${tempSchema}", public`);
+
+    console.log('Applying schema.sql inside the rollback-only transaction…');
     const schemaSql = readFileSync(path.resolve(__dirname, '../../schema.sql'), 'utf-8');
     await client.query(schemaSql);
 
-    console.log('Introspecting expected (throwaway) vs actual (public) schema…\n');
+    console.log('Introspecting expected (throwaway) vs actual (public) schema…\\n');
 
-    const [expectedTables, actualTables] = await Promise.all([getTables(tempSchema), getTables('public')]);
+    const expectedTables = await getTables(client, tempSchema);
+    const actualTables = await getTables(client, 'public');
     const missingTables = expectedTables.filter((t) => !actualTables.includes(t));
     const extraTables = actualTables.filter((t) => !expectedTables.includes(t));
 
     missingTables.forEach((t) => issues.push(`MISSING TABLE: "${t}" exists in schema.sql but not in production`));
     extraTables.forEach((t) => issues.push(`EXTRA TABLE (informational): "${t}" exists in production but not in schema.sql — check if it's legacy/unused`));
 
-    const [expectedCols, actualCols] = await Promise.all([getColumns(tempSchema), getColumns('public')]);
+    const expectedCols = await getColumns(client, tempSchema);
+    const actualCols = await getColumns(client, 'public');
     const actualColMap = new Map<string, ColumnRow>();
     actualCols.forEach((c) => actualColMap.set(`${c.table_name}.${c.column_name}`, c));
     const expectedColMap = new Map<string, ColumnRow>();
     expectedCols.forEach((c) => expectedColMap.set(`${c.table_name}.${c.column_name}`, c));
 
     for (const [colKey, exp] of expectedColMap) {
-      if (!expectedTables.includes(exp.table_name)) continue; // table itself already reported missing
+      if (!expectedTables.includes(exp.table_name)) continue;
       const act = actualColMap.get(colKey);
       if (!act) {
         issues.push(`MISSING COLUMN: "${exp.table_name}.${exp.column_name}" exists in schema.sql but not in production`);
@@ -163,13 +163,14 @@ async function main() {
       }
     }
     for (const [colKey, act] of actualColMap) {
-      if (!expectedTables.includes(act.table_name)) continue; // extra table already reported
+      if (!expectedTables.includes(act.table_name)) continue;
       if (!expectedColMap.has(colKey)) {
         issues.push(`EXTRA COLUMN (informational): "${colKey}" exists in production but not in schema.sql`);
       }
     }
 
-    const [expectedEnums, actualEnums] = await Promise.all([getEnums(tempSchema), getEnums('public')]);
+    const expectedEnums = await getEnums(client, tempSchema);
+    const actualEnums = await getEnums(client, 'public');
     const actualEnumMap = new Map(actualEnums.map((e) => [e.enum_name, e.labels]));
     for (const exp of expectedEnums) {
       const act = actualEnumMap.get(exp.enum_name);
@@ -184,7 +185,8 @@ async function main() {
       }
     }
 
-    const [expectedConstraints, actualConstraints] = await Promise.all([getConstraints(tempSchema), getConstraints('public')]);
+    const expectedConstraints = await getConstraints(client, tempSchema);
+    const actualConstraints = await getConstraints(client, 'public');
     const actualConstraintKeys = new Set(actualConstraints.map(key));
     const expectedConstraintKeys = new Set(expectedConstraints.map(key));
     for (const c of expectedConstraints) {
@@ -200,7 +202,8 @@ async function main() {
       }
     }
 
-    const [expectedIdx, actualIdx] = await Promise.all([getIndexes(tempSchema), getIndexes('public')]);
+    const expectedIdx = await getIndexes(client, tempSchema);
+    const actualIdx = await getIndexes(client, 'public');
     const actualIdxDefs = new Set(actualIdx.map((i) => i.indexdef));
     for (const idx of expectedIdx) {
       if (!expectedTables.includes(idx.table_name)) continue;
@@ -209,34 +212,36 @@ async function main() {
       }
     }
 
-    // ── Report ──────────────────────────────────────────────────────────────
     if (issues.length === 0) {
       console.log('✅ No drift found — production schema matches schema.sql exactly.');
     } else {
       const blocking = issues.filter((i) => !i.includes('(informational)'));
       const informational = issues.filter((i) => i.includes('(informational)'));
-      console.log(`⚠️  ${issues.length} irregularit${issues.length === 1 ? 'y' : 'ies'} found:\n`);
+      console.log(`⚠️  ${issues.length} irregularit${issues.length === 1 ? 'y' : 'ies'} found:\\n`);
       if (blocking.length) {
         console.log(`--- ${blocking.length} likely to cause real errors (run "npm run db:migrate" to fix missing tables/columns/enums/indexes; missing constraints need a manual ALTER) ---`);
         blocking.forEach((i) => console.log(`  • ${i}`));
       }
       if (informational.length) {
-        console.log(`\n--- ${informational.length} informational (production has extra stuff not in schema.sql — not necessarily a problem, just worth knowing about) ---`);
+        console.log(`\\n--- ${informational.length} informational (production has extra stuff not in schema.sql — not necessarily a problem, just worth knowing about) ---`);
         informational.forEach((i) => console.log(`  • ${i}`));
       }
     }
 
-    console.log(`\nCleaning up throwaway schema "${tempSchema}"…`);
-    await client.query(`DROP SCHEMA "${tempSchema}" CASCADE`);
-
+    console.log('Rolling back schema replay and all comparison-side effects…');
+    await client.query('ROLLBACK');
+    transactionStarted = false;
+    console.log('Rollback complete; inspected database was not modified.');
     process.exitCode = issues.some((i) => !i.includes('(informational)')) ? 1 : 0;
   } catch (e) {
     console.error('Drift check failed:', e);
-    if (client) {
+    if (client && transactionStarted) {
       try {
-        await client.query(`DROP SCHEMA IF EXISTS "${tempSchema}" CASCADE`);
-      } catch (cleanupErr) {
-        console.error(`Could not clean up throwaway schema "${tempSchema}" — drop it manually with: DROP SCHEMA "${tempSchema}" CASCADE;`, cleanupErr);
+        await client.query('ROLLBACK');
+        transactionStarted = false;
+        console.log('Rollback complete after drift-check failure.');
+      } catch (rollbackErr) {
+        console.error('CRITICAL: drift-check transaction rollback failed; inspect database connection and transaction state immediately.', rollbackErr);
       }
     }
     process.exitCode = 1;
@@ -245,5 +250,4 @@ async function main() {
     await pool.end();
   }
 }
-
 main();
