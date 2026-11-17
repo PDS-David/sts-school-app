@@ -70,11 +70,11 @@ test('loads SS2 Government First-Term drafts while explicitly holding later term
   const pkg = loaded.find(item => item.class_name === 'SS 2' && item.subject_slug === 'government');
   assert.ok(pkg);
   assert.equal(pkg.delivery_mode, 'INSTRUCTIONAL');
-  assert.equal(pkg.units.length, 10);
-  assert.equal(pkg.units.reduce((count, unit) => count + unit.practice.length, 0), 20);
-  assert.deepEqual(pkg.coverage.map(row => row.status), ['PARTIAL', 'UNRESOLVED', 'UNRESOLVED', 'SUPPORTED']);
-  assert.ok(pkg.open_items.some(item => item.id === 'GOV-SS2-T2-IMPLEMENTATION'));
-  assert.ok(pkg.open_items.some(item => item.id === 'GOV-SS2-T3-IMPLEMENTATION'));
+  assert.equal(pkg.units.length, 30);
+  assert.equal(pkg.units.reduce((count, unit) => count + unit.practice.length, 0), 60);
+  assert.deepEqual(pkg.coverage.map(row => row.status), ['PARTIAL', 'SUPPORTED', 'PARTIAL', 'PARTIAL', 'SUPPORTED', 'SUPPORTED']);
+  assert.ok(pkg.open_items.some(item => item.id === 'GOV-SS2-T2-ASSESSMENT-RECONCILIATION'));
+  assert.ok(pkg.open_items.some(item => item.id === 'GOV-SS2-T3-ASSESSMENT-RECONCILIATION'));
   assert.ok(pkg.units.every(unit => unit.state.implementation === 'DRAFT' && unit.state.verification === 'DEFERRED'));
 });
 
