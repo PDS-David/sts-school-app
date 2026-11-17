@@ -359,7 +359,7 @@ test('loads source-mapped SS2 Physics First-Term drafts without overstating rema
   assert.deepEqual(pkg.units.filter(unit => unit.term === '2nd Term').map(unit => unit.week_label), ['1-3', '4', '5', '6', '7', '8', '9', '10']);
   assert.deepEqual(pkg.units.filter(unit => unit.term === '3rd Term').map(unit => unit.week_label), ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']);
   assert.ok(pkg.units.every(unit => unit.state.implementation === 'DRAFT' && unit.state.verification === 'DEFERRED'));
-  assert.equal(pkg.coverage.filter(row => /^SS2PHY-COV-T[123]-W/.test(row.id)).length, 26);
+  assert.equal(pkg.coverage.filter(row => /^SS2PHY-COV-T1-/.test(row.id) || /^SS2PHY-COV-T[23]-W/.test(row.id)).length, 26);
   assert.equal(pkg.coverage.find(row => row.id === 'SS2PHY-COV-T1')?.status, 'PARTIAL');
   assert.equal(pkg.coverage.find(row => row.id === 'SS2PHY-COV-T2')?.status, 'PARTIAL');
   assert.equal(pkg.coverage.find(row => row.id === 'SS2PHY-COV-T3')?.status, 'PARTIAL');
