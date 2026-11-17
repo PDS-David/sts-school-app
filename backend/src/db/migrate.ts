@@ -88,7 +88,9 @@ async function ledgerExists(client: PoolClient): Promise<boolean> {
   return Boolean(rows[0]?.present);
 }
 
-async function getApplied(client: PoolClient): Promise<AppliedMigration[]> {
+async function getApplied(
+  client: PoolClient,
+): Promise<AppliedMigration[]> {
   if (!(await ledgerExists(client))) {
     return [];
   }
@@ -103,8 +105,8 @@ async function getApplied(client: PoolClient): Promise<AppliedMigration[]> {
 async function assertNoUntrackedApplicationSchema(
   client: PoolClient,
 ): Promise<void> {
-  // Tolerate extension-owned objects and the migration ledger itself,
-  // but refuse any other pre-existing public schema object.
+  // Match the clean-bootstrap guard: tolerate extension-owned objects and
+  // the ledger itself, but refuse any other pre-existing public schema object.
   const { rows } = await client.query(`
     SELECT 1 FROM (
       SELECT 'pg_class'::regclass AS classid, c.oid AS objid
@@ -166,7 +168,9 @@ function assertAppliedChecksums(
   migrations: Migration[],
   applied: AppliedMigration[],
 ): void {
-  const byVersion = new Map(migrations.map(m => [m.version, m]));
+  const byVersion = new Map(
+    migrations.map(migration => [migration.version, migration]),
+  );
 
   for (const row of applied) {
     const source = byVersion.get(row.version);
@@ -177,7 +181,10 @@ function assertAppliedChecksums(
       );
     }
 
-    if (source.name !== row.name || source.checksum !== row.checksum) {
+    if (
+      source.name !== row.name ||
+      source.checksum !== row.checksum
+    ) {
       throw new Error(
         `Checksum/name mismatch for applied migration ${row.version}. Never edit an applied migration; restore the original file and add a new numbered migration.`,
       );
@@ -189,7 +196,10 @@ function assertSequentialHistory(
   migrations: Migration[],
   applied: AppliedMigration[],
 ): void {
-  const appliedVersions = new Set(applied.map(row => row.version));
+  const appliedVersions = new Set(
+    applied.map(row => row.version),
+  );
+
   let pendingSeen = false;
 
   for (const migration of migrations) {
@@ -207,7 +217,8 @@ async function applyAll(
   client: PoolClient,
   migrations: Migration[],
 ): Promise<void> {
-  // Incremental mode must never invent a baseline.
+  // Do not create even an empty ledger on an existing untracked database.
+  // --all is incremental-only; --fresh is the explicit clean-install path.
   if (!(await ledgerExists(client))) {
     await assertNoUntrackedApplicationSchema(client);
 
@@ -227,7 +238,9 @@ async function applyAll(
   assertAppliedChecksums(migrations, applied);
   assertSequentialHistory(migrations, applied);
 
-  const appliedVersions = new Set(applied.map(row => row.version));
+  const appliedVersions = new Set(
+    applied.map(row => row.version),
+  );
 
   for (const migration of migrations) {
     if (appliedVersions.has(migration.version)) {
@@ -242,14 +255,19 @@ async function applyAll(
       }
 
       await client.query(
-        `INSERT INTO public.schema_migrations(version, name, checksum)
-         VALUES($1, $2, $3)`,
-        [migration.version, migration.name, migration.checksum],
+        'INSERT INTO public.schema_migrations(version, name, checksum) VALUES($1, $2, $3)',
+        [
+          migration.version,
+          migration.name,
+          migration.checksum,
+        ],
       );
 
       await client.query('COMMIT');
 
-      console.log(`Applied ${migration.version} ${migration.name}`);
+      console.log(
+        `Applied ${migration.version} ${migration.name}`,
+      );
     } catch (error) {
       await client.query('ROLLBACK');
 
@@ -265,9 +283,14 @@ async function applyFresh(
   client: PoolClient,
   migrations: Migration[],
 ): Promise<void> {
-  const baseline = migrations.find(m => m.version === '0001');
+  const baseline = migrations.find(
+    migration => migration.version === '0001',
+  );
 
-  if (!baseline || baseline.name !== '0001_baseline.sql') {
+  if (
+    !baseline ||
+    baseline.name !== '0001_baseline.sql'
+  ) {
     throw new Error(
       'Fresh install requires migrations/0001_baseline.sql.',
     );
@@ -286,29 +309,54 @@ async function applyFresh(
 
   const schema = readFileSync(SCHEMA_PATH, 'utf8');
 
-  console.log('Applying complete schema.sql for a fresh installation…');
+  console.log(
+    'Applying complete schema.sql for a fresh installation...',
+  );
 
-  // schema.sql creates the ledger and stamps 0001 itself.
-  // Keep both operations inside this transaction so a failed replay
-  // cannot leave behind an empty or partially initialized ledger.
-  await client.query('BEGIN');
+  let transactionStarted = false;
 
   try {
+    // The schema, migration ledger and baseline stamp must be atomic.
+    // schema.sql creates public.schema_migrations itself.
+    await client.query('BEGIN');
+    transactionStarted = true;
+
     await client.query(schema);
 
     const appliedAfterSchema = await getApplied(client);
 
-    assertAppliedChecksums(migrations, appliedAfterSchema);
+    assertAppliedChecksums(
+      migrations,
+      appliedAfterSchema,
+    );
 
-    if (!appliedAfterSchema.some(row => row.version === '0001')) {
+    const stampedBaseline = appliedAfterSchema.find(
+      row => row.version === '0001',
+    );
+
+    if (
+      !stampedBaseline ||
+      stampedBaseline.name !== baseline.name ||
+      stampedBaseline.checksum !== baseline.checksum
+    ) {
       throw new Error(
-        'schema.sql did not stamp the immutable 0001 baseline migration.',
+        'schema.sql did not stamp the correct immutable 0001 baseline migration.',
       );
     }
 
     await client.query('COMMIT');
+    transactionStarted = false;
   } catch (error) {
-    await client.query('ROLLBACK');
+    if (transactionStarted) {
+      try {
+        await client.query('ROLLBACK');
+      } catch (rollbackError) {
+        throw new Error(
+          'Fresh schema replay failed and transaction rollback also failed. Inspect the database connection before retrying.',
+          { cause: rollbackError },
+        );
+      }
+    }
 
     throw new Error(
       'Fresh schema replay failed; transaction rolled back.',
@@ -316,7 +364,9 @@ async function applyFresh(
     );
   }
 
-  console.log('Fresh schema applied and baseline migration stamped.');
+  console.log(
+    'Fresh schema applied and baseline migration stamped.',
+  );
 }
 
 async function printStatus(
@@ -329,7 +379,9 @@ async function printStatus(
   assertAppliedChecksums(migrations, applied);
   assertSequentialHistory(migrations, applied);
 
-  const appliedVersions = new Set(applied.map(row => row.version));
+  const appliedVersions = new Set(
+    applied.map(row => row.version),
+  );
 
   console.log(
     exists
@@ -354,11 +406,14 @@ export async function runMigrations(
   mode: Mode = '--all',
 ): Promise<void> {
   if (!['--all', '--fresh', '--status'].includes(mode)) {
-    throw new Error('Usage: migrate.ts [--all|--fresh|--status]');
+    throw new Error(
+      'Usage: migrate.ts [--all|--fresh|--status]',
+    );
   }
 
   const migrations = readMigrations();
   const client = await pool.connect();
+
   let locked = false;
 
   try {
@@ -396,8 +451,11 @@ if (isMain) {
   runMigrations(mode)
     .catch(error => {
       console.error(
-        error instanceof Error ? error.message : 'Migration failed.',
+        error instanceof Error
+          ? error.message
+          : 'Migration failed.',
       );
+
       process.exitCode = 1;
     })
     .finally(() => pool.end());
