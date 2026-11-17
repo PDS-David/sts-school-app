@@ -12,8 +12,8 @@ This register records verified implementation gaps in the repository and the liv
   - SS2 `SSS 2-20260507T072840Z-3-001.zip`: `a97506c7f030a6e9604a13ae0aab30f59563a1473ec682f647459549dd9e1153` (61 members).
   - SS3 `SSS 3-20260507T072839Z-3-001.zip`: `045e261aba9475b32b4cb963a2495faf3ddd503860b205aa1e89f0ac07d3c741` (39 members).
 - Current master registers five SS2 subject packages and two SS3 subject packages. SS2 Civic Education is implemented on PR #969 and SS2 Government First Term is implemented on PR #974; neither is yet merged. No student-delivery gate has been opened.
-- All seven packages on master are still `PENDING`; lesson implementation is draft and verification is deferred. The additional Civic Education PR preserves the same release gates.
-- There are four open GitHub issues, four active implementation/operations PRs, and this gap-register PR.
+- All seven packages on master are still `PENDING`; lesson implementation is draft and verification is deferred. The additional Civic Education and Government PRs preserve the same release gates.
+- There are five open GitHub issues after consolidating duplicate recovery issue #975 into canonical issue #976, and seven open PRs including this gap register. No PR has been merged by this work.
 
 ## 2. SS2 and SS3 curriculum work remaining
 
@@ -183,7 +183,7 @@ This is consistent with the former Free database expiring and being deleted. It 
 
 ## 5. GitHub Issues and active PRs
 
-### Open issues (all four currently open)
+### Open issues (five currently open; #975 consolidated as duplicate of #976)
 
 | Issue | Severity | Current finding | Required resolution |
 |---|---|---|---|
@@ -191,7 +191,7 @@ This is consistent with the former Free database expiring and being deleted. It 
 | [#952](https://github.com/PDS-David/sts-school-app/issues/952) | P1 | Production schema drift, absent migration ledger, missing school-events/rate-limit tables and audit controls. | Recover historical migration origin, verify encrypted backup/restore, prepare exact baseline plan and apply only after owner approval. |
 | [#954](https://github.com/PDS-David/sts-school-app/issues/954) | P1 | Free database expires 2026-12-12; Free plan has no backups/PITR. | Configure encrypted backups, pass restore rehearsal, then approve paid-plan upgrade or replacement migration before expiry. |
 | [#955](https://github.com/PDS-David/sts-school-app/issues/955) | P2 | External database allowlist is `0.0.0.0/0`. | Inventory legitimate external clients, move service traffic to private networking and restrict external CIDRs. |
-| [#976](https://github.com/PDS-David/sts-school-app/issues/976) | P1 | Previous production database `sts-school-db` is absent; current replacement has zero key records. Backup recovery is not yet ruled in or out. | Search encrypted email backups, local exports and off-host storage; verify and restore only into an isolated database. |
+| [#976](https://github.com/PDS-David/sts-school-app/issues/976) | P1 | Previous production database `sts-school-db` is absent; current replacement has zero student/attendance/score/invoice/message rows, 1 admin user and 1,408 Primary-only curriculum topics. Backup recovery is not yet ruled in or out. Duplicate #975 is closed as duplicate of this canonical issue. | Search encrypted email backups, local exports and off-host storage; verify and restore only into an isolated database. |
 
 ### Open PRs (none merged by this work)
 
@@ -199,10 +199,10 @@ This is consistent with the former Free database expiring and being deleted. It 
 |---|---|---|
 | [#969](https://github.com/PDS-David/sts-school-app/pull/969) | SS2 Civic Education, all three terms: 26 draft units and 52 practice records. | Open; SS23 contract/integrity and SS1 integrity pass. An unrelated JSS3 check fails on its existing prompt-count assertion; JSS3 was not changed. |
 | [#970](https://github.com/PDS-David/sts-school-app/pull/970) | Full read-only Render schema-drift inventory. | Open; documentation only. |
-| [#971](https://github.com/PDS-David/sts-school-app/pull/971) | Encrypted scheduled Render Postgres backup workflow and restore instructions. | Open; requires two repository secrets before first successful run. |
+| [#971](https://github.com/PDS-David/sts-school-app/pull/971) | Encrypted scheduled Render Postgres backup workflow and restore instructions. | Open; workflow syntax validation passed, but the backup job was skipped and no encrypted artifact was produced. Secrets and a manual/scheduled backup run are still required. |
 | [#972](https://github.com/PDS-David/sts-school-app/pull/972) | Conventional Expo App entrypoint and updated Android readiness notes. | Open; Android debug APK build and emulator verification are running. |
 | [#973](https://github.com/PDS-David/sts-school-app/pull/973) | This evidence-based application completion gap register. | Open; documentation only. |
-| [#974](https://github.com/PDS-David/sts-school-app/pull/974) | SS2 Government: 30 draft units and 60 practice records across all three terms. | Open; package/loader regression checks pending. |
+| [#974](https://github.com/PDS-David/sts-school-app/pull/974) | SS2 Government: 30 draft units and 60 practice records across all three terms. | Open; SS23 contract, SS23 integrity and SS1 integrity pass on head `67f6b241c6bb174454f8075a825916712c498d5b`; shared JSS3 workflow fails on `tests/jss3-yo-license.db.test.mts` assertion `prompts.length >= 2`. |
 | [#977](https://github.com/PDS-David/sts-school-app/pull/977) | Connect delivery-gated SS2/SS3 packages to student subject discovery and lesson screens. | Open; backend, mobile, package and cross-project CI running. |
 
 
@@ -267,3 +267,33 @@ The four-role audit does not include `finance_admin`. The old app-wide audit als
 - No PR was merged.
 - Curriculum approval is not source-rights approval, technical verification or independent subject QA.
 - A successful schema test is not educational correctness; a successful build is not production release acceptance.
+
+
+## 10. Live revalidation addendum — 2026-11-17 01:27 UTC
+
+This addendum supersedes the earlier counts and CI descriptions above where they differ.
+
+### Repository and curriculum
+- `master` is the only integration branch; no PR was merged by this execution.
+- Current master package loader registers five SS2 subjects (Agricultural Science, Biology, Chemistry, Mathematics, Physics) and two SS3 exam-preparation subjects (Agricultural Science, Biology).
+- PR #969 adds SS2 Civic Education (26 draft units / 52 practice records); PR #974 adds SS2 Government (30 draft units / 60 practice records). Both remain open and student-delivery blocked.
+- PR #974 head `67f6b241c6bb174454f8075a825916712c498d5b`: SS23 package contract, SS23 integrity and SS1 integrity passed. The shared JSS3 workflow failed only in the existing database test `tests/jss3-yo-license.db.test.mts`, assertion `prompts.length >= 2`. This execution did not modify JSS3.
+- PR #977 adds gated SS23 subject discovery and student lesson UI. Its SS23 contract/integrity, SS1 integrity and backend learning-reference checks have passed on the observed head; mobile release and other project checks were still running at last inspection.
+- Current open PRs: #969, #970, #971, #972, #973, #974, #977. Owner retains merge authority.
+
+### Render live findings
+- Workspace: My Workspace; Postgres resource `sts-school-db-2`, ID `dpg-dbqhddbrjlhs738a4s4g-a`, PostgreSQL 18.6, Frankfurt, Free, expiry `2026-12-12T01:30:29Z`.
+- Database is 12 MB. Read-only counts: 1 user, 0 students, 0 attendance, 0 scores, 0 invoices, 0 messages; `backup_log` has one reminder and zero backup records.
+- Live catalog: 40 public tables. `schema_migrations`, `school_events` and `rate_limit_counters` are absent; `app_bootstrap` and `backup_log` are live-only tables. Existing OPS-05 report documents nine missing audit columns, six missing indexes, two missing append-only triggers, one missing function and additional live-only columns that must be preserved.
+- `sts-school-app` starts against the current database but exits with SQLSTATE `42P01` because `public.rate_limit_counters` is missing.
+- `sts-school-backend` exits because it resolves stale hostname `dpg-dad2f32jnfac73e5j6r0-a` (`ENOTFOUND`), not the current DB hostname. The mobile client is configured to use this second service.
+- Both backend services are on Free, deploy from `master`, point to the same repository, have no Render health-check path configured and permit all IPv4 sources (`0.0.0.0/0`). The database external allowlist is also `0.0.0.0/0`.
+- No environment values, service settings, IP allowlists, production rows or schema were changed. The existing migration runner correctly refuses to adopt this drifted database without a reviewed baseline; do not bypass OPS-05.
+
+### Backup workflow status
+- PR #971's workflow run `43993155199` passed its actionlint validation job, but its actual backup job was skipped. The run produced no artifact. Therefore there is still no verified current backup or restore rehearsal.
+- The Render Free database expires on 12 December 2026; a durable plan, backup destination and restore test remain urgent.
+
+### Issue register
+- Open: #951, #952, #954, #955, #976.
+- #975 was confirmed to be a duplicate of #976, commented and closed with GitHub duplicate reason. The recovery task itself remains open.
