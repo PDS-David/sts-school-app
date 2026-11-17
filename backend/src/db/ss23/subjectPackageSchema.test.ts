@@ -363,21 +363,7 @@ test('loads source-mapped SS2 Physics First-Term drafts without overstating rema
   assert.ok(pkg.open_items.some(item => item.id === 'SS2PHY-CONTENT-REMAINING' && item.blocks_delivery));
 });
 
-test('loads source-mapped SS2 Physics First-Term drafts without overstating remaining terms', () => {
-  const raw = readFileSync(new URL('./subjects/physics.json', import.meta.url), 'utf8');
-  const pkg = packageSchema.parse(JSON.parse(raw));
-  assert.equal(pkg.class_name, 'SS 2');
-  assert.equal(pkg.delivery_mode, 'INSTRUCTIONAL');
-  assert.equal(pkg.package_status, 'PENDING');
-  assert.equal(pkg.sources.length, 3);
-  assert.equal(pkg.units.length, 8);
-  assert.deepEqual(pkg.units.map(unit => unit.week_label), ['1', '2', '3', '4', '5', '6&7', '8&9', '10&11']);
-  assert.ok(pkg.units.every(unit => unit.state.implementation === 'DRAFT' && unit.state.verification === 'DEFERRED'));
-  assert.equal(pkg.coverage.find(row => row.id === 'SS2PHY-COV-T1')?.status, 'PARTIAL');
-  assert.equal(pkg.coverage.find(row => row.id === 'SS2PHY-COV-T2')?.status, 'UNRESOLVED');
-  assert.equal(pkg.coverage.find(row => row.id === 'SS2PHY-COV-T3')?.status, 'UNRESOLVED');
-  assert.ok(pkg.open_items.some(item => item.id === 'SS2PHY-CONTENT-REMAINING' && item.blocks_delivery));
-});
+
 
 test('SS3 Biology includes only source-backed prior-learning revision and preserves unresolved topics', () => {
   const raw = readFileSync(new URL('./subjects/ss3/biology.json', import.meta.url), 'utf8');
