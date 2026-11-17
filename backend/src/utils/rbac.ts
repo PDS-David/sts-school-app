@@ -30,8 +30,11 @@ export const permissions: Record<Role, string[]> = {
   // The separate /students/:id/promotion and soft-delete routes preserve the
   // teacher's explicit runtime promote/demote/retain/remove decisions.
   teacher: [
-    // Read-only access to the assigned class's source data for report creation.
-    'students.read', 'grades.read', 'attendance.read', 'classRecord.read',
+    // The only roster access is for selecting a student in the assigned
+    // physical class. The report endpoints themselves return the scores,
+    // attendance and remarks together; separate grade/attendance feeds are
+    // intentionally not granted to this role.
+    'students.read',
     // The class teacher may add the remark that appears on the official report.
     'classRecord.write',
   ],
