@@ -116,7 +116,7 @@ jobs:
         run: |
           set -euo pipefail
           row_count_sql="SELECT string_agg(format('%I=%s', table_name, (xpath('//c/text()', query_to_xml(format('SELECT count(*) AS c FROM public.%I', table_name), false, true, '')))[1]::text), E'\n' ORDER BY table_name) FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE' AND table_name NOT IN ('schema_migrations','school_events','rate_limit_counters')"
-          counts="$(docker run --rm --env DATABASE_URL postgres:18 psql "$DATABASE_URL" -X -A -t -v ON_ERROR_STOP=1 -c "$row_count_sql")"
+          counts="$(docker run --rm --env DATABASE_URL --env ROW_COUNT_SQL="$row_count_sql" postgres:18 sh -ceu 'psql "$DATABASE_URL" -X -A -t -v ON_ERROR_STOP=1 -c "$ROW_COUNT_SQL"')"
           test -n "$counts"
           echo "counts_b64=$(printf '%s' "$counts" | base64 -w0)" >> "$GITHUB_OUTPUT"
           echo 'Captured row counts for all existing application and operational tables.' >> "$GITHUB_STEP_SUMMARY"
@@ -164,7 +164,7 @@ jobs:
             IF NOT EXISTS (SELECT 1 FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname='public' AND p.proname='audit_log_reject_mutation') THEN RAISE EXCEPTION 'Audit append-only function missing'; END IF;
             IF EXISTS (SELECT 1 FROM pg_constraint WHERE conrelid='public.audit_log'::regclass AND conname='audit_log_actor_id_fkey') THEN RAISE EXCEPTION 'Obsolete audit actor FK remains'; END IF;
           END \$\$; SELECT version,name,checksum FROM public.schema_migrations ORDER BY version"
-          docker run --rm --env DATABASE_URL postgres:18 psql "$DATABASE_URL" -X -v ON_ERROR_STOP=1 -c "$verification_sql"
+          docker run --rm --env DATABASE_URL --env VERIFICATION_SQL="$verification_sql" postgres:18 sh -ceu 'psql "$DATABASE_URL" -X -v ON_ERROR_STOP=1 -c "$VERIFICATION_SQL"'
           {
             echo '### Production migration verification'
             echo '- Migration ledger contains 0001-0004.'
