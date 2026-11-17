@@ -146,7 +146,7 @@ async function preflight(client: PoolClient): Promise<{ database: string; versio
   );
   if (pendingFunctions.rows.length) errors.push(`Pending migration functions already exist: ${pendingFunctions.rows.map(row => row.proname).join(', ')}`);
   const pendingTriggers = await client.query<{ tgname: string }>(
-    `SELECT tgname FROM pg_trigger WHERE tgname = ANY($1::text[]) AND NOT tgisinternal`,
+    `SELECT tgname FROM pg_trigger WHERE tgrelid='public.audit_log'::regclass AND tgname = ANY($1::text[]) AND NOT tgisinternal`,
     [contract.expected.pending_triggers],
   );
   if (pendingTriggers.rows.length) errors.push(`Pending migration triggers already exist: ${pendingTriggers.rows.map(row => row.tgname).join(', ')}`);
@@ -189,6 +189,13 @@ async function main(): Promise<void> {
     await client.query('BEGIN');
     transactionOpen = true;
     await client.query('SELECT pg_advisory_xact_lock($1, $2)', [LOCK_NAMESPACE, LOCK_ID]);
+    const targetInfo = await client.query<{ database: string; version_num: number; encoding: string }>(
+      `SELECT current_database() AS database, current_setting('server_version_num')::integer AS version_num, current_setting('server_encoding') AS encoding`,
+    );
+    const target = targetInfo.rows[0];
+    if (target.database !== DATABASE_NAME || Math.floor(target.version_num / 10000) !== 18 || target.encoding !== 'UTF8') {
+      fail(`Refusing target ${target.database}: expected ${DATABASE_NAME}, PostgreSQL 18, UTF8.`);
+    }
     const ledgerState = await client.query<{ present: boolean }>(`SELECT to_regclass('public.schema_migrations') IS NOT NULL AS present`);
     if (ledgerState.rows[0]?.present) {
       const baselineRows = await client.query<{ version: string; name: string; checksum: string }>(
