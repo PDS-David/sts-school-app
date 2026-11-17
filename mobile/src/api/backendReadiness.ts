@@ -30,15 +30,18 @@ export function createBackendReadinessGate(
     if (inFlight) return inFlight;
 
     const url = baseUrl.replace(/\/+$/, '') + '/health/ready';
-    const pending = request(url, timeoutMs)
-      .then(() => {
-        lastReadyAt = now();
-      })
-      .finally(() => {
-        if (inFlight === pending) inFlight = null;
-      });
-
+    const pending = request(url, timeoutMs).then(() => {
+      lastReadyAt = now();
+    });
     inFlight = pending;
+
+    // Attach both outcomes to clear the shared promise without creating an
+    // unhandled rejected promise or self-referencing its initializer.
+    void pending.then(
+      () => { if (inFlight === pending) inFlight = null; },
+      () => { if (inFlight === pending) inFlight = null; },
+    );
+
     return pending;
   }
 
