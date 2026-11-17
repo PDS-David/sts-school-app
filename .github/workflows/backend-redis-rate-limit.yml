@@ -5,11 +5,15 @@ on:
     branches: [master]
     paths:
       - "backend/src/utils/redisRateLimitStore.ts"
+      - "backend/src/utils/postgresRateLimitStore.ts"
       - "backend/src/utils/ai.ts"
       - "backend/src/index.ts"
       - "backend/src/routes/auth.ts"
       - "backend/src/routes/ai.ts"
       - "backend/src/routes/messages.ts"
+      - "backend/src/db/migrate.ts"
+      - "backend/schema.sql"
+      - "backend/migrations/0003_rate_limit_counters.sql"
       - "tests/backend-redis-rate-limit.integration.test.mts"
       - ".github/workflows/backend-redis-rate-limit.yml"
 
@@ -22,21 +26,27 @@ concurrency:
 
 jobs:
   redis-rate-limit:
+    # The workflow/check name is retained for existing branch-protection compatibility.
+    # The shared request/AI quota implementation now uses PostgreSQL, not Redis.
     name: Redis shared-quota integration and backend typecheck
     runs-on: ubuntu-latest
     timeout-minutes: 15
     services:
-      redis:
-        image: redis:7-alpine
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: sts_test
         ports:
-          - 6379:6379
+          - 5432:5432
         options: >-
-          --health-cmd "redis-cli ping"
+          --health-cmd "pg_isready -U postgres -d sts_test"
           --health-interval 5s
-          --health-timeout 3s
+          --health-timeout 5s
           --health-retries 10
     env:
-      RATE_LIMIT_REDIS_URL: redis://localhost:6379
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/sts_test
       NODE_ENV: test
     steps:
       - name: Check out repository
@@ -48,7 +58,11 @@ jobs:
           cache: npm
       - name: Install locked workspace dependencies
         run: npm ci --ignore-scripts
-      - name: Run distributed Redis rate-limit regressions
+      - name: Bootstrap disposable PostgreSQL schema
+        run: npm run db:bootstrap --workspace=backend
+      - name: Apply numbered PostgreSQL migrations
+        run: npm run db:migrate --workspace=backend -- --all
+      - name: Run shared PostgreSQL rate-limit regressions
         run: node --import tsx --test tests/backend-redis-rate-limit.integration.test.mts
       - name: Typecheck backend
         run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
