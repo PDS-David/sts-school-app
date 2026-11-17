@@ -20,7 +20,7 @@ type Contract = {
     baseline_table_count: number; baseline_column_count: number; public_table_count: number;
     operational_tables: string[]; explicit_indexes: string[]; constraint_counts: Record<string, number>;
     extensions: string[]; enum_types: string[]; pending_tables: string[];
-    pending_audit_log_columns: string[]; pending_audit_log_fk_to_drop: string;
+    pending_audit_log_columns: string[]; pending_audit_log_fk_to_drop: string; pending_indexes: string[]; pending_functions: string[]; pending_triggers: string[]; pending_constraints: string[];
   };
   tables: Record<string, Record<string, ColumnContract>>;
 };
@@ -138,6 +138,30 @@ async function preflight(client: PoolClient): Promise<{ database: string; versio
     [contract.expected.pending_audit_log_fk_to_drop],
   );
   if (!oldAuditFk.rows[0]?.present) errors.push(`Expected pre-migration audit FK ${contract.expected.pending_audit_log_fk_to_drop} is missing`);
+  const pendingIndexes = await client.query<{ indexname: string }>(
+    `SELECT indexname FROM pg_indexes WHERE schemaname='public' AND indexname = ANY($1::text[])`,
+    [contract.expected.pending_indexes],
+  );
+  if (pendingIndexes.rows.length) errors.push(`Pending migration indexes already exist: ${pendingIndexes.rows.map(row => row.indexname).join(', ')}`);
+  const pendingFunctions = await client.query<{ proname: string }>(
+    `SELECT p.proname FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname='public' AND p.proname = ANY($1::text[])`,
+    [contract.expected.pending_functions],
+  );
+  if (pendingFunctions.rows.length) errors.push(`Pending migration functions already exist: ${pendingFunctions.rows.map(row => row.proname).join(', ')}`);
+  const pendingTriggers = await client.query<{ tgname: string }>(
+    `SELECT tgname FROM pg_trigger WHERE tgname = ANY($1::text[]) AND NOT tgisinternal`,
+    [contract.expected.pending_triggers],
+  );
+  if (pendingTriggers.rows.length) errors.push(`Pending migration triggers already exist: ${pendingTriggers.rows.map(row => row.tgname).join(', ')}`);
+  const pendingConstraints = await client.query<{ conname: string }>(
+    `SELECT conname FROM pg_constraint WHERE conrelid='public.audit_log'::regclass AND conname = ANY($1::text[])`,
+    [contract.expected.pending_constraints],
+  );
+  if (pendingConstraints.rows.length) errors.push(`Pending migration constraints already exist: ${pendingConstraints.rows.map(row => row.conname).join(', ')}`);
+  const allUserTriggers = await client.query<{ total: number }>(
+    `SELECT count(*)::integer AS total FROM pg_trigger t JOIN pg_class c ON c.oid=t.tgrelid JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname='public' AND NOT t.tgisinternal`,
+  );
+  if (Number(allUserTriggers.rows[0]?.total ?? 0) !== 0) errors.push('Unexpected user-defined trigger(s) exist in public schema');
   const auditTriggers = await client.query<{ total: number }>(
     `SELECT count(*)::integer AS total FROM pg_trigger WHERE tgrelid='public.audit_log'::regclass AND NOT tgisinternal`,
   );
