@@ -1,6 +1,10 @@
 name: Render PostgreSQL encrypted backup
 
 on:
+  pull_request:
+    paths:
+      - ".github/workflows/render-postgres-backup.yml"
+      - "docs/ops/RENDER_POSTGRES_BACKUP_RESTORE.md"
   schedule:
     - cron: "20 2 * * *"
   workflow_dispatch:
@@ -13,6 +17,14 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  validate:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate workflow syntax with actionlint
+        run: docker run --rm -v "$GITHUB_WORKSPACE:/repo" -w /repo rhysd/actionlint:1.7.7 -color .github/workflows/render-postgres-backup.yml
+
   backup:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
