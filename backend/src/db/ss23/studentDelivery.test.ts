@@ -216,3 +216,27 @@ test('blocks lessons whose question-level source reuse is still pending', () => 
   assert.equal(delivery.getUnit(blockedUnitId, 'SS 2'), null);
   assert.ok(delivery.getUnit(unaffectedUnitId, 'SS 2'));
 });
+
+
+test('keeps SS3 Biology revision prompts source-exact and excludes unsupported new instruction', () => {
+  const pkg = loaded.find(item => item.class_name === 'SS 3' && item.subject_slug === 'biology');
+  assert.ok(pkg);
+  assert.equal(pkg.delivery_mode, 'EXAM_PREPARATION');
+  assert.equal(pkg.package_status, 'PENDING');
+  const excretion = pkg.units.find(unit => unit.id === 'PREP-SS3-BIOLOGY-T1-W2-EXCRETION');
+  assert.ok(excretion);
+  assert.deepEqual(excretion.practice.map(question => question.question), [
+    'Which of the following parts of mammalian skin is directly involved in excretion? (a) Sebaceous gland (b) sweat gland (c) horny layer (d) blood capillaries',
+    '(b) Explain how skin acts as an excretory organ.',
+  ]);
+  assert.ok(excretion.practice.every(question => question.question_origin === 'ORIGINAL_SOURCE' && question.answer_origin === 'AUTHORED_SUPPLEMENT'));
+  const adaptation = pkg.units.find(unit => unit.id === 'PREP-SS3-BIOLOGY-T2-W3-4');
+  assert.ok(adaptation);
+  assert.deepEqual(adaptation.practice.map(question => question.question), [
+    'Give three examples of structural adaptation for obtaining food in animals.',
+    'Give five examples of animals and their adaptive colouration.',
+  ]);
+  assert.ok(pkg.coverage.some(row => row.id === 'SS3BIO-COV-T2-W5' && row.status === 'UNRESOLVED'));
+  assert.ok(pkg.coverage.some(row => row.id === 'SS3BIO-COV-T2-W6' && row.status === 'UNRESOLVED'));
+  assert.ok(pkg.open_items.some(item => item.id === 'SS3BIO-PRIOR-LEARNING-MAP' && item.blocks_delivery));
+});
