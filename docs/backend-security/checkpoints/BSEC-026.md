@@ -1,24 +1,19 @@
 # Checkpoint — BSEC-026
 
 - **Task ID:** BSEC-026
-- **Title:** Reconcile BSEC-024 and BSEC-025 checkpoint records with merged GitHub state
-- **Status:** reconciliation committed; PostgreSQL rerun pending
+- **Title:** Enforce school-bound administrator scope on class-lock reads and writes
+- **Status:** implementation committed; focused CI verification pending
 - **Owner:** ChatGPT implementation worker
 - **Base branch:** master
 - **Base commit:** 32d4d1677e4cd236f05bcb2c4fb4a86022dfaed8
-- **Working branch:** agent/backend-security-bsec026-reconciliation-20261116
+- **Working branch:** agent/backend-class-lock-school-admin-scope-20261116
 - **Changed files:**
-  - docs/backend-security/checkpoints/BSEC-024.md
-  - docs/backend-security/checkpoints/BSEC-025.md
+  - backend/src/routes/academic.ts
   - tests/backend-class-lock-read-scope.integration.test.mts
-  - .github/workflows/backend-security-reconciliation.yml
   - docs/backend-security/checkpoints/BSEC-026.md
-- **Reconciliation findings:**
-  - BSEC-024 implementation PR #897 is merged at `50b61ed850d414951c9bf614d06b678a1985354e`; its checkpoint's focused PostgreSQL and backend typecheck evidence is workflow `43940770785` (passed).
-  - BSEC-025 implementation PR #900 is merged at `4287d6af058d892a692a6c8cc375911411423c3f`.
-  - Both merge commits are ancestors of current master `32d4d1677e4cd236f05bcb2c4fb4a86022dfaed8` (compare results: master is 38 commits ahead of BSEC-024 merge and 33 commits ahead of BSEC-025 merge; 0 behind in both comparisons).
-  - BSEC-025's old checkpoint still said CI pending. No workflow run is currently recorded for its implementation commit because the workflow was introduced in that PR. This is not being represented as a pass.
-- **Changes:** update BSEC-024 checkpoint to its merged state; update BSEC-025 checkpoint to its merged state with post-merge verification explicitly pending; fix the BSEC-025 test fixture to seed and clean up the Secondary `Primary 4` class required by the new class-membership validation; add a PostgreSQL 16 reconciliation workflow that reruns BSEC-024 and BSEC-025 integration suites and backend TypeScript checking.
-- **Production safety:** all verification is configured against a disposable PostgreSQL 16 service. No production database, production data, secrets or deployment settings were accessed or changed.
-- **Remaining:** inspect the reconciliation workflow; if both suites and typecheck pass, update BSEC-025 checkpoint with the actual run evidence; open a focused PR and verify current-head checks.
-- **Exact next action:** inspect the PostgreSQL BSEC-024/BSEC-025 reconciliation workflow result.
+- **Defect:** BSEC-025 distinguished teachers from administrators, but treated every admin as global. School-bound admin accounts are supported elsewhere in the application. A school-bound administrator could supply another school's school_code to GET /academic/class-locks or PUT /academic/class-locks and inspect or alter that school's lock state.
+- **Implementation:** pin school-bound administrators to req.user.school_code for both reads and writes; reject a conflicting client-supplied school_code with HTTP 403. Preserve global-admin cross-school behavior, requiring an explicit school_code. Preserve the existing teacher rule that ignores a client-supplied school_code and uses the authenticated school. Validate class name, positive 32-bit term ID, and boolean lock state on writes; verify the class belongs to the selected school before inserting or deleting a lock.
+- **Regression coverage added:** PostgreSQL HTTP coverage for school-bound admin own-school reads/writes, forged cross-school GET/PUT denial, proof the denied write does not delete the other school's lock, global-admin explicit cross-school access, teacher school-code spoofing behavior, invalid term IDs and unknown classes. Existing student, parent, finance-admin, class-teacher and subject-only teacher denials remain.
+- **Verification:** source and test files fetched back from the dedicated branch and reviewed. The focused PostgreSQL 16 workflow and backend TypeScript check are configured to run on the PR. No local test execution is claimed. No production database or data was accessed or changed.
+- **Remaining:** open the focused PR; inspect the PostgreSQL class-lock authorization workflow and backend typecheck; fix any genuine failures without weakening assertions; verify the merge head and update this checkpoint with actual CI evidence.
+- **Exact next action:** open the PR from this branch and verify its focused PostgreSQL workflow.

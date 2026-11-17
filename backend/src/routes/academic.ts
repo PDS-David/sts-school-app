@@ -264,7 +264,7 @@ router.get('/classes', async (req, res) => {
 // GET  /academic/class-locks?class_name=&term_id=&school_code=
 router.get('/class-locks', requireRole('teacher', 'admin'), async (req, res) => {
   const { class_name, term_id, school_code } = req.query as Record<string, string>;
-  if (!class_name || class_name.trim().length > 100 || !term_id) {
+  if (typeof class_name !== 'string' || !class_name.trim() || class_name.trim().length > 100 || !term_id) {
     return res.status(400).json({ error: 'A valid class_name and term_id are required' });
   }
   const parsedTermId = Number(term_id);
@@ -275,10 +275,18 @@ router.get('/class-locks', requireRole('teacher', 'admin'), async (req, res) => 
   const user = req.user!;
   let schoolCode: string;
   if (user.role === 'admin') {
-    if (!school_code || !school_code.trim() || school_code.length > 50) {
-      return res.status(400).json({ error: 'school_code is required for administrators' });
+    const requestedSchool = typeof school_code === 'string' ? school_code.trim() : '';
+    if (user.school_code) {
+      if (school_code !== undefined && requestedSchool !== user.school_code) {
+        return res.status(403).json({ error: "You can't view class locks outside your school" });
+      }
+      schoolCode = user.school_code;
+    } else {
+      if (!requestedSchool || requestedSchool.length > 50) {
+        return res.status(400).json({ error: 'school_code is required for global administrators' });
+      }
+      schoolCode = requestedSchool;
     }
-    schoolCode = school_code.trim();
   } else {
     if (!user.school_code || !user.assigned_class) {
       return res.status(403).json({ error: 'Only class teachers can view class lock status' });
@@ -312,18 +320,29 @@ router.put('/class-locks', requireRole('teacher', 'admin'), async (req, res) => 
   const { class_name, term_id, school_code, locked } = req.body as {
     class_name?: string; term_id?: number; school_code?: string; locked?: boolean;
   };
-  if (!class_name || !term_id || typeof locked !== 'boolean') {
-    return res.status(400).json({ error: 'class_name, term_id, and locked (boolean) are required' });
+  const parsedTermId = Number(term_id);
+  if (typeof class_name !== 'string' || !class_name.trim() || class_name.trim().length > 100 ||
+      !Number.isSafeInteger(parsedTermId) || parsedTermId <= 0 || parsedTermId > 2_147_483_647 ||
+      typeof locked !== 'boolean') {
+    return res.status(400).json({ error: 'A valid class_name, positive term_id, and locked (boolean) are required' });
   }
+  const className = class_name.trim();
   const user = req.user!;
 
-  let sc: string | null;
+  let sc: string;
   if (user.role === 'admin') {
-    // Admin has no school_code of their own — they must say which school's
-    // class they mean, same pattern as every other admin-facing endpoint in
-    // this file (GET /terms, GET /classes above).
-    if (!school_code) return res.status(400).json({ error: 'school_code is required for admin' });
-    sc = school_code;
+    const requestedSchool = typeof school_code === 'string' ? school_code.trim() : '';
+    if (user.school_code) {
+      if (school_code !== undefined && requestedSchool !== user.school_code) {
+        return res.status(403).json({ error: "You can't change class locks outside your school" });
+      }
+      sc = user.school_code;
+    } else {
+      if (!requestedSchool || requestedSchool.length > 50) {
+        return res.status(400).json({ error: 'school_code is required for global administrators' });
+      }
+      sc = requestedSchool;
+    }
   } else {
     // Teacher: only their own assigned class, own school. A subject-only
     // teacher (no assigned_class) or a teacher naming a class that isn't
@@ -333,15 +352,21 @@ router.put('/class-locks', requireRole('teacher', 'admin'), async (req, res) => 
     // school); locking is a bigger, more disruptive action than a single
     // record write, so it's restricted to the one person whose job it
     // actually is to close out a class.
-    if (!user.assigned_class || user.assigned_class !== class_name) {
+    if (!user.assigned_class || user.assigned_class !== className) {
       return res.status(403).json({ error: 'You can only lock or unlock your own assigned class' });
     }
-    sc = user.school_code;
+    sc = user.school_code ?? '';
     if (!sc) return res.status(403).json({ error: 'Your teacher account is not assigned to a school.' });
   }
 
-  const termScopeError = await checkTermSchoolScope(sc, term_id);
+  const termScopeError = await checkTermSchoolScope(sc, parsedTermId);
   if (termScopeError) return res.status(termScopeError.status).json({ error: termScopeError.error });
+
+  const { rows: classRows } = await query(
+    'SELECT 1 FROM classes WHERE school_code=$1 AND name=$2',
+    [sc, className],
+  );
+  if (!classRows[0]) return res.status(400).json({ error: 'Unknown class for this school' });
 
   if (locked) {
     const { rows } = await query(
@@ -349,25 +374,25 @@ router.put('/class-locks', requireRole('teacher', 'admin'), async (req, res) => 
        VALUES($1,$2,$3,$4)
        ON CONFLICT(school_code, class_name, term_id) DO NOTHING
        RETURNING *`,
-      [sc, class_name, term_id, user.id],
+      [sc, className, parsedTermId, user.id],
     );
     // Locking an already-locked class (re-tap, or someone else beat them to
     // it) is a no-op, not an error — just report whichever lock exists.
     const lock = rows[0] ?? (await query(
       'SELECT * FROM class_locks WHERE school_code=$1 AND class_name=$2 AND term_id=$3',
-      [sc, class_name, term_id],
+      [sc, className, parsedTermId],
     )).rows[0];
     if (rows[0]) {
-      await audit(user, 'lock_class', 'class_lock', String(lock.id), `${class_name} — term ${term_id}`);
+      await audit(user, 'lock_class', 'class_lock', String(lock.id), `${className} — term ${parsedTermId}`);
     }
     return res.json({ lock });
   } else {
     const { rows } = await query(
       'DELETE FROM class_locks WHERE school_code=$1 AND class_name=$2 AND term_id=$3 RETURNING id',
-      [sc, class_name, term_id],
+      [sc, className, parsedTermId],
     );
     if (rows[0]) {
-      await audit(user, 'unlock_class', 'class_lock', String(rows[0].id), `${class_name} — term ${term_id}`);
+      await audit(user, 'unlock_class', 'class_lock', String(rows[0].id), `${className} — term ${parsedTermId}`);
     }
     return res.json({ lock: null });
   }

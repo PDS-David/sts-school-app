@@ -58,6 +58,7 @@ async function startServer(): Promise<{ server: Server; baseUrl: string }> {
 test('class lock reads are restricted to class teachers and administrators', async () => {
   const suffix = randomUUID().slice(0, 8);
   const admin = await createUser('admin', 'admin', null);
+  const primaryAdmin = await createUser('primary-admin', 'admin', 'primary');
   const primaryTeacher = await createUser('primary-teacher', 'teacher', 'primary', 'Primary 4');
   const secondaryTeacher = await createUser('secondary-teacher', 'teacher', 'secondary', 'Primary 4');
   const subjectOnlyTeacher = await createUser('subject-only-teacher', 'teacher', 'primary');
@@ -103,6 +104,14 @@ test('class lock reads are restricted to class teachers and administrators', asy
       `${started.baseUrl}${queryString}`,
       { headers: { Authorization: `Bearer ${token}` } },
     );
+    const put = (token: string, body: Record<string, unknown>) => fetch(
+      started.baseUrl,
+      {
+        method: 'PUT',
+        headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      },
+    );
     const primaryQuery = `?class_name=Primary%204&term_id=${primaryTerm}`;
 
     const adminRead = await get(admin.token, `${primaryQuery}&school_code=primary`);
@@ -111,6 +120,56 @@ test('class lock reads are restricted to class teachers and administrators', asy
 
     const adminMissingSchool = await get(admin.token, primaryQuery);
     assert.equal(adminMissingSchool.status, 400, 'global admins must name the school explicitly');
+
+    const schoolAdminRead = await get(primaryAdmin.token, primaryQuery);
+    assert.equal(schoolAdminRead.status, 200, 'school-bound admins should use their assigned school without a query override');
+    assert.equal((await schoolAdminRead.json() as { lock: { school_code: string } }).lock.school_code, 'primary');
+
+    const schoolAdminSpoofedSchool = await get(primaryAdmin.token, `${primaryQuery}&school_code=secondary`);
+    assert.equal(schoolAdminSpoofedSchool.status, 403, 'school-bound admins cannot inspect another school by forging school_code');
+
+    const globalAdminMissingWriteSchool = await put(admin.token, {
+      class_name: 'Primary 4', term_id: primaryTerm, locked: true,
+    });
+    assert.equal(globalAdminMissingWriteSchool.status, 400, 'global admins must name the school when changing class locks');
+
+    const schoolAdminOwnWrite = await put(primaryAdmin.token, {
+      class_name: 'Primary 4', term_id: primaryTerm, locked: true,
+    });
+    assert.equal(schoolAdminOwnWrite.status, 200);
+    assert.equal((await schoolAdminOwnWrite.json() as { lock: { school_code: string } }).lock.school_code, 'primary');
+
+    const schoolAdminSpoofedWrite = await put(primaryAdmin.token, {
+      class_name: 'Primary 4', term_id: secondaryTerm, school_code: 'secondary', locked: false,
+    });
+    assert.equal(schoolAdminSpoofedWrite.status, 403, 'school-bound admins cannot unlock another school by forging school_code');
+
+    const teacherSpoofedWrite = await put(primaryTeacher.token, {
+      class_name: 'Primary 4', term_id: primaryTerm, school_code: 'secondary', locked: true,
+    });
+    assert.equal(teacherSpoofedWrite.status, 200, 'teacher-supplied school_code remains ignored in favour of authenticated school');
+    assert.equal((await teacherSpoofedWrite.json() as { lock: { school_code: string } }).lock.school_code, 'primary');
+
+    const globalAdminSecondaryWrite = await put(admin.token, {
+      class_name: 'Primary 4', term_id: secondaryTerm, school_code: 'secondary', locked: true,
+    });
+    assert.equal(globalAdminSecondaryWrite.status, 200, 'global admins retain explicit cross-school management');
+
+    const invalidWriteTerm = await put(admin.token, {
+      class_name: 'Primary 4', term_id: 'not-a-number', school_code: 'primary', locked: true,
+    });
+    assert.equal(invalidWriteTerm.status, 400, 'invalid term IDs are rejected before SQL');
+
+    const unknownWriteClass = await put(admin.token, {
+      class_name: 'NotAClass', term_id: primaryTerm, school_code: 'primary', locked: true,
+    });
+    assert.equal(unknownWriteClass.status, 400, 'class locks cannot be created for unknown school classes');
+
+    const secondaryLockStillExists = await query(
+      'SELECT id FROM class_locks WHERE school_code=$1 AND class_name=$2 AND term_id=$3',
+      ['secondary', 'Primary 4', secondaryTerm],
+    );
+    assert.equal(secondaryLockStillExists.rows.length, 1, 'denied school-bound admin write must not mutate the other school lock');
 
     const teacherOwnClass = await get(primaryTeacher.token, primaryQuery);
     assert.equal(teacherOwnClass.status, 200);
@@ -159,6 +218,6 @@ test('class lock reads are restricted to class teachers and administrators', asy
     if (classIds.length) await query('DELETE FROM classes WHERE id=ANY($1::int[])', [classIds]);
     if (termIds.length) await query('DELETE FROM terms WHERE id=ANY($1::int[])', [termIds]);
     await query('DELETE FROM users WHERE id=ANY($1::uuid[])',
-      [[admin.id, primaryTeacher.id, secondaryTeacher.id, subjectOnlyTeacher.id, student.id, parent.id, financeAdmin.id]]);
+      [[admin.id, primaryAdmin.id, primaryTeacher.id, secondaryTeacher.id, subjectOnlyTeacher.id, student.id, parent.id, financeAdmin.id]]);
   }
 });
