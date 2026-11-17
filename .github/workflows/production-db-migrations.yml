@@ -115,7 +115,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          row_count_sql="SELECT string_agg(format('%I=%s', table_name, (xpath('//c/text()', query_to_xml(format('SELECT count(*) AS c FROM public.%I', table_name), false, true, '')))[1]::text), E'\\n' ORDER BY table_name) FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE' AND table_name NOT IN ('schema_migrations','school_events','rate_limit_counters')"
+          row_count_sql="SELECT string_agg(format('%I=%s', table_name, (xpath('//c/text()', query_to_xml(format('SELECT count(*) AS c FROM public.%I', table_name), false, true, '')))[1]::text), E'\n' ORDER BY table_name) FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE' AND table_name NOT IN ('schema_migrations','school_events','rate_limit_counters')"
           counts="$(docker run --rm --env DATABASE_URL postgres:18 psql "$DATABASE_URL" -X -A -t -v ON_ERROR_STOP=1 -c "$row_count_sql")"
           test -n "$counts"
           echo "counts_b64=$(printf '%s' "$counts" | base64 -w0)" >> "$GITHUB_OUTPUT"
@@ -133,6 +133,9 @@ jobs:
         if: inputs.operation == 'apply'
         run: npm run db:migrate --workspace backend -- --all
 
+      - name: Verify migration ledger with the application runner
+        if: inputs.operation == 'apply'
+        run: npm run db:migrate:status --workspace backend
       - name: Verify migration ledger and database integrity
         if: inputs.operation == 'apply'
         env:
@@ -140,25 +143,27 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          row_count_sql="SELECT string_agg(format('%I=%s', table_name, (xpath('//c/text()', query_to_xml(format('SELECT count(*) AS c FROM public.%I', table_name), false, true, '')))[1]::text), E'\\n' ORDER BY table_name) FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE' AND table_name NOT IN ('schema_migrations','school_events','rate_limit_counters')"
+          row_count_sql="SELECT string_agg(format('%I=%s', table_name, (xpath('//c/text()', query_to_xml(format('SELECT count(*) AS c FROM public.%I', table_name), false, true, '')))[1]::text), E'\n' ORDER BY table_name) FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE' AND table_name NOT IN ('schema_migrations','school_events','rate_limit_counters')"
           after_counts="$(docker run --rm --env DATABASE_URL postgres:18 psql "$DATABASE_URL" -X -A -t -v ON_ERROR_STOP=1 -c "$row_count_sql")"
           before_counts="$(printf '%s' "$BEFORE_COUNTS_B64" | base64 -d)"
           if [[ "$before_counts" != "$after_counts" ]]; then
             echo "::error::Existing table row counts changed during migration."
-            diff -u <(printf '%s\\n' "$before_counts") <(printf '%s\\n' "$after_counts") || true
+            diff -u <(printf '%s\n' "$before_counts") <(printf '%s\n' "$after_counts") || true
             exit 1
           fi
-          verification_sql="DO \\$\\$ BEGIN
+          verification_sql="DO \$\$ BEGIN
             IF (SELECT count(*) FROM public.schema_migrations WHERE version IN ('0001','0002','0003','0004')) <> 4 THEN RAISE EXCEPTION 'Expected migrations 0001-0004'; END IF;
             IF to_regclass('public.school_events') IS NULL THEN RAISE EXCEPTION 'school_events missing'; END IF;
             IF to_regclass('public.rate_limit_counters') IS NULL THEN RAISE EXCEPTION 'rate_limit_counters missing'; END IF;
             IF (SELECT count(*) FROM information_schema.columns WHERE table_schema='public' AND table_name='audit_log' AND column_name IN ('actor_role','actor_school_code','actor_ip','request_id','user_agent','metadata','outcome','previous_hash','event_hash')) <> 9 THEN RAISE EXCEPTION 'Audit columns incomplete'; END IF;
             IF EXISTS (SELECT 1 FROM pg_constraint WHERE connamespace='public'::regnamespace AND NOT convalidated) THEN RAISE EXCEPTION 'Unvalidated constraints remain'; END IF;
             IF EXISTS (SELECT 1 FROM pg_index i JOIN pg_class t ON t.oid=i.indrelid JOIN pg_namespace n ON n.oid=t.relnamespace WHERE n.nspname='public' AND (NOT i.indisvalid OR NOT i.indisready)) THEN RAISE EXCEPTION 'Invalid indexes remain'; END IF;
+            IF (SELECT count(*) FROM pg_indexes WHERE schemaname='public' AND indexname IN ('idx_school_events_school_start','idx_school_events_class_start','idx_rate_limit_counters_expiry','idx_audit_log_school_id_desc','idx_audit_log_actor_id_desc','idx_audit_log_action_id_desc','idx_audit_log_event_hash_unique')) <> 7 THEN RAISE EXCEPTION 'Required migration indexes missing'; END IF;
+            IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conrelid='public.audit_log'::regclass AND conname='audit_log_outcome_check' AND convalidated) THEN RAISE EXCEPTION 'Audit outcome check constraint missing or unvalidated'; END IF;
             IF (SELECT count(*) FROM pg_trigger WHERE tgrelid='public.audit_log'::regclass AND NOT tgisinternal) <> 2 THEN RAISE EXCEPTION 'Audit append-only triggers missing'; END IF;
             IF NOT EXISTS (SELECT 1 FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname='public' AND p.proname='audit_log_reject_mutation') THEN RAISE EXCEPTION 'Audit append-only function missing'; END IF;
             IF EXISTS (SELECT 1 FROM pg_constraint WHERE conrelid='public.audit_log'::regclass AND conname='audit_log_actor_id_fkey') THEN RAISE EXCEPTION 'Obsolete audit actor FK remains'; END IF;
-          END \\$\\$; SELECT version,name,checksum FROM public.schema_migrations ORDER BY version"
+          END \$\$; SELECT version,name,checksum FROM public.schema_migrations ORDER BY version"
           docker run --rm --env DATABASE_URL postgres:18 psql "$DATABASE_URL" -X -v ON_ERROR_STOP=1 -c "$verification_sql"
           {
             echo '### Production migration verification'
