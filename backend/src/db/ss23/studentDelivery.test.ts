@@ -216,3 +216,27 @@ test('blocks lessons whose question-level source reuse is still pending', () => 
   assert.equal(delivery.getUnit(blockedUnitId, 'SS 2'), null);
   assert.ok(delivery.getUnit(unaffectedUnitId, 'SS 2'));
 });
+
+
+test('keeps SS3 Agriculture exam-only and links each revision unit to prior learning and source questions', () => {
+  const pkg = loaded.find(item => item.class_name === 'SS 3' && item.subject_slug === 'agricultural-science');
+  assert.ok(pkg);
+  assert.equal(pkg.delivery_mode, 'EXAM_PREPARATION');
+  assert.equal(pkg.package_status, 'PENDING');
+  assert.equal(pkg.units.length, 12);
+  assert.deepEqual([...new Set(pkg.units.map(unit => unit.term))].sort(), ['1st Term', '2nd Term']);
+  assert.ok(pkg.units.every(unit => unit.unit_type === 'REVISION_UNIT'));
+  assert.equal(pkg.external_sources.filter(source => source.source_id.startsWith('SS23-EXT-SS1-AGRI-PRIOR-')).length, 2);
+  for (const unit of pkg.units) {
+    const priorId = unit.term === '1st Term' ? 'SS23-EXT-SS1-AGRI-PRIOR-T1' : 'SS23-EXT-SS1-AGRI-PRIOR-T2';
+    assert.ok(unit.provenance.some(ref => ref.source_id === priorId && ref.role === 'AUTHORED_SUPPLEMENT'), unit.id + ' needs a prior-learning crosswalk');
+    assert.equal(unit.practice[0].question_origin, 'ORIGINAL_SOURCE', unit.id + ' needs a source-located evaluation prompt');
+    assert.equal(unit.practice[0].answer_origin, 'AUTHORED_SUPPLEMENT');
+    assert.ok(unit.practice[0].provenance.some(ref => ref.role === 'ORIGINAL_SOURCE'));
+    assert.ok(unit.state.implementation === 'DRAFT' && unit.state.verification === 'DEFERRED');
+  }
+  assert.equal(pkg.coverage.find(row => row.id === 'SS3AG-PRIOR-LEARNING-T1')?.status, 'PARTIAL');
+  assert.equal(pkg.coverage.find(row => row.id === 'SS3AG-PRIOR-LEARNING-T2')?.status, 'PARTIAL');
+  assert.ok(pkg.open_items.some(item => item.id === 'SS3AG-PRIOR-LEARNING-DEPTH-REVIEW' && item.blocks_delivery));
+  assert.ok(pkg.open_items.some(item => item.id === 'SS3AG-T1-EXTENSION-OBJECTIVE-COUNT' && item.blocks_delivery));
+});
