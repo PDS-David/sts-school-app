@@ -7,7 +7,6 @@ on:
       - 'backend/src/middleware/auth.ts'
       - 'backend/src/utils/rbac.ts'
       - 'backend/package.json'
-      - 'backend/package-lock.json'
       - 'tests/backend-messages-rbac.test.mts'
       - '.github/workflows/messages-rbac.yml'
   push:
@@ -17,7 +16,6 @@ on:
       - 'backend/src/middleware/auth.ts'
       - 'backend/src/utils/rbac.ts'
       - 'backend/package.json'
-      - 'backend/package-lock.json'
       - 'tests/backend-messages-rbac.test.mts'
       - '.github/workflows/messages-rbac.yml'
 
@@ -29,9 +27,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-          cache-dependency-path: backend/package-lock.json
-      - run: npm ci
+      - run: npm install --no-audit --no-fund
         working-directory: backend
       - run: npm run test:messages-rbac
         working-directory: backend
