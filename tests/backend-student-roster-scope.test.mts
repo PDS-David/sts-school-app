@@ -52,12 +52,16 @@ test('teacher-supplied school filters cannot widen the teacher current school or
     assigned_class: 'Primary 4',
   };
   assert.deepEqual(
-    resolveStudentRosterScope(teacher, { school_code: 'secondary', class_name: 'JSS 1' }),
+    resolveStudentRosterScope(teacher, { school_code: 'secondary' }),
     { schoolCode: 'primary', className: 'Primary 4' },
+  );
+  assert.deepEqual(
+    resolveStudentRosterScope(teacher, { school_code: 'secondary', class_name: 'JSS 1' }),
+    { status: 403, error: 'You can only browse students in your assigned physical class.' },
   );
 });
 
-test('subject-only teachers must name a class and cannot fall back to the whole school roster', () => {
+test('teachers without an assigned physical class cannot browse arbitrary school classes', () => {
   const teacher: AuthUser = {
     ...financeAdmin,
     id: 'teacher-2',
@@ -66,11 +70,12 @@ test('subject-only teachers must name a class and cannot fall back to the whole 
     school_code: 'secondary',
     assigned_class: null,
   };
-  assert.deepEqual(resolveStudentRosterScope(teacher, {}), { schoolCode: 'secondary', className: null });
-  assert.deepEqual(
-    resolveStudentRosterScope(teacher, { class_name: 'SS 2' }),
-    { schoolCode: 'secondary', className: 'SS 2' },
-  );
+  const expected = {
+    status: 403,
+    error: 'Report access requires a teacher account assigned to a physical class. Contact the school administrator.',
+  };
+  assert.deepEqual(resolveStudentRosterScope(teacher, {}), expected);
+  assert.deepEqual(resolveStudentRosterScope(teacher, { class_name: 'SS 2' }), expected);
 });
 
 test('teacher without a school assignment is denied rather than allowed to query all schools', () => {
