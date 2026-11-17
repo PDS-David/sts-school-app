@@ -123,6 +123,15 @@ No production schema or data has been changed. Do not run `--fresh`, stamp a bas
 
 The database's external IP allowlist is `0.0.0.0/0`. No complete inventory of external admin, CI, backup and developer clients has been approved. Restricting this without that inventory risks lockout; the issue remains open. Routine service traffic should use Render private networking, with external access restricted to known fixed CIDRs.
 
+
+### 3.5 Previous production database recovery
+
+The previous handoff `AGENT_CONTINUATION.md` identifies the former live database as `sts-school-db` on Render Free Postgres and records Render's dashboard warning that it would be deleted on **2026-10-04** unless upgraded. The current Render workspace lists only `sts-school-db-2`, created on **2026-11-12**. The old hostname referenced by the stale backend service returns `404 not found`, and the old database ID is no longer retrievable.
+
+This is consistent with the former Free database expiring and being deleted. It is not yet proven that its data is irrecoverable: the repository's encrypted backup implementation can email a backup attachment when `ADMIN_LOG_RECIPIENTS` is configured and the encrypted file is under 17 MiB; larger files produce a notice directing an operator to run `npm run db:backup-export` locally. The new database's `backup_log` has one reminder and zero backup records, but that log belongs to the new database and cannot establish what happened on the deleted database.
+
+**Recovery is an urgent unresolved workstream:** search the project-owner/admin email accounts for subjects beginning `[STS School] Encrypted database backup`, inspect local `db:backup-export` output and any off-host storage, verify any candidate backup's age-encryption identity and archive integrity, then restore only into an isolated PostgreSQL database. Do not overwrite the current database or claim old student data recovered until row counts and representative records are validated. A Gmail connection is required to search the owner's email; it has been suggested but is not yet connected.
+
 ## 4. Mobile application and release gaps
 
 ### Implemented, but not fully verified
@@ -169,6 +178,43 @@ The database's external IP allowlist is `0.0.0.0/0`. No complete inventory of ex
 | [#972](https://github.com/PDS-David/sts-school-app/pull/972) | Conventional Expo App entrypoint and updated Android readiness notes. | Open; Android debug APK build and emulator verification are running. |
 | [#973](https://github.com/PDS-David/sts-school-app/pull/973) | This evidence-based application completion gap register. | Open; documentation only. |
 | [#974](https://github.com/PDS-David/sts-school-app/pull/974) | SS2 Government First-Term: 10 draft units and 20 practice records; T2/T3 explicitly unresolved. | Open; package/loader regression checks pending. |
+
+
+## 8. Additional product and administration gaps recorded in the existing app audit
+
+These items were present in `APP_WIDE_AUDIT.md`, `AGENT_CONTINUATION.md` and `TODO.md`. They are distinct from the SS2/SS3 curriculum work and from the four current GitHub Issues.
+
+### Not implemented or not complete
+
+1. **Student creation UI:** `POST /students` and parent auto-provisioning exist, but the mobile Students screen is read-only. There is no Add Student form to collect the student and parent details; current creation relies on legacy import scripts.
+2. **Fee-item and invoice creation UI:** backend endpoints exist and have validation, but Finance screens can only view existing fee items/invoices and mark an invoice paid. There is no in-app form to create fee items or invoices.
+3. **Announcements:** no complete announcements/school-notice backend endpoint and delivery workflow is present; Student/Parent Home currently shows an empty-state placeholder.
+4. **Teacher marking backlog:** submissions have no graded/ungraded marker, so the teacher dashboard's open-assessment count is not a true pending-marking count.
+5. **Coming-soon modules:** Teacher Analytics and Calendar, Student Badges, Parent Upcoming Tests, Parent Calendar and School Events do not have complete backing data/workflows.
+6. **Parent messaging scope decision:** parent messaging is scoped to the ward's class teacher. Whether parents should also contact subject teachers or school admins (for example, for billing) remains a product decision.
+7. **Admin Edit User data integrity:** the edit modal still sends empty strings for nullable `school_code` and `assigned_class`. For admin/finance-admin accounts this can replace intended SQL NULL values with empty strings. This was flagged in `APP_WIDE_AUDIT.md` Part 4 and not fixed.
+8. **Finance-admin role audit:** student, parent, teacher and admin surfaces were audited in `APP_WIDE_AUDIT.md`; the separate `finance_admin` role was explicitly out of scope and has not had the same full screen-to-route, RBAC and data-scope audit.
+9. **Pre-login flow audit:** `StudentSelfClaimScreen` and `ActivateAccountScreen` were not included in the completed student-role audit; their full error-path and abuse-case review remains unverified.
+10. **Report-card school details:** the term-report PDF code now implements the agreed layout (position included; motto is embedded in the crest; attendance/remarks/next-term are excluded), but the Primary school's address and phone in `mobile/src/schoolBranding.ts` are still placeholders copied from Model College.
+11. **Report position/permission decision:** the term report currently always includes subject and overall position. The older TODO's requested optional position-column setting and the question of whether teachers should gain print/export access were not evidenced as implemented. Current print/export remains intentionally restricted to admin and parent.
+12. **Class management:** classes are seed-defined; there is no create/edit class route or admin workflow. The existing admin class-summary ranking query uses class name without school code, which is not currently reachable as a cross-school bug because class names are seed-defined and non-overlapping, but must be fixed if class management or overlapping names are introduced.
+13. **School onboarding:** the app is configured around the two seeded campuses (`primary` and `secondary`). No self-service workflow for onboarding a new school/campus and its branding, users, classes and fee configuration is verified.
+14. **PDF acceptance:** report PDF HTML has A4/one-page styling and the owner-approved content decisions are reflected in code comments, but a fresh physical-device print/export acceptance with the actual Primary and Secondary logos/contact details is not recorded.
+
+### Intentionally restricted — do not build these as missing features
+
+- Students view their own attendance; they do not enter or edit physical-classroom attendance. Teachers enter attendance from the physical register.
+- Students may view their report card on-screen but cannot print/export it. Report-card printing/export is admin and parent only.
+- Teachers do not create assessments or question prompts; these are admin/Brainee responsibilities under the explicit RBAC policy.
+- Teachers do not use security-question self-service password recovery; password reset is admin-managed.
+- Topic-completion AI content is available once the account is active; there is no per-item admin approval gate.
+- Locked curriculum topics are deliberately disabled until the required PIN/prior-topic completion condition is satisfied.
+
+## 9. Existing app-wide audit status
+
+`APP_WIDE_AUDIT.md` records Parts 0–5 as completed or resolved: database compatibility against the schema at the time, student/parent/teacher/admin audits, parent cross-campus provisioning, and AdminUsers layout. That audit was performed against the former database before its recorded 2026-10-04 expiry. It does **not** prove the current `sts_school_db_2` is the same database or contains the same data. The new Render database has a different ID and must be treated as a fresh, separate production state until recovery is proven.
+
+The four-role audit does not include `finance_admin`. The old app-wide audit also records that the mobile-to-backend route map had zero endpoint mismatches at the time of that audit; this should be rerun after the current deployment/database repair, not treated as a live production health check.
 
 ## 6. Work order to finish
 
