@@ -70,11 +70,9 @@ async function createRecoveryUser(uname: string): Promise<string> {
 }
 
 async function cleanUser(uname: string, id: string): Promise<void> {
-  await query(
-    `DELETE FROM audit_log WHERE entity='user' AND entity_id=$1
-       AND action IN ('activation_failed','activation_success','forgot_password_failed','forgot_password_reset','login')`,
-    [id],
-  );
+  // audit_log is append-only (BSEC-029): its rows are retained by design, and actor_id is no longer
+  // a foreign key, so deleting the test user never needs to (and must not) touch audit history.
+  void id;
   await query('DELETE FROM users WHERE username=$1', [uname]);
 }
 

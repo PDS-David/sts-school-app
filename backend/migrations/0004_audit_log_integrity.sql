@@ -1,5 +1,5 @@
--- Production schema alignment: restore audit-log protections and the
--- password_hash invariant after OPS-05 baseline adoption.
+-- Production schema alignment: restore audit-log protections after OPS-05
+-- baseline adoption.
 --
 -- This migration intentionally does not synthesize historical actor snapshots
 -- or hash-chain values. Existing audit rows remain intact; fields that cannot
@@ -8,17 +8,10 @@
 -- Apply only through the numbered migration runner, after the owner-approved
 -- OPS-05 review has adopted 0001 and migrations 0002/0003 have succeeded.
 
-DO $$
-BEGIN
-  IF EXISTS (SELECT 1 FROM public.users WHERE password_hash IS NULL) THEN
-    RAISE EXCEPTION
-      'Refusing to enforce users.password_hash NOT NULL: NULL password hashes exist; review and repair accounts first.';
-  END IF;
-
-  ALTER TABLE public.users
-    ALTER COLUMN password_hash SET NOT NULL;
-END;
-$$;
+-- users.password_hash is intentionally left NULLABLE. backend/schema.sql drops
+-- the NOT NULL constraint for the staff-activation flow, and POST /admin/users
+-- creates pending-activation accounts with password_hash NULL until the account
+-- holder sets a password. Enforcing NOT NULL here would make that INSERT fail.
 
 -- Keep audit history independent of user-account deletion. The actor snapshot
 -- columns are deliberately nullable for historical events whose original

@@ -21,7 +21,7 @@ The migration runner refuses `--all` when an existing database has no migration 
   - Extra relative to `schema.sql`: `app_bootstrap`, `backup_log`. Preserve and inspect these; do not drop them.
   - `rate_limit_counters` is also absent; it is supplied by migration `0003_rate_limit_counters.sql`.
 - `audit_log` has 4 rows, but lacks `actor_role`, `actor_school_code`, `actor_ip`, `request_id`, `user_agent`, `metadata`, `outcome`, `previous_hash`, and `event_hash`. Both append-only triggers and the expected audit indexes are absent. Its old `actor_id` foreign key is still present, although current schema intentionally removes it so deleting an account cannot alter historical audit events.
-- `users.password_hash` is nullable in production although current schema requires NOT NULL. There is currently 1 user and 0 NULL password hashes, so a guarded NOT NULL migration is feasible after backup.
+- `users.password_hash` is nullable in production. That matches the current schema, which drops NOT NULL on this column for the staff-activation flow (pending-activation accounts have no password yet), so it is not drift and no constraint change is required.
 - Observed data counts include 2 schools, 6 terms, 1,408 topics, 1 user, and 4 audit rows. Do not replace or reseed these records.
 - `backup_log` has one `reminder` record, not a database export record. This is not evidence of a recoverable backup. The encrypted export utility takes a repeatable-read snapshot and excludes `app_bootstrap`, `backup_log`, and `schema_migrations` from the data payload.
 - `app_bootstrap` has a version-1 marker, but its stored checksum does not match the current `schema.sql` plus the current bootstrap configuration. The marker alone therefore does not prove that today's baseline is installed.
@@ -35,7 +35,7 @@ Branch `ops/production-db-audit-repair-20261117` adds:
 
 - `backend/migrations/0004_audit_log_integrity.sql`
 
-It restores the missing audit columns, outcome check, indexes, mutation-rejection triggers, and PUBLIC privilege revocations. It also restores the `users.password_hash NOT NULL` invariant, refusing to proceed if any NULL hashes exist.
+It restores the missing audit columns, outcome check, indexes, mutation-rejection triggers, and PUBLIC privilege revocations. It deliberately does not change `users.password_hash`, which stays nullable for pending-activation accounts.
 
 The migration deliberately leaves historical actor snapshots and hash-chain fields NULL where those facts were never captured. It does not invent historical values or delete/replace audit rows.
 
@@ -97,7 +97,7 @@ npm run db:migrate -- --all
 npm run db:migrate -- --status
 ```
 
-Expected sequence: 0002 creates `school_events`; 0003 creates `rate_limit_counters`; 0004 restores audit integrity and the password-hash constraint. Verify table definitions, indexes, constraints, triggers, and migration checksums before restarting the application.
+Expected sequence: 0002 creates `school_events`; 0003 creates `rate_limit_counters`; 0004 restores audit integrity. Verify table definitions, indexes, constraints, triggers, and migration checksums before restarting the application.
 
 ### 6. Restore application service and protect database continuity
 
