@@ -340,8 +340,8 @@ test('loads the source-mapped SS2 Chemistry package without overstating term cov
   assert.ok(weekCoverage.every(coverage => coverage.status === 'PARTIAL' && coverage.unit_ids.length === 1));
   assert.ok(pkg.units.every(unit => unit.state.implementation === 'DRAFT' && unit.state.verification === 'DEFERRED'));
   assert.equal(pkg.coverage.find(row => row.id === 'SS2CHEM-COV-T1')?.status, 'PARTIAL');
-  assert.equal(pkg.coverage.find(row => row.id === 'SS2CHEM-COV-T2')?.status, 'UNRESOLVED');
-  assert.equal(pkg.coverage.find(row => row.id === 'SS2CHEM-COV-T3')?.status, 'UNRESOLVED');
+  assert.equal(pkg.coverage.find(row => row.id === 'SS2CHEM-COV-T2')?.status, 'PARTIAL');
+  assert.equal(pkg.coverage.find(row => row.id === 'SS2CHEM-COV-T3')?.status, 'PARTIAL');
   assert.ok(pkg.open_items.some(item => item.id === 'SS2CHEM-REMAINING-CURRICULUM' && item.blocks_delivery));
   assert.ok(pkg.units.every(unit => unit.state.implementation === 'DRAFT' && unit.state.verification === 'DEFERRED'));
 });
