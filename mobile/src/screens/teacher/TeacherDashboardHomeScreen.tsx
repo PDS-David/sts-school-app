@@ -1,107 +1,75 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { View, Text, ScrollView, RefreshControl, TouchableOpacity } from 'react-native';
 import api from '../../api/client';
 import { useAuth } from '../../api/AuthContext';
-import { Card, Loader } from '../../components/UI';
+import { Card, Loader, Btn } from '../../components/UI';
 import { PageContainer } from '../../components/layout';
 import { Colors, Spacing, Fonts } from '../../theme';
 import { AppHeader } from '../../components/AppHeader';
 import { openNotifications } from '../../navigation/navigationRef';
 
-// Corrected after live testing on web, same reasoning as
-// AdminDashboardHomeScreen.tsx: Quick Actions (was a screen-local
-// mini-sidebar here, duplicating both the real persistent Sidebar's nav
-// AND a FAB with the same destinations) now lives in that one real
-// Sidebar instead (see TeacherTabs.tsx's QUICK_ACTIONS). Student count
-// folds into the header subtitle rather than a separate centre stat row.
 export default function TeacherDashboardHomeScreen({ navigation }: any) {
   const { user } = useAuth();
   const [term, setTerm] = useState<any>(null);
-  const [studentCount, setStudentCount] = useState<number | null>(null);
-  const [overview, setOverview] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [loadError, setLoadError] = useState('');
   const [refreshing, setRefreshing] = useState(false);
-  const requestGenerationRef = useRef(0);
-  const teacherScopeKey = [user?.id ?? '', user?.school_code ?? '', user?.assigned_class ?? ''].join(':');
+  const [loadError, setLoadError] = useState('');
 
   const load = useCallback(async () => {
-    const generation = ++requestGenerationRef.current;
-    const isCurrentRequest = () => generation === requestGenerationRef.current;
     setLoadError('');
-    const errors: string[] = [];
     try {
       const { data } = await api.get('/academic/terms/current');
-      if (isCurrentRequest()) setTerm(data.term);
-    } catch { if (isCurrentRequest()) errors.push('term details'); }
-    try {
-      const { data } = await api.get('/scores/teacher/overview');
-      if (isCurrentRequest()) {
-        setOverview(data);
-        setStudentCount(data.summary?.student_count ?? 0);
-      }
-    } catch { if (isCurrentRequest()) errors.push('marking analytics'); }
-    if (!isCurrentRequest()) return;
-    if (errors.length) setLoadError(`Could not refresh ${errors.join(' and ')}. Pull down or retry to try again.`);
-    setLoading(false);
-  }, [teacherScopeKey]);
+      setTerm(data.term ?? null);
+    } catch (error: any) {
+      setLoadError(error?.response?.data?.error ?? 'Could not load the current reporting term.');
+    } finally {
+      setLoading(false);
+      setRefreshing(false);
+    }
+  }, []);
 
-  useEffect(() => {
-    setTerm(null);
-    setOverview(null);
-    setStudentCount(null);
-    setLoadError('');
-    setLoading(true);
-    void load();
-    return () => { requestGenerationRef.current += 1; };
-  }, [load]);
+  useEffect(() => { void load(); }, [load]);
 
   if (loading) return <Loader />;
 
-  const subtitleParts = [
-    term ? `${term.name} · ${term.academic_year}` : null,
-    studentCount != null ? `${studentCount} Students` : null,
-  ].filter(Boolean);
+  const openReports = () => navigation.getParent()?.navigate('ReportsTab', { screen: 'Students' });
+  const openDecisions = () => navigation.getParent()?.navigate('ReportsTab', { screen: 'PromoteStudents' });
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
       <AppHeader
-        title={`Hi, ${user?.username ?? ''}`}
-        subtitle={subtitleParts.join(' · ') || undefined}
+        title={`Welcome, ${user?.username ?? 'Teacher'}`}
+        subtitle={[user?.assigned_class ?? 'No class assigned', term ? `${term.name} · ${term.academic_year}` : null].filter(Boolean).join(' · ')}
         onPressBell={() => openNotifications()}
       />
-      <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={async () => { setRefreshing(true); await load(); setRefreshing(false); }} />}>
-        <PageContainer style={{ padding: Spacing.md }}>
-          {!!loadError && <Card style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text><TouchableOpacity onPress={() => load()} style={{ marginTop: Spacing.sm }}><Text style={{ color: Colors.primary, fontWeight: '700' }}>Retry dashboard</Text></TouchableOpacity></Card>}
-          <Card>
-            <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm }}>
-              Use Classes, Chats, or More to get started — or Quick Actions in the sidebar for Enter Scores, Attendance, and Students.
-            </Text>
+      <ScrollView
+        contentContainerStyle={{ padding: Spacing.md }}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); void load(); }} />}
+      >
+        {!!loadError && (
+          <Card style={{ marginBottom: Spacing.sm }}>
+            <Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text>
+            <TouchableOpacity onPress={() => void load()} style={{ marginTop: Spacing.sm }}>
+              <Text style={{ color: Colors.primary, fontWeight: '700' }}>Retry</Text>
+            </TouchableOpacity>
           </Card>
-          {overview?.summary ? (
-            <>
-              <Card style={{ marginTop: Spacing.md }}>
-                <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm }}>Pending marks this term</Text>
-                <Text style={{ color: Colors.text, fontSize: 30, fontWeight: '800' }}>{overview.summary.pending_score_entries ?? 0}</Text>
-                <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.xs }}>
-                  {overview.summary.marked_score_entries ?? 0} of {overview.summary.expected_score_entries ?? 0} expected subject marks entered
-                </Text>
-                <TouchableOpacity onPress={() => navigation.getParent()?.navigate('ClassesTab', { screen: 'ScoreEntry' })} style={{ marginTop: 10 }}>
-                  <Text style={{ color: Colors.primary, fontWeight: '700' }}>Enter or complete marks</Text>
-                </TouchableOpacity>
-              </Card>
-              <Card style={{ marginTop: Spacing.sm }}>
-                <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm }}>Term performance</Text>
-                <Text style={{ color: Colors.text, fontSize: Fonts.sizes.md, fontWeight: '700', marginTop: 5 }}>
-                  Average: {overview.summary.average_score ?? '—'} · Pass rate: {overview.summary.pass_rate == null ? '—' : `${overview.summary.pass_rate}%`}
-                </Text>
-                <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.xs, marginTop: 4 }}>
-                  {overview.summary.attendance_rate == null ? 'Attendance analytics unavailable for this assignment scope' : `Average attendance: ${overview.summary.attendance_rate}%`}
-                </Text>
-              </Card>
-            </>
-          ) : null}
-        </PageContainer>
+        )}
+        <Card>
+          <Text style={{ color: Colors.text, fontSize: Fonts.sizes.lg, fontWeight: '800' }}>Student report generation</Text>
+          <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm, lineHeight: 20, marginTop: 6 }}>
+            Select a student in your assigned physical class, review the term's recorded information,
+            add your class-teacher remark, then print or export the official report card.
+          </Text>
+          <Btn label="Generate Student Reports" onPress={openReports} style={{ marginTop: Spacing.md }} />
+        </Card>
+        <Card style={{ marginTop: Spacing.sm }}>
+          <Text style={{ color: Colors.text, fontSize: Fonts.sizes.md, fontWeight: '700' }}>Class progression decisions</Text>
+          <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm, lineHeight: 20, marginTop: 5 }}>
+            When the school requests end-of-session decisions, choose promote, retain, or demote for each
+            student in your assigned class. These decisions are made at runtime, never pre-filled by the app.
+          </Text>
+          <Btn label="Review Class Decisions" variant="outline" onPress={openDecisions} style={{ marginTop: Spacing.sm }} />
+        </Card>
       </ScrollView>
     </View>
   );
