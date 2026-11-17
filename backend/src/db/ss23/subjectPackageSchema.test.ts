@@ -331,8 +331,14 @@ test('loads the source-mapped SS2 Chemistry package without overstating term cov
   assert.equal(pkg.delivery_mode, 'INSTRUCTIONAL');
   assert.equal(pkg.package_status, 'PENDING');
   assert.equal(pkg.sources.length, 3);
-  assert.equal(pkg.units.length, 3);
-  assert.deepEqual(pkg.units.map(unit => unit.week_label), ['1', '2', '3']);
+  assert.equal(pkg.units.length, 10);
+  assert.deepEqual(pkg.units.map(unit => unit.week_label), ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']);
+  for (const week of ['04', '05', '06', '07', '08', '09', '10']) {
+    const row = pkg.coverage.find(item => item.id === `SS2CHEM-COV-T1-W${week}`);
+    assert.ok(row, `missing First-Term week ${week} coverage`);
+    assert.equal(row.status, 'PARTIAL');
+    assert.equal(row.unit_ids.length, 1);
+  }
   assert.ok(pkg.units.every(unit => unit.term === '1st Term'));
   assert.equal(pkg.coverage.find(row => row.id === 'SS2CHEM-COV-T1')?.status, 'PARTIAL');
   assert.equal(pkg.coverage.find(row => row.id === 'SS2CHEM-COV-T2')?.status, 'UNRESOLVED');
