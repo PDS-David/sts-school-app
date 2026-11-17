@@ -240,3 +240,8 @@ Both services have an empty Render HTTP health-check path. The repository now ex
 - The production database's `public.schema_migrations` relation was checked directly with read-only SQL: it is **absent**. `public.app_bootstrap` exists, but it is not the migration ledger used by the current repository migration runner.
 - Current `backend/src/db/migrate.ts` creates/uses `public.schema_migrations(version, name, checksum, applied_at)`. Its `--all` mode refuses to proceed when an application schema already exists without a baseline; `--fresh` is only for an empty database. The migration README requires OPS-05 drift evidence and owner approval before baseline adoption.
 - Therefore production migration adoption is **not complete**. Do not run `db:migrate --fresh`, manually insert a baseline, or apply later migrations to this database until the read-only drift review and explicit owner-approved adoption plan are complete.
+
+
+## Latest CI refresh — 2026-11-17
+
+On PR #947 head `1388705e9416bd0bf9b128667c9bfb93e20d59bf`, seven workflow groups are now green: Mobile TypeScript, SS1 package integrity, SS23 package integrity, web mobile bundle readiness, SS1 French source/package/hash/regression, Android mobile readiness and JSS3 implementation/assets. The only remaining group is Mobile release and dependency audit run `43984569495`; its locked install, offline/frontend regressions, TypeScript, JS export, Java/SDK setup and native prebuild passed, while Gradle debug APK assembly was still running at the latest poll. Emulator retry, npm audit, SDK 57 candidate and artifact steps have not yet run on this head. No EAS credential is available in the recorded evidence. PR #947 remains open and unmerged.
