@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   cacheGet, cacheSet, cacheInvalidatePrefix,
   enqueueRequest, getOutbox, removeFromOutbox,
-  subscribeConnectivity, setCacheNamespace, getCacheNamespace,
+  isOnline, subscribeConnectivity, setCacheNamespace, getCacheNamespace,
 } from '../offline';
 
 // A write to e.g. `/scores/bulk` should invalidate cached GETs under
@@ -28,6 +28,7 @@ import { resolveApiBaseUrl } from '../../config/apiTarget';
 import { shouldEnqueueOfflineWrite, isAccountSwitchCancellation } from '../offline/replayPolicy';
 import { shouldDiscardOutboxFailure } from '../offline/outboxFailurePolicy';
 import { shouldStopOutboxFlush } from '../offline/outboxFlushPolicy';
+import { createBackendReadinessGate } from './backendReadiness';
 
 // Kicked off once at module load (not awaited here) and awaited lazily by
 // the request interceptor below, so the very first request — and every
@@ -86,6 +87,20 @@ if (__DEV__) {
 
 const api = axios.create({ baseURL: BASE_URL, timeout: 15000 });
 
+// Render Free services can take about a minute to wake after idle. Probe the
+// public readiness endpoint before dispatching the user's request so the
+// normal 15-second API timeout does not misclassify a cold start as offline.
+const backendReadiness = createBackendReadinessGate(async (url, timeoutMs) => {
+  // Check connectivity only when a readiness probe is due, not on every API
+  // request. If offline, let the existing cache/outbox policy handle it quickly.
+  if (!await isOnline().catch(() => false)) {
+    const offlineError = new Error('Network unavailable before backend readiness check');
+    (offlineError as any).code = 'ERR_OFFLINE';
+    throw offlineError;
+  }
+  return axios.get(url, { timeout: timeoutMs });
+});
+
 // ── Request interceptor: attach access token ──────────────────────────────────
 api.interceptors.request.use(async (config) => {
   if ((config as any)._cacheNamespace === undefined) {
@@ -95,6 +110,17 @@ api.interceptors.request.use(async (config) => {
   await tokenMigration;
   // Never attach whichever account's token happens to be in SecureStore now
   // to a request that was created under a different signed-in account.
+  if (requestNamespace !== getCacheNamespace()) {
+    throw new axios.CanceledError('Session changed before request could be sent');
+  }
+  try {
+    await backendReadiness.ensureReady(BASE_URL);
+  } catch (error) {
+    // Preserve the original API request context so the existing offline/cache
+    // policy handles a failed wake-up exactly as it handles other network loss.
+    if (error && typeof error === 'object') (error as any).config = config;
+    throw error;
+  }
   if (requestNamespace !== getCacheNamespace()) {
     throw new axios.CanceledError('Session changed before request could be sent');
   }
@@ -131,6 +157,9 @@ api.interceptors.response.use(
     // Account-switch cancellations are intentional, not network failures;
     // never turn them into queued writes for the previous session.
     if (isAccountSwitchCancellation(error)) return Promise.reject(error);
+    if (!error.response || [502, 503, 504].includes(error.response.status)) {
+      backendReadiness.invalidate();
+    }
     const original = error.config;
     const requestNamespace = (original as any)?._cacheNamespace ?? getCacheNamespace();
     const method = (original?.method ?? 'get').toLowerCase();
