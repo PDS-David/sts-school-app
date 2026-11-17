@@ -1,0 +1,38 @@
+name: Render Free-Tier Keep Alive
+
+on:
+  # Render Free web services spin down after 15 minutes without inbound traffic.
+  # A five-minute readiness request reduces idle spin-down while this service
+  # remains on the Free plan. GitHub scheduled runs can be delayed, so this is
+  # a mitigation rather than an uptime guarantee.
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: render-free-tier-keepalive
+  cancel-in-progress: false
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Wake the API if idle and verify database readiness
+        env:
+          API_BASE_URL: https://sts-school-app.onrender.com
+        run: |
+          set -euo pipefail
+          echo "Checking the canonical STS School API readiness endpoint."
+          curl --fail --silent --show-error \
+            --connect-timeout 10 \
+            --max-time 90 \
+            --retry 2 \
+            --retry-delay 5 \
+            --retry-all-errors \
+            "${API_BASE_URL}/health/ready"
+          printf '\n'
+          echo "API liveness/readiness request completed." >> "$GITHUB_STEP_SUMMARY"
