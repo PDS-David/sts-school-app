@@ -55,7 +55,7 @@ async function startServer(): Promise<{ server: Server; baseUrl: string }> {
   return { server, baseUrl: `http://127.0.0.1:${port}/scores` };
 }
 
-test('score writes enforce subject ownership and bulk upserts roll back atomically', async () => {
+test('teachers cannot enter scores; administrator bulk writes remain atomic', async () => {
   const suffix = randomUUID();
   const year = `BSEC20/${suffix.slice(0, 8)}`;
   const subjectTeacher = await createUser('subject-teacher', 'teacher', 'primary');
@@ -132,22 +132,22 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     });
 
     const allowedSubject = await post('/', score(studentIds[0], subjectIds[0], termIds[0]), subjectTeacher.token);
-    assert.equal(allowedSubject.status, 200, 'subject-only teacher may enter their assigned subject');
+    assert.equal(allowedSubject.status, 403, 'teachers cannot enter scores, even for assigned subjects');
 
     const deniedSubject = await post('/', score(studentIds[0], subjectIds[1], termIds[0]), subjectTeacher.token);
-    assert.equal(deniedSubject.status, 403, 'subject-only teacher may not enter an unassigned subject');
+    assert.equal(deniedSubject.status, 403, 'teacher score entry is denied at the role boundary');
 
     const foreignSubject = await post('/', score(studentIds[0], subjectIds[2], termIds[0]), subjectTeacher.token);
-    assert.equal(foreignSubject.status, 400, 'subject must belong to the student school');
+    assert.equal(foreignSubject.status, 403, 'teacher score entry is denied before subject inspection');
 
     const foreignTerm = await post('/', score(studentIds[0], subjectIds[0], termIds[1]), subjectTeacher.token);
-    assert.equal(foreignTerm.status, 400, 'term must belong to the student school');
+    assert.equal(foreignTerm.status, 403, 'teacher score entry is denied before term inspection');
 
     const classTeacherSubject = await post('/', score(studentIds[0], subjectIds[1], termIds[0]), classTeacher.token);
-    assert.equal(classTeacherSubject.status, 200, 'class teacher retains same-school class-wide subject access');
+    assert.equal(classTeacherSubject.status, 403, 'class teachers generate reports but do not enter marks');
 
     const classTeacherWrongClass = await post('/', score(studentIds[1], subjectIds[0], termIds[0]), classTeacher.token);
-    assert.equal(classTeacherWrongClass.status, 403, 'class teacher may not write outside their assigned class');
+    assert.equal(classTeacherWrongClass.status, 403, 'class teachers cannot enter marks for any class');
 
     const adminForeignSubject = await post('/', score(studentIds[0], subjectIds[2], termIds[0]), admin.token);
     assert.equal(adminForeignSubject.status, 400, 'administrator writes must preserve student/subject school integrity');
@@ -158,21 +158,21 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
         score(studentIds[1], subjectIds[1], termIds[0]),
       ],
     }, subjectTeacher.token);
-    assert.equal(invalidBatch.status, 403, 'bulk batch must reject any unassigned subject');
+    assert.equal(invalidBatch.status, 403, 'teachers cannot enter scores in bulk');
     const { rows: invalidBatchRows } = await query(
       'SELECT id FROM scores WHERE student_id=ANY($1::uuid[]) AND term_id=$2',
       [[studentIds[0], studentIds[1]], termIds[0]],
     );
-    assert.equal(invalidBatchRows.length, 2,
-      'invalid bulk batch must not change any score; only the two earlier single writes remain');
+    assert.equal(invalidBatchRows.length, 0,
+      'denied teacher writes must not create or change any score');
 
     const validBatch = await post('/bulk', {
       scores: [
         score(studentIds[0], subjectIds[0], termIds[0]),
         score(studentIds[1], subjectIds[0], termIds[0]),
       ],
-    }, subjectTeacher.token);
-    assert.equal(validBatch.status, 200, 'a valid batch of assigned-subject scores must commit');
+    }, admin.token);
+    assert.equal(validBatch.status, 200, 'administrator may commit a valid batch');
     assert.deepEqual(await validBatch.json(), { saved: 2 });
     const { rows: validBatchRows } = await query(
       'SELECT id FROM scores WHERE student_id=ANY($1::uuid[]) AND subject_id=$2 AND term_id=$3',
@@ -206,7 +206,7 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
         score(rollbackIds[0], subjectIds[0], termIds[0]),
         score(rollbackIds[1], subjectIds[0], termIds[0]),
       ],
-    }, subjectTeacher.token);
+    }, admin.token);
     assert.equal(failedBatch.status, 500);
     const { rows: rollbackRows } = await query(
       'SELECT id FROM scores WHERE student_id=ANY($1::uuid[]) AND subject_id=$2 AND term_id=$3',
@@ -252,10 +252,18 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
       `${started.baseUrl}?term_id=${termIds[0]}`,
       { headers: { Authorization: `Bearer ${classTeacher.token}` } },
     );
-    assert.equal(rawScores.status, 200);
-    const rawPayload = await rawScores.json() as { scores: Array<{ student_id: string }> };
-    assert.ok(rawPayload.scores.every(row => row.student_id !== studentIds[2]),
-      'raw score list must not expose cross-school score rows');
+    assert.equal(rawScores.status, 403, 'teachers access score data through the scoped report endpoint only');
+
+    const teacherReport = await fetch(
+      `${started.baseUrl}/report/${studentIds[0]}?term_id=${termIds[0]}`,
+      { headers: { Authorization: `Bearer ${classTeacher.token}` } },
+    );
+    assert.equal(teacherReport.status, 200, 'class teacher can generate a report for a student in their assigned class');
+    const outOfClassReport = await fetch(
+      `${started.baseUrl}/report/${studentIds[1]}?term_id=${termIds[0]}`,
+      { headers: { Authorization: `Bearer ${classTeacher.token}` } },
+    );
+    assert.equal(outOfClassReport.status, 403, 'class teacher cannot generate reports for another class');
   } finally {
     if (triggerCreated) {
       await query('DROP TRIGGER IF EXISTS bsec20_reject_second_score ON scores').catch(() => undefined);
