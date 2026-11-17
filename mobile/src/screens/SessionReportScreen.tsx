@@ -78,8 +78,9 @@ export default function SessionReportScreen({ route }: any) {
   const { student, academic_year, terms, terms_present, is_complete_session, subjects, attendance, summary } = report;
   const brand = getSchoolBrand(student.school_code);
 
-  // Same restriction as MyResultsScreen.tsx — admin + parent only.
-  const canPrintExport = user?.role === 'admin' || user?.role === 'parent';
+  // Teachers may generate/export reports for students in their assigned class.
+  // The backend independently checks that class scope on the report endpoint.
+  const canPrintExport = user?.role === 'admin' || user?.role === 'parent' || user?.role === 'teacher';
   const handlePrint = async () => {
     setPdfBusy('print');
     try {
