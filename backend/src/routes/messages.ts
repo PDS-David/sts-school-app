@@ -6,7 +6,7 @@ import { requireAuth } from '../middleware/auth.js';
 import { hasPerm } from '../utils/rbac.js';
 import { getMessageableUsers } from '../utils/scope.js';
 import { sendPushToUser } from '../utils/push.js';
-import { createRedisRateLimitStore } from '../utils/redisRateLimitStore.js';
+import { createPostgresRateLimitStore } from '../utils/postgresRateLimitStore.js';
 
 const router = Router();
 router.use(requireAuth);
