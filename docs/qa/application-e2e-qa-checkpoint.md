@@ -87,3 +87,48 @@ These are candidate test targets, not confirmed defects or passing implementatio
 ## Exact next action
 
 Run the suite from a full repository checkout with a configured non-production backend/database and mobile test environment. Start by inventorying test and workflow files, then execute the existing backend and package test scripts before adding the E2E harness. Do not mark any journey passed until the real journey has executed.
+
+
+---
+
+## Render-connected QA pass — 2026-11-17
+
+### Infrastructure access and inspection
+- Confirmed the only available Render workspace: `My Workspace` (`tea-d7au7aadbo4c73arnk40`).
+- Connected Postgres: `sts-school-db-2`, PostgreSQL 18, Frankfurt, free plan, available; created 2026-11-12 and expires 2026-12-12.
+- Two backend web services point to the same repository and `master`, both in Frankfurt:
+  - `sts-school-app` (`srv-dbqmsa142hec73foh6i0`)
+  - `sts-school-backend` (`srv-d9bl507aqgkc739ji4i0`)
+- No Render Key Value instances exist in the workspace.
+- Read-only database inspection found the `public` schema and 40 application tables. Approximate live-row counts from `pg_stat_user_tables`: 1 user, 0 students, 18 classes, 12 subjects, 6 terms, 1,408 topics; 0 attendance, scores, invoices, messages, submissions and materials. Counts are approximate statistics, not exact counts.
+- No production data or schema was modified.
+
+### Confirmed defect QA-RENDER-001 — backend startup blocked by missing Redis
+- Severity: P1.
+- Both Render services repeatedly failed to start on 2026-11-16. Their build stages succeeded, but deployment events ended `update_failed` with `nonZeroExit: 1`.
+- Runtime logs explicitly report missing `RATE_LIMIT_REDIS_URL` / `REDIS_URL`. Source inspection confirms `backend/src/index.ts` calls `assertRateLimitRedisConfigured()` before starting Express, and `backend/src/utils/redisRateLimitStore.ts` deliberately refuses production startup without shared Redis.
+- Latest deployment at inspection (commit `4377def33080a198d4e93ce50abd04ddbc5010ac`, 2026-11-17 00:17 UTC) was still `update_in_progress`; terminal result must be checked before reporting its outcome.
+- Defect record: https://github.com/PDS-David/sts-school-app/issues/951
+- No bypass was made. Process-local rate limiting is explicitly rejected by the implementation.
+- Render's Free Key Value plan is 25 MB and in-memory only; data is lost on restarts and Render says free instances are not for production. Paid 256 MB plan is listed at $10/month. No paid resource was created and no billing change was made without explicit cost approval.
+
+### Confirmed defect QA-RENDER-002 — database schema is behind deployed route requirements; migration adoption blocked
+- Severity: P1 for calendar route availability; schema adoption is owner-gated.
+- Read-only SQL confirmed `public.app_bootstrap` exists, while `public.schema_migrations` and `public.school_events` do not.
+- Current `backend/src/routes/schoolEvents.ts` queries and writes `school_events`; current `backend/schema.sql` and migration `0002_school_events.sql` define it. Therefore authenticated calendar route operations will fail against this database until the missing relation is safely applied.
+- `backend/src/db/migrate.ts` intentionally refuses to baseline an existing schema without a recorded migration ledger. `backend/migrations/README.md` requires OPS-05 schema-drift evidence and owner approval; `--fresh` is only for clean installations. No migration or baseline write was attempted.
+- Defect record: https://github.com/PDS-David/sts-school-app/issues/952
+
+### QA execution limits after Render access
+- Render Postgres query capability is read-only. It cannot create isolated test fixtures or execute migrations.
+- No staging database/service exists in the workspace; the connected database contains live school records and was treated as production. No test users or school data were inserted.
+- The Render connector exposes resource inspection, read-only SQL, logs, events, deploys and metrics, but no shell, test runner, HTTP client, or device/emulator. Public endpoint inspection through the available web fetch was also inaccessible.
+- Thus no student, parent, teacher, administrator, attendance, report-card, materials, assessment, messaging, offline-sync or finance journey was executed. All 12 remain NOT RUN.
+- No production test writes, migrations, deploy triggers, service configuration updates, or infrastructure creation were performed.
+
+### Updated remaining work / exact next action
+1. Owner authorizes a persistent paid Render Key Value plan (published entry plan $10/month) or provides an existing production-grade Redis-compatible endpoint. Then configure `RATE_LIMIT_REDIS_URL` on the canonical API service; resolve whether the duplicate backend service is intentionally retained before configuring it.
+2. Re-check both deployments triggered at 2026-11-17 00:17 UTC and verify terminal state and health only after Redis is configured.
+3. Perform OPS-05 read-only schema drift review and obtain owner approval for baseline adoption; then apply the reviewed migration path, including `0002_school_events.sql`.
+4. Provide an isolated staging database and service with test-only credentials and an execution-capable runner (CI or checkout) plus Android emulator/device access.
+5. Run existing automated suites, add missing E2E regression coverage and execute all 12 journeys. Record evidence and create/route defects without using production data.
