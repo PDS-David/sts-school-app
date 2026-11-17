@@ -123,11 +123,11 @@ jobs:
 
       - name: Run guarded baseline preflight
         if: inputs.operation == 'preflight'
-        run: npm run db:adopt-baseline --workspace backend -- --confirm-database "$CONFIRM_DATABASE_NAME"
+        run: npx tsx backend/src/db/adoptExistingBaseline.ts --confirm-database "$CONFIRM_DATABASE_NAME"
 
       - name: Adopt the verified baseline
         if: inputs.operation == 'apply'
-        run: npm run db:adopt-baseline --workspace backend -- --apply --confirm-database "$CONFIRM_DATABASE_NAME"
+        run: npx tsx backend/src/db/adoptExistingBaseline.ts --apply --confirm-database "$CONFIRM_DATABASE_NAME"
 
       - name: Apply numbered migrations
         if: inputs.operation == 'apply'
