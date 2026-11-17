@@ -55,16 +55,22 @@ export function resolveStudentRosterScope(
 
   if (user.role === 'teacher') {
     const schoolCode = nonBlank(user.school_code);
-    if (!schoolCode) {
+    const assignedClass = nonBlank(user.assigned_class);
+    if (!schoolCode || !assignedClass) {
       return {
         status: 403,
-        error: 'Your teacher account is not assigned to a school. Contact the school administrator.',
+        error: 'Report access requires a teacher account assigned to a physical class. Contact the school administrator.',
       };
     }
-    return {
-      schoolCode,
-      className: nonBlank(user.assigned_class) ?? requestedClass,
-    };
+    // A teacher's roster is the assigned physical class only. A query-string
+    // class_name must never widen that scope to another class in the school.
+    if (requestedClass && requestedClass !== assignedClass) {
+      return {
+        status: 403,
+        error: 'You can only browse students in your assigned physical class.',
+      };
+    }
+    return { schoolCode, className: assignedClass };
   }
 
   return {
