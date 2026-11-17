@@ -94,7 +94,9 @@ const backendReadiness = createBackendReadinessGate(async (url, timeoutMs) => {
   // Check connectivity only when a readiness probe is due, not on every API
   // request. If offline, let the existing cache/outbox policy handle it quickly.
   if (!await isOnline().catch(() => false)) {
-    throw new Error('Network unavailable before backend readiness check');
+    const offlineError = new Error('Network unavailable before backend readiness check');
+    (offlineError as any).code = 'ERR_OFFLINE';
+    throw offlineError;
   }
   return axios.get(url, { timeout: timeoutMs });
 });
