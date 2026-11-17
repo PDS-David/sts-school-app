@@ -379,6 +379,22 @@ test('loads source-mapped SS2 Physics First-Term drafts without overstating rema
   assert.ok(pkg.open_items.some(item => item.id === 'SS2PHY-CONTENT-REMAINING' && item.blocks_delivery));
 });
 
+test('SS3 Biology includes only source-backed prior-learning revision and preserves unresolved topics', () => {
+  const raw = readFileSync(new URL('./subjects/ss3/biology.json', import.meta.url), 'utf8');
+  const pkg = packageSchema.parse(JSON.parse(raw));
+  assert.equal(pkg.class_name, 'SS 3');
+  assert.equal(pkg.delivery_mode, 'EXAM_PREPARATION');
+  assert.equal(pkg.units.length, 2);
+  const skinRevision = pkg.units.find(unit => unit.id === 'PREP-SS3-BIOLOGY-T1-W2-EXCRETION');
+  assert.ok(skinRevision);
+  assert.equal(skinRevision.term, '1st Term');
+  assert.ok(skinRevision.exam_targets.includes('WAEC'));
+  assert.ok(skinRevision.body.includes('SS2 Biology Third Term, Week 2'));
+  assert.equal(pkg.coverage.find(row => row.id === 'SS3BIO-COV-T1')?.status, 'PARTIAL');
+  assert.equal(pkg.coverage.find(row => row.id === 'SS3BIO-COV-T2-W5')?.status, 'UNRESOLVED');
+  assert.ok(pkg.open_items.some(item => item.id === 'SS3BIO-T1-W2-EXCLUDED-CONTENT' && item.blocks_delivery));
+});
+
 test('registered SS2/SS3 packages preserve class-specific delivery modes and SS3 has no third term', () => {
   const packages = loadSs23Packages();
   assert.ok(packages.some(pkg => pkg.class_name === 'SS 2' && pkg.subject_slug === 'chemistry'));
