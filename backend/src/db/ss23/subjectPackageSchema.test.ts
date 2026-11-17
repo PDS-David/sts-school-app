@@ -396,7 +396,9 @@ test('loads SS2 Mathematics drafts across all three terms and preserves source g
   assert.deepEqual(pkg.units.filter(unit => unit.term === '2nd Term').map(unit => unit.week_label), ['1', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12&13']);
   assert.deepEqual(pkg.units.filter(unit => unit.term === '3rd Term').map(unit => unit.week_label), ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']);
   assert.ok(pkg.units.every(unit => unit.state.implementation === 'DRAFT' && unit.state.verification === 'DEFERRED'));
-  assert.ok(pkg.units.filter(unit => unit.term !== '1st Term').every(unit => unit.practice.every(q => q.question_origin === 'AUTHORED_SUPPLEMENT')));
+  const transcribedWeeks = new Set(['8', '9']);
+  assert.ok(pkg.units.filter(unit => unit.term === '2nd Term' || (unit.term === '3rd Term' && !transcribedWeeks.has(unit.week_label))).every(unit => unit.practice.every(q => q.question_origin === 'AUTHORED_SUPPLEMENT')));
+  assert.ok(pkg.units.filter(unit => unit.term === '3rd Term' && transcribedWeeks.has(unit.week_label)).every(unit => unit.practice.some(q => q.question_origin === 'ORIGINAL_SOURCE')));
   assert.equal(pkg.coverage.find(row => row.id === 'SS2MATH-COV-T1')?.status, 'PARTIAL');
   assert.equal(pkg.coverage.find(row => row.id === 'SS2MATH-COV-T2')?.status, 'PARTIAL');
   assert.equal(pkg.coverage.find(row => row.id === 'SS2MATH-COV-T3')?.status, 'PARTIAL');
