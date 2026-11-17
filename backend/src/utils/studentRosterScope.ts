@@ -15,7 +15,7 @@ function nonBlank(value: string | null | undefined): string | null {
  * Global administrators (school_code NULL) may browse all schools or select
  * a campus. School-bound administrators are pinned to their own school.
  * Finance administrators may select either campus, but must select one explicitly.
- * Teachers are always pinned to their own school and, when assigned, class.
+ * Teachers must be assigned to a physical class and are pinned to that school/class.
  * Missing teacher school assignment is a configuration error, never a reason
  * to fall back to an unfiltered cross-school roster.
  */
