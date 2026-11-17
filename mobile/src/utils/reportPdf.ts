@@ -5,13 +5,9 @@ import { Asset } from 'expo-asset';
 import type { SchoolBrand } from '../schoolBranding';
 import { renderTermReportHtml } from './reportTemplate';
 
-// Print/Export is deliberately restricted to admin and parent — see the
-// buttons in MyResultsScreen.tsx / SessionReportScreen.tsx, gated on
-// `user?.role === 'admin' || user?.role === 'parent'`. This module itself
-// has no role check; the two screens are the only call sites and they
-// already gate who ever reaches this code, same as every other role
-// restriction in this app (UI-level gating on top of data the backend
-// already scopes correctly — a teacher/student simply never sees the button).
+// This module has no role check. MyResultsScreen and SessionReportScreen
+// expose print/export to admins, parents, and teachers. Teacher report access
+// is independently restricted by the backend to the teacher's assigned class.
 
 async function logoDataUri(brand: SchoolBrand | null): Promise<string> {
   if (!brand) return '';
