@@ -294,3 +294,16 @@ This addendum supersedes the earlier counts and CI descriptions above where they
 ### Issue register
 - Open: #951, #952, #954, #955, #976.
 - #975 was confirmed to be a duplicate of #976, commented and closed with GitHub duplicate reason. The recovery task itself remains open.
+
+## 11. Source archive recovery and curriculum continuation — 2026-11-17
+
+The SS2 and SS3 combined source archives have now been recovered from the connected Library and verified against their exact recorded SHA-256 values. The original source-access blocker is removed; no re-upload is required. See [SS23 source archive recovery register](../ss23/SOURCE_ARCHIVE_RECOVERY_20261117.md) on the Mathematics continuation branch / PR #980 for the full 100-member inventory, hashes, internal-header status and four version conflicts.
+
+- SS2 archive: 61 members (47 DOCX, 13 DOC, 1 PPTX), SHA-256 `a97506c7f030a6e9604a13ae0aab30f59563a1473ec682f647459549dd9e1153`.
+- SS3 archive: 39 members (28 DOCX, 11 DOC), SHA-256 `045e261aba9475b32b4cb963a2495faf3ddd503860b205aa1e89f0ac07d3c741`.
+- The 100 member records span 21 subjects. 96 match earlier registered hashes; four received candidate versions remain on hold pending a defensible version decision.
+- Header reconciliation: 84 fully verified; 11 do not state term internally; five additional class/term anomalies require quarantine or review.
+- SS3 Third Term remains empty. Missing SS2/SS3 term sources remain missing and must not be fabricated.
+- PR #980 extends SS2 Mathematics to 31 draft units across all three terms and 62 practice records. It retains unresolved source Week 2 and Week 10/11 sequence discrepancies, and does not clear assessments, visuals, rights or independent QA.
+
+The remaining curriculum work is now source-backed and can proceed subject by subject. Packages remain pending until source assessments, visuals, answer marking, rights and independent subject QA are reconciled.
