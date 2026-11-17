@@ -58,3 +58,4 @@ jobs:
         working-directory: backend
 
 # Keep this workflow scoped to the PostgreSQL limiter, its migration, and its direct callers.
+# Route import fixes are included in the backend typecheck on each relevant push.
