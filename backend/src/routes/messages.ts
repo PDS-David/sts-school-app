@@ -21,7 +21,7 @@ const messageSendLimiter = rateLimit({
   standardHeaders: true,
   legacyHeaders: false,
   handler: (_req, res) => res.status(429).json({ error: 'Too many messages; try again shortly' }),
-  store: createRedisRateLimitStore('message-send'),
+  store: createPostgresRateLimitStore('message-send'),
 });
 
 const sendMessageSchema = z.object({
