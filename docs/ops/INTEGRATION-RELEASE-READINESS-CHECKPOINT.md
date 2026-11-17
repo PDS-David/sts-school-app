@@ -233,3 +233,10 @@ Both services have an empty Render HTTP health-check path. The repository now ex
 6. **Release code:** finish current-head PR #947 checks; remediate any failed check, obtain EAS credentials through repository secret settings, and complete signed AAB plus device acceptance before release sign-off.
 
 **Current status:** repository work continues; production remains **NOT RELEASE READY**. The confirmed blockers are missing production Redis, failed current deployments, Free/expiring/no-backup PostgreSQL, Free compute constraints, unconfigured health checks and incomplete signed Android release acceptance.
+
+
+## Migration-ledger clarification — 2026-11-17
+
+- The production database's `public.schema_migrations` relation was checked directly with read-only SQL: it is **absent**. `public.app_bootstrap` exists, but it is not the migration ledger used by the current repository migration runner.
+- Current `backend/src/db/migrate.ts` creates/uses `public.schema_migrations(version, name, checksum, applied_at)`. Its `--all` mode refuses to proceed when an application schema already exists without a baseline; `--fresh` is only for an empty database. The migration README requires OPS-05 drift evidence and owner approval before baseline adoption.
+- Therefore production migration adoption is **not complete**. Do not run `db:migrate --fresh`, manually insert a baseline, or apply later migrations to this database until the read-only drift review and explicit owner-approved adoption plan are complete.
