@@ -16,11 +16,11 @@ function configuredDatabaseUrl(env: NodeJS.ProcessEnv = process.env): string | n
   return env.DATABASE_URL?.trim() || null;
 }
 
-export function assertRateLimitPostgresConfigured(env: NodeJS.ProcessEnv = process.env): void {
-  if (env.NODE_ENV !== 'production') return;
-  if (!configuredDatabaseUrl(env)) {
+export async function assertRateLimitPostgresConfigured(env: NodeJS.ProcessEnv = process.env): Promise<void> {
+  if (env.NODE_ENV === 'production' && !configuredDatabaseUrl(env)) {
     throw new Error('Production startup refused: DATABASE_URL is required for shared PostgreSQL-backed request limits.');
   }
+  await verifyPostgresRateLimitStore();
 }
 
 export async function verifyPostgresRateLimitStore(): Promise<void> {
@@ -53,6 +53,25 @@ function toRateLimitInfo(row: { total_hits: number | string; reset_at: Date | st
   return { totalHits, resetTime };
 }
 
+let cleanupCounter = 0;
+
+function scheduleExpiredCounterCleanup(): void {
+  cleanupCounter += 1;
+  if (cleanupCounter % 100 !== 0) return;
+  // Bounded, opportunistic cleanup avoids an unbounded counter table without
+  // requiring pg_cron or a second hosted worker on the Free tier.
+  void pool.query(
+    `WITH expired AS (
+       SELECT ctid FROM public.rate_limit_counters
+       WHERE reset_at <= clock_timestamp()
+       ORDER BY reset_at
+       LIMIT 500
+     )
+     DELETE FROM public.rate_limit_counters AS counters
+     USING expired WHERE counters.ctid = expired.ctid`,
+  ).catch(error => console.warn('[rate-limit] expired counter cleanup failed', error));
+}
+
 async function incrementCounter(namespace: string, key: string, windowMs: number): Promise<ClientRateLimitInfo> {
   const result = await pool.query(
     `INSERT INTO public.rate_limit_counters(namespace, key_hash, total_hits, reset_at)
@@ -72,6 +91,7 @@ async function incrementCounter(namespace: string, key: string, windowMs: number
     [namespace, digestKey(key), windowMs],
   );
   if (!result.rows[0]) throw new Error('PostgreSQL did not return the updated rate-limit counter.');
+  scheduleExpiredCounterCleanup();
   return toRateLimitInfo(result.rows[0]);
 }
 
