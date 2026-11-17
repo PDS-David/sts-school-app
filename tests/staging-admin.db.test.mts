@@ -11,6 +11,7 @@ import test, { after, before, beforeEach } from 'node:test';
 import type { AddressInfo } from 'node:net';
 import bcrypt from 'bcryptjs';
 import pg from 'pg';
+import { readFileSync } from 'node:fs';
 
 const SERVER_URL = process.env.JSS3_LOCAL_TEST_DATABASE_URL;
 const root = path.resolve(import.meta.dirname, '..');
@@ -52,6 +53,9 @@ if (!SERVER_URL) {
   const boot = await pool.connect();
   assert.equal(await bootstrap(boot), 'created');
   boot.release();
+  // The real login route is rate-limited through public.rate_limit_counters (migration 0003). bootstrap() applies schema.sql,
+  // which does not create it, so apply the approved (idempotent) migration or the limiter fails closed with HTTP 503.
+  await pool.query(readFileSync(new URL('../backend/migrations/0003_rate_limit_counters.sql', import.meta.url), 'utf8'));
 
   const opts = (over: Partial<import('../backend/src/db/createStagingAdmin.js').FirstAdminOptions> = {}) => ({
     username: 'stg.admin', schoolCode: 'secondary', fullName: 'Staging Administrator', password: GOOD,

@@ -27,6 +27,9 @@ if(!db){test('supplement revision database checks require JSS3_YO_TEST_DATABASE_
  await query('UPDATE topics SET generated_assessment_id=$1 WHERE id=$2',[a,t]);return {t,a};};
  before(async()=>{
  await query(readFileSync(new URL('../backend/schema.sql',import.meta.url),'utf8'));
+ // AI generation consumes a PostgreSQL-backed quota (public.rate_limit_counters, migration 0003). schema.sql does not
+ // create it, so apply the approved migration (idempotent) or the quota check fails closed and no AI prompt is sent.
+ await query(readFileSync(new URL('../backend/migrations/0003_rate_limit_counters.sql',import.meta.url),'utf8'));
  subject=(await one(`INSERT INTO subjects(school_code,name) VALUES('secondary','Yoruba') RETURNING id`)).id;
  user=(await one(`INSERT INTO users(username,password_hash,role,school_code,full_name) VALUES($1,'x','student','secondary',$1) RETURNING id`,[tag])).id;
  student=(await one(`INSERT INTO students(school_code,admission_number,full_name,class_name,user_id) VALUES('secondary',$1,$1,'JSS 3',$2) RETURNING id`,[tag,user])).id;
