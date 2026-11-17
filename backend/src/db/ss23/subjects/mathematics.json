@@ -3763,7 +3763,7 @@
     {
       "id": "SS2MATH-CONTENT-REMAINING",
       "kind": "CONTENT",
-      "detail": "First-Term (10 units), Second-Term (11 units including review/examination markers) and Third-Term (10 units including review markers) now have draft records where source body is available. Second-Term Week 2 has no distinct source body block; the Week 10/11 scheme/body sequence is inconsistent. Original assessments, exact worked examples and visual assets are not yet fully reconciled.",
+      "detail": "First-Term (10 units), Second-Term (11 units including review/examination markers) and Third-Term (10 units including revision markers) now have draft records. The rendered Second-Term source still has no distinct Week 2 body and its Week 10/11 scheme/body sequence is inconsistent. Original assessments, exact worked examples and visual assets are not yet fully reconciled.",
       "required_action": "Resolve the Second-Term Week 2 and Week 10/11 source discrepancies; reconcile every original assessment, assignment, worked example, graph, table and diagram across all three terms before subject QA.",
       "affected_ids": [
         "SS2MATH-COV-T1",
@@ -3849,7 +3849,7 @@
     {
       "id": "SS2MATH-VISUAL-WORKED-EXAMPLES",
       "kind": "VISUAL",
-      "detail": "Source graphs, coordinate plots, truth tables, circle diagrams, trigonometric figures, bearings diagrams, frequency tables, histograms, ogives, fraction notation and worked examples require rendered-page reconciliation. One T3 Mathematics DOCX has a malformed word/NULL relationship: ZIP integrity passes and LibreOffice renders it, but the DOCX parser cannot read it directly.",
+      "detail": "The T3 Mathematics DOCX is a valid archive member whose SHA-256 matches the original ZIP. python-docx fails on a malformed word/NULL relationship, but the exact member's OpenXML document.xml has been recovered, including 27 tables; LibreOffice renders the file to a 31-page PDF. The package contains 3 embedded images and 1 embedded worksheet. All rendered-page diagrams, symbols, data tables and embedded visuals still require subject-level reconciliation.",
       "required_action": "Inspect rendered pages, reconcile every mathematical symbol, superscript, fraction bar, graph scale, diagram and data table, and replace no missing source visual with an unlabelled approximation.",
       "affected_ids": [
         "SUP-SS2-MATH-T1-W01",
@@ -3889,7 +3889,7 @@
     {
       "id": "SS2MATH-T2-W02-SOURCE-GAP",
       "kind": "CONTENT",
-      "detail": "The Second-Term scheme contains unnumbered opening revision/straight-line items, then a Week 1 body and Week 3 body. No distinct Week 2 heading or substantive Week 2 body was located in the recovered member.",
+      "detail": "The rendered 24-page Second-Term source PDF shows a Week 1 heading followed by a Week 3 heading; no distinct Week 2 heading or substantive Week 2 body is present. The opening scheme contains unnumbered revision/straight-line items, but the source does not establish that these are a separate Week 2 lesson.",
       "required_action": "Review the original pages and confirm whether the unnumbered scheme item is intended as Week 2 or whether the source omits a week. Do not invent a separate lesson until the source structure is established.",
       "affected_ids": [
         "SS2MATH-COV-T2-W2"
@@ -3899,7 +3899,7 @@
     {
       "id": "SS2MATH-T2-W10-W11-SCHEME-BODY-MISMATCH",
       "kind": "CONTENT",
-      "detail": "The Second-Term scheme lists chord properties for Week 10 and circle-theorem angle properties for Week 11. The Week 10 body instead begins angle-at-centre/same-segment theorems and Week 11 body is cyclic quadrilaterals. The sequence does not fully reconcile.",
+      "detail": "The rendered 24-page Second-Term PDF confirms the scheme lists Week 10 chord properties (perpendicular bisectors, equal chords and distances from the centre) and Week 11 circle-theorem angle properties. The body has circle-theorem material after Week 9 and a Week 11 heading before cyclic quadrilaterals, but no distinct Week 10 chord-properties body. Do not reassign the available circle-theorem content to Week 10 without evidence.",
       "required_action": "Compare the rendered source pages and determine whether headings/body were displaced or whether the scheme is stale. Preserve the observed discrepancy and do not mark the affected coverage complete until reconciled.",
       "affected_ids": [
         "SS2MATH-COV-T2-W10",
