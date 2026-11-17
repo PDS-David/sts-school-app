@@ -1,0 +1,58 @@
+name: Backend PostgreSQL rate-limit store
+
+on:
+  pull_request:
+    paths:
+      - 'backend/src/utils/postgresRateLimitStore.ts'
+      - 'backend/src/utils/redisRateLimitStore.ts'
+      - 'backend/migrations/0002_rate_limit_counters.sql'
+      - 'backend/src/index.ts'
+      - 'backend/src/utils/ai.ts'
+      - 'tests/backend-postgres-rate-limit-store.test.mts'
+      - '.github/workflows/backend-postgres-rate-limit-store.yml'
+  push:
+    branches: [master]
+    paths:
+      - 'backend/src/utils/postgresRateLimitStore.ts'
+      - 'backend/src/utils/redisRateLimitStore.ts'
+      - 'backend/migrations/0002_rate_limit_counters.sql'
+      - 'backend/src/index.ts'
+      - 'backend/src/utils/ai.ts'
+      - 'tests/backend-postgres-rate-limit-store.test.mts'
+      - '.github/workflows/backend-postgres-rate-limit-store.yml'
+
+jobs:
+  postgres-rate-limit-store:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: sts_rate_limit_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d sts_rate_limit_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/sts_rate_limit_test
+      NODE_ENV: test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install backend dependencies
+        run: npm install --no-audit --no-fund
+        working-directory: backend
+      - name: Apply isolated rate-limit migration
+        run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f backend/migrations/0002_rate_limit_counters.sql
+      - name: Test shared counters, concurrency, expiry, isolation and outage handling
+        run: node --import tsx --test tests/backend-postgres-rate-limit-store.test.mts
+      - name: Typecheck backend
+        run: npm run build
+        working-directory: backend
