@@ -25,8 +25,8 @@ import { installFatalProcessHandlers } from './utils/fatalProcessHandlers.js';
 import {
   assertRateLimitPostgresConfigured,
   createPostgresRateLimitStore,
-  disconnectRedisRateLimitStore,
-} from './utils/redisRateLimitStore.js';
+  disconnectPostgresRateLimitStore,
+} from './utils/postgresRateLimitStore.js';
 
 dotenv.config();
 await assertRateLimitPostgresConfigured();
@@ -162,6 +162,6 @@ const server = app.listen(port, () => {
 
 installFatalProcessHandlers(server, async () => {
   await stopBackupScheduler();
-  disconnectRedisRateLimitStore();
+  disconnectPostgresRateLimitStore();
   await pool.end();
 });
