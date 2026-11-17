@@ -440,7 +440,7 @@ export default function StudentDetailScreen({ route, navigation }: any) {
       {/* View full report card */}
       <Btn
         label="View Full Report Card"
-        onPress={() => navigation.navigate('MyResults', { parentStudentId: studentId })}
+        onPress={() => navigation.navigate('MyResults', { parentStudentId: studentId, termId: selTermId })}
         variant="outline"
         style={{ margin: Spacing.md }}
       />
