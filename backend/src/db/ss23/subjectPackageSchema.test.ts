@@ -384,20 +384,27 @@ test('SS3 Biology includes only source-backed prior-learning revision and preser
   assert.ok(pkg.open_items.some(item => item.id === 'SS3BIO-T1-W2-EXCLUDED-CONTENT' && item.blocks_delivery));
 });
 
-test('loads source-mapped SS2 Mathematics First-Term drafts and preserves unresolved later terms', () => {
+test('loads SS2 Mathematics drafts across all three terms and preserves source gaps', () => {
   const raw = readFileSync(new URL('./subjects/mathematics.json', import.meta.url), 'utf8');
   const pkg = packageSchema.parse(JSON.parse(raw));
   assert.equal(pkg.class_name, 'SS 2');
   assert.equal(pkg.delivery_mode, 'INSTRUCTIONAL');
   assert.equal(pkg.package_status, 'PENDING');
   assert.equal(pkg.sources.length, 3);
-  assert.equal(pkg.units.length, 10);
-  assert.deepEqual(pkg.units.map(unit => unit.week_label), ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']);
+  assert.equal(pkg.units.length, 31);
+  assert.deepEqual(pkg.units.filter(unit => unit.term === '1st Term').map(unit => unit.week_label), ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']);
+  assert.deepEqual(pkg.units.filter(unit => unit.term === '2nd Term').map(unit => unit.week_label), ['1', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12&13']);
+  assert.deepEqual(pkg.units.filter(unit => unit.term === '3rd Term').map(unit => unit.week_label), ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']);
   assert.ok(pkg.units.every(unit => unit.state.implementation === 'DRAFT' && unit.state.verification === 'DEFERRED'));
+  assert.ok(pkg.units.filter(unit => unit.term !== '1st Term').every(unit => unit.practice.every(q => q.question_origin === 'AUTHORED_SUPPLEMENT')));
   assert.equal(pkg.coverage.find(row => row.id === 'SS2MATH-COV-T1')?.status, 'PARTIAL');
-  assert.equal(pkg.coverage.find(row => row.id === 'SS2MATH-COV-T2')?.status, 'UNRESOLVED');
-  assert.equal(pkg.coverage.find(row => row.id === 'SS2MATH-COV-T3')?.status, 'UNRESOLVED');
-  assert.ok(pkg.open_items.some(item => item.id === 'SS2MATH-CONTENT-REMAINING' && item.blocks_delivery));
+  assert.equal(pkg.coverage.find(row => row.id === 'SS2MATH-COV-T2')?.status, 'PARTIAL');
+  assert.equal(pkg.coverage.find(row => row.id === 'SS2MATH-COV-T3')?.status, 'PARTIAL');
+  assert.equal(pkg.coverage.find(row => row.id === 'SS2MATH-COV-T2-W2')?.status, 'UNRESOLVED');
+  assert.equal(pkg.coverage.find(row => row.id === 'SS2MATH-COV-T2-W7')?.status, 'MARKER');
+  assert.ok(pkg.open_items.some(item => item.id === 'SS2MATH-T2-W02-SOURCE-GAP' && item.blocks_delivery));
+  assert.ok(pkg.open_items.some(item => item.id === 'SS2MATH-T2-W10-W11-SCHEME-BODY-MISMATCH' && item.blocks_delivery));
+  assert.ok(pkg.open_items.some(item => item.id === 'SS2MATH-ASSESSMENT-RECONCILIATION' && item.blocks_delivery));
 });
 
 test('registered SS2/SS3 packages preserve class-specific delivery modes and SS3 has no third term', () => {
