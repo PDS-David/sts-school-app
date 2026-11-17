@@ -60,7 +60,7 @@ jobs:
                 --format=custom --no-owner --no-acl --verbose \
                 --file=/backup/database.dump
               psql "$RENDER_POSTGRES_EXTERNAL_URL" -X -A -t \
-                -c "SELECT current_database() || E''\\t'' || current_setting(''server_version'')" \
+                -c "SHOW server_version" \
                 > /backup/database-info.txt
             '
 
