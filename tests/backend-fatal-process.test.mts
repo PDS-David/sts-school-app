@@ -9,10 +9,12 @@ interface ChildResult {
   stderr: string;
 }
 
-function runFatalChild(trigger: 'rejection' | 'exception'): Promise<ChildResult> {
+function runFatalChild(trigger: 'rejection' | 'exception' | 'sigterm'): Promise<ChildResult> {
   const triggerCode = trigger === 'rejection'
     ? "Promise.reject(new Error('simulated unhandled rejection'));"
-    : "setImmediate(() => { throw new Error('simulated uncaught exception'); });";
+    : trigger === 'exception'
+      ? "setImmediate(() => { throw new Error('simulated uncaught exception'); });"
+      : "process.kill(process.pid, 'SIGTERM');";
   const source = `
     import { createServer } from 'node:http';
     import { installFatalProcessHandlers } from './backend/src/utils/fatalProcessHandlers.ts';
@@ -63,5 +65,13 @@ test('an uncaught exception drains the HTTP server and exits with code 1', async
   assert.equal(result.signal, null);
   assert.equal(result.code, 1);
   assert.match(result.stderr, /uncaughtException/);
+  assert.match(result.stdout, /shutdown-complete/);
+});
+
+test('SIGTERM drains the HTTP server and closes dependencies before a clean exit', async () => {
+  const result = await runFatalChild('sigterm');
+  assert.equal(result.signal, null);
+  assert.equal(result.code, 0);
+  assert.match(result.stderr, /SIGTERM/);
   assert.match(result.stdout, /shutdown-complete/);
 });

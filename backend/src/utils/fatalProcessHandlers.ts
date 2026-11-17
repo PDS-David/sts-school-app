@@ -1,10 +1,9 @@
 import type { Server } from 'node:http';
 
 /**
- * Node cannot safely continue after an uncaught exception, and unhandled
- * rejections should not be silently converted into log-only events. Stop
- * accepting traffic, drain the server and dependencies, then let the process
- * exit non-zero so the process manager can restart a clean instance.
+ * Stop accepting new requests and drain active work before closing shared
+ * dependencies. Fatal JavaScript errors exit non-zero so Render can replace
+ * the process; platform termination signals exit cleanly after shutdown.
  */
 export function installFatalProcessHandlers(
   server: Server,
@@ -12,36 +11,42 @@ export function installFatalProcessHandlers(
 ): void {
   let shuttingDown = false;
 
-  const terminate = (event: string, reason: unknown): void => {
+  const terminate = (event: string, reason: unknown, exitCode: 0 | 1): void => {
     if (shuttingDown) return;
     shuttingDown = true;
 
-    console.error(`[fatal] ${event}; shutting down the API process:`, reason);
+    const prefix = exitCode === 0 ? '[shutdown]' : '[fatal]';
+    console.error(`${prefix} ${event}; draining the API process:`, reason);
 
     const hardStop = setTimeout(() => {
-      console.error('[fatal] graceful shutdown exceeded 10 seconds; closing remaining HTTP connections.');
+      console.error(`${prefix} graceful shutdown exceeded 10 seconds; closing remaining HTTP connections.`);
       server.closeAllConnections();
-      process.exit(1);
+      process.exit(exitCode);
     }, 10_000);
     hardStop.unref();
 
     server.close((closeError) => {
       if (closeError && (closeError as NodeJS.ErrnoException).code !== 'ERR_SERVER_NOT_RUNNING') {
-        console.error('[fatal] HTTP server close failed:', closeError);
+        console.error(`${prefix} HTTP server close failed:`, closeError);
       }
 
       void Promise.resolve()
         .then(shutdownDependencies)
         .catch((shutdownError) => {
-          console.error('[fatal] dependency shutdown failed:', shutdownError);
+          console.error(`${prefix} dependency shutdown failed:`, shutdownError);
         })
         .finally(() => {
           clearTimeout(hardStop);
-          process.exitCode = 1;
+          process.exitCode = exitCode;
         });
     });
+
+    // Explicitly release idle keep-alive sockets while active requests drain.
+    server.closeIdleConnections();
   };
 
-  process.on('unhandledRejection', (reason) => terminate('unhandledRejection', reason));
-  process.on('uncaughtException', (error) => terminate('uncaughtException', error));
+  process.on('unhandledRejection', (reason) => terminate('unhandledRejection', reason, 1));
+  process.on('uncaughtException', (error) => terminate('uncaughtException', error, 1));
+  process.on('SIGTERM', () => terminate('SIGTERM', 'Render is stopping this instance', 0));
+  process.on('SIGINT', () => terminate('SIGINT', 'Process interrupted', 0));
 }
