@@ -841,6 +841,814 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS2-PHY-T2-W01-03",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "2nd Term",
+      "subject": "Physics",
+      "title": "Heat Energy, Temperature, Heat Capacity and Specific Heat Capacity",
+      "week_label": "1-3",
+      "objectives": [
+        "Distinguish heat from temperature and define heat capacity and specific heat capacity.",
+        "Apply Q=mcDeltaT and energy conservation to heating, mixing and gravitational energy problems."
+      ],
+      "body": "HEAT ENERGY AND SPECIFIC HEAT CAPACITY\n\nHeat is energy transferred because of a temperature difference; temperature describes the thermal state of a body. Heat flows spontaneously from a hotter body to a colder one until thermal equilibrium is approached. The source covers temperature scales, thermometers, heat capacity and specific heat capacity. Heat capacity is the heat required to raise the temperature of a whole body by one kelvin; specific heat capacity is the heat required to raise unit mass by one kelvin.\n\nFor a body of mass m and specific heat capacity c undergoing temperature change DeltaT, Q = mcDeltaT. Use mass in kilograms, c in J kg-1 K-1 and temperature difference in kelvin or degrees Celsius. For electrical heating, energy supplied is Q = VIt or Pt, where V is voltage, I current and t time. For mixing problems, apply conservation of energy: heat lost by the hotter body equals heat gained by the colder body when losses are neglected.\n\nThe source also relates gravitational potential energy to heating when falling water loses potential energy. State the assumption of negligible heat loss and keep all quantities in consistent SI units.",
+      "body_sha256": "0be64ddf6f141a118895b7d7c9b5fe53ba9f2994760eaaf77be0989ff6ceecf8",
+      "practice": [
+        {
+          "id": "SS2PHY-T2-W1-3-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Weeks 1-3 assignment, waterfall question.",
+          "question": "A waterfall is 630 m high. Calculate the change in temperature of water falling from the top to the bottom if no heat is lost. Take g=10 m/s2 and c=4200 J kg-1 K-1.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "Loss of gravitational potential energy per kilogram is gh = 10 x 630 = 6300 J/kg. Temperature rise DeltaT = gh/c = 6300/4200 = 1.5 K (or 1.5 degrees C).",
+          "explanation": "Equate gravitational potential energy lost per unit mass to heat gained per unit mass.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses gh = 6300 J/kg.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates temperature rise as 1.5 K.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Weeks 1-3 assignment, waterfall question.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T2-W1-3-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Weeks 1-3 assignment, water-mixing question.",
+          "question": "If 60 g of water at 90 degrees C is poured into 20 g of water at 30 degrees C, calculate the final steady temperature. Neglect heat loss and calorimeter heat capacity.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "Heat lost by hot water equals heat gained by cold water: 60(90-T)=20(T-30). Hence 5400-60T=20T-600; 6000=80T and T=75 degrees C.",
+          "explanation": "The specific heat capacity cancels because both portions are water.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Sets heat lost equal to heat gained.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains 75 degrees C.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Weeks 1-3 assignment, water-mixing question.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-2bf3d68129b1",
+          "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Second-Term Physics source, combined Weeks 1–3 body and associated classwork/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T2-W04",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "2nd Term",
+      "subject": "Physics",
+      "title": "Evaporation, Boiling and Melting",
+      "week_label": "4",
+      "objectives": [
+        "Distinguish evaporation, boiling, melting, freezing and sublimation.",
+        "Explain effects of pressure and impurities on boiling and melting points."
+      ],
+      "body": "EVAPORATION, BOILING AND MELTING\n\nEvaporation is the escape of molecules from the surface of a liquid and can occur at temperatures below the boiling point. Boiling occurs throughout a liquid when its saturated vapour pressure equals the external pressure and bubbles form within the liquid. Evaporation causes cooling because higher-energy molecules escape from the surface. Boiling occurs at a definite temperature for a given pressure and pure substance.\n\nMelting is the change from solid to liquid; freezing is the reverse. Sublimation is direct change from solid to gas without passing through the liquid state. Pressure affects boiling point: reducing external pressure lowers the boiling point, while increasing pressure raises it. Impurities can alter melting and boiling points; non-volatile solutes generally raise boiling point and lower freezing point.\n\nThe source asks for experimental determination of boiling point and effects of impurities and pressure. In an experiment, heat the liquid steadily, use a suitable thermometer, record the temperature when boiling is sustained, and note the external pressure and purity of the sample.",
+      "body_sha256": "8426ba13f86d1f613334b6d8093cce3c1450319272e827fb64a419736f07b6ff",
+      "practice": [
+        {
+          "id": "SS2PHY-T2-W4-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 4 ASSIGNMENT, Section A, change of state item.",
+          "question": "A phenomenon describing the direct change of a substance from solid to gas is called what?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "Sublimation.",
+          "explanation": "Sublimation bypasses the liquid state.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Identifies sublimation.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 4 ASSIGNMENT, Section A, change of state item.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T2-W4-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 4 ASSIGNMENT, Section A, pressure effect item.",
+          "question": "What effect does reducing the surface pressure of a liquid have on its boiling point?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "It reduces the boiling point because boiling occurs when the liquid's saturated vapour pressure equals the external pressure.",
+          "explanation": "A lower external pressure is reached at a lower temperature.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that boiling point decreases.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains the vapour-pressure condition.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 4 ASSIGNMENT, Section A, pressure effect item.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-2bf3d68129b1",
+          "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Second-Term Physics source, Week 4 body and associated classwork/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T2-W05",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "2nd Term",
+      "subject": "Physics",
+      "title": "Latent Heat of Fusion and Vaporisation",
+      "week_label": "5",
+      "objectives": [
+        "Define specific latent heat of fusion and vaporisation.",
+        "Calculate energy for temperature changes and changes of state."
+      ],
+      "body": "LATENT HEAT\n\nWhen a substance changes state, energy may be absorbed or released without a temperature change. Specific latent heat is the energy required to change the state of unit mass of a substance at constant temperature. Specific latent heat of fusion refers to solid-liquid change; specific latent heat of vaporisation refers to liquid-gas change.\n\nFor a mass m undergoing a change of state, Q = mL, where L is the appropriate specific latent heat. If temperature also changes, combine sensible heat Q=mcDeltaT with latent heat. For ice initially below zero, first warm the ice to zero, melt it, then warm the water to the required temperature. For water below its boiling point, warm it to the boiling point before vaporising it.\n\nUse consistent units: if mass is in grams, convert the specific latent heat units accordingly; if L is in J/kg, use mass in kg. The source includes multistage calculations and asks learners to distinguish specific heat capacity from specific latent heat.",
+      "body_sha256": "d0fdef9743d1740d865b1052e7e329873acad60e65a319418a882a8973979f6a",
+      "practice": [
+        {
+          "id": "SS2PHY-T2-W5-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 5 ASSIGNMENT, Section A, ice-melting calculation.",
+          "question": "Calculate the heat required to change 10 g of ice at 0 degrees C to water at 10 degrees C. Use Lf=335 J/g and cwater=4.2 J/g K.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "Q = mLf + mcDeltaT = 10(335) + 10(4.2)(10) = 3350 + 420 = 3770 J.",
+          "explanation": "Include both the energy to melt the ice and the energy to warm the resulting water.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Calculates latent heat 3350 J.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates sensible heat 420 J.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains total 3770 J.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 5 ASSIGNMENT, Section A, ice-melting calculation.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T2-W5-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 5 ASSIGNMENT, Section B, water-vaporisation calculation.",
+          "question": "Calculate the energy required to vaporise 50 g of water initially at 80 degrees C. Use c=4.2 J/g K and Lv=2260 J/g.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "Warm to 100 degrees C: Q1=50(4.2)(20)=4200 J. Vaporise: Q2=50(2260)=113000 J. Total energy=117200 J.",
+          "explanation": "The water must first reach its boiling point, then receive latent heat of vaporisation.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Calculates heating energy 4200 J.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates vaporisation energy 113000 J.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains total 117200 J.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 5 ASSIGNMENT, Section B, water-vaporisation calculation.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-2bf3d68129b1",
+          "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Second-Term Physics source, Week 5 body and associated classwork/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T2-W06",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "2nd Term",
+      "subject": "Physics",
+      "title": "Vapour Pressure, Humidity and Dew Point",
+      "week_label": "6",
+      "objectives": [
+        "Define saturated and unsaturated vapour pressure and relate vapour pressure to boiling.",
+        "Define humidity, relative humidity and dew point and identify measuring instruments."
+      ],
+      "body": "VAPOUR PRESSURE AND HUMIDITY\n\nVapour pressure is the pressure exerted by vapour in equilibrium with its liquid at a given temperature. In a closed space, saturated vapour pressure is reached when the rate of evaporation equals the rate of condensation. Unsaturated vapour pressure is below the saturation value, so net evaporation can occur. A liquid boils when its saturated vapour pressure equals the external atmospheric pressure.\n\nHumidity describes the amount of water vapour in air. Relative humidity is the ratio of actual water-vapour pressure to saturated vapour pressure at the same temperature, expressed as a percentage. A hygrometer measures humidity. Dew point is the temperature to which air must be cooled, at constant pressure and water-vapour content, for saturation to occur and dew to begin forming.\n\nFog and mist are suspensions of tiny water droplets near the ground; fog generally reduces visibility more strongly than mist. The source includes weather-related effects, humidity terms and a project on specific heat capacity apparatus.",
+      "body_sha256": "5013753603f35b1997128c763ac8c59e10ef3746fa1e39a39d8f504d36396b37",
+      "practice": [
+        {
+          "id": "SS2PHY-T2-W6-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 6 ASSIGNMENT, Section A, boiling condition item.",
+          "question": "The temperature at which saturated vapour pressure of a liquid equals atmospheric pressure gives rise to what phenomenon?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "Boiling point.",
+          "explanation": "Boiling occurs when saturated vapour pressure equals the external pressure.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Identifies boiling point.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 6 ASSIGNMENT, Section A, boiling condition item.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T2-W6-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 6 ASSIGNMENT, Section A, humidity instrument item.",
+          "question": "What instrument is used to measure relative humidity of an environment?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "A hygrometer.",
+          "explanation": "A hygrometer measures humidity; a hydrometer measures relative density of liquids.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies a hygrometer.",
+              "marks": 1
+            },
+            {
+              "criterion": "Distinguishes it from a hydrometer.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 6 ASSIGNMENT, Section A, humidity instrument item.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-2bf3d68129b1",
+          "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Second-Term Physics source, Week 6 body and associated classwork/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T2-W07",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "2nd Term",
+      "subject": "Physics",
+      "title": "Gas Laws and the General Gas Equation",
+      "week_label": "7",
+      "objectives": [
+        "State Boyle's law, Charles' law and the pressure law.",
+        "Apply the combined gas equation using absolute temperature."
+      ],
+      "body": "GAS LAWS\n\nGas laws describe relationships between pressure, volume and absolute temperature for a fixed mass of gas. Boyle's law states that at constant temperature, pressure is inversely proportional to volume: P1V1=P2V2. Charles' law states that at constant pressure, volume is directly proportional to absolute temperature: V1/T1=V2/T2. The pressure law states that at constant volume, pressure is directly proportional to absolute temperature: P1/T1=P2/T2.\n\nCombining the laws gives P1V1/T1=P2V2/T2 for a fixed mass of gas. Temperature must be in kelvin, not degrees Celsius: T(K)=theta(degrees C)+273. The source includes trapped air columns, heated gas vessels and graph interpretation. For a changing gas state, identify which variables are constant, convert temperatures to kelvin and substitute carefully.\n\nThe ideal gas equation is PV=nRT. It relates pressure, volume, amount of gas and absolute temperature. Use consistent units for R and the other quantities.",
+      "body_sha256": "5a9db540dbfe561b8d7720f0e1d72831484285ef3f41e256015ba5c91ccc73be",
+      "practice": [
+        {
+          "id": "SS2PHY-T2-W7-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 7 CLASSWORK, combined gas law calculation.",
+          "question": "A vessel contains gas at 50 degrees C and pressure 76 cmHg. Calculate the final pressure if its volume is doubled while it is heated to 90 degrees C.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "T1=323 K and T2=363 K. P2=P1(V1/V2)(T2/T1)=76(1/2)(363/323)=42.7 cmHg approximately.",
+          "explanation": "Use the combined gas law and convert both temperatures to kelvin.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Converts temperatures to 323 K and 363 K.",
+              "marks": 1
+            },
+            {
+              "criterion": "Applies the combined gas equation.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains about 42.7 cmHg.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 7 CLASSWORK, combined gas law calculation.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T2-W7-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 7 ASSIGNMENT, Section A, trapped air-column question.",
+          "question": "A column of air 10 cm long is trapped in a tube at 27 degrees C. What is its length at 100 degrees C if pressure is constant?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "T1=300 K and T2=373 K. By Charles' law, L2=L1(T2/T1)=10(373/300)=12.43 cm.",
+          "explanation": "At constant pressure, gas volume is proportional to absolute temperature; the trapped tube's cross-section is constant, so length follows volume.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Converts temperatures to kelvin.",
+              "marks": 1
+            },
+            {
+              "criterion": "Applies Charles' law.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains about 12.4 cm.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 7 ASSIGNMENT, Section A, trapped air-column question.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-2bf3d68129b1",
+          "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Second-Term Physics source, Week 7 body and associated classwork/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T2-W08",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "2nd Term",
+      "subject": "Physics",
+      "title": "Wave Motion and Wave Quantities",
+      "week_label": "8",
+      "objectives": [
+        "Define wave motion and distinguish mechanical from electromagnetic waves.",
+        "Calculate wavelength, frequency, period and wave speed."
+      ],
+      "body": "WAVE MOTION\n\nA wave is a disturbance that transfers energy from one point to another without net transfer of the medium. Mechanical waves require a material medium; examples include sound, water and waves on a stretched string. Electromagnetic waves do not require a material medium and can travel through a vacuum. Waves may be transverse or longitudinal depending on the direction of particle vibration relative to propagation.\n\nThe amplitude is maximum displacement from equilibrium, wavelength is the distance between successive points in phase, frequency is the number of complete cycles per second and period is the time for one cycle. Wave speed v=f lambda=lambda/T. For electromagnetic radiation in air or vacuum, use approximately 3.0 x 10^8 m/s. Radio frequency is often stated in MHz; convert to hertz before calculating wavelength.\n\nThe source includes wave equations and stationary waves. Read the equation carefully to identify amplitude, wavelength, frequency, phase and propagation direction.",
+      "body_sha256": "7f2f6f28fc54b82e31dbec46dd2b58df1701d3f49f685f7e9699a1e3b70b097d",
+      "practice": [
+        {
+          "id": "SS2PHY-T2-W8-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 8 CLASSWORK, radio-frequency wavelength calculation.",
+          "question": "A radio station broadcasts at a frequency of 21 MHz. If the speed of light in air is 3 x 10^8 m/s, calculate the wavelength.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "f=21 x 10^6 Hz. lambda=v/f=(3 x 10^8)/(21 x 10^6)=14.3 m approximately.",
+          "explanation": "Convert MHz to Hz and use v=f lambda.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Converts 21 MHz to 21 x 10^6 Hz.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains wavelength about 14.3 m.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 8 CLASSWORK, radio-frequency wavelength calculation.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T2-W8-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 8 CLASSWORK, wave definition and stationary-wave prompt.",
+          "question": "What is a wave? Define a stationary wave.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "A wave is a disturbance that transfers energy without net transfer of the medium. A stationary wave is a pattern formed by superposition of two waves of the same frequency and amplitude travelling in opposite directions, producing fixed nodes and antinodes.",
+          "explanation": "Distinguish energy transfer from bulk movement of the medium and identify nodes and antinodes in a stationary wave.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Defines wave motion correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Defines stationary wave and identifies nodes/antinodes.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 8 CLASSWORK, wave definition and stationary-wave prompt.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-2bf3d68129b1",
+          "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Second-Term Physics source, Week 8 body and associated classwork/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T2-W09",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "2nd Term",
+      "subject": "Physics",
+      "title": "Properties of Waves: Reflection, Refraction, Diffraction and Interference",
+      "week_label": "9",
+      "objectives": [
+        "Describe reflection, refraction, diffraction, interference and polarisation.",
+        "Explain wave behaviour at boundaries and distinguish particle motion from energy transfer."
+      ],
+      "body": "PROPERTIES OF WAVES\n\nWaves exhibit reflection, refraction, diffraction and interference. Reflection occurs when a wave meets a boundary and returns into its original medium. Refraction is a change in wave direction and speed as it enters a medium where its speed differs; frequency remains constant while wavelength changes. Diffraction is spreading around an obstacle or through an aperture and is most pronounced when the gap size is comparable to wavelength.\n\nInterference occurs when waves superpose. Constructive interference occurs when waves meet in phase and reinforce; destructive interference occurs when they meet out of phase and reduce the resultant amplitude. Polarisation is the restriction of transverse-wave vibrations to a particular plane; it does not apply to longitudinal waves such as sound in air.\n\nWater-wave examples show that particles oscillate about equilibrium while energy propagates. A floating cork generally moves up and down as a wave passes rather than travelling with the wave to the shore.",
+      "body_sha256": "434e595e4e5911b9c7e437703f9d3dac0c23c30008074704a0a76df546d5d655",
+      "practice": [
+        {
+          "id": "SS2PHY-T2-W9-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 9 ASSIGNMENT, Section A, refraction question.",
+          "question": "When a wave travels from air into water, what happens to its speed?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "The speed decreases for the usual water-wave context described in the source; the direction may also change if incidence is oblique.",
+          "explanation": "Refraction involves a change in speed and, for oblique incidence, direction.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that speed decreases.",
+              "marks": 1
+            },
+            {
+              "criterion": "Relates the change to refraction.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 9 ASSIGNMENT, Section A, refraction question.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T2-W9-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 9 ASSIGNMENT, Section A, interference question.",
+          "question": "What phenomenon occurs when two similar waves travelling in the same direction cross each other?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "Interference.",
+          "explanation": "Interference is the result of superposition of waves.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Identifies interference.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 9 ASSIGNMENT, Section A, interference question.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-2bf3d68129b1",
+          "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Second-Term Physics source, Week 9 body and associated classwork/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T2-W10",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "2nd Term",
+      "subject": "Physics",
+      "title": "Light Waves and Plane/Curved Mirrors",
+      "week_label": "10",
+      "objectives": [
+        "Describe image formation by plane mirrors and distinguish real and virtual images.",
+        "Calculate number of images and apply the mirror formula to concave mirrors."
+      ],
+      "body": "LIGHT AND MIRRORS\n\nLight is an electromagnetic wave. Reflection from a plane mirror obeys the laws of reflection: the incident ray, reflected ray and normal lie in the same plane, and angle of incidence equals angle of reflection. A plane mirror forms an upright, virtual image of the same size as the object, laterally inverted and apparently the same distance behind the mirror as the object is in front.\n\nTwo plane mirrors inclined at angle theta can form multiple images. For an object on the angle bisector, when 360/theta is an integer, the number of images is 360/theta - 1. Curved mirrors may be concave or convex. A concave mirror can form real or virtual images depending on object position; a convex mirror forms virtual, upright and diminished images.\n\nFor spherical mirrors, relate focal length f, object distance u and image distance v using the mirror equation 1/f=1/u+1/v under a consistent sign convention. Magnification is image height/object height and can also be related to image and object distances.",
+      "body_sha256": "765645f7c34a923ab8fc4901b1ec49d467de606d366a6d4c4b6d76a491e63221",
+      "practice": [
+        {
+          "id": "SS2PHY-T2-W10-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 10 ASSIGNMENT, Section A, two-plane-mirror image count.",
+          "question": "An object is placed between two plane mirrors inclined at 60 degrees. How many images will be seen?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "Number of images = 360/60 - 1 = 5.",
+          "explanation": "Use the formula for two plane mirrors inclined at an angle when 360/theta is an integer.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses n=360/theta - 1.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains five images.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 10 ASSIGNMENT, Section A, two-plane-mirror image count.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T2-W10-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 10 ASSIGNMENT, Section A, concave-mirror image question.",
+          "question": "An object is placed 15 cm in front of a concave mirror of focal length 20 cm. Describe the image formed.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "Using the mirror equation with a concave mirror, the image is virtual, upright and magnified. Its distance is 60 cm behind the mirror and magnification is 4.",
+          "explanation": "Because the object is inside the focal length, the reflected rays diverge and their backward extensions meet behind the mirror.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Obtains image distance 60 cm behind the mirror.",
+              "marks": 1
+            },
+            {
+              "criterion": "Identifies virtual, upright and magnified image.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains magnification 4.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 10 ASSIGNMENT, Section A, concave-mirror image question.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-2bf3d68129b1",
+          "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Second-Term Physics source, Week 10 body and associated classwork/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "coverage": [
@@ -872,12 +1680,25 @@
       "source_id": "SS23-SRC-2bf3d68129b1",
       "objective": "Second-Term scheme: heat, heat capacity, changes of state, vapour pressure, gas laws, waves and light.",
       "objective_locator": "Second-Term Physics scheme of work.",
-      "status": "UNRESOLVED",
-      "unit_ids": [],
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T2-W01-03",
+        "SUP-SS2-PHY-T2-W04",
+        "SUP-SS2-PHY-T2-W05",
+        "SUP-SS2-PHY-T2-W06",
+        "SUP-SS2-PHY-T2-W07",
+        "SUP-SS2-PHY-T2-W08",
+        "SUP-SS2-PHY-T2-W09",
+        "SUP-SS2-PHY-T2-W10"
+      ],
       "evidence": [
         {
           "locator": "Second-Term Physics source member SHA-256 2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
           "explanation": "Source inventoried; no instructional units implemented yet."
+        },
+        {
+          "locator": "Second-Term source SHA-256 2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7; combined Week 1–3 and Weeks 4–10 source sections.",
+          "explanation": "Eight source-week/combined-week draft units are mapped; full assessment, diagram and worked-example reconciliation remains open."
         }
       ]
     },
@@ -1022,14 +1843,142 @@
           "explanation": "Draft unit and two source-located practice prompts mapped; full source question inventory and visual review remain open."
         }
       ]
+    },
+    {
+      "id": "SS2PHY-COV-T2-W1-3",
+      "source_id": "SS23-SRC-2bf3d68129b1",
+      "objective": "Week 1-3: Heat Energy, Temperature, Heat Capacity and Specific Heat Capacity",
+      "objective_locator": "Second-Term Physics source, combined Weeks 1–3 body and associated classwork/assignment.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T2-W01-03"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7; source week section and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located questions are mapped; full source-item and visual reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T2-W4",
+      "source_id": "SS23-SRC-2bf3d68129b1",
+      "objective": "Week 4: Evaporation, Boiling and Melting",
+      "objective_locator": "Second-Term Physics source, Week 4 body and associated classwork/assignment.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T2-W04"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7; source week section and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located questions are mapped; full source-item and visual reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T2-W5",
+      "source_id": "SS23-SRC-2bf3d68129b1",
+      "objective": "Week 5: Latent Heat of Fusion and Vaporisation",
+      "objective_locator": "Second-Term Physics source, Week 5 body and associated classwork/assignment.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T2-W05"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7; source week section and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located questions are mapped; full source-item and visual reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T2-W6",
+      "source_id": "SS23-SRC-2bf3d68129b1",
+      "objective": "Week 6: Vapour Pressure, Humidity and Dew Point",
+      "objective_locator": "Second-Term Physics source, Week 6 body and associated classwork/assignment.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T2-W06"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7; source week section and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located questions are mapped; full source-item and visual reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T2-W7",
+      "source_id": "SS23-SRC-2bf3d68129b1",
+      "objective": "Week 7: Gas Laws and the General Gas Equation",
+      "objective_locator": "Second-Term Physics source, Week 7 body and associated classwork/assignment.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T2-W07"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7; source week section and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located questions are mapped; full source-item and visual reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T2-W8",
+      "source_id": "SS23-SRC-2bf3d68129b1",
+      "objective": "Week 8: Wave Motion and Wave Quantities",
+      "objective_locator": "Second-Term Physics source, Week 8 body and associated classwork/assignment.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T2-W08"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7; source week section and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located questions are mapped; full source-item and visual reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T2-W9",
+      "source_id": "SS23-SRC-2bf3d68129b1",
+      "objective": "Week 9: Properties of Waves: Reflection, Refraction, Diffraction and Interference",
+      "objective_locator": "Second-Term Physics source, Week 9 body and associated classwork/assignment.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T2-W09"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7; source week section and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located questions are mapped; full source-item and visual reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T2-W10",
+      "source_id": "SS23-SRC-2bf3d68129b1",
+      "objective": "Week 10: Light Waves and Plane/Curved Mirrors",
+      "objective_locator": "Second-Term Physics source, Week 10 body and associated classwork/assignment.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T2-W10"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7; source week section and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located questions are mapped; full source-item and visual reconciliation remains open."
+        }
+      ]
     }
   ],
   "open_items": [
     {
       "id": "SS2PHY-CONTENT-REMAINING",
       "kind": "CONTENT",
-      "detail": "Eight First-Term source-week/combined-week units are drafted. Second- and Third-Term Physics source content is not yet implemented; First-Term assessment mapping is partial.",
-      "required_action": "Implement all Second- and Third-Term source sections; reconcile every source classwork, assignment, examination item and worked example; preserve combined-week labels.",
+      "detail": "First- and Second-Term source sections have draft units (8 units each). Third-Term source content remains unimplemented. First- and Second-Term assessment mapping is partial.",
+      "required_action": "Implement all Third-Term source sections; reconcile every source classwork, assignment, examination item and worked example; preserve combined-week labels.",
       "affected_ids": [
         "SS2PHY-COV-T1",
         "SS2PHY-COV-T2",
