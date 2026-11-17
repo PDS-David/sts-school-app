@@ -80,7 +80,7 @@ SS3 is examination preparation only. No new instructional topics may be introduc
 6. Reconcile missing, duplicate and conflicting source versions without choosing arbitrarily.
 7. Complete rendered-page visual review and source-asset rights review.
 8. Complete independent subject QA and close blocking open items.
-9. Connect the existing gated SS2/SS3 student-delivery API to the mobile subject discovery and lesson screens; the current mobile client fetches only database subjects and SS1 package lessons.
+9. Merge and verify PR #977, which connects the existing gated SS2/SS3 student-delivery API to mobile subject discovery and lesson screens. Until that PR is merged, the mobile client fetches only database subjects and SS1 package lessons.
 10. Keep every package unavailable to students until the applicable gates and owner release authorization pass.
 
 ## 3. Production backend and Render gaps
@@ -202,7 +202,8 @@ This is consistent with the former Free database expiring and being deleted. It 
 | [#971](https://github.com/PDS-David/sts-school-app/pull/971) | Encrypted scheduled Render Postgres backup workflow and restore instructions. | Open; requires two repository secrets before first successful run. |
 | [#972](https://github.com/PDS-David/sts-school-app/pull/972) | Conventional Expo App entrypoint and updated Android readiness notes. | Open; Android debug APK build and emulator verification are running. |
 | [#973](https://github.com/PDS-David/sts-school-app/pull/973) | This evidence-based application completion gap register. | Open; documentation only. |
-| [#974](https://github.com/PDS-David/sts-school-app/pull/974) | SS2 Government First-Term: 10 draft units and 20 practice records; T2/T3 explicitly unresolved. | Open; package/loader regression checks pending. |
+| [#974](https://github.com/PDS-David/sts-school-app/pull/974) | SS2 Government: 30 draft units and 60 practice records across all three terms. | Open; package/loader regression checks pending. |
+| [#977](https://github.com/PDS-David/sts-school-app/pull/977) | Connect delivery-gated SS2/SS3 packages to student subject discovery and lesson screens. | Open; backend, mobile, package and cross-project CI running. |
 
 
 ## 8. Additional product and administration gaps recorded in the existing app audit
@@ -236,7 +237,7 @@ These items were present in `APP_WIDE_AUDIT.md`, `AGENT_CONTINUATION.md` and `TO
 - Locked curriculum topics are deliberately disabled until the required PIN/prior-topic completion condition is satisfied.
 
 
-15. **SS2/SS3 mobile curriculum integration:** backend routes `GET /learning/ss23/lessons` and `GET /learning/ss23/preparation` already exist and enforce the package delivery gates, but `StudentLearningScreen` fetches only `/academic/subjects`, and `SubjectTopicsScreen` fetches only `/learning/ss1/lessons`. The mobile app does not call either SS23 endpoint and has no SS23 lesson screen. The current database also has zero subject rows for the `secondary` school, so secondary students currently receive no subject tiles. Integrate a gated subject-discovery endpoint and SS23 lesson UI; only packages passing the existing server-side delivery gate may appear.
+15. **SS2/SS3 mobile curriculum integration:** backend routes `GET /learning/ss23/lessons` and `GET /learning/ss23/preparation` already exist and enforce the package delivery gates, but the current mobile app does not call them and has no SS23 lesson screen. PR #977 adds a gated subject-discovery endpoint, merges approved package subjects into the Learning screen, and adds a student lesson view that omits model answers and marking. The PR is open and its full CI is running; until it is merged, secondary students have no SS23 package subject tiles. The current database also has zero subject rows for the `secondary` school.
 
 ## 9. Existing app-wide audit status
 
