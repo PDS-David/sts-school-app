@@ -13,12 +13,14 @@ const LOCK_NAMESPACE = 1937001;
 const LOCK_ID = 3;
 
 type Mode = '--all' | '--fresh' | '--status';
+
 type Migration = {
   version: string;
   name: string;
   checksum: string;
   sql: string;
 };
+
 type AppliedMigration = {
   version: string;
   name: string;
@@ -27,6 +29,10 @@ type AppliedMigration = {
 
 function checksum(content: string): string {
   return createHash('sha256').update(content).digest('hex');
+}
+
+function errorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
 }
 
 function readMigrations(): Migration[] {
@@ -158,10 +164,16 @@ async function acquireLock(client: PoolClient): Promise<void> {
 }
 
 async function releaseLock(client: PoolClient): Promise<void> {
-  await client.query(
-    'SELECT pg_advisory_unlock($1, $2)',
+  const result = await client.query<{ pg_advisory_unlock: boolean }>(
+    'SELECT pg_advisory_unlock($1, $2) AS pg_advisory_unlock',
     [LOCK_NAMESPACE, LOCK_ID],
   );
+
+  if (result.rows[0]?.pg_advisory_unlock !== true) {
+    throw new Error(
+      'PostgreSQL did not confirm release of the migration advisory lock.',
+    );
+  }
 }
 
 function assertAppliedChecksums(
@@ -269,10 +281,17 @@ async function applyAll(
         `Applied ${migration.version} ${migration.name}`,
       );
     } catch (error) {
-      await client.query('ROLLBACK');
+      try {
+        await client.query('ROLLBACK');
+      } catch (rollbackError) {
+        throw new Error(
+          `Migration ${migration.name} failed and rollback also failed. Original error: ${errorMessage(error)}. Rollback error: ${errorMessage(rollbackError)}. Inspect the database connection and transaction state before retrying.`,
+          { cause: error },
+        );
+      }
 
       throw new Error(
-        `Migration ${migration.name} failed; transaction rolled back.`,
+        `Migration ${migration.name} failed; transaction rolled back. Cause: ${errorMessage(error)}`,
         { cause: error },
       );
     }
@@ -352,14 +371,14 @@ async function applyFresh(
         await client.query('ROLLBACK');
       } catch (rollbackError) {
         throw new Error(
-          'Fresh schema replay failed and transaction rollback also failed. Inspect the database connection before retrying.',
-          { cause: rollbackError },
+          `Fresh schema replay failed and rollback also failed. Original error: ${errorMessage(error)}. Rollback error: ${errorMessage(rollbackError)}. Inspect the database connection and transaction state before retrying.`,
+          { cause: error },
         );
       }
     }
 
     throw new Error(
-      'Fresh schema replay failed; transaction rolled back.',
+      `Fresh schema replay failed; transaction rolled back. Cause: ${errorMessage(error)}`,
       { cause: error },
     );
   }
@@ -415,6 +434,8 @@ export async function runMigrations(
   const client = await pool.connect();
 
   let locked = false;
+  let operationFailed = false;
+  let operationError: unknown;
 
   try {
     if (mode === '--status') {
@@ -430,13 +451,45 @@ export async function runMigrations(
     } else {
       await applyAll(client, migrations);
     }
+  } catch (error) {
+    operationFailed = true;
+    operationError = error;
+    throw error;
   } finally {
+    let unlockFailed = false;
+    let unlockError: unknown;
+
     try {
       if (locked) {
         await releaseLock(client);
       }
+    } catch (error) {
+      unlockFailed = true;
+      unlockError = error;
     } finally {
-      client.release();
+      // Discard a connection if its advisory lock could not be released.
+      // Returning it to the pool could leave a session-level lock held.
+      client.release(
+        unlockFailed
+          ? unlockError instanceof Error
+            ? unlockError
+            : new Error(errorMessage(unlockError))
+          : undefined,
+      );
+    }
+
+    if (unlockFailed) {
+      if (operationFailed) {
+        throw new Error(
+          `Migration operation failed: ${errorMessage(operationError)}. Advisory-lock release also failed: ${errorMessage(unlockError)}. The database connection was discarded. Inspect database state before retrying.`,
+          { cause: operationError },
+        );
+      }
+
+      throw new Error(
+        `Advisory-lock release failed: ${errorMessage(unlockError)}. The database connection was discarded.`,
+        { cause: unlockError },
+      );
     }
   }
 }
