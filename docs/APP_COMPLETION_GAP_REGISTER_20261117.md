@@ -80,7 +80,8 @@ SS3 is examination preparation only. No new instructional topics may be introduc
 6. Reconcile missing, duplicate and conflicting source versions without choosing arbitrarily.
 7. Complete rendered-page visual review and source-asset rights review.
 8. Complete independent subject QA and close blocking open items.
-9. Keep every package unavailable to students until the applicable gates and owner release authorization pass.
+9. Connect the existing gated SS2/SS3 student-delivery API to the mobile subject discovery and lesson screens; the current mobile client fetches only database subjects and SS1 package lessons.
+10. Keep every package unavailable to students until the applicable gates and owner release authorization pass.
 
 ## 3. Production backend and Render gaps
 
@@ -126,7 +127,7 @@ The replacement database is **not completely empty**. Current read-only counts a
 | Scores / attendance / weekly efforts / class records | 0 |
 | Fee items / invoices / messages / announcements | 0 |
 
-All 1,408 imported topics are for **Primary 1–6 only** (all three terms). There are no imported JSS or SS topics in the replacement database. The 12 subject rows are Cultural & Creative Arts, English Language, Civic Education, Computer Studies, Mathematics, Physical & Health Education, Social Studies, Agricultural Science, Basic Science, Home Economics, Basic Technology and Basic Science and Technology. The database has the JSS 1–3 and SS 1–3 class rows, but no secondary topic, assessment, material or student records.
+All 1,408 imported topics are for **Primary 1–6 only** (all three terms). There are no imported JSS or SS topics in the replacement database. The 12 subject rows are Cultural & Creative Arts, English Language, Civic Education, Computer Studies, Mathematics, Physical & Health Education, Social Studies, Agricultural Science, Basic Science, Home Economics, Basic Technology and Basic Science and Technology. The database has the JSS 1–3 and SS 1–3 class rows, but no secondary subject, topic, assessment, material or student records. The 12 subject rows belong only to the `primary` school; the `secondary` school currently has zero subject rows.
 
 This indicates that the replacement DB has retained/imported Primary curriculum topics and basic school/class setup, but it is not a restored copy of the previous operational school database. The SS2/SS3 JSON packages in the repository are not yet imported into the live topics system.
 
@@ -233,6 +234,9 @@ These items were present in `APP_WIDE_AUDIT.md`, `AGENT_CONTINUATION.md` and `TO
 - Teachers do not use security-question self-service password recovery; password reset is admin-managed.
 - Topic-completion AI content is available once the account is active; there is no per-item admin approval gate.
 - Locked curriculum topics are deliberately disabled until the required PIN/prior-topic completion condition is satisfied.
+
+
+15. **SS2/SS3 mobile curriculum integration:** backend routes `GET /learning/ss23/lessons` and `GET /learning/ss23/preparation` already exist and enforce the package delivery gates, but `StudentLearningScreen` fetches only `/academic/subjects`, and `SubjectTopicsScreen` fetches only `/learning/ss1/lessons`. The mobile app does not call either SS23 endpoint and has no SS23 lesson screen. The current database also has zero subject rows for the `secondary` school, so secondary students currently receive no subject tiles. Integrate a gated subject-discovery endpoint and SS23 lesson UI; only packages passing the existing server-side delivery gate may appear.
 
 ## 9. Existing app-wide audit status
 
