@@ -307,3 +307,12 @@ The SS2 and SS3 combined source archives have now been recovered from the connec
 - PR #980 extends SS2 Mathematics to 31 draft units across all three terms and 62 practice records. It retains unresolved source Week 2 and Week 10/11 sequence discrepancies, and does not clear assessments, visuals, rights or independent QA.
 
 The remaining curriculum work is now source-backed and can proceed subject by subject. Packages remain pending until source assessments, visuals, answer marking, rights and independent subject QA are reconciled.
+
+
+## 12. Latest PR and source implementation state — 2026-11-17 01:42 UTC
+
+- PR #980 is now open: [SS2 Mathematics T2/T3 implementation and source archive recovery](https://github.com/PDS-David/sts-school-app/pull/980). It extends Mathematics from 10 First-Term units to 31 draft units across all three terms and 62 practice records. It also commits the recovered archive verification report and updates the SS23 checkpoint/handoff.
+- PR #980 head `837a9c497c98782e2797a1b1bb3f982eebc52386`: SS23 package integrity, package contract tests, source validation and SS1 integrity have passed. The cross-project JSS3 verification workflow was still running at the latest check; no JSS3 files were changed.
+- Mathematics remains PENDING with all units DRAFT and verification DEFERRED. T2 Week 2 is explicitly unresolved; T2 Week 10/11 scheme/body mismatch remains blocking; all original assessment blocks and visual items remain to be reconciled.
+- Open PRs now include #969, #970, #971, #972, #973, #974, #977 and #980 (eight total). The owner retains merge authority; no PR has been merged by this execution.
+- The two original curriculum archives are verified and available. The remaining source blockers are not archive access: they are the four unresolved version differences, five header anomalies, missing source terms, assessment/visual reconciliation, rights and independent subject QA.
