@@ -47,6 +47,18 @@ The current migration runner requires `schema_migrations` for incremental `--all
 
 The production `app_bootstrap.version=1` value does not prove that the current `0001_baseline.sql` checksum has been adopted into `schema_migrations`. The bootstrap table has only `version`, `checksum`, and `applied_at`; it is not the migration ledger.
 
+## Backup and health-check delivery constraints
+
+The current backup implementation in `backend/src/utils/backup.ts` has a useful encrypted export format (AES-256-GCM over gzip data), a repeatable-read database snapshot, and a workstation export command (`npm run db:backup-export --workspace=backend`). However, its automatic scheduler is an in-process hourly timer. It attempts to send the encrypted file by SMTP; when no recipient is configured or the file is too large for the 17 MiB attachment limit, it records a non-delivered attempt and points the operator to the manual workstation export. There is no configured object-storage destination in the inspected implementation.
+
+This does not provide a reliable unattended backup on the current Free Render web services: they may spin down while idle, and Render Free outbound SMTP restrictions prevent relying on the standard SMTP ports. The one reminder row in `backup_log` is consistent with a reminder having been sent, not with a completed backup. Until a durable off-host destination and credentials are explicitly selected, the safe path is a manual encrypted export from a trusted workstation followed by checksum verification, separate passphrase custody and a restore rehearsal on a disposable database. No backup was exported in this inspection.
+
+Both Render web services currently have an empty HTTP health-check path. The repository already provides:
+- `GET /health/live` — process liveness, independent of PostgreSQL.
+- `GET /health/ready` — readiness including a bounded PostgreSQL probe (5-second statement timeout), with no secret or database details in its response.
+
+After the Redis-backed rate-limit dependency is supplied and the service can start, configure `/health/ready` in each Render service's Dashboard → Settings → Health Checks. This is a configuration step only; the connected Render controls exposed for this inspection do not provide a service health-check-path update action. Do not assume the setting has been applied.
+
 ## Required next steps
 
 1. Obtain a consistent backup using an approved destination and encryption key, then verify its checksum and rehearse restore into a disposable database.
