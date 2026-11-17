@@ -319,3 +319,14 @@ The remaining curriculum work is now source-backed and can proceed subject by su
 - Mathematics remains PENDING with all units DRAFT and verification DEFERRED. T2 Week 2 is explicitly unresolved; T2 Week 10/11 scheme/body mismatch remains blocking; 20 original T3 Week 8-9 prompts are transcribed; remaining original assessment blocks and visual items remain to be reconciled. Nine open items block delivery.
 - Open PRs now include #969, #970, #971, #972, #973, #974, #977, #978 and #980 (nine total: eight implementation/operations PRs plus this gap-register PR). The owner retains merge authority; no PR has been merged by this execution.
 - The two original curriculum archives are verified and available. The remaining source blockers are not archive access: they are the four unresolved version differences, five header anomalies, missing source terms, assessment/visual reconciliation, rights and independent subject QA.
+
+
+## 13. SS3 Agriculture prior-learning evidence — 2026-11-17
+
+PR #981 ([SS3 Agriculture prior-learning and source-assessment verification](https://github.com/PDS-David/sts-school-app/pull/981)) now records an earlier-class crosswalk for all 12 existing SS3 Agriculture revision units. The SS1 archive was recovered and its outer SHA-256 and relevant Agriculture member hashes verified. SS2 Third-Term Agriculture Animal Nutrition is also linked as prior-learning evidence. This uses SS1 as evidence only; no SS1 files or curriculum records are changed.
+
+- 12/12 original SS3 Agriculture evaluation prompts (one per existing unit) were matched against their source documents and are now marked `ORIGINAL_SOURCE`.
+- Model answers and marking remain authored supplements.
+- SS3 remains exam-preparation only; no Third-Term content is created.
+- The SS3 T1 extension question asks for seven objectives while the source body lists six. No seventh was invented; this is a blocking item.
+- Prior-learning topic presence is established, but depth requires independent Agricultural Science review. Answer verification, remaining source assessments, visuals, practical/mock content, rights and release gates remain open.
