@@ -1,0 +1,25 @@
+# Checkpoint — BSEC-031
+
+- **Task ID:** BSEC-031
+- **Title:** Reconcile BSEC-024 and BSEC-025 checkpoint records with merged GitHub state
+- **Numbering note:** originally drafted as BSEC-026; renumbered to BSEC-031 because master already uses BSEC-026 for the school-bound administrator class-lock scope task.
+- **Status:** reconciliation committed; PostgreSQL rerun pending
+- **Owner:** ChatGPT implementation worker
+- **Base branch:** master
+- **Base commit:** 32d4d1677e4cd236f05bcb2c4fb4a86022dfaed8
+- **Working branch:** agent/backend-security-bsec026-reconciliation-20261116
+- **Changed files:**
+  - docs/backend-security/checkpoints/BSEC-024.md
+  - docs/backend-security/checkpoints/BSEC-025.md
+  - tests/backend-class-lock-read-scope.integration.test.mts
+  - .github/workflows/backend-security-reconciliation.yml
+  - docs/backend-security/checkpoints/BSEC-031.md
+- **Reconciliation findings:**
+  - BSEC-024 implementation PR #897 is merged at `50b61ed850d414951c9bf614d06b678a1985354e`; its checkpoint's focused PostgreSQL and backend typecheck evidence is workflow `43940770785` (passed).
+  - BSEC-025 implementation PR #900 is merged at `4287d6af058d892a692a6c8cc375911411423c3f`.
+  - Both merge commits are ancestors of current master `32d4d1677e4cd236f05bcb2c4fb4a86022dfaed8` (compare results: master is 38 commits ahead of BSEC-024 merge and 33 commits ahead of BSEC-025 merge; 0 behind in both comparisons).
+  - BSEC-025's old checkpoint still said CI pending. No workflow run is currently recorded for its implementation commit because the workflow was introduced in that PR. This is not being represented as a pass.
+- **Changes:** update BSEC-024 checkpoint to its merged state; update BSEC-025 checkpoint to its merged state with post-merge verification explicitly pending; fix the BSEC-025 test fixture to seed and clean up the Secondary `Primary 4` class required by the new class-membership validation; add a PostgreSQL 16 reconciliation workflow that reruns BSEC-024 and BSEC-025 integration suites and backend TypeScript checking.
+- **Production safety:** all verification is configured against a disposable PostgreSQL 16 service. No production database, production data, secrets or deployment settings were accessed or changed.
+- **Remaining:** inspect the reconciliation workflow; if both suites and typecheck pass, update BSEC-025 checkpoint with the actual run evidence; open a focused PR and verify current-head checks.
+- **Exact next action:** inspect the PostgreSQL BSEC-024/BSEC-025 reconciliation workflow result.
