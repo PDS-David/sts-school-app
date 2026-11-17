@@ -23,7 +23,7 @@ jobs:
   validate-workflow:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
-    timeout-minutes: 2
+    timeout-minutes: 4
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -32,6 +32,20 @@ jobs:
           ruby -e "require 'yaml'; YAML.load_file('.github/workflows/render-free-tier-keepalive.yml', aliases: true)"
           grep -Fq "cron: '*/5 * * * *'" .github/workflows/render-free-tier-keepalive.yml
           grep -Fq '/health/ready' .github/workflows/render-free-tier-keepalive.yml
+      - name: Verify live API and PostgreSQL readiness
+        env:
+          API_BASE_URL: https://sts-school-app.onrender.com
+        run: |
+          set -euo pipefail
+          body="$(curl --fail --silent --show-error \
+            --connect-timeout 10 \
+            --max-time 90 \
+            --retry 1 \
+            --retry-delay 5 \
+            --retry-all-errors \
+            "\${API_BASE_URL}/health/ready")"
+          printf '%s\n' "$body"
+          printf '%s' "$body" | grep -Fq '"database":"ok"'
 
   keep-alive:
     if: github.event_name != 'pull_request'
@@ -50,6 +64,6 @@ jobs:
             --retry 2 \
             --retry-delay 5 \
             --retry-all-errors \
-            "${API_BASE_URL}/health/ready"
+            "\${API_BASE_URL}/health/ready"
           printf '\n'
           echo "API liveness/readiness request completed." >> "$GITHUB_STEP_SUMMARY"
