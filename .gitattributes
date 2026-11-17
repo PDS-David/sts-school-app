@@ -1,0 +1,4 @@
+# Migration files and the schema are checksummed byte-for-byte by backend/src/db/migrate.ts.
+# Force LF so Windows checkouts (core.autocrlf) hash identically to Linux CI.
+backend/migrations/*.sql text eol=lf
+backend/schema.sql text eol=lf
