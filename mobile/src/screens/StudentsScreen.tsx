@@ -8,6 +8,7 @@ import api from '../api/client';
 import { Loader, Empty, Badge } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { useAdminSchool } from '../api/AdminSchoolContext';
+import { useAuth } from '../api/AuthContext';
 import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
 import { FAB } from '../components/FAB';
 import { PageContainer } from '../components/layout';
@@ -19,6 +20,7 @@ interface Student {
 
 export default function StudentsScreen({ navigation }: any) {
   const { selectedSchoolCode } = useAdminSchool();
+  const { user } = useAuth();
   const [students,  setStudents]  = useState<Student[]>([]);
   const [filtered,  setFiltered]  = useState<Student[]>([]);
   const [loading,   setLoading]   = useState(true);
@@ -28,8 +30,8 @@ export default function StudentsScreen({ navigation }: any) {
   // Compact switcher lives in the native header now, not as a full-width
   // block in the content area — see SchoolSwitcherBar.tsx's `compact` doc.
   useEffect(() => {
-    navigation.setOptions({ headerRight: () => <SchoolSwitcherBar compact /> });
-  }, [navigation]);
+    navigation.setOptions({ headerRight: user?.role === 'admin' ? () => <SchoolSwitcherBar compact /> : undefined });
+  }, [navigation, user?.role]);
 
   const fetch = async () => {
     try {
@@ -91,7 +93,7 @@ export default function StudentsScreen({ navigation }: any) {
           )}
         />
       </PageContainer>
-      <FAB actions={[{ icon: 'person-add', label: 'Enroll Student', onPress: () => navigation.navigate('AddStudent') }]} />
+      {user?.role === 'admin' && <FAB actions={[{ icon: 'person-add', label: 'Enroll Student', onPress: () => navigation.navigate('AddStudent') }]} />}
     </View>
   );
 }
