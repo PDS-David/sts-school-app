@@ -3,7 +3,7 @@
 Audit date: 2026-11-16  
 Archive: `SSS 3-20260507T072839Z-3-001.zip`  
 Archive SHA-256: `045e261aba9475b32b4cb963a2495faf3ddd503860b205aa1e89f0ac07d3c741`  
-Members: 39 total; 38 document files extracted (18 first-term folder entries and 20 second-term folder entries).
+Members: 39 total; 39 document files (19 first-term folder entries and 20 second-term folder entries), as confirmed by the 2026-11-17 archive revalidation. See `sources/REVALIDATION_20261117.md`.
 
 ## Policy gate
 
