@@ -5,15 +5,15 @@ import { resolveStudentRosterScope } from '../backend/src/utils/studentRosterSco
 
 test('teacher permissions are limited to reading assigned-class report data and writing class-teacher remarks', () => {
   assert.equal(hasPerm('teacher', 'students.read'), true);
-  assert.equal(hasPerm('teacher', 'grades.read'), true);
-  assert.equal(hasPerm('teacher', 'attendance.read'), true);
-  assert.equal(hasPerm('teacher', 'classRecord.read'), true);
   assert.equal(hasPerm('teacher', 'classRecord.write'), true);
 
   for (const permission of [
+    'grades.read',
     'grades.write',
     'grades.export',
+    'attendance.read',
     'attendance.write',
+    'classRecord.read',
     'materials.read',
     'materials.write',
     'topics.read',
