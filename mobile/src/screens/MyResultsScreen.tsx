@@ -70,7 +70,7 @@ export default function MyResultsScreen({ route, navigation }: any) {
     }
   };
 
-  useEffect(() => { fetchReport(); }, [effectiveWardId]);
+  useEffect(() => { fetchReport(); }, [effectiveWardId, parentStudentId, termId, user?.role]);
 
   if (loading) return <Loader />;
   if (error) {
