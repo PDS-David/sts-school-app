@@ -4,8 +4,10 @@ on:
   push:
     branches:
       - "agent/mobile-release-audit-*"
+      - "agent/mobile-audit-and-db-readiness-fixes-*"
     paths:
       - ".github/workflows/mobile-release-audit.yml"
+      - ".github/scripts/android-emulator-smoke.sh"
       - "mobile/**"
       - "package.json"
       - "package-lock.json"
@@ -13,6 +15,7 @@ on:
   pull_request:
     paths:
       - ".github/workflows/mobile-release-audit.yml"
+      - ".github/scripts/android-emulator-smoke.sh"
       - "mobile/**"
       - "package.json"
       - "package-lock.json"
@@ -77,41 +80,7 @@ jobs:
           api-level: 35
           arch: x86_64
           profile: pixel_2
-          script: |
-            mkdir -p artifacts
-            adb wait-for-device
-            for attempt in $(seq 1 60); do
-              if adb shell cmd package list packages >/dev/null 2>&1; then
-                break
-              fi
-              sleep 2
-            done
-            installed=0
-            for attempt in $(seq 1 4); do
-              if adb install -r mobile/android/app/build/outputs/apk/debug/app-debug.apk; then
-                installed=1
-                break
-              fi
-              adb reconnect offline || true
-              adb wait-for-device
-              sleep 5
-            done
-            if [ "$installed" -ne 1 ]; then
-              echo "APK install failed after four attempts."
-              adb logcat -d -t 5000 > artifacts/android-emulator-logcat.txt || true
-              exit 1
-            fi
-            adb shell am force-stop ng.edu.sowtheseed.school
-            adb shell monkey -p ng.edu.sowtheseed.school 1
-            for attempt in $(seq 1 30); do
-              if adb shell pidof ng.edu.sowtheseed.school >/dev/null 2>&1; then
-                adb logcat -d -t 3000 > artifacts/android-emulator-logcat.txt
-                exit 0
-              fi
-              sleep 1
-            done
-            adb logcat -d -t 5000 > artifacts/android-emulator-logcat.txt
-            exit 1
+          script: bash .github/scripts/android-emulator-smoke.sh
       - name: Capture complete dependency audit
         run: |
           mkdir -p artifacts
@@ -125,11 +94,10 @@ jobs:
       - name: Validate Expo SDK 57 candidate
         run: |
           mkdir -p artifacts
-          npx expo-doctor@latest --json > artifacts/expo-doctor-sdk57.json || npx expo-doctor@latest > artifacts/expo-doctor-sdk57.txt || true
+          npx expo-doctor@latest > artifacts/expo-doctor-sdk57.txt 2>&1 || true
           npm run test:mobile:offline
           npm run test:mobile:frontend-contracts
           npx tsc --noEmit -p mobile/tsconfig.json
-          npx expo export --platform android --output-dir ../artifacts/mobile-android-sdk57
           npm audit --json > artifacts/npm-audit-sdk57.json || true
           npm audit --omit=dev --json > artifacts/npm-audit-sdk57-production.json || true
           npm ls expo @expo/cli expo-sharing expo-splash-screen glob image-size minimatch zod --all --json > artifacts/audit-dependency-tree-sdk57.json || true
@@ -138,6 +106,11 @@ jobs:
           cp mobile/package.json artifacts/expo-sdk57-candidate/mobile-package.json
           cp package-lock.json artifacts/expo-sdk57-candidate/package-lock.json
           cp mobile/app.config.js artifacts/expo-sdk57-candidate/app.config.js
+      - name: Export Android bundle for SDK 57 candidate
+        working-directory: mobile
+        env:
+          CI: "1"
+        run: npx expo export --platform android --output-dir ../artifacts/mobile-android-sdk57
       - name: Build staging Android APK with EAS
         if: github.event_name == 'push' && env.EXPO_TOKEN != ''
         run: npx eas-cli@latest build --platform android --profile staging --non-interactive --json > artifacts/eas-staging-apk.json
