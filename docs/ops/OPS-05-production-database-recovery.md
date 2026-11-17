@@ -14,7 +14,7 @@ The migration runner refuses `--all` when an existing database has no migration 
 ## Verified production findings
 
 - PostgreSQL 18.6, Free plan, Frankfurt, status available.
-- Render currently reports expiry at **2026-12-12 01:30:29 UTC**. Resolve the expiring-plan issue before that date; do not assume the database will persist beyond it.
+- Render currently reports expiry at **2026-12-12 01:30:29 UTC**. Free Postgres has no managed backups; after expiry it becomes inaccessible, with a 14-day upgrade grace period before Render deletes the database and its data. Resolve continuity before expiry; do not rely on the grace period as a backup. (See Render's [Free instance limitations](https://render.com/docs/free).)
 - 40 public base tables and 325 public columns were observed.
 - Comparing table and column names with the current `backend/schema.sql` found:
   - Missing: `schema_migrations`, `school_events`.
@@ -23,7 +23,7 @@ The migration runner refuses `--all` when an existing database has no migration 
 - `audit_log` has 4 rows, but lacks `actor_role`, `actor_school_code`, `actor_ip`, `request_id`, `user_agent`, `metadata`, `outcome`, `previous_hash`, and `event_hash`. Both append-only triggers and the expected audit indexes are absent. Its old `actor_id` foreign key is still present, although current schema intentionally removes it so deleting an account cannot alter historical audit events.
 - `users.password_hash` is nullable in production although current schema requires NOT NULL. There is currently 1 user and 0 NULL password hashes, so a guarded NOT NULL migration is feasible after backup.
 - Observed data counts include 2 schools, 6 terms, 1,408 topics, 1 user, and 4 audit rows. Do not replace or reseed these records.
-- `backup_log` has one `reminder` record, not a database export record. This is not evidence of a recoverable backup.
+- `backup_log` has one `reminder` record, not a database export record. This is not evidence of a recoverable backup. The encrypted export utility takes a repeatable-read snapshot and excludes `app_bootstrap`, `backup_log`, and `schema_migrations` from the data payload.
 - `app_bootstrap` has a version-1 marker, but its stored checksum does not match the current `schema.sql` plus the current bootstrap configuration. The marker alone therefore does not prove that today's baseline is installed.
 - `schema_migrations` does not exist, so there is no recorded migration history to trust.
 
