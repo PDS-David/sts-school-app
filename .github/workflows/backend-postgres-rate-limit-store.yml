@@ -46,10 +46,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-          cache-dependency-path: backend/package-lock.json
       - name: Install backend dependencies
-        run: npm ci
+        run: npm install --no-audit --no-fund
         working-directory: backend
       - name: Apply isolated rate-limit migration
         run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f backend/migrations/0002_rate_limit_counters.sql
