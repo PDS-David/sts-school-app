@@ -16,14 +16,14 @@
 // execution. Never remove the transaction or replace ROLLBACK with COMMIT.
 // A successful rollback leaves the inspected database unchanged.
 //
-//// USAGE (same pattern as db:migrate — run locally against production):
+// USAGE (same pattern as db:migrate — use only after reviewing this rollback guard):
 //   cd backend
 //   $env:NODE_ENV="production"          (PowerShell)  or  export NODE_ENV=production (bash)
 //   $env:DATABASE_URL="<the EXTERNAL Render Postgres URL>"
 //   npx tsx src/db/checkDrift.ts
 //
 // Exit code 0 = clean (no drift). Exit code 1 = drift found (see report).
-// Safe to run against production at any time — read-only against `public`.
+// The replay executes DDL/DML but must be fully undone by ROLLBACK before exit.
 
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
