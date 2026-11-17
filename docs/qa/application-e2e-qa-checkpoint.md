@@ -134,3 +134,14 @@ Run the suite from a full repository checkout with a configured non-production b
 2. Perform OPS-05 read-only schema drift review and obtain owner approval for baseline adoption; then apply the reviewed migration path, including `0002_school_events.sql`.
 3. Provide an isolated staging database and service with test-only credentials and an execution-capable runner (CI or checkout) plus Android emulator/device access.
 4. Run existing automated suites, add missing E2E regression coverage and execute all 12 journeys. Record evidence and create/route defects without using production data.
+
+
+### Additional production database risks
+- **QA-RENDER-003 — P1, expiring database / no recorded backup:** Render reports the connected production Postgres is on the Free plan and expires 2026-12-12 01:30 UTC. The application's `backup_log` contains only one reminder row and no backup rows. Render's official Free Postgres documentation states that free databases expire after 30 days and do not support backups. Defect record: https://github.com/PDS-David/sts-school-app/issues/954. No export, restore, plan change or database write was performed.
+- **QA-RENDER-004 — P2, broad external database allowlist:** Render reports the Postgres IP allowlist as `0.0.0.0/0` (everywhere). This confirms public-source IP access is permitted; it does not prove unauthorized access or authentication bypass. Defect record: https://github.com/PDS-David/sts-school-app/issues/955. No network setting was changed.
+
+### Current GitHub checkpoint
+- Follow-up branch: `agent/application-e2e-qa-render-20261117`.
+- Latest checkpoint commit before these additional risk records: `b07f5e357bd504cdf3aecdca9eaf0c8552774a3a`.
+- PR: https://github.com/PDS-David/sts-school-app/pull/953 (draft).
+- All four Render findings are now recorded as issues #951, #952, #954 and #955. Acceptance suite remains incomplete; all 12 journeys are NOT RUN.
