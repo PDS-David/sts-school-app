@@ -670,7 +670,7 @@
           "answer_origin": "AUTHORED_SUPPLEMENT",
           "answer_locator": "Authored model answer; not attributed to the source.",
           "answer": "T is proportional to sqrt(L); new period=2.0 x sqrt(2)=2.83 s approximately.",
-          "explanation": "Use T=2pi sqrt(L/g).",
+          "explanation": "Use T = 2 pi sqrt(L/g); doubling the pendulum length multiplies its period by the square root of two.",
           "marks": 2,
           "marking": [
             {
@@ -841,6 +841,1822 @@
         "verification": "DEFERRED",
         "verification_reference": null
       }
+    },
+    {
+      "id": "SUP-SS2-PHY-T2-W01-03",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "2nd Term",
+      "subject": "Physics",
+      "title": "Heat Energy, Temperature, Heat Capacity and Specific Heat Capacity",
+      "week_label": "1-3",
+      "objectives": [
+        "Distinguish heat from temperature and define heat capacity and specific heat capacity.",
+        "Apply Q=mcDeltaT and energy conservation to heating, mixing and gravitational energy problems."
+      ],
+      "body": "HEAT ENERGY AND SPECIFIC HEAT CAPACITY\n\nHeat is energy transferred because of a temperature difference; temperature describes the thermal state of a body. Heat flows spontaneously from a hotter body to a colder one until thermal equilibrium is approached. The source covers temperature scales, thermometers, heat capacity and specific heat capacity. Heat capacity is the heat required to raise the temperature of a whole body by one kelvin; specific heat capacity is the heat required to raise unit mass by one kelvin.\n\nFor a body of mass m and specific heat capacity c undergoing temperature change DeltaT, Q = mcDeltaT. Use mass in kilograms, c in J kg-1 K-1 and temperature difference in kelvin or degrees Celsius. For electrical heating, energy supplied is Q = VIt or Pt, where V is voltage, I current and t time. For mixing problems, apply conservation of energy: heat lost by the hotter body equals heat gained by the colder body when losses are neglected.\n\nThe source also relates gravitational potential energy to heating when falling water loses potential energy. State the assumption of negligible heat loss and keep all quantities in consistent SI units.",
+      "body_sha256": "0be64ddf6f141a118895b7d7c9b5fe53ba9f2994760eaaf77be0989ff6ceecf8",
+      "practice": [
+        {
+          "id": "SS2PHY-T2-W1-3-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Weeks 1-3 assignment, waterfall question.",
+          "question": "A waterfall is 630 m high. Calculate the change in temperature of water falling from the top to the bottom if no heat is lost. Take g=10 m/s2 and c=4200 J kg-1 K-1.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "Loss of gravitational potential energy per kilogram is gh = 10 x 630 = 6300 J/kg. Temperature rise DeltaT = gh/c = 6300/4200 = 1.5 K (or 1.5 degrees C).",
+          "explanation": "Equate gravitational potential energy lost per unit mass to heat gained per unit mass.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses gh = 6300 J/kg.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates temperature rise as 1.5 K.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Weeks 1-3 assignment, waterfall question.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T2-W1-3-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Weeks 1-3 assignment, water-mixing question.",
+          "question": "If 60 g of water at 90 degrees C is poured into 20 g of water at 30 degrees C, calculate the final steady temperature. Neglect heat loss and calorimeter heat capacity.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "Heat lost by hot water equals heat gained by cold water: 60(90-T)=20(T-30). Hence 5400-60T=20T-600; 6000=80T and T=75 degrees C.",
+          "explanation": "The specific heat capacity cancels because both portions are water.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Sets heat lost equal to heat gained.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains 75 degrees C.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Weeks 1-3 assignment, water-mixing question.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-2bf3d68129b1",
+          "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Second-Term Physics source, combined Weeks 1–3 body and associated classwork/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T2-W04",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "2nd Term",
+      "subject": "Physics",
+      "title": "Evaporation, Boiling and Melting",
+      "week_label": "4",
+      "objectives": [
+        "Distinguish evaporation, boiling, melting, freezing and sublimation.",
+        "Explain effects of pressure and impurities on boiling and melting points."
+      ],
+      "body": "EVAPORATION, BOILING AND MELTING\n\nEvaporation is the escape of molecules from the surface of a liquid and can occur at temperatures below the boiling point. Boiling occurs throughout a liquid when its saturated vapour pressure equals the external pressure and bubbles form within the liquid. Evaporation causes cooling because higher-energy molecules escape from the surface. Boiling occurs at a definite temperature for a given pressure and pure substance.\n\nMelting is the change from solid to liquid; freezing is the reverse. Sublimation is direct change from solid to gas without passing through the liquid state. Pressure affects boiling point: reducing external pressure lowers the boiling point, while increasing pressure raises it. Impurities can alter melting and boiling points; non-volatile solutes generally raise boiling point and lower freezing point.\n\nThe source asks for experimental determination of boiling point and effects of impurities and pressure. In an experiment, heat the liquid steadily, use a suitable thermometer, record the temperature when boiling is sustained, and note the external pressure and purity of the sample.",
+      "body_sha256": "8426ba13f86d1f613334b6d8093cce3c1450319272e827fb64a419736f07b6ff",
+      "practice": [
+        {
+          "id": "SS2PHY-T2-W4-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 4 ASSIGNMENT, Section A, change of state item.",
+          "question": "A phenomenon describing the direct change of a substance from solid to gas is called what?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "Sublimation.",
+          "explanation": "Sublimation bypasses the liquid state.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Identifies sublimation.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 4 ASSIGNMENT, Section A, change of state item.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T2-W4-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 4 ASSIGNMENT, Section A, pressure effect item.",
+          "question": "What effect does reducing the surface pressure of a liquid have on its boiling point?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "It reduces the boiling point because boiling occurs when the liquid's saturated vapour pressure equals the external pressure.",
+          "explanation": "A lower external pressure is reached at a lower temperature.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that boiling point decreases.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains the vapour-pressure condition.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 4 ASSIGNMENT, Section A, pressure effect item.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-2bf3d68129b1",
+          "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Second-Term Physics source, Week 4 body and associated classwork/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T2-W05",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "2nd Term",
+      "subject": "Physics",
+      "title": "Latent Heat of Fusion and Vaporisation",
+      "week_label": "5",
+      "objectives": [
+        "Define specific latent heat of fusion and vaporisation.",
+        "Calculate energy for temperature changes and changes of state."
+      ],
+      "body": "LATENT HEAT\n\nWhen a substance changes state, energy may be absorbed or released without a temperature change. Specific latent heat is the energy required to change the state of unit mass of a substance at constant temperature. Specific latent heat of fusion refers to solid-liquid change; specific latent heat of vaporisation refers to liquid-gas change.\n\nFor a mass m undergoing a change of state, Q = mL, where L is the appropriate specific latent heat. If temperature also changes, combine sensible heat Q=mcDeltaT with latent heat. For ice initially below zero, first warm the ice to zero, melt it, then warm the water to the required temperature. For water below its boiling point, warm it to the boiling point before vaporising it.\n\nUse consistent units: if mass is in grams, convert the specific latent heat units accordingly; if L is in J/kg, use mass in kg. The source includes multistage calculations and asks learners to distinguish specific heat capacity from specific latent heat.",
+      "body_sha256": "d0fdef9743d1740d865b1052e7e329873acad60e65a319418a882a8973979f6a",
+      "practice": [
+        {
+          "id": "SS2PHY-T2-W5-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 5 ASSIGNMENT, Section A, ice-melting calculation.",
+          "question": "Calculate the heat required to change 10 g of ice at 0 degrees C to water at 10 degrees C. Use Lf=335 J/g and cwater=4.2 J/g K.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "Q = mLf + mcDeltaT = 10(335) + 10(4.2)(10) = 3350 + 420 = 3770 J.",
+          "explanation": "Include both the energy to melt the ice and the energy to warm the resulting water.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Calculates latent heat 3350 J.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates sensible heat 420 J.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains total 3770 J.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 5 ASSIGNMENT, Section A, ice-melting calculation.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T2-W5-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 5 ASSIGNMENT, Section B, water-vaporisation calculation.",
+          "question": "Calculate the energy required to vaporise 50 g of water initially at 80 degrees C. Use c=4.2 J/g K and Lv=2260 J/g.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "Warm to 100 degrees C: Q1=50(4.2)(20)=4200 J. Vaporise: Q2=50(2260)=113000 J. Total energy=117200 J.",
+          "explanation": "The water must first reach its boiling point, then receive latent heat of vaporisation.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Calculates heating energy 4200 J.",
+              "marks": 1
+            },
+            {
+              "criterion": "Calculates vaporisation energy 113000 J.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains total 117200 J.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 5 ASSIGNMENT, Section B, water-vaporisation calculation.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-2bf3d68129b1",
+          "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Second-Term Physics source, Week 5 body and associated classwork/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T2-W06",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "2nd Term",
+      "subject": "Physics",
+      "title": "Vapour Pressure, Humidity and Dew Point",
+      "week_label": "6",
+      "objectives": [
+        "Define saturated and unsaturated vapour pressure and relate vapour pressure to boiling.",
+        "Define humidity, relative humidity and dew point and identify measuring instruments."
+      ],
+      "body": "VAPOUR PRESSURE AND HUMIDITY\n\nVapour pressure is the pressure exerted by vapour in equilibrium with its liquid at a given temperature. In a closed space, saturated vapour pressure is reached when the rate of evaporation equals the rate of condensation. Unsaturated vapour pressure is below the saturation value, so net evaporation can occur. A liquid boils when its saturated vapour pressure equals the external atmospheric pressure.\n\nHumidity describes the amount of water vapour in air. Relative humidity is the ratio of actual water-vapour pressure to saturated vapour pressure at the same temperature, expressed as a percentage. A hygrometer measures humidity. Dew point is the temperature to which air must be cooled, at constant pressure and water-vapour content, for saturation to occur and dew to begin forming.\n\nFog and mist are suspensions of tiny water droplets near the ground; fog generally reduces visibility more strongly than mist. The source includes weather-related effects, humidity terms and a project on specific heat capacity apparatus.",
+      "body_sha256": "5013753603f35b1997128c763ac8c59e10ef3746fa1e39a39d8f504d36396b37",
+      "practice": [
+        {
+          "id": "SS2PHY-T2-W6-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 6 ASSIGNMENT, Section A, boiling condition item.",
+          "question": "The temperature at which saturated vapour pressure of a liquid equals atmospheric pressure gives rise to what phenomenon?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "Boiling point.",
+          "explanation": "Boiling occurs when saturated vapour pressure equals the external pressure.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Identifies boiling point.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 6 ASSIGNMENT, Section A, boiling condition item.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T2-W6-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 6 ASSIGNMENT, Section A, humidity instrument item.",
+          "question": "What instrument is used to measure relative humidity of an environment?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "A hygrometer.",
+          "explanation": "A hygrometer measures humidity; a hydrometer measures relative density of liquids.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies a hygrometer.",
+              "marks": 1
+            },
+            {
+              "criterion": "Distinguishes it from a hydrometer.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 6 ASSIGNMENT, Section A, humidity instrument item.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-2bf3d68129b1",
+          "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Second-Term Physics source, Week 6 body and associated classwork/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T2-W07",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "2nd Term",
+      "subject": "Physics",
+      "title": "Gas Laws and the General Gas Equation",
+      "week_label": "7",
+      "objectives": [
+        "State Boyle's law, Charles' law and the pressure law.",
+        "Apply the combined gas equation using absolute temperature."
+      ],
+      "body": "GAS LAWS\n\nGas laws describe relationships between pressure, volume and absolute temperature for a fixed mass of gas. Boyle's law states that at constant temperature, pressure is inversely proportional to volume: P1V1=P2V2. Charles' law states that at constant pressure, volume is directly proportional to absolute temperature: V1/T1=V2/T2. The pressure law states that at constant volume, pressure is directly proportional to absolute temperature: P1/T1=P2/T2.\n\nCombining the laws gives P1V1/T1=P2V2/T2 for a fixed mass of gas. Temperature must be in kelvin, not degrees Celsius: T(K)=theta(degrees C)+273. The source includes trapped air columns, heated gas vessels and graph interpretation. For a changing gas state, identify which variables are constant, convert temperatures to kelvin and substitute carefully.\n\nThe ideal gas equation is PV=nRT. It relates pressure, volume, amount of gas and absolute temperature. Use consistent units for R and the other quantities.",
+      "body_sha256": "5a9db540dbfe561b8d7720f0e1d72831484285ef3f41e256015ba5c91ccc73be",
+      "practice": [
+        {
+          "id": "SS2PHY-T2-W7-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 7 CLASSWORK, combined gas law calculation.",
+          "question": "A vessel contains gas at 50 degrees C and pressure 76 cmHg. Calculate the final pressure if its volume is doubled while it is heated to 90 degrees C.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "T1=323 K and T2=363 K. P2=P1(V1/V2)(T2/T1)=76(1/2)(363/323)=42.7 cmHg approximately.",
+          "explanation": "Use the combined gas law and convert both temperatures to kelvin.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Converts temperatures to 323 K and 363 K.",
+              "marks": 1
+            },
+            {
+              "criterion": "Applies the combined gas equation.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains about 42.7 cmHg.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 7 CLASSWORK, combined gas law calculation.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T2-W7-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 7 ASSIGNMENT, Section A, trapped air-column question.",
+          "question": "A column of air 10 cm long is trapped in a tube at 27 degrees C. What is its length at 100 degrees C if pressure is constant?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "T1=300 K and T2=373 K. By Charles' law, L2=L1(T2/T1)=10(373/300)=12.43 cm.",
+          "explanation": "At constant pressure, gas volume is proportional to absolute temperature; the trapped tube's cross-section is constant, so length follows volume.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Converts temperatures to kelvin.",
+              "marks": 1
+            },
+            {
+              "criterion": "Applies Charles' law.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains about 12.4 cm.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 7 ASSIGNMENT, Section A, trapped air-column question.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-2bf3d68129b1",
+          "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Second-Term Physics source, Week 7 body and associated classwork/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T2-W08",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "2nd Term",
+      "subject": "Physics",
+      "title": "Wave Motion and Wave Quantities",
+      "week_label": "8",
+      "objectives": [
+        "Define wave motion and distinguish mechanical from electromagnetic waves.",
+        "Calculate wavelength, frequency, period and wave speed."
+      ],
+      "body": "WAVE MOTION\n\nA wave is a disturbance that transfers energy from one point to another without net transfer of the medium. Mechanical waves require a material medium; examples include sound, water and waves on a stretched string. Electromagnetic waves do not require a material medium and can travel through a vacuum. Waves may be transverse or longitudinal depending on the direction of particle vibration relative to propagation.\n\nThe amplitude is maximum displacement from equilibrium, wavelength is the distance between successive points in phase, frequency is the number of complete cycles per second and period is the time for one cycle. Wave speed v=f lambda=lambda/T. For electromagnetic radiation in air or vacuum, use approximately 3.0 x 10^8 m/s. Radio frequency is often stated in MHz; convert to hertz before calculating wavelength.\n\nThe source includes wave equations and stationary waves. Read the equation carefully to identify amplitude, wavelength, frequency, phase and propagation direction.",
+      "body_sha256": "7f2f6f28fc54b82e31dbec46dd2b58df1701d3f49f685f7e9699a1e3b70b097d",
+      "practice": [
+        {
+          "id": "SS2PHY-T2-W8-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 8 CLASSWORK, radio-frequency wavelength calculation.",
+          "question": "A radio station broadcasts at a frequency of 21 MHz. If the speed of light in air is 3 x 10^8 m/s, calculate the wavelength.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "f=21 x 10^6 Hz. lambda=v/f=(3 x 10^8)/(21 x 10^6)=14.3 m approximately.",
+          "explanation": "Convert MHz to Hz and use v=f lambda.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Converts 21 MHz to 21 x 10^6 Hz.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains wavelength about 14.3 m.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 8 CLASSWORK, radio-frequency wavelength calculation.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T2-W8-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 8 CLASSWORK, wave definition and stationary-wave prompt.",
+          "question": "What is a wave? Define a stationary wave.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "A wave is a disturbance that transfers energy without net transfer of the medium. A stationary wave is a pattern formed by superposition of two waves of the same frequency and amplitude travelling in opposite directions, producing fixed nodes and antinodes.",
+          "explanation": "Distinguish energy transfer from bulk movement of the medium and identify nodes and antinodes in a stationary wave.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Defines wave motion correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Defines stationary wave and identifies nodes/antinodes.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 8 CLASSWORK, wave definition and stationary-wave prompt.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-2bf3d68129b1",
+          "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Second-Term Physics source, Week 8 body and associated classwork/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T2-W09",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "2nd Term",
+      "subject": "Physics",
+      "title": "Properties of Waves: Reflection, Refraction, Diffraction and Interference",
+      "week_label": "9",
+      "objectives": [
+        "Describe reflection, refraction, diffraction, interference and polarisation.",
+        "Explain wave behaviour at boundaries and distinguish particle motion from energy transfer."
+      ],
+      "body": "PROPERTIES OF WAVES\n\nWaves exhibit reflection, refraction, diffraction and interference. Reflection occurs when a wave meets a boundary and returns into its original medium. Refraction is a change in wave direction and speed as it enters a medium where its speed differs; frequency remains constant while wavelength changes. Diffraction is spreading around an obstacle or through an aperture and is most pronounced when the gap size is comparable to wavelength.\n\nInterference occurs when waves superpose. Constructive interference occurs when waves meet in phase and reinforce; destructive interference occurs when they meet out of phase and reduce the resultant amplitude. Polarisation is the restriction of transverse-wave vibrations to a particular plane; it does not apply to longitudinal waves such as sound in air.\n\nWater-wave examples show that particles oscillate about equilibrium while energy propagates. A floating cork generally moves up and down as a wave passes rather than travelling with the wave to the shore.",
+      "body_sha256": "434e595e4e5911b9c7e437703f9d3dac0c23c30008074704a0a76df546d5d655",
+      "practice": [
+        {
+          "id": "SS2PHY-T2-W9-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 9 ASSIGNMENT, Section A, refraction question.",
+          "question": "When a wave travels from air into water, what happens to its speed?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "The speed decreases for the usual water-wave context described in the source; the direction may also change if incidence is oblique.",
+          "explanation": "Refraction involves a change in speed and, for oblique incidence, direction.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that speed decreases.",
+              "marks": 1
+            },
+            {
+              "criterion": "Relates the change to refraction.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 9 ASSIGNMENT, Section A, refraction question.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T2-W9-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 9 ASSIGNMENT, Section A, interference question.",
+          "question": "What phenomenon occurs when two similar waves travelling in the same direction cross each other?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "Interference.",
+          "explanation": "Interference is the result of superposition of waves.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Identifies interference.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 9 ASSIGNMENT, Section A, interference question.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-2bf3d68129b1",
+          "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Second-Term Physics source, Week 9 body and associated classwork/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T2-W10",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "2nd Term",
+      "subject": "Physics",
+      "title": "Light Waves and Plane/Curved Mirrors",
+      "week_label": "10",
+      "objectives": [
+        "Describe image formation by plane mirrors and distinguish real and virtual images.",
+        "Calculate number of images and apply the mirror formula to concave mirrors."
+      ],
+      "body": "LIGHT AND MIRRORS\n\nLight is an electromagnetic wave. Reflection from a plane mirror obeys the laws of reflection: the incident ray, reflected ray and normal lie in the same plane, and angle of incidence equals angle of reflection. A plane mirror forms an upright, virtual image of the same size as the object, laterally inverted and apparently the same distance behind the mirror as the object is in front.\n\nTwo plane mirrors inclined at angle theta can form multiple images. For an object on the angle bisector, when 360/theta is an integer, the number of images is 360/theta - 1. Curved mirrors may be concave or convex. A concave mirror can form real or virtual images depending on object position; a convex mirror forms virtual, upright and diminished images.\n\nFor spherical mirrors, relate focal length f, object distance u and image distance v using the mirror equation 1/f=1/u+1/v under a consistent sign convention. Magnification is image height/object height and can also be related to image and object distances.",
+      "body_sha256": "765645f7c34a923ab8fc4901b1ec49d467de606d366a6d4c4b6d76a491e63221",
+      "practice": [
+        {
+          "id": "SS2PHY-T2-W10-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 10 ASSIGNMENT, Section A, two-plane-mirror image count.",
+          "question": "An object is placed between two plane mirrors inclined at 60 degrees. How many images will be seen?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "Number of images = 360/60 - 1 = 5.",
+          "explanation": "Use the formula for two plane mirrors inclined at an angle when 360/theta is an integer.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses n=360/theta - 1.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains five images.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 10 ASSIGNMENT, Section A, two-plane-mirror image count.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T2-W10-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Second-Term Physics source, Week 10 ASSIGNMENT, Section A, concave-mirror image question.",
+          "question": "An object is placed 15 cm in front of a concave mirror of focal length 20 cm. Describe the image formed.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not presented as a source-printed answer.",
+          "answer": "Using the mirror equation with a concave mirror, the image is virtual, upright and magnified. Its distance is 60 cm behind the mirror and magnification is 4.",
+          "explanation": "Because the object is inside the focal length, the reflected rays diverge and their backward extensions meet behind the mirror.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Obtains image distance 60 cm behind the mirror.",
+              "marks": 1
+            },
+            {
+              "criterion": "Identifies virtual, upright and magnified image.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains magnification 4.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-2bf3d68129b1",
+              "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Second-Term Physics source, Week 10 ASSIGNMENT, Section A, concave-mirror image question.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-2bf3d68129b1",
+          "source_sha256": "2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Second-Term Physics source, Week 10 body and associated classwork/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T3-W01",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "3rd Term",
+      "subject": "Physics",
+      "title": "Reflection of Light on Plane Surfaces",
+      "week_label": "1",
+      "objectives": [
+        "State the laws of reflection and distinguish regular from diffuse reflection.",
+        "Describe image formation by plane mirrors and calculate image numbers and angular deviation."
+      ],
+      "body": "REFLECTION OF LIGHT ON PLANE SURFACES\n\nReflection occurs when light strikes a surface and returns into the original medium. Regular reflection occurs on a smooth surface where parallel incident rays remain parallel after reflection. Diffuse reflection occurs on a rough surface where reflected rays travel in different directions. The laws of reflection state that the incident ray, reflected ray and normal at the point of incidence lie in the same plane, and the angle of incidence equals the angle of reflection.\n\nA plane mirror forms an image that is virtual, upright, the same size as the object and laterally inverted. The image appears as far behind the mirror as the object is in front. Two plane mirrors inclined at an angle can produce multiple images; when 360/theta is an integer, the number of images is 360/theta - 1. For a single plane mirror, the angle between the incident and reflected rays is twice the angle of incidence; the deviation from the straight-line path is 180 - 2i.\n\nThe source covers applications including periscopes, kaleidoscopes and sextants. Label the normal, incident ray, reflected ray and angles clearly in diagrams.",
+      "body_sha256": "5367c6c113a13e73e6adc765b8d4bba96a6c5c80be82be539508cf649015343f",
+      "practice": [
+        {
+          "id": "SS2PHY-T3-W1-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Third-Term Physics source, Week 1 EVALUATION, item 1.",
+          "question": "If the angle of reflection is 35 degrees, calculate (a) the angle of deviation, (b) the angle of glance and (c) the angle of incidence.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer.",
+          "answer": "Angle of incidence i=35 degrees. Angle of deviation=180-2i=110 degrees. Angle of glance=90-i=55 degrees. Angle of incidence=35 degrees.",
+          "explanation": "Apply the law of reflection and the definitions of deviation and glance.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Angle of deviation 110 degrees.",
+              "marks": 1
+            },
+            {
+              "criterion": "Angle of glance 55 degrees.",
+              "marks": 1
+            },
+            {
+              "criterion": "Angle of incidence 35 degrees.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-e5f51a1283e8",
+              "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Third-Term Physics source, Week 1 EVALUATION, item 1.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T3-W1-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Third-Term Physics source, Week 1 EVALUATION, item 2.",
+          "question": "An object is placed between two plane mirrors inclined at 40 degrees to each other. Find the number of images formed.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer.",
+          "answer": "Number of images=360/40-1=8.",
+          "explanation": "For this angle, 360/theta is an integer; subtract one to obtain the number of images.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses 360/theta - 1.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains eight images.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-e5f51a1283e8",
+              "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Third-Term Physics source, Week 1 EVALUATION, item 2.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-e5f51a1283e8",
+          "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Third-Term Physics source, Week 1 body and associated assignment/evaluation.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T3-W02",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "3rd Term",
+      "subject": "Physics",
+      "title": "Curved Mirrors, Image Formation and Mirror Formula",
+      "week_label": "2",
+      "objectives": [
+        "Distinguish concave and convex mirrors and describe image formation.",
+        "Apply the mirror formula and magnification to numerical problems."
+      ],
+      "body": "REFLECTION ON CURVED MIRRORS\n\nCurved mirrors are parts of spherical reflecting surfaces. A concave mirror has its reflecting surface on the inside of the spherical curve and converges parallel rays towards a principal focus. A convex mirror has its reflecting surface on the outside and diverges parallel rays; its focus is virtual. The principal axis passes through the pole and centre of curvature. Radius of curvature R is twice the focal length for a spherical mirror: R=2f.\n\nA concave mirror can form real, inverted images when the object is beyond the focus, or virtual, upright and magnified images when the object is between the pole and focus. A convex mirror forms virtual, upright and diminished images. The mirror equation relates focal length, object distance and image distance; magnification is the ratio of image height to object height and depends on the sign convention used.\n\nThe source includes pinhole-camera comparisons, mirror uses and numerical questions. State the sign convention before substitution and interpret whether the image is real or virtual.",
+      "body_sha256": "5a4556e3e5334a9023ff55c86b38cd1dc2b054f7920fc5e404657ff42be95c3b",
+      "practice": [
+        {
+          "id": "SS2PHY-T3-W2-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Third-Term Physics source, Week 2 EVALUATION, item 1.",
+          "question": "A concave mirror of radius of curvature 20 cm produces an inverted image three times the size of an object. Calculate the object and image positions.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer.",
+          "answer": "f=R/2=10 cm. For an inverted image, magnification magnitude is 3 and v=3u. From 1/f=1/u+1/v, 1/10=1/u+1/(3u)=4/(3u), so u=13.3 cm and v=40 cm in magnitude.",
+          "explanation": "Use the spherical mirror relation and the magnitude of magnification; the image is real and inverted.",
+          "marks": 4,
+          "marking": [
+            {
+              "criterion": "Calculates focal length 10 cm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses magnification relation v=3u.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains object distance about 13.3 cm and image distance 40 cm.",
+              "marks": 2
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-e5f51a1283e8",
+              "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Third-Term Physics source, Week 2 EVALUATION, item 1.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T3-W2-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Third-Term Physics source, Week 2 EVALUATION, item 2.",
+          "question": "A concave mirror of radius of curvature 20 cm has an object placed 15 cm from its pole. Calculate the magnification of the image.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer.",
+          "answer": "f=10 cm. Using 1/f=1/u+1/v with u=15 cm gives 1/v=1/10-1/15=1/30, so v=30 cm. Magnification magnitude= v/u=30/15=2; the image is real and inverted.",
+          "explanation": "The object is beyond the focal point, so the image is real and inverted.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Finds focal length 10 cm and image distance 30 cm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains magnification 2 and identifies inversion.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-e5f51a1283e8",
+              "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Third-Term Physics source, Week 2 EVALUATION, item 2.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-e5f51a1283e8",
+          "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Third-Term Physics source, Week 2 body and associated assignment/evaluation.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T3-W03",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "3rd Term",
+      "subject": "Physics",
+      "title": "Refraction of Light and Rectangular Glass Blocks",
+      "week_label": "3",
+      "objectives": [
+        "State the laws of refraction and define refractive index.",
+        "Calculate refractive index, angle of refraction and apparent depth."
+      ],
+      "body": "REFRACTION OF LIGHT\n\nRefraction is the change in direction and speed of light as it passes obliquely from one transparent medium into another. Light bends towards the normal when it enters a medium in which it travels more slowly, and away from the normal when it enters a faster medium. The frequency remains constant across the boundary while wavelength changes.\n\nSnell's law states that n1 sin(i)=n2 sin(r). The absolute refractive index of a medium is n=c/v, where c is the speed of light in vacuum and v its speed in the medium. For light travelling from air into glass, sin(i)/sin(r) is approximately the refractive index of the glass. A ray passing through a rectangular glass block emerges parallel to the incident ray but is laterally displaced.\n\nApparent depth is less than real depth when an object under water or glass is viewed from air. For near-normal viewing, refractive index = real depth/apparent depth.",
+      "body_sha256": "7eeb201aeffa8314d99e9fba72b4c616be91cd06d7584468ed1c338dcb233831",
+      "practice": [
+        {
+          "id": "SS2PHY-T3-W3-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Third-Term Physics source, Week 3 WEEKEND ASSIGNMENT, item 2.",
+          "question": "The speed of light in air and glass is 3.0 x 10^8 m/s and 1.8 x 10^8 m/s respectively. Calculate the sine of the angle of incidence that produces an angle of refraction of 30 degrees in glass.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer.",
+          "answer": "n=3.0/1.8=1.667. By Snell's law, sin(i)=n sin(30)=1.667 x 0.5=0.833. The nearest listed option in the source is 0.8; the calculated value is about 0.83.",
+          "explanation": "Use the speed ratio to find refractive index, then apply Snell's law. Note the source option rounding.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Calculates refractive index about 1.667.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains sin(i) about 0.833 and notes closest option 0.8.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-e5f51a1283e8",
+              "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Third-Term Physics source, Week 3 WEEKEND ASSIGNMENT, item 2.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T3-W3-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Third-Term Physics source, Week 3 WEEKEND ASSIGNMENT, item 3.",
+          "question": "A transparent rectangular block 5.0 cm thick is placed on a black dot. The dot appears 3.0 cm from the top when viewed from above. Calculate the refractive index.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer.",
+          "answer": "Refractive index=real depth/apparent depth=5.0/3.0=1.67, equivalent to 5/3.",
+          "explanation": "Use the apparent-depth relation for near-normal viewing.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies real depth 5.0 cm and apparent depth 3.0 cm.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains refractive index 5/3 or 1.67.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-e5f51a1283e8",
+              "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Third-Term Physics source, Week 3 WEEKEND ASSIGNMENT, item 3.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-e5f51a1283e8",
+          "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Third-Term Physics source, Week 3 body and associated assignment/evaluation.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T3-W04",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "3rd Term",
+      "subject": "Physics",
+      "title": "Triangular Prisms, Critical Angle and Total Internal Reflection",
+      "week_label": "4",
+      "objectives": [
+        "Explain refraction through a triangular prism and define critical angle.",
+        "State the conditions for total internal reflection and apply the critical-angle relation."
+      ],
+      "body": "REFRACTION THROUGH TRIANGULAR PRISMS\n\nA triangular prism refracts light at two non-parallel faces. The ray bends towards the normal on entering a denser medium and away from the normal on leaving it. The angle of deviation depends on the prism angle, angle of incidence and refractive index. At minimum deviation, the path through the prism is symmetrical and the angle of incidence equals the angle of emergence.\n\nWhen light travels from an optically denser medium towards a less dense medium, the refracted ray bends away from the normal. The critical angle is the angle of incidence in the denser medium for which the refracted ray travels along the boundary at 90 degrees. For a medium-to-air boundary, sin(C)=1/n. Total internal reflection occurs when light travels from denser to less dense medium and the angle of incidence exceeds the critical angle.\n\nApplications include optical fibres, prisms and periscopes. For calculations, identify the medium from which the ray is travelling and use the correct relative or absolute refractive index.",
+      "body_sha256": "f2a10b177cef9afa89af3b14f83d816278a7481b7d97197eee8aca1f36aacafd",
+      "practice": [
+        {
+          "id": "SS2PHY-T3-W4-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Third-Term Physics source, Week 4 ASSIGNMENT, theory item 2.",
+          "question": "The critical angle for a transparent material in air is 39 degrees. Calculate its refractive index.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer.",
+          "answer": "n=1/sin(C)=1/sin(39 degrees)=1.59 approximately.",
+          "explanation": "For a denser medium to air, sin(C)=1/n.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses n=1/sin(C).",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains refractive index about 1.59.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-e5f51a1283e8",
+              "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Third-Term Physics source, Week 4 ASSIGNMENT, theory item 2.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T3-W4-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Third-Term Physics source, Week 4 ASSIGNMENT, relative refractive index item.",
+          "question": "The absolute refractive indices of glass and water are 3/2 and 4/3 respectively. Find the relative refractive index at the interface when light travels from water to glass.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer.",
+          "answer": "Relative refractive index of glass with respect to water = n_glass/n_water = (3/2)/(4/3)=9/8=1.125.",
+          "explanation": "Divide the absolute refractive index of the destination medium by that of the incident medium.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Sets the ratio as (3/2)/(4/3).",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains 9/8.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-e5f51a1283e8",
+              "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Third-Term Physics source, Week 4 ASSIGNMENT, relative refractive index item.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-e5f51a1283e8",
+          "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Third-Term Physics source, Week 4 body and associated assignment/evaluation.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T3-W05",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "3rd Term",
+      "subject": "Physics",
+      "title": "Refraction Through Lenses and Lens Formulae",
+      "week_label": "5",
+      "objectives": [
+        "Distinguish converging and diverging lenses and describe image formation.",
+        "Calculate focal length, image distance, magnification and lens power."
+      ],
+      "body": "LENSES AND IMAGE FORMATION\n\nA lens is a transparent optical component that refracts light. A convex lens is thicker at the centre and converges parallel rays towards a principal focus; a concave lens is thinner at the centre and diverges rays as if they came from a virtual focus. The optical centre is the point through which a ray passes without significant deviation in the thin-lens model. The principal axis passes through the optical centre and principal foci.\n\nFor a thin lens, the lens equation relates focal length f, object distance u and image distance v: 1/f=1/u+1/v under a consistent sign convention. Linear magnification is image height/object height and is related to image and object distances. Lens power P=1/f when f is in metres; the unit is the dioptre. A converging lens can form real or virtual images depending on object position; a diverging lens forms virtual, upright and diminished images for a real object.\n\nThe source includes numerical problems involving image size and focal length. Draw a principal-ray diagram to check the nature and orientation of the image.",
+      "body_sha256": "c2439230f9b76a4c215fc66de5e3f1153e8680aab8c2f1a3ab7d263a545c184a",
+      "practice": [
+        {
+          "id": "SS2PHY-T3-W5-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Third-Term Physics source, Week 5 ASSIGNMENT, item 1.",
+          "question": "The reciprocal of the focal length of a lens is called what?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer.",
+          "answer": "The power of the lens.",
+          "explanation": "Power P is the reciprocal of focal length measured in metres.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Identifies lens power.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-e5f51a1283e8",
+              "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Third-Term Physics source, Week 5 ASSIGNMENT, item 1.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T3-W5-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Third-Term Physics source, Week 5 ASSIGNMENT, item 4.",
+          "question": "An object is placed 20 cm from a converging lens. If the real image formed is 80 cm from the lens, find the focal length.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer.",
+          "answer": "1/f=1/20+1/80=5/80=1/16, so f=16 cm.",
+          "explanation": "Use the thin-lens equation with object and real image distances.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Substitutes 20 cm and 80 cm correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains focal length 16 cm.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-e5f51a1283e8",
+              "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Third-Term Physics source, Week 5 ASSIGNMENT, item 4.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-e5f51a1283e8",
+          "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Third-Term Physics source, Week 5 body and associated assignment/evaluation.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T3-W06",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "3rd Term",
+      "subject": "Physics",
+      "title": "Optical Instruments and the Human Eye",
+      "week_label": "6",
+      "objectives": [
+        "Describe image formation in cameras, microscopes, telescopes and projectors.",
+        "Explain accommodation and common eye defects and their lens corrections."
+      ],
+      "body": "OPTICAL INSTRUMENTS\n\nOptical instruments use lenses and/or mirrors to form images for observation or projection. A camera uses a converging lens to form a real, inverted image on a light-sensitive surface. A projector forms a magnified real image on a screen. A compound microscope uses an objective lens and eyepiece to obtain high magnification of small nearby objects; a telescope uses an objective and eyepiece to view distant objects.\n\nThe human eye forms an image on the retina. Accommodation is the ability of the eye lens to change curvature and focal length so that near and distant objects can be focused. Long-sightedness (hypermetropia) is corrected with a converging lens; short-sightedness (myopia) is corrected with a diverging lens. Presbyopia is age-related loss of accommodation and may require suitable corrective lenses.\n\nThe source compares binocular vision and optical instruments. In an answer, identify the lens type, the nature and location of the image, and the purpose of the instrument.",
+      "body_sha256": "9d09afb93363c145a73a29409fa92828fe502a239ffed15dfeeee5911ad855fe",
+      "practice": [
+        {
+          "id": "SS2PHY-T3-W6-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Third-Term Physics source, Week 6 ASSIGNMENT, Section A, eye-defect correction.",
+          "question": "For correcting long-sightedness in the human eye, which type of lens is required?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer.",
+          "answer": "A converging (convex) lens.",
+          "explanation": "A converging lens adds optical power so that the image is focused on the retina.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies a converging/convex lens.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains correction by focusing the image on the retina.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-e5f51a1283e8",
+              "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Third-Term Physics source, Week 6 ASSIGNMENT, Section A, eye-defect correction.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T3-W6-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Third-Term Physics source, Week 6 ASSIGNMENT, Section A, accommodation question.",
+          "question": "What is the ability of the eye to focus objects at different distances called?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer.",
+          "answer": "Accommodation.",
+          "explanation": "Accommodation occurs when ciliary muscles alter lens curvature and focal length.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies accommodation.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains the change in lens curvature/focal length.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-e5f51a1283e8",
+              "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Third-Term Physics source, Week 6 ASSIGNMENT, Section A, accommodation question.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-e5f51a1283e8",
+          "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Third-Term Physics source, Week 6 body and associated assignment/evaluation.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T3-W07",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "3rd Term",
+      "subject": "Physics",
+      "title": "Dispersion of White Light and Colour",
+      "week_label": "7",
+      "objectives": [
+        "Explain dispersion and distinguish pure from impure spectra.",
+        "Identify primary and secondary colours of light and explain colour of objects."
+      ],
+      "body": "DISPERSION OF WHITE LIGHT\n\nWhite light contains a range of wavelengths. Dispersion is the separation of white light into its constituent colours because different wavelengths refract by different amounts in a dispersive medium such as a glass prism. In the visible spectrum, red is deviated least and violet most. A pure spectrum has distinct colours that do not overlap; an impure spectrum has overlapping colour bands.\n\nA spectrometer or prism arrangement can produce a spectrum using a narrow slit, collimating lens, prism and viewing telescope or screen. The collimating lens produces parallel rays before they enter the prism. Primary colours of light are red, green and blue; mixing two primary colours in suitable proportions produces secondary colours such as cyan, magenta and yellow.\n\nThe colour of an opaque object depends on the wavelengths it reflects and absorbs. A white object reflects most visible wavelengths; a black object absorbs most. A transparent coloured filter transmits selected wavelengths and absorbs others.",
+      "body_sha256": "22b677ae5a686502921ca7b305a4aa43580e367b1cce250fda42d642d3102d7a",
+      "practice": [
+        {
+          "id": "SS2PHY-T3-W7-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Third-Term Physics source, Week 7 ASSIGNMENT, item 1.",
+          "question": "The separation of white light into its constituent colours is known as what?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer.",
+          "answer": "Dispersion.",
+          "explanation": "Different wavelengths are refracted by different amounts in a dispersive medium.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies dispersion.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains separation due to wavelength-dependent refraction.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-e5f51a1283e8",
+              "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Third-Term Physics source, Week 7 ASSIGNMENT, item 1.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T3-W7-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Third-Term Physics source, Week 7 ASSIGNMENT, item 2.",
+          "question": "What is light of one wavelength or colour called?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer.",
+          "answer": "Monochromatic light.",
+          "explanation": "Monochromatic light consists of a single wavelength or narrow wavelength band.",
+          "marks": 1,
+          "marking": [
+            {
+              "criterion": "Identifies monochromatic light.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-e5f51a1283e8",
+              "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Third-Term Physics source, Week 7 ASSIGNMENT, item 2.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-e5f51a1283e8",
+          "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Third-Term Physics source, Week 7 body and associated assignment/evaluation.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T3-W08",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "3rd Term",
+      "subject": "Physics",
+      "title": "Sound Waves: Production, Transmission, Speed and Echo",
+      "week_label": "8",
+      "objectives": [
+        "Describe sound as a mechanical longitudinal wave and explain its transmission.",
+        "Relate speed, frequency, wavelength and period and explain echo and reverberation."
+      ],
+      "body": "SOUND WAVES\n\nSound is produced by vibrating objects and travels through a material medium as a mechanical wave. In air, sound is longitudinal: particles vibrate parallel to the direction of wave propagation, producing compressions and rarefactions. Sound cannot travel through a vacuum because there are no particles to transmit the disturbance. Its speed depends on the properties and temperature of the medium and is generally greater in solids than in liquids and gases.\n\nWave speed v=f lambda and period T=1/f. An echo is reflected sound heard separately from the original sound when the reflecting surface is sufficiently distant. Echoes are used to measure distance and depth, locate underwater objects and detect obstacles. Reverberation is persistence of sound due to repeated reflections in an enclosure; excessive reverberation reduces clarity.\n\nThe source covers forced vibration and resonance as well as sound characteristics such as pitch, loudness and quality. Frequency determines pitch; amplitude relates to loudness; waveform and overtones affect quality.",
+      "body_sha256": "11491217fe559dfee56fee9ff55c36db207841e5dc9051e23cb2f7bd465bd03e",
+      "practice": [
+        {
+          "id": "SS2PHY-T3-W8-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Third-Term Physics source, Week 8 ASSIGNMENT, item 2.",
+          "question": "A sound wave in air has wavelength 1.65 m and speed 330 m/s. Calculate its period.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer.",
+          "answer": "f=v/lambda=330/1.65=200 Hz. Period T=1/f=1/200=0.005 s.",
+          "explanation": "Calculate frequency from wave speed and wavelength, then take its reciprocal.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Calculates frequency 200 Hz.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains period 0.005 s.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-e5f51a1283e8",
+              "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Third-Term Physics source, Week 8 ASSIGNMENT, item 2.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T3-W8-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Third-Term Physics source, Week 8 ASSIGNMENT, item 4.",
+          "question": "Why does sound from an enclosed bell jar gradually fade as the jar is evacuated?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer.",
+          "answer": "As air is removed, there are fewer particles to transmit sound. Sound fades because it requires a material medium and cannot propagate through a vacuum.",
+          "explanation": "Sound is a mechanical wave; evacuation reduces the medium available for transmission.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "States that sound requires a material medium.",
+              "marks": 1
+            },
+            {
+              "criterion": "Explains that evacuation removes the transmitting air.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-e5f51a1283e8",
+              "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Third-Term Physics source, Week 8 ASSIGNMENT, item 4.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-e5f51a1283e8",
+          "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Third-Term Physics source, Week 8 body and associated assignment/evaluation.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T3-W09",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "3rd Term",
+      "subject": "Physics",
+      "title": "Musical Instruments, Beats and Resonance",
+      "week_label": "9",
+      "objectives": [
+        "Classify wind, string and percussion instruments by their vibrating sources.",
+        "Explain beats, harmonics and resonance in musical instruments."
+      ],
+      "body": "MUSICAL INSTRUMENTS\n\nMusical instruments produce sound through vibrating strings, air columns, membranes or solid bodies. Wind instruments such as flutes, clarinets, saxophones and trumpets produce sound through vibrating air columns. String instruments produce sound through vibrating strings; percussion instruments produce sound when a membrane or solid body is struck. The frequency and pattern of vibration determine the pitch and quality of the note.\n\nA musical note usually contains a fundamental frequency and harmonics or overtones. Resonance occurs when a system is driven at or near one of its natural frequencies, increasing the amplitude of vibration. The body of an instrument or a resonating air column can amplify the sound. Beats occur when two sound waves of slightly different frequencies interfere; the loudness rises and falls periodically. Beat frequency is the absolute difference between the two frequencies.\n\nThe source relates musical instruments to wind columns and string vibrations. Distinguish the vibrating source from the resonating body that amplifies the sound.",
+      "body_sha256": "8c96938aa8ce6f8408ade3ac7d0d8ca7ae88335d1c0ecc21e1860f5025d62507",
+      "practice": [
+        {
+          "id": "SS2PHY-T3-W9-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Third-Term Physics source, Week 9 EVALUATION, item 1.",
+          "question": "What are beats?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer.",
+          "answer": "Beats are periodic variations in the loudness of sound produced when two waves of slightly different frequencies superpose.",
+          "explanation": "The beat frequency equals the absolute difference between the two frequencies.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Defines beats as periodic loudness variation.",
+              "marks": 1
+            },
+            {
+              "criterion": "Links them to superposition of close frequencies.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-e5f51a1283e8",
+              "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Third-Term Physics source, Week 9 EVALUATION, item 1.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T3-W9-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Third-Term Physics source, Week 9 EVALUATION, item 2.",
+          "question": "State three applications of echo.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer.",
+          "answer": "Echo is used in echo sounding to measure sea depth, in SONAR to locate underwater objects, and by bats or dolphins for locating prey and obstacles. It is also used in medical ultrasound imaging.",
+          "explanation": "Give three distinct uses that depend on reflected sound.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "One correct application.",
+              "marks": 1
+            },
+            {
+              "criterion": "Second correct application.",
+              "marks": 1
+            },
+            {
+              "criterion": "Third correct application.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-e5f51a1283e8",
+              "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Third-Term Physics source, Week 9 EVALUATION, item 2.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-e5f51a1283e8",
+          "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Third-Term Physics source, Week 9 body and associated assignment/evaluation.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-PHY-T3-W10",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "3rd Term",
+      "subject": "Physics",
+      "title": "Vibrations in Strings and Air Columns",
+      "week_label": "10",
+      "objectives": [
+        "Explain stationary waves and harmonics in stretched strings and open/closed pipes.",
+        "Calculate resonant frequencies and wavelengths using effective lengths and end correction."
+      ],
+      "body": "VIBRATIONS IN STRINGS AND PIPES\n\nA stretched string fixed at both ends supports stationary waves when reflected waves travelling in opposite directions superpose. Nodes occur at the fixed ends and antinodes between them. The fundamental mode has one loop; higher harmonics contain additional loops. The frequency depends on string length, tension and mass per unit length.\n\nAir columns in pipes also support stationary waves. In a pipe closed at one end, there is a displacement node at the closed end and an antinode at the open end. The fundamental wavelength is approximately four times the effective pipe length; only odd harmonics occur. In an open pipe, displacement antinodes occur at both ends and the fundamental wavelength is twice the effective length. End correction accounts for the antinode lying slightly beyond an open end.\n\nUse v=f lambda and the appropriate harmonic relation. For a closed pipe, fundamental f=v/(4Leff) and first overtone (third harmonic) f=3v/(4Leff). Convert all lengths to metres and include end correction where specified.",
+      "body_sha256": "85ebb47412dd7ed912d28a1d2e750f48d9f315960c5fd2ad67661fc395db1ac5",
+      "practice": [
+        {
+          "id": "SS2PHY-T3-W10-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Third-Term Physics source, Week 10 EVALUATION, item 1.",
+          "question": "The shortest length of an air column in a resonance tube closed at one end that resonates with a frequency of 560 Hz is 20 cm. Calculate the wavelength of the sound in air.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer.",
+          "answer": "For the fundamental of a closed pipe, lambda=4L=4 x 0.20=0.80 m.",
+          "explanation": "The shortest resonant length corresponds to the fundamental mode, with one-quarter wavelength in the pipe.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies the fundamental closed-pipe relation lambda=4L.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains wavelength 0.80 m.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-e5f51a1283e8",
+              "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Third-Term Physics source, Week 10 EVALUATION, item 1.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2PHY-T3-W10-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "Third-Term Physics source, Week 10 EVALUATION, item 2.",
+          "question": "Determine the frequency of the first overtone of a closed pipe of length 30 cm if the end correction is 0.8 cm and the speed of sound is 340 m/s.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer.",
+          "answer": "Effective length Leff=30.0+0.8=30.8 cm=0.308 m. The first overtone of a closed pipe is the third harmonic: f=3v/(4Leff)=3(340)/(4(0.308))=828 Hz approximately.",
+          "explanation": "Use the third harmonic for the first overtone in a closed pipe and include the end correction.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Calculates effective length 0.308 m.",
+              "marks": 1
+            },
+            {
+              "criterion": "Uses f=3v/(4Leff).",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains approximately 828 Hz.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-e5f51a1283e8",
+              "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Third-Term Physics source, Week 10 EVALUATION, item 2.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-e5f51a1283e8",
+          "source_sha256": "e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "Third-Term Physics source, Week 10 body and associated assignment/evaluation.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Physics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
     }
   ],
   "coverage": [
@@ -872,12 +2688,25 @@
       "source_id": "SS23-SRC-2bf3d68129b1",
       "objective": "Second-Term scheme: heat, heat capacity, changes of state, vapour pressure, gas laws, waves and light.",
       "objective_locator": "Second-Term Physics scheme of work.",
-      "status": "UNRESOLVED",
-      "unit_ids": [],
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T2-W01-03",
+        "SUP-SS2-PHY-T2-W04",
+        "SUP-SS2-PHY-T2-W05",
+        "SUP-SS2-PHY-T2-W06",
+        "SUP-SS2-PHY-T2-W07",
+        "SUP-SS2-PHY-T2-W08",
+        "SUP-SS2-PHY-T2-W09",
+        "SUP-SS2-PHY-T2-W10"
+      ],
       "evidence": [
         {
           "locator": "Second-Term Physics source member SHA-256 2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7",
           "explanation": "Source inventoried; no instructional units implemented yet."
+        },
+        {
+          "locator": "Second-Term source SHA-256 2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7; combined Week 1–3 and Weeks 4–10 source sections.",
+          "explanation": "Eight source-week/combined-week draft units are mapped; full assessment, diagram and worked-example reconciliation remains open."
         }
       ]
     },
@@ -886,12 +2715,27 @@
       "source_id": "SS23-SRC-e5f51a1283e8",
       "objective": "Third-Term scheme: reflection, refraction, lenses, optical instruments, dispersion, sound and vibrations.",
       "objective_locator": "Third-Term Physics scheme of work.",
-      "status": "UNRESOLVED",
-      "unit_ids": [],
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T3-W01",
+        "SUP-SS2-PHY-T3-W02",
+        "SUP-SS2-PHY-T3-W03",
+        "SUP-SS2-PHY-T3-W04",
+        "SUP-SS2-PHY-T3-W05",
+        "SUP-SS2-PHY-T3-W06",
+        "SUP-SS2-PHY-T3-W07",
+        "SUP-SS2-PHY-T3-W08",
+        "SUP-SS2-PHY-T3-W09",
+        "SUP-SS2-PHY-T3-W10"
+      ],
       "evidence": [
         {
           "locator": "Third-Term Physics source member SHA-256 e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8",
           "explanation": "Source inventoried; no instructional units implemented yet."
+        },
+        {
+          "locator": "Third-Term Physics source SHA-256 e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8; Weeks 1–10.",
+          "explanation": "Ten source-week draft units are mapped; full assessment, ray-diagram, optical-instrument and practical reconciliation remains open."
         }
       ]
     },
@@ -1022,14 +2866,302 @@
           "explanation": "Draft unit and two source-located practice prompts mapped; full source question inventory and visual review remain open."
         }
       ]
+    },
+    {
+      "id": "SS2PHY-COV-T2-W1-3",
+      "source_id": "SS23-SRC-2bf3d68129b1",
+      "objective": "Week 1-3: Heat Energy, Temperature, Heat Capacity and Specific Heat Capacity",
+      "objective_locator": "Second-Term Physics source, combined Weeks 1–3 body and associated classwork/assignment.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T2-W01-03"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7; source week section and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located questions are mapped; full source-item and visual reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T2-W4",
+      "source_id": "SS23-SRC-2bf3d68129b1",
+      "objective": "Week 4: Evaporation, Boiling and Melting",
+      "objective_locator": "Second-Term Physics source, Week 4 body and associated classwork/assignment.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T2-W04"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7; source week section and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located questions are mapped; full source-item and visual reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T2-W5",
+      "source_id": "SS23-SRC-2bf3d68129b1",
+      "objective": "Week 5: Latent Heat of Fusion and Vaporisation",
+      "objective_locator": "Second-Term Physics source, Week 5 body and associated classwork/assignment.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T2-W05"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7; source week section and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located questions are mapped; full source-item and visual reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T2-W6",
+      "source_id": "SS23-SRC-2bf3d68129b1",
+      "objective": "Week 6: Vapour Pressure, Humidity and Dew Point",
+      "objective_locator": "Second-Term Physics source, Week 6 body and associated classwork/assignment.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T2-W06"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7; source week section and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located questions are mapped; full source-item and visual reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T2-W7",
+      "source_id": "SS23-SRC-2bf3d68129b1",
+      "objective": "Week 7: Gas Laws and the General Gas Equation",
+      "objective_locator": "Second-Term Physics source, Week 7 body and associated classwork/assignment.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T2-W07"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7; source week section and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located questions are mapped; full source-item and visual reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T2-W8",
+      "source_id": "SS23-SRC-2bf3d68129b1",
+      "objective": "Week 8: Wave Motion and Wave Quantities",
+      "objective_locator": "Second-Term Physics source, Week 8 body and associated classwork/assignment.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T2-W08"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7; source week section and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located questions are mapped; full source-item and visual reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T2-W9",
+      "source_id": "SS23-SRC-2bf3d68129b1",
+      "objective": "Week 9: Properties of Waves: Reflection, Refraction, Diffraction and Interference",
+      "objective_locator": "Second-Term Physics source, Week 9 body and associated classwork/assignment.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T2-W09"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7; source week section and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located questions are mapped; full source-item and visual reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T2-W10",
+      "source_id": "SS23-SRC-2bf3d68129b1",
+      "objective": "Week 10: Light Waves and Plane/Curved Mirrors",
+      "objective_locator": "Second-Term Physics source, Week 10 body and associated classwork/assignment.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T2-W10"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 2bf3d68129b1d6cede1e8c1ffeb9ff87bb420aafb8f1c73715028db1dc235aa7; source week section and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located questions are mapped; full source-item and visual reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T3-W01",
+      "source_id": "SS23-SRC-e5f51a1283e8",
+      "objective": "Week 1: Reflection of Light on Plane Surfaces",
+      "objective_locator": "Third-Term Physics source, Week 1 body and associated assignment/evaluation.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T3-W01"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8; source week body and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located prompts are mapped; full assessment, diagram and numerical-example reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T3-W02",
+      "source_id": "SS23-SRC-e5f51a1283e8",
+      "objective": "Week 2: Curved Mirrors, Image Formation and Mirror Formula",
+      "objective_locator": "Third-Term Physics source, Week 2 body and associated assignment/evaluation.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T3-W02"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8; source week body and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located prompts are mapped; full assessment, diagram and numerical-example reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T3-W03",
+      "source_id": "SS23-SRC-e5f51a1283e8",
+      "objective": "Week 3: Refraction of Light and Rectangular Glass Blocks",
+      "objective_locator": "Third-Term Physics source, Week 3 body and associated assignment/evaluation.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T3-W03"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8; source week body and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located prompts are mapped; full assessment, diagram and numerical-example reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T3-W04",
+      "source_id": "SS23-SRC-e5f51a1283e8",
+      "objective": "Week 4: Triangular Prisms, Critical Angle and Total Internal Reflection",
+      "objective_locator": "Third-Term Physics source, Week 4 body and associated assignment/evaluation.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T3-W04"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8; source week body and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located prompts are mapped; full assessment, diagram and numerical-example reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T3-W05",
+      "source_id": "SS23-SRC-e5f51a1283e8",
+      "objective": "Week 5: Refraction Through Lenses and Lens Formulae",
+      "objective_locator": "Third-Term Physics source, Week 5 body and associated assignment/evaluation.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T3-W05"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8; source week body and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located prompts are mapped; full assessment, diagram and numerical-example reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T3-W06",
+      "source_id": "SS23-SRC-e5f51a1283e8",
+      "objective": "Week 6: Optical Instruments and the Human Eye",
+      "objective_locator": "Third-Term Physics source, Week 6 body and associated assignment/evaluation.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T3-W06"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8; source week body and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located prompts are mapped; full assessment, diagram and numerical-example reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T3-W07",
+      "source_id": "SS23-SRC-e5f51a1283e8",
+      "objective": "Week 7: Dispersion of White Light and Colour",
+      "objective_locator": "Third-Term Physics source, Week 7 body and associated assignment/evaluation.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T3-W07"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8; source week body and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located prompts are mapped; full assessment, diagram and numerical-example reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T3-W08",
+      "source_id": "SS23-SRC-e5f51a1283e8",
+      "objective": "Week 8: Sound Waves: Production, Transmission, Speed and Echo",
+      "objective_locator": "Third-Term Physics source, Week 8 body and associated assignment/evaluation.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T3-W08"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8; source week body and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located prompts are mapped; full assessment, diagram and numerical-example reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T3-W09",
+      "source_id": "SS23-SRC-e5f51a1283e8",
+      "objective": "Week 9: Musical Instruments, Beats and Resonance",
+      "objective_locator": "Third-Term Physics source, Week 9 body and associated assignment/evaluation.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T3-W09"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8; source week body and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located prompts are mapped; full assessment, diagram and numerical-example reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2PHY-COV-T3-W10",
+      "source_id": "SS23-SRC-e5f51a1283e8",
+      "objective": "Week 10: Vibrations in Strings and Air Columns",
+      "objective_locator": "Third-Term Physics source, Week 10 body and associated assignment/evaluation.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-PHY-T3-W10"
+      ],
+      "evidence": [
+        {
+          "locator": "Exact source member SHA-256 e5f51a1283e8839b7258ba2d6f591c5bbef5200ae0815678ea62d521c838fdd8; source week body and assessment blocks.",
+          "explanation": "A draft instructional unit and two source-located prompts are mapped; full assessment, diagram and numerical-example reconciliation remains open."
+        }
+      ]
     }
   ],
   "open_items": [
     {
       "id": "SS2PHY-CONTENT-REMAINING",
       "kind": "CONTENT",
-      "detail": "Eight First-Term source-week/combined-week units are drafted. Second- and Third-Term Physics source content is not yet implemented; First-Term assessment mapping is partial.",
-      "required_action": "Implement all Second- and Third-Term source sections; reconcile every source classwork, assignment, examination item and worked example; preserve combined-week labels.",
+      "detail": "Draft instructional units now cover all three Physics terms: eight First-Term source-week/combined-week units, eight Second-Term units and ten Third-Term units. Assessment, diagram, practical and independent verification remain incomplete.",
+      "required_action": "Reconcile every original source question, classwork, assignment, worked example, ray diagram, wave graph and practical activity across all three terms; independently verify all calculations and marking.",
       "affected_ids": [
         "SS2PHY-COV-T1",
         "SS2PHY-COV-T2",
