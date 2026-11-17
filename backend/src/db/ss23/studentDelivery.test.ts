@@ -67,6 +67,21 @@ test('loads only registered, schema-valid SS23 packages across both classes', ()
   assert.equal(ss3.delivery_mode, 'EXAM_PREPARATION');
 });
 
+test('loads SS2 Government draft units across all three terms with held QA gates', () => {
+  const pkg = loaded.find(item => item.class_name === 'SS 2' && item.subject_slug === 'government');
+  assert.ok(pkg);
+  assert.equal(pkg.delivery_mode, 'INSTRUCTIONAL');
+  assert.equal(pkg.units.length, 30);
+  assert.equal(pkg.units.reduce((count, unit) => count + unit.practice.length, 0), 60);
+  assert.deepEqual(pkg.coverage.map(row => row.status), ['PARTIAL', 'SUPPORTED', 'PARTIAL', 'PARTIAL', 'SUPPORTED', 'SUPPORTED']);
+  assert.ok(pkg.open_items.some(item => item.id === 'GOV-SS2-T2-ASSESSMENT-RECONCILIATION'));
+  assert.ok(pkg.open_items.some(item => item.id === 'GOV-SS2-T3-ASSESSMENT-RECONCILIATION'));
+  const emir = pkg.units.find(unit => unit.term === '1st Term' && unit.week_label === '7');
+  assert.ok(emir);
+  assert.equal(emir.practice.find(question => question.question_origin === 'ORIGINAL_SOURCE')?.question, 'What were the powers and functions of an Emir in the Hausa/Fulani political system?');
+  assert.ok(pkg.units.every(unit => unit.state.implementation === 'DRAFT' && unit.state.verification === 'DEFERRED'));
+});
+
 test('loads SS2 Civic Education source-mapped First-Term drafts without overstating later terms', () => {
   const pkg = loaded.find(item => item.class_name === 'SS 2' && item.subject_slug === 'civic-education');
   assert.ok(pkg);
