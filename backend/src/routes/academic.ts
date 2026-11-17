@@ -143,7 +143,7 @@ router.post('/terms', requireRole('admin'), async (req, res) => {
   return res.status(201).json({ term: result.term });
 });
 
-router.put('/terms/:id', requireRole('admin', 'teacher'), async (req, res) => {
+router.put('/terms/:id', requireRole('admin'), async (req, res) => {
   const termId = Number(req.params.id);
   if (!Number.isSafeInteger(termId) || termId <= 0 || termId > 2_147_483_647) {
     return res.status(404).json({ error: 'Term not found' });
@@ -258,7 +258,7 @@ router.get('/subjects', async (req, res) => {
   return res.json({ subjects: rows });
 });
 
-router.post('/subjects', requireRole('admin','teacher'), async (req, res) => {
+router.post('/subjects', requireRole('admin'), async (req, res) => {
   const { name, code, school_code } = req.body ?? {};
   const user = req.user!;
   let sc = user.school_code;
@@ -332,7 +332,7 @@ router.get('/classes', async (req, res) => {
 // actually enforced; these two routes just manage the class_locks row.
 //
 // GET  /academic/class-locks?class_name=&term_id=&school_code=
-router.get('/class-locks', requireRole('teacher', 'admin'), async (req, res) => {
+router.get('/class-locks', requireRole('admin'), async (req, res) => {
   const { class_name, term_id, school_code } = req.query as Record<string, string>;
   if (typeof class_name !== 'string' || !class_name.trim() || class_name.trim().length > 100 || !term_id) {
     return res.status(400).json({ error: 'A valid class_name and term_id are required' });
@@ -386,7 +386,7 @@ router.get('/class-locks', requireRole('teacher', 'admin'), async (req, res) => 
 });
 
 // PUT  /academic/class-locks   body: { class_name, term_id, school_code?, locked }
-router.put('/class-locks', requireRole('teacher', 'admin'), async (req, res) => {
+router.put('/class-locks', requireRole('admin'), async (req, res) => {
   const { class_name, term_id, school_code, locked } = req.body as {
     class_name?: string; term_id?: number; school_code?: string; locked?: boolean;
   };
