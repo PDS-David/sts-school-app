@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   cacheGet, cacheSet, cacheInvalidatePrefix,
   enqueueRequest, getOutbox, removeFromOutbox,
-  subscribeConnectivity, setCacheNamespace, getCacheNamespace,
+  isOnline, subscribeConnectivity, setCacheNamespace, getCacheNamespace,
 } from '../offline';
 
 // A write to e.g. `/scores/bulk` should invalidate cached GETs under
@@ -106,13 +106,15 @@ api.interceptors.request.use(async (config) => {
   if (requestNamespace !== getCacheNamespace()) {
     throw new axios.CanceledError('Session changed before request could be sent');
   }
-  try {
-    await backendReadiness.ensureReady(BASE_URL);
-  } catch (error) {
-    // Preserve the original API request context so the existing offline/cache
-    // policy handles a failed wake-up exactly as it handles other network loss.
-    if (error && typeof error === 'object') (error as any).config = config;
-    throw error;
+  if (await isOnline()) {
+    try {
+      await backendReadiness.ensureReady(BASE_URL);
+    } catch (error) {
+      // Preserve the original API request context so the existing offline/cache
+      // policy handles a failed wake-up exactly as it handles other network loss.
+      if (error && typeof error === 'object') (error as any).config = config;
+      throw error;
+    }
   }
   if (requestNamespace !== getCacheNamespace()) {
     throw new axios.CanceledError('Session changed before request could be sent');
