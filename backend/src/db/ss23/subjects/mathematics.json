@@ -1,0 +1,1341 @@
+{
+  "schema_version": "ss23-subject-v1",
+  "subject_slug": "mathematics",
+  "canonical_subject": "Mathematics",
+  "package_status": "PENDING",
+  "class_name": "SS 2",
+  "delivery_mode": "INSTRUCTIONAL",
+  "sources": [
+    {
+      "source_id": "SS23-SRC-237dbcc77749",
+      "sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+      "bytes": 1329101,
+      "archive_member": "1st Term SS2 /1ST TERM S2 MATHEMATICS.docx",
+      "class_name": "SS 2",
+      "term": "1st Term",
+      "canonical_subject": "Mathematics",
+      "header_text": "SUBJECT: MATHEMATICS; CLASS: SS2; TERM NOT STATED IN INTERNAL HEADER.",
+      "header_evidence": {
+        "locator": "Document opening header and scheme-of-work heading.",
+        "explanation": "The internal header verifies Mathematics and SS2; First-Term assignment is corroborated by archive folder and internal week sequence."
+      },
+      "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+      "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+      "reuse_status": "PENDING"
+    },
+    {
+      "source_id": "SS23-SRC-9356b2d91b97",
+      "sha256": "9356b2d91b977ae828d0e5866fd51d24589c7e1751616c903c2a1041bee9b14d",
+      "bytes": 301805,
+      "archive_member": "2nd Term SS2 /MATHEMATICS.docx",
+      "class_name": "SS 2",
+      "term": "2nd Term",
+      "canonical_subject": "Mathematics",
+      "header_text": "SCHEME OF WORK; MATHEMATICS; SS 2; TERM NOT STATED IN INTERNAL HEADER.",
+      "header_evidence": {
+        "locator": "Document opening header and scheme-of-work heading.",
+        "explanation": "The internal header verifies Mathematics and SS2; Second-Term assignment is corroborated by archive folder and internal scheme."
+      },
+      "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+      "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+      "reuse_status": "PENDING"
+    },
+    {
+      "source_id": "SS23-SRC-1a0f6bf443be",
+      "sha256": "1a0f6bf443be9356ad95a1e846c96e6bc30ce91ebaed50a8bffb030379860f22",
+      "bytes": 633856,
+      "archive_member": "3rd Term SS2 /3RD TERM S2 MATHEMATICS.docx",
+      "class_name": "SS 2",
+      "term": "3rd Term",
+      "canonical_subject": "Mathematics",
+      "header_text": "THIRD TERM E-LEARNING NOTE; SUBJECT: MATHEMATICS; CLASS: SS2.",
+      "header_evidence": {
+        "locator": "Document opening header and scheme-of-work heading.",
+        "explanation": "The internal header explicitly identifies Third Term, Mathematics and SS2."
+      },
+      "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+      "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+      "reuse_status": "PENDING"
+    }
+  ],
+  "external_sources": [],
+  "source_rules": [],
+  "assets": [],
+  "units": [
+    {
+      "id": "SUP-SS2-MATH-T1-W01",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "1st Term",
+      "subject": "Mathematics",
+      "title": "Logarithms, Standard Form and Logarithm Tables",
+      "week_label": "1",
+      "objectives": [
+        "Express large and small numbers in standard form and interpret powers of ten.",
+        "Use logarithm and antilogarithm tables to evaluate products, quotients, roots and powers."
+      ],
+      "body": "LOGARITHMS AND STANDARD FORM\n\nStandard form expresses a number as A x 10^n, where 1 <= A < 10 and n is an integer. Large numbers have positive powers of ten; numbers between zero and one use negative powers. Move the decimal point until one non-zero digit remains to its left and count the places moved to determine the exponent.\n\nFor positive numbers, log(ab)=log(a)+log(b), log(a/b)=log(a)-log(b), log(a^n)=n log(a), and log(root_n(a))=log(a)/n. A common logarithm has base 10. The integer part is the characteristic and the decimal part is the mantissa. For numbers less than one, use bar notation for a negative characteristic while retaining a positive mantissa. Antilog tables reverse the logarithm process.\n\nWhen using tables, retain sufficient figures during intermediate steps and round only the final answer to the requested significant figures. Check that the magnitude of the answer is reasonable before accepting it.\n\nWORKING STANDARD\nShow each transformation, state the formula used and keep exact values until the final step unless the question requests an approximation. Check signs, units and the stated degree of accuracy. When an item contains an apparent transcription or option mismatch, record the inconsistency rather than forcing an answer to fit a choice. These draft notes summarize the supplied lesson sections; they do not replace all worked examples, tables, exercises, diagrams or assignments in the original source. Those items still require one-to-one reconciliation and independent Mathematics review.",
+      "body_sha256": "407d5cca36df7302c89e6819701b6fa0a10f100f05b9e32cb04af18b7f2302f4",
+      "practice": [
+        {
+          "id": "SS2MATH-T1-W1-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "First-Term Mathematics source, Week 1 ASSIGNMENT, item 1.",
+          "question": "Use logarithm tables to find log10(900), correct to four decimal places.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as an answer printed in the source.",
+          "answer": "900 = 9 x 10^2. log10(900)=log10(9)+2=0.9542+2=2.9542.",
+          "explanation": "Separate the power of ten from the mantissa and use the table for log10(9).",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Writes 900 as 9 x 10^2.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains 2.9542.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-237dbcc77749",
+              "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "First-Term Mathematics source, Week 1 ASSIGNMENT, item 1.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2MATH-T1-W1-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "First-Term Mathematics source, Week 1 ASSIGNMENT, item 2.",
+          "question": "Use logarithm tables to find log10(12.34), correct to four decimal places.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as an answer printed in the source.",
+          "answer": "log10(12.34)=1.0913 approximately.",
+          "explanation": "The characteristic is 1 because 12.34 lies between 10 and 100; the mantissa is obtained from the table.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies characteristic 1.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains mantissa and total logarithm 1.0913.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-237dbcc77749",
+              "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "First-Term Mathematics source, Week 1 ASSIGNMENT, item 2.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-237dbcc77749",
+          "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "First-Term Mathematics source, Week 1 body and associated evaluation/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-MATH-T1-W02",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "1st Term",
+      "subject": "Mathematics",
+      "title": "Approximations, Significant Figures and Percentage Error",
+      "week_label": "2",
+      "objectives": [
+        "Round values to a stated number of significant figures and decimal places.",
+        "Calculate absolute, relative and percentage error and determine upper/lower bounds."
+      ],
+      "body": "APPROXIMATION AND PERCENTAGE ERROR\n\nAn approximation replaces an exact value with a nearby value at a stated degree of accuracy. Significant figures begin at the first non-zero digit; leading zeros are not significant. When rounding, inspect the digit immediately after the last retained digit. If it is 5 or greater, increase the last retained digit by one; otherwise leave it unchanged.\n\nThe absolute error is the magnitude of the difference between a measured/approximated value and the true value. Percentage error = (absolute error / true value) x 100%. If a measurement is rounded to the nearest unit, its maximum absolute error is half a unit. The smallest and largest possible values lie half a unit below and above the stated rounded value.\n\nFor derived quantities such as perimeter or area, calculate bounds using the smallest and largest possible measurements. Keep the distinction between percentage error, absolute error and percentage accuracy clear.\n\nWORKING STANDARD\nShow each transformation, state the formula used and keep exact values until the final step unless the question requests an approximation. Check signs, units and the stated degree of accuracy. When an item contains an apparent transcription or option mismatch, record the inconsistency rather than forcing an answer to fit a choice. These draft notes summarize the supplied lesson sections; they do not replace all worked examples, tables, exercises, diagrams or assignments in the original source. Those items still require one-to-one reconciliation and independent Mathematics review.",
+      "body_sha256": "a7f5c8d24eec340516185fd63151779f4b56ccb4bf8ad54dbb98ccb25e4d9fc0",
+      "practice": [
+        {
+          "id": "SS2MATH-T1-W2-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "First-Term Mathematics source, Week 2 ASSIGNMENT, item 1.",
+          "question": "The distance between two towns is 60 km to the nearest kilometre. What is the maximum absolute error?",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as an answer printed in the source.",
+          "answer": "Maximum absolute error = 0.5 km.",
+          "explanation": "A value rounded to the nearest kilometre lies within 0.5 km of the stated value.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies half of one kilometre.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives 0.5 km.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-237dbcc77749",
+              "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "First-Term Mathematics source, Week 2 ASSIGNMENT, item 1.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2MATH-T1-W2-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "First-Term Mathematics source, Week 2 ASSIGNMENT, item 3.",
+          "question": "A sales girl gives a customer N1.15 change instead of N1.25. Calculate the percentage error using N1.25 as the correct amount.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as an answer printed in the source.",
+          "answer": "Absolute error = N1.25-N1.15=N0.10. Percentage error=(0.10/1.25)x100=8%.",
+          "explanation": "Use the correct value as the denominator when calculating percentage error.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Calculates absolute error N0.10.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains 8%.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-237dbcc77749",
+              "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "First-Term Mathematics source, Week 2 ASSIGNMENT, item 3.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-237dbcc77749",
+          "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "First-Term Mathematics source, Week 2 body and associated evaluation/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-MATH-T1-W03",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "1st Term",
+      "subject": "Mathematics",
+      "title": "Sequences and Arithmetic Progression",
+      "week_label": "3",
+      "objectives": [
+        "Identify a sequence and determine its pattern and nth term.",
+        "Calculate terms, common difference and sums of arithmetic progressions."
+      ],
+      "body": "SEQUENCES AND ARITHMETIC PROGRESSION\n\nA sequence is an ordered list of numbers formed according to a rule. An arithmetic progression (A.P.) is a sequence in which the difference between consecutive terms is constant. The first term is a, common difference is d, and the nth term is Tn=a+(n-1)d. A positive d gives an increasing A.P.; a negative d gives a decreasing A.P.\n\nThe sum of the first n terms is Sn=n/2[2a+(n-1)d], or Sn=n/2(a+l), where l is the last term. To solve a word problem, identify the first term, common difference and number of terms, then choose the nth-term or sum formula. A sequence may also be described by a rule such as Tn=3n-5; substitute n to obtain a specified term.\n\nCheck the pattern by calculating successive differences. Do not assume a sequence is arithmetic unless the difference is constant.\n\nWORKING STANDARD\nShow each transformation, state the formula used and keep exact values until the final step unless the question requests an approximation. Check signs, units and the stated degree of accuracy. When an item contains an apparent transcription or option mismatch, record the inconsistency rather than forcing an answer to fit a choice. These draft notes summarize the supplied lesson sections; they do not replace all worked examples, tables, exercises, diagrams or assignments in the original source. Those items still require one-to-one reconciliation and independent Mathematics review.",
+      "body_sha256": "d1bb15701f1d723327175e037b53dbd7c6d03f4c21ba7f3e13c523215b42f361",
+      "practice": [
+        {
+          "id": "SS2MATH-T1-W3-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "First-Term Mathematics source, Week 3 ASSIGNMENT, item 1.",
+          "question": "Find the fourth term of an arithmetic progression whose first term is 2 and common difference is 0.5.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as an answer printed in the source.",
+          "answer": "T4=a+3d=2+3(0.5)=3.5.",
+          "explanation": "The fourth term is three common differences after the first term.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses Tn=a+(n-1)d.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains 3.5.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-237dbcc77749",
+              "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "First-Term Mathematics source, Week 3 ASSIGNMENT, item 1.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2MATH-T1-W3-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "First-Term Mathematics source, Week 3 GENERAL EVALUATION, item 1.",
+          "question": "An arithmetic progression has 15 terms and common difference -3. Its sum is 120. Find the first and last terms.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as an answer printed in the source.",
+          "answer": "120=15/2[2a+14(-3)]=7.5(2a-42). Thus 2a-42=16, 2a=58 and a=29. Last term l=29+14(-3)=-13.",
+          "explanation": "Use the sum formula to find a, then use T15=a+14d.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Substitutes n=15, d=-3 and S=120 correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds first term 29.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds last term -13.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-237dbcc77749",
+              "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "First-Term Mathematics source, Week 3 GENERAL EVALUATION, item 1.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-237dbcc77749",
+          "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "First-Term Mathematics source, Week 3 body and associated evaluation/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-MATH-T1-W04",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "1st Term",
+      "subject": "Mathematics",
+      "title": "Geometric Progression and Geometric Series",
+      "week_label": "4",
+      "objectives": [
+        "Identify a geometric progression and calculate its common ratio and nth term.",
+        "Find finite sums and sums to infinity where they exist."
+      ],
+      "body": "GEOMETRIC PROGRESSION\n\nA geometric progression (G.P.) is a sequence in which the ratio between consecutive terms is constant. The first term is a and the common ratio is r. The nth term is Tn=ar^(n-1). To find r, divide a term by the preceding term, checking that the ratio is consistent throughout the sequence.\n\nThe sum of the first n terms is Sn=a(1-r^n)/(1-r) when r is not 1, or a(r^n-1)/(r-1). If the absolute value of r is less than one, the infinite series converges and S-infinity=a/(1-r). If the absolute value of r is at least one, the ordinary infinite sum does not converge.\n\nFor word problems, identify whether the question asks for one term, a finite sum, or a sum to infinity. Use signed values for negative common ratios and check the number of terms carefully.\n\nWORKING STANDARD\nShow each transformation, state the formula used and keep exact values until the final step unless the question requests an approximation. Check signs, units and the stated degree of accuracy. When an item contains an apparent transcription or option mismatch, record the inconsistency rather than forcing an answer to fit a choice. These draft notes summarize the supplied lesson sections; they do not replace all worked examples, tables, exercises, diagrams or assignments in the original source. Those items still require one-to-one reconciliation and independent Mathematics review.",
+      "body_sha256": "2ad8dded8b8434d20dea825e5109fc1cc484f2b0eef4742a6aa14250a9b4a070",
+      "practice": [
+        {
+          "id": "SS2MATH-T1-W4-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "First-Term Mathematics source, Week 4 EVALUATION, item 1.",
+          "question": "The sixth term of a geometric progression is 2000. Find its first term if its common ratio is 10.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as an answer printed in the source.",
+          "answer": "T6=ar^5. Therefore a=2000/10^5=0.02.",
+          "explanation": "Use the nth-term formula and isolate the first term.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses T6=ar^5.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains first term 0.02.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-237dbcc77749",
+              "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "First-Term Mathematics source, Week 4 EVALUATION, item 1.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2MATH-T1-W4-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "First-Term Mathematics source, Week 4 EVALUATION, item 2.",
+          "question": "Find the seventh term of the geometric progression 27, 9, 3, ...",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as an answer printed in the source.",
+          "answer": "a=27 and r=1/3. T7=27(1/3)^6=1/27.",
+          "explanation": "There are six ratio multiplications from the first to the seventh term.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Identifies a=27 and r=1/3.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains 1/27.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-237dbcc77749",
+              "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "First-Term Mathematics source, Week 4 EVALUATION, item 2.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-237dbcc77749",
+          "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "First-Term Mathematics source, Week 4 body and associated evaluation/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-MATH-T1-W05",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "1st Term",
+      "subject": "Mathematics",
+      "title": "Quadratic Equations from Sum and Product of Roots",
+      "week_label": "5",
+      "objectives": [
+        "Construct a quadratic equation when the sum and product of roots are given.",
+        "Use relationships between roots and coefficients to solve related problems."
+      ],
+      "body": "QUADRATIC EQUATIONS AND ROOT RELATIONSHIPS\n\nA quadratic equation has the form ax^2+bx+c=0, where a is not zero. If its roots are alpha and beta, then alpha+beta=-b/a and alpha beta=c/a. Conversely, if the sum of roots is S and product is P, a monic quadratic equation is x^2-Sx+P=0. Multiplying through by a non-zero constant gives an equivalent equation.\n\nExpressions involving roots can be simplified using the sum and product. For example, alpha^2+beta^2=(alpha+beta)^2-2alpha beta. The reciprocal sum 1/alpha+1/beta equals (alpha+beta)/(alpha beta), provided neither root is zero. Word problems can be translated into quadratic equations by defining an unknown, expressing the other quantity in terms of it, and using the given sum, difference, area or product.\n\nCheck candidate roots by substitution and interpret whether negative values are meaningful in the context of the problem.\n\nWORKING STANDARD\nShow each transformation, state the formula used and keep exact values until the final step unless the question requests an approximation. Check signs, units and the stated degree of accuracy. When an item contains an apparent transcription or option mismatch, record the inconsistency rather than forcing an answer to fit a choice. These draft notes summarize the supplied lesson sections; they do not replace all worked examples, tables, exercises, diagrams or assignments in the original source. Those items still require one-to-one reconciliation and independent Mathematics review.",
+      "body_sha256": "e7a172788675a42e3f261690788de0150de8b8fa0dadac8abe647c0584602011",
+      "practice": [
+        {
+          "id": "SS2MATH-T1-W5-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "First-Term Mathematics source, Week 5 THEORY, item 2.",
+          "question": "Find the quadratic equation ax^2+bx+c=0 whose sum and product of roots are 3 and 4 respectively.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as an answer printed in the source.",
+          "answer": "For a monic equation, x^2-(sum)x+(product)=0. Hence x^2-3x+4=0.",
+          "explanation": "Use x^2-Sx+P=0 for roots with sum S and product P.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Uses the correct sum/product relationship.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains x^2-3x+4=0.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-237dbcc77749",
+              "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "First-Term Mathematics source, Week 5 THEORY, item 2.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2MATH-T1-W5-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "First-Term Mathematics source, Week 5 ASSIGNMENT, item 3.",
+          "question": "If alpha and beta are roots of 2x^2+9x+9=0, calculate alpha^2+beta^2.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as an answer printed in the source.",
+          "answer": "alpha+beta=-9/2 and alpha beta=9/2. alpha^2+beta^2=(alpha+beta)^2-2alpha beta=81/4-9=45/4=11.25.",
+          "explanation": "Use the identity for the sum of squares in terms of the sum and product of roots.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Finds sum -9/2 and product 9/2.",
+              "marks": 1
+            },
+            {
+              "criterion": "Applies the identity correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains 11.25.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-237dbcc77749",
+              "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "First-Term Mathematics source, Week 5 ASSIGNMENT, item 3.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-237dbcc77749",
+          "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "First-Term Mathematics source, Week 5 body and associated evaluation/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-MATH-T1-W06",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "1st Term",
+      "subject": "Mathematics",
+      "title": "First Half-Term Review and Periodic Test Preparation",
+      "week_label": "6",
+      "objectives": [
+        "Retrieve and apply logarithms, approximations, arithmetic and geometric progressions, and quadratic-root relationships.",
+        "Complete cumulative examination practice and identify errors for reassessment."
+      ],
+      "body": "FIRST HALF-TERM REVIEW\n\nThis source week is explicitly a review of the first half-term lessons and a periodic test; it introduces no new mathematical topic. Revision should therefore retrieve and connect the methods already covered in Weeks 1–5: logarithm laws and standard form; rounding, significant figures and percentage error; arithmetic progressions; geometric progressions; and construction of quadratic equations from root relationships.\n\nFor each problem, identify the topic and the relevant formula before calculating. Keep exact fractions where possible, check the sign of a common difference or ratio, and state the required degree of accuracy. In logarithm-table questions, distinguish characteristic from mantissa. In approximation questions, use the correct true value as the denominator for percentage error. In sequences, check the common difference or ratio before applying a formula.\n\nThis unit is revision and assessment practice only. It preserves the source's review-week role and does not create a new instructional topic.\n\nWORKING STANDARD\nShow each transformation, state the formula used and keep exact values until the final step unless the question requests an approximation. Check signs, units and the stated degree of accuracy. When an item contains an apparent transcription or option mismatch, record the inconsistency rather than forcing an answer to fit a choice. These draft notes summarize the supplied lesson sections; they do not replace all worked examples, tables, exercises, diagrams or assignments in the original source. Those items still require one-to-one reconciliation and independent Mathematics review.",
+      "body_sha256": "6a25dd9ab718b3d82fdc31023813740876325ef094eb859555c009e892cd00af",
+      "practice": [
+        {
+          "id": "SS2MATH-T1-W6-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "First-Term Mathematics source, Week 6 GENERAL EVALUATION, percentage-error review item.",
+          "question": "A metal rod is measured as 9.20 m when its true length is 9.43 m. Calculate the percentage error to three significant figures.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as an answer printed in the source.",
+          "answer": "Absolute error=9.43-9.20=0.23 m. Percentage error=(0.23/9.43)x100=2.44% to 3 s.f.",
+          "explanation": "Use the true length as the denominator and round only the final percentage.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Calculates absolute error 0.23 m.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains 2.44%.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-237dbcc77749",
+              "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "First-Term Mathematics source, Week 6 GENERAL EVALUATION, percentage-error review item.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2MATH-T1-W6-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "First-Term Mathematics source, Week 6 GENERAL EVALUATION, arithmetic-progression review item.",
+          "question": "An arithmetic progression has 15 terms, common difference -3 and sum 120. Find its first and last terms.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as an answer printed in the source.",
+          "answer": "First term a=29 and last term l=-13, using Sn=n/2[2a+(n-1)d] and l=a+14d.",
+          "explanation": "This cumulative question checks selection and use of the A.P. sum and nth-term formula.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Obtains first term 29.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains last term -13.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-237dbcc77749",
+              "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "First-Term Mathematics source, Week 6 GENERAL EVALUATION, arithmetic-progression review item.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-237dbcc77749",
+          "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "First-Term Mathematics source, Week 6 body and associated evaluation/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-MATH-T1-W07",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "1st Term",
+      "subject": "Mathematics",
+      "title": "Simultaneous Linear Equations",
+      "week_label": "7",
+      "objectives": [
+        "Solve pairs of linear equations by elimination and substitution.",
+        "Translate word problems and interpret points of intersection."
+      ],
+      "body": "SIMULTANEOUS LINEAR EQUATIONS\n\nA pair of simultaneous linear equations has a common solution that satisfies both equations. The elimination method adds or subtracts suitably multiplied equations to remove one unknown. The substitution method makes one unknown the subject in one equation and substitutes it into the other. After finding one variable, substitute back to obtain the second and check both values in the original equations.\n\nA pair of straight lines may intersect at one point, be parallel with no solution, or coincide with infinitely many solutions. The point of intersection is the ordered pair satisfying both line equations. Word problems involving ages, costs or quantities can be represented by defining two unknowns and forming two independent equations.\n\nUse exact fractions where the solution is not an integer; do not round intermediate values unnecessarily.\n\nWORKING STANDARD\nShow each transformation, state the formula used and keep exact values until the final step unless the question requests an approximation. Check signs, units and the stated degree of accuracy. When an item contains an apparent transcription or option mismatch, record the inconsistency rather than forcing an answer to fit a choice. These draft notes summarize the supplied lesson sections; they do not replace all worked examples, tables, exercises, diagrams or assignments in the original source. Those items still require one-to-one reconciliation and independent Mathematics review.",
+      "body_sha256": "6d0bc2e0a3efb98616665addeb257b8024bd869da97b4b2083b9dd2749c4ecf8",
+      "practice": [
+        {
+          "id": "SS2MATH-T1-W7-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "First-Term Mathematics source, Week 7 EVALUATION, elimination question 1.",
+          "question": "Solve simultaneously: 5x-4y=38 and x+3y=22.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as an answer printed in the source.",
+          "answer": "From x+3y=22, x=22-3y. Substitute: 5(22-3y)-4y=38, so 110-19y=38, y=72/19. Then x=202/19.",
+          "explanation": "Eliminate or substitute consistently; verify the exact fractional solution in both equations.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Obtains y=72/19.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains x=202/19.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-237dbcc77749",
+              "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "First-Term Mathematics source, Week 7 EVALUATION, elimination question 1.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2MATH-T1-W7-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "First-Term Mathematics source, Week 7 ASSIGNMENT, item 2.",
+          "question": "Find the point of intersection of 3x-2y=-12 and x+2y=4.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as an answer printed in the source.",
+          "answer": "Adding the equations gives 4x=-8, so x=-2. Substitute into x+2y=4: -2+2y=4, hence y=3. The intersection is (-2,3).",
+          "explanation": "Add the equations to eliminate y, then substitute to find x or y.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Finds x=-2.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds y=3 and states (-2,3).",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-237dbcc77749",
+              "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "First-Term Mathematics source, Week 7 ASSIGNMENT, item 2.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-237dbcc77749",
+          "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "First-Term Mathematics source, Week 7 body and associated evaluation/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-MATH-T1-W08",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "1st Term",
+      "subject": "Mathematics",
+      "title": "Simultaneous Linear and Quadratic Equations",
+      "week_label": "8",
+      "objectives": [
+        "Solve one linear and one quadratic equation simultaneously by substitution or factorisation.",
+        "Use intersections of a line and a curve to interpret simultaneous solutions."
+      ],
+      "body": "SIMULTANEOUS LINEAR AND QUADRATIC EQUATIONS\n\nA simultaneous system containing one linear and one quadratic equation may have two, one or no real points of intersection. Make one variable the subject of the linear equation and substitute into the quadratic equation. Simplify to a single quadratic, solve by factorisation or the quadratic formula, then substitute each root back to obtain the corresponding value of the other variable.\n\nA difference of two squares can simplify some systems. For example, x^2-y^2=(x-y)(x+y). If one equation is y=x^2 and the other is y=x+6, equate the right-hand sides to obtain a quadratic in x. The ordered pairs are the intersection points of the line and curve.\n\nCheck every ordered pair in both original equations; a sign error during factorisation can remove a valid solution or introduce an invalid one.\n\nWORKING STANDARD\nShow each transformation, state the formula used and keep exact values until the final step unless the question requests an approximation. Check signs, units and the stated degree of accuracy. When an item contains an apparent transcription or option mismatch, record the inconsistency rather than forcing an answer to fit a choice. These draft notes summarize the supplied lesson sections; they do not replace all worked examples, tables, exercises, diagrams or assignments in the original source. Those items still require one-to-one reconciliation and independent Mathematics review.",
+      "body_sha256": "438596aceee5f1a29bdcc53983efe48668710aa2631f2913ac40e1b31f4a6617",
+      "practice": [
+        {
+          "id": "SS2MATH-T1-W8-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "First-Term Mathematics source, Week 8 ASSIGNMENT, item 1.",
+          "question": "Solve simultaneously: xy=-12 and x-y=7.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as an answer printed in the source.",
+          "answer": "From x-y=7, x=y+7. Then y(y+7)=-12, so y^2+7y+12=0=(y+3)(y+4). Thus (x,y)=(4,-3) or (3,-4).",
+          "explanation": "Substitute the linear relation into the product equation and solve the resulting quadratic.",
+          "marks": 3,
+          "marking": [
+            {
+              "criterion": "Forms y^2+7y+12=0.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds both ordered pairs (4,-3) and (3,-4).",
+              "marks": 2
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-237dbcc77749",
+              "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "First-Term Mathematics source, Week 8 ASSIGNMENT, item 1.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2MATH-T1-W8-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "First-Term Mathematics source, Week 8 ASSIGNMENT, item 3.",
+          "question": "Solve simultaneously y=x^2 and y=x+6.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as an answer printed in the source.",
+          "answer": "Equate x^2=x+6, giving x^2-x-6=0=(x-3)(x+2). Thus x=3 or -2, and the solutions are (3,9) and (-2,4).",
+          "explanation": "Equate the two expressions for y, factorise and substitute each x value.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Forms and factorises x^2-x-6=0.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds both ordered pairs.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-237dbcc77749",
+              "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "First-Term Mathematics source, Week 8 ASSIGNMENT, item 3.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-237dbcc77749",
+          "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "First-Term Mathematics source, Week 8 body and associated evaluation/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-MATH-T1-W09",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "1st Term",
+      "subject": "Mathematics",
+      "title": "Straight-Line Graphs, Gradient of Curves and Tangents",
+      "week_label": "9",
+      "objectives": [
+        "Calculate gradient and equation of a straight line from coordinates or a point and gradient.",
+        "Estimate the gradient of a curve by drawing a tangent at a specified point."
+      ],
+      "body": "STRAIGHT-LINE GRAPHS AND GRADIENT\n\nThe gradient of a straight line measures its steepness and is calculated as change in y divided by change in x: m=(y2-y1)/(x2-x1). A line rising from left to right has positive gradient; one falling from left to right has negative gradient; a horizontal line has zero gradient. The equation can be written y=mx+c, where c is the y-intercept, or y-y1=m(x-x1) when a point and gradient are known.\n\nA curve has a changing gradient. To estimate the gradient at a point, draw a tangent at that point and calculate the gradient of the tangent using two well-separated points on it. The accuracy depends on the scale and quality of the graph and tangent. The source includes plotting straight lines and curves, completing tables of values and estimating gradients.\n\nFor a line equation, rearrange into y=mx+c to read off the gradient and intercept. For graph questions, label axes, choose a clear scale and show the points used in the gradient calculation.\n\nWORKING STANDARD\nShow each transformation, state the formula used and keep exact values until the final step unless the question requests an approximation. Check signs, units and the stated degree of accuracy. When an item contains an apparent transcription or option mismatch, record the inconsistency rather than forcing an answer to fit a choice. These draft notes summarize the supplied lesson sections; they do not replace all worked examples, tables, exercises, diagrams or assignments in the original source. Those items still require one-to-one reconciliation and independent Mathematics review.",
+      "body_sha256": "54808a2d237f0907022b02a70290b83a4790f701d3168f692f7d71953390cc1d",
+      "practice": [
+        {
+          "id": "SS2MATH-T1-W9-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "First-Term Mathematics source, Week 9 ASSIGNMENT, item 2.",
+          "question": "Find the gradient of the line joining the points (7,-2) and (-1,2).",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as an answer printed in the source.",
+          "answer": "m=(2-(-2))/(-1-7)=4/(-8)=-1/2.",
+          "explanation": "Use the change in y divided by the corresponding change in x.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Substitutes the coordinate differences correctly.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains gradient -1/2.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-237dbcc77749",
+              "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "First-Term Mathematics source, Week 9 ASSIGNMENT, item 2.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2MATH-T1-W9-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "First-Term Mathematics source, Week 9 GENERAL EVALUATION, item 1.",
+          "question": "A straight line passes through (3,k) and (-3,2k). If its gradient is -2/3, find k and the equation of the line.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as an answer printed in the source.",
+          "answer": "Gradient=(2k-k)/(-3-3)=k/(-6)=-2/3, so k=4. The points are (3,4) and (-3,8). Using y=mx+c gives y=-(2/3)x+6.",
+          "explanation": "Use the two-point gradient formula, then substitute a point to find the intercept.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Finds k=4.",
+              "marks": 1
+            },
+            {
+              "criterion": "Finds equation y=-(2/3)x+6.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-237dbcc77749",
+              "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "First-Term Mathematics source, Week 9 GENERAL EVALUATION, item 1.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-237dbcc77749",
+          "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "First-Term Mathematics source, Week 9 body and associated evaluation/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    },
+    {
+      "id": "SUP-SS2-MATH-T1-W10",
+      "class_name": "SS 2",
+      "delivery_mode": "INSTRUCTIONAL",
+      "unit_type": "LESSON",
+      "term": "1st Term",
+      "subject": "Mathematics",
+      "title": "First-Term Revision and Examination Practice",
+      "week_label": "10",
+      "objectives": [
+        "Consolidate the full First-Term Mathematics scheme without introducing new content.",
+        "Use mixed examination questions to select methods and check accuracy."
+      ],
+      "body": "FIRST-TERM REVISION\n\nThe First-Term scheme lists Week 10 as Revision. This unit is therefore a cumulative review of the source-backed work: logarithms and standard form; approximation and percentage error; arithmetic and geometric progressions; quadratic equations from root relationships; simultaneous linear equations; simultaneous linear/quadratic systems; and straight-line graphs and gradients.\n\nThe purpose is retrieval, method selection and correction of common errors, not introduction of a new topic. For each question, identify the mathematical structure, write the governing formula or equation, solve step by step and check the result in the original condition. For graphical work, use an appropriate scale and label all axes. For numerical work, preserve exact fractions until the final rounding step.\n\nThis revision week remains a draft examination-preparation lesson within SS2 instructional teaching. Its questions are selected from the source's general evaluation/revision block; the full assessment register remains to be reconciled.\n\nWORKING STANDARD\nShow each transformation, state the formula used and keep exact values until the final step unless the question requests an approximation. Check signs, units and the stated degree of accuracy. When an item contains an apparent transcription or option mismatch, record the inconsistency rather than forcing an answer to fit a choice. These draft notes summarize the supplied lesson sections; they do not replace all worked examples, tables, exercises, diagrams or assignments in the original source. Those items still require one-to-one reconciliation and independent Mathematics review.",
+      "body_sha256": "fac5f61c45f6000b753fbea0150f09a8dbe359ff78a4429a30f910931500168a",
+      "practice": [
+        {
+          "id": "SS2MATH-T1-W10-P1",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "First-Term Mathematics source, Week 9 GENERAL EVALUATION/REVISION, straight-line gradient question.",
+          "question": "Find the gradient of the line 3y-6x+15=0.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as an answer printed in the source.",
+          "answer": "Rearrange: 3y=6x-15, so y=2x-5. The gradient is 2.",
+          "explanation": "Put the equation into y=mx+c form and read off m.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Rearranges to y=2x-5.",
+              "marks": 1
+            },
+            {
+              "criterion": "Identifies gradient 2.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-237dbcc77749",
+              "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "First-Term Mathematics source, Week 9 GENERAL EVALUATION/REVISION, straight-line gradient question.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        },
+        {
+          "id": "SS2MATH-T1-W10-P2",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "First-Term Mathematics source, Week 9 GENERAL EVALUATION/REVISION, curve-gradient question.",
+          "question": "For y=6x-x^2, find the gradient at x=3.",
+          "answer_origin": "AUTHORED_SUPPLEMENT",
+          "answer_locator": "Authored model answer; not represented as an answer printed in the source.",
+          "answer": "The derivative is dy/dx=6-2x. At x=3, gradient=6-6=0.",
+          "explanation": "The source asks for the gradient of the curve at a specified x-value; use the tangent gradient, represented analytically by the derivative.",
+          "marks": 2,
+          "marking": [
+            {
+              "criterion": "Differentiates to 6-2x.",
+              "marks": 1
+            },
+            {
+              "criterion": "Obtains gradient 0 at x=3.",
+              "marks": 1
+            }
+          ],
+          "provenance": [
+            {
+              "source_id": "SS23-SRC-237dbcc77749",
+              "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "First-Term Mathematics source, Week 9 GENERAL EVALUATION/REVISION, curve-gradient question.",
+              "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+              "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+              "reuse_status": "PENDING"
+            }
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "source_id": "SS23-SRC-237dbcc77749",
+          "source_sha256": "237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+          "role": "ORIGINAL_SOURCE",
+          "locator": "First-Term Mathematics source, Week 10 body and associated evaluation/assignment.",
+          "rights": "Owner-supplied curriculum archive; redistribution/reuse status for extracted original content remains pending.",
+          "attribution": "Owner-supplied SS2 Mathematics curriculum archive.",
+          "reuse_status": "PENDING"
+        }
+      ],
+      "state": {
+        "content_approval": "PENDING",
+        "approval_reference": null,
+        "implementation": "DRAFT",
+        "verification": "DEFERRED",
+        "verification_reference": null
+      }
+    }
+  ],
+  "coverage": [
+    {
+      "id": "SS2MATH-COV-T1",
+      "source_id": "SS23-SRC-237dbcc77749",
+      "objective": "First-Term scheme: logarithms, approximations, A.P., G.P., quadratic roots, simultaneous equations and straight-line graphs.",
+      "objective_locator": "First-Term Mathematics scheme of work, Weeks 1–10.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-MATH-T1-W01",
+        "SUP-SS2-MATH-T1-W02",
+        "SUP-SS2-MATH-T1-W03",
+        "SUP-SS2-MATH-T1-W04",
+        "SUP-SS2-MATH-T1-W05",
+        "SUP-SS2-MATH-T1-W06",
+        "SUP-SS2-MATH-T1-W07",
+        "SUP-SS2-MATH-T1-W08",
+        "SUP-SS2-MATH-T1-W09",
+        "SUP-SS2-MATH-T1-W10"
+      ],
+      "evidence": [
+        {
+          "locator": "First-Term Mathematics member SHA-256 237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d",
+          "explanation": "Nine substantive weeks and the Week 10 revision slot have draft units; full source question and worked-example reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2MATH-COV-T2",
+      "source_id": "SS23-SRC-9356b2d91b97",
+      "objective": "Second-Term Mathematics scheme and source body.",
+      "objective_locator": "Second-Term Mathematics source scheme.",
+      "status": "UNRESOLVED",
+      "unit_ids": [],
+      "evidence": [
+        {
+          "locator": "Second-Term source SHA-256 9356b2d91b977ae828d0e5866fd51d24589c7e1751616c903c2a1041bee9b14d",
+          "explanation": "Source inventoried; no instructional units implemented yet."
+        }
+      ]
+    },
+    {
+      "id": "SS2MATH-COV-T3",
+      "source_id": "SS23-SRC-1a0f6bf443be",
+      "objective": "Third-Term Mathematics scheme and source body.",
+      "objective_locator": "Third-Term Mathematics source scheme.",
+      "status": "UNRESOLVED",
+      "unit_ids": [],
+      "evidence": [
+        {
+          "locator": "Third-Term source SHA-256 1a0f6bf443be9356ad95a1e846c96e6bc30ce91ebaed50a8bffb030379860f22",
+          "explanation": "Source inventoried; no instructional units implemented yet."
+        }
+      ]
+    },
+    {
+      "id": "SS2MATH-COV-T1-W01",
+      "source_id": "SS23-SRC-237dbcc77749",
+      "objective": "Week 1: Logarithms, Standard Form and Logarithm Tables",
+      "objective_locator": "First-Term Mathematics source, Week 1.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-MATH-T1-W01"
+      ],
+      "evidence": [
+        {
+          "locator": "Source week and evaluation/assignment; SHA-256 237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d.",
+          "explanation": "Draft lesson and two source-located questions mapped; complete source-item and worked-example reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2MATH-COV-T1-W02",
+      "source_id": "SS23-SRC-237dbcc77749",
+      "objective": "Week 2: Approximations, Significant Figures and Percentage Error",
+      "objective_locator": "First-Term Mathematics source, Week 2.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-MATH-T1-W02"
+      ],
+      "evidence": [
+        {
+          "locator": "Source week and evaluation/assignment; SHA-256 237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d.",
+          "explanation": "Draft lesson and two source-located questions mapped; complete source-item and worked-example reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2MATH-COV-T1-W03",
+      "source_id": "SS23-SRC-237dbcc77749",
+      "objective": "Week 3: Sequences and Arithmetic Progression",
+      "objective_locator": "First-Term Mathematics source, Week 3.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-MATH-T1-W03"
+      ],
+      "evidence": [
+        {
+          "locator": "Source week and evaluation/assignment; SHA-256 237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d.",
+          "explanation": "Draft lesson and two source-located questions mapped; complete source-item and worked-example reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2MATH-COV-T1-W04",
+      "source_id": "SS23-SRC-237dbcc77749",
+      "objective": "Week 4: Geometric Progression and Geometric Series",
+      "objective_locator": "First-Term Mathematics source, Week 4.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-MATH-T1-W04"
+      ],
+      "evidence": [
+        {
+          "locator": "Source week and evaluation/assignment; SHA-256 237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d.",
+          "explanation": "Draft lesson and two source-located questions mapped; complete source-item and worked-example reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2MATH-COV-T1-W05",
+      "source_id": "SS23-SRC-237dbcc77749",
+      "objective": "Week 5: Quadratic Equations from Sum and Product of Roots",
+      "objective_locator": "First-Term Mathematics source, Week 5.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-MATH-T1-W05"
+      ],
+      "evidence": [
+        {
+          "locator": "Source week and evaluation/assignment; SHA-256 237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d.",
+          "explanation": "Draft lesson and two source-located questions mapped; complete source-item and worked-example reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2MATH-COV-T1-W06",
+      "source_id": "SS23-SRC-237dbcc77749",
+      "objective": "Week 6: First Half-Term Review and Periodic Test Preparation",
+      "objective_locator": "First-Term Mathematics source, Week 6.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-MATH-T1-W06"
+      ],
+      "evidence": [
+        {
+          "locator": "Source week and evaluation/assignment; SHA-256 237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d.",
+          "explanation": "Draft lesson and two source-located questions mapped; complete source-item and worked-example reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2MATH-COV-T1-W07",
+      "source_id": "SS23-SRC-237dbcc77749",
+      "objective": "Week 7: Simultaneous Linear Equations",
+      "objective_locator": "First-Term Mathematics source, Week 7.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-MATH-T1-W07"
+      ],
+      "evidence": [
+        {
+          "locator": "Source week and evaluation/assignment; SHA-256 237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d.",
+          "explanation": "Draft lesson and two source-located questions mapped; complete source-item and worked-example reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2MATH-COV-T1-W08",
+      "source_id": "SS23-SRC-237dbcc77749",
+      "objective": "Week 8: Simultaneous Linear and Quadratic Equations",
+      "objective_locator": "First-Term Mathematics source, Week 8.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-MATH-T1-W08"
+      ],
+      "evidence": [
+        {
+          "locator": "Source week and evaluation/assignment; SHA-256 237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d.",
+          "explanation": "Draft lesson and two source-located questions mapped; complete source-item and worked-example reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2MATH-COV-T1-W09",
+      "source_id": "SS23-SRC-237dbcc77749",
+      "objective": "Week 9: Straight-Line Graphs, Gradient of Curves and Tangents",
+      "objective_locator": "First-Term Mathematics source, Week 9.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-MATH-T1-W09"
+      ],
+      "evidence": [
+        {
+          "locator": "Source week and evaluation/assignment; SHA-256 237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d.",
+          "explanation": "Draft lesson and two source-located questions mapped; complete source-item and worked-example reconciliation remains open."
+        }
+      ]
+    },
+    {
+      "id": "SS2MATH-COV-T1-W10",
+      "source_id": "SS23-SRC-237dbcc77749",
+      "objective": "Week 10: First-Term Revision and Examination Practice",
+      "objective_locator": "First-Term Mathematics source, Week 10.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "SUP-SS2-MATH-T1-W10"
+      ],
+      "evidence": [
+        {
+          "locator": "Source week and evaluation/assignment; SHA-256 237dbcc7774973a4ffd71fdb372b11c859b3551dfba5e37743514cfc7215d38d.",
+          "explanation": "Draft lesson and two source-located questions mapped; complete source-item and worked-example reconciliation remains open."
+        }
+      ]
+    }
+  ],
+  "open_items": [
+    {
+      "id": "SS2MATH-CONTENT-REMAINING",
+      "kind": "CONTENT",
+      "detail": "Ten First-Term source-week/revision units are drafted. Second- and Third-Term Mathematics source content remains unimplemented. First-Term question mapping is partial.",
+      "required_action": "Implement all Second- and Third-Term source weeks; reconcile every original assignment, general evaluation, worked example and graph/table against the package.",
+      "affected_ids": [
+        "SS2MATH-COV-T1",
+        "SS2MATH-COV-T2",
+        "SS2MATH-COV-T3"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "SS2MATH-ASSESSMENT-RECONCILIATION",
+      "kind": "CONTENT",
+      "detail": "Two source-located prompts are mapped per unit, but the source includes additional multiple-choice blocks, theory questions, general evaluations and repeated weekend assignments.",
+      "required_action": "Create a complete item-level assessment register preserving source numbering, options, equations, tables and marks; verify all authored answers and identify source transcription ambiguities.",
+      "affected_ids": [
+        "SUP-SS2-MATH-T1-W01",
+        "SUP-SS2-MATH-T1-W02",
+        "SUP-SS2-MATH-T1-W03",
+        "SUP-SS2-MATH-T1-W04",
+        "SUP-SS2-MATH-T1-W05",
+        "SUP-SS2-MATH-T1-W06",
+        "SUP-SS2-MATH-T1-W07",
+        "SUP-SS2-MATH-T1-W08",
+        "SUP-SS2-MATH-T1-W09",
+        "SUP-SS2-MATH-T1-W10"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "SS2MATH-VISUAL-WORKED-EXAMPLES",
+      "kind": "VISUAL",
+      "detail": "Source graphs, coordinate plots, logarithm tables, sequence tables and worked examples have not been checked against rendered source pages. OCR/text extraction may omit mathematical symbols or superscripts.",
+      "required_action": "Inspect rendered pages, verify mathematical notation and graph scales, and reconcile every table, diagram and worked example with the source before subject QA.",
+      "affected_ids": [
+        "SUP-SS2-MATH-T1-W01",
+        "SUP-SS2-MATH-T1-W02",
+        "SUP-SS2-MATH-T1-W03",
+        "SUP-SS2-MATH-T1-W04",
+        "SUP-SS2-MATH-T1-W05",
+        "SUP-SS2-MATH-T1-W06",
+        "SUP-SS2-MATH-T1-W07",
+        "SUP-SS2-MATH-T1-W08",
+        "SUP-SS2-MATH-T1-W09",
+        "SUP-SS2-MATH-T1-W10"
+      ],
+      "blocks_delivery": true
+    }
+  ]
+}
