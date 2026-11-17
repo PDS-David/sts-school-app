@@ -6,6 +6,8 @@ import {
   createBackendReadinessGate,
 } from '../../mobile/src/api/backendReadiness.ts';
 
+const noDelay = async () => {};
+
 test('first API operation waits for database readiness at the canonical origin', async () => {
   const calls: Array<{ url: string; timeoutMs: number }> = [];
   const gate = createBackendReadinessGate(async (url, timeoutMs) => {
@@ -46,6 +48,9 @@ test('a successful readiness probe is reused only within the freshness window', 
   const gate = createBackendReadinessGate(
     async () => { calls++; },
     () => now,
+    BACKEND_READINESS_FRESHNESS_MS,
+    BACKEND_COLD_START_TIMEOUT_MS,
+    noDelay,
   );
 
   await gate.ensureReady('https://api.example.test');
@@ -58,16 +63,45 @@ test('a successful readiness probe is reused only within the freshness window', 
   assert.equal(calls, 2);
 });
 
-test('a failed readiness probe is not cached and the next request retries', async () => {
+test('transient Render 503 is retried once before readiness is cached', async () => {
   let calls = 0;
   const gate = createBackendReadinessGate(async () => {
     calls++;
-    if (calls === 1) throw new Error('database not ready');
-  });
+    if (calls === 1) throw { response: { status: 503 } };
+  }, Date.now, undefined, undefined, noDelay);
+
+  await gate.ensureReady('https://api.example.test');
+  await gate.ensureReady('https://api.example.test');
+  assert.equal(calls, 2);
+});
+
+test('offline status is not retried and is not cached as ready', async () => {
+  let calls = 0;
+  let delays = 0;
+  const offline = Object.assign(new Error('offline'), { code: 'ERR_OFFLINE' });
+  const gate = createBackendReadinessGate(
+    async () => { calls++; throw offline; },
+    Date.now,
+    undefined,
+    undefined,
+    async () => { delays++; },
+  );
+
+  await assert.rejects(gate.ensureReady('https://api.example.test'), /offline/);
+  assert.equal(calls, 1);
+  assert.equal(delays, 0);
+});
+
+test('a failed readiness probe is not cached and the next API operation retries', async () => {
+  let calls = 0;
+  const gate = createBackendReadinessGate(async () => {
+    calls++;
+    if (calls <= 2) throw new Error('database not ready');
+  }, Date.now, undefined, undefined, noDelay);
 
   await assert.rejects(gate.ensureReady('https://api.example.test'), /database not ready/);
   await gate.ensureReady('https://api.example.test');
-  assert.equal(calls, 2);
+  assert.equal(calls, 3);
 });
 
 test('network failure invalidation forces a fresh readiness probe', async () => {
