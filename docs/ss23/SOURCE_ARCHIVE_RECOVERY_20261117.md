@@ -76,3 +76,12 @@ The owner-approved curriculum remains approved; this report does not request cur
 ## Immediate implementation consequence
 
 The source-byte recovery blocker is removed. Source-backed implementation can now continue subject by subject from the exact recovered members. The four version conflicts and explicit header mismatches remain quarantined rather than being used as if resolved.
+
+## 2026-11-17 source-question cross-checks
+
+Using the recovered source member text, I independently checked the source-located evaluation prompts already present in the two open SS2 packages:
+
+- Civic Education PR #969: **26 of 26** `ORIGINAL_SOURCE` evaluation prompts were found in the cited First-, Second- and Third-Term source documents. The answer keys and second practice prompts are authored supplements.
+- Government PR #974: **30 of 30** `ORIGINAL_SOURCE` evaluation prompts were found in the cited First-, Second- and Third-Term source documents. One Week 7 question had a minor wording omission ("an Emir"); it has been corrected to match the source exactly and a regression assertion was added. Model answers and second practice prompts are authored supplements.
+- These checks verify the 56 labelled evaluation prompts, not every additional general-evaluation block, weekend assignment, exercise reference, visual, or answer key. Those remain in the subject open-item registers.
+- SS2 Mathematics PR #980 adds 21 draft units for Second and Third Terms. Its new practice prompts are explicitly authored supplements; source exercise and examination blocks are still to be transcribed and reconciled. Second-Term Week 2 and Week 10/11 source-sequence discrepancies remain held.
