@@ -330,3 +330,10 @@ PR #981 ([SS3 Agriculture prior-learning and source-assessment verification](htt
 - SS3 remains exam-preparation only; no Third-Term content is created.
 - The SS3 T1 extension question asks for seven objectives while the source body lists six. No seventh was invented; this is a blocking item.
 - Prior-learning topic presence is established, but depth requires independent Agricultural Science review. Answer verification, remaining source assessments, visuals, practical/mock content, rights and release gates remain open.
+
+
+## 14. SS3 Biology source-prompt exactness — 2026-11-17
+
+PR #982 ([SS3 Biology source assessment exactness](https://github.com/PDS-David/sts-school-app/pull/982)) corrects the First-Term Week 2 excretion MCQ to preserve the exact source stem and options, and limits the theory prompt to the exact source sub-question on excretion. The source's temperature-regulation part remains excluded because earlier-class coverage is not established. Both Second-Term adaptation prompts were independently matched to the recovered source document. The regression test locks all four source prompts and the exam-only boundary.
+
+PR #982's SS23 package contract and integrity gates passed. Its JSS3 cross-project verification workflow was still running at the latest check. No SS1/SS2 curriculum or production data is changed.
