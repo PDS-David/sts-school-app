@@ -974,5 +974,5 @@ CREATE INDEX IF NOT EXISTS idx_school_events_class_start
 -- Stamp the immutable baseline for clean bootstrap/schema.sql installs.
 -- Keep this checksum synchronized with backend/migrations/0001_baseline.sql.
 INSERT INTO public.schema_migrations(version,name,checksum)
-VALUES ('0001','0001_baseline.sql','8fac52350c7941b17d12fecfca36cbd07c610fdf18e44a7a70764a81b9119dac')
+VALUES ('0001','0001_baseline.sql','c7fa9116e76019f76391377e5ec99054bc9f996a61472026b1cced5351e2348e')
 ON CONFLICT (version) DO NOTHING;
