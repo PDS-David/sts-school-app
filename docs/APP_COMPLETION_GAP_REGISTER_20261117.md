@@ -11,7 +11,7 @@ This register records verified implementation gaps in the repository and the liv
 - Source archive identities verified:
   - SS2 `SSS 2-20260507T072840Z-3-001.zip`: `a97506c7f030a6e9604a13ae0aab30f59563a1473ec682f647459549dd9e1153` (61 members).
   - SS3 `SSS 3-20260507T072839Z-3-001.zip`: `045e261aba9475b32b4cb963a2495faf3ddd503860b205aa1e89f0ac07d3c741` (39 members).
-- Current master registers five SS2 subject packages and two SS3 subject packages. SS2 Civic Education is implemented on PR #969 but is not yet merged. No student-delivery gate has been opened.
+- Current master registers five SS2 subject packages and two SS3 subject packages. SS2 Civic Education is implemented on PR #969 and SS2 Government First Term is implemented on PR #974; neither is yet merged. No student-delivery gate has been opened.
 - All seven packages on master are still `PENDING`; lesson implementation is draft and verification is deferred. The additional Civic Education PR preserves the same release gates.
 - There are four open GitHub issues, four active implementation/operations PRs, and this gap-register PR.
 
@@ -25,10 +25,10 @@ Agricultural Science, Biology, Bookkeeping, Catering Craft, Chemistry, Civic Edu
 
 | Class | Subjects with a package on master | Additional package in open PR | No package yet |
 |---|---:|---:|---:|
-| SS2 | 5 of 21 | 1 (Civic Education, PR #969) | 15 |
+| SS2 | 5 of 21 | 2 (Civic Education, PR #969; Government, PR #974) | 14 |
 | SS3 | 2 of 21 | 0 | 19 |
 
-**SS2 subjects with no package yet:** Bookkeeping, Catering Craft, Commerce, Data Processing, Economics, English, Financial Accounting, Food & Nutrition, French, Further Mathematics, Geography, Government, Literature, Technical Drawing and Yoruba.
+**SS2 subjects with no package yet:** Bookkeeping, Catering Craft, Commerce, Data Processing, Economics, English, Financial Accounting, Food & Nutrition, French, Further Mathematics, Geography, Literature, Technical Drawing and Yoruba.
 
 **SS3 subjects with no package yet:** Bookkeeping, Catering Craft, Chemistry, Civic Education, Commerce, Data Processing, Economics, English, Financial Accounting, Food & Nutrition, French, Further Mathematics, Geography, Government, Literature, Mathematics, Physics, Technical Drawing and Yoruba.
 
@@ -44,6 +44,7 @@ The source registry contains 61 SS2 and 39 SS3 members because some class/term s
 | Mathematics | 10 | 20 | First Term only. Second- and Third-Term implementation is absent; coverage has UNRESOLVED rows. Three open items; no assets. |
 | Physics | 26 | 52 | Three terms represented. All coverage rows remain PARTIAL; three open items and no assets. Full source assessment, equation, diagram, practical and independent QA reconciliation remains open. |
 | Civic Education (PR #969) | 26 | 52 | Nine First-Term, nine Second-Term and eight Third-Term draft units. Source-located evaluation prompts and authored practice are distinct. Seven open items remain for full assignment reconciliation, visuals, source rights and independent QA. PR is open and not merged. |
+| Government (PR #974) | 10 | 20 | First-Term only. Ten source-week draft units and ten source-located evaluation prompts. Second/Third Terms explicitly unresolved; seven open items remain for assessment reconciliation, historical fact-check, visuals, rights and independent QA. |
 
 All authored answers and supplementary practice must remain separately attributed from original source questions. Package counts are implementation counts, not proof of full source coverage.
 
