@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View, Text, StyleSheet, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import api from '../api/client';
@@ -37,29 +37,37 @@ export default function StudentSelfClaimScreen({ navigation }: any) {
   const [newPw, setNewPw] = useState('');
   const [conf, setConf] = useState('');
   const [error, setError] = useState('');
+  const [loadError, setLoadError] = useState<{ step: Step; message: string } | null>(null);
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState<{ username: string } | null>(null);
 
-  useEffect(() => {
-    api.get('/auth/self-claim/schools')
-      .then(({ data }) => {
-        setSchools(data.schools ?? []);
-        if (data.schools?.length === 1) setSchoolCode(data.schools[0].code);
-      })
-      .catch(() => setError('Could not load schools. Check your connection and try again.'))
-      .finally(() => setLoadingSchools(false));
+  const loadSchools = useCallback(async () => {
+    setLoadingSchools(true);
+    setLoadError(null);
+    try {
+      const { data } = await api.get('/auth/self-claim/schools');
+      setSchools(data.schools ?? []);
+      if (data.schools?.length === 1) setSchoolCode(data.schools[0].code);
+    } catch {
+      setLoadError({ step: 'school', message: 'Could not load schools. Check your connection and try again.' });
+    } finally {
+      setLoadingSchools(false);
+    }
   }, []);
+
+  useEffect(() => { void loadSchools(); }, [loadSchools]);
 
   const handleSchoolNext = async () => {
     if (!schoolCode) { setError('Select your school'); return; }
     setError('');
+    setLoadError(null);
     setLoadingClasses(true);
     setStep('class');
     try {
       const { data } = await api.get('/auth/self-claim/classes', { params: { school_code: schoolCode } });
       setClasses(data.classes ?? []);
     } catch {
-      setError('Could not load classes. Check your connection and try again.');
+      setLoadError({ step: 'class', message: 'Could not load classes. Check your connection and try again.' });
     } finally {
       setLoadingClasses(false);
     }
@@ -68,13 +76,14 @@ export default function StudentSelfClaimScreen({ navigation }: any) {
   const handleClassNext = async () => {
     if (!className) { setError('Select your class'); return; }
     setError('');
+    setLoadError(null);
     setLoadingRoster(true);
     setStep('name');
     try {
       const { data } = await api.get('/auth/self-claim/roster', { params: { school_code: schoolCode, class_name: className } });
       setRoster(data.students ?? []);
     } catch {
-      setError('Could not load the class list. Check your connection and try again.');
+      setLoadError({ step: 'name', message: 'Could not load the class list. Check your connection and try again.' });
     } finally {
       setLoadingRoster(false);
     }
@@ -126,45 +135,64 @@ export default function StudentSelfClaimScreen({ navigation }: any) {
           <Text style={styles.title}>Set Up Your Account</Text>
 
           {step === 'school' && (
-            loadingSchools ? <Loader /> : (
+            loadingSchools ? <Loader /> : loadError?.step === 'school' ? (
+              <>
+                <Empty message={loadError.message} />
+                <Btn label="Retry loading schools" variant="outline" onPress={loadSchools} />
+              </>
+            ) : schools.length === 0 ? (
+              <Empty message="No schools are available for account setup. Please contact your school admin." />
+            ) : (
               <>
                 <Text style={styles.label}>School</Text>
-                <Picker selectedValue={schoolCode} onValueChange={setSchoolCode} style={styles.picker}>
+                <Picker selectedValue={schoolCode} onValueChange={(value) => { setSchoolCode(value); setError(''); }} style={styles.picker}>
                   <Picker.Item label="Select your school…" value="" />
                   {schools.map((s) => <Picker.Item key={s.code} label={s.name} value={s.code} />)}
                 </Picker>
                 {error ? <Text style={styles.error}>{error}</Text> : null}
-                <Btn label="Next" onPress={handleSchoolNext} style={{ marginTop: Spacing.md }} />
+                <Btn label="Next" onPress={handleSchoolNext} disabled={!schoolCode} style={{ marginTop: Spacing.md }} />
               </>
             )
           )}
 
           {step === 'class' && (
-            loadingClasses ? <Loader /> : (
+            loadingClasses ? <Loader /> : loadError?.step === 'class' ? (
+              <>
+                <Empty message={loadError.message} />
+                <Btn label="Retry loading classes" variant="outline" onPress={handleSchoolNext} />
+              </>
+            ) : classes.length === 0 ? (
+              <Empty message="No classes are available for this school yet. Please contact your school admin." />
+            ) : (
               <>
                 <Text style={styles.label}>Class</Text>
-                <Picker selectedValue={className} onValueChange={setClassName} style={styles.picker}>
+                <Picker selectedValue={className} onValueChange={(value) => { setClassName(value); setError(''); }} style={styles.picker}>
                   <Picker.Item label="Select your class…" value="" />
                   {classes.map((c) => <Picker.Item key={c} label={c} value={c} />)}
                 </Picker>
                 {error ? <Text style={styles.error}>{error}</Text> : null}
-                <Btn label="Next" onPress={handleClassNext} style={{ marginTop: Spacing.md }} />
+                <Btn label="Next" onPress={handleClassNext} disabled={!className} style={{ marginTop: Spacing.md }} />
               </>
             )
           )}
 
           {step === 'name' && (
-            loadingRoster ? <Loader /> : roster.length === 0 ? (
+            loadingRoster ? <Loader /> : loadError?.step === 'name' ? (
+              <>
+                <Empty message={loadError.message} />
+                <Btn label="Retry loading class list" variant="outline" onPress={handleClassNext} />
+              </>
+            ) : roster.length === 0 ? (
               <Empty message="No unclaimed students found in this class. If you already have an account, use Forgot Password on the sign-in screen instead. Otherwise, ask your school admin." />
             ) : (
               <>
                 <Text style={styles.label}>Your Name</Text>
-                <Picker selectedValue={studentId} onValueChange={setStudentId} style={styles.picker}>
+                <Picker selectedValue={studentId} onValueChange={(value) => { setStudentId(value); setError(''); }} style={styles.picker}>
                   <Picker.Item label="Select your name…" value="" />
                   {roster.map((s) => <Picker.Item key={s.id} label={s.full_name} value={s.id} />)}
                 </Picker>
                 {error ? <Text style={styles.error}>{error}</Text> : null}
-                <Btn label="Next" onPress={handleNameNext} style={{ marginTop: Spacing.md }} />
+                <Btn label="Next" onPress={handleNameNext} disabled={!studentId} style={{ marginTop: Spacing.md }} />
               </>
             )
           )}

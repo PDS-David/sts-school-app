@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState, useRef } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, RefreshControl } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../api/client';
@@ -29,12 +29,15 @@ export default function ParentActivitiesScreen({ navigation }: any) {
   const [refreshing, setRefreshing] = useState(false);
   const [testsError, setTestsError] = useState(false);
   const [eventsError, setEventsError] = useState(false);
+  const requestGenerationRef = useRef(0);
 
   const load = useCallback(async () => {
+    const generation = ++requestGenerationRef.current;
     const [testsResult, eventsResult] = await Promise.allSettled([
       api.get('/learning/parent/upcoming-assessments'),
       api.get('/school-events'),
     ]);
+    if (generation !== requestGenerationRef.current) return;
     setTestsError(testsResult.status === 'rejected');
     setEventsError(eventsResult.status === 'rejected');
     if (testsResult.status === 'fulfilled') setAssessments(testsResult.value.data.assessments ?? []);
@@ -42,7 +45,10 @@ export default function ParentActivitiesScreen({ navigation }: any) {
     setLoading(false);
   }, []);
 
-  useEffect(() => { load(); }, [load]);
+  useEffect(() => {
+    void load();
+    return () => { requestGenerationRef.current += 1; };
+  }, [load]);
 
   if (loading) return <Loader />;
 
@@ -58,7 +64,7 @@ export default function ParentActivitiesScreen({ navigation }: any) {
         {!testsError && assessments.length === 0 ? (
           <Card><Text style={styles.sub}>No upcoming tests have been published for your children.</Text></Card>
         ) : null}
-        {!testsError ? assessments.map(test => (
+        {assessments.map(test => (
           <Card key={test.id} style={styles.card}>
             <View style={styles.icon}><Ionicons name="clipboard-outline" size={22} color={Colors.primary} /></View>
             <View style={styles.content}>
@@ -68,14 +74,14 @@ export default function ParentActivitiesScreen({ navigation }: any) {
               {test.end_at ? <Text style={styles.sub}>Closes: {dateLabel(test.end_at)}</Text> : null}
             </View>
           </Card>
-        )) : null}
+        ))}
 
         <Text style={styles.section}>School Calendar & Events</Text>
         {eventsError ? <Card><Text style={styles.sub}>{events.length ? 'Could not refresh school events. Showing the last available list.' : 'Could not load school events. Pull down to retry.'}</Text></Card> : null}
         {!eventsError && events.length === 0 ? (
           <Card><Text style={styles.sub}>No school events are scheduled in the current calendar window.</Text></Card>
         ) : null}
-        {!eventsError ? events.map(event => (
+        {events.map(event => (
           <Card key={String(event.id)} style={styles.card}>
             <View style={styles.icon}><Ionicons name={event.event_type === 'holiday' ? 'sunny-outline' : event.event_type === 'exam' ? 'school-outline' : 'calendar-outline'} size={22} color={Colors.primary} /></View>
             <View style={styles.content}>
@@ -86,7 +92,7 @@ export default function ParentActivitiesScreen({ navigation }: any) {
               {event.description ? <Text style={styles.sub}>{event.description}</Text> : null}
             </View>
           </Card>
-        )) : null}
+        ))}
 
         <Text style={styles.section}>Assignments & Results</Text>
         <TouchableOpacity onPress={() => navigation.navigate('MyResults')} activeOpacity={0.8}>

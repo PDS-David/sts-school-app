@@ -242,7 +242,7 @@ export default function ScoreEntryScreen({ navigation }: any) {
             <View style={isWide ? styles.filterCol : undefined}>
               <Text style={styles.filterLabel}>Class</Text>
               <View style={styles.pickerWrap}>
-                <Picker selectedValue={selClass} onValueChange={setSelClass}>
+                <Picker selectedValue={selClass} onValueChange={setSelClass} accessibilityLabel="Select score-entry class">
                   {classes.map(c => <Picker.Item key={c} label={c} value={c} />)}
                 </Picker>
               </View>
@@ -250,7 +250,7 @@ export default function ScoreEntryScreen({ navigation }: any) {
             <View style={isWide ? styles.filterCol : undefined}>
               <Text style={styles.filterLabel}>Subject</Text>
               <View style={styles.pickerWrap}>
-                <Picker selectedValue={selSub} onValueChange={v => setSelSub(Number(v))}>
+                <Picker selectedValue={selSub} onValueChange={v => setSelSub(Number(v))} accessibilityLabel="Select score-entry subject">
                   <Picker.Item label="Select subject…" value="" />
                   {subjects.map(s => <Picker.Item key={s.id} label={s.name} value={s.id} />)}
                 </Picker>
@@ -259,7 +259,7 @@ export default function ScoreEntryScreen({ navigation }: any) {
             <View style={isWide ? styles.filterCol : undefined}>
               <Text style={styles.filterLabel}>Term</Text>
               <View style={styles.pickerWrap}>
-                <Picker selectedValue={selTerm} onValueChange={v => setSelTerm(Number(v))}>
+                <Picker selectedValue={selTerm} onValueChange={v => setSelTerm(Number(v))} accessibilityLabel="Select score-entry term">
                   {terms.map(t => <Picker.Item key={t.id} label={`${t.name} – ${t.academic_year}`} value={t.id} />)}
                 </Picker>
               </View>
@@ -267,7 +267,7 @@ export default function ScoreEntryScreen({ navigation }: any) {
           </View>
 
           {!showNewSub ? (
-            <TouchableOpacity onPress={() => setShowNewSub(true)} style={styles.addSubLink}>
+            <TouchableOpacity onPress={() => setShowNewSub(true)} style={styles.addSubLink} accessibilityRole="button" accessibilityLabel="Add a subject not in the list">
               <Ionicons name="add-circle-outline" size={14} color={Colors.primary} />
               <Text style={styles.addSubLinkTxt}>Don't see the subject? Add it</Text>
             </TouchableOpacity>
@@ -339,6 +339,7 @@ export default function ScoreEntryScreen({ navigation }: any) {
                             onChangeText={v => updateRow(i, f, v)}
                             keyboardType="numeric"
                             placeholder="0"
+                            accessibilityLabel={`${r.name} ${f.toUpperCase()} score`}
                             style={{ marginBottom: 0 }}
                           />
                         </View>

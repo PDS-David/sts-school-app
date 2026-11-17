@@ -25,9 +25,10 @@ import type { AuthUser } from '../types/index.js';
  * term_id in hand, so this is the one place to enforce it rather than
  * duplicating the check in each route.
  *
- * Admins are unrestricted (matches every other route in the app, and means
- * an admin can always write past a lock — e.g. to make a correction the
- * class teacher isn't available to unlock for) — with one exception: a
+ * Global administrators (school_code NULL) are unrestricted and can write
+ * past a lock — e.g. to make a correction the class teacher isn't available
+ * to unlock for. School-bound administrators are restricted to their own
+ * school, but can still write past a class lock. With one exception: a
  * soft-deleted student (see `students.deleted_at` / `deleted_by`, added
  * alongside the DELETE /students/:id soft-delete + admin-restore change) is
  * treated as not-found for every write path, including for admin. This
@@ -72,6 +73,12 @@ export async function checkTeacherStudentScope(
   const student = rows[0];
   if (!student) return { status: 404, error: 'Student not found' };
   if (student.deleted_at) return { status: 404, error: 'Student not found' };
+
+  // A school-bound admin is scoped just like other school users; only a
+  // global admin (school_code NULL) bypasses the tenant check.
+  if (user.role === 'admin' && user.school_code && student.school_code !== user.school_code) {
+    return { status: 404, error: 'Student not found' };
+  }
 
   if (termId !== undefined) {
     const termScopeError = await checkTermSchoolScope(student.school_code, termId);
@@ -145,6 +152,8 @@ export const checkTeacherDeleteScope = checkTeacherStudentScope;
  * another) — this was simply a gap none of them covered, since none of them
  * happen to run on a create with no existing row.
  *
+ * A school-bound administrator is pinned to their own school; only a global
+ * administrator (school_code NULL) may create a student in either school.
  * Mirrors checkTeacherStudentScope()'s existing class-check shape (a
  * subject-only teacher, with no assigned_class, is not restricted by class
  * here either, consistent with how that function already treats subject
@@ -154,7 +163,12 @@ export function checkTeacherRosterScope(
   user: AuthUser,
   target: { school_code: string; class_name: string },
 ): { status: number; error: string } | null {
-  if (user.role === 'admin') return null;
+  if (user.role === 'admin') {
+    if (user.school_code && target.school_code !== user.school_code) {
+      return { status: 403, error: "You can't create a student outside your own school" };
+    }
+    return null;
+  }
   if (user.role !== 'teacher') {
     return { status: 403, error: 'Not authorized to create student records' };
   }

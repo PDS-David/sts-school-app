@@ -407,7 +407,7 @@ export default function AdminUsersScreen() {
         {!!loadError && <View style={{ marginBottom: Spacing.xs }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text><Btn label='Retry user list' variant='outline' onPress={() => fetchUsers()} /></View>}
         {!!schoolsError && <View style={{ marginBottom: Spacing.xs }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{schoolsError}</Text><Btn label='Retry schools' variant='outline' onPress={() => setSchoolsRetry(v => v + 1)} /></View>}
         {!!lookupError && <View style={{ marginBottom: Spacing.xs }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{lookupError}</Text><Btn label='Retry class/subject options' variant='outline' onPress={() => setLookupRetry(v => v + 1)} /></View>}
-        <TouchableOpacity style={styles.addBtn} onPress={openNew}>
+        <TouchableOpacity style={styles.addBtn} onPress={openNew} accessibilityRole="button" accessibilityLabel="Add user">
           <Ionicons name="person-add" size={20} color={Colors.white} />
           <Text style={styles.addBtnText}>Add User</Text>
         </TouchableOpacity>
@@ -416,6 +416,7 @@ export default function AdminUsersScreen() {
           value={search}
           onChangeText={setSearch}
           style={{ marginTop: Spacing.sm, marginBottom: 0 }}
+          accessibilityLabel="Search users by name or username"
         />
         <View style={styles.roleFilterRow}>
           {['all', ...ROLES].map(r => (
@@ -423,6 +424,9 @@ export default function AdminUsersScreen() {
               key={r}
               onPress={() => setRoleFilter(r)}
               style={[styles.roleChip, roleFilter === r && styles.roleChipActive]}
+              accessibilityRole="button"
+              accessibilityLabel={`Filter users by ${r === 'all' ? 'all roles' : r}`}
+              accessibilityState={{ selected: roleFilter === r }}
             >
               <Text style={[styles.roleChipText, roleFilter === r && styles.roleChipTextActive]}>
                 {r === 'all' ? 'All' : r}
@@ -447,7 +451,7 @@ export default function AdminUsersScreen() {
         renderItem={({ item: u }) => (
           <PageContainer style={{ width: '100%' }}>
           <ErrorBoundary fallbackLabel={`Couldn't display user "${u.username ?? u.id}"`}>
-          <TouchableOpacity onPress={() => setActionsUser(u)} activeOpacity={0.7}>
+          <TouchableOpacity onPress={() => setActionsUser(u)} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={`Open actions for ${u.full_name || u.username}`}>
           <Card style={styles.userCard}>
             <View style={styles.userRow}>
               <View style={styles.userInfo}>

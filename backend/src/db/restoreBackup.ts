@@ -165,6 +165,26 @@ export async function restore(p: BackupPayload, opts: { apply: boolean; confirmD
     }
     if (opts.confirmDatabase !== database) throw new Error('--confirm-database must equal the connected database name.');
 
+    // The audit log is append-only during normal application operation. A
+    // deliberate, explicitly confirmed disaster-recovery restore is the only
+    // path allowed to replace its contents. Disable only its TRUNCATE trigger,
+    // inside this transaction, and restore its exact previous enabled state
+    // before COMMIT. A rollback also rolls back the trigger state change.
+    let auditTruncateTriggerState: string | null = null;
+    if (byName.has('audit_log')) {
+      const { rows: triggerRows } = await client.query(
+        `SELECT tgenabled
+           FROM pg_trigger
+          WHERE tgrelid='public.audit_log'::regclass
+            AND tgname='audit_log_append_only_truncate'
+            AND NOT tgisinternal`,
+      );
+      auditTruncateTriggerState = triggerRows[0]?.tgenabled ?? null;
+      if (auditTruncateTriggerState === 'O' || auditTruncateTriggerState === 'A') {
+        await client.query('ALTER TABLE public.audit_log DISABLE TRIGGER audit_log_append_only_truncate');
+      }
+    }
+
     await client.query(`TRUNCATE ${order.map(ident).join(', ')} RESTART IDENTITY`);
     for (const name of order) {
       const t = byName.get(name)!;
@@ -181,6 +201,11 @@ export async function restore(p: BackupPayload, opts: { apply: boolean; confirmD
         const { rows: seq } = await client.query(`SELECT pg_get_serial_sequence($1,$2) AS s`, [`public.${ident(name)}`, c.name]);
         if (seq[0]?.s) await client.query(`SELECT setval($1, COALESCE((SELECT max(${ident(c.name)}) FROM public.${ident(name)}), 1), (SELECT count(*) > 0 FROM public.${ident(name)}))`, [seq[0].s]);
       }
+    }
+    if (auditTruncateTriggerState === 'A') {
+      await client.query('ALTER TABLE public.audit_log ENABLE ALWAYS TRIGGER audit_log_append_only_truncate');
+    } else if (auditTruncateTriggerState === 'O') {
+      await client.query('ALTER TABLE public.audit_log ENABLE TRIGGER audit_log_append_only_truncate');
     }
     await client.query('COMMIT');
     return { mode: 'applied' as const, database, summary };

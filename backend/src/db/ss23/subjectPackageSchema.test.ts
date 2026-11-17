@@ -331,16 +331,83 @@ test('loads the source-mapped SS2 Chemistry package without overstating term cov
   assert.equal(pkg.delivery_mode, 'INSTRUCTIONAL');
   assert.equal(pkg.package_status, 'PENDING');
   assert.equal(pkg.sources.length, 3);
-  assert.equal(pkg.units.length, 3);
-  assert.deepEqual(pkg.units.map(unit => unit.week_label), ['1', '2', '3']);
-  assert.ok(pkg.units.every(unit => unit.term === '1st Term'));
+  assert.equal(pkg.units.length, 28);
+  assert.deepEqual(pkg.units.filter(unit => unit.term === '1st Term').map(unit => unit.week_label), ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']);
+  assert.deepEqual(pkg.units.filter(unit => unit.term === '2nd Term').map(unit => unit.week_label), ['1', '2', '3', '4', '5', '6', '7', '8', '9']);
+  assert.deepEqual(pkg.units.filter(unit => unit.term === '3rd Term').map(unit => unit.week_label), ['1', '2', '3', '4', '5', '6', '7', '8', '9']);
+  const weekCoverage = pkg.coverage.filter(coverage => /^SS2CHEM-COV-T[123]-W/.test(coverage.id));
+  assert.equal(weekCoverage.length, 25);
+  assert.ok(weekCoverage.every(coverage => coverage.status === 'PARTIAL' && coverage.unit_ids.length === 1));
+  assert.ok(pkg.units.every(unit => unit.state.implementation === 'DRAFT' && unit.state.verification === 'DEFERRED'));
   assert.equal(pkg.coverage.find(row => row.id === 'SS2CHEM-COV-T1')?.status, 'PARTIAL');
-  assert.equal(pkg.coverage.find(row => row.id === 'SS2CHEM-COV-T2')?.status, 'UNRESOLVED');
-  assert.equal(pkg.coverage.find(row => row.id === 'SS2CHEM-COV-T3')?.status, 'UNRESOLVED');
+  assert.equal(pkg.coverage.find(row => row.id === 'SS2CHEM-COV-T2')?.status, 'PARTIAL');
+  assert.equal(pkg.coverage.find(row => row.id === 'SS2CHEM-COV-T3')?.status, 'PARTIAL');
   assert.ok(pkg.open_items.some(item => item.id === 'SS2CHEM-REMAINING-CURRICULUM' && item.blocks_delivery));
   assert.ok(pkg.units.every(unit => unit.state.implementation === 'DRAFT' && unit.state.verification === 'DEFERRED'));
 });
 
+
+test('loads source-mapped SS2 Physics First-Term drafts without overstating remaining terms', () => {
+  const raw = readFileSync(new URL('./subjects/physics.json', import.meta.url), 'utf8');
+  const pkg = packageSchema.parse(JSON.parse(raw));
+  assert.equal(pkg.class_name, 'SS 2');
+  assert.equal(pkg.delivery_mode, 'INSTRUCTIONAL');
+  assert.equal(pkg.package_status, 'PENDING');
+  assert.equal(pkg.sources.length, 3);
+  assert.equal(pkg.units.length, 26);
+  assert.deepEqual(pkg.units.filter(unit => unit.term === '1st Term').map(unit => unit.week_label), ['1', '2', '3', '4', '5', '6&7', '8&9', '10&11']);
+  assert.deepEqual(pkg.units.filter(unit => unit.term === '2nd Term').map(unit => unit.week_label), ['1-3', '4', '5', '6', '7', '8', '9', '10']);
+  assert.deepEqual(pkg.units.filter(unit => unit.term === '3rd Term').map(unit => unit.week_label), ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']);
+  assert.ok(pkg.units.every(unit => unit.state.implementation === 'DRAFT' && unit.state.verification === 'DEFERRED'));
+  assert.equal(pkg.coverage.filter(row => /^SS2PHY-COV-T1-/.test(row.id) || /^SS2PHY-COV-T[23]-W/.test(row.id)).length, 26);
+  assert.equal(pkg.coverage.find(row => row.id === 'SS2PHY-COV-T1')?.status, 'PARTIAL');
+  assert.equal(pkg.coverage.find(row => row.id === 'SS2PHY-COV-T2')?.status, 'PARTIAL');
+  assert.equal(pkg.coverage.find(row => row.id === 'SS2PHY-COV-T3')?.status, 'PARTIAL');
+  assert.ok(pkg.open_items.some(item => item.id === 'SS2PHY-CONTENT-REMAINING' && item.blocks_delivery));
+});
+
+
+
+test('SS3 Biology includes only source-backed prior-learning revision and preserves unresolved topics', () => {
+  const raw = readFileSync(new URL('./subjects/ss3/biology.json', import.meta.url), 'utf8');
+  const pkg = packageSchema.parse(JSON.parse(raw));
+  assert.equal(pkg.class_name, 'SS 3');
+  assert.equal(pkg.delivery_mode, 'EXAM_PREPARATION');
+  assert.equal(pkg.units.length, 2);
+  const skinRevision = pkg.units.find(unit => unit.id === 'PREP-SS3-BIOLOGY-T1-W2-EXCRETION');
+  assert.ok(skinRevision);
+  assert.equal(skinRevision.term, '1st Term');
+  assert.ok(skinRevision.exam_targets.includes('WAEC'));
+  assert.ok(skinRevision.body.includes('SS2 Biology Third Term, Week 2'));
+  assert.equal(pkg.coverage.find(row => row.id === 'SS3BIO-COV-T1')?.status, 'PARTIAL');
+  assert.equal(pkg.coverage.find(row => row.id === 'SS3BIO-COV-T2-W5')?.status, 'UNRESOLVED');
+  assert.ok(pkg.open_items.some(item => item.id === 'SS3BIO-T1-W2-EXCLUDED-CONTENT' && item.blocks_delivery));
+});
+
+test('loads SS2 Mathematics drafts across all three terms and preserves source gaps', () => {
+  const raw = readFileSync(new URL('./subjects/mathematics.json', import.meta.url), 'utf8');
+  const pkg = packageSchema.parse(JSON.parse(raw));
+  assert.equal(pkg.class_name, 'SS 2');
+  assert.equal(pkg.delivery_mode, 'INSTRUCTIONAL');
+  assert.equal(pkg.package_status, 'PENDING');
+  assert.equal(pkg.sources.length, 3);
+  assert.equal(pkg.units.length, 31);
+  assert.deepEqual(pkg.units.filter(unit => unit.term === '1st Term').map(unit => unit.week_label), ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']);
+  assert.deepEqual(pkg.units.filter(unit => unit.term === '2nd Term').map(unit => unit.week_label), ['1', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12&13']);
+  assert.deepEqual(pkg.units.filter(unit => unit.term === '3rd Term').map(unit => unit.week_label), ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']);
+  assert.ok(pkg.units.every(unit => unit.state.implementation === 'DRAFT' && unit.state.verification === 'DEFERRED'));
+  const transcribedWeeks = new Set(['8', '9']);
+  assert.ok(pkg.units.filter(unit => unit.term === '2nd Term' || (unit.term === '3rd Term' && !transcribedWeeks.has(unit.week_label))).every(unit => unit.practice.every(q => q.question_origin === 'AUTHORED_SUPPLEMENT')));
+  assert.ok(pkg.units.filter(unit => unit.term === '3rd Term' && transcribedWeeks.has(unit.week_label)).every(unit => unit.practice.some(q => q.question_origin === 'ORIGINAL_SOURCE')));
+  assert.equal(pkg.coverage.find(row => row.id === 'SS2MATH-COV-T1')?.status, 'PARTIAL');
+  assert.equal(pkg.coverage.find(row => row.id === 'SS2MATH-COV-T2')?.status, 'PARTIAL');
+  assert.equal(pkg.coverage.find(row => row.id === 'SS2MATH-COV-T3')?.status, 'PARTIAL');
+  assert.equal(pkg.coverage.find(row => row.id === 'SS2MATH-COV-T2-W2')?.status, 'UNRESOLVED');
+  assert.equal(pkg.coverage.find(row => row.id === 'SS2MATH-COV-T2-W7')?.status, 'MARKER');
+  assert.ok(pkg.open_items.some(item => item.id === 'SS2MATH-T2-W02-SOURCE-GAP' && item.blocks_delivery));
+  assert.ok(pkg.open_items.some(item => item.id === 'SS2MATH-T2-W10-W11-SCHEME-BODY-MISMATCH' && item.blocks_delivery));
+  assert.ok(pkg.open_items.some(item => item.id === 'SS2MATH-ASSESSMENT-RECONCILIATION' && item.blocks_delivery));
+});
 
 test('registered SS2/SS3 packages preserve class-specific delivery modes and SS3 has no third term', () => {
   const packages = loadSs23Packages();

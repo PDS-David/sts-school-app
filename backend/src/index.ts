@@ -22,8 +22,14 @@ import healthRouter from './routes/health.js';
 import { startBackupScheduler } from './utils/backup.js';
 import { pool } from './db/pool.js';
 import { installFatalProcessHandlers } from './utils/fatalProcessHandlers.js';
+import {
+  assertRateLimitPostgresConfigured,
+  createPostgresRateLimitStore,
+  disconnectPostgresRateLimitStore,
+} from './utils/postgresRateLimitStore.js';
 
 dotenv.config();
+await assertRateLimitPostgresConfigured();
 
 const app = express();
 
@@ -32,7 +38,11 @@ app.use(helmet());
 app.use(express.json({ limit: '5mb' }));
 
 // Rate limiting on auth routes
-app.use('/auth', rateLimit({ windowMs: 15 * 60 * 1000, max: 30 }));
+app.use('/auth', rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 30,
+  store: createPostgresRateLimitStore('auth-ip'),
+}));
 
 // Routes
 app.use('/health', healthRouter);
@@ -67,6 +77,18 @@ app.use((err: any, _req: express.Request, res: express.Response, _next: express.
   // report it as 400, and skip the console.error noise for this expected case.
   if (err instanceof SyntaxError && 'body' in err) {
     return res.status(400).json({ error: 'Malformed JSON in request body' });
+  }
+
+  if (err?.code === 'AUDIT_PERSISTENCE_FAILED') {
+    console.error('[audit] sensitive operation blocked because the audit record could not be persisted', err?.cause ?? err);
+    res.set('Retry-After', '5');
+    return res.status(503).json({ error: 'Security audit storage is temporarily unavailable. Sensitive changes cannot be completed right now.' });
+  }
+
+  if (err?.code === 'RATE_LIMIT_STORE_UNAVAILABLE') {
+    console.error('[rate-limit] shared PostgreSQL store unavailable; request denied', err?.cause ?? err);
+    res.set('Retry-After', '5');
+    return res.status(503).json({ error: 'Request protection is temporarily unavailable. Please retry shortly.' });
   }
 
   // Postgres constraint violations (via the `pg` driver, which attaches a
@@ -140,5 +162,6 @@ const server = app.listen(port, () => {
 
 installFatalProcessHandlers(server, async () => {
   await stopBackupScheduler();
+  disconnectPostgresRateLimitStore();
   await pool.end();
 });

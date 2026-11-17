@@ -348,3 +348,128 @@ test('parents can read invoices only for active linked wards while finance admin
     await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [[parent.id, financeAdmin.id]]);
   }
 });
+
+
+
+test('parent fee schedules follow linked ward campuses and cannot be widened by query parameters', async () => {
+  const parent = await createInvoiceViewer('fee-schedule-parent', 'parent');
+  const primaryOnlyParent = await createInvoiceViewer('primary-only-fee-parent', 'parent');
+  const suffix = randomUUID();
+  const studentIds: string[] = [];
+  const feeItemIds: number[] = [];
+  let server: Server | undefined;
+
+  try {
+    for (const [label, schoolCode] of [
+      ['primary-ward', 'primary'],
+      ['secondary-ward', 'secondary'],
+    ] as const) {
+      const { rows } = await query(
+        `INSERT INTO students(full_name,class_name,school_code,admission_number)
+         VALUES($1,'Primary 4',$2,$3) RETURNING id`,
+        [`BSEC22 ${label}`, schoolCode, `BSEC22-${label}-${suffix}`],
+      );
+      studentIds.push(String(rows[0].id));
+    }
+    await query(
+      'INSERT INTO parent_wards(parent_id,student_id) VALUES($1,$2),($1,$3),($4,$2)',
+      [parent.id, studentIds[0], studentIds[1], primaryOnlyParent.id],
+    );
+
+    for (const [label, schoolCode] of [
+      ['primary-fee', 'primary'],
+      ['secondary-fee', 'secondary'],
+    ] as const) {
+      const { rows } = await query(
+        'INSERT INTO fee_items(school_code,name,amount) VALUES($1,$2,100) RETURNING id',
+        [schoolCode, `BSEC22 ${label} ${suffix}`],
+      );
+      feeItemIds.push(Number(rows[0].id));
+    }
+
+    const started = await startFinanceServer();
+    server = started.server;
+    const getFeeItems = (token: string, queryString = '') => fetch(
+      `${started.baseUrl}/fee-items${queryString}`,
+      { headers: { Authorization: `Bearer ${token}` } },
+    );
+
+    const allLinkedCampuses = await getFeeItems(parent.token);
+    assert.equal(allLinkedCampuses.status, 200);
+    assert.deepEqual(
+      (await allLinkedCampuses.json() as { fee_items: Array<{ id: number }> }).fee_items.map(item => item.id).sort(),
+      feeItemIds.slice().sort(),
+      'parents may see fee schedules only for campuses containing their active linked wards',
+    );
+
+    const selectedSecondaryCampus = await getFeeItems(parent.token, '?school_code=secondary');
+    assert.equal(selectedSecondaryCampus.status, 200);
+    assert.deepEqual(
+      (await selectedSecondaryCampus.json() as { fee_items: Array<{ id: number }> }).fee_items.map(item => item.id),
+      [feeItemIds[1]],
+      'a parent can select a linked ward campus and receive that campus fee schedule',
+    );
+
+    const unlinkedCampus = await getFeeItems(primaryOnlyParent.token, '?school_code=secondary');
+    assert.equal(unlinkedCampus.status, 200);
+    assert.deepEqual(
+      (await unlinkedCampus.json() as { fee_items: unknown[] }).fee_items,
+      [],
+      'a school_code query parameter must not expose a campus without a linked ward',
+    );
+  } finally {
+    if (server) {
+      server.closeAllConnections();
+      await new Promise<void>(resolve => server!.close(() => resolve()));
+    }
+    if (feeItemIds.length) await query('DELETE FROM fee_items WHERE id=ANY($1::int[])', [feeItemIds]);
+    if (studentIds.length) {
+      await query('DELETE FROM parent_wards WHERE student_id=ANY($1::uuid[])', [studentIds]);
+      await query('DELETE FROM students WHERE id=ANY($1::uuid[])', [studentIds]);
+    }
+    await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [[parent.id, primaryOnlyParent.id]]);
+  }
+});
+
+
+test('fee item creation rejects invalid amounts and unknown or missing campuses', async () => {
+  const financeAdmin = await createInvoiceViewer('fee-item-validation', 'finance_admin');
+  let server: Server | undefined;
+  const createdIds: number[] = [];
+
+  try {
+    const started = await startFinanceServer();
+    server = started.server;
+    const send = (body: unknown) => fetch(`${started.baseUrl}/fee-items`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${financeAdmin.token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+
+    const missingSchool = await send({ name: 'Valid fee', amount: 100 });
+    assert.equal(missingSchool.status, 400, 'finance_admin must explicitly select a campus');
+
+    const invalidAmount = await send({ name: 'Invalid fee', amount: 0, school_code: 'primary' });
+    assert.equal(invalidAmount.status, 400, 'fee amounts must be greater than zero');
+
+    const unknownSchool = await send({ name: 'Unknown campus fee', amount: 100, school_code: 'unknown' });
+    assert.equal(unknownSchool.status, 400, 'fee items cannot be created for an unknown campus');
+
+    const valid = await send({ name: '  Valid fee  ', amount: '125.50', class_name: 'Primary 4', school_code: 'primary' });
+    assert.equal(valid.status, 201);
+    const payload = await valid.json() as { fee_item: { id: number; name: string; amount: string | number } };
+    createdIds.push(payload.fee_item.id);
+    assert.equal(payload.fee_item.name, 'Valid fee');
+    assert.equal(Number(payload.fee_item.amount), 125.5);
+  } finally {
+    if (server) {
+      server.closeAllConnections();
+      await new Promise<void>(resolve => server!.close(() => resolve()));
+    }
+    if (createdIds.length) await query('DELETE FROM fee_items WHERE id=ANY($1::int[])', [createdIds]);
+    await query('DELETE FROM users WHERE id=$1', [financeAdmin.id]);
+  }
+});

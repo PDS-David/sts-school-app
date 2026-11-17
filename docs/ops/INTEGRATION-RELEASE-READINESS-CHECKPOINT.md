@@ -176,3 +176,72 @@ This section supersedes earlier PR-state snapshots above. It records subsequent 
 - PR #808's health endpoint is confirmed present on master after merge commit `7451e263136b4fedc5fd876f5822c755b6c7b1c7`; `backend/src/index.ts` mounts the router at `/health`. The provider still needs its health-check path configured by an authorised operator.
 
 **Current next action:** finish the current-head checks for PR #806, then merge the checkpoint update if all required checks pass. Production provider verification remains blocked on Render access and owner approval.
+
+## Render account verification — 2026-11-17
+
+**Workspace:** My Workspace (`tea-d7au7aadbo4c73arnk40`). This is the only workspace returned by the connected Render account.
+
+### Actual services and deployments
+
+| Resource | Render state | Operational finding |
+|---|---|---|
+| `sts-school-backend` (`srv-d9bl507aqgkc739ji4i0`) | Web service, Free, Frankfurt, `master`, auto-deploy on commit; URL `https://sts-school-backend.onrender.com` | This is the API origin configured by the mobile app. Latest deploy of commit `26206e84496002bdcaf124ec68e406c4cb4b95c6` failed with process exit 1. Last live deploy is commit `62eb59efd79ac8568cda1da1d059de5911c99190`. |
+| `sts-school-app` (`srv-dbqmsa142hec73foh6i0`) | Web service, Free, Frankfurt, `master`, auto-deploy on commit; URL `https://sts-school-app.onrender.com` | Duplicate backend configuration (same repository/root and one instance). Latest deploy of `26206e8` failed with process exit 1. Last live deploy is also `62eb59e`. |
+
+Both services have an empty Render HTTP health-check path. The repository now exposes `GET /health/live` and DB-aware `GET /health/ready`, but neither provider setting has been configured. External HTTP access to the health URLs could not be verified from this environment; Render request logs returned no recorded `/health/ready` requests. Do not infer endpoint health from that absence.
+
+**Deployment failure root cause:** both services' logs repeatedly report that production startup refuses to proceed without `RATE_LIMIT_REDIS_URL` (or `REDIS_URL`), because process-local rate limiting is not accepted. The Render workspace contains **no Key Value instance**. Do not remove the startup guard or substitute process-local rate limits. The last live deployment predates the distributed Redis rate-limiter merge (#923), so the running API is behind current master and is not serving the latest security changes.
+
+### Actual PostgreSQL state
+
+- Primary database: `sts-school-db-2` (`dpg-dbqhddbrjlhs738a4s4g-a`), PostgreSQL 18.6, Frankfurt, status `available`, plan **Free**.
+- Render reports creation at **2026-11-12 01:30:29 UTC** and expiry at **2026-12-12 01:30:29 UTC**. This is an account value, not an inferred date.
+- Read-only SQL verification succeeded: current database `sts_school_db_2`, 40 public application tables, database size 12,900,031 bytes (~12.3 MiB).
+- `app_bootstrap` reports version 1. No public table name contains “migration”; the production migration-ledger adoption state therefore needs explicit reconciliation before any production migration.
+- `backup_log` contains only one historical reminder row (`kind=reminder`, `status=sent`, 2026-11-12). There are **no recorded backup attempts or successful application-level emailed backups** in this table.
+
+### Backup and scheduler reality
+
+- Render's current documentation says Free Postgres has no point-in-time recovery and no provider logical backups; Free databases expire after 30 days, then have a 14-day upgrade grace period before deletion. Therefore this database has **no provider-managed backup/recovery protection** while it remains Free. See [Render Postgres Recovery and Backups](https://render.com/docs/postgresql-backups) and [Render Free instance limitations](https://render.com/docs/free).
+- The repository's current backup scheduler implementation is in commit `26206e84496002bdcaf124ec68e406c4cb4b95c6`, but both Render deploys for that commit failed. Its scheduler is therefore not verified as running in production.
+- Render currently lists no Key Value resources and no Render Workflows; the service inventory contains no dedicated Cron Job or background worker for backups.
+- Render Free web services spin down after 15 minutes without inbound traffic and cannot send outbound SMTP traffic on ports 25, 465 or 587. The current in-process hourly scheduler plus SMTP email delivery is consequently not a viable production backup mechanism on the present Free web-service plan. See [Render Free instance limitations](https://render.com/docs/free).
+- The backup runbook's email delivery design additionally depends on `BACKUP_PASSPHRASE`, `ADMIN_LOG_RECIPIENTS` and SMTP configuration. No secret values were read. No successful external backup or restore rehearsal is evidenced.
+
+### Repository release workflow follow-up
+
+- PR #947 remains open on `agent/mobile-release-audit-20261116`, head `1388705e9416bd0bf9b128667c9bfb93e20d59bf`, based on current master `53f6d1d2498e77e5744bdc1f52e460afa5e50a8f` (0 commits behind at last comparison).
+- The earlier run on head `2b05cce` passed TypeScript, package checks, Android export, native prebuild and debug APK build, but emulator APK installation failed with ADB `Broken pipe (32)`; fail-fast skipped later audit/SDK candidate steps.
+- Follow-up workflow change committed at `55b641b0ebd92b5b3ffd96bd92e619ace81b3b68` adds package-manager readiness polling, four ADB install attempts, independent audit/SDK candidate execution and artifact upload, and a final failure step that still fails the job if emulator smoke testing fails.
+- Checkpoint update commit: `1388705e9416bd0bf9b128667c9bfb93e20d59bf`.
+- At last poll on that head, Mobile TypeScript, SS1 package integrity and SS23 package integrity had passed; Android readiness, JSS3/PostgreSQL, mobile release audit and web bundle checks were still running. PR #947 is not merged; no signed production AAB or physical-device acceptance is claimed.
+
+### Actions taken / not taken
+
+- Completed read-only Render discovery, service/deploy inspection, log review, metrics query and read-only PostgreSQL metadata queries.
+- No secrets, connection strings, student data or backup contents were retrieved.
+- No production data was written, no migration was applied, no service environment was changed, no resource was created or upgraded, and no deployment was triggered.
+- The Render connector exposes no direct service-plan or Postgres-plan upgrade action in this session. Provider health-check path and plan changes must be applied through the Render Dashboard/API after owner approval.
+
+### Exact next actions / approvals required
+
+1. **Redis:** approve creation of a paid Frankfurt Render Key Value instance for shared rate limiting. Free Key Value is not recommended for production: Render documents that it is in-memory only and loses all data on restart. After approval, set `RATE_LIMIT_REDIS_URL` on the actual API service(s) using the internal connection URL; keep the URL out of Git and chat.
+2. **Database:** upgrade `sts-school-db-2` to a paid plan before **2026-12-12 01:30 UTC**, enabling Render's managed recovery/backups. Independently configure an off-provider backup and complete a disposable restore rehearsal; do not treat plan upgrade as proof of restore readiness.
+3. **Compute/backup delivery:** move the API service(s) to paid compute if the chosen backup design depends on SMTP, or replace the in-process scheduler/email design with a dedicated paid Cron Job/worker and an approved encrypted off-host object-storage destination. Do not deploy until secret and retention requirements are set.
+4. **Duplicate service:** determine whether `sts-school-app` is obsolete or intentionally serves a separate client before deleting or suspending it. The mobile app currently targets `sts-school-backend`.
+5. **Health checks:** configure the API service's Render HTTP health-check path as `/health/ready` after a live deploy containing the health route and Redis configuration; verify a real HTTP 200 response and database probe.
+6. **Release code:** finish current-head PR #947 checks; remediate any failed check, obtain EAS credentials through repository secret settings, and complete signed AAB plus device acceptance before release sign-off.
+
+**Current status:** repository work continues; production remains **NOT RELEASE READY**. The confirmed blockers are missing production Redis, failed current deployments, Free/expiring/no-backup PostgreSQL, Free compute constraints, unconfigured health checks and incomplete signed Android release acceptance.
+
+
+## Migration-ledger clarification — 2026-11-17
+
+- The production database's `public.schema_migrations` relation was checked directly with read-only SQL: it is **absent**. `public.app_bootstrap` exists, but it is not the migration ledger used by the current repository migration runner.
+- Current `backend/src/db/migrate.ts` creates/uses `public.schema_migrations(version, name, checksum, applied_at)`. Its `--all` mode refuses to proceed when an application schema already exists without a baseline; `--fresh` is only for an empty database. The migration README requires OPS-05 drift evidence and owner approval before baseline adoption.
+- Therefore production migration adoption is **not complete**. Do not run `db:migrate --fresh`, manually insert a baseline, or apply later migrations to this database until the read-only drift review and explicit owner-approved adoption plan are complete.
+
+
+## Latest CI refresh — 2026-11-17
+
+On PR #947 head `1388705e9416bd0bf9b128667c9bfb93e20d59bf`, seven workflow groups are now green: Mobile TypeScript, SS1 package integrity, SS23 package integrity, web mobile bundle readiness, SS1 French source/package/hash/regression, Android mobile readiness and JSS3 implementation/assets. The only remaining group is Mobile release and dependency audit run `43984569495`; its locked install, offline/frontend regressions, TypeScript, JS export, Java/SDK setup and native prebuild passed, while Gradle debug APK assembly was still running at the latest poll. Emulator retry, npm audit, SDK 57 candidate and artifact steps have not yet run on this head. No EAS credential is available in the recorded evidence. PR #947 remains open and unmerged.

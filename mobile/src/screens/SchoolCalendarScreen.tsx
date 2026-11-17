@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState, useRef } from 'react';
 import { View, Text, ScrollView, RefreshControl } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../api/client';
@@ -24,17 +24,25 @@ export default function SchoolCalendarScreen() {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [failed, setFailed] = useState(false);
+  const requestGenerationRef = useRef(0);
 
   const load = useCallback(async () => {
+    const generation = ++requestGenerationRef.current;
     try {
       const { data } = await api.get('/school-events');
+      if (generation !== requestGenerationRef.current) return;
       setEvents(data.events ?? []);
       setFailed(false);
-    } catch { setFailed(true); }
-    setLoading(false);
+    } catch {
+      if (generation === requestGenerationRef.current) setFailed(true);
+    }
+    if (generation === requestGenerationRef.current) setLoading(false);
   }, []);
 
-  useEffect(() => { load(); }, [load]);
+  useEffect(() => {
+    void load();
+    return () => { requestGenerationRef.current += 1; };
+  }, [load]);
 
   if (loading) return <Loader />;
 
@@ -45,10 +53,12 @@ export default function SchoolCalendarScreen() {
         <RefreshControl refreshing={refreshing} onRefresh={async () => { setRefreshing(true); await load(); setRefreshing(false); }} />
       }>
         {failed ? (
-          <Card><Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm }}>The calendar could not be loaded. Pull down to retry.</Text></Card>
-        ) : events.length === 0 ? (
+          <Card><Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm }}>{events.length ? 'Could not refresh the calendar. Showing the last available events.' : 'The calendar could not be loaded. Pull down to retry.'}</Text></Card>
+        ) : null}
+        {!failed && events.length === 0 ? (
           <Card><Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm }}>No school events are scheduled in the current calendar window.</Text></Card>
-        ) : events.map(event => (
+        ) : null}
+        {events.map(event => (
           <Card key={String(event.id)} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: Spacing.sm, marginBottom: Spacing.sm }}>
             <View style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: Colors.primary + '20', alignItems: 'center', justifyContent: 'center' }}>
               <Ionicons name={event.event_type === 'holiday' ? 'sunny-outline' : event.event_type === 'exam' ? 'school-outline' : event.event_type === 'deadline' ? 'alarm-outline' : 'calendar-outline'} size={22} color={Colors.primary} />

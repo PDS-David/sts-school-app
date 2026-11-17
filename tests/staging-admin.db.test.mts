@@ -11,6 +11,7 @@ import test, { after, before, beforeEach } from 'node:test';
 import type { AddressInfo } from 'node:net';
 import bcrypt from 'bcryptjs';
 import pg from 'pg';
+import { readFileSync } from 'node:fs';
 
 const SERVER_URL = process.env.JSS3_LOCAL_TEST_DATABASE_URL;
 const root = path.resolve(import.meta.dirname, '..');
@@ -52,6 +53,9 @@ if (!SERVER_URL) {
   const boot = await pool.connect();
   assert.equal(await bootstrap(boot), 'created');
   boot.release();
+  // The real login route is rate-limited through public.rate_limit_counters (migration 0003). bootstrap() applies schema.sql,
+  // which does not create it, so apply the approved (idempotent) migration or the limiter fails closed with HTTP 503.
+  await pool.query(readFileSync(new URL('../backend/migrations/0003_rate_limit_counters.sql', import.meta.url), 'utf8'));
 
   const opts = (over: Partial<import('../backend/src/db/createStagingAdmin.js').FirstAdminOptions> = {}) => ({
     username: 'stg.admin', schoolCode: 'secondary', fullName: 'Staging Administrator', password: GOOD,
@@ -62,8 +66,11 @@ if (!SERVER_URL) {
     await c.connect();
     try { return await lib.createStagingAdmin(c, o); } finally { await c.end(); }
   };
+  let auditStartId = 0;
   const counts = async () => (await query(
-    `SELECT (SELECT count(*) FROM users)::int u, (SELECT count(*) FROM audit_log WHERE action='bootstrap_first_admin')::int a`,
+    `SELECT (SELECT count(*) FROM users)::int u,
+            (SELECT count(*) FROM audit_log WHERE action='bootstrap_first_admin' AND id > $1)::int a`,
+    [auditStartId],
   )).rows[0] as { u: number; a: number };
   const refused = (re: RegExp) => (e: unknown) => e instanceof lib.FirstAdminRefusal && re.test(e.message);
   const cli = (args: string[], env: Record<string, string> = {}, db = DB) => spawnSync(
@@ -72,7 +79,11 @@ if (!SERVER_URL) {
   );
 
   before(() => assert.deepEqual(created.length, 3));
-  beforeEach(async () => { await query('DELETE FROM audit_log'); await query('DELETE FROM users'); });
+  beforeEach(async () => {
+    const { rows } = await query('SELECT COALESCE(MAX(id),0)::bigint AS id FROM audit_log');
+    auditStartId = Number(rows[0].id);
+    await query('DELETE FROM users');
+  });
   after(async () => {
     await pool.end();
     for (const db of created) await adminClient.query(`DROP DATABASE IF EXISTS "${db}" WITH (FORCE)`);
@@ -220,7 +231,7 @@ if (!SERVER_URL) {
     assert.equal((await run()).mode, 'applied'); // the guard did not leave the target locked or half-provisioned
   });
   test('cleanup: no residue after the suite state is reset', async () => {
-    await query('DELETE FROM audit_log'); await query('DELETE FROM users');
+    await query('DELETE FROM users');
     assert.deepEqual(await counts(), { u: 0, a: 0 });
   });
 }

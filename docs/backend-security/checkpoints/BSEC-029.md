@@ -1,18 +1,20 @@
 # Checkpoint — BSEC-029
 
 - **Task ID:** BSEC-029
-- **Title:** Enforce school boundaries on admin operational records and restrict global operations
-- **Status:** implementation committed; focused CI verification pending
-- **Owner:** ChatGPT implementation worker
-- **Base branch:** agent/backend-admin-user-school-scope-20261116 (stacked on BSEC-028)
-- **Working branch:** agent/backend-admin-operational-school-scope-final2-20261116
-- **Changed files:**
-  - backend/src/routes/admin.ts
-  - tests/backend-admin-user-school-scope.integration.test.mts (extended)
-  - docs/backend-security/checkpoints/BSEC-029.md
-- **Defect:** school-bound administrators could read all audit records, read/reissue term PINs for students in other schools, read/reissue class access codes for other schools, and export another school's workbook. They could also trigger global log-email delivery and full-database backup operations.
-- **Implementation:** apply the shared admin school-scope resolver to audit-log, term-PIN reads, class-code reads/writes and Excel export. Pin term-PIN creation to a student in the authenticated school and hold a row lock through the upsert. Validate student UUIDs and term labels, validate class membership before class-code creation, and cap audit-log page size at 500. Restrict log-email, backup status and backup execution to global administrators only.
-- **Regression coverage added:** PostgreSQL HTTP tests cover own-school class-code generation and reads, cross-school class-code denial, own-school term-PIN issue/read, cross-school term-PIN denial, audit-log isolation, export school override denial, and global-only backup/log-email restrictions. Global-admin cross-school operations are retained and tested.
-- **Verification:** initial combined workflow exposed a BSEC-028 test assertion that expected school_code in the parent-login response, although the endpoint intentionally returns account identities without that field. The assertion now verifies inclusion of the authenticated school's parent and exclusion of the other school's parent. BSEC-029's operational isolation test passed on the first run; the combined rerun is pending. No production database or data was accessed or changed.
-- **Remaining:** inspect the combined PostgreSQL integration workflow and backend typecheck; fix genuine failures without weakening assertions; update the checkpoint with actual CI evidence.
-- **Exact next action:** inspect the refreshed BSEC-029 PostgreSQL admin operational-scope workflow.
+- **Title:** Sensitive-action audit logging and tamper-evident audit history
+- **Status:** merged; implementation and verification complete
+- **Base branch:** master
+- **Working branch:** agent/backend-sensitive-audit-bsec029-20261116
+- **Pull request:** #944 (merged)
+- **Merge commit:** 5b926ac6df8426b8236b3f9ea3719ee54675d338
+- **Verified head:** b0fc8cee609d39c5d624547c452ffa100a8bf453
+- **Scope:** Sensitive administrator account lifecycle operations, student/parent relationship changes, student record changes, class progression/retention and database backup execution.
+- **Audit event model:** actor identity/role/school snapshots, target school, request ID, IP address, user-agent, outcome, bounded metadata and redacted detail.
+- **Persistence guarantees:** Sensitive administrator operations use strict audit persistence and transactional audit writes; failure to persist a required audit event returns HTTP 503. Student and relationship actions use strict audit paths; class progression and student creation/edit paths use transaction-aware audit writes.
+- **Integrity controls:** Per-school SHA-256 hash chains serialize concurrent writers with transaction-scoped advisory locks. An integrity verification routine and admin endpoint detect previous-hash or event-hash mismatches. Audit rows are protected against UPDATE, DELETE and TRUNCATE by database triggers; mutation privileges are revoked from PUBLIC.
+- **Privacy controls:** Metadata is recursively bounded and redacts credential/contact fields; detail strings redact common secret, email and phone patterns. Passwords, activation codes, tokens and raw credentials are not intentionally recorded.
+- **Regression coverage:** Dedicated PostgreSQL workflow covers hash-chain continuity, recursive metadata redaction, append-only UPDATE/DELETE rejection and oversized metadata failure. The workflow includes backend typecheck.
+- **CI:** All 14 workflows associated with the verified PR head completed successfully, including audit integrity, admin tenant isolation, student roster, parent/ward, student-login, parent provisioning, attendance, teacher assignment, Redis rate limiting, API health, fatal shutdown, SS1, SS23 and JSS3 checks. The staging-admin tests now preserve immutable audit rows and use per-test audit ID watermarks.
+- **Corrective fixes:** PostgreSQL dollar quoting was corrected to valid $$ delimiters. Test cleanup was updated rather than weakening append-only triggers.
+- **Production impact:** No production database, secrets, backup files or deployments were accessed or changed.
+- **Remaining:** No outstanding BSEC-029 implementation or verification blockers. Legacy best-effort audit remains only for non-critical telemetry; the sensitive admin/student paths described above use strict audit persistence.

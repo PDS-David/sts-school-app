@@ -177,6 +177,40 @@
       "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
       "attribution": "FAO: livestock services, marketing and value chains; accessed 2026-11-16.",
       "reuse_status": "PERMITTED"
+    },
+    {
+      "source_id": "SS23-EXT-SS1-AGRI-PRIOR-T1",
+      "class_name": "SS 3",
+      "term": "1st Term",
+      "canonical_subject": "Agricultural Science",
+      "title": "Earlier-class prior-learning crosswalk: SS1/SS2 Agriculture for SS3 First Term",
+      "url": "https://github.com/PDS-David/sts-school-app/blob/master/docs/ss1/sources/README.md",
+      "content": "Prior-learning crosswalk for SS3 Agricultural Science First-Term revision. The owner-supplied SS1 archive SHA-256 is 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e. Its SS1 First-Term Agricultural Science member SHA-256 is df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526; the SS1 Third-Term member SHA-256 is 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a. SS1 First-Term Week 1 covers agricultural extension and education, animal health, finance and marketing; Week 3 covers marketing systems; Week 4 identifies agricultural loan/credit schemes and the National Agricultural Insurance Scheme; Week 5 covers crop and animal improvement; Week 7 introduces fishery, fish farming and fish ponds. SS1 Third-Term Weeks 6 and 9-10 cover artificial insemination and livestock management, including animal health, diseases and parasites. SS2 Third-Term Agricultural Science member SHA-256 6abb32818845fa3739f287d2cc3e274149313bfb381074a623a2bce8c02b2811 covers Animal Nutrition in Weeks 9-10. This is a cross-class evidence summary, not a new SS3 instructional lesson. It establishes topic presence in earlier-class curriculum but does not certify instructional depth or specialist approval.",
+      "evidence": {
+        "locator": "SS1 archive and member hashes recorded in docs/ss1/sources/README.md and backend/src/db/ss1/sourceRegistry.json; SS2 T3 member hash recorded in backend/src/db/ss23/sourceRegistry.json.",
+        "explanation": "SS1 archive and the three SS1 Agriculture member hashes were verified directly from the recovered ZIP. The SS2 T3 Agriculture member hash is bound to the SS23 source registry. These records show the topic appears in an established earlier class; a subject specialist must still judge whether the earlier teaching depth is sufficient for each SS3 revision task."
+      },
+      "sha256": "0bc2d1693fe92cb63639b3dbcd097a89deb25aab39679bba1a8af8d1c029a7ae",
+      "rights": "Owner-supplied earlier-class curriculum evidence; the crosswalk is authored and no source lesson text or image is reproduced. Rights to any future extracts/media remain pending.",
+      "attribution": "Authored prior-learning crosswalk based on the owner-supplied SS1/SS2 Agricultural Science source documents.",
+      "reuse_status": "PENDING"
+    },
+    {
+      "source_id": "SS23-EXT-SS1-AGRI-PRIOR-T2",
+      "class_name": "SS 3",
+      "term": "2nd Term",
+      "canonical_subject": "Agricultural Science",
+      "title": "Earlier-class prior-learning crosswalk: SS1 Agriculture for SS3 Second Term",
+      "url": "https://github.com/PDS-David/sts-school-app/blob/master/docs/ss1/sources/README.md",
+      "content": "Prior-learning crosswalk for SS3 Agricultural Science Second-Term revision. The owner-supplied SS1 archive SHA-256 is 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e. Its SS1 First-Term Agricultural Science member SHA-256 is df1b516cdd8855d069a329d7aa627dbd0dcd3612dd10d254c53af9cb93a56526; the SS1 Third-Term member SHA-256 is 9e920bff3769d9d977c4b2849cc77c769b6033be9176f4f6b35c27935999e12a. SS1 First-Term Week 1 and Week 3 include agricultural marketing, marketing systems and marketing boards. SS1 First-Term Week 1 introduces veterinary medicine and animal health. SS1 Third-Term Week 8 covers factors predisposing livestock to disease; Weeks 9-10 cover livestock management, pig/cattle diseases and parasites. SS1 First-Term Week 9 covers parasites and pests. SS1 First-Term Week 5 introduces animal improvement and selection. These earlier-class source sections provide prior-learning evidence for the SS3 topics of agricultural marketing, routine livestock management, animal health, selected animal diseases and livestock parasites. This is a cross-class evidence summary, not a new SS3 instructional lesson. It establishes topic presence but does not certify instructional depth or specialist approval.",
+      "evidence": {
+        "locator": "SS1 archive and member hashes recorded in docs/ss1/sources/README.md and backend/src/db/ss1/sourceRegistry.json.",
+        "explanation": "SS1 archive and member hashes were verified directly from the recovered ZIP. The crosswalk identifies earlier-class topic presence; a subject specialist must still confirm that the earlier instruction is adequate for SS3 exam revision."
+      },
+      "sha256": "17958974220fc52b0adeb885b0be266f8efd32296c40e24c8f24e86d4274be6f",
+      "rights": "Owner-supplied earlier-class curriculum evidence; the crosswalk is authored and no source lesson text or image is reproduced. Rights to any future extracts/media remain pending.",
+      "attribution": "Authored prior-learning crosswalk based on the owner-supplied SS1/SS2 Agricultural Science source documents.",
+      "reuse_status": "PENDING"
     }
   ],
   "source_rules": [],
@@ -547,14 +581,60 @@
           "explanation": "FAO describes marketing, finance, extension and animal-health services as connected parts of livestock value chains and producer support."
         }
       ]
+    },
+    {
+      "id": "SS3AG-PRIOR-LEARNING-T1",
+      "source_id": "SS23-EXT-SS1-AGRI-PRIOR-T1",
+      "objective": "Earlier-class evidence for SS3 First-Term Agriculture revision topics is present in SS1/SS2 source curriculum.",
+      "objective_locator": "SS1 First- and Third-Term Agricultural Science sources; SS2 Third-Term Agricultural Science source.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T1-W1",
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T1-W2",
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T1-W3-4",
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T1-W5-6",
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T1-W7",
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T1-W8-9",
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T1-W10"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1 archive and member hashes recorded in docs/ss1/sources/README.md and backend/src/db/ss1/sourceRegistry.json; SS2 T3 member hash recorded in backend/src/db/ss23/sourceRegistry.json.",
+          "explanation": "SS1 archive and the three SS1 Agriculture member hashes were verified directly from the recovered ZIP. The SS2 T3 Agriculture member hash is bound to the SS23 source registry. These records show the topic appears in an established earlier class; a subject specialist must still judge whether the earlier teaching depth is sufficient for each SS3 revision task."
+        },
+        {
+          "locator": "SS2 Third-Term Agricultural Science member SHA-256 6abb32818845fa3739f287d2cc3e274149313bfb381074a623a2bce8c02b2811",
+          "explanation": "SS2 Third-Term Weeks 9-10 explicitly cover Animal Nutrition. The crosswalk shows topic presence, not specialist confirmation of depth."
+        }
+      ]
+    },
+    {
+      "id": "SS3AG-PRIOR-LEARNING-T2",
+      "source_id": "SS23-EXT-SS1-AGRI-PRIOR-T2",
+      "objective": "Earlier-class evidence for SS3 Second-Term Agriculture revision topics is present in SS1 source curriculum.",
+      "objective_locator": "SS1 First- and Third-Term Agricultural Science sources.",
+      "status": "PARTIAL",
+      "unit_ids": [
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T2-W1",
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T2-W2",
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T2-W3-4",
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T2-W5-6",
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T2-W7-8"
+      ],
+      "evidence": [
+        {
+          "locator": "SS1 archive and member hashes recorded in docs/ss1/sources/README.md and backend/src/db/ss1/sourceRegistry.json.",
+          "explanation": "SS1 archive and member hashes were verified directly from the recovered ZIP. The crosswalk identifies earlier-class topic presence; a subject specialist must still confirm that the earlier instruction is adequate for SS3 exam revision."
+        }
+      ]
     }
   ],
   "open_items": [
     {
       "id": "SS3AG-T1-ORIGINAL-ASSESSMENTS",
       "kind": "CONTENT",
-      "detail": "Original SS3 First-Term source assessment prompts and past-question locators have not been transcribed and reconciled.",
-      "required_action": "Inspect source pages; inventory original prompts and map them to revision topics. Do not label authored practice as original past questions.",
+      "detail": "One original source EVALUATION prompt has now been transcribed and matched to each of the seven First-Term revision units. The remaining evaluation/general-evaluation, reading/weekend-assignment and theory blocks are not yet fully reconciled.",
+      "required_action": "Continue the source-to-practice inventory for every remaining First-Term evaluation, general evaluation, theory, reading assignment and weekend assignment; preserve source numbering/options and keep all model answers labelled authored.",
       "affected_ids": [
         "PREP-SS3-AGRICULTURAL-SCIENCE-T1-W1",
         "PREP-SS3-AGRICULTURAL-SCIENCE-T1-W2",
@@ -595,8 +675,8 @@
     {
       "id": "SS3AG-T2-ORIGINAL-ASSESSMENTS",
       "kind": "CONTENT",
-      "detail": "Original SS3 Second-Term assessment prompts and past-question locators have not been transcribed and reconciled.",
-      "required_action": "Inspect source pages; inventory original prompts and map them to revision topics. Do not label authored practice as original past questions.",
+      "detail": "One original source EVALUATION prompt has now been transcribed and matched to each of the five Second-Term revision units. The remaining evaluation/general-evaluation, reading/weekend-assignment and theory blocks are not yet fully reconciled.",
+      "required_action": "Continue the source-to-practice inventory for every remaining Second-Term evaluation, general evaluation, theory, reading assignment and weekend assignment; preserve source numbering/options and keep all model answers labelled authored.",
       "affected_ids": [
         "PREP-SS3-AGRICULTURAL-SCIENCE-T2-W1",
         "PREP-SS3-AGRICULTURAL-SCIENCE-T2-W2",
@@ -623,8 +703,8 @@
     {
       "id": "SS3AG-ANSWER-MARKING-REVIEW",
       "kind": "VERIFICATION",
-      "detail": "Original source answer keys, worked explanations and marking allocations have not been independently verified.",
-      "required_action": "Reconcile each original prompt and marking guide; validate calculations and subject accuracy with an Agricultural Science specialist.",
+      "detail": "Twelve original evaluation prompts are now transcribed from the recovered SS3 source members, with authored answers and marking. The source asks for seven extension objectives but lists six; the progeny/pedigree distinction and Newcastle causative-agent answer require specialist validation. Other original answer keys and marks remain unverified.",
+      "required_action": "Have an Agricultural Science specialist verify all twelve authored model answers and marks, resolve the six-versus-seven extension objective discrepancy, validate progeny/pedigree selection, verify the Newcastle disease agent, and reconcile the remaining source assessment blocks.",
       "affected_ids": [
         "PREP-SS3-AGRICULTURAL-SCIENCE-T1-W1",
         "PREP-SS3-AGRICULTURAL-SCIENCE-T1-W2",
@@ -661,6 +741,37 @@
         "PREP-SS3-AGRICULTURAL-SCIENCE-T2-W7-8"
       ],
       "blocks_delivery": true
+    },
+    {
+      "id": "SS3AG-PRIOR-LEARNING-DEPTH-REVIEW",
+      "kind": "VERIFICATION",
+      "detail": "A source-hash-linked crosswalk now shows all twelve SS3 Agriculture revision topics are mentioned in the established SS1/SS2 Agriculture curriculum. Some earlier references are overview-level; topic presence alone does not prove that the depth of prior instruction is sufficient for every SS3 revision objective.",
+      "required_action": "Obtain independent Agricultural Science subject review of each SS3-to-SS1/SS2 mapping and confirm that every revision brief tests established prior learning only. If depth is insufficient, narrow or hold that revision unit rather than introducing new SS3 teaching.",
+      "affected_ids": [
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T1-W1",
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T1-W2",
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T1-W3-4",
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T1-W5-6",
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T1-W7",
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T1-W8-9",
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T1-W10",
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T2-W1",
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T2-W2",
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T2-W3-4",
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T2-W5-6",
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T2-W7-8"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "SS3AG-T1-EXTENSION-OBJECTIVE-COUNT",
+      "kind": "CONTENT",
+      "detail": "The SS3 First-Term Week 2 evaluation asks students to state seven objectives of agricultural extension, but the adjacent source body lists only six objectives.",
+      "required_action": "Verify the original printed page and obtain a subject-authoritative seventh objective or correct the assessment specification through a documented source decision. Do not invent a seventh objective.",
+      "affected_ids": [
+        "PREP-SS3-AGRICULTURAL-SCIENCE-T1-W2"
+      ],
+      "blocks_delivery": true
     }
   ],
   "units": [
@@ -682,34 +793,38 @@
         "Review the key terms and processes for Animal Nutrition and Malnutrition.",
         "Apply the topic to WAEC, NECO and JAMB command words and structured responses."
       ],
-      "body": "EXAM-PREPARATION REVISION BRIEF\n\nAnimal nutrition covers the energy, protein, minerals, vitamins, water and fibre needed for maintenance, growth, reproduction and production. A balanced ration matches the species and production stage. Malnutrition includes undernutrition, nutrient deficiency and harmful excess or imbalance. Causes include inadequate feed, poor feed quality, parasites, disease, competition and poor management. In exam answers, distinguish starvation from a specific nutrient deficiency and link signs to the likely nutritional problem.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. Original source question prompts, exact page locators and source-specific diagrams remain to be reconciled before student release.",
-      "body_sha256": "c3f7b6d65b23c7f9bb5fb2105b16891e3302208ed486321b66968a82ffca0427",
+      "body": "EXAM-PREPARATION REVISION BRIEF\n\nAnimal nutrition covers the energy, protein, minerals, vitamins, water and fibre needed for maintenance, growth, reproduction and production. A balanced ration matches the species and production stage. Malnutrition includes undernutrition, nutrient deficiency and harmful excess or imbalance. Causes include inadequate feed, poor feed quality, parasites, disease, competition and poor management. In exam answers, distinguish starvation from a specific nutrient deficiency and link signs to the likely nutritional problem.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. One original evaluation prompt is transcribed and source-located in the practice set; remaining evaluation, general-evaluation, reading/weekend-assignment blocks, exact page locators and source-specific diagrams remain to be reconciled before student release.",
+      "body_sha256": "d05299beafa6fff9380eec6759a238501dd9997cded8b58095572ea23e49fcf8",
       "practice": [
         {
           "id": "SS3AG-T1-W1-P1",
-          "question_origin": "AUTHORED_SUPPLEMENT",
-          "question_locator": "Original exam-style practice written for this revision brief; not copied from WAEC, NECO, JAMB or the supplied source.",
-          "question": "Define malnutrition and state two causes in farm animals.",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "SS3 First-Term Agricultural Science source, Week 1 EVALUATION, question 1.",
+          "question": "What is malnutrition in farm animals?",
           "answer_origin": "AUTHORED_SUPPLEMENT",
-          "answer_locator": "Authored model answer and marking guide.",
-          "answer": "Malnutrition is poor nutritional status caused by inadequate, excessive or imbalanced nutrient intake. Causes include inadequate feed, poor feed quality, nutrient deficiency, parasites, disease or poor management.",
-          "explanation": "The response is marked for the stated distinction or process and the relevant supporting explanation.",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer key.",
+          "answer": "Malnutrition occurs when the ration supplied to a farm animal does not provide all required nutrients in adequate quantities, causing nutrient deficiency and nutritional disease.",
+          "explanation": "The source defines malnutrition through an inadequate or imbalanced ration; this is an authored model response, not a source answer key.",
           "marks": 2,
           "marking": [
             {
-              "criterion": "Correct identification or definition plus a relevant explanation or example.",
-              "marks": 2
+              "criterion": "Gives the correct definition or first required fact.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives the second required fact or a relevant explanation/example.",
+              "marks": 1
             }
           ],
           "provenance": [
             {
-              "source_id": "SS23-EXT-SS3-AGRI-LIVESTOCK",
-              "source_sha256": "6e1868abebd4ee5ac1042da4e5cc1af91de8e58b4ca7d9c0862d1651142a583e",
-              "role": "AUTHORED_SUPPLEMENT",
-              "locator": "FAO: animal production, nutrition and husbandry",
-              "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
-              "attribution": "FAO: animal production, nutrition and husbandry; accessed 2026-11-16.",
-              "reuse_status": "PERMITTED"
+              "source_id": "SS23-SRC-d5fb9404af80",
+              "source_sha256": "d5fb9404af805c3c370fe851db2277bf97c836c08a9c30bb8b6b512ddea269bf",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Source map scheme/body mapping, 1st Term, Week 1.",
+              "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
+              "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
+              "reuse_status": "PENDING"
             }
           ]
         },
@@ -749,7 +864,7 @@
           "role": "ORIGINAL_SOURCE",
           "locator": "Source map scheme/body mapping, 1st Term, Week 1.",
           "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
-          "attribution": "Owner-supplied SS3 Agricultural Science source document; this package provides exam-preparation summaries and original practice, not verbatim transcription.",
+          "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
           "reuse_status": "PENDING"
         },
         {
@@ -760,6 +875,15 @@
           "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
           "attribution": "FAO: animal production, nutrition and husbandry; accessed 2026-11-16.",
           "reuse_status": "PERMITTED"
+        },
+        {
+          "source_id": "SS23-EXT-SS1-AGRI-PRIOR-T1",
+          "source_sha256": "0bc2d1693fe92cb63639b3dbcd097a89deb25aab39679bba1a8af8d1c029a7ae",
+          "role": "AUTHORED_SUPPLEMENT",
+          "locator": "SS1 T1 Weeks 1, 3, 4, 5 and 7; SS1 T3 Weeks 6 and 9-10; SS2 T3 Weeks 9-10.",
+          "rights": "Owner-supplied earlier-class curriculum evidence; the crosswalk is authored and no source lesson text or image is reproduced. Rights to any future extracts/media remain pending.",
+          "attribution": "Authored prior-learning crosswalk based on the owner-supplied SS1/SS2 Agricultural Science source documents.",
+          "reuse_status": "PENDING"
         }
       ],
       "state": {
@@ -788,34 +912,54 @@
         "Review the key terms and processes for Agricultural Extension.",
         "Apply the topic to WAEC, NECO and JAMB command words and structured responses."
       ],
-      "body": "EXAM-PREPARATION REVISION BRIEF\n\nAgricultural extension connects research, practical knowledge and farmers so they can make informed production decisions. Objectives include improving productivity, income, food security and resource management. Methods include individual contact such as farm visits, group methods such as demonstrations and field days, and mass communication such as radio and digital channels. Extension is two-way: agents listen, explain options, adapt advice to local conditions and gather feedback. Adoption is affected by cost, risk, literacy, trust, culture and input availability.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. Original source question prompts, exact page locators and source-specific diagrams remain to be reconciled before student release.",
-      "body_sha256": "3c7dafd1026c3c9776e1c01cf91fb5925e5d95b12f2d1d820232a73ddf5d8657",
+      "body": "EXAM-PREPARATION REVISION BRIEF\n\nAgricultural extension connects research, practical knowledge and farmers so they can make informed production decisions. Objectives include improving productivity, income, food security and resource management. Methods include individual contact such as farm visits, group methods such as demonstrations and field days, and mass communication such as radio and digital channels. Extension is two-way: agents listen, explain options, adapt advice to local conditions and gather feedback. Adoption is affected by cost, risk, literacy, trust, culture and input availability.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. One original evaluation prompt is transcribed and source-located in the practice set; remaining evaluation, general-evaluation, reading/weekend-assignment blocks, exact page locators and source-specific diagrams remain to be reconciled before student release.",
+      "body_sha256": "309037b27e37f9578070d3af6943d4f168143b42cee8609eb1c05bdb0c16c359",
       "practice": [
         {
           "id": "SS3AG-T1-W2-P1",
-          "question_origin": "AUTHORED_SUPPLEMENT",
-          "question_locator": "Original exam-style practice written for this revision brief; not copied from WAEC, NECO, JAMB or the supplied source.",
-          "question": "Define agricultural extension and state two objectives.",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "SS3 First-Term Agricultural Science source, Week 2 EVALUATION, question 1.",
+          "question": "State seven objectives of agricultural extension.",
           "answer_origin": "AUTHORED_SUPPLEMENT",
-          "answer_locator": "Authored model answer and marking guide.",
-          "answer": "Agricultural extension is an organised process of communicating and applying useful agricultural knowledge with farmers. Objectives include productivity, income, food security or sustainable resource use.",
-          "explanation": "The response is marked for the stated distinction or process and the relevant supporting explanation.",
-          "marks": 2,
+          "answer_locator": "Authored model answer; not represented as a source-printed answer key.",
+          "answer": "The source lists six objectives: educate farmers to replace less productive traditional methods with improved scientific techniques; improve rural living standards; identify proper marketing channels; help farmers access and supervise agricultural loans; link farmers with research institutes; and accelerate rural development. The source asks for seven but lists only six; a seventh is not invented.",
+          "explanation": "The source-body count does not reconcile with its seven-point question. This authored answer lists only the six objectives actually present and leaves the seventh unresolved for subject review.",
+          "marks": 6,
           "marking": [
             {
-              "criterion": "Correct identification or definition plus a relevant explanation or example.",
-              "marks": 2
+              "criterion": "First source-listed objective",
+              "marks": 1
+            },
+            {
+              "criterion": "Second source-listed objective",
+              "marks": 1
+            },
+            {
+              "criterion": "Third source-listed objective",
+              "marks": 1
+            },
+            {
+              "criterion": "Fourth source-listed objective",
+              "marks": 1
+            },
+            {
+              "criterion": "Fifth source-listed objective",
+              "marks": 1
+            },
+            {
+              "criterion": "Sixth source-listed objective",
+              "marks": 1
             }
           ],
           "provenance": [
             {
-              "source_id": "SS23-EXT-SS3-AGRI-LIVESTOCK",
-              "source_sha256": "6e1868abebd4ee5ac1042da4e5cc1af91de8e58b4ca7d9c0862d1651142a583e",
-              "role": "AUTHORED_SUPPLEMENT",
-              "locator": "FAO: animal production, nutrition and husbandry",
-              "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
-              "attribution": "FAO: animal production, nutrition and husbandry; accessed 2026-11-16.",
-              "reuse_status": "PERMITTED"
+              "source_id": "SS23-SRC-d5fb9404af80",
+              "source_sha256": "d5fb9404af805c3c370fe851db2277bf97c836c08a9c30bb8b6b512ddea269bf",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Source map scheme/body mapping, 1st Term, Week 2.",
+              "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
+              "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
+              "reuse_status": "PENDING"
             }
           ]
         },
@@ -855,7 +999,7 @@
           "role": "ORIGINAL_SOURCE",
           "locator": "Source map scheme/body mapping, 1st Term, Week 2.",
           "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
-          "attribution": "Owner-supplied SS3 Agricultural Science source document; this package provides exam-preparation summaries and original practice, not verbatim transcription.",
+          "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
           "reuse_status": "PENDING"
         },
         {
@@ -866,6 +1010,15 @@
           "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
           "attribution": "FAO: animal production, nutrition and husbandry; accessed 2026-11-16.",
           "reuse_status": "PERMITTED"
+        },
+        {
+          "source_id": "SS23-EXT-SS1-AGRI-PRIOR-T1",
+          "source_sha256": "0bc2d1693fe92cb63639b3dbcd097a89deb25aab39679bba1a8af8d1c029a7ae",
+          "role": "AUTHORED_SUPPLEMENT",
+          "locator": "SS1 T1 Weeks 1, 3, 4, 5 and 7; SS1 T3 Weeks 6 and 9-10; SS2 T3 Weeks 9-10.",
+          "rights": "Owner-supplied earlier-class curriculum evidence; the crosswalk is authored and no source lesson text or image is reproduced. Rights to any future extracts/media remain pending.",
+          "attribution": "Authored prior-learning crosswalk based on the owner-supplied SS1/SS2 Agricultural Science source documents.",
+          "reuse_status": "PENDING"
         }
       ],
       "state": {
@@ -894,34 +1047,38 @@
         "Review the key terms and processes for Fish Farming.",
         "Apply the topic to WAEC, NECO and JAMB command words and structured responses."
       ],
-      "body": "EXAM-PREPARATION REVISION BRIEF\n\nFish farming is the controlled rearing of fish for food or sale. Site selection considers clean water, soil that holds water, suitable topography, access, market proximity, security and flood risk. Production systems include ponds, tanks and cages. Good management includes pond preparation, suitable fingerlings, appropriate stocking density, balanced feed, water-quality monitoring, disease prevention and timely harvesting. Fish require suitable dissolved oxygen, temperature and pH. Overfeeding and excessive stocking can worsen water quality and increase disease risk.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. Original source question prompts, exact page locators and source-specific diagrams remain to be reconciled before student release.",
-      "body_sha256": "c7bf82efec1ca63df8c3a011ca1f13dc218e87282443c5757c038590ae5d6700",
+      "body": "EXAM-PREPARATION REVISION BRIEF\n\nFish farming is the controlled rearing of fish for food or sale. Site selection considers clean water, soil that holds water, suitable topography, access, market proximity, security and flood risk. Production systems include ponds, tanks and cages. Good management includes pond preparation, suitable fingerlings, appropriate stocking density, balanced feed, water-quality monitoring, disease prevention and timely harvesting. Fish require suitable dissolved oxygen, temperature and pH. Overfeeding and excessive stocking can worsen water quality and increase disease risk.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. One original evaluation prompt is transcribed and source-located in the practice set; remaining evaluation, general-evaluation, reading/weekend-assignment blocks, exact page locators and source-specific diagrams remain to be reconciled before student release.",
+      "body_sha256": "7741d36baf0eb775278a5c592540db500242c5deb994d9eca8eec00ad80aa4ac",
       "practice": [
         {
           "id": "SS3AG-T1-W3-4-P1",
-          "question_origin": "AUTHORED_SUPPLEMENT",
-          "question_locator": "Original exam-style practice written for this revision brief; not copied from WAEC, NECO, JAMB or the supplied source.",
-          "question": "State four factors considered when selecting a fish-farm site.",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "SS3 First-Term Agricultural Science source, Week 3 EVALUATION, question 1.",
+          "question": "Define fishery.",
           "answer_origin": "AUTHORED_SUPPLEMENT",
-          "answer_locator": "Authored model answer and marking guide.",
-          "answer": "Reliable clean water, suitable soil, access, market proximity, security, topography and low flood risk are valid factors.",
-          "explanation": "The response is marked for the stated distinction or process and the relevant supporting explanation.",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer key.",
+          "answer": "Fishery is the study of fish and other aquatic animals.",
+          "explanation": "The answer follows the source definition; fish farming and fishery are related but not identical terms.",
           "marks": 2,
           "marking": [
             {
-              "criterion": "Correct identification or definition plus a relevant explanation or example.",
-              "marks": 2
+              "criterion": "Gives the correct definition or first required fact.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives the second required fact or a relevant explanation/example.",
+              "marks": 1
             }
           ],
           "provenance": [
             {
-              "source_id": "SS23-EXT-SS3-AGRI-AQUACULTURE",
-              "source_sha256": "b3275ed9e5fd142528138c8381bc54054770fcf981750e730dc03a6266d33e57",
-              "role": "AUTHORED_SUPPLEMENT",
-              "locator": "FAO: fish farming and aquaculture feeding",
-              "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
-              "attribution": "FAO: fish farming and aquaculture feeding; accessed 2026-11-16.",
-              "reuse_status": "PERMITTED"
+              "source_id": "SS23-SRC-d5fb9404af80",
+              "source_sha256": "d5fb9404af805c3c370fe851db2277bf97c836c08a9c30bb8b6b512ddea269bf",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Source map scheme/body mapping, 1st Term, Week 3-4.",
+              "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
+              "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
+              "reuse_status": "PENDING"
             }
           ]
         },
@@ -961,7 +1118,7 @@
           "role": "ORIGINAL_SOURCE",
           "locator": "Source map scheme/body mapping, 1st Term, Week 3-4.",
           "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
-          "attribution": "Owner-supplied SS3 Agricultural Science source document; this package provides exam-preparation summaries and original practice, not verbatim transcription.",
+          "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
           "reuse_status": "PENDING"
         },
         {
@@ -972,6 +1129,15 @@
           "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
           "attribution": "FAO: fish farming and aquaculture feeding; accessed 2026-11-16.",
           "reuse_status": "PERMITTED"
+        },
+        {
+          "source_id": "SS23-EXT-SS1-AGRI-PRIOR-T1",
+          "source_sha256": "0bc2d1693fe92cb63639b3dbcd097a89deb25aab39679bba1a8af8d1c029a7ae",
+          "role": "AUTHORED_SUPPLEMENT",
+          "locator": "SS1 T1 Weeks 1, 3, 4, 5 and 7; SS1 T3 Weeks 6 and 9-10; SS2 T3 Weeks 9-10.",
+          "rights": "Owner-supplied earlier-class curriculum evidence; the crosswalk is authored and no source lesson text or image is reproduced. Rights to any future extracts/media remain pending.",
+          "attribution": "Authored prior-learning crosswalk based on the owner-supplied SS1/SS2 Agricultural Science source documents.",
+          "reuse_status": "PENDING"
         }
       ],
       "state": {
@@ -1000,34 +1166,38 @@
         "Review the key terms and processes for Animal Improvement.",
         "Apply the topic to WAEC, NECO and JAMB command words and structured responses."
       ],
-      "body": "EXAM-PREPARATION REVISION BRIEF\n\nAnimal improvement aims to increase useful inherited traits such as growth, fertility, milk or egg yield, meat quality, disease resistance and adaptation. Selection chooses breeding animals with desirable performance and health records. Crossbreeding combines traits from different breeds and may produce hybrid vigour; inbreeding increases relatedness and can expose harmful recessive traits. Improvement programmes need clear objectives, identification, accurate records, good nutrition and disease control. The source scheme assigns Weeks 5-6, while the source map identifies a Week Five body heading only; keep the revision range combined until the full body span is confirmed.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. Original source question prompts, exact page locators and source-specific diagrams remain to be reconciled before student release.",
-      "body_sha256": "6aa1fc0521ea482a4cdd1b09b7805d18cb8a39a615158f8fb50c929087cbfdd6",
+      "body": "EXAM-PREPARATION REVISION BRIEF\n\nAnimal improvement aims to increase useful inherited traits such as growth, fertility, milk or egg yield, meat quality, disease resistance and adaptation. Selection chooses breeding animals with desirable performance and health records. Crossbreeding combines traits from different breeds and may produce hybrid vigour; inbreeding increases relatedness and can expose harmful recessive traits. Improvement programmes need clear objectives, identification, accurate records, good nutrition and disease control. The source scheme assigns Weeks 5-6, while the source map identifies a Week Five body heading only; keep the revision range combined until the full body span is confirmed.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. One original evaluation prompt is transcribed and source-located in the practice set; remaining evaluation, general-evaluation, reading/weekend-assignment blocks, exact page locators and source-specific diagrams remain to be reconciled before student release.",
+      "body_sha256": "eee97fedca7889452fb715ff4dadf5325622cd24d54ca3d14a5143519ffe4e5f",
       "practice": [
         {
           "id": "SS3AG-T1-W5-6-P1",
-          "question_origin": "AUTHORED_SUPPLEMENT",
-          "question_locator": "Original exam-style practice written for this revision brief; not copied from WAEC, NECO, JAMB or the supplied source.",
-          "question": "Differentiate selection and crossbreeding.",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "SS3 First-Term Agricultural Science source, Week 5 EVALUATION, question 1.",
+          "question": "What is animal improvement?",
           "answer_origin": "AUTHORED_SUPPLEMENT",
-          "answer_locator": "Authored model answer and marking guide.",
-          "answer": "Selection chooses animals with desirable traits to breed; crossbreeding mates animals from different breeds to combine traits or exploit hybrid vigour.",
-          "explanation": "The response is marked for the stated distinction or process and the relevant supporting explanation.",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer key.",
+          "answer": "Animal improvement is the development and breeding of animals with desirable productive characteristics, including upgrading existing local breeds.",
+          "explanation": "The source definition concerns selecting and breeding animals with merit and improving local breeds; the answer is an authored model response.",
           "marks": 2,
           "marking": [
             {
-              "criterion": "Correct identification or definition plus a relevant explanation or example.",
-              "marks": 2
+              "criterion": "Gives the correct definition or first required fact.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives the second required fact or a relevant explanation/example.",
+              "marks": 1
             }
           ],
           "provenance": [
             {
-              "source_id": "SS23-EXT-SS3-AGRI-BIOTECH",
-              "source_sha256": "dbc19109352087a89a8d3e8e4c3aceed1a45321cc9c09ff7b214ed48fec89ef0",
-              "role": "AUTHORED_SUPPLEMENT",
-              "locator": "FAO: livestock biotechnology and artificial insemination",
-              "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
-              "attribution": "FAO: livestock biotechnology and artificial insemination; accessed 2026-11-16.",
-              "reuse_status": "PERMITTED"
+              "source_id": "SS23-SRC-d5fb9404af80",
+              "source_sha256": "d5fb9404af805c3c370fe851db2277bf97c836c08a9c30bb8b6b512ddea269bf",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Source map scheme/body mapping, 1st Term, Week 5-6.",
+              "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
+              "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
+              "reuse_status": "PENDING"
             }
           ]
         },
@@ -1067,7 +1237,7 @@
           "role": "ORIGINAL_SOURCE",
           "locator": "Source map scheme/body mapping, 1st Term, Week 5-6.",
           "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
-          "attribution": "Owner-supplied SS3 Agricultural Science source document; this package provides exam-preparation summaries and original practice, not verbatim transcription.",
+          "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
           "reuse_status": "PENDING"
         },
         {
@@ -1078,6 +1248,15 @@
           "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
           "attribution": "FAO: livestock biotechnology and artificial insemination; accessed 2026-11-16.",
           "reuse_status": "PERMITTED"
+        },
+        {
+          "source_id": "SS23-EXT-SS1-AGRI-PRIOR-T1",
+          "source_sha256": "0bc2d1693fe92cb63639b3dbcd097a89deb25aab39679bba1a8af8d1c029a7ae",
+          "role": "AUTHORED_SUPPLEMENT",
+          "locator": "SS1 T1 Weeks 1, 3, 4, 5 and 7; SS1 T3 Weeks 6 and 9-10; SS2 T3 Weeks 9-10.",
+          "rights": "Owner-supplied earlier-class curriculum evidence; the crosswalk is authored and no source lesson text or image is reproduced. Rights to any future extracts/media remain pending.",
+          "attribution": "Authored prior-learning crosswalk based on the owner-supplied SS1/SS2 Agricultural Science source documents.",
+          "reuse_status": "PENDING"
         }
       ],
       "state": {
@@ -1106,34 +1285,38 @@
         "Review the key terms and processes for Artificial Insemination.",
         "Apply the topic to WAEC, NECO and JAMB command words and structured responses."
       ],
-      "body": "EXAM-PREPARATION REVISION BRIEF\n\nArtificial insemination places semen into the female reproductive tract by a trained operator without natural mating. A programme includes selecting healthy breeding males, collecting semen hygienically, evaluating semen quality, diluting and preserving it, detecting oestrus and inseminating at the appropriate time. Benefits include wider use of selected sires and improved breeding records. Limitations include training and equipment costs, the need for accurate heat detection and careful semen handling. Poor hygiene or timing reduces success and can spread disease.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. Original source question prompts, exact page locators and source-specific diagrams remain to be reconciled before student release.",
-      "body_sha256": "e4b38392ccf9a2722fcdac33edbe269a507c3751a9af04ca25633cadef87308b",
+      "body": "EXAM-PREPARATION REVISION BRIEF\n\nArtificial insemination places semen into the female reproductive tract by a trained operator without natural mating. A programme includes selecting healthy breeding males, collecting semen hygienically, evaluating semen quality, diluting and preserving it, detecting oestrus and inseminating at the appropriate time. Benefits include wider use of selected sires and improved breeding records. Limitations include training and equipment costs, the need for accurate heat detection and careful semen handling. Poor hygiene or timing reduces success and can spread disease.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. One original evaluation prompt is transcribed and source-located in the practice set; remaining evaluation, general-evaluation, reading/weekend-assignment blocks, exact page locators and source-specific diagrams remain to be reconciled before student release.",
+      "body_sha256": "b7fa9ad68ca237abf13d9063deb882a1dd601b2aeec441ea5ee76c16813e08c5",
       "practice": [
         {
           "id": "SS3AG-T1-W7-P1",
-          "question_origin": "AUTHORED_SUPPLEMENT",
-          "question_locator": "Original exam-style practice written for this revision brief; not copied from WAEC, NECO, JAMB or the supplied source.",
-          "question": "Outline four steps in an artificial insemination programme.",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "SS3 First-Term Agricultural Science source, Week 7 EVALUATION, question 1.",
+          "question": "What is artificial Insemination?",
           "answer_origin": "AUTHORED_SUPPLEMENT",
-          "answer_locator": "Authored model answer and marking guide.",
-          "answer": "Select a suitable sire; collect semen hygienically; evaluate, dilute and store semen; detect oestrus; inseminate at the appropriate time.",
-          "explanation": "The response is marked for the stated distinction or process and the relevant supporting explanation.",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer key.",
+          "answer": "Artificial insemination is the introduction of semen into the reproductive tract of a female animal by a method other than natural mating.",
+          "explanation": "The response distinguishes artificial insemination from natural mating and follows the source definition.",
           "marks": 2,
           "marking": [
             {
-              "criterion": "Correct identification or definition plus a relevant explanation or example.",
-              "marks": 2
+              "criterion": "Gives the correct definition or first required fact.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives the second required fact or a relevant explanation/example.",
+              "marks": 1
             }
           ],
           "provenance": [
             {
-              "source_id": "SS23-EXT-SS3-AGRI-BIOTECH",
-              "source_sha256": "dbc19109352087a89a8d3e8e4c3aceed1a45321cc9c09ff7b214ed48fec89ef0",
-              "role": "AUTHORED_SUPPLEMENT",
-              "locator": "FAO: livestock biotechnology and artificial insemination",
-              "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
-              "attribution": "FAO: livestock biotechnology and artificial insemination; accessed 2026-11-16.",
-              "reuse_status": "PERMITTED"
+              "source_id": "SS23-SRC-d5fb9404af80",
+              "source_sha256": "d5fb9404af805c3c370fe851db2277bf97c836c08a9c30bb8b6b512ddea269bf",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Source map scheme/body mapping, 1st Term, Week 7.",
+              "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
+              "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
+              "reuse_status": "PENDING"
             }
           ]
         },
@@ -1173,7 +1356,7 @@
           "role": "ORIGINAL_SOURCE",
           "locator": "Source map scheme/body mapping, 1st Term, Week 7.",
           "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
-          "attribution": "Owner-supplied SS3 Agricultural Science source document; this package provides exam-preparation summaries and original practice, not verbatim transcription.",
+          "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
           "reuse_status": "PENDING"
         },
         {
@@ -1184,6 +1367,15 @@
           "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
           "attribution": "FAO: livestock biotechnology and artificial insemination; accessed 2026-11-16.",
           "reuse_status": "PERMITTED"
+        },
+        {
+          "source_id": "SS23-EXT-SS1-AGRI-PRIOR-T1",
+          "source_sha256": "0bc2d1693fe92cb63639b3dbcd097a89deb25aab39679bba1a8af8d1c029a7ae",
+          "role": "AUTHORED_SUPPLEMENT",
+          "locator": "SS1 T1 Weeks 1, 3, 4, 5 and 7; SS1 T3 Weeks 6 and 9-10; SS2 T3 Weeks 9-10.",
+          "rights": "Owner-supplied earlier-class curriculum evidence; the crosswalk is authored and no source lesson text or image is reproduced. Rights to any future extracts/media remain pending.",
+          "attribution": "Authored prior-learning crosswalk based on the owner-supplied SS1/SS2 Agricultural Science source documents.",
+          "reuse_status": "PENDING"
         }
       ],
       "state": {
@@ -1212,34 +1404,38 @@
         "Review the key terms and processes for Agricultural Financing.",
         "Apply the topic to WAEC, NECO and JAMB command words and structured responses."
       ],
-      "body": "EXAM-PREPARATION REVISION BRIEF\n\nAgricultural finance provides and manages money for farm establishment, production, processing and marketing. Fixed capital purchases long-term assets such as buildings and machinery; working capital pays recurring costs such as seed, feed, labour and transport. Sources include savings, cooperatives, banks, microfinance institutions, government programmes and value-chain partners. A loan should match the farm cash-flow cycle and repayment capacity. A farm budget estimates costs and returns; cash-flow records show when money enters and leaves. Borrowers should understand interest, collateral, fees and repayment terms.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. Original source question prompts, exact page locators and source-specific diagrams remain to be reconciled before student release.",
-      "body_sha256": "468cf2b3674591048647da707f055a2c65756cc9308484b633f4f8ca955862c1",
+      "body": "EXAM-PREPARATION REVISION BRIEF\n\nAgricultural finance provides and manages money for farm establishment, production, processing and marketing. Fixed capital purchases long-term assets such as buildings and machinery; working capital pays recurring costs such as seed, feed, labour and transport. Sources include savings, cooperatives, banks, microfinance institutions, government programmes and value-chain partners. A loan should match the farm cash-flow cycle and repayment capacity. A farm budget estimates costs and returns; cash-flow records show when money enters and leaves. Borrowers should understand interest, collateral, fees and repayment terms.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. One original evaluation prompt is transcribed and source-located in the practice set; remaining evaluation, general-evaluation, reading/weekend-assignment blocks, exact page locators and source-specific diagrams remain to be reconciled before student release.",
+      "body_sha256": "bbbacb97b1238e98b0953029493bcaf33d70c67de232c80586e2bdfed387d372",
       "practice": [
         {
           "id": "SS3AG-T1-W8-9-P1",
-          "question_origin": "AUTHORED_SUPPLEMENT",
-          "question_locator": "Original exam-style practice written for this revision brief; not copied from WAEC, NECO, JAMB or the supplied source.",
-          "question": "Differentiate fixed capital and working capital with one example each.",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "SS3 First-Term Agricultural Science source, Week 8 and 9 EVALUATION, question 1.",
+          "question": "What is agricultural finance?",
           "answer_origin": "AUTHORED_SUPPLEMENT",
-          "answer_locator": "Authored model answer and marking guide.",
-          "answer": "Fixed capital finances long-term assets such as buildings or machinery; working capital covers recurring operating costs such as feed, seed or wages.",
-          "explanation": "The response is marked for the stated distinction or process and the relevant supporting explanation.",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer key.",
+          "answer": "Agricultural finance is the acquisition and use of capital in agribusiness; it concerns the demand for and supply of funds for agricultural projects.",
+          "explanation": "The answer follows the source definition and distinguishes agricultural finance from agricultural credit, which is a refundable loan.",
           "marks": 2,
           "marking": [
             {
-              "criterion": "Correct identification or definition plus a relevant explanation or example.",
-              "marks": 2
+              "criterion": "Gives the correct definition or first required fact.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives the second required fact or a relevant explanation/example.",
+              "marks": 1
             }
           ],
           "provenance": [
             {
-              "source_id": "SS23-EXT-SS3-AGRI-FINANCE",
-              "source_sha256": "5ea91b79758614cc61ab1ab77e03c3e3a595a4a4d8275855905b4a9adf1728e1",
-              "role": "AUTHORED_SUPPLEMENT",
-              "locator": "FAO: livestock services, finance and marketing",
-              "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
-              "attribution": "FAO: livestock services, finance and marketing; accessed 2026-11-16.",
-              "reuse_status": "PERMITTED"
+              "source_id": "SS23-SRC-d5fb9404af80",
+              "source_sha256": "d5fb9404af805c3c370fe851db2277bf97c836c08a9c30bb8b6b512ddea269bf",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Source map scheme/body mapping, 1st Term, Week 8-9.",
+              "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
+              "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
+              "reuse_status": "PENDING"
             }
           ]
         },
@@ -1279,7 +1475,7 @@
           "role": "ORIGINAL_SOURCE",
           "locator": "Source map scheme/body mapping, 1st Term, Week 8-9.",
           "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
-          "attribution": "Owner-supplied SS3 Agricultural Science source document; this package provides exam-preparation summaries and original practice, not verbatim transcription.",
+          "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
           "reuse_status": "PENDING"
         },
         {
@@ -1290,6 +1486,15 @@
           "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
           "attribution": "FAO: livestock services, finance and marketing; accessed 2026-11-16.",
           "reuse_status": "PERMITTED"
+        },
+        {
+          "source_id": "SS23-EXT-SS1-AGRI-PRIOR-T1",
+          "source_sha256": "0bc2d1693fe92cb63639b3dbcd097a89deb25aab39679bba1a8af8d1c029a7ae",
+          "role": "AUTHORED_SUPPLEMENT",
+          "locator": "SS1 T1 Weeks 1, 3, 4, 5 and 7; SS1 T3 Weeks 6 and 9-10; SS2 T3 Weeks 9-10.",
+          "rights": "Owner-supplied earlier-class curriculum evidence; the crosswalk is authored and no source lesson text or image is reproduced. Rights to any future extracts/media remain pending.",
+          "attribution": "Authored prior-learning crosswalk based on the owner-supplied SS1/SS2 Agricultural Science source documents.",
+          "reuse_status": "PENDING"
         }
       ],
       "state": {
@@ -1318,34 +1523,38 @@
         "Review the key terms and processes for Agricultural Insurance.",
         "Apply the topic to WAEC, NECO and JAMB command words and structured responses."
       ],
-      "body": "EXAM-PREPARATION REVISION BRIEF\n\nAgricultural insurance transfers specified financial risks from a farmer to an insurer in return for a premium, subject to policy terms. A policy states the insured subject, covered event, exclusions, sum insured, premium, deductible and claim procedure. Insurance does not prevent hazards; it can reduce financial shock after a covered loss. Farmers should disclose material facts, keep production and purchase records, follow risk-reduction requirements and report losses promptly. A claim is assessed against the policy and evidence; not every loss is automatically payable.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. Original source question prompts, exact page locators and source-specific diagrams remain to be reconciled before student release.",
-      "body_sha256": "68890c04ae9661003231ee6d0639938c6bf68661dc0b4eff35855574d9e1eb2e",
+      "body": "EXAM-PREPARATION REVISION BRIEF\n\nAgricultural insurance transfers specified financial risks from a farmer to an insurer in return for a premium, subject to policy terms. A policy states the insured subject, covered event, exclusions, sum insured, premium, deductible and claim procedure. Insurance does not prevent hazards; it can reduce financial shock after a covered loss. Farmers should disclose material facts, keep production and purchase records, follow risk-reduction requirements and report losses promptly. A claim is assessed against the policy and evidence; not every loss is automatically payable.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. One original evaluation prompt is transcribed and source-located in the practice set; remaining evaluation, general-evaluation, reading/weekend-assignment blocks, exact page locators and source-specific diagrams remain to be reconciled before student release.",
+      "body_sha256": "2d9f4d2e670dbe00bf83b1908d77c5b52238456a45d710617097a63eab8ddf3f",
       "practice": [
         {
           "id": "SS3AG-T1-W10-P1",
-          "question_origin": "AUTHORED_SUPPLEMENT",
-          "question_locator": "Original exam-style practice written for this revision brief; not copied from WAEC, NECO, JAMB or the supplied source.",
-          "question": "Define agricultural insurance and explain the role of a premium.",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "SS3 First-Term Agricultural Science source, Week 10 EVALUATION, question 1.",
+          "question": "Define agricultural insurance.",
           "answer_origin": "AUTHORED_SUPPLEMENT",
-          "answer_locator": "Authored model answer and marking guide.",
-          "answer": "Agricultural insurance is a contract that transfers specified financial risks to an insurer under stated terms. A premium is the amount paid for cover.",
-          "explanation": "The response is marked for the stated distinction or process and the relevant supporting explanation.",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer key.",
+          "answer": "Agricultural insurance is an insurance policy that compensates farmers for specified losses, such as crop losses caused by natural disasters or revenue losses caused by falling commodity prices.",
+          "explanation": "The answer follows the source definition and gives the two source examples of production and price-related loss.",
           "marks": 2,
           "marking": [
             {
-              "criterion": "Correct identification or definition plus a relevant explanation or example.",
-              "marks": 2
+              "criterion": "Gives the correct definition or first required fact.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives the second required fact or a relevant explanation/example.",
+              "marks": 1
             }
           ],
           "provenance": [
             {
-              "source_id": "SS23-EXT-SS3-AGRI-INSURANCE",
-              "source_sha256": "b38831b6ab58be4b8c4b924c6d8da20639ca3c75481c8f63cc5b5f7d3b75c010",
-              "role": "AUTHORED_SUPPLEMENT",
-              "locator": "FAO: agricultural risk and rural finance",
-              "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
-              "attribution": "FAO: agricultural risk and rural finance; accessed 2026-11-16.",
-              "reuse_status": "PERMITTED"
+              "source_id": "SS23-SRC-d5fb9404af80",
+              "source_sha256": "d5fb9404af805c3c370fe851db2277bf97c836c08a9c30bb8b6b512ddea269bf",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Source map scheme/body mapping, 1st Term, Week 10.",
+              "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
+              "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
+              "reuse_status": "PENDING"
             }
           ]
         },
@@ -1385,7 +1594,7 @@
           "role": "ORIGINAL_SOURCE",
           "locator": "Source map scheme/body mapping, 1st Term, Week 10.",
           "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
-          "attribution": "Owner-supplied SS3 Agricultural Science source document; this package provides exam-preparation summaries and original practice, not verbatim transcription.",
+          "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
           "reuse_status": "PENDING"
         },
         {
@@ -1396,6 +1605,15 @@
           "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
           "attribution": "FAO: agricultural risk and rural finance; accessed 2026-11-16.",
           "reuse_status": "PERMITTED"
+        },
+        {
+          "source_id": "SS23-EXT-SS1-AGRI-PRIOR-T1",
+          "source_sha256": "0bc2d1693fe92cb63639b3dbcd097a89deb25aab39679bba1a8af8d1c029a7ae",
+          "role": "AUTHORED_SUPPLEMENT",
+          "locator": "SS1 T1 Weeks 1, 3, 4, 5 and 7; SS1 T3 Weeks 6 and 9-10; SS2 T3 Weeks 9-10.",
+          "rights": "Owner-supplied earlier-class curriculum evidence; the crosswalk is authored and no source lesson text or image is reproduced. Rights to any future extracts/media remain pending.",
+          "attribution": "Authored prior-learning crosswalk based on the owner-supplied SS1/SS2 Agricultural Science source documents.",
+          "reuse_status": "PENDING"
         }
       ],
       "state": {
@@ -1424,34 +1642,38 @@
         "Review the key terms and processes for Agricultural Marketing.",
         "Apply the topic to WAEC, NECO and JAMB command words and structured responses."
       ],
-      "body": "EXAM-PREPARATION REVISION BRIEF\n\nAgricultural marketing moves farm products from producers to consumers. Activities include assembling, grading, sorting, packaging, storage, transport, processing, wholesaling, retailing and market information. A marketing channel describes the route a product follows, such as farmer to cooperative to wholesaler to retailer to consumer. Price is affected by quality, season, supply, demand, transport, storage and bargaining power. Post-harvest losses reduce saleable quantity and income. Market information helps farmers decide what to produce, when to sell and where to sell.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. Original source question prompts, exact page locators and source-specific diagrams remain to be reconciled before student release.",
-      "body_sha256": "22ec53c8e066fcafd002939aa1385e8b204a15a033f2e46a2ebd3cfa7f18fd4a",
+      "body": "EXAM-PREPARATION REVISION BRIEF\n\nAgricultural marketing moves farm products from producers to consumers. Activities include assembling, grading, sorting, packaging, storage, transport, processing, wholesaling, retailing and market information. A marketing channel describes the route a product follows, such as farmer to cooperative to wholesaler to retailer to consumer. Price is affected by quality, season, supply, demand, transport, storage and bargaining power. Post-harvest losses reduce saleable quantity and income. Market information helps farmers decide what to produce, when to sell and where to sell.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. One original evaluation prompt is transcribed and source-located in the practice set; remaining evaluation, general-evaluation, reading/weekend-assignment blocks, exact page locators and source-specific diagrams remain to be reconciled before student release.",
+      "body_sha256": "e54ea6224f27c7fd11dbf361821b0657a17b7a56200ced11e0c8dea7c40623d4",
       "practice": [
         {
           "id": "SS3AG-T2-W1-P1",
-          "question_origin": "AUTHORED_SUPPLEMENT",
-          "question_locator": "Original exam-style practice written for this revision brief; not copied from WAEC, NECO, JAMB or the supplied source.",
-          "question": "List four functions of agricultural marketing.",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "SS3 Second-Term Agricultural Science source, Week 1 EVALUATION, question 1.",
+          "question": "What is agricultural marketing?",
           "answer_origin": "AUTHORED_SUPPLEMENT",
-          "answer_locator": "Authored model answer and marking guide.",
-          "answer": "Grading, sorting, packaging, storage, transport, processing, assembling, wholesaling, retailing and market information are valid.",
-          "explanation": "The response is marked for the stated distinction or process and the relevant supporting explanation.",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer key.",
+          "answer": "Agricultural marketing comprises the activities involved in moving farm produce from producers to final consumers.",
+          "explanation": "The answer follows the source definition; the wider marketing chain includes handling, storage, grading, transport and distribution.",
           "marks": 2,
           "marking": [
             {
-              "criterion": "Correct identification or definition plus a relevant explanation or example.",
-              "marks": 2
+              "criterion": "Gives the correct definition or first required fact.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives the second required fact or a relevant explanation/example.",
+              "marks": 1
             }
           ],
           "provenance": [
             {
-              "source_id": "SS23-EXT-SS3-AGRI-MARKETING",
-              "source_sha256": "1ed09b36f4ec6c84bf47eb5fc78bd081bdbedfedba7c05e356190e368822cc27",
-              "role": "AUTHORED_SUPPLEMENT",
-              "locator": "FAO: livestock services, marketing and value chains",
-              "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
-              "attribution": "FAO: livestock services, marketing and value chains; accessed 2026-11-16.",
-              "reuse_status": "PERMITTED"
+              "source_id": "SS23-SRC-b12f41490179",
+              "source_sha256": "b12f41490179307255b2958622b9106edc70fbb8d314e8981756e01475f50340",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Source map scheme/body mapping, 2nd Term, Week 1.",
+              "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
+              "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
+              "reuse_status": "PENDING"
             }
           ]
         },
@@ -1491,7 +1713,7 @@
           "role": "ORIGINAL_SOURCE",
           "locator": "Source map scheme/body mapping, 2nd Term, Week 1.",
           "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
-          "attribution": "Owner-supplied SS3 Agricultural Science source document; this package provides exam-preparation summaries and original practice, not verbatim transcription.",
+          "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
           "reuse_status": "PENDING"
         },
         {
@@ -1502,6 +1724,15 @@
           "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
           "attribution": "FAO: livestock services, marketing and value chains; accessed 2026-11-16.",
           "reuse_status": "PERMITTED"
+        },
+        {
+          "source_id": "SS23-EXT-SS1-AGRI-PRIOR-T2",
+          "source_sha256": "17958974220fc52b0adeb885b0be266f8efd32296c40e24c8f24e86d4274be6f",
+          "role": "AUTHORED_SUPPLEMENT",
+          "locator": "SS1 T1 Weeks 1, 3, 5 and 9; SS1 T3 Weeks 8-10.",
+          "rights": "Owner-supplied earlier-class curriculum evidence; the crosswalk is authored and no source lesson text or image is reproduced. Rights to any future extracts/media remain pending.",
+          "attribution": "Authored prior-learning crosswalk based on the owner-supplied SS1/SS2 Agricultural Science source documents.",
+          "reuse_status": "PENDING"
         }
       ],
       "state": {
@@ -1530,34 +1761,38 @@
         "Review the key terms and processes for Routine Management Practices in Farm Animals.",
         "Apply the topic to WAEC, NECO and JAMB command words and structured responses."
       ],
-      "body": "EXAM-PREPARATION REVISION BRIEF\n\nRoutine animal-management practices maintain health, welfare and productivity. They include suitable feed and clean water, species-appropriate housing and ventilation, cleaning pens and equipment, safe manure removal, daily observation, isolation of sick or newly arrived animals, records and veterinary care. Other practices may include identification, vaccination and parasite control under competent guidance. Handling should minimise fear, pain and injury. Biosecurity reduces the introduction and spread of pathogens through people, animals, equipment, feed and water.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. Original source question prompts, exact page locators and source-specific diagrams remain to be reconciled before student release.",
-      "body_sha256": "d6fb0bbbe9e40e350cffc033a84d0d7a6e72be8f4fee44ea81e98cdd49ddd4c2",
+      "body": "EXAM-PREPARATION REVISION BRIEF\n\nRoutine animal-management practices maintain health, welfare and productivity. They include suitable feed and clean water, species-appropriate housing and ventilation, cleaning pens and equipment, safe manure removal, daily observation, isolation of sick or newly arrived animals, records and veterinary care. Other practices may include identification, vaccination and parasite control under competent guidance. Handling should minimise fear, pain and injury. Biosecurity reduces the introduction and spread of pathogens through people, animals, equipment, feed and water.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. One original evaluation prompt is transcribed and source-located in the practice set; remaining evaluation, general-evaluation, reading/weekend-assignment blocks, exact page locators and source-specific diagrams remain to be reconciled before student release.",
+      "body_sha256": "beee25af2abe4b079038c845b35b4ae29d2f20358a4cab4aa51f321b40db24d6",
       "practice": [
         {
           "id": "SS3AG-T2-W2-P1",
-          "question_origin": "AUTHORED_SUPPLEMENT",
-          "question_locator": "Original exam-style practice written for this revision brief; not copied from WAEC, NECO, JAMB or the supplied source.",
-          "question": "State four routine management practices for farm animals.",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "SS3 Second-Term Agricultural Science source, Week 2 EVALUATION, question 1.",
+          "question": "Differentiate between progeny and pedigree selection.",
           "answer_origin": "AUTHORED_SUPPLEMENT",
-          "answer_locator": "Authored model answer and marking guide.",
-          "answer": "Suitable feeding, clean water, housing, cleaning, observation, records, vaccination, parasite control, identification and veterinary care are valid.",
-          "explanation": "The response is marked for the stated distinction or process and the relevant supporting explanation.",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer key.",
+          "answer": "Progeny selection assesses a breeding animal by the performance and characteristics of its offspring. Pedigree selection uses the animal’s ancestry and the recorded performance of its parents and other relatives to estimate breeding value.",
+          "explanation": "The source lists both methods but does not fully explain their distinction. This authored comparison is included as a model answer and remains subject to Agricultural Science specialist review.",
           "marks": 2,
           "marking": [
             {
-              "criterion": "Correct identification or definition plus a relevant explanation or example.",
-              "marks": 2
+              "criterion": "Gives the correct definition or first required fact.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives the second required fact or a relevant explanation/example.",
+              "marks": 1
             }
           ],
           "provenance": [
             {
-              "source_id": "SS23-EXT-SS3-AGRI-HUSBANDRY",
-              "source_sha256": "882fcf2c310e6e02a91b4c85d48de0c384b6f75182708446ab9c1ca5c2d99827",
-              "role": "AUTHORED_SUPPLEMENT",
-              "locator": "WOAH: good animal husbandry and production practices",
-              "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
-              "attribution": "WOAH: good animal husbandry and production practices; accessed 2026-11-16.",
-              "reuse_status": "PERMITTED"
+              "source_id": "SS23-SRC-b12f41490179",
+              "source_sha256": "b12f41490179307255b2958622b9106edc70fbb8d314e8981756e01475f50340",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Source map scheme/body mapping, 2nd Term, Week 2.",
+              "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
+              "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
+              "reuse_status": "PENDING"
             }
           ]
         },
@@ -1597,7 +1832,7 @@
           "role": "ORIGINAL_SOURCE",
           "locator": "Source map scheme/body mapping, 2nd Term, Week 2.",
           "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
-          "attribution": "Owner-supplied SS3 Agricultural Science source document; this package provides exam-preparation summaries and original practice, not verbatim transcription.",
+          "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
           "reuse_status": "PENDING"
         },
         {
@@ -1608,6 +1843,15 @@
           "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
           "attribution": "WOAH: good animal husbandry and production practices; accessed 2026-11-16.",
           "reuse_status": "PERMITTED"
+        },
+        {
+          "source_id": "SS23-EXT-SS1-AGRI-PRIOR-T2",
+          "source_sha256": "17958974220fc52b0adeb885b0be266f8efd32296c40e24c8f24e86d4274be6f",
+          "role": "AUTHORED_SUPPLEMENT",
+          "locator": "SS1 T1 Weeks 1, 3, 5 and 9; SS1 T3 Weeks 8-10.",
+          "rights": "Owner-supplied earlier-class curriculum evidence; the crosswalk is authored and no source lesson text or image is reproduced. Rights to any future extracts/media remain pending.",
+          "attribution": "Authored prior-learning crosswalk based on the owner-supplied SS1/SS2 Agricultural Science source documents.",
+          "reuse_status": "PENDING"
         }
       ],
       "state": {
@@ -1636,34 +1880,38 @@
         "Review the key terms and processes for Principles of Animal Health Management.",
         "Apply the topic to WAEC, NECO and JAMB command words and structured responses."
       ],
-      "body": "EXAM-PREPARATION REVISION BRIEF\n\nAnimal health management prevents disease, detects problems early and protects animal welfare and public health. Disease risk is influenced by the host, the infectious agent and the environment. Prevention includes clean housing, nutrition, safe water, ventilation, reduced stress, quarantine, vaccination where recommended, parasite management and veterinary assessment. Biosecurity controls movement of animals, people, equipment and materials that may carry pathogens. Surveillance and records help identify unusual illness or production changes. Responsible antimicrobial use helps limit antimicrobial resistance.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. Original source question prompts, exact page locators and source-specific diagrams remain to be reconciled before student release.",
-      "body_sha256": "5351e2b8ba30a643ba24e4edd9e441691892c28677d116043b57e47ffc64f3f1",
+      "body": "EXAM-PREPARATION REVISION BRIEF\n\nAnimal health management prevents disease, detects problems early and protects animal welfare and public health. Disease risk is influenced by the host, the infectious agent and the environment. Prevention includes clean housing, nutrition, safe water, ventilation, reduced stress, quarantine, vaccination where recommended, parasite management and veterinary assessment. Biosecurity controls movement of animals, people, equipment and materials that may carry pathogens. Surveillance and records help identify unusual illness or production changes. Responsible antimicrobial use helps limit antimicrobial resistance.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. One original evaluation prompt is transcribed and source-located in the practice set; remaining evaluation, general-evaluation, reading/weekend-assignment blocks, exact page locators and source-specific diagrams remain to be reconciled before student release.",
+      "body_sha256": "e1d9bad19139a2d9e153b4ce466a00c95e3c31a1d81f005ab32904fb3a2ba5c2",
       "practice": [
         {
           "id": "SS3AG-T2-W3-4-P1",
-          "question_origin": "AUTHORED_SUPPLEMENT",
-          "question_locator": "Original exam-style practice written for this revision brief; not copied from WAEC, NECO, JAMB or the supplied source.",
-          "question": "Name the three broad components of the disease triangle.",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "SS3 Second-Term Agricultural Science source, Weeks 3 and 4 EVALUATION, question 1.",
+          "question": "Define livestock diseases.",
           "answer_origin": "AUTHORED_SUPPLEMENT",
-          "answer_locator": "Authored model answer and marking guide.",
-          "answer": "The host, the disease-causing agent and the environment.",
-          "explanation": "The response is marked for the stated distinction or process and the relevant supporting explanation.",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer key.",
+          "answer": "A livestock disease is a condition in which an animal deviates from normal health or its normal body processes are interfered with, reducing its ability to function and produce normally.",
+          "explanation": "The answer follows the source definition and identifies the effect on normal animal function or production.",
           "marks": 2,
           "marking": [
             {
-              "criterion": "Correct identification or definition plus a relevant explanation or example.",
-              "marks": 2
+              "criterion": "Gives the correct definition or first required fact.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives the second required fact or a relevant explanation/example.",
+              "marks": 1
             }
           ],
           "provenance": [
             {
-              "source_id": "SS23-EXT-SS3-AGRI-HEALTH",
-              "source_sha256": "c933f6aa15631895686be05e370ce878137088280114759dccd27f9aebb52799",
-              "role": "AUTHORED_SUPPLEMENT",
-              "locator": "FAO: animal health and disease prevention",
-              "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
-              "attribution": "FAO: animal health and disease prevention; accessed 2026-11-16.",
-              "reuse_status": "PERMITTED"
+              "source_id": "SS23-SRC-b12f41490179",
+              "source_sha256": "b12f41490179307255b2958622b9106edc70fbb8d314e8981756e01475f50340",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Source map scheme/body mapping, 2nd Term, Week 3-4.",
+              "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
+              "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
+              "reuse_status": "PENDING"
             }
           ]
         },
@@ -1703,7 +1951,7 @@
           "role": "ORIGINAL_SOURCE",
           "locator": "Source map scheme/body mapping, 2nd Term, Week 3-4.",
           "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
-          "attribution": "Owner-supplied SS3 Agricultural Science source document; this package provides exam-preparation summaries and original practice, not verbatim transcription.",
+          "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
           "reuse_status": "PENDING"
         },
         {
@@ -1714,6 +1962,15 @@
           "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
           "attribution": "FAO: animal health and disease prevention; accessed 2026-11-16.",
           "reuse_status": "PERMITTED"
+        },
+        {
+          "source_id": "SS23-EXT-SS1-AGRI-PRIOR-T2",
+          "source_sha256": "17958974220fc52b0adeb885b0be266f8efd32296c40e24c8f24e86d4274be6f",
+          "role": "AUTHORED_SUPPLEMENT",
+          "locator": "SS1 T1 Weeks 1, 3, 5 and 9; SS1 T3 Weeks 8-10.",
+          "rights": "Owner-supplied earlier-class curriculum evidence; the crosswalk is authored and no source lesson text or image is reproduced. Rights to any future extracts/media remain pending.",
+          "attribution": "Authored prior-learning crosswalk based on the owner-supplied SS1/SS2 Agricultural Science source documents.",
+          "reuse_status": "PENDING"
         }
       ],
       "state": {
@@ -1742,34 +1999,42 @@
         "Review the key terms and processes for Selected Animal Diseases.",
         "Apply the topic to WAEC, NECO and JAMB command words and structured responses."
       ],
-      "body": "EXAM-PREPARATION REVISION BRIEF\n\nAnimal-disease exam questions require learners to connect a disease with its cause, signs, transmission, effects and control. Signs may include fever, diarrhoea, coughing, lameness, skin lesions, reduced appetite or production decline; they are not always specific to one disease. Transmission may occur through direct contact, aerosols, contaminated feed or water, vectors, equipment or animal products. Control depends on the disease and may include isolation, hygiene, vaccination, vector control, movement restrictions, safe carcass disposal and veterinary diagnosis. Zoonotic diseases also require attention to human exposure and food safety.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. Original source question prompts, exact page locators and source-specific diagrams remain to be reconciled before student release.",
-      "body_sha256": "d44adb27afc9ab0c14ca6d6d26e99bc27f84e949eb1e043ac30490a5e3e300fc",
+      "body": "EXAM-PREPARATION REVISION BRIEF\n\nAnimal-disease exam questions require learners to connect a disease with its cause, signs, transmission, effects and control. Signs may include fever, diarrhoea, coughing, lameness, skin lesions, reduced appetite or production decline; they are not always specific to one disease. Transmission may occur through direct contact, aerosols, contaminated feed or water, vectors, equipment or animal products. Control depends on the disease and may include isolation, hygiene, vaccination, vector control, movement restrictions, safe carcass disposal and veterinary diagnosis. Zoonotic diseases also require attention to human exposure and food safety.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. One original evaluation prompt is transcribed and source-located in the practice set; remaining evaluation, general-evaluation, reading/weekend-assignment blocks, exact page locators and source-specific diagrams remain to be reconciled before student release.",
+      "body_sha256": "276eaf5a65dc47fbc3b52f98c8faa1e609f0a905e90300265455c4b83886b61b",
       "practice": [
         {
           "id": "SS3AG-T2-W5-6-P1",
-          "question_origin": "AUTHORED_SUPPLEMENT",
-          "question_locator": "Original exam-style practice written for this revision brief; not copied from WAEC, NECO, JAMB or the supplied source.",
-          "question": "List four routes by which animal diseases can spread.",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "SS3 Second-Term Agricultural Science source, Week 5 and 6 EVALUATION, question 1 (parts a-c).",
+          "question": "a. Name the causative agent of Newcastle disease. b. What are the symptoms? c. How can it be controlled?",
           "answer_origin": "AUTHORED_SUPPLEMENT",
-          "answer_locator": "Authored model answer and marking guide.",
-          "answer": "Direct contact, aerosols, contaminated feed or water, vectors, equipment, animal products and movement of infected animals are valid.",
-          "explanation": "The response is marked for the stated distinction or process and the relevant supporting explanation.",
-          "marks": 2,
+          "answer_locator": "Authored model answer; not represented as a source-printed answer key.",
+          "answer": "a. Newcastle disease virus. b. The source lists sneezing, nasal discharge, difficult breathing, loss of appetite, diarrhoea, paralysis, somersaulting, twisting of the neck and circling movement. c. Vaccination, good sanitation and disinfection of poultry buildings.",
+          "explanation": "The symptoms and control measures follow the source table. The causative-agent name is an authored factual answer because the source evaluation asks for it but the adjacent table does not name the agent.",
+          "marks": 3,
           "marking": [
             {
-              "criterion": "Correct identification or definition plus a relevant explanation or example.",
-              "marks": 2
+              "criterion": "Names the causative agent.",
+              "marks": 1
+            },
+            {
+              "criterion": "States source-supported symptoms.",
+              "marks": 1
+            },
+            {
+              "criterion": "States source-supported control measures.",
+              "marks": 1
             }
           ],
           "provenance": [
             {
-              "source_id": "SS23-EXT-SS3-AGRI-HEALTH",
-              "source_sha256": "c933f6aa15631895686be05e370ce878137088280114759dccd27f9aebb52799",
-              "role": "AUTHORED_SUPPLEMENT",
-              "locator": "FAO: animal health and disease prevention",
-              "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
-              "attribution": "FAO: animal health and disease prevention; accessed 2026-11-16.",
-              "reuse_status": "PERMITTED"
+              "source_id": "SS23-SRC-b12f41490179",
+              "source_sha256": "b12f41490179307255b2958622b9106edc70fbb8d314e8981756e01475f50340",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Source map scheme/body mapping, 2nd Term, Week 5-6.",
+              "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
+              "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
+              "reuse_status": "PENDING"
             }
           ]
         },
@@ -1809,7 +2074,7 @@
           "role": "ORIGINAL_SOURCE",
           "locator": "Source map scheme/body mapping, 2nd Term, Week 5-6.",
           "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
-          "attribution": "Owner-supplied SS3 Agricultural Science source document; this package provides exam-preparation summaries and original practice, not verbatim transcription.",
+          "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
           "reuse_status": "PENDING"
         },
         {
@@ -1820,6 +2085,15 @@
           "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
           "attribution": "FAO: animal health and disease prevention; accessed 2026-11-16.",
           "reuse_status": "PERMITTED"
+        },
+        {
+          "source_id": "SS23-EXT-SS1-AGRI-PRIOR-T2",
+          "source_sha256": "17958974220fc52b0adeb885b0be266f8efd32296c40e24c8f24e86d4274be6f",
+          "role": "AUTHORED_SUPPLEMENT",
+          "locator": "SS1 T1 Weeks 1, 3, 5 and 9; SS1 T3 Weeks 8-10.",
+          "rights": "Owner-supplied earlier-class curriculum evidence; the crosswalk is authored and no source lesson text or image is reproduced. Rights to any future extracts/media remain pending.",
+          "attribution": "Authored prior-learning crosswalk based on the owner-supplied SS1/SS2 Agricultural Science source documents.",
+          "reuse_status": "PENDING"
         }
       ],
       "state": {
@@ -1848,34 +2122,38 @@
         "Review the key terms and processes for Livestock Parasites.",
         "Apply the topic to WAEC, NECO and JAMB command words and structured responses."
       ],
-      "body": "EXAM-PREPARATION REVISION BRIEF\n\nLivestock parasites live on or in a host and obtain resources at the host's expense. Ectoparasites live on the body surface and include ticks, lice and mites. Endoparasites live inside the body and include gastrointestinal worms, flukes and some protozoa. Effects include irritation, blood loss, tissue damage, poor growth, reduced production, anaemia and transmission of pathogens. Control depends on the parasite and may include clean housing, pasture management, quarantine, observation and targeted treatment under veterinary guidance. Indiscriminate drug use can promote resistance.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. Original source question prompts, exact page locators and source-specific diagrams remain to be reconciled before student release.",
-      "body_sha256": "66f9ab74abbf287c19044e74e34f25c13f95b7bfea31af90e84540c9df552723",
+      "body": "EXAM-PREPARATION REVISION BRIEF\n\nLivestock parasites live on or in a host and obtain resources at the host's expense. Ectoparasites live on the body surface and include ticks, lice and mites. Endoparasites live inside the body and include gastrointestinal worms, flukes and some protozoa. Effects include irritation, blood loss, tissue damage, poor growth, reduced production, anaemia and transmission of pathogens. Control depends on the parasite and may include clean housing, pasture management, quarantine, observation and targeted treatment under veterinary guidance. Indiscriminate drug use can promote resistance.\n\nWAEC / NECO / JAMB response approach: define the key term, organise the answer under the command word, give accurate examples and explain cause-and-effect relationships. For a comparison, state both sides using the same basis. For a process, write the stages in sequence. For a calculation, show the formula, substitution, units and final interpretation. These are revision notes and original exam-style practice; they are not a new SS3 instructional lesson and are not copied past questions.\n\nSource boundary: the source map identifies this topic and its scheme/body anchor. The revision summary is newly authored. One original evaluation prompt is transcribed and source-located in the practice set; remaining evaluation, general-evaluation, reading/weekend-assignment blocks, exact page locators and source-specific diagrams remain to be reconciled before student release.",
+      "body_sha256": "b1ed0936019aa256cf50c291f2586ef2d2fd99d3ab901f18c2b4bedc8a4bcc93",
       "practice": [
         {
           "id": "SS3AG-T2-W7-8-P1",
-          "question_origin": "AUTHORED_SUPPLEMENT",
-          "question_locator": "Original exam-style practice written for this revision brief; not copied from WAEC, NECO, JAMB or the supplied source.",
-          "question": "Differentiate ectoparasites and endoparasites with two examples of each.",
+          "question_origin": "ORIGINAL_SOURCE",
+          "question_locator": "SS3 Second-Term Agricultural Science source, Week 7 and 8 EVALUATION, question 1.",
+          "question": "What are endoparasites?",
           "answer_origin": "AUTHORED_SUPPLEMENT",
-          "answer_locator": "Authored model answer and marking guide.",
-          "answer": "Ectoparasites live on the body surface, e.g. ticks and lice. Endoparasites live inside the body, e.g. roundworms and flukes.",
-          "explanation": "The response is marked for the stated distinction or process and the relevant supporting explanation.",
+          "answer_locator": "Authored model answer; not represented as a source-printed answer key.",
+          "answer": "Endoparasites are parasites that live within the body of their host animal; examples in the source include liver flukes, tapeworms and roundworms.",
+          "explanation": "The answer follows the source definition and gives examples that are listed in the source.",
           "marks": 2,
           "marking": [
             {
-              "criterion": "Correct identification or definition plus a relevant explanation or example.",
-              "marks": 2
+              "criterion": "Gives the correct definition or first required fact.",
+              "marks": 1
+            },
+            {
+              "criterion": "Gives the second required fact or a relevant explanation/example.",
+              "marks": 1
             }
           ],
           "provenance": [
             {
-              "source_id": "SS23-EXT-SS3-AGRI-HEALTH",
-              "source_sha256": "c933f6aa15631895686be05e370ce878137088280114759dccd27f9aebb52799",
-              "role": "AUTHORED_SUPPLEMENT",
-              "locator": "FAO: animal health and disease prevention",
-              "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
-              "attribution": "FAO: animal health and disease prevention; accessed 2026-11-16.",
-              "reuse_status": "PERMITTED"
+              "source_id": "SS23-SRC-b12f41490179",
+              "source_sha256": "b12f41490179307255b2958622b9106edc70fbb8d314e8981756e01475f50340",
+              "role": "ORIGINAL_SOURCE",
+              "locator": "Source map scheme/body mapping, 2nd Term, Week 7-8.",
+              "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
+              "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
+              "reuse_status": "PENDING"
             }
           ]
         },
@@ -1915,7 +2193,7 @@
           "role": "ORIGINAL_SOURCE",
           "locator": "Source map scheme/body mapping, 2nd Term, Week 7-8.",
           "rights": "Owner-supplied source archive; redistribution/reuse status of original extracts is not independently established.",
-          "attribution": "Owner-supplied SS3 Agricultural Science source document; this package provides exam-preparation summaries and original practice, not verbatim transcription.",
+          "attribution": "Owner-supplied SS3 Agricultural Science source document; selected original evaluation prompts are transcribed verbatim; revision summaries and model answers are authored supplements.",
           "reuse_status": "PENDING"
         },
         {
@@ -1926,6 +2204,15 @@
           "rights": "Factual material paraphrased; no verbatim text or third-party images reproduced. Rights to any future media must be assessed separately.",
           "attribution": "FAO: animal health and disease prevention; accessed 2026-11-16.",
           "reuse_status": "PERMITTED"
+        },
+        {
+          "source_id": "SS23-EXT-SS1-AGRI-PRIOR-T2",
+          "source_sha256": "17958974220fc52b0adeb885b0be266f8efd32296c40e24c8f24e86d4274be6f",
+          "role": "AUTHORED_SUPPLEMENT",
+          "locator": "SS1 T1 Weeks 1, 3, 5 and 9; SS1 T3 Weeks 8-10.",
+          "rights": "Owner-supplied earlier-class curriculum evidence; the crosswalk is authored and no source lesson text or image is reproduced. Rights to any future extracts/media remain pending.",
+          "attribution": "Authored prior-learning crosswalk based on the owner-supplied SS1/SS2 Agricultural Science source documents.",
+          "reuse_status": "PENDING"
         }
       ],
       "state": {

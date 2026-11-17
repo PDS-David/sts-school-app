@@ -1,6 +1,6 @@
 # SS2 / SS3 original source receipt — 2026-11-13
 
-Archives were supplied by the owner in-session. They are **not committed** (no repository-upload authorisation, unlike SSS1). Re-supply is needed to re-run extraction; identity is pinned by the hashes below and in `SOURCE_ASSIGNMENTS.csv` (100 members, SHA-256 each).
+Archives were supplied by the owner and are **not committed** (no repository-upload authorisation, unlike SSS1). Both exact combined archives were reattached and revalidated on 2026-11-17; all 100 members were extracted successfully. See `REVALIDATION_20261117.md` for the current archive receipt, member counts, header/duplicate anomalies, missing terms and four unresolved source-version differences. Identity remains pinned by the hashes below and in `SOURCE_ASSIGNMENTS.csv`.
 
 | Archive | SHA-256 | Members |
 |---|---|---|

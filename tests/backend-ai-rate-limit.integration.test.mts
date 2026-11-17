@@ -11,7 +11,7 @@ after(async () => {
   await pool.end();
 });
 
-test('AI endpoints enforce a per-account limit without Redis and isolate users sharing an IP', async () => {
+test('AI endpoints enforce a shared Redis per-account limit and isolate users sharing an IP', async () => {
   const suffix = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
   const usernames = [`bsec13-a-${suffix}`, `bsec13-b-${suffix}`, `bsec13-admin-${suffix}`];
   let userIds: string[] = [];

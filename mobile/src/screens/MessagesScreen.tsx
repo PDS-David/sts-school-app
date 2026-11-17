@@ -52,6 +52,7 @@ export default function MessagesScreen() {
   const [sending,      setSending]      = useState(false);
   const [sendError, setSendError] = useState('');
   const threadRequestRef = useRef(0);
+  const draftsByContactRef = useRef<Record<string, string>>({});
   const flatRef = useRef<FlatList>(null);
 
   useEffect(() => {
@@ -66,7 +67,12 @@ export default function MessagesScreen() {
   }, [contactsRetry]);
 
   const openConversation = async (c: Contact) => {
+    if (activeContact && activeContact.id !== c.id) {
+      draftsByContactRef.current[activeContact.id] = body;
+    }
+    const nextDraft = c.id === activeContact?.id ? body : draftsByContactRef.current[c.id] ?? '';
     const requestId = ++threadRequestRef.current;
+    setBody(nextDraft);
     setActiveContact(c);
     setThread([]);
     setThreadLoading(true);
@@ -108,7 +114,13 @@ export default function MessagesScreen() {
       // in flight. Never clear that conversation's draft or append the
       // previous recipient's message to its thread.
       const stillOnConversation = threadRequestRef.current === conversationRequest && activeContact?.id === recipientId;
-      if (stillOnConversation) setBody(current => current === outgoing ? '' : current);
+      // Drafts belong to a recipient, not to the shared admin thread screen.
+      // Clear only the exact text accepted by the server/outbox; newer text
+      // typed while the request was pending remains saved for this contact.
+      if ((draftsByContactRef.current[recipientId] ?? '').trim() === outgoing) {
+        draftsByContactRef.current[recipientId] = '';
+        if (activeContact?.id === recipientId) setBody(current => current.trim() === outgoing ? '' : current);
+      }
       // Append directly instead of re-fetching: works the same whether the
       // message reached the server or was queued offline (pending=true).
       if (data?.message) {
@@ -150,7 +162,7 @@ export default function MessagesScreen() {
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         {/* Header */}
         <View style={styles.threadHeader}>
-          <TouchableOpacity onPress={() => { threadRequestRef.current += 1; setThreadLoading(false); setActiveContact(null); }} style={{ padding: 6 }}>
+          <TouchableOpacity onPress={() => { threadRequestRef.current += 1; setThreadLoading(false); setActiveContact(null); }} style={{ padding: 6 }} accessibilityRole="button" accessibilityLabel="Back to contacts">
             <Ionicons name="arrow-back" size={22} color={Colors.white} />
           </TouchableOpacity>
           <View style={styles.threadAvatar}>
@@ -195,7 +207,7 @@ export default function MessagesScreen() {
         <View style={[styles.inputRow, { paddingBottom: Spacing.sm + insets.bottom }]}>
           <Input
             value={body}
-            onChangeText={(value) => { setBody(value); setSendError(''); }}
+            onChangeText={(value) => { setBody(value); if (activeContact) draftsByContactRef.current[activeContact.id] = value; setSendError(''); }}
             placeholder="Type a message…"
             style={{ flex: 1, marginBottom: 0 }}
             multiline

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
@@ -58,29 +58,41 @@ export default function FinanceScreen({ navigation }: any) {
     student_id: '', term_id: '', fee_item_ids: [],
   });
   const [saving, setSaving] = useState(false);
+  const dataRequestRef = useRef(0);
+  const invoiceOptionsRequestRef = useRef(0);
 
   const fetch = async () => {
+    // A school/ward switch can start a second load before the first one
+    // finishes. Only the newest request may update the visible finance data.
+    const requestId = ++dataRequestRef.current;
     const invUrl = isParent && selectedWardId
       ? `/finance/invoices?student_id=${selectedWardId}`
       : '/finance/invoices';
+    const schoolCode = selectedSchoolCode;
     setLoading(true);
     setLoadError('');
-    setInvoices([]);
-    setFeeItems([]);
     const errors: string[] = [];
+    let nextInvoices: any[] = [];
+    let nextFeeItems: any[] = [];
     try {
       const { data } = await api.get(invUrl);
-      setInvoices(data.invoices ?? []);
+      nextInvoices = data.invoices ?? [];
     } catch { errors.push('invoices'); }
     try {
       // finance_admin has no school of its own — fee items are school-scoped.
-      const { data } = await api.get('/finance/fee-items', { params: { school_code: isFinanceAdmin ? (selectedSchoolCode ?? undefined) : undefined } });
-      setFeeItems(data.fee_items ?? []);
+      const { data } = await api.get('/finance/fee-items', { params: { school_code: isFinanceAdmin ? (schoolCode ?? undefined) : isParent ? (selectedWard?.school_code ?? undefined) : undefined } });
+      nextFeeItems = data.fee_items ?? [];
     } catch { errors.push('fee schedule'); }
+    if (requestId !== dataRequestRef.current) return;
+    setInvoices(nextInvoices);
+    setFeeItems(nextFeeItems);
     if (errors.length) setLoadError(`Could not load ${errors.join(' and ')}. Check your connection and retry.`);
     setLoading(false);
   };
-  useEffect(() => { fetch(); }, [selectedWardId, selectedSchoolCode]);
+  useEffect(() => {
+    void fetch();
+    return () => { dataRequestRef.current += 1; };
+  }, [selectedWardId, selectedSchoolCode, selectedWard?.school_code]);
 
   const markPaid = async () => {
     if (!confirmPaid || updatingInvoiceId !== null) return;
@@ -121,21 +133,44 @@ export default function FinanceScreen({ navigation }: any) {
   };
 
   const loadInvoiceOptions = async () => {
+    const requestId = ++invoiceOptionsRequestRef.current;
+    const schoolCode = selectedSchoolCode;
     setInvOptionsLoading(true);
     setInvOptionsError('');
     setStudents([]);
     setTerms([]);
     try {
       const [s, t] = await Promise.all([
-        api.get('/students', { params: { school_code: selectedSchoolCode ?? undefined } }),
-        api.get('/academic/terms', { params: { school_code: selectedSchoolCode ?? undefined } }),
+        api.get('/students', { params: { school_code: schoolCode ?? undefined } }),
+        api.get('/academic/terms', { params: { school_code: schoolCode ?? undefined } }),
       ]);
+      if (requestId !== invoiceOptionsRequestRef.current) return;
       setStudents(s.data.students ?? []);
       setTerms(t.data.terms ?? []);
     } catch (e: any) {
+      if (requestId !== invoiceOptionsRequestRef.current) return;
       setInvOptionsError(e?.response?.data?.error ?? 'Could not load students and terms for this school. Retry before creating an invoice.');
-    } finally { setInvOptionsLoading(false); }
+    } finally {
+      if (requestId === invoiceOptionsRequestRef.current) setInvOptionsLoading(false);
+    }
   };
+
+  // Finance Admin can switch campuses while a modal is open. Close any
+  // campus-specific form and invalidate in-flight option loads so records
+  // from the previous campus can never be selected for the new one.
+  useEffect(() => {
+    if (!isFinanceAdmin) return;
+    invoiceOptionsRequestRef.current += 1;
+    setFeeModal(false);
+    setFeeForm({ name: '', amount: '', class_name: '' });
+    setInvModal(false);
+    setStudents([]);
+    setTerms([]);
+    setInvForm({ student_id: '', term_id: '', fee_item_ids: [] });
+    setInvOptionsLoading(false);
+    setInvOptionsError('');
+    setConfirmPaid(null);
+  }, [selectedSchoolCode]);
 
   const openInvoiceModal = () => {
     if (isFinanceAdmin && !selectedSchoolCode) {
