@@ -30,6 +30,17 @@ const freeLaunchMode = () => process.env.FREE_LAUNCH_MODE !== 'false';
 const termPinEnforced = () => !freeLaunchMode() && process.env.TERM_PIN_ENFORCED === 'true';
 const curriculumSequenceEnforced = () => !freeLaunchMode() && process.env.CURRICULUM_SEQUENCE_ENFORCED === 'true';
 
+function curriculumTeachingSource(value: unknown): string | null {
+  if (typeof value !== 'string') return null;
+  const markers = ['PRACTICE QUESTIONS AND MARKING GUIDE', 'SOURCES AND ATTRIBUTION'];
+  const end = markers.reduce((limit, marker) => {
+    const index = value.indexOf(marker);
+    return index >= 0 ? Math.min(limit, index) : limit;
+  }, value.length);
+  const teachingText = value.slice(0, end).trim();
+  return teachingText || null;
+}
+
 function verifyStudentDeliveryAsset(bytes: Buffer, mediaType: string, expectedSha256: string): boolean {
   if (!Buffer.isBuffer(bytes) || bytes.length === 0 || bytes.length > 10 * 1024 * 1024) return false;
   const actualHash = createHash('sha256').update(bytes).digest('hex');
@@ -1257,14 +1268,16 @@ router.post('/topics/:id/lesson', requirePerm('topics.read'), requireRole('stude
   topic.source_reference = learnerTopic.source_reference;
   topic.summary = learnerTopic.summary;
 
-  const groundingSource: string | null = primary4Delivery?.kind === 'matched' ? primary4Delivery.text
-    : mathematicsDelivery?.kind === 'corrected' ? mathematicsDelivery.text
-    : englishDelivery?.kind === 'corrected' ? englishDelivery.text
+  const groundingSource: string | null = primary4Delivery?.kind === 'matched' ? curriculumTeachingSource(primary4Delivery.text)
+    : mathematicsDelivery?.kind === 'corrected' ? curriculumTeachingSource(mathematicsDelivery.text)
+    : englishDelivery?.kind === 'corrected' ? curriculumTeachingSource(englishDelivery.text)
     : agriculturalScienceDelivery?.kind === 'corrected' || agriculturalScienceSupplement?.kind === 'supplement' || agriculturalScienceSourceProjection
-      ? (typeof topic.source_reference === 'string' ? topic.source_reference : null)
-    : ss1Delivery?.kind === 'corrected' ? ss1Delivery.text
-    : delivery?.kind === 'corrected' ? delivery.text
-    : typeof topic.source_reference === 'string' ? topic.source_reference : null;
+      ? curriculumTeachingSource(topic.source_reference)
+    : ss1Delivery?.kind === 'corrected' ? curriculumTeachingSource(ss1Delivery.text)
+    : frenchDelivery?.kind === 'corrected' ? curriculumTeachingSource(frenchDelivery.text)
+    : literatureDelivery?.text ? curriculumTeachingSource(literatureDelivery.text)
+    : delivery?.kind === 'corrected' ? curriculumTeachingSource(delivery.text)
+    : curriculumTeachingSource(topic.source_reference);
 
   // Generate the teaching lesson from approved curriculum context. Brainee
   // remains a separate tutor/chat experience and is not the lesson author.
@@ -1562,14 +1575,16 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   topic.source_reference = learnerTopic.source_reference;
   topic.summary = learnerTopic.summary;
 
-  const groundingSource: string | null = primary4Delivery?.kind === 'matched' ? primary4Delivery.text
-    : mathematicsDelivery?.kind === 'corrected' ? mathematicsDelivery.text
-    : englishDelivery?.kind === 'corrected' ? englishDelivery.text
+  const groundingSource: string | null = primary4Delivery?.kind === 'matched' ? curriculumTeachingSource(primary4Delivery.text)
+    : mathematicsDelivery?.kind === 'corrected' ? curriculumTeachingSource(mathematicsDelivery.text)
+    : englishDelivery?.kind === 'corrected' ? curriculumTeachingSource(englishDelivery.text)
     : agriculturalScienceDelivery?.kind === 'corrected' || agriculturalScienceSupplement?.kind === 'supplement' || agriculturalScienceSourceProjection
-      ? (typeof topic.source_reference === 'string' ? topic.source_reference : null)
-    : ss1Delivery?.kind === 'corrected' ? ss1Delivery.text
-    : delivery?.kind === 'corrected' ? delivery.text
-    : typeof topic.source_reference === 'string' ? topic.source_reference : null;
+      ? curriculumTeachingSource(topic.source_reference)
+    : ss1Delivery?.kind === 'corrected' ? curriculumTeachingSource(ss1Delivery.text)
+    : frenchDelivery?.kind === 'corrected' ? curriculumTeachingSource(frenchDelivery.text)
+    : literatureDelivery?.text ? curriculumTeachingSource(literatureDelivery.text)
+    : delivery?.kind === 'corrected' ? curriculumTeachingSource(delivery.text)
+    : curriculumTeachingSource(topic.source_reference);
 
   // Generate the teaching lesson from approved curriculum context. Brainee
   // remains a separate tutor/chat experience and is not the lesson author.
