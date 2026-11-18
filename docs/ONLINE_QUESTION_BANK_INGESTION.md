@@ -59,6 +59,7 @@ Import payload shape:
     "explanation": "Editorial explanation",
     "marks": 1,
     "topic_slug": "linear-equations",
+    "source_locator": "page 3, question 12",
     "content_origin": "past_question"
   }]
 }
