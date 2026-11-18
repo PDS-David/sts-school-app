@@ -142,9 +142,10 @@ router.get('/deleted', requireRole('admin'), async (req, res) => {
   const { school_code } = req.query as Record<string, string>;
   const scope = resolveStudentRosterScope(req.user!, { school_code });
   if ('error' in scope) return res.status(scope.status).json({ error: scope.error });
-  let sql = `SELECT s.id, s.admission_number, s.full_name, s.class_name, s.school_code,
+  let sql = `SELECT s.id, s.admission_number, s.full_name, rrm.class_name, s.school_code,
                      s.deleted_at, u.full_name AS deleted_by_name, u.role AS deleted_by_role
               FROM students s
+              JOIN report_roster_memberships rrm ON rrm.student_id=s.id
               LEFT JOIN users u ON u.id = s.deleted_by
               WHERE s.deleted_at IS NOT NULL`;
   const params: unknown[] = [];
@@ -182,6 +183,13 @@ router.get('/report-roster/removed', requireRole('admin'), async (req, res) => {
 router.get('/:id', requirePerm('students.read'), async (req, res) => {
   const user = req.user!;
   let teacherReportClassName: string | null = null;
+  if (user.role !== 'teacher') {
+    const { rows: reportMemberships } = await query(
+      'SELECT 1 FROM report_roster_memberships WHERE student_id=$1 LIMIT 1',
+      [req.params.id],
+    );
+    if (!reportMemberships[0]) return res.status(404).json({ error: 'Student not found' });
+  }
   if (user.role === 'teacher') {
     if (!user.school_code || !user.assigned_class) {
       return res.status(403).json({ error: 'Report access requires an assigned physical class.' });
