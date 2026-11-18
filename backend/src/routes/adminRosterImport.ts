@@ -11,7 +11,7 @@ const upload = multer({
   storage: multer.memoryStorage(),
   limits: { fileSize: 2 * 1024 * 1024, files: 1 },
   fileFilter: (_req, file, callback) => {
-    if (!/\.xlsx$/i.test(file.originalname)) return callback(new Error('Upload an .xlsx workbook.'));
+    if (!/\.xlsx$/i.test(file.originalname)) return callback(null, false);
     callback(null, true);
   },
 });
