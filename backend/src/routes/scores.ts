@@ -265,7 +265,7 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
       params.push(allowedClasses);
       sql += ` AND rrm.class_name=ANY($${params.length}::text[]) AND rrm.status='active'`;
       params.push(user.assigned_subject_ids);
-      sql += ` AND sc.subject_id=ANY(${params.length}::int[])`;
+      sql += ` AND sc.subject_id=ANY($${params.length}::int[])`;
     }
   } else if (user.role === 'admin' && school_code) {
     // Found in a hardening pass: filtering by class_name alone (e.g. the
