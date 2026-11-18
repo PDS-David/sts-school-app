@@ -308,6 +308,12 @@ export default function TopicDetailScreen({ route, navigation }: any) {
               <TouchableOpacity onPress={() => setRevealed((r) => ({ ...r, [i]: !r[i] }))}>
                 <Text style={styles.revealTxt}>{revealed[i] ? 'Hide answer' : 'Reveal answer'}</Text>
               </TouchableOpacity>
+              {revealed[i] && (
+                <View style={styles.explanationBox}>
+                  <Text style={styles.explanationTitle}>Answer explanation</Text>
+                  <Text style={styles.explanationText}>{(q.correct_keys ?? []).join(', ') || 'Review the explanation below.'}: {q.explanation ?? 'An explanation is not available for this question.'}</Text>
+                </View>
+              )}
             </View>
           ))}
         </Card>
@@ -339,4 +345,7 @@ const styles = StyleSheet.create({
   option: { fontSize: Fonts.sizes.sm, color: Colors.text, paddingVertical: 2 },
   correctOption: { color: Colors.success, fontWeight: '700' },
   revealTxt: { fontSize: Fonts.sizes.xs, color: Colors.primary, fontWeight: '700', marginTop: 4 },
+  explanationBox: { backgroundColor: Colors.primary + '10', borderRadius: Radius.sm, padding: Spacing.sm, marginTop: Spacing.sm },
+  explanationTitle: { fontSize: Fonts.sizes.xs, color: Colors.primary, fontWeight: '700', marginBottom: 4 },
+  explanationText: { fontSize: Fonts.sizes.sm, color: Colors.text, lineHeight: 20 },
 });
