@@ -135,6 +135,42 @@ Answers must be unambiguous; distractors must be plausible but clearly wrong fro
   });
 });
 
+router.get('/sets/:id', async (req, res) => {
+  const { rows: students } = await query('SELECT id FROM students WHERE user_id=$1 LIMIT 1',[req.user!.id]);
+  const student=students[0];
+  if(!student) return res.status(404).json({error:'Student record not found.'});
+  const {rows:sets}=await query(
+    'SELECT id,topic_id,topic_title,status,created_at,completed_at,questions FROM class_practice_sets WHERE id=$1 AND student_id=$2',
+    [req.params.id,student.id],
+  );
+  const set=sets[0];
+  if(!set) return res.status(404).json({error:'Practice set not found.'});
+  const questions=Array.isArray(set.questions)?set.questions:[];
+  if(set.status!=='completed'){
+    return res.json({
+      set:{id:set.id,topic_id:set.topic_id,topic_title:set.topic_title,status:set.status,created_at:set.created_at},
+      questions:questions.map(({correct_answer:_answer,explanation:_explanation,...q}:any)=>q),
+    });
+  }
+  const {rows:attempts}=await query(
+    'SELECT question_id,answer,correct,marks_awarded,marks_available FROM class_practice_attempts WHERE set_id=$1 AND student_id=$2',
+    [set.id,student.id],
+  );
+  const byId=new Map(attempts.map((item:any)=>[item.question_id,item]));
+  const results=questions.map((q:any)=>{
+    const attempt:any=byId.get(q.id);
+    return {question_id:q.id,concept:q.concept,answer:attempt?.answer??null,correct:attempt?.correct??false,
+      marks_awarded:Number(attempt?.marks_awarded??0),marks_available:Number(attempt?.marks_available??q.marks),
+      explanation:q.explanation};
+  });
+  const score=results.reduce((sum:number,item:any)=>sum+item.marks_awarded,0);
+  const total=results.reduce((sum:number,item:any)=>sum+item.marks_available,0);
+  return res.json({
+    set:{id:set.id,topic_id:set.topic_id,topic_title:set.topic_title,status:set.status,created_at:set.created_at,completed_at:set.completed_at},
+    result:{submitted:true,score,total,percentage:total?Math.round(score/total*100):0,results},
+  });
+});
+
 router.post('/sets/:id/submit', async (req, res) => {
   const answers = req.body?.answers;
   if (!Array.isArray(answers) || answers.length < 1 || answers.length > 10 ||
