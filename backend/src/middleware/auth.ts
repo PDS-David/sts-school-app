@@ -79,6 +79,10 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
     return res.status(403).json({ error: 'Your account is awaiting admin approval.', code: 'PENDING_APPROVAL' });
   }
 
+  const requestedSchool = req.header('x-school-code')?.trim() || null;
+  if (dbUser.role === 'admin' && dbUser.can_manage_all_schools === true && requestedSchool && !['primary', 'secondary'].includes(requestedSchool)) {
+    return res.status(400).json({ error: 'Invalid selected school. Choose Primary or Secondary.' });
+  }
   req.user = hydrateAuthUser(user, {
     username: dbUser.username,
     role: dbUser.role as Role,
@@ -86,6 +90,7 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
     assigned_class: dbUser.assigned_class,
     assigned_subject_ids: dbUser.assigned_subject_ids,
     can_manage_all_schools: dbUser.can_manage_all_schools === true,
+    selected_school_code: dbUser.role === 'admin' && dbUser.can_manage_all_schools === true ? requestedSchool : null,
   });
   next();
 }
