@@ -28,6 +28,23 @@ function gradeClass(grade: unknown): string {
   return 'grade-other';
 }
 
+function reportClassLabel(value: unknown): string {
+  const name = String(value ?? '').trim();
+  const primary = /^Primary\\s+(\\d+)$/i.exec(name);
+  if (primary) return `Grade ${primary[1]}`;
+  const jss = /^JSS\\s+(\\d+)$/i.exec(name);
+  if (jss) return `JSS${jss[1]}`;
+  const ss = /^SS\\s+(\\d+)$/i.exec(name);
+  if (ss) return `SS${ss[1]}`;
+  return name;
+}
+
+function optionalNumber(value: unknown, digits = 1): string {
+  return value === undefined || value === null || value === ''
+    ? '—'
+    : formatNumber(value, digits);
+}
+
 /**
  * Render the supplied Sow the Seed term-report format.
  * This is deliberately a pure function so the exact report structure can be
@@ -62,13 +79,13 @@ export function renderTermReportHtml(
   const rows = scores.map((score: any) => `
     <tr>
       <td class="subject">${display(score.subject_name)}</td>
-      <td>${display(score.ca1, '0')}</td>
-      <td>${display(score.ca2, '0')}</td>
-      <td>${display(score.exam, '0')}</td>
-      <td class="total">${display(score.total, '0')}</td>
+      <td>${formatNumber(score.ca1)}</td>
+      <td>${formatNumber(score.ca2)}</td>
+      <td>${formatNumber(score.exam)}</td>
+      <td class="total">${formatNumber(score.total)}</td>
       <td class="${gradeClass(score.grade)}">${display(score.grade)}</td>
-      <td>${display(score.class_highest)}</td>
-      <td>${display(score.class_average)}</td>
+      <td>${optionalNumber(score.class_highest)}</td>
+      <td>${optionalNumber(score.class_average, 2)}</td>
       <td>${display(score.teacher_remark)}</td>
     </tr>`).join('');
 
@@ -166,7 +183,7 @@ export function renderTermReportHtml(
   <section class="student-info">
     <div><span class="label">STUDENT NAME</span><span class="value">${display(student.full_name, '')}</span></div>
     <div><span class="label">ADMISSION NO.</span><span class="value">${display(student.admission_number)}</span></div>
-    <div><span class="label">CLASS</span><span class="value">${display(student.class_name, '')}</span></div>
+    <div><span class="label">CLASS</span><span class="value">${escapeHtml(reportClassLabel(student.class_name))}</span></div>
     <div><span class="label">TERM / SESSION</span><span class="value">${display(term.name, '')}, ${display(term.academic_year, '')}</span></div>
   </section>
 
