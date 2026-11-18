@@ -75,7 +75,7 @@ Example request shape:
 
 The deadline is calculated on the server as the earlier of start time plus configured duration and the examination end time. Client clocks are display-only. Refresh/reconnect recovery loads server-saved answers; the mobile screen also retains unsent answers locally and retries when connected.
 
-MCQs are marked automatically. Written responses reuse the existing `generateJSON(..., 'essay-mark')` AI-marking contract. If AI marking is unavailable, the attempt is placed in `under_review` and the affected answer is marked `pending_review`; it is not silently awarded zero.
+MCQs are marked automatically and receive answer-specific explanations. Every short-answer/essay question must include an explicit criterion rubric whose maximum marks sum to the question marks. AI marking reuses the existing `generateJSON(..., 'essay-mark')` provider, but its output is accepted only when criterion scores reconcile to the total, each criterion is within its mark limit, feedback is present and confidence is at least 0.75. Confidence and criterion evidence are stored per response. Low-confidence, malformed or unavailable AI marking is sent to `pending_review`; it is not silently awarded zero. Examiners can then apply a manual mark.
 
 ## Data model
 
@@ -88,12 +88,14 @@ Migration `0014_formal_online_examinations.sql` adds:
 - `online_exam_responses` (autosaved responses and marking state)
 - `online_exam_audit_events`
 
+Migration `0015_online_exam_marking_confidence.sql` adds validated AI confidence (0–1) and structured criterion-level marking evidence to each written response.
+
 No physical-reporting tables are referenced by the migration or route.
 
 ## Deployment and verification
 
-- Migration 0014 is additive, but the current master branch has migration 0012 and no 0013. PR #1033 owns migration 0013; the existing migration runner rejects gaps and requires sequential history. Do not merge or deploy this PR until the migration-number collision/order is explicitly coordinated and 0013 is present before 0014.
+- Migration order is 0012 (question bank), 0013 (adaptive class practice), 0014 (formal examinations) and 0015 (marking confidence/rubric evidence). This PR carries an identical copy of 0013 from PR #1033 solely to make the full sequence testable while both PRs are open. After #1033 is merged, remove the duplicate 0013 file from this branch and rebase/update against master before merging this PR. The repository migration-runner guard now has a regression test for contiguous numbering.
 - Deploy the backend API and mobile app together to expose the student flow.
 - No destructive production operation or data backfill is required.
-- CI workflow `.github/workflows/online-exams.yml` runs the backend build, focused contract tests, PostgreSQL 18 question-bank + exam migration/API/constraint/isolation test and mobile TypeScript check. The workflow applies migrations 0012 and 0014 directly in an isolated test schema; it does not validate the repository's full sequential migration ledger while 0013 is absent.
+- CI workflow `.github/workflows/online-exams.yml` runs the backend build, focused contract tests, PostgreSQL 18 integration tests applying migrations 0012 → 0013 → 0014 → 0015 in order, and mobile TypeScript check. A contract test also rejects any numbered migration gap.
 - The PostgreSQL integration test requires a disposable `TEST_DATABASE_URL`; it creates and drops only a uniquely named test schema.
