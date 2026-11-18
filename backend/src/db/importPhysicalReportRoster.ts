@@ -102,9 +102,10 @@ async function main() {
           throw new Error(`Matched Production Student ID ${entry.matchedProductionStudentId} for roster identity ${entry.rosterIdentity} does not exist in production; no replacement student will be created`);
         }
         const { rows: possibleDuplicates } = await client.query(
-          `SELECT id FROM students
-            WHERE school_code=$1
-              AND lower(regexp_replace(trim(full_name),'[[:space:]]+',' ','g'))=$2
+          `SELECT s.id FROM students s
+            JOIN report_roster_memberships rrm ON rrm.student_id=s.id
+            WHERE s.school_code=$1
+              AND lower(regexp_replace(trim(s.full_name),'[[:space:]]+',' ','g'))=$2
             LIMIT 2`,
           [entry.schoolCode, normalizeName(entry.fullName)],
         );
