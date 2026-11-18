@@ -178,6 +178,54 @@ async function redeemedSs1Terms(studentId: string, policy?: LearningAccessPolicy
 
 // Resolve the same sequence policy used by GET /topics for direct asset access.
 // A missing student record is fail-closed: no ordered lesson content/assets.
+function ss1ProgressKey(lesson: any): string {
+  return 'ss1:' + createHash('sha256').update([
+    'SS 1', lesson.canonical_subject, lesson.term, String(lesson.id),
+  ].join('\\0')).digest('hex');
+}
+
+function ss23ProgressKey(unit: any): string {
+  return 'ss23:' + createHash('sha256').update([
+    unit.class_name, unit.subject, unit.term, String(unit.id),
+  ].join('\\0')).digest('hex');
+}
+
+async function completedPackageLessonKeys(studentId: string, className: 'SS 1' | 'SS 2' | 'SS 3'): Promise<Set<string>> {
+  try {
+    const { rows } = await query(
+      'SELECT lesson_key FROM student_curriculum_lesson_progress WHERE student_id=$1 AND class_name=$2',
+      [studentId, className],
+    );
+    return new Set(rows.map((row: any) => String(row.lesson_key)));
+  } catch (error: any) {
+    // Package progress remains non-blocking until migration 0009 is applied.
+    if (error?.code === '42P01') return new Set();
+    throw error;
+  }
+}
+
+async function markPackageLessonCompleted(
+  studentId: string,
+  lessonKey: string,
+  className: 'SS 1' | 'SS 2' | 'SS 3',
+  subject: string,
+  term: string,
+  title: string,
+): Promise<string | null> {
+  await query(
+    `INSERT INTO student_curriculum_lesson_progress
+       (student_id, lesson_key, class_name, subject_name, term_label, lesson_title)
+     VALUES ($1,$2,$3,$4,$5,$6)
+     ON CONFLICT (student_id, lesson_key) DO NOTHING`,
+    [studentId, lessonKey, className, subject, term, title],
+  );
+  const { rows } = await query(
+    'SELECT completed_at FROM student_curriculum_lesson_progress WHERE student_id=$1 AND lesson_key=$2',
+    [studentId, lessonKey],
+  );
+  return rows[0]?.completed_at ?? null;
+}
+
 async function studentTopicSequenceLocked(user: AuthUser, topic: any, policy?: LearningAccessPolicyState): Promise<boolean> {
   if (user.role !== 'student' || !curriculumSequenceEnforced(policy)) return false;
   if (topic.order_index == null) return false;
@@ -225,14 +273,17 @@ router.get('/ss1/lessons', requirePerm('topics.read'), async (req, res) => {
     return res.status(400).json({ error: 'subject_name is too long' });
   }
   const unlockedTerms = await redeemedSs1Terms(studentId, req.learningAccessPolicy);
+  const completedKeys = await completedPackageLessonKeys(studentId, 'SS 1');
   const lessons = listStudentSs1Lessons(subjectName).map(lesson => {
+    const completed = completedKeys.has(ss1ProgressKey(lesson));
     const locked = !unlockedTerms.has(lesson.term);
     // A locked list row is metadata only. Do not serialize lesson body,
     // practice questions/answers, source provenance or asset URLs.
-    if (locked) return { ...studentSs1LessonPreview(lesson, true), assets: [] };
+    if (locked) return { ...studentSs1LessonPreview(lesson, true), completed, assets: [] };
     return {
       ...safeStudentSs1Lesson(lesson),
       ...studentSs1LessonPreview(lesson, false),
+      completed,
       assets: listStudentSs1Assets(lesson.id).map(asset => ({
         id: asset.id,
         alt: asset.alt,
@@ -254,9 +305,11 @@ router.get('/ss1/lessons/:lessonId', requirePerm('topics.read'), async (req, res
   if (!unlockedTerms.has(lesson.term)) {
     return res.status(423).json({ error: 'Redeem the Term PIN to unlock lessons for this term.' });
   }
+  const completedKeys = await completedPackageLessonKeys(studentId, 'SS 1');
   return res.json({
     lesson: {
       ...safeStudentSs1Lesson(lesson),
+      completed: completedKeys.has(ss1ProgressKey(lesson)),
       assets: listStudentSs1Assets(lesson.id).map(asset => ({
         id: asset.id,
         alt: asset.alt,
