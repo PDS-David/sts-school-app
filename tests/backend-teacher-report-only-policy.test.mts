@@ -5,11 +5,11 @@ import { resolveStudentRosterScope } from '../backend/src/utils/studentRosterSco
 
 test('teacher role has only the permission needed to select their assigned report roster', () => {
   assert.equal(hasPerm('teacher', 'students.read'), true);
-  assert.equal(hasPerm('teacher', 'classRecord.write'), true);
   for (const permission of [
     'grades.read', 'grades.write', 'grades.export',
     'attendance.read', 'attendance.write',
     'classRecord.read',
+    'classRecord.write',
     'materials.read', 'materials.write',
     'topics.read', 'topics.write',
     'weeklyEfforts.read', 'weeklyEfforts.write', 'weeklyEfforts.feedback',
