@@ -22,7 +22,7 @@ This is an independent online-learning corpus. It uses only the `question_bank_*
 The database trigger enforces source-to-question rights status. The API rejects a past-question import unless the source is active, the board matches, the source is explicitly licensed/public-domain, and rights evidence is recorded. Original/AI-generated content must have no exam year and be labelled "Original practice — not a past paper".
 
 ## Pilot
-Six original AI-assisted practice questions were added as `approved`, not falsely represented as historical examination items:
+Six original AI-generated practice questions were added as `reviewed` and answer-checked, but not published or represented as historical examination items. Subject-expert approval is still required before student delivery:
 - WAEC track: Mathematics (linear equations), Biology (osmosis)
 - NECO track: Mathematics (percentages), Biology (photosynthesis)
 - JAMB track: Mathematics (arithmetic sequences), Chemistry (atomic structure)
@@ -30,7 +30,7 @@ Six original AI-assisted practice questions were added as `approved`, not falsel
 Every pilot item has an answer, explanation, one mark, and a subject/topic mapping. The question number is an `AI-GEN-###` identifier; exam year is NULL; paper is explicitly labelled original practice. No restricted past-question wording was copied.
 
 ## Source gaps
-For WAEC, NECO and JAMB, source-gap records are created for Mathematics, Biology and Chemistry. They remain open for historical question ingestion until written reuse permission or a documented public-domain basis is obtained. Meanwhile, the platform can generate additional original questions, subject to editorial review.
+For each WAEC, NECO and JAMB Mathematics, Biology and Chemistry combination, two distinct gap records are created: `past_question_rights` remains open until written reuse permission or a documented public-domain basis is obtained; `ai_generation` is marked `ready_for_ai_generation` for original content creation. The six pilot items cover WAEC Mathematics/Biology, NECO Mathematics/Biology, and JAMB Mathematics/Chemistry.
 
 ## API (global admin only)
 - `GET /question-bank/summary`
@@ -38,7 +38,7 @@ For WAEC, NECO and JAMB, source-gap records are created for Mathematics, Biology
 - `GET /question-bank/sources`
 - `POST /question-bank/sources`
 - `GET /question-bank/gaps`
-- `GET /question-bank/questions?board=WAEC&subject_code=MATHEMATICS&review_status=approved`
+- `GET /question-bank/questions?board=WAEC&subject_code=MATHEMATICS&review_status=reviewed`
 - `POST /question-bank/ingest`
 
 Import payload shape:
