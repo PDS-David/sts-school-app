@@ -135,8 +135,13 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.equal(otherSubjectQueue.status,200);assert.equal(otherSubjectQueue.data.questions.length,0);
       const invalidReview=await request('/question-bank/questions/'+questionId+'/review','POST',teacherToken,{decision:'approved',notes:'OK'});
       assert.equal(invalidReview.status,400);
+      const schoolSubjects=await request('/online-exams/admin/question-bank/subjects','GET',adminToken,undefined,school);
+      assert.equal(schoolSubjects.status,200);assert.ok(schoolSubjects.data.subjects.some((item:any)=>item.code==='MATHEMATICS'));
+      assert.equal((await request('/online-exams/admin/question-bank/subjects','GET',teacherToken,undefined,school)).status,403);
       const approved=await request('/question-bank/questions/'+questionId+'/review','POST',teacherToken,{decision:'approved',notes:'Checked the answer key, explanation and syllabus alignment.'});
       assert.equal(approved.status,200);assert.equal(approved.data.review_status,'approved');
+      const approvedQuestions=await request('/online-exams/admin/question-bank/questions?board=WAEC&subject_code=MATHEMATICS','GET',adminToken,undefined,school);
+      assert.equal(approvedQuestions.status,200);assert.ok(approvedQuestions.data.questions.some((item:any)=>item.id===questionId));
       const rejectedQuestion=reviewQueue.data.questions.find((item:any)=>item.id!==questionId);
       assert.ok(rejectedQuestion);
       const rejected=await request('/question-bank/questions/'+rejectedQuestion.id+'/review','POST',teacherToken,{decision:'rejected',notes:'The explanation needs correction before student use.'});
