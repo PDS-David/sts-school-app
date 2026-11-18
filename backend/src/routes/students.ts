@@ -357,7 +357,7 @@ router.put('/:id', requirePerm('grades.write'), async (req, res) => {
 // use scores.class_name, stamped when each score is recorded (routes/scores.ts),
 // and fall back to the live class only for rows with no stamp. Nothing is
 // written to scores from this route.
-router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
+router.post('/:id/promotion', requireRole('admin'), async (req, res) => {
   const user = req.user!;
   const { action } = req.body as { action?: 'promote' | 'demote' | 'retain' | 'remove' | 'reinstate' };
   if (!action || !['promote', 'demote', 'retain', 'remove', 'reinstate'].includes(action)) {
