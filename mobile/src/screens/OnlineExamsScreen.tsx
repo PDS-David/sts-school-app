@@ -20,7 +20,7 @@ export default function OnlineExamsScreen({ navigation }: any) {
   const open=async(exam:any)=>{
     try{
       let session:any;
-      if(exam.attempt_id && exam.attempt_status==='in_progress'){
+      if(exam.attempt_id && ['in_progress','expired'].includes(exam.attempt_status)){
         const {data}=await api.get('/online-exams/attempts/'+exam.attempt_id);session=data;
       }else{
         const {data}=await api.post('/online-exams/exams/'+exam.id+'/start');session=data;
