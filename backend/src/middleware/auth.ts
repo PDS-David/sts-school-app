@@ -102,6 +102,10 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
       pathname.startsWith('/weekly-efforts') ||
       pathname.startsWith('/school-events') ||
       pathname.startsWith('/announcements') ||
+      pathname.startsWith('/learning') ||
+      pathname.startsWith('/ai') ||
+      pathname.startsWith('/finance') ||
+      pathname.startsWith('/messages') ||
       pathname === '/admin' || pathname.startsWith('/admin/');
     const globalAdminPaths = new Set([
       '/admin/backups/status',
