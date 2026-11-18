@@ -7,6 +7,9 @@ import { AppHeader } from '../../components/AppHeader';
 
 const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string; screen: string; color: string }[] = [
   { icon: 'people-outline', label: 'Student Reports', sub: 'Select a student in your assigned physical class and generate their report', screen: 'Students', color: '#1565C0' },
+  { icon: 'create-outline', label: 'Enter / Edit Scores', sub: 'Record continuous assessment and examination scores', screen: 'ScoreEntry', color: '#C62828' },
+  { icon: 'calendar-outline', label: 'Attendance', sub: 'Record and correct students’ attendance', screen: 'Attendance', color: '#E65100' },
+  { icon: 'chatbox-ellipses-outline', label: 'Class Remarks', sub: 'Maintain weekly effort and class-teacher remarks', screen: 'WeeklyEfforts', color: '#6A1B9A' },
 ];
 
 export default function TeacherClassesScreen({ navigation }: any) {
