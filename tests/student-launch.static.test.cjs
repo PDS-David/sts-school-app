@@ -21,10 +21,12 @@ test('PIN enforcement is explicitly opt-in, preserving free launch access', () =
   assert.match(s, /!termPinEnforced\(\) \|\| redeemedTermLabels\.has/);
   assert.match(s, /!termPinEnforced\(\) \|\| !!pinRows\[0\]/);
 });
-test('cached notes do not hide practice retrieval action', () => {
+test('AI curriculum lesson generation and progress completion are separate actions', () => {
   const s = read('mobile/src/screens/TopicDetailScreen.tsx');
-  assert.match(s, /Get Practice Questions/);
-  assert.match(s, /onPress=\{complete\}/);
+  assert.match(s, /Generate AI Lesson/);
+  assert.match(s, /onPress=\{loadLesson\}/);
+  assert.match(s, /Mark topic complete/);
+  assert.match(s, /onPress=\{markComplete\}/);
 });
 test('submitted assessments cannot overwrite existing grades', () => {
   const s = read('backend/src/routes/learning.ts');
