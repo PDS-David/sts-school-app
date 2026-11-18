@@ -5,6 +5,8 @@ on:
     branches: [master]
     paths:
       - "backend/src/routes/scores.ts"
+      - "backend/src/routes/students.ts"
+      - "backend/src/utils/scope.ts"
       - "backend/src/utils/grades.ts"
       - "tests/backend-grades.test.mts"
       - "backend/src/middleware/auth.ts"
@@ -16,6 +18,8 @@ on:
     branches: [master]
     paths:
       - "backend/src/routes/scores.ts"
+      - "backend/src/routes/students.ts"
+      - "backend/src/utils/scope.ts"
       - "backend/src/middleware/auth.ts"
       - "backend/src/utils/authClaims.ts"
       - "tests/backend-score-subject-scope-atomicity.integration.test.mts"
