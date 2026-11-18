@@ -55,7 +55,7 @@ export default function OnlineExamsScreen({ navigation }: any) {
     {error? <Text style={styles.error}>{error}</Text>:null}
     <FlatList data={exams} keyExtractor={x=>x.id} renderItem={render}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={()=>load(true)}/>}
-      ListEmptyComponent={<Empty label="No examinations available" message="Your class has no published online examination at the moment."/>}
+      ListEmptyComponent={<Empty message="Your class has no published online examination at the moment."/>}
       contentContainerStyle={{paddingBottom:Spacing.xl}}/>
   </View>;
 }
