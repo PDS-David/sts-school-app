@@ -487,32 +487,6 @@ export async function getMessageableUsers(user: AuthUser): Promise<MessageableUs
     return rows;
   }
 
-  if (user.role === 'teacher') {
-    // Same NULL-school_code bug found and fixed in the student/parent
-    // branches above (Pass 19 audit) applies here too: `RECIPIENT_ERROR
-    // .teacher` ("other staff and students/parents in your own school")
-    // implies admin counts as reachable "staff", but the old plain
-    // `WHERE school_code = $1` matched nothing for admin rows
-    // (school_code = NULL), so a teacher's contacts list never actually
-    // included any admin. `role = 'admin'` is now checked as an
-    // alternative to the school_code match rather than ANDed with it.
-    // The LEFT JOIN + deleted_at check (added in the Pass 20 comparison
-    // audit) stops a soft-deleted student's login from still showing up as
-    // a contact here — it only affects rows where role = 'student'; every
-    // other role's `s.deleted_at` is simply NULL (no matching students row)
-    // and passes through unaffected.
-    const { rows } = await query(
-      `SELECT DISTINCT u.id, u.username, u.full_name, u.role
-       FROM users u
-       LEFT JOIN students s ON s.user_id = u.id
-       WHERE u.is_active = TRUE AND u.id <> $1 AND (u.role = 'admin' OR u.school_code = $2)
-         AND (u.role <> 'student' OR s.deleted_at IS NULL)
-       ORDER BY u.full_name`,
-      [user.id, user.school_code],
-    );
-    return rows;
-  }
-
   if (user.role === 'admin') {
     // admin — same deleted_at fix as the teacher branch above.
     const { rows } = await query(
