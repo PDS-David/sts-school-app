@@ -635,7 +635,6 @@ export default function AdminUsersScreen() {
               value={form.initial_password}
               onChangeText={v => setForm(f => ({ ...f, initial_password: v.replace(/\D/g, '').slice(0, 4) }))}
               keyboardType="numeric"
-              maxLength={4}
               autoCapitalize="none"
               secureTextEntry
             />
