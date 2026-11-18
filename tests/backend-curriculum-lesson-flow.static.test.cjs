@@ -100,3 +100,16 @@ test('global learning access policy is persisted, global-admin-only and audited'
   assert.match(read('backend/src/routes/learning.ts'), /curriculumSequenceEnforced\(req\.learningAccessPolicy\)/);
   assert.match(read('backend/src/routes/learning.ts'), /termPinEnforced\(req\.learningAccessPolicy\)/);
 });
+
+test('global administrators can manage learning access from the admin app while school admins cannot', () => {
+  const screen = read('mobile/src/screens/admin/AdminLearningAccessScreen.tsx');
+  const menu = read('mobile/src/screens/admin/AdminMoreScreen.tsx');
+  const nav = read('mobile/src/navigation/AdminTabs.tsx');
+  assert.match(screen, /\/admin\/learning-access-settings/);
+  assert.match(screen, /free_launch_mode/);
+  assert.match(screen, /term_pin_enforced/);
+  assert.match(screen, /curriculum_sequence_enforced/);
+  assert.match(menu, /user\?\.school_code === null/);
+  assert.match(menu, /navigation\.navigate\('AdminLearningAccess'\)/);
+  assert.match(nav, /name="AdminLearningAccess"/);
+});
