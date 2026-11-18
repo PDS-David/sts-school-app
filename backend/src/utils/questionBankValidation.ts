@@ -44,6 +44,9 @@ export const ingestionQuestionSchema = z.object({
   if (question.question_type !== 'mcq' && question.options !== undefined) {
     ctx.addIssue({ code: 'custom', path: ['options'], message: 'Only MCQ questions may include options.' });
   }
+  if (question.content_origin === 'past_question' && !question.source_locator) {
+    ctx.addIssue({ code: 'custom', path: ['source_locator'], message: 'Past questions require an exact source page, document or question locator.' });
+  }
   if (question.content_origin === 'past_question' && !question.exam_year) {
     ctx.addIssue({ code: 'custom', path: ['exam_year'], message: 'Past questions require the actual examination year.' });
   }
