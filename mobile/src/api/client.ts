@@ -325,7 +325,18 @@ api.interceptors.response.use(
         let parsedData: any = undefined;
         try { parsedData = typeof original.data === 'string' ? JSON.parse(original.data) : original.data; } catch { parsedData = original.data; }
 
-        const queued = await enqueueRequest({ method: method as any, url: original.url ?? '', data: parsedData }, requestNamespace);
+        const originalHeaders = original.headers as any;
+        const schoolCode =
+          originalHeaders?.get?.('x-school-code') ??
+          originalHeaders?.['x-school-code'] ??
+          originalHeaders?.['X-School-Code'] ??
+          (api.defaults.headers.common as any)?.['x-school-code'];
+        const queued = await enqueueRequest({
+          method: method as any,
+          url: original.url ?? '',
+          data: parsedData,
+          ...(schoolCode ? { headers: { 'x-school-code': String(schoolCode) } } : {}),
+        }, requestNamespace);
 
         // Best-effort synthetic response so calling screens don't have to special-case
         // every offline write. Messages get a realistic shape so they can render
@@ -391,6 +402,7 @@ export async function flushOutbox(): Promise<{ synced: number; failed: number; r
           method: item.method,
           url: item.url,
           data: item.data,
+          headers: item.headers,
           _skipOfflineQueue: true,
           _cacheNamespace: userNamespace,
         } as any);
