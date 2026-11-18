@@ -15,7 +15,7 @@ test('canonical topic lesson generation is separate from completion and assessme
   assert.match(lessonRoute, /requireRole\('student'\)/);
   assert.match(lessonRoute, /getOrGenerateCurriculumLesson/);
   assert.match(lessonRoute, /curriculum_learning_objectives/);
-  assert.match(lessonRoute, /studentTopicSequenceLocked/);
+  assert.match(lessonRoute, /resolveSequenceGroup\(siblingRows, new Set\(passRows\.map\(\(r: any\) => r\.topic_id\)\), pinOk\)/);
   assert.doesNotMatch(lessonRoute, /INSERT INTO topic_completions/i);
   assert.doesNotMatch(lessonRoute, /INSERT INTO assessments/i);
   assert.doesNotMatch(lessonRoute, /INSERT INTO questions/i);
@@ -38,7 +38,7 @@ test('student topic screen requests the AI lesson first and records completion s
   assert.match(screen, /\/learning\/topics\/\$\{topic\.id\}\/progress/);
   assert.doesNotMatch(screen, /\/learning\/topics\/\$\{topic\.id\}\/complete/);
   assert.match(screen, /generatedLesson\.sections\.map/);
-  assert.match(screen, /generatedLesson\.practice_questions/);
+  assert.match(screen, /setPractice\(data\.lesson\.practice_questions \?\? \[\]\)/);
 });
 
 test('SS1 and SS2/SS3 package screens consume AI-generated lesson endpoints', () => {
