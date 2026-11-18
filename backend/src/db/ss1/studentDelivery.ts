@@ -66,7 +66,7 @@ export function studentSs1LessonPreview(lesson: StudentSs1Lesson, locked: boolea
 }
 
 /** Public student projection. Teacher answer keys, marking criteria, source provenance,
- * approval records and content hashes remain server-side for AI grounding/audit only.
+ * internal approval records and content hashes remain server-side; only required attribution fields are public.
  */
 export function safeStudentSs1Lesson(lesson: StudentSs1Lesson) {
   return {
