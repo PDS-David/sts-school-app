@@ -40,8 +40,8 @@ import { pool } from './pool.js';
 const MAPPING: Record<string, string> = {
   JSS1: 'JSS 1', JSS2: 'JSS 2', JSS3: 'JSS 3',
   SS1: 'SS 1', SS2: 'SS 2', SS3: 'SS 3',
-  'Grade 1': 'PRY 1', 'Grade 2': 'PRY 2', 'Grade 3': 'PRY 3',
-  'Grade 4': 'PRY 4', 'Grade 5': 'PRY 5', 'Grade 6': 'PRY 6',
+  'Grade 1': 'Primary 1', 'Grade 2': 'Primary 2', 'Grade 3': 'Primary 3',
+  'Grade 4': 'Primary 4', 'Grade 5': 'Primary 5', 'Grade 6': 'Primary 6',
 };
 
 function normalizeClass(raw: string): string {
@@ -98,6 +98,9 @@ function parseDir(dir: string, schoolCode: 'primary' | 'secondary'): { rows: Ros
 
 async function main() {
   const yes = process.argv.includes('--yes');
+  if (yes) {
+    throw new Error('This legacy historical-report importer is disabled for writes. It cannot verify current enrolment. Use importPhysicalReportRoster.ts only after every workbook row has a verified status, current class, verifier and date.');
+  }
   const primaryDir = arg('primary-dir');
   const secondaryDir = arg('secondary-dir');
 
@@ -167,13 +170,88 @@ async function main() {
   try {
     await client.query('BEGIN');
     for (const r of importable) {
-      const { rowCount } = await client.query(
+      const insertedStudent = await client.query<{ id: string; class_name: string; deleted_at: Date | null }>(
         `INSERT INTO students(school_code, admission_number, full_name, class_name)
          VALUES ($1,$2,$3,$4)
-         ON CONFLICT (school_code, admission_number) DO NOTHING`,
+         ON CONFLICT (school_code, admission_number) DO NOTHING
+         RETURNING id, class_name, deleted_at`,
         [r.school_code, r.admission_number, r.full_name, r.class_name],
       );
-      if (rowCount && rowCount > 0) inserted++; else alreadyExisted++;
+
+      let student = insertedStudent.rows[0];
+      if (student) {
+        inserted++;
+      } else {
+        alreadyExisted++;
+        const existing = await client.query<{ id: string; class_name: string; deleted_at: Date | null }>(
+          `SELECT id, class_name, deleted_at FROM students
+           WHERE school_code=$1 AND admission_number=$2
+           FOR UPDATE`,
+          [r.school_code, r.admission_number],
+        );
+        student = existing.rows[0];
+      }
+      if (!student) {
+        throw new Error(`Could not resolve imported student identity for ${r.school_code}/${r.admission_number}`);
+      }
+      if (student.deleted_at) {
+        throw new Error(`Refusing to enrol soft-deleted student ${r.school_code}/${r.admission_number}; an administrator must resolve that record first.`);
+      }
+
+      // The source report card defines the physical class. Never copy the
+      // online student's class_name or rewrite the online student row.
+      const existingMembership = await client.query<{
+        class_name: string; status: 'active' | 'removed';
+      }>(
+        `SELECT class_name,status FROM report_roster_memberships
+         WHERE student_id=$1 FOR UPDATE`,
+        [student.id],
+      );
+
+      if (!existingMembership.rows[0]) {
+        await client.query(
+          `INSERT INTO report_roster_memberships
+             (student_id, class_name, source_class_name, status, joined_at)
+           VALUES ($1,$2,$2,'active',now())`,
+          [student.id, r.class_name],
+        );
+        await client.query(
+          `INSERT INTO report_roster_membership_events
+             (student_id, event_type, to_class_name, details)
+           VALUES ($1,'enrolled',$2,$3::jsonb)`,
+          [student.id, r.class_name, JSON.stringify({ source: 'importStudentRoster', source_file: r.source_file })],
+        );
+      } else if (existingMembership.rows[0].status === 'removed') {
+        // 0006 removes provisional 0005 backfill rows because an online
+        // student is not proof of physical report-roster membership. An
+        // explicit source import may activate only those provisional rows.
+        // A later administrator removal remains authoritative and is never undone
+        // by rerunning an old import.
+        const latestEvent = await client.query<{ source: string | null }>(
+          `SELECT details->>'source' AS source
+             FROM report_roster_membership_events
+            WHERE student_id=$1
+            ORDER BY id DESC LIMIT 1`,
+          [student.id],
+        );
+        if (latestEvent.rows[0]?.source === '0006_explicit_report_roster_enrolment') {
+          const previousClass = existingMembership.rows[0].class_name;
+          await client.query(
+            `UPDATE report_roster_memberships
+                SET class_name=$1, source_class_name=$1, status='active',
+                    removed_at=NULL, changed_by=NULL, updated_at=now()
+              WHERE student_id=$2 AND status='removed'`,
+            [r.class_name, student.id],
+          );
+          await client.query(
+            `INSERT INTO report_roster_membership_events
+               (student_id, event_type, from_class_name, to_class_name, details)
+             VALUES ($1,'reinstated',$2,$3,$4::jsonb)`,
+            [student.id, previousClass, r.class_name,
+              JSON.stringify({ source: 'importStudentRoster', source_file: r.source_file, reason: 'explicit_physical_roster_reconciliation' })],
+          );
+        }
+      }
     }
     await client.query('COMMIT');
     console.log(`\n✓ Inserted ${inserted} new student row(s). ${alreadyExisted} already existed (by admission number) and were left untouched. Committed.`);

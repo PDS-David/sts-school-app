@@ -9,6 +9,12 @@ import { audit } from '../utils/audit.js';
 // school; there is no school or class parameter on GET.
 const router = Router();
 router.use(requireAuth);
+router.use((req, res, next) => {
+  if (req.user?.role === 'teacher') {
+    return res.status(403).json({ error: 'Teacher accounts are limited to physical-class report workflows.' });
+  }
+  next();
+});
 
 const COLUMNS = 'a.id, a.school_code, a.title, a.body, a.audience_role, a.class_name, a.created_by, a.created_at, a.expires_at';
 const LIVE = '(a.expires_at IS NULL OR a.expires_at > now())';

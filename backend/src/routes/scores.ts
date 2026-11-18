@@ -403,7 +403,7 @@ router.post('/bulk', requirePerm('grades.write'), async (req, res) => {
 // returned unchanged on purpose.
 async function authoriseReportAccess(
   user: AuthUser,
-  student: { id: string; user_id: string | null; deleted_at?: string | Date | null },
+  student: { id: string; user_id: string | null; class_name: string; school_code: string; deleted_at?: string | Date | null },
 ): Promise<{ status: number; error: string } | null> {
   let denied: { status: number; error: string } | null;
   switch (user.role) {
@@ -417,9 +417,29 @@ async function authoriseReportAccess(
       denied = pw.length ? null : { status: 403, error: 'Not your ward' };
       break;
     }
-    case 'teacher':
-      denied = await checkTeacherStudentScope(user, student.id);
+    case 'teacher': {
+      if (!user.school_code || !user.assigned_class) {
+        denied = { status: 403, error: 'Report access requires an assigned physical class.' };
+        break;
+      }
+      const { rows: memberships } = await query(
+        `SELECT rrm.class_name
+         FROM report_roster_memberships rrm
+         JOIN students s ON s.id=rrm.student_id
+         WHERE rrm.student_id=$1 AND rrm.status='active'
+           AND rrm.class_name=$2 AND s.school_code=$3 AND s.deleted_at IS NULL`,
+        [student.id, user.assigned_class, user.school_code],
+      );
+      if (!memberships[0]) {
+        denied = { status: 404, error: 'Student is not in your active physical report roster.' };
+      } else {
+        // Report rendering must use the physical roster's class, not the
+        // student's independent online-learning class field.
+        student.class_name = memberships[0].class_name;
+        denied = null;
+      }
       break;
+    }
     case 'admin':
       denied = null;
       break;
@@ -550,8 +570,12 @@ router.get('/report/:student_id', async (req, res) => {
     ? classTotals.filter((r) => Number(r.grand_total) > Number(myTotal)).length + 1
     : null;
 
+  const reportStudent = user.role === 'teacher'
+    ? { id: student.id, full_name: student.full_name, admission_number: student.admission_number, class_name: student.class_name, school_code: student.school_code }
+    : student;
+
   return res.json({
-    student,
+    student: reportStudent,
     term,
     scores: scoreRows,
     attendance: { days_present: attRows[0]?.days_present ?? 0, days_opened: term?.days_opened ?? 0 },
@@ -656,8 +680,11 @@ router.get('/session-report/:student_id', async (req, res) => {
     ? +(subjects.reduce((s, r) => s + r.session_average, 0) / subjects.length).toFixed(2)
     : 0;
 
+  const reportStudent = user.role === 'teacher'
+    ? { id: student.id, full_name: student.full_name, admission_number: student.admission_number, class_name: student.class_name, school_code: student.school_code }
+    : student;
   return res.json({
-    student,
+    student: reportStudent,
     academic_year: year,
     terms: terms.map(t => ({ id: t.id, name: t.name, is_current: t.is_current })),
     terms_present: terms.length,

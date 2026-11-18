@@ -95,8 +95,17 @@ export async function checkTeacherStudentScope(
   if (student.school_code !== user.school_code) {
     return { status: 403, error: "You can't write records for a student outside your school" };
   }
-  if (user.assigned_class && student.class_name !== user.assigned_class) {
-    return { status: 403, error: "You can't write records for a student outside your assigned class" };
+  if (!user.assigned_class) {
+    return { status: 403, error: 'This action requires an assigned physical class.' };
+  }
+  const { rows: rosterRows } = await query(
+    `SELECT class_name FROM report_roster_memberships
+     WHERE student_id=$1 AND status='active'`,
+    [studentId],
+  );
+  const reportClassName = rosterRows[0]?.class_name as string | undefined;
+  if (!reportClassName || reportClassName !== user.assigned_class) {
+    return { status: 403, error: "You can't write report remarks outside your assigned physical class" };
   }
 
   if (termId !== undefined) {
@@ -104,7 +113,7 @@ export async function checkTeacherStudentScope(
       `SELECT cl.locked_at, u.full_name AS locked_by_name
        FROM class_locks cl LEFT JOIN users u ON u.id = cl.locked_by
        WHERE cl.school_code=$1 AND cl.class_name=$2 AND cl.term_id=$3`,
-      [student.school_code, student.class_name, termId],
+      [student.school_code, reportClassName, termId],
     );
     const lock = lockRows[0];
     if (lock) {
@@ -112,7 +121,7 @@ export async function checkTeacherStudentScope(
       const when = new Date(lock.locked_at).toLocaleDateString();
       return {
         status: 403,
-        error: `${student.class_name}'s records for this term were locked by ${who} on ${when}. Ask them or an admin to unlock before making changes.`,
+        error: `${reportClassName}'s records for this term were locked by ${who} on ${when}. Ask an admin to unlock before making changes.`,
       };
     }
   }
@@ -291,7 +300,7 @@ export interface MessageableUser {
  * Found live in QA Pass 7: `GET /messages/contacts` (what the Chats/Messages
  * UI actually shows and lets the user tap) was properly scoped per role, but
  * `POST /messages` never checked `recipient_id` against that same scope for
- * anyone except `student` — `parent`, `teacher`, and `admin` sends only
+ * anyone except `student` — `parent` and `admin` sends only
  * checked `messages.write`, a permission every account of that role has
  * regardless of school. Live-verified: a `secondary`-school parent
  * (`secparent1`, whose own contacts list correctly showed only their ward's
@@ -299,7 +308,7 @@ export interface MessageableUser {
  * student they have no relationship to whatsoever, just by knowing/guessing
  * a user id — the exact "student/parent messaging someone they shouldn't"
  * case this pass's plan called out. A `secondary` teacher could do the same
- * to a `primary` parent. This helper is now the single source of truth for
+ * to a `primary` parent before the report-only teacher policy was enforced. This helper is now the single source of truth for
  * "who may X message", used to build the contacts list *and* to enforce
  * `POST /messages` — closing the gap without duplicating the scoping logic
  * (mirrors `resolveViewerClassNames` above).
@@ -329,12 +338,7 @@ export interface MessageableUser {
  *     independently-developed branches (student classmate messaging +
  *     parent subject-teacher/admin reach) were reconciled into a single
  *     build.
- *   - teacher → every other active user in their own school, PLUS every
- *     admin regardless of school (matches the pre-existing GET /contacts
- *     query, which was never actually staff-only despite its old comment —
- *     students and parents in-school were already includable; the
- *     cross-school admin gap was new to this file until the Pass 19 audit
- *     below, though the `RECIPIENT_ERROR.teacher` copy already implied it).
+ *   - teacher → no messaging contacts. Teacher accounts are report-generation-only.
  *   - admin   → every other active user, in every school. This is a genuine
  *     behaviour change: admin's `school_code` is `NULL`, so the old
  *     `WHERE school_code=$1` contacts query matched nothing and
@@ -394,6 +398,9 @@ export interface MessageableUser {
  *     contributes teacher rows and can never gate the admin branch.
  */
 export async function getMessageableUsers(user: AuthUser): Promise<MessageableUser[]> {
+  // Teacher accounts are report-generation-only; fail closed before any directory query.
+  if (user.role === 'teacher') return [];
+
   if (user.role === 'student') {
     const { rows } = await query(
       `SELECT DISTINCT u.id, u.username, u.full_name, u.role
@@ -471,32 +478,6 @@ export async function getMessageableUsers(user: AuthUser): Promise<MessageableUs
          )
        ORDER BY u.full_name`,
       [user.id],
-    );
-    return rows;
-  }
-
-  if (user.role === 'teacher') {
-    // Same NULL-school_code bug found and fixed in the student/parent
-    // branches above (Pass 19 audit) applies here too: `RECIPIENT_ERROR
-    // .teacher` ("other staff and students/parents in your own school")
-    // implies admin counts as reachable "staff", but the old plain
-    // `WHERE school_code = $1` matched nothing for admin rows
-    // (school_code = NULL), so a teacher's contacts list never actually
-    // included any admin. `role = 'admin'` is now checked as an
-    // alternative to the school_code match rather than ANDed with it.
-    // The LEFT JOIN + deleted_at check (added in the Pass 20 comparison
-    // audit) stops a soft-deleted student's login from still showing up as
-    // a contact here — it only affects rows where role = 'student'; every
-    // other role's `s.deleted_at` is simply NULL (no matching students row)
-    // and passes through unaffected.
-    const { rows } = await query(
-      `SELECT DISTINCT u.id, u.username, u.full_name, u.role
-       FROM users u
-       LEFT JOIN students s ON s.user_id = u.id
-       WHERE u.is_active = TRUE AND u.id <> $1 AND (u.role = 'admin' OR u.school_code = $2)
-         AND (u.role <> 'student' OR s.deleted_at IS NULL)
-       ORDER BY u.full_name`,
-      [user.id, user.school_code],
     );
     return rows;
   }

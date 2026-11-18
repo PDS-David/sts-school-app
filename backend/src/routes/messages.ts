@@ -34,7 +34,7 @@ const sendMessageSchema = z.object({
 const RECIPIENT_ERROR: Record<string, string> = {
   student: 'You may only message your teachers, admin, your parent(s), or a classmate',
   parent: "You may only message your child's/children's class teacher(s), subject teacher(s), or admin",
-  teacher: 'You may only message other staff and students/parents in your own school, or any admin',
+  teacher: 'Teacher accounts are limited to report generation and cannot send messages',
   admin: 'Recipient not found or inactive',
 };
 

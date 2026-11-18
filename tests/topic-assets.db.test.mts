@@ -79,8 +79,8 @@ if (!URL_) {
     await query('DELETE FROM assessments WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
     await query('DELETE FROM teacher_subjects WHERE user_id IN (SELECT id FROM users WHERE school_code = ANY($1) OR username LIKE $2)', [[TEST_SC, TEST_SC_B], 'zz_t2test_%']);
     await query('DELETE FROM subjects WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
-    // Keep append-only report-roster history intact; remove only memberships
-    // that have no event trail, then remove only students with no history.
+    // Preserve the synthetic students and append-only roster history. The
+    // test asserts that deleting unrelated learning content never erases it.
     await query(
       `DELETE FROM report_roster_memberships m
        USING students s
@@ -517,15 +517,14 @@ if (!URL_) {
     assert.equal((await del(`/learning/materials/${otherSchoolBody.material.id}`, tokenAdminGlobal)).status, 200);
   });
 
-  test('teacher material deletion is limited to the uploader within the same school', async () => {
+  test('report-only teachers cannot create or delete learning materials', async () => {
     const created = await postJson('/learning/materials', tokenTeacherA, {
       subject_id: subjectA, class_name: 'JSS 3', title: 'Teacher-owned material',
       type: 'doc', url: 'https://example.org/lesson.docx',
     });
-    assert.equal(created.status, 201);
-    const body: any = await created.json();
-    assert.equal((await del(`/learning/materials/${body.material.id}`, tokenTeacherB)).status, 404);
-    assert.equal((await del(`/learning/materials/${body.material.id}`, tokenAdminA)).status, 200);
+    assert.equal(created.status, 403);
+    assert.match((await created.json() as { error: string }).error, /Teacher accounts are limited to physical-class report workflows/);
+    assert.equal(await count('SELECT count(*) n FROM materials WHERE title=$1', ['Teacher-owned material']), 0);
   });
 
   test('endpoint: tampered stored bytes fail MIME/SHA-256 verification before delivery', async () => {

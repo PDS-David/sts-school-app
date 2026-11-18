@@ -5,29 +5,17 @@ import { Card, Badge } from '../../components/UI';
 import { Colors, Spacing, Fonts } from '../../theme';
 import { useAuth } from '../../api/AuthContext';
 import { AppHeader } from '../../components/AppHeader';
-import { openNotifications } from '../../navigation/navigationRef';
 
 export default function TeacherMoreScreen({ navigation }: any) {
   const { user, logout } = useAuth();
 
   const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string; onPress?: () => void }[] = [
-    { icon: 'calendar-outline', label: 'School Calendar', sub: 'View school events and important dates', onPress: () => navigation.navigate('SchoolCalendar') },
-    { icon: 'trending-up-outline', label: 'Weekly Efforts', sub: 'Log weekly student effort', onPress: () => navigation.navigate('WeeklyEfforts') },
-    { icon: 'bar-chart-outline', label: 'Analytics & Marking', sub: 'Review pending marks and class performance', onPress: () => navigation.navigate('TeacherAnalytics') },
-    { icon: 'settings-outline', label: 'Settings', sub: 'Change password and preferences', onPress: () => navigation.navigate('ChangePassword') },
-    // No "Security Question" entry here (deliberately, not an omission):
-    // per explicit school-owner policy, a teacher who forgets their
-    // password has admin reset it directly — self-service recovery
-    // doesn't apply to this role (see auth.ts POST /login, which now
-    // suppresses must_set_security_question for role==='teacher'). This
-    // menu item used to say "Used to reset your password if you forget
-    // it," which would have been actively misleading now that path is
-    // dead for teachers by design.
+    { icon: 'settings-outline', label: 'Settings', sub: 'Change password and account preferences', onPress: () => navigation.navigate('ChangePassword') },
   ];
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
-      <AppHeader title="More" onPressBell={() => openNotifications()} />
+      <AppHeader title="More" />
       <ScrollView contentContainerStyle={{ padding: Spacing.md }}>
         <Card style={styles.identity}>
           <View style={styles.bigAvatar}><Text style={styles.bigAvatarText}>{(user?.username?.[0] ?? '?').toUpperCase()}</Text></View>

@@ -106,13 +106,14 @@ test('parent ward links enforce teacher school/class scope and mutate atomically
     };
 
     const allowed = await link(primaryP4, parent.id, classTeacher.token);
-    assert.equal(allowed.status, 200, 'class teacher may link a parent for a student in their assigned class');
-    assert.deepEqual(await allowed.json(), { ok: true, linked: true });
-    assert.equal(await isLinked(primaryP4, parent.id), true);
+    assert.equal(allowed.status, 403, 'report-only teachers cannot manage parent links');
+    assert.equal(await isLinked(primaryP4, parent.id), false);
 
     const duplicate = await link(primaryP4, parent.id, classTeacher.token);
-    assert.equal(duplicate.status, 200, 'linking an existing ward relationship is idempotent');
-    assert.deepEqual(await duplicate.json(), { ok: true, linked: false });
+    assert.equal(duplicate.status, 403, 'teachers cannot access parent-link administration');
+
+    const adminPrimaryLink = await link(primaryP4, parent.id, admin.token);
+    assert.equal(adminPrimaryLink.status, 200, 'administrators retain parent-link management');
 
     const wrongClass = await link(primaryP5, parent.id, classTeacher.token);
     assert.equal(wrongClass.status, 403, 'class teacher cannot link parents to another class');
@@ -126,16 +127,16 @@ test('parent ward links enforce teacher school/class scope and mutate atomically
     assert.equal(otherTeacherDenied.status, 403, 'teacher from another school cannot unlink the ward relationship');
     assert.equal(await isLinked(primaryP4, parent.id), true);
 
-    const invalidParentRole = await link(primaryP4, nonParent.id, classTeacher.token);
+    const invalidParentRole = await link(primaryP4, nonParent.id, admin.token);
     assert.equal(invalidParentRole.status, 400, 'only active parent accounts may be linked');
-    const inactiveParentDenied = await link(primaryP4, inactiveParent.id, classTeacher.token);
+    const inactiveParentDenied = await link(primaryP4, inactiveParent.id, admin.token);
     assert.equal(inactiveParentDenied.status, 400, 'inactive parent accounts cannot be linked');
 
     const invalidIds = await fetch(`${started.baseUrl}/not-a-uuid/link-parent`, {
-      method: 'POST', headers: headers(classTeacher.token), body: JSON.stringify({ parent_id: parent.id }),
+      method: 'POST', headers: headers(admin.token), body: JSON.stringify({ parent_id: parent.id }),
     });
     assert.equal(invalidIds.status, 400);
-    const invalidParentId = await link(primaryP4, 'not-a-uuid', classTeacher.token);
+    const invalidParentId = await link(primaryP4, 'not-a-uuid', admin.token);
     assert.equal(invalidParentId.status, 400);
 
     const deletedDenied = await link(deletedStudent, parent.id, admin.token);
@@ -146,9 +147,8 @@ test('parent ward links enforce teacher school/class scope and mutate atomically
     assert.equal(await isLinked(secondaryP4, parent.id), true);
 
     const teacherUnlink = await unlink(primaryP4, parent.id, classTeacher.token);
-    assert.equal(teacherUnlink.status, 200);
-    assert.deepEqual(await teacherUnlink.json(), { ok: true, unlinked: true });
-    assert.equal(await isLinked(primaryP4, parent.id), false);
+    assert.equal(teacherUnlink.status, 403, 'teachers cannot unlink parent relationships');
+    assert.equal(await isLinked(primaryP4, parent.id), true);
 
     const adminUnlink = await unlink(secondaryP4, parent.id, admin.token);
     assert.equal(adminUnlink.status, 200);

@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { requirePerm } from '../backend/src/middleware/auth.js';
+import { canMessage } from '../backend/src/utils/rbac.js';
+import { getMessageableUsers } from '../backend/src/utils/scope.js';
 
 function runPermission(role: string, permission: string) {
   const req = { user: { role } } as any;
@@ -25,9 +27,21 @@ test('finance_admin cannot access message inbox, conversations or contacts', () 
 });
 
 test('roles with messages.read continue through the message read guard', () => {
-  for (const role of ['student', 'parent', 'teacher', 'admin']) {
+  for (const role of ['student', 'parent', 'admin']) {
     const result = runPermission(role, 'messages.read');
     assert.equal(result.statusCode, 200);
     assert.equal(result.nextCalled, true);
   }
+});
+
+test('report-only teachers cannot access messaging or retrieve message contacts', async () => {
+  for (const endpoint of ['messages.read', 'messages.write']) {
+    const result = runPermission('teacher', endpoint);
+    assert.equal(result.statusCode, 403);
+    assert.equal(result.nextCalled, false);
+    assert.deepEqual(result.body, { error: `Permission denied: ${endpoint}` });
+  }
+  assert.equal(canMessage('teacher', 'teacher-id', 'student-id'), false);
+  const contacts = await getMessageableUsers({ id: 'teacher-id', role: 'teacher', school_code: 'primary' } as any);
+  assert.deepEqual(contacts, []);
 });
