@@ -8,10 +8,21 @@ function normalizeName(value: string): string {
 }
 
 async function main() {
-  const fileArgument = process.argv.slice(2).find(value => value.startsWith('--file='));
-  const apply = process.argv.includes('--apply');
+  const args = process.argv.slice(2);
+  const fileArgument = args.find(value => value.startsWith('--file='));
+  const databaseArgument = args.find(value => value.startsWith('--confirm-database='));
+  const apply = args.includes('--apply');
+  const ownerApproved = args.includes('--owner-approved-initial-roster');
+  const confirmedDatabase = databaseArgument?.slice('--confirm-database='.length).trim() ?? '';
+
   if (!fileArgument) {
-    throw new Error('Usage: npm run db:import-physical-roster -- --file=/path/to/Student_Roster_Reconciliation_with_Identities.xlsx [--apply]');
+    throw new Error('Usage: node --import tsx src/db/importPhysicalReportRoster.ts --file=/path/to/Student_Roster_Initial_Launch_Approved.xlsx --confirm-database=sts_school_db_2 [--apply --owner-approved-initial-roster]');
+  }
+  if (confirmedDatabase !== 'sts_school_db_2') {
+    throw new Error('Every run requires --confirm-database=sts_school_db_2. No database rows were changed.');
+  }
+  if (apply && !ownerApproved) {
+    throw new Error('Production writes require --owner-approved-initial-roster, confirming the school owner authorized this initial roster. No database rows were changed.');
   }
 
   const filePath = resolve(fileArgument.slice('--file='.length));
@@ -29,7 +40,17 @@ async function main() {
   let matchedProductionStudents = 0;
 
   try {
-    await client.query('BEGIN');
+    await client.query(apply ? 'BEGIN' : 'BEGIN READ ONLY');
+    await client.query("SET LOCAL lock_timeout = '5s'");
+    await client.query("SET LOCAL statement_timeout = '60s'");
+    await client.query('SELECT pg_advisory_xact_lock($1, $2)', [1937001, 5]);
+
+    const { rows: databaseRows } = await client.query<{ database_name: string }>(
+      'SELECT current_database() AS database_name',
+    );
+    if (databaseRows[0]?.database_name !== confirmedDatabase) {
+      throw new Error('Connected database is not sts_school_db_2. No database rows were changed.');
+    }
 
     const { rows: classRows } = await client.query<{ school_code: string; name: string }>(
       'SELECT school_code,name FROM classes WHERE school_code IN (\'primary\',\'secondary\')',
@@ -190,6 +211,7 @@ async function main() {
     }
 
     console.log(JSON.stringify({
+      database_name: databaseRows[0].database_name,
       source_file: sourceFile,
       source_rows: entries.length,
       verified_active_rows_considered: entries.filter(entry => entry.enrolmentStatus === 'active').length,
