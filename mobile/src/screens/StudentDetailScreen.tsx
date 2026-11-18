@@ -238,7 +238,7 @@ export default function StudentDetailScreen({ route, navigation }: any) {
           {student.gender && <Text style={styles.studentMeta}>{student.gender}</Text>}
         </View>
         {isAdmin && (
-          <TouchableOpacity onPress={deleteStudent style={{ padding: 6 }}>
+          <TouchableOpacity onPress={deleteStudent} style={{ padding: 6 }}>
             <Ionicons name="trash-outline" size={22} color={Colors.error} />
           </TouchableOpacity>
         )}
