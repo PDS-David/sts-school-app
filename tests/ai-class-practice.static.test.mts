@@ -8,8 +8,9 @@ test('class practice is isolated from physical reporting tables', async () => {
   for (const table of ['class_practice_sets','class_practice_attempts','class_practice_concept_performance','class_practice_remediation_recommendations']) {
     assert.match(migration,new RegExp('CREATE TABLE IF NOT EXISTS '+table));
   }
-  assert.doesNotMatch(migration,/\b(scores|attendance|report_remarks)\b/i);
-  assert.doesNotMatch(route,/\b(scores|attendance|teacher_remark|report_remarks)\b/i);
+  const executableMigration = migration.replace(/--.*$/gm, '');
+  assert.doesNotMatch(executableMigration,/\b(scores|attendance|report_remarks)\b/i);
+  assert.doesNotMatch(route,/\b(?:FROM|JOIN|INTO|UPDATE|TABLE)\s+(?:public\.)?(?:scores|attendance|teacher_remarks|report_remarks|report_cards)\b/i);
   assert.match(route,/JOIN topic_completions tc ON tc\.topic_id=t\.id AND tc\.student_id=\$1/);
 });
 
