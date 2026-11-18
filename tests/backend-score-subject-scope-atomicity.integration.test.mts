@@ -274,7 +274,7 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     assert.equal(Number(primarySubjectReport.subject_position), 1);
 
     const rawScores = await fetch(
-      `${started.baseUrl}?term_id=${termIds[0]}`,
+      `${started.baseUrl}?term_id=${termIds[0]}&class_name=Primary%204&subject_id=${subjectIds[0]}`,
       { headers: { Authorization: `Bearer ${classTeacher.token}` } },
     );
     assert.equal(rawScores.status, 200, 'teachers can read only score rows for their assigned active physical roster');
