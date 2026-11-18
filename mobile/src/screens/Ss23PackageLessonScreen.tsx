@@ -29,6 +29,7 @@ export default function Ss23PackageLessonScreen({ route, navigation }: any) {
       const { data } = await api.post(`/learning/ss23/units/${encodeURIComponent(lesson.id)}/generate`);
       if (!data?.ok || !data.lesson) throw new Error(data?.error ?? 'The AI lesson could not be generated.');
       setGeneratedLesson(data.lesson);
+      setRevealed({});
     } catch (error: any) {
       setGenerationError(error?.response?.data?.error ?? error?.message ?? 'The AI lesson could not be generated. Check your connection and retry.');
     } finally {
@@ -80,12 +81,17 @@ export default function Ss23PackageLessonScreen({ route, navigation }: any) {
             <Text style={styles.body}>{generatedLesson.summary}</Text>
           </>
         ) : (
-          <>
-            <Text style={styles.body}>{lesson.body}</Text>
-            {generationError ? <Text style={styles.generationError}>{generationError}</Text> : null}
-            {generating ? <Text style={styles.note}>The curriculum lesson engine is preparing your lesson…</Text> : null}
+          <View style={{ marginTop: Spacing.sm }}>
+            {generating ? <Text style={styles.note}>The AI curriculum engine is preparing this lesson from the approved topic and objectives…</Text> : null}
+            {generationError ? (
+              <>
+                <Text style={styles.generationError}>{generationError}</Text>
+                <Text style={styles.note}>The approved source note is shown below for reference; it is not the AI-generated lesson.</Text>
+                <Text style={styles.body}>{lesson.body}</Text>
+              </>
+            ) : null}
             {!generating ? <Btn label="Generate AI lesson" onPress={generateLesson} loading={generating} /> : null}
-          </>
+          </View>
         )}
         {lesson.assets?.length > 0 && token ? (
           <View style={{ marginTop: Spacing.md }}>
@@ -112,15 +118,7 @@ export default function Ss23PackageLessonScreen({ route, navigation }: any) {
             </View>}
           </View>
         )) : (
-          <>
-            {(lesson.practice ?? []).map((question: any, index: number) => (
-              <View key={question.id} style={styles.question}>
-                <Text style={styles.questionText}>{index + 1}. {question.question}</Text>
-                <Text style={styles.marks}>{question.marks} mark(s)</Text>
-              </View>
-            ))}
-            <Text style={styles.note}>AI-generated practice questions will appear with the generated lesson.</Text>
-          </>
+          <Text style={styles.note}>AI-generated practice questions will appear with the generated lesson.</Text>
         )}
       </Card>
     </ScrollView>
