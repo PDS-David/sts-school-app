@@ -55,16 +55,21 @@ function resolveAdminSchoolScope(
 // This is deliberately global-admin-only: the existing free-launch and
 // term/sequence gates are deployment-wide, not per-school subscription plans.
 router.get('/learning-access-settings', requireGlobalAdmin, async (req, res) => {
-  const { rows } = await query(
-    `SELECT free_launch_mode, term_pin_enforced, curriculum_sequence_enforced,
-            updated_at, updated_by
-       FROM public.learning_access_settings WHERE id=1`,
-  );
-  if (!rows[0]) return res.status(503).json({ error: 'Learning access settings are not initialized. Apply migration 0008 first.' });
-  return res.json({
-    settings: rows[0],
-    effective: resolveLearningAccessPolicy(rows[0]),
-  });
+  try {
+    const { rows } = await query(
+      `SELECT free_launch_mode, term_pin_enforced, curriculum_sequence_enforced,
+              updated_at, updated_by
+         FROM public.learning_access_settings WHERE id=1`,
+    );
+    if (!rows[0]) return res.status(503).json({ error: 'Learning access settings are not initialized. Apply migration 0008 first.' });
+    return res.json({
+      settings: rows[0],
+      effective: resolveLearningAccessPolicy(rows[0]),
+    });
+  } catch (error: any) {
+    if (error?.code === '42P01') return res.status(503).json({ error: 'Learning access settings are not installed. Apply migration 0008 first.' });
+    throw error;
+  }
 });
 
 router.put('/learning-access-settings', requireGlobalAdmin, async (req, res) => {
@@ -77,7 +82,8 @@ router.put('/learning-access-settings', requireGlobalAdmin, async (req, res) => 
     });
   }
 
-  const settings = await withTransaction(async client => {
+  try {
+    const settings = await withTransaction(async client => {
     const { rows } = await client.query(
       `UPDATE public.learning_access_settings
           SET free_launch_mode=$1,
@@ -105,7 +111,11 @@ router.put('/learning-access-settings', requireGlobalAdmin, async (req, res) => 
     return rows[0];
   });
 
-  return res.json({ settings, effective: resolveLearningAccessPolicy(settings) });
+    return res.json({ settings, effective: resolveLearningAccessPolicy(settings) });
+  } catch (error: any) {
+    if (error?.code === '42P01') return res.status(503).json({ error: 'Learning access settings are not installed. Apply migration 0008 first.' });
+    throw error;
+  }
 });
 
 // ══════════════════════════════════════════
