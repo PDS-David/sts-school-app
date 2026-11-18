@@ -132,3 +132,11 @@ test('admin app can create, publish, list and manually review formal examination
   assert.match(adminTabs, /name="FormalOnlineExams" component=\{AdminOnlineExamsScreen\}/);
   assert.match(adminAssessments, /navigate\('FormalOnlineExams'\)/);
 });
+
+test('school admins browse only approved question-bank items through the exam API', () => {
+  assert.match(route, /router\.get\('\/admin\/question-bank\/subjects',requireRole\('admin'\)/);
+  assert.match(route, /router\.get\('\/admin\/question-bank\/questions',requireRole\('admin'\)/);
+  assert.match(route, /q\.review_status IN \('approved','published'\)/);
+  assert.match(adminExamScreen, /api\.get\('\/online-exams\/admin\/question-bank\/subjects'/);
+  assert.match(adminExamScreen, /api\.get\('\/online-exams\/admin\/question-bank\/questions'/);
+});
