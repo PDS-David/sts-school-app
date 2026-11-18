@@ -13,6 +13,9 @@ export default function Ss23PackageLessonScreen({ route, navigation }: any) {
   const [generatedLesson, setGeneratedLesson] = useState<any | null>(null);
   const [generating, setGenerating] = useState(false);
   const [generationError, setGenerationError] = useState<string | null>(null);
+  const [completed, setCompleted] = useState(!!lesson.completed);
+  const [completing, setCompleting] = useState(false);
+  const [progressError, setProgressError] = useState<string | null>(null);
   const [revealed, setRevealed] = useState<Record<number, boolean>>({});
   const isExamPreparation = lesson.delivery_mode === 'EXAM_PREPARATION';
 
@@ -36,6 +39,20 @@ export default function Ss23PackageLessonScreen({ route, navigation }: any) {
       setGenerating(false);
     }
   };
+  const markComplete = async () => {
+    if (!generatedLesson || completed || completing) return;
+    setCompleting(true);
+    setProgressError(null);
+    try {
+      const { data } = await api.post(`/learning/ss23/units/${encodeURIComponent(lesson.id)}/progress`);
+      setCompleted(!!data?.completed);
+    } catch (error: any) {
+      setProgressError(error?.response?.data?.error ?? 'Could not save lesson progress. Reconnect and try again.');
+    } finally {
+      setCompleting(false);
+    }
+  };
+
   useEffect(() => {
     if (!lesson.locked) void generateLesson();
   }, [lesson.id, lesson.locked]);
@@ -120,6 +137,18 @@ export default function Ss23PackageLessonScreen({ route, navigation }: any) {
         )) : (
           <Text style={styles.note}>AI-generated practice questions will appear with the generated lesson.</Text>
         )}
+        {generatedLesson ? (
+          <View style={{ marginTop: Spacing.md }}>
+            <Btn
+              label={completed ? 'Lesson completed' : completing ? 'Saving progress…' : 'Mark lesson complete'}
+              onPress={markComplete}
+              loading={completing}
+              disabled={completed || completing}
+              variant={completed ? 'outline' : 'primary'}
+            />
+            {progressError ? <Text style={styles.generationError}>{progressError}</Text> : null}
+          </View>
+        ) : null}
       </Card>
     </ScrollView>
   );
