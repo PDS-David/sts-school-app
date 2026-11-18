@@ -343,6 +343,9 @@ router.post('/', requirePerm('grades.write'), async (req, res) => {
 // checkTeacherStudentScope) since editing an existing student's own-school/
 // own-class rule is identical to the one already enforced for deleting one.
 router.put('/:id', requirePerm('grades.write'), async (req, res) => {
+  if (req.user!.role === 'teacher' && req.body?.class_name !== undefined) {
+    return res.status(403).json({ error: 'Physical class placement is managed through the administrator-controlled report roster.' });
+  }
   const scopeError = await checkTeacherDeleteScope(req.user!, req.params.id);
   if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
 
