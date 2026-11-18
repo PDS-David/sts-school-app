@@ -102,9 +102,10 @@ test('administrator placement decisions mutate only physical report membership a
        RETURNING id`,
       [teacherUsername, schoolCode],
     );
-    teacherId = String(teacherUsers[0].id);
+    const teacherAccountId = String(teacherUsers[0].id);
+    teacherId = teacherAccountId;
     const teacherToken = signAccess({
-      id: teacherId,
+      id: teacherAccountId,
       username: teacherUsername,
       role: 'teacher',
       school_code: schoolCode,
