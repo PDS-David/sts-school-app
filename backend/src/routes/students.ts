@@ -85,12 +85,12 @@ router.get('/', requirePerm('students.read'), async (req, res) => {
   if (effectiveSchool) { params.push(effectiveSchool); sql += ` AND s.school_code=$${params.length}`; }
   if (effectiveClass) {
     params.push(effectiveClass);
-    sql += ` AND rrm.class_name=${params.length}`;
+    sql += ` AND rrm.class_name=$${params.length}`;
   } else if (user.role === 'teacher' && !user.assigned_class) {
     const assignedClasses = user.assigned_class_names ?? [];
     if (!assignedClasses.length) return res.status(403).json({ error: 'No classes are assigned to this subject teacher.' });
     params.push(assignedClasses);
-    sql += ` AND rrm.class_name=ANY(${params.length}::text[])`;
+    sql += ` AND rrm.class_name=ANY($${params.length}::text[])`;
   }
   if (search) { params.push(`%${search}%`); sql += ` AND s.full_name ILIKE $${params.length}`; }
 
