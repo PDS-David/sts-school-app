@@ -18,20 +18,28 @@ export default function OnlineExamAttemptScreen({ route, navigation }:any) {
   const [online,setOnline]=useState(true);
   const [error,setError]=useState('');
   const pending=useRef<Record<string,any>>({});
+  const saveQueue=useRef<Record<string,Promise<any>>>({});
+  const autoSubmitAttempted=useRef(false);
   const clockOffset=useRef(0);
   const storageKey='online-exam-attempt:'+attemptId;
 
   const saveOne=useCallback(async(questionId:string,response:any)=>{
     pending.current[questionId]=response;
     await AsyncStorage.setItem(storageKey,JSON.stringify(pending.current));
-    try{
-      await api.put('/online-exams/attempts/'+attemptId+'/responses/'+questionId,{response});
-      delete pending.current[questionId];
-      await AsyncStorage.setItem(storageKey,JSON.stringify(pending.current));
-      setError('');
-    }catch(e:any){
-      setError(online?'Response is retained on this device and will retry when connected.':'Offline: response is stored locally until reconnection.');
-    }
+    const previous=saveQueue.current[questionId]??Promise.resolve();
+    const queued=previous.catch(()=>undefined).then(async()=>{
+      try{
+        await api.put('/online-exams/attempts/'+attemptId+'/responses/'+questionId,{response});
+        if(JSON.stringify(pending.current[questionId])===JSON.stringify(response)) delete pending.current[questionId];
+        await AsyncStorage.setItem(storageKey,JSON.stringify(pending.current));
+        setError('');
+      }catch(e:any){
+        setError(online?'Response is retained on this device and will retry when connected.':'Offline: response is stored locally until reconnection.');
+        throw e;
+      }
+    });
+    saveQueue.current[questionId]=queued;
+    try{await queued;}catch{/* retained locally for retry */}
   },[attemptId,online,storageKey]);
 
   const load=useCallback(async()=>{
@@ -76,7 +84,7 @@ export default function OnlineExamAttemptScreen({ route, navigation }:any) {
     tick();const timer=setInterval(tick,1000);return()=>clearInterval(timer);
   },[session]);
   useEffect(()=>{
-    if(clockReady && remaining===0 && session?.attempt?.deadline_at && !loading && online) submit(true);
+    if(clockReady && remaining===0 && session?.attempt?.deadline_at && !loading && online && !autoSubmitAttempted.current){ autoSubmitAttempted.current=true; submit(true); }
   },[remaining,session,loading,clockReady,online]);
 
   useEffect(()=>{
@@ -96,8 +104,12 @@ export default function OnlineExamAttemptScreen({ route, navigation }:any) {
       const net=await NetInfo.fetch();
       if(!net.isConnected)throw new Error('Connect to the internet before submitting. Your saved answers are retained on this device.');
       for(const [qid,value] of Object.entries(pending.current)){
-        await api.put('/online-exams/attempts/'+attemptId+'/responses/'+qid,{response:value});
-        delete pending.current[qid];
+        try{
+          await api.put('/online-exams/attempts/'+attemptId+'/responses/'+qid,{response:value});
+          delete pending.current[qid];
+        }catch(e:any){
+          if(e?.response?.status!==409) throw e;
+        }
       }
       await AsyncStorage.setItem(storageKey,JSON.stringify({}));
       await AsyncStorage.removeItem(storageKey+':session');
