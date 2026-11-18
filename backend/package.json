@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "start": "node dist/index.js",
+    "start": "npm run db:migrate && node dist/index.js",
     "build": "tsc -p tsconfig.json",
     "test:auth-claims": "node --import tsx --test ../tests/backend-auth-claims.test.mts",
     "db:bootstrap": "node --import tsx src/db/bootstrap.ts",
