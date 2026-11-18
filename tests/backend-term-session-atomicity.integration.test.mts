@@ -16,9 +16,9 @@ after(async () => {
 async function createUser(label: string, role: 'admin' | 'teacher', schoolCode: string | null) {
   const username = `bsec17-${label}-${randomUUID()}`;
   const { rows } = await query(
-    `INSERT INTO users(username,password_hash,role,full_name,school_code,is_active,pending_admin_review)
-     VALUES($1,'test-hash',$2,$3,$4,TRUE,FALSE) RETURNING id`,
-    [username, role, `BSEC17 ${label}`, schoolCode],
+    `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,is_active,pending_admin_review)
+     VALUES($1,'test-hash',$2,$3,$4,$5,TRUE,FALSE) RETURNING id`,
+    [username, role, `BSEC17 ${label}`, schoolCode, role === 'teacher' ? 'Primary 4' : null],
   );
   const id = String(rows[0].id);
   return {
