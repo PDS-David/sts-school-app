@@ -49,8 +49,10 @@ test('both Primary 3 Agricultural Science archive copies are acknowledged agains
   assert.equal(isAcknowledgedCrossClassDuplicate('PRY 3 AGRIC SCIENCE 3RD TERM_1.docx', 'PRY 4 AGRIC 3RD TERM.docx'), true);
 });
 
-test('the anonymous Primary 5 first-term extraction artifact remains excluded by the nine-file allowlist', () => {
+test('Primary 5 first-term allowlist matches root-relative source identities', () => {
   assert.equal(isPrimarySourceExcluded('ⁿ.docx', 'BASIC FIVE/1st Term Basic 5/ⁿ.docx'), true);
+  assert.equal(isPrimarySourceExcluded('PRY 5 IST TERM ICT_1.doc', 'BASIC FIVE/1st Term Basic 5/PRY 5 IST TERM ICT_1.doc'), true);
+  assert.equal(isPrimarySourceExcluded('PRY 5 English Ist term_1.docx', 'BASIC FIVE/1st Term Basic 5/PRY 5 English Ist term_1.docx'), true);
   assert.equal(isPrimarySourceExcluded('PRY 5 CCA  Ist term.doc', 'BASIC FIVE/1st Term Basic 5/PRY 5 CCA  Ist term.doc'), false);
 });
 
