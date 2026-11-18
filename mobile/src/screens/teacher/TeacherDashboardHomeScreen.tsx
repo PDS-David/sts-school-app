@@ -70,9 +70,6 @@ export default function TeacherDashboardHomeScreen({ navigation }: any) {
             <TouchableOpacity onPress={() => navigation.getParent()?.navigate('ReportsTab', { screen: 'Students' })} style={{ marginTop: Spacing.md }}>
               <Text style={{ color: Colors.primary, fontWeight: '700' }}>Open student reports</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.getParent()?.navigate('ReportsTab', { screen: 'PromoteStudents' })} style={{ marginTop: Spacing.sm }}>
-              <Text style={{ color: Colors.primary, fontWeight: '700' }}>Manage report-roster placement</Text>
-            </TouchableOpacity>
           </Card>
         </PageContainer>
       </ScrollView>
