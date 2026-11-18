@@ -37,6 +37,11 @@ test('individual student score and class-record reports reject a term from anoth
       [admission, userId],
     );
     studentId = String(students[0].id);
+    await query(
+      `INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status)
+       VALUES($1,'Primary 4','Primary 4','active')`,
+      [studentId],
+    );
 
     const year = `BSEC12/${suffix}`;
     const { rows: primaryTerms } = await query(
