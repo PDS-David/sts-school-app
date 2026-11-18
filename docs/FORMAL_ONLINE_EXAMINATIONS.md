@@ -92,8 +92,8 @@ No physical-reporting tables are referenced by the migration or route.
 
 ## Deployment and verification
 
-- Deploy the backend migration using the existing numbered migration runner. Migration 0014 is additive.
+- Migration 0014 is additive, but the current master branch has migration 0012 and no 0013. PR #1033 owns migration 0013; the existing migration runner rejects gaps and requires sequential history. Do not merge or deploy this PR until the migration-number collision/order is explicitly coordinated and 0013 is present before 0014.
 - Deploy the backend API and mobile app together to expose the student flow.
 - No destructive production operation or data backfill is required.
-- CI workflow `.github/workflows/online-exams.yml` runs the backend build, focused contract tests, PostgreSQL 18 migration/constraint/isolation test and mobile TypeScript check.
+- CI workflow `.github/workflows/online-exams.yml` runs the backend build, focused contract tests, PostgreSQL 18 question-bank + exam migration/API/constraint/isolation test and mobile TypeScript check. The workflow applies migrations 0012 and 0014 directly in an isolated test schema; it does not validate the repository's full sequential migration ledger while 0013 is absent.
 - The PostgreSQL integration test requires a disposable `TEST_DATABASE_URL`; it creates and drops only a uniquely named test schema.
