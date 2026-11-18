@@ -36,7 +36,7 @@ function validateDaysPresent(days_present: unknown, daysOpened: number | null): 
 }
 
 // ── PUT /attendance  (upsert days present) ────────────────────────────────────
-router.put('/', requireRole('admin'), async (req, res) => {
+router.put('/', requireRole('admin', 'teacher'), async (req, res) => {
   const { student_id, term_id, days_present } = req.body as {
     student_id: string; term_id: number; days_present: number;
   };
@@ -104,7 +104,7 @@ router.get('/', requirePerm('attendance.read'), async (req, res) => {
 });
 
 // ── PUT /attendance/bulk  (whole class at once) ───────────────────────────────
-router.put('/bulk', requireRole('admin'), async (req, res) => {
+router.put('/bulk', requireRole('admin', 'teacher'), async (req, res) => {
   const { entries, term_id } = req.body as {
     term_id: number;
     entries: Array<{ student_id: string; days_present: number }>;
