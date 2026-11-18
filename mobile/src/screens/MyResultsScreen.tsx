@@ -95,11 +95,10 @@ export default function MyResultsScreen({ route, navigation }: any) {
   const { student, term, scores, attendance, class_record, summary } = report;
   const brand = getSchoolBrand(student.school_code);
 
-  // Print/Export is deliberately admin + parent only — this is a report
-  // TEACHERS generate the underlying data for, but the school's own decision
-  // was that printing/exporting the finished document is an admin/parent
-  // action, not something a teacher or the student themselves does from here.
-  const canPrintExport = user?.role === 'admin' || user?.role === 'parent';
+  // Teachers generate and export reports only for active students in
+  // their assigned physical class; admins and parents retain their existing
+  // report-export access.
+  const canPrintExport = user?.role === 'admin' || user?.role === 'parent' || user?.role === 'teacher';
 
 
   const handlePrint = async () => {
