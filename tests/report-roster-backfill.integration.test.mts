@@ -6,12 +6,13 @@ import test, { after } from 'node:test';
 import { pool } from '../backend/src/db/pool.js';
 
 const migration = readFileSync(join(process.cwd(), 'backend/migrations/0005_report_roster_memberships.sql'), 'utf8');
+const explicitEnrolment = readFileSync(join(process.cwd(), 'backend/migrations/0006_require_explicit_report_roster_enrolment.sql'), 'utf8');
 
 after(async () => {
   await pool.end();
 });
 
-test('0005 backfills active and soft-deleted students idempotently without changing online identity', async () => {
+test('0005 provisional backfill is made inactive by 0006 until physical roster identity is confirmed', async () => {
   const client = await pool.connect();
   const suffix = randomUUID();
   const schoolCode = `roster_backfill_${suffix.slice(0, 12)}`;
@@ -31,6 +32,8 @@ test('0005 backfills active and soft-deleted students idempotently without chang
 
     await client.query(migration);
     await client.query(migration);
+    await client.query(explicitEnrolment);
+    await client.query(explicitEnrolment);
 
     const memberships = await client.query(
       `SELECT student_id,class_name,source_class_name,status,removed_at
@@ -42,8 +45,8 @@ test('0005 backfills active and soft-deleted students idempotently without chang
     const removedMembership = memberships.rows.find(row => row.student_id === removed.rows[0].id);
     assert.equal(activeMembership?.class_name, 'Primary 4');
     assert.equal(activeMembership?.source_class_name, 'Primary 4');
-    assert.equal(activeMembership?.status, 'active');
-    assert.equal(activeMembership?.removed_at, null);
+    assert.equal(activeMembership?.status, 'removed', 'online-only student rows must not become active report-roster members');
+    assert.ok(activeMembership?.removed_at);
     assert.equal(removedMembership?.class_name, 'Primary 5');
     assert.equal(removedMembership?.source_class_name, 'Primary 5');
     assert.equal(removedMembership?.status, 'removed');
@@ -54,8 +57,9 @@ test('0005 backfills active and soft-deleted students idempotently without chang
        FROM report_roster_membership_events WHERE student_id=ANY($1::uuid[])`,
       [[active.rows[0].id, removed.rows[0].id]],
     );
-    assert.equal(events.rowCount, 2, 're-running migration must not duplicate backfill events');
+    assert.equal(events.rowCount, 3, '0006 adds one reconciliation event and remains idempotent');
     assert.ok(events.rows.some(row => row.student_id === active.rows[0].id && row.event_type === 'enrolled'));
+    assert.ok(events.rows.some(row => row.student_id === active.rows[0].id && row.event_type === 'removed'));
     assert.ok(events.rows.some(row => row.student_id === removed.rows[0].id && row.event_type === 'removed'));
 
     const students = await client.query(

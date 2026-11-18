@@ -6,6 +6,7 @@ on:
     paths:
       - "backend/schema.sql"
       - "backend/migrations/0005_report_roster_memberships.sql"
+      - "backend/migrations/0006_require_explicit_report_roster_enrolment.sql"
       - "backend/migrations/README.md"
       - "tests/report-roster-schema.test.mts"
       - "tests/report-roster-backfill.integration.test.mts"
@@ -21,7 +22,7 @@ concurrency:
 
 jobs:
   schema:
-    name: PostgreSQL 18 fresh schema, numbered migration and backfill
+    name: PostgreSQL 18 fresh schema and explicit report-roster enrolment
     runs-on: ubuntu-latest
     timeout-minutes: 20
     services:
@@ -57,5 +58,5 @@ jobs:
         run: npm run db:migrate --workspace=backend
       - name: Verify schema parity and append-only safeguards
         run: node --import tsx --test tests/report-roster-schema.test.mts
-      - name: Verify real 0005 backfill and idempotence
+      - name: Verify provisional backfill is deactivated until explicit enrolment
         run: node --import tsx --test tests/report-roster-backfill.integration.test.mts

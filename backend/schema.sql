@@ -688,28 +688,8 @@ CREATE TRIGGER report_roster_events_append_only_truncate
   FOR EACH STATEMENT EXECUTE FUNCTION report_roster_events_reject_mutation();
 REVOKE UPDATE, DELETE, TRUNCATE ON TABLE report_roster_membership_events FROM PUBLIC;
 
--- Existing students become report-roster members in their existing class.
--- This is a one-time idempotent bootstrap; it does not modify student identity.
-INSERT INTO report_roster_memberships
-  (student_id, class_name, source_class_name, status, joined_at, removed_at)
-SELECT id, class_name, class_name,
-       CASE WHEN deleted_at IS NULL THEN 'active' ELSE 'removed' END,
-       COALESCE(created_at, now()), deleted_at
-  FROM students
-ON CONFLICT (student_id) DO NOTHING;
-INSERT INTO report_roster_membership_events
-  (student_id, event_type, to_class_name, occurred_at, details)
-SELECT m.student_id,
-       CASE WHEN m.status = 'active' THEN 'enrolled' ELSE 'removed' END,
-       m.class_name,
-       COALESCE(m.removed_at, m.joined_at),
-       jsonb_build_object('source', 'schema_bootstrap')
-  FROM report_roster_memberships m
- WHERE NOT EXISTS (
-   SELECT 1 FROM report_roster_membership_events e
-   WHERE e.student_id = m.student_id
- );
-
+-- No online student is automatically enrolled in the physical report roster.
+-- Memberships are created only from an explicitly reconciled physical-class source.
 
 
 -- ── Pass 22: Brainee (AI) — essay grading, weekly-effort summaries ────────────
