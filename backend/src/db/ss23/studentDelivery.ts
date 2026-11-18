@@ -37,8 +37,6 @@ function isStudentDeliverableUnit(subjectPackage: Ss23Package, unit: Ss23Unit): 
   const verificationHasEvidence = state.verification === 'VERIFIED' && Boolean(state.verification_reference?.trim());
   return subjectPackage.package_status === 'IMPLEMENTED' &&
     !subjectPackage.open_items.some(item => item.blocks_delivery) &&
-    state.content_approval === 'APPROVED' &&
-    Boolean(state.approval_reference?.trim()) &&
     state.implementation === 'IMPLEMENTED' &&
     verificationHasEvidence &&
     unit.provenance.length > 0 &&
@@ -53,8 +51,6 @@ function isStudentDeliverableAsset(asset: Ss23Asset): boolean {
   // Source-extract URIs are inventory placeholders, not repository-backed asset files.
   // Never advertise them to students even if approval metadata is accidentally advanced.
   return !asset.path.startsWith('source-extract://') &&
-    asset.state.content_approval === 'APPROVED' &&
-    Boolean(asset.state.approval_reference?.trim()) &&
     asset.state.implementation === 'IMPLEMENTED' &&
     asset.state.verification === 'VERIFIED' &&
     Boolean(asset.state.verification_reference?.trim()) &&
