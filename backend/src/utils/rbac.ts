@@ -33,16 +33,11 @@ export const permissions: Record<Role, string[]> = {
   // permissions 'aiResults.read' / 'aiGrading.override' used in
   // routes/learning.ts — a teacher must never view or touch a grade Brainee
   // gave a student. Do not add any of these back for 'teacher'.
-  teacher: [
-    'materials.read',    'materials.write',
-    'topics.read',       'topics.write',
-    'grades.read',       'grades.write',        'grades.export',
-    'students.read',
-    'weeklyEfforts.read','weeklyEfforts.write','weeklyEfforts.feedback',
-    'messages.read',     'messages.write',
-    'attendance.write',  'attendance.read',
-    'classRecord.write', 'classRecord.read',
-  ],
+  // Teachers use the school app only to generate reports for their
+  // assigned physical class. Report data is returned by the scoped report
+  // endpoints; no standalone grade, attendance, messaging, learning-content,
+  // AI, term-management or student-write permissions are granted.
+  teacher: ['students.read'],
   admin: ['*'],   // full access — including questions.*, assessments.*,
                   // aiResults.read, and aiGrading.override, none of which
                   // are granted to any other role.
