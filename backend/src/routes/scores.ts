@@ -235,7 +235,7 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
   const params: unknown[] = [];
 
   if (term_id)    { params.push(term_id);    sql += ` AND sc.term_id=$${params.length}`; }
-  if (class_name) { params.push(class_name); sql += ` AND COALESCE(rrm.class_name,s.class_name)=${params.length}`; }
+  if (class_name) { params.push(class_name); sql += ` AND COALESCE(rrm.class_name,s.class_name)=$${params.length}`; }
   if (subject_id) { params.push(subject_id); sql += ` AND sc.subject_id=$${params.length}`; }
   if (student_id) { params.push(student_id); sql += ` AND sc.student_id=$${params.length}`; }
   // Teachers see only their school
@@ -247,7 +247,7 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
       return res.json({ scores: [] });
     }
     params.push(user.assigned_class);
-    sql += ` AND rrm.class_name=${params.length} AND rrm.status='active'`;
+    sql += ` AND rrm.class_name=$${params.length} AND rrm.status='active'`;
   } else if (user.role === 'admin' && school_code) {
     // Found in a hardening pass: filtering by class_name alone (e.g. the
     // admin Class Summary/ranking screen) had no school scoping at all for
