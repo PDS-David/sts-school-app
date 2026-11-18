@@ -98,6 +98,9 @@ function parseDir(dir: string, schoolCode: 'primary' | 'secondary'): { rows: Ros
 
 async function main() {
   const yes = process.argv.includes('--yes');
+  if (yes) {
+    throw new Error('This legacy historical-report importer is disabled for writes. It cannot verify current enrolment. Use importPhysicalReportRoster.ts only after every workbook row has a verified status, current class, verifier and date.');
+  }
   const primaryDir = arg('primary-dir');
   const secondaryDir = arg('secondary-dir');
 
