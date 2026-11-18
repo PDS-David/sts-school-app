@@ -12,6 +12,7 @@ export default function OnlineExamAttemptScreen({ route, navigation }:any) {
   const [session,setSession]=useState<any>(initialSession??null);
   const [responses,setResponses]=useState<Record<string,any>>({});
   const [remaining,setRemaining]=useState(0);
+  const [clockReady,setClockReady]=useState(false);
   const [loading,setLoading]=useState(!initialSession);
   const [saving,setSaving]=useState(false);
   const [online,setOnline]=useState(true);
@@ -35,19 +36,29 @@ export default function OnlineExamAttemptScreen({ route, navigation }:any) {
 
   const load=useCallback(async()=>{
     setLoading(true);setError('');
+    const cachedSessionRaw=await AsyncStorage.getItem(storageKey+':session');
+    const cachedResponsesRaw=await AsyncStorage.getItem(storageKey);
+    const cachedSession=cachedSessionRaw?JSON.parse(cachedSessionRaw):null;
+    const cachedResponses=cachedResponsesRaw?JSON.parse(cachedResponsesRaw):{};
     try{
       const {data}=await api.get('/online-exams/attempts/'+attemptId);
       setSession(data);
+      await AsyncStorage.setItem(storageKey+':session',JSON.stringify(data));
       clockOffset.current=new Date(data.attempt.server_time).getTime()-Date.now();
       const remote=Object.fromEntries((data.saved_responses??[]).map((x:any)=>[x.exam_question_id,x.response]));
-      const raw=await AsyncStorage.getItem(storageKey);
-      const local=raw?JSON.parse(raw):{};
+      const local=cachedResponses;
       const merged={...remote,...local};
       setResponses(merged);
       pending.current=local;
       for(const [qid,value] of Object.entries(local)) await saveOne(qid,value);
     }catch(e:any){
-      setError(e?.response?.data?.error??'Could not recover this examination attempt.');
+      if(cachedSession?.questions){
+        setSession(cachedSession);
+        setResponses(cachedResponses);
+        pending.current=cachedResponses;
+        clockOffset.current=0;
+        setError('Offline recovery: showing the last cached examination. Unsynced answers will upload when connection returns.');
+      }else setError(e?.response?.data?.error??'Could not recover this examination attempt.');
     }finally{setLoading(false);}
   },[attemptId,saveOne,storageKey]);
   useEffect(()=>{load();},[load]);
@@ -60,13 +71,19 @@ export default function OnlineExamAttemptScreen({ route, navigation }:any) {
     const tick=()=>{
       const serverNow=Date.now()+clockOffset.current;
       const seconds=Math.max(0,Math.floor((new Date(session.attempt.deadline_at).getTime()-serverNow)/1000));
-      setRemaining(seconds);
+      setRemaining(seconds);setClockReady(true);
     };
     tick();const timer=setInterval(tick,1000);return()=>clearInterval(timer);
   },[session]);
   useEffect(()=>{
-    if(remaining===0 && session?.attempt?.deadline_at && !loading) submit(true);
-  },[remaining,session,loading]);
+    if(clockReady && remaining===0 && session?.attempt?.deadline_at && !loading && online) submit(true);
+  },[remaining,session,loading,clockReady,online]);
+
+  useEffect(()=>{
+    if(online && Object.keys(pending.current).length){
+      (async()=>{for(const [qid,value] of Object.entries(pending.current)) await saveOne(qid,value);})();
+    }
+  },[online,saveOne]);
 
   const change=(qid:string,value:any)=>{
     setResponses(old=>({...old,[qid]:value}));
@@ -83,6 +100,7 @@ export default function OnlineExamAttemptScreen({ route, navigation }:any) {
         delete pending.current[qid];
       }
       await AsyncStorage.setItem(storageKey,JSON.stringify({}));
+      await AsyncStorage.removeItem(storageKey+':session');
       const {data}=await api.post('/online-exams/attempts/'+attemptId+'/submit',{confirm:true});
       Alert.alert(auto?'Time is up':'Examination submitted',data.status==='under_review'?'Your answers were submitted. Some written responses are awaiting marking.':'Your examination has been submitted successfully.');
       navigation.replace('OnlineExams');
