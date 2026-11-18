@@ -270,9 +270,10 @@ router.post('/', requirePerm('grades.write'), async (req, res) => {
   // Authorize the requested physical class before checking for duplicates;
   // otherwise a teacher could use 409/201 differences to enumerate another class.
   const duplicate = await query(
-    `SELECT id FROM students
-      WHERE school_code=$1 AND class_name=$2 AND deleted_at IS NULL
-        AND lower(regexp_replace(trim(full_name),'\\s+',' ','g')) = lower(regexp_replace(trim($3),'\\s+',' ','g'))
+    `SELECT s.id FROM students s
+      JOIN report_roster_memberships rrm ON rrm.student_id=s.id
+      WHERE s.school_code=$1 AND rrm.class_name=$2 AND s.deleted_at IS NULL
+        AND lower(regexp_replace(trim(s.full_name),'\\s+',' ','g')) = lower(regexp_replace(trim($3),'\\s+',' ','g'))
       LIMIT 1`,
     [d.school_code, d.class_name, d.full_name],
   );
@@ -525,9 +526,10 @@ router.post('/:id/promotion', requireRole('admin', 'teacher'), async (req, res) 
         return { ok: false as const, status: 409, error: 'Student placement changed; refresh the class roster and try again.' };
       }
       const { rows: duplicateRows } = await client.query(
-        `SELECT id FROM students
-          WHERE school_code='secondary' AND deleted_at IS NULL
-            AND lower(regexp_replace(trim(full_name),'[[:space:]]+',' ','g')) =
+        `SELECT s.id FROM students s
+          JOIN report_roster_memberships rrm ON rrm.student_id=s.id
+          WHERE s.school_code='secondary' AND s.deleted_at IS NULL
+            AND lower(regexp_replace(trim(s.full_name),'[[:space:]]+',' ','g')) =
                 lower(regexp_replace(trim($1),'[[:space:]]+',' ','g'))
           LIMIT 1`,
         [locked.full_name],
