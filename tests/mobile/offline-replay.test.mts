@@ -48,6 +48,19 @@ function memoryStorage() {
   };
 }
 
+test('queued offline writes retain the selected school for safe replay after a switch', async () => {
+  const storage = memoryStorage();
+  const outbox = createOutboxStore<{ id: string; headers?: Record<string, string> }>(
+    storage, () => 'admin-user', 'offline_outbox:',
+  );
+  await outbox.enqueue({
+    id: 'attendance-primary',
+    headers: { 'x-school-code': 'primary' },
+  });
+  const [queued] = await outbox.getAll();
+  assert.deepEqual(queued.headers, { 'x-school-code': 'primary' });
+});
+
 test('outbox writes reject when durable storage fails', async () => {
   const storage = memoryStorage();
   const outbox = createOutboxStore<{ id: string }>(
