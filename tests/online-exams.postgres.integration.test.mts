@@ -29,6 +29,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
         is_active BOOLEAN DEFAULT true,access_expires_at TIMESTAMPTZ,revocation_reason TEXT,
         pending_admin_review BOOLEAN DEFAULT false)`);
       await client.query('CREATE TABLE students(id UUID PRIMARY KEY,user_id UUID,school_code TEXT,class_name TEXT,deleted_at TIMESTAMPTZ)');
+      await client.query('CREATE TABLE topics(id INTEGER PRIMARY KEY)');
       await client.query('CREATE TABLE teacher_subjects(user_id UUID,subject_id INTEGER)');
       await client.query('CREATE TABLE scores(id BIGINT PRIMARY KEY,score NUMERIC)');
       await client.query('CREATE TABLE attendance(id BIGINT PRIMARY KEY,present BOOLEAN)');
@@ -42,8 +43,10 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       await client.query("INSERT INTO report_roster_memberships VALUES(1,'00000000-0000-4000-8000-000000000001')");
 
       const questionBankSql=await readFile(new URL('../backend/migrations/0012_online_question_bank.sql',import.meta.url),'utf8');
+      const classPracticeSql=await readFile(new URL('../backend/migrations/0013_ai_class_practice.sql',import.meta.url),'utf8');
       const examSql=await readFile(new URL('../backend/migrations/0014_formal_online_examinations.sql',import.meta.url),'utf8');
       await client.query(questionBankSql);
+      await client.query(classPracticeSql);
       await client.query(examSql);
 
       const school='primary',admin=randomUUID(),studentUser=randomUUID(),otherUser=randomUUID();
