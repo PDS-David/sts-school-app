@@ -44,8 +44,8 @@ export default function OnlineExamsScreen({ navigation }: any) {
       <Text style={styles.meta}>Opens: {new Date(item.starts_at).toLocaleString()}</Text>
       <Text style={styles.meta}>Closes: {new Date(item.ends_at).toLocaleString()}</Text>
       {status && <Text style={[styles.status,{color:closed?Colors.success:Colors.primary}]}>Attempt: {status.replace('_',' ')}</Text>}
-      <Btn title={status==='in_progress'?'Resume examination':status==='expired'?'Submit saved answers':closed?'Attempt closed':'View instructions and start'} onPress={()=>open(item)} disabled={closed}/>
-      {closed && item.attempt_id ? <Btn title="View result" variant="outline" onPress={()=>navigation.navigate('OnlineExamResult',{attemptId:item.attempt_id})}/> : null}
+      <Btn label={status==='in_progress'?'Resume examination':status==='expired'?'Submit saved answers':closed?'Attempt closed':'View instructions and start'} onPress={()=>open(item)} disabled={closed}/>
+      {closed && item.attempt_id ? <Btn label="View result" variant="outline" onPress={()=>navigation.navigate('OnlineExamResult',{attemptId:item.attempt_id})}/> : null}
     </Card>;
   };
   if(loading)return <Loader/>;
@@ -55,7 +55,7 @@ export default function OnlineExamsScreen({ navigation }: any) {
     {error? <Text style={styles.error}>{error}</Text>:null}
     <FlatList data={exams} keyExtractor={x=>x.id} renderItem={render}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={()=>load(true)}/>}
-      ListEmptyComponent={<Empty title="No examinations available" message="Your class has no published online examination at the moment."/>}
+      ListEmptyComponent={<Empty label="No examinations available" message="Your class has no published online examination at the moment."/>}
       contentContainerStyle={{paddingBottom:Spacing.xl}}/>
   </View>;
 }
