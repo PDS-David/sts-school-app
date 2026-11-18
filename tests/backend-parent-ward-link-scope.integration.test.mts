@@ -292,7 +292,11 @@ test('school-bound administrators are confined to their student roster and mutat
     }
     await query('DELETE FROM parent_wards WHERE student_id=ANY($1::uuid[]) OR parent_id=ANY($2::uuid[])',
       [studentIds, [parent.id]]);
-    if (studentIds.length) await query('DELETE FROM students WHERE id=ANY($1::uuid[])', [studentIds]);
+    if (studentIds.length) {
+      await query('DELETE FROM report_roster_membership_events WHERE student_id=ANY($1::uuid[])', [studentIds]);
+      await query('DELETE FROM report_roster_memberships WHERE student_id=ANY($1::uuid[])', [studentIds]);
+      await query('DELETE FROM students WHERE id=ANY($1::uuid[])', [studentIds]);
+    }
     await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [userIds]);
   }
 });
