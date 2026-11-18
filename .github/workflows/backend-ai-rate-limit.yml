@@ -59,6 +59,8 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Bootstrap disposable PostgreSQL schema
         run: npm run db:bootstrap --workspace=backend
+      - name: Apply numbered migrations
+        run: npm run db:migrate --workspace=backend
       - name: Run AI per-account rate-limit regression
         run: node --import tsx --test tests/backend-ai-rate-limit.integration.test.mts
       - name: Typecheck backend
