@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { getStudentSs1Lesson, isStudentDeliverableSs1Lesson, listStudentSs1Lessons, listStudentSs1Assets, readStudentSs1Asset, studentSs1LessonPreview } from '../../backend/src/db/ss1/studentDelivery.js';
+import { getStudentSs1Lesson, isStudentDeliverableSs1Lesson, listStudentSs1Lessons, listStudentSs1Assets, readStudentSs1Asset, studentSs1LessonPreview, safeStudentSs1Lesson } from '../../backend/src/db/ss1/studentDelivery.js';
 import { studentTopicPreview } from '../../backend/src/utils/jss3Sequence.js';
 import { loadPackages } from '../../backend/src/db/ss1/loader.js';
 
@@ -131,4 +131,19 @@ test('SS1 lesson delivery is independent of teacher approval metadata', () => {
   candidate.state.content_approval = 'PENDING';
   candidate.state.approval_reference = null;
   assert.equal(isStudentDeliverableSs1Lesson(candidate), true, 'implemented lessons must not be gated by approval metadata');
+});
+
+test('unlocked SS1 student lessons omit teacher answers, marking keys and source provenance', () => {
+  const lesson = listStudentSs1Lessons()[0];
+  assert.ok(lesson, 'an implemented SS1 lesson fixture must exist');
+  const delivered = safeStudentSs1Lesson(lesson);
+  assert.equal(delivered.id, lesson.id);
+  assert.equal(delivered.title, lesson.title);
+  assert.deepEqual(delivered.objectives, lesson.objectives);
+  assert.equal(delivered.body, lesson.body);
+  assert.equal('practice' in delivered, false);
+  assert.equal('provenance' in delivered, false);
+  assert.equal('state' in delivered, false);
+  assert.equal('body_sha256' in delivered, false);
+  assert.equal('package_status' in delivered, false);
 });
