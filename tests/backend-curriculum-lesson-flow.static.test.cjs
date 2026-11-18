@@ -61,3 +61,12 @@ test('lesson cache is additive and isolated from formal assessment tables', () =
   assert.match(cache, /validateCurriculumLesson/);
   assert.match(cache, /42P01/);
 });
+
+test('all curriculum lesson generation endpoints enforce a shared per-account HTTP rate limit', () => {
+  const route = read('backend/src/routes/learning.ts');
+  assert.match(route, /createRedisRateLimitStore\('curriculum-lesson-http'\)/);
+  assert.match(route, /const curriculumLessonLimiter = rateLimit\(/);
+  assert.match(route, /router\.post\('\/topics\/:id\/lesson', curriculumLessonLimiter,/);
+  assert.match(route, /router\.post\('\/ss1\/lessons\/:lessonId\/generate', curriculumLessonLimiter,/);
+  assert.match(route, /router\.post\('\/ss23\/units\/:unitId\/generate', curriculumLessonLimiter,/);
+});
