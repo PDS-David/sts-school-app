@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS online_exam_questions (
 CREATE INDEX IF NOT EXISTS online_exam_questions_exam_order_idx ON online_exam_questions(exam_id,section_id,position);
 
 CREATE OR REPLACE FUNCTION online_exam_question_rights_guard()
-RETURNS trigger LANGUAGE plpgsql AS $
+RETURNS trigger LANGUAGE plpgsql AS $online_exam_guard$
 DECLARE
   v_question RECORD;
   v_exam RECORD;
@@ -88,7 +88,7 @@ BEGIN
   END IF;
   RETURN NEW;
 END;
-$;
+$online_exam_guard$;
 
 CREATE TRIGGER trg_online_exam_question_rights_guard
 BEFORE INSERT OR UPDATE OF exam_id,question_bank_question_id
