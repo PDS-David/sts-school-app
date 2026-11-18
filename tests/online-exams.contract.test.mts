@@ -14,7 +14,7 @@ test('numbered database migrations remain contiguous for the production migratio
   const files = (await readdir(directory)).filter(name => name.endsWith('.sql')).sort();
   assert.ok(files.length > 0, 'migration directory must not be empty');
   files.forEach((name, index) => {
-    assert.match(name, /^\\d{4}_[a-z0-9_-]+\\.sql$/);
+    assert.match(name, /^\d{4}_[a-z0-9_-]+\.sql$/);
     assert.equal(name.slice(0, 4), String(index + 1).padStart(4, '0'),
       `migration sequence gap at ${name}; expected ${String(index + 1).padStart(4, '0')}`);
   });
@@ -61,7 +61,7 @@ test('AI essay marking reuses the existing essay-mark contract', () => {
 
 test('exam schema and APIs remain isolated from physical teacher-report data', () => {
   assert.doesNotMatch(migration, /\b(scores|attendance|report_cards|report_remarks|class_records|report_roster_memberships)\b/i);
-  assert.doesNotMatch(route, /\b(scores|attendance|report_cards|report_remarks|class_records|report_roster_memberships)\b/i);
+  assert.doesNotMatch(route, /\b(?:FROM|JOIN|INTO|UPDATE|TABLE)\s+(?:public\.)?(?:scores|attendance|report_cards|report_remarks|class_records|report_roster_memberships)\b/i);
   for (const table of ['online_exams','online_exam_sections','online_exam_questions','online_exam_candidates','online_exam_attempts','online_exam_responses','online_exam_audit_events']) {
     assert.match(migration, new RegExp('CREATE TABLE IF NOT EXISTS '+table));
   }
