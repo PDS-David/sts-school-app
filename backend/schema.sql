@@ -407,6 +407,32 @@ CREATE TABLE IF NOT EXISTS topics (
   created_at  TIMESTAMPTZ DEFAULT now()
 );
 
+-- Shared AI-generated teaching lesson and practice cache. This is separate
+-- from topic completion and from the formal assessment/question bank.
+CREATE TABLE IF NOT EXISTS curriculum_generated_lessons (
+  cache_key          TEXT PRIMARY KEY CHECK (length(cache_key) BETWEEN 1 AND 240),
+  topic_id           INTEGER REFERENCES topics(id) ON DELETE CASCADE,
+  class_name         TEXT NOT NULL,
+  subject_name       TEXT NOT NULL,
+  term_label         TEXT NOT NULL,
+  topic_title        TEXT NOT NULL,
+  context_sha256     CHAR(64) NOT NULL CHECK (context_sha256 ~ '^[0-9a-f]{64}$'),
+  lesson_json        JSONB NOT NULL CHECK (jsonb_typeof(lesson_json) = 'object'),
+  generator_version  TEXT NOT NULL,
+  generated_at       TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at         TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_curriculum_generated_lessons_topic
+  ON curriculum_generated_lessons(topic_id)
+  WHERE topic_id IS NOT NULL;
+
+CREATE INDEX IF NOT EXISTS idx_curriculum_generated_lessons_class_subject_term
+  ON curriculum_generated_lessons(class_name, subject_name, term_label);
+
+COMMENT ON TABLE curriculum_generated_lessons IS
+  'Validated AI curriculum lesson and practice cache; separate from topic completion and formal assessment records.';
+
 -- One row per student per topic they've marked done. No per-student content
 -- lives here (see topics.summary above for why) — this table is purely the
 -- completion record itself.
