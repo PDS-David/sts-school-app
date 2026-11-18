@@ -48,6 +48,12 @@ test('source-recovery and Primary 4 package evidence are represented', () => {
     inventory.sourceRecovery.entries.map((entry: { recoveredWeekMarkerCount: number }) => entry.recoveredWeekMarkerCount),
     [10, 9, 5],
   );
+  for (const entry of inventory.sourceRecovery.entries as Array<{ sourceBasename: string; sourceSha256: string; sourceArchiveSha256: string }>) {
+    assert.ok(inventory.documents.some((doc: { basename: string; sha256: string }) => doc.basename === entry.sourceBasename && doc.sha256 === entry.sourceSha256));
+    assert.ok(inventory.sourceArchives.some((archive: { sha256: string }) => archive.sha256 === entry.sourceArchiveSha256));
+  }
+  const p5Anonymous = inventory.documents.find((doc: { basename: string }) => doc.basename === 'ⁿ.docx');
+  assert.equal(p5Anonymous?.excluded_after_patch, true);
   assert.equal(inventory.primary4CodeEvidence.manifestRows, 248);
   assert.equal(inventory.primary4CodeEvidence.researchedLessons, 38);
   assert.equal(inventory.primary4CodeEvidence.archiveLessonCorrections, 33);
