@@ -7,9 +7,9 @@
 // Optional: T2_REAL_ASSETS=<folder holding MUSIC_ASSET_MANIFEST.csv, TASK2_BT_ASSET_MANIFEST.csv,
 //   music/ and bt/ (original media)> additionally attaches and byte-checks the REAL Task 2 assets.
 //
-// Everything this file creates lives under one throw-away school_code
-// (TEST_SC) plus its users; the `after` hook deletes all of it and asserts
-// that zero rows remain, printing the counts.
+// Everything this file creates lives under one throw-away school_code.
+// The schema-idempotency check intentionally backfills the two students into
+// the report roster, so their append-only membership history is retained.
 import assert from 'node:assert/strict';
 import { createHash, randomUUID } from 'node:crypto';
 import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
@@ -108,6 +108,14 @@ if (!URL_) {
       assessments: await count('SELECT count(*) n FROM assessments WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]),
       subjects: await count('SELECT count(*) n FROM subjects WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]),
       students: await count('SELECT count(*) n FROM students WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]),
+      report_roster_memberships: await count(
+        'SELECT count(*) n FROM report_roster_memberships m JOIN students s ON s.id=m.student_id WHERE s.school_code = ANY($1)',
+        [[TEST_SC, TEST_SC_B]],
+      ),
+      report_roster_membership_events: await count(
+        'SELECT count(*) n FROM report_roster_membership_events e JOIN students s ON s.id=e.student_id WHERE s.school_code = ANY($1)',
+        [[TEST_SC, TEST_SC_B]],
+      ),
       users: await count("SELECT count(*) n FROM users WHERE school_code=$1 OR username LIKE 'zz_t2test_%'", [TEST_SC]),
       schools: await count('SELECT count(*) n FROM schools WHERE code = ANY($1)', [[TEST_SC, TEST_SC_B]]),
       materials: await count('SELECT count(*) n FROM materials WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]),
@@ -196,7 +204,20 @@ if (!URL_) {
     // Reminder of what this run created, for the report.
     console.log(`TEST-DATA CREATED: 1 school, 2 subjects, ${MUSIC.length + BT.length} topics, ${created.userIds.length} users, ${created.studentIds.length} students, topic_assets rows (deleted by cascade)`);
     await pool.end();
-    for (const [k, v] of Object.entries(left)) assert.equal(v, 0, `residue in ${k}`);
+    const preservedHistory = new Set([
+      'students',
+      'report_roster_memberships',
+      'report_roster_membership_events',
+      'schools',
+    ]);
+    for (const [k, v] of Object.entries(left)) {
+      if (preservedHistory.has(k)) {
+        const expected = k === 'schools' ? 1 : created.studentIds.length;
+        assert.equal(v, expected, `preserved report history count in ${k}`);
+      } else {
+        assert.equal(v, 0, `residue in ${k}`);
+      }
+    }
   });
 
   // ── helpers to write a synthetic manifest + files ──────────────────────────
