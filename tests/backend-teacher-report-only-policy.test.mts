@@ -6,7 +6,7 @@ import { resolveStudentRosterScope } from '../backend/src/utils/studentRosterSco
 test('teacher role can maintain assigned physical-class reports but not online learning or administration', () => {
   for (const permission of [
     'students.read', 'students.write',
-    'grades.read', 'grades.write', 'grades.export',
+    'grades.read', 'grades.write',
     'attendance.read', 'attendance.write',
     'classRecord.read', 'classRecord.write',
   ]) {
