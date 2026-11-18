@@ -88,6 +88,12 @@ test('primary report uses the exact supplied assessment maxima and full report s
   assert.ok(html.includes('95%'));
   assert.ok(!html.includes('Overall Position'));
   assert.ok(!html.includes('POSITION</th>'));
+  const canonicalClassReport = report('primary');
+  canonicalClassReport.student.class_name = 'Primary 4';
+  const canonicalHtml = renderTermReportHtml(canonicalClassReport, primaryBrand, '');
+  assert.ok(canonicalHtml.includes('>Grade 4</span>'), 'canonical Primary class maps to the supplied report label');
+  assert.ok(canonicalHtml.includes('17.0'));
+  assert.ok(canonicalHtml.includes('71.12'));
 });
 
 test('secondary report uses the secondary assessment maxima and principal labels', () => {
@@ -99,6 +105,10 @@ test('secondary report uses the secondary assessment maxima and principal labels
   assert.ok(html.includes("PRINCIPAL'S REMARK"));
   assert.ok(html.includes("PRINCIPAL'S SIGNATURE"));
   assert.ok(!html.includes("HEAD TEACHER'S REMARK"));
+  const canonicalClassReport = report('secondary');
+  canonicalClassReport.student.class_name = 'JSS 2';
+  const canonicalHtml = renderTermReportHtml(canonicalClassReport, secondaryBrand, '');
+  assert.ok(canonicalHtml.includes('>JSS2</span>'), 'canonical JSS class maps to the supplied report label');
 });
 
 test('student, subject, remarks and branding text are escaped before HTML rendering', () => {
