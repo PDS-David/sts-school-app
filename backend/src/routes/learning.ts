@@ -250,7 +250,7 @@ router.post('/ss1/lessons/:lessonId/generate', requirePerm('topics.read'), async
   }
   try {
     const result = await getOrGenerateCurriculumLesson({
-      cacheKey: `ss1:${lesson.id}`,
+      cacheKey: `ss1:${encodeURIComponent(lesson.canonical_subject)}:${encodeURIComponent(lesson.term)}:${encodeURIComponent(String(lesson.id))}`,
       input: {
         className: 'SS 1',
         subject: lesson.canonical_subject,
@@ -410,7 +410,7 @@ router.post('/ss23/units/:unitId/generate', requirePerm('topics.read'), async (r
     : unit.body;
   try {
     const result = await getOrGenerateCurriculumLesson({
-      cacheKey: `ss23:${unit.id}`,
+      cacheKey: `ss23:${encodeURIComponent(unit.class_name)}:${encodeURIComponent(unit.subject)}:${encodeURIComponent(unit.term)}:${encodeURIComponent(String(unit.id))}`,
       input: {
         className: unit.class_name,
         subject: unit.subject,
