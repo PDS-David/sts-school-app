@@ -38,7 +38,7 @@ router.get('/terms', async (req, res) => {
   const requested = typeof req.query.school_code === 'string' ? req.query.school_code.trim() : undefined;
   const user = req.user!;
   let sc = user.school_code;
-  if (user.role === 'teacher' && (!user.school_code || !user.assigned_class)) {
+  if (user.role === 'teacher' && (!user.school_code || !(user.assigned_class || user.assigned_class_names?.length))) {
     return res.status(403).json({ error: 'Adding a report subject requires an assigned physical class.' });
   }
   if (user.role === 'admin') {
@@ -260,13 +260,19 @@ router.get('/subjects', async (req, res) => {
       sc = requested ?? null;
     }
   }
+  if (user.role === 'teacher' && !user.assigned_class) {
+    const ids = user.assigned_subject_ids ?? [];
+    if (!ids.length) return res.json({ subjects: [] });
+    const { rows } = await query('SELECT * FROM subjects WHERE school_code=$1 AND id=ANY($2::int[]) ORDER BY name', [sc, ids]);
+    return res.json({ subjects: rows });
+  }
   const { rows } = await query(
     'SELECT * FROM subjects WHERE school_code=$1 ORDER BY name', [sc],
   );
   return res.json({ subjects: rows });
 });
 
-router.post('/subjects', requireRole('admin', 'teacher'), async (req, res) => {
+router.post('/subjects', requireRole('admin'), async (req, res) => {
   const { name, code, school_code } = req.body ?? {};
   const user = req.user!;
   let sc = user.school_code;
@@ -320,6 +326,12 @@ router.get('/classes', async (req, res) => {
     } else {
       sc = requested ?? null;
     }
+  }
+  if (user.role === 'teacher') {
+    const names = user.assigned_class ? [user.assigned_class] : (user.assigned_class_names ?? []);
+    if (!names.length) return res.json({ classes: [] });
+    const { rows } = await query('SELECT * FROM classes WHERE school_code=$1 AND name=ANY($2::text[]) ORDER BY id', [sc, names]);
+    return res.json({ classes: rows });
   }
   const { rows } = await query(
     'SELECT * FROM classes WHERE school_code=$1 ORDER BY id', [sc],
