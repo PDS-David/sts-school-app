@@ -84,6 +84,14 @@ if (!SERVER_URL) {
       assert.deepEqual(baseline.rows, [{ version: '0001', name: '0001_baseline.sql' }]);
       const schools = await client.query("SELECT to_regclass('public.schools') IS NOT NULL AS present");
       assert.equal(schools.rows[0].present, true);
+      const accessSettings = await client.query(
+        'SELECT free_launch_mode, term_pin_enforced, curriculum_sequence_enforced FROM public.learning_access_settings WHERE id=1',
+      );
+      assert.deepEqual(accessSettings.rows, [{
+        free_launch_mode: true,
+        term_pin_enforced: false,
+        curriculum_sequence_enforced: false,
+      }], 'fresh schema must default to free launch without access restrictions');
     } finally { await client.end(); }
 
     const migrations = readdirSync(MIGRATIONS_DIR).filter(name => name.endsWith('.sql')).sort();
