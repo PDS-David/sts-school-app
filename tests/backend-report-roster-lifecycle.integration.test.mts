@@ -94,9 +94,17 @@ test('administrator placement decisions mutate only physical report membership a
     assert.ok(removedPayload.students.some(student => student.id === studentIds[2]),
       'administrator can retrieve removed physical-roster entries');
 
+    const teacherUsername = `report-only-teacher-${suffix}`;
+    const { rows: teacherUsers } = await query(
+      `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,is_active,pending_admin_review)
+       VALUES($1,'test-hash','teacher','Report Only Teacher',$2,'Primary 4',TRUE,FALSE)
+       RETURNING id`,
+      [teacherUsername, schoolCode],
+    );
+    const teacherId = String(teacherUsers[0].id);
     const teacherToken = signAccess({
-      id: randomUUID(),
-      username: 'report-only-teacher',
+      id: teacherId,
+      username: teacherUsername,
       role: 'teacher',
       school_code: schoolCode,
       assigned_class: 'Primary 4',
@@ -203,6 +211,6 @@ test('administrator placement decisions mutate only physical report membership a
     // The append-only event log intentionally retains the test history. The
     // dedicated synthetic school and its rows are isolated from real schools;
     // the disposable PostgreSQL service is discarded at workflow end.
-    await query('DELETE FROM users WHERE id=$1', [adminId]);
+    await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [[adminId, teacherId]]);
   }
 });
