@@ -11,7 +11,7 @@ const CLASSES=['JSS 3','SS 1','SS 2','SS 3'];
 const iso=(offset:number)=>new Date(Date.now()+offset).toISOString();
 
 function parseRubric(text:string,maximum:number){
-  const lines=text.split(/\\r?\\n/).map(line=>line.trim()).filter(Boolean);
+  const lines=text.split(/\r?\n/).map(line=>line.trim()).filter(Boolean);
   if(lines.length<1||lines.length>20)return null;
   const criteria:any[]=[];
   const ids=new Set<string>();
