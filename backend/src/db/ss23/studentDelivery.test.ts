@@ -335,3 +335,23 @@ test('keeps SS3 Biology revision prompts source-exact and excludes unsupported n
   assert.ok(pkg.coverage.some(row => row.id === 'SS3BIO-COV-T2-W6' && row.status === 'UNRESOLVED'));
   assert.ok(pkg.open_items.some(item => item.id === 'SS3BIO-PRIOR-LEARNING-MAP' && item.blocks_delivery));
 });
+
+
+test('online-school delivery does not depend on teacher-approval metadata', () => {
+  const pkg = approvedPackage();
+  // Teacher approval is already established outside this delivery workflow.
+  // Student delivery depends on implementation, verification, package status,
+  // delivery blockers and permitted source reuse—not approval metadata fields.
+  pkg.units.forEach((unit: any) => {
+    unit.state.content_approval = 'PENDING';
+    unit.state.approval_reference = null;
+  });
+  pkg.assets.forEach((asset: any) => {
+    asset.state.content_approval = 'PENDING';
+    asset.state.approval_reference = null;
+  });
+  const delivery = createSs23StudentDelivery([pkg]);
+  assert.ok(delivery.listUnits('SS 2').length > 0, 'implemented and verified units remain student-accessible');
+  const unit = delivery.listUnits('SS 2').find(item => item.title.includes('Soil Formation'))!;
+  assert.ok(delivery.listAssets(unit.id, 'SS 2').length > 0, 'implemented, verified, permitted real assets remain accessible');
+});
