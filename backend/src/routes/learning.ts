@@ -4,7 +4,7 @@ import { z } from 'zod';
 import type { PoolClient } from 'pg';
 import { query, withTransaction } from '../db/pool.js';
 import { verifyTopicAssetPayload } from '../db/attachTopicAssets.js';
-import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
+import { requireAuth, requirePerm, requireRole, denyTeacherAccess } from '../middleware/auth.js';
 import { resolveViewerClassNames, checkTeacherContentScope } from '../utils/scope.js';
 import { generate, generateJSON } from '../utils/ai.js';
 import { sendPushToClass } from '../utils/push.js';
@@ -40,7 +40,7 @@ function verifyStudentDeliveryAsset(bytes: Buffer, mediaType: string, expectedSh
 }
 
 const router = Router();
-router.use(requireAuth);
+router.use(requireAuth, denyTeacherAccess);
 router.use((req, res, next) => {
   if (req.user?.role === 'teacher') {
     return res.status(403).json({ error: 'Teacher accounts are limited to physical-class report workflows.' });
