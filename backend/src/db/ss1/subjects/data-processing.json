@@ -26,8 +26,8 @@
       "canonical_subject": "Data Processing",
       "header_text": "Data processing",
       "header_evidence": {
-        "locator": "SS1-SRC-6880a598b05b: first non-empty paragraph of mammoth.extractRawText output (the importer's own call), at character offset 16 (preceded by 16 spaces); the paragraph is '                Data processing  ' (leading and trailing spaces trimmed in header_text); the next non-empty paragraph is 'WEEK 2<6 tabs>TOPIC: information processing'",
-        "explanation": "The heading 'Data processing' occurs once in the extracted text (case-insensitive, whitespace-tolerant search also finds one occurrence). It equals the canonical subject 'Data Processing' apart from case, which the contract allows without an alias, so no source_alias rule is declared. The document has no SUBJECT, CLASS or term label and no Computer Studies or ICT wording; its content (information processing, transmission of information, computer ethics, computer safety, operating systems) is consistent with Data Processing. No Computer Studies or ICT mapping is made."
+        "locator": "word/document.xml, w:body direct-child blocks 0-1; block 0 is the exact title paragraph, block 1 is empty; joined range SHA-256 906999658bdbe8a8e746d16114778bde078577dca4a31e49d8b36a83eb9accd9. Block 2 is the first label paragraph.",
+        "explanation": "Block 0 contains 'Data processing' with 16 leading and 2 trailing spaces; block 1 is blank. The title occurs once and matches canonical 'Data Processing' apart from case, so no source_alias rule is needed. There is no SUBJECT/CLASS line, term title, scheme table or references list. The registered manifest assigns this source to 2nd Term; this is not inferred from the filename or document text. The first teaching label is WEEK 2 in block 2; DP-INV-T2 confirms Week 1 and Weeks 11-12 are absent. No Computer Studies or ICT alias is inferred."
       }
     },
     {
@@ -1873,6 +1873,36 @@
         "SS1-SRC-a92792eaa7ef"
       ],
       "blocks_delivery": false
+    },
+    {
+      "id": "DATA-PROCESSING-T2-MISSING-WEEK-1",
+      "kind": "CONTENT",
+      "detail": "The verified second-term source has a title-only preamble in blocks 0-1 and begins its teaching sequence at WEEK 2 in block 2. No Week 1 body is present in this source.",
+      "required_action": "Obtain the missing Week 1 source material or an owner-approved, scheme-backed equivalent. Do not reconstruct it from later weeks or infer it from the filename.",
+      "affected_ids": [
+        "SS1-SRC-6880a598b05b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "DATA-PROCESSING-T2-MISSING-SCHEME",
+      "kind": "CONTENT",
+      "detail": "The verified second-term source contains no scheme table/list and no explicit term title or SUBJECT/CLASS line. The registered term identity is manifest-backed only; the source provides no scheme objectives to map.",
+      "required_action": "Obtain the official second-term scheme/objectives or explicit owner-approved source material. Do not convert the week labels into scheme objectives or invent a term title.",
+      "affected_ids": [
+        "SS1-SRC-6880a598b05b"
+      ],
+      "blocks_delivery": true
+    },
+    {
+      "id": "DATA-PROCESSING-T2-MISSING-WEEKS-11-12",
+      "kind": "CONTENT",
+      "detail": "The complete inventory in DP-INV-T2 records Week 10 as the final teaching label; Weeks 11 and 12 are absent from the verified second-term source.",
+      "required_action": "Obtain the missing Week 11-12 source material or an owner-approved scheme confirming the term's intended scope. Do not invent week labels or content.",
+      "affected_ids": [
+        "SS1-SRC-6880a598b05b"
+      ],
+      "blocks_delivery": true
     }
   ]
 }
