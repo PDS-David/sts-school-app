@@ -121,7 +121,7 @@ export default function OnlineExamAttemptScreen({ route, navigation }:any) {
     finally{setSaving(false);}
   };
   if(loading)return <Loader/>;
-  if(!session?.questions)return <View style={styles.container}><Text style={styles.error}>{error||'Examination attempt unavailable.'}</Text><Btn title="Retry recovery" onPress={load}/></View>;
+  if(!session?.questions)return <View style={styles.container}><Text style={styles.error}>{error||'Examination attempt unavailable.'}</Text><Btn label="Retry recovery" onPress={load}/></View>;
   const fmt=(s:number)=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
   return <View style={styles.container}>
     <View style={styles.timerBar}>
@@ -148,7 +148,7 @@ export default function OnlineExamAttemptScreen({ route, navigation }:any) {
             style={styles.answerInput}/>}
         </Card>
       ))}
-      <Btn title={saving?'Saving…':'Submit examination'} onPress={()=>Alert.alert('Submit examination?','You cannot change your answers after submission.',[
+      <Btn label={saving?'Saving…':'Submit examination'} onPress={()=>Alert.alert('Submit examination?','You cannot change your answers after submission.',[
         {text:'Continue exam',style:'cancel'},{text:'Submit',style:'destructive',onPress:()=>submit(false)}
       ])} disabled={saving}/>
       {saving?<ActivityIndicator color={Colors.primary} style={{marginTop:Spacing.sm}/>:null}
@@ -160,7 +160,7 @@ const styles=StyleSheet.create({
  timerBar:{flexDirection:'row',alignItems:'center',gap:Spacing.sm,marginBottom:Spacing.md},
  heading:{fontSize:Fonts.sizes.lg,fontWeight:'800',color:Colors.text},
  meta:{fontSize:Fonts.sizes.xs,color:Colors.textSub,marginBottom:Spacing.sm},
- timer:{flexDirection:'row',alignItems:'center',gap:4,backgroundColor:Colors.surface,borderRadius:Radius.md,padding:Spacing.sm},
+ timer:{flexDirection:'row',alignItems:'center',gap:4,backgroundColor:Colors.card,borderRadius:Radius.md,padding:Spacing.sm},
  timerText:{fontSize:Fonts.sizes.lg,fontWeight:'900',fontVariant:['tabular-nums']},
  instructions:{marginBottom:Spacing.md},
  sectionTitle:{fontSize:Fonts.sizes.md,fontWeight:'800',color:Colors.text,marginBottom:Spacing.xs},
