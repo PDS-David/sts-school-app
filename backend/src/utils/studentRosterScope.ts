@@ -27,6 +27,8 @@ export function resolveStudentRosterScope(
   const requestedClass = nonBlank(requested.class_name);
 
   if (user.role === 'admin') {
+    if (user.can_manage_all_schools === true && !requestedSchool && !user.school_code) return { status: 400, error: 'Select a school before loading student records.' };
+    if (requestedSchool && !['primary', 'secondary'].includes(requestedSchool)) return { status: 400, error: 'Invalid school_code.' };
     const ownSchool = nonBlank(user.school_code);
     if (ownSchool) {
       if (requestedSchool && requestedSchool !== ownSchool) {
