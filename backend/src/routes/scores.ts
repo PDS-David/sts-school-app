@@ -49,10 +49,10 @@ async function validateScoreWriteScope(
      ORDER BY joined_at DESC LIMIT 1 FOR SHARE`,
     [score.student_id],
   );
-  const physicalClassName = rosterRows[0]?.class_name ?? student.class_name;
-  if (user.role === 'teacher' && !rosterRows[0]) {
-    return { status: 403, error: 'Student is not in an active physical report roster.' };
+  if (!rosterRows[0]) {
+    return { status: 404, error: 'Student is not in an active physical report roster.' };
   }
+  const physicalClassName = rosterRows[0].class_name;
 
   const { rows: subjectRows } = await client.query(
     'SELECT school_code FROM subjects WHERE id=$1 FOR SHARE',
@@ -127,11 +127,10 @@ router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => 
     });
   }
 
-  const scopeParams = [schoolCode, className, subjectIds, term.id, user.role === 'teacher'];
+  const scopeParams = [schoolCode, className, subjectIds, term.id];
   const scopeWhere = `st.school_code=$1 AND su.school_code=$1 AND st.deleted_at IS NULL
-    AND ($2::text IS NULL OR COALESCE(rrm.class_name,st.class_name)=$2)
-    AND ($3::int[] IS NULL OR su.id=ANY($3))
-    AND ($5::boolean = FALSE OR rrm.student_id IS NOT NULL)`;
+    AND ($2::text IS NULL OR rrm.class_name=$2)
+    AND ($3::int[] IS NULL OR su.id=ANY($3))`;
 
   const { rows: aggregateRows } = await query(
     `SELECT COUNT(DISTINCT st.id)::int AS student_count,
@@ -143,7 +142,7 @@ router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => 
               ELSE ROUND(COUNT(sc.id) FILTER (WHERE sc.total >= 40) * 100.0 / COUNT(sc.id), 1)
             END AS pass_rate
        FROM students st
-       LEFT JOIN report_roster_memberships rrm ON rrm.student_id=st.id AND rrm.status='active'
+       JOIN report_roster_memberships rrm ON rrm.student_id=st.id AND rrm.status='active'
        CROSS JOIN subjects su
        LEFT JOIN scores sc ON sc.student_id=st.id AND sc.subject_id=su.id AND sc.term_id=$4
       WHERE ${scopeWhere}`,
@@ -172,16 +171,16 @@ router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => 
   let attendanceRecords = 0;
   let weeklyEffortEntries = 0;
   if (user.role === 'admin' || className) {
-    const classParams = [schoolCode, className, term.id, term.days_opened, user.role === 'teacher'];
+    const classParams = [schoolCode, className, term.id, term.days_opened];
     const { rows: attendanceRows } = await query(
       `SELECT COUNT(a.id)::int AS attendance_records,
               ROUND(AVG(100.0 * a.days_present / NULLIF($4::numeric, 0)), 1) AS attendance_rate
          FROM attendance a
          JOIN students st ON st.id=a.student_id
-         LEFT JOIN report_roster_memberships rrm ON rrm.student_id=st.id AND rrm.status='active'
+         JOIN report_roster_memberships rrm ON rrm.student_id=st.id AND rrm.status='active'
         WHERE st.school_code=$1 AND st.deleted_at IS NULL
-          AND ($2::text IS NULL OR COALESCE(rrm.class_name,st.class_name)=$2)
-          AND ($5::boolean = FALSE OR rrm.student_id IS NOT NULL) AND a.term_id=$3`,
+          AND ($2::text IS NULL OR rrm.class_name=$2)
+          AND a.term_id=$3`,
       classParams,
     );
     attendanceRate = attendanceRows[0]?.attendance_rate == null ? null : Number(attendanceRows[0].attendance_rate);
@@ -219,19 +218,19 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
   const user = req.user!;
 
   let sql = `SELECT sc.id, sc.ca1, sc.ca2, sc.exam, sc.total, sc.grade, sc.teacher_remark,
-                    s.id AS student_id, s.full_name, COALESCE(rrm.class_name,s.class_name) AS class_name, s.admission_number,
+                    s.id AS student_id, s.full_name, rrm.class_name AS class_name, s.admission_number,
                     sub.id AS subject_id, sub.name AS subject_name,
                     t.id AS term_id, t.name AS term_name
              FROM scores sc
              JOIN students s   ON s.id = sc.student_id
-             LEFT JOIN report_roster_memberships rrm ON rrm.student_id=s.id AND rrm.status='active'
+             JOIN report_roster_memberships rrm ON rrm.student_id=s.id AND rrm.status='active'
              JOIN subjects sub ON sub.id = sc.subject_id AND sub.school_code = s.school_code
              JOIN terms t      ON t.id  = sc.term_id AND t.school_code = s.school_code
              WHERE 1=1`;
   const params: unknown[] = [];
 
   if (term_id)    { params.push(term_id);    sql += ` AND sc.term_id=$${params.length}`; }
-  if (class_name) { params.push(class_name); sql += ` AND COALESCE(rrm.class_name,s.class_name)=$${params.length}`; }
+  if (class_name) { params.push(class_name); sql += ` AND rrm.class_name=${params.length}`; }
   if (subject_id) { params.push(subject_id); sql += ` AND sc.subject_id=$${params.length}`; }
   if (student_id) { params.push(student_id); sql += ` AND sc.student_id=$${params.length}`; }
   // Teachers see only their school
@@ -394,6 +393,14 @@ async function authoriseReportAccess(
   user: AuthUser,
   student: { id: string; user_id: string | null; class_name: string; school_code: string; deleted_at?: string | Date | null },
 ): Promise<{ status: number; error: string } | null> {
+  const { rows: reportMemberships } = await query(
+    'SELECT class_name FROM report_roster_memberships WHERE student_id=$1 LIMIT 1',
+    [student.id],
+  );
+  if (!reportMemberships[0]) return { status: 404, error: 'Student is not in the physical report roster.' };
+  // Use the report roster class, not the independently selected online-learning class.
+  student.class_name = reportMemberships[0].class_name;
+
   let denied: { status: number; error: string } | null;
   switch (user.role) {
     case 'student':
