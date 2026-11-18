@@ -13,6 +13,7 @@ test('teacher role can maintain assigned physical-class reports but not online l
     assert.equal(hasPerm('teacher', permission), true, `teacher must have ${permission}`);
   }
   for (const permission of [
+    'grades.export',
     'materials.read', 'materials.write',
     'topics.read', 'topics.write',
     'weeklyEfforts.read', 'weeklyEfforts.write', 'weeklyEfforts.feedback',
