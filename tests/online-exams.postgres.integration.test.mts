@@ -120,8 +120,11 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.equal(reviewQueue.status,200);
       assert.ok(reviewQueue.data.questions.length>=2);
       assert.ok(reviewQueue.data.questions.every((item:any)=>item.subject==='Mathematics'));
+      assert.equal((await request('/question-bank/questions','GET',teacherToken)).status,403,'teachers may review assigned subjects but cannot administer the global question bank');
       const otherSubjectQueue=await request('/question-bank/review-queue','GET',unassignedTeacherToken);
       assert.equal(otherSubjectQueue.status,200);assert.equal(otherSubjectQueue.data.questions.length,0);
+      const invalidReview=await request('/question-bank/questions/'+questionId+'/review','POST',teacherToken,{decision:'approved',notes:'OK'});
+      assert.equal(invalidReview.status,400);
       const approved=await request('/question-bank/questions/'+questionId+'/review','POST',teacherToken,{decision:'approved',notes:'Checked the answer key, explanation and syllabus alignment.'});
       assert.equal(approved.status,200);assert.equal(approved.data.review_status,'approved');
       const rejectedQuestion=reviewQueue.data.questions.find((item:any)=>item.id!==questionId);
