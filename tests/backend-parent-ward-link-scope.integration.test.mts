@@ -168,6 +168,7 @@ test('parent ward links enforce teacher school/class scope and mutate atomically
     }
     await query('DELETE FROM parent_wards WHERE student_id=ANY($1::uuid[]) OR parent_id=ANY($2::uuid[])',
       [studentIds, [parent.id, inactiveParent.id, nonParent.id]]);
+    await query('DELETE FROM report_roster_memberships WHERE student_id=ANY($1::uuid[])', [studentIds]);
     await query('DELETE FROM students WHERE id=ANY($1::uuid[])', [studentIds]);
     await query('DELETE FROM users WHERE id=ANY($1::uuid[])',
       [[admin.id, classTeacher.id, otherSchoolTeacher.id, parent.id, inactiveParent.id, nonParent.id]]);
