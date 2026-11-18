@@ -11,7 +11,7 @@ import { generate, generateJSON } from '../utils/ai.js';
 import { getOrGenerateCurriculumLesson } from '../services/curriculumLessonCache.js';
 import { createRedisRateLimitStore } from '../utils/redisRateLimitStore.js';
 import { sendPushToClass } from '../utils/push.js';
-import type { AuthUser } from '../types/index.js';
+import type { AuthUser, LearningAccessPolicyState } from '../types/index.js';
 import { isSafeExternalMaterialUrl } from '../utils/materialUrl.js';
 import { attributionsForTopic, publicAttribution } from '../db/jss3Attributions.js';
 import { resolveSequenceGroup, studentTopicPreview } from '../utils/jss3Sequence.js';
@@ -29,8 +29,10 @@ import { resolvePrimary4SourceDelivery, safePrimary4Topic, primary4WithdrawnAsse
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
 // Read per request (value is constant in a running server) so tests can exercise PIN on and off in one process.
 const freeLaunchMode = () => process.env.FREE_LAUNCH_MODE !== 'false';
-const termPinEnforced = () => !freeLaunchMode() && process.env.TERM_PIN_ENFORCED === 'true';
-const curriculumSequenceEnforced = () => !freeLaunchMode() && process.env.CURRICULUM_SEQUENCE_ENFORCED === 'true';
+const termPinEnforced = (policy?: LearningAccessPolicyState) =>
+  policy?.termPinEnforced ?? (!freeLaunchMode() && process.env.TERM_PIN_ENFORCED === 'true');
+const curriculumSequenceEnforced = (policy?: LearningAccessPolicyState) =>
+  policy?.curriculumSequenceEnforced ?? (!freeLaunchMode() && process.env.CURRICULUM_SEQUENCE_ENFORCED === 'true');
 
 /** Strip teacher-only practice answers, marking guidance and source metadata before AI lesson grounding. */
 function curriculumTeachingSource(value: unknown): string | null {
@@ -165,8 +167,8 @@ async function ss1StudentId(user: AuthUser): Promise<string | null> {
   return rows[0]?.id ?? null;
 }
 
-async function redeemedSs1Terms(studentId: string): Promise<Set<string>> {
-  if (!termPinEnforced()) return new Set(['1st Term', '2nd Term', '3rd Term']);
+async function redeemedSs1Terms(studentId: string, policy?: LearningAccessPolicyState): Promise<Set<string>> {
+  if (!termPinEnforced(policy)) return new Set(['1st Term', '2nd Term', '3rd Term']);
   const { rows } = await query(
     'SELECT term_label FROM term_access_pins WHERE student_id=$1 AND redeemed_at IS NOT NULL',
     [studentId],
@@ -176,8 +178,8 @@ async function redeemedSs1Terms(studentId: string): Promise<Set<string>> {
 
 // Resolve the same sequence policy used by GET /topics for direct asset access.
 // A missing student record is fail-closed: no ordered lesson content/assets.
-async function studentTopicSequenceLocked(user: AuthUser, topic: any): Promise<boolean> {
-  if (user.role !== 'student' || !curriculumSequenceEnforced()) return false;
+async function studentTopicSequenceLocked(user: AuthUser, topic: any, policy?: LearningAccessPolicyState): Promise<boolean> {
+  if (user.role !== 'student' || !curriculumSequenceEnforced(policy)) return false;
   if (topic.order_index == null) return false;
   const { rows: studentRows } = await query('SELECT id FROM students WHERE user_id=$1', [user.id]);
   const studentId = studentRows[0]?.id;
@@ -197,11 +199,11 @@ async function studentTopicSequenceLocked(user: AuthUser, topic: any): Promise<b
   ]);
   const passedIds = new Set(completionRows.filter((row: any) => row.passed === true).map((row: any) => Number(row.topic_id)));
   const redeemedTerms = new Set(pinRows.map((row: any) => String(row.term_label)));
-  const pinOk = !termPinEnforced() || redeemedTerms.has(String(topic.term_label));
+  const pinOk = !termPinEnforced(policy) || redeemedTerms.has(String(topic.term_label));
   return resolveSequenceGroup(group, passedIds, pinOk).get(Number(topic.id))?.locked ?? true;
 }
 
-async function studentAssessmentTopicLocked(user: AuthUser, assessmentId: string | number): Promise<boolean> {
+async function studentAssessmentTopicLocked(user: AuthUser, assessmentId: string | number, policy?: LearningAccessPolicyState): Promise<boolean> {
   if (user.role !== 'student') return false;
   const { rows: linkedTopics } = await query(
     `SELECT t.id, t.school_code, t.subject_id, t.class_name, t.term_label, t.order_index,
@@ -210,7 +212,7 @@ async function studentAssessmentTopicLocked(user: AuthUser, assessmentId: string
     [assessmentId],
   );
   for (const topic of linkedTopics) {
-    if (await studentTopicSequenceLocked(user, topic)) return true;
+    if (await studentTopicSequenceLocked(user, topic, policy)) return true;
   }
   return false;
 }
@@ -222,7 +224,7 @@ router.get('/ss1/lessons', requirePerm('topics.read'), async (req, res) => {
   if (subjectName && subjectName.trim().length > 120) {
     return res.status(400).json({ error: 'subject_name is too long' });
   }
-  const unlockedTerms = await redeemedSs1Terms(studentId);
+  const unlockedTerms = await redeemedSs1Terms(studentId, req.learningAccessPolicy);
   const lessons = listStudentSs1Lessons(subjectName).map(lesson => {
     const locked = !unlockedTerms.has(lesson.term);
     // A locked list row is metadata only. Do not serialize lesson body,
@@ -337,8 +339,8 @@ async function ss23StudentContext(user: AuthUser): Promise<{ studentId: string; 
   return rows[0]?.id ? { studentId: rows[0].id, className } : null;
 }
 
-async function redeemedSs23Terms(studentId: string): Promise<Set<string>> {
-  if (!termPinEnforced()) return new Set(['1st Term', '2nd Term', '3rd Term']);
+async function redeemedSs23Terms(studentId: string, policy?: LearningAccessPolicyState): Promise<Set<string>> {
+  if (!termPinEnforced(policy)) return new Set(['1st Term', '2nd Term', '3rd Term']);
   const { rows } = await query(
     'SELECT term_label FROM term_access_pins WHERE student_id=$1 AND redeemed_at IS NOT NULL',
     [studentId],
@@ -372,7 +374,7 @@ router.get('/ss23/lessons', requirePerm('topics.read'), async (req, res) => {
   if (subjectName && subjectName.trim().length > 120) {
     return res.status(400).json({ error: 'subject_name is too long' });
   }
-  const unlockedTerms = await redeemedSs23Terms(context.studentId);
+  const unlockedTerms = await redeemedSs23Terms(context.studentId, req.learningAccessPolicy);
   const units = listStudentSs23Units('SS 2', subjectName).map(unit => {
     const locked = !unlockedTerms.has(unit.term);
     if (locked) return { ...studentSs23UnitPreview(unit, true), assets: [] };
@@ -806,9 +808,9 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
       }
       const lockedIds = new Set<number>();
       const seqById = new Map<number, { locked: boolean; sequence_position: number | null; is_sequence_first: boolean }>();
-      if (curriculumSequenceEnforced()) {
+      if (curriculumSequenceEnforced(req.learningAccessPolicy)) {
         for (const group of groups.values()) {
-          const pinOk = !termPinEnforced() || redeemedTermLabels.has(group[0].term_label);
+          const pinOk = !termPinEnforced(req.learningAccessPolicy) || redeemedTermLabels.has(group[0].term_label);
           for (const [id, r] of resolveSequenceGroup(group, passedIds, pinOk)) {
             if (r.locked) lockedIds.add(id);
             seqById.set(id, r);
@@ -897,7 +899,7 @@ router.get('/topics/:id/assets', requirePerm('topics.read'), async (req, res) =>
   if ((user.role === 'student' || user.role === 'parent') && (primary4AssetTopic as any).primary4_delivery?.hide_from_student === true) {
     return res.json({ assets: [], attributions: [] });
   }
-  if (await studentTopicSequenceLocked(user, visible[0])) return res.json({ assets: [], attributions: [] });
+  if (await studentTopicSequenceLocked(user, visible[0], req.learningAccessPolicy)) return res.json({ assets: [], attributions: [] });
 
   // Metadata only — `bytes` is never selected here.
   const { rows: storedAssets } = await query(
@@ -948,7 +950,7 @@ router.get('/mathematics-assets/:assetKey', requirePerm('topics.read'), async (r
     params,
   );
   const topic = visible[0];
-  if (!topic || await studentTopicSequenceLocked(user, topic) || topic.school_code !== 'secondary' || topic.class_name !== 'SS 1' || topic.subject_name !== 'Mathematics') {
+  if (!topic || await studentTopicSequenceLocked(user, topic, req.learningAccessPolicy) || topic.school_code !== 'secondary' || topic.class_name !== 'SS 1' || topic.subject_name !== 'Mathematics') {
     return res.status(404).json({ error: 'Asset not found' });
   }
   const asset = mathematicsAssetsForTopic(topic).find((item: any) => item.asset_key === assetKey);
@@ -991,7 +993,7 @@ router.get('/assets/:id', requirePerm('topics.read'), async (req, res) => {
       WHERE a.id=$1 AND a.displayed=true AND t.school_code=$2${scope}`,
     params,
   );
-  if (!meta[0] || await studentTopicSequenceLocked(user, meta[0] && { ...meta[0], id: meta[0].topic_id, order_index: meta[0].order_index })) return res.status(404).json({ error: 'Asset not found' });
+  if (!meta[0] || await studentTopicSequenceLocked(user, meta[0] && { ...meta[0], id: meta[0].topic_id, order_index: meta[0].order_index }, req.learningAccessPolicy)) return res.status(404).json({ error: 'Asset not found' });
   if (meta[0].school_code === 'secondary' && meta[0].class_name === 'SS 1' && meta[0].subject_name === 'Agricultural Science' &&
       !agriculturalScienceAssetDeliverable(meta[0], meta[0])) return res.status(404).json({ error: 'Asset not found' });
   if (meta[0].school_code === 'secondary' && meta[0].class_name === 'SS 1' && meta[0].subject_name === 'Mathematics' &&
@@ -2057,7 +2059,7 @@ router.get('/assessments', requirePerm('assessments.read'), async (req, res) => 
          FROM topics t WHERE t.generated_assessment_id=ANY($1)`,
       [rows.map((row: any) => row.id)],
     );
-    const lockStates = await Promise.all(linkedTopics.map((topic: any) => studentTopicSequenceLocked(user, topic)));
+    const lockStates = await Promise.all(linkedTopics.map((topic: any) => studentTopicSequenceLocked(user, topic, req.learningAccessPolicy)));
     const lockedAssessmentIds = new Set(linkedTopics.filter((topic: any, index: number) => lockStates[index]).map((topic: any) => topic.generated_assessment_id));
     if (lockedAssessmentIds.size) visibleRows = rows.filter((assessment: any) => !lockedAssessmentIds.has(assessment.id));
   }
@@ -2250,7 +2252,7 @@ router.get('/assessments/:id/questions', async (req, res) => {
     if (!student || assessment.school_code !== student.school_code || assessment.class_name !== student.class_name) {
       return res.status(404).json({ error: 'Assessment not found' });
     }
-    if (await studentAssessmentTopicLocked(user, assessment.id)) {
+    if (await studentAssessmentTopicLocked(user, assessment.id, req.learningAccessPolicy)) {
       return res.status(403).json({ error: 'This assessment is locked until its topic is unlocked.' });
     }
     if (assessment.status !== 'open') {
@@ -2346,7 +2348,7 @@ router.post('/assessments/:id/submit', requirePerm('assessments.take'), async (r
   if (assessment.school_code !== student.school_code || assessment.class_name !== student.class_name) {
     return res.status(403).json({ error: 'This assessment is not available to you' });
   }
-  if (await studentAssessmentTopicLocked(user, req.params.id)) {
+  if (await studentAssessmentTopicLocked(user, req.params.id, req.learningAccessPolicy)) {
     return res.status(403).json({ error: 'This assessment is locked until its topic is unlocked.' });
   }
   if (assessment.status !== 'open') {
