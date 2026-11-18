@@ -95,12 +95,22 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       process.env.FREE_LAUNCH_MODE='true';
       process.env.NODE_ENV='test';
       const express=require('express');
-      const [{default:router},{default:questionBankRouter},{signAccess},{pool:databasePool}]=await Promise.all([
+      const [{default:router,validateMarkingRubric,validateAiRubricMark},{default:questionBankRouter},{signAccess},{pool:databasePool}]=await Promise.all([
         import('../backend/src/routes/onlineExams.ts'),
         import('../backend/src/routes/questionBank.ts'),
         import('../backend/src/utils/jwt.ts'),
         import('../backend/src/db/pool.ts')
       ]);
+      const rubric=[{id:'method',description:'Shows the correct method',max_marks:3},{id:'result',description:'States the correct result',max_marks:2}];
+      assert.deepEqual(validateMarkingRubric(rubric,5),rubric);
+      assert.equal(validateMarkingRubric(rubric,4),null);
+      const validAiMark={points:4,confidence:0.82,feedback:'The method and result are mostly correct.',criterion_scores:[
+        {criterion_id:'method',points:3,rationale:'The response shows the correct method.'},
+        {criterion_id:'result',points:1,rationale:'The result is partially correct.'}
+      ]};
+      assert.equal(validateAiRubricMark(validAiMark,rubric,5)?.points,4);
+      assert.equal(validateAiRubricMark({...validAiMark,points:5},rubric,5),null);
+      assert.equal(validateAiRubricMark({...validAiMark,criterion_scores:[validAiMark.criterion_scores[0]]},rubric,5),null);
       pool=databasePool;
       const app=express();app.use(express.json());app.use('/online-exams',router);app.use('/question-bank',questionBankRouter);
       server=app.listen(0);
