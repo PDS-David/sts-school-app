@@ -58,6 +58,13 @@ test('administrators and assigned teachers execute scoped physical report-roster
       );
     }
 
+    const { rows: onlineOnlyRows } = await query(
+      `INSERT INTO students(full_name,class_name,school_code,admission_number)
+       VALUES($1,'Primary 4',$2,$3) RETURNING id`,
+      [`Online Only Learner ${suffix}`, schoolCode, `ONLINE-${suffix}`],
+    );
+    const onlineOnlyStudentId = String(onlineOnlyRows[0].id);
+
     const app = express();
     app.use(express.json());
     app.use('/students', studentsRouter);
@@ -70,6 +77,15 @@ test('administrators and assigned teachers execute scoped physical report-roster
       server!.once('error', reject);
     });
     const baseUrl = `http://127.0.0.1:${(server.address() as AddressInfo).port}/students`;
+    const adminRosterResponse = await fetch(baseUrl, { headers: { Authorization: `Bearer ${token}` } });
+    assert.equal(adminRosterResponse.status, 200);
+    const adminRosterBody = await adminRosterResponse.json() as { students: Array<{ id: string }> };
+    assert.ok(!adminRosterBody.students.some(student => student.id === onlineOnlyStudentId),
+      'administrator physical report list excludes student profiles without report-roster membership');
+    const onlineOnlyDetail = await fetch(`${baseUrl}/${onlineOnlyStudentId}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    assert.equal(onlineOnlyDetail.status, 404, 'physical report detail endpoint does not expose online-only profiles');
     const getRemoved = () => fetch(`${baseUrl}/report-roster/removed`, {
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -149,6 +165,8 @@ test('administrators and assigned teachers execute scoped physical report-roster
     assert.ok(teacherRosterBody.students.some(student => student.id === studentIds[1]));
     assert.ok(!teacherRosterBody.students.some(student => student.id === studentIds[0]),
       'teacher roster is limited to active membership in the assigned physical class');
+    assert.ok(!teacherRosterBody.students.some(student => student.id === onlineOnlyStudentId),
+      'teacher roster never includes an online-only student profile');
 
     const teacherProfile = await fetch(`${baseUrl}/${studentIds[1]}`, {
       headers: { Authorization: `Bearer ${teacherToken}` },
