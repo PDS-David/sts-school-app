@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Picker } from '@react-native-picker/picker';
 import {
   View, Text, StyleSheet, ScrollView, TouchableOpacity,
   KeyboardAvoidingView, Platform, Image,
@@ -12,6 +13,7 @@ export default function LoginScreen({ navigation }: any) {
   const { login } = useAuth();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [schoolCode, setSchoolCode] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error,    setError]    = useState('');
   const [loading,  setLoading]  = useState(false);
@@ -29,7 +31,7 @@ export default function LoginScreen({ navigation }: any) {
       // triggers; losing that race silently skipped the forced flow
       // entirely, which is how an account could reach the Dashboard while
       // still on its temp/default password.
-      await login(username.trim(), password);
+      await login(username.trim(), password, schoolCode || undefined);
     } catch (e: any) {
       if (!e?.response) {
         // axios sets `.response` only when a response actually came back —
@@ -71,6 +73,14 @@ export default function LoginScreen({ navigation }: any) {
         {/* Form */}
         <View style={styles.form}>
           <Text style={styles.title}>Sign In</Text>
+          <Text style={styles.passwordLabel}>School (required for teachers)</Text>
+          <View style={{ borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.md, marginBottom: Spacing.md }}>
+            <Picker selectedValue={schoolCode} onValueChange={setSchoolCode}>
+              <Picker.Item label="Select school (teachers must select)" value="" />
+              <Picker.Item label="Primary School" value="primary" />
+              <Picker.Item label="Secondary School" value="secondary" />
+            </Picker>
+          </View>
           <Input
             label="Username"
             value={username}
