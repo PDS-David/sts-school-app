@@ -25,6 +25,30 @@ on:
       - "tests/backend-*.integration.test.mts"
       - "tests/report-roster-schema.test.mts"
       - ".github/workflows/backend-report-roster.yml"
+  push:
+    branches: [master]
+    paths:
+      - "backend/schema.sql"
+      - "backend/migrations/**"
+      - "backend/src/db/importStudentRoster.ts"
+      - "backend/src/routes/academic.ts"
+      - "backend/src/routes/ai.ts"
+      - "backend/src/routes/announcements.ts"
+      - "backend/src/routes/learning.ts"
+      - "backend/src/routes/schoolEvents.ts"
+      - "backend/src/routes/scores.ts"
+      - "backend/src/routes/students.ts"
+      - "backend/src/routes/weeklyEfforts.ts"
+      - "mobile/src/screens/MyResultsScreen.tsx"
+      - "mobile/src/screens/SessionReportScreen.tsx"
+      - "mobile/src/screens/StudentDetailScreen.tsx"
+      - "backend/src/utils/rbac.ts"
+      - "backend/src/utils/scope.ts"
+      - "backend/src/utils/studentRosterScope.ts"
+      - "tests/backend-*.test.mts"
+      - "tests/backend-*.integration.test.mts"
+      - "tests/report-roster-schema.test.mts"
+      - ".github/workflows/backend-report-roster.yml"
 
 permissions:
   contents: read
