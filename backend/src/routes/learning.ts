@@ -30,6 +30,7 @@ const freeLaunchMode = () => process.env.FREE_LAUNCH_MODE !== 'false';
 const termPinEnforced = () => !freeLaunchMode() && process.env.TERM_PIN_ENFORCED === 'true';
 const curriculumSequenceEnforced = () => !freeLaunchMode() && process.env.CURRICULUM_SEQUENCE_ENFORCED === 'true';
 
+/** Strip teacher-only practice answers, marking guidance and source metadata before AI lesson grounding. */
 function curriculumTeachingSource(value: unknown): string | null {
   if (typeof value !== 'string') return null;
   const markers = ['PRACTICE QUESTIONS AND MARKING GUIDE', 'SOURCES AND ATTRIBUTION'];
