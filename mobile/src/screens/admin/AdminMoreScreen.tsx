@@ -24,6 +24,7 @@ export default function AdminMoreScreen({ navigation }: any) {
     { icon: 'calendar-outline', label: 'School Calendar', sub: 'Publish and manage school events', onPress: () => navigation.navigate('SchoolEvents') },
     { icon: 'person-outline', label: 'Users', sub: 'Manage teacher/parent/student/admin accounts', onPress: () => navigation.navigate('AdminUsers') },
     { icon: 'key-outline', label: 'Term PINs', sub: 'Generate and view student access PINs per term', onPress: () => navigation.navigate('AdminTermPins') },
+    ...(user?.school_code === null ? [{ icon: 'shield-checkmark-outline' as const, label: 'Learning Access', sub: 'Set global free-launch, term PIN and topic-sequence restrictions', onPress: () => navigation.navigate('AdminLearningAccess') }] : []),
     { icon: 'people-circle-outline', label: 'Class Codes', sub: 'Generate the code students use to set up their own account', onPress: () => navigation.navigate('AdminClassCodes') },
     { icon: 'document-text-outline', label: 'Export Excel', sub: 'Download a school\u2019s records as a spreadsheet', onPress: () => navigation.navigate('ExportExcel') },
     { icon: 'shield-checkmark-outline', label: 'Audit Log', sub: 'See who changed what, and when', onPress: () => navigation.navigate('AuditLog') },
