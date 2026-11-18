@@ -28,7 +28,7 @@ The command is dry-run by default:
 
 ```powershell
 cd backend
-npm run db:import-physical-roster -- --file="C:\path\to\Student_Roster_Reconciliation_with_Identities.xlsx"
+node --import tsx src/db/importPhysicalReportRoster.ts --file="C:\path\to\Student_Roster_Reconciliation_with_Identities.xlsx"
 ```
 
 Review the summary and resolve any UUID/name/membership conflicts before applying. The importer refuses soft-deleted students, ambiguous same-name records, teacher-removed memberships and active memberships whose class has changed. It never rewrites an existing student's online class or login link.
@@ -36,7 +36,7 @@ Review the summary and resolve any UUID/name/membership conflicts before applyin
 Writes require the explicit `--apply` flag:
 
 ```powershell
-npm run db:import-physical-roster -- --file="C:\path\to\Student_Roster_Reconciliation_with_Identities.xlsx" --apply
+node --import tsx src/db/importPhysicalReportRoster.ts --file="C:\path\to\Student_Roster_Reconciliation_with_Identities.xlsx" --apply
 ```
 
 Before any production apply:
