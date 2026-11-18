@@ -449,12 +449,15 @@ router.get('/ss23/lessons', requirePerm('topics.read'), async (req, res) => {
     return res.status(400).json({ error: 'subject_name is too long' });
   }
   const unlockedTerms = await redeemedSs23Terms(context.studentId, req.learningAccessPolicy);
+  const completedKeys = await completedPackageLessonKeys(context.studentId, 'SS 2');
   const units = listStudentSs23Units('SS 2', subjectName).map(unit => {
     const locked = !unlockedTerms.has(unit.term);
-    if (locked) return { ...studentSs23UnitPreview(unit, true), assets: [] };
+    const completed = completedKeys.has(ss23ProgressKey(unit));
+    if (locked) return { ...studentSs23UnitPreview(unit, true), completed, assets: [] };
     return {
       ...safeStudentSs23Unit(unit),
       ...studentSs23UnitPreview(unit, false),
+      completed,
       assets: studentSs23Assets(unit.id, 'SS 2'),
     };
   });
@@ -469,12 +472,15 @@ router.get('/ss23/preparation', requirePerm('topics.read'), async (req, res) => 
     return res.status(400).json({ error: 'subject_name is too long' });
   }
   const unlockedTerms = await redeemedSs23Terms(context.studentId, req.learningAccessPolicy);
+  const completedKeys = await completedPackageLessonKeys(context.studentId, 'SS 3');
   const units = listStudentSs23Units('SS 3', subjectName).map(unit => {
     const locked = !unlockedTerms.has(unit.term);
-    if (locked) return { ...studentSs23UnitPreview(unit, true), assets: [] };
+    const completed = completedKeys.has(ss23ProgressKey(unit));
+    if (locked) return { ...studentSs23UnitPreview(unit, true), completed, assets: [] };
     return {
       ...safeStudentSs23Unit(unit),
       ...studentSs23UnitPreview(unit, false),
+      completed,
       assets: studentSs23Assets(unit.id, 'SS 3'),
     };
   });
@@ -490,10 +496,12 @@ router.get('/ss23/units/:unitId', requirePerm('topics.read'), async (req, res) =
   if (!unlockedTerms.has(unit.term)) {
     return res.status(423).json({ error: 'Redeem the Term PIN to unlock this curriculum unit.' });
   }
+  const completedKeys = await completedPackageLessonKeys(context.studentId, context.className);
   return res.json({
     unit: {
       ...safeStudentSs23Unit(unit),
       ...studentSs23UnitPreview(unit, false),
+      completed: completedKeys.has(ss23ProgressKey(unit)),
       assets: studentSs23Assets(unit.id, context.className),
     },
   });
