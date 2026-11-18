@@ -151,7 +151,7 @@ export default function OnlineExamAttemptScreen({ route, navigation }:any) {
       <Btn label={saving?'Saving…':'Submit examination'} onPress={()=>Alert.alert('Submit examination?','You cannot change your answers after submission.',[
         {text:'Continue exam',style:'cancel'},{text:'Submit',style:'destructive',onPress:()=>submit(false)}
       ])} disabled={saving}/>
-      {saving?<ActivityIndicator color={Colors.primary} style={{marginTop:Spacing.sm}/>:null}
+      {saving?<ActivityIndicator color={Colors.primary} style={{marginTop:Spacing.sm}}/>:null}
     </ScrollView>
   </View>;
 }
