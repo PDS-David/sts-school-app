@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../api/client';
+import { useAuth } from '../api/AuthContext';
 import { Loader, Empty, Badge } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { useAdminSchool } from '../api/AdminSchoolContext';
@@ -19,6 +20,7 @@ interface Student {
 
 export default function StudentsScreen({ navigation }: any) {
   const { selectedSchoolCode } = useAdminSchool();
+  const { user } = useAuth();
   const [students,  setStudents]  = useState<Student[]>([]);
   const [filtered,  setFiltered]  = useState<Student[]>([]);
   const [loading,   setLoading]   = useState(true);
@@ -91,7 +93,7 @@ export default function StudentsScreen({ navigation }: any) {
           )}
         />
       </PageContainer>
-      <FAB actions={[{ icon: 'person-add', label: 'Enroll Student', onPress: () => navigation.navigate('AddStudent') }]} />
+      {user?.role === 'admin' && <FAB actions={[{ icon: 'person-add', label: 'Enroll Student', onPress: () => navigation.navigate('AddStudent') }]} />}
     </View>
   );
 }
