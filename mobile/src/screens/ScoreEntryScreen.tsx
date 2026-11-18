@@ -268,7 +268,7 @@ export default function ScoreEntryScreen({ navigation }: any) {
             </View>
           </View>
 
-          {!showNewSub ? (
+          {isAdmin && (!showNewSub ? (
             <TouchableOpacity onPress={() => setShowNewSub(true)} style={styles.addSubLink} accessibilityRole="button" accessibilityLabel="Add a subject not in the list">
               <Ionicons name="add-circle-outline" size={14} color={Colors.primary} />
               <Text style={styles.addSubLinkTxt}>Don't see the subject? Add it</Text>
@@ -284,7 +284,7 @@ export default function ScoreEntryScreen({ navigation }: any) {
                 <Btn label={addingSub ? 'Adding…' : 'Add Subject'} onPress={handleAddSubject} loading={addingSub} style={{ flex: 1 }} />
               </View>
             </View>
-          )}
+          ))}
 
           <View style={styles.maxHintRow}>
             <Ionicons name="information-circle-outline" size={14} color={Colors.textSub} />
