@@ -31,6 +31,16 @@ export const ingestionQuestionSchema = z.object({
   if (question.question_type === 'mcq' && (!question.options || question.options.length < 2)) {
     ctx.addIssue({ code: 'custom', path: ['options'], message: 'MCQ questions require at least two options.' });
   }
+  if (question.question_type === 'mcq' && question.options) {
+    const keys = question.options.map(option => option.key);
+    if (new Set(keys).size !== keys.length) {
+      ctx.addIssue({ code: 'custom', path: ['options'], message: 'MCQ option keys must be unique.' });
+    }
+    const answerKey = question.correct_answer.key;
+    if (typeof answerKey !== 'string' || !keys.includes(answerKey)) {
+      ctx.addIssue({ code: 'custom', path: ['correct_answer', 'key'], message: 'The correct answer key must match one of the option keys.' });
+    }
+  }
   if (question.question_type !== 'mcq' && question.options !== undefined) {
     ctx.addIssue({ code: 'custom', path: ['options'], message: 'Only MCQ questions may include options.' });
   }
