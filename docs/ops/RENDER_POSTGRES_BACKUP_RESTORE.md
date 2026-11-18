@@ -67,7 +67,7 @@ pg_restore --verbose --exit-on-error --single-transaction \
 
 The repository includes `scripts/ops/restore-and-import-initial-roster.ps1`. It combines the safe local restore rehearsal and the approved initial physical-roster importer preflight.
 
-The verified recovery artifact created on 2026-11-18 is the GitHub Actions artifact from backup run `44274818217` (artifact ID `14412904587`). Its downloaded ZIP SHA-256 is:
+The verified recovery artifact created on 2026-11-18 is the GitHub Actions artifact from [backup run 44274818217](https://github.com/PDS-David/sts-school-app/actions/runs/44274818217) (artifact ID `14412904587`). Its downloaded ZIP SHA-256 is:
 
 ```text
 4e1d081a1cab969705bf225edfd366e55bda1390ae60683822f51121bb4d5724
