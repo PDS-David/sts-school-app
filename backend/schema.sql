@@ -75,11 +75,6 @@ ALTER TABLE users ADD COLUMN IF NOT EXISTS access_expires_at TIMESTAMPTZ;
 ALTER TABLE users ADD COLUMN IF NOT EXISTS assigned_class_names TEXT[] NOT NULL DEFAULT '{}';
 ALTER TABLE users ADD COLUMN IF NOT EXISTS can_manage_all_schools BOOLEAN NOT NULL DEFAULT FALSE;
 
-CREATE UNIQUE INDEX IF NOT EXISTS users_username_global_non_teacher_uq
-  ON users (lower(username)) WHERE role <> 'teacher';
-CREATE UNIQUE INDEX IF NOT EXISTS users_teacher_school_username_uq
-  ON users (school_code, lower(username)) WHERE role = 'teacher';
-
 -- ── Role widened to TEXT + CHECK (Finance Admin / Operations Admin split) ────
 -- `role` used to be the fixed `user_role` ENUM above. Adding a new value to a
 -- Postgres enum requires `ALTER TYPE ... ADD VALUE`, which Postgres refuses
@@ -107,6 +102,11 @@ END $$;
 ALTER TABLE users DROP CONSTRAINT IF EXISTS users_role_check;
 ALTER TABLE users ADD CONSTRAINT users_role_check
   CHECK (role IN ('student','parent','teacher','admin','finance_admin'));
+
+CREATE UNIQUE INDEX IF NOT EXISTS users_username_global_non_teacher_uq
+  ON users (lower(username)) WHERE role <> 'teacher';
+CREATE UNIQUE INDEX IF NOT EXISTS users_teacher_school_username_uq
+  ON users (school_code, lower(username)) WHERE role = 'teacher';
 
 -- ── Self-service password recovery ──────────────────────────────────────────
 -- No SMTP/SMS delivery channel is relied on for this (email is optional on
