@@ -418,6 +418,7 @@ router.post('/ss23/units/:unitId/generate', requirePerm('topics.read'), async (r
         topic: unit.title,
         objectives: unit.objectives,
         sourceMaterial,
+        mode: unit.class_name === 'SS 3' && unit.delivery_mode === 'EXAM_PREPARATION' ? 'EXAM_PREPARATION' : 'INSTRUCTION',
       },
       identity: { userId: req.user!.id, role: req.user!.role },
     });
