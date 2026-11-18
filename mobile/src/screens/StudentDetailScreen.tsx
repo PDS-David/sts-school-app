@@ -102,7 +102,8 @@ export default function StudentDetailScreen({ route, navigation }: any) {
       setEditGender(s.data.student?.gender ?? '');
       setEditDob(s.data.student?.date_of_birth ? String(s.data.student.date_of_birth).slice(0, 10) : '');
       setEditAdmissionNumber(s.data.student?.admission_number ?? '');
-      if (s.data.student?.school_code) fetchTerms(s.data.student.school_code);
+      const schoolCode = s.data.student?.school_code ?? user?.school_code;
+      if (schoolCode) fetchTerms(schoolCode);
       await fetchReport(selTermId ?? undefined);
     } catch (e: any) {
       setLoadError(e?.response?.data?.error ?? 'Could not load this student record. Check your connection and retry.');
