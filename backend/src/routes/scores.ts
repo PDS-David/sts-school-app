@@ -559,30 +559,25 @@ router.get('/report/:student_id', async (req, res) => {
      GROUP BY s3.student_id`,
     [termClass, resolvedTermId, student.school_code],
   );
-  // Class size is the physical class roster, not only students who already
-  // have at least one score. For historical terms, prefer each student's
-  // most common score-class snapshot; fall back to active physical roster
-  // membership, and only then to the legacy student class.
+  // Class size is the physical report roster plus students whose score
+  // snapshots place them in this class for the requested historical term.
+  // This includes roster members who have not yet received a score, excludes
+  // unrostered online-only students, and keeps promoted students attached to
+  // the class in which their historical scores were recorded.
   const { rows: classSizeRows } = await query(
     `SELECT COUNT(*)::int AS class_size
        FROM students st
-       LEFT JOIN LATERAL (
-         SELECT sx.class_name
-           FROM scores sx
-          WHERE sx.student_id=st.id AND sx.term_id=$3 AND sx.class_name IS NOT NULL
-          GROUP BY sx.class_name
-          ORDER BY COUNT(*) DESC, sx.class_name
-          LIMIT 1
-       ) term_class ON TRUE
-       LEFT JOIN LATERAL (
-         SELECT rrm.class_name
-           FROM report_roster_memberships rrm
-          WHERE rrm.student_id=st.id AND rrm.status='active'
-          ORDER BY rrm.joined_at DESC
-          LIMIT 1
-       ) physical_roster ON TRUE
       WHERE st.school_code=$2 AND st.deleted_at IS NULL
-        AND COALESCE(term_class.class_name, physical_roster.class_name, st.class_name)=$1`,
+        AND (
+          EXISTS (
+            SELECT 1 FROM report_roster_memberships rrm
+             WHERE rrm.student_id=st.id AND rrm.status='active' AND rrm.class_name=$1
+          )
+          OR EXISTS (
+            SELECT 1 FROM scores sx
+             WHERE sx.student_id=st.id AND sx.term_id=$3 AND sx.class_name=$1
+          )
+        )`,
     [termClass, student.school_code, resolvedTermId],
   );
   const classSize = Number(classSizeRows[0]?.class_size ?? 0);
