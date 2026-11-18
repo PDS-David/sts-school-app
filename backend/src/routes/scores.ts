@@ -163,6 +163,7 @@ router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => 
             (COUNT(*) - COUNT(sc.id))::int AS pending_score_entries,
             ROUND(AVG(sc.total), 1) AS average_score
        FROM students st
+       LEFT JOIN report_roster_memberships rrm ON rrm.student_id=st.id AND rrm.status='active'
        CROSS JOIN subjects su
        LEFT JOIN scores sc ON sc.student_id=st.id AND sc.subject_id=su.id AND sc.term_id=$4
       WHERE ${scopeWhere}
