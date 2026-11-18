@@ -80,7 +80,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       const otherToken=token(otherUser,'other-student');
       const adminToken=token(admin,'test-admin','admin');
       const request=async(path:string,method='GET',auth=studentToken,body?:any,schoolHeader?:string)=>{
-        const response=await fetch(base+path,{method,headers:{...(auth?{Authorization:'Bearer '+auth}:{}),...(schoolHeader?{'x-school-code':schoolHeader}:{}),'Content-Type':'application/json'},...(body?{body:JSON.stringify(body)}:{})});
+        const response=await fetch(base+path,{method,headers:{...(auth?{Authorization:'Bearer '+auth}:{}),...(schoolHeader?{'x-school-code':schoolHeader}:{}),'Content-Type':'application/json'},...(body?{body:JSON.stringify(body)}:{}),signal:AbortSignal.timeout(15000)});
         return {status:response.status,data:await response.json()};
       };
       const examDraft={
@@ -148,7 +148,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       const audit=await client.query('SELECT COUNT(*)::int AS n FROM online_exam_audit_events WHERE exam_id=$1',[examId]);
       assert.ok(audit.rows[0].n>=4);
     }finally{
-      if(server) await new Promise(resolve=>server.close(resolve));
+      if(server){server.closeAllConnections?.();await new Promise(resolve=>server.close(resolve));}
       if(pool) await pool.end();
       await client.query('RESET search_path');
       await client.query('DROP SCHEMA IF EXISTS '+schema+' CASCADE');
