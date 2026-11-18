@@ -246,8 +246,8 @@ export default function AdminOnlineExamsScreen() {
                   {response.marking_details?.criterion_scores?.map((item:any)=><Text key={item.criterion_id} style={styles.meta}>{item.criterion_id}: {item.points} — {item.rationale}</Text>)}
                   {response.marking_status==='pending_review'?(
                     <View style={styles.manual}>
-                      <Field label={'Manual mark (max '+response.marks+')'} value={marks[response.question_id]??''} onChange={value=>setMarks(current=>({...current,[response.question_id]:value}))} keyboardType="numeric"/>
-                      <Field label="Examiner feedback" value={feedback[response.question_id]??''} onChange={value=>setFeedback(current=>({...current,[response.question_id]:value}))} multiline/>
+                      <Field label={'Manual mark (max '+response.marks+')'} value={marks[response.question_id]??''} onChange={(value:string)=>setMarks(current=>({...current,[response.question_id]:value}))} keyboardType="numeric"/>
+                      <Field label="Examiner feedback" value={feedback[response.question_id]??''} onChange={(value:string)=>setFeedback(current=>({...current,[response.question_id]:value}))} multiline/>
                       <Btn label={busy===response.question_id?'Saving…':'Save manual mark'} onPress={()=>markResponse(response)} loading={busy===response.question_id} disabled={busy===response.question_id}/>
                     </View>
                   ):null}
