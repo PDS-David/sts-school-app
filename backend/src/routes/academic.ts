@@ -143,35 +143,13 @@ router.post('/terms', requireRole('admin'), async (req, res) => {
   return res.status(201).json({ term: result.term });
 });
 
-router.put('/terms/:id', requireRole('admin', 'teacher'), async (req, res) => {
+router.put('/terms/:id', requireRole('admin'), async (req, res) => {
   const termId = Number(req.params.id);
   if (!Number.isSafeInteger(termId) || termId <= 0 || termId > 2_147_483_647) {
     return res.status(404).json({ error: 'Term not found' });
   }
   const { name, academic_year, is_current, start_date, end_date, days_opened, next_term_begins } = req.body ?? {};
   const user = req.user!;
-
-  if (user.role === 'teacher') {
-    if (name !== undefined || academic_year !== undefined || is_current !== undefined ||
-        start_date !== undefined || end_date !== undefined) {
-      return res.status(403).json({ error: 'Teachers can only update days-opened and next-term-begins for a term.' });
-    }
-  }
-
-  if (name !== undefined && !isValidSessionTermName(name)) {
-    return res.status(400).json({
-      error: `Term name must be one of: ${SESSION_TERM_NAMES.join(', ')}`,
-    });
-  }
-  if (academic_year !== undefined &&
-      (typeof academic_year !== 'string' || !academic_year.trim() || academic_year.length > 20)) {
-    return res.status(400).json({ error: 'academic_year must be a non-empty string of at most 20 characters.' });
-  }
-  if (is_current !== undefined && typeof is_current !== 'boolean') {
-    return res.status(400).json({ error: 'is_current must be a boolean.' });
-  }
-  const daysOpenedError = validateDaysOpened(days_opened);
-  if (daysOpenedError) return res.status(400).json({ error: daysOpenedError });
 
   const result = await withTransaction(async (client) => {
     // school_code is immutable through this endpoint. Read it to select the
