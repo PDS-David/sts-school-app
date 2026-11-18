@@ -60,7 +60,7 @@ export function SchoolSwitcherBar({ compact = false }: { compact?: boolean }) {
 
   return (
     <View style={styles.wrap}>
-      <Text style={styles.label}>Viewing school:</Text>
+      <Text style={styles.label}>{selectedSchoolCode ? 'Viewing school:' : 'Select a school to continue:'}</Text>
       <View style={styles.row}>
         {schools.map(s => {
           const active = s.code === selectedSchoolCode;
