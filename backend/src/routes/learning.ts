@@ -1014,7 +1014,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   const student = stRows[0];
   if (!student) return res.status(404).json({ error: 'No student record for this user' });
 
-  const { rows: tRows } = await query('SELECT t.*, sub.name AS subject_name, to_jsonb(t)->>'term_label' AS curriculum_term_label, to_jsonb(t)->'learning_objectives' AS curriculum_learning_objectives FROM topics t LEFT JOIN subjects sub ON sub.id=t.subject_id WHERE t.id=$1', [req.params.id]);
+  const { rows: tRows } = await query('SELECT t.*, sub.name AS subject_name, COALESCE(to_jsonb(t)->>'term_label', term.name) AS curriculum_term_label, term.academic_year AS curriculum_academic_year, to_jsonb(t)->'learning_objectives' AS curriculum_learning_objectives FROM topics t LEFT JOIN subjects sub ON sub.id=t.subject_id LEFT JOIN terms term ON term.id=t.term_id AND term.school_code=t.school_code WHERE t.id=$1', [req.params.id]);
   const topic = tRows[0];
   if (!topic) return res.status(404).json({ error: 'Topic not found' });
   if (topic.school_code !== student.school_code || (topic.class_name && topic.class_name !== student.class_name)) {
@@ -1233,7 +1233,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
     generatedLesson = await generateCurriculumLesson({
       className: student.class_name,
       subject: topic.subject_name || 'Subject not recorded',
-      term: topic.curriculum_term_label || (topic.term_id ? `Term reference ${topic.term_id}` : 'Term not recorded'),
+      term: topic.curriculum_term_label ? `${topic.curriculum_term_label}${topic.curriculum_academic_year ? ` (${topic.curriculum_academic_year})` : ''}` : 'Term not recorded',
       topic: topic.title,
       objectives,
       sourceMaterial: groundingSource || topic.description || null,
