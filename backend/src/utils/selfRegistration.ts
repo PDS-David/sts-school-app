@@ -1,5 +1,6 @@
 import type { PoolClient } from 'pg';
 import { withTransaction } from '../db/pool.js';
+import { auditInTransaction } from './audit.js';
 import { usernameBaseFromName } from './password.js';
 
 type SelfClaimInput = {
@@ -25,6 +26,7 @@ type SelfRegistrationInput = {
   username: string;
   passwordHash: string;
   admissionNumber?: string;
+  className?: string;
   wardAdmissionNumber?: string;
 };
 
@@ -32,6 +34,7 @@ export type SelfRegistrationResult =
   | { kind: 'registered'; username: string }
   | { kind: 'username_taken' }
   | { kind: 'school_not_found' }
+  | { kind: 'class_not_found' }
   | { kind: 'student_not_found' }
   | { kind: 'parent_phone_exists' };
 
@@ -47,11 +50,7 @@ async function writeSecurityAudit(
   schoolCode: string | null,
   detail: string,
 ): Promise<void> {
-  await client.query(
-    `INSERT INTO audit_log(actor_id,actor_name,action,entity,entity_id,school_code,detail)
-     VALUES(NULL,NULL,$1,$2,$3,$4,$5)`,
-    [action, entity, entityId, schoolCode, detail],
-  );
+  await auditInTransaction(client, null, action, entity, entityId, detail, { schoolCode });
 }
 
 type ClassAccessCodeCheck =
@@ -181,16 +180,29 @@ export async function registerSelfServiceAccount(
     if (!schools[0]) return { kind: 'school_not_found' };
 
     let studentId: string | null = null;
+    let onlineClassName: string | null = null;
     if (input.role === 'student') {
-      const { rows } = await client.query(
-        `SELECT id FROM students
-         WHERE school_code=$1 AND admission_number=$2
-           AND user_id IS NULL AND deleted_at IS NULL
-         FOR UPDATE`,
-        [input.schoolCode, input.admissionNumber],
-      );
-      if (!rows[0]) return { kind: 'student_not_found' };
-      studentId = String(rows[0].id);
+      if (input.className?.trim()) {
+        const { rows: classes } = await client.query(
+          'SELECT name FROM classes WHERE school_code=$1 AND name=$2 FOR SHARE',
+          [input.schoolCode, input.className.trim()],
+        );
+        if (!classes[0]) return { kind: 'class_not_found' };
+        onlineClassName = classes[0].name;
+      } else if (input.admissionNumber?.trim()) {
+        // Explicit admission-number linking remains available for an existing physical student.
+        const { rows } = await client.query(
+          `SELECT id FROM students
+           WHERE school_code=$1 AND admission_number=$2
+             AND user_id IS NULL AND deleted_at IS NULL
+           FOR UPDATE`,
+          [input.schoolCode, input.admissionNumber.trim()],
+        );
+        if (!rows[0]) return { kind: 'student_not_found' };
+        studentId = String(rows[0].id);
+      } else {
+        return { kind: 'class_not_found' };
+      }
     }
 
     if (input.role === 'parent') {
@@ -231,7 +243,13 @@ export async function registerSelfServiceAccount(
     );
     const user = users[0];
 
-    if (input.role === 'student') {
+    if (input.role === 'student' && onlineClassName) {
+      // Independent online-learning profile: no admission number and no physical report-roster membership.
+      await client.query(
+        'INSERT INTO students(school_code,full_name,class_name,user_id) VALUES($1,$2,$3,$4)',
+        [input.schoolCode, input.fullName, onlineClassName, user.id],
+      );
+    } else if (input.role === 'student') {
       const { rows: linked } = await client.query(
         'UPDATE students SET user_id=$1 WHERE id=$2 AND user_id IS NULL RETURNING id',
         [user.id, studentId],
