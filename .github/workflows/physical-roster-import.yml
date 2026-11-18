@@ -5,6 +5,10 @@ on:
     paths:
       - 'backend/src/db/physicalRosterWorkbook.ts'
       - 'backend/src/db/importPhysicalReportRoster.ts'
+      - 'backend/src/db/studentClassListWorkbook.ts'
+      - 'backend/src/routes/adminRosterImport.ts'
+      - 'backend/Student_Class_List.xlsx'
+      - 'tests/student-class-list-workbook.test.mts'
       - 'backend/package.json'
       - 'tests/physical-roster-workbook.test.mts'
       - 'tests/physical-roster-import-readonly.integration.test.mts'
@@ -61,6 +65,8 @@ jobs:
           cache: npm
       - name: Install workspace dependencies
         run: npm ci
+      - name: Validate the approved 104-student physical class list and mappings
+        run: node --import tsx --test tests/student-class-list-workbook.test.mts
       - name: Test workbook parsing and class mapping
         run: node --import tsx --test tests/physical-roster-workbook.test.mts
       - name: Exercise importer read-only dry-run, atomic apply and idempotence against disposable PostgreSQL 18
