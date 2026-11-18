@@ -79,20 +79,29 @@ if (!URL_) {
     await query('DELETE FROM assessments WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
     await query('DELETE FROM teacher_subjects WHERE user_id IN (SELECT id FROM users WHERE school_code = ANY($1) OR username LIKE $2)', [[TEST_SC, TEST_SC_B], 'zz_t2test_%']);
     await query('DELETE FROM subjects WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
-    // Keep append-only report-roster history intact; remove only memberships
-    // that have no event trail, then remove only students with no history.
-    await query(
-      `DELETE FROM report_roster_memberships m
-       USING students s
-       WHERE m.student_id=s.id AND s.school_code=ANY($1)
-         AND NOT EXISTS (SELECT 1 FROM report_roster_membership_events e WHERE e.student_id=s.id)`,
-      [[TEST_SC, TEST_SC_B]],
-    );
-    await query(
-      `DELETE FROM students s WHERE s.school_code=ANY($1)
-       AND NOT EXISTS (SELECT 1 FROM report_roster_membership_events e WHERE e.student_id=s.id)`,
-      [[TEST_SC, TEST_SC_B]],
-    );
+    // Disposable topic-assets fixtures only: schema replay may create
+    // append-only roster backfill events. Disable user triggers briefly so
+    // the isolated test database can remove its own synthetic rows.
+    await query('BEGIN');
+    try {
+      await query('ALTER TABLE report_roster_membership_events DISABLE TRIGGER USER');
+      await query(
+        `DELETE FROM report_roster_membership_events e
+         USING students s WHERE e.student_id=s.id AND s.school_code=ANY($1)`,
+        [[TEST_SC, TEST_SC_B]],
+      );
+      await query(
+        `DELETE FROM report_roster_memberships m
+         USING students s WHERE m.student_id=s.id AND s.school_code=ANY($1)`,
+        [[TEST_SC, TEST_SC_B]],
+      );
+      await query('DELETE FROM students WHERE school_code=ANY($1)', [[TEST_SC, TEST_SC_B]]);
+      await query('ALTER TABLE report_roster_membership_events ENABLE TRIGGER USER');
+      await query('COMMIT');
+    } catch (error) {
+      await query('ROLLBACK');
+      throw error;
+    }
     await query('DELETE FROM users WHERE school_code = ANY($1) OR username LIKE $2', [[TEST_SC, TEST_SC_B], 'zz_t2test_%']);
     await query(
       `DELETE FROM schools sc WHERE sc.code=ANY($1)
@@ -505,15 +514,14 @@ if (!URL_) {
     assert.equal((await del(`/learning/materials/${otherSchoolBody.material.id}`, tokenAdminGlobal)).status, 200);
   });
 
-  test('teacher material deletion is limited to the uploader within the same school', async () => {
+  test('report-only teachers cannot create or delete learning materials', async () => {
     const created = await postJson('/learning/materials', tokenTeacherA, {
       subject_id: subjectA, class_name: 'JSS 3', title: 'Teacher-owned material',
       type: 'doc', url: 'https://example.org/lesson.docx',
     });
-    assert.equal(created.status, 201);
-    const body: any = await created.json();
-    assert.equal((await del(`/learning/materials/${body.material.id}`, tokenTeacherB)).status, 404);
-    assert.equal((await del(`/learning/materials/${body.material.id}`, tokenAdminA)).status, 200);
+    assert.equal(created.status, 403);
+    assert.deepEqual(await created.json(), { error: 'Permission denied: materials.write' });
+    assert.equal(await count('SELECT count(*) n FROM materials WHERE title=$1', ['Teacher-owned material']), 0);
   });
 
   test('endpoint: tampered stored bytes fail MIME/SHA-256 verification before delivery', async () => {
