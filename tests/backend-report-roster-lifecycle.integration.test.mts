@@ -13,7 +13,7 @@ after(async () => {
   await pool.end();
 });
 
-test('teacher placement decisions mutate only physical report membership and append history', async () => {
+test('administrator placement decisions mutate only physical report membership and append history', async () => {
   const suffix = randomUUID();
   const schoolCode = `roster_${suffix.slice(0, 12)}`;
   await query('INSERT INTO schools(code,name) VALUES($1,$2)', [schoolCode, `Roster Lifecycle School ${suffix}`]);
@@ -24,7 +24,7 @@ test('teacher placement decisions mutate only physical report membership and app
   const username = `roster-teacher-${suffix}`;
   const { rows: users } = await query(
     `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,is_active,pending_admin_review)
-     VALUES($1,'test-hash','teacher','Roster Lifecycle Teacher',$2,'Primary 4',TRUE,FALSE)
+     VALUES($1,'test-hash','admin','Roster Lifecycle Administrator',$2,'Primary 4',TRUE,FALSE)
      RETURNING id`,
     [username, schoolCode],
   );
@@ -32,7 +32,7 @@ test('teacher placement decisions mutate only physical report membership and app
   const token = signAccess({
     id: teacherId,
     username,
-    role: 'teacher',
+    role: 'admin',
     school_code: schoolCode,
     assigned_class: 'Primary 4',
     assigned_subject_ids: [],
