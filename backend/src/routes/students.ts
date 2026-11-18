@@ -131,7 +131,8 @@ router.get('/me', async (req, res) => {
     return res.status(403).json({ error: 'Only student accounts can use this route' });
   }
   const { rows } = await query(
-    `SELECT id, admission_number, full_name, class_name, school_code
+    `SELECT id, admission_number, full_name, class_name, school_code,
+            EXISTS (SELECT 1 FROM report_roster_memberships rrm WHERE rrm.student_id=students.id) AS has_physical_report_roster
      FROM students WHERE user_id = $1 AND deleted_at IS NULL`,
     [req.user!.id],
   );
