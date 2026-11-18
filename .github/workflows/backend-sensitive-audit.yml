@@ -1,6 +1,13 @@
 name: Backend sensitive audit integrity
 
 on:
+  push:
+    branches: [master]
+    paths:
+      - "backend/schema.sql"
+      - "backend/src/utils/audit.ts"
+      - "tests/backend-sensitive-audit.integration.test.mts"
+      - ".github/workflows/backend-sensitive-audit.yml"
   pull_request:
     branches: [master, 'agent/**']
     paths:
@@ -23,7 +30,7 @@ jobs:
     timeout-minutes: 20
     services:
       postgres:
-        image: postgres:16
+        image: postgres:18
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
