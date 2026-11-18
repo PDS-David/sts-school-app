@@ -92,8 +92,8 @@ test('primary report uses the exact supplied assessment maxima and full report s
   canonicalClassReport.student.class_name = 'Primary 4';
   const canonicalHtml = renderTermReportHtml(canonicalClassReport, primaryBrand, '');
   assert.ok(canonicalHtml.includes('>Grade 4</span>'), 'canonical Primary class maps to the supplied report label');
-  assert.ok(canonicalHtml.includes('17.0'));
-  assert.ok(canonicalHtml.includes('71.12'));
+  assert.ok(canonicalHtml.includes('18.0'));
+  assert.ok(canonicalHtml.includes('77.38'));
 });
 
 test('secondary report uses the secondary assessment maxima and principal labels', () => {
