@@ -81,3 +81,30 @@ test('current empty subject assignments replace stale token grants without alias
   assert.deepEqual(current.assigned_subject_ids, []);
   assert.notEqual(current.assigned_subject_ids, currentAssignments);
 });
+
+test('only an explicitly authorized admin receives cross-school scope without changing stored assignment', () => {
+  const current = hydrateAuthUser(staleAdminToken, {
+    username: 'davidadmin',
+    role: 'admin',
+    school_code: 'secondary',
+    assigned_class: null,
+    assigned_subject_ids: [],
+    can_manage_all_schools: true,
+  });
+  assert.equal(current.school_code, null);
+  assert.equal(current.assigned_school_code, 'secondary');
+  assert.equal(current.can_manage_all_schools, true);
+});
+
+test('multi-school capability is ignored for non-admin roles', () => {
+  const current = hydrateAuthUser(staleAdminToken, {
+    username: 'teacher-1',
+    role: 'teacher',
+    school_code: 'secondary',
+    assigned_class: 'JSS 2',
+    assigned_subject_ids: [],
+    can_manage_all_schools: true,
+  });
+  assert.equal(current.school_code, 'secondary');
+  assert.equal(current.can_manage_all_schools, false);
+});
