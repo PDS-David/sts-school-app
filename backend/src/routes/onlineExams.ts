@@ -624,6 +624,43 @@ router.post('/attempts/:attemptId/submit',requireRole('student'),async(req,res)=
   return res.json({submitted:true,...final});
 });
 
+router.get('/admin/exams/:examId/attempts',requireRole('admin'),async(req,res)=>{
+  const schoolCode=schoolForAdmin(req.user);
+  if(!schoolCode) return res.status(400).json({error:'Select a school before viewing examination attempts.'});
+  const {rows: examRows}=await query('SELECT id,title,class_name FROM online_exams WHERE id=$1 AND school_code=$2',[req.params.examId,schoolCode]);
+  if(!examRows[0]) return res.status(404).json({error:'Examination not found in the selected school.'});
+  const {rows}=await query(`
+    SELECT c.student_id,u.username,a.id AS attempt_id,a.status,a.started_at,a.submitted_at,
+           a.score,a.total_marks,a.percentage,
+           (SELECT COUNT(*)::int FROM online_exam_responses r WHERE r.attempt_id=a.id AND r.marking_status='pending_review') AS pending_reviews
+      FROM online_exam_candidates c
+      JOIN students s ON s.id=c.student_id
+      LEFT JOIN users u ON u.id=s.user_id
+      LEFT JOIN online_exam_attempts a ON a.exam_id=c.exam_id AND a.student_id=c.student_id
+     WHERE c.exam_id=$1 ORDER BY u.username NULLS LAST,c.student_id
+  `,[req.params.examId]);
+  return res.json({exam:examRows[0],attempts:rows});
+});
+
+router.get('/admin/attempts/:attemptId/responses',requireRole('admin'),async(req,res)=>{
+  const schoolCode=schoolForAdmin(req.user);
+  if(!schoolCode) return res.status(400).json({error:'Select a school before reviewing examination responses.'});
+  const {rows: attempts}=await query(`
+    SELECT a.id,a.status,a.score,a.total_marks,e.id AS exam_id,e.title,e.school_code
+      FROM online_exam_attempts a JOIN online_exams e ON e.id=a.exam_id
+     WHERE a.id=$1 AND e.school_code=$2
+  `,[req.params.attemptId,schoolCode]);
+  if(!attempts[0]) return res.status(404).json({error:'Examination attempt not found in the selected school.'});
+  const {rows}=await query(`
+    SELECT q.id AS question_id,q.question_snapshot->>'stem' AS stem,q.marks,
+           r.response,r.awarded_marks,r.marking_status,r.feedback
+      FROM online_exam_questions q
+      LEFT JOIN online_exam_responses r ON r.exam_question_id=q.id AND r.attempt_id=$1
+     WHERE q.exam_id=$2 ORDER BY q.position
+  `,[req.params.attemptId,attempts[0].exam_id]);
+  return res.json({attempt:attempts[0],responses:rows});
+});
+
 router.put('/admin/attempts/:attemptId/responses/:questionId/mark',requireRole('admin'),async(req,res)=>{
   const schoolCode=schoolForAdmin(req.user);
   if(!schoolCode) return res.status(400).json({error:'Select a school before marking online examination responses.'});
