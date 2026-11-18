@@ -16,7 +16,8 @@ Run from the repository root:
 4. Keep `backend/schema.sql` as the complete fresh-install schema. When a new migration is added, keep the fresh-install schema in sync.
 5. `0001_baseline.sql` is an immutable marker only; do not put later schema changes in it.
 6. Physical report-roster membership is tracked separately from `students` online identity in `0005_report_roster_memberships.sql`; roster changes must not mutate `students.class_name`, `students.user_id`, scores, attendance or parent links.
-6. The runner refuses to stamp an existing application database that has no migration baseline. Do not use `--fresh` on an existing production database as a shortcut. Existing databases require the owner-approved OPS-05 schema-drift review before explicit baseline adoption.
+7. `0006_require_explicit_report_roster_enrolment.sql` deactivates the provisional 0005 backfill. An online student is not a report-roster member unless explicitly reconciled and imported from the physical-class source roster.
+8. The runner refuses to stamp an existing application database that has no migration baseline. Do not use `--fresh` on an existing production database as a shortcut. Existing databases require the owner-approved OPS-05 schema-drift review before explicit baseline adoption.
 7. `--status` is read-only. It does not create the ledger or alter schema.
 
 ## New database setup
