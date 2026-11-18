@@ -4,7 +4,7 @@ import { pool } from './pool.js';
 import { parsePhysicalRosterWorkbook } from './physicalRosterWorkbook.js';
 
 function normalizeName(value: string): string {
-  return value.normalize('NFKC').trim().replace(/\\s+/g, ' ').toLocaleLowerCase('en');
+  return value.normalize('NFKC').trim().replace(/\s+/g, ' ').toLocaleLowerCase('en');
 }
 
 async function main() {
@@ -61,7 +61,7 @@ async function main() {
         const { rows: possibleDuplicates } = await client.query(
           `SELECT id FROM students
             WHERE school_code=$1 AND class_name=$2
-              AND lower(regexp_replace(trim(full_name),'\\s+',' ','g'))=$3
+              AND lower(regexp_replace(trim(full_name),'\s+',' ','g'))=$3
             LIMIT 2`,
           [entry.schoolCode, entry.className, normalizeName(entry.fullName)],
         );
