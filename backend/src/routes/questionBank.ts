@@ -65,9 +65,10 @@ router.post('/sources', async (req, res) => {
       typeof body.rights_evidence !== 'string' || body.rights_evidence.trim().length < 12) {
     return res.status(400).json({ error: 'Provide a valid board, source name, URL, access method, rights status and rights evidence.' });
   }
-  if (body.source_url) {
+  const sourceUrl = typeof body.source_url === 'string' && body.source_url.trim() ? body.source_url.trim() : null;
+  if (sourceUrl) {
     let parsed: URL;
-    try { parsed = new URL(body.source_url); } catch { return res.status(400).json({ error: 'source_url must be a valid HTTP(S) URL.' }); }
+    try { parsed = new URL(sourceUrl); } catch { return res.status(400).json({ error: 'source_url must be a valid HTTP(S) URL.' }); }
     if (!['http:', 'https:'].includes(parsed.protocol)) return res.status(400).json({ error: 'Only HTTP(S) source URLs are allowed.' });
   }
   if (['licensed','public_domain','original_generated'].includes(rights.data) && body.rights_evidence.trim().length < 12) {
@@ -79,7 +80,7 @@ router.post('/sources', async (req, res) => {
   const { rows } = await query(`
     INSERT INTO question_bank_sources(board,source_name,source_url,access_method,rights_status,rights_evidence,created_by)
     VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING id,board,source_name,source_url,access_method,rights_status,rights_evidence
-  `, [board.data,body.source_name.trim(),body.source_url ?? null,body.access_method,rights.data,body.rights_evidence.trim(),req.user!.id]);
+  `, [board.data,body.source_name.trim(),sourceUrl,body.access_method,rights.data,body.rights_evidence.trim(),req.user!.id]);
   return res.status(201).json({ source: rows[0] });
 });
 
