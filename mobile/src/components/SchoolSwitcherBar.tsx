@@ -17,15 +17,16 @@ import { useAdminSchool, type School } from '../api/AdminSchoolContext';
 // latter was flagged live-testing the Admin dashboard as center-content
 // space that should be for viewing/doing something, not identity/nav
 // chrome; the same principle applies to every other admin screen using
-// this component, not just the dashboard.// Display-only abbreviations for the switcher chips specifically — the
+// this component, not just the dashboard.
+// Use clear school-section names in the switcher chips — the
 // underlying schools.name value (used for report cards, invoices, and
 // anywhere else in the app) is untouched; this is purely a mobile-UI
 // space-saving concern, keyed by the stable `code` rather than matching the
 // full name string, so it doesn't silently stop working if the school's
 // official name is ever edited.
 const SHORT_LABELS: Record<string, string> = {
-  primary: 'STSNPS',
-  secondary: 'STSMC',
+  primary: 'Primary',
+  secondary: 'Secondary',
 };
 function shortLabel(s: School): string {
   return SHORT_LABELS[s.code] ?? s.name;
@@ -60,7 +61,7 @@ export function SchoolSwitcherBar({ compact = false }: { compact?: boolean }) {
 
   return (
     <View style={styles.wrap}>
-      <Text style={styles.label}>Viewing school:</Text>
+      <Text style={styles.label}>{selectedSchoolCode ? 'Viewing school:' : 'Select a school to continue:'}</Text>
       <View style={styles.row}>
         {schools.map(s => {
           const active = s.code === selectedSchoolCode;

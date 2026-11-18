@@ -56,6 +56,7 @@ CREATE TABLE IF NOT EXISTS users (
   password_hash    TEXT NOT NULL,
   role             user_role NOT NULL DEFAULT 'teacher',
   school_code      TEXT REFERENCES schools(code) ON DELETE SET NULL,
+  can_manage_all_schools BOOLEAN NOT NULL DEFAULT FALSE,
   full_name        TEXT,
   email            TEXT UNIQUE,
   phone            TEXT,
@@ -70,6 +71,7 @@ CREATE TABLE IF NOT EXISTS users (
 
 -- Safe to re-run: adds the column on databases created before this field existed.
 ALTER TABLE users ADD COLUMN IF NOT EXISTS access_expires_at TIMESTAMPTZ;
+ALTER TABLE users ADD COLUMN IF NOT EXISTS can_manage_all_schools BOOLEAN NOT NULL DEFAULT FALSE;
 
 -- ── Role widened to TEXT + CHECK (Finance Admin / Operations Admin split) ────
 -- `role` used to be the fixed `user_role` ENUM above. Adding a new value to a

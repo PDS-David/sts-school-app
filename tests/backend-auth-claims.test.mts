@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { hydrateAuthUser } from '../backend/src/utils/authClaims.ts';
 import type { AuthUser } from '../backend/src/types/index.js';
+import { resolveStudentRosterScope } from '../backend/src/utils/studentRosterScope.ts';
 
 const staleAdminToken: AuthUser = {
   id: 'user-1',
@@ -80,4 +81,54 @@ test('current empty subject assignments replace stale token grants without alias
 
   assert.deepEqual(current.assigned_subject_ids, []);
   assert.notEqual(current.assigned_subject_ids, currentAssignments);
+});
+
+test('only an explicitly authorized admin receives cross-school scope without changing stored assignment', () => {
+  const current = hydrateAuthUser(staleAdminToken, {
+    username: 'davidadmin',
+    role: 'admin',
+    school_code: 'secondary',
+    assigned_class: null,
+    assigned_subject_ids: [],
+    can_manage_all_schools: true,
+  });
+  assert.equal(current.school_code, null);
+  assert.equal(current.assigned_school_code, 'secondary');
+  assert.equal(current.can_manage_all_schools, true);
+});
+
+test('multi-school capability is ignored for non-admin roles', () => {
+  const current = hydrateAuthUser(staleAdminToken, {
+    username: 'teacher-1',
+    role: 'teacher',
+    school_code: 'secondary',
+    assigned_class: 'JSS 2',
+    assigned_subject_ids: [],
+    can_manage_all_schools: true,
+  });
+  assert.equal(current.school_code, 'secondary');
+  assert.equal(current.can_manage_all_schools, false);
+});
+
+test('authorized admin scope follows explicit school selection while retaining stored assignment', () => {
+  const current = hydrateAuthUser(staleAdminToken, {
+    username: 'davidadmin', role: 'admin', school_code: 'secondary',
+    assigned_class: null, assigned_subject_ids: [], can_manage_all_schools: true,
+    selected_school_code: 'primary',
+  });
+  assert.equal(current.school_code, 'primary');
+  assert.equal(current.assigned_school_code, 'secondary');
+});
+
+test('multi-school admin cannot load an unselected roster and can select either school', () => {
+  const admin: AuthUser = {
+    id: 'user-1', username: 'davidadmin', role: 'admin', school_code: null,
+    assigned_class: null, assigned_subject_ids: [], can_manage_all_schools: true,
+  };
+  const missing = resolveStudentRosterScope(admin, {});
+  assert.equal('status' in missing && missing.status === 400, true);
+  const primary = resolveStudentRosterScope(admin, { school_code: 'primary' });
+  assert.deepEqual(primary, { schoolCode: 'primary', className: null });
+  const secondary = resolveStudentRosterScope(admin, { school_code: 'secondary' });
+  assert.deepEqual(secondary, { schoolCode: 'secondary', className: null });
 });

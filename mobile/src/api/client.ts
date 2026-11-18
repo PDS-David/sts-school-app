@@ -22,6 +22,7 @@ function resourcePrefix(url: string): string {
   if (parts[0] === 'admin' && parts.length > 1) return `/${parts[0]}/${parts[1]}`;
   return `/${parts[0]}`;
 }
+import { buildOfflineCacheUrl } from './offlineCacheScope';
 import { emitForcedLogout } from './authEvents';
 import { getSecureItem, setSecureItem, deleteSecureItems, migrateLegacyTokens } from './secureTokenStorage';
 import { resolveApiBaseUrl } from '../../config/apiTarget';
@@ -87,6 +88,7 @@ if (__DEV__) {
 
 const api = axios.create({ baseURL: BASE_URL, timeout: 15000 });
 
+
 // Render Free services can take about a minute to wake after idle. Probe the
 // public readiness endpoint before dispatching the user's request so the
 // normal 15-second API timeout does not misclassify a cold start as offline.
@@ -143,7 +145,7 @@ api.interceptors.response.use(
   async (res) => {
     const method = (res.config.method ?? 'get').toLowerCase();
     if (method === 'get') {
-      await cacheSet(res.config.url ?? '', res.data, (res.config as any)._cacheNamespace ?? getCacheNamespace());
+      await cacheSet(buildOfflineCacheUrl(res.config.url ?? '', res.config.params as any, ((res.config.headers as any)?.get?.('x-school-code') ?? (res.config.headers as any)?.['x-school-code'] ?? (api.defaults.headers.common as any)?.['x-school-code']) as string | undefined), res.data, (res.config as any)._cacheNamespace ?? getCacheNamespace());
     } else {
       // Real, server-confirmed write — safe to drop stale cached reads for
       // this resource area. (Queued-offline writes never reach this branch;
@@ -225,7 +227,7 @@ api.interceptors.response.use(
     const isNetworkFailure = !error.response;
     if (isNetworkFailure && original) {
       if (method === 'get') {
-        const cached = await cacheGet(original.url ?? '', requestNamespace);
+        const cached = await cacheGet(buildOfflineCacheUrl(original.url ?? '', original.params as any, ((original.headers as any)?.get?.('x-school-code') ?? (original.headers as any)?.['x-school-code'] ?? (api.defaults.headers.common as any)?.['x-school-code']) as string | undefined), requestNamespace);
         if (cached) {
           return { data: cached.data, status: 200, statusText: 'OK (cached)', headers: {}, config: original, fromCache: true };
         }
@@ -303,7 +305,18 @@ api.interceptors.response.use(
         let parsedData: any = undefined;
         try { parsedData = typeof original.data === 'string' ? JSON.parse(original.data) : original.data; } catch { parsedData = original.data; }
 
-        const queued = await enqueueRequest({ method: method as any, url: original.url ?? '', data: parsedData }, requestNamespace);
+        const originalHeaders = original.headers as any;
+        const schoolCode =
+          originalHeaders?.get?.('x-school-code') ??
+          originalHeaders?.['x-school-code'] ??
+          originalHeaders?.['X-School-Code'] ??
+          (api.defaults.headers.common as any)?.['x-school-code'];
+        const queued = await enqueueRequest({
+          method: method as any,
+          url: original.url ?? '',
+          data: parsedData,
+          ...(schoolCode ? { headers: { 'x-school-code': String(schoolCode) } } : {}),
+        }, requestNamespace);
 
         // Best-effort synthetic response so calling screens don't have to special-case
         // every offline write. Messages get a realistic shape so they can render
@@ -369,6 +382,7 @@ export async function flushOutbox(): Promise<{ synced: number; failed: number; r
           method: item.method,
           url: item.url,
           data: item.data,
+          headers: item.headers,
           _skipOfflineQueue: true,
           _cacheNamespace: userNamespace,
         } as any);

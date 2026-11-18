@@ -117,7 +117,8 @@ export default function AdminDashboardHomeScreen() {
     const isCurrentRequest = () => generation === requestGenerationRef.current;
     setLoadError('');
     const errors: string[] = [];
-    const sc = selectedSchoolCode ?? undefined;
+    if (!selectedSchoolCode) { setTerm(null); setStudentCount(null); setLoading(false); return; }
+    const sc = selectedSchoolCode;
     try {
       const { data } = await api.get('/students', { params: { school_code: sc } });
       if (isCurrentRequest()) setStudentCount(data.students?.length ?? null);
@@ -157,6 +158,7 @@ export default function AdminDashboardHomeScreen() {
       />
       <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={async () => { setRefreshing(true); await load(); setRefreshing(false); }} />}>
         <PageContainer style={{ padding: Spacing.md }}>
+          {!selectedSchoolCode && <Card style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.text, fontSize: Fonts.sizes.md, fontWeight: '700' }}>Select a school</Text><Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm, marginTop: 4 }}>Choose Primary or Secondary above. No school data is loaded until you make a selection. You can switch schools at any time.</Text></Card>}
           {!!loadError && <Card style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{loadError}</Text><Btn label='Retry school summary' variant='outline' onPress={() => load()} style={{ marginTop: Spacing.sm }} /></Card>}
           <Card>
             <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm }}>

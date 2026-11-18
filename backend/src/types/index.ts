@@ -12,6 +12,8 @@ export interface AuthUser {
   school_code: string | null;
   assigned_class: string | null;
   assigned_subject_ids: number[];
+  can_manage_all_schools?: boolean;
+  assigned_school_code?: string | null;
 }
 
 export interface LearningAccessPolicyState {

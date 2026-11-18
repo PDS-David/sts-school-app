@@ -109,6 +109,8 @@ export interface QueuedRequest {
   method: 'post' | 'put' | 'patch' | 'delete';
   url: string;
   data?: any;
+  /** Tenant context captured at enqueue time; never replay a write under a later school selection. */
+  headers?: Record<string, string>;
   createdAt: number;
 }
 
@@ -119,6 +121,7 @@ function isQueuedRequest(value: unknown): value is QueuedRequest {
     && item.id.length > 0
     && ['post', 'put', 'patch', 'delete'].includes(item.method as string)
     && typeof item.url === 'string'
+    && (item.headers === undefined || (typeof item.headers === 'object' && item.headers !== null && Object.values(item.headers as Record<string, unknown>).every(value => typeof value === 'string')))
     && typeof item.createdAt === 'number';
 }
 

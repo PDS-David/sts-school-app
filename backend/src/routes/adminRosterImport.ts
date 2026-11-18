@@ -18,8 +18,8 @@ const upload = multer({
 router.use(requireAuth, requireRole('admin'));
 
 function requireGlobalAdmin(req: any, res: any): boolean {
-  if (req.user?.school_code) {
-    res.status(403).json({ error: 'A global administrator is required to import records into both school sections.' });
+  if (req.user?.can_manage_all_schools !== true) {
+    res.status(403).json({ error: 'An administrator explicitly authorized to manage both schools is required for this import.' });
     return false;
   }
   return true;
