@@ -49,6 +49,8 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Bootstrap disposable PostgreSQL schema
         run: npm run db:bootstrap --workspace=backend
+      - name: Apply numbered migrations
+        run: npm run db:migrate --workspace=backend
       - name: Run term session atomicity regressions
         run: node --import tsx --test tests/backend-term-session-atomicity.integration.test.mts
       - name: Typecheck backend
