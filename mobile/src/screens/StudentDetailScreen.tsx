@@ -142,8 +142,8 @@ export default function StudentDetailScreen({ route, navigation }: any) {
       await api.put('/attendance/class-records', {
         student_id: studentId,
         term_id: report.term.id,
-        class_teacher_remark: ctRemark || null,
-        admin_remark: isTeacher ? (admRemark || null) : undefined,
+        class_teacher_remark: ctRemark,
+        admin_remark: isTeacher ? admRemark : undefined,
       });
       Alert.alert('Saved', 'Remarks saved successfully.');
       fetch();
