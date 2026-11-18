@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { z } from 'zod';
 import { createHash } from 'node:crypto';
 import { query, withTransaction } from '../db/pool.js';
-import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
+import { requireAuth, requirePerm, requireRole, denyTeacherWrites } from '../middleware/auth.js';
 import { auditContextFromRequest, auditInTransaction, auditStrict } from '../utils/audit.js';
 import { checkTeacherDeleteScope, checkTeacherRosterScope } from '../utils/scope.js';
 import { resolveStudentRosterScope } from '../utils/studentRosterScope.js';
@@ -11,7 +11,7 @@ import type { PoolClient } from 'pg';
 import type { AuthUser } from '../types/index.js';
 
 const router = Router();
-router.use(requireAuth);
+router.use(requireAuth, denyTeacherWrites);
 
 type WardMutationScope =
   | { ok: true; schoolCode: string }
