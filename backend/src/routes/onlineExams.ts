@@ -323,7 +323,7 @@ router.post('/admin/exams', requireRole('admin'), async (req, res) => {
         const marks=Number(item.marks??q.marks);
         total+=marks;
         const provenance={board:q.board,subject:b.subject_name,class_name:b.class_name,examination_type:b.examination_type,
-          exam_year:q.exam_year,source_id:q.source_id,source_name:q.source_name,source_url:q.source_url,
+          exam_year:q.exam_year,source_id:q.source_id,source_name:q.source_name,source_url:q.source_url,rights_evidence:q.rights_evidence,
           source_locator:q.source_locator,session_exam_year:b.exam_year??null,covered_topic_id:parseLessonLocator(q.source_locator)?.kind==='school_topic'?parseLessonLocator(q.source_locator)?.topic_id:null,covered_lesson_key:parseLessonLocator(q.source_locator)?.kind==='package_lesson'?parseLessonLocator(q.source_locator)?.lesson_key:null,covered_lesson_class:parseLessonLocator(q.source_locator)?.kind==='package_lesson'?parseLessonLocator(q.source_locator)?.class_name:null,lesson_sources:parseLessonLocator(q.source_locator)?.lesson_sources??null,rights_status:q.rights_status,content_origin:q.content_origin,paper:q.paper,question_number:q.question_number};
         const snapshot={stem:q.stem,question_type:q.question_type,options:q.options,correct_answer:q.correct_answer,
           explanation:q.explanation,topic_id:q.topic_id,topic_name:q.topic_name??null};
