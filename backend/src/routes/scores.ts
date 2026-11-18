@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { z } from 'zod';
 import { query, withTransaction } from '../db/pool.js';
 import type { PoolClient } from 'pg';
-import { requireAuth, requirePerm } from '../middleware/auth.js';
+import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
 import { getGrade } from '../utils/grades.js';
 import { audit } from '../utils/audit.js';
 import { termRank } from '../utils/terms.js';
@@ -277,7 +277,7 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
 });
 
 // ── POST /scores  (upsert) ────────────────────────────────────────────────────
-router.post('/', requirePerm('grades.write'), async (req, res) => {
+router.post('/', requireRole('admin'), async (req, res) => {
   const parsed = scoreEntrySchema.safeParse(req.body);
   if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
   const d = parsed.data;
@@ -319,7 +319,7 @@ router.post('/', requirePerm('grades.write'), async (req, res) => {
 });
 
 // ── POST /scores/bulk  (batch entry for a whole class) ────────────────────────
-router.post('/bulk', requirePerm('grades.write'), async (req, res) => {
+router.post('/bulk', requireRole('admin'), async (req, res) => {
   const bodySchema = z.object({
     scores: z.array(scoreEntrySchema).min(1).max(500)
       .refine(items => new Set(items.map(s => `${s.student_id}:${s.subject_id}:${s.term_id}`)).size === items.length,

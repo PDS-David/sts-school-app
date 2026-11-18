@@ -260,6 +260,19 @@ router.post('/', requirePerm('grades.write'), async (req, res) => {
   if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
 
   const d = parsed.data;
+  if (req.user!.role === 'teacher' && (d.parent_phone?.trim() || d.parent_email?.trim())) {
+    return res.status(403).json({ error: 'Teachers can create physical student records, but parent account creation and linking must be handled by an administrator.' });
+  }
+  const duplicate = await query(
+    `SELECT id FROM students
+      WHERE school_code=$1 AND class_name=$2 AND deleted_at IS NULL
+        AND lower(regexp_replace(trim(full_name),'\\s+',' ','g')) = lower(regexp_replace(trim($3),'\\s+',' ','g'))
+      LIMIT 1`,
+    [d.school_code, d.class_name, d.full_name],
+  );
+  if (duplicate.rows.length) {
+    return res.status(409).json({ error: 'A student with this name already exists in this class. Check the existing physical roster before creating another record.' });
+  }
   const scopeError = checkTeacherRosterScope(req.user!, { school_code: d.school_code, class_name: d.class_name });
   if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
 
@@ -546,7 +559,7 @@ router.post('/:id/promotion', requireRole('admin'), async (req, res) => {
 //      deleted_at/deleted_by, so historical scores/attendance still resolve
 //      correctly and an admin can bring it back via POST /:id/restore. Every
 //      audit entry records exactly who did it and what was deleted.
-router.delete('/:id', requirePerm('grades.write'), async (req, res) => {
+router.delete('/:id', requireRole('admin'), async (req, res) => {
   const user = req.user!;
   const scopeError = await checkTeacherDeleteScope(user, req.params.id);
   if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
@@ -578,7 +591,7 @@ router.post('/:id/restore', requireRole('admin'), async (req, res) => {
 });
 
 // ── POST /students/:id/link-parent ────────────────────────────────────────────
-router.post('/:id/link-parent', requirePerm('grades.write'), async (req, res) => {
+router.post('/:id/link-parent', requireRole('admin'), async (req, res) => {
   const studentId = z.string().uuid().safeParse(req.params.id);
   const body = z.object({ parent_id: z.string().uuid() }).safeParse(req.body);
   if (!studentId.success || !body.success) {
@@ -614,7 +627,7 @@ router.post('/:id/link-parent', requirePerm('grades.write'), async (req, res) =>
 });
 
 // ── DELETE /students/:id/unlink-parent/:parentId ──────────────────────────────
-router.delete('/:id/unlink-parent/:parentId', requirePerm('grades.write'), async (req, res) => {
+router.delete('/:id/unlink-parent/:parentId', requireRole('admin'), async (req, res) => {
   const studentId = z.string().uuid().safeParse(req.params.id);
   const parentId = z.string().uuid().safeParse(req.params.parentId);
   if (!studentId.success || !parentId.success) {
