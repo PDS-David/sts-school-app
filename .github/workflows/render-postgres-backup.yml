@@ -5,6 +5,10 @@ on:
     paths:
       - ".github/workflows/render-postgres-backup.yml"
       - "docs/ops/RENDER_POSTGRES_BACKUP_RESTORE.md"
+  push:
+    branches: [master]
+    paths:
+      - ".github/workflows/render-postgres-backup.yml"
   schedule:
     - cron: "20 2 * * *"
   workflow_dispatch:
