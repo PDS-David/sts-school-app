@@ -1,10 +1,35 @@
 name: AI curriculum lesson generation
 on:
+  push:
+    branches: [master]
+    paths:
+      - "backend/src/services/curriculumLessonGenerator.ts"
+      - "backend/src/services/curriculumLessonCache.ts"
+      - "backend/src/routes/learning.ts"
+      - "mobile/src/screens/TopicDetailScreen.tsx"
+      - "mobile/src/screens/Ss1PackageLessonScreen.tsx"
+      - "mobile/src/screens/Ss23PackageLessonScreen.tsx"
+      - "backend/migrations/0007_curriculum_generated_lessons.sql"
+      - "backend/schema.sql"
+      - "tests/backend-curriculum-lesson-generator.test.mts"
+      - "tests/backend-curriculum-lesson-flow.static.test.cjs"
+      - "tests/student-launch.static.test.cjs"
+      - ".github/workflows/ai-curriculum-lesson-generation.yml"
+      - "backend/src/utils/ai.ts"
   pull_request:
     branches: [master]
     paths:
       - "backend/src/services/curriculumLessonGenerator.ts"
+      - "backend/src/services/curriculumLessonCache.ts"
+      - "backend/src/routes/learning.ts"
+      - "mobile/src/screens/TopicDetailScreen.tsx"
+      - "mobile/src/screens/Ss1PackageLessonScreen.tsx"
+      - "mobile/src/screens/Ss23PackageLessonScreen.tsx"
+      - "backend/migrations/0007_curriculum_generated_lessons.sql"
+      - "backend/schema.sql"
       - "tests/backend-curriculum-lesson-generator.test.mts"
+      - "tests/backend-curriculum-lesson-flow.static.test.cjs"
+      - "tests/student-launch.static.test.cjs"
       - ".github/workflows/ai-curriculum-lesson-generation.yml"
       - "backend/src/utils/ai.ts"
 permissions:
@@ -25,5 +50,7 @@ jobs:
       - run: npm ci --ignore-scripts
       - name: Validate generated lesson contract
         run: node --import tsx --test tests/backend-curriculum-lesson-generator.test.mts
-      - name: Typecheck backend
-        run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
+      - name: Validate curriculum lesson flow and free-launch regressions
+        run: node --test tests/backend-curriculum-lesson-flow.static.test.cjs tests/student-launch.static.test.cjs
+      - name: Typecheck backend and mobile
+        run: npm run typecheck
