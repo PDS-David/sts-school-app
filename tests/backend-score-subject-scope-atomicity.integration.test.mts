@@ -125,6 +125,14 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
         [studentIds[index], className],
       );
     }
+    for (const studentId of rollbackIds) {
+      await query(
+        `INSERT INTO report_roster_memberships
+           (student_id,class_name,source_class_name,status)
+         VALUES($1,'Primary 5','Primary 5','active')`,
+        [studentId],
+      );
+    }
 
     const { rows: onlineOnlyRows } = await query(
       `INSERT INTO students(full_name,class_name,school_code,admission_number)
