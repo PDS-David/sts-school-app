@@ -294,3 +294,50 @@ test('failed student-link write rolls back the newly inserted self-registration 
     await query('DELETE FROM users WHERE username=$1', [username]);
   }
 });
+
+
+test('student self-registration can create an online-only profile without an admission number or physical roster membership', async () => {
+  const username = `bsec8-online-${suffix()}`;
+  let userId: string | undefined;
+  let onlineStudentId: string | undefined;
+  try {
+    const result = await registerSelfServiceAccount({
+      role: 'student',
+      fullName: 'BSEC8 Online Learner',
+      phone: '08000000001',
+      schoolCode: 'primary',
+      username,
+      passwordHash: 'test-password-hash',
+      className: 'Primary 4',
+    });
+    assert.deepEqual(result, { kind: 'registered', username });
+
+    const { rows: users } = await query('SELECT id, pending_admin_review FROM users WHERE username=$1', [username]);
+    userId = String(users[0].id);
+    assert.equal(users[0].pending_admin_review, true, 'stored review state remains available if free launch ends');
+
+    const { rows: students } = await query(
+      'SELECT id, admission_number, class_name FROM students WHERE user_id=$1',
+      [userId],
+    );
+    assert.equal(students.length, 1);
+    onlineStudentId = String(students[0].id);
+    assert.equal(students[0].admission_number, null);
+    assert.equal(students[0].class_name, 'Primary 4');
+
+    const { rows: memberships } = await query(
+      'SELECT count(*)::int AS count FROM report_roster_memberships WHERE student_id=$1',
+      [onlineStudentId],
+    );
+    assert.equal(memberships[0].count, 0, 'online-only profile must not become a physical report-roster member');
+
+    const { rows: auditRows } = await query(
+      "SELECT event_hash FROM audit_log WHERE action='self_register' AND entity_id=$1 ORDER BY id DESC LIMIT 1",
+      [userId],
+    );
+    assert.ok(auditRows[0]?.event_hash, 'self-registration security event must be hash-chained');
+  } finally {
+    if (onlineStudentId) await query('DELETE FROM students WHERE id=$1', [onlineStudentId]);
+    if (userId) await query('DELETE FROM users WHERE id=$1', [userId]);
+  }
+});
