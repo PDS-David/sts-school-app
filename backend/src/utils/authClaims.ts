@@ -14,6 +14,7 @@ export interface CurrentAuthClaims {
   school_code: string | null;
   assigned_class: string | null;
   assigned_subject_ids: number[];
+  assigned_class_names?: string[];
   can_manage_all_schools?: boolean;
   selected_school_code?: string | null;
 }
@@ -35,5 +36,6 @@ export function hydrateAuthUser(
     can_manage_all_schools: current.role === 'admin' && current.can_manage_all_schools === true,
     assigned_class: current.assigned_class,
     assigned_subject_ids: [...current.assigned_subject_ids],
+    assigned_class_names: [...(current.assigned_class_names ?? [])],
   };
 }
