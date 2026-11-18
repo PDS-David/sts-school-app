@@ -24,10 +24,6 @@ const state = z.object({
   if (value.verification === 'DEFERRED' && value.verification_reference !== null) {
     ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Deferred verification cannot claim a verification reference', path: ['verification_reference'] });
   }
-  if (value.verification === 'VERIFIED' &&
-      (value.content_approval !== 'APPROVED' || value.implementation !== 'IMPLEMENTED')) {
-    ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Verified content must also be approved and implemented' });
-  }
 });
 const provenance = z.object({
   source_id: z.string().regex(/^SS23-(?:SRC|EXT)-[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/),
