@@ -973,7 +973,7 @@ router.put('/topics/:id', requirePerm('topics.write'), async (req, res) => {
   // Same delivery guard as the list/detail paths: an edited JSS3 or SS1 corrected row must not hand back stale, withheld or
   // audited-original text (or a stale assessment link). The stored row itself is not touched here.
   const { rows: full } = await query(
-    'SELECT t.*, sub.name AS subject_name, to_jsonb(t)->>'term_label' AS curriculum_term_label, to_jsonb(t)->'learning_objectives' AS curriculum_learning_objectives FROM topics t LEFT JOIN subjects sub ON sub.id=t.subject_id WHERE t.id=$1', [req.params.id],
+    'SELECT t.*, sub.name AS subject_name FROM topics t LEFT JOIN subjects sub ON sub.id=t.subject_id WHERE t.id=$1', [req.params.id],
   );
   const { subject_name: _subjectName, ...safe } = safeSs1MathematicsTopic(safeEnglishTopic(safeAgriculturalScienceTopic(safeSs1Topic(safeJss3Topic(full[0] ?? rows[0])))));
   return res.json({ topic: safe });
@@ -1014,7 +1014,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   const student = stRows[0];
   if (!student) return res.status(404).json({ error: 'No student record for this user' });
 
-  const { rows: tRows } = await query('SELECT t.*, sub.name AS subject_name FROM topics t LEFT JOIN subjects sub ON sub.id=t.subject_id WHERE t.id=$1', [req.params.id]);
+  const { rows: tRows } = await query('SELECT t.*, sub.name AS subject_name, to_jsonb(t)->>'term_label' AS curriculum_term_label, to_jsonb(t)->'learning_objectives' AS curriculum_learning_objectives FROM topics t LEFT JOIN subjects sub ON sub.id=t.subject_id WHERE t.id=$1', [req.params.id]);
   const topic = tRows[0];
   if (!topic) return res.status(404).json({ error: 'Topic not found' });
   if (topic.school_code !== student.school_code || (topic.class_name && topic.class_name !== student.class_name)) {
@@ -1228,7 +1228,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
       ? (() => { try { const parsed = JSON.parse(rawObjectives); return Array.isArray(parsed) ? parsed.filter((value): value is string => typeof value === 'string' && value.trim().length > 0) : []; } catch { return []; } })()
       : [];
 
-  let generatedLesson;
+  let generatedLesson: Awaited<ReturnType<typeof generateCurriculumLesson>>;
   try {
     generatedLesson = await generateCurriculumLesson({
       className: student.class_name,
