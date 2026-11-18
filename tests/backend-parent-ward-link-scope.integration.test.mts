@@ -193,6 +193,13 @@ test('school-bound administrators are confined to their student roster and mutat
     primaryActive, secondaryActive, primaryDeleted, secondaryDeleted,
     primaryLinkTarget, secondaryLinkTarget,
   ];
+  for (const studentId of studentIds) {
+    await query(
+      `INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status)
+       VALUES($1,'Primary 4','Primary 4','active')`,
+      [studentId],
+    );
+  }
   let createdStudentId: string | undefined;
   let server: Server | undefined;
 
