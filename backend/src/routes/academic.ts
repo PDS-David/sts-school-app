@@ -143,20 +143,13 @@ router.post('/terms', requireRole('admin'), async (req, res) => {
   return res.status(201).json({ term: result.term });
 });
 
-router.put('/terms/:id', requireRole('admin', 'teacher'), async (req, res) => {
+router.put('/terms/:id', requireRole('admin'), async (req, res) => {
   const termId = Number(req.params.id);
   if (!Number.isSafeInteger(termId) || termId <= 0 || termId > 2_147_483_647) {
     return res.status(404).json({ error: 'Term not found' });
   }
   const { name, academic_year, is_current, start_date, end_date, days_opened, next_term_begins } = req.body ?? {};
   const user = req.user!;
-
-  if (user.role === 'teacher') {
-    if (name !== undefined || academic_year !== undefined || is_current !== undefined ||
-        start_date !== undefined || end_date !== undefined) {
-      return res.status(403).json({ error: 'Teachers can only update days-opened and next-term-begins for a term.' });
-    }
-  }
 
   if (name !== undefined && !isValidSessionTermName(name)) {
     return res.status(400).json({
@@ -258,7 +251,7 @@ router.get('/subjects', async (req, res) => {
   return res.json({ subjects: rows });
 });
 
-router.post('/subjects', requireRole('admin','teacher'), async (req, res) => {
+router.post('/subjects', requireRole('admin'), async (req, res) => {
   const { name, code, school_code } = req.body ?? {};
   const user = req.user!;
   let sc = user.school_code;
@@ -332,7 +325,7 @@ router.get('/classes', async (req, res) => {
 // actually enforced; these two routes just manage the class_locks row.
 //
 // GET  /academic/class-locks?class_name=&term_id=&school_code=
-router.get('/class-locks', requireRole('teacher', 'admin'), async (req, res) => {
+router.get('/class-locks', requireRole('admin'), async (req, res) => {
   const { class_name, term_id, school_code } = req.query as Record<string, string>;
   if (typeof class_name !== 'string' || !class_name.trim() || class_name.trim().length > 100 || !term_id) {
     return res.status(400).json({ error: 'A valid class_name and term_id are required' });
@@ -343,28 +336,12 @@ router.get('/class-locks', requireRole('teacher', 'admin'), async (req, res) => 
   }
 
   const user = req.user!;
-  let schoolCode: string;
-  if (user.role === 'admin') {
-    const requestedSchool = typeof school_code === 'string' ? school_code.trim() : '';
-    if (user.school_code) {
-      if (school_code !== undefined && requestedSchool !== user.school_code) {
-        return res.status(403).json({ error: "You can't view class locks outside your school" });
-      }
-      schoolCode = user.school_code;
-    } else {
-      if (!requestedSchool || requestedSchool.length > 50) {
-        return res.status(400).json({ error: 'school_code is required for global administrators' });
-      }
-      schoolCode = requestedSchool;
-    }
-  } else {
-    if (!user.school_code || !user.assigned_class) {
-      return res.status(403).json({ error: 'Only class teachers can view class lock status' });
-    }
-    if (class_name.trim() !== user.assigned_class) {
-      return res.status(403).json({ error: 'You can only view the lock status of your assigned class' });
-    }
-    schoolCode = user.school_code;
+  const schoolCode = user.school_code ?? (typeof school_code === 'string' ? school_code.trim() : '');
+  if (!schoolCode) {
+    return res.status(400).json({ error: 'school_code is required for global administrators' });
+  }
+  if (user.school_code && school_code !== undefined && school_code !== user.school_code) {
+    return res.status(403).json({ error: "You can't view class locks outside your school" });
   }
 
   const termScopeError = await checkTermSchoolScope(schoolCode, parsedTermId);
@@ -386,7 +363,7 @@ router.get('/class-locks', requireRole('teacher', 'admin'), async (req, res) => 
 });
 
 // PUT  /academic/class-locks   body: { class_name, term_id, school_code?, locked }
-router.put('/class-locks', requireRole('teacher', 'admin'), async (req, res) => {
+router.put('/class-locks', requireRole('admin'), async (req, res) => {
   const { class_name, term_id, school_code, locked } = req.body as {
     class_name?: string; term_id?: number; school_code?: string; locked?: boolean;
   };
@@ -398,35 +375,10 @@ router.put('/class-locks', requireRole('teacher', 'admin'), async (req, res) => 
   }
   const className = class_name.trim();
   const user = req.user!;
-
-  let sc: string;
-  if (user.role === 'admin') {
-    const requestedSchool = typeof school_code === 'string' ? school_code.trim() : '';
-    if (user.school_code) {
-      if (school_code !== undefined && requestedSchool !== user.school_code) {
-        return res.status(403).json({ error: "You can't change class locks outside your school" });
-      }
-      sc = user.school_code;
-    } else {
-      if (!requestedSchool || requestedSchool.length > 50) {
-        return res.status(400).json({ error: 'school_code is required for global administrators' });
-      }
-      sc = requestedSchool;
-    }
-  } else {
-    // Teacher: only their own assigned class, own school. A subject-only
-    // teacher (no assigned_class) or a teacher naming a class that isn't
-    // theirs can't lock/unlock anything — this is deliberately narrower
-    // than checkTeacherStudentScope's write checks (which also allow a
-    // subject teacher with no assigned_class to write across a whole
-    // school); locking is a bigger, more disruptive action than a single
-    // record write, so it's restricted to the one person whose job it
-    // actually is to close out a class.
-    if (!user.assigned_class || user.assigned_class !== className) {
-      return res.status(403).json({ error: 'You can only lock or unlock your own assigned class' });
-    }
-    sc = user.school_code ?? '';
-    if (!sc) return res.status(403).json({ error: 'Your teacher account is not assigned to a school.' });
+  let sc = user.school_code ?? (typeof school_code === 'string' ? school_code.trim() : '');
+  if (!sc) return res.status(400).json({ error: 'school_code is required for global administrators' });
+  if (user.school_code && school_code !== undefined && school_code !== user.school_code) {
+    return res.status(403).json({ error: "You can't change class locks outside your school" });
   }
 
   const termScopeError = await checkTermSchoolScope(sc, parsedTermId);
