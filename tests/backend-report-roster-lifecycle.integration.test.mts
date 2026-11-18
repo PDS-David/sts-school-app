@@ -39,6 +39,7 @@ test('administrator placement decisions mutate only physical report membership a
   });
   const studentIds: string[] = [];
   let server: Server | undefined;
+  let teacherId: string | null = null;
 
   try {
     for (const [index, admission] of ['PROMOTE', 'RETAIN', 'REMOVE', 'REINSTATE', 'RACE', 'PROMOTE_RACE'].entries()) {
@@ -101,7 +102,7 @@ test('administrator placement decisions mutate only physical report membership a
        RETURNING id`,
       [teacherUsername, schoolCode],
     );
-    const teacherId = String(teacherUsers[0].id);
+    teacherId = String(teacherUsers[0].id);
     const teacherToken = signAccess({
       id: teacherId,
       username: teacherUsername,
@@ -200,9 +201,9 @@ test('administrator placement decisions mutate only physical report membership a
     assert.ok(eventTypes(studentIds[3]).includes('removed'));
     assert.ok(eventTypes(studentIds[3]).includes('reinstated'));
     assert.equal(eventTypes(studentIds[4]).filter(type => type === 'removed').length, 1,
-      'concurrent teacher decisions must append exactly one removal event');
+      'concurrent administrator decisions must append exactly one removal event');
     assert.equal(eventTypes(studentIds[5]).filter(type => type === 'class_changed').length, 1,
-      'concurrent promotions must append exactly one class-change event');
+      'concurrent administrator promotions must append exactly one class-change event');
   } finally {
     if (server) {
       server.closeAllConnections();
@@ -211,6 +212,6 @@ test('administrator placement decisions mutate only physical report membership a
     // The append-only event log intentionally retains the test history. The
     // dedicated synthetic school and its rows are isolated from real schools;
     // the disposable PostgreSQL service is discarded at workflow end.
-    await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [[adminId, teacherId]]);
+    await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [[adminId, ...(teacherId ? [teacherId] : [])]]);
   }
 });
