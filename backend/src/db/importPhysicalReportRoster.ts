@@ -24,6 +24,9 @@ async function main() {
   let newMemberships = 0;
   let reactivatedMemberships = 0;
   let unchangedMemberships = 0;
+  let skippedTransferred = 0;
+  let skippedLeft = 0;
+  let matchedProductionStudents = 0;
 
   try {
     await client.query('BEGIN');
@@ -33,12 +36,23 @@ async function main() {
     );
     const availableClasses = new Set(classRows.map(row => `${row.school_code}|${row.name}`));
     for (const entry of entries) {
-      if (!availableClasses.has(`${entry.schoolCode}|${entry.className}`)) {
-        throw new Error(`Required canonical class is missing: ${entry.schoolCode}/${entry.className}`);
+      if (entry.enrolmentStatus === 'active' && entry.className
+          && !availableClasses.has(`${entry.schoolCode}|${entry.className}`)) {
+        throw new Error(`Required verified current class is missing: ${entry.schoolCode}/${entry.className}`);
       }
     }
 
     for (const entry of entries) {
+      if (entry.enrolmentStatus === 'transferred') {
+        skippedTransferred++;
+        continue;
+      }
+      if (entry.enrolmentStatus === 'left') {
+        skippedLeft++;
+        continue;
+      }
+      if (!entry.className) throw new Error(`Verified active roster identity ${entry.rosterIdentity} has no current class`);
+      if (entry.matchedProductionStudentId) matchedProductionStudents++;
       const { rows: existingRows } = await client.query<{
         id: string; school_code: string; full_name: string; class_name: string;
         user_id: string | null; deleted_at: Date | null;
@@ -52,12 +66,15 @@ async function main() {
       if (existingStudent) {
         if (existingStudent.school_code !== entry.schoolCode
             || normalizeName(existingStudent.full_name) !== normalizeName(entry.fullName)) {
-          throw new Error(`UUID identity conflict for roster identity ${entry.rosterIdentity}; no student row was changed`);
+          throw new Error(`Student identity conflict for roster identity ${entry.rosterIdentity}; no student row was changed`);
         }
         if (existingStudent.deleted_at) {
           throw new Error(`Roster identity ${entry.rosterIdentity} matches a soft-deleted student; resolve it administratively before import`);
         }
       } else {
+        if (entry.matchedProductionStudentId) {
+          throw new Error(`Matched Production Student ID ${entry.matchedProductionStudentId} for roster identity ${entry.rosterIdentity} does not exist in production; no replacement student will be created`);
+        }
         const { rows: possibleDuplicates } = await client.query(
           `SELECT id FROM students
             WHERE school_code=$1
@@ -104,6 +121,11 @@ async function main() {
               source_file: sourceFile,
               roster_identity: entry.rosterIdentity,
               source_class_name: entry.sourceClassName,
+              enrolment_status: entry.enrolmentStatus,
+              verified_by: entry.verifiedBy,
+              verification_date: entry.verificationDate,
+              evidence: entry.evidence || null,
+              matched_production_student_id: entry.matchedProductionStudentId,
             })],
           );
         }
@@ -146,7 +168,12 @@ async function main() {
             source: 'importPhysicalReportRoster',
             source_file: sourceFile,
             roster_identity: entry.rosterIdentity,
-            reason: 'explicit_historical_source_roster_reconciliation',
+            reason: 'explicit_verified_current_enrolment_reconciliation',
+            enrolment_status: entry.enrolmentStatus,
+            verified_by: entry.verifiedBy,
+            verification_date: entry.verificationDate,
+            evidence: entry.evidence || null,
+            matched_production_student_id: entry.matchedProductionStudentId,
           })],
         );
       }
@@ -164,6 +191,10 @@ async function main() {
     console.log(JSON.stringify({
       source_file: sourceFile,
       source_rows: entries.length,
+      verified_active_rows_considered: entries.filter(entry => entry.enrolmentStatus === 'active').length,
+      transferred_rows_skipped: skippedTransferred,
+      left_school_rows_skipped: skippedLeft,
+      matched_production_students: matchedProductionStudents,
       new_student_rows: newStudents,
       new_report_roster_memberships: newMemberships,
       reactivated_provisional_memberships: reactivatedMemberships,
