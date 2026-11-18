@@ -5,6 +5,9 @@ import { query } from '../db/pool.js';
 import { hydrateAuthUser } from '../utils/authClaims.js';
 import type { Role } from '../types/index.js';
 
+// Free-launch default: student account expiry and pending-review gates are deferred until paid/restricted launch.
+const freeLaunchMode = () => process.env.FREE_LAUNCH_MODE !== 'false';
+
 export async function requireAuth(req: Request, res: Response, next: NextFunction) {
   const header = req.headers.authorization;
   if (!header?.startsWith('Bearer ')) {
@@ -44,7 +47,7 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
         : 'Account is deactivated. Contact the school admin.',
     });
   }
-  if (dbUser.access_expires_at && new Date(dbUser.access_expires_at).getTime() <= Date.now()) {
+  if (!(freeLaunchMode() && dbUser.role === 'student') && dbUser.access_expires_at && new Date(dbUser.access_expires_at).getTime() <= Date.now()) {
     return res.status(401).json({
       error: dbUser.revocation_reason
         ? `Your access period has ended: ${dbUser.revocation_reason}. Contact the school admin to reactivate your account.`
@@ -55,7 +58,7 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
   if (dbUser.student_deleted) {
     return res.status(401).json({ error: 'Your student record is no longer active. Contact the school admin.' });
   }
-  if (dbUser.pending_admin_review && req.baseUrl !== '/auth') {
+  if (!(freeLaunchMode() && dbUser.role === 'student') && dbUser.pending_admin_review && req.baseUrl !== '/auth') {
     return res.status(403).json({ error: 'Your account is awaiting admin approval.', code: 'PENDING_APPROVAL' });
   }
 
