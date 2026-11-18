@@ -135,8 +135,8 @@ test('administrator placement decisions mutate only physical report membership a
     assert.equal(teacherProfile.status, 200);
     const teacherProfileBody = await teacherProfile.json() as { student: Record<string, unknown> };
     assert.deepEqual(Object.keys(teacherProfileBody.student).sort(),
-      ['admission_number', 'class_name', 'created_at', 'full_name', 'id', 'school_code'].sort(),
-      'teacher profile exposes only the identity fields required for report generation');
+      ['admission_number', 'class_name', 'created_at', 'date_of_birth', 'full_name', 'gender', 'id', 'school_code'].sort(),
+      'teacher profile exposes report particulars teachers need to maintain, without online account or parent data');
     const reinstated = await decide(studentIds[3], 'remove');
     assert.equal(reinstated.status, 200);
     const restore = await decide(studentIds[3], 'reinstate');
