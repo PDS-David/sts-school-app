@@ -14,6 +14,9 @@ export default function Ss1PackageLessonScreen({ route }: any) {
   const [generatedLesson, setGeneratedLesson] = useState<any | null>(null);
   const [generating, setGenerating] = useState(false);
   const [generationError, setGenerationError] = useState<string | null>(null);
+  const [completed, setCompleted] = useState(!!lesson.completed);
+  const [completing, setCompleting] = useState(false);
+  const [progressError, setProgressError] = useState<string | null>(null);
   useEffect(() => {
     let active = true;
     getSecureItem('access_token').then(value => { if (active) setToken(value); }).catch(() => {});
@@ -34,6 +37,20 @@ export default function Ss1PackageLessonScreen({ route }: any) {
       setGenerating(false);
     }
   };
+  const markComplete = async () => {
+    if (!generatedLesson || completed || completing) return;
+    setCompleting(true);
+    setProgressError(null);
+    try {
+      const { data } = await api.post(`/learning/ss1/lessons/${encodeURIComponent(lesson.id)}/progress`);
+      setCompleted(!!data?.completed);
+    } catch (error: any) {
+      setProgressError(error?.response?.data?.error ?? 'Could not save lesson progress. Reconnect and try again.');
+    } finally {
+      setCompleting(false);
+    }
+  };
+
   useEffect(() => {
     if (!lesson.locked) void generateLesson();
   }, [lesson.id, lesson.locked]);
@@ -97,6 +114,18 @@ export default function Ss1PackageLessonScreen({ route }: any) {
             </View>}
           </View>
         )) : <Text style={styles.note}>Practice questions will appear with the generated lesson.</Text>}
+        {generatedLesson ? (
+          <View style={{ marginTop: Spacing.md }}>
+            <Btn
+              label={completed ? 'Lesson completed' : completing ? 'Saving progress…' : 'Mark lesson complete'}
+              onPress={markComplete}
+              loading={completing}
+              disabled={completed || completing}
+              variant={completed ? 'outline' : 'primary'}
+            />
+            {progressError ? <Text style={styles.generationError}>{progressError}</Text> : null}
+          </View>
+        ) : null}
         <Text style={styles.sourceHeading}>Sources and attribution</Text>
         {lesson.provenance.map((source: any, index: number) => (
           <Text key={index} style={styles.source}>{source.title} — {source.locator}{source.url ? ` · ${source.url}` : ''}{'\n'}Rights: {source.rights}{'\n'}Attribution: {source.attribution}</Text>
