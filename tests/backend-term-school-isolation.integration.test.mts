@@ -43,6 +43,12 @@ test('student writes reject a term belonging to another school for teachers and 
     );
     studentId = students[0].id;
 
+    await query(
+      `INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status)
+       VALUES($1,'Primary 4','Primary 4','active')`,
+      [studentId],
+    );
+
     const { rows: primaryTerms } = await query(
       `INSERT INTO terms(name,academic_year,school_code)
        VALUES('1st Term',$1,'primary') RETURNING id`,
@@ -76,7 +82,10 @@ test('student writes reject a term belonging to another school for teachers and 
     assert.equal(await checkTeacherStudentScope(teacher, studentId, primaryTermId), null);
     assert.equal(await checkTeacherStudentScope(admin, studentId, primaryTermId), null);
   } finally {
-    if (studentId) await query('DELETE FROM students WHERE id=$1', [studentId]);
+    if (studentId) {
+      await query('DELETE FROM report_roster_memberships WHERE student_id=$1', [studentId]);
+      await query('DELETE FROM students WHERE id=$1', [studentId]);
+    }
     if (primaryTermId) await query('DELETE FROM terms WHERE id=$1', [primaryTermId]);
     if (secondaryTermId) await query('DELETE FROM terms WHERE id=$1', [secondaryTermId]);
   }

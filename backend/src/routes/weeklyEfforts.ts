@@ -205,7 +205,7 @@ router.post('/:id/feedback', requirePerm('weeklyEfforts.feedback'), async (req, 
 // Previously had no ownership check at all — any authenticated user could
 // read any weekly_effort's feedback thread by id, regardless of role or
 // relationship to the student. Confirmed live before this fix.
-router.get('/:id/feedback', async (req, res) => {
+router.get('/:id/feedback', requirePerm('weeklyEfforts.read'), async (req, res) => {
   const denied = await checkWeeklyEffortAccess(req.user!, req.params.id);
   if (denied) return res.status(denied.status).json({ error: denied.error });
 

@@ -130,7 +130,7 @@ test('term creation conflicts are deterministic and concurrent current-term swit
     assert.ok([termIds[1], termIds[2]].includes(currentId));
 
     const foreignUpdate = await putTerm(termIds[1], { days_opened: 20 }, foreignTeacher.token);
-    assert.equal(foreignUpdate.status, 404, 'teacher cannot update another school term');
+    assert.equal(foreignUpdate.status, 403, 'report-only teachers cannot administer term settings');
     const invalidBoolean = await putTerm(termIds[1], { is_current: 'true' });
     assert.equal(invalidBoolean.status, 400, 'is_current must be a boolean');
     const missing = await putTerm(2_147_483_647, { is_current: true });

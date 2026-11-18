@@ -171,7 +171,7 @@ if (!SERVER_URL) {
     const studentFeed = await request('/school-events', studentUser);
     assert.deepEqual(studentFeed.payload.events.map((e: any) => e.title), ['Student revision']);
     const teacherFeed = await request('/school-events', classTeacher);
-    assert.deepEqual(teacherFeed.payload.events.map((e: any) => e.title), ['Staff briefing']);
+    assert.equal(teacherFeed.status, 403, 'teachers use the school app only for report generation');
     const schoolAdminFeed = await request('/school-events', schoolAdmin);
     assert.equal(schoolAdminFeed.payload.events.length, 3);
 
@@ -237,24 +237,8 @@ if (!SERVER_URL) {
     assert.equal(denied.status, 403);
   });
 
-  test('teacher marking overview counts missing marks and respects class and subject assignments', async () => {
-    const classOverview = await request('/scores/teacher/overview', classTeacher);
-    assert.equal(classOverview.status, 200, JSON.stringify(classOverview.payload));
-    assert.equal(Number(classOverview.payload.summary.student_count), 2);
-    assert.equal(Number(classOverview.payload.summary.expected_score_entries), 4);
-    assert.equal(Number(classOverview.payload.summary.marked_score_entries), 2);
-    assert.equal(Number(classOverview.payload.summary.pending_score_entries), 2);
-    assert.equal(classOverview.payload.subjects.length, 2);
-
-    const subjectOnlyOverview = await request('/scores/teacher/overview', subjectTeacher);
-    assert.equal(subjectOnlyOverview.status, 200, JSON.stringify(subjectOnlyOverview.payload));
-    // Subject-only teachers see their assigned subject across their school, not just one class.
-    assert.equal(Number(subjectOnlyOverview.payload.summary.student_count), 3);
-    assert.equal(Number(subjectOnlyOverview.payload.summary.expected_score_entries), 3);
-    assert.equal(Number(subjectOnlyOverview.payload.summary.marked_score_entries), 1);
-    assert.equal(Number(subjectOnlyOverview.payload.summary.pending_score_entries), 2);
-    assert.equal(subjectOnlyOverview.payload.summary.attendance_rate, null);
-    assert.equal(subjectOnlyOverview.payload.summary.attendance_records, 0);
-    assert.equal(subjectOnlyOverview.payload.summary.weekly_effort_entries, 0);
+  test('teacher accounts cannot access marking overviews because their app role is report-only', async () => {
+    assert.equal((await request('/scores/teacher/overview', classTeacher)).status, 403);
+    assert.equal((await request('/scores/teacher/overview', subjectTeacher)).status, 403);
   });
 }

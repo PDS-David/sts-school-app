@@ -141,7 +141,7 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
       }
     } catch { failedSources.push('assessment alerts'); }
 
-    if (user.role !== 'finance_admin') {
+    if (user.role !== 'finance_admin' && user.role !== 'teacher') {
       try {
         const { data } = await api.get('/messages/contacts');
         const withUnread = (data.contacts ?? []).filter((c: any) => (c.unread_count ?? 0) > 0);

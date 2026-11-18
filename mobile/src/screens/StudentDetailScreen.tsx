@@ -58,7 +58,7 @@ export default function StudentDetailScreen({ route, navigation }: any) {
     }
   };
 
-  // Which term's report/remarks the teacher is viewing and editing — see
+  // Which term's report the teacher is viewing (remarks remain admin-managed) — see
   // the fix below (fetchReport now accepts a term_id) for why this exists:
   // previously the screen always used whatever term the backend fell back
   // to (school's is_current flag), with no way for a teacher to pick or
@@ -237,7 +237,7 @@ export default function StudentDetailScreen({ route, navigation }: any) {
           </Text>
           {student.gender && <Text style={styles.studentMeta}>{student.gender}</Text>}
         </View>
-        {isTeacher && (
+        {isAdmin && (
           <TouchableOpacity onPress={deleteStudent} style={{ padding: 6 }}>
             <Ionicons name="trash-outline" size={22} color={Colors.error} />
           </TouchableOpacity>
@@ -350,9 +350,7 @@ export default function StudentDetailScreen({ route, navigation }: any) {
         </Card>
       )}
 
-      {/* Term picker — controls both the summary/scores below and which
-          term saveRemarks() writes to (it always uses report.term.id,
-          which this keeps in sync with whatever's selected here). */}
+      {/* Term picker controls the report being viewed/exported. */}
       {isTeacher && terms.length > 0 && (
         <Card>
           <SectionHeader title="Reporting Term" />
@@ -407,8 +405,8 @@ export default function StudentDetailScreen({ route, navigation }: any) {
         </Card>
       )}
 
-      {/* Remarks */}
-      {isTeacher && term && (
+      {/* Remarks are admin-managed; teachers generate reports without editing source data. */}
+      {isAdmin && term && (
         <Card>
           <SectionHeader title="Remarks" />
           <Input
