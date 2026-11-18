@@ -57,7 +57,16 @@ test('imports only verified current enrolments and uses the verified current cla
       'Current Enrolment Status': 'Promoted',
       'Current Class (verified)': 'JSS 2',
     }),
-  ]), 2);
+    row({
+      'Student Name': 'Primary-to-Secondary Example',
+      'Last-Term Class': 'Grade 5',
+      'School Section': 'Primary',
+      'Roster Identity (not admission no.)': 'PRI-GRADE-5-PRIMARY-TO-SECONDARY-003',
+      'Internal Student UUID': '4c4cfd4e-96bb-5f7a-92b6-05e3a8214e1a',
+      'Current Enrolment Status': 'Promoted',
+      'Current Class (verified)': 'JSS 1',
+    }),
+  ]), 3);
 
   assert.equal(entries[0].schoolCode, 'primary');
   assert.equal(entries[0].sourceClassName, 'Grade 1');
@@ -68,6 +77,10 @@ test('imports only verified current enrolments and uses the verified current cla
   assert.equal(entries[1].sourceClassName, 'JSS1');
   assert.equal(entries[1].className, 'JSS 2');
   assert.equal(entries[1].enrolmentStatus, 'active');
+  assert.equal(entries[2].schoolCode, 'secondary');
+  assert.equal(entries[2].sourceClassName, 'Grade 5');
+  assert.equal(entries[2].className, 'JSS 1');
+  assert.equal(entries[2].enrolmentStatus, 'active');
 });
 
 test('transferred and left-school students are validated but returned as non-enrolment rows', () => {
@@ -192,7 +205,7 @@ test('rejects unsupported source/current classes and inconsistent school section
   );
   assert.throws(
     () => parsePhysicalRosterWorkbook(workbook([row({ 'Current Class (verified)': 'JSS 1' })]), 1),
-    /verified current class belongs to a different school section/,
+    /only a promoted student may move between Primary and Secondary sections/,
   );
   assert.throws(
     () => parsePhysicalRosterWorkbook(workbook([row({ 'Matched Production Student ID': 'not-a-uuid' })]), 1),
