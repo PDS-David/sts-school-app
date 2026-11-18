@@ -93,6 +93,11 @@ if (!SERVER_URL) {
   );
   const studentId = studentInsert.rows.find((r: any) => r.user_id === studentUser.id).id as string;
   const otherStudentId = studentInsert.rows.find((r: any) => r.user_id === otherStudentUser.id).id as string;
+  await query(
+    `INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status)
+     VALUES($1,'Primary 4','Primary 4','active'),($2,'Primary 4','Primary 4','active')`,
+    [studentId, otherStudentId],
+  );
   await query('INSERT INTO parent_wards(parent_id,student_id) VALUES($1,$2)', [parentUser.id, studentId]);
 
   const subjectInsert = await query(
@@ -237,8 +242,13 @@ if (!SERVER_URL) {
     assert.equal(denied.status, 403);
   });
 
-  test('teacher accounts cannot access marking overviews because their app role is report-only', async () => {
-    assert.equal((await request('/scores/teacher/overview', classTeacher)).status, 403);
-    assert.equal((await request('/scores/teacher/overview', subjectTeacher)).status, 403);
+  test('class teachers can access marking overviews only for their active physical report roster', async () => {
+    const overview = await request('/scores/teacher/overview', classTeacher);
+    assert.equal(overview.status, 200, JSON.stringify(overview.payload));
+    assert.equal(overview.payload.summary.student_count, 2);
+    assert.equal(overview.payload.summary.weekly_effort_entries, 0,
+      'teacher marking overview must not expose online-learning weekly-effort data');
+    assert.equal((await request('/scores/teacher/overview', subjectTeacher)).status, 403,
+      'subject-only teacher without an assigned physical class cannot access a marking overview');
   });
 }
