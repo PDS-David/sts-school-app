@@ -1,6 +1,12 @@
 name: Backend attendance report tenant scope
 
 on:
+  push:
+    branches: [master]
+    paths:
+      - "backend/src/routes/attendance.ts"
+      - "tests/backend-attendance-report-scope.integration.test.mts"
+      - ".github/workflows/backend-attendance-report-scope.yml"
   pull_request:
     branches: [master]
     paths:
