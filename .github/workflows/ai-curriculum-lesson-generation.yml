@@ -1,0 +1,29 @@
+name: AI curriculum lesson generation
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - "backend/src/services/curriculumLessonGenerator.ts"
+      - "tests/backend-curriculum-lesson-generator.test.mts"
+      - ".github/workflows/ai-curriculum-lesson-generation.yml"
+      - "backend/src/utils/ai.ts"
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate-curriculum-generation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - name: Validate generated lesson contract
+        run: node --import tsx --test tests/backend-curriculum-lesson-generator.test.mts
+      - name: Typecheck backend
+        run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
