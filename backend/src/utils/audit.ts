@@ -299,11 +299,13 @@ export async function audit(
 export async function verifyAuditLogIntegrity(schoolCode?: string): Promise<{
   valid: boolean;
   checked: number;
+  legacyUnhashed: number;
+  coverage: 'complete' | 'partial';
   invalidRecordId?: string;
   reason?: 'previous_hash_mismatch' | 'event_hash_mismatch';
 }> {
   const params: unknown[] = [];
-  let where = 'WHERE event_hash IS NOT NULL';
+  let where = 'WHERE TRUE';
   if (schoolCode !== undefined) {
     params.push(schoolCode);
     where += ' AND school_code IS NOT DISTINCT FROM $1';
@@ -318,17 +320,25 @@ export async function verifyAuditLogIntegrity(schoolCode?: string): Promise<{
   );
   const lastHashBySchool = new Map<string, string | null>();
   let checked = 0;
+  let legacyUnhashed = 0;
   for (const row of rows) {
+    // Migration 0004 deliberately preserves pre-hash audit rows without
+    // fabricating historical actor snapshots or hashes. Report their count
+    // explicitly while verifying every hash-chained row that can be checked.
+    if (!row.event_hash) {
+      legacyUnhashed += 1;
+      continue;
+    }
     const key = row.school_code ?? '<global>';
     const expectedPrevious = lastHashBySchool.has(key) ? lastHashBySchool.get(key)! : null;
     if ((row.previous_hash ?? null) !== expectedPrevious) {
-      return { valid: false, checked, invalidRecordId: String(row.id), reason: 'previous_hash_mismatch' };
+      return { valid: false, checked, legacyUnhashed, coverage: legacyUnhashed ? 'partial' : 'complete', invalidRecordId: String(row.id), reason: 'previous_hash_mismatch' };
     }
     if (hashCanonicalEvent(row) !== row.event_hash) {
-      return { valid: false, checked, invalidRecordId: String(row.id), reason: 'event_hash_mismatch' };
+      return { valid: false, checked, legacyUnhashed, coverage: legacyUnhashed ? 'partial' : 'complete', invalidRecordId: String(row.id), reason: 'event_hash_mismatch' };
     }
     lastHashBySchool.set(key, row.event_hash);
     checked += 1;
   }
-  return { valid: true, checked };
+  return { valid: true, checked, legacyUnhashed, coverage: legacyUnhashed ? 'partial' : 'complete' };
 }
