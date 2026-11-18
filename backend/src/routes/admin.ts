@@ -281,10 +281,10 @@ router.post('/users', async (req, res) => {
       createdUser = await withTransaction(async (client) => {
         await validateTeacherAssignments(client, schoolCodeN, assignedClassN, subjectIds);\n        if (!assignedClassN && classNames.length) {\n          const { rows: classRows } = await client.query('SELECT name FROM classes WHERE school_code=$1 AND name=ANY($2::text[])', [schoolCodeN, classNames]);\n          if (classRows.length !== classNames.length) throw new TeacherAssignmentValidationError('Every subject-teacher class must belong to the selected school.');\n        }
         const { rows } = await client.query(
-          `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,
+          `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,assigned_class_names,
              phone,email,must_change_pw,access_expires_at,activation_code)
-           VALUES($1,$2,'teacher',$3,$4,$5,$6,$7,TRUE,$8,NULL) RETURNING id,username,role,school_code,access_expires_at`,
-          [uname, hash, full_name, schoolCodeN, assignedClassN, phoneN, emailN, expiresAt],
+           VALUES($1,$2,'teacher',$3,$4,$5,$6,$7,$8,TRUE,$9,NULL) RETURNING id,username,role,school_code,access_expires_at`,
+          [uname, hash, full_name, schoolCodeN, assignedClassN, classNames, phoneN, emailN, expiresAt],
         );
         for (const sid of subjectIds) {
           await client.query(
