@@ -23,9 +23,9 @@ function Read-ZipText($Zip, [string]$Name) {
 }
 
 function Invoke-Importer([bool]$DoApply) {
-    $args = @("--import","tsx","src/db/importPhysicalReportRoster.ts","--file=$ResolvedWorkbook","--confirm-database=sts_school_db_2")
-    if ($DoApply) { $args += @("--apply","--owner-approved-initial-roster") }
-    $output = & node @args 2>&1
+    $cliArgs = @("--import","tsx","src/db/importPhysicalReportRoster.ts","--file=$ResolvedWorkbook","--confirm-database=sts_school_db_2")
+    if ($DoApply) { $cliArgs += @("--apply","--owner-approved-initial-roster") }
+    $output = & node @cliArgs 2>&1
     if ($LASTEXITCODE -ne 0) { $output | ForEach-Object { Write-Host $_ }; throw "Roster importer failed; stop and inspect before retrying." }
     $joined = ($output | ForEach-Object { "$_" }) -join [Environment]::NewLine
     $start = $joined.LastIndexOf("{")
