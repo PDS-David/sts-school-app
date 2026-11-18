@@ -48,7 +48,7 @@ function ReportsStackNavigator({ subjectTeacher = false }: { subjectTeacher?: bo
       <ReportsStack.Screen name="Students" component={StudentsScreen} options={{ headerShown: true, title: 'Report Roster', ...opts }} />
       {!subjectTeacher && <ReportsStack.Screen name="StudentDetail" component={StudentDetailScreen} options={{ headerShown: true, title: 'Student Report', ...opts }} />}
       {!subjectTeacher && <ReportsStack.Screen name="MyResults" component={MyResultsScreen} options={{ headerShown: true, title: 'Term Report', ...opts }} />}
-      {!subjectTeacher && <ReportsStack.Screen name="SessionReport" component={SessionReportScreen} options={{ headerShown: true, title: 'Session Report', ...opts }} />
+      {!subjectTeacher && <ReportsStack.Screen name="SessionReport" component={SessionReportScreen} options={{ headerShown: true, title: 'Session Report', ...opts }} />}
       {!subjectTeacher && <ReportsStack.Screen name="AddStudent" component={AddStudentScreen} options={{ headerShown: true, title: 'Add Physical-Class Student', ...opts }} />}
       <ReportsStack.Screen name="ScoreEntry" component={ScoreEntryScreen} options={{ headerShown: true, title: 'Enter / Edit Scores', ...opts }} />
       {!subjectTeacher && <ReportsStack.Screen name="Attendance" component={AttendanceScreen} options={{ headerShown: true, title: 'Attendance', ...opts }} />}
