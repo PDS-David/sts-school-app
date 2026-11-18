@@ -97,7 +97,7 @@ Migration `0014_formal_online_examinations.sql` adds:
 - `online_exam_responses` (autosaved responses and marking state)
 - `online_exam_audit_events`
 
-Migration `0015_online_exam_marking_confidence.sql` adds validated AI confidence (0–1) and structured criterion-level marking evidence to each written response.
+Migration `0015_online_exam_marking_confidence.sql` adds validated AI confidence (0–1) and structured criterion-level marking evidence to each written response. Migration `0016_question_bank_subject_reviews.sql` records append-only subject-teacher approval/rejection decisions; teachers can review only question-bank subjects that match their assigned teaching subjects, and only approved/published questions can be attached to an examination.
 
 No physical-reporting tables are referenced by the migration or route.
 
@@ -108,3 +108,6 @@ No physical-reporting tables are referenced by the migration or route.
 - No destructive production operation or data backfill is required.
 - CI workflow `.github/workflows/online-exams.yml` runs the backend build, focused contract tests, PostgreSQL 18 integration tests applying migrations 0012 → 0013 → 0014 → 0015 in order, and mobile TypeScript check. A contract test also rejects any numbered migration gap.
 - The PostgreSQL integration test requires a disposable `TEST_DATABASE_URL`; it creates and drops only a uniquely named test schema.
+
+
+Teacher subject review is exposed in the teacher app's More → Review Questions screen. It is a content-governance exception only; teachers still cannot create or administer online student assessments, and online assessment data remains separate from physical school reports.
