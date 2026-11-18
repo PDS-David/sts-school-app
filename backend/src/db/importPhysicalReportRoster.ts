@@ -51,7 +51,8 @@ async function main() {
         skippedLeft++;
         continue;
       }
-      if (!entry.className) throw new Error(`Verified active roster identity ${entry.rosterIdentity} has no current class`);
+      const currentClassName = currentClassName;
+      if (!currentClassName) throw new Error(`Verified active roster identity ${entry.rosterIdentity} has no current class`);
       if (entry.matchedProductionStudentId) matchedProductionStudents++;
       const { rows: existingRows } = await client.query<{
         id: string; school_code: string; full_name: string; class_name: string;
@@ -89,7 +90,7 @@ async function main() {
           await client.query(
             `INSERT INTO students(id,school_code,full_name,class_name)
              VALUES($1,$2,$3,$4)`,
-            [entry.studentId, entry.schoolCode, entry.fullName, entry.className],
+            [entry.studentId, entry.schoolCode, entry.fullName, currentClassName],
           );
         }
         newStudents++;
@@ -110,13 +111,13 @@ async function main() {
             `INSERT INTO report_roster_memberships
                (student_id,class_name,source_class_name,status,joined_at)
              VALUES($1,$2,$3,'active',now())`,
-            [entry.studentId, entry.className, entry.sourceClassName],
+            [entry.studentId, currentClassName, entry.sourceClassName],
           );
           await client.query(
             `INSERT INTO report_roster_membership_events
                (student_id,event_type,to_class_name,details)
              VALUES($1,'enrolled',$2,$3::jsonb)`,
-            [entry.studentId, entry.className, JSON.stringify({
+            [entry.studentId, currentClassName, JSON.stringify({
               source: 'importPhysicalReportRoster',
               source_file: sourceFile,
               roster_identity: entry.rosterIdentity,
@@ -134,7 +135,7 @@ async function main() {
       }
 
       if (membership.status === 'active') {
-        if (membership.class_name !== entry.className
+        if (membership.class_name !== currentClassName
             || membership.source_class_name !== entry.sourceClassName) {
           throw new Error(`Active report-roster placement conflicts with workbook identity ${entry.rosterIdentity}; administrator decisions will not be overwritten`);
         }
@@ -158,13 +159,13 @@ async function main() {
               SET class_name=$1,source_class_name=$2,status='active',
                   removed_at=NULL,changed_by=NULL,updated_at=now()
             WHERE student_id=$3 AND status='removed'`,
-          [entry.className, entry.sourceClassName, entry.studentId],
+          [currentClassName, entry.sourceClassName, entry.studentId],
         );
         await client.query(
           `INSERT INTO report_roster_membership_events
              (student_id,event_type,from_class_name,to_class_name,details)
            VALUES($1,'reinstated',$2,$3,$4::jsonb)`,
-          [entry.studentId, membership.class_name, entry.className, JSON.stringify({
+          [entry.studentId, membership.class_name, currentClassName, JSON.stringify({
             source: 'importPhysicalReportRoster',
             source_file: sourceFile,
             roster_identity: entry.rosterIdentity,
