@@ -1,6 +1,9 @@
 name: Production PostgreSQL baseline adoption and migrations
 
 on:
+  pull_request:
+    paths:
+      - ".github/workflows/production-db-migrations.yml"
   workflow_dispatch:
     inputs:
       operation:
@@ -34,6 +37,14 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  validate:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate workflow syntax with actionlint
+        run: docker run --rm -v "$GITHUB_WORKSPACE:/repo" -w /repo rhysd/actionlint:1.7.7 -color .github/workflows/production-db-migrations.yml
+
   production-migration:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
@@ -115,7 +126,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          row_count_sql="SELECT string_agg(format('%I=%s', table_name, (xpath('//c/text()', query_to_xml(format('SELECT count(*) AS c FROM public.%I', table_name), false, true, '')))[1]::text), E'\n' ORDER BY table_name) FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE' AND table_name NOT IN ('schema_migrations','school_events','rate_limit_counters','report_roster_memberships','report_roster_membership_events')"
+          row_count_sql="SELECT string_agg(format('%I=%s', table_name, (xpath('//c/text()', query_to_xml(format('SELECT count(*) AS c FROM public.%I', table_name), false, true, '')))[1]::text), E'\n' ORDER BY table_name) FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE' AND table_name NOT IN ('schema_migrations','school_events','rate_limit_counters','report_roster_memberships','report_roster_membership_events','curriculum_generated_lessons','learning_access_settings','student_curriculum_lesson_progress')"
           counts="$(docker run --rm --env DATABASE_URL --env ROW_COUNT_SQL="$row_count_sql" postgres:18 sh -ceu 'psql "$DATABASE_URL" -X -A -t -v ON_ERROR_STOP=1 -c "$ROW_COUNT_SQL"')"
           test -n "$counts"
           echo "counts_b64=$(printf '%s' "$counts" | base64 -w0)" >> "$GITHUB_OUTPUT"
@@ -143,7 +154,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          row_count_sql="SELECT string_agg(format('%I=%s', table_name, (xpath('//c/text()', query_to_xml(format('SELECT count(*) AS c FROM public.%I', table_name), false, true, '')))[1]::text), E'\n' ORDER BY table_name) FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE' AND table_name NOT IN ('schema_migrations','school_events','rate_limit_counters','report_roster_memberships','report_roster_membership_events')"
+          row_count_sql="SELECT string_agg(format('%I=%s', table_name, (xpath('//c/text()', query_to_xml(format('SELECT count(*) AS c FROM public.%I', table_name), false, true, '')))[1]::text), E'\n' ORDER BY table_name) FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE' AND table_name NOT IN ('schema_migrations','school_events','rate_limit_counters','report_roster_memberships','report_roster_membership_events','curriculum_generated_lessons','learning_access_settings','student_curriculum_lesson_progress')"
           after_counts="$(docker run --rm --env DATABASE_URL --env ROW_COUNT_SQL="$row_count_sql" postgres:18 sh -ceu 'psql "$DATABASE_URL" -X -A -t -v ON_ERROR_STOP=1 -c "$ROW_COUNT_SQL"')"
           before_counts="$(printf '%s' "$BEFORE_COUNTS_B64" | base64 -d)"
           if [[ "$before_counts" != "$after_counts" ]]; then
@@ -152,7 +163,7 @@ jobs:
             exit 1
           fi
           verification_sql="DO \$\$ BEGIN
-            IF (SELECT count(*) FROM public.schema_migrations WHERE version IN ('0001','0002','0003','0004','0005','0006')) <> 6 THEN RAISE EXCEPTION 'Expected migrations 0001-0005'; END IF;
+            IF (SELECT count(*) FROM public.schema_migrations WHERE version IN ('0001','0002','0003','0004','0005','0006','0007','0008','0009')) <> 9 THEN RAISE EXCEPTION 'Expected migrations 0001-0009'; END IF;
             IF to_regclass('public.school_events') IS NULL THEN RAISE EXCEPTION 'school_events missing'; END IF;
             IF to_regclass('public.rate_limit_counters') IS NULL THEN RAISE EXCEPTION 'rate_limit_counters missing'; END IF;
             IF to_regclass('public.report_roster_memberships') IS NULL THEN RAISE EXCEPTION 'report_roster_memberships missing'; END IF;
@@ -170,11 +181,16 @@ jobs:
             IF (SELECT count(*) FROM pg_trigger WHERE tgrelid='public.audit_log'::regclass AND NOT tgisinternal) <> 2 THEN RAISE EXCEPTION 'Audit append-only triggers missing'; END IF;
             IF NOT EXISTS (SELECT 1 FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname='public' AND p.proname='audit_log_reject_mutation') THEN RAISE EXCEPTION 'Audit append-only function missing'; END IF;
             IF EXISTS (SELECT 1 FROM pg_constraint WHERE conrelid='public.audit_log'::regclass AND conname='audit_log_actor_id_fkey') THEN RAISE EXCEPTION 'Obsolete audit actor FK remains'; END IF;
+            IF to_regclass('public.curriculum_generated_lessons') IS NULL THEN RAISE EXCEPTION 'curriculum_generated_lessons missing'; END IF;
+            IF to_regclass('public.learning_access_settings') IS NULL THEN RAISE EXCEPTION 'learning_access_settings missing'; END IF;
+            IF to_regclass('public.student_curriculum_lesson_progress') IS NULL THEN RAISE EXCEPTION 'student_curriculum_lesson_progress missing'; END IF;
+            IF (SELECT count(*) FROM public.learning_access_settings WHERE id=1) <> 1 THEN RAISE EXCEPTION 'Global learning access policy seed row missing'; END IF;
+            IF (SELECT count(*) FROM pg_indexes WHERE schemaname='public' AND indexname IN ('idx_curriculum_generated_lessons_topic','idx_curriculum_generated_lessons_class_subject_term','idx_student_curriculum_progress_class_term')) <> 3 THEN RAISE EXCEPTION 'Curriculum lesson/progress indexes missing'; END IF;
           END \$\$; SELECT version,name,checksum FROM public.schema_migrations ORDER BY version"
           docker run --rm --env DATABASE_URL --env VERIFICATION_SQL="$verification_sql" postgres:18 sh -ceu 'psql "$DATABASE_URL" -X -v ON_ERROR_STOP=1 -c "$VERIFICATION_SQL"'
           {
             echo '### Production migration verification'
-            echo '- Migration ledger contains 0001-0006, including the physical report-roster migration and explicit-enrolment safeguard.'
+            echo '- Migration ledger contains 0001-0009, including the physical report-roster safeguards and curriculum lesson/access/progress objects.'
             echo '- school_events, rate_limit_counters and all nine audit columns exist.'
             echo '- Report-roster tables, three indexes, append-only function and two triggers exist; no unverified membership is active.'
             echo '- Existing student rows are preserved; provisional 0005 memberships are inactive until the physical source roster is reconciled.'
