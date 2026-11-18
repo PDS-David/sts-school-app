@@ -236,7 +236,7 @@ router.get('/subjects', async (req, res) => {
   return res.json({ subjects: rows });
 });
 
-router.post('/subjects', requireRole('admin','teacher'), async (req, res) => {
+router.post('/subjects', requireRole('admin'), async (req, res) => {
   const { name, code, school_code } = req.body ?? {};
   const user = req.user!;
   let sc = user.school_code;
