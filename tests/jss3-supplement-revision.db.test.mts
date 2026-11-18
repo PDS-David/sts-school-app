@@ -73,6 +73,30 @@ if(!db){test('supplement revision database checks require JSS3_YO_TEST_DATABASE_
  const {t}=await make();prompts.length=0;const done=await api('POST',`/topics/${t}/complete`);assert.equal(done.status,200);assert.match(done.body.summary,/JSS3 SUPPLEMENT UPDATE/);assert.ok(prompts.length>=1, 'one structured lesson generation produces the teaching body and practice set');for(const p of prompts)assert.match(p,/JSS3 SUPPLEMENT UPDATE/);
  const unknown=await make('unreviewed edited text');prompts.length=0;const held=await api('POST',`/topics/${unknown.t}/complete`);assert.equal(held.status,200);assert.equal(held.body.delivery_correction.status,'withheld');assert.equal(prompts.length,0);
  });
+ test('AI lesson generation does not complete the topic or create an assessment; progress and cache are separate',async()=>{
+ const title=`Cache lesson ${tag}`;
+ const t=(await one(`INSERT INTO topics(school_code,subject_id,class_name,term_label,title,source_reference,summary) VALUES('secondary',$1,'JSS 3','1st Term',$2,'Approved source material for this generic Yoruba lesson.',NULL) RETURNING id`,[subject,title])).id;
+ topics.push(t);
+ const assessmentCount=(await one('SELECT count(*)::int n FROM assessments WHERE subject_id=$1',[subject])).n;
+ prompts.length=0;
+ const first=await api('POST',`/topics/${t}/lesson`);
+ assert.equal(first.status,200);
+ assert.ok(first.body.lesson?.introduction);
+ assert.ok(first.body.lesson?.sections?.length>=2);
+ assert.equal(first.body.lesson.practice_questions.length,5);
+ assert.equal(prompts.length,1);
+ assert.equal((await one('SELECT count(*)::int n FROM topic_completions WHERE topic_id=$1',[t])).n,0);
+ assert.equal((await one('SELECT count(*)::int n FROM assessments WHERE subject_id=$1',[subject])).n,assessmentCount);
+ const cached=await api('POST',`/topics/${t}/lesson`);
+ assert.equal(cached.status,200);
+ assert.ok(cached.body.lesson?.practice_questions?.length===5);
+ assert.equal(prompts.length,1,'second request reuses the validated context cache without another AI call');
+ const progress=await api('POST',`/topics/${t}/progress`);
+ assert.equal(progress.status,200);
+ assert.equal(progress.body.completed,true);
+ assert.equal((await one('SELECT count(*)::int n FROM topic_completions WHERE topic_id=$1 AND student_id=$2',[t,student])).n,1);
+ });
+
  test('real SQL transaction rollback preserves prior cache/assessment state on failure',async()=>{
  const {t,a}=await make();const c=await pool.connect();try{await c.query('BEGIN');const r=resolveDelivery({school_code:'secondary',class_name:'JSS 3',subject_name:'Yoruba',term_label:'1st Term',title:fixture.lesson.title,source_reference:ref})!;await retireStaleJss3Cache((sql,args)=>c.query(sql,args),t,r);await assert.rejects(c.query('SELECT 1/0'));await c.query('ROLLBACK');}finally{c.release();}
  assert.equal((await one('SELECT summary FROM topics WHERE id=$1',[t])).summary,'STALE SUMMARY');assert.equal((await one('SELECT status FROM assessments WHERE id=$1',[a])).status,'open');
