@@ -43,6 +43,7 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
   // take effect on the very next authenticated request.
   const { rows } = await query(
     `SELECT u.username, u.role, u.school_code, u.assigned_class,
+            COALESCE(u.assigned_class_names, ARRAY[]::text[]) AS assigned_class_names,
             COALESCE(u.can_manage_all_schools, FALSE) AS can_manage_all_schools,
             COALESCE((
               SELECT array_agg(ts.subject_id ORDER BY ts.subject_id)
@@ -89,6 +90,7 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
     school_code: dbUser.school_code,
     assigned_class: dbUser.assigned_class,
     assigned_subject_ids: dbUser.assigned_subject_ids,
+    assigned_class_names: dbUser.assigned_class_names,
     can_manage_all_schools: dbUser.can_manage_all_schools === true,
     selected_school_code: dbUser.role === 'admin' && dbUser.can_manage_all_schools === true ? requestedSchool : null,
   });
