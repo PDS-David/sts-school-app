@@ -76,6 +76,7 @@ test('primary report uses the exact supplied assessment maxima and full report s
     'AVERAGE',
     'SUBJECTS TAKEN',
     'KEY:',
+    'E 40–44 Poor',
     "CLASS TEACHER'S REMARK",
     "HEAD TEACHER'S REMARK",
     "CLASS TEACHER'S SIGNATURE",
