@@ -112,6 +112,7 @@ test('teacher creation rejects a subject from another school before creating the
       role: 'teacher',
       school_code: 'primary',
       assigned_subject_ids: [foreignSubjectId],
+      assigned_class_names: ['Primary 1'],
       initial_password: '1234',
     });
     assert.equal(response.status, 400);
@@ -157,6 +158,7 @@ test('teacher creation rolls back the user if subject insertion fails after the 
       role: 'teacher',
       school_code: 'primary',
       assigned_subject_ids: [subjectId],
+      assigned_class_names: ['Primary 1'],
       initial_password: '1234',
     });
     assert.equal(response.status, 500);
