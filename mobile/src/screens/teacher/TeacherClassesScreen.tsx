@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Card } from '../../components/UI';
 import { Colors, Spacing, Fonts } from '../../theme';
 import { AppHeader } from '../../components/AppHeader';
+import { useAuth } from '../../api/AuthContext';
 
 const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string; screen: string; color: string }[] = [
   { icon: 'person-add-outline', label: 'Add Student', sub: 'Create a student record in your assigned physical class', screen: 'AddStudent', color: '#2E7D32' },
@@ -15,11 +16,14 @@ const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string;
 ];
 
 export default function TeacherClassesScreen({ navigation }: any) {
+  const { user } = useAuth();
+  const subjectTeacher = !!user && user.role === 'teacher' && !user.assigned_class;
+  const visibleItems = subjectTeacher ? ITEMS.filter(item => item.screen === 'Students' || item.screen === 'ScoreEntry') : ITEMS;
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
       <AppHeader title="Student Reports" />
       <ScrollView contentContainerStyle={{ padding: Spacing.md }}>
-        {ITEMS.map((it) => (
+        {visibleItems.map((it) => (
           <TouchableOpacity key={it.label} onPress={() => navigation.navigate(it.screen)} activeOpacity={0.8}>
             <Card style={styles.row}>
               <View style={[styles.iconWrap, { backgroundColor: it.color + '20' }]}>
