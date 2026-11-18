@@ -111,6 +111,22 @@ test('administrator placement decisions mutate only physical report membership a
       headers: { Authorization: `Bearer ${teacherToken}` },
     });
     assert.equal(teacherRemoved.status, 403, 'teachers must not manage the removed physical-roster list');
+
+    const teacherRoster = await fetch(baseUrl, { headers: { Authorization: `Bearer ${teacherToken}` } });
+    assert.equal(teacherRoster.status, 200);
+    const teacherRosterBody = await teacherRoster.json() as { students: Array<{ id: string; class_name: string }> };
+    assert.ok(teacherRosterBody.students.some(student => student.id === studentIds[1]));
+    assert.ok(!teacherRosterBody.students.some(student => student.id === studentIds[0]),
+      'teacher roster is limited to active membership in the assigned physical class');
+
+    const teacherProfile = await fetch(`${baseUrl}/${studentIds[1]}`, {
+      headers: { Authorization: `Bearer ${teacherToken}` },
+    });
+    assert.equal(teacherProfile.status, 200);
+    const teacherProfileBody = await teacherProfile.json() as { student: Record<string, unknown> };
+    assert.deepEqual(Object.keys(teacherProfileBody.student).sort(),
+      ['admission_number', 'class_name', 'created_at', 'full_name', 'id', 'school_code'].sort(),
+      'teacher profile exposes only the identity fields required for report generation');
     const reinstated = await decide(studentIds[3], 'remove');
     assert.equal(reinstated.status, 200);
     const restore = await decide(studentIds[3], 'reinstate');
