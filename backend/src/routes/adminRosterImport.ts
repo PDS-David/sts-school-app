@@ -38,7 +38,7 @@ async function inspectWorkbook(buffer: Buffer) {
          FROM students s
          LEFT JOIN report_roster_memberships m ON m.student_id=s.id AND m.status='active'
         WHERE s.school_code=$1 AND s.deleted_at IS NULL
-          AND lower(regexp_replace(trim(s.full_name), '\\s+', ' ', 'g')) = ANY($2::text[])`,
+          AND lower(regexp_replace(trim(s.full_name), '\s+', ' ', 'g')) = ANY($2::text[])`,
       [schoolCode, namesBySchool[schoolCode]],
     );
     for (const row of rows) conflicts.push({ schoolCode, fullName: row.full_name, existingClass: row.class_name });
@@ -94,7 +94,7 @@ router.post('/confirm', upload.single('file'), async (req, res) => {
       const duplicate = await client.query(
         `SELECT s.id, s.full_name FROM students s
           WHERE s.school_code=$1 AND s.deleted_at IS NULL
-            AND lower(regexp_replace(trim(s.full_name), '\\s+', ' ', 'g')) = ANY($2::text[])
+            AND lower(regexp_replace(trim(s.full_name), '\s+', ' ', 'g')) = ANY($2::text[])
           LIMIT 1`,
         [schoolCode, schoolNames[schoolCode]],
       );
