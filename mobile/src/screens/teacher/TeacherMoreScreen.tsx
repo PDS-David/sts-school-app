@@ -5,7 +5,6 @@ import { Card, Badge } from '../../components/UI';
 import { Colors, Spacing, Fonts } from '../../theme';
 import { useAuth } from '../../api/AuthContext';
 import { AppHeader } from '../../components/AppHeader';
-import { openNotifications } from '../../navigation/navigationRef';
 
 export default function TeacherMoreScreen({ navigation }: any) {
   const { user, logout } = useAuth();
