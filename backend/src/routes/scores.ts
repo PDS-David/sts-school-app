@@ -219,7 +219,7 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
   const user = req.user!;
 
   let sql = `SELECT sc.id, sc.ca1, sc.ca2, sc.exam, sc.total, sc.grade, sc.teacher_remark,
-                    s.id AS student_id, s.full_name, s.class_name, s.admission_number,
+                    s.id AS student_id, s.full_name, COALESCE(rrm.class_name,s.class_name) AS class_name, s.admission_number,
                     sub.id AS subject_id, sub.name AS subject_name,
                     t.id AS term_id, t.name AS term_name
              FROM scores sc
@@ -258,7 +258,7 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
   }
 
   if (user.role !== 'admin') sql += ' AND s.deleted_at IS NULL';
-  sql += ' ORDER BY s.class_name, s.full_name, sub.name';
+  sql += ' ORDER BY COALESCE(rrm.class_name,s.class_name), s.full_name, sub.name';
   const { rows } = await query(sql, params);
   return res.json({ scores: rows });
 });
