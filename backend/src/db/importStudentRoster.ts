@@ -40,8 +40,8 @@ import { pool } from './pool.js';
 const MAPPING: Record<string, string> = {
   JSS1: 'JSS 1', JSS2: 'JSS 2', JSS3: 'JSS 3',
   SS1: 'SS 1', SS2: 'SS 2', SS3: 'SS 3',
-  'Grade 1': 'PRY 1', 'Grade 2': 'PRY 2', 'Grade 3': 'PRY 3',
-  'Grade 4': 'PRY 4', 'Grade 5': 'PRY 5', 'Grade 6': 'PRY 6',
+  'Grade 1': 'Primary 1', 'Grade 2': 'Primary 2', 'Grade 3': 'Primary 3',
+  'Grade 4': 'Primary 4', 'Grade 5': 'Primary 5', 'Grade 6': 'Primary 6',
 };
 
 function normalizeClass(raw: string): string {
@@ -167,13 +167,51 @@ async function main() {
   try {
     await client.query('BEGIN');
     for (const r of importable) {
-      const { rowCount } = await client.query(
+      const insertedStudent = await client.query<{ id: string; class_name: string }>(
         `INSERT INTO students(school_code, admission_number, full_name, class_name)
          VALUES ($1,$2,$3,$4)
-         ON CONFLICT (school_code, admission_number) DO NOTHING`,
+         ON CONFLICT (school_code, admission_number) DO NOTHING
+         RETURNING id, class_name`,
         [r.school_code, r.admission_number, r.full_name, r.class_name],
       );
-      if (rowCount && rowCount > 0) inserted++; else alreadyExisted++;
+
+      let student = insertedStudent.rows[0];
+      if (student) {
+        inserted++;
+      } else {
+        alreadyExisted++;
+        const existing = await client.query<{ id: string; class_name: string }>(
+          `SELECT id, class_name FROM students
+           WHERE school_code=$1 AND admission_number=$2
+           FOR UPDATE`,
+          [r.school_code, r.admission_number],
+        );
+        student = existing.rows[0];
+      }
+      if (!student) {
+        throw new Error(`Could not resolve imported student identity for ${r.school_code}/${r.admission_number}`);
+      }
+
+      // Do not overwrite an existing student's online class or account link.
+      // Create the physical report-roster membership independently and only
+      // when one does not already exist.
+      const membership = await client.query(
+        `INSERT INTO report_roster_memberships
+           (student_id, class_name, source_class_name, status, joined_at)
+         VALUES ($1,$2,$2,'active',now())
+         ON CONFLICT (student_id) DO NOTHING
+         RETURNING student_id`,
+        [student.id, r.class_name],
+      );
+      if (membership.rowCount) {
+        await client.query(
+          `INSERT INTO report_roster_membership_events
+             (student_id, event_type, to_class_name, details)
+           VALUES ($1,'enrolled',$2,$3::jsonb)`,
+          [student.id, insertedStudent.rows[0] ? r.class_name : student.class_name,
+            JSON.stringify({ source: 'importStudentRoster', source_file: r.source_file })],
+        );
+      }
     }
     await client.query('COMMIT');
     console.log(`\n✓ Inserted ${inserted} new student row(s). ${alreadyExisted} already existed (by admission number) and were left untouched. Committed.`);
