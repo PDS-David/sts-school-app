@@ -21,7 +21,7 @@ The historical class is provenance only. It is never assumed to be the current c
 | JSS1–3 | JSS 1–3 | Secondary |
 | SS1–2 | SS 1–2 | Secondary |
 
-The current-class dropdown also supports the school's other current classes (Pre-Nursery, Reception, Nursery, KG, Primary 1–6, JSS 1–3 and SS 1–3). The selected class must belong to the student's school section.
+The current-class dropdown supports all current classes (Pre-Nursery, Reception, Nursery, KG, Primary 1–6, JSS 1–3 and SS 1–3). A promoted student may move from Primary to Secondary; in that case the verified current class determines the active report-roster section. Same-class and retained decisions must remain in the historical section.
 
 ## Mandatory verification gate
 
@@ -45,7 +45,7 @@ The original workbook has all 104 current-status and current-class cells blank; 
 
 ## Identity and separation safeguards
 
-- The deterministic Internal Student UUID is used for a new student-row identity only when Matched Production Student ID is blank.
+- The deterministic Internal Student UUID is used for a new student-row identity only when Matched Production Student ID is blank. For a cross-section promotion where an existing production student belongs to the previous section, do not match that old-section ID to the new-section row; leave the match blank so the importer creates a separate section-specific row without changing the old online record.
 - If Matched Production Student ID is filled, that exact existing production student must exist and match the verified name and school. The importer will not create a replacement if the match is missing.
 - The importer does not invent admission numbers or online login accounts.
 - Existing online student class, login links and academic history are not rewritten.
