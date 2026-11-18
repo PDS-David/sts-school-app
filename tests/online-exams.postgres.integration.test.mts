@@ -169,6 +169,10 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.equal((await request('/online-exams/exams','GET','')).status,401);
       const rejectedPilot=await request('/online-exams/admin/exams','POST',adminToken,examDraft,school);
       assert.equal(rejectedPilot.status,400);
+      const missingCoverage=structuredClone(examDraft);delete missingCoverage.sections[0].questions[0].covered_topic_id;
+      assert.equal((await request('/online-exams/admin/exams','POST',adminToken,missingCoverage,school)).status,400);
+      const wrongCoverage=structuredClone(examDraft);wrongCoverage.sections[0].questions[0].covered_topic_id=99999;
+      assert.equal((await request('/online-exams/admin/exams','POST',adminToken,wrongCoverage,school)).status,400);
       const created=await request('/online-exams/admin/exams','POST',adminToken,examDraft,school);
       assert.equal(created.status,201);
       const examId=created.data.exam.id;
