@@ -126,7 +126,7 @@ router.get('/users', async (req, res) => {
   const { school_code, role } = req.query as Record<string, string>;
   const scope = resolveAdminSchoolScope(req.user!, school_code);
   if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
-  let sql = `SELECT u.id,u.username,u.full_name,u.role,u.school_code,u.assigned_class,
+  let sql = `SELECT u.id,u.username,u.full_name,u.role,u.school_code,u.assigned_class,u.assigned_class_names,
                     u.is_active,u.must_change_pw,u.access_expires_at,u.created_at,
                     u.phone,u.email,
                     (u.password_hash IS NULL) AS pending_activation,
@@ -211,7 +211,7 @@ function blankToNull<T>(v: T): T | null {
 }
 
 router.post('/users', async (req, res) => {
-  const { username, full_name, role, school_code, assigned_class, assigned_subject_ids, phone, email, access_expires_at, initial_password } = req.body ?? {};
+  const { username, full_name, role, school_code, assigned_class, assigned_class_names, assigned_subject_ids, phone, email, access_expires_at, initial_password } = req.body ?? {};
   const scope = resolveAdminSchoolScope(req.user!, school_code);
   if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
   if (req.user!.school_code && role === 'finance_admin') {
@@ -231,7 +231,9 @@ router.post('/users', async (req, res) => {
     ? classTeacherUsername(String(assigned_class))
     : String(username).trim().toLowerCase();
 
-  const exists = await query('SELECT id FROM users WHERE username=$1', [uname]);
+  const exists = role === 'teacher'
+    ? await query('SELECT id FROM users WHERE role=\'teacher\' AND school_code=$1 AND lower(username)=lower($2)', [schoolCodeN, uname])
+    : await query('SELECT id FROM users WHERE lower(username)=lower($1)', [uname]);
   if (exists.rows.length) {
     return res.status(409).json({
       error: isClassTeacher
@@ -251,8 +253,8 @@ router.post('/users', async (req, res) => {
   // 'teacher' only; every other role still goes through the Task C
   // activation-code flow below unchanged.
   if (role === 'teacher') {
-    if (!initial_password || String(initial_password).length < 8) {
-      return res.status(400).json({ error: 'initial_password is required for a teacher and must be at least 8 characters' });
+    if (typeof initial_password !== 'string' || !/^\d{4}$/.test(initial_password)) {
+      return res.status(400).json({ error: 'Teacher initial_password must be exactly four numeric digits.' });
     }
 
     let subjectIds: number[];
@@ -265,16 +267,30 @@ router.post('/users', async (req, res) => {
       throw error;
     }
 
+    const classNames: string[] = Array.isArray(assigned_class_names)
+      ? [...new Set(assigned_class_names.filter((v: unknown): v is string => typeof v === 'string').map((v: string) => v.trim()).filter(Boolean))]
+      : [];
+    if (assigned_class_names !== undefined && (!Array.isArray(assigned_class_names) || classNames.length !== assigned_class_names.length)) {
+      return res.status(400).json({ error: 'assigned_class_names must be an array of class names.' });
+    }
+    if (!assignedClassN && (!classNames.length || !subjectIds.length)) {
+      return res.status(400).json({ error: 'A subject teacher must have at least one assigned class and one assigned subject.' });
+    }
+
     const hash = await bcrypt.hash(String(initial_password), 10);
     let createdUser;
     try {
       createdUser = await withTransaction(async (client) => {
         await validateTeacherAssignments(client, schoolCodeN, assignedClassN, subjectIds);
+        if (!assignedClassN && classNames.length) {
+          const { rows: classRows } = await client.query('SELECT name FROM classes WHERE school_code=$1 AND name=ANY($2::text[])', [schoolCodeN, classNames]);
+          if (classRows.length !== classNames.length) throw new TeacherAssignmentValidationError('Every subject-teacher class must belong to the selected school.');
+        }
         const { rows } = await client.query(
-          `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,
+          `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,assigned_class_names,
              phone,email,must_change_pw,access_expires_at,activation_code)
-           VALUES($1,$2,'teacher',$3,$4,$5,$6,$7,TRUE,$8,NULL) RETURNING id,username,role,school_code,access_expires_at`,
-          [uname, hash, full_name, schoolCodeN, assignedClassN, phoneN, emailN, expiresAt],
+           VALUES($1,$2,'teacher',$3,$4,$5,$6,$7,$8,TRUE,$9,NULL) RETURNING id,username,role,school_code,access_expires_at`,
+          [uname, hash, full_name, schoolCodeN, assignedClassN, classNames, phoneN, emailN, expiresAt],
         );
         for (const sid of subjectIds) {
           await client.query(
@@ -360,13 +376,14 @@ router.post('/users/:id/reissue-activation-code', async (req, res) => {
 });
 
 router.put('/users/:id', async (req, res) => {
-  const { full_name, role, school_code, assigned_class, assigned_subject_ids, is_active, phone, email, access_expires_at, clear_expiry, revocation_reason } = req.body ?? {};
+  const { full_name, role, school_code, assigned_class, assigned_class_names, assigned_subject_ids, is_active, phone, email, access_expires_at, clear_expiry, revocation_reason } = req.body ?? {};
   const schoolCodeN = blankToNull(school_code);
   const assignedClassN = blankToNull(assigned_class);
   const phoneN = blankToNull(phone);
   const emailN = blankToNull(email);
   const reactivating = is_active === true;
   const hasSubjectIds = assigned_subject_ids !== undefined;
+  const hasClassNames = assigned_class_names !== undefined;
   if (req.user!.school_code && school_code != null && school_code !== '' &&
       (typeof school_code !== 'string' || school_code.trim() !== req.user!.school_code)) {
     return res.status(403).json({ error: "You can't move an account outside your school" });
@@ -394,7 +411,19 @@ router.put('/users/:id', async (req, res) => {
       }
 
       let nextSubjectIds: number[] = [];
+      let nextClassNames: string[] = [];
       if (nextRole === 'teacher') {
+        if (hasClassNames) {
+          if (!Array.isArray(assigned_class_names) || assigned_class_names.some((v: unknown) => typeof v !== 'string' || !v.trim())) {
+            throw new TeacherAssignmentValidationError('assigned_class_names must be an array of class names.');
+          }
+          nextClassNames = [...new Set(assigned_class_names.map((v: string) => v.trim()))];
+          const { rows: classRows } = await client.query('SELECT name FROM classes WHERE school_code=$1 AND name=ANY($2::text[])', [nextSchool, nextClassNames]);
+          if (classRows.length !== nextClassNames.length) throw new TeacherAssignmentValidationError('Every subject-teacher class must belong to the selected school.');
+        } else {
+          const { rows: existingClasses } = await client.query('SELECT assigned_class_names FROM users WHERE id=$1', [req.params.id]);
+          nextClassNames = existingClasses[0]?.assigned_class_names ?? [];
+        }
         if (hasSubjectIds) {
           nextSubjectIds = normalizeTeacherSubjectIds(assigned_subject_ids);
         } else {
@@ -413,13 +442,16 @@ router.put('/users/:id', async (req, res) => {
            school_code=COALESCE($3,school_code),
            assigned_class=CASE WHEN COALESCE($2,role) IN ('admin','finance_admin') THEN NULL
                                ELSE COALESCE($4,assigned_class) END,
+           assigned_class_names=CASE WHEN COALESCE($2,role) IN ('admin','finance_admin') THEN '{}'::text[]
+                                     WHEN $13 THEN $14::text[] ELSE assigned_class_names END,
            is_active=COALESCE($5,is_active),
            phone=COALESCE($6,phone), email=COALESCE($7,email),
            access_expires_at = CASE WHEN $9 THEN NULL ELSE COALESCE($8, access_expires_at) END,
            revocation_reason = CASE WHEN $11 THEN NULL ELSE COALESCE($12, revocation_reason) END
          WHERE id=$10 RETURNING id,username,role,is_active,access_expires_at,revocation_reason`,
         [full_name, role, schoolCodeN, assignedClassN, is_active, phoneN, emailN,
-         access_expires_at ?? null, !!clear_expiry, req.params.id, reactivating, revocation_reason ?? null],
+         access_expires_at ?? null, !!clear_expiry, req.params.id, reactivating, revocation_reason ?? null,
+         hasClassNames, nextClassNames],
       );
       if (!rows[0]) return { user: null };
 
@@ -455,23 +487,29 @@ router.put('/users/:id', async (req, res) => {
 });
 
 router.post('/users/:id/reset-password', async (req, res) => {
-  const pw = generateTempPassword();
-  const hash = await bcrypt.hash(pw, 10);
   const result = await withTransaction(async (client) => {
-    const { rows } = await client.query(
-      'UPDATE users SET password_hash=$1, must_change_pw=TRUE WHERE id=$2 AND ($3::text IS NULL OR school_code=$3) RETURNING id, school_code',
-      [hash, req.params.id, req.user!.school_code ?? null],
+    const { rows: existing } = await client.query(
+      'SELECT id, role, school_code FROM users WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) FOR UPDATE',
+      [req.params.id, req.user!.school_code ?? null],
     );
-    if (!rows[0]) return null;
+    if (!existing[0]) return null;
+    // Teacher credentials follow the agreed four-digit numeric PIN convention;
+    // other account types retain their existing temporary-password flow.
+    const pw = existing[0].role === 'teacher' ? generateNumericPin() : generateTempPassword();
+    const hash = await bcrypt.hash(pw, 10);
+    await client.query(
+      'UPDATE users SET password_hash=$1, must_change_pw=TRUE WHERE id=$2',
+      [hash, req.params.id],
+    );
     await auditInTransaction(
       client, req.user!, 'reset_password', 'user', req.params.id,
       'administrator reset user password; forced password change on next login',
-      auditContextFromRequest(req, { schoolCode: rows[0].school_code, metadata: { target_user_id: req.params.id, must_change_password: true } }),
+      auditContextFromRequest(req, { schoolCode: existing[0].school_code, metadata: { target_user_id: req.params.id, must_change_password: true } }),
     );
-    return rows[0];
+    return { password: pw };
   });
   if (!result) return res.status(404).json({ error: 'User not found' });
-  return res.json({ ok: true, temporary_password: pw });
+  return res.json({ ok: true, temporary_password: result.password });
 });
 
 // Clears the pending_admin_review flag set by POST /auth/self-register —
