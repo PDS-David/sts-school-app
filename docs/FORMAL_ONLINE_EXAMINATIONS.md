@@ -111,3 +111,6 @@ No physical-reporting tables are referenced by the migration or route.
 
 
 Teacher subject review is exposed in the teacher app's More → Review Questions screen. It is a content-governance exception only; teachers still cannot create or administer online student assessments, and online assessment data remains separate from physical school reports.
+
+
+Admin experience: the Admin app's Assessments → Formal Online Exams screen lists school-scoped examinations, creates drafts from approved objective questions, publishes only after server-side candidate lesson-coverage checks, lists candidate attempts, displays per-question AI confidence/rubric evidence, and permits manual marks for `pending_review` responses. School administrators can browse only approved question-bank content through the exam API; global question-bank ingestion remains restricted to global administrators. Written-response question creation requires a criterion rubric; the current mobile draft creator selects objective MCQs, while the backend accepts written-response items with a validated rubric.
