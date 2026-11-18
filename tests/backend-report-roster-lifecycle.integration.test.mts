@@ -137,6 +137,27 @@ test('administrator placement decisions mutate only physical report membership a
     assert.deepEqual(Object.keys(teacherProfileBody.student).sort(),
       ['admission_number', 'class_name', 'created_at', 'date_of_birth', 'full_name', 'gender', 'id', 'school_code'].sort(),
       'teacher profile exposes report particulars teachers need to maintain, without online account or parent data');
+    const updateTeacherProfile = await fetch(`${baseUrl}/${studentIds[1]}`, {
+      method: 'PUT',
+      headers: teacherHeaders,
+      body: JSON.stringify({
+        full_name: 'Updated Physical Report Student',
+        gender: 'F',
+        date_of_birth: '2012-04-05',
+        admission_number: 'UPDATED-ROSTER-001',
+        class_name: 'Primary 5',
+      }),
+    });
+    assert.equal(updateTeacherProfile.status, 200, 'assigned teacher can edit report student particulars');
+    const { rows: updatedStudent } = await query(
+      'SELECT full_name,gender,date_of_birth,admission_number,class_name FROM students WHERE id=$1',
+      [studentIds[1]],
+    );
+    assert.equal(updatedStudent[0]?.full_name, 'Updated Physical Report Student');
+    assert.equal(updatedStudent[0]?.gender, 'F');
+    assert.equal(String(updatedStudent[0]?.date_of_birth).slice(0, 10), '2012-04-05');
+    assert.equal(updatedStudent[0]?.admission_number, 'UPDATED-ROSTER-001');
+    assert.equal(updatedStudent[0]?.class_name, 'Primary 4', 'teacher profile editing cannot change the student class field');
     const reinstated = await decide(studentIds[3], 'remove');
     assert.equal(reinstated.status, 200);
     const restore = await decide(studentIds[3], 'reinstate');
