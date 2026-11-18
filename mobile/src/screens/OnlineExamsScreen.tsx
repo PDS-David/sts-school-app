@@ -20,7 +20,7 @@ export default function OnlineExamsScreen({ navigation }: any) {
   const open=async(exam:any)=>{
     try{
       let session:any;
-      if(exam.attempt_id && ['in_progress','expired'].includes(exam.attempt_status)){
+      if(exam.attempt_id && ['in_progress','expired','submitting'].includes(exam.attempt_status)){
         const {data}=await api.get('/online-exams/attempts/'+exam.attempt_id);session=data;
       }else{
         const {data}=await api.post('/online-exams/exams/'+exam.id+'/start');session=data;
@@ -44,7 +44,7 @@ export default function OnlineExamsScreen({ navigation }: any) {
       <Text style={styles.meta}>Opens: {new Date(item.starts_at).toLocaleString()}</Text>
       <Text style={styles.meta}>Closes: {new Date(item.ends_at).toLocaleString()}</Text>
       {status && <Text style={[styles.status,{color:closed?Colors.success:Colors.primary}]}>Attempt: {status.replace('_',' ')}</Text>}
-      <Btn label={status==='in_progress'?'Resume examination':status==='expired'?'Submit saved answers':closed?'Attempt closed':'View instructions and start'} onPress={()=>open(item)} disabled={closed}/>
+      <Btn label={status==='in_progress'?'Resume examination':status==='expired'?'Submit saved answers':status==='submitting'?'Recover submission':closed?'Attempt closed':'View instructions and start'} onPress={()=>open(item)} disabled={closed}/>
       {closed && item.attempt_id ? <Btn label="View result" variant="outline" onPress={()=>navigation.navigate('OnlineExamResult',{attemptId:item.attempt_id})}/> : null}
     </Card>;
   };
