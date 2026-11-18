@@ -19,6 +19,8 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
     try{
       await client.query('CREATE SCHEMA '+schema);
       await client.query('SET search_path TO '+schema);
+      await client.query('CREATE TABLE public.learning_access_settings(id INTEGER PRIMARY KEY,free_launch_mode BOOLEAN,term_pin_enforced BOOLEAN,curriculum_sequence_enforced BOOLEAN)');
+      await client.query('INSERT INTO public.learning_access_settings VALUES(1,true,false,false)');
       await client.query('CREATE EXTENSION IF NOT EXISTS pgcrypto');
       await client.query('CREATE TABLE schools(code TEXT PRIMARY KEY)');
       await client.query(`CREATE TABLE users(
@@ -152,6 +154,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       if(pool) await pool.end();
       await client.query('RESET search_path');
       await client.query('DROP SCHEMA IF EXISTS '+schema+' CASCADE');
+      await client.query('DROP TABLE IF EXISTS public.learning_access_settings');
       await client.end();
     }
   });
