@@ -87,10 +87,16 @@ export default function AssessmentsScreen({ navigation }: any) {
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
       {isAdmin && (
         <PageContainer style={{ padding: Spacing.sm, paddingBottom: 0 }}>
-          <TouchableOpacity style={styles.addBtn} onPress={() => navigation.navigate('CreateAssessment')}>
-            <Ionicons name="add-circle" size={20} color={Colors.white} />
-            <Text style={styles.addBtnTxt}>Create Assessment</Text>
-          </TouchableOpacity>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.sm }}>
+            <TouchableOpacity style={styles.addBtn} onPress={() => navigation.navigate('CreateAssessment')}>
+              <Ionicons name="add-circle" size={20} color={Colors.white} />
+              <Text style={styles.addBtnTxt}>Create Assessment</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.addBtn, { backgroundColor: Colors.primaryDark }]} onPress={() => navigation.navigate('FormalOnlineExams')}>
+              <Ionicons name="school-outline" size={20} color={Colors.white} />
+              <Text style={styles.addBtnTxt}>Formal Online Exams</Text>
+            </TouchableOpacity>
+          </View>
         </PageContainer>
       )}
       <FlatList
