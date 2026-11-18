@@ -100,7 +100,7 @@ async function main() {
         const { rows: possibleDuplicates } = await client.query(
           `SELECT id FROM students
             WHERE school_code=$1
-              AND lower(regexp_replace(trim(full_name),'\s+',' ','g'))=$2
+              AND lower(regexp_replace(trim(full_name),'[[:space:]]+',' ','g'))=$2
             LIMIT 2`,
           [entry.schoolCode, normalizeName(entry.fullName)],
         );
