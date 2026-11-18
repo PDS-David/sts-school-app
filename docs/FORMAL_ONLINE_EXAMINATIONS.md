@@ -70,6 +70,7 @@ Example request shape:
 - `PUT /online-exams/attempts/:attemptId/responses/:questionId` autosaves a response. The server checks ownership, question membership and the deadline.
 - `POST /online-exams/attempts/:attemptId/submit` finalises the attempt. It is safe to retry after an already-completed submission.
 - `GET /online-exams/attempts/:attemptId/results` returns only that student's own result and response feedback.
+- School-scoped examiner endpoints list candidate attempts and responses, and permit manual marks only for responses left `pending_review` by unavailable AI marking.
 
 The deadline is calculated on the server as the earlier of start time plus configured duration and the examination end time. Client clocks are display-only. Refresh/reconnect recovery loads server-saved answers; the mobile screen also retains unsent answers locally and retries when connected.
 
