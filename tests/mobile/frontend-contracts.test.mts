@@ -72,6 +72,10 @@ test('teacher placement-decision screen is reachable and only offers teacher-per
   assert.ok(screen.includes('/promotion'));
   // Backend (POST /students/:id/promotion) lets teachers promote/retain/remove only;
   // demote, reinstate and the removed list are administrator-only.
-  assert.ok(!/'demote'|'reinstate'|report-roster\\/removed/.test(screen),
-    'teacher screen must not call administrator-only roster actions');
+  assert.ok(
+    !screen.includes("'demote'") &&
+    !screen.includes("'reinstate'") &&
+    !screen.includes('report-roster/removed'),
+    'teacher screen must not call administrator-only roster actions'
+  );
 });
