@@ -23,7 +23,7 @@ type AdminSchoolScope =
 // supplying a query/body school_code. A global administrator (school_code NULL)
 // retains the existing cross-school behavior and may optionally narrow reads.
 function requireGlobalAdmin(req: Request, res: Response, next: NextFunction) {
-  if (req.user?.school_code) {
+  if (req.user?.school_code && req.user?.can_manage_all_schools !== true) {
     return res.status(403).json({ error: 'Only a global administrator can access this operation' });
   }
   next();
@@ -33,6 +33,7 @@ function resolveAdminSchoolScope(
   user: AuthUser,
   requested: unknown,
 ): AdminSchoolScope {
+  if (user.can_manage_all_schools === true && (requested === undefined || requested === null || requested === '')) return { ok: false, status: 400, error: 'Select a school before accessing school records.' };
   if (user.school_code) {
     if (requested !== undefined && requested !== null && requested !== '' &&
         (typeof requested !== 'string' || requested.trim() !== user.school_code)) {
