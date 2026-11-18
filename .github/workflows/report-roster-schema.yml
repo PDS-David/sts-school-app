@@ -1,0 +1,61 @@
+name: PostgreSQL physical report-roster schema
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - "backend/schema.sql"
+      - "backend/migrations/0005_report_roster_memberships.sql"
+      - "backend/migrations/README.md"
+      - "tests/report-roster-schema.test.mts"
+      - "tests/report-roster-backfill.integration.test.mts"
+      - ".github/workflows/production-db-migrations.yml"
+      - ".github/workflows/report-roster-schema.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  schema:
+    name: PostgreSQL 18 fresh schema, numbered migration and backfill
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: sts_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d sts_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/sts_test
+      NODE_ENV: test
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install locked workspace dependencies
+        run: npm ci --ignore-scripts
+      - name: Bootstrap disposable PostgreSQL 18 schema
+        run: npm run db:bootstrap --workspace=backend
+      - name: Apply numbered migrations
+        run: npm run db:migrate --workspace=backend
+      - name: Verify schema parity and append-only safeguards
+        run: node --import tsx --test tests/report-roster-schema.test.mts
+      - name: Verify real 0005 backfill and idempotence
+        run: node --import tsx --test tests/report-roster-backfill.integration.test.mts
