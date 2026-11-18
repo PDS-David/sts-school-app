@@ -388,7 +388,7 @@ router.post('/:id/promotion', requireRole('admin'), async (req, res) => {
         `INSERT INTO report_roster_membership_events
            (student_id,event_type,from_class_name,actor_id,details)
          VALUES($1,'removed',$2,$3,$4::jsonb)`,
-        [membership.id, membership.report_class_name, user.id, JSON.stringify({ reason: 'teacher_decision' })],
+        [membership.id, membership.report_class_name, user.id, JSON.stringify({ reason: 'administrator_decision' })],
       );
       await auditInTransaction(client, user, 'remove_report_roster_membership', 'student', membership.id,
         'student removed from active physical report roster',
@@ -416,7 +416,7 @@ router.post('/:id/promotion', requireRole('admin'), async (req, res) => {
         `INSERT INTO report_roster_membership_events
            (student_id,event_type,to_class_name,actor_id,details)
          VALUES($1,'reinstated',$2,$3,$4::jsonb)`,
-        [membership.id, membership.report_class_name, user.id, JSON.stringify({ reason: 'teacher_decision' })],
+        [membership.id, membership.report_class_name, user.id, JSON.stringify({ reason: 'administrator_decision' })],
       );
       await auditInTransaction(client, user, 'reinstate_report_roster_membership', 'student', membership.id,
         'student reinstated in physical report roster',
@@ -443,7 +443,7 @@ router.post('/:id/promotion', requireRole('admin'), async (req, res) => {
         `INSERT INTO report_roster_membership_events
            (student_id,event_type,from_class_name,to_class_name,actor_id,details)
          VALUES($1,'retained',$2,$2,$3,$4::jsonb)`,
-        [membership.id, fromClass, user.id, JSON.stringify({ reason: 'teacher_decision' })],
+        [membership.id, fromClass, user.id, JSON.stringify({ reason: 'administrator_decision' })],
       );
       await auditInTransaction(client, user, 'retain_report_roster_student', 'student', membership.id,
         'student retained in physical report class',
