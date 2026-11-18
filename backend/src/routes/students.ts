@@ -158,20 +158,22 @@ router.get('/deleted', requireRole('admin'), async (req, res) => {
   return res.json({ students: rows });
 });
 
-// ── GET /students/report-roster/removed (teacher's recoverable removals) ──
-router.get('/report-roster/removed', requirePerm('students.read'), async (req, res) => {
+// ── GET /students/report-roster/removed (admin roster reconciliation) ──
+router.get('/report-roster/removed', requireRole('admin'), async (req, res) => {
   const user = req.user!;
-  if (user.role !== 'teacher' || !user.school_code || !user.assigned_class) {
-    return res.status(403).json({ error: 'Removed report-roster entries are available only to an assigned class teacher.' });
+  const params: unknown[] = [];
+  let schoolClause = '';
+  if (user.school_code) {
+    params.push(user.school_code);
+    schoolClause = ` AND s.school_code=${params.length}`;
   }
   const { rows } = await query(
     `SELECT s.id,s.admission_number,s.full_name,m.class_name
        FROM students s
        JOIN report_roster_memberships m ON m.student_id=s.id
-      WHERE s.school_code=$1 AND s.deleted_at IS NULL
-        AND m.class_name=$2 AND m.status='removed'
-      ORDER BY s.full_name`,
-    [user.school_code, user.assigned_class],
+      WHERE s.deleted_at IS NULL AND m.status='removed'${schoolClause}
+      ORDER BY s.school_code,m.class_name,s.full_name`,
+    params,
   );
   return res.json({ students: rows });
 });
