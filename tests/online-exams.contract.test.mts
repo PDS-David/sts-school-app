@@ -6,6 +6,7 @@ const route = await readFile(new URL('../backend/src/routes/onlineExams.ts', imp
 const migration = await readFile(new URL('../backend/migrations/0014_formal_online_examinations.sql', import.meta.url), 'utf8');
 const markingMigration = await readFile(new URL('../backend/migrations/0015_online_exam_marking_confidence.sql', import.meta.url), 'utf8');
 const mobileList = await readFile(new URL('../mobile/src/screens/OnlineExamsScreen.tsx', import.meta.url), 'utf8');
+const mobileHome = await readFile(new URL('../mobile/src/screens/student/StudentAssessmentsHomeScreen.tsx', import.meta.url), 'utf8');
 const mobileAttempt = await readFile(new URL('../mobile/src/screens/OnlineExamAttemptScreen.tsx', import.meta.url), 'utf8');
 
 
@@ -86,4 +87,11 @@ test('written responses require a complete criterion rubric and confidence-valid
   assert.match(route, /marking_details=\$7::jsonb/);
   assert.match(markingMigration, /online_exam_responses_marking_confidence_range/);
   assert.match(markingMigration, /online_exam_responses_marking_details_object/);
+});
+
+test('student assessment home exposes the dedicated formal-exam flow and completed-lesson practice route', () => {
+  assert.match(mobileHome, /label: 'Adaptive Practice'/);
+  assert.match(mobileHome, /screen: 'LearningTab'/);
+  assert.match(mobileHome, /label: 'Exams'/);
+  assert.match(mobileHome, /screen: 'OnlineExams'/);
 });
