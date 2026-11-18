@@ -92,6 +92,10 @@ if (!SERVER_URL) {
         term_pin_enforced: false,
         curriculum_sequence_enforced: false,
       }], 'fresh schema must default to free launch without access restrictions');
+      const packageProgress = await client.query(
+        "SELECT to_regclass('public.student_curriculum_lesson_progress') IS NOT NULL AS present",
+      );
+      assert.equal(packageProgress.rows[0].present, true, 'fresh schema must include package lesson progress storage');
     } finally { await client.end(); }
 
     const migrations = readdirSync(MIGRATIONS_DIR).filter(name => name.endsWith('.sql')).sort();
