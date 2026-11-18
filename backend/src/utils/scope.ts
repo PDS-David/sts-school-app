@@ -181,10 +181,13 @@ export function checkTeacherRosterScope(
   if (user.role !== 'teacher') {
     return { status: 403, error: 'Not authorized to create student records' };
   }
-  if (target.school_code !== user.school_code) {
+  if (!user.school_code || target.school_code !== user.school_code) {
     return { status: 403, error: "You can't create a student outside your own school" };
   }
-  if (user.assigned_class && target.class_name !== user.assigned_class) {
+  if (!user.assigned_class) {
+    return { status: 403, error: 'Creating physical report-roster students requires an assigned class.' };
+  }
+  if (target.class_name !== user.assigned_class) {
     return { status: 403, error: "You can't create a student outside your assigned class" };
   }
   return null;

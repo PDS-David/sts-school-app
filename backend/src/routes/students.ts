@@ -13,6 +13,7 @@ import type { AuthUser } from '../types/index.js';
 const router = Router();
 // Teachers work in the physical reporting system. Route-level permissions and
 // checkTeacherRosterScope/checkTeacherStudentScope enforce their own class roster.
+router.use(requireAuth);
 
 type WardMutationScope =
   | { ok: true; schoolCode: string }
@@ -278,9 +279,28 @@ router.post('/', requirePerm('grades.write'), async (req, res) => {
       parent_email: d.parent_email ?? null,
     } : undefined,
     async (client, student, parentRecord) => {
+      // Every student created through this reporting-system route is also
+      // enrolled in the independent physical report roster. This is not an
+      // online-learning enrolment and creates no student login.
+      await client.query(
+        `INSERT INTO report_roster_memberships
+           (student_id,class_name,source_class_name,status,joined_at,changed_by)
+         VALUES($1,$2,$2,'active',now(),$3)`,
+        [student.id, d.class_name, req.user!.id],
+      );
+      await client.query(
+        `INSERT INTO report_roster_membership_events
+           (student_id,event_type,to_class_name,actor_id,details)
+         VALUES($1,'enrolled',$2,$3,$4::jsonb)`,
+        [student.id, d.class_name, req.user!.id, JSON.stringify({
+          source: 'physical_reporting_student_create',
+          school_code: d.school_code,
+          actor_role: req.user!.role,
+        })],
+      );
       await auditInTransaction(
-        client, req.user!, 'add_student', 'student', String(student.id), 'student record created',
-        auditContextFromRequest(req, { schoolCode: d.school_code, metadata: { class_name: d.class_name, parent_linked: !!parentRecord } }),
+        client, req.user!, 'add_student', 'student', String(student.id), 'physical reporting student record created',
+        auditContextFromRequest(req, { schoolCode: d.school_code, metadata: { class_name: d.class_name, parent_linked: !!parentRecord, report_roster_enrolled: true } }),
       );
       if (parentRecord?.created) {
         await auditInTransaction(

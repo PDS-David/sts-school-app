@@ -13,6 +13,7 @@ import { sendPushToUser } from '../utils/push.js';
 const router = Router();
 // Teachers may enter and correct physical-class report scores. Every write
 // is scoped by validateScoreWriteScope before it reaches the database.
+router.use(requireAuth);
 
 // Shared by POST /scores and POST /scores/bulk — see Pass 10 fix note below
 // on why /bulk needs this too, not just type/shape validation.

@@ -9,6 +9,7 @@ import { checkTeacherStudentScope, checkTermSchoolScope } from '../utils/scope.j
 const router = Router();
 // Teachers may maintain attendance and class records for their physical roster;
 // checkTeacherStudentScope validates school, active roster membership and term.
+router.use(requireAuth);
 
 // Found live in Pass 10: neither PUT /attendance nor PUT /attendance/bulk
 // validated `days_present` at all — not even that it's a non-negative
