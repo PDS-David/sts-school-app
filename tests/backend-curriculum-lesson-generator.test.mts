@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { validateCurriculumLesson } from '../../backend/src/services/curriculumLessonGenerator.ts';
+import { validateCurriculumLesson } from '../backend/src/services/curriculumLessonGenerator.ts';
 
 const validLesson = {
   title: 'Fractions',
