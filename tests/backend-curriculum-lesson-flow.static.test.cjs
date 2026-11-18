@@ -123,6 +123,8 @@ test('SS1 and SS2/SS3 package lessons persist student completion separately from
   assert.ok(route.includes("router.post('/ss23/units/:unitId/progress'"));
   assert.match(route, /completedPackageLessonKeys\(/);
   assert.match(route, /markPackageLessonCompleted\(/);
+  assert.match(route, /contentFingerprint = lesson\.body_sha256/);
+  assert.match(route, /contentFingerprint = unit\.body_sha256/);
   assert.match(migration, /PRIMARY KEY \(student_id, lesson_key\)/);
   assert.match(migration, /REFERENCES public\.students\(id\) ON DELETE CASCADE/);
   assert.match(ss1, /\/learning\/ss1\/lessons\/\$\{encodeURIComponent\(lesson\.id\)\}\/progress/);
