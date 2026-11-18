@@ -362,6 +362,8 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     const allStudentIds = [...studentIds, ...rollbackIds];
     if (allStudentIds.length) {
       await query('DELETE FROM scores WHERE student_id=ANY($1::uuid[])', [allStudentIds]);
+      await query('DELETE FROM attendance WHERE student_id=ANY($1::uuid[])', [allStudentIds]);
+      await query('DELETE FROM class_records WHERE student_id=ANY($1::uuid[])', [allStudentIds]);
       await query('DELETE FROM report_roster_membership_events WHERE student_id=ANY($1::uuid[])', [allStudentIds]);
       await query('DELETE FROM report_roster_memberships WHERE student_id=ANY($1::uuid[])', [allStudentIds]);
       await query('DELETE FROM students WHERE id=ANY($1::uuid[])', [allStudentIds]);
