@@ -1,49 +1,31 @@
 import React, { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack';
-import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../theme';
 import { SidebarLayout, SidebarItem, SidebarAction } from '../components/Sidebar';
 import { navigationRef } from './navigationRef';
 import { useIsWide } from '../components/layout';
 
-// NOTE (teacher role policy): a teacher on this platform never creates a
-// test/quiz/essay assignment, never opens AI Marking, and never views a
-// student's self-assessment results with Brainee — those are exclusively
-// admin/Brainee territory (see backend/src/utils/rbac.ts). This is why
-// CreateAssessmentScreen, AssessmentsScreen (teacher marking/results view),
-// and EssayAnswerReviewScreen are intentionally NOT imported here. A
-// teacher's grading surface is only ScoreEntryScreen — CA1/CA2/Exam scores
-// for their own subject or class — reached from the Classes tab below.
 import TeacherDashboardHomeScreen from '../screens/teacher/TeacherDashboardHomeScreen';
-import SchoolCalendarScreen from '../screens/SchoolCalendarScreen';
 import TeacherClassesScreen from '../screens/teacher/TeacherClassesScreen';
 import TeacherMoreScreen from '../screens/teacher/TeacherMoreScreen';
-import TeacherAnalyticsScreen from '../screens/teacher/TeacherAnalyticsScreen';
-import ChatsScreen from '../screens/chats/ChatsScreen';
-import ChatThreadScreen from '../screens/chats/ChatThreadScreen';
-
 import StudentsScreen from '../screens/StudentsScreen';
 import StudentDetailScreen from '../screens/StudentDetailScreen';
 import MyResultsScreen from '../screens/MyResultsScreen';
 import SessionReportScreen from '../screens/SessionReportScreen';
-import MaterialsScreen from '../screens/MaterialsScreen';
-import AttendanceScreen from '../screens/AttendanceScreen';
-import ScoreEntryScreen from '../screens/ScoreEntryScreen';
-import { SubjectsMgmtScreen } from '../screens/AcademicMgmtScreens';
-import WeeklyEffortsScreen from '../screens/WeeklyEffortsScreen';
 import ChangePasswordScreen from '../screens/ChangePasswordScreen';
-import ClassLockScreen from '../screens/ClassLockScreen';
 import PromoteStudentsScreen from '../screens/PromoteStudentsScreen';
 
 const Tab = createBottomTabNavigator();
 const DashStack = createNativeStackNavigator();
-const ClassesStack = createNativeStackNavigator();
-const ChatsStack = createNativeStackNavigator();
+const ReportsStack = createNativeStackNavigator();
 const MoreStack = createNativeStackNavigator();
 
-const opts: NativeStackNavigationOptions = { headerStyle: { backgroundColor: Colors.primary }, headerTintColor: Colors.white };
+const opts: NativeStackNavigationOptions = {
+  headerStyle: { backgroundColor: Colors.primary },
+  headerTintColor: Colors.white,
+};
 
 function DashStackNavigator() {
   return (
@@ -53,30 +35,16 @@ function DashStackNavigator() {
   );
 }
 
-function ClassesStackNavigator() {
+function ReportsStackNavigator() {
   return (
-    <ClassesStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
-      <ClassesStack.Screen name="ClassesHome" component={TeacherClassesScreen} />
-      <ClassesStack.Screen name="Students" component={StudentsScreen} options={{ headerShown: true, title: 'Students', ...opts }} />
-      <ClassesStack.Screen name="StudentDetail" component={StudentDetailScreen} options={{ headerShown: true, title: 'Student', ...opts }} />
-      <ClassesStack.Screen name="MyResults" component={MyResultsScreen} options={{ headerShown: true, title: 'Report Card', ...opts }} />
-      <ClassesStack.Screen name="SessionReport" component={SessionReportScreen} options={{ headerShown: true, title: 'Session Report', ...opts }} />
-      <ClassesStack.Screen name="Materials" component={MaterialsScreen} options={{ headerShown: true, title: 'Resources', ...opts }} />
-      <ClassesStack.Screen name="Attendance" component={AttendanceScreen} options={{ headerShown: true, title: 'Attendance', ...opts }} />
-      <ClassesStack.Screen name="ScoreEntry" component={ScoreEntryScreen} options={{ headerShown: true, title: 'Enter Scores', ...opts }} />
-      <ClassesStack.Screen name="SubjectsMgmt" component={SubjectsMgmtScreen} options={{ headerShown: true, title: 'Subjects', ...opts }} />
-      <ClassesStack.Screen name="ClassLock" component={ClassLockScreen} options={{ headerShown: true, title: 'Close Term Records', ...opts }} />
-      <ClassesStack.Screen name="PromoteStudents" component={PromoteStudentsScreen} options={{ headerShown: true, title: 'Promote Students', ...opts }} />
-    </ClassesStack.Navigator>
-  );
-}
-
-function ChatsStackNavigator() {
-  return (
-    <ChatsStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
-      <ChatsStack.Screen name="ChatsList" component={ChatsScreen} />
-      <ChatsStack.Screen name="ChatThread" component={ChatThreadScreen} />
-    </ChatsStack.Navigator>
+    <ReportsStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
+      <ReportsStack.Screen name="ReportsHome" component={TeacherClassesScreen} />
+      <ReportsStack.Screen name="Students" component={StudentsScreen} options={{ headerShown: true, title: 'Report Roster', ...opts }} />
+      <ReportsStack.Screen name="StudentDetail" component={StudentDetailScreen} options={{ headerShown: true, title: 'Student Report', ...opts }} />
+      <ReportsStack.Screen name="MyResults" component={MyResultsScreen} options={{ headerShown: true, title: 'Term Report', ...opts }} />
+      <ReportsStack.Screen name="SessionReport" component={SessionReportScreen} options={{ headerShown: true, title: 'Session Report', ...opts }} />
+      <ReportsStack.Screen name="PromoteStudents" component={PromoteStudentsScreen} options={{ headerShown: true, title: 'Report-Roster Decisions', ...opts }} />
+    </ReportsStack.Navigator>
   );
 }
 
@@ -84,41 +52,28 @@ function MoreStackNavigator() {
   return (
     <MoreStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
       <MoreStack.Screen name="More" component={TeacherMoreScreen} />
-      <MoreStack.Screen name="TeacherAnalytics" component={TeacherAnalyticsScreen} />
-      <MoreStack.Screen name="WeeklyEfforts" component={WeeklyEffortsScreen} options={{ headerShown: true, title: 'Weekly Efforts', ...opts }} />
       <MoreStack.Screen name="ChangePassword" component={ChangePasswordScreen} options={{ headerShown: true, title: 'Change Password', ...opts }} />
-      {/* No local "SecurityQuestionSetup" registration (deliberately removed
-          this session): nothing in the teacher's own screens links to it
-          anymore — see TeacherMoreScreen.tsx's removal note. The root-level
-          registration in RootNavigator.tsx still exists for other roles;
-          it's simply unreachable from anywhere in this stack now. */}
-      <MoreStack.Screen name="SchoolCalendar" component={SchoolCalendarScreen} options={{ headerShown: false }} />
     </MoreStack.Navigator>
   );
 }
 
-function tabBarVisibleFor(isWide: boolean) {
-  return ({ route }: { route: any }) => {
-    const focused = getFocusedRouteNameFromRoute(route) ?? '';
-    const hide = isWide || focused === 'ChatThread';
-    return { tabBarStyle: hide ? { display: 'none' as const } : undefined };
-  };
-}
-
 const SIDEBAR_ITEMS: SidebarItem[] = [
   { routeName: 'DashboardTab', label: 'Dashboard', icon: 'grid' },
-  { routeName: 'ClassesTab', label: 'Classes', icon: 'people' },
-  { routeName: 'ChatsTab', label: 'Chats', icon: 'chatbubbles' },
+  { routeName: 'ReportsTab', label: 'Reports & Roster', icon: 'people' },
   { routeName: 'MoreTab', label: 'More', icon: 'menu' },
 ];
 
-// Previously duplicated as a screen-local mini-sidebar + FAB inside
-// TeacherDashboardHomeScreen.tsx — moved here, same reasoning as Admin's
-// QUICK_ACTIONS in AdminTabs.tsx.
 const QUICK_ACTIONS: SidebarAction[] = [
-  { icon: 'create-outline', label: 'Enter Scores', onPress: () => navigationRef.isReady() && navigationRef.navigate('ClassesTab', { screen: 'ScoreEntry' }) },
-  { icon: 'calendar-outline', label: 'Attendance', onPress: () => navigationRef.isReady() && navigationRef.navigate('ClassesTab', { screen: 'Attendance' }) },
-  { icon: 'people-outline', label: 'Students', onPress: () => navigationRef.isReady() && navigationRef.navigate('ClassesTab', { screen: 'Students' }) },
+  {
+    icon: 'document-text-outline',
+    label: 'Generate Reports',
+    onPress: () => navigationRef.isReady() && navigationRef.navigate('ReportsTab', { screen: 'Students' }),
+  },
+  {
+    icon: 'people-outline',
+    label: 'Roster Decisions',
+    onPress: () => navigationRef.isReady() && navigationRef.navigate('ReportsTab', { screen: 'PromoteStudents' }),
+  },
 ];
 
 export default function TeacherTabs() {
@@ -130,15 +85,16 @@ export default function TeacherTabs() {
     <SidebarLayout items={SIDEBAR_ITEMS} activeRouteName={activeRouteName} quickActions={QUICK_ACTIONS}>
       <Tab.Navigator
         id={undefined}
-        screenOptions={{ headerShown: false, tabBarActiveTintColor: Colors.primary, tabBarInactiveTintColor: Colors.textSub, tabBarStyle: isWide ? { display: 'none' } : undefined }}
+        screenOptions={{
+          headerShown: false,
+          tabBarActiveTintColor: Colors.primary,
+          tabBarInactiveTintColor: Colors.textSub,
+          tabBarStyle: isWide ? { display: 'none' } : undefined,
+        }}
         screenListeners={{ state: (e: any) => setTabState(e.data.state) }}
       >
         <Tab.Screen name="DashboardTab" component={DashStackNavigator} options={{ title: 'Dashboard', tabBarIcon: ({ color, size }) => <Ionicons name="grid" size={size} color={color} /> }} />
-        <Tab.Screen name="ClassesTab" component={ClassesStackNavigator} options={{ title: 'Classes', tabBarIcon: ({ color, size }) => <Ionicons name="people" size={size} color={color} /> }} />
-        <Tab.Screen
-          name="ChatsTab" component={ChatsStackNavigator}
-          options={({ route }) => ({ title: 'Chats', tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" size={size} color={color} />, ...tabBarVisibleFor(isWide)({ route }) })}
-        />
+        <Tab.Screen name="ReportsTab" component={ReportsStackNavigator} options={{ title: 'Reports', tabBarIcon: ({ color, size }) => <Ionicons name="document-text" size={size} color={color} /> }} />
         <Tab.Screen name="MoreTab" component={MoreStackNavigator} options={{ title: 'More', tabBarIcon: ({ color, size }) => <Ionicons name="menu" size={size} color={color} /> }} />
       </Tab.Navigator>
     </SidebarLayout>
