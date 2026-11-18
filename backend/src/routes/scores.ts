@@ -462,6 +462,33 @@ async function authoriseReportAccess(
   return null;
 }
 
+// ── PUT /scores/class-record/:student_id (physical report remarks) ───────────
+router.put('/class-record/:student_id', requireRole('admin', 'teacher'), async (req, res) => {
+  const schema = z.object({
+    term_id: z.number().int().positive(),
+    class_teacher_remark: z.string().max(3000).optional(),
+    admin_remark: z.string().max(3000).optional(),
+  }).refine(d => d.class_teacher_remark !== undefined || d.admin_remark !== undefined,
+    'At least one report remark must be supplied');
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
+  const d = parsed.data;
+  const scopeViolation = await checkTeacherStudentScope(req.user!, req.params.student_id, d.term_id);
+  if (scopeViolation) return res.status(scopeViolation.status).json({ error: scopeViolation.error });
+  const { rows } = await query(
+    `INSERT INTO class_records(student_id,term_id,class_teacher_remark,admin_remark,updated_at)
+     VALUES($1,$2,$3,$4,now())
+     ON CONFLICT(student_id,term_id) DO UPDATE SET
+       class_teacher_remark=COALESCE($3,class_records.class_teacher_remark),
+       admin_remark=COALESCE($4,class_records.admin_remark),
+       updated_at=now()
+     RETURNING *`,
+    [req.params.student_id, d.term_id, d.class_teacher_remark ?? null, d.admin_remark ?? null],
+  );
+  await audit(req.user!, 'save_physical_report_remarks', 'class_record', String(rows[0].id));
+  return res.json({ class_record: rows[0] });
+});
+
 // ── GET /scores/report/:student_id  (full term report) ───────────────────────
 router.get('/report/:student_id', async (req, res) => {
   const { term_id } = req.query as { term_id?: string };
