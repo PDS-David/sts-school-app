@@ -30,11 +30,11 @@ function gradeClass(grade: unknown): string {
 
 function reportClassLabel(value: unknown): string {
   const name = String(value ?? '').trim();
-  const primary = /^Primary\\s+(\\d+)$/i.exec(name);
+  const primary = /^Primary\s+(\d+)$/i.exec(name);
   if (primary) return `Grade ${primary[1]}`;
-  const jss = /^JSS\\s+(\\d+)$/i.exec(name);
+  const jss = /^JSS\s+(\d+)$/i.exec(name);
   if (jss) return `JSS${jss[1]}`;
-  const ss = /^SS\\s+(\\d+)$/i.exec(name);
+  const ss = /^SS\s+(\d+)$/i.exec(name);
   if (ss) return `SS${ss[1]}`;
   return name;
 }
