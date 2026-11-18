@@ -11,21 +11,23 @@ test('results screen hooks are all declared before conditional loading/error ret
   const hook = s.indexOf('const [pdfBusy, setPdfBusy] = useState');
   assert.ok(hook >= 0 && hook < s.indexOf('if (loading) return') && hook < s.indexOf('if (error)'));
 });
-test('PIN enforcement is explicitly opt-in, preserving free launch access', () => {
-  const s = read('backend/src/routes/learning.ts');
-  assert.match(s, /TERM_PIN_ENFORCED === 'true'/);
-  assert.match(s, /const freeLaunchMode = \(\) => process\.env\.FREE_LAUNCH_MODE !== 'false'/);
-  assert.match(s, /const termPinEnforced = \(\) => !freeLaunchMode\(\) && process\.env\.TERM_PIN_ENFORCED === 'true'/);
-  assert.match(s, /const curriculumSequenceEnforced = \(\) => !freeLaunchMode\(\) && process\.env\.CURRICULUM_SEQUENCE_ENFORCED === 'true'/);
-  assert.match(s, /!termPinEnforced\(\) \|\| redeemedTermLabels\.has/);
-  assert.match(s, /!termPinEnforced\(\) \|\| !!pinRows\[0\]/);
+test('PIN and sequence enforcement use the persisted policy while preserving free-launch defaults', () => {
+  const learning = read('backend/src/routes/learning.ts');
+  const policy = read('backend/src/utils/learningAccessPolicy.ts');
+  assert.match(learning, /policy\?\.termPinEnforced/);
+  assert.match(learning, /policy\?\.curriculumSequenceEnforced/);
+  assert.match(learning, /!termPinEnforced\(req\.learningAccessPolicy\) \|\| redeemedTermLabels\.has/);
+  assert.match(learning, /!termPinEnforced\(req\.learningAccessPolicy\) \|\| !!pinRows\[0\]/);
+  assert.match(policy, /stored\?\.free_launch_mode \?\? true/);
+  assert.match(policy, /termPinEnforced: !freeLaunchMode && requestedTermPin/);
+  assert.match(policy, /curriculumSequenceEnforced: !freeLaunchMode && requestedSequence/);
 });
 
 test('free launch defers student expiry/review gates but retains identity safeguards', () => {
   const auth = read('backend/src/middleware/auth.ts');
-  assert.match(auth, /const freeLaunchMode = \(\) => process\.env\.FREE_LAUNCH_MODE !== 'false'/);
-  assert.match(auth, /!\(freeLaunchMode\(\) && dbUser\.role === 'student'\) && dbUser\.access_expires_at/);
-  assert.match(auth, /!\(freeLaunchMode\(\) && dbUser\.role === 'student'\) && dbUser\.pending_admin_review/);
+  assert.match(auth, /readLearningAccessPolicy\(\)/);
+  assert.match(auth, /accessPolicy\.freeLaunchMode && dbUser\.role === 'student'\) && dbUser\.access_expires_at/);
+  assert.match(auth, /accessPolicy\.freeLaunchMode && dbUser\.role === 'student'\) && dbUser\.pending_admin_review/);
   assert.match(auth, /if \(dbUser\.student_deleted\)/);
   assert.match(auth, /if \(!dbUser \|\| !dbUser\.is_active\)/);
 });
