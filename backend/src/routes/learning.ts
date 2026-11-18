@@ -993,21 +993,12 @@ router.delete('/topics/:id', requirePerm('topics.write'), async (req, res) => {
 });
 
 // ── POST /topics/:id/complete (student) ─────────────────────────────────────
-// Marks the topic done for the calling student, then has Brainee produce:
-//   - a study summary (generated once per topic, cached on topics.summary —
-//     the same canonical content for every student, not personalized)
-//   - fresh practice exercises (generated every call, never persisted — same
-//     ephemeral, not-saved-to-the-bank pattern already used by /ai/explain
-//     and /ai/notes)
-//   - the topic's "standard assessment" (generated once per topic, reusing
-//     real questions/assessments/assessment_questions rows exactly like an
-//     admin-authored assessment). Created status='open' — immediately
-//     usable, no per-item admin review. The only approval gate here is
-//     account-level: a student can only ever reach this route if their
-//     account is_active and unexpired (requireAuth already enforces that on
-//     every request), matching the explicit decision that admin approves
-//     account access once, not every study summary/assessment Brainee
-//     produces afterward.
+// Generates the curriculum lesson and its practice set from the approved
+// class, subject, term, topic, available objectives and source material.
+// This is the DIY learning-content pipeline, not Brainee chat/tutoring.
+// The validated practice questions may also seed the existing standard
+// topic assessment. Student access, term PINs and sequence gates are checked
+// before any generation or content delivery.
 router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, res) => {
   const user = req.user!;
   const { rows: stRows } = await query('SELECT id, school_code, class_name FROM students WHERE user_id=$1 LIMIT 1', [user.id]);
