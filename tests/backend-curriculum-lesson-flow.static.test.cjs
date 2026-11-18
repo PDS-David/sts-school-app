@@ -129,6 +129,9 @@ test('SS1 and SS2/SS3 package lessons persist student completion separately from
   assert.match(ss23, /\/learning\/ss23\/units\/\$\{encodeURIComponent\(lesson\.id\)\}\/progress/);
   assert.match(ss1, /Mark lesson complete/);
   assert.match(ss23, /Mark lesson complete/);
+  const list = read('mobile/src/screens/SubjectTopicsScreen.tsx');
+  assert.match(list, /lesson\.completed \? 'checkmark-circle'/);
+  assert.match(list, /lesson\.completed \? ' · Completed' : ''/);
   assert.match(ss1, /if \(lesson\.locked\)/);
   assert.match(ss1, /navigation\.navigate\('TermPinRedeem'\)/);
 });
