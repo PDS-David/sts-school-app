@@ -323,7 +323,7 @@ router.post('/admin/exams', requireRole('admin'), async (req, res) => {
         total+=marks;
         const provenance={board:q.board,subject:b.subject_name,class_name:b.class_name,examination_type:b.examination_type,
           exam_year:q.exam_year,source_id:q.source_id,source_name:q.source_name,source_url:q.source_url,
-          source_locator:q.source_locator,session_exam_year:b.exam_year??null,covered_topic_id:typeof q.source_locator==='string'&&q.source_locator.startsWith('school-topic:')?Number(q.source_locator.slice('school-topic:'.length)):null,rights_status:q.rights_status,content_origin:q.content_origin,paper:q.paper,question_number:q.question_number};
+          source_locator:q.source_locator,session_exam_year:b.exam_year??null,covered_topic_id:parseLessonLocator(q.source_locator)?.kind==='school_topic'?parseLessonLocator(q.source_locator)?.topic_id:null,covered_lesson_key:parseLessonLocator(q.source_locator)?.kind==='package_lesson'?parseLessonLocator(q.source_locator)?.lesson_key:null,covered_lesson_class:parseLessonLocator(q.source_locator)?.kind==='package_lesson'?parseLessonLocator(q.source_locator)?.class_name:null,lesson_sources:parseLessonLocator(q.source_locator)?.lesson_sources??null,rights_status:q.rights_status,content_origin:q.content_origin,paper:q.paper,question_number:q.question_number};
         const snapshot={stem:q.stem,question_type:q.question_type,options:q.options,correct_answer:q.correct_answer,
           explanation:q.explanation,topic_id:q.topic_id,topic_name:q.topic_name??null};
         await client.query(`
@@ -383,6 +383,24 @@ router.post('/admin/exams/:examId/publish',requireRole('admin'),async(req,res)=>
       if(Number(coverage[0]?.completed)!==Number(coverage[0]?.candidates)){
         return {status:409,error:'One or more current candidates have not completed every lesson used to generate this examination. Update the exam coverage before publishing.'};
       }
+    }
+    const {rows: packageRefs}=await client.query(`
+      SELECT DISTINCT provenance->>'covered_lesson_key' AS lesson_key,
+                      provenance->>'covered_lesson_class' AS lesson_class
+        FROM online_exam_questions
+       WHERE exam_id=$1 AND provenance->>'covered_lesson_key' IS NOT NULL
+    `,[exam.id]);
+    for(const ref of packageRefs){
+      if(ref.lesson_class!==exam.class_name) return {status:409,error:'Generated package lesson class does not match the examination class.'};
+      const {rows: coverage}=await client.query(`
+        SELECT COUNT(DISTINCT st.id)::int AS completed
+          FROM students st
+          JOIN student_curriculum_lesson_progress p
+            ON p.student_id=st.id AND p.class_name=$2 AND p.lesson_key=$3
+         WHERE st.school_code=$1 AND st.class_name=$2 AND st.deleted_at IS NULL
+      `,[exam.school_code,exam.class_name,ref.lesson_key]);
+      if(Number(coverage[0]?.completed)!==candidates.length)
+        return {status:409,error:'Every current candidate must have completed each SS1–SS3 package lesson used for generated questions before publication.'};
     }
     for(const candidate of candidates){
       await client.query(`
