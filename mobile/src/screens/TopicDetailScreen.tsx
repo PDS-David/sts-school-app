@@ -293,7 +293,7 @@ export default function TopicDetailScreen({ route, navigation }: any) {
             {l.credits.map(c => <Text key={c.key} style={styles.attrText} accessibilityLabel={c.accessibilityLabel}>{c.text}</Text>)}
           </View>); })}
         <Btn
-          label={loading ? 'Generating lesson…' : generatedLesson ? 'Regenerate AI Lesson' : 'Generate AI Lesson'}
+          label={loading ? 'Generating lesson…' : generatedLesson ? 'Reload AI Lesson' : 'Generate AI Lesson'}
           onPress={loadLesson}
           loading={loading}
           style={{ marginTop: Spacing.sm }}
