@@ -166,8 +166,8 @@ router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => 
     scopeParams,
   );
 
-  // Attendance and weekly-effort aggregates are class-teacher-only. A
-  // subject-only teacher's record scope does not include whole-class registers.
+  // Attendance aggregates use the active physical report roster. Weekly-effort
+  // counts belong to online-learning activity and remain admin-only.
   let attendanceRate: number | null = null;
   let attendanceRecords = 0;
   let weeklyEffortEntries = 0;
