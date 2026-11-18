@@ -13,7 +13,7 @@ after(async () => {
   await pool.end();
 });
 
-test('administrator placement decisions mutate only physical report membership and append history', async () => {
+test('administrators and assigned teachers execute scoped physical report-roster decisions and append history', async () => {
   const suffix = randomUUID();
   const schoolCode = `roster_${suffix.slice(0, 12)}`;
   await query('INSERT INTO schools(code,name) VALUES($1,$2)', [schoolCode, `Roster Lifecycle School ${suffix}`]);
@@ -42,7 +42,7 @@ test('administrator placement decisions mutate only physical report membership a
   let teacherId: string | null = null;
 
   try {
-    for (const [index, admission] of ['PROMOTE', 'RETAIN', 'REMOVE', 'REINSTATE', 'RACE', 'PROMOTE_RACE'].entries()) {
+    for (const [index, admission] of ['PROMOTE', 'RETAIN', 'REMOVE', 'REINSTATE', 'RACE', 'PROMOTE_RACE', 'TEACHER_PROMOTE', 'TEACHER_REMOVE'].entries()) {
       const { rows } = await query(
         `INSERT INTO students(full_name,class_name,school_code,admission_number)
          VALUES($1,'Primary 4',$2,$3) RETURNING id`,
@@ -113,10 +113,30 @@ test('administrator placement decisions mutate only physical report membership a
       assigned_subject_ids: [],
     });
     const teacherHeaders = { Authorization: `Bearer ${teacherToken}`, 'Content-Type': 'application/json' };
-    const teacherDecision = await fetch(`${baseUrl}/${studentIds[0]}/promotion`, {
+    const teacherRetain = await fetch(`${baseUrl}/${studentIds[1]}/promotion`, {
+      method: 'POST', headers: teacherHeaders, body: JSON.stringify({ action: 'retain' }),
+    });
+    assert.equal(teacherRetain.status, 200, 'assigned teacher can retain a student in their class');
+    const teacherPromote = await fetch(`${baseUrl}/${studentIds[6]}/promotion`, {
+      method: 'POST', headers: teacherHeaders, body: JSON.stringify({ action: 'promote' }),
+    });
+    assert.equal(teacherPromote.status, 200, 'assigned teacher can promote a student to the next class');
+    const teacherRemove = await fetch(`${baseUrl}/${studentIds[7]}/promotion`, {
       method: 'POST', headers: teacherHeaders, body: JSON.stringify({ action: 'remove' }),
     });
-    assert.equal(teacherDecision.status, 403, 'teachers must not change physical report-roster membership');
+    assert.equal(teacherRemove.status, 200, 'assigned teacher can remove a student from the physical report roster');
+    const teacherDemote = await fetch(`${baseUrl}/${studentIds[1]}/promotion`, {
+      method: 'POST', headers: teacherHeaders, body: JSON.stringify({ action: 'demote' }),
+    });
+    assert.equal(teacherDemote.status, 403, 'teachers cannot demote students');
+    const teacherReinstate = await fetch(`${baseUrl}/${studentIds[3]}/promotion`, {
+      method: 'POST', headers: teacherHeaders, body: JSON.stringify({ action: 'reinstate' }),
+    });
+    assert.equal(teacherReinstate.status, 403, 'teachers cannot reinstate removed students');
+    const teacherWrongClass = await fetch(`${baseUrl}/${studentIds[0]}/promotion`, {
+      method: 'POST', headers: teacherHeaders, body: JSON.stringify({ action: 'remove' }),
+    });
+    assert.equal(teacherWrongClass.status, 404, 'teachers cannot act on students outside their assigned class');
     const teacherRemoved = await fetch(`${baseUrl}/report-roster/removed`, {
       headers: { Authorization: `Bearer ${teacherToken}` },
     });
@@ -192,7 +212,7 @@ test('administrator placement decisions mutate only physical report membership a
       'SELECT id,class_name,deleted_at FROM students WHERE id=ANY($1::uuid[]) ORDER BY id',
       [studentIds],
     );
-    assert.equal(students.length, 6);
+    assert.equal(students.length, 8);
     assert.ok(students.every(row => row.class_name === 'Primary 4'),
       'online student class must remain unchanged by every report-roster decision');
     assert.ok(students.every(row => row.deleted_at === null),
@@ -212,6 +232,10 @@ test('administrator placement decisions mutate only physical report membership a
     assert.equal(byStudent.get(studentIds[4])?.status, 'removed');
     assert.equal(byStudent.get(studentIds[5])?.class_name, 'Primary 5');
     assert.equal(byStudent.get(studentIds[5])?.status, 'active');
+    assert.equal(byStudent.get(studentIds[6])?.class_name, 'Primary 5');
+    assert.equal(byStudent.get(studentIds[6])?.status, 'active');
+    assert.equal(byStudent.get(studentIds[7])?.class_name, 'Primary 4');
+    assert.equal(byStudent.get(studentIds[7])?.status, 'removed');
 
     const { rows: events } = await query(
       'SELECT student_id,event_type FROM report_roster_membership_events WHERE student_id=ANY($1::uuid[])',
@@ -225,6 +249,8 @@ test('administrator placement decisions mutate only physical report membership a
     assert.ok(eventTypes(studentIds[3]).includes('reinstated'));
     assert.equal(eventTypes(studentIds[4]).filter(type => type === 'removed').length, 1,
       'concurrent administrator decisions must append exactly one removal event');
+    assert.ok(eventTypes(studentIds[6]).includes('class_changed'), 'teacher promotion is recorded in roster history');
+    assert.ok(eventTypes(studentIds[7]).includes('removed'), 'teacher removal is recorded in roster history');
     assert.equal(eventTypes(studentIds[5]).filter(type => type === 'class_changed').length, 1,
       'concurrent administrator promotions must append exactly one class-change event');
   } finally {
