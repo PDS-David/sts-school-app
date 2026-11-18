@@ -315,78 +315,138 @@ router.put('/:id', requirePerm('grades.write'), async (req, res) => {
 // written to scores from this route.
 router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
   const user = req.user!;
-  const { action } = req.body as { action?: 'promote' | 'demote' | 'retain' };
-  if (!action || !['promote', 'demote', 'retain'].includes(action)) {
-    return res.status(400).json({ error: "action must be 'promote', 'demote', or 'retain'" });
+  const { action } = req.body as { action?: 'promote' | 'demote' | 'retain' | 'remove' | 'reinstate' };
+  if (!action || !['promote', 'demote', 'retain', 'remove', 'reinstate'].includes(action)) {
+    return res.status(400).json({ error: "action must be 'promote', 'demote', 'retain', 'remove', or 'reinstate'" });
   }
 
-  const { rows: sRows } = await query(
-    'SELECT id, full_name, class_name, school_code FROM students WHERE id=$1 AND deleted_at IS NULL',
+  const { rows: membershipRows } = await query(
+    `SELECT s.id, s.full_name, s.school_code,
+            m.class_name AS report_class_name, m.status
+     FROM students s
+     JOIN report_roster_memberships m ON m.student_id=s.id
+     WHERE s.id=$1 AND s.deleted_at IS NULL`,
     [req.params.id],
   );
-  const student = sRows[0];
-  if (!student) return res.status(404).json({ error: 'Student not found' });
+  const membership = membershipRows[0];
+  if (!membership) return res.status(404).json({ error: 'Active report-roster membership not found' });
 
-  // No admin bypass — see comment above. Only the actual class teacher of
-  // the class this student is CURRENTLY in.
-  // The school check comes first: assigned_class and class_name are plain-text
-  // labels such as "JSS 1" that repeat across schools, so the class match alone
-  // does not prove the student belongs to this teacher's school. Both failures
-  // return the same 403 so the response does not reveal whether the student
-  // exists in another school. This guard runs before the action branches, so
-  // promote, demote and retain are all covered. checkTeacherStudentScope is not
-  // used here: this route needs its own denial wording, and passing no termId
-  // (so a class lock never blocks a promotion) is already how this route behaves.
-  if (
-    !user.school_code || student.school_code !== user.school_code
-    || !user.assigned_class || user.assigned_class !== student.class_name
-  ) {
-    return res.status(403).json({ error: 'You can only promote, demote, or retain students in your own assigned class' });
+  // Decisions apply to the teacher's physical class only. The student's
+  // online-learning class and login link are deliberately not consulted or
+  // modified by this workflow.
+  if (!user.school_code || membership.school_code !== user.school_code
+      || !user.assigned_class || membership.report_class_name !== user.assigned_class) {
+    return res.status(403).json({ error: 'You can only manage report-roster placement in your own assigned physical class' });
   }
 
+  if (action === 'remove') {
+    if (membership.status !== 'active') {
+      return res.status(409).json({ error: 'Student is not currently active in the report roster' });
+    }
+    await withTransaction(async (client) => {
+      await client.query(
+        `UPDATE report_roster_memberships
+         SET status='removed', removed_at=now(), changed_by=$1, updated_at=now()
+         WHERE student_id=$2 AND status='active'`,
+        [user.id, membership.id],
+      );
+      await client.query(
+        `INSERT INTO report_roster_membership_events
+           (student_id,event_type,from_class_name,actor_id,details)
+         VALUES($1,'removed',$2,$3,$4::jsonb)`,
+        [membership.id, membership.report_class_name, user.id, JSON.stringify({ reason: 'teacher_decision' })],
+      );
+      await auditInTransaction(client, user, 'remove_report_roster_membership', 'student', membership.id,
+        'student removed from active physical report roster',
+        auditContextFromRequest(req, { schoolCode: membership.school_code, metadata: { class_name: membership.report_class_name } }));
+    });
+    return res.json({ ok: true, action, class_name: membership.report_class_name, online_account_unchanged: true });
+  }
+
+  if (action === 'reinstate') {
+    if (membership.status !== 'removed') {
+      return res.status(409).json({ error: 'Student is already active in the report roster' });
+    }
+    await withTransaction(async (client) => {
+      await client.query(
+        `UPDATE report_roster_memberships
+         SET status='active', removed_at=NULL, changed_by=$1, updated_at=now()
+         WHERE student_id=$2 AND status='removed'`,
+        [user.id, membership.id],
+      );
+      await client.query(
+        `INSERT INTO report_roster_membership_events
+           (student_id,event_type,to_class_name,actor_id,details)
+         VALUES($1,'reinstated',$2,$3,$4::jsonb)`,
+        [membership.id, membership.report_class_name, user.id, JSON.stringify({ reason: 'teacher_decision' })],
+      );
+      await auditInTransaction(client, user, 'reinstate_report_roster_membership', 'student', membership.id,
+        'student reinstated in physical report roster',
+        auditContextFromRequest(req, { schoolCode: membership.school_code, metadata: { class_name: membership.report_class_name } }));
+    });
+    return res.json({ ok: true, action, class_name: membership.report_class_name, online_account_unchanged: true });
+  }
+
+  if (membership.status !== 'active') {
+    return res.status(409).json({ error: 'Only active report-roster students can be promoted, demoted, or retained' });
+  }
+
+  const fromClass = membership.report_class_name;
   if (action === 'retain') {
-    await auditStrict(user, 'retain_class', 'student', student.id, 'student retained in current class', auditContextFromRequest(req, { schoolCode: student.school_code, metadata: { class_name: student.class_name } }));
-    return res.json({ ok: true, action, from_class: student.class_name, to_class: student.class_name });
+    await withTransaction(async (client) => {
+      await client.query(
+        'UPDATE report_roster_memberships SET changed_by=$1, updated_at=now() WHERE student_id=$2 AND status=\'active\'',
+        [user.id, membership.id],
+      );
+      await client.query(
+        `INSERT INTO report_roster_membership_events
+           (student_id,event_type,from_class_name,to_class_name,actor_id,details)
+         VALUES($1,'retained',$2,$2,$3,$4::jsonb)`,
+        [membership.id, fromClass, user.id, JSON.stringify({ reason: 'teacher_decision' })],
+      );
+      await auditInTransaction(client, user, 'retain_report_roster_student', 'student', membership.id,
+        'student retained in physical report class',
+        auditContextFromRequest(req, { schoolCode: membership.school_code, metadata: { class_name: fromClass } }));
+    });
+    return res.json({ ok: true, action, from_class: fromClass, to_class: fromClass, online_account_unchanged: true });
   }
 
   const { rows: classRows } = await query(
-    'SELECT name FROM classes WHERE school_code=$1 ORDER BY id ASC', [student.school_code],
+    'SELECT name FROM classes WHERE school_code=$1 ORDER BY id ASC', [membership.school_code],
   );
   const names = classRows.map((r: any) => r.name);
-  const idx = names.indexOf(student.class_name);
-  // A student whose class_name doesn't match any row in this school's
-  // `classes` list (e.g. a legacy/typo'd value) isn't part of a sequence
-  // that can be moved relative to.
+  const idx = names.indexOf(fromClass);
   if (idx === -1) {
-    return res.status(409).json({
-      error: `"${student.class_name}" isn't in this school's class list, so there's no next/previous class to move to. Fix the class name via student edit first.`,
-    });
+    return res.status(409).json({ error: `"${fromClass}" isn't in this school's class list, so it cannot be moved automatically.` });
   }
   const targetIdx = action === 'promote' ? idx + 1 : idx - 1;
   if (targetIdx < 0 || targetIdx >= names.length) {
     return res.status(400).json({
       error: action === 'promote'
-        ? `"${student.class_name}" is already the highest class — there's no next class to promote to.`
-        : `"${student.class_name}" is already the lowest class — there's no lower class to demote to.`,
+        ? `"${fromClass}" is already the highest class.`
+        : `"${fromClass}" is already the lowest class.`,
     });
   }
   const toClass = names[targetIdx];
 
-  const updated = await withTransaction(async (client) => {
-    const { rows } = await client.query(
-      'UPDATE students SET class_name=$1 WHERE id=$2 RETURNING *',
-      [toClass, student.id],
+  await withTransaction(async (client) => {
+    await client.query(
+      `UPDATE report_roster_memberships
+       SET class_name=$1, changed_by=$2, updated_at=now()
+       WHERE student_id=$3 AND status='active'`,
+      [toClass, user.id, membership.id],
     );
-    if (!rows[0]) return null;
-    await auditInTransaction(
-      client, user, action === 'promote' ? 'promote_class' : 'demote_class', 'student', student.id,
-      'student class placement changed',
-      auditContextFromRequest(req, { schoolCode: student.school_code, metadata: { from_class: student.class_name, to_class: toClass } }),
+    await client.query(
+      `INSERT INTO report_roster_membership_events
+         (student_id,event_type,from_class_name,to_class_name,actor_id,details)
+       VALUES($1,'class_changed',$2,$3,$4,$5::jsonb)`,
+      [membership.id, fromClass, toClass, user.id, JSON.stringify({ action })],
     );
-    return rows[0];
+    await auditInTransaction(client, user, action === 'promote' ? 'promote_report_roster_student' : 'demote_report_roster_student',
+      'student', membership.id, 'physical report-roster class placement changed',
+      auditContextFromRequest(req, { schoolCode: membership.school_code, metadata: { from_class: fromClass, to_class: toClass } }));
   });
-  if (!updated) return res.status(404).json({ error: 'Student not found' });
-  return res.json({ ok: true, action, from_class: student.class_name, to_class: toClass, student: updated });
+  return res.json({ ok: true, action, from_class: fromClass, to_class: toClass, online_account_unchanged: true });
 });
 
 // ── DELETE /students/:id ──────────────────────────────────────────────────────
