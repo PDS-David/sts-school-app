@@ -73,9 +73,10 @@ router.get('/', requirePerm('students.read'), async (req, res) => {
   const teacherRosterJoin = user.role === 'teacher'
     ? ' JOIN report_roster_memberships rrm ON rrm.student_id=s.id AND rrm.status=\'active\''
     : '';
+  const teacherPersonalFields = user.role === 'teacher' ? '' : 's.gender,s.date_of_birth,';
   let sql = `SELECT s.id,s.admission_number,s.full_name,
                     ${user.role === 'teacher' ? 'rrm.class_name' : 's.class_name'} AS class_name,
-                    s.gender,s.date_of_birth,s.school_code,s.created_at
+                    ${teacherPersonalFields}s.school_code,s.created_at
              FROM students s${teacherRosterJoin}
              WHERE s.deleted_at IS NULL`;
   const params: unknown[] = [];
@@ -204,9 +205,16 @@ router.get('/:id', requirePerm('students.read'), async (req, res) => {
   );
   if (!rows[0]) return res.status(404).json({ error: 'Student not found' });
   if (teacherReportClassName) {
-    // The teacher-facing profile represents the physical report roster;
-    // leave students.class_name untouched for the independent online account.
+    // The teacher-facing profile represents only the report roster. Do not
+    // expose online-account links, parent contacts or unrelated personal data.
     rows[0].class_name = teacherReportClassName;
+    delete rows[0].gender;
+    delete rows[0].date_of_birth;
+    delete rows[0].user_id;
+    delete rows[0].deleted_at;
+    delete rows[0].deleted_by;
+    delete rows[0].login_username;
+    delete rows[0].parents;
   }
   return res.json({ student: rows[0] });
 });
