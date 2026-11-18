@@ -65,7 +65,6 @@ export default function ReportRemarksScreen() {
         student_id: studentId,
         term_id: Number(termId),
         class_teacher_remark: classTeacherRemark,
-        admin_remark: adminRemark,
       });
       setNotice('Report remarks saved successfully.');
     } catch (e: any) {
