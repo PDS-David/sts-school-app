@@ -7,7 +7,7 @@ import type { Role } from '../types/index.js';
 import { resolveLearningAccessPolicy } from '../utils/learningAccessPolicy.js';
 
 
-async function readLearningAccessPolicy() {
+export async function readLearningAccessPolicy() {
   try {
     const { rows } = await query(
       `SELECT free_launch_mode, term_pin_enforced, curriculum_sequence_enforced
