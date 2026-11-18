@@ -457,9 +457,27 @@ async function authoriseReportAccess(
       break;
     }
     case 'teacher': {
-      if (!user.school_code || !user.assigned_class) {
-        denied = { status: 403, error: 'Report access requires an assigned physical class.' };
+      const allowedClasses = user.assigned_class ? [user.assigned_class] : (user.assigned_class_names ?? []);
+      const isSubjectTeacher = !user.assigned_class;
+      if (!user.school_code || !allowedClasses.length || (isSubjectTeacher && !user.assigned_subject_ids?.length)) {
+        denied = { status: 403, error: 'Report access requires assigned physical classes and subjects.' };
         break;
+      }
+      const { rows: memberships } = await query(
+        `SELECT rrm.class_name FROM report_roster_memberships rrm
+         JOIN students s ON s.id=rrm.student_id
+         WHERE rrm.student_id=$1 AND rrm.status='active'
+           AND rrm.class_name=ANY($2::text[]) AND s.school_code=$3 AND s.deleted_at IS NULL
+         ORDER BY rrm.joined_at DESC LIMIT 1`,
+        [student.id, allowedClasses, user.school_code],
+      );
+      if (!memberships[0]) {
+        denied = { status: 404, error: 'Student is not in your active physical report roster.' };
+      } else {
+        student.class_name = memberships[0].class_name;
+        denied = null;
+      }
+      break;
       }
       const { rows: memberships } = await query(
         `SELECT rrm.class_name
@@ -563,15 +581,18 @@ router.get('/report/:student_id', async (req, res) => {
      FROM scores sc
      JOIN subjects sub ON sub.id=sc.subject_id AND sub.school_code=$4
      WHERE sc.student_id=$2 AND sc.term_id=$3
+       AND ($5::int[] IS NULL OR sc.subject_id=ANY($5::int[]))
      ORDER BY sub.name`,
-    [student.class_name, student.id, resolvedTermId, student.school_code],
+    [student.class_name, student.id, resolvedTermId, student.school_code,
+     user.role === 'teacher' && !user.assigned_class ? user.assigned_subject_ids : null],
   );
 
-  const { rows: attRows } = await query(
+  const isSubjectTeacher = user.role === 'teacher' && !user.assigned_class;
+  const { rows: attRows } = isSubjectTeacher ? { rows: [] as Array<{ days_present: number | null }> } : await query(
     'SELECT days_present FROM attendance WHERE student_id=$1 AND term_id=$2',
     [student.id, resolvedTermId],
   );
-  const { rows: recRows } = await query(
+  const { rows: recRows } = isSubjectTeacher ? { rows: [] as Array<Record<string, unknown>> } : await query(
     'SELECT * FROM class_records WHERE student_id=$1 AND term_id=$2',
     [student.id, resolvedTermId],
   );
@@ -704,8 +725,10 @@ router.get('/session-report/:student_id', async (req, res) => {
     `SELECT sc.*, sub.name AS subject_name
      FROM scores sc JOIN subjects sub ON sub.id = sc.subject_id AND sub.school_code=$3
      WHERE sc.student_id=$1 AND sc.term_id = ANY($2::int[])
+       AND ($4::int[] IS NULL OR sc.subject_id=ANY($4::int[]))
      ORDER BY sub.name`,
-    [student.id, termIds, student.school_code],
+    [student.id, termIds, student.school_code,
+     user.role === 'teacher' && !user.assigned_class ? user.assigned_subject_ids : null],
   );
 
   // Group each subject's per-term totals together
@@ -734,7 +757,7 @@ router.get('/session-report/:student_id', async (req, res) => {
     })
     .sort((a, b) => a.subject_name.localeCompare(b.subject_name));
 
-  const { rows: attRows } = await query(
+  const { rows: attRows } = user.role === 'teacher' && !user.assigned_class ? { rows: [] as Array<{ days_present: number | null }> } : await query(
     'SELECT days_present FROM attendance WHERE student_id=$1 AND term_id = ANY($2::int[])',
     [student.id, termIds],
   );
