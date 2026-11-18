@@ -155,7 +155,8 @@ test('administrator placement decisions mutate only physical report membership a
     );
     assert.equal(updatedStudent[0]?.full_name, 'Updated Physical Report Student');
     assert.equal(updatedStudent[0]?.gender, 'F');
-    assert.equal(String(updatedStudent[0]?.date_of_birth).slice(0, 10), '2012-04-05');
+    const updatedDob = updatedStudent[0]?.date_of_birth;
+    assert.equal(updatedDob instanceof Date ? updatedDob.toISOString().slice(0, 10) : String(updatedDob).slice(0, 10), '2012-04-05');
     assert.equal(updatedStudent[0]?.admission_number, 'UPDATED-ROSTER-001');
     assert.equal(updatedStudent[0]?.class_name, 'Primary 4', 'teacher profile editing cannot change the student class field');
     const reinstated = await decide(studentIds[3], 'remove');
