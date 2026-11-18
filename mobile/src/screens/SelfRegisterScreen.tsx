@@ -5,6 +5,9 @@ import api from '../api/client';
 import { Btn, Input, Card, Loader, Empty } from '../components/UI';
 import { Colors, Spacing, Fonts } from '../theme';
 
+// Student registration creates an independent online-learning identity.
+// Students who need access to an existing physical report record should use
+// the separate student-record claim flow instead of self-registering here.
 // Public (no login) — POST /auth/self-register. Student, parent, and
 // teacher can create their own account directly (own username + password,
 // no admin-issued activation or class code) — see the detailed comment on
