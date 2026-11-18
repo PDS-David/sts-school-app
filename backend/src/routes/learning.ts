@@ -1064,6 +1064,279 @@ router.delete('/topics/:id', requirePerm('topics.write'), async (req, res) => {
 // The validated practice questions may also seed the existing standard
 // topic assessment. Student access, term PINs and sequence gates are checked
 // before any generation or content delivery.
+router.post('/topics/:id/lesson', requirePerm('topics.read'), requireRole('student'), async (req, res) => {
+  const user = req.user!;
+  const { rows: stRows } = await query('SELECT id, school_code, class_name FROM students WHERE user_id=$1 LIMIT 1', [user.id]);
+  const student = stRows[0];
+  if (!student) return res.status(404).json({ error: 'No student record for this user' });
+
+  const { rows: tRows } = await query(`SELECT t.*, sub.name AS subject_name, COALESCE(to_jsonb(t)->>'term_label', term.name) AS curriculum_term_label, term.academic_year AS curriculum_academic_year, to_jsonb(t)->'learning_objectives' AS curriculum_learning_objectives FROM topics t LEFT JOIN subjects sub ON sub.id=t.subject_id LEFT JOIN terms term ON term.id=t.term_id AND term.school_code=t.school_code WHERE t.id=$1`, [req.params.id]);
+  const topic = tRows[0];
+  if (!topic) return res.status(404).json({ error: 'Topic not found' });
+  if (topic.school_code !== student.school_code || (topic.class_name && topic.class_name !== student.class_name)) {
+    return res.status(403).json({ error: 'This topic is not available to you' });
+  }
+
+  // Enforce the same lock GET /topics computes for display — without this,
+  // a student could bypass the whole PIN/pass-gate scheme by calling this
+  // route directly for a topic the UI never let them open. Only applies to
+  // ordered (ingested) topics; see schema.sql's "Term-PIN gating" section.
+  if (curriculumSequenceEnforced() && topic.order_index != null) {
+    // Same resolver as GET /topics (Task 05) so the list and this direct guard cannot disagree.
+    const { rows: siblingRows } = await query(
+      `SELECT id, order_index, (to_jsonb(t)->>'sequence_rank')::numeric AS sequence_rank FROM topics t
+       WHERE school_code=$4 AND subject_id=$1 AND class_name=$2 AND term_label=$3 AND order_index IS NOT NULL`,
+      [topic.subject_id, topic.class_name, topic.term_label, topic.school_code],
+    );
+    const { rows: passRows } = await query(
+      'SELECT topic_id FROM topic_completions WHERE student_id=$1 AND passed=true AND topic_id=ANY($2)',
+      [student.id, siblingRows.map((r: any) => r.id)],
+    );
+    const { rows: pinRows } = await query(
+      'SELECT 1 FROM term_access_pins WHERE student_id=$1 AND term_label=$2 AND redeemed_at IS NOT NULL',
+      [student.id, topic.term_label],
+    );
+    const pinOk = !termPinEnforced() || !!pinRows[0];
+    const verdict = resolveSequenceGroup(siblingRows, new Set(passRows.map((r: any) => r.topic_id)), pinOk).get(topic.id);
+    if (verdict?.locked) {
+      return res.status(403).json({ error: verdict.is_sequence_first
+        ? 'This topic is locked. Redeem your term PIN first.'
+        : 'This topic is locked. Complete and pass the previous topic first.' });
+    }
+  }
+
+  // Subject-specific delivery correction (after access/lock checks, so correction never widens access). A topic whose original
+  // text is audited as unsafe is taught from the corrected lessons only; if its stored source changed unreviewed it
+  // is withheld. Stale cached summary/assessment built from the original text is retired atomically first.
+  const delivery = resolveDelivery(topic);
+  if (delivery) {
+    await retireStaleJss3Cache(query, topic.id, delivery);
+    const { rows: fresh } = await query('SELECT generated_assessment_id FROM topics WHERE id=$1', [topic.id]);
+    topic.generated_assessment_id = fresh[0]?.generated_assessment_id ?? null;
+    topic.summary = delivery.text;
+    if (delivery.kind === 'withheld') {
+      return res.json({ ok: true, summary: delivery.text, summary_is_fallback: false, practice_questions: [], assessment_status: null,
+        delivery_correction: { id: delivery.correctionId, status: 'withheld' }, note: 'This topic is temporarily unavailable pending review.' });
+    }
+  }
+  const ss1Delivery = resolveSs1Delivery(topic);
+  if (ss1Delivery) {
+    await retireStaleSs1Cache(query, topic.id, ss1Delivery);
+    const { rows: fresh } = await query('SELECT generated_assessment_id FROM topics WHERE id=$1', [topic.id]);
+    topic.generated_assessment_id = fresh[0]?.generated_assessment_id ?? null;
+    topic.summary = ss1Delivery.text;
+    if (ss1Delivery.kind === 'withheld') {
+      return res.json({ ok: true, summary: ss1Delivery.text, summary_is_fallback: false, practice_questions: [], assessment_status: null,
+        delivery_correction: { id: ss1Delivery.correctionId, status: 'withheld', provenance: 'withheld pending source review' },
+        note: 'This Catering Craft topic is temporarily unavailable while its source is checked.' });
+    }
+  }
+
+  // SS1 French source corrections are served from the approved lesson package.
+  // The resolver only replaces an exact source-body fingerprint for this
+  // class/subject/term/file, so unrelated French topics are left untouched.
+  const frenchDelivery = resolveSs1FrenchDelivery(topic);
+  if (frenchDelivery) {
+    await retireStaleSs1FrenchCache(query, topic.id, frenchDelivery);
+    const { rows: fresh } = await query('SELECT generated_assessment_id FROM topics WHERE id=$1', [topic.id]);
+    topic.generated_assessment_id = fresh[0]?.generated_assessment_id ?? null;
+    topic.summary = frenchDelivery.text;
+  }
+
+  // SS1 Literature lessons are selected only by the registered term, exact source filename and source topic heading.
+  // The package preserves separate mappings for the second and third term even where their teaching text repeats.
+  const literatureDelivery = resolveSs1LiteratureDelivery(topic);
+  if (literatureDelivery) {
+    await retireStaleSs1LiteratureCache(query, topic.id, literatureDelivery);
+    const { rows: fresh } = await query('SELECT generated_assessment_id FROM topics WHERE id=$1', [topic.id]);
+    topic.generated_assessment_id = fresh[0]?.generated_assessment_id ?? null;
+    topic.summary = literatureDelivery.text;
+  }
+
+  // SS1 Mathematics corrections are bound to the exact source row fingerprint,
+  // term, class, subject and source file. A changed source row or incomplete
+  // approval/verification is withheld rather than passed to Brainee as lesson text.
+  const mathematicsDelivery = resolveSs1MathematicsDelivery(topic);
+  if (mathematicsDelivery) {
+    await retireStaleSs1MathematicsCache(query, topic.id, mathematicsDelivery);
+    const { rows: fresh } = await query('SELECT generated_assessment_id FROM topics WHERE id=$1', [topic.id]);
+    topic.generated_assessment_id = fresh[0]?.generated_assessment_id ?? null;
+    topic.summary = mathematicsDelivery.text;
+    if (mathematicsDelivery.kind === 'withheld') {
+      return res.json({ ok: true, summary: mathematicsDelivery.text, summary_is_fallback: false,
+        practice_questions: [], assessment_status: null,
+        delivery_correction: { id: mathematicsDelivery.correctionId, status: 'withheld', provenance: 'withheld pending exact source, approval and verification' },
+        note: 'This Mathematics topic is temporarily unavailable pending source and lesson verification.' });
+    }
+  }
+  const agriculturalScienceSupplement = resolveAgriculturalScienceSupplement(topic);
+  if (agriculturalScienceSupplement) {
+    await retireStaleAgriculturalScienceSupplementCache(query, topic.id, agriculturalScienceSupplement);
+    const { rows: fresh } = await query('SELECT generated_assessment_id FROM topics WHERE id=$1', [topic.id]);
+    topic.generated_assessment_id = fresh[0]?.generated_assessment_id ?? null;
+    if (agriculturalScienceSupplement.kind === 'withheld') {
+      return res.json({ ok: true, summary: agriculturalScienceSupplement.text, summary_is_fallback: false,
+        practice_questions: [], assessment_status: null,
+        delivery_correction: { id: agriculturalScienceSupplement.lessonId, status: 'withheld', provenance: 'withheld pending exact package identity and verification' },
+        note: 'This Agricultural Science supplement is temporarily unavailable pending package verification.' });
+    }
+  }
+  const agriculturalScienceDelivery = resolveAgriculturalScienceDelivery(topic);
+  if (agriculturalScienceDelivery) {
+    await retireStaleAgriculturalScienceCache(query, topic.id, agriculturalScienceDelivery);
+    const { rows: fresh } = await query('SELECT generated_assessment_id FROM topics WHERE id=$1', [topic.id]);
+    topic.generated_assessment_id = fresh[0]?.generated_assessment_id ?? null;
+    topic.summary = agriculturalScienceDelivery.text;
+    if (agriculturalScienceDelivery.kind === 'withheld') {
+      return res.json({ ok: true, summary: agriculturalScienceDelivery.text, summary_is_fallback: false, practice_questions: [], assessment_status: null,
+        delivery_correction: { id: agriculturalScienceDelivery.correctionId, status: 'withheld', provenance: 'withheld pending subject approval/verification' },
+        note: 'This Agricultural Science topic is temporarily unavailable pending subject approval and verification.' });
+    }
+  }
+  const agriculturalScienceSourceProjection = resolveAgriculturalScienceSourceProjection(topic);
+  if (agriculturalScienceSourceProjection) {
+    await retireStaleAgriculturalScienceSourceCache(query, topic.id, agriculturalScienceSourceProjection);
+    const { rows: fresh } = await query('SELECT generated_assessment_id FROM topics WHERE id=$1', [topic.id]);
+    topic.generated_assessment_id = fresh[0]?.generated_assessment_id ?? null;
+    if (agriculturalScienceSourceProjection.kind === 'withheld') {
+      return res.json({ ok: true, summary: agriculturalScienceSourceProjection.text, summary_is_fallback: false,
+        practice_questions: [], assessment_status: null,
+        delivery_correction: { id: agriculturalScienceSourceProjection.sourceLessonId, status: 'withheld' },
+        note: 'This Agricultural Science source row contains no learner-safe teaching material.' });
+    }
+  }
+  const englishDelivery = resolveEnglishDelivery(topic);
+  if (englishDelivery) {
+    await retireStaleEnglishCache(query, topic.id, englishDelivery);
+    const { rows: fresh } = await query('SELECT generated_assessment_id FROM topics WHERE id=$1', [topic.id]);
+    topic.generated_assessment_id = fresh[0]?.generated_assessment_id ?? null;
+    topic.summary = englishDelivery.text;
+    if (englishDelivery.kind === 'withheld') {
+      return res.json({ ok: true, summary: englishDelivery.text, summary_is_fallback: false, practice_questions: [], assessment_status: null,
+        delivery_correction: { id: englishDelivery.correctionId, status: 'withheld', provenance: 'withheld pending English approval/verification' },
+        note: 'This English Language topic is temporarily unavailable pending subject approval and verification.' });
+    }
+  }
+  // Primary 4 lessons are grounded only in source rows whose identity and source_reference hash
+  // match the supplied read-only export. Short source notes remain visibly flagged to pupils.
+  const primary4Delivery = resolvePrimary4SourceDelivery(topic);
+  if (primary4Delivery && (primary4Delivery.kind === 'withheld' || primary4Delivery.source !== 'primary4-export')) {
+    await retireStalePrimary4Cache(query, topic.id, primary4Delivery);
+    const { rows: freshPrimary4 } = await query(
+      'SELECT summary, generated_assessment_id FROM topics WHERE id=$1',
+      [topic.id],
+    );
+    topic.summary = freshPrimary4[0]?.summary ?? null;
+    topic.generated_assessment_id = freshPrimary4[0]?.generated_assessment_id ?? null;
+  }
+  if (primary4Delivery?.kind === 'withheld') {
+    if (primary4Delivery.hideFromStudent) return res.status(404).json({ error: 'Topic not found' });
+    return res.json({ ok: true, summary: primary4Delivery.text, summary_is_fallback: false,
+      practice_questions: [], assessment_status: null,
+      delivery_correction: { id: String(primary4Delivery.topicId ?? req.params.id), status: 'withheld', provenance: primary4Delivery.source },
+      note: 'This Primary 4 topic is temporarily unavailable while its curriculum source is checked.' });
+  }
+  if (primary4Delivery?.kind === 'matched' && primary4Delivery.source === 'archive-correction') {
+    topic.title = primary4Delivery.displayTitle ?? topic.title;
+    topic.source_reference = primary4Delivery.text;
+    topic.summary = null;
+    topic.generated_assessment_id = null;
+  }
+  if (primary4Delivery?.kind === 'matched') topic.source_reference = primary4Delivery.text;
+
+  // Agricultural Science compiled supplements contain teacher answer keys. Replace the stored
+  // compiler payload with the exact verified learner projection before any AI grounding or fallback.
+  const agriculturalScienceLearnerTopic = safeAgriculturalScienceTopic(topic);
+  topic.source_reference = agriculturalScienceLearnerTopic.source_reference;
+  topic.summary = agriculturalScienceLearnerTopic.summary;
+
+  // A compiled English supplement stores teacher marking keys in source_reference.
+  // Sanitize the student copy before using it as AI grounding or fallback text.
+  const learnerTopic = safeEnglishSupplementTopic(topic, user.role);
+  topic.source_reference = learnerTopic.source_reference;
+  topic.summary = learnerTopic.summary;
+
+  const groundingSource: string | null = primary4Delivery?.kind === 'matched' ? primary4Delivery.text
+    : mathematicsDelivery?.kind === 'corrected' ? mathematicsDelivery.text
+    : englishDelivery?.kind === 'corrected' ? englishDelivery.text
+    : agriculturalScienceDelivery?.kind === 'corrected' || agriculturalScienceSupplement?.kind === 'supplement' || agriculturalScienceSourceProjection
+      ? (typeof topic.source_reference === 'string' ? topic.source_reference : null)
+    : ss1Delivery?.kind === 'corrected' ? ss1Delivery.text
+    : delivery?.kind === 'corrected' ? delivery.text
+    : typeof topic.source_reference === 'string' ? topic.source_reference : null;
+
+  // Generate the teaching lesson from approved curriculum context. Brainee
+  // remains a separate tutor/chat experience and is not the lesson author.
+  let summary: string | null = null;
+  let summary_is_fallback = false;
+  let practice_questions: Array<{
+    stem: string;
+    options: Array<{ key: 'A' | 'B' | 'C' | 'D'; text: string }>;
+    correct_keys: Array<'A' | 'B' | 'C' | 'D'>;
+    explanation: string;
+    marks: number;
+  }> = [];
+
+  // Read optional objective metadata from the resolved curriculum row without
+  // assuming every legacy topic schema has that column. No schema migration
+  // or student-supplied curriculum identifiers are required for this path.
+  const rawObjectives = topic.curriculum_learning_objectives;
+  const objectives: string[] = Array.isArray(rawObjectives)
+    ? rawObjectives.filter((value: unknown): value is string => typeof value === 'string' && value.trim().length > 0)
+    : typeof rawObjectives === 'string'
+      ? (() => { try { const parsed = JSON.parse(rawObjectives); return Array.isArray(parsed) ? parsed.filter((value): value is string => typeof value === 'string' && value.trim().length > 0) : []; } catch { return []; } })()
+      : [];
+
+  let generatedLesson: Awaited<ReturnType<typeof getOrGenerateCurriculumLesson>>['lesson'];
+  try {
+    const generated = await getOrGenerateCurriculumLesson({
+      cacheKey: `topic:${topic.id}`,
+      topicId: Number(topic.id),
+      input: {
+        className: student.class_name,
+        subject: topic.subject_name || 'Subject not recorded',
+        term: topic.curriculum_term_label ? `${topic.curriculum_term_label}${topic.curriculum_academic_year ? ` (${topic.curriculum_academic_year})` : ''}` : 'Term not recorded',
+        topic: topic.title,
+        objectives,
+        sourceMaterial: groundingSource || topic.description || null,
+      },
+      identity: { userId: user.id, role: user.role },
+    });
+    generatedLesson = generated.lesson;
+
+    summary = [
+      generatedLesson.title,
+      generatedLesson.introduction,
+      ...generatedLesson.sections.map(section => `${section.heading}\n${section.content}`),
+      `Lesson recap\n${generatedLesson.summary}`,
+    ].join('\n\n');
+    practice_questions = generatedLesson.practice_questions.map(question => ({ ...question, marks: 1 }));
+  } catch (error: any) {
+    console.error('[curriculum] AI lesson generation/validation failed', {
+      topicId: topic.id,
+      message: error?.message ?? 'Unknown generation error',
+    });
+    return res.status(error?.statusCode ?? 502).json({
+      ok: false,
+      error: error?.message ?? 'A complete lesson could not be generated. Please retry.',
+      code: 'CURRICULUM_LESSON_GENERATION_FAILED',
+    });
+  }
+
+  return res.json({
+    ok: true,
+    lesson: generatedLesson,
+    summary,
+    summary_is_fallback,
+    practice_questions,
+    delivery_correction: primary4Delivery?.kind === 'matched'
+      ? { id: String(primary4Delivery.topicId), status: primary4Delivery.source === 'primary4-export' ? 'source-export-match' : 'researched-package-match' }
+      : ss1Delivery ? { id: ss1Delivery.correctionId, status: ss1Delivery.kind }
+      : delivery ? { id: delivery.correctionId, status: delivery.kind }
+      : undefined,
+  });
+});
+
 router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, res) => {
   const user = req.user!;
   const { rows: stRows } = await query('SELECT id, school_code, class_name FROM students WHERE user_id=$1 LIMIT 1', [user.id]);
