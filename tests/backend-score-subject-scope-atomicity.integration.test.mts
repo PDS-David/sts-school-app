@@ -141,7 +141,7 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     });
 
     const allowedSubject = await post('/', score(studentIds[0], subjectIds[0], termIds[0]), subjectTeacher.token);
-    assert.equal(allowedSubject.status, 200, 'assigned class teachers can enter scores for their physical roster');
+    assert.equal(allowedSubject.status, 403, 'subject-only teachers without an assigned physical class cannot enter report scores');
 
     const deniedSubject = await post('/', score(studentIds[0], subjectIds[1], termIds[0]), subjectTeacher.token);
     assert.equal(deniedSubject.status, 403, 'subject-only teachers without an assigned physical class cannot enter report scores');
