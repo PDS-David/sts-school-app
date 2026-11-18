@@ -53,6 +53,8 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Bootstrap disposable PostgreSQL schema
         run: npm run db:bootstrap --workspace=backend
+      - name: Apply numbered migrations
+        run: npm run db:migrate --workspace=backend
       - name: Verify BSEC-024 messaging input and sender quota
         run: node --import tsx --test tests/backend-messaging-input-abuse-controls.integration.test.mts
       - name: Verify BSEC-025 class-lock read authorization
