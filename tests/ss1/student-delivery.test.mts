@@ -133,7 +133,7 @@ test('SS1 lesson delivery is independent of teacher approval metadata', () => {
   assert.equal(isStudentDeliverableSs1Lesson(candidate), true, 'implemented lessons must not be gated by approval metadata');
 });
 
-test('unlocked SS1 student lessons omit teacher answers, marking keys and source provenance', () => {
+test('unlocked SS1 student lessons omit teacher answers and internal package state', () => {
   const lesson = listStudentSs1Lessons()[0];
   assert.ok(lesson, 'an implemented SS1 lesson fixture must exist');
   const delivered = safeStudentSs1Lesson(lesson);
