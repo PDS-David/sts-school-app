@@ -53,6 +53,10 @@ export default function MyResultsScreen({ route, navigation }: any) {
         }
         const myStudent = s.data.students[0];
         if (!myStudent) { setError('No student record linked to your account.'); return; }
+        if (!myStudent.has_physical_report_roster) {
+          setError('No physical report is linked to this online-learning account. Your learning access is unaffected; use the Learning area to continue.');
+          return;
+        }
         url = `/scores/report/${myStudent.id}`;
       } else if ((user?.role === 'admin' || user?.role === 'teacher') && parentStudentId) {
         url = `/scores/report/${parentStudentId}`;
@@ -75,7 +79,7 @@ export default function MyResultsScreen({ route, navigation }: any) {
   if (loading) return <Loader />;
   if (error) {
     const retryable = !error.startsWith('Select a child') &&
-      !error.startsWith('No student record') &&
+      !error.startsWith('No student record') && !error.startsWith('No physical report') &&
       !error.startsWith('No student selected');
     return (
       <View style={styles.errorWrap}>
