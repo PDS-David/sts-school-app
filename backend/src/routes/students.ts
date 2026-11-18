@@ -164,6 +164,20 @@ router.get('/deleted', requireRole('admin'), async (req, res) => {
 // doesn't confirm that the record exists at all.
 router.get('/:id', requirePerm('students.read'), async (req, res) => {
   const user = req.user!;
+  if (user.role === 'teacher') {
+    if (!user.school_code || !user.assigned_class) {
+      return res.status(403).json({ error: 'Report access requires an assigned physical class.' });
+    }
+    const { rows: memberships } = await query(
+      `SELECT 1
+       FROM report_roster_memberships m
+       JOIN students s ON s.id=m.student_id
+       WHERE m.student_id=$1 AND m.status='active'
+         AND m.class_name=$2 AND s.school_code=$3 AND s.deleted_at IS NULL`,
+      [req.params.id, user.assigned_class, user.school_code],
+    );
+    if (!memberships[0]) return res.status(404).json({ error: 'Student not found' });
+  }
   const params: unknown[] = [req.params.id];
   let schoolClause = '';
   if (user.role !== 'admin' || user.school_code) {
