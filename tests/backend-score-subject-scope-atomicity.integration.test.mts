@@ -117,6 +117,15 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     studentIds.push(...studentRows.slice(0, 3).map(result => String(result.rows[0].id)));
     rollbackIds.push(...studentRows.slice(3).map(result => String(result.rows[0].id)));
 
+    for (const [index, className] of ['Primary 4', 'Primary 5', 'Primary 4'].entries()) {
+      await query(
+        `INSERT INTO report_roster_memberships
+           (student_id,class_name,source_class_name,status)
+         VALUES($1,$2,$2,'active')`,
+        [studentIds[index], className],
+      );
+    }
+
     const started = await startServer();
     server = started.server;
     const headers = (token: string) => ({
@@ -253,6 +262,17 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
       { headers: { Authorization: `Bearer ${classTeacher.token}` } },
     );
     assert.equal(rawScores.status, 403, 'teachers access score data through the scoped report endpoint only');
+
+    const teacherReport = await fetch(
+      `${started.baseUrl}/report/${studentIds[0]}?term_id=${termIds[0]}`,
+      { headers: { Authorization: `Bearer ${classTeacher.token}` } },
+    );
+    assert.equal(teacherReport.status, 200, 'teacher can generate a report for an active student in the assigned physical class');
+    const outOfClassReport = await fetch(
+      `${started.baseUrl}/report/${studentIds[1]}?term_id=${termIds[0]}`,
+      { headers: { Authorization: `Bearer ${classTeacher.token}` } },
+    );
+    assert.equal(outOfClassReport.status, 404, 'teacher cannot generate a report for a student outside the assigned physical class');
   } finally {
     if (triggerCreated) {
       await query('DROP TRIGGER IF EXISTS bsec20_reject_second_score ON scores').catch(() => undefined);
@@ -265,6 +285,8 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     const allStudentIds = [...studentIds, ...rollbackIds];
     if (allStudentIds.length) {
       await query('DELETE FROM scores WHERE student_id=ANY($1::uuid[])', [allStudentIds]);
+      await query('DELETE FROM report_roster_membership_events WHERE student_id=ANY($1::uuid[])', [allStudentIds]);
+      await query('DELETE FROM report_roster_memberships WHERE student_id=ANY($1::uuid[])', [allStudentIds]);
       await query('DELETE FROM students WHERE id=ANY($1::uuid[])', [allStudentIds]);
     }
     await query('DELETE FROM teacher_subjects WHERE user_id=ANY($1::uuid[])', [[subjectTeacher.id, classTeacher.id]]);
