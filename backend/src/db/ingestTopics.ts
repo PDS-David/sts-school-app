@@ -386,7 +386,7 @@ export interface ParsedTopic {
 // can't match. This catches that shape specifically: a standalone line
 // containing ONLY a number 1-20 (optionally a range like "1&2"), and
 // nothing else on that line.
-const BARE_NUMBER_LINE = /^[ \t]*(\d{1,2}(?:\s*(?:&|and|,|-|/)\s*\d{1,2})?)[ \t]*$/gim;
+const BARE_NUMBER_LINE = /^[ \t]*(\d{1,2}(?:\s*(?:&|and|,|-|\/)\s*\d{1,2})?)[ \t]*$/gim;
 
 export function parseTopics(text: string): ParsedTopic[] {
   const rawMatches = [...text.matchAll(WEEK_MARKER)].filter(m => !isSchemeWorkWeekHeader(text, m.index!, m[0]));
