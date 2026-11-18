@@ -1,6 +1,18 @@
 name: Backend score subject scope and batch atomicity
 
 on:
+  push:
+    branches: [master]
+    paths:
+      - "backend/src/routes/scores.ts"
+      - "backend/src/utils/grades.ts"
+      - "tests/backend-grades.test.mts"
+      - "backend/src/utils/grades.ts"
+      - "backend/src/middleware/auth.ts"
+      - "backend/src/utils/authClaims.ts"
+      - "tests/backend-score-subject-scope-atomicity.integration.test.mts"
+      - "tests/backend-grades.test.mts"
+      - ".github/workflows/backend-score-subject-scope-atomicity.yml"
   pull_request:
     branches: [master]
     paths:
@@ -24,7 +36,7 @@ jobs:
     timeout-minutes: 15
     services:
       postgres:
-        image: postgres:16
+        image: postgres:18
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
@@ -53,5 +65,7 @@ jobs:
         run: npm run db:bootstrap --workspace=backend
       - name: Run score authorization and transaction regressions
         run: node --import tsx --test tests/backend-score-subject-scope-atomicity.integration.test.mts
+      - name: Test deterministic grade boundaries and report remarks
+        run: node --import tsx --test tests/backend-grades.test.mts
       - name: Typecheck backend
         run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
