@@ -10,6 +10,9 @@ const questionBankRoute = await readFile(new URL('../backend/src/routes/question
 const teacherReviewScreen = await readFile(new URL('../mobile/src/screens/teacher/TeacherQuestionReviewScreen.tsx', import.meta.url), 'utf8');
 const teacherMore = await readFile(new URL('../mobile/src/screens/teacher/TeacherMoreScreen.tsx', import.meta.url), 'utf8');
 const teacherTabs = await readFile(new URL('../mobile/src/navigation/TeacherTabs.tsx', import.meta.url), 'utf8');
+const adminExamScreen = await readFile(new URL('../mobile/src/screens/admin/AdminOnlineExamsScreen.tsx', import.meta.url), 'utf8');
+const adminTabs = await readFile(new URL('../mobile/src/navigation/AdminTabs.tsx', import.meta.url), 'utf8');
+const adminAssessments = await readFile(new URL('../mobile/src/screens/AssessmentsScreen.tsx', import.meta.url), 'utf8');
 const mobileList = await readFile(new URL('../mobile/src/screens/OnlineExamsScreen.tsx', import.meta.url), 'utf8');
 const mobileHome = await readFile(new URL('../mobile/src/screens/student/StudentAssessmentsHomeScreen.tsx', import.meta.url), 'utf8');
 const mobileAttempt = await readFile(new URL('../mobile/src/screens/OnlineExamAttemptScreen.tsx', import.meta.url), 'utf8');
@@ -118,4 +121,14 @@ test('teacher UI exposes question review only through the teacher navigation and
   assert.match(teacherReviewScreen, /notes\.length<10/);
   assert.match(teacherMore, /label: 'Review Questions'/);
   assert.match(teacherTabs, /TeacherQuestionReviewScreen/);
+});
+
+test('admin app can create, publish, list and manually review formal examinations', () => {
+  assert.match(adminExamScreen, /api\.get\('\/online-exams\/admin\/exams'/);
+  assert.match(adminExamScreen, /api\.post\('\/online-exams\/admin\/exams'/);
+  assert.match(adminExamScreen, /api\.post\('\/online-exams\/admin\/exams\/'\+exam\.id\+'\/publish'/);
+  assert.match(adminExamScreen, /api\.get\('\/online-exams\/admin\/exams\/'\+exam\.id\+'\/attempts'/);
+  assert.match(adminExamScreen, /api\.put\('\/online-exams\/admin\/attempts\/'\+selectedAttempt\.attempt_id/);
+  assert.match(adminTabs, /name="FormalOnlineExams" component=\{AdminOnlineExamsScreen\}/);
+  assert.match(adminAssessments, /navigate\('FormalOnlineExams'\)/);
 });
