@@ -42,6 +42,9 @@ export default function ReportRemarksScreen() {
     let cancelled = false;
     setRecordLoading(true);
     setNotice('');
+    setError('');
+    setClassTeacherRemark('');
+    setAdminRemark('');
     api.get(`/attendance/class-records/${studentId}/${termId}`)
       .then(({ data }) => {
         if (cancelled) return;
@@ -56,7 +59,7 @@ export default function ReportRemarksScreen() {
   }, [studentId, termId]);
 
   const save = async () => {
-    if (!studentId || !termId || saving) return;
+    if (!studentId || !termId || saving || recordLoading || !!error) return;
     setSaving(true);
     setNotice('');
     setError('');
@@ -104,7 +107,7 @@ export default function ReportRemarksScreen() {
             <TextInput value={adminRemark} editable={false}
               multiline textAlignVertical="top" style={[styles.textArea, styles.readOnly]}
               placeholder="No principal's or head teacher's remark recorded yet" />
-            <Btn label={saving ? 'Saving…' : 'Save Report Remarks'} onPress={save} loading={saving} />
+            <Btn label={saving ? 'Saving…' : 'Save Report Remarks'} onPress={save} loading={saving} disabled={saving || recordLoading || !!error || !studentId || !termId} />
             {!!notice && <Text style={styles.success}>{notice}</Text>}
             {!!error && <Text style={styles.error}>{error}</Text>}
           </Card>
