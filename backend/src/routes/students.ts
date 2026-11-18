@@ -73,9 +73,8 @@ router.get('/', requirePerm('students.read'), async (req, res) => {
   // profiles never appear in the physical student-report roster.
   const reportRosterJoin = " JOIN report_roster_memberships rrm ON rrm.student_id=s.id AND rrm.status='active'";
   const teacherPersonalFields = user.role === 'teacher' ? '' : 's.gender,s.date_of_birth,';
-  let sql = `SELECT s.id,s.admission_number,s.full_name,
-                    rrm.class_name AS class_name,
-                    ${teacherPersonalFields}s.school_code,s.created_at
+  const teacherProjection = user.role === 'teacher' ? 's.id,s.admission_number,s.full_name,rrm.class_name AS class_name' : `s.id,s.admission_number,s.full_name,rrm.class_name AS class_name,${teacherPersonalFields}s.school_code,s.created_at`;
+  let sql = `SELECT ${teacherProjection}
              FROM students s${reportRosterJoin}
              WHERE s.deleted_at IS NULL`;
   const params: unknown[] = [];
@@ -83,7 +82,12 @@ router.get('/', requirePerm('students.read'), async (req, res) => {
   if (effectiveSchool) { params.push(effectiveSchool); sql += ` AND s.school_code=$${params.length}`; }
   if (effectiveClass) {
     params.push(effectiveClass);
-    sql += ` AND rrm.class_name=$${params.length}`;
+    sql += ` AND rrm.class_name=${params.length}`;
+  } else if (user.role === 'teacher' && !user.assigned_class) {
+    const assignedClasses = user.assigned_class_names ?? [];
+    if (!assignedClasses.length) return res.status(403).json({ error: 'No classes are assigned to this subject teacher.' });
+    params.push(assignedClasses);
+    sql += ` AND rrm.class_name=ANY(${params.length}::text[])`;
   }
   if (search) { params.push(`%${search}%`); sql += ` AND s.full_name ILIKE $${params.length}`; }
 
@@ -191,16 +195,17 @@ router.get('/:id', requirePerm('students.read'), async (req, res) => {
     if (!reportMemberships[0]) return res.status(404).json({ error: 'Student not found' });
   }
   if (user.role === 'teacher') {
-    if (!user.school_code || !user.assigned_class) {
-      return res.status(403).json({ error: 'Report access requires an assigned physical class.' });
+    const allowedClasses = user.assigned_class ? [user.assigned_class] : (user.assigned_class_names ?? []);
+    if (!user.school_code || !allowedClasses.length) {
+      return res.status(403).json({ error: 'Report access requires assigned classes.' });
     }
     const { rows: memberships } = await query(
       `SELECT m.class_name
        FROM report_roster_memberships m
        JOIN students s ON s.id=m.student_id
        WHERE m.student_id=$1 AND m.status='active'
-         AND m.class_name=$2 AND s.school_code=$3 AND s.deleted_at IS NULL`,
-      [req.params.id, user.assigned_class, user.school_code],
+         AND m.class_name=ANY($2::text[]) AND s.school_code=$3 AND s.deleted_at IS NULL`,
+      [req.params.id, allowedClasses, user.school_code],
     );
     if (!memberships[0]) return res.status(404).json({ error: 'Student not found' });
     teacherReportClassName = memberships[0].class_name;
@@ -218,7 +223,9 @@ router.get('/:id', requirePerm('students.read'), async (req, res) => {
   if (teacherReportClassName) params.push(teacherReportClassName);
   const teacherClassSelect = teacherReportClassName ? '$' + params.length : 's.class_name';
   const teacherQuery = teacherReportClassName
-    ? 'SELECT s.id,s.admission_number,s.full_name,s.gender,s.date_of_birth,' + teacherClassSelect + ' AS class_name,s.school_code,s.created_at FROM students s WHERE s.id=$1' + schoolClause + deletedClause
+    ? (user.role === 'teacher' && !user.assigned_class
+        ? 'SELECT s.id,s.admission_number,s.full_name,' + teacherClassSelect + ' AS class_name FROM students s WHERE s.id=$1' + schoolClause + deletedClause
+        : 'SELECT s.id,s.admission_number,s.full_name,s.gender,s.date_of_birth,' + teacherClassSelect + ' AS class_name,s.school_code,s.created_at FROM students s WHERE s.id=$1' + schoolClause + deletedClause)
     : `SELECT s.*,
               lu.username AS login_username,
               array_agg(json_build_object('parent_id',pw.parent_id,'name',pu.full_name,'phone',pu.phone))
