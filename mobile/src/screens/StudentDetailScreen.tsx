@@ -112,7 +112,7 @@ export default function StudentDetailScreen({ route, navigation }: any) {
         student_id: studentId,
         term_id: report.term.id,
         class_teacher_remark: ctRemark || null,
-        admin_remark: isAdmin ? (admRemark || null) : undefined,
+        admin_remark: isTeacher ? (admRemark || null) : undefined,
       });
       Alert.alert('Saved', 'Remarks saved successfully.');
       fetch();
@@ -405,8 +405,8 @@ export default function StudentDetailScreen({ route, navigation }: any) {
         </Card>
       )}
 
-      {/* Remarks are admin-managed; teachers generate reports without editing source data. */}
-      {isAdmin && term && (
+      {/* Teachers and administrators may edit every physical report remark field. */}
+      {isTeacher && term && (
         <Card>
           <SectionHeader title="Remarks" />
           <Input
@@ -417,7 +417,7 @@ export default function StudentDetailScreen({ route, navigation }: any) {
             numberOfLines={2}
             placeholder="e.g. Hardworking and focused…"
           />
-          {isAdmin && (
+          {isTeacher && (
             <Input
               label="Head Teacher / Principal Remark"
               value={admRemark}
