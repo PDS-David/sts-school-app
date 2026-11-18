@@ -151,6 +151,8 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       const created=await request('/online-exams/admin/exams','POST',adminToken,examDraft,school);
       assert.equal(created.status,201);
       const examId=created.data.exam.id;
+      const adminExams=await request('/online-exams/admin/exams','GET',adminToken,undefined,school);
+      assert.equal(adminExams.status,200);assert.equal(adminExams.data.exams.length,1);assert.equal(adminExams.data.exams[0].id,examId);
       const published=await request('/online-exams/admin/exams/'+examId+'/publish','POST',adminToken,{},school);
       assert.equal(published.status,200);assert.equal(published.data.eligible_candidates,1);
 
