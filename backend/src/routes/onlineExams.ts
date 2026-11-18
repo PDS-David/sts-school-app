@@ -13,6 +13,49 @@ const EXAM_CLASSES = new Set(['JSS 3','SS 1','SS 2','SS 3']);
 const BOARDS = new Set(['WAEC','NECO','JAMB']);
 const clean = (v: unknown) => String(v ?? '').trim().toLocaleLowerCase().replace(/\s+/g,' ');
 
+type MarkingRubricCriterion = { id: string; description: string; max_marks: number };
+
+function validateMarkingRubric(value: unknown, maximum: number): MarkingRubricCriterion[] | null {
+  if (!Array.isArray(value) || value.length < 1 || value.length > 20) return null;
+  const criteria: MarkingRubricCriterion[] = [];
+  const ids = new Set<string>();
+  for (const raw of value as any[]) {
+    if (!raw || typeof raw.id !== 'string' || !/^[a-z0-9_-]{1,40}$/i.test(raw.id) ||
+        ids.has(raw.id) || typeof raw.description !== 'string' ||
+        raw.description.trim().length < 5 || raw.description.trim().length > 500 ||
+        !Number.isFinite(Number(raw.max_marks)) || Number(raw.max_marks) <= 0 ||
+        Number(raw.max_marks) > maximum) return null;
+    ids.add(raw.id);
+    criteria.push({ id: raw.id, description: raw.description.trim(), max_marks: Number(raw.max_marks) });
+  }
+  const total = criteria.reduce((sum, item) => sum + item.max_marks, 0);
+  return Math.abs(total - maximum) <= 0.01 ? criteria : null;
+}
+
+function validateAiRubricMark(value: any, rubric: MarkingRubricCriterion[], maximum: number) {
+  if (!value || !Number.isFinite(Number(value.points)) || Number(value.points) < 0 ||
+      Number(value.points) > maximum || !Number.isFinite(Number(value.confidence)) ||
+      Number(value.confidence) < 0 || Number(value.confidence) > 1 ||
+      typeof value.feedback !== 'string' || value.feedback.trim().length < 5 ||
+      !Array.isArray(value.criterion_scores) || value.criterion_scores.length !== rubric.length) return null;
+  const scores = new Map<string, { criterion_id: string; points: number; rationale: string }>();
+  for (const item of value.criterion_scores) {
+    if (!item || typeof item.criterion_id !== 'string' || scores.has(item.criterion_id) ||
+        !Number.isFinite(Number(item.points)) || typeof item.rationale !== 'string' ||
+        item.rationale.trim().length < 3) return null;
+    scores.set(item.criterion_id, { criterion_id: item.criterion_id, points: Number(item.points), rationale: item.rationale.trim() });
+  }
+  let sum = 0;
+  for (const criterion of rubric) {
+    const score = scores.get(criterion.id);
+    if (!score || score.points < 0 || score.points > criterion.max_marks) return null;
+    sum += score.points;
+  }
+  if (Math.abs(sum - Number(value.points)) > 0.01) return null;
+  return { points: Number(value.points), confidence: Number(value.confidence), feedback: value.feedback.trim(),
+    criterion_scores: rubric.map(item => scores.get(item.id)!) };
+}
+
 function schoolForAdmin(user: any): string | null {
   return user.selected_school_code || user.school_code || null;
 }
@@ -295,6 +338,12 @@ router.post('/admin/exams', requireRole('admin'), async (req, res) => {
       const byId=new Map(qs.map((q:any)=>[q.id,q]));
       for(const item of allItems){
         const q:any=byId.get(item.question_id);
+        const itemMarks=Number(item.marks??q.marks);
+        if(q.question_type!=='mcq'){
+          const rubric=validateMarkingRubric(item.marking_rubric,itemMarks);
+          if(!rubric) return {error:'Every written-response question requires a marking_rubric whose criterion marks add up exactly to the question marks.',status:400};
+          item.marking_rubric=rubric;
+        }
         if(q.board!==b.board || !['GENERAL',b.board].includes(q.source_board) ||
            !['licensed','public_domain','original_generated'].includes(q.rights_status) ||
            q.rights_status!==q.source_rights || typeof q.rights_evidence!=='string' || q.rights_evidence.trim().length<12 ||
@@ -326,7 +375,7 @@ router.post('/admin/exams', requireRole('admin'), async (req, res) => {
           exam_year:q.exam_year,source_id:q.source_id,source_name:q.source_name,source_url:q.source_url,rights_evidence:q.rights_evidence,
           source_locator:q.source_locator,session_exam_year:b.exam_year??null,covered_topic_id:parseLessonLocator(q.source_locator)?.kind==='school_topic'?parseLessonLocator(q.source_locator)?.topic_id:null,covered_lesson_key:parseLessonLocator(q.source_locator)?.kind==='package_lesson'?parseLessonLocator(q.source_locator)?.lesson_key:null,covered_lesson_class:parseLessonLocator(q.source_locator)?.kind==='package_lesson'?parseLessonLocator(q.source_locator)?.class_name:null,lesson_sources:parseLessonLocator(q.source_locator)?.lesson_sources??null,rights_status:q.rights_status,content_origin:q.content_origin,paper:q.paper,question_number:q.question_number};
         const snapshot={stem:q.stem,question_type:q.question_type,options:q.options,correct_answer:q.correct_answer,
-          explanation:q.explanation,topic_id:q.topic_id,topic_name:q.topic_name??null};
+          explanation:q.explanation,marking_rubric:item.marking_rubric??null,topic_id:q.topic_id,topic_name:q.topic_name??null};
         await client.query(`
           INSERT INTO online_exam_questions(exam_id,section_id,question_bank_question_id,position,marks,question_snapshot,provenance)
           VALUES($1,$2,$3,$4,$5,$6::jsonb,$7::jsonb)
@@ -582,35 +631,66 @@ router.post('/attempts/:attemptId/submit',requireRole('student'),async(req,res)=
   const graded:any[]=[];
   for(const q of claimed.questions){
     const saved:any=answerMap.get(q.id);
-    if(!saved){graded.push({id:q.id,awarded:0,status:'auto_marked',feedback:null});continue;}
     const snapshot=q.question_snapshot;
-    let awarded:number|null=0, marking='auto_marked', feedback:string|null=null;
+    if(!saved){
+      graded.push({id:q.id,awarded:0,marking:'auto_marked',feedback:'No response submitted; zero marks awarded.',
+        confidence:1,details:{method:'unanswered',criterion_scores:[]}});
+      continue;
+    }
+    let awarded:number|null=0, marking='auto_marked', feedback:string|null=null, confidence:number|null=null;
+    let details:any={method:'objective_key'};
     if(snapshot.question_type==='mcq'){
       const correct=snapshot.correct_answer;
       const expected=typeof correct==='string'?correct:(correct?.key??correct?.value??'');
       const actual=typeof saved.response==='string'?saved.response:(saved.response?.key??saved.response?.value??'');
-      awarded=clean(actual)===clean(expected)?Number(q.marks):0;
-      feedback=awarded? 'Correct answer.':'Review this question and its explanation after the examination.';
+      const isCorrect=clean(actual)===clean(expected);
+      awarded=isCorrect?Number(q.marks):0;
+      feedback=(isCorrect?'Correct. ':'Incorrect. ')+String(snapshot.explanation??'Review the lesson and the worked examples.');
+      confidence=1;
+      details={method:'objective_key',is_correct:isCorrect};
     } else {
+      const rubric=Array.isArray(snapshot.marking_rubric)?snapshot.marking_rubric:[];
       try{
-        const prompt=`Mark this examination response using the question, expected answer/rubric and marking guidance.\nQuestion: ${snapshot.stem}\nExpected answer or rubric: ${JSON.stringify(snapshot.correct_answer)}\nGuidance: ${snapshot.explanation}\nCandidate response: ${typeof saved.response==='string'?saved.response:JSON.stringify(saved.response)}\nMaximum marks: ${q.marks}\nReturn JSON: {"points":number,"feedback":"brief evidence-based feedback"}`;
-        const marked:any=await generateJSON(prompt,'essay-mark',{userId:req.user!.id,role:req.user!.role});
-        awarded=Math.max(0,Math.min(Number(q.marks),Number(marked?.points)||0));
-        feedback=typeof marked?.feedback==='string'?marked.feedback:null;
-        marking='ai_marked';
+        if(!rubric.length) throw new Error('No approved marking rubric is attached to this written-response question.');
+        const prompt=[
+          'Mark the candidate response strictly against the supplied criterion-by-criterion rubric. Do not award credit for unsupported claims.',
+          'The criterion scores must sum to the total points. If evidence is insufficient, set confidence below 0.75.',
+          'Question: '+snapshot.stem,
+          'Expected answer/reference: '+JSON.stringify(snapshot.correct_answer),
+          'Marking guidance: '+snapshot.explanation,
+          'Rubric: '+JSON.stringify(rubric),
+          'Candidate response: '+(typeof saved.response==='string'?saved.response:JSON.stringify(saved.response)),
+          'Maximum marks: '+q.marks,
+          'Return JSON: {"points":number,"confidence":number_between_0_and_1,"feedback":"evidence-based feedback","criterion_scores":[{"criterion_id":"rubric id","points":number,"rationale":"evidence from response"}]}'
+        ].join('\\n');
+        const raw:any=await generateJSON(prompt,'essay-mark',{userId:req.user!.id,role:req.user!.role});
+        const marked=validateAiRubricMark(raw,rubric,Number(q.marks));
+        if(!marked) throw new Error('AI marking output did not satisfy the rubric contract.');
+        confidence=marked.confidence;
+        feedback=marked.feedback;
+        details={method:'ai_rubric',criterion_scores:marked.criterion_scores};
+        if(marked.confidence<0.75){
+          awarded=null; marking='pending_review'; pending=true;
+          feedback='AI confidence is below the review threshold. '+marked.feedback;
+        } else {
+          awarded=marked.points; marking='ai_marked';
+        }
       }catch{
         awarded=null; marking='pending_review'; pending=true;
+        feedback='This written response requires examiner review because automated rubric marking was unavailable or inconclusive.';
+        details={method:'manual_review_required',criterion_scores:[]};
       }
     }
     if(awarded!=null) score+=awarded;
-    graded.push({id:q.id,awarded,marking,feedback});
+    graded.push({id:q.id,awarded,marking,feedback,confidence,details});
   }
   const final=await withTransaction(async client=>{
     for(const item of graded){
       await client.query(`
-        UPDATE online_exam_responses SET awarded_marks=$3,marking_status=$4,feedback=$5
+        UPDATE online_exam_responses SET awarded_marks=$3,marking_status=$4,feedback=$5,
+          marking_confidence=$6,marking_details=$7::jsonb
          WHERE attempt_id=$1 AND exam_question_id=$2
-      `,[claimed.attempt.id,item.id,item.awarded,item.marking,item.feedback]);
+      `,[claimed.attempt.id,item.id,item.awarded,item.marking,item.feedback,item.confidence,JSON.stringify(item.details??{})]);
     }
     const status=pending?'under_review':'submitted';
     const {rows}=await client.query(`
@@ -655,7 +735,7 @@ router.get('/admin/attempts/:attemptId/responses',requireRole('admin'),async(req
   if(!attempts[0]) return res.status(404).json({error:'Examination attempt not found in the selected school.'});
   const {rows}=await query(`
     SELECT q.id AS question_id,q.question_snapshot->>'stem' AS stem,q.marks,
-           r.response,r.awarded_marks,r.marking_status,r.feedback
+           r.response,r.awarded_marks,r.marking_status,r.feedback,r.marking_confidence,r.marking_details
       FROM online_exam_questions q
       JOIN online_exam_sections s ON s.id=q.section_id
       LEFT JOIN online_exam_responses r ON r.exam_question_id=q.id AND r.attempt_id=$1
@@ -690,9 +770,10 @@ router.put('/admin/attempts/:attemptId/responses/:questionId/mark',requireRole('
     if(response.marking_status!=='pending_review') return {status:409,error:'Only responses pending manual review can be marked here.'};
     if(awarded>Number(response.marks)) return {status:400,error:'Awarded marks cannot exceed this question’s available marks.'};
     await client.query(`
-      UPDATE online_exam_responses SET awarded_marks=$3,marking_status='manual_marked',feedback=$4
+      UPDATE online_exam_responses SET awarded_marks=$3,marking_status='manual_marked',feedback=$4,
+        marking_confidence=NULL,marking_details=$5::jsonb
        WHERE attempt_id=$1 AND exam_question_id=$2
-    `,[attempt.id,response.exam_question_id,awarded,feedback||null]);
+    `,[attempt.id,response.exam_question_id,awarded,feedback||null,JSON.stringify({method:'manual_examiner',awarded_marks:awarded})]);
     const {rows: totals}=await client.query(`
       SELECT COALESCE(SUM(COALESCE(awarded_marks,0)),0) AS score,
              COUNT(*) FILTER (WHERE marking_status='pending_review')::int AS pending
@@ -727,7 +808,7 @@ router.get('/attempts/:attemptId/results',requireRole('student'),async(req,res)=
   `,[req.params.attemptId,student.id]);
   if(!rows[0]) return res.status(404).json({error:'Result not found.'});
   const {rows: answers}=await query(`
-    SELECT q.id,q.question_snapshot->>'stem' AS stem,r.response,r.awarded_marks,r.marking_status,r.feedback,q.marks
+    SELECT q.id,q.question_snapshot->>'stem' AS stem,r.response,r.awarded_marks,r.marking_status,r.feedback,r.marking_confidence,r.marking_details,q.marks
       FROM online_exam_questions q
       JOIN online_exam_sections s ON s.id=q.section_id
       LEFT JOIN online_exam_responses r
