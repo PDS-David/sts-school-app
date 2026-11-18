@@ -168,7 +168,7 @@ export default function StudentDetailScreen({ route, navigation }: any) {
         student_id: studentId,
         term_id: report.term.id,
         class_teacher_remark: ctRemark,
-        admin_remark: isTeacher ? admRemark : undefined,
+        admin_remark: isAdmin ? admRemark : undefined,
       });
       Alert.alert('Saved', 'Remarks saved successfully.');
       fetch();
@@ -484,7 +484,7 @@ export default function StudentDetailScreen({ route, navigation }: any) {
         </Card>
       )}
 
-      {/* Teachers and administrators may edit every physical report remark field. */}
+      {/* Class teachers edit their own remark; only administrators edit the principal's remark. */}
       {isTeacher && term && (
         <Card>
           <SectionHeader title="Remarks" />
@@ -496,7 +496,7 @@ export default function StudentDetailScreen({ route, navigation }: any) {
             numberOfLines={2}
             placeholder="e.g. Hardworking and focused…"
           />
-          {isTeacher && (
+          {isAdmin && (
             <Input
               label="Head Teacher / Principal Remark"
               value={admRemark}
@@ -505,6 +505,16 @@ export default function StudentDetailScreen({ route, navigation }: any) {
               numberOfLines={2}
               placeholder="e.g. Excellent result…"
             />
+          )}
+          {isClassTeacher && (
+            <View style={{ marginBottom: Spacing.md }}>
+              <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm, fontWeight: '600', marginBottom: Spacing.xs }}>
+                Head Teacher / Principal Remark (view only)
+              </Text>
+              <Text style={{ color: Colors.text, backgroundColor: Colors.background, borderRadius: Radius.md, padding: Spacing.sm, minHeight: 52 }}>
+                {admRemark || 'No principal remark recorded yet.'}
+              </Text>
+            </View>
           )}
           <Btn
             label={saving ? 'Saving…' : 'Save Remarks'}
