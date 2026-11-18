@@ -290,13 +290,9 @@ test('school-bound administrators are confined to their student roster and mutat
       server.closeAllConnections();
       await new Promise<void>(resolve => server!.close(() => resolve()));
     }
-    await query('DELETE FROM parent_wards WHERE student_id=ANY($1::uuid[]) OR parent_id=ANY($2::uuid[])',
-      [studentIds, [parent.id]]);
-    if (studentIds.length) {
-      await query('DELETE FROM report_roster_membership_events WHERE student_id=ANY($1::uuid[])', [studentIds]);
-      await query('DELETE FROM report_roster_memberships WHERE student_id=ANY($1::uuid[])', [studentIds]);
-      await query('DELETE FROM students WHERE id=ANY($1::uuid[])', [studentIds]);
-    }
-    await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [userIds]);
+    // This test exercises the append-only physical-roster event ledger.
+    // Keep its uniquely identified test rows and related accounts in the
+    // disposable CI database; deleting the ledger entries is intentionally
+    // prohibited by the database's append-only trigger.
   }
 });
