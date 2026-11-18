@@ -95,8 +95,17 @@ export async function checkTeacherStudentScope(
   if (student.school_code !== user.school_code) {
     return { status: 403, error: "You can't write records for a student outside your school" };
   }
-  if (user.assigned_class && student.class_name !== user.assigned_class) {
-    return { status: 403, error: "You can't write records for a student outside your assigned class" };
+  if (!user.assigned_class) {
+    return { status: 403, error: 'This action requires an assigned physical class.' };
+  }
+  const { rows: rosterRows } = await query(
+    `SELECT class_name FROM report_roster_memberships
+     WHERE student_id=$1 AND status='active'`,
+    [studentId],
+  );
+  const reportClassName = rosterRows[0]?.class_name as string | undefined;
+  if (!reportClassName || reportClassName !== user.assigned_class) {
+    return { status: 403, error: "You can't write report remarks outside your assigned physical class" };
   }
 
   if (termId !== undefined) {
@@ -104,7 +113,7 @@ export async function checkTeacherStudentScope(
       `SELECT cl.locked_at, u.full_name AS locked_by_name
        FROM class_locks cl LEFT JOIN users u ON u.id = cl.locked_by
        WHERE cl.school_code=$1 AND cl.class_name=$2 AND cl.term_id=$3`,
-      [student.school_code, student.class_name, termId],
+      [student.school_code, reportClassName, termId],
     );
     const lock = lockRows[0];
     if (lock) {
