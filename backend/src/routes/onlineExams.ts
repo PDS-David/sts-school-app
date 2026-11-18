@@ -655,8 +655,9 @@ router.get('/admin/attempts/:attemptId/responses',requireRole('admin'),async(req
     SELECT q.id AS question_id,q.question_snapshot->>'stem' AS stem,q.marks,
            r.response,r.awarded_marks,r.marking_status,r.feedback
       FROM online_exam_questions q
+      JOIN online_exam_sections s ON s.id=q.section_id
       LEFT JOIN online_exam_responses r ON r.exam_question_id=q.id AND r.attempt_id=$1
-     WHERE q.exam_id=$2 ORDER BY q.position
+     WHERE q.exam_id=$2 ORDER BY s.position,q.position
   `,[req.params.attemptId,attempts[0].exam_id]);
   return res.json({attempt:attempts[0],responses:rows});
 });
