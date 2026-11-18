@@ -85,6 +85,16 @@ export async function checkTeacherStudentScope(
     if (termScopeError) return termScopeError;
   }
 
+  // Score, attendance and report mutations are only valid for physical
+  // report-roster students. Online-only learning profiles have no membership.
+  const { rows: rosterRows } = await query(
+    `SELECT class_name FROM report_roster_memberships
+     WHERE student_id=$1 AND status='active'`,
+    [studentId],
+  );
+  const reportClassName = rosterRows[0]?.class_name as string | undefined;
+  if (!reportClassName) return { status: 404, error: 'Student is not in an active physical report roster' };
+
   if (user.role === 'admin') return null;
   if (user.role !== 'teacher') {
     // Shouldn't happen — the routes calling this are already gated by
@@ -98,13 +108,7 @@ export async function checkTeacherStudentScope(
   if (!user.assigned_class) {
     return { status: 403, error: 'This action requires an assigned physical class.' };
   }
-  const { rows: rosterRows } = await query(
-    `SELECT class_name FROM report_roster_memberships
-     WHERE student_id=$1 AND status='active'`,
-    [studentId],
-  );
-  const reportClassName = rosterRows[0]?.class_name as string | undefined;
-  if (!reportClassName || reportClassName !== user.assigned_class) {
+  if (reportClassName !== user.assigned_class) {
     return { status: 403, error: "You can't write report remarks outside your assigned physical class" };
   }
 
