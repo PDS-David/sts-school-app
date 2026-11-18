@@ -337,7 +337,7 @@ router.post('/admin/exams', requireRole('admin'), async (req, res) => {
       `,[exam.id,user.id,JSON.stringify({question_count:allItems.length,section_count:b.sections.length,total_marks:total})]);
       return {exam,total_marks:total,question_count:allItems.length};
     });
-    if('error' in result) return res.status(result.status).json({error:result.error});
+    if('error' in result) return res.status(400).json({error:result.error});
     return res.status(201).json(result);
   } catch(error:any) {
     console.error('[online-exams] create failed',error);
@@ -551,7 +551,7 @@ router.put('/attempts/:attemptId/responses/:questionId',requireRole('student'),a
 router.post('/attempts/:attemptId/submit',requireRole('student'),async(req,res)=>{
   const student=await getStudent(req);
   if(!student) return res.status(404).json({error:'Student record not found.'});
-  const claimed=await withTransaction(async client=>{
+  const claimed:any=await withTransaction(async client=>{
     const {rows}=await client.query(
       'SELECT * FROM online_exam_attempts WHERE id=$1 AND student_id=$2 FOR UPDATE',[req.params.attemptId,student.id]);
     const attempt=rows[0];
