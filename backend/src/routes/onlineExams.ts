@@ -216,7 +216,7 @@ router.post('/admin/exams', requireRole('admin'), async (req, res) => {
         total+=marks;
         const provenance={board:q.board,subject:b.subject_name,class_name:b.class_name,examination_type:b.examination_type,
           exam_year:q.exam_year,source_id:q.source_id,source_name:q.source_name,source_url:q.source_url,
-          source_locator:q.source_locator,rights_status:q.rights_status,content_origin:q.content_origin,paper:q.paper,question_number:q.question_number};
+          source_locator:q.source_locator,covered_topic_id:typeof q.source_locator==='string'&&q.source_locator.startsWith('school-topic:')?Number(q.source_locator.slice('school-topic:'.length)):null,rights_status:q.rights_status,content_origin:q.content_origin,paper:q.paper,question_number:q.question_number};
         const snapshot={stem:q.stem,question_type:q.question_type,options:q.options,correct_answer:q.correct_answer,
           explanation:q.explanation,topic_id:q.topic_id,topic_name:q.topic_name??null};
         await client.query(`
@@ -254,6 +254,24 @@ router.post('/admin/exams/:examId/publish',requireRole('admin'),async(req,res)=>
        WHERE school_code=$1 AND class_name=$2 AND deleted_at IS NULL
     `,[exam.school_code,exam.class_name]);
     if(!candidates.length) return {status:409,error:'No active candidates are enrolled in this examination class.'};
+    const {rows: generatedTopics}=await client.query(`
+      SELECT DISTINCT (provenance->>'covered_topic_id')::integer AS topic_id
+        FROM online_exam_questions
+       WHERE exam_id=$1 AND provenance->>'covered_topic_id' IS NOT NULL
+    `,[exam.id]);
+    const coveredTopicIds=generatedTopics.map((row:any)=>Number(row.topic_id));
+    if(coveredTopicIds.length){
+      const {rows: coverage}=await client.query(`
+        SELECT COUNT(DISTINCT st.id)::int AS candidates,
+               COUNT(DISTINCT tc.student_id)::int AS completed
+          FROM students st
+          LEFT JOIN topic_completions tc ON tc.student_id=st.id AND tc.topic_id=ANY($3::int[])
+         WHERE st.school_code=$1 AND st.class_name=$2 AND st.deleted_at IS NULL
+      `,[exam.school_code,exam.class_name,coveredTopicIds]);
+      if(Number(coverage[0]?.completed)!==Number(coverage[0]?.candidates)){
+        return {status:409,error:'One or more current candidates have not completed every lesson used to generate this examination. Update the exam coverage before publishing.'};
+      }
+    }
     for(const candidate of candidates){
       await client.query(`
         INSERT INTO online_exam_candidates(exam_id,student_id,eligible_class)
