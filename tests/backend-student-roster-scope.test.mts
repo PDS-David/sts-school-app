@@ -90,3 +90,29 @@ test('teacher without a school assignment is denied rather than allowed to query
   assert.equal('error' in result, true);
   if ('error' in result) assert.equal(result.status, 403);
 });
+
+
+test('subject teachers are restricted to their explicit multi-class roster assignments', () => {
+  const subjectTeacher: AuthUser = {
+    ...financeAdmin,
+    id: 'subject-teacher-2',
+    username: 'mathematics',
+    role: 'teacher',
+    school_code: 'secondary',
+    assigned_class: null,
+    assigned_class_names: ['JSS 1', 'JSS 2'],
+    assigned_subject_ids: [4],
+  };
+  assert.deepEqual(resolveStudentRosterScope(subjectTeacher, {}), {
+    schoolCode: 'secondary',
+    className: null,
+  });
+  assert.deepEqual(resolveStudentRosterScope(subjectTeacher, { class_name: 'JSS 2' }), {
+    schoolCode: 'secondary',
+    className: 'JSS 2',
+  });
+  assert.deepEqual(resolveStudentRosterScope(subjectTeacher, { class_name: 'SS 1' }), {
+    status: 403,
+    error: 'You can only browse students in your assigned physical class.',
+  });
+});
