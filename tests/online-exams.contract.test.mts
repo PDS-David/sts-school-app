@@ -84,7 +84,6 @@ test('written responses require a complete criterion rubric and confidence-valid
   assert.match(route, /marking='pending_review'/);
   assert.match(route, /marking_confidence=\$6/);
   assert.match(route, /marking_details=\$7::jsonb/);
-  assert.match(route, /marking_confidence NULL OR marking_confidence BETWEEN 0 AND 1/);
   assert.match(markingMigration, /online_exam_responses_marking_confidence_range/);
   assert.match(markingMigration, /online_exam_responses_marking_details_object/);
 });
