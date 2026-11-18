@@ -33,8 +33,8 @@ export default function ClassPracticeScreen({ route }: any) {
     setGenerating(true);setError('');setResult(null);setPracticeSet(null);setQuestions([]);setAnswers({});
     try{
       const {data}=await api.post('/class-practice/sets',{topic_id:Number(topic.id)});
-      setPracticeSet(data.set);setQuestions(data.questions??[]);
-      if(!Array.isArray(data.questions)||data.questions.length<3) throw new Error('The practice set is incomplete. Please retry.');
+      if(!data.set?.id||!Array.isArray(data.questions)||data.questions.length<3) throw new Error('The practice set is incomplete. Please retry.');
+      setPracticeSet(data.set);setQuestions(data.questions);
     }catch(e:any){
       setError(e?.response?.data?.error??e?.message??'Could not generate practice for this completed lesson. Check your connection and retry.');
     }finally{setGenerating(false);}
@@ -53,7 +53,13 @@ export default function ClassPracticeScreen({ route }: any) {
       });
       setResult(data);await loadProgress();
     }catch(e:any){
-      setError(e?.response?.data?.error??'Your answers could not be submitted. Your set remains available; retry when connected.');
+      // A timed-out response may still have committed on the server. Recover
+      // the owner's persisted result before asking the student to retry.
+      try{
+        const {data}=await api.get('/class-practice/sets/'+practiceSet.id);
+        if(data?.result?.submitted){setResult(data.result);await loadProgress();return;}
+      }catch{/* Keep the original submit error when the recovery request also fails. */}
+      setError(e?.response?.data?.error??'Your answers could not be confirmed. Reconnect and retry; completed results are recovered automatically.');
     }finally{setSubmitting(false);}
   };
 
