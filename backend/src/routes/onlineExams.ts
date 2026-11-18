@@ -339,6 +339,14 @@ router.post('/admin/exams', requireRole('admin'), async (req, res) => {
       for(const item of allItems){
         const q:any=byId.get(item.question_id);
         const itemMarks=Number(item.marks??q.marks);
+        const coveredTopicId=Number(item.covered_topic_id);
+        if(!Number.isSafeInteger(coveredTopicId)||coveredTopicId<=0)
+          return {error:'Every formal-exam question must be mapped to a school lesson topic completed by the candidates.',status:400};
+        const {rows:coveredTopics}=await client.query(`
+          SELECT t.id FROM topics t JOIN subjects sub ON sub.id=t.subject_id AND sub.school_code=t.school_code
+           WHERE t.id=$1 AND t.school_code=$2 AND t.class_name=$3 AND sub.name=$4
+        `,[coveredTopicId,schoolCode,b.class_name,b.subject_name.trim()]);
+        if(!coveredTopics[0]) return {error:'The mapped lesson topic must belong to this school, examination class and subject.',status:400};
         if(q.question_type!=='mcq'){
           const rubric=validateMarkingRubric(item.marking_rubric,itemMarks);
           if(!rubric) return {error:'Every written-response question requires a marking_rubric whose criterion marks add up exactly to the question marks.',status:400};
@@ -373,7 +381,7 @@ router.post('/admin/exams', requireRole('admin'), async (req, res) => {
         total+=marks;
         const provenance={board:q.board,subject:b.subject_name,class_name:b.class_name,examination_type:b.examination_type,
           exam_year:q.exam_year,source_id:q.source_id,source_name:q.source_name,source_url:q.source_url,rights_evidence:q.rights_evidence,
-          source_locator:q.source_locator,session_exam_year:b.exam_year??null,covered_topic_id:parseLessonLocator(q.source_locator)?.kind==='school_topic'?parseLessonLocator(q.source_locator)?.topic_id:null,covered_lesson_key:parseLessonLocator(q.source_locator)?.kind==='package_lesson'?parseLessonLocator(q.source_locator)?.lesson_key:null,covered_lesson_class:parseLessonLocator(q.source_locator)?.kind==='package_lesson'?parseLessonLocator(q.source_locator)?.class_name:null,lesson_sources:parseLessonLocator(q.source_locator)?.lesson_sources??null,rights_status:q.rights_status,content_origin:q.content_origin,paper:q.paper,question_number:q.question_number};
+          source_locator:q.source_locator,session_exam_year:b.exam_year??null,covered_topic_id:Number(item.covered_topic_id),covered_lesson_key:parseLessonLocator(q.source_locator)?.kind==='package_lesson'?parseLessonLocator(q.source_locator)?.lesson_key:null,covered_lesson_class:parseLessonLocator(q.source_locator)?.kind==='package_lesson'?parseLessonLocator(q.source_locator)?.class_name:null,lesson_sources:parseLessonLocator(q.source_locator)?.lesson_sources??null,rights_status:q.rights_status,content_origin:q.content_origin,paper:q.paper,question_number:q.question_number};
         const snapshot={stem:q.stem,question_type:q.question_type,options:q.options,correct_answer:q.correct_answer,
           explanation:q.explanation,marking_rubric:item.marking_rubric??null,topic_id:q.topic_id,topic_name:q.topic_name??null};
         await client.query(`
@@ -704,6 +712,29 @@ router.post('/attempts/:attemptId/submit',requireRole('student'),async(req,res)=
     return rows[0];
   });
   return res.json({submitted:true,...final});
+});
+
+router.get('/admin/lesson-topics',requireRole('admin'),async(req,res)=>{
+  const schoolCode=schoolForAdmin(req.user);
+  const className=typeof req.query.class_name==='string'?req.query.class_name:'';
+  const subjectName=typeof req.query.subject_name==='string'?req.query.subject_name.trim():'';
+  if(!schoolCode) return res.status(400).json({error:'Select a school before loading examination lesson coverage.'});
+  if(!EXAM_CLASSES.has(className)||!subjectName)
+    return res.status(400).json({error:'Provide a valid examination class and subject.'});
+  const {rows}=await query(`
+    SELECT t.id,t.title,t.term_id,t.order_index,
+           COUNT(DISTINCT st.id)::int AS candidate_count,
+           COUNT(DISTINCT tc.student_id)::int AS completed_count
+      FROM topics t
+      JOIN subjects sub ON sub.id=t.subject_id AND sub.school_code=t.school_code
+      LEFT JOIN students st ON st.school_code=t.school_code AND st.class_name=t.class_name AND st.deleted_at IS NULL
+      LEFT JOIN topic_completions tc ON tc.topic_id=t.id AND tc.student_id=st.id
+     WHERE t.school_code=$1 AND t.class_name=$2 AND sub.name=$3
+     GROUP BY t.id,t.title,t.term_id,t.order_index
+     ORDER BY t.term_id,t.order_index,t.title
+  `,[schoolCode,className,subjectName]);
+  return res.json({topics:rows.map((row:any)=>({...row,eligible_for_all_candidates:
+    Number(row.candidate_count)>0&&Number(row.completed_count)===Number(row.candidate_count)}))});
 });
 
 router.get('/admin/question-bank/subjects',requireRole('admin'),async(req,res)=>{
