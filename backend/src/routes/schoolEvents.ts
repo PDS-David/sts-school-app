@@ -6,6 +6,12 @@ import { audit } from '../utils/audit.js';
 
 const router = Router();
 router.use(requireAuth);
+router.use((req, res, next) => {
+  if (req.user?.role === 'teacher') {
+    return res.status(403).json({ error: 'Teacher accounts are limited to physical-class report workflows.' });
+  }
+  next();
+});
 
 const EVENT_COLUMNS = 'e.id, e.school_code, e.title, e.description, e.event_type, e.audience_role, e.class_name, e.start_at, e.end_at, e.created_at';
 const RANGE = "e.start_at >= now() - interval '30 days' AND e.start_at <= now() + interval '365 days'";
