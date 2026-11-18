@@ -40,8 +40,8 @@ import { pool } from './pool.js';
 const MAPPING: Record<string, string> = {
   JSS1: 'JSS 1', JSS2: 'JSS 2', JSS3: 'JSS 3',
   SS1: 'SS 1', SS2: 'SS 2', SS3: 'SS 3',
-  'Grade 1': 'PRY 1', 'Grade 2': 'PRY 2', 'Grade 3': 'PRY 3',
-  'Grade 4': 'PRY 4', 'Grade 5': 'PRY 5', 'Grade 6': 'PRY 6',
+  'Grade 1': 'Primary 1', 'Grade 2': 'Primary 2', 'Grade 3': 'Primary 3',
+  'Grade 4': 'Primary 4', 'Grade 5': 'Primary 5', 'Grade 6': 'Primary 6',
 };
 
 function normalizeClass(raw: string): string {
