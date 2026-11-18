@@ -179,14 +179,20 @@ async function redeemedSs1Terms(studentId: string, policy?: LearningAccessPolicy
 // Resolve the same sequence policy used by GET /topics for direct asset access.
 // A missing student record is fail-closed: no ordered lesson content/assets.
 function ss1ProgressKey(lesson: any): string {
+  const contentFingerprint = lesson.body_sha256
+    ?? createHash('sha256').update(String(lesson.body ?? '')).digest('hex');
   return 'ss1:' + createHash('sha256').update([
     'SS 1', lesson.canonical_subject, lesson.term, String(lesson.id),
+    String(contentFingerprint), JSON.stringify(lesson.objectives ?? []),
   ].join('\\0')).digest('hex');
 }
 
 function ss23ProgressKey(unit: any): string {
+  const contentFingerprint = unit.body_sha256
+    ?? createHash('sha256').update(String(unit.body ?? '')).digest('hex');
   return 'ss23:' + createHash('sha256').update([
     unit.class_name, unit.subject, unit.term, String(unit.id),
+    String(contentFingerprint), JSON.stringify(unit.objectives ?? []),
   ].join('\\0')).digest('hex');
 }
 
