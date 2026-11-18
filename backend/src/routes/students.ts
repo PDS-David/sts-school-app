@@ -376,9 +376,9 @@ router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
       const updated = await client.query(
         `UPDATE report_roster_memberships
          SET status='removed', removed_at=now(), changed_by=$1, updated_at=now()
-         WHERE student_id=$2 AND status='active'
+         WHERE student_id=$2 AND status='active' AND class_name=$3
          RETURNING student_id`,
-        [user.id, membership.id],
+        [user.id, membership.id, membership.report_class_name],
       );
       if (!updated.rowCount) return false;
       await client.query(
@@ -404,9 +404,9 @@ router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
       const updated = await client.query(
         `UPDATE report_roster_memberships
          SET status='active', removed_at=NULL, changed_by=$1, updated_at=now()
-         WHERE student_id=$2 AND status='removed'
+         WHERE student_id=$2 AND status='removed' AND class_name=$3
          RETURNING student_id`,
-        [user.id, membership.id],
+        [user.id, membership.id, membership.report_class_name],
       );
       if (!updated.rowCount) return false;
       await client.query(
@@ -432,8 +432,8 @@ router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
   if (action === 'retain') {
     const changed = await withTransaction(async (client) => {
       const updated = await client.query(
-        'UPDATE report_roster_memberships SET changed_by=$1, updated_at=now() WHERE student_id=$2 AND status=\'active\' RETURNING student_id',
-        [user.id, membership.id],
+        'UPDATE report_roster_memberships SET changed_by=$1, updated_at=now() WHERE student_id=$2 AND status=\'active\' AND class_name=$3 RETURNING student_id',
+        [user.id, membership.id, fromClass],
       );
       if (!updated.rowCount) return false;
       await client.query(
@@ -473,9 +473,9 @@ router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
     const updated = await client.query(
       `UPDATE report_roster_memberships
        SET class_name=$1, changed_by=$2, updated_at=now()
-       WHERE student_id=$3 AND status='active'
+       WHERE student_id=$3 AND status='active' AND class_name=$4
        RETURNING student_id`,
-      [toClass, user.id, membership.id],
+      [toClass, user.id, membership.id, fromClass],
     );
     if (!updated.rowCount) return false;
     await client.query(
