@@ -226,7 +226,7 @@ router.get('/:id', requirePerm('students.read'), async (req, res) => {
        WHERE s.id=$1${schoolClause}${deletedClause} GROUP BY s.id, lu.username`;
   const { rows } = await query(teacherQuery, params);
   if (!rows[0]) return res.status(404).json({ error: 'Student not found' });
-
+  return res.json({ student: rows[0] });
 });
 
 // ── POST /students ────────────────────────────────────────────────────────────
