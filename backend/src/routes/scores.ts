@@ -77,8 +77,20 @@ async function validateScoreWriteScope(
     if (!user.school_code || user.school_code !== student.school_code) {
       return { status: 403, error: "You can't write scores outside your school" };
     }
-    if (!user.assigned_class || physicalClassName !== user.assigned_class) {
-      return { status: 403, error: "You can only write scores for students in your assigned physical class." };
+    // Class teachers control every subject in their one assigned class.
+    // Subject teachers are limited to the explicit class + subject grants
+    // stored on their account. These checks run against freshly hydrated DB
+    // claims, never client-supplied class or subject values.
+    const isClassTeacher = !!user.assigned_class;
+    if (isClassTeacher) {
+      if (physicalClassName !== user.assigned_class) {
+        return { status: 403, error: "You can only write scores for students in your assigned class." };
+      }
+    } else {
+      const allowedClasses = user.assigned_class_names ?? [];
+      if (!allowedClasses.includes(physicalClassName) || !user.assigned_subject_ids.includes(score.subject_id)) {
+        return { status: 403, error: "You can only write scores for your assigned subject and assigned classes." };
+      }
     }
 
     const { rows: locks } = await client.query(
@@ -237,12 +249,17 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
   if (user.role === 'teacher') {
     if (!user.school_code) return res.status(403).json({ error: 'Your teacher account is not assigned to a school.' });
     params.push(user.school_code); sql += ` AND s.school_code=$${params.length}`;
-    if (!user.assigned_class) {
-      // Physical report access requires a class assignment, not merely a subject assignment.
-      return res.json({ scores: [] });
+    if (user.assigned_class) {
+      params.push(user.assigned_class);
+      sql += ` AND rrm.class_name=${params.length} AND rrm.status='active'`;
+    } else {
+      const allowedClasses = user.assigned_class_names ?? [];
+      if (!allowedClasses.length || !user.assigned_subject_ids.length) return res.json({ scores: [] });
+      params.push(allowedClasses);
+      sql += ` AND rrm.class_name=ANY(${params.length}::text[]) AND rrm.status='active'`;
+      params.push(user.assigned_subject_ids);
+      sql += ` AND sc.subject_id=ANY(${params.length}::int[])`;
     }
-    params.push(user.assigned_class);
-    sql += ` AND rrm.class_name=$${params.length} AND rrm.status='active'`;
   } else if (user.role === 'admin' && school_code) {
     // Found in a hardening pass: filtering by class_name alone (e.g. the
     // admin Class Summary/ranking screen) had no school scoping at all for
