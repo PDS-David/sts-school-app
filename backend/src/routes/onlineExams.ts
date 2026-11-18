@@ -242,10 +242,10 @@ router.post('/admin/exams', requireRole('admin'), async (req, res) => {
   const b = req.body ?? {};
   if (!schoolCode) return res.status(400).json({ error: 'Select a school before creating an examination.' });
   if (!BOARDS.has(b.board) || !EXAM_CLASSES.has(b.class_name) ||
-      typeof b.subject_name !== 'string' || !b.subject_name.trim() ||
-      typeof b.examination_type !== 'string' || b.examination_type.trim().length < 2 ||
-      typeof b.title !== 'string' || b.title.trim().length < 3 ||
-      typeof b.instructions !== 'string' || !b.instructions.trim() ||
+      typeof b.subject_name !== 'string' || !b.subject_name.trim() || b.subject_name.trim().length>200 ||
+      typeof b.examination_type !== 'string' || b.examination_type.trim().length < 2 || b.examination_type.trim().length>80 ||
+      typeof b.title !== 'string' || b.title.trim().length < 3 || b.title.trim().length>255 ||
+      typeof b.instructions !== 'string' || !b.instructions.trim() || b.instructions.trim().length>8000 ||
       !Number.isInteger(b.duration_minutes) || b.duration_minutes < 1 || b.duration_minutes > 600 ||
       !Array.isArray(b.sections) || b.sections.length < 1 || b.sections.length > 20) {
     return res.status(400).json({ error: 'Provide a valid board, examination class, subject, type, title, instructions, duration and 1–20 sections.' });
@@ -261,13 +261,13 @@ router.post('/admin/exams', requireRole('admin'), async (req, res) => {
   const allItems: any[] = [];
   for (let si=0; si<b.sections.length; si++) {
     const section=b.sections[si];
-    if (!section || typeof section.title !== 'string' || !section.title.trim() ||
+    if (!section || typeof section.title !== 'string' || !section.title.trim() || section.title.trim().length>120 ||
         !Array.isArray(section.questions) || section.questions.length < 1 || section.questions.length > 100) {
       return res.status(400).json({ error: 'Each section requires a title and 1–100 questions.' });
     }
     for (let qi=0; qi<section.questions.length; qi++) {
       const item=section.questions[qi];
-      if (!item || typeof item.question_id !== 'string' ||
+      if (!item || typeof item.question_id !== 'string' || !/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(item.question_id) ||
           (item.marks != null && (!Number.isFinite(Number(item.marks)) || Number(item.marks)<=0 || Number(item.marks)>100))) {
         return res.status(400).json({ error: 'Each question requires a valid question_id and positive marks.' });
       }
@@ -275,6 +275,7 @@ router.post('/admin/exams', requireRole('admin'), async (req, res) => {
     }
   }
   const ids=allItems.map(x=>x.question_id);
+  if (allItems.length>200) return res.status(400).json({error:'An examination may contain no more than 200 questions.'});
   if (new Set(ids).size !== ids.length) return res.status(400).json({ error: 'A question may appear only once in an examination.' });
   try {
     const result=await withTransaction(async client=>{
@@ -294,8 +295,9 @@ router.post('/admin/exams', requireRole('admin'), async (req, res) => {
       const byId=new Map(qs.map((q:any)=>[q.id,q]));
       for(const item of allItems){
         const q:any=byId.get(item.question_id);
-        if(q.board!==b.board || !['licensed','public_domain','original_generated'].includes(q.rights_status) ||
-           q.rights_status!==q.source_rights ||
+        if(q.board!==b.board || !['GENERAL',b.board].includes(q.source_board) ||
+           !['licensed','public_domain','original_generated'].includes(q.rights_status) ||
+           q.rights_status!==q.source_rights || typeof q.rights_evidence!=='string' || q.rights_evidence.trim().length<12 ||
            (q.content_origin==='past_question' && (!['licensed','public_domain'].includes(q.source_rights) || !q.exam_year)) ||
            (q.content_origin!=='past_question' && q.source_rights!=='original_generated')){
           return {error:'Question board/provenance or documented reuse rights are invalid for this examination.',status:400};
@@ -360,6 +362,7 @@ router.post('/admin/exams/:examId/publish',requireRole('admin'),async(req,res)=>
        WHERE school_code=$1 AND class_name=$2 AND deleted_at IS NULL
     `,[exam.school_code,exam.class_name]);
     if(!candidates.length) return {status:409,error:'No active candidates are enrolled in this examination class.'};
+    if(new Date(exam.ends_at).getTime()<=Date.now()) return {status:409,error:'An examination whose end time has passed cannot be published.'};
     const {rows: generatedTopics}=await client.query(`
       SELECT DISTINCT (provenance->>'covered_topic_id')::integer AS topic_id
         FROM online_exam_questions
