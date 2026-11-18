@@ -101,10 +101,10 @@ export default function ReportRemarksScreen() {
             <TextInput value={classTeacherRemark} onChangeText={setClassTeacherRemark}
               multiline textAlignVertical="top" style={styles.textArea}
               placeholder="Enter the class teacher's remark" />
-            <Text style={styles.label}>Principal / Head Teacher's Remark</Text>
-            <TextInput value={adminRemark} onChangeText={setAdminRemark}
-              multiline textAlignVertical="top" style={styles.textArea}
-              placeholder="Enter the principal's or head teacher's remark" />
+            <Text style={styles.label}>Principal / Head Teacher's Remark (view only)</Text>
+            <TextInput value={adminRemark} editable={false}
+              multiline textAlignVertical="top" style={[styles.textArea, styles.readOnly]}
+              placeholder="No principal's or head teacher's remark recorded yet" />
             <Btn label={saving ? 'Saving…' : 'Save Report Remarks'} onPress={save} loading={saving} />
             {!!notice && <Text style={styles.success}>{notice}</Text>}
             {!!error && <Text style={styles.error}>{error}</Text>}
@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
   label: { fontSize: Fonts.sizes.sm, color: Colors.text, fontWeight: '700', marginBottom: Spacing.xs, marginTop: Spacing.sm },
   picker: { borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.md, marginBottom: Spacing.sm, overflow: 'hidden' },
   textArea: { minHeight: 110, borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.md, padding: Spacing.sm, color: Colors.text, backgroundColor: Colors.white, marginBottom: Spacing.md },
+  readOnly: { backgroundColor: Colors.background, color: Colors.textSub },
   success: { color: '#2E7D32', marginTop: Spacing.sm },
   error: { color: '#C62828', marginTop: Spacing.sm },
 });
