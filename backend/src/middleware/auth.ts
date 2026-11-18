@@ -69,6 +69,18 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
   next();
 }
 
+/**
+ * Teachers do not administer the independent DIY online-learning environment.
+ * Keep them out of learning-content, online assessment-authoring and messaging
+ * routes; physical student and academic reporting routes remain available.
+ */
+export function denyTeacherAccess(req: Request, res: Response, next: NextFunction) {
+  if (req.user?.role === 'teacher') {
+    return res.status(403).json({ error: 'Teacher accounts are limited to physical reporting workflows.' });
+  }
+  next();
+}
+
 export async function isStudentRecordDeleted(userId: string): Promise<boolean> {
   const { rows } = await query('SELECT 1 FROM students WHERE user_id=$1 AND deleted_at IS NOT NULL LIMIT 1', [userId]);
   return rows.length > 0;
