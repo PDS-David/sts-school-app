@@ -6,7 +6,6 @@ import { Card, Loader } from '../../components/UI';
 import { PageContainer } from '../../components/layout';
 import { Colors, Spacing, Fonts } from '../../theme';
 import { AppHeader } from '../../components/AppHeader';
-import { openNotifications } from '../../navigation/navigationRef';
 
 export default function TeacherDashboardHomeScreen({ navigation }: any) {
   const { user } = useAuth();
