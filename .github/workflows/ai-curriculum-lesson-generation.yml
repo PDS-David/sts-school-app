@@ -40,7 +40,21 @@ concurrency:
 jobs:
   validate-curriculum-generation:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: jss3_test_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d jss3_test_ci"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -52,5 +66,9 @@ jobs:
         run: node --import tsx --test tests/backend-curriculum-lesson-generator.test.mts
       - name: Validate curriculum lesson flow and free-launch regressions
         run: node --test tests/backend-curriculum-lesson-flow.static.test.cjs tests/student-launch.static.test.cjs
+      - name: Verify corrected-topic generation and cache against PostgreSQL
+        env:
+          JSS3_YO_TEST_DATABASE_URL: postgres://postgres:postgres@localhost:5432/jss3_test_ci
+        run: node --import tsx --test tests/jss3-supplement-revision.db.test.mts
       - name: Typecheck backend and mobile
         run: npm run typecheck
