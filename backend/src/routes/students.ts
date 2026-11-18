@@ -263,6 +263,11 @@ router.post('/', requirePerm('grades.write'), async (req, res) => {
   if (req.user!.role === 'teacher' && (d.parent_phone?.trim() || d.parent_email?.trim())) {
     return res.status(403).json({ error: 'Teachers can create physical student records, but parent account creation and linking must be handled by an administrator.' });
   }
+  const scopeError = checkTeacherRosterScope(req.user!, { school_code: d.school_code, class_name: d.class_name });
+  if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
+
+  // Authorize the requested physical class before checking for duplicates;
+  // otherwise a teacher could use 409/201 differences to enumerate another class.
   const duplicate = await query(
     `SELECT id FROM students
       WHERE school_code=$1 AND class_name=$2 AND deleted_at IS NULL
@@ -273,8 +278,6 @@ router.post('/', requirePerm('grades.write'), async (req, res) => {
   if (duplicate.rows.length) {
     return res.status(409).json({ error: 'A student with this name already exists in this class. Check the existing physical roster before creating another record.' });
   }
-  const scopeError = checkTeacherRosterScope(req.user!, { school_code: d.school_code, class_name: d.class_name });
-  if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
 
   const result = await createStudentWithParent(
     {
