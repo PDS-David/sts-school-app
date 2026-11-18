@@ -45,7 +45,7 @@ router.post('/login', loginAttemptLimiter, async (req, res) => {
 
   const { rows } = await query(
     `SELECT id,username,password_hash,role,school_code,
-            assigned_class,is_active,must_change_pw,access_expires_at,
+            assigned_class,COALESCE(assigned_class_names, ARRAY[]::text[]) AS assigned_class_names,is_active,must_change_pw,access_expires_at,
             revocation_reason,must_set_security_question,pending_admin_review
      FROM users WHERE lower(username) = lower($1)
        AND (role <> 'teacher' OR school_code = $2)`,
@@ -94,6 +94,7 @@ router.post('/login', loginAttemptLimiter, async (req, res) => {
     school_code: user.school_code,
     assigned_class: user.assigned_class,
     assigned_subject_ids: assignedSubjectIds,
+    assigned_class_names: user.assigned_class_names ?? [],
   };
 
   const accessToken  = signAccess(payload);
@@ -132,7 +133,7 @@ router.post('/login', loginAttemptLimiter, async (req, res) => {
     // so it can offer "lock/unlock my class" only where it actually applies.
     // It was already being fetched and put into the JWT payload above, just
     // never actually returned to the client for the app to read directly.
-    user: { id: user.id, username: user.username, role: user.role, school_code: user.school_code, assigned_class: user.assigned_class, assigned_subject_ids: assignedSubjectIds, pending_admin_review: !!user.pending_admin_review && !(user.role === 'student' && accessPolicy.freeLaunchMode) },
+    user: { id: user.id, username: user.username, role: user.role, school_code: user.school_code, assigned_class: user.assigned_class, assigned_subject_ids: assignedSubjectIds, assigned_class_names: user.assigned_class_names ?? [], pending_admin_review: !!user.pending_admin_review && !(user.role === 'student' && accessPolicy.freeLaunchMode) },
   });
 });
 
