@@ -93,7 +93,11 @@ if (!URL_) {
       [[TEST_SC, TEST_SC_B]],
     );
     await query('DELETE FROM users WHERE school_code = ANY($1) OR username LIKE $2', [[TEST_SC, TEST_SC_B], 'zz_t2test_%']);
-    await query('DELETE FROM schools WHERE code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
+    await query(
+      `DELETE FROM schools sc WHERE sc.code=ANY($1)
+       AND NOT EXISTS (SELECT 1 FROM students s WHERE s.school_code=sc.code)`,
+      [[TEST_SC, TEST_SC_B]],
+    );
   }
 
   async function residue() {
