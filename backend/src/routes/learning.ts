@@ -41,6 +41,12 @@ function verifyStudentDeliveryAsset(bytes: Buffer, mediaType: string, expectedSh
 
 const router = Router();
 router.use(requireAuth);
+router.use((req, res, next) => {
+  if (req.user?.role === 'teacher') {
+    return res.status(403).json({ error: 'Teacher accounts are limited to physical-class report workflows.' });
+  }
+  next();
+});
 
 type ContentReferenceError = { status: 400; error: string } | null;
 
