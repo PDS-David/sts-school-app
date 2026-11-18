@@ -1510,6 +1510,12 @@ router.post('/topics/:id/progress', requirePerm('topics.complete'), requireRole(
   return res.json({ ok: true, completed: true });
 });
 
+/**
+ * @deprecated Compatibility route for older installed mobile clients.
+ * The current app uses POST /topics/:id/lesson and POST /topics/:id/progress
+ * so lesson generation, practice and completion remain independent. Keep
+ * this route until deployed-client adoption is verified before removing it.
+ */
 router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, res) => {
   const user = req.user!;
   const { rows: stRows } = await query('SELECT id, school_code, class_name FROM students WHERE user_id=$1 LIMIT 1', [user.id]);
