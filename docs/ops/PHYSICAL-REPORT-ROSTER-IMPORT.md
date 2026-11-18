@@ -1,6 +1,6 @@
 # Physical report-roster import
 
-This importer reads the supplied historical `Student_Roster_Reconciliation_with_Identities.xlsx` workbook. It is separate from online learner registration and does not create student login accounts.
+This importer reads the supplied historical `Student_Roster_Reconciliation_with_Identities_VERIFICATION_FIXED.xlsx` workbook. It is separate from online learner registration and does not create student login accounts.
 
 ## Source and class mapping
 
@@ -41,7 +41,7 @@ Transferred and Left school records require a verifier, date and evidence/notes.
 
 `Unverified`, `Awaiting confirmation`, missing verifier/date, missing current class, invalid class/section combinations or invalid matched production IDs stop the entire import. The command does not partially import the remaining rows.
 
-The supplied workbook currently has all 104 rows marked `Unverified`, with the current class, verifier, date and matched production ID fields blank. **It will therefore reject the workbook as-is.** The rows must first be checked against current school records and updated by an authorised school administrator. Do not change the status just to make the import pass.
+The original workbook has all 104 current-status and current-class cells blank; the word `Unverified` was mistakenly placed in the `Verified By` column. A corrected copy, `Student_Roster_Reconciliation_with_Identities_VERIFICATION_FIXED.xlsx`, has been placed in the Library. It moves `Unverified` into the correct status column, clears the verifier cells, and fixes the current-class dropdown to use the School Section. **The corrected copy will still reject until each row is actually verified.** Check each record against current school records and enter its real status, current class, verifier and date. Do not change the status just to make the import pass.
 
 ## Identity and separation safeguards
 
