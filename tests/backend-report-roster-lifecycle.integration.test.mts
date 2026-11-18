@@ -21,16 +21,16 @@ test('administrator placement decisions mutate only physical report membership a
     `INSERT INTO classes(school_code,name) VALUES($1,'Primary 4'),($1,'Primary 5')`,
     [schoolCode],
   );
-  const username = `roster-teacher-${suffix}`;
+  const username = `roster-admin-${suffix}`;
   const { rows: users } = await query(
     `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,is_active,pending_admin_review)
      VALUES($1,'test-hash','admin','Roster Lifecycle Administrator',$2,'Primary 4',TRUE,FALSE)
      RETURNING id`,
     [username, schoolCode],
   );
-  const teacherId = String(users[0].id);
+  const adminId = String(users[0].id);
   const token = signAccess({
-    id: teacherId,
+    id: adminId,
     username,
     role: 'admin',
     school_code: schoolCode,
@@ -92,7 +92,25 @@ test('administrator placement decisions mutate only physical report membership a
     assert.equal(removedRoster.status, 200);
     const removedPayload = await removedRoster.json() as { students: Array<{ id: string }> };
     assert.ok(removedPayload.students.some(student => student.id === studentIds[2]),
-      'teacher can retrieve removed students from their own assigned class for reinstatement');
+      'administrator can retrieve removed physical-roster entries');
+
+    const teacherToken = signAccess({
+      id: randomUUID(),
+      username: 'report-only-teacher',
+      role: 'teacher',
+      school_code: schoolCode,
+      assigned_class: 'Primary 4',
+      assigned_subject_ids: [],
+    });
+    const teacherHeaders = { Authorization: `Bearer ${teacherToken}`, 'Content-Type': 'application/json' };
+    const teacherDecision = await fetch(`${baseUrl}/${studentIds[0]}/promotion`, {
+      method: 'POST', headers: teacherHeaders, body: JSON.stringify({ action: 'remove' }),
+    });
+    assert.equal(teacherDecision.status, 403, 'teachers must not change physical report-roster membership');
+    const teacherRemoved = await fetch(`${baseUrl}/report-roster/removed`, {
+      headers: { Authorization: `Bearer ${teacherToken}` },
+    });
+    assert.equal(teacherRemoved.status, 403, 'teachers must not manage the removed physical-roster list');
     const reinstated = await decide(studentIds[3], 'remove');
     assert.equal(reinstated.status, 200);
     const restore = await decide(studentIds[3], 'reinstate');
@@ -169,6 +187,6 @@ test('administrator placement decisions mutate only physical report membership a
     // The append-only event log intentionally retains the test history. The
     // dedicated synthetic school and its rows are isolated from real schools;
     // the disposable PostgreSQL service is discarded at workflow end.
-    await query('DELETE FROM users WHERE id=$1', [teacherId]);
+    await query('DELETE FROM users WHERE id=$1', [adminId]);
   }
 });
