@@ -49,7 +49,7 @@ function normalizeName(value: string): string {
  * Parse only the historical source identity columns. Current Enrolment Status,
  * Current Class, verification fields and admission numbers are intentionally
  * ignored: the original report-sheet class is the starting physical roster.
- * Teachers make later placement/removal decisions through the app.
+ * School administrators manage later physical-roster placement decisions through controlled admin workflows. Teacher accounts remain report-generation-only.
  */
 export function parsePhysicalRosterWorkbook(
   buffer: Buffer,
