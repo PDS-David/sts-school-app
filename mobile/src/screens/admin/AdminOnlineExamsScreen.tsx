@@ -109,9 +109,10 @@ export default function AdminOnlineExamsScreen() {
     }
     setBusy(response.question_id);setError('');
     try{
-      await api.put('/online-exams/admin/attempts/'+selectedAttempt.attempt_id+'/responses/'+response.question_id+'/mark',{
+      const {data:marked}=await api.put('/online-exams/admin/attempts/'+selectedAttempt.attempt_id+'/responses/'+response.question_id+'/mark',{
         awarded_marks:awarded,feedback:feedback[response.question_id]??'',
       });
+      setSelectedAttempt((current:any)=>({...current,status:marked.attempt.status,score:marked.attempt.score,total_marks:marked.attempt.total_marks,percentage:marked.attempt.percentage}));
       const {data}=await api.get('/online-exams/admin/attempts/'+selectedAttempt.attempt_id+'/responses');
       setResponses(data.responses??[]);
       setNotice('Manual mark saved and the candidate total recalculated.');
