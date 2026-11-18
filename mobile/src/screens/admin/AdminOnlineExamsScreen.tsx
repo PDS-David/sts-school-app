@@ -10,6 +10,23 @@ const BOARDS=['WAEC','NECO','JAMB'];
 const CLASSES=['JSS 3','SS 1','SS 2','SS 3'];
 const iso=(offset:number)=>new Date(Date.now()+offset).toISOString();
 
+function parseRubric(text:string,maximum:number){
+  const lines=text.split(/\\r?\\n/).map(line=>line.trim()).filter(Boolean);
+  if(lines.length<1||lines.length>20)return null;
+  const criteria:any[]=[];
+  const ids=new Set<string>();
+  for(const line of lines){
+    const parts=line.split('|');
+    if(parts.length!==3)return null;
+    const [id,description,rawMarks]=parts.map(part=>part.trim());
+    const marks=Number(rawMarks);
+    if(!/^[a-z0-9_-]{1,40}$/i.test(id)||ids.has(id)||description.length<5||description.length>500||!Number.isFinite(marks)||marks<=0)return null;
+    ids.add(id);criteria.push({id,description,max_marks:marks});
+  }
+  const total=criteria.reduce((sum,item)=>sum+item.max_marks,0);
+  return Math.abs(total-maximum)<=0.01?criteria:null;
+}
+
 export default function AdminOnlineExamsScreen() {
   const [mode,setMode]=useState<'list'|'create'|'attempts'|'responses'>('list');
   const [exams,setExams]=useState<any[]>([]);
@@ -19,6 +36,7 @@ export default function AdminOnlineExamsScreen() {
   const [selectedTopic,setSelectedTopic]=useState<any>(null);
   const [loadingTopics,setLoadingTopics]=useState(false);
   const [selectedQuestions,setSelectedQuestions]=useState<Record<string,boolean>>({});
+  const [rubricInputs,setRubricInputs]=useState<Record<string,string>>({});
   const [selectedExam,setSelectedExam]=useState<any>(null);
   const [selectedAttempt,setSelectedAttempt]=useState<any>(null);
   const [attempts,setAttempts]=useState<any[]>([]);
@@ -57,9 +75,9 @@ export default function AdminOnlineExamsScreen() {
     setLoading(true);setError('');setQuestions([]);setSelectedQuestions({});
     try{
       const {data}=await api.get('/online-exams/admin/question-bank/questions',{params:{board:nextBoard,subject_code:nextSubject.code,review_status:'approved'}});
-      setQuestions((data.questions??[]).filter((q:any)=>q.question_type==='mcq'));
+      setQuestions(data.questions??[]);
       if((data.questions??[]).some((q:any)=>q.question_type!=='mcq'))
-        setNotice('Written-response questions are held back here until a criterion rubric is authored for them. Objective approved questions are available below.');
+        setNotice('Written-response questions require a complete criterion rubric. Add one criterion per line using id|description|max_marks; the marks must sum to the question maximum.');
     }catch(e:any){setError(e?.response?.data?.error??'Could not load approved questions for this subject.');}
     finally{setLoading(false);}
   };
@@ -83,12 +101,22 @@ export default function AdminOnlineExamsScreen() {
     if(!title.trim()||!instructions.trim()||!Number.isInteger(Number(duration))||Number(duration)<1||Number(duration)>600){
       setError('Enter a title, instructions and a duration from 1 to 600 minutes.');return;
     }
+    const examQuestions:any[]=[];
+    for(const question of selected){
+      const item:any={question_id:question.id,marks:Number(question.marks),covered_topic_id:Number(selectedTopic.id)};
+      if(question.question_type!=='mcq'){
+        const rubric=parseRubric(rubricInputs[question.id]??'',Number(question.marks));
+        if(!rubric){setError('Complete a valid criterion rubric for every selected written-response question.');return;}
+        item.marking_rubric=rubric;
+      }
+      examQuestions.push(item);
+    }
     setBusy('create');setError('');setNotice('');
     try{
       await api.post('/online-exams/admin/exams',{
         board,subject_name:subject.name,class_name:className,examination_type:examType,title:title.trim(),
         instructions:instructions.trim(),duration_minutes:Number(duration),starts_at:startsAt,ends_at:endsAt,
-        sections:[{title:'Section A',instructions:'Answer all questions in this section.',questions:selected.map(q=>({question_id:q.id,marks:Number(q.marks),covered_topic_id:Number(selectedTopic.id)}))}],
+        sections:[{title:'Section A',instructions:'Answer all questions in this section.',questions:examQuestions}],
       });
       setNotice('Examination draft created. Review its schedule and publish when candidate lesson coverage is complete.');
       setMode('list');await loadExams();
@@ -197,16 +225,23 @@ export default function AdminOnlineExamsScreen() {
                 <Text style={styles.meta}>{item.completed_count}/{item.candidate_count} completed</Text>
               </TouchableOpacity>)}</View>
               {selectedTopic?<Text style={styles.notice}>Selected lesson: {selectedTopic.title}. The server rechecks every candidate before publication.</Text>:null}
-              <Text style={styles.label}>Approved objective questions ({questions.length})</Text>
+              <Text style={styles.label}>Approved questions ({questions.length})</Text>
               {subject&&!questions.length?<Empty message="No approved MCQ questions are available for this board and subject. Ask an assigned subject teacher to review the question bank first."/>:null}
               {questions.map(question=>(
-                <TouchableOpacity key={question.id} onPress={()=>toggleQuestion(question.id)} style={[styles.question,selectedQuestions[question.id]&&styles.questionSelected]}>
-                  <Ionicons name={selectedQuestions[question.id]?'checkbox':'square-outline'} size={20} color={selectedQuestions[question.id]?Colors.primary:Colors.textSub}/>
-                  <View style={{flex:1}}>
-                    <Text style={styles.questionText}>{question.stem}</Text>
-                    <Text style={styles.meta}>{question.topic} · {question.marks} marks · {question.question_number}</Text>
-                  </View>
-                </TouchableOpacity>
+                <View key={question.id}>
+                  <TouchableOpacity onPress={()=>toggleQuestion(question.id)} style={[styles.question,selectedQuestions[question.id]&&styles.questionSelected]}>
+                    <Ionicons name={selectedQuestions[question.id]?'checkbox':'square-outline'} size={20} color={selectedQuestions[question.id]?Colors.primary:Colors.textSub}/>
+                    <View style={{flex:1}}>
+                      <Text style={styles.questionText}>{question.stem}</Text>
+                      <Text style={styles.meta}>{question.topic} · {question.question_type} · {question.marks} marks · {question.question_number}</Text>
+                    </View>
+                  </TouchableOpacity>
+                  {selectedQuestions[question.id]&&question.question_type!=='mcq'?(
+                    <View style={styles.rubricWrap}>
+                      <Field label={'Marking rubric for '+question.marks+' marks (id|description|max_marks per line)'} value={rubricInputs[question.id]??''} onChange={(value:string)=>setRubricInputs(current=>({...current,[question.id]:value}))} multiline placeholder={'method|Shows the correct method|3\nresult|States the correct result|2'}/>
+                    </View>
+                  ):null}
+                </View>
               ))}
               <Btn label={busy==='create'?'Creating…':'Create draft'} onPress={createExam} loading={busy==='create'} disabled={busy==='create'||!selectedTopic||!questions.some(q=>selectedQuestions[q.id])} style={{marginTop:Spacing.md}}/>
             </Card>
@@ -285,6 +320,7 @@ const styles=StyleSheet.create({
   input:{borderWidth:1,borderColor:Colors.border,borderRadius:Radius.md,padding:Spacing.sm,color:Colors.text,backgroundColor:Colors.white,minHeight:42},
   question:{flexDirection:'row',alignItems:'flex-start',gap:Spacing.sm,borderWidth:1,borderColor:Colors.border,borderRadius:Radius.md,padding:Spacing.sm,marginTop:Spacing.sm},
   questionSelected:{borderColor:Colors.primary,backgroundColor:Colors.primary+'08'},
+  rubricWrap:{marginLeft:Spacing.lg,marginTop:Spacing.xs},
   topicChip:{borderWidth:1,borderColor:Colors.border,borderRadius:Radius.md,padding:Spacing.sm,marginTop:Spacing.xs,maxWidth:'100%'},
   topicChipDisabled:{opacity:0.45},
   questionText:{fontSize:Fonts.sizes.sm,fontWeight:'700',color:Colors.text,lineHeight:20},
