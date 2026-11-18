@@ -52,7 +52,7 @@ END $$;
 
 CREATE TABLE IF NOT EXISTS users (
   id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  username         TEXT UNIQUE NOT NULL,
+  username         TEXT NOT NULL,
   password_hash    TEXT NOT NULL,
   role             user_role NOT NULL DEFAULT 'teacher',
   school_code      TEXT REFERENCES schools(code) ON DELETE SET NULL,
@@ -74,6 +74,11 @@ CREATE TABLE IF NOT EXISTS users (
 ALTER TABLE users ADD COLUMN IF NOT EXISTS access_expires_at TIMESTAMPTZ;
 ALTER TABLE users ADD COLUMN IF NOT EXISTS assigned_class_names TEXT[] NOT NULL DEFAULT '{}';
 ALTER TABLE users ADD COLUMN IF NOT EXISTS can_manage_all_schools BOOLEAN NOT NULL DEFAULT FALSE;
+
+CREATE UNIQUE INDEX IF NOT EXISTS users_username_global_non_teacher_uq
+  ON users (lower(username)) WHERE role <> 'teacher';
+CREATE UNIQUE INDEX IF NOT EXISTS users_teacher_school_username_uq
+  ON users (school_code, lower(username)) WHERE role = 'teacher';
 
 -- ── Role widened to TEXT + CHECK (Finance Admin / Operations Admin split) ────
 -- `role` used to be the fixed `user_role` ENUM above. Adding a new value to a
