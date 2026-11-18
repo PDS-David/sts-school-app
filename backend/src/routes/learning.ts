@@ -25,7 +25,9 @@ import { resolvePrimary4SourceDelivery, safePrimary4Topic, primary4WithdrawnAsse
 
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
 // Read per request (value is constant in a running server) so tests can exercise PIN on and off in one process.
-const termPinEnforced = () => process.env.TERM_PIN_ENFORCED === 'true';
+const freeLaunchMode = () => process.env.FREE_LAUNCH_MODE !== 'false';
+const termPinEnforced = () => !freeLaunchMode() && process.env.TERM_PIN_ENFORCED === 'true';
+const curriculumSequenceEnforced = () => !freeLaunchMode() && process.env.CURRICULUM_SEQUENCE_ENFORCED === 'true';
 
 function verifyStudentDeliveryAsset(bytes: Buffer, mediaType: string, expectedSha256: string): boolean {
   if (!Buffer.isBuffer(bytes) || bytes.length === 0 || bytes.length > 10 * 1024 * 1024) return false;
@@ -147,7 +149,7 @@ async function redeemedSs1Terms(studentId: string): Promise<Set<string>> {
 // Resolve the same sequence policy used by GET /topics for direct asset access.
 // A missing student record is fail-closed: no ordered lesson content/assets.
 async function studentTopicSequenceLocked(user: AuthUser, topic: any): Promise<boolean> {
-  if (user.role !== 'student') return false;
+  if (user.role !== 'student' || !curriculumSequenceEnforced()) return false;
   if (topic.order_index == null) return false;
   const { rows: studentRows } = await query('SELECT id FROM students WHERE user_id=$1', [user.id]);
   const studentId = studentRows[0]?.id;
@@ -710,11 +712,13 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
       }
       const lockedIds = new Set<number>();
       const seqById = new Map<number, { locked: boolean; sequence_position: number | null; is_sequence_first: boolean }>();
-      for (const group of groups.values()) {
-        const pinOk = !termPinEnforced() || redeemedTermLabels.has(group[0].term_label);
-        for (const [id, r] of resolveSequenceGroup(group, passedIds, pinOk)) {
-          if (r.locked) lockedIds.add(id);
-          seqById.set(id, r);
+      if (curriculumSequenceEnforced()) {
+        for (const group of groups.values()) {
+          const pinOk = !termPinEnforced() || redeemedTermLabels.has(group[0].term_label);
+          for (const [id, r] of resolveSequenceGroup(group, passedIds, pinOk)) {
+            if (r.locked) lockedIds.add(id);
+            seqById.set(id, r);
+          }
         }
       }
 
@@ -1020,7 +1024,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   // a student could bypass the whole PIN/pass-gate scheme by calling this
   // route directly for a topic the UI never let them open. Only applies to
   // ordered (ingested) topics; see schema.sql's "Term-PIN gating" section.
-  if (topic.order_index != null) {
+  if (curriculumSequenceEnforced() && topic.order_index != null) {
     // Same resolver as GET /topics (Task 05) so the list and this direct guard cannot disagree.
     const { rows: siblingRows } = await query(
       `SELECT id, order_index, (to_jsonb(t)->>'sequence_rank')::numeric AS sequence_rank FROM topics t
