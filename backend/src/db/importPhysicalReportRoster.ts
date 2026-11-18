@@ -51,7 +51,7 @@ async function main() {
         skippedLeft++;
         continue;
       }
-      const currentClassName = currentClassName;
+      const currentClassName = entry.className;
       if (!currentClassName) throw new Error(`Verified active roster identity ${entry.rosterIdentity} has no current class`);
       if (entry.matchedProductionStudentId) matchedProductionStudents++;
       const { rows: existingRows } = await client.query<{
