@@ -11,7 +11,19 @@ if(!db){test('supplement revision database checks require JSS3_YO_TEST_DATABASE_
  const u=new URL(db);assert.ok(['localhost','127.0.0.1','[::1]'].includes(u.hostname));assert.match(u.pathname,/^\/jss3_test_/);
  process.env.DATABASE_URL=db;process.env.NODE_ENV='development';process.env.TERM_PIN_ENFORCED='false';
  const prompts:string[]=[];
- const stub=http.createServer((req,res)=>{let b='';req.on('data',d=>b+=d);req.on('end',()=>{const p=String(JSON.parse(b).prompt);prompts.push(p);const n=/Draft 5 multiple/.test(p)?5:3;res.setHeader('content-type','application/json');res.end(JSON.stringify({text:JSON.stringify(Array.from({length:n},(_,i)=>({stem:`Q${i}?`,options:[{key:'A',text:'A'},{key:'B',text:'B'}],correct_keys:['A'],marks:1})))}));});});
+ const stub=http.createServer((req,res)=>{let b='';req.on('data',d=>b+=d);req.on('end',()=>{
+  const p=String(JSON.parse(b).prompt);prompts.push(p);res.setHeader('content-type','application/json');
+  const options=[{key:'A',text:'Correct option'},{key:'B',text:'Alternative option B'},{key:'C',text:'Alternative option C'},{key:'D',text:'Alternative option D'}];
+  if(/Draft 5 multiple/.test(p)){
+    const questions=Array.from({length:5},(_,i)=>({stem:`Which statement correctly applies the approved lesson concept in question ${i+1}?`,options,correct_keys:['A'],marks:1}));
+    res.end(JSON.stringify({text:JSON.stringify(questions)}));return;
+  }
+  const lesson={title:'JSS 3 Yoruba approved lesson',introduction:'This lesson introduces the approved topic in clear language and explains why the concept matters in the Yoruba curriculum for this class.',sections:[
+    {heading:'Meaning and context',content:'The topic is explained using the supplied approved curriculum material. Learners identify the key idea, recognise its context and connect it with examples that are appropriate for this class.'},
+    {heading:'Application and examples',content:'Learners apply the concept to suitable examples drawn from the supplied source. The explanation stays within the approved learning objectives and does not add unrelated syllabus requirements.'}
+  ],summary:'The lesson recap reinforces the approved concept, its meaning and its application within the supplied curriculum objectives.',practice_questions:Array.from({length:5},(_,i)=>({stem:`Which statement best explains the approved lesson concept in question ${i+1}?`,options,correct_keys:['A'],explanation:'Option A is correct because it accurately reflects the concept explained in the approved lesson.'}))};
+  res.end(JSON.stringify({text:JSON.stringify(lesson)}));
+ });});
  await new Promise<void>(r=>stub.listen(0,'127.0.0.1',r));process.env.AI_AGENT_SERVICE_URL=`http://127.0.0.1:${(stub.address() as AddressInfo).port}`;
  await import('express-async-errors');const {default:express}=await import('express');const {pool,query}=await import('../backend/src/db/pool.js');
  const {default:router}=await import('../backend/src/routes/learning.js');const {signAccess}=await import('../backend/src/utils/jwt.js');
