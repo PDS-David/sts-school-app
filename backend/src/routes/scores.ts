@@ -478,24 +478,6 @@ async function authoriseReportAccess(
         denied = null;
       }
       break;
-      }
-      const { rows: memberships } = await query(
-        `SELECT rrm.class_name
-         FROM report_roster_memberships rrm
-         JOIN students s ON s.id=rrm.student_id
-         WHERE rrm.student_id=$1 AND rrm.status='active'
-           AND rrm.class_name=$2 AND s.school_code=$3 AND s.deleted_at IS NULL`,
-        [student.id, user.assigned_class, user.school_code],
-      );
-      if (!memberships[0]) {
-        denied = { status: 404, error: 'Student is not in your active physical report roster.' };
-      } else {
-        // Report rendering must use the physical roster's class, not the
-        // student's independent online-learning class field.
-        student.class_name = memberships[0].class_name;
-        denied = null;
-      }
-      break;
     }
     case 'admin':
       denied = null;
