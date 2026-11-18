@@ -631,7 +631,7 @@ router.put('/admin/attempts/:attemptId/responses/:questionId/mark',requireRole('
   const feedback=typeof req.body?.feedback==='string'?req.body.feedback.trim():'';
   if(!Number.isFinite(awarded)||awarded<0||awarded>100||feedback.length>2000)
     return res.status(400).json({error:'Provide awarded_marks from 0 to 100 and optional feedback up to 2,000 characters.'});
-  const result=await withTransaction(async client=>{
+  const result:any=await withTransaction(async client=>{
     const {rows: attempts}=await client.query(`
       SELECT a.*,e.school_code FROM online_exam_attempts a
       JOIN online_exams e ON e.id=a.exam_id
@@ -641,12 +641,13 @@ router.put('/admin/attempts/:attemptId/responses/:questionId/mark',requireRole('
     if(!attempt) return {status:404,error:'Examination attempt not found in the selected school.'};
     if(attempt.status!=='under_review') return {status:409,error:'Only attempts awaiting written-response review can be manually marked.'};
     const {rows: responses}=await client.query(`
-      SELECT r.exam_question_id,q.marks FROM online_exam_responses r
+      SELECT r.exam_question_id,r.marking_status,q.marks FROM online_exam_responses r
       JOIN online_exam_questions q ON q.id=r.exam_question_id
      WHERE r.attempt_id=$1 AND r.exam_question_id=$2 FOR UPDATE OF r
     `,[attempt.id,req.params.questionId]);
     const response=responses[0];
     if(!response) return {status:404,error:'Saved response not found.'};
+    if(response.marking_status!=='pending_review') return {status:409,error:'Only responses pending manual review can be marked here.'};
     if(awarded>Number(response.marks)) return {status:400,error:'Awarded marks cannot exceed this question’s available marks.'};
     await client.query(`
       UPDATE online_exam_responses SET awarded_marks=$3,marking_status='manual_marked',feedback=$4
