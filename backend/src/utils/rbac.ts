@@ -24,8 +24,9 @@ export const permissions: Record<Role, string[]> = {
     'finance.read',
   ],
   // Teachers maintain academic records and reports for their assigned physical class.
+  // They may directly promote, retain, or remove students from that class roster.
   // They do not administer the independent student-learning/AI assessment system,
-  // manage school-wide terms/classes, message users, or make roster decisions.
+  // manage school-wide terms/classes, message users, or reinstate/demote students.
   teacher: [
     'students.read', 'students.write',
     'grades.read', 'grades.write',
