@@ -12,7 +12,7 @@ The importer reads only the `Teacher Verification` sheet's historical identity c
 - Roster Identity
 - Internal Student UUID
 
-It deliberately ignores Current Enrolment Status, Current Class, verification notes, admission number and login-related fields. The starting placement is the source class exactly as supplied; teachers make later promote, demote, retain, remove and reinstate decisions in the app.
+It deliberately ignores Current Enrolment Status, Current Class, verification notes, admission number and login-related fields. The starting placement is the source class exactly as supplied; school administrators manage later promote, demote, retain, remove and reinstate decisions through controlled administrative workflows. Teacher accounts remain report-generation-only.
 
 | Source class | Database/report class | School |
 |---|---|---|
@@ -31,7 +31,7 @@ cd backend
 node --import tsx src/db/importPhysicalReportRoster.ts --file="C:\path\to\Student_Roster_Reconciliation_with_Identities.xlsx"
 ```
 
-Review the summary and resolve any UUID/name/membership conflicts before applying. The importer refuses soft-deleted students, ambiguous same-name records, teacher-removed memberships and active memberships whose class has changed. It never rewrites an existing student's online class or login link.
+Review the summary and resolve any UUID/name/membership conflicts before applying. The importer refuses soft-deleted students, ambiguous same-name records, administrator-removed memberships and active memberships whose class has changed. It never rewrites an existing student's online class or login link.
 
 Writes require the explicit `--apply` flag:
 
