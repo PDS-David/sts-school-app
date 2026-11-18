@@ -201,7 +201,7 @@ async function main() {
          VALUES ($1,$2,$2,'active',now())
          ON CONFLICT (student_id) DO NOTHING
          RETURNING student_id`,
-        [student.id, insertedStudent.rows[0] ? r.class_name : student.class_name],
+        [student.id, r.class_name],
       );
       if (membership.rowCount) {
         await client.query(
