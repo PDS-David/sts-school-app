@@ -25,6 +25,7 @@ router.get('/summary', async (_req, res) => {
       (SELECT count(*)::int FROM question_bank_sources) AS sources,
       (SELECT count(*)::int FROM question_bank_questions) AS questions,
       (SELECT count(*)::int FROM question_bank_questions WHERE review_status='approved') AS approved_questions,
+      (SELECT count(*)::int FROM question_bank_questions WHERE review_status='reviewed') AS reviewed_questions,
       (SELECT count(*)::int FROM question_bank_source_gaps WHERE gap_status <> 'resolved') AS open_source_gaps,
       (SELECT count(*)::int FROM question_bank_questions WHERE content_origin='past_question') AS licensed_past_questions
   `);
