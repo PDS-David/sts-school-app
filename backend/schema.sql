@@ -1076,6 +1076,21 @@ INSERT INTO public.learning_access_settings (id)
 VALUES (1)
 ON CONFLICT (id) DO NOTHING;
 
+-- ── Student progress for generated SS1/SS2/SS3 package lessons ─────────────
+-- Separate from canonical numeric topic_completions and physical-class reporting.
+CREATE TABLE IF NOT EXISTS public.student_curriculum_lesson_progress (
+  student_id    UUID NOT NULL REFERENCES public.students(id) ON DELETE CASCADE,
+  lesson_key    TEXT NOT NULL CHECK (length(lesson_key) BETWEEN 1 AND 240),
+  class_name    TEXT NOT NULL CHECK (class_name IN ('SS 1', 'SS 2', 'SS 3')),
+  subject_name  TEXT NOT NULL,
+  term_label    TEXT NOT NULL,
+  lesson_title  TEXT NOT NULL,
+  completed_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
+  PRIMARY KEY (student_id, lesson_key)
+);
+CREATE INDEX IF NOT EXISTS idx_student_curriculum_progress_class_term
+  ON public.student_curriculum_lesson_progress(student_id, class_name, term_label);
+
 -- Stamp the immutable baseline for clean bootstrap/schema.sql installs.
 -- Keep this checksum synchronized with backend/migrations/0001_baseline.sql.
 INSERT INTO public.schema_migrations(version,name,checksum)
