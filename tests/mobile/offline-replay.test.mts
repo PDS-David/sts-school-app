@@ -6,7 +6,18 @@ import { createOutboxStore } from '../../mobile/src/offline/outboxStore.ts';
 import { isRestorableUser } from '../../mobile/src/api/authSession.ts';
 import { shouldDiscardOutboxFailure } from '../../mobile/src/offline/outboxFailurePolicy.ts';
 import { shouldStopOutboxFlush } from '../../mobile/src/offline/outboxFlushPolicy.ts';
+import { buildOfflineCacheUrl } from '../../mobile/src/api/offlineCacheScope.ts';
 import { getMaterialDownloadTarget, isSafeMaterialUrl } from '../../mobile/src/utils/materialDownload.ts';
+
+test('offline GET cache keys are isolated by selected school and query parameters', () => {
+  const primary = buildOfflineCacheUrl('/students', { school_code: 'primary' }, 'primary');
+  const secondary = buildOfflineCacheUrl('/students', { school_code: 'secondary' }, 'secondary');
+  const unselected = buildOfflineCacheUrl('/students', undefined, undefined);
+  assert.notEqual(primary, secondary);
+  assert.notEqual(primary, unselected);
+  assert.ok(primary.includes('__school_scope=primary'));
+  assert.ok(secondary.includes('__school_scope=secondary'));
+});
 
 test('normal failed writes remain eligible for offline queueing', () => {
   assert.equal(shouldEnqueueOfflineWrite({}), true);
