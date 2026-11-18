@@ -45,9 +45,13 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       const questionBankSql=await readFile(new URL('../backend/migrations/0012_online_question_bank.sql',import.meta.url),'utf8');
       const classPracticeSql=await readFile(new URL('../backend/migrations/0013_ai_class_practice.sql',import.meta.url),'utf8');
       const examSql=await readFile(new URL('../backend/migrations/0014_formal_online_examinations.sql',import.meta.url),'utf8');
+      const markingSql=await readFile(new URL('../backend/migrations/0015_online_exam_marking_confidence.sql',import.meta.url),'utf8');
       await client.query(questionBankSql);
       await client.query(classPracticeSql);
       await client.query(examSql);
+      await client.query(markingSql);
+      const {rows: markingColumns}=await client.query(`SELECT column_name FROM information_schema.columns WHERE table_schema=$1 AND table_name='online_exam_responses' AND column_name IN ('marking_confidence','marking_details')`,[schema]);
+      assert.deepEqual(markingColumns.map((row:any)=>row.column_name).sort(),['marking_confidence','marking_details']);
 
       const school='primary',admin=randomUUID(),studentUser=randomUUID(),otherUser=randomUUID();
       const student=randomUUID(),otherStudent=randomUUID();
