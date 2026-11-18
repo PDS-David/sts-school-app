@@ -113,3 +113,20 @@ test('global administrators can manage learning access from the admin app while 
   assert.match(menu, /navigation\.navigate\('AdminLearningAccess'\)/);
   assert.match(nav, /name="AdminLearningAccess"/);
 });
+
+test('SS1 and SS2/SS3 package lessons persist student completion separately from canonical topics', () => {
+  const route = read('backend/src/routes/learning.ts');
+  const migration = read('backend/migrations/0009_student_curriculum_lesson_progress.sql');
+  const ss1 = read('mobile/src/screens/Ss1PackageLessonScreen.tsx');
+  const ss23 = read('mobile/src/screens/Ss23PackageLessonScreen.tsx');
+  assert.ok(route.includes("router.post('/ss1/lessons/:lessonId/progress'"));
+  assert.ok(route.includes("router.post('/ss23/units/:unitId/progress'"));
+  assert.match(route, /completedPackageLessonKeys\(/);
+  assert.match(route, /markPackageLessonCompleted\(/);
+  assert.match(migration, /PRIMARY KEY \(student_id, lesson_key\)/);
+  assert.match(migration, /REFERENCES public\.students\(id\) ON DELETE CASCADE/);
+  assert.match(ss1, /\/learning\/ss1\/lessons\/\$\{encodeURIComponent\(lesson\.id\)\}\/progress/);
+  assert.match(ss23, /\/learning\/ss23\/units\/\$\{encodeURIComponent\(lesson\.id\)\}\/progress/);
+  assert.match(ss1, /Mark lesson complete/);
+  assert.match(ss23, /Mark lesson complete/);
+});
