@@ -108,11 +108,9 @@ router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => 
   const className = user.role === 'teacher'
     ? user.assigned_class
     : (typeof req.query.class_name === 'string' ? req.query.class_name : null);
-  const subjectIds = user.role === 'teacher' && !user.assigned_class
-    ? user.assigned_subject_ids
-    : null;
+  const subjectIds = null;
 
-  if (user.role === 'teacher' && !className && (!subjectIds || subjectIds.length === 0)) {
+  if (user.role === 'teacher' && !className) {
     return res.json({
       term: null,
       summary: { student_count: 0, expected_score_entries: 0, marked_score_entries: 0, pending_score_entries: 0, average_score: null, pass_rate: null, attendance_rate: null, attendance_records: 0, weekly_effort_entries: 0 },
@@ -244,32 +242,12 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
   if (user.role === 'teacher') {
     if (!user.school_code) return res.status(403).json({ error: 'Your teacher account is not assigned to a school.' });
     params.push(user.school_code); sql += ` AND s.school_code=$${params.length}`;
-    if (user.assigned_class) {
-      params.push(user.assigned_class); sql += ` AND rrm.class_name=${params.length} AND rrm.status='active'`;
-    } else if (user.assigned_subject_ids && user.assigned_subject_ids.length > 0) {
-      // Bug found by live-testing this route directly with a real
-      // subject-only teacher account: the previous version only blocked a
-      // subject-only teacher when NO class_name was supplied at all — but
-      // passing ANY class_name (including one this teacher has no
-      // relationship to whatsoever) sailed straight through with no
-      // subject restriction applied anywhere, returning every subject's
-      // scores for that entire class. Confirmed: a Mathematics-only
-      // teacher account pulled all 210 score rows across 15 different
-      // subjects for a class ("JSS2") they don't teach at all, just by
-      // adding ?class_name=JSS2 to the request.
-      //
-      // The actual rule this route needs (matching checkTeacherContentScope
-      // elsewhere in this codebase): a subject-only teacher may see any
-      // class in their own school, but ONLY for their own subject. Forcing
-      // sc.subject_id to their own assigned_subject_id here — regardless of
-      // whether the caller also passed a (possibly different, possibly
-      // forged) subject_id — means a mismatched subject_id param now
-      // returns zero rows instead of leaking every subject's data.
-      params.push(user.assigned_subject_ids); sql += ` AND sc.subject_id = ANY($${params.length})`;
-    } else {
-      // Physical report entry is limited to an assigned class and active roster.
+    if (!user.assigned_class) {
+      // Physical report access requires a class assignment, not merely a subject assignment.
       return res.json({ scores: [] });
     }
+    params.push(user.assigned_class);
+    sql += ` AND rrm.class_name=${params.length} AND rrm.status='active'`;
   } else if (user.role === 'admin' && school_code) {
     // Found in a hardening pass: filtering by class_name alone (e.g. the
     // admin Class Summary/ranking screen) had no school scoping at all for
