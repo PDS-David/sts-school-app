@@ -3,7 +3,7 @@ import test from 'node:test';
 import { hasPerm } from '../backend/src/utils/rbac.js';
 import { resolveStudentRosterScope } from '../backend/src/utils/studentRosterScope.js';
 
-test('teacher role can maintain assigned physical-class reports but not online learning or administration', () => {
+test('teacher role can maintain assigned physical-class reports and execute approved student outcomes, but not online learning or administration', () => {
   for (const permission of [
     'students.read', 'students.write',
     'grades.read', 'grades.write',

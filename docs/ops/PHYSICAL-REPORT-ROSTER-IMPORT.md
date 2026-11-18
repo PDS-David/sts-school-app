@@ -1,6 +1,6 @@
 # Physical report-roster import
 
-This importer reads the supplied historical `Student_Roster_Reconciliation_with_Identities_VERIFICATION_FIXED.xlsx` workbook. It is separate from online learner registration and does not create student login accounts.
+This importer reads the owner-approved initial physical report roster workbook `Student_Roster_Initial_Launch_Approved.xlsx`. It is separate from online learner registration and does not create student login accounts.
 
 ## Source and class mapping
 
@@ -41,7 +41,7 @@ Transferred and Left school records require a verifier, date and evidence/notes.
 
 `Unverified`, `Awaiting confirmation`, missing verifier/date, missing current class, invalid class/section combinations or invalid matched production IDs stop the entire import. The command does not partially import the remaining rows.
 
-The original workbook has all 104 current-status and current-class cells blank; the word `Unverified` was mistakenly placed in the `Verified By` column. A corrected copy, `Student_Roster_Reconciliation_with_Identities_VERIFICATION_FIXED.xlsx`, has been placed in the Library. It moves `Unverified` into the correct status column, clears the verifier cells, and fixes the current-class dropdown to use the School Section. **The corrected copy will still reject until each row is actually verified.** Check each record against current school records and enter its real status, current class, verifier and date. Do not change the status just to make the import pass.
+The owner-approved initial-launch workbook `Student_Roster_Initial_Launch_Approved.xlsx` was supplied on 18 November 2026. It contains 104 students, with the supplied former classes mapped to the app's actual class names, the status `Still enrolled - same class`, the owner authorization in `Verified By`, and the authorization date. This is the school owner's explicit instruction to place these historical report names into their former physical classes as the initial reporting roster; teachers then execute promotion, retention or removal. It does not assert that these students already have online accounts or admission numbers, and it creates neither. The workbook's source classes and current-class mapping must still pass all parser and production class checks.
 
 ## Identity and separation safeguards
 
@@ -59,15 +59,15 @@ The command is dry-run by default:
 
 ```powershell
 cd backend
-node --import tsx src/db/importPhysicalReportRoster.ts --file="C:\path\to\Student_Roster_Reconciliation_with_Identities.xlsx"
+node --import tsx src/db/importPhysicalReportRoster.ts --file="C:\path\to\Student_Roster_Initial_Launch_Approved.xlsx" --confirm-database=sts_school_db_2
 ```
 
 Review the dry-run summary and resolve all conflicts. The importer refuses soft-deleted students, ambiguous same-name records, missing matched production records, administrator-removed memberships and active memberships whose class has changed.
 
-Writes require the explicit `--apply` flag:
+Writes require the explicit `--apply` flag and the owner-approval acknowledgement `--owner-approved-initial-roster`:
 
 ```powershell
-node --import tsx src/db/importPhysicalReportRoster.ts --file="C:\path\to\Student_Roster_Reconciliation_with_Identities.xlsx" --apply
+node --import tsx src/db/importPhysicalReportRoster.ts --file="C:\path\to\Student_Roster_Initial_Launch_Approved.xlsx" --confirm-database=sts_school_db_2 --apply --owner-approved-initial-roster
 ```
 
 Before any production apply:

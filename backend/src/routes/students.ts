@@ -387,8 +387,8 @@ router.put('/:id', requirePerm('grades.write'), async (req, res) => {
 });
 
 // ── POST /students/:id/promotion ──────────────────────────────────────────────
-// Physical report-roster placement is an administrator responsibility.
-// Teacher accounts are report-generation-only and cannot change membership.
+// Assigned physical-class teachers may promote, retain, or remove their own
+// students. Demotion and reinstatement remain administrator-only.
 //
 // "Next"/"previous" class is derived from the classes table's own row order
 // within the student's school (see backend/schema.sql's classes table and
@@ -403,7 +403,7 @@ router.put('/:id', requirePerm('grades.write'), async (req, res) => {
 // use scores.class_name, stamped when each score is recorded (routes/scores.ts),
 // and fall back to the live class only for rows with no stamp. Nothing is
 // written to scores from this route.
-router.post('/:id/promotion', requireRole('admin'), async (req, res) => {
+router.post('/:id/promotion', requireRole('admin', 'teacher'), async (req, res) => {
   const user = req.user!;
   const { action } = req.body as { action?: 'promote' | 'demote' | 'retain' | 'remove' | 'reinstate' };
   if (!action || !['promote', 'demote', 'retain', 'remove', 'reinstate'].includes(action)) {
@@ -420,6 +420,19 @@ router.post('/:id/promotion', requireRole('admin'), async (req, res) => {
   );
   const membership = membershipRows[0];
   if (!membership) return res.status(404).json({ error: 'Active report-roster membership not found' });
+
+  // Teacher decisions are limited to the active physical class assigned to
+  // that teacher. Do not let query/body values widen school or class scope.
+  if (user.role === 'teacher') {
+    if (!user.school_code || !user.assigned_class ||
+        membership.school_code !== user.school_code ||
+        membership.report_class_name !== user.assigned_class) {
+      return res.status(404).json({ error: 'Student not found in your assigned physical class' });
+    }
+    if (!['promote', 'retain', 'remove'].includes(action)) {
+      return res.status(403).json({ error: 'Teachers may promote, retain, or remove students in their assigned physical class.' });
+    }
+  }
 
   // A school-bound administrator is restricted to their own school.
   // A global administrator may reconcile any school's physical report roster.
@@ -444,7 +457,7 @@ router.post('/:id/promotion', requireRole('admin'), async (req, res) => {
         `INSERT INTO report_roster_membership_events
            (student_id,event_type,from_class_name,actor_id,details)
          VALUES($1,'removed',$2,$3,$4::jsonb)`,
-        [membership.id, membership.report_class_name, user.id, JSON.stringify({ reason: 'administrator_decision' })],
+        [membership.id, membership.report_class_name, user.id, JSON.stringify({ reason: user.role === 'teacher' ? 'teacher_decision' : 'administrator_decision', actor_role: user.role })],
       );
       await auditInTransaction(client, user, 'remove_report_roster_membership', 'student', membership.id,
         'student removed from active physical report roster',
@@ -472,7 +485,7 @@ router.post('/:id/promotion', requireRole('admin'), async (req, res) => {
         `INSERT INTO report_roster_membership_events
            (student_id,event_type,to_class_name,actor_id,details)
          VALUES($1,'reinstated',$2,$3,$4::jsonb)`,
-        [membership.id, membership.report_class_name, user.id, JSON.stringify({ reason: 'administrator_decision' })],
+        [membership.id, membership.report_class_name, user.id, JSON.stringify({ reason: 'administrator_decision', actor_role: user.role })],
       );
       await auditInTransaction(client, user, 'reinstate_report_roster_membership', 'student', membership.id,
         'student reinstated in physical report roster',
@@ -488,6 +501,116 @@ router.post('/:id/promotion', requireRole('admin'), async (req, res) => {
   }
 
   const fromClass = membership.report_class_name;
+
+  // Primary 6 -> JSS 1 crosses the primary/secondary school-code boundary.
+  // Keep the original primary student and any online account/history intact;
+  // create a separate report-only secondary identity for the promoted class.
+  if (action === 'promote' && membership.school_code === 'primary' && fromClass === 'Primary 6') {
+    const promoted = await withTransaction(async (client) => {
+      await client.query(
+        "SELECT pg_advisory_xact_lock(hashtext('physical-roster-cross-section'), hashtext($1))",
+        [membership.full_name.toLocaleLowerCase('en').trim().replace(/\s+/g, ' ')],
+      );
+      const { rows: lockedRows } = await client.query(
+        `SELECT s.id, s.full_name, s.school_code, m.class_name, m.status
+           FROM students s
+           JOIN report_roster_memberships m ON m.student_id=s.id
+          WHERE s.id=$1 AND s.deleted_at IS NULL
+          FOR UPDATE OF s, m`,
+        [membership.id],
+      );
+      const locked = lockedRows[0];
+      if (!locked || locked.status !== 'active' || locked.school_code !== 'primary' || locked.class_name !== 'Primary 6') {
+        return { ok: false as const, status: 409, error: 'Student placement changed; refresh the class roster and try again.' };
+      }
+      const { rows: duplicateRows } = await client.query(
+        `SELECT id FROM students
+          WHERE school_code='secondary' AND deleted_at IS NULL
+            AND lower(regexp_replace(trim(full_name),'[[:space:]]+',' ','g')) =
+                lower(regexp_replace(trim($1),'[[:space:]]+',' ','g'))
+          LIMIT 1`,
+        [locked.full_name],
+      );
+      if (duplicateRows.length) {
+        return { ok: false as const, status: 409, error: 'A student with this name already exists in Secondary. Ask an administrator to reconcile the identity before promotion.' };
+      }
+      const { rows: targetClasses } = await client.query(
+        "SELECT name FROM classes WHERE school_code='secondary' AND name='JSS 1' LIMIT 1",
+      );
+      if (!targetClasses[0]) {
+        return { ok: false as const, status: 409, error: 'Secondary JSS 1 is not configured. Ask an administrator to configure the class before promotion.' };
+      }
+      const toClass = targetClasses[0].name as string;
+      const { rows: newStudents } = await client.query(
+        `INSERT INTO students(full_name, class_name, school_code)
+         VALUES($1,$2,'secondary') RETURNING id`,
+        [locked.full_name, toClass],
+      );
+      const newStudentId = String(newStudents[0].id);
+      const { rows: removedRows } = await client.query(
+        `UPDATE report_roster_memberships
+            SET status='removed', removed_at=now(), changed_by=$1, updated_at=now()
+          WHERE student_id=$2 AND status='active' AND class_name='Primary 6'
+          RETURNING student_id`,
+        [user.id, membership.id],
+      );
+      if (!removedRows[0]) throw new Error('Primary report-roster membership changed during cross-section promotion');
+      await client.query(
+        `INSERT INTO report_roster_membership_events
+           (student_id,event_type,from_class_name,actor_id,details)
+         VALUES($1,'removed',$2,$3,$4::jsonb)`,
+        [membership.id, fromClass, user.id, JSON.stringify({
+          reason: 'promoted_to_secondary',
+          to_school_code: 'secondary',
+          to_class_name: toClass,
+          destination_student_id: newStudentId,
+          actor_role: user.role,
+        })],
+      );
+      await client.query(
+        `INSERT INTO report_roster_memberships
+           (student_id,class_name,source_class_name,status,joined_at,changed_by)
+         VALUES($1,$2,$2,'active',now(),$3)`,
+        [newStudentId, toClass, user.id],
+      );
+      await client.query(
+        `INSERT INTO report_roster_membership_events
+           (student_id,event_type,to_class_name,actor_id,details)
+         VALUES($1,'enrolled',$2,$3,$4::jsonb)`,
+        [newStudentId, toClass, user.id, JSON.stringify({
+          source: 'cross_section_promotion',
+          source_student_id: membership.id,
+          from_school_code: 'primary',
+          from_class_name: fromClass,
+          actor_role: user.role,
+        })],
+      );
+      await auditInTransaction(
+        client, user, 'promote_report_roster_student', 'student', membership.id,
+        'physical report-roster student promoted from Primary to Secondary',
+        auditContextFromRequest(req, { schoolCode: 'primary', metadata: {
+          from_class: fromClass, to_class: toClass, to_school_code: 'secondary',
+          destination_student_id: newStudentId, actor_role: user.role,
+        } }),
+      );
+      await auditInTransaction(
+        client, user, 'enrol_promoted_report_student', 'student', newStudentId,
+        'new Secondary physical report identity created after promotion',
+        auditContextFromRequest(req, { schoolCode: 'secondary', metadata: {
+          source_student_id: membership.id, class_name: toClass, actor_role: user.role,
+          online_account_created: false,
+        } }),
+      );
+      return { ok: true as const, newStudentId, toClass };
+    });
+    if (!promoted.ok) return res.status(promoted.status).json({ error: promoted.error });
+    return res.json({
+      ok: true, action, from_class: fromClass, to_class: promoted.toClass,
+      cross_section: true, destination_student_id: promoted.newStudentId,
+      online_account_unchanged: true,
+    });
+  }
+
   if (action === 'retain') {
     const changed = await withTransaction(async (client) => {
       const updated = await client.query(
@@ -499,7 +622,7 @@ router.post('/:id/promotion', requireRole('admin'), async (req, res) => {
         `INSERT INTO report_roster_membership_events
            (student_id,event_type,from_class_name,to_class_name,actor_id,details)
          VALUES($1,'retained',$2,$2,$3,$4::jsonb)`,
-        [membership.id, fromClass, user.id, JSON.stringify({ reason: 'administrator_decision' })],
+        [membership.id, fromClass, user.id, JSON.stringify({ reason: 'teacher_decision', actor_role: user.role })],
       );
       await auditInTransaction(client, user, 'retain_report_roster_student', 'student', membership.id,
         'student retained in physical report class',
@@ -541,7 +664,7 @@ router.post('/:id/promotion', requireRole('admin'), async (req, res) => {
       `INSERT INTO report_roster_membership_events
          (student_id,event_type,from_class_name,to_class_name,actor_id,details)
        VALUES($1,'class_changed',$2,$3,$4,$5::jsonb)`,
-      [membership.id, fromClass, toClass, user.id, JSON.stringify({ action })],
+      [membership.id, fromClass, toClass, user.id, JSON.stringify({ action, actor_role: user.role })],
     );
     await auditInTransaction(client, user, action === 'promote' ? 'promote_report_roster_student' : 'demote_report_roster_student',
       'student', membership.id, 'physical report-roster class placement changed',
