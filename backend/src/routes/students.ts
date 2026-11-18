@@ -212,8 +212,21 @@ router.get('/:id', requirePerm('students.read'), async (req, res) => {
   // record never existed, matching every other non-admin scoping check.
   const deletedClause = user.role === 'admin' ? '' : ' AND s.deleted_at IS NULL';
   if (teacherReportClassName) params.push(teacherReportClassName);
-  const teacherClassSelect = teacherReportClassName ? `$ ${params.length}`.replace('$ ', '
-  return res.json({ student: rows[0] });
+  const teacherClassSelect = teacherReportClassName ? '$' + params.length : 's.class_name';
+  const teacherQuery = teacherReportClassName
+    ? 'SELECT s.id,s.admission_number,s.full_name,' + teacherClassSelect + ' AS class_name,s.school_code,s.created_at FROM students s WHERE s.id=$1' + schoolClause + deletedClause
+    : `SELECT s.*,
+              lu.username AS login_username,
+              array_agg(json_build_object('parent_id',pw.parent_id,'name',pu.full_name,'phone',pu.phone))
+                FILTER (WHERE pw.parent_id IS NOT NULL) AS parents
+       FROM students s
+       LEFT JOIN users lu ON lu.id = s.user_id
+       LEFT JOIN parent_wards pw ON pw.student_id=s.id
+       LEFT JOIN users pu ON pu.id=pw.parent_id
+       WHERE s.id=$1${schoolClause}${deletedClause} GROUP BY s.id, lu.username`;
+  const { rows } = await query(teacherQuery, params);
+  if (!rows[0]) return res.status(404).json({ error: 'Student not found' });
+
 });
 
 // ── POST /students ────────────────────────────────────────────────────────────
