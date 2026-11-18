@@ -93,6 +93,7 @@ CREATE TABLE IF NOT EXISTS question_bank_source_gaps (
   id BIGSERIAL PRIMARY KEY,
   board TEXT NOT NULL CHECK (board IN ('WAEC','NECO','JAMB')),
   subject_id BIGINT NOT NULL REFERENCES question_bank_subjects(id) ON DELETE RESTRICT,
+  gap_type TEXT NOT NULL CHECK (gap_type IN ('past_question_rights','ai_generation')),
   gap_status TEXT NOT NULL DEFAULT 'rights_permission_required'
     CHECK (gap_status IN ('rights_permission_required','source_not_found','awaiting_source','ready_for_ai_generation','resolved')),
   reason TEXT NOT NULL,
@@ -100,7 +101,7 @@ CREATE TABLE IF NOT EXISTS question_bank_source_gaps (
   source_id UUID REFERENCES question_bank_sources(id) ON DELETE SET NULL,
   updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
-  UNIQUE(board, subject_id)
+  UNIQUE(board, subject_id, gap_type)
 );
 
 -- A database-level fail-closed rights gate. The API repeats these checks so
@@ -186,15 +187,23 @@ WHERE NOT EXISTS (
  WHERE source_name='STS original practice pilot — AI-assisted, human-verified'
 );
 
-INSERT INTO question_bank_source_gaps(board,subject_id,gap_status,reason,next_action,source_id)
-SELECT b.board, s.id, 'rights_permission_required',
+INSERT INTO question_bank_source_gaps(board,subject_id,gap_type,gap_status,reason,next_action,source_id)
+SELECT b.board, s.id, 'past_question_rights', 'rights_permission_required',
        'No source with documented permission for republication was verified during source research.',
-       'Seek written reuse permission or generate and review original exam-style practice questions; do not copy restricted past papers.',
+       'Obtain written reuse permission or a documented public-domain basis before importing any historical question text.',
        src.id
 FROM (VALUES ('WAEC'),('NECO'),('JAMB')) b(board)
 CROSS JOIN question_bank_subjects s
 LEFT JOIN question_bank_sources src ON src.board=b.board AND src.rights_status='reference_only'
-ON CONFLICT (board,subject_id) DO NOTHING;
+ON CONFLICT (board,subject_id,gap_type) DO NOTHING;
+
+INSERT INTO question_bank_source_gaps(board,subject_id,gap_type,gap_status,reason,next_action)
+SELECT b.board, s.id, 'ai_generation', 'ready_for_ai_generation',
+       'No rights-cleared historical question set is available for this board and subject.',
+       'Generate original exam-style questions, verify every answer and explanation, then approve before student delivery.'
+FROM (VALUES ('WAEC'),('NECO'),('JAMB')) b(board)
+CROSS JOIN question_bank_subjects s
+ON CONFLICT (board,subject_id,gap_type) DO NOTHING;
 
 -- Six original, answer-checked pilot questions. The board denotes the exam
 -- preparation track only: these are NOT represented as questions from a
