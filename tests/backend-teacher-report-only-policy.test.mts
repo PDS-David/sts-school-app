@@ -77,7 +77,7 @@ test('report ranking uses physical roster placement for legacy score rows and co
   assert.match(source, /COALESCE\(s2\.class_name, rrm2\.class_name, st2\.class_name\)/);
   assert.match(source, /COALESCE\(s3\.class_name, rrm3\.class_name, st3\.class_name\)/);
   assert.match(source, /COUNT\(\*\)::int AS class_size/);
-  assert.match(source, /most common score-class snapshot/);
+  assert.match(source, /score snapshots place them in this class/);
   assert.match(source, /COALESCE\(rrm\.class_name,s\.class_name\) AS class_name/);
   assert.match(source, /ORDER BY COALESCE\(rrm\.class_name,s\.class_name\), s\.full_name, sub\.name/);
 });
