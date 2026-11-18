@@ -15,19 +15,25 @@ after(async () => {
 
 test('teacher placement decisions mutate only physical report membership and append history', async () => {
   const suffix = randomUUID();
+  const schoolCode = `roster_${suffix.slice(0, 12)}`;
+  await query('INSERT INTO schools(code,name) VALUES($1,$2)', [schoolCode, `Roster Lifecycle School ${suffix}`]);
+  await query(
+    `INSERT INTO classes(school_code,name) VALUES($1,'Primary 4'),($1,'Primary 5')`,
+    [schoolCode],
+  );
   const username = `roster-teacher-${suffix}`;
   const { rows: users } = await query(
     `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,is_active,pending_admin_review)
-     VALUES($1,'test-hash','teacher','Roster Lifecycle Teacher','primary','Primary 4',TRUE,FALSE)
+     VALUES($1,'test-hash','teacher','Roster Lifecycle Teacher',$2,'Primary 4',TRUE,FALSE)
      RETURNING id`,
-    [username],
+    [username, schoolCode],
   );
   const teacherId = String(users[0].id);
   const token = signAccess({
     id: teacherId,
     username,
     role: 'teacher',
-    school_code: 'primary',
+    school_code: schoolCode,
     assigned_class: 'Primary 4',
     assigned_subject_ids: [],
   });
@@ -38,8 +44,8 @@ test('teacher placement decisions mutate only physical report membership and app
     for (const [index, admission] of ['PROMOTE', 'RETAIN', 'REMOVE', 'REINSTATE'].entries()) {
       const { rows } = await query(
         `INSERT INTO students(full_name,class_name,school_code,admission_number)
-         VALUES($1,'Primary 4','primary',$2) RETURNING id`,
-        [`Roster Lifecycle ${admission} ${suffix}`, `${admission}-${suffix}-${index}`],
+         VALUES($1,'Primary 4',$2,$3) RETURNING id`,
+        [`Roster Lifecycle ${admission} ${suffix}`, schoolCode, `${admission}-${suffix}-${index}`],
       );
       const studentId = String(rows[0].id);
       studentIds.push(studentId);
@@ -122,7 +128,8 @@ test('teacher placement decisions mutate only physical report membership and app
       await new Promise<void>(resolve => server!.close(() => resolve()));
     }
     // The append-only event log intentionally retains the test history. The
-    // PostgreSQL service is disposable and is discarded at workflow end.
+    // dedicated synthetic school and its rows are isolated from real schools;
+    // the disposable PostgreSQL service is discarded at workflow end.
     await query('DELETE FROM users WHERE id=$1', [teacherId]);
   }
 });
