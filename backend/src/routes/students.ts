@@ -50,8 +50,13 @@ async function lockWardMutationStudent(
   if (!user.school_code || student.school_code !== user.school_code) {
     return { ok: false, status: 403, error: "You can't manage parent links outside your school" };
   }
-  if (user.assigned_class && student.class_name !== user.assigned_class) {
-    return { ok: false, status: 403, error: "You can't manage parent links outside your assigned class" };
+  if (user.role === 'teacher') {
+    if (!user.assigned_class) {
+      return { ok: false, status: 403, error: 'Subject teachers cannot manage parent links.' };
+    }
+    if (student.class_name !== user.assigned_class) {
+      return { ok: false, status: 403, error: "You can't manage parent links outside your assigned class" };
+    }
   }
   return { ok: true, schoolCode: student.school_code };
 }
@@ -73,9 +78,8 @@ router.get('/', requirePerm('students.read'), async (req, res) => {
   // profiles never appear in the physical student-report roster.
   const reportRosterJoin = " JOIN report_roster_memberships rrm ON rrm.student_id=s.id AND rrm.status='active'";
   const teacherPersonalFields = user.role === 'teacher' ? '' : 's.gender,s.date_of_birth,';
-  let sql = `SELECT s.id,s.admission_number,s.full_name,
-                    rrm.class_name AS class_name,
-                    ${teacherPersonalFields}s.school_code,s.created_at
+  const teacherProjection = user.role === 'teacher' ? 's.id,s.admission_number,s.full_name,rrm.class_name AS class_name' : `s.id,s.admission_number,s.full_name,rrm.class_name AS class_name,${teacherPersonalFields}s.school_code,s.created_at`;
+  let sql = `SELECT ${teacherProjection}
              FROM students s${reportRosterJoin}
              WHERE s.deleted_at IS NULL`;
   const params: unknown[] = [];
@@ -84,6 +88,11 @@ router.get('/', requirePerm('students.read'), async (req, res) => {
   if (effectiveClass) {
     params.push(effectiveClass);
     sql += ` AND rrm.class_name=$${params.length}`;
+  } else if (user.role === 'teacher' && !user.assigned_class) {
+    const assignedClasses = user.assigned_class_names ?? [];
+    if (!assignedClasses.length) return res.status(403).json({ error: 'No classes are assigned to this subject teacher.' });
+    params.push(assignedClasses);
+    sql += ` AND rrm.class_name=ANY($${params.length}::text[])`;
   }
   if (search) { params.push(`%${search}%`); sql += ` AND s.full_name ILIKE $${params.length}`; }
 
@@ -183,24 +192,18 @@ router.get('/report-roster/removed', requireRole('admin'), async (req, res) => {
 router.get('/:id', requirePerm('students.read'), async (req, res) => {
   const user = req.user!;
   let teacherReportClassName: string | null = null;
-  if (user.role !== 'teacher') {
-    const { rows: reportMemberships } = await query(
-      'SELECT 1 FROM report_roster_memberships WHERE student_id=$1 LIMIT 1',
-      [req.params.id],
-    );
-    if (!reportMemberships[0]) return res.status(404).json({ error: 'Student not found' });
-  }
   if (user.role === 'teacher') {
-    if (!user.school_code || !user.assigned_class) {
-      return res.status(403).json({ error: 'Report access requires an assigned physical class.' });
+    const allowedClasses = user.assigned_class ? [user.assigned_class] : (user.assigned_class_names ?? []);
+    if (!user.school_code || !allowedClasses.length) {
+      return res.status(403).json({ error: 'Report access requires assigned classes.' });
     }
     const { rows: memberships } = await query(
       `SELECT m.class_name
        FROM report_roster_memberships m
        JOIN students s ON s.id=m.student_id
        WHERE m.student_id=$1 AND m.status='active'
-         AND m.class_name=$2 AND s.school_code=$3 AND s.deleted_at IS NULL`,
-      [req.params.id, user.assigned_class, user.school_code],
+         AND m.class_name=ANY($2::text[]) AND s.school_code=$3 AND s.deleted_at IS NULL`,
+      [req.params.id, allowedClasses, user.school_code],
     );
     if (!memberships[0]) return res.status(404).json({ error: 'Student not found' });
     teacherReportClassName = memberships[0].class_name;
@@ -218,7 +221,9 @@ router.get('/:id', requirePerm('students.read'), async (req, res) => {
   if (teacherReportClassName) params.push(teacherReportClassName);
   const teacherClassSelect = teacherReportClassName ? '$' + params.length : 's.class_name';
   const teacherQuery = teacherReportClassName
-    ? 'SELECT s.id,s.admission_number,s.full_name,s.gender,s.date_of_birth,' + teacherClassSelect + ' AS class_name,s.school_code,s.created_at FROM students s WHERE s.id=$1' + schoolClause + deletedClause
+    ? (user.role === 'teacher' && !user.assigned_class
+        ? 'SELECT s.id,s.admission_number,s.full_name,' + teacherClassSelect + ' AS class_name FROM students s WHERE s.id=$1' + schoolClause + deletedClause
+        : 'SELECT s.id,s.admission_number,s.full_name,s.gender,s.date_of_birth,' + teacherClassSelect + ' AS class_name,s.school_code,s.created_at FROM students s WHERE s.id=$1' + schoolClause + deletedClause)
     : `SELECT s.*,
               lu.username AS login_username,
               array_agg(json_build_object('parent_id',pw.parent_id,'name',pu.full_name,'phone',pu.phone))
@@ -243,6 +248,9 @@ router.get('/:id', requirePerm('students.read'), async (req, res) => {
 // assigned class. A school-bound admin is pinned to their school; only a
 // global admin (school_code NULL) is unrestricted.
 router.post('/', requirePerm('grades.write'), async (req, res) => {
+  if (req.user!.role === 'teacher' && !req.user!.assigned_class) {
+    return res.status(403).json({ error: 'Subject teachers cannot create or administer student records.' });
+  }
   const schema = z.object({
     full_name:        z.string().min(2),
     class_name:       z.string(),
