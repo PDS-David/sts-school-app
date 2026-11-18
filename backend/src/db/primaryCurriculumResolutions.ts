@@ -6,6 +6,8 @@
  * import reproducible on another machine. Additions require source review.
  */
 
+import { PRIMARY_SOURCE_TEXT_OVERRIDES } from './primarySourceTextOverrides.js';
+
 type ParsedTopicLike = { weekLabel: string; title: string; body: string };
 
 const EXCLUDED_FILES = new Set([
