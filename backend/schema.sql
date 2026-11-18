@@ -1061,6 +1061,21 @@ CREATE INDEX IF NOT EXISTS idx_school_events_school_start
 CREATE INDEX IF NOT EXISTS idx_school_events_class_start
   ON school_events(school_code, class_name, start_at);
 
+-- ── Global online-learning access policy ──────────────────────────────────
+-- One global-admin-controlled policy. Defaults retain free launch and leave
+-- term PIN/sequence enforcement off until the owner chooses to enable them.
+CREATE TABLE IF NOT EXISTS public.learning_access_settings (
+  id                           SMALLINT PRIMARY KEY CHECK (id = 1),
+  free_launch_mode             BOOLEAN NOT NULL DEFAULT TRUE,
+  term_pin_enforced            BOOLEAN NOT NULL DEFAULT FALSE,
+  curriculum_sequence_enforced BOOLEAN NOT NULL DEFAULT FALSE,
+  updated_by                   UUID REFERENCES public.users(id) ON DELETE SET NULL,
+  updated_at                   TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+INSERT INTO public.learning_access_settings (id)
+VALUES (1)
+ON CONFLICT (id) DO NOTHING;
+
 -- Stamp the immutable baseline for clean bootstrap/schema.sql installs.
 -- Keep this checksum synchronized with backend/migrations/0001_baseline.sql.
 INSERT INTO public.schema_migrations(version,name,checksum)
