@@ -128,7 +128,7 @@ if (!URL_ || !CAP || !existsSync(path.join(CAP, 'original-rows.json'))) {
       // 4. completion path: corrected grounding only
       prompts.length = 0; const done = await api('POST', `/topics/${topic}/complete`);
       assert.equal(done.status, 200); assert.ok(done.body.summary.startsWith(JSS3_CORRECTION_MARKER)); assert.equal(done.body.delivery_correction.status, 'corrected');
-      assert.ok(prompts.length >= 2, 'practice + assessment prompts expected'); for (const p of prompts) { assert.ok(!p.includes(marker), 'original text reached AI grounding'); assert.ok(p.includes(JSS3_CORRECTION_MARKER)); }
+      assert.ok(prompts.length >= 1, 'one structured lesson prompt generates teaching content and practice together'); for (const p of prompts) { assert.ok(!p.includes(marker), 'original text reached AI grounding'); assert.ok(p.includes(JSS3_CORRECTION_MARKER)); }
       const fp = resolveDelivery({ school_code: SC, class_name: 'JSS 3', subject_name: c.subject_name, term_label: r.termLabel, title: r.title, source_reference: body })!.fingerprint;
       const link = await one(`SELECT a.id, a.status, a.content_fingerprint FROM topics t JOIN assessments a ON a.id=t.generated_assessment_id WHERE t.id=$1`, [topic]);
       assert.equal(link.status, 'open'); assert.equal(link.content_fingerprint, fp); assert.notEqual(link.id, stale);
