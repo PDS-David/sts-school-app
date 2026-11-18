@@ -2,14 +2,14 @@ import { Router } from 'express';
 import rateLimit from 'express-rate-limit';
 import { z } from 'zod';
 import { query } from '../db/pool.js';
-import { requireAuth, requirePerm } from '../middleware/auth.js';
+import { requireAuth, requirePerm, denyTeacherAccess } from '../middleware/auth.js';
 import { hasPerm } from '../utils/rbac.js';
 import { getMessageableUsers } from '../utils/scope.js';
 import { sendPushToUser } from '../utils/push.js';
 import { createPostgresRateLimitStore } from '../utils/postgresRateLimitStore.js';
 
 const router = Router();
-router.use(requireAuth);
+router.use(requireAuth, denyTeacherAccess);
 
 // Direct messages are a user-generated write surface. Key the limiter by the
 // authenticated account (not client-supplied IP headers) so a sender cannot
