@@ -157,7 +157,8 @@ test('teacher creation rolls back the user if subject insertion fails after the 
       role: 'teacher',
       school_code: 'primary',
       assigned_subject_ids: [subjectId],
-      initial_password: 'Bsec5-Strong-Password!',
+      assigned_class_names: ['Primary 1'],
+      initial_password: '1234',
     });
     assert.equal(response.status, 500);
 
