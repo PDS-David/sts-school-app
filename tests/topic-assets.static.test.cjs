@@ -137,7 +137,7 @@ test('mobile: generated curriculum lessons render before authenticated pictures 
   assert.match(s, /AI-generated curriculum lesson/);
   assert.match(s, /generatedLesson\.introduction/);
   assert.match(s, /generatedLesson\.sections\.map/);
-  assert.match(s, /generatedLesson\.practice_questions/);
+  assert.match(s, /setPractice\(data\.lesson\.practice_questions \?\? \[\]\)/);
   assert.match(s, /api\.post\(\`\/learning\/topics\/\$\{topic\.id\}\/lesson\`\)/);
   assert.match(s, /api\.post\(\`\/learning\/topics\/\$\{topic\.id\}\/progress\`\)/);
   assert.doesNotMatch(s, /api\.post\(\`\/learning\/topics\/\$\{topic\.id\}\/complete\`\)/);
