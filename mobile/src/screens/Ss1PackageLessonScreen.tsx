@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import api from '../api/client';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { Card, SectionHeader } from '../components/UI';
+import { Card, SectionHeader, Btn } from '../components/UI';
 import { getSecureItem } from '../api/secureTokenStorage';
 import { LessonImage } from './TopicDetailScreen';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
@@ -103,6 +103,7 @@ export default function Ss1PackageLessonScreen({ route }: any) {
 const styles = StyleSheet.create({
   reviewPending: { borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.sm, padding: Spacing.sm, marginTop: Spacing.sm },
   generationError: { color: Colors.error, fontSize: Fonts.sizes.xs, marginTop: Spacing.sm },
+  note: { color: Colors.textSub, fontSize: Fonts.sizes.xs, lineHeight: 18, marginTop: Spacing.md },
   reviewPendingText: { color: Colors.textSub, fontSize: Fonts.sizes.xs, lineHeight: 18 },
   meta: { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginBottom: Spacing.xs },
   body: { color: Colors.text, fontSize: Fonts.sizes.sm, lineHeight: 22, marginTop: Spacing.sm },
