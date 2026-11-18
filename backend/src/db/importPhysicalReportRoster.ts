@@ -56,6 +56,10 @@ async function main() {
       'SELECT school_code,name FROM classes WHERE school_code IN (\'primary\',\'secondary\')',
     );
     const availableClasses = new Set(classRows.map(row => `${row.school_code}|${row.name}`));
+
+    // PostgreSQL forbids SELECT FOR UPDATE inside the read-only dry-run transaction.
+    // Acquire row locks only for the write/apply transaction.
+    const rowLock = apply ? ' FOR UPDATE' : '';
     for (const entry of entries) {
       if (entry.enrolmentStatus === 'active' && entry.className
           && !availableClasses.has(`${entry.schoolCode}|${entry.className}`)) {
@@ -80,7 +84,7 @@ async function main() {
         user_id: string | null; deleted_at: Date | null;
       }>(
         `SELECT id,school_code,full_name,class_name,user_id,deleted_at
-           FROM students WHERE id=$1 FOR UPDATE`,
+           FROM students WHERE id=$1${rowLock}`,
         [entry.studentId],
       );
       const existingStudent = existingRows[0];
@@ -121,7 +125,7 @@ async function main() {
         class_name: string; source_class_name: string; status: 'active' | 'removed';
       }>(
         `SELECT class_name,source_class_name,status
-           FROM report_roster_memberships WHERE student_id=$1 FOR UPDATE`,
+           FROM report_roster_memberships WHERE student_id=$1${rowLock}`,
         [entry.studentId],
       );
       const membership = membershipRows[0];
