@@ -58,19 +58,20 @@ export function resolveStudentRosterScope(
   if (user.role === 'teacher') {
     const schoolCode = nonBlank(user.school_code);
     const assignedClass = nonBlank(user.assigned_class);
-    if (!schoolCode || !assignedClass) {
+    const assignedClasses = assignedClass ? [assignedClass] : (user.assigned_class_names ?? []);
+    if (!schoolCode || !assignedClasses.length) {
       return {
         status: 403,
-        error: 'Report access requires a teacher account assigned to a physical class. Contact the school administrator.',
+        error: 'Report access requires an assigned physical class or subject-teacher class list. Contact the school administrator.',
       };
     }
-    if (requestedClass && requestedClass !== assignedClass) {
+    if (requestedClass && !assignedClasses.includes(requestedClass)) {
       return {
         status: 403,
-        error: 'You can only browse students in your assigned physical class.',
+        error: 'You can only browse students in your assigned classes.',
       };
     }
-    return { schoolCode, className: assignedClass };
+    return { schoolCode, className: assignedClass ?? requestedClass ?? null };
   }
 
   return {
