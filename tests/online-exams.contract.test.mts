@@ -148,3 +148,10 @@ test('formal exam authoring requires a valid school lesson topic mapping for eve
   assert.match(adminExamScreen, /api\.get\('\/online-exams\/admin\/lesson-topics'/);
   assert.match(adminExamScreen, /covered_topic_id:Number\(selectedTopic\.id\)/);
 });
+
+test('admin exam creator captures structured rubric criteria for written responses', () => {
+  assert.match(adminExamScreen, /function parseRubric/);
+  assert.match(adminExamScreen, /item\.marking_rubric=rubric/);
+  assert.match(adminExamScreen, /id\|description\|max_marks/);
+  assert.match(adminExamScreen, /covered_topic_id:Number\(selectedTopic\.id\)/);
+});
