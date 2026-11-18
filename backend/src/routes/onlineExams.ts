@@ -29,6 +29,107 @@ function publicQuestion(row: any) {
   };
 }
 
+router.post('/admin/exams/generate-drafts',requireRole('admin'),async(req,res)=>{
+  const schoolCode=schoolForAdmin(req.user);
+  const body=req.body??{};
+  const topicIds=body.lesson_topic_ids;
+  if(!schoolCode) return res.status(400).json({error:'Select a school before generating examination questions.'});
+  if(!BOARDS.has(body.board)||!EXAM_CLASSES.has(body.class_name)||
+     typeof body.subject_name!=='string'||!body.subject_name.trim()||
+     !Array.isArray(topicIds)||topicIds.length<1||topicIds.length>12||
+     !topicIds.every((id:any)=>Number.isSafeInteger(id)&&id>0)||
+     new Set(topicIds).size!==topicIds.length){
+    return res.status(400).json({error:'Provide board, examination class, subject and 1–12 unique lesson topic IDs.'});
+  }
+  const {rows: lessons}=await query(`
+    SELECT t.id,t.title,t.description,t.summary,sub.name AS subject_name,
+           COUNT(DISTINCT st.id)::int AS candidate_count,
+           COUNT(DISTINCT tc.student_id)::int AS completed_count
+      FROM topics t
+      JOIN subjects sub ON sub.id=t.subject_id AND sub.school_code=t.school_code
+      JOIN students st ON st.school_code=t.school_code AND st.class_name=t.class_name AND st.deleted_at IS NULL
+      LEFT JOIN topic_completions tc ON tc.topic_id=t.id AND tc.student_id=st.id
+     WHERE t.id=ANY($1::int[]) AND t.school_code=$2 AND t.class_name=$3 AND sub.name=$4
+     GROUP BY t.id,t.title,t.description,t.summary,sub.name
+  `,[topicIds,schoolCode,body.class_name,body.subject_name.trim()]);
+  if(lessons.length!==topicIds.length || lessons.some((l:any)=>!Number(l.candidate_count)||Number(l.completed_count)!==Number(l.candidate_count))){
+    return res.status(409).json({error:'Every selected lesson must belong to this school, subject and class, and must be completed by every currently enrolled candidate.'});
+  }
+  if(lessons.some((l:any)=>![l.summary,l.description].some((v:any)=>typeof v==='string'&&v.trim()))){
+    return res.status(409).json({error:'A selected completed lesson has no usable teaching content to ground original examination questions.'});
+  }
+  const sourceResult=await query(`
+    SELECT id,source_name FROM question_bank_sources
+     WHERE board='GENERAL' AND access_method='original_generated'
+       AND rights_status='original_generated' AND is_active=true
+     ORDER BY created_at LIMIT 1
+  `);
+  if(!sourceResult.rows[0]) return res.status(409).json({error:'The registered original-generated question source is unavailable.'});
+
+  const drafts:any[]=[];
+  try{
+    for(const lesson of lessons){
+      const lessonText=[lesson.summary,lesson.description].filter((v:any)=>typeof v==='string'&&v.trim()).join('\n\n').slice(0,12000);
+      const prompt=`Write 3 original ${body.board} examination-standard multiple-choice questions for ${body.class_name} ${body.subject_name} based ONLY on this completed lesson.\nLesson title: ${lesson.title}\nLesson content:\n${lessonText}\nDo not add facts, topics or skills not explicitly taught in this lesson. Do not imitate or quote a past paper. Questions must be age-appropriate, clear and unambiguous, with four plausible options and one correct answer. Return JSON {"questions":[{"stem":"...","options":[{"key":"A","text":"..."},{"key":"B","text":"..."},{"key":"C","text":"..."},{"key":"D","text":"..."}],"correct_key":"A","explanation":"...","marks":1}]}`;
+      const generated:any=await generateJSON(prompt,'generate-questions',{userId:req.user!.id,role:req.user!.role});
+      if(!Array.isArray(generated?.questions)||generated.questions.length!==3) throw new Error('Question generation returned an incomplete set.');
+      for(const q of generated.questions){
+        if(!q||typeof q.stem!=='string'||q.stem.trim().length<12||
+           !Array.isArray(q.options)||q.options.length!==4||
+           !q.options.every((o:any)=>o&&typeof o.key==='string'&&typeof o.text==='string'&&o.text.trim())||
+           !q.options.some((o:any)=>o.key===q.correct_key)||
+           typeof q.explanation!=='string'||q.explanation.trim().length<10||
+           !Number.isFinite(Number(q.marks))||Number(q.marks)<=0||Number(q.marks)>10){
+          throw new Error('Generated question failed answer/options/marks validation.');
+        }
+        drafts.push({lesson,q});
+      }
+    }
+  }catch(error:any){
+    return res.status(502).json({error:error?.message??'Could not generate examination questions from the selected lessons.'});
+  }
+
+  try{
+    const saved=await withTransaction(async client=>{
+      const normalized=body.subject_name.trim();
+      let {rows: subjectRows}=await client.query('SELECT id FROM question_bank_subjects WHERE name=$1',[normalized]);
+      if(!subjectRows[0]){
+        const code=normalized.toUpperCase().replace(/[^A-Z0-9]+/g,'_').replace(/^_|_$/g,'').slice(0,35)||'SUBJECT';
+        await client.query('INSERT INTO question_bank_subjects(code,name) VALUES($1,$2) ON CONFLICT(code) DO NOTHING',[code,normalized]);
+        ({rows:subjectRows}=await client.query('SELECT id FROM question_bank_subjects WHERE name=$1',[normalized]));
+        if(!subjectRows[0]) return {error:'Subject code already exists for a different question-bank subject. Admin taxonomy reconciliation is required.'};
+      }
+      const subjectId=subjectRows[0].id;
+      const ids:string[]=[];
+      for(const item of drafts){
+        const lesson=item.lesson,q=item.q;
+        const slug=lesson.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,100)||('lesson-'+lesson.id);
+        let {rows: topicRows}=await client.query('SELECT id FROM question_bank_topics WHERE subject_id=$1 AND slug=$2',[subjectId,slug]);
+        if(!topicRows[0]){
+          ({rows:topicRows}=await client.query(`
+            INSERT INTO question_bank_topics(subject_id,slug,name,description)
+            VALUES($1,$2,$3,$4) RETURNING id
+          `,[subjectId,slug,lesson.title,lesson.description??lesson.summary??null]));
+        }
+        const qno='AI-GEN-'+randomUUID().slice(0,8).toUpperCase();
+        const {rows: inserted}=await client.query(`
+          INSERT INTO question_bank_questions(board,exam_year,subject_id,paper,question_number,question_type,stem,options,correct_answer,explanation,marks,topic_id,source_id,source_locator,content_origin,rights_status,review_status,created_by)
+          VALUES($1,NULL,$2,'Original practice — not a past paper',$3,'mcq',$4,$5::jsonb,$6::jsonb,$7,$8,$9,$10,$11,'ai_generated','original_generated','draft',$12)
+          RETURNING id
+        `,[body.board,subjectId,qno,q.stem.trim(),JSON.stringify(q.options),JSON.stringify({key:q.correct_key}),
+          q.explanation.trim(),Number(q.marks),topicRows[0].id,sourceResult.rows[0].id,'school-topic:'+lesson.id,req.user!.id]);
+        ids.push(inserted[0].id);
+      }
+      return {draft_question_ids:ids,review_status:'draft',count:ids.length,source:sourceResult.rows[0].source_name};
+    });
+    if('error' in saved) return res.status(409).json({error:saved.error});
+    return res.status(201).json({...saved,message:'Questions are saved as drafts. An authorised subject reviewer must approve them before they can be used in an examination.'});
+  }catch(error:any){
+    console.error('[online-exams] question draft persistence failed',error);
+    return res.status(500).json({error:'Could not save generated examination-question drafts.'});
+  }
+});
+
 router.post('/admin/exams', requireRole('admin'), async (req, res) => {
   const user = req.user!;
   const schoolCode = schoolForAdmin(user);
