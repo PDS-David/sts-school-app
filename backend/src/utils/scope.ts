@@ -403,6 +403,9 @@ export interface MessageableUser {
  *     contributes teacher rows and can never gate the admin branch.
  */
 export async function getMessageableUsers(user: AuthUser): Promise<MessageableUser[]> {
+  // Teacher accounts are report-generation-only; fail closed before any directory query.
+  if (user.role === 'teacher') return [];
+
   if (user.role === 'student') {
     const { rows } = await query(
       `SELECT DISTINCT u.id, u.username, u.full_name, u.role
