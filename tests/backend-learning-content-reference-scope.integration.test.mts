@@ -130,22 +130,28 @@ test('learning content writes and reads reject cross-school subject, term and qu
       { method: 'POST', headers: headers(token), body: JSON.stringify(body) },
     );
 
+    const teacherMaterialAttempt = await post('/materials', {
+      subject_id: subjectIds[0], term_id: termIds[0], class_name: 'Primary 4',
+      title: 'Teacher is report-only', type: 'pdf', url: 'https://example.test/teacher.pdf',
+    });
+    assert.equal(teacherMaterialAttempt.status, 403, 'teacher accounts cannot use learning-content routes');
+
     const wrongSubjectMaterial = await post('/materials', {
       subject_id: subjectIds[2], term_id: termIds[0], class_name: 'Primary 4',
       title: 'Wrong school subject', type: 'pdf', url: 'https://example.test/foreign.pdf',
-    });
+    }, admin.token);
     assert.equal(wrongSubjectMaterial.status, 400);
 
     const wrongTermMaterial = await post('/materials', {
       subject_id: subjectIds[0], term_id: termIds[1], class_name: 'Primary 4',
       title: 'Wrong school term', type: 'pdf', url: 'https://example.test/foreign-term.pdf',
-    });
+    }, admin.token);
     assert.equal(wrongTermMaterial.status, 400);
 
     const validMaterial = await post('/materials', {
       subject_id: subjectIds[0], term_id: termIds[0], class_name: 'Primary 4',
       title: 'Valid material', type: 'pdf', url: 'https://example.org/valid.pdf',
-    });
+    }, admin.token);
     assert.equal(validMaterial.status, 201);
     const validMaterialPayload = await validMaterial.json() as { material: { id: number } };
     materialIds.push(validMaterialPayload.material.id);
