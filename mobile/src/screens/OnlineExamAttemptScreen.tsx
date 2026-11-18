@@ -69,6 +69,7 @@ export default function OnlineExamAttemptScreen({ route, navigation }:any) {
       }else setError(e?.response?.data?.error??'Could not recover this examination attempt.');
     }finally{setLoading(false);}
   },[attemptId,saveOne,storageKey]);
+  useEffect(()=>{if(initialSession) AsyncStorage.setItem(storageKey+':session',JSON.stringify(initialSession));},[initialSession,storageKey]);
   useEffect(()=>{load();},[load]);
   useEffect(()=>{
     const unsubscribe=NetInfo.addEventListener(state=>setOnline(!!state.isConnected));
