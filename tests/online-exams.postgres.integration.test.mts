@@ -78,6 +78,20 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       const {rows: questionRows}=await client.query("SELECT id FROM question_bank_questions WHERE question_number='AI-GEN-001' AND board='WAEC'");
       assert.ok(subjectRows[0]);assert.ok(questionRows[0]);
       const questionId=questionRows[0].id;
+      const essayQuestionId=randomUUID();
+      const {rows:generatedSources}=await client.query("SELECT id FROM question_bank_sources WHERE rights_status='original_generated' ORDER BY created_at LIMIT 1");
+      const {rows:bankTopics}=await client.query('SELECT id FROM question_bank_topics WHERE subject_id=$1 ORDER BY name LIMIT 1',[subjectRows[0].id]);
+      assert.ok(generatedSources[0]&&bankTopics[0]);
+      await client.query(`
+        INSERT INTO question_bank_questions(
+          id,source_id,board,subject_id,topic_id,paper,question_number,question_type,stem,options,
+          correct_answer,explanation,marks,content_origin,rights_status,review_status,created_by
+        ) VALUES($1,$2,'WAEC',$3,$4,'Original practice — not a past paper','AI-GEN-ESSAY-001',
+          'essay',$5,NULL,$6::jsonb,$7,5,'ai_generated','original_generated','reviewed',$8)
+      `,[essayQuestionId,generatedSources[0].id,subjectRows[0].id,bankTopics[0].id,
+        'Explain how a linear equation is solved and justify each step.',
+        JSON.stringify({reference:'Isolate the variable using inverse operations.'}),
+        'Award marks for a correct method and a justified solution.',admin]);
       const dbGuardExam=randomUUID(),dbGuardSection=randomUUID();
       await client.query(`INSERT INTO online_exams(id,school_code,subject_id,subject_name,class_name,board,examination_type,title,instructions,duration_minutes,starts_at,ends_at,created_by)
         VALUES($1,$2,$3,'Mathematics','SS 3','WAEC','Mock','Rights guard test','Test rights trigger.',30,now(),now()+interval '1 hour',$4)`,
@@ -132,7 +146,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       };
       const reviewQueue=await request('/question-bank/review-queue','GET',teacherToken);
       assert.equal(reviewQueue.status,200);
-      assert.ok(reviewQueue.data.questions.length>=2);
+      assert.ok(reviewQueue.data.questions.length>=3);
       assert.ok(reviewQueue.data.questions.every((item:any)=>item.subject==='Mathematics'));
       assert.equal((await request('/question-bank/questions','GET',teacherToken)).status,403,'teachers may review assigned subjects but cannot administer the global question bank');
       const otherSubjectQueue=await request('/question-bank/review-queue','GET',unassignedTeacherToken);
@@ -144,9 +158,11 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.equal((await request('/online-exams/admin/question-bank/subjects','GET',teacherToken,undefined,school)).status,403);
       const approved=await request('/question-bank/questions/'+questionId+'/review','POST',teacherToken,{decision:'approved',notes:'Checked the answer key, explanation and syllabus alignment.'});
       assert.equal(approved.status,200);assert.equal(approved.data.review_status,'approved');
+      const approvedEssay=await request('/question-bank/questions/'+essayQuestionId+'/review','POST',teacherToken,{decision:'approved',notes:'The response rubric aligns with the Mathematics learning objective.'});
+      assert.equal(approvedEssay.status,200);assert.equal(approvedEssay.data.review_status,'approved');
       const approvedQuestions=await request('/online-exams/admin/question-bank/questions?board=WAEC&subject_code=MATHEMATICS','GET',adminToken,undefined,school);
       assert.equal(approvedQuestions.status,200);assert.ok(approvedQuestions.data.questions.some((item:any)=>item.id===questionId));
-      const rejectedQuestion=reviewQueue.data.questions.find((item:any)=>item.id!==questionId);
+      const rejectedQuestion=reviewQueue.data.questions.find((item:any)=>item.id!==questionId&&item.id!==essayQuestionId);
       assert.ok(rejectedQuestion);
       const rejected=await request('/question-bank/questions/'+rejectedQuestion.id+'/review','POST',teacherToken,{decision:'rejected',notes:'The explanation needs correction before student use.'});
       assert.equal(rejected.status,200);assert.equal(rejected.data.review_status,'reviewed');
@@ -154,6 +170,8 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.equal(forbiddenReview.status,403);
       const reviewAudit=await client.query('SELECT decision FROM question_bank_question_reviews WHERE question_id=$1 ORDER BY reviewed_at',[questionId]);
       assert.deepEqual(reviewAudit.rows.map((row:any)=>row.decision),['approved']);
+      const essayReviewAudit=await client.query('SELECT decision FROM question_bank_question_reviews WHERE question_id=$1',[essayQuestionId]);
+      assert.deepEqual(essayReviewAudit.rows.map((row:any)=>row.decision),['approved']);
       const rejectedAudit=await client.query('SELECT decision FROM question_bank_question_reviews WHERE question_id=$1',[rejectedQuestion.id]);
       assert.deepEqual(rejectedAudit.rows.map((row:any)=>row.decision),['rejected']);
 
@@ -163,12 +181,15 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
         board:'WAEC',subject_name:'Mathematics',class_name:'SS 3',examination_type:'Mock',
         title:'SS3 Mathematics Mock',instructions:'Read each question carefully.',duration_minutes:30,
         starts_at:new Date(Date.now()-60000).toISOString(),ends_at:new Date(Date.now()+2*60*60*1000).toISOString(),
-        sections:[{title:'Section A',instructions:'Answer the question.',questions:[{question_id:questionId,marks:2,covered_topic_id:coveredTopicId}]}]
+        sections:[{title:'Section A',instructions:'Answer all questions.',questions:[{question_id:questionId,marks:2,covered_topic_id:coveredTopicId},{question_id:essayQuestionId,marks:5,covered_topic_id:coveredTopicId,marking_rubric:[{id:'method',description:'Shows the correct method',max_marks:3},{id:'result',description:'States the correct result',max_marks:2}]}]}]
       };
 
       assert.equal((await request('/online-exams/exams','GET','')).status,401);
-      const rejectedPilot=await request('/online-exams/admin/exams','POST',adminToken,examDraft,school);
+      const rejectedDraft=structuredClone(examDraft);rejectedDraft.sections[0].questions[0].question_id=rejectedQuestion.id;
+      const rejectedPilot=await request('/online-exams/admin/exams','POST',adminToken,rejectedDraft,school);
       assert.equal(rejectedPilot.status,400);
+      const missingRubric=structuredClone(examDraft);delete missingRubric.sections[0].questions[1].marking_rubric;
+      assert.equal((await request('/online-exams/admin/exams','POST',adminToken,missingRubric,school)).status,400);
       const missingCoverage=structuredClone(examDraft);delete missingCoverage.sections[0].questions[0].covered_topic_id;
       assert.equal((await request('/online-exams/admin/exams','POST',adminToken,missingCoverage,school)).status,400);
       const wrongCoverage=structuredClone(examDraft);wrongCoverage.sections[0].questions[0].covered_topic_id=99999;
@@ -188,7 +209,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.equal(list.status,200);assert.equal(list.data.exams.length,1);
       const started=await request('/online-exams/exams/'+examId+'/start','POST');
       assert.equal(started.status,200);
-      assert.equal(started.data.questions.length,1);
+      assert.equal(started.data.questions.length,2);
       assert.equal(JSON.stringify(started.data).includes('correct_answer'),false);
       const attemptId=started.data.attempt.id;
       const resumed=await request('/online-exams/exams/'+examId+'/start','POST');
@@ -211,8 +232,33 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.equal(Number(submitted.data.score),2);
       const duplicate=await request('/online-exams/attempts/'+attemptId+'/submit','POST',studentToken,{confirm:true});
       assert.equal(duplicate.status,200);assert.equal(duplicate.data.already_submitted,true);
+      const essayExamQuestionId=started.data.questions[1].id;
+      await client.query("UPDATE online_exam_attempts SET status='under_review' WHERE id=$1",[attemptId]);
+      await client.query(`
+        INSERT INTO online_exam_responses(attempt_id,exam_question_id,response,awarded_marks,marking_status,feedback,marking_confidence,marking_details)
+        VALUES($1,$2,$3::jsonb,NULL,'pending_review','AI confidence below the review threshold.',0.42,'{"method":"ai_rubric","criterion_scores":[]}'::jsonb)
+        ON CONFLICT(attempt_id,exam_question_id) DO UPDATE SET
+          response=EXCLUDED.response,awarded_marks=NULL,marking_status='pending_review',
+          feedback=EXCLUDED.feedback,marking_confidence=EXCLUDED.marking_confidence,marking_details=EXCLUDED.marking_details
+      `,[attemptId,essayExamQuestionId,JSON.stringify('I isolate the variable by applying inverse operations.')]);
+      const examinerResponses=await request('/online-exams/admin/attempts/'+attemptId+'/responses','GET',adminToken,undefined,school);
+      assert.equal(examinerResponses.status,200);
+      const pendingEssay=examinerResponses.data.responses.find((item:any)=>item.question_id===essayExamQuestionId);
+      assert.equal(pendingEssay.marking_status,'pending_review');
+      assert.equal(Number(pendingEssay.marking_confidence),0.42);
+      assert.equal(pendingEssay.marking_rubric.length,2);
+      const manualMark=await request('/online-exams/admin/attempts/'+attemptId+'/responses/'+essayExamQuestionId+'/mark','PUT',adminToken,{awarded_marks:3,feedback:'Correct method; final justification is incomplete.'},school);
+      assert.equal(manualMark.status,200);
+      assert.equal(manualMark.data.attempt.status,'submitted');
+      assert.equal(Number(manualMark.data.attempt.score),5);
+      const finalExamResponses=await request('/online-exams/admin/attempts/'+attemptId+'/responses','GET',adminToken,undefined,school);
+      const manuallyMarked=finalExamResponses.data.responses.find((item:any)=>item.question_id===essayExamQuestionId);
+      assert.equal(manuallyMarked.marking_status,'manual_marked');
+      assert.equal(manuallyMarked.marking_confidence,null);
+      assert.equal(manuallyMarked.marking_details.method,'manual_examiner');
+
       const result=await request('/online-exams/attempts/'+attemptId+'/results');
-      assert.equal(result.status,200);assert.equal(Number(result.data.attempt.score),2);
+      assert.equal(result.status,200);assert.equal(Number(result.data.attempt.score),5);
       const duplicateAttempts=await client.query('SELECT COUNT(*)::int AS n FROM online_exam_attempts WHERE exam_id=$1 AND student_id=$2',[examId,student]);
       assert.equal(duplicateAttempts.rows[0].n,1);
 
