@@ -12,6 +12,7 @@ import { useAuth } from '../api/AuthContext';
 import TeacherDashboardHomeScreen from '../screens/teacher/TeacherDashboardHomeScreen';
 import TeacherClassesScreen from '../screens/teacher/TeacherClassesScreen';
 import TeacherMoreScreen from '../screens/teacher/TeacherMoreScreen';
+import TeacherQuestionReviewScreen from '../screens/teacher/TeacherQuestionReviewScreen';
 import StudentsScreen from '../screens/StudentsScreen';
 import AddStudentScreen from '../screens/AddStudentScreen';
 import StudentDetailScreen from '../screens/StudentDetailScreen';
@@ -62,6 +63,7 @@ function MoreStackNavigator() {
   return (
     <MoreStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
       <MoreStack.Screen name="More" component={TeacherMoreScreen} />
+      <MoreStack.Screen name="TeacherQuestionReview" component={TeacherQuestionReviewScreen} options={{ headerShown: true, title: 'Subject Question Review', ...opts }} />
       <MoreStack.Screen name="ChangePassword" component={ChangePasswordScreen} options={{ headerShown: true, title: 'Change Password', ...opts }} />
     </MoreStack.Navigator>
   );
