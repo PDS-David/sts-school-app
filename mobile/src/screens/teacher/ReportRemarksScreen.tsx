@@ -42,7 +42,7 @@ export default function ReportRemarksScreen() {
     let cancelled = false;
     setRecordLoading(true);
     setNotice('');
-    api.get(`/scores/report/${studentId}`, { params: { term_id: termId } })
+    api.get(`/attendance/class-records/${studentId}/${termId}`)
       .then(({ data }) => {
         if (cancelled) return;
         setClassTeacherRemark(data.class_record?.class_teacher_remark ?? '');
@@ -61,7 +61,8 @@ export default function ReportRemarksScreen() {
     setNotice('');
     setError('');
     try {
-      await api.put(`/scores/class-record/${studentId}`, {
+      await api.put('/attendance/class-records', {
+        student_id: studentId,
         term_id: Number(termId),
         class_teacher_remark: classTeacherRemark,
         admin_remark: adminRemark,
