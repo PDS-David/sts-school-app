@@ -222,7 +222,7 @@ async function main() {
         // 0006 removes provisional 0005 backfill rows because an online
         // student is not proof of physical report-roster membership. An
         // explicit source import may activate only those provisional rows.
-        // A later teacher removal remains authoritative and is never undone
+        // A later administrator removal remains authoritative and is never undone
         // by rerunning an old import.
         const latestEvent = await client.query<{ source: string | null }>(
           `SELECT details->>'source' AS source
