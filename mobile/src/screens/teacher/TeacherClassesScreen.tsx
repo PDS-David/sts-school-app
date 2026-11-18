@@ -6,10 +6,10 @@ import { Colors, Spacing, Fonts } from '../../theme';
 import { AppHeader } from '../../components/AppHeader';
 
 const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string; screen: string; color: string }[] = [
+  { icon: 'person-add-outline', label: 'Add Student', sub: 'Create a student record in your assigned physical class', screen: 'AddStudent', color: '#2E7D32' },
   { icon: 'people-outline', label: 'Student Reports', sub: 'Select a student in your assigned physical class and generate their report', screen: 'Students', color: '#1565C0' },
   { icon: 'create-outline', label: 'Enter / Edit Scores', sub: 'Record continuous assessment and examination scores', screen: 'ScoreEntry', color: '#C62828' },
   { icon: 'calendar-outline', label: 'Attendance', sub: 'Record and correct students’ attendance', screen: 'Attendance', color: '#E65100' },
-  { icon: 'chatbox-ellipses-outline', label: 'Class Remarks', sub: 'Maintain weekly effort and class-teacher remarks', screen: 'WeeklyEfforts', color: '#6A1B9A' },
 ];
 
 export default function TeacherClassesScreen({ navigation }: any) {
