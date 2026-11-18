@@ -10,6 +10,7 @@ import { generateTempPassword, generateNumericPin } from '../utils/password.js';
 import { getBackupStatus, runBackup, BackupConfigError } from '../utils/backup.js';
 import { normalizeTeacherSubjectIds, TeacherAssignmentValidationError, validateTeacherAssignments } from '../utils/teacherAssignments.js';
 import type { AuthUser } from '../types/index.js';
+import { resolveLearningAccessPolicy } from '../utils/learningAccessPolicy.js';
 
 const router = Router();
 router.use(requireAuth, requireRole('admin'));
@@ -47,6 +48,65 @@ function resolveAdminSchoolScope(
   }
   return { ok: true, schoolCode: requested.trim() };
 }
+
+// ══════════════════════════════════════════
+// GLOBAL ONLINE-LEARNING ACCESS POLICY
+// ══════════════════════════════════════════
+// This is deliberately global-admin-only: the existing free-launch and
+// term/sequence gates are deployment-wide, not per-school subscription plans.
+router.get('/learning-access-settings', requireGlobalAdmin, async (req, res) => {
+  const { rows } = await query(
+    `SELECT free_launch_mode, term_pin_enforced, curriculum_sequence_enforced,
+            updated_at, updated_by
+       FROM public.learning_access_settings WHERE id=1`,
+  );
+  if (!rows[0]) return res.status(503).json({ error: 'Learning access settings are not initialized. Apply migration 0008 first.' });
+  return res.json({
+    settings: rows[0],
+    effective: resolveLearningAccessPolicy(rows[0]),
+  });
+});
+
+router.put('/learning-access-settings', requireGlobalAdmin, async (req, res) => {
+  const body = req.body ?? {};
+  const keys = ['free_launch_mode', 'term_pin_enforced', 'curriculum_sequence_enforced'];
+  if (keys.some(key => typeof body[key] !== 'boolean') ||
+      Object.keys(body).some(key => !keys.includes(key))) {
+    return res.status(400).json({
+      error: 'Provide exactly three boolean settings: free_launch_mode, term_pin_enforced and curriculum_sequence_enforced.',
+    });
+  }
+
+  const settings = await withTransaction(async client => {
+    const { rows } = await client.query(
+      `UPDATE public.learning_access_settings
+          SET free_launch_mode=$1,
+              term_pin_enforced=$2,
+              curriculum_sequence_enforced=$3,
+              updated_by=$4,
+              updated_at=now()
+        WHERE id=1
+        RETURNING free_launch_mode, term_pin_enforced, curriculum_sequence_enforced,
+                  updated_at, updated_by`,
+      [body.free_launch_mode, body.term_pin_enforced, body.curriculum_sequence_enforced, req.user!.id],
+    );
+    if (!rows[0]) throw new Error('Global learning access settings row is missing; apply migration 0008.');
+    await auditInTransaction(
+      client, req.user!, 'update_learning_access_settings', 'learning_access_settings', 'global',
+      'Global online-learning access policy updated',
+      auditContextFromRequest(req, {
+        metadata: {
+          free_launch_mode: body.free_launch_mode,
+          term_access_required: body.term_pin_enforced,
+          sequence_gate_enabled: body.curriculum_sequence_enforced,
+        },
+      }),
+    );
+    return rows[0];
+  });
+
+  return res.json({ settings, effective: resolveLearningAccessPolicy(settings) });
+});
 
 // ══════════════════════════════════════════
 // USER MANAGEMENT
