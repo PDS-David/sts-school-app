@@ -50,7 +50,10 @@ async function lockWardMutationStudent(
   if (!user.school_code || student.school_code !== user.school_code) {
     return { ok: false, status: 403, error: "You can't manage parent links outside your school" };
   }
-  if (user.assigned_class && student.class_name !== user.assigned_class) {
+  if (!user.assigned_class) {
+    return { ok: false, status: 403, error: 'Subject teachers cannot manage parent links.' };
+  }
+  if (student.class_name !== user.assigned_class) {
     return { ok: false, status: 403, error: "You can't manage parent links outside your assigned class" };
   }
   return { ok: true, schoolCode: student.school_code };
@@ -250,6 +253,9 @@ router.get('/:id', requirePerm('students.read'), async (req, res) => {
 // assigned class. A school-bound admin is pinned to their school; only a
 // global admin (school_code NULL) is unrestricted.
 router.post('/', requirePerm('grades.write'), async (req, res) => {
+  if (req.user!.role === 'teacher' && !req.user!.assigned_class) {
+    return res.status(403).json({ error: 'Subject teachers cannot create or administer student records.' });
+  }
   const schema = z.object({
     full_name:        z.string().min(2),
     class_name:       z.string(),
