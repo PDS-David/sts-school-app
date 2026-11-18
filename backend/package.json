@@ -32,7 +32,8 @@
     "audit:primary4": "node --import tsx src/db/primary4/buildPrimary4CoverageReport.ts",
     "db:migrate:status": "tsx src/db/migrate.ts --status",
     "db:migrate:fresh": "tsx src/db/migrate.ts --fresh",
-    "test:messages-rbac": "node --import tsx --test ../tests/backend-messages-rbac.test.mts"
+    "test:messages-rbac": "node --import tsx --test ../tests/backend-messages-rbac.test.mts",
+    "test:question-bank": "node --import tsx --test ../tests/question-bank-ingestion.test.mts"
   },
   "dependencies": {
     "@google/genai": "^1.48.0",

@@ -1,0 +1,127 @@
+name: Online question-bank ingestion
+
+on:
+  pull_request:
+    paths:
+      - "backend/migrations/0012_online_question_bank.sql"
+      - "backend/src/routes/questionBank.ts"
+      - "backend/src/utils/questionBankValidation.ts"
+      - "backend/package.json"
+      - "backend/package-lock.json"
+      - "tests/question-bank-ingestion.test.mts"
+      - ".github/workflows/question-bank-ingestion.yml"
+  push:
+    branches: [master]
+    paths:
+      - "backend/migrations/0012_online_question_bank.sql"
+      - "backend/src/routes/questionBank.ts"
+      - "backend/src/utils/questionBankValidation.ts"
+      - "backend/package.json"
+      - "backend/package-lock.json"
+      - "tests/question-bank-ingestion.test.mts"
+      - ".github/workflows/question-bank-ingestion.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_DB: question_bank_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d question_bank_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/question_bank_test
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install backend dependencies
+        working-directory: backend
+        run: npm ci
+
+      - name: Build backend
+        working-directory: backend
+        run: npm run build
+
+      - name: Run question-bank validation tests
+        working-directory: backend
+        run: npm run test:question-bank
+
+      - name: Prepare isolated PostgreSQL test schema
+        run: |
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 <<'SQL'
+          CREATE EXTENSION IF NOT EXISTS pgcrypto;
+          CREATE TABLE users (id UUID PRIMARY KEY);
+          SQL
+
+      - name: Apply question-bank migration to isolated PostgreSQL
+        run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f backend/migrations/0012_online_question_bank.sql
+
+      - name: Verify pilot counts, provenance, topic mapping and rights guard
+        run: |
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 <<'SQL'
+          DO $$
+          BEGIN
+            IF (SELECT count(*) FROM question_bank_questions) <> 6 THEN
+              RAISE EXCEPTION 'Expected six pilot questions';
+            END IF;
+            IF (SELECT count(*) FROM question_bank_questions WHERE exam_year IS NOT NULL) <> 0 THEN
+              RAISE EXCEPTION 'Generated pilot questions must not claim a historical exam year';
+            END IF;
+            IF (SELECT count(*) FROM question_bank_questions WHERE review_status='reviewed' AND rights_status='original_generated') <> 6 THEN
+              RAISE EXCEPTION 'Pilot review or rights status is incorrect';
+            END IF;
+            IF (SELECT count(*) FROM question_bank_questions q JOIN question_bank_topics t ON t.id=q.topic_id AND t.subject_id=q.subject_id) <> 6 THEN
+              RAISE EXCEPTION 'A pilot question has an invalid subject/topic mapping';
+            END IF;
+            IF (SELECT count(*) FROM question_bank_source_gaps) <> 18 THEN
+              RAISE EXCEPTION 'Expected separate rights and AI-generation gaps for all 9 board/subject pairs';
+            END IF;
+            IF (SELECT imported_count FROM question_bank_ingestion_batches WHERE batch_key='pilot-original-ai-2026-11-18') <> 6 THEN
+              RAISE EXCEPTION 'Pilot ingestion batch count is incorrect';
+            END IF;
+          END $$;
+
+          INSERT INTO question_bank_sources(board,source_name,access_method,rights_status,rights_evidence)
+          VALUES('WAEC','CI restricted-source guard test','other','restricted','Restricted fixture; never reusable.');
+
+          DO $$
+          DECLARE
+            restricted_source UUID;
+            math_subject BIGINT;
+            math_topic BIGINT;
+          BEGIN
+            SELECT id INTO restricted_source FROM question_bank_sources WHERE source_name='CI restricted-source guard test';
+            SELECT id INTO math_subject FROM question_bank_subjects WHERE code='MATHEMATICS';
+            SELECT id INTO math_topic FROM question_bank_topics WHERE subject_id=math_subject AND slug='linear-equations';
+            BEGIN
+              INSERT INTO question_bank_questions
+                (board,exam_year,subject_id,paper,question_number,question_type,stem,options,correct_answer,
+                 explanation,marks,topic_id,source_id,content_origin,rights_status)
+              VALUES
+                ('WAEC',2022,math_subject,'Paper 1','CI-RESTRICTED-001','mcq','Restricted question fixture?',
+                 '[{"key":"A","text":"A"},{"key":"B","text":"B"}]'::jsonb,'{"key":"A"}'::jsonb,
+                 'Fixture explanation.',1,math_topic,restricted_source,'past_question','licensed');
+              RAISE EXCEPTION 'Rights trigger failed open for a restricted source';
+            EXCEPTION WHEN check_violation THEN
+              NULL;
+            END;
+          END $$;
+          SQL
