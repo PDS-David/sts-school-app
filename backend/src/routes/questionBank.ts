@@ -72,6 +72,9 @@ router.post('/sources', async (req, res) => {
   if (['licensed','public_domain','original_generated'].includes(rights.data) && body.rights_evidence.trim().length < 12) {
     return res.status(400).json({ error: 'Reusable rights require evidence.' });
   }
+  if (rights.data === 'original_generated' && (body.access_method !== 'original_generated' || board.data !== 'GENERAL')) {
+    return res.status(400).json({ error: 'Original-generated sources must use access_method original_generated and board GENERAL.' });
+  }
   const { rows } = await query(`
     INSERT INTO question_bank_sources(board,source_name,source_url,access_method,rights_status,rights_evidence,created_by)
     VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING id,board,source_name,source_url,access_method,rights_status,rights_evidence
