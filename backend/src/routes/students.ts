@@ -375,12 +375,10 @@ router.post('/:id/promotion', requireRole('admin'), async (req, res) => {
   const membership = membershipRows[0];
   if (!membership) return res.status(404).json({ error: 'Active report-roster membership not found' });
 
-  // Decisions apply to the teacher's physical class only. The student's
-  // online-learning class and login link are deliberately not consulted or
-  // modified by this workflow.
-  if (!user.school_code || membership.school_code !== user.school_code
-      || !user.assigned_class || membership.report_class_name !== user.assigned_class) {
-    return res.status(403).json({ error: 'You can only manage report-roster placement in your own assigned physical class' });
+  // A school-bound administrator is restricted to their own school.
+  // A global administrator may reconcile any school's physical report roster.
+  if (user.school_code && membership.school_code !== user.school_code) {
+    return res.status(403).json({ error: 'You can only manage report-roster placement in your own school' });
   }
 
   if (action === 'remove') {
