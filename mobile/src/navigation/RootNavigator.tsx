@@ -15,6 +15,9 @@ import SecurityQuestionSetupScreen from '../screens/SecurityQuestionSetupScreen'
 import NotificationsScreen from '../screens/NotificationsScreen';
 import BraineeChatScreen from '../screens/BraineeChatScreen';
 import TextStudyScreen from '../screens/TextStudyScreen';
+import OnlineExamsScreen from '../screens/OnlineExamsScreen';
+import OnlineExamAttemptScreen from '../screens/OnlineExamAttemptScreen';
+import OnlineExamResultScreen from '../screens/OnlineExamResultScreen';
 
 import StudentTabs from './StudentTabs';
 import TeacherTabs from './TeacherTabs';
@@ -114,6 +117,11 @@ export default function RootNavigator() {
           <Stack.Screen name="SecurityQuestionSetup" component={SecurityQuestionSetupScreen} options={{ headerShown: true, title: 'Security Question', headerStyle: { backgroundColor: Colors.primary }, headerTintColor: Colors.white }} />
           <Stack.Screen name="Notifications" component={NotificationsScreen} options={modalOpts} />
           <Stack.Screen name="BraineeChat" component={BraineeChatScreen} options={modalOpts} />
+          {user.role === 'student' ? <>
+            <Stack.Screen name="OnlineExams" component={OnlineExamsScreen} options={{ headerShown: true, title: 'Formal Online Exams' }} />
+            <Stack.Screen name="OnlineExamAttempt" component={OnlineExamAttemptScreen} options={{ headerShown: true, title: 'Examination', gestureEnabled: false }} />
+            <Stack.Screen name="OnlineExamResult" component={OnlineExamResultScreen} options={{ headerShown: true, title: 'Examination Result' }} />
+          </> : null}
           <Stack.Screen name="TextStudy" component={TextStudyScreen} options={modalOpts} />
         </>
       )}
