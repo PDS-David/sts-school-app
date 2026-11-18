@@ -220,7 +220,7 @@ export default function AdminUsersScreen() {
       setInfoDialog({ title: 'Teacher username required', message: 'Choose a class or subject from the teacher username dropdown.' });
       return;
     }
-    if (!editUser && form.role === 'teacher' && !/^\\d{4}$/.test(form.initial_password)) {
+    if (!editUser && form.role === 'teacher' && !/^\d{4}$/.test(form.initial_password)) {
       setInfoDialog({ title: 'Invalid teacher password', message: 'Enter exactly four numeric digits for the teacher password.' });
       return;
     }
@@ -633,7 +633,7 @@ export default function AdminUsersScreen() {
             <Input
               label="Teacher Password (4 digits)"
               value={form.initial_password}
-              onChangeText={v => setForm(f => ({ ...f, initial_password: v.replace(/\\D/g, '').slice(0, 4) }))}
+              onChangeText={v => setForm(f => ({ ...f, initial_password: v.replace(/\D/g, '').slice(0, 4) }))}
               keyboardType="number-pad"
               maxLength={4}
               autoCapitalize="none"
