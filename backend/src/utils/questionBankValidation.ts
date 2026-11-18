@@ -21,7 +21,7 @@ export const ingestionQuestionSchema = z.object({
   question_type: z.enum(['mcq', 'short_answer', 'essay']),
   stem: z.string().trim().min(5).max(12000),
   options: z.array(optionSchema).min(2).max(10).optional(),
-  correct_answer: z.record(z.string(), z.unknown()),
+  correct_answer: z.record(z.string(), z.unknown()).refine(value => Object.keys(value).length > 0, 'correct_answer cannot be empty'),
   explanation: z.string().trim().min(5).max(12000),
   marks: z.number().positive().max(100),
   topic_slug: z.string().trim().min(1).max(100).regex(/^[a-z0-9-]+$/),
