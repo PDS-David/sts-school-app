@@ -8,6 +8,16 @@ on:
       - "backend/src/routes/attendance.ts"
       - "backend/src/utils/scope.ts"
       - "tests/backend-student-report-term-scope.integration.test.mts"
+      - "tests/backend-teacher-report-only-policy.test.mts"
+      - ".github/workflows/backend-student-report-term-scope.yml"
+  push:
+    branches: [master]
+    paths:
+      - "backend/src/routes/scores.ts"
+      - "backend/src/routes/attendance.ts"
+      - "backend/src/utils/scope.ts"
+      - "tests/backend-student-report-term-scope.integration.test.mts"
+      - "tests/backend-teacher-report-only-policy.test.mts"
       - ".github/workflows/backend-student-report-term-scope.yml"
 
 permissions:
@@ -53,5 +63,7 @@ jobs:
         run: npm run db:bootstrap --workspace=backend
       - name: Run student report term-scope regressions
         run: node --import tsx --test tests/backend-student-report-term-scope.integration.test.mts
+      - name: Verify teacher reporting remains independent and uses physical roster ranking
+        run: node --import tsx --test tests/backend-teacher-report-only-policy.test.mts
       - name: Typecheck backend
         run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
