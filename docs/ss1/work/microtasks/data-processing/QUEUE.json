@@ -32,7 +32,8 @@
     "DP-TEST-PACKAGE (2026-11-13): added tests/ss1/data-processing.package.test.mts following the French package-test pattern. Covers Zod schema parse; exact one-to-one source registration against SOURCE_ASSIGNMENTS.csv for all three terms; current authored lesson body hash/objectives/practice/marking integrity without fabricated approval or verification; two PENDING-OWNER source-alias gates; source-rule wrong-hash/ambiguous/missing-anchor guards; and coverage reference/status boundaries. Tests were authored but deliberately NOT RUN as required by the task. Package remains PENDING; no lesson, correction, asset or approval state changed.",
     "DP-WK-T3-W01 (2026-11-13): source member hash verified; indexed original DOCX paragraphs 27–79. Added PARTIAL coverage for definition, basic features, functions and uses pending parsed-body binding; PARTIAL coverage for the bare MICROSOFT WORD heading (p43, no explanation); PARTIAL coverage for the Week 1 text-editor/Notepad question because Week 2 p92–95 identifies Notepad as a text editor. Recorded evaluation p45–47, general evaluation p57–61, reading p63–64, weekend MCQs p66–73 and theory p75–77. Added a blocking question-sequencing open item and tasks for sequence decision and lesson authoring. No Word-specific procedure or answers invented.",
     "DP-PRE-T3 (2026-11-13): inspected original third-term Data Processing DOCX paragraphs 1–27. Recorded title, subject/class, WEEK/TOPIC header with trailing tabs, twelve scheme rows (initial Revision; Word Processing I–III; Spreadsheet I–III; Database Management I–III; Revision; Examination), three references, and first body marker WEEK ONE. Scheme rows are plain paragraphs with no WEEK <number> body marker, so no classify_marker rule or marker coverage entry is needed. Rows 2–10 map to body Weeks 1–9; rows 1,11,12 remain scheme-only.",
-    "DP-PRE-T1 (2026-11-13): recorded the hash-verified First Term opening block as preamble/scheme/reference material, mapped scheme rows 1-10 to exact body ranges/digests without creating coverage from scheme headings, preserved the existing row 1/2 coverage, and recorded the three bibliographic entries as unverified external references with a permission follow-up. Rows 11-12 remain with DP-MARK-T1-REVEXAM. No lesson, parser rule, approval or verification was invented; tests/importer/database/device checks deferred."
+    "DP-PRE-T1 (2026-11-13): recorded the hash-verified First Term opening block as preamble/scheme/reference material, mapped scheme rows 1-10 to exact body ranges/digests without creating coverage from scheme headings, preserved the existing row 1/2 coverage, and recorded the three bibliographic entries as unverified external references with a permission follow-up. Rows 11-12 remain with DP-MARK-T1-REVEXAM. No lesson, parser rule, approval or verification was invented; tests/importer/database/device checks deferred.",
+    "DP-PRE-T2 (2026-11-18): verified the second-term preamble blocks 0-1 against the exact archive/member hashes and XML range hash. The title-only block and blank block are metadata, not scheme or teaching content. Missing Week 1, scheme/objectives, and Weeks 11-12 are recorded as blocking open items. No lesson, practice, source rule, or coverage was invented; testing deferred by owner."
   ],
   "counts": {
     "SOURCE_REGISTRATION": 3,
@@ -45,12 +46,13 @@
     "VISUAL_DISPOSITION": 21,
     "SOURCE_PRESERVATION": 4,
     "LESSON": 8,
-    "SCOPE_DECOMPOSITION": 1
+    "SCOPE_DECOMPOSITION": 1,
+    "OWNER_ACTION": 2
   },
   "status_counts": {
-    "IMPLEMENTED_TESTING_DEFERRED": 15,
+    "IMPLEMENTED_TESTING_DEFERRED": 16,
     "BLOCKED": 3,
-    "PENDING": 65
+    "PENDING": 64
   },
   "items": [
     {
@@ -1129,8 +1131,8 @@
         "DP-INV-T2",
         "DP-SRC-T2"
       ],
-      "status": "PENDING",
-      "implementation_reference": "Inventory (DP-INV-T2): blocks 0-1, range sha256 906999658bdbe8a8e746d16114778bde078577dca4a31e49d8b36a83eb9accd9. Block 0 is the title 'Data processing' (padded with spaces) and block 1 is empty. The first teaching label is block 2 ('WEEK 2TOPIC: information processing'), so Week 1 is either missing from the source or was never written; nothing in the document explains the gap. Term identity rests on the registered source header, not on this document's text. Footer/page text, if any, is not teaching. Locator rule: word/document.xml of the verified member; block = direct child of w:body, 0-based (blocks 0-261; block 262 is w:sectPr); block text = concatenation of its w:t runs (UTF-8, no normalisation); range hash = SHA-256 of block texts first..last inclusive joined with \\n (empty blocks included).",
+      "status": "IMPLEMENTED_TESTING_DEFERRED",
+      "implementation_reference": "docs/ss1/work/microtasks/data-processing/DP-PRE-T2.md. Verified composite archive SHA-256 024487129a86c3a89e55293b3ad71b0dfe8b8969ea55bbc64dbfdc17565c9a3e and member SHA-256 83221771b598f2ccfe1199bfc6f72c5ca9f09f6d899c0479cd128f59564500b4. word/document.xml blocks 0-1 range SHA-256 906999658bdbe8a8e746d16114778bde078577dca4a31e49d8b36a83eb9accd9: block 0 is the title-only 'Data processing' paragraph, block 1 is blank, and block 2 is the first label WEEK 2. No scheme table, references list, SUBJECT/CLASS line or term title. DP-INV-T2 confirms no Week 1 or Weeks 11-12. Three blocking source-gap open items added to the package; no source rule, coverage, lesson or practice invented. Testing deferred by owner.",
       "completion_condition": "Blocks 0-1 classified; the missing Week 1, scheme and Weeks 11-12 are recorded as source gaps (open items) and nothing is invented."
     },
     {
@@ -3093,13 +3095,6 @@
     "DP-WK-T1-W08",
     "DP-WK-T1-W09",
     "DP-WK-T1-W10",
-    "DP-MARK-T1-REVEXAM",
-    "DP-VIS-T1-W04-TBL-GENERATIONS",
-    "DP-VIS-T1-W07-TBL-AGES",
-    "DP-VIS-T1-PUBLISHER-MEDIA",
-    "DP-PRES-T1-NUMBERING",
-    "DP-PRES-T1-SUPERSCRIPT",
-    "DP-PRE-T2",
     "DP-WK-T2-W02",
     "DP-WK-T2-W03-04",
     "DP-WK-T2-W05",
@@ -3108,15 +3103,6 @@
     "DP-WK-T2-W08",
     "DP-WK-T2-W09",
     "DP-WK-T2-W10",
-    "DP-VIS-T2-FIG-CHART",
-    "DP-VIS-T2-FIG-RADIO",
-    "DP-VIS-T2-FIG-TELEPHONE",
-    "DP-VIS-T2-FIG-TELEVISION",
-    "DP-VIS-T2-FIG-WIRELESS",
-    "DP-VIS-T2-FIG-SATELLITE",
-    "DP-VIS-T2-TBL-OSLAYERS",
-    "DP-FACT-T1-W02-HISTORY-CLAIMS",
-    "DP-LES-T1-W02-NUMBER-SYSTEMS",
     "DP-WK-T3-W02",
     "DP-WK-T3-W03",
     "DP-WK-T3-W04",
@@ -3125,16 +3111,35 @@
     "DP-WK-T3-W07",
     "DP-WK-T3-W08",
     "DP-WK-T3-W09",
+    "DP-MARK-T1-REVEXAM",
     "DP-MARK-T3-REVEXAM",
+    "DP-PRES-T1-NUMBERING",
+    "DP-PRES-T1-SUPERSCRIPT",
     "DP-PRES-T3-LEGACY-UI",
     "DP-PRES-T3-SAMPLE-DATA",
-    "DP-FACT-T3-SOFTWARE-STATUS",
-    "DP-FACT-T3-FORMULAS",
+    "DP-VIS-T1-PUBLISHER-MEDIA",
+    "DP-VIS-T1-W04-TBL-GENERATIONS",
+    "DP-VIS-T1-W07-TBL-AGES",
+    "DP-VIS-T2-FIG-CHART",
+    "DP-VIS-T2-FIG-RADIO",
+    "DP-VIS-T2-FIG-SATELLITE",
+    "DP-VIS-T2-FIG-TELEPHONE",
+    "DP-VIS-T2-FIG-TELEVISION",
+    "DP-VIS-T2-FIG-WIRELESS",
+    "DP-VIS-T2-TBL-OSLAYERS",
     "DP-VIS-T3-IMG01",
     "DP-VIS-T3-IMG02",
     "DP-VIS-T3-IMG03",
     "DP-VIS-T3-IMG04",
     "DP-VIS-T3-IMG05",
-    "DP-VIS-T3-IMG06"
+    "DP-VIS-T3-IMG06",
+    "DP-VIS-T3-IMG07",
+    "DP-VIS-T3-IMG08",
+    "DP-VIS-T3-IMG09",
+    "DP-VIS-T3-IMG10",
+    "DP-FACT-T1-W02-HISTORY-CLAIMS",
+    "DP-FACT-T3-FORMULAS",
+    "DP-FACT-T3-SOFTWARE-STATUS",
+    "DP-LES-T1-W02-NUMBER-SYSTEMS"
   ]
 }
