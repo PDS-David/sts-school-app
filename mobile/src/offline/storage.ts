@@ -109,6 +109,8 @@ export interface QueuedRequest {
   method: 'post' | 'put' | 'patch' | 'delete';
   url: string;
   data?: any;
+  /** Tenant context captured at enqueue time; never replay a write under a later school selection. */
+  headers?: Record<string, string>;
   createdAt: number;
 }
 
