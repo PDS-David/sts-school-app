@@ -1,9 +1,9 @@
 # STS School Application — Consolidated Completion Register
 
-**Snapshot:** 18 November 2026  
+**Snapshot:** 18 November 2026, 18:55 UTC  
 **Repository:** [PDS-David/sts-school-app](https://github.com/PDS-David/sts-school-app)  
 **Branch:** `master`  
-**Inspected commit:** `d33f9736476bd2cb03c5961419a76cced48cb114`  
+**Inspected commit:** `aae0b0b2f3908ba800abade0dde217840a6beb5b`  
 **Purpose:** A point-in-time, evidence-linked register. A file existing, a schema passing, or a CI workflow passing does not by itself mean a feature is production-ready or accepted by the school.
 
 ## Status definitions
@@ -19,17 +19,17 @@ Keep these states separate: **implemented ≠ tested ≠ approved ≠ deployed �
 
 | Area | Status | Repository-backed finding |
 |---|---|---|
-| Production backend and database | AMBER | Database schema/migration tooling and 48 public tables were observed in the prior live DB inspection; production health, data completeness and restore acceptance still require a fresh authorized check. |
-| Physical school reports | GREEN / AMBER | Teacher score/attendance/report scope has dedicated integration workflows; the five newest relevant workflows at this commit passed. Final live teacher-to-parent/student report acceptance remains a separate gate. |
+| Production backend and database | AMBER | Canonical Render `sts-school-app` is live on this inspected master commit; `sts-school-db-2` is available with 11 recorded migrations. Public HTTP/authenticated smoke tests remain unverified; the Free database expires 12 December 2026. |
+| Physical school reports | AMBER | Report/attendance/score code and scoped tests exist, and the 104-student physical roster is imported. Live production currently has 0 teacher users, 0 teacher-subject assignments, 0 scores and 0 attendance rows; teacher entry and report delivery therefore remain unaccepted end-to-end. |
 | Online learning and AI assessments | AMBER / RED | Curriculum delivery, topic progression and assessment/submission structures exist. The question bank was observed empty in the previous live DB check; complete AI marking and remediation are not certified end-to-end. |
 | Curriculum | AMBER | 21 SS1 subject package files exist; SS2 has seven package files; SS3 has two exam-preparation package files. Schema/integrity workflows pass, but package presence is not lesson/source/rights/approval acceptance. Primary and JSS require class-by-class evidence closeout. |
-| Student, parent, teacher, admin | AMBER | Student, parent, teacher and admin code-path audits are substantially/fully closed in `APP_WIDE_AUDIT.md`; finance_admin and pre-login onboarding still need separate acceptance. |
+| Student, parent, teacher, admin | AMBER | Student, parent, teacher and admin code-path audits are substantially/fully closed in `APP_WIDE_AUDIT.md`; production currently has 0 teacher users and 0 teacher-subject assignments. Finance_admin and pre-login onboarding still need separate acceptance. |
 | Mobile release | AMBER | Expo mobile application and Android readiness/release workflows exist; real-device, production API, offline/recovery and release acceptance must be evidenced. |
 | Operational controls | AMBER | Migration, backup, security, roster-import and dependency workflows exist; restore drills, operational monitoring and full rollout sign-off remain explicit gates. |
 
 ### Latest CI evidence at the inspected commit
 
-The latest runs at `d33f973` for these five named workflows were successful:
+At the previous application commit `d33f973` (before the current documentation-only commit), the latest runs for these five named workflows were successful:
 
 - SS1 package integrity gate
 - SS23 package integrity gate
@@ -37,7 +37,7 @@ The latest runs at `d33f973` for these five named workflows were successful:
 - Backend score subject scope and batch atomicity
 - Backend physical report-roster isolation
 
-There were no open pull requests at inspection. This is not a claim that every workflow in the repository is green; older commits show canceled runs when newer commits superseded them.
+The current `master` documentation snapshot is `aae0b0b`; the canonical Render service has deployed it. No open PRs were found at this inspection. This is not a claim that every workflow in the repository is green; older commits show canceled runs when newer commits superseded them.
 
 ## 2. Application modules
 
@@ -45,16 +45,16 @@ There were no open pull requests at inspection. This is not a claim that every w
 |---|---|---|
 | Login, authentication, activation, password reset | AMBER | `backend/src/routes/auth.ts`; activation, self-registration, student self-claim, forced password change and security-question flows exist. Complete fresh-account, locked-account, expiry and recovery acceptance for every role. |
 | Role routing and RBAC | GREEN / AMBER | `mobile/src/navigation/RootNavigator.tsx`, role tab navigators and backend permission middleware exist. Student/parent/teacher/admin audits are documented; finance_admin still needs a dedicated role audit and live acceptance. |
-| Student profiles and roster | AMBER | `students.ts`, Students screens, roster import and physical report-roster tables exist. Reconcile every supplied student against the correct school/class and verify promote/demote, duplicates, inactive/deleted students and parent links. |
+| Student profiles and roster | GREEN / AMBER | Live production contains 104 students, 104 active physical report-roster memberships and 104 append-only membership events. All ten workbook class totals match. Parent links, duplicate edge cases and teacher promote/demote acceptance remain to be tested. |
 | Parent accounts and wards | GREEN / AMBER | Parent role audit closed in `APP_WIDE_AUDIT.md`; cross-campus parent provisioning fix documented. Complete real multi-ward and cross-school family acceptance. |
-| Teacher accounts and assignments | GREEN / AMBER | Teacher role audit closed; class/subject scope and username/assignment work exist. Verify every live teacher's actual class/subject grants against the approved school allocation. |
+| Teacher accounts and assignments | AMBER | Teacher role, class/subject scope and school-scoped username code exist; production currently contains 0 teacher users and 0 teacher-subject assignments. Create/verify real teacher accounts and allocations before live report acceptance. |
 | Admin and school setup | GREEN / AMBER | Admin role audit closed; user management, term PINs, class codes, audit log and Excel export are traced. Follow up the flagged NULL-vs-empty school_code edit path and validate school setup on production. |
 | Finance admin / fees / invoices | GREY / AMBER | Finance routes, finance screens, invoices and fee-item tables exist. Finance_admin was explicitly outside the prior admin-role audit; verify permissions, invoice lifecycle, payment reconciliation, balances, exports and live data. |
 | Classes, subjects, terms and class locks | AMBER | `academic.ts`, AcademicMgmt screens and seed definitions exist. Confirm class-by-class subject eligibility, term transitions, locks and school isolation against the school's approved structure. |
 | Attendance (physical school) | GREEN / AMBER | Attendance route/screen and teacher permission tests exist; teachers cannot edit admin-only remarks. Complete live attendance entry, correction, days-opened calculation and report rendering acceptance. |
 | Scores and school report cards | GREEN / AMBER | Score entry, class/subject scope, report roster and report routes exist; latest scope/atomicity workflows passed. Complete full report-card calculation, PDF/print, remarks, parent/student visibility and live sign-off. This is NOT the online-learning AI assessment system. |
 | Online curriculum lessons | AMBER | `learning.ts`, topic import, source grounding, PIN/sequence gates, lesson generation/cache and learner progress exist. Validate complete lesson coverage, generated lesson quality, cache invalidation, assets, rights and student delivery for every class/subject. |
-| Online question bank | RED / AMBER | `questions`, `assessments`, `assessment_questions`, `submissions` and `submission_answers` exist. Previous live DB inspection found **0 question rows**. Populate and validate the question bank before claiming online exams/practice are ready. |
+| Online question bank | RED | Live production currently has **0 questions, 0 assessments, 0 assessment-question rows and 0 submissions**. Populate and validate sourced or AI-generated questions before claiming online exams/practice are ready. |
 | Online class practice (AI-generated) | RED / AMBER | Required product behaviour is not yet certified: generate only from lessons actually covered, diagnose each student's weak concepts, adapt question selection and track improvement. |
 | Online terminal/exam assessments | RED / AMBER | Required product behaviour is not yet certified: timed exam conditions, exam-style paper structure, authentic past-question sourcing where legally usable, provenance and AI-generated exam-standard replacements where sourced papers are unavailable. |
 | AI marking and feedback (online learning) | AMBER / RED | Submission and AI grading fields exist (`ai_suggested_points`, `ai_feedback`, grading status). Prove objective and subjective marking, rubrics, score persistence, explanations, confidence/uncertain-case handling and remedial recommendations end-to-end. Keep this separate from school report scores. |
@@ -65,7 +65,7 @@ There were no open pull requests at inspection. This is not a claim that every w
 | Announcements / school events / notifications | AMBER | Routes/tables/screens and push-token/delivery structures exist. Verify audience targeting, delivery, read state, disabled devices and retry/failure handling. |
 | Weekly efforts and feedback | GREEN / AMBER | Route/screen and role-scope fixes exist; student feedback-compose mismatch was fixed. Complete full role-specific live workflow and report visibility. |
 | Reports / analytics / exports | AMBER | School report endpoints, session reports and Excel export exist. Teacher analytics/reporting and management analytics need complete role-based data validation and live acceptance. |
-| Backup, restore and disaster recovery | AMBER | Backup log/table, encrypted backup and restore workflows exist. A successful isolated restore with row counts, integrity checks and documented RPO/RTO is still required. |
+| Backup, restore and disaster recovery | AMBER | Encrypted backup artifact `render-postgres-backup-20261118T150527Z` (run `44331445935`) completed a PostgreSQL 18 disposable restore before encryption; manifest: 48 tables, 10 migrations, 104 students and 104 roster memberships. The backup predates migration 0011. Daily backup is scheduled; durable database plan and ongoing restore monitoring remain open. |
 | Security, audit and privacy | AMBER | RBAC, scope guards, rate limiting, audit logs, credential controls and security workflows exist. Complete end-to-end authorization matrix, dependency remediation, secret checks, retention and privacy review. |
 | Mobile Android / iOS / offline | AMBER / GREY | Expo mobile app and Android readiness/release workflows exist. Prove production API configuration, login, core workflows, poor-network recovery, offline queue/sync, device matrix and signed release. Do not claim iOS release readiness without evidence. |
 | CI/CD and deployment | AMBER | Many focused GitHub Actions workflows exist; latest named curriculum/report-scope workflows passed. Audit every current failing workflow, verify production deploy SHA and rollback procedure. |
@@ -205,7 +205,7 @@ This is a separate learner-facing system, not the physical teacher report workfl
 
 ## 5. Production data evidence and limits
 
-The previous live production inspection recorded **48 public tables, 104 active students, 104 active report-roster memberships, 11 schema migration records and 0 rows in `questions`**. Treat those figures as a dated observation, not a live query at every later commit. A fresh production data check is required before rollout or declaring the online question bank complete.
+Live read-only verification at 18 November 2026 18:55 UTC recorded **48 public tables, 104 students, 104 active report-roster memberships, 104 membership events, 11 schema migrations, 0 teacher users, 0 teacher-subject assignments, 0 questions, 0 assessments, 0 assessment-question rows and 0 submissions**. The 104 roster rows match all ten owner-approved workbook class totals. The audit log records a successful `Student_Class_List.xlsx` import with source SHA-256 `e68e62448a5251d850e40d02d8b15167ebe386c143a7be3d8f7331cbe2cb69c2`. The canonical Render service is live on this commit; public HTTP smoke tests remain unverified. The database is PostgreSQL 18 on Render Free and expires **12 December 2026 01:30:29 UTC**. A successful encrypted off-host backup artifact exists, but the most recent verified artifact predates migration 0011. Treat these as dated observations, not live values at every later commit.
 
 ## 6. Required completion gates
 
