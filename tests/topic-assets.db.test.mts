@@ -33,6 +33,9 @@ if (!URL_) {
   // These cases explicitly exercise the restricted sequence policy.
   process.env.FREE_LAUNCH_MODE = 'false';
   process.env.CURRICULUM_SEQUENCE_ENFORCED = 'true';
+  // These cases explicitly exercise the restricted sequence policy.
+  process.env.FREE_LAUNCH_MODE = 'false';
+  process.env.CURRICULUM_SEQUENCE_ENFORCED = 'true';
   process.env.TERM_PIN_ENFORCED = 'false';
 
   const TEST_RUN = randomUUID().replaceAll('-', '').slice(0, 10);
