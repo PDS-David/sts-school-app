@@ -30,6 +30,7 @@ export default function AdminTermPinsScreen() {
   const [refreshing, setRefreshing] = useState(false);
 
   const loadStudents = useCallback(() => {
+    if (!selectedSchoolCode) { setStudents([]); setStudentId(''); return; }
     api.get('/students', { params: { school_code: selectedSchoolCode ?? undefined } })
       .then(({ data }) => {
         setStudents(data.students ?? []);
@@ -39,17 +40,20 @@ export default function AdminTermPinsScreen() {
   }, [selectedSchoolCode]);
 
   const loadPins = useCallback(async () => {
+    if (!selectedSchoolCode) { setPins([]); setLoadingPins(false); return; }
+    setLoadingPins(true);
     try {
-      const { data } = await api.get('/admin/term-pins');
+      const { data } = await api.get('/admin/term-pins', { params: { school_code: selectedSchoolCode } });
       setPins(data.term_pins ?? []);
     } catch { /* offline — keep whatever's already loaded */ }
     setLoadingPins(false);
-  }, []);
+  }, [selectedSchoolCode]);
 
   useEffect(() => { loadStudents(); }, [loadStudents]);
   useEffect(() => { loadPins(); }, [loadPins]);
 
   const generate = async () => {
+    if (!selectedSchoolCode) { Alert.alert('Select a school first'); return; }
     if (!studentId) { Alert.alert('Select a student first'); return; }
     setGenerating(true);
     try {
@@ -73,6 +77,8 @@ export default function AdminTermPinsScreen() {
       setGenerating(false);
     }
   };
+
+  if (!selectedSchoolCode) return <View style={{ flex: 1, backgroundColor: Colors.background }}><AppHeader title="Term PINs" onPressBell={() => openNotifications()} rightExtra={<SchoolSwitcherBar compact />} /><View style={{ padding: Spacing.lg }}><Text style={styles.hint}>Select Primary or Secondary above before managing term PINs.</Text></View></View>;
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
