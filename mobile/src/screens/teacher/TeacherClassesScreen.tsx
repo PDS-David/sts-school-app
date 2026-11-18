@@ -8,13 +8,12 @@ import { openNotifications } from '../../navigation/navigationRef';
 
 const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string; screen: string; color: string }[] = [
   { icon: 'people-outline', label: 'Student Reports', sub: 'Select a student in your assigned physical class and generate their report', screen: 'Students', color: '#1565C0' },
-  { icon: 'trending-up-outline', label: 'Roster Decisions', sub: 'Promote, demote, retain, or remove students from the physical report roster', screen: 'PromoteStudents', color: '#1B5E20' },
 ];
 
 export default function TeacherClassesScreen({ navigation }: any) {
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
-      <AppHeader title="Reports & Roster" onPressBell={() => openNotifications()} />
+      <AppHeader title="Student Reports" onPressBell={() => openNotifications()} />
       <ScrollView contentContainerStyle={{ padding: Spacing.md }}>
         {ITEMS.map((it) => (
           <TouchableOpacity key={it.label} onPress={() => navigation.navigate(it.screen)} activeOpacity={0.8}>
