@@ -55,7 +55,16 @@ Example request shape:
       "title": "Section A",
       "instructions": "Answer all questions.",
       "questions": [
-        { "question_id": "question-bank-uuid", "marks": 2 }
+        { "question_id": "question-bank-uuid", "marks": 2 },
+        {
+          "question_id": "written-question-uuid",
+          "marks": 5,
+          "marking_rubric": [
+            { "id": "definition", "description": "Defines the required concept accurately", "max_marks": 2 },
+            { "id": "application", "description": "Applies the concept to the question", "max_marks": 2 },
+            { "id": "clarity", "description": "Presents a clear, relevant explanation", "max_marks": 1 }
+          ]
+        }
       ]
     }
   ]
