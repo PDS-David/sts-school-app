@@ -35,11 +35,11 @@ const EXCLUDED_FILES = new Set([
   // Basic Science 1st Term empty.
   'PRY 4 BST Ist term.docx',
   // Byte-for-byte the same lessons as Primary 4's "PRY 4 HOME ECONS RD TERM.docx",
-  // whose heading is "THIRD TERM HOME ECONOMICS PRIMARY FOUR". Found in the live
-  // database as 21 Primary 3 2nd-Term rows with the same hashes as Primary 4's;
-  // removed with the curriculum owner's approval. Primary 3 has no Home
-  // Economics source of its own.
+  // whose heading is "THIRD TERM HOME ECONOMICS PRIMARY FOUR". Both the canonical
+  // and _1 archive copies were found in Primary 3; the owner-approved exclusion
+  // applies to both. Primary 3 has no Home Economics source of its own.
   'PRY 3 HOME ECONS 2ND TERM.docx',
+  'PRY 3 HOME ECONS 2ND TERM_1.docx',
   // Anonymous source overlaps the retained, clearly identified Primary 5 CCA
   // First-Term source; do not let the anonymous copy duplicate its lesson.
   'み.docx',
@@ -102,8 +102,10 @@ export function isPrimarySourceExcluded(basename: string, sourceIdentity = ''): 
 // blocks the import audit (see crossClassByteDuplicate in ingestTopics.ts).
 const ACKNOWLEDGED_CROSS_CLASS_DUPLICATES: Array<[string, string]> = [
   // Same bytes, no class named inside either file; owner decided on
-  // 2026-11-12 to keep the lessons in both Primary 3 and Primary 4.
+  // 2026-11-12 to keep the lessons in both Primary 3 and Primary 4. The archive
+  // contains a second byte-identical P3 copy, so acknowledge that exact alias too.
   ['PRY 3 AGRIC SCIENCE 3RD TERM.docx', 'PRY 4 AGRIC 3RD TERM.docx'],
+  ['PRY 3 AGRIC SCIENCE 3RD TERM_1.docx', 'PRY 4 AGRIC 3RD TERM.docx'],
 ];
 
 export function isAcknowledgedCrossClassDuplicate(a: string, b: string): boolean {
@@ -128,7 +130,14 @@ export function resolvePrimarySubjectName<T extends { name: string; fallback: bo
   return subjectName;
 }
 
-export function applyPrimarySourceTextResolution(basename: string, text: string): string {
+export function applyPrimarySourceTextResolution(basename: string, text: string, sourceHash?: string): string {
+  const recoveredSource = PRIMARY_SOURCE_TEXT_OVERRIDES.get(basename);
+  if (recoveredSource) {
+    if (!sourceHash || sourceHash !== recoveredSource.sourceSha256) {
+      throw new Error(`Primary source text override hash mismatch for ${basename}: expected ${recoveredSource.sourceSha256}, received ${sourceHash ?? 'missing'}`);
+    }
+    return recoveredSource.text;
+  }
   if (basename === '1st termBasicscience4.docx') {
     // The opening section is a short scheme outline. Detailed notes begin at
     // the first doubled marker, e.g. "WEEK: WEEK 1". Keep the lesson section
