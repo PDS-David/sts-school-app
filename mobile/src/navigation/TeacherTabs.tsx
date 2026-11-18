@@ -1,4 +1,4 @@
-// Teacher navigation intentionally exposes only report generation and physical-roster decisions.
+// Teacher navigation intentionally exposes report generation only.
 import React, { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack';
@@ -58,7 +58,7 @@ function MoreStackNavigator() {
 
 const SIDEBAR_ITEMS: SidebarItem[] = [
   { routeName: 'DashboardTab', label: 'Dashboard', icon: 'grid' },
-  { routeName: 'ReportsTab', label: 'Reports & Roster', icon: 'people' },
+  { routeName: 'ReportsTab', label: 'Student Reports', icon: 'document-text' },
   { routeName: 'MoreTab', label: 'More', icon: 'menu' },
 ];
 
@@ -67,9 +67,6 @@ const QUICK_ACTIONS: SidebarAction[] = [
     icon: 'document-text-outline',
     label: 'Generate Reports',
     onPress: () => navigationRef.isReady() && navigationRef.navigate('ReportsTab', { screen: 'Students' }),
-  },
-  {
-    icon: 'people-outline',
   },
 ];
 
