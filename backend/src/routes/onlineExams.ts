@@ -706,6 +706,27 @@ router.post('/attempts/:attemptId/submit',requireRole('student'),async(req,res)=
   return res.json({submitted:true,...final});
 });
 
+router.get('/admin/exams',requireRole('admin'),async(req,res)=>{
+  const schoolCode=schoolForAdmin(req.user);
+  if(!schoolCode) return res.status(400).json({error:'Select a school before listing examinations.'});
+  const {rows}=await query(`
+    SELECT e.id,e.title,e.subject_name,e.class_name,e.board,e.examination_type,e.exam_year,
+           e.status,e.starts_at,e.ends_at,e.duration_minutes,e.published_at,
+           COUNT(DISTINCT q.id)::int AS question_count,
+           COUNT(DISTINCT c.student_id)::int AS candidate_count,
+           COUNT(DISTINCT a.id)::int AS attempt_count
+      FROM online_exams e
+      LEFT JOIN online_exam_questions q ON q.exam_id=e.id
+      LEFT JOIN online_exam_candidates c ON c.exam_id=e.id
+      LEFT JOIN online_exam_attempts a ON a.exam_id=e.id
+     WHERE e.school_code=$1
+     GROUP BY e.id
+     ORDER BY e.starts_at DESC,e.created_at DESC
+     LIMIT 200
+  `,[schoolCode]);
+  return res.json({exams:rows});
+});
+
 router.get('/admin/exams/:examId/attempts',requireRole('admin'),async(req,res)=>{
   const schoolCode=schoolForAdmin(req.user);
   if(!schoolCode) return res.status(400).json({error:'Select a school before viewing examination attempts.'});
