@@ -173,18 +173,22 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     const adminForeignSubject = await post('/', score(studentIds[0], subjectIds[2], termIds[0]), admin.token);
     assert.equal(adminForeignSubject.status, 400, 'administrator writes must preserve student/subject school integrity');
 
+    const { rows: scoresBeforeDeniedBatch } = await query(
+      'SELECT id,student_id,subject_id,total FROM scores WHERE student_id=ANY($1::uuid[]) AND term_id=$2 ORDER BY id',
+      [[studentIds[0], studentIds[1]], termIds[0]],
+    );
     const invalidBatch = await post('/bulk', {
       scores: [
         score(studentIds[0], subjectIds[0], termIds[0]),
         score(studentIds[1], subjectIds[1], termIds[0]),
       ],
     }, subjectTeacher.token);
-    assert.equal(invalidBatch.status, 403, 'teachers cannot enter scores in bulk');
-    const { rows: invalidBatchRows } = await query(
-      'SELECT id FROM scores WHERE student_id=ANY($1::uuid[]) AND term_id=$2',
+    assert.equal(invalidBatch.status, 403, 'subject-only teachers without a physical class cannot enter scores in bulk');
+    const { rows: scoresAfterDeniedBatch } = await query(
+      'SELECT id,student_id,subject_id,total FROM scores WHERE student_id=ANY($1::uuid[]) AND term_id=$2 ORDER BY id',
       [[studentIds[0], studentIds[1]], termIds[0]],
     );
-    assert.equal(invalidBatchRows.length, 0,
+    assert.deepEqual(scoresAfterDeniedBatch, scoresBeforeDeniedBatch,
       'denied teacher writes must not create or change any score');
 
     const validBatch = await post('/bulk', {
