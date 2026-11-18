@@ -65,6 +65,7 @@ if (!URL_) {
   const cleanup = async () => {
     for (const sc of [SC, SC2]) {
       await q('DELETE FROM topics WHERE school_code=$1', [sc]); await q('DELETE FROM subjects WHERE school_code=$1', [sc]);
+      await q('DELETE FROM report_roster_memberships WHERE student_id IN (SELECT id FROM students WHERE school_code=$1)', [sc]);
       await q('DELETE FROM students WHERE school_code=$1', [sc]); await q('DELETE FROM users WHERE school_code=$1', [sc]); await q('DELETE FROM schools WHERE code=$1', [sc]);
     }
   };
