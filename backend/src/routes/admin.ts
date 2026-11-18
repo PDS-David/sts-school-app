@@ -126,7 +126,7 @@ router.get('/users', async (req, res) => {
   const { school_code, role } = req.query as Record<string, string>;
   const scope = resolveAdminSchoolScope(req.user!, school_code);
   if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
-  let sql = `SELECT u.id,u.username,u.full_name,u.role,u.school_code,u.assigned_class,
+  let sql = `SELECT u.id,u.username,u.full_name,u.role,u.school_code,u.assigned_class,u.assigned_class_names,
                     u.is_active,u.must_change_pw,u.access_expires_at,u.created_at,
                     u.phone,u.email,
                     (u.password_hash IS NULL) AS pending_activation,
@@ -376,13 +376,14 @@ router.post('/users/:id/reissue-activation-code', async (req, res) => {
 });
 
 router.put('/users/:id', async (req, res) => {
-  const { full_name, role, school_code, assigned_class, assigned_subject_ids, is_active, phone, email, access_expires_at, clear_expiry, revocation_reason } = req.body ?? {};
+  const { full_name, role, school_code, assigned_class, assigned_class_names, assigned_subject_ids, is_active, phone, email, access_expires_at, clear_expiry, revocation_reason } = req.body ?? {};
   const schoolCodeN = blankToNull(school_code);
   const assignedClassN = blankToNull(assigned_class);
   const phoneN = blankToNull(phone);
   const emailN = blankToNull(email);
   const reactivating = is_active === true;
   const hasSubjectIds = assigned_subject_ids !== undefined;
+  const hasClassNames = assigned_class_names !== undefined;
   if (req.user!.school_code && school_code != null && school_code !== '' &&
       (typeof school_code !== 'string' || school_code.trim() !== req.user!.school_code)) {
     return res.status(403).json({ error: "You can't move an account outside your school" });
@@ -410,7 +411,19 @@ router.put('/users/:id', async (req, res) => {
       }
 
       let nextSubjectIds: number[] = [];
+      let nextClassNames: string[] = [];
       if (nextRole === 'teacher') {
+        if (hasClassNames) {
+          if (!Array.isArray(assigned_class_names) || assigned_class_names.some((v: unknown) => typeof v !== 'string' || !v.trim())) {
+            throw new TeacherAssignmentValidationError('assigned_class_names must be an array of class names.');
+          }
+          nextClassNames = [...new Set(assigned_class_names.map((v: string) => v.trim()))];
+          const { rows: classRows } = await client.query('SELECT name FROM classes WHERE school_code=$1 AND name=ANY($2::text[])', [nextSchool, nextClassNames]);
+          if (classRows.length !== nextClassNames.length) throw new TeacherAssignmentValidationError('Every subject-teacher class must belong to the selected school.');
+        } else {
+          const { rows: existingClasses } = await client.query('SELECT assigned_class_names FROM users WHERE id=$1', [req.params.id]);
+          nextClassNames = existingClasses[0]?.assigned_class_names ?? [];
+        }
         if (hasSubjectIds) {
           nextSubjectIds = normalizeTeacherSubjectIds(assigned_subject_ids);
         } else {
@@ -429,13 +442,16 @@ router.put('/users/:id', async (req, res) => {
            school_code=COALESCE($3,school_code),
            assigned_class=CASE WHEN COALESCE($2,role) IN ('admin','finance_admin') THEN NULL
                                ELSE COALESCE($4,assigned_class) END,
+           assigned_class_names=CASE WHEN COALESCE($2,role) IN ('admin','finance_admin') THEN '{}'::text[]
+                                     WHEN $13 THEN $14::text[] ELSE assigned_class_names END,
            is_active=COALESCE($5,is_active),
            phone=COALESCE($6,phone), email=COALESCE($7,email),
            access_expires_at = CASE WHEN $9 THEN NULL ELSE COALESCE($8, access_expires_at) END,
            revocation_reason = CASE WHEN $11 THEN NULL ELSE COALESCE($12, revocation_reason) END
          WHERE id=$10 RETURNING id,username,role,is_active,access_expires_at,revocation_reason`,
         [full_name, role, schoolCodeN, assignedClassN, is_active, phoneN, emailN,
-         access_expires_at ?? null, !!clear_expiry, req.params.id, reactivating, revocation_reason ?? null],
+         access_expires_at ?? null, !!clear_expiry, req.params.id, reactivating, revocation_reason ?? null,
+         hasClassNames, nextClassNames],
       );
       if (!rows[0]) return { user: null };
 
