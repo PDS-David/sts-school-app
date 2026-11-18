@@ -149,6 +149,14 @@ before(async () => {
       [group.school, group.target],
     );
   }
+
+  // Same display name as the first workbook row, but this is an online-only
+  // profile and must not block a distinct physical report-roster identity.
+  await pool.query(
+    `INSERT INTO students(id,school_code,full_name,class_name,user_id)
+     VALUES($1,'primary','Dry Run Grade 1 Student 01','Primary 1',$2)`,
+    [randomUUID(), randomUUID()],
+  );
 });
 
 after(async () => {
@@ -176,7 +184,7 @@ test('production importer dry-run is read-only, then apply is atomic and idempot
       (SELECT count(*)::int FROM report_roster_memberships) AS memberships,
       (SELECT count(*)::int FROM report_roster_membership_events) AS events
   `);
-  assert.deepEqual(afterDryRun.rows[0], { students: 0, memberships: 0, events: 0 },
+  assert.deepEqual(afterDryRun.rows[0], { students: 1, memberships: 0, events: 0 },
     'dry-run must not write any production-style rows');
 
   const applied = runImporter(true);
@@ -198,8 +206,8 @@ test('production importer dry-run is read-only, then apply is atomic and idempot
       (SELECT count(*)::int FROM report_roster_membership_events WHERE event_type='enrolled') AS enrolment_events
   `);
   assert.deepEqual(afterApply.rows[0], {
-    students: 104,
-    linked_online_accounts: 0,
+    students: 105,
+    linked_online_accounts: 1,
     admission_numbers: 0,
     active_memberships: 104,
     enrolment_events: 104,
