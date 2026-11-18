@@ -70,7 +70,7 @@ if(!db){test('supplement revision database checks require JSS3_YO_TEST_DATABASE_
  const {t,a}=await make();assert.equal((await api('POST',`/assessments/${a}/submit`,{answers:{}})).status,403);assert.equal((await one('SELECT count(*)::int n FROM submissions WHERE assessment_id=$1',[a])).n,0);assert.equal((await one('SELECT generated_assessment_id FROM topics WHERE id=$1',[t])).generated_assessment_id,null);
  });
  test('completion uses current text for AI and unknown stored bytes are withheld without AI',async()=>{
- const {t}=await make();prompts.length=0;const done=await api('POST',`/topics/${t}/complete`);assert.equal(done.status,200);assert.match(done.body.summary,/JSS3 SUPPLEMENT UPDATE/);assert.ok(prompts.length>=2);for(const p of prompts)assert.match(p,/JSS3 SUPPLEMENT UPDATE/);
+ const {t}=await make();prompts.length=0;const done=await api('POST',`/topics/${t}/complete`);assert.equal(done.status,200);assert.match(done.body.summary,/JSS3 SUPPLEMENT UPDATE/);assert.ok(prompts.length>=1, 'one structured lesson generation produces the teaching body and practice set');for(const p of prompts)assert.match(p,/JSS3 SUPPLEMENT UPDATE/);
  const unknown=await make('unreviewed edited text');prompts.length=0;const held=await api('POST',`/topics/${unknown.t}/complete`);assert.equal(held.status,200);assert.equal(held.body.delivery_correction.status,'withheld');assert.equal(prompts.length,0);
  });
  test('real SQL transaction rollback preserves prior cache/assessment state on failure',async()=>{
