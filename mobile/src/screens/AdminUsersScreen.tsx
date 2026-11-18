@@ -17,6 +17,7 @@ interface User {
   school_code: string; assigned_class: string; is_active: boolean;
   access_expires_at: string | null;
   assigned_subject_ids?: number[];
+  assigned_class_names?: string[];
   // Now selected by GET /admin/users (Part 4 audit fix) — previously absent,
   // which made every Edit-User save silently blank the target's phone
   // number (see openEdit/handleSave below for the actual fix).
@@ -115,6 +116,7 @@ export default function AdminUsersScreen() {
     school_code: '', assigned_class: '', phone: '',
     access_expires_at: '', // YYYY-MM-DD, blank = no expiry
     assigned_subject_ids: [] as number[],
+    assigned_class_names: [] as string[],
     initial_password: '', // teacher only — admin sets the actual first-login password directly (see handleSave)
   });
 
@@ -191,7 +193,7 @@ export default function AdminUsersScreen() {
     setEditUser(null);
     setForm({
       username: '', role: 'teacher', school_code: '', assigned_class: '',
-      phone: '', access_expires_at: '', assigned_subject_ids: [], initial_password: '',
+      phone: '', access_expires_at: '', assigned_subject_ids: [], assigned_class_names: [], initial_password: '',
     });
     setModal(true);
   };
@@ -209,7 +211,7 @@ export default function AdminUsersScreen() {
       // actually meant to change. Now correctly seeded from the fetched value.
       school_code: u.school_code ?? '', assigned_class: u.assigned_class ?? '', phone: u.phone ?? '',
       access_expires_at: u.access_expires_at ? u.access_expires_at.slice(0, 10) : '',
-      assigned_subject_ids: u.assigned_subject_ids ?? [], initial_password: '',
+      assigned_subject_ids: u.assigned_subject_ids ?? [], assigned_class_names: u.assigned_class_names ?? [], initial_password: '',
     });
     setModal(true);
   };
@@ -256,6 +258,7 @@ export default function AdminUsersScreen() {
     // instead of '' so the server never stores an empty string for them.
     payload.school_code = form.school_code || null;
     payload.assigned_class = form.assigned_class || null;
+    payload.assigned_class_names = form.assigned_class ? [] : form.assigned_class_names;
     if (!showsExpiry || !form.access_expires_at) {
       delete payload.access_expires_at;
       if (editUser && showsExpiry) payload.clear_expiry = true;
@@ -575,6 +578,7 @@ export default function AdminUsersScreen() {
                         username: selected ? classTeacherUsername(selected.name) : '',
                         assigned_class: selected?.name ?? '',
                         assigned_subject_ids: [],
+                        assigned_class_names: [],
                       }));
                     } else if (value.startsWith('subject:')) {
                       const id = Number(value.slice(8));
@@ -584,9 +588,10 @@ export default function AdminUsersScreen() {
                         username: selected ? subjectTeacherUsername(selected.name) : '',
                         assigned_class: '',
                         assigned_subject_ids: selected ? [selected.id] : [],
+                        assigned_class_names: [],
                       }));
                     } else {
-                      setForm(f => ({ ...f, username: '', assigned_class: '', assigned_subject_ids: [] }));
+                      setForm(f => ({ ...f, username: '', assigned_class: '', assigned_subject_ids: [], assigned_class_names: [] }));
                     }
                   }}
                 >
@@ -610,6 +615,26 @@ export default function AdminUsersScreen() {
                 </Picker>
               </View>
               <Text style={styles.expiryHint}>Choose the class or subject name. Its matching username is filled in automatically.</Text>
+              {form.assigned_subject_ids.length > 0 && (
+                <View style={{ marginTop: Spacing.sm }}>
+                  <Text style={styles.filterLabel}>Classes this subject teacher can mark</Text>
+                  {availableClasses.map(c => {
+                    const selected = form.assigned_class_names.includes(c.name);
+                    return (
+                      <TouchableOpacity key={c.id} onPress={() => setForm(f => ({
+                        ...f,
+                        assigned_class_names: selected
+                          ? f.assigned_class_names.filter(name => name !== c.name)
+                          : [...f.assigned_class_names, c.name],
+                      }))} style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 8 }}>
+                        <Ionicons name={selected ? 'checkbox' : 'square-outline'} size={20} color={selected ? Colors.primary : Colors.textSub} />
+                        <Text style={{ marginLeft: 10, color: Colors.text }}>{c.name}</Text>
+                      </TouchableOpacity>
+                    );
+                  })}
+                  <Text style={styles.expiryHint}>Select every class assigned to this subject teacher.</Text>
+                </View>
+              )}
             </>
           )}
           {!editUser && form.role !== 'teacher' && (
