@@ -85,6 +85,7 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
       termIds.push(Number(rows[0].id));
     }
 
+    await query("UPDATE users SET assigned_class_names=ARRAY['Primary 4']::text[] WHERE id=$1", [subjectTeacher.id]);
     await query('INSERT INTO teacher_subjects(user_id,subject_id) VALUES($1,$2)', [subjectTeacher.id, subjectIds[0]]);
 
     const studentRows = await Promise.all([
@@ -156,10 +157,10 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     });
 
     const allowedSubject = await post('/', score(studentIds[0], subjectIds[0], termIds[0]), subjectTeacher.token);
-    assert.equal(allowedSubject.status, 403, 'subject-only teachers without an assigned physical class cannot enter report scores');
+    assert.equal(allowedSubject.status, 200, 'subject teachers can enter marks for their assigned subject in an assigned class');
 
     const deniedSubject = await post('/', score(studentIds[0], subjectIds[1], termIds[0]), subjectTeacher.token);
-    assert.equal(deniedSubject.status, 403, 'subject-only teachers without an assigned physical class cannot enter report scores');
+    assert.equal(deniedSubject.status, 403, 'subject teachers cannot enter marks for unassigned subjects');
 
     const foreignSubject = await post('/', score(studentIds[0], subjectIds[2], termIds[0]), subjectTeacher.token);
     assert.equal(foreignSubject.status, 400, 'student, subject and term must belong to the same school');
@@ -169,6 +170,12 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
 
     const classTeacherSubject = await post('/', score(studentIds[0], subjectIds[1], termIds[0]), classTeacher.token);
     assert.equal(classTeacherSubject.status, 200, 'class teachers can enter marks for any report subject in their assigned class');
+    const subjectTeacherOutsideClass = await post('/', score(studentIds[1], subjectIds[0], termIds[0]), subjectTeacher.token);
+    assert.equal(subjectTeacherOutsideClass.status, 403, 'subject teachers cannot mark students outside their assigned classes');
+    const classTeacherOverride = await post('/', { ...score(studentIds[0], subjectIds[0], termIds[0]), ca1: 15 }, classTeacher.token);
+    assert.equal(classTeacherOverride.status, 200, 'class teachers can overwrite a subject teacher mark for their class');
+    const subjectTeacherCannotOverride = await post('/', score(studentIds[0], subjectIds[1], termIds[0]), subjectTeacher.token);
+    assert.equal(subjectTeacherCannotOverride.status, 403, 'subject teachers cannot overwrite a class-teacher mark');
     const { rows: calculatedScore } = await query(
       'SELECT total,grade,class_name FROM scores WHERE student_id=$1 AND subject_id=$2 AND term_id=$3',
       [studentIds[0], subjectIds[1], termIds[0]],
