@@ -69,6 +69,25 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
   next();
 }
 
+/**
+ * Teacher accounts are intentionally report-only. Use this middleware after
+ * requireAuth on read/report routers that may also expose legacy write routes.
+ */
+export function denyTeacherWrites(req: Request, res: Response, next: NextFunction) {
+  if (req.user?.role === 'teacher' && !['GET', 'HEAD', 'OPTIONS'].includes(req.method.toUpperCase())) {
+    return res.status(403).json({ error: 'Teacher accounts are report-only and cannot modify school records.' });
+  }
+  next();
+}
+
+/** Deny teachers access to non-report areas of the application entirely. */
+export function denyTeacherAccess(req: Request, res: Response, next: NextFunction) {
+  if (req.user?.role === 'teacher') {
+    return res.status(403).json({ error: 'Teacher accounts are limited to report-generation workflows.' });
+  }
+  next();
+}
+
 export async function isStudentRecordDeleted(userId: string): Promise<boolean> {
   const { rows } = await query('SELECT 1 FROM students WHERE user_id=$1 AND deleted_at IS NOT NULL LIMIT 1', [userId]);
   return rows.length > 0;
