@@ -4,7 +4,6 @@ import { requireAuth, requireRole } from '../middleware/auth.js';
 import { query, withTransaction } from '../db/pool.js';
 import {
   ingestionBatchSchema,
-  ingestionQuestionSchema,
   questionBankRightsSchema,
   questionBankSourceBoardSchema,
   rightsGate,
@@ -82,7 +81,7 @@ router.post('/sources', async (req, res) => {
 
 router.get('/gaps', async (_req, res) => {
   const { rows } = await query(`
-    SELECT g.id,g.board,s.code AS subject_code,s.name AS subject,g.gap_status,
+    SELECT g.id,g.board,g.gap_type,s.code AS subject_code,s.name AS subject,g.gap_status,
            g.reason,g.next_action,g.source_id,g.updated_at
     FROM question_bank_source_gaps g
     JOIN question_bank_subjects s ON s.id=g.subject_id
@@ -122,7 +121,10 @@ router.post('/ingest', async (req, res) => {
   const payload = parsed.data;
   const payloadHash = createHash('sha256').update(JSON.stringify(payload.questions)).digest('hex');
 
-  let result;
+  type IngestResult =
+    | { ok: true; batch_id: string; imported_count: number; payload_sha256: string }
+    | { ok: false; status: number; error: string };
+  let result: IngestResult;
   try {
     result = await withTransaction(async client => {
     const { rows: sourceRows } = await client.query(
