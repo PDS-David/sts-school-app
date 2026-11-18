@@ -18,6 +18,8 @@ export interface User {
   // Added for the class-lock feature — which class (if any) this user is
   // the class teacher for. Only meaningful when role === 'teacher'.
   assigned_class?: string | null;
+  assigned_subject_ids?: number[];
+  assigned_class_names?: string[];
   // Set on accounts created via POST /auth/self-register (student/parent/
   // teacher choosing their own username+password directly, no admin-issued
   // code). Persists across app restarts as part of the stored user object
