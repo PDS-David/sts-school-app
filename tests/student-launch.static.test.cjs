@@ -18,6 +18,8 @@ test('PIN enforcement is explicitly opt-in, preserving free launch access', () =
   assert.match(s, /const freeLaunchMode = \\(\\) => process\\.env\\.FREE_LAUNCH_MODE !== 'false'/);
   assert.match(s, /const termPinEnforced = \\(\\) => !freeLaunchMode\\(\\) && process\\.env\\.TERM_PIN_ENFORCED === 'true'/);
   assert.match(s, /const curriculumSequenceEnforced = \\(\\) => !freeLaunchMode\\(\\) && process\\.env\\.CURRICULUM_SEQUENCE_ENFORCED === 'true'/);
+  assert.match(s, /const termPinEnforced = \\(\\) => !freeLaunchMode\\(\\) && process\\.env\\.TERM_PIN_ENFORCED === 'true'/);
+  assert.match(s, /const curriculumSequenceEnforced = \\(\\) => !freeLaunchMode\\(\\) && process\\.env\\.CURRICULUM_SEQUENCE_ENFORCED === 'true'/);
   assert.match(s, /!termPinEnforced\(\) \|\| redeemedTermLabels\.has/);
   assert.match(s, /!termPinEnforced\(\) \|\| !!pinRows\[0\]/);
 });
