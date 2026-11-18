@@ -663,7 +663,7 @@ CREATE TABLE IF NOT EXISTS report_roster_membership_events (
     CHECK (event_type IN ('enrolled', 'class_changed', 'retained', 'removed', 'reinstated')),
   from_class_name TEXT,
   to_class_name TEXT,
-  actor_id UUID REFERENCES users(id) ON DELETE SET NULL,
+  actor_id UUID, -- immutable actor snapshot; intentionally not a user FK
   occurred_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   details JSONB NOT NULL DEFAULT '{}'::jsonb
 );
