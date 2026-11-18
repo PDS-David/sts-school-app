@@ -34,6 +34,7 @@ export default function StudentsScreen({ navigation }: any) {
   }, [navigation]);
 
   const fetch = async () => {
+    if (user?.role === 'admin' && !selectedSchoolCode) { setStudents([]); setFiltered([]); setLoading(false); setRefreshing(false); return; }
     try {
       // Admin has no school of their own — pass whichever one is selected in
       // the switcher, so this always shows exactly one school's students
@@ -60,6 +61,7 @@ export default function StudentsScreen({ navigation }: any) {
   return (
     <View style={styles.container}>
       <PageContainer style={{ flex: 1 }}>
+        {user?.role === 'admin' && !selectedSchoolCode ? <View style={{ padding: Spacing.lg }}><Text style={{ color: Colors.text, fontWeight: '700' }}>Select a school above to view its students.</Text></View> : <>
         <View style={styles.searchBar}>
           <Ionicons name="search" size={18} color={Colors.textSub} />
           <TextInput
@@ -92,6 +94,7 @@ export default function StudentsScreen({ navigation }: any) {
             </TouchableOpacity>
           )}
         />
+        </>}
       </PageContainer>
       {user?.role === 'admin' && <FAB actions={[{ icon: 'person-add', label: 'Enroll Student', onPress: () => navigation.navigate('AddStudent') }]} />}
     </View>
