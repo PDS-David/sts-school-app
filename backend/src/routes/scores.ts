@@ -230,7 +230,7 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
   const params: unknown[] = [];
 
   if (term_id)    { params.push(term_id);    sql += ` AND sc.term_id=$${params.length}`; }
-  if (class_name) { params.push(class_name); sql += ` AND COALESCE(rrm.class_name,s.class_name)=${params.length}`; }
+  if (class_name) { params.push(class_name); sql += ` AND COALESCE(rrm.class_name,s.class_name)=$${params.length}`; }
   if (subject_id) { params.push(subject_id); sql += ` AND sc.subject_id=$${params.length}`; }
   if (student_id) { params.push(student_id); sql += ` AND sc.student_id=$${params.length}`; }
   // Teachers see only their school
