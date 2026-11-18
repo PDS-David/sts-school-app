@@ -62,11 +62,12 @@ test('0005 backfills active and soft-deleted students idempotently without chang
       'SELECT id,user_id,class_name FROM students WHERE id=ANY($1::uuid[])',
       [[active.rows[0].id, removed.rows[0].id]],
     );
-    assert.deepEqual(
-      students.rows.map(row => ({ id: row.id, user_id: row.user_id, class_name: row.class_name })),
-      [active.rows[0], removed.rows[0]],
-      'backfill must not rewrite the online student identity or class',
-    );
+    const studentById = new Map(students.rows.map(row => [row.id, row]));
+    assert.equal(studentById.get(active.rows[0].id)?.user_id, active.rows[0].user_id);
+    assert.equal(studentById.get(active.rows[0].id)?.class_name, active.rows[0].class_name);
+    assert.equal(studentById.get(removed.rows[0].id)?.user_id, removed.rows[0].user_id);
+    assert.equal(studentById.get(removed.rows[0].id)?.class_name, removed.rows[0].class_name,
+      'backfill must not rewrite the online student identity or class');
   } finally {
     await client.query('ROLLBACK');
     client.release();
