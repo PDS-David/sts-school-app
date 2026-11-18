@@ -184,9 +184,6 @@ test('school-bound administrators are confined to their student roster and mutat
     primaryActive, secondaryActive, primaryDeleted, secondaryDeleted,
     primaryLinkTarget, secondaryLinkTarget,
   ];
-  const userIds = [
-    primaryAdmin.id, globalAdmin.id, parent.id, primaryLogin.id, secondaryLogin.id,
-  ];
   let createdStudentId: string | undefined;
   let server: Server | undefined;
 
