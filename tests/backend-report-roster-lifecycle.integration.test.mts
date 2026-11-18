@@ -68,6 +68,9 @@ test('teacher placement decisions mutate only physical report membership and app
       server!.once('error', reject);
     });
     const baseUrl = `http://127.0.0.1:${(server.address() as AddressInfo).port}/students`;
+    const getRemoved = () => fetch(`${baseUrl}/report-roster/removed`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
     const decide = (studentId: string, action: string) => fetch(`${baseUrl}/${studentId}/promotion`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
@@ -85,10 +88,19 @@ test('teacher placement decisions mutate only physical report membership and app
     assert.equal(retained.status, 200);
     const removed = await decide(studentIds[2], 'remove');
     assert.equal(removed.status, 200);
+    const removedRoster = await getRemoved();
+    assert.equal(removedRoster.status, 200);
+    const removedPayload = await removedRoster.json() as { students: Array<{ id: string }> };
+    assert.ok(removedPayload.students.some(student => student.id === studentIds[2]),
+      'teacher can retrieve removed students from their own assigned class for reinstatement');
     const reinstated = await decide(studentIds[3], 'remove');
     assert.equal(reinstated.status, 200);
     const restore = await decide(studentIds[3], 'reinstate');
     assert.equal(restore.status, 200);
+    const removedAfterRestore = await getRemoved();
+    const removedAfterRestorePayload = await removedAfterRestore.json() as { students: Array<{ id: string }> };
+    assert.ok(!removedAfterRestorePayload.students.some(student => student.id === studentIds[3]),
+      'reinstated student no longer appears in the removed list');
 
     const concurrentRemovals = await Promise.all([
       decide(studentIds[4], 'remove'),
