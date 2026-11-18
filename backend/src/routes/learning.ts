@@ -250,7 +250,7 @@ router.get('/ss1/lessons/:lessonId', requirePerm('topics.read'), async (req, res
   if (!studentId) return res.status(404).json({ error: 'Lesson not found' });
   const lesson = getStudentSs1Lesson(req.params.lessonId);
   if (!lesson) return res.status(404).json({ error: 'Lesson not found' });
-  const unlockedTerms = await redeemedSs1Terms(studentId);
+  const unlockedTerms = await redeemedSs1Terms(studentId, req.learningAccessPolicy);
   if (!unlockedTerms.has(lesson.term)) {
     return res.status(423).json({ error: 'Redeem the Term PIN to unlock lessons for this term.' });
   }
@@ -273,7 +273,7 @@ router.post('/ss1/lessons/:lessonId/generate', curriculumLessonLimiter, requireP
   if (!studentId) return res.status(404).json({ error: 'Lesson not found' });
   const lesson = getStudentSs1Lesson(req.params.lessonId);
   if (!lesson) return res.status(404).json({ error: 'Lesson not found' });
-  const unlockedTerms = await redeemedSs1Terms(studentId);
+  const unlockedTerms = await redeemedSs1Terms(studentId, req.learningAccessPolicy);
   if (!unlockedTerms.has(lesson.term)) {
     return res.status(423).json({ error: 'Redeem the Term PIN to generate this lesson.' });
   }
@@ -304,7 +304,7 @@ router.get('/ss1/assets/:assetId', requirePerm('topics.read'), async (req, res) 
   if (!studentId) return res.status(404).json({ error: 'Asset not found' });
   const result = readStudentSs1Asset(req.params.assetId);
   if (!result) return res.status(404).json({ error: 'Asset not found' });
-  const unlockedTerms = await redeemedSs1Terms(studentId);
+  const unlockedTerms = await redeemedSs1Terms(studentId, req.learningAccessPolicy);
   if (!unlockedTerms.has(result.asset.term)) {
     return res.status(423).json({ error: 'Redeem the Term PIN to unlock this lesson asset.' });
   }
@@ -394,7 +394,7 @@ router.get('/ss23/preparation', requirePerm('topics.read'), async (req, res) => 
   if (subjectName && subjectName.trim().length > 120) {
     return res.status(400).json({ error: 'subject_name is too long' });
   }
-  const unlockedTerms = await redeemedSs23Terms(context.studentId);
+  const unlockedTerms = await redeemedSs23Terms(context.studentId, req.learningAccessPolicy);
   const units = listStudentSs23Units('SS 3', subjectName).map(unit => {
     const locked = !unlockedTerms.has(unit.term);
     if (locked) return { ...studentSs23UnitPreview(unit, true), assets: [] };
@@ -412,7 +412,7 @@ router.get('/ss23/units/:unitId', requirePerm('topics.read'), async (req, res) =
   if (!context) return res.status(404).json({ error: 'Unit not found' });
   const unit = getStudentSs23Unit(req.params.unitId, context.className);
   if (!unit) return res.status(404).json({ error: 'Unit not found' });
-  const unlockedTerms = await redeemedSs23Terms(context.studentId);
+  const unlockedTerms = await redeemedSs23Terms(context.studentId, req.learningAccessPolicy);
   if (!unlockedTerms.has(unit.term)) {
     return res.status(423).json({ error: 'Redeem the Term PIN to unlock this curriculum unit.' });
   }
@@ -430,7 +430,7 @@ router.post('/ss23/units/:unitId/generate', curriculumLessonLimiter, requirePerm
   if (!context) return res.status(404).json({ error: 'Unit not found' });
   const unit = getStudentSs23Unit(req.params.unitId, context.className);
   if (!unit) return res.status(404).json({ error: 'Unit not found' });
-  const unlockedTerms = await redeemedSs23Terms(context.studentId);
+  const unlockedTerms = await redeemedSs23Terms(context.studentId, req.learningAccessPolicy);
   if (!unlockedTerms.has(unit.term)) {
     return res.status(423).json({ error: 'Redeem the Term PIN to generate this lesson.' });
   }
@@ -465,7 +465,7 @@ router.get('/ss23/assets/:assetId', requirePerm('topics.read'), async (req, res)
   if (!context) return res.status(404).json({ error: 'Asset not found' });
   const result = readStudentSs23Asset(req.params.assetId, context.className);
   if (!result) return res.status(404).json({ error: 'Asset not found' });
-  const unlockedTerms = await redeemedSs23Terms(context.studentId);
+  const unlockedTerms = await redeemedSs23Terms(context.studentId, req.learningAccessPolicy);
   if (!unlockedTerms.has(result.asset.term)) {
     return res.status(423).json({ error: 'Redeem the Term PIN to unlock this curriculum asset.' });
   }
@@ -1111,7 +1111,7 @@ router.post('/topics/:id/lesson', curriculumLessonLimiter, requirePerm('topics.r
   // a student could bypass the whole PIN/pass-gate scheme by calling this
   // route directly for a topic the UI never let them open. Only applies to
   // ordered (ingested) topics; see schema.sql's "Term-PIN gating" section.
-  if (curriculumSequenceEnforced() && topic.order_index != null) {
+  if (curriculumSequenceEnforced(req.learningAccessPolicy) && topic.order_index != null) {
     // Same resolver as GET /topics (Task 05) so the list and this direct guard cannot disagree.
     const { rows: siblingRows } = await query(
       `SELECT id, order_index, (to_jsonb(t)->>'sequence_rank')::numeric AS sequence_rank FROM topics t
@@ -1126,7 +1126,7 @@ router.post('/topics/:id/lesson', curriculumLessonLimiter, requirePerm('topics.r
       'SELECT 1 FROM term_access_pins WHERE student_id=$1 AND term_label=$2 AND redeemed_at IS NOT NULL',
       [student.id, topic.term_label],
     );
-    const pinOk = !termPinEnforced() || !!pinRows[0];
+    const pinOk = !termPinEnforced(req.learningAccessPolicy) || !!pinRows[0];
     const verdict = resolveSequenceGroup(siblingRows, new Set(passRows.map((r: any) => r.topic_id)), pinOk).get(topic.id);
     if (verdict?.locked) {
       return res.status(403).json({ error: verdict.is_sequence_first
@@ -1389,7 +1389,7 @@ router.post('/topics/:id/progress', requirePerm('topics.complete'), requireRole(
   if (topic.school_code !== student.school_code || (topic.class_name && topic.class_name !== student.class_name)) {
     return res.status(403).json({ error: 'This topic is not available to you' });
   }
-  if (await studentTopicSequenceLocked(user, topic)) {
+  if (await studentTopicSequenceLocked(user, topic, req.learningAccessPolicy)) {
     return res.status(403).json({ error: 'This topic is locked. Complete the required preceding topic first.' });
   }
 
@@ -1418,7 +1418,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   // a student could bypass the whole PIN/pass-gate scheme by calling this
   // route directly for a topic the UI never let them open. Only applies to
   // ordered (ingested) topics; see schema.sql's "Term-PIN gating" section.
-  if (curriculumSequenceEnforced() && topic.order_index != null) {
+  if (curriculumSequenceEnforced(req.learningAccessPolicy) && topic.order_index != null) {
     // Same resolver as GET /topics (Task 05) so the list and this direct guard cannot disagree.
     const { rows: siblingRows } = await query(
       `SELECT id, order_index, (to_jsonb(t)->>'sequence_rank')::numeric AS sequence_rank FROM topics t
@@ -1433,7 +1433,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
       'SELECT 1 FROM term_access_pins WHERE student_id=$1 AND term_label=$2 AND redeemed_at IS NOT NULL',
       [student.id, topic.term_label],
     );
-    const pinOk = !termPinEnforced() || !!pinRows[0];
+    const pinOk = !termPinEnforced(req.learningAccessPolicy) || !!pinRows[0];
     const verdict = resolveSequenceGroup(siblingRows, new Set(passRows.map((r: any) => r.topic_id)), pinOk).get(topic.id);
     if (verdict?.locked) {
       return res.status(403).json({ error: verdict.is_sequence_first
