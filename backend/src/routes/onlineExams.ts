@@ -706,6 +706,42 @@ router.post('/attempts/:attemptId/submit',requireRole('student'),async(req,res)=
   return res.json({submitted:true,...final});
 });
 
+router.get('/admin/question-bank/subjects',requireRole('admin'),async(req,res)=>{
+  const schoolCode=schoolForAdmin(req.user);
+  if(!schoolCode) return res.status(400).json({error:'Select a school before browsing approved examination subjects.'});
+  const {rows}=await query(`
+    SELECT s.id,s.code,s.name,
+           COALESCE(jsonb_agg(jsonb_build_object('id',t.id,'slug',t.slug,'name',t.name)
+             ORDER BY t.name) FILTER(WHERE t.id IS NOT NULL),'[]'::jsonb) AS topics
+      FROM question_bank_subjects s
+      LEFT JOIN question_bank_topics t ON t.subject_id=s.id
+     GROUP BY s.id ORDER BY s.name
+  `);
+  return res.json({subjects:rows});
+});
+
+router.get('/admin/question-bank/questions',requireRole('admin'),async(req,res)=>{
+  const schoolCode=schoolForAdmin(req.user);
+  if(!schoolCode) return res.status(400).json({error:'Select a school before browsing approved examination questions.'});
+  const board=typeof req.query.board==='string'?req.query.board:null;
+  const subjectCode=typeof req.query.subject_code==='string'?req.query.subject_code:null;
+  const {rows}=await query(`
+    SELECT q.id,q.board,q.paper,q.question_number,q.question_type,q.stem,q.options,q.marks,
+           q.content_origin,q.rights_status,s.code AS subject_code,s.name AS subject,
+           t.slug AS topic_slug,t.name AS topic
+      FROM question_bank_questions q
+      JOIN question_bank_subjects s ON s.id=q.subject_id
+      JOIN question_bank_topics t ON t.id=q.topic_id AND t.subject_id=q.subject_id
+     WHERE q.review_status IN ('approved','published')
+       AND q.question_type='mcq'
+       AND ($1::text IS NULL OR q.board=$1)
+       AND ($2::text IS NULL OR s.code=$2)
+     ORDER BY q.board,s.name,t.name,q.created_at DESC
+     LIMIT 500
+  `,[board,subjectCode]);
+  return res.json({questions:rows});
+});
+
 router.get('/admin/exams',requireRole('admin'),async(req,res)=>{
   const schoolCode=schoolForAdmin(req.user);
   if(!schoolCode) return res.status(400).json({error:'Select a school before listing examinations.'});
