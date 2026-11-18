@@ -112,7 +112,8 @@ test('teacher creation rejects a subject from another school before creating the
       role: 'teacher',
       school_code: 'primary',
       assigned_subject_ids: [foreignSubjectId],
-      initial_password: 'Bsec5-Strong-Password!',
+      assigned_class_names: ['Primary 1'],
+      initial_password: '1234',
     });
     assert.equal(response.status, 400);
     const { rows } = await query('SELECT id FROM users WHERE username=$1', [username]);
@@ -134,7 +135,7 @@ test('teacher creation rejects a class from another school', async () => {
       school_code: 'primary',
       assigned_class: 'JSS 1',
       assigned_subject_ids: [],
-      initial_password: 'Bsec5-Strong-Password!',
+      initial_password: '1234',
     });
     assert.equal(response.status, 400);
     const { rows } = await query('SELECT id FROM users WHERE username=$1', [username]);
