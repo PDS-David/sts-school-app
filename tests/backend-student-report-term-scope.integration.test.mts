@@ -107,6 +107,7 @@ test('individual student score and class-record reports reject a term from anoth
       server.closeAllConnections();
       await new Promise<void>(resolve => server!.close(() => resolve()));
     }
+    if (studentId) await query('DELETE FROM report_roster_memberships WHERE student_id=$1', [studentId]);
     if (studentId) await query('DELETE FROM students WHERE id=$1', [studentId]);
     if (userId) await query('DELETE FROM users WHERE id=$1', [userId]);
     if (primaryTermId) await query('DELETE FROM terms WHERE id=$1', [primaryTermId]);
