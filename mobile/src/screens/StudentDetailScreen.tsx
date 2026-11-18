@@ -20,6 +20,7 @@ export default function StudentDetailScreen({ route, navigation }: any) {
   const [report,    setReport]    = useState<any>(null);
   const [loading,   setLoading]   = useState(true);
   const [refreshing,setRefreshing]= useState(false);
+  const [loadError, setLoadError] = useState('');
 
   // Class-record editing
   const [ctRemark,  setCtRemark]  = useState('');
@@ -93,6 +94,7 @@ export default function StudentDetailScreen({ route, navigation }: any) {
   };
 
   const fetch = async () => {
+    setLoadError('');
     try {
       const s = await api.get(`/students/${studentId}`);
       setStudent(s.data.student);
@@ -102,7 +104,8 @@ export default function StudentDetailScreen({ route, navigation }: any) {
       setEditAdmissionNumber(s.data.student?.admission_number ?? '');
       if (s.data.student?.school_code) fetchTerms(s.data.student.school_code);
       await fetchReport(selTermId ?? undefined);
-    } catch {
+    } catch (e: any) {
+      setLoadError(e?.response?.data?.error ?? 'Could not load this student record. Check your connection and retry.');
     } finally { setLoading(false); setRefreshing(false); }
   };
 
@@ -269,7 +272,12 @@ export default function StudentDetailScreen({ route, navigation }: any) {
   };
 
   if (loading) return <Loader />;
-  if (!student) return <Empty message="Student not found" />;
+  if (!student) return (
+    <View style={{ flex: 1, justifyContent: 'center', padding: Spacing.md, backgroundColor: Colors.background }}>
+      <Empty message={loadError || 'Student record not found.'} />
+      {!!loadError && <Btn label="Retry loading student" variant="outline" onPress={() => { setLoading(true); fetch(); }} />}
+    </View>
+  );
 
   const scores = report?.scores ?? [];
   const att    = report?.attendance;
