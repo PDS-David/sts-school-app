@@ -74,7 +74,7 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
   if (dbUser.student_deleted) {
     return res.status(401).json({ error: 'Your student record is no longer active. Contact the school admin.' });
   }
-  if (!(req.learningAccessPolicy.freeLaunchMode && dbUser.role === 'student') && dbUser.pending_admin_review && req.baseUrl !== '/auth') {
+  if (!(accessPolicy.freeLaunchMode && dbUser.role === 'student') && dbUser.pending_admin_review && req.baseUrl !== '/auth') {
     return res.status(403).json({ error: 'Your account is awaiting admin approval.', code: 'PENDING_APPROVAL' });
   }
 
