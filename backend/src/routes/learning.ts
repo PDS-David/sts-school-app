@@ -7,6 +7,7 @@ import { verifyTopicAssetPayload } from '../db/attachTopicAssets.js';
 import { requireAuth, requirePerm, requireRole, denyTeacherAccess } from '../middleware/auth.js';
 import { resolveViewerClassNames, checkTeacherContentScope } from '../utils/scope.js';
 import { generate, generateJSON } from '../utils/ai.js';
+import { generateCurriculumLesson } from '../services/curriculumLessonGenerator.js';
 import { sendPushToClass } from '../utils/push.js';
 import type { AuthUser } from '../types/index.js';
 import { isSafeExternalMaterialUrl } from '../utils/materialUrl.js';
@@ -972,7 +973,7 @@ router.put('/topics/:id', requirePerm('topics.write'), async (req, res) => {
   // Same delivery guard as the list/detail paths: an edited JSS3 or SS1 corrected row must not hand back stale, withheld or
   // audited-original text (or a stale assessment link). The stored row itself is not touched here.
   const { rows: full } = await query(
-    'SELECT t.*, sub.name AS subject_name FROM topics t LEFT JOIN subjects sub ON sub.id=t.subject_id WHERE t.id=$1', [req.params.id],
+    'SELECT t.*, sub.name AS subject_name, to_jsonb(t)->>'term_label' AS curriculum_term_label, to_jsonb(t)->'learning_objectives' AS curriculum_learning_objectives FROM topics t LEFT JOIN subjects sub ON sub.id=t.subject_id WHERE t.id=$1', [req.params.id],
   );
   const { subject_name: _subjectName, ...safe } = safeSs1MathematicsTopic(safeEnglishTopic(safeAgriculturalScienceTopic(safeSs1Topic(safeJss3Topic(full[0] ?? rows[0])))));
   return res.json({ topic: safe });
@@ -1208,62 +1209,61 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
     : delivery?.kind === 'corrected' ? delivery.text
     : typeof topic.source_reference === 'string' ? topic.source_reference : null;
 
+  // Generate the teaching lesson from approved curriculum context. Brainee
+  // remains a separate tutor/chat experience and is not the lesson author.
+  let summary: string | null = null;
+  let summary_is_fallback = false;
+  let practice_questions: Array<{
+    stem: string;
+    options: Array<{ key: 'A' | 'B' | 'C' | 'D'; text: string }>;
+    correct_keys: Array<'A' | 'B' | 'C' | 'D'>;
+    explanation: string;
+    marks: number;
+  }> = [];
+
+  const rawObjectives = topic.curriculum_learning_objectives;
+  const objectives: string[] = Array.isArray(rawObjectives)
+    ? rawObjectives.filter((value: unknown): value is string => typeof value === 'string' && value.trim().length > 0)
+    : typeof rawObjectives === 'string'
+      ? (() => { try { const parsed = JSON.parse(rawObjectives); return Array.isArray(parsed) ? parsed.filter((value): value is string => typeof value === 'string' && value.trim().length > 0) : []; } catch { return []; } })()
+      : [];
+
+  let generatedLesson;
+  try {
+    generatedLesson = await generateCurriculumLesson({
+      className: student.class_name,
+      subject: topic.subject_name || 'Subject not recorded',
+      term: topic.curriculum_term_label || (topic.term_id ? `Term reference ${topic.term_id}` : 'Term not recorded'),
+      topic: topic.title,
+      objectives,
+      sourceMaterial: groundingSource || topic.description || null,
+    }, { userId: user.id, role: user.role });
+
+    summary = [
+      generatedLesson.title,
+      generatedLesson.introduction,
+      ...generatedLesson.sections.map(section => `${section.heading}\n${section.content}`),
+      `Lesson recap\n${generatedLesson.summary}`,
+    ].join('\n\n');
+    practice_questions = generatedLesson.practice_questions.map(question => ({ ...question, marks: 1 }));
+    await query('UPDATE topics SET summary=$1 WHERE id=$2', [summary, topic.id]);
+  } catch (error: any) {
+    console.error('[curriculum] AI lesson generation/validation failed', {
+      topicId: topic.id,
+      message: error?.message ?? 'Unknown generation error',
+    });
+    return res.status(error?.statusCode ?? 502).json({
+      ok: false,
+      error: error?.message ?? 'A complete lesson could not be generated. Please retry.',
+      code: 'CURRICULUM_LESSON_GENERATION_FAILED',
+    });
+  }
+
   await query(
     `INSERT INTO topic_completions(topic_id, student_id) VALUES($1,$2)
      ON CONFLICT (topic_id, student_id) DO NOTHING`,
     [topic.id, student.id],
   );
-
-  // Study summary — generate once, cache on the topic row. A failure here
-  // never blocks the completion itself or the practice/assessment below.
-  // When source_reference exists (this topic was ingested from the
-  // school's own curriculum documents — see schema.sql), Brainee is
-  // grounded in that real material rather than writing from the bare title
-  // alone, so output quality doesn't depend on generating from nothing. If
-  // generation fails, source_reference itself is returned as a fallback —
-  // clearly labeled as unpolished source material, not presented as the
-  // finished lesson — so the student isn't left with nothing.
-  let summary: string | null = topic.summary;
-  let summary_is_fallback = false;
-  if (!summary) {
-    try {
-      const grounding = groundingSource
-        ? `\n\nBase this on the following curriculum material (original lesson notes and, where labelled, attributed replacement teaching). Preserve that provenance; do not describe replacement passages as recovered textbook pages. Use the supplied content rather than inventing content from the title alone:\n"""\n${groundingSource}\n"""`
-        : '';
-      summary = await generate(
-        `Write short, clear study notes on "${topic.title}" for a student learning it ` +
-        `for the first time. Keep it focused and easy to revise from.${grounding}`,
-        'notes',
-        { userId: user.id, role: user.role },
-      );
-      await query('UPDATE topics SET summary=$1 WHERE id=$2', [summary, topic.id]);
-    } catch {
-      if (groundingSource) {
-        summary = groundingSource;
-        summary_is_fallback = true;
-      } else {
-        summary = null;
-      }
-    }
-  }
-
-  // Practice exercises — fresh every call, never persisted. Also grounded
-  // in source_reference when available, same reasoning as the summary above.
-  let practice_questions: unknown = [];
-  try {
-    const grounding = groundingSource
-      ? ` Base the questions on this curriculum material: """${groundingSource}"""`
-      : '';
-    practice_questions = await generateJSON(
-      `Draft 3 multiple-choice practice question(s) on the topic "${topic.title}".${grounding} ` +
-      `Return a JSON array where each item has exactly this shape: ` +
-      `{"stem": string, "options": [{"key":"A","text":string}, {"key":"B","text":string}, {"key":"C","text":string}, {"key":"D","text":string}], "correct_keys": [string]}`,
-      'generate-questions',
-      { userId: user.id, role: user.role },
-    );
-  } catch {
-    practice_questions = [];
-  }
 
   // Standard assessment — generate once per topic, reusing real infra.
   // Status is 'open' immediately: no per-item admin approval, per explicit
@@ -1279,16 +1279,8 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
   let assessment_status: string | null = null;
   if (!topic.generated_assessment_id) {
     try {
-      const grounding = groundingSource
-        ? ` Base the questions on this curriculum material: """${groundingSource}"""`
-        : '';
-      const drafts = await generateJSON(
-        `Draft 5 multiple-choice question(s) on the topic "${topic.title}".${grounding} ` +
-        `Return a JSON array where each item has exactly this shape: ` +
-        `{"stem": string, "options": [{"key":"A","text":string}, {"key":"B","text":string}, {"key":"C","text":string}, {"key":"D","text":string}], "correct_keys": [string], "marks": number}`,
-        'generate-questions',
-        { userId: user.id, role: user.role },
-      ) as Array<{ stem: string; options: unknown; correct_keys: string[]; marks?: number }>;
+      // Reuse the validated questions generated from this exact lesson.
+      const drafts = practice_questions;
 
       // ASM-03: the model call above is finished before BEGIN; everything
       // below is DB-only and commits as one unit, so a failure cannot leave
@@ -1342,6 +1334,7 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
     ok: true,
     summary,
     summary_is_fallback,
+    lesson: generatedLesson,
     delivery_correction: primary4Delivery?.kind === 'matched' ? { id: String(primary4Delivery.topicId), status: primary4Delivery.source === 'primary4-export' ? 'source-export-match' : 'researched-package-match', provenance: primary4Delivery.source === 'primary4-export' ? 'source_reference hash matches the supplied database export' : 'source_reference hash matches an approved researched lesson package' } : ss1Delivery ? { id: ss1Delivery.correctionId, status: ss1Delivery.kind, provenance: ss1Delivery.kind === 'corrected' ? 'approved project-authored correction' : 'withheld pending source review' } : delivery ? { id: delivery.correctionId, status: delivery.kind, provenance: 'corrected/equivalent teaching' } : undefined,
     practice_questions,
     assessment_status,
