@@ -95,10 +95,13 @@ router.get('/', requirePerm('attendance.read'), async (req, res) => {
     `SELECT a.student_id, a.days_present
      FROM attendance a
      JOIN students s ON s.id = a.student_id
-     WHERE s.class_name = $1 AND a.term_id = $2
+     LEFT JOIN report_roster_memberships rrm
+       ON rrm.student_id=s.id AND rrm.status='active'
+     WHERE COALESCE(rrm.class_name,s.class_name) = $1 AND a.term_id = $2
        AND ($4::boolean OR s.deleted_at IS NULL)
-       AND s.school_code = $3`,
-    [effectiveClass, parsedTermId, effectiveSchoolCode, user.role === 'admin'],
+       AND s.school_code = $3
+       AND ($5::boolean = FALSE OR rrm.student_id IS NOT NULL)`,
+    [effectiveClass, parsedTermId, effectiveSchoolCode, user.role === 'admin', user.role === 'teacher'],
   );
   return res.json({ attendance: rows });
 });
