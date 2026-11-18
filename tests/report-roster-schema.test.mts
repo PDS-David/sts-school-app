@@ -15,7 +15,7 @@ test('numbered migration creates separate current report-roster membership and i
   for (const field of ['student_id', 'class_name', 'source_class_name', 'status', 'joined_at', 'removed_at', 'changed_by', 'updated_at']) {
     assert.match(migration, new RegExp('\\b' + field + '\\b'));
   }
-  assert.match(migration, /status IN \\('active', 'removed'\\)/);
+  assert.match(migration, /status IN \('active', 'removed'\)/);
   assert.match(migration, /ON DELETE RESTRICT/);
   assert.match(migration, /BEFORE UPDATE OR DELETE ON public\\.report_roster_membership_events/);
   assert.match(migration, /BEFORE TRUNCATE ON public\\.report_roster_membership_events/);
