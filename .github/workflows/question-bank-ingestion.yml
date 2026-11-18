@@ -85,7 +85,7 @@ jobs:
       - name: Verify adaptive class-practice schema
         run: |
           psql "$DATABASE_URL" -v ON_ERROR_STOP=1 <<'SQL'
-          DO $
+          DO $$
           BEGIN
             IF to_regclass('class_practice_sets') IS NULL
               OR to_regclass('class_practice_attempts') IS NULL
@@ -93,7 +93,7 @@ jobs:
               OR to_regclass('class_practice_remediation_recommendations') IS NULL THEN
               RAISE EXCEPTION 'Adaptive class-practice migration did not create all four tables';
             END IF;
-          END $;
+          END $$;
           SQL
 
       - name: Prepare isolated PostgreSQL test schema
