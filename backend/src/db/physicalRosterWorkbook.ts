@@ -42,7 +42,7 @@ function requiredText(value: unknown, field: string, rowNumber: number): string 
 }
 
 function normalizeName(value: string): string {
-  return value.normalize('NFKC').trim().replace(/\\s+/g, ' ').toLocaleLowerCase('en');
+  return value.normalize('NFKC').trim().replace(/\s+/g, ' ').toLocaleLowerCase('en');
 }
 
 /**
