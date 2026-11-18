@@ -108,3 +108,13 @@ test('multi-school capability is ignored for non-admin roles', () => {
   assert.equal(current.school_code, 'secondary');
   assert.equal(current.can_manage_all_schools, false);
 });
+
+test('authorized admin scope follows explicit school selection while retaining stored assignment', () => {
+  const current = hydrateAuthUser(staleAdminToken, {
+    username: 'davidadmin', role: 'admin', school_code: 'secondary',
+    assigned_class: null, assigned_subject_ids: [], can_manage_all_schools: true,
+    selected_school_code: 'primary',
+  });
+  assert.equal(current.school_code, 'primary');
+  assert.equal(current.assigned_school_code, 'secondary');
+});
