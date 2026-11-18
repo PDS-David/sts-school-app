@@ -154,6 +154,18 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
 
     const classTeacherSubject = await post('/', score(studentIds[0], subjectIds[1], termIds[0]), classTeacher.token);
     assert.equal(classTeacherSubject.status, 200, 'class teachers can enter marks for any report subject in their assigned class');
+    const { rows: calculatedScore } = await query(
+      'SELECT total,grade,class_name FROM scores WHERE student_id=$1 AND subject_id=$2 AND term_id=$3',
+      [studentIds[0], subjectIds[1], termIds[0]],
+    );
+    assert.equal(Number(calculatedScore[0]?.total), 50, 'database calculates total from CA1 + CA2 + exam');
+    assert.ok(calculatedScore[0]?.grade, 'server calculates and stores the grade');
+    assert.equal(calculatedScore[0]?.class_name, 'Primary 4', 'score snapshot uses the physical report-roster class');
+
+    const teacherBulk = await post('/bulk', {
+      scores: [score(studentIds[0], subjectIds[0], termIds[0])],
+    }, classTeacher.token);
+    assert.equal(teacherBulk.status, 200, 'class teachers can save a whole-class score batch');
 
     const classTeacherWrongClass = await post('/', score(studentIds[1], subjectIds[0], termIds[0]), classTeacher.token);
     assert.equal(classTeacherWrongClass.status, 403, 'teachers cannot enter marks outside their assigned physical class');
