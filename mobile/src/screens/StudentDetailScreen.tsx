@@ -13,7 +13,8 @@ export default function StudentDetailScreen({ route, navigation }: any) {
   const { studentId } = route.params as { studentId: string };
   const { user } = useAuth();
   const isAdmin   = user?.role === 'admin';
-  const isTeacher = user?.role === 'teacher' || isAdmin;
+  const isClassTeacher = user?.role === 'teacher';
+  const isTeacher = isClassTeacher || isAdmin;
 
   const [student,   setStudent]   = useState<any>(null);
   const [report,    setReport]    = useState<any>(null);
@@ -133,6 +134,30 @@ export default function StudentDetailScreen({ route, navigation }: any) {
     } finally {
       setSavingProfile(false);
     }
+  };
+
+  const executeRosterDecision = (action: 'promote' | 'retain' | 'remove') => {
+    const labels = { promote: 'Promote student', retain: 'Retain student', remove: 'Remove student' };
+    const messages = {
+      promote: `Promote ${student?.full_name} to the next physical class?`,
+      retain: `Keep ${student?.full_name} in ${student?.class_name} for the next session?`,
+      remove: `Remove ${student?.full_name} from the active physical-class report roster? The student’s online-learning account and academic history will remain unchanged.`,
+    };
+    Alert.alert(labels[action], messages[action], [
+      { text: 'Cancel', style: 'cancel' },
+      { text: 'Confirm', style: action === 'remove' ? 'destructive' : 'default', onPress: async () => {
+        try {
+          const { data } = await api.post(`/students/${studentId}/promotion`, { action });
+          const destination = data.to_class ? ` to ${data.to_class}` : '';
+          Alert.alert('Decision saved', action === 'remove'
+            ? 'Student removed from the active physical report roster.'
+            : action === 'retain' ? 'Student retained in the current class.' : `Student promoted${destination}.`);
+          navigation.goBack();
+        } catch (e: any) {
+          Alert.alert('Could not save decision', e?.response?.data?.error ?? 'Refresh the class roster and try again.');
+        }
+      }},
+    ]);
   };
 
   const saveRemarks = async () => {
@@ -285,6 +310,18 @@ export default function StudentDetailScreen({ route, navigation }: any) {
           </TouchableOpacity>
         )}
       </View>
+
+      {isClassTeacher && student.class_name === user?.assigned_class && (
+        <Card style={{ margin: Spacing.md }}>
+          <SectionHeader title="Student Placement Decision" />
+          <Text style={styles.noLinkTxt}>
+            Record the end-of-session decision for this student. The decision updates the physical report roster only.
+          </Text>
+          <Btn label="Promote to Next Class" variant="outline" onPress={() => executeRosterDecision('promote')} style={{ marginTop: Spacing.xs }} />
+          <Btn label="Retain in Current Class" variant="outline" onPress={() => executeRosterDecision('retain')} style={{ marginTop: Spacing.xs }} />
+          <Btn label="Remove from Class Roster" variant="outline" onPress={() => executeRosterDecision('remove')} style={{ marginTop: Spacing.xs }} />
+        </Card>
+      )}
 
       {/* Login account (admin only) */}
       {isAdmin && (
