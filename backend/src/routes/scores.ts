@@ -43,6 +43,13 @@ async function validateScoreWriteScope(
   );
   const student = studentRows[0];
   if (!student || student.deleted_at) return { status: 404, error: 'Student not found' };
+  const { rows: rosterRows } = await client.query(
+    `SELECT class_name FROM report_roster_memberships
+     WHERE student_id=$1 AND status='active'
+     ORDER BY joined_at DESC LIMIT 1 FOR SHARE`,
+    [score.student_id],
+  );
+  const physicalClassName = rosterRows[0]?.class_name ?? student.class_name;
 
   const { rows: subjectRows } = await client.query(
     'SELECT school_code FROM subjects WHERE id=$1 FOR SHARE',
@@ -67,17 +74,13 @@ async function validateScoreWriteScope(
     if (!user.school_code || user.school_code !== student.school_code) {
       return { status: 403, error: "You can't write scores outside your school" };
     }
-    if (user.assigned_class) {
-      if (student.class_name !== user.assigned_class) {
-        return { status: 403, error: "You can't write scores outside your assigned class" };
-      }
-    } else if (!(user.assigned_subject_ids ?? []).some(id => Number(id) === score.subject_id)) {
-      return { status: 403, error: 'You can only enter scores for your assigned subjects.' };
+    if (!user.assigned_class || physicalClassName !== user.assigned_class) {
+      return { status: 403, error: "You can only write scores for students in your assigned physical class." };
     }
 
     const { rows: locks } = await client.query(
       'SELECT locked_at FROM class_locks WHERE school_code=$1 AND class_name=$2 AND term_id=$3 FOR SHARE',
-      [student.school_code, student.class_name, score.term_id],
+      [student.school_code, physicalClassName, score.term_id],
     );
     if (locks[0]) {
       return { status: 403, error: 'This class is locked for the selected term. Ask an administrator to unlock it.' };
@@ -277,7 +280,7 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
 });
 
 // ── POST /scores  (upsert) ────────────────────────────────────────────────────
-router.post('/', requireRole('admin'), async (req, res) => {
+router.post('/', requireRole('admin', 'teacher'), async (req, res) => {
   const parsed = scoreEntrySchema.safeParse(req.body);
   if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
   const d = parsed.data;
@@ -302,7 +305,7 @@ router.post('/', requireRole('admin'), async (req, res) => {
     const grade = getGrade(d.ca1 + d.ca2 + d.exam);
     const { rows } = await client.query(
       `INSERT INTO scores(student_id,subject_id,term_id,ca1,ca2,exam,grade,teacher_remark,entered_by,updated_at,class_name)
-       VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,now(),(SELECT class_name FROM students WHERE id=$1))
+       VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,now(),(SELECT COALESCE((SELECT class_name FROM report_roster_memberships WHERE student_id=$1 AND status='active' ORDER BY joined_at DESC LIMIT 1), class_name) FROM students WHERE id=$1))
        ON CONFLICT(student_id,subject_id,term_id)
        DO UPDATE SET ca1=$4,ca2=$5,exam=$6,grade=$7,teacher_remark=$8,entered_by=$9,updated_at=now(),
                      class_name=COALESCE(scores.class_name, EXCLUDED.class_name)
@@ -319,7 +322,7 @@ router.post('/', requireRole('admin'), async (req, res) => {
 });
 
 // ── POST /scores/bulk  (batch entry for a whole class) ────────────────────────
-router.post('/bulk', requireRole('admin'), async (req, res) => {
+router.post('/bulk', requireRole('admin', 'teacher'), async (req, res) => {
   const bodySchema = z.object({
     scores: z.array(scoreEntrySchema).min(1).max(500)
       .refine(items => new Set(items.map(s => `${s.student_id}:${s.subject_id}:${s.term_id}`)).size === items.length,
