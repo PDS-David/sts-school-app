@@ -77,8 +77,39 @@ async function validateScoreWriteScope(
     if (!user.school_code || user.school_code !== student.school_code) {
       return { status: 403, error: "You can't write scores outside your school" };
     }
-    if (!user.assigned_class || physicalClassName !== user.assigned_class) {
-      return { status: 403, error: "You can only write scores for students in your assigned physical class." };
+    // Class teachers control every subject in their one assigned class.
+    // Subject teachers are limited to the explicit class + subject grants
+    // stored on their account. These checks run against freshly hydrated DB
+    // claims, never client-supplied class or subject values.
+    const isClassTeacher = !!user.assigned_class;
+    if (isClassTeacher) {
+      if (physicalClassName !== user.assigned_class) {
+        return { status: 403, error: "You can only write scores for students in your assigned class." };
+      }
+    } else {
+      const allowedClasses = user.assigned_class_names ?? [];
+      if (!allowedClasses.includes(physicalClassName) || !user.assigned_subject_ids.includes(score.subject_id)) {
+        return { status: 403, error: "You can only write scores for your assigned subject and assigned classes." };
+      }
+    }
+
+    // A subject teacher may correct their own entry, but cannot replace a
+    // class-teacher or administrator decision. Class teachers deliberately
+    // retain override authority over every subject in their assigned class.
+    if (!user.assigned_class) {
+      const { rows: existingScores } = await client.query(
+        `SELECT sc.entered_by, author.role AS author_role, author.assigned_class AS author_class
+         FROM scores sc
+         LEFT JOIN users author ON author.id=sc.entered_by
+         WHERE sc.student_id=$1 AND sc.subject_id=$2 AND sc.term_id=$3
+         FOR UPDATE OF sc`,
+        [score.student_id, score.subject_id, score.term_id],
+      );
+      const existing = existingScores[0];
+      if (existing && existing.entered_by !== user.id &&
+          (existing.author_role === 'admin' || existing.author_class === physicalClassName)) {
+        return { status: 403, error: "A class teacher's or administrator's mark cannot be overwritten by a subject teacher." };
+      }
     }
 
     const { rows: locks } = await client.query(
@@ -105,13 +136,20 @@ router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => 
     : user.school_code;
   if (!schoolCode) return res.status(400).json({ error: 'school_code is required' });
 
+  const requestedClassName = typeof req.query.class_name === 'string' ? req.query.class_name : null;
+  const allowedClasses = user.assigned_class ? [user.assigned_class] : (user.assigned_class_names ?? []);
   const className = user.role === 'teacher'
-    ? user.assigned_class
-    : (typeof req.query.class_name === 'string' ? req.query.class_name : null);
-  const subjectIds = null;
+    ? (requestedClassName && allowedClasses.includes(requestedClassName) ? requestedClassName : (user.assigned_class ?? null))
+    : requestedClassName;
+  const subjectIds = user.role === 'teacher' && !user.assigned_class
+    ? user.assigned_subject_ids
+    : null;
 
-  if (user.role === 'teacher' && !className) {
-    return res.status(403).json({ error: 'Marking overview requires an assigned physical class.' });
+  if (user.role === 'teacher' && (!className || !allowedClasses.includes(className))) {
+    return res.status(403).json({ error: 'Choose one of your assigned classes to view its marking overview.' });
+  }
+  if (user.role === 'teacher' && !user.assigned_class && !subjectIds?.length) {
+    return res.status(403).json({ error: 'No subject assignments are configured for this account.' });
   }
 
   const { rows: terms } = await query(
@@ -237,12 +275,17 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
   if (user.role === 'teacher') {
     if (!user.school_code) return res.status(403).json({ error: 'Your teacher account is not assigned to a school.' });
     params.push(user.school_code); sql += ` AND s.school_code=$${params.length}`;
-    if (!user.assigned_class) {
-      // Physical report access requires a class assignment, not merely a subject assignment.
-      return res.json({ scores: [] });
+    if (user.assigned_class) {
+      params.push(user.assigned_class);
+      sql += ` AND rrm.class_name=$${params.length} AND rrm.status='active'`;
+    } else {
+      const allowedClasses = user.assigned_class_names ?? [];
+      if (!allowedClasses.length || !user.assigned_subject_ids.length) return res.json({ scores: [] });
+      params.push(allowedClasses);
+      sql += ` AND rrm.class_name=ANY($${params.length}::text[]) AND rrm.status='active'`;
+      params.push(user.assigned_subject_ids);
+      sql += ` AND sc.subject_id=ANY($${params.length}::int[])`;
     }
-    params.push(user.assigned_class);
-    sql += ` AND rrm.class_name=$${params.length} AND rrm.status='active'`;
   } else if (user.role === 'admin' && school_code) {
     // Found in a hardening pass: filtering by class_name alone (e.g. the
     // admin Class Summary/ranking screen) had no school scoping at all for

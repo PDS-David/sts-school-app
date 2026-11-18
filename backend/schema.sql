@@ -52,7 +52,7 @@ END $$;
 
 CREATE TABLE IF NOT EXISTS users (
   id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  username         TEXT UNIQUE NOT NULL,
+  username         TEXT NOT NULL,
   password_hash    TEXT NOT NULL,
   role             user_role NOT NULL DEFAULT 'teacher',
   school_code      TEXT REFERENCES schools(code) ON DELETE SET NULL,
@@ -61,6 +61,7 @@ CREATE TABLE IF NOT EXISTS users (
   email            TEXT UNIQUE,
   phone            TEXT,
   assigned_class   TEXT,          -- class_teacher's class e.g. 'JSS1'
+  assigned_class_names TEXT[] NOT NULL DEFAULT '{}', -- explicit subject-teacher multi-class scope
   assigned_subject_id INT,        -- subject_teacher's subject
   is_active        BOOLEAN DEFAULT TRUE,
   must_change_pw   BOOLEAN DEFAULT FALSE,
@@ -71,6 +72,7 @@ CREATE TABLE IF NOT EXISTS users (
 
 -- Safe to re-run: adds the column on databases created before this field existed.
 ALTER TABLE users ADD COLUMN IF NOT EXISTS access_expires_at TIMESTAMPTZ;
+ALTER TABLE users ADD COLUMN IF NOT EXISTS assigned_class_names TEXT[] NOT NULL DEFAULT '{}';
 ALTER TABLE users ADD COLUMN IF NOT EXISTS can_manage_all_schools BOOLEAN NOT NULL DEFAULT FALSE;
 
 -- ── Role widened to TEXT + CHECK (Finance Admin / Operations Admin split) ────
@@ -100,6 +102,11 @@ END $$;
 ALTER TABLE users DROP CONSTRAINT IF EXISTS users_role_check;
 ALTER TABLE users ADD CONSTRAINT users_role_check
   CHECK (role IN ('student','parent','teacher','admin','finance_admin'));
+
+CREATE UNIQUE INDEX IF NOT EXISTS users_username_global_non_teacher_uq
+  ON users (lower(username)) WHERE role <> 'teacher';
+CREATE UNIQUE INDEX IF NOT EXISTS users_teacher_school_username_uq
+  ON users (school_code, lower(username)) WHERE role = 'teacher';
 
 -- ── Self-service password recovery ──────────────────────────────────────────
 -- No SMTP/SMS delivery channel is relied on for this (email is optional on

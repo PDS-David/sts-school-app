@@ -15,12 +15,13 @@ import { PageContainer } from '../components/layout';
 
 interface Student {
   id: string; full_name: string; class_name: string;
-  admission_number: string; gender: string;
+  admission_number: string; gender?: string;
 }
 
 export default function StudentsScreen({ navigation }: any) {
   const { selectedSchoolCode } = useAdminSchool();
   const { user } = useAuth();
+  const isSubjectTeacher = user?.role === 'teacher' && !user.assigned_class;
   const [students,  setStudents]  = useState<Student[]>([]);
   const [filtered,  setFiltered]  = useState<Student[]>([]);
   const [loading,   setLoading]   = useState(true);
@@ -31,7 +32,7 @@ export default function StudentsScreen({ navigation }: any) {
   // Compact switcher lives in the native header now, not as a full-width
   // block in the content area — see SchoolSwitcherBar.tsx's `compact` doc.
   useEffect(() => {
-    navigation.setOptions({ headerRight: () => <SchoolSwitcherBar compact /> });
+    navigation.setOptions({ headerRight: user?.role === 'admin' ? () => <SchoolSwitcherBar compact /> : undefined });
   }, [navigation]);
 
   const fetch = async () => {
@@ -89,7 +90,8 @@ export default function StudentsScreen({ navigation }: any) {
           renderItem={({ item: s }) => (
             <TouchableOpacity
               style={styles.row}
-              onPress={() => navigation.navigate('StudentDetail', { studentId: s.id })}
+              onPress={() => { if (!isSubjectTeacher) navigation.navigate('StudentDetail', { studentId: s.id }); }}
+              disabled={isSubjectTeacher}
               activeOpacity={0.7}
             >
               <View style={styles.avatar}>
@@ -99,7 +101,7 @@ export default function StudentsScreen({ navigation }: any) {
                 <Text style={styles.name}>{s.full_name}</Text>
                 <Text style={styles.meta}>{s.class_name}  ·  {s.admission_number ?? '—'}</Text>
               </View>
-              <Ionicons name="chevron-forward" size={18} color={Colors.textSub} />
+              {!isSubjectTeacher && <Ionicons name="chevron-forward" size={18} color={Colors.textSub} />}
             </TouchableOpacity>
           )}
         />}
