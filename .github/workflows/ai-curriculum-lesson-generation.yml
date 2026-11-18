@@ -42,7 +42,7 @@ concurrency:
 jobs:
   validate-curriculum-generation:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     services:
       postgres:
         image: postgres:16
@@ -72,5 +72,9 @@ jobs:
         env:
           JSS3_YO_TEST_DATABASE_URL: postgres://postgres:postgres@localhost:5432/jss3_test_ci
         run: node --import tsx --test tests/jss3-supplement-revision.db.test.mts
+      - name: Verify fresh-install and incremental migration ledger with PostgreSQL
+        env:
+          MIGRATION_TEST_DATABASE_URL: postgres://postgres:postgres@localhost:5432/jss3_test_ci
+        run: node --import tsx --test tests/migration-ledger.db.test.mts
       - name: Typecheck backend and mobile
         run: npm run typecheck
