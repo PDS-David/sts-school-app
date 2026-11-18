@@ -11,7 +11,7 @@
 // (TEST_SC) plus its users; the `after` hook deletes all of it and asserts
 // that zero rows remain, printing the counts.
 import assert from 'node:assert/strict';
-import { createHash } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -32,8 +32,9 @@ if (!URL_) {
   process.env.NODE_ENV = 'development';
   process.env.TERM_PIN_ENFORCED = 'false';
 
-  const TEST_SC = 'zz_t2test';
-  const TEST_SC_B = 'zz_t2test_other';
+  const TEST_RUN = randomUUID().replaceAll('-', '').slice(0, 10);
+  const TEST_SC = `zz_t2test_${TEST_RUN}`;
+  const TEST_SC_B = `zz_t2test_other_${TEST_RUN}`;
   const sha = (b: Buffer) => createHash('sha256').update(b).digest('hex');
 
   // Tiny but signature-valid images.
