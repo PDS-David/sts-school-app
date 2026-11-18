@@ -27,7 +27,8 @@ function validateGeneratedQuestions(value: unknown, allowedConcepts: string[]): 
     if (!raw || typeof raw !== 'object' || !allowed.has(clean(raw.concept)) ||
         typeof raw.question !== 'string' || raw.question.trim().length < 10 ||
         !Array.isArray(raw.options) || raw.options.length !== 4 ||
-        !raw.options.every((o: any) => o && typeof o.key === 'string' && typeof o.text === 'string') ||
+        !raw.options.every((o: any) => o && typeof o.key === 'string' && clean(o.key).length > 0 && typeof o.text === 'string' && o.text.trim().length > 0) ||
+        new Set(raw.options.map((o: any) => clean(o.key))).size !== 4 ||
         typeof raw.correct_answer !== 'string' ||
         !raw.options.some((o: any) => clean(o.key) === clean(raw.correct_answer)) ||
         typeof raw.explanation !== 'string' || raw.explanation.trim().length < 10 ||
@@ -170,7 +171,9 @@ router.post('/sets/:id/submit', async (req, res) => {
       const correct = clean(a.answer) === clean(q.correct_answer);
       return { q, answer: a.answer, correct, marks: correct ? q.marks : 0 };
     });
-    for (const item of graded) {
+    // All submissions acquire shared concept-performance rows in the same order.
+    // Preserve `graded` itself for the student's original response ordering.
+    for (const item of [...graded].sort((a, b) => clean(a.q.concept).localeCompare(clean(b.q.concept)))) {
       await client.query(`
         INSERT INTO class_practice_attempts(set_id,student_id,topic_id,question_id,concept,answer,correct,marks_awarded,marks_available)
         VALUES($1,$2,$3,$4,$5,$6::jsonb,$7,$8,$9)
