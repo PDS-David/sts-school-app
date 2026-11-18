@@ -16,7 +16,7 @@ import { ConfirmDialog } from '../components/ConfirmDialog';
 interface Student { id: string; full_name: string; class_name: string; }
 interface Subject { id: number; name: string; }
 interface Term    { id: number; name: string; academic_year: string; }
-interface ScoreRow { student_id: string; name: string; ca1: string; ca2: string; exam: string; }
+interface ScoreRow { student_id: string; name: string; ca1: string; ca2: string; exam: string; teacher_remark: string; }
 
 export default function ScoreEntryScreen({ navigation }: any) {
   const { user } = useAuth();
@@ -124,7 +124,7 @@ export default function ScoreEntryScreen({ navigation }: any) {
   useEffect(() => {
     if (!selClass || rosterLoading || rosterError) return;
     const classStudents = students.filter(s => s.class_name === selClass);
-    const blankRows = classStudents.map(s => ({ student_id: s.id, name: s.full_name, ca1: '', ca2: '', exam: '' }));
+    const blankRows = classStudents.map(s => ({ student_id: s.id, name: s.full_name, ca1: '', ca2: '', exam: '', teacher_remark: '' }));
     setRows(blankRows);
     if (!selSub || !selTerm) {
       setScoresLoading(false);
@@ -144,6 +144,7 @@ export default function ScoreEntryScreen({ navigation }: any) {
           ca1: String(scoreMap[s.id]?.ca1 ?? ''),
           ca2: String(scoreMap[s.id]?.ca2 ?? ''),
           exam: String(scoreMap[s.id]?.exam ?? ''),
+          teacher_remark: String(scoreMap[s.id]?.teacher_remark ?? ''),
         })));
       })
       .catch(() => {
@@ -153,7 +154,7 @@ export default function ScoreEntryScreen({ navigation }: any) {
     return () => { cancelled = true; };
   }, [selClass, selSub, selTerm, students, rosterLoading, rosterError, scoresRetry]);
 
-  const updateRow = (idx: number, field: 'ca1'|'ca2'|'exam', val: string) => {
+  const updateRow = (idx: number, field: 'ca1'|'ca2'|'exam'|'teacher_remark', val: string) => {
     setRows(prev => prev.map((r, i) => i === idx ? { ...r, [field]: val } : r));
   };
 
@@ -172,7 +173,7 @@ export default function ScoreEntryScreen({ navigation }: any) {
       return;
     }
     const payload = rows
-      .filter(r => r.ca1.trim() !== '' || r.ca2.trim() !== '' || r.exam.trim() !== '')
+      .filter(r => r.ca1.trim() !== '' || r.ca2.trim() !== '' || r.exam.trim() !== '' || r.teacher_remark.trim() !== '')
       .map(r => ({
         student_id: r.student_id,
         subject_id: Number(selSub),
@@ -180,6 +181,7 @@ export default function ScoreEntryScreen({ navigation }: any) {
         ca1: Number(r.ca1 || 0),
         ca2: Number(r.ca2 || 0),
         exam: Number(r.exam || 0),
+        teacher_remark: r.teacher_remark,
       }));
     if (!payload.length) { setInfoDialog({ title: 'No scores entered', message: 'Enter at least one score before saving.' }); return; }
     setSaving(true);
@@ -345,6 +347,15 @@ export default function ScoreEntryScreen({ navigation }: any) {
                         </View>
                       ))}
                       <Text style={[styles.gdCell, styles.totalCell]}>{total || '—'}</Text>
+                      <View style={{ position: 'absolute', left: 10, right: 10, top: '100%', paddingTop: 2, paddingBottom: 6 }}>
+                        <Input
+                          value={r.teacher_remark}
+                          onChangeText={v => updateRow(i, 'teacher_remark', v)}
+                          placeholder="Subject remark (optional)"
+                          accessibilityLabel={`${r.name} subject remark`}
+                          style={{ marginBottom: 0 }}
+                        />
+                      </View>
                     </View>
                   );
                 })}
