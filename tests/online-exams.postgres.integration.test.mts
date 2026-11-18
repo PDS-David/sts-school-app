@@ -30,6 +30,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
         pending_admin_review BOOLEAN DEFAULT false)`);
       await client.query('CREATE TABLE students(id UUID PRIMARY KEY,user_id UUID,school_code TEXT,class_name TEXT,deleted_at TIMESTAMPTZ)');
       await client.query('CREATE TABLE topics(id INTEGER PRIMARY KEY)');
+      await client.query('CREATE TABLE subjects(id INTEGER PRIMARY KEY,name TEXT)');
       await client.query('CREATE TABLE teacher_subjects(user_id UUID,subject_id INTEGER)');
       await client.query('CREATE TABLE scores(id BIGINT PRIMARY KEY,score NUMERIC)');
       await client.query('CREATE TABLE attendance(id BIGINT PRIMARY KEY,present BOOLEAN)');
@@ -57,12 +58,15 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       const {rows: markingColumns}=await client.query(`SELECT column_name FROM information_schema.columns WHERE table_schema=$1 AND table_name='online_exam_responses' AND column_name IN ('marking_confidence','marking_details')`,[schema]);
       assert.deepEqual(markingColumns.map((row:any)=>row.column_name).sort(),['marking_confidence','marking_details']);
 
-      const school='primary',admin=randomUUID(),studentUser=randomUUID(),otherUser=randomUUID();
+      const school='primary',admin=randomUUID(),studentUser=randomUUID(),otherUser=randomUUID(),teacherUser=randomUUID(),unassignedTeacher=randomUUID();
       const student=randomUUID(),otherStudent=randomUUID();
       await client.query('INSERT INTO schools(code) VALUES($1)',[school]);
       await client.query(`INSERT INTO users(id,username,role,school_code,can_manage_all_schools,is_active) VALUES
         ($1,'test-admin','admin',$3,true,true),($2,'test-student','student',$3,false,true)`,[admin,studentUser,school]);
-      await client.query('INSERT INTO users(id,username,role,school_code,is_active) VALUES($1,$2,$3,$4,true)',[otherUser,'other-student','student',school]);
+      await client.query('INSERT INTO users(id,username,role,school_code,is_active) VALUES($1,$2,$3,$4,true),($5,$6,$7,$4,true)',[otherUser,'other-student','student',school,teacherUser,'math-teacher','teacher']);
+      await client.query('INSERT INTO users(id,username,role,school_code,is_active) VALUES($1,$2,$3,$4,true)',[unassignedTeacher,'unassigned-teacher','teacher',school]);
+      await client.query("INSERT INTO subjects(id,name) VALUES(1,'Mathematics'),(2,'Biology')");
+      await client.query('INSERT INTO teacher_subjects(user_id,subject_id) VALUES($1,1)',[teacherUser]);
       await client.query('INSERT INTO students(id,user_id,school_code,class_name) VALUES($1,$2,$3,$4),($5,$6,$3,$7)',
         [student,studentUser,school,'SS 3',otherStudent,otherUser,'JSS 3']);
 
@@ -91,13 +95,14 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       process.env.FREE_LAUNCH_MODE='true';
       process.env.NODE_ENV='test';
       const express=require('express');
-      const [{default:router},{signAccess},{pool:databasePool}]=await Promise.all([
+      const [{default:router},{default:questionBankRouter},{signAccess},{pool:databasePool}]=await Promise.all([
         import('../backend/src/routes/onlineExams.ts'),
+        import('../backend/src/routes/questionBank.ts'),
         import('../backend/src/utils/jwt.ts'),
         import('../backend/src/db/pool.ts')
       ]);
       pool=databasePool;
-      const app=express();app.use(express.json());app.use('/online-exams',router);
+      const app=express();app.use(express.json());app.use('/online-exams',router);app.use('/question-bank',questionBankRouter);
       server=app.listen(0);
       await new Promise(resolve=>server.once('listening',resolve));
       const base='http://127.0.0.1:'+server.address().port;
@@ -105,10 +110,31 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       const studentToken=token(studentUser,'test-student');
       const otherToken=token(otherUser,'other-student');
       const adminToken=token(admin,'test-admin','admin');
+      const teacherToken=token(teacherUser,'math-teacher','teacher');
+      const unassignedTeacherToken=token(unassignedTeacher,'unassigned-teacher','teacher');
       const request=async(path:string,method='GET',auth=studentToken,body?:any,schoolHeader?:string)=>{
         const response=await fetch(base+path,{method,headers:{...(auth?{Authorization:'Bearer '+auth}:{}),...(schoolHeader?{'x-school-code':schoolHeader}:{}),'Content-Type':'application/json'},...(body?{body:JSON.stringify(body)}:{}),signal:AbortSignal.timeout(15000)});
         return {status:response.status,data:await response.json()};
       };
+      const reviewQueue=await request('/question-bank/review-queue','GET',teacherToken);
+      assert.equal(reviewQueue.status,200);
+      assert.ok(reviewQueue.data.questions.length>=2);
+      assert.ok(reviewQueue.data.questions.every((item:any)=>item.subject==='Mathematics'));
+      const otherSubjectQueue=await request('/question-bank/review-queue','GET',unassignedTeacherToken);
+      assert.equal(otherSubjectQueue.status,200);assert.equal(otherSubjectQueue.data.questions.length,0);
+      const approved=await request('/question-bank/questions/'+questionId+'/review','POST',teacherToken,{decision:'approved',notes:'Checked the answer key, explanation and syllabus alignment.'});
+      assert.equal(approved.status,200);assert.equal(approved.data.review_status,'approved');
+      const rejectedQuestion=reviewQueue.data.questions.find((item:any)=>item.id!==questionId);
+      assert.ok(rejectedQuestion);
+      const rejected=await request('/question-bank/questions/'+rejectedQuestion.id+'/review','POST',teacherToken,{decision:'rejected',notes:'The explanation needs correction before student use.'});
+      assert.equal(rejected.status,200);assert.equal(rejected.data.review_status,'reviewed');
+      const forbiddenReview=await request('/question-bank/questions/'+rejectedQuestion.id+'/review','POST',unassignedTeacherToken,{decision:'approved',notes:'Attempted approval without subject assignment.'});
+      assert.equal(forbiddenReview.status,403);
+      const reviewAudit=await client.query('SELECT decision FROM question_bank_question_reviews WHERE question_id=$1 ORDER BY reviewed_at',[questionId]);
+      assert.deepEqual(reviewAudit.rows.map((row:any)=>row.decision),['approved']);
+      const rejectedAudit=await client.query('SELECT decision FROM question_bank_question_reviews WHERE question_id=$1',[rejectedQuestion.id]);
+      assert.deepEqual(rejectedAudit.rows.map((row:any)=>row.decision),['rejected']);
+
       const examDraft={
         board:'WAEC',subject_name:'Mathematics',class_name:'SS 3',examination_type:'Mock',
         title:'SS3 Mathematics Mock',instructions:'Read each question carefully.',duration_minutes:30,
@@ -119,7 +145,6 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.equal((await request('/online-exams/exams','GET','')).status,401);
       const rejectedPilot=await request('/online-exams/admin/exams','POST',adminToken,examDraft,school);
       assert.equal(rejectedPilot.status,400);
-      await client.query("UPDATE question_bank_questions SET review_status='approved' WHERE id=$1",[questionId]);
       const created=await request('/online-exams/admin/exams','POST',adminToken,examDraft,school);
       assert.equal(created.status,201);
       const examId=created.data.exam.id;
