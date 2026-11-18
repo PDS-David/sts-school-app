@@ -27,7 +27,7 @@ export default function PromoteStudentsScreen() {
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState('');
   const [busyId, setBusyId] = useState<string | null>(null);
-  const [confirm, setConfirm] = useState<{ student: StudentRow; action: 'promote' | 'demote' | 'retain'; toLabel: string } | null>(null);
+  const [confirm, setConfirm] = useState<{ student: StudentRow; action: 'promote' | 'demote' | 'retain' | 'remove'; toLabel: string } | null>(null);
   const [info, setInfo] = useState<{ title: string; message: string } | null>(null);
 
   const fetchRoster = useCallback(() => {
@@ -44,18 +44,22 @@ export default function PromoteStudentsScreen() {
 
   useEffect(() => { fetchRoster(); }, [fetchRoster]);
 
-  const runAction = async (student: StudentRow, action: 'promote' | 'demote' | 'retain') => {
+  const runAction = async (student: StudentRow, action: 'promote' | 'demote' | 'retain' | 'remove') => {
     setBusyId(student.id);
     try {
       const { data } = await api.post(`/students/${student.id}/promotion`, { action });
+      setStudents(prev => prev.filter(s => s.id !== student.id));
       if (action === 'retain') {
-        setStudents(prev => prev.filter(s => s.id !== student.id));
         setInfo({ title: 'Retained', message: `${student.full_name} stays in ${student.class_name}.` });
+      } else if (action === 'remove') {
+        setInfo({
+          title: 'Removed from report roster',
+          message: `${student.full_name} was removed from the active physical report roster. Their online account and academic history remain unchanged.`,
+        });
       } else {
-        setStudents(prev => prev.filter(s => s.id !== student.id));
         setInfo({
           title: action === 'promote' ? 'Promoted' : 'Demoted',
-          message: `${student.full_name} moved from ${data.from_class} to ${data.to_class}.`,
+          message: `${student.full_name} moved from ${data.from_class} to ${data.to_class} in the physical report roster. Their online class remains unchanged.`,
         });
       }
     } catch (e: any) {
@@ -81,9 +85,7 @@ export default function PromoteStudentsScreen() {
       <PageContainer style={{ padding: Spacing.md, paddingBottom: 0 }}>
         <Card style={{ marginBottom: Spacing.sm }}>
           <Text style={styles.explainer}>
-            For each student in {user?.assigned_class ?? 'your class'}, choose whether they move up to the
-            next class, stay where they are, or move down — this updates their class right away. Once you act
-            on a student, they drop off this list; anyone still listed hasn't been decided on yet.
+            For each student in {user?.assigned_class ?? 'your class'}, choose whether they move up, stay, move down, or leave the active physical report roster. These decisions affect report-roster placement only; online classes, logins and academic history are unchanged. Once you act on a student, they drop off this active list.
           </Text>
         </Card>
       </PageContainer>
@@ -130,6 +132,14 @@ export default function PromoteStudentsScreen() {
                     onPress={() => setConfirm({ student: s, action: 'promote', toLabel: 'the next class' })}
                     style={styles.actionBtn}
                   />
+                  <Btn
+                    label="Remove"
+                    variant="outline"
+                    loading={busyId === s.id}
+                    disabled={busyId !== null}
+                    onPress={() => setConfirm({ student: s, action: 'remove', toLabel: 'the active report roster' })}
+                    style={styles.actionBtn}
+                  />
                 </View>
               </Card>
             </PageContainer>
@@ -140,12 +150,14 @@ export default function PromoteStudentsScreen() {
       {confirm && (
         <ConfirmDialog
           visible
-          title={confirm.action === 'promote' ? 'Promote this student?' : confirm.action === 'demote' ? 'Demote this student?' : 'Retain this student?'}
+          title={confirm.action === 'promote' ? 'Promote this student?' : confirm.action === 'demote' ? 'Demote this student?' : confirm.action === 'remove' ? 'Remove this student from the report roster?' : 'Retain this student?'}
           message={confirm.action === 'retain'
-            ? `Keep ${confirm.student.full_name} in ${confirm.student.class_name}? This records the retain decision.`
-            : `Move ${confirm.student.full_name} to ${confirm.toLabel}? This changes their class right away.`}
-          confirmLabel={confirm.action === 'promote' ? 'Promote' : confirm.action === 'demote' ? 'Demote' : 'Retain'}
-          destructive={confirm.action === 'demote'}
+            ? `Keep ${confirm.student.full_name} in ${confirm.student.class_name}?`
+            : confirm.action === 'remove'
+              ? `Remove ${confirm.student.full_name} from the active physical report roster? Their online account and academic history will remain unchanged.`
+              : `Move ${confirm.student.full_name} to ${confirm.toLabel} in the physical report roster only? Their online class will remain unchanged.`}
+          confirmLabel={confirm.action === 'promote' ? 'Promote' : confirm.action === 'demote' ? 'Demote' : confirm.action === 'remove' ? 'Remove' : 'Retain'}
+          destructive={confirm.action === 'demote' || confirm.action === 'remove'}
           onConfirm={() => runAction(confirm.student, confirm.action)}
           onCancel={() => setConfirm(null)}
         />
@@ -170,6 +182,6 @@ const styles = StyleSheet.create({
   row:     { marginBottom: Spacing.sm, width: '100%' },
   name:    { fontSize: Fonts.sizes.md, fontWeight: '700', color: Colors.text },
   sub:     { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginTop: 2 },
-  actions: { flexDirection: 'row', gap: Spacing.sm, marginTop: Spacing.sm },
-  actionBtn: { flex: 1, paddingVertical: 8 },
+  actions: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.sm, marginTop: Spacing.sm },
+  actionBtn: { flex: 1, minWidth: '45%', paddingVertical: 8 },
 });
