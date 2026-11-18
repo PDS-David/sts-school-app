@@ -108,7 +108,7 @@ jobs:
               --username=postgres --dbname=sts_backup_restore_check /tmp/database.dump
             psql --username=postgres --dbname=sts_backup_restore_check --no-psqlrc \
               --set=ON_ERROR_STOP=1 --tuples-only --no-align \
-              --command="SELECT concat_ws(chr(124), current_database(), current_setting($server_version$), (SELECT count(*)::text FROM information_schema.tables WHERE table_schema=$public$ AND table_type=$BASE TABLE$), (SELECT count(*)::text FROM schema_migrations), (SELECT count(*)::text FROM students), (SELECT count(*)::text FROM report_roster_memberships), (SELECT count(*)::text FROM audit_log))" \
+              --command="SELECT concat_ws(chr(124), current_database(), version(), (SELECT count(*)::text FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname=current_schema() AND c.relkind IN (chr(114),chr(112))), (SELECT count(*)::text FROM schema_migrations), (SELECT count(*)::text FROM students), (SELECT count(*)::text FROM report_roster_memberships), (SELECT count(*)::text FROM audit_log))" \
               > /tmp/restore-verification.txt
             test -s /tmp/restore-verification.txt
           '
@@ -117,7 +117,7 @@ jobs:
           trap - EXIT
           IFS='|' read -r restored_database restored_version restored_tables restored_migrations restored_students restored_memberships restored_audit < "$backup_dir/restore-verification.txt"
           test "$restored_database" = "sts_backup_restore_check"
-          case "$restored_version" in 18.*) ;; *) echo "::error::Disposable restore did not use PostgreSQL 18"; exit 1 ;; esac
+          case "$restored_version" in *"PostgreSQL 18"*) ;; *) echo "::error::Disposable restore did not use PostgreSQL 18"; exit 1 ;; esac
           test "$restored_tables" -ge 40
           test "$restored_migrations" -ge 6
 
