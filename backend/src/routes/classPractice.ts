@@ -143,27 +143,33 @@ router.post('/sets/:id/submit', async (req, res) => {
   const { rows: students } = await query('SELECT id FROM students WHERE user_id=$1 LIMIT 1',[req.user!.id]);
   const student = students[0];
   if (!student) return res.status(404).json({ error: 'Student record not found.' });
-  const { rows: sets } = await query(
-    'SELECT * FROM class_practice_sets WHERE id=$1 AND student_id=$2 FOR UPDATE',
-    [req.params.id,student.id],
-  );
-  const set = sets[0];
-  if (!set) return res.status(404).json({ error: 'Practice set not found.' });
-  if (set.status !== 'open') return res.status(409).json({ error: 'This practice set has already been submitted.' });
+  // The row lock must be acquired on the same transaction client that performs
+  // grading and persistence. A pool-level SELECT FOR UPDATE releases its lock
+  // as soon as that standalone statement ends, allowing duplicate concurrent
+  // submissions to race.
+  const result = await withTransaction(async client => {
+    const { rows: sets } = await client.query(
+      'SELECT * FROM class_practice_sets WHERE id=$1 AND student_id=$2 FOR UPDATE',
+      [req.params.id,student.id],
+    );
+    const set = sets[0];
+    if (!set) return { status: 404, body: { error: 'Practice set not found.' } };
+    if (set.status !== 'open') {
+      return { status: 409, body: { error: 'This practice set has already been submitted.' } };
+    }
 
-  const questions = Array.isArray(set.questions) ? set.questions : [];
-  const byId = new Map(questions.map((q: any) => [q.id,q]));
-  if (answers.length !== questions.length || new Set(answers.map((a: any) => a.question_id)).size !== answers.length ||
-      answers.some((a: any) => !byId.has(a.question_id))) {
-    return res.status(400).json({ error: 'Submit exactly one answer for every question in this set.' });
-  }
+    const questions = Array.isArray(set.questions) ? set.questions : [];
+    const byId = new Map(questions.map((q: any) => [q.id,q]));
+    if (answers.length !== questions.length || new Set(answers.map((a: any) => a.question_id)).size !== answers.length ||
+        answers.some((a: any) => !byId.has(a.question_id))) {
+      return { status: 400, body: { error: 'Submit exactly one answer for every question in this set.' } };
+    }
 
-  const graded = answers.map((a: any) => {
-    const q: any = byId.get(a.question_id);
-    const correct = clean(a.answer) === clean(q.correct_answer);
-    return { q, answer: a.answer, correct, marks: correct ? q.marks : 0 };
-  });
-  await withTransaction(async client => {
+    const graded = answers.map((a: any) => {
+      const q: any = byId.get(a.question_id);
+      const correct = clean(a.answer) === clean(q.correct_answer);
+      return { q, answer: a.answer, correct, marks: correct ? q.marks : 0 };
+    });
     for (const item of graded) {
       await client.query(`
         INSERT INTO class_practice_attempts(set_id,student_id,topic_id,question_id,concept,answer,correct,marks_awarded,marks_available)
@@ -203,16 +209,20 @@ router.post('/sets/:id/submit', async (req, res) => {
         `, [student.id,set.topic_id,concept,accuracy]);
       }
     }
+    const total = graded.reduce((sum,x) => sum + Number(x.q.marks),0);
+    const awarded = graded.reduce((sum,x) => sum + Number(x.marks),0);
+    return {
+      status: 200,
+      body: {
+        submitted: true, score: awarded, total, percentage: total ? Math.round(awarded / total * 100) : 0,
+        results: graded.map(({ q, answer, correct, marks }) => ({
+          question_id: q.id, concept: q.concept, answer, correct, marks_awarded: marks,
+          marks_available: q.marks, explanation: q.explanation,
+        })),
+      },
+    };
   });
-  const total = graded.reduce((sum,x) => sum + Number(x.q.marks),0);
-  const awarded = graded.reduce((sum,x) => sum + Number(x.marks),0);
-  return res.json({
-    submitted: true, score: awarded, total, percentage: total ? Math.round(awarded / total * 100) : 0,
-    results: graded.map(({ q, answer, correct, marks }) => ({
-      question_id: q.id, concept: q.concept, answer, correct, marks_awarded: marks,
-      marks_available: q.marks, explanation: q.explanation,
-    })),
-  });
+  return res.status(result.status).json(result.body);
 });
 
 router.get('/progress', async (req, res) => {
