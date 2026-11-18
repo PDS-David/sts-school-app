@@ -756,6 +756,8 @@ router.get('/admin/attempts/:attemptId/responses',requireRole('admin'),async(req
   if(!attempts[0]) return res.status(404).json({error:'Examination attempt not found in the selected school.'});
   const {rows}=await query(`
     SELECT q.id AS question_id,q.question_snapshot->>'stem' AS stem,q.marks,
+           q.question_snapshot->>'question_type' AS question_type,q.question_snapshot->'options' AS options,
+           q.question_snapshot->'correct_answer' AS correct_answer,q.question_snapshot->'marking_rubric' AS marking_rubric,
            r.response,r.awarded_marks,r.marking_status,r.feedback,r.marking_confidence,r.marking_details
       FROM online_exam_questions q
       JOIN online_exam_sections s ON s.id=q.section_id
