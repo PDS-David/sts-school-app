@@ -371,7 +371,7 @@ router.post('/bulk', requireRole('admin', 'teacher'), async (req, res) => {
       const grade = getGrade(score.ca1 + score.ca2 + score.exam);
       const { rows } = await client.query(
         `INSERT INTO scores(student_id,subject_id,term_id,ca1,ca2,exam,grade,teacher_remark,entered_by,updated_at,class_name)
-         VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,now(),(SELECT class_name FROM students WHERE id=$1))
+         VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,now(),(SELECT COALESCE((SELECT class_name FROM report_roster_memberships WHERE student_id=$1 AND status='active' ORDER BY joined_at DESC LIMIT 1), class_name) FROM students WHERE id=$1))
          ON CONFLICT(student_id,subject_id,term_id)
          DO UPDATE SET ca1=$4,ca2=$5,exam=$6,grade=$7,teacher_remark=$8,entered_by=$9,updated_at=now(),
                        class_name=COALESCE(scores.class_name, EXCLUDED.class_name)
