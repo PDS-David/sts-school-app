@@ -6,7 +6,7 @@ import { getSecureItem } from '../api/secureTokenStorage';
 import { LessonImage } from './TopicDetailScreen';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 
-export default function Ss1PackageLessonScreen({ route }: any) {
+export default function Ss1PackageLessonScreen({ route, navigation }: any) {
   const { lesson } = route.params as { lesson: any };
   const [revealed, setRevealed] = useState<Record<number, boolean>>({});
   const [token, setToken] = useState<string | null>(null);
@@ -54,6 +54,23 @@ export default function Ss1PackageLessonScreen({ route }: any) {
   useEffect(() => {
     if (!lesson.locked) void generateLesson();
   }, [lesson.id, lesson.locked]);
+
+  if (lesson.locked) {
+    return (
+      <ScrollView style={{ flex: 1, backgroundColor: Colors.background }} contentContainerStyle={{ padding: Spacing.md }}>
+        <Card>
+          <Text style={styles.meta}>{lesson.canonical_subject} · {lesson.term}</Text>
+          <SectionHeader title={lesson.title} />
+          <View style={styles.locked}>
+            <Text style={styles.lockedTitle}>This term is locked</Text>
+            <Text style={styles.note}>Redeem the Term PIN issued by your school to unlock this lesson.</Text>
+          </View>
+          <Btn label="Enter Term PIN" onPress={() => navigation.navigate('TermPinRedeem')} />
+        </Card>
+      </ScrollView>
+    );
+  }
+
   return (
     <ScrollView style={{ flex: 1, backgroundColor: Colors.background }} contentContainerStyle={{ padding: Spacing.md }}>
       <Card>
@@ -136,6 +153,8 @@ export default function Ss1PackageLessonScreen({ route }: any) {
 }
 
 const styles = StyleSheet.create({
+  locked: { backgroundColor: Colors.primary + '10', borderRadius: Radius.sm, padding: Spacing.md, marginVertical: Spacing.md },
+  lockedTitle: { color: Colors.text, fontSize: Fonts.sizes.md, fontWeight: '700' },
   reviewPending: { borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.sm, padding: Spacing.sm, marginTop: Spacing.sm },
   generationError: { color: Colors.error, fontSize: Fonts.sizes.xs, marginTop: Spacing.sm },
   note: { color: Colors.textSub, fontSize: Fonts.sizes.xs, lineHeight: 18, marginTop: Spacing.md },
