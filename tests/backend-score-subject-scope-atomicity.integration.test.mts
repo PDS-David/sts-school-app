@@ -141,38 +141,54 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     });
 
     const allowedSubject = await post('/', score(studentIds[0], subjectIds[0], termIds[0]), subjectTeacher.token);
-    assert.equal(allowedSubject.status, 403, 'teachers generate reports but do not enter scores');
+    assert.equal(allowedSubject.status, 403, 'subject-only teachers without an assigned physical class cannot enter report scores');
 
     const deniedSubject = await post('/', score(studentIds[0], subjectIds[1], termIds[0]), subjectTeacher.token);
-    assert.equal(deniedSubject.status, 403, 'teacher score entry is denied at the role boundary');
+    assert.equal(deniedSubject.status, 403, 'subject-only teachers without an assigned physical class cannot enter report scores');
 
     const foreignSubject = await post('/', score(studentIds[0], subjectIds[2], termIds[0]), subjectTeacher.token);
-    assert.equal(foreignSubject.status, 403, 'teacher score entry is denied before subject inspection');
+    assert.equal(foreignSubject.status, 400, 'student, subject and term must belong to the same school');
 
     const foreignTerm = await post('/', score(studentIds[0], subjectIds[0], termIds[1]), subjectTeacher.token);
-    assert.equal(foreignTerm.status, 403, 'teacher score entry is denied before term inspection');
+    assert.equal(foreignTerm.status, 400, 'teacher score entry rejects a term owned by another school');
 
     const classTeacherSubject = await post('/', score(studentIds[0], subjectIds[1], termIds[0]), classTeacher.token);
-    assert.equal(classTeacherSubject.status, 403, 'class teachers generate reports but do not enter marks');
+    assert.equal(classTeacherSubject.status, 200, 'class teachers can enter marks for any report subject in their assigned class');
+    const { rows: calculatedScore } = await query(
+      'SELECT total,grade,class_name FROM scores WHERE student_id=$1 AND subject_id=$2 AND term_id=$3',
+      [studentIds[0], subjectIds[1], termIds[0]],
+    );
+    assert.equal(Number(calculatedScore[0]?.total), 50, 'database calculates total from CA1 + CA2 + exam');
+    assert.ok(calculatedScore[0]?.grade, 'server calculates and stores the grade');
+    assert.equal(calculatedScore[0]?.class_name, 'Primary 4', 'score snapshot uses the physical report-roster class');
+
+    const teacherBulk = await post('/bulk', {
+      scores: [score(studentIds[0], subjectIds[0], termIds[0])],
+    }, classTeacher.token);
+    assert.equal(teacherBulk.status, 200, 'class teachers can save a whole-class score batch');
 
     const classTeacherWrongClass = await post('/', score(studentIds[1], subjectIds[0], termIds[0]), classTeacher.token);
-    assert.equal(classTeacherWrongClass.status, 403, 'teachers cannot enter marks for any class');
+    assert.equal(classTeacherWrongClass.status, 403, 'teachers cannot enter marks outside their assigned physical class');
 
     const adminForeignSubject = await post('/', score(studentIds[0], subjectIds[2], termIds[0]), admin.token);
     assert.equal(adminForeignSubject.status, 400, 'administrator writes must preserve student/subject school integrity');
 
+    const { rows: scoresBeforeDeniedBatch } = await query(
+      'SELECT id,student_id,subject_id,total FROM scores WHERE student_id=ANY($1::uuid[]) AND term_id=$2 ORDER BY id',
+      [[studentIds[0], studentIds[1]], termIds[0]],
+    );
     const invalidBatch = await post('/bulk', {
       scores: [
         score(studentIds[0], subjectIds[0], termIds[0]),
         score(studentIds[1], subjectIds[1], termIds[0]),
       ],
     }, subjectTeacher.token);
-    assert.equal(invalidBatch.status, 403, 'teachers cannot enter scores in bulk');
-    const { rows: invalidBatchRows } = await query(
-      'SELECT id FROM scores WHERE student_id=ANY($1::uuid[]) AND term_id=$2',
+    assert.equal(invalidBatch.status, 403, 'subject-only teachers without a physical class cannot enter scores in bulk');
+    const { rows: scoresAfterDeniedBatch } = await query(
+      'SELECT id,student_id,subject_id,total FROM scores WHERE student_id=ANY($1::uuid[]) AND term_id=$2 ORDER BY id',
       [[studentIds[0], studentIds[1]], termIds[0]],
     );
-    assert.equal(invalidBatchRows.length, 0,
+    assert.deepEqual(scoresAfterDeniedBatch, scoresBeforeDeniedBatch,
       'denied teacher writes must not create or change any score');
 
     const validBatch = await post('/bulk', {
@@ -258,10 +274,12 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     assert.equal(Number(primarySubjectReport.subject_position), 1);
 
     const rawScores = await fetch(
-      `${started.baseUrl}?term_id=${termIds[0]}`,
+      `${started.baseUrl}?term_id=${termIds[0]}&class_name=Primary%204&subject_id=${subjectIds[0]}`,
       { headers: { Authorization: `Bearer ${classTeacher.token}` } },
     );
-    assert.equal(rawScores.status, 403, 'teachers access score data through the scoped report endpoint only');
+    assert.equal(rawScores.status, 200, 'teachers can read only score rows for their assigned active physical roster');
+    const rawScorePayload = await rawScores.json() as { scores: Array<{ student_id: string }> };
+    assert.ok(rawScorePayload.scores.every(row => row.student_id === studentIds[0]));
 
     const teacherReport = await fetch(
       `${started.baseUrl}/report/${studentIds[0]}?term_id=${termIds[0]}`,

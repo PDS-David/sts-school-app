@@ -1,4 +1,4 @@
-// Teacher navigation intentionally exposes report generation only.
+// Teacher navigation exposes physical-class record entry, editing and report generation.
 import React, { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack';
@@ -12,9 +12,13 @@ import TeacherDashboardHomeScreen from '../screens/teacher/TeacherDashboardHomeS
 import TeacherClassesScreen from '../screens/teacher/TeacherClassesScreen';
 import TeacherMoreScreen from '../screens/teacher/TeacherMoreScreen';
 import StudentsScreen from '../screens/StudentsScreen';
+import AddStudentScreen from '../screens/AddStudentScreen';
 import StudentDetailScreen from '../screens/StudentDetailScreen';
 import MyResultsScreen from '../screens/MyResultsScreen';
 import SessionReportScreen from '../screens/SessionReportScreen';
+import ScoreEntryScreen from '../screens/ScoreEntryScreen';
+import AttendanceScreen from '../screens/AttendanceScreen';
+import ReportRemarksScreen from '../screens/teacher/ReportRemarksScreen';
 import ChangePasswordScreen from '../screens/ChangePasswordScreen';
 
 const Tab = createBottomTabNavigator();
@@ -43,6 +47,10 @@ function ReportsStackNavigator() {
       <ReportsStack.Screen name="StudentDetail" component={StudentDetailScreen} options={{ headerShown: true, title: 'Student Report', ...opts }} />
       <ReportsStack.Screen name="MyResults" component={MyResultsScreen} options={{ headerShown: true, title: 'Term Report', ...opts }} />
       <ReportsStack.Screen name="SessionReport" component={SessionReportScreen} options={{ headerShown: true, title: 'Session Report', ...opts }} />
+      <ReportsStack.Screen name="AddStudent" component={AddStudentScreen} options={{ headerShown: true, title: 'Add Physical-Class Student', ...opts }} />
+      <ReportsStack.Screen name="ScoreEntry" component={ScoreEntryScreen} options={{ headerShown: true, title: 'Enter / Edit Scores', ...opts }} />
+      <ReportsStack.Screen name="Attendance" component={AttendanceScreen} options={{ headerShown: true, title: 'Attendance', ...opts }} />
+      <ReportsStack.Screen name="ReportRemarks" component={ReportRemarksScreen} options={{ headerShown: true, title: 'Report Remarks', ...opts }} />
     </ReportsStack.Navigator>
   );
 }

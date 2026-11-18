@@ -3,19 +3,24 @@ import test from 'node:test';
 import { hasPerm } from '../backend/src/utils/rbac.js';
 import { resolveStudentRosterScope } from '../backend/src/utils/studentRosterScope.js';
 
-test('teacher role has only the permission needed to select their assigned report roster', () => {
-  assert.equal(hasPerm('teacher', 'students.read'), true);
+test('teacher role can maintain assigned physical-class reports but not online learning or administration', () => {
   for (const permission of [
-    'grades.read', 'grades.write', 'grades.export',
+    'students.read', 'students.write',
+    'grades.read', 'grades.write',
     'attendance.read', 'attendance.write',
-    'classRecord.read',
-    'classRecord.write',
+    'classRecord.read', 'classRecord.write',
+  ]) {
+    assert.equal(hasPerm('teacher', permission), true, `teacher must have ${permission}`);
+  }
+  for (const permission of [
+    'grades.export',
     'materials.read', 'materials.write',
     'topics.read', 'topics.write',
     'weeklyEfforts.read', 'weeklyEfforts.write', 'weeklyEfforts.feedback',
     'messages.read', 'messages.write',
     'questions.write', 'assessments.create',
     'aiResults.read', 'aiGrading.override',
+    'terms.write', 'classLocks.write',
   ]) {
     assert.equal(hasPerm('teacher', permission), false, `teacher must not have ${permission}`);
   }

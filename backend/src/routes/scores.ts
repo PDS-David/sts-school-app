@@ -29,8 +29,8 @@ const scoreEntrySchema = z.object({
 
 /**
  * Validate and lock all three school-owned references for a score write.
- * Subject-only teachers may enter only their assigned subjects; class
- * teachers retain the class-wide subject access exposed by GET /scores.
+ * Teachers must have an assigned physical class and active report-roster
+ * membership; they may enter any report subject for that class.
  */
 async function validateScoreWriteScope(
   client: PoolClient,
@@ -43,6 +43,16 @@ async function validateScoreWriteScope(
   );
   const student = studentRows[0];
   if (!student || student.deleted_at) return { status: 404, error: 'Student not found' };
+  const { rows: rosterRows } = await client.query(
+    `SELECT class_name FROM report_roster_memberships
+     WHERE student_id=$1 AND status='active'
+     ORDER BY joined_at DESC LIMIT 1 FOR SHARE`,
+    [score.student_id],
+  );
+  const physicalClassName = rosterRows[0]?.class_name ?? student.class_name;
+  if (user.role === 'teacher' && !rosterRows[0]) {
+    return { status: 403, error: 'Student is not in an active physical report roster.' };
+  }
 
   const { rows: subjectRows } = await client.query(
     'SELECT school_code FROM subjects WHERE id=$1 FOR SHARE',
@@ -67,17 +77,13 @@ async function validateScoreWriteScope(
     if (!user.school_code || user.school_code !== student.school_code) {
       return { status: 403, error: "You can't write scores outside your school" };
     }
-    if (user.assigned_class) {
-      if (student.class_name !== user.assigned_class) {
-        return { status: 403, error: "You can't write scores outside your assigned class" };
-      }
-    } else if (!(user.assigned_subject_ids ?? []).some(id => Number(id) === score.subject_id)) {
-      return { status: 403, error: 'You can only enter scores for your assigned subjects.' };
+    if (!user.assigned_class || physicalClassName !== user.assigned_class) {
+      return { status: 403, error: "You can only write scores for students in your assigned physical class." };
     }
 
     const { rows: locks } = await client.query(
       'SELECT locked_at FROM class_locks WHERE school_code=$1 AND class_name=$2 AND term_id=$3 FOR SHARE',
-      [student.school_code, student.class_name, score.term_id],
+      [student.school_code, physicalClassName, score.term_id],
     );
     if (locks[0]) {
       return { status: 403, error: 'This class is locked for the selected term. Ask an administrator to unlock it.' };
@@ -102,16 +108,10 @@ router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => 
   const className = user.role === 'teacher'
     ? user.assigned_class
     : (typeof req.query.class_name === 'string' ? req.query.class_name : null);
-  const subjectIds = user.role === 'teacher' && !user.assigned_class
-    ? user.assigned_subject_ids
-    : null;
+  const subjectIds = null;
 
-  if (user.role === 'teacher' && !className && (!subjectIds || subjectIds.length === 0)) {
-    return res.json({
-      term: null,
-      summary: { student_count: 0, expected_score_entries: 0, marked_score_entries: 0, pending_score_entries: 0, average_score: null, pass_rate: null, attendance_rate: null, attendance_records: 0, weekly_effort_entries: 0 },
-      subjects: [],
-    });
+  if (user.role === 'teacher' && !className) {
+    return res.status(403).json({ error: 'Marking overview requires an assigned physical class.' });
   }
 
   const { rows: terms } = await query(
@@ -127,10 +127,11 @@ router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => 
     });
   }
 
-  const scopeParams = [schoolCode, className, subjectIds, term.id];
+  const scopeParams = [schoolCode, className, subjectIds, term.id, user.role === 'teacher'];
   const scopeWhere = `st.school_code=$1 AND su.school_code=$1 AND st.deleted_at IS NULL
-    AND ($2::text IS NULL OR st.class_name=$2)
-    AND ($3::int[] IS NULL OR su.id=ANY($3))`;
+    AND ($2::text IS NULL OR COALESCE(rrm.class_name,st.class_name)=$2)
+    AND ($3::int[] IS NULL OR su.id=ANY($3))
+    AND ($5::boolean = FALSE OR rrm.student_id IS NOT NULL)`;
 
   const { rows: aggregateRows } = await query(
     `SELECT COUNT(DISTINCT st.id)::int AS student_count,
@@ -142,6 +143,7 @@ router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => 
               ELSE ROUND(COUNT(sc.id) FILTER (WHERE sc.total >= 40) * 100.0 / COUNT(sc.id), 1)
             END AS pass_rate
        FROM students st
+       LEFT JOIN report_roster_memberships rrm ON rrm.student_id=st.id AND rrm.status='active'
        CROSS JOIN subjects su
        LEFT JOIN scores sc ON sc.student_id=st.id AND sc.subject_id=su.id AND sc.term_id=$4
       WHERE ${scopeWhere}`,
@@ -155,6 +157,7 @@ router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => 
             (COUNT(*) - COUNT(sc.id))::int AS pending_score_entries,
             ROUND(AVG(sc.total), 1) AS average_score
        FROM students st
+       LEFT JOIN report_roster_memberships rrm ON rrm.student_id=st.id AND rrm.status='active'
        CROSS JOIN subjects su
        LEFT JOIN scores sc ON sc.student_id=st.id AND sc.subject_id=su.id AND sc.term_id=$4
       WHERE ${scopeWhere}
@@ -163,32 +166,36 @@ router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => 
     scopeParams,
   );
 
-  // Attendance and weekly-effort aggregates are class-teacher-only. A
-  // subject-only teacher's record scope does not include whole-class registers.
+  // Attendance aggregates use the active physical report roster. Weekly-effort
+  // counts belong to online-learning activity and remain admin-only.
   let attendanceRate: number | null = null;
   let attendanceRecords = 0;
   let weeklyEffortEntries = 0;
   if (user.role === 'admin' || className) {
-    const classParams = [schoolCode, className, term.id, term.days_opened];
+    const classParams = [schoolCode, className, term.id, term.days_opened, user.role === 'teacher'];
     const { rows: attendanceRows } = await query(
       `SELECT COUNT(a.id)::int AS attendance_records,
               ROUND(AVG(100.0 * a.days_present / NULLIF($4::numeric, 0)), 1) AS attendance_rate
          FROM attendance a
          JOIN students st ON st.id=a.student_id
+         LEFT JOIN report_roster_memberships rrm ON rrm.student_id=st.id AND rrm.status='active'
         WHERE st.school_code=$1 AND st.deleted_at IS NULL
-          AND ($2::text IS NULL OR st.class_name=$2) AND a.term_id=$3`,
+          AND ($2::text IS NULL OR COALESCE(rrm.class_name,st.class_name)=$2)
+          AND ($5::boolean = FALSE OR rrm.student_id IS NOT NULL) AND a.term_id=$3`,
       classParams,
     );
     attendanceRate = attendanceRows[0]?.attendance_rate == null ? null : Number(attendanceRows[0].attendance_rate);
     attendanceRecords = attendanceRows[0]?.attendance_records ?? 0;
-    const { rows: effortRows } = await query(
-      `SELECT COUNT(*)::int AS weekly_effort_entries
-         FROM weekly_efforts we JOIN students st ON st.id=we.student_id
-        WHERE st.school_code=$1 AND st.deleted_at IS NULL
-          AND ($2::text IS NULL OR st.class_name=$2) AND we.term_id=$3`,
-      classParams.slice(0, 3),
-    );
-    weeklyEffortEntries = effortRows[0]?.weekly_effort_entries ?? 0;
+    if (user.role === 'admin') {
+      const { rows: effortRows } = await query(
+        `SELECT COUNT(*)::int AS weekly_effort_entries
+           FROM weekly_efforts we JOIN students st ON st.id=we.student_id
+          WHERE st.school_code=$1 AND st.deleted_at IS NULL
+            AND ($2::text IS NULL OR st.class_name=$2) AND we.term_id=$3`,
+        classParams.slice(0, 3),
+      );
+      weeklyEffortEntries = effortRows[0]?.weekly_effort_entries ?? 0;
+    }
   }
 
   const summary = aggregateRows[0] ?? {};
@@ -217,46 +224,26 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
                     t.id AS term_id, t.name AS term_name
              FROM scores sc
              JOIN students s   ON s.id = sc.student_id
+             LEFT JOIN report_roster_memberships rrm ON rrm.student_id=s.id AND rrm.status='active'
              JOIN subjects sub ON sub.id = sc.subject_id AND sub.school_code = s.school_code
              JOIN terms t      ON t.id  = sc.term_id AND t.school_code = s.school_code
              WHERE 1=1`;
   const params: unknown[] = [];
 
   if (term_id)    { params.push(term_id);    sql += ` AND sc.term_id=$${params.length}`; }
-  if (class_name) { params.push(class_name); sql += ` AND s.class_name=$${params.length}`; }
+  if (class_name) { params.push(class_name); sql += ` AND COALESCE(rrm.class_name,s.class_name)=$${params.length}`; }
   if (subject_id) { params.push(subject_id); sql += ` AND sc.subject_id=$${params.length}`; }
   if (student_id) { params.push(student_id); sql += ` AND sc.student_id=$${params.length}`; }
   // Teachers see only their school
   if (user.role === 'teacher') {
     if (!user.school_code) return res.status(403).json({ error: 'Your teacher account is not assigned to a school.' });
     params.push(user.school_code); sql += ` AND s.school_code=$${params.length}`;
-    if (user.assigned_class) {
-      params.push(user.assigned_class); sql += ` AND s.class_name=$${params.length}`;
-    } else if (user.assigned_subject_ids && user.assigned_subject_ids.length > 0) {
-      // Bug found by live-testing this route directly with a real
-      // subject-only teacher account: the previous version only blocked a
-      // subject-only teacher when NO class_name was supplied at all — but
-      // passing ANY class_name (including one this teacher has no
-      // relationship to whatsoever) sailed straight through with no
-      // subject restriction applied anywhere, returning every subject's
-      // scores for that entire class. Confirmed: a Mathematics-only
-      // teacher account pulled all 210 score rows across 15 different
-      // subjects for a class ("JSS2") they don't teach at all, just by
-      // adding ?class_name=JSS2 to the request.
-      //
-      // The actual rule this route needs (matching checkTeacherContentScope
-      // elsewhere in this codebase): a subject-only teacher may see any
-      // class in their own school, but ONLY for their own subject. Forcing
-      // sc.subject_id to their own assigned_subject_id here — regardless of
-      // whether the caller also passed a (possibly different, possibly
-      // forged) subject_id — means a mismatched subject_id param now
-      // returns zero rows instead of leaking every subject's data.
-      params.push(user.assigned_subject_ids); sql += ` AND sc.subject_id = ANY($${params.length})`;
-    } else {
-      // Neither an assigned class nor an assigned subject — nothing in
-      // this school is legitimately scoped to this teacher at all.
+    if (!user.assigned_class) {
+      // Physical report access requires a class assignment, not merely a subject assignment.
       return res.json({ scores: [] });
     }
+    params.push(user.assigned_class);
+    sql += ` AND rrm.class_name=$${params.length} AND rrm.status='active'`;
   } else if (user.role === 'admin' && school_code) {
     // Found in a hardening pass: filtering by class_name alone (e.g. the
     // admin Class Summary/ranking screen) had no school scoping at all for
@@ -277,7 +264,7 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
 });
 
 // ── POST /scores  (upsert) ────────────────────────────────────────────────────
-router.post('/', requireRole('admin'), async (req, res) => {
+router.post('/', requireRole('admin', 'teacher'), async (req, res) => {
   const parsed = scoreEntrySchema.safeParse(req.body);
   if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
   const d = parsed.data;
@@ -302,7 +289,7 @@ router.post('/', requireRole('admin'), async (req, res) => {
     const grade = getGrade(d.ca1 + d.ca2 + d.exam);
     const { rows } = await client.query(
       `INSERT INTO scores(student_id,subject_id,term_id,ca1,ca2,exam,grade,teacher_remark,entered_by,updated_at,class_name)
-       VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,now(),(SELECT class_name FROM students WHERE id=$1))
+       VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,now(),(SELECT COALESCE((SELECT class_name FROM report_roster_memberships WHERE student_id=$1 AND status='active' ORDER BY joined_at DESC LIMIT 1), class_name) FROM students WHERE id=$1))
        ON CONFLICT(student_id,subject_id,term_id)
        DO UPDATE SET ca1=$4,ca2=$5,exam=$6,grade=$7,teacher_remark=$8,entered_by=$9,updated_at=now(),
                      class_name=COALESCE(scores.class_name, EXCLUDED.class_name)
@@ -319,7 +306,7 @@ router.post('/', requireRole('admin'), async (req, res) => {
 });
 
 // ── POST /scores/bulk  (batch entry for a whole class) ────────────────────────
-router.post('/bulk', requireRole('admin'), async (req, res) => {
+router.post('/bulk', requireRole('admin', 'teacher'), async (req, res) => {
   const bodySchema = z.object({
     scores: z.array(scoreEntrySchema).min(1).max(500)
       .refine(items => new Set(items.map(s => `${s.student_id}:${s.subject_id}:${s.term_id}`)).size === items.length,
@@ -358,7 +345,7 @@ router.post('/bulk', requireRole('admin'), async (req, res) => {
       const grade = getGrade(score.ca1 + score.ca2 + score.exam);
       const { rows } = await client.query(
         `INSERT INTO scores(student_id,subject_id,term_id,ca1,ca2,exam,grade,teacher_remark,entered_by,updated_at,class_name)
-         VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,now(),(SELECT class_name FROM students WHERE id=$1))
+         VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,now(),(SELECT COALESCE((SELECT class_name FROM report_roster_memberships WHERE student_id=$1 AND status='active' ORDER BY joined_at DESC LIMIT 1), class_name) FROM students WHERE id=$1))
          ON CONFLICT(student_id,subject_id,term_id)
          DO UPDATE SET ca1=$4,ca2=$5,exam=$6,grade=$7,teacher_remark=$8,entered_by=$9,updated_at=now(),
                        class_name=COALESCE(scores.class_name, EXCLUDED.class_name)

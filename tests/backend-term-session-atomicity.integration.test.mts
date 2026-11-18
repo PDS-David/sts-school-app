@@ -16,9 +16,9 @@ after(async () => {
 async function createUser(label: string, role: 'admin' | 'teacher', schoolCode: string | null) {
   const username = `bsec17-${label}-${randomUUID()}`;
   const { rows } = await query(
-    `INSERT INTO users(username,password_hash,role,full_name,school_code,is_active,pending_admin_review)
-     VALUES($1,'test-hash',$2,$3,$4,TRUE,FALSE) RETURNING id`,
-    [username, role, `BSEC17 ${label}`, schoolCode],
+    `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,is_active,pending_admin_review)
+     VALUES($1,'test-hash',$2,$3,$4,$5,TRUE,FALSE) RETURNING id`,
+    [username, role, `BSEC17 ${label}`, schoolCode, role === 'teacher' ? 'Primary 4' : null],
   );
   const id = String(rows[0].id);
   return {
@@ -55,6 +55,7 @@ test('term creation conflicts are deterministic and concurrent current-term swit
   const academicYear = `BSEC17/${suffix.slice(0, 8)}`;
   const admin = await createUser('admin', 'admin', null);
   const foreignTeacher = await createUser('foreign-teacher', 'teacher', 'secondary');
+  const primaryTeacher = await createUser('primary-teacher', 'teacher', 'primary');
   const termIds: number[] = [];
   let server: Server | undefined;
   let triggerCreated = false;
@@ -130,7 +131,11 @@ test('term creation conflicts are deterministic and concurrent current-term swit
     assert.ok([termIds[1], termIds[2]].includes(currentId));
 
     const foreignUpdate = await putTerm(termIds[1], { days_opened: 20 }, foreignTeacher.token);
-    assert.equal(foreignUpdate.status, 403, 'report-only teachers cannot administer term settings');
+    assert.equal(foreignUpdate.status, 404, 'teachers cannot update another school\'s term particulars');
+    const teacherDaysOpened = await putTerm(termIds[1], { days_opened: 22 }, primaryTeacher.token);
+    assert.equal(teacherDaysOpened.status, 200, 'assigned teachers may update days opened for their own school report');
+    const teacherCurrentTerm = await putTerm(termIds[1], { is_current: true }, primaryTeacher.token);
+    assert.equal(teacherCurrentTerm.status, 403, 'teachers cannot change the school-wide current term');
     const invalidBoolean = await putTerm(termIds[1], { is_current: 'true' });
     assert.equal(invalidBoolean.status, 400, 'is_current must be a boolean');
     const missing = await putTerm(2_147_483_647, { is_current: true });
@@ -180,6 +185,6 @@ test('term creation conflicts are deterministic and concurrent current-term swit
       await new Promise<void>(resolve => server!.close(() => resolve()));
     }
     if (termIds.length) await query('DELETE FROM terms WHERE id=ANY($1::int[])', [termIds]);
-    await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [[admin.id, foreignTeacher.id]]);
+    await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [[admin.id, foreignTeacher.id, primaryTeacher.id]]);
   }
 });

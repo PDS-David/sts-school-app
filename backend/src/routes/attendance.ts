@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { z } from 'zod';
 import { query } from '../db/pool.js';
 import { saveAttendanceBulk } from '../utils/attendanceWrites.js';
 import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
@@ -36,7 +37,7 @@ function validateDaysPresent(days_present: unknown, daysOpened: number | null): 
 }
 
 // ── PUT /attendance  (upsert days present) ────────────────────────────────────
-router.put('/', requireRole('admin'), async (req, res) => {
+router.put('/', requireRole('admin', 'teacher'), async (req, res) => {
   const { student_id, term_id, days_present } = req.body as {
     student_id: string; term_id: number; days_present: number;
   };
@@ -70,9 +71,10 @@ router.get('/', requirePerm('attendance.read'), async (req, res) => {
   const { class_name, term_id, school_code: requestedSchoolCode } = req.query as Record<string, string>;
   const user = req.user!;
   const parsedTermId = Number(term_id);
-  const effectiveClass = user.role === 'teacher'
-    ? (user.assigned_class ?? class_name?.trim())
-    : class_name?.trim();
+  if (user.role === 'teacher' && !user.assigned_class) {
+    return res.status(403).json({ error: 'Attendance access requires an assigned physical class.' });
+  }
+  const effectiveClass = user.role === 'teacher' ? user.assigned_class : class_name?.trim();
   // Admins have no own school_code. Their selected school is explicit in
   // the screen's school switcher; requiring it prevents same-named classes
   // from different schools being mixed in the attendance editor.
@@ -95,16 +97,19 @@ router.get('/', requirePerm('attendance.read'), async (req, res) => {
     `SELECT a.student_id, a.days_present
      FROM attendance a
      JOIN students s ON s.id = a.student_id
-     WHERE s.class_name = $1 AND a.term_id = $2
+     LEFT JOIN report_roster_memberships rrm
+       ON rrm.student_id=s.id AND rrm.status='active'
+     WHERE COALESCE(rrm.class_name,s.class_name) = $1 AND a.term_id = $2
        AND ($4::boolean OR s.deleted_at IS NULL)
-       AND s.school_code = $3`,
-    [effectiveClass, parsedTermId, effectiveSchoolCode, user.role === 'admin'],
+       AND s.school_code = $3
+       AND ($5::boolean = FALSE OR rrm.student_id IS NOT NULL)`,
+    [effectiveClass, parsedTermId, effectiveSchoolCode, user.role === 'admin', user.role === 'teacher'],
   );
   return res.json({ attendance: rows });
 });
 
 // ── PUT /attendance/bulk  (whole class at once) ───────────────────────────────
-router.put('/bulk', requireRole('admin'), async (req, res) => {
+router.put('/bulk', requireRole('admin', 'teacher'), async (req, res) => {
   const { entries, term_id } = req.body as {
     term_id: number;
     entries: Array<{ student_id: string; days_present: number }>;
@@ -149,7 +154,7 @@ router.get('/class-records/:student_id/:term_id', async (req, res) => {
 
   const { rows: stRows } = await query('SELECT * FROM students WHERE id=$1', [student_id]);
   const student = stRows[0];
-  if (!student) return res.status(404).json({ error: 'Student not found' });
+  if (!student || (user.role !== 'admin' && student.deleted_at)) return res.status(404).json({ error: 'Student not found' });
 
   if (user.role === 'student') {
     if (student.user_id !== user.id) return res.status(403).json({ error: 'Access denied' });
@@ -160,7 +165,15 @@ router.get('/class-records/:student_id/:term_id', async (req, res) => {
     if (!pw.length) return res.status(403).json({ error: 'Not your ward' });
   } else if (user.role === 'teacher') {
     if (!hasPerm(user.role, 'classRecord.read')) return res.status(403).json({ error: 'Permission denied: classRecord.read' });
-    if (student.school_code !== user.school_code) return res.status(403).json({ error: 'Wrong school' });
+    if (!user.school_code || !user.assigned_class || student.school_code !== user.school_code) {
+      return res.status(404).json({ error: 'Class record not found' });
+    }
+    const { rows: membershipRows } = await query(
+      `SELECT 1 FROM report_roster_memberships
+       WHERE student_id=$1 AND class_name=$2 AND status='active'`,
+      [student_id, user.assigned_class],
+    );
+    if (!membershipRows[0]) return res.status(404).json({ error: 'Class record not found' });
   } else if (user.role !== 'admin') {
     return res.status(403).json({ error: 'Access denied' });
   }
@@ -181,9 +194,10 @@ router.get('/class-records', requirePerm('classRecord.read'), async (req, res) =
   const { class_name, term_id } = req.query as Record<string, string>;
   const user = req.user!;
   const parsedTermId = Number(term_id);
-  const effectiveClass = user.role === 'teacher'
-    ? (user.assigned_class ?? class_name?.trim())
-    : class_name?.trim();
+  if (user.role === 'teacher' && !user.assigned_class) {
+    return res.status(403).json({ error: 'Class-record access requires an assigned physical class.' });
+  }
+  const effectiveClass = user.role === 'teacher' ? user.assigned_class : class_name?.trim();
 
   if (!effectiveClass || !Number.isSafeInteger(parsedTermId) || parsedTermId <= 0 || parsedTermId > 2_147_483_647) {
     return res.status(400).json({ error: 'A valid class_name and positive integer term_id are required' });
@@ -201,32 +215,34 @@ router.get('/class-records', requirePerm('classRecord.read'), async (req, res) =
   }
 
   const { rows } = await query(
-    `SELECT cr.*, s.full_name, s.class_name
+    `SELECT cr.*, s.full_name, COALESCE(rrm.class_name,s.class_name) AS class_name
      FROM class_records cr
      JOIN students s ON s.id = cr.student_id
-     WHERE s.class_name = $1 AND cr.term_id = $2
+     LEFT JOIN report_roster_memberships rrm
+       ON rrm.student_id=s.id AND rrm.status='active'
+     WHERE COALESCE(rrm.class_name,s.class_name) = $1 AND cr.term_id = $2
        AND ($4::boolean OR s.deleted_at IS NULL)
        AND ($3::text IS NULL OR s.school_code = $3)
+       AND ($5::boolean = FALSE OR rrm.student_id IS NOT NULL)
      ORDER BY s.full_name`,
-    [effectiveClass, parsedTermId, user.school_code ?? null, user.role === 'admin'],
+    [effectiveClass, parsedTermId, user.school_code ?? null, user.role === 'admin', user.role === 'teacher'],
   );
   return res.json({ class_records: rows });
 });
 
 // ── PUT /class-records  (teacher/admin remarks) ───────────────────────────────
 router.put('/class-records', requirePerm('classRecord.write'), async (req, res) => {
-  const { student_id, term_id, class_teacher_remark, admin_remark } = req.body as {
-    student_id: string; term_id: number;
-    class_teacher_remark?: string; admin_remark?: string;
-  };
-  // admin_remark is the head teacher/principal's field — only an admin
-  // account may set it. The mobile UI already hides this field from
-  // teachers, but that's client-side only; enforce it here too, since a
-  // teacher could otherwise call this endpoint directly and write it anyway
-  // (verified live before this fix).
-  if (admin_remark !== undefined && req.user!.role !== 'admin') {
-    return res.status(403).json({ error: 'Only an admin can set the head teacher/principal remark' });
-  }
+  const schema = z.object({
+    student_id: z.string().uuid(),
+    term_id: z.number().int().positive(),
+    class_teacher_remark: z.string().max(3000).optional(),
+    admin_remark: z.string().max(3000).optional(),
+  }).refine(d => d.class_teacher_remark !== undefined || d.admin_remark !== undefined,
+    'At least one report remark must be supplied');
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
+  const { student_id, term_id, class_teacher_remark, admin_remark } = parsed.data;
+  // The school owner authorizes teachers to edit every report remark field.
   const scopeViolation = await checkTeacherStudentScope(req.user!, student_id, term_id);
   if (scopeViolation) return res.status(scopeViolation.status).json({ error: scopeViolation.error });
 
