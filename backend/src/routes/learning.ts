@@ -712,11 +712,13 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
       }
       const lockedIds = new Set<number>();
       const seqById = new Map<number, { locked: boolean; sequence_position: number | null; is_sequence_first: boolean }>();
-      for (const group of groups.values()) {
-        const pinOk = !termPinEnforced() || redeemedTermLabels.has(group[0].term_label);
-        for (const [id, r] of resolveSequenceGroup(group, passedIds, pinOk)) {
-          if (r.locked) lockedIds.add(id);
-          seqById.set(id, r);
+      if (curriculumSequenceEnforced()) {
+        for (const group of groups.values()) {
+          const pinOk = !termPinEnforced() || redeemedTermLabels.has(group[0].term_label);
+          for (const [id, r] of resolveSequenceGroup(group, passedIds, pinOk)) {
+            if (r.locked) lockedIds.add(id);
+            seqById.set(id, r);
+          }
         }
       }
 
