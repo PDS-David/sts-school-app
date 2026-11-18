@@ -10,6 +10,7 @@ const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string;
   { icon: 'people-outline', label: 'Student Reports', sub: 'Select a student in your assigned physical class and generate their report', screen: 'Students', color: '#1565C0' },
   { icon: 'create-outline', label: 'Enter / Edit Scores', sub: 'Record continuous assessment and examination scores', screen: 'ScoreEntry', color: '#C62828' },
   { icon: 'calendar-outline', label: 'Attendance', sub: 'Record and correct students’ attendance', screen: 'Attendance', color: '#E65100' },
+  { icon: 'chatbox-ellipses-outline', label: 'Report Remarks', sub: 'Create and edit class-teacher and principal/head-teacher remarks', screen: 'ReportRemarks', color: '#6A1B9A' },
 ];
 
 export default function TeacherClassesScreen({ navigation }: any) {
