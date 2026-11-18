@@ -4,6 +4,7 @@ import { readFile, readdir } from 'node:fs/promises';
 
 const route = await readFile(new URL('../backend/src/routes/onlineExams.ts', import.meta.url), 'utf8');
 const migration = await readFile(new URL('../backend/migrations/0014_formal_online_examinations.sql', import.meta.url), 'utf8');
+const markingMigration = await readFile(new URL('../backend/migrations/0015_online_exam_marking_confidence.sql', import.meta.url), 'utf8');
 const mobileList = await readFile(new URL('../mobile/src/screens/OnlineExamsScreen.tsx', import.meta.url), 'utf8');
 const mobileAttempt = await readFile(new URL('../mobile/src/screens/OnlineExamAttemptScreen.tsx', import.meta.url), 'utf8');
 
@@ -73,4 +74,17 @@ test('student flow caches unsent answers and derives the timer from the server d
   assert.match(mobileAttempt, /server_time/);
   assert.match(mobileAttempt, /navigation\.replace\('OnlineExams'\)/);
   assert.match(mobileList, /\/online-exams\/exams/);
+});
+
+test('written responses require a complete criterion rubric and confidence-validated AI marks', () => {
+  assert.match(route, /validateMarkingRubric\(item\.marking_rubric,itemMarks\)/);
+  assert.match(route, /marking_rubric:item\.marking_rubric/);
+  assert.match(route, /validateAiRubricMark\(raw,rubric,Number\(q\.marks\)\)/);
+  assert.match(route, /marked\.confidence<0\.75/);
+  assert.match(route, /marking='pending_review'/);
+  assert.match(route, /marking_confidence=\$6/);
+  assert.match(route, /marking_details=\$7::jsonb/);
+  assert.match(route, /marking_confidence NULL OR marking_confidence BETWEEN 0 AND 1/);
+  assert.match(markingMigration, /online_exam_responses_marking_confidence_range/);
+  assert.match(markingMigration, /online_exam_responses_marking_details_object/);
 });
