@@ -6,6 +6,7 @@ import { Card, Btn, Input, SectionHeader } from '../components/UI';
 import { ConfirmDialog } from '../components/ConfirmDialog';
 import { Colors, Spacing, Fonts } from '../theme';
 import { useAdminSchool } from '../api/AdminSchoolContext';
+import { useAuth } from '../api/AuthContext';
 
 const GENDERS = ['M', 'F', 'Other'] as const;
 
@@ -19,6 +20,9 @@ const GENDERS = ['M', 'F', 'Other'] as const;
 // same as any other manually-created account in this app.
 export default function AddStudentScreen({ navigation }: any) {
   const { selectedSchoolCode } = useAdminSchool();
+  const { user } = useAuth();
+  const isAdmin = user?.role === 'admin';
+  const effectiveSchoolCode = isAdmin ? selectedSchoolCode : user?.school_code ?? null;
   const [classes, setClasses] = useState<string[]>([]);
   const [classLoading, setClassLoading] = useState(true);
   const [classError, setClassError] = useState('');
@@ -43,19 +47,22 @@ export default function AddStudentScreen({ navigation }: any) {
     setClassError('');
     setClasses([]);
     setClassName('');
-    api.get('/academic/classes', { params: { school_code: selectedSchoolCode ?? undefined } })
+    api.get('/academic/classes', { params: { school_code: effectiveSchoolCode ?? undefined } })
       .then(({ data }) => {
         if (cancelled) return;
         const names = (data.classes ?? []).map((c: any) => c.name);
-        setClasses(names);
-        if (names.length) setClassName(names[0]);
+        const scopedNames = user?.role === 'teacher' && user.assigned_class
+          ? names.filter((name: string) => name === user.assigned_class)
+          : names;
+        setClasses(scopedNames);
+        if (scopedNames.length) setClassName(scopedNames[0]);
       })
       .catch((e: any) => {
         if (!cancelled) setClassError(e?.response?.data?.error ?? 'Could not load classes for this school. Retry before enrolling a student.');
       })
       .finally(() => { if (!cancelled) setClassLoading(false); });
     return () => { cancelled = true; };
-  }, [selectedSchoolCode, classRetry]);
+  }, [effectiveSchoolCode, classRetry, user?.role, user?.assigned_class]);
 
   const validate = () => {
     const e: Record<string, string> = {};
@@ -89,7 +96,7 @@ export default function AddStudentScreen({ navigation }: any) {
       const { data } = await api.post('/students', {
         full_name: fullName.trim(),
         class_name: className,
-        school_code: selectedSchoolCode,
+        school_code: effectiveSchoolCode,
         gender,
         date_of_birth: dob.trim() || undefined,
         admission_number: admissionNumber.trim() || undefined,
@@ -145,6 +152,7 @@ export default function AddStudentScreen({ navigation }: any) {
         <Input label="Admission number (optional)" value={admissionNumber} onChangeText={setAdmissionNumber} placeholder="e.g. STS/2026/041" />
       </Card>
 
+      {isAdmin && <>
       <SectionHeader title="Parent / guardian (optional)" />
       <Card style={{ marginBottom: Spacing.lg }}>
         <Text style={styles.hint}>
@@ -154,6 +162,7 @@ export default function AddStudentScreen({ navigation }: any) {
         <Input label="Parent phone" value={parentPhone} onChangeText={setParentPhone} placeholder="e.g. 08012345678" keyboardType="phone-pad" error={errors.parentPhone} />
         <Input label="Parent email (optional)" value={parentEmail} onChangeText={setParentEmail} placeholder="optional" keyboardType="email-address" autoCapitalize="none" error={errors.parentEmail} />
       </Card>
+      </>}
 
       <Btn label="Enroll Student" onPress={submit} loading={saving} disabled={saving || classLoading || !!classError || classes.length === 0 || !className} />
       <View style={{ height: Spacing.xl }} />
