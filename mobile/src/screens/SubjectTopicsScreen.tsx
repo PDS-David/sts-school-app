@@ -127,10 +127,10 @@ export default function SubjectTopicsScreen({ route, navigation }: any) {
                   <TouchableOpacity key={lesson.id} style={[styles.row, lesson.locked && styles.rowLocked]} activeOpacity={lesson.locked ? 1 : 0.8}
                     disabled={!!lesson.locked}
                     onPress={() => navigation.navigate('Ss1PackageLesson', { lesson })}>
-                    <View style={styles.rowIcon}><Ionicons name={lesson.locked ? 'lock-closed' : 'book-outline'} size={20} color={lesson.locked ? Colors.textSub : Colors.primary} /></View>
+                    <View style={styles.rowIcon}><Ionicons name={lesson.locked ? 'lock-closed' : (lesson.completed ? 'checkmark-circle' : 'book-outline')} size={20} color={lesson.locked ? Colors.textSub : (lesson.completed ? Colors.success : Colors.primary)} /></View>
                     <View style={{ flex: 1 }}>
                       <Text style={styles.rowTitle}>{lesson.title}</Text>
-                      <Text style={styles.rowSub}>{lesson.term} · {lesson.practice_count ?? lesson.practice?.length ?? 0} practice questions{lesson.classroom_verification_pending ? ' · Teacher review pending' : ''}</Text>
+                      <Text style={styles.rowSub}>{lesson.term} · {lesson.practice_count ?? lesson.practice?.length ?? 0} practice questions{lesson.classroom_verification_pending ? ' · Teacher review pending' : ''}{lesson.completed ? ' · Completed' : ''}</Text>
                     </View>
                     <Ionicons name={lesson.locked ? 'lock-closed' : 'chevron-forward'} size={18} color={Colors.textSub} />
                   </TouchableOpacity>
@@ -146,10 +146,10 @@ export default function SubjectTopicsScreen({ route, navigation }: any) {
                   <TouchableOpacity key={lesson.id} style={[styles.row, lesson.locked && styles.rowLocked]} activeOpacity={lesson.locked ? 1 : 0.8}
                     disabled={!!lesson.locked}
                     onPress={() => navigation.navigate('Ss23PackageLesson', { lesson })}>
-                    <View style={styles.rowIcon}><Ionicons name={lesson.locked ? 'lock-closed' : 'book-outline'} size={20} color={lesson.locked ? Colors.textSub : Colors.primary} /></View>
+                    <View style={styles.rowIcon}><Ionicons name={lesson.locked ? 'lock-closed' : (lesson.completed ? 'checkmark-circle' : 'book-outline')} size={20} color={lesson.locked ? Colors.textSub : (lesson.completed ? Colors.success : Colors.primary)} /></View>
                     <View style={{ flex: 1 }}>
                       <Text style={styles.rowTitle}>{lesson.title}</Text>
-                      <Text style={styles.rowSub}>{lesson.term} · Week {lesson.week_label} · {lesson.practice_count ?? 0} practice questions</Text>
+                      <Text style={styles.rowSub}>{lesson.term} · Week {lesson.week_label} · {lesson.practice_count ?? 0} practice questions{lesson.completed ? ' · Completed' : ''}</Text>
                     </View>
                     <Ionicons name={lesson.locked ? 'lock-closed' : 'chevron-forward'} size={18} color={Colors.textSub} />
                   </TouchableOpacity>
@@ -165,7 +165,7 @@ export default function SubjectTopicsScreen({ route, navigation }: any) {
                   <TouchableOpacity key={lesson.id} style={[styles.row, lesson.locked && styles.rowLocked]} activeOpacity={lesson.locked ? 1 : 0.8}
                     disabled={!!lesson.locked}
                     onPress={() => navigation.navigate('Ss23PackageLesson', { lesson })}>
-                    <View style={styles.rowIcon}><Ionicons name={lesson.locked ? 'lock-closed' : 'clipboard-outline'} size={20} color={lesson.locked ? Colors.textSub : Colors.primary} /></View>
+                    <View style={styles.rowIcon}><Ionicons name={lesson.locked ? 'lock-closed' : (lesson.completed ? 'checkmark-circle' : 'clipboard-outline')} size={20} color={lesson.locked ? Colors.textSub : (lesson.completed ? Colors.success : Colors.primary)} /></View>
                     <View style={{ flex: 1 }}>
                       <Text style={styles.rowTitle}>{lesson.title}</Text>
                       <Text style={styles.rowSub}>{lesson.term} · Week {lesson.week_label} · {lesson.practice_count ?? 0} practice questions</Text>
