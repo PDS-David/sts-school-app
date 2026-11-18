@@ -15,7 +15,7 @@ export default function TeacherMoreScreen({ navigation }: any) {
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
-      <AppHeader title="More" onPressBell={() => openNotifications()} />
+      <AppHeader title="More" />
       <ScrollView contentContainerStyle={{ padding: Spacing.md }}>
         <Card style={styles.identity}>
           <View style={styles.bigAvatar}><Text style={styles.bigAvatarText}>{(user?.username?.[0] ?? '?').toUpperCase()}</Text></View>
