@@ -154,6 +154,18 @@ if (!URL_) {
         `INSERT INTO students(school_code, admission_number, full_name, class_name, user_id) VALUES($1,$2,$3,$4,$5) RETURNING id`,
         [TEST_SC, `ZZT2-${tag}`, `T2 TEST ${tag}`, cls, u.rows[0].id]);
       created.studentIds.push(s.rows[0].id);
+      const membership = await query(
+        `INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status)
+         VALUES($1,$2,$2,'active') ON CONFLICT(student_id) DO NOTHING RETURNING student_id`,
+        [s.rows[0].id, cls],
+      );
+      if (membership.rowCount) {
+        await query(
+          `INSERT INTO report_roster_membership_events(student_id,event_type,to_class_name,details)
+           VALUES($1,'enrolled',$2,'{"source":"topic-assets-test-fixture"}'::jsonb)`,
+          [s.rows[0].id, cls],
+        );
+      }
       return signAccess({ id: u.rows[0].id, username: `zz_t2test_${tag}`, role: 'student', school_code: TEST_SC, assigned_class: null, assigned_subject_ids: [] });
     };
     tokenA = await mk('A', 'JSS 3');
