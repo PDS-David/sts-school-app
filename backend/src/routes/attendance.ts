@@ -163,7 +163,15 @@ router.get('/class-records/:student_id/:term_id', async (req, res) => {
     if (!pw.length) return res.status(403).json({ error: 'Not your ward' });
   } else if (user.role === 'teacher') {
     if (!hasPerm(user.role, 'classRecord.read')) return res.status(403).json({ error: 'Permission denied: classRecord.read' });
-    if (student.school_code !== user.school_code) return res.status(403).json({ error: 'Wrong school' });
+    if (!user.school_code || !user.assigned_class || student.school_code !== user.school_code) {
+      return res.status(404).json({ error: 'Class record not found' });
+    }
+    const { rows: membershipRows } = await query(
+      `SELECT 1 FROM report_roster_memberships
+       WHERE student_id=$1 AND class_name=$2 AND status='active'`,
+      [student_id, user.assigned_class],
+    );
+    if (!membershipRows[0]) return res.status(404).json({ error: 'Class record not found' });
   } else if (user.role !== 'admin') {
     return res.status(403).json({ error: 'Access denied' });
   }
@@ -204,14 +212,17 @@ router.get('/class-records', requirePerm('classRecord.read'), async (req, res) =
   }
 
   const { rows } = await query(
-    `SELECT cr.*, s.full_name, s.class_name
+    `SELECT cr.*, s.full_name, COALESCE(rrm.class_name,s.class_name) AS class_name
      FROM class_records cr
      JOIN students s ON s.id = cr.student_id
-     WHERE s.class_name = $1 AND cr.term_id = $2
+     LEFT JOIN report_roster_memberships rrm
+       ON rrm.student_id=s.id AND rrm.status='active'
+     WHERE COALESCE(rrm.class_name,s.class_name) = $1 AND cr.term_id = $2
        AND ($4::boolean OR s.deleted_at IS NULL)
        AND ($3::text IS NULL OR s.school_code = $3)
+       AND ($5::boolean = FALSE OR rrm.student_id IS NOT NULL)
      ORDER BY s.full_name`,
-    [effectiveClass, parsedTermId, user.school_code ?? null, user.role === 'admin'],
+    [effectiveClass, parsedTermId, user.school_code ?? null, user.role === 'admin', user.role === 'teacher'],
   );
   return res.json({ class_records: rows });
 });
@@ -222,14 +233,7 @@ router.put('/class-records', requirePerm('classRecord.write'), async (req, res) 
     student_id: string; term_id: number;
     class_teacher_remark?: string; admin_remark?: string;
   };
-  // admin_remark is the head teacher/principal's field — only an admin
-  // account may set it. The mobile UI already hides this field from
-  // teachers, but that's client-side only; enforce it here too, since a
-  // teacher could otherwise call this endpoint directly and write it anyway
-  // (verified live before this fix).
-  if (admin_remark !== undefined && req.user!.role !== 'admin') {
-    return res.status(403).json({ error: 'Only an admin can set the head teacher/principal remark' });
-  }
+  // The school owner authorizes teachers to edit every report remark field.
   const scopeViolation = await checkTeacherStudentScope(req.user!, student_id, term_id);
   if (scopeViolation) return res.status(scopeViolation.status).json({ error: scopeViolation.error });
 
