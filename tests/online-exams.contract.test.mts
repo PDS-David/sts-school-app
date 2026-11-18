@@ -26,7 +26,7 @@ test('formal exams only use approved rights-cleared question-bank items', () => 
 test('server deadlines, autosave, one-attempt constraint and idempotent submission are present', () => {
   assert.match(migration, /UNIQUE\(exam_id,student_id\)/);
   assert.match(route, /deadline_at/);
-  assert.match(route, /LEAST\(now\+/);
+  assert.match(route, /LEAST\(now\(\)\+/);
   assert.match(route, /online_exam_responses/);
   assert.match(route, /ON CONFLICT\(attempt_id,exam_question_id\) DO UPDATE/);
   assert.match(route, /already_submitted/);
