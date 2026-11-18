@@ -25,9 +25,6 @@ import FrenchListeningScreen from '../screens/FrenchListeningScreen';
 import TermPinRedeemScreen from '../screens/TermPinRedeemScreen';
 import StudyPlanScreen from '../screens/student/StudyPlanScreen';
 import AssessmentsScreen from '../screens/AssessmentsScreen';
-import OnlineExamsScreen from '../screens/OnlineExamsScreen';
-import OnlineExamAttemptScreen from '../screens/OnlineExamAttemptScreen';
-import OnlineExamResultScreen from '../screens/OnlineExamResultScreen';
 import TakeAssessmentScreen from '../screens/TakeAssessmentScreen';
 import MyResultsScreen from '../screens/MyResultsScreen';
 import SessionReportScreen from '../screens/SessionReportScreen';
@@ -75,9 +72,6 @@ function AssessmentsStackNavigator() {
   return (
     <AssessmentsStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
       <AssessmentsStack.Screen name="AssessmentsHome" component={StudentAssessmentsHomeScreen} />
-      <AssessmentsStack.Screen name="OnlineExams" component={OnlineExamsScreen} options={{ headerShown: true, title: 'Formal Online Exams', ...stackScreenOptions }} />
-      <AssessmentsStack.Screen name="OnlineExamAttempt" component={OnlineExamAttemptScreen} options={{ headerShown: true, title: 'Examination', ...stackScreenOptions, gestureEnabled: false }} />
-      <AssessmentsStack.Screen name="OnlineExamResult" component={OnlineExamResultScreen} options={{ headerShown: true, title: 'Examination Result', ...stackScreenOptions }} />
       <AssessmentsStack.Screen name="Assessments" component={AssessmentsScreen} options={{ headerShown: true, title: 'Assessments', ...stackScreenOptions }} />
       <AssessmentsStack.Screen name="TakeAssessment" component={TakeAssessmentScreen} options={{ headerShown: true, title: 'Take Assessment', ...stackScreenOptions }} />
       <AssessmentsStack.Screen name="MyResults" component={MyResultsScreen} options={{ headerShown: true, title: 'My Results', ...stackScreenOptions }} />
