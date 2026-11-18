@@ -111,11 +111,7 @@ router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => 
   const subjectIds = null;
 
   if (user.role === 'teacher' && !className) {
-    return res.json({
-      term: null,
-      summary: { student_count: 0, expected_score_entries: 0, marked_score_entries: 0, pending_score_entries: 0, average_score: null, pass_rate: null, attendance_rate: null, attendance_records: 0, weekly_effort_entries: 0 },
-      subjects: [],
-    });
+    return res.status(403).json({ error: 'Marking overview requires an assigned physical class.' });
   }
 
   const { rows: terms } = await query(
