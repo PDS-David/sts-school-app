@@ -23,7 +23,25 @@ if (!URL_ || !CAP || !existsSync(path.join(CAP, 'original-rows.json'))) {
   const stub = http.createServer((req, res) => { let b = ''; req.on('data', d => b += d); req.on('end', () => {
     const p = String(JSON.parse(b).prompt); prompts.push(p);
     const q = (n: number) => JSON.stringify(Array.from({ length: n }, (_, i) => ({ stem: `Q${i + 1}?`, options: ['A', 'B', 'C', 'D'].map(k => ({ key: k, text: `opt ${k}` })), correct_keys: ['A'], marks: 1 })));
-    const text = /Draft 5 multiple/.test(p) ? q(5) : /Draft 3 multiple/.test(p) ? q(3) : 'AI STUDY NOTES (uncorrected topic)';
+    const lessonJson = (summary: string) => JSON.stringify({
+      title: 'JSS 3 approved Yoruba lesson',
+      introduction: 'This lesson explains the approved Yoruba curriculum topic in clear language and establishes the context learners need before studying its details.',
+      sections: [
+        { heading: 'Meaning and context', content: 'The topic is explained using the supplied approved curriculum material. Learners identify the central idea, understand its context and connect it with relevant examples for this class.' },
+        { heading: 'Application and examples', content: 'Learners apply the concept to examples grounded in the approved source. The explanation stays within the stated objectives and does not introduce unrelated syllabus content.' },
+      ],
+      summary,
+      practice_questions: Array.from({ length: 5 }, (_, i) => ({
+        stem: `Which statement best explains the approved lesson concept in question ${i + 1}?`,
+        options: ['A', 'B', 'C', 'D'].map(key => ({ key, text: `Option ${key} description` })),
+        correct_keys: ['A'],
+        explanation: 'Option A accurately reflects the concept taught in the approved lesson.',
+      })),
+    });
+    const correction = p.includes('[JSS3 DELIVERY CORRECTION]');
+    const text = /Draft 5 multiple/.test(p) ? q(5) : /Draft 3 multiple/.test(p) ? q(3)
+      : lessonJson(correction ? '[JSS3 DELIVERY CORRECTION] Generated lesson recap grounded in the approved replacement lesson.'
+        : 'AI STUDY NOTES (uncorrected topic) Generated lesson recap grounded in the supplied approved topic.');
     res.setHeader('content-type', 'application/json'); res.end(JSON.stringify({ text }));
   }); });
   await new Promise<void>(r => stub.listen(0, '127.0.0.1', r));
@@ -161,7 +179,7 @@ if (!URL_ || !CAP || !existsSync(path.join(CAP, 'original-rows.json'))) {
     await query('UPDATE subjects SET name=$1 WHERE id=$2', ['Mathematics', subjectId]);
     const topic = await mkTopic(`${TAG} ordinary topic`, 'Perfectly ordinary lesson text.'); const legacy = await mkLegacyAssessment(topic, null);
     assert.equal((await api('GET', `/assessments/${legacy}/questions`)).status, 200, 'uncorrected legacy assessment must stay readable');
-    const done = await api('POST', `/topics/${topic}/complete`); assert.equal(done.body.summary, 'AI STUDY NOTES (uncorrected topic)'); assert.equal(done.body.delivery_correction, undefined);
+    const done = await api('POST', `/topics/${topic}/complete`); assert.ok(done.body.summary.startsWith('AI STUDY NOTES (uncorrected topic)')); assert.equal(done.body.delivery_correction, undefined);
     assert.equal((await one('SELECT status FROM assessments WHERE id=$1', [legacy])).status, 'open');
     assert.equal((await one('SELECT generated_assessment_id g FROM topics WHERE id=$1', [topic])).g, legacy);
   });
