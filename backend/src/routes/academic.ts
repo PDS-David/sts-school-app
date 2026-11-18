@@ -38,6 +38,9 @@ router.get('/terms', async (req, res) => {
   const requested = typeof req.query.school_code === 'string' ? req.query.school_code.trim() : undefined;
   const user = req.user!;
   let sc = user.school_code;
+  if (user.role === 'teacher' && (!user.school_code || !user.assigned_class)) {
+    return res.status(403).json({ error: 'Adding a report subject requires an assigned physical class.' });
+  }
   if (user.role === 'admin') {
     if (user.school_code) {
       if (requested !== undefined && requested !== user.school_code) {
@@ -263,7 +266,7 @@ router.get('/subjects', async (req, res) => {
   return res.json({ subjects: rows });
 });
 
-router.post('/subjects', requireRole('admin'), async (req, res) => {
+router.post('/subjects', requireRole('admin', 'teacher'), async (req, res) => {
   const { name, code, school_code } = req.body ?? {};
   const user = req.user!;
   let sc = user.school_code;
