@@ -242,7 +242,10 @@ router.put('/class-records', requirePerm('classRecord.write'), async (req, res) 
   const parsed = schema.safeParse(req.body);
   if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
   const { student_id, term_id, class_teacher_remark, admin_remark } = parsed.data;
-  // The school owner authorizes teachers to edit every report remark field.
+  if (req.user!.role === 'teacher' && admin_remark !== undefined) {
+    return res.status(403).json({ error: 'Only administrators can edit the principal / head teacher remark.' });
+  }
+  // Teachers may edit only the class-teacher remark for their assigned class.
   const scopeViolation = await checkTeacherStudentScope(req.user!, student_id, term_id);
   if (scopeViolation) return res.status(scopeViolation.status).json({ error: scopeViolation.error });
 
