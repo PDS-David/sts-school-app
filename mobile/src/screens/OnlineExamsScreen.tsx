@@ -45,6 +45,7 @@ export default function OnlineExamsScreen({ navigation }: any) {
       <Text style={styles.meta}>Closes: {new Date(item.ends_at).toLocaleString()}</Text>
       {status && <Text style={[styles.status,{color:closed?Colors.success:Colors.primary}]}>Attempt: {status.replace('_',' ')}</Text>}
       <Btn title={status==='in_progress'?'Resume examination':status==='expired'?'Submit saved answers':closed?'Attempt closed':'View instructions and start'} onPress={()=>open(item)} disabled={closed}/>
+      {closed && item.attempt_id ? <Btn title="View result" variant="outline" onPress={()=>navigation.navigate('OnlineExamResult',{attemptId:item.attempt_id})}/> : null}
     </Card>;
   };
   if(loading)return <Loader/>;
