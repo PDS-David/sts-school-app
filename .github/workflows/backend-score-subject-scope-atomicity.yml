@@ -7,7 +7,6 @@ on:
       - "backend/src/routes/scores.ts"
       - "backend/src/utils/grades.ts"
       - "tests/backend-grades.test.mts"
-      - "backend/src/utils/grades.ts"
       - "backend/src/middleware/auth.ts"
       - "backend/src/utils/authClaims.ts"
       - "tests/backend-score-subject-scope-atomicity.integration.test.mts"
@@ -20,6 +19,8 @@ on:
       - "backend/src/middleware/auth.ts"
       - "backend/src/utils/authClaims.ts"
       - "tests/backend-score-subject-scope-atomicity.integration.test.mts"
+      - "backend/src/utils/grades.ts"
+      - "tests/backend-grades.test.mts"
       - ".github/workflows/backend-score-subject-scope-atomicity.yml"
 
 permissions:
