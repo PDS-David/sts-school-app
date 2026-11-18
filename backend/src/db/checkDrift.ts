@@ -134,7 +134,7 @@ async function main() {
     // qualifiers; otherwise REFERENCES public.users would escape the
     // temporary schema and fail (or risk touching public objects).
     const schemaSql = readFileSync(path.resolve(__dirname, '../../schema.sql'), 'utf-8')
-      .replace(/\bpublic\./g, `"${tempSchema}".`);
+      .replace(/\bpublic\.(?!schema_migrations\b)/g, `"${tempSchema}".`);
     await client.query(schemaSql);
 
     console.log('Introspecting expected (throwaway) vs actual (public) schema…\n');
