@@ -1269,6 +1269,9 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
     marks: number;
   }> = [];
 
+  // Read optional objective metadata from the resolved curriculum row without
+  // assuming every legacy topic schema has that column. No schema migration
+  // or student-supplied curriculum identifiers are required for this path.
   const rawObjectives = topic.curriculum_learning_objectives;
   const objectives: string[] = Array.isArray(rawObjectives)
     ? rawObjectives.filter((value: unknown): value is string => typeof value === 'string' && value.trim().length > 0)
