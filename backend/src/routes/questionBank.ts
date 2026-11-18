@@ -10,7 +10,6 @@ import {
 } from '../utils/questionBankValidation.js';
 
 const router = Router();
-const router = Router();
 
 // Subject-teacher review is intentionally separate from global question-bank
 // administration. Teachers can review only subjects assigned to their account;
