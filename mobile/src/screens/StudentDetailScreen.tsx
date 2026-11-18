@@ -24,6 +24,11 @@ export default function StudentDetailScreen({ route, navigation }: any) {
   const [ctRemark,  setCtRemark]  = useState('');
   const [admRemark, setAdmRemark] = useState('');
   const [saving,    setSaving]    = useState(false);
+  const [savingProfile, setSavingProfile] = useState(false);
+  const [editFullName, setEditFullName] = useState('');
+  const [editGender, setEditGender] = useState('');
+  const [editDob, setEditDob] = useState('');
+  const [editAdmissionNumber, setEditAdmissionNumber] = useState('');
 
   // Login / parent linking (admin only)
   const [showLoginPicker,  setShowLoginPicker]  = useState(false);
@@ -90,6 +95,10 @@ export default function StudentDetailScreen({ route, navigation }: any) {
     try {
       const s = await api.get(`/students/${studentId}`);
       setStudent(s.data.student);
+      setEditFullName(s.data.student?.full_name ?? '');
+      setEditGender(s.data.student?.gender ?? '');
+      setEditDob(s.data.student?.date_of_birth ? String(s.data.student.date_of_birth).slice(0, 10) : '');
+      setEditAdmissionNumber(s.data.student?.admission_number ?? '');
       if (s.data.student?.school_code) fetchTerms(s.data.student.school_code);
       await fetchReport(selTermId ?? undefined);
     } catch {
@@ -103,6 +112,28 @@ export default function StudentDetailScreen({ route, navigation }: any) {
 
   useEffect(() => { fetch(); }, [studentId]);
   useEffect(() => { if (isAdmin) fetchTermPins(); }, [studentId]);
+
+  const saveStudentParticulars = async () => {
+    if (savingProfile || !editFullName.trim()) {
+      if (!editFullName.trim()) Alert.alert('Name required', 'Enter the student’s full name.');
+      return;
+    }
+    setSavingProfile(true);
+    try {
+      await api.put(`/students/${studentId}`, {
+        full_name: editFullName.trim(),
+        gender: editGender.trim() || undefined,
+        date_of_birth: editDob.trim() || undefined,
+        admission_number: editAdmissionNumber.trim(),
+      });
+      Alert.alert('Saved', 'Student particulars updated successfully.');
+      fetch();
+    } catch (e: any) {
+      Alert.alert('Error', e?.response?.data?.error ?? 'Could not update student particulars.');
+    } finally {
+      setSavingProfile(false);
+    }
+  };
 
   const saveRemarks = async () => {
     if (!report?.term) { Alert.alert('No active term'); return; }
@@ -225,6 +256,17 @@ export default function StudentDetailScreen({ route, navigation }: any) {
       style={styles.container}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); fetch(); }} />}
     >
+      {isTeacher && (
+        <Card style={{ margin: Spacing.md }}>
+          <SectionHeader title="Edit Student Particulars" />
+          <Input label="Full name" value={editFullName} onChangeText={setEditFullName} placeholder="Student's full name" />
+          <Input label="Gender (M, F or Other)" value={editGender} onChangeText={setEditGender} placeholder="M, F or Other" />
+          <Input label="Date of birth (YYYY-MM-DD)" value={editDob} onChangeText={setEditDob} placeholder="YYYY-MM-DD" />
+          <Input label="Admission number" value={editAdmissionNumber} onChangeText={setEditAdmissionNumber} placeholder="Admission number" />
+          <Btn label={savingProfile ? 'Saving…' : 'Save Student Particulars'} onPress={saveStudentParticulars} loading={savingProfile} />
+        </Card>
+      )}
+
       {/* Profile header */}
       <View style={styles.profileHeader}>
         <View style={styles.avatar}>
