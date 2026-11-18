@@ -343,11 +343,20 @@ router.post('/', requirePerm('grades.write'), async (req, res) => {
 // checkTeacherStudentScope) since editing an existing student's own-school/
 // own-class rule is identical to the one already enforced for deleting one.
 router.put('/:id', requirePerm('grades.write'), async (req, res) => {
+  const editSchema = z.object({
+    full_name: z.string().min(2).max(200).optional(),
+    gender: z.enum(['M', 'F', 'Other']).optional(),
+    date_of_birth: z.string().optional(),
+    admission_number: z.string().max(100).optional(),
+    class_name: z.string().optional(),
+  }).refine(d => Object.keys(d).length > 0, 'At least one student field must be supplied');
+  const parsed = editSchema.safeParse(req.body);
+  if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
   const scopeError = await checkTeacherDeleteScope(req.user!, req.params.id);
   if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
 
-  const { full_name, gender, date_of_birth, admission_number } = req.body;
-  const class_name = req.user!.role === 'teacher' ? undefined : req.body?.class_name;
+  const { full_name, gender, date_of_birth, admission_number } = parsed.data;
+  const class_name = req.user!.role === 'teacher' ? undefined : parsed.data.class_name;
   // A teacher may edit a physical student record but cannot move it outside
   // the teacher's assigned physical class or school.
   if (req.user!.role === 'teacher') {
