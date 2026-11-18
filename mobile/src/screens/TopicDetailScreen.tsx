@@ -152,6 +152,8 @@ export default function TopicDetailScreen({ route, navigation }: any) {
   const [topic, setTopic]           = useState(initialTopic);
   const [loading, setLoading]       = useState(false);
   const [practice, setPractice]     = useState<any[]>([]);
+  const [generatedLesson, setGeneratedLesson] = useState<any | null>(null);
+  const [completed, setCompleted] = useState(!!initialTopic.completed);
   const [revealed, setRevealed]     = useState<Record<number, boolean>>({});
   const [assessmentStatus, setAssessmentStatus] = useState<string | null>(null);
   const [note, setNote]             = useState<string | undefined>(undefined);
@@ -190,25 +192,53 @@ export default function TopicDetailScreen({ route, navigation }: any) {
     return () => { alive = false; };
   }, [initialTopic.id, assetAttempt]);
 
-  const complete = async () => {
+  const loadLesson = async () => {
+    if (topic.locked || loading) return;
     setLoading(true);
+    setNote(undefined);
     try {
-      const { data } = await api.post(`/learning/topics/${topic.id}/complete`);
-      setTopic((t: any) => ({ ...t, summary: data.summary }));
-      setSummaryIsFallback(!!data.summary_is_fallback);
-      setPractice(data.practice_questions ?? []);
-      setAssessmentStatus(data.assessment_status ?? null);
+      const { data } = await api.post(`/learning/topics/${topic.id}/lesson`);
+      if (!data?.lesson) {
+        setNote(data?.note ?? 'This curriculum lesson is temporarily unavailable pending source review.');
+        return;
+      }
+      setGeneratedLesson(data.lesson);
+      setPractice(data.lesson.practice_questions ?? []);
+      setRevealed({});
+      setSummaryIsFallback(false);
       setNote(data.note);
     } catch (e: any) {
       const msg = e?.response?.data?.error;
       setInfoDialog({
-        title: 'Could not load this topic',
-        message: msg ?? "You're offline — getting a new topic's study notes needs a connection. Try again once you're back online.",
+        title: 'Could not generate this lesson',
+        message: msg ?? "You're offline — generating this curriculum lesson needs a connection. Try again once you're back online.",
       });
     } finally {
       setLoading(false);
     }
   };
+
+  const markComplete = async () => {
+    if (completed || !generatedLesson) return;
+    setLoading(true);
+    try {
+      await api.post(`/learning/topics/${topic.id}/progress`);
+      setCompleted(true);
+      setTopic((current: any) => ({ ...current, completed: true }));
+      setNote('Your lesson has been marked as complete.');
+    } catch (e: any) {
+      setInfoDialog({
+        title: 'Could not update your progress',
+        message: e?.response?.data?.error ?? 'Your lesson is available, but progress could not be saved. Please retry.',
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (!topic.locked) void loadLesson();
+  }, [topic.id, topic.locked]);
 
   const takeAssessment = () => {
     // TakeAssessment lives in the Assessments tab's own stack, not the
@@ -230,19 +260,22 @@ export default function TopicDetailScreen({ route, navigation }: any) {
         <SectionHeader title={topic.title} />
         {topic.description ? <Text style={styles.desc}>{topic.description}</Text> : null}
 
-        {topic.summary ? (
+        {generatedLesson ? (
           <View style={{ marginTop: Spacing.sm }}>
-            <Text style={styles.summaryLabel}>Study Notes</Text>
-            {summaryIsFallback && (
-              <View style={styles.fallbackBox}>
-                <Ionicons name="information-circle-outline" size={16} color={Colors.textSub} />
-                <Text style={styles.fallbackText}>
-                  We couldn't generate a polished lesson right now, so here's the school's
-                  original curriculum note for this topic instead. Try again later for the
-                  full write-up.
-                </Text>
+            <Text style={styles.summaryLabel}>AI-generated curriculum lesson</Text>
+            <Text style={styles.summaryText}>{generatedLesson.introduction}</Text>
+            {generatedLesson.sections.map((section: any, index: number) => (
+              <View key={index} style={{ marginTop: Spacing.md }}>
+                <Text style={styles.summaryLabel}>{section.heading}</Text>
+                <Text style={styles.summaryText}>{section.content}</Text>
               </View>
-            )}
+            ))}
+            <Text style={[styles.summaryLabel, { marginTop: Spacing.md }]}>Lesson recap</Text>
+            <Text style={styles.summaryText}>{generatedLesson.summary}</Text>
+          </View>
+        ) : topic.summary ? (
+          <View style={{ marginTop: Spacing.sm }}>
+            <Text style={styles.summaryLabel}>Previously generated study notes</Text>
             <Text style={styles.summaryText}>{topic.summary}</Text>
           </View>
         ) : null}
@@ -263,11 +296,21 @@ export default function TopicDetailScreen({ route, navigation }: any) {
             {l.credits.map(c => <Text key={c.key} style={styles.attrText} accessibilityLabel={c.accessibilityLabel}>{c.text}</Text>)}
           </View>); })}
         <Btn
-            label={loading ? 'Loading…' : topic.summary ? 'Get Practice Questions' : 'Get Study Notes'}
-            onPress={complete}
+          label={loading ? 'Generating lesson…' : generatedLesson ? 'Regenerate AI Lesson' : 'Generate AI Lesson'}
+          onPress={loadLesson}
+          loading={loading}
+          style={{ marginTop: Spacing.sm }}
+        />
+        {generatedLesson ? (
+          <Btn
+            label={completed ? 'Topic completed' : loading ? 'Saving progress…' : 'Mark topic complete'}
+            onPress={markComplete}
             loading={loading}
+            disabled={completed || loading}
+            color={completed ? Colors.success : undefined}
             style={{ marginTop: Spacing.sm }}
           />
+        ) : null}
 
         {note && (
           <View style={styles.noteBox}>
