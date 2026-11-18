@@ -601,7 +601,7 @@ router.get('/report/:student_id', async (req, res) => {
   for (const [cn, count] of snapshotCounts) {
     if (count > bestCount) { termClass = cn; bestCount = count; }
   }
-  const { rows: classTotals } = await query(
+  const { rows: classTotals } = isSubjectTeacher ? { rows: [] as Array<{ student_id: string; grand_total: number }> } : await query(
     `SELECT s3.student_id, SUM(s3.total) AS grand_total
      FROM scores s3
      JOIN students st3 ON st3.id = s3.student_id
@@ -617,7 +617,7 @@ router.get('/report/:student_id', async (req, res) => {
   // This includes roster members who have not yet received a score, excludes
   // unrostered online-only students, and keeps promoted students attached to
   // the class in which their historical scores were recorded.
-  const { rows: classSizeRows } = await query(
+  const { rows: classSizeRows } = isSubjectTeacher ? { rows: [] as Array<{ class_size: number }> } : await query(
     `SELECT COUNT(*)::int AS class_size
        FROM students st
       WHERE st.school_code=$2 AND st.deleted_at IS NULL
@@ -633,14 +633,14 @@ router.get('/report/:student_id', async (req, res) => {
         )`,
     [termClass, student.school_code, resolvedTermId],
   );
-  const classSize = Number(classSizeRows[0]?.class_size ?? 0);
+  const classSize = isSubjectTeacher ? null : Number(classSizeRows[0]?.class_size ?? 0);
   const myTotal = classTotals.find((r) => r.student_id === student.id)?.grand_total;
   const overallPosition = myTotal !== undefined
     ? classTotals.filter((r) => Number(r.grand_total) > Number(myTotal)).length + 1
     : null;
 
   const reportStudent = user.role === 'teacher'
-    ? { id: student.id, full_name: student.full_name, admission_number: student.admission_number, class_name: student.class_name, school_code: student.school_code }
+    ? { id: student.id, full_name: student.full_name, admission_number: student.admission_number, class_name: student.class_name }
     : student;
 
   return res.json({
@@ -653,7 +653,7 @@ router.get('/report/:student_id', async (req, res) => {
       total_score: n ? totalScore : null,
       average: n ? +(totalScore / n).toFixed(2) : null,
       subject_count: n,
-      overall_position: overallPosition,
+      overall_position: isSubjectTeacher ? null : overallPosition,
       class_size: classSize,
     },
   });
@@ -761,7 +761,7 @@ router.get('/session-report/:student_id', async (req, res) => {
     terms_present: terms.length,
     is_complete_session: terms.length === 3 && subjects.length > 0 && subjects.every(s => s.terms_recorded === 3),
     subjects,
-    attendance: { days_present, days_opened },
+    attendance: user.role === 'teacher' && !user.assigned_class ? { days_present: null, days_opened: null } : { days_present, days_opened },
     summary: { grand_total, grand_average, subject_count: subjects.length },
   });
 });
