@@ -178,7 +178,7 @@ router.get('/exams',requireRole('student'),async(req,res)=>{
   const {rows}=await query(`
     SELECT e.id,e.title,e.subject_name,e.class_name,e.board,e.examination_type,e.exam_year,e.instructions,
            e.duration_minutes,e.starts_at,e.ends_at,
-           a.id AS attempt_id,a.status AS attempt_status,a.deadline_at,a.submitted_at
+           a.id AS attempt_id,a.status AS attempt_status,a.deadline_at,a.submitted_at,a.score
       FROM online_exams e
       JOIN online_exam_candidates c ON c.exam_id=e.id AND c.student_id=$1
       LEFT JOIN online_exam_attempts a ON a.exam_id=e.id AND a.student_id=$1
@@ -223,11 +223,7 @@ router.post('/exams/:examId/start',requireRole('student'),async(req,res)=>{
         VALUES($1,$2,$3,'attempt_started')
       `,[exam.id,attempt.id,req.user!.id]);
     }
-    if(['submitted','under_review','expired'].includes(attempt.status)) return {status:409,error:'This examination attempt is already closed.',attempt_id:attempt.id};
-    if(new Date(attempt.deadline_at).getTime()<=Date.now()){
-      await client.query("UPDATE online_exam_attempts SET status='expired' WHERE id=$1",[attempt.id]);
-      return {status:409,error:'The server-side examination deadline has passed.',attempt_id:attempt.id};
-    }
+    if(['submitted','under_review'].includes(attempt.status)) return {status:409,error:'This examination attempt is already closed.',attempt_id:attempt.id};
     const {rows: sections}=await client.query(
       'SELECT * FROM online_exam_sections WHERE exam_id=$1 ORDER BY position',[exam.id]);
     const {rows: questions}=await client.query(`
@@ -257,7 +253,7 @@ router.get('/attempts/:attemptId',requireRole('student'),async(req,res)=>{
   `,[req.params.attemptId,student.id]);
   const attempt=rows[0];
   if(!attempt) return res.status(404).json({error:'Attempt not found.'});
-  if(attempt.status!=='in_progress') return res.status(409).json({error:'This attempt is no longer in progress.',status:attempt.status});
+  if(!['in_progress','expired'].includes(attempt.status)) return res.status(409).json({error:'This attempt is no longer in progress.',status:attempt.status});
   const {rows: qs}=await query(`
     SELECT q.*,s.title AS section_title FROM online_exam_questions q
     JOIN online_exam_sections s ON s.id=q.section_id WHERE q.exam_id=$1 ORDER BY s.position,q.position
