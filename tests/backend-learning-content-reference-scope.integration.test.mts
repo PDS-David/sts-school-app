@@ -243,7 +243,9 @@ test('learning content writes and reads reject cross-school subject, term and qu
       headers: { Authorization: `Bearer ${token}` },
     });
     const materialsResponse = await get('/materials', teacher.token);
-    const materialsPayload = await materialsResponse.json() as { materials: Array<{ id: number }> };
+    assert.equal(materialsResponse.status, 403, 'teacher accounts cannot browse learning materials');
+    const adminMaterialsResponse = await get('/materials', admin.token);
+    const materialsPayload = await adminMaterialsResponse.json() as { materials: Array<{ id: number }> };
     assert.ok(materialsPayload.materials.some(item => item.id === validMaterialPayload.material.id));
     assert.ok(!materialsPayload.materials.some(item => item.id === Number(legacyMaterial[0].id)));
 
