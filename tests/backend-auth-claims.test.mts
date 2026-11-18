@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { hydrateAuthUser } from '../backend/src/utils/authClaims.ts';
 import type { AuthUser } from '../backend/src/types/index.js';
+import { resolveStudentRosterScope } from '../backend/src/utils/studentRosterScope.ts';
 
 const staleAdminToken: AuthUser = {
   id: 'user-1',
@@ -117,4 +118,17 @@ test('authorized admin scope follows explicit school selection while retaining s
   });
   assert.equal(current.school_code, 'primary');
   assert.equal(current.assigned_school_code, 'secondary');
+});
+
+test('multi-school admin cannot load an unselected roster and can select either school', () => {
+  const admin: AuthUser = {
+    id: 'user-1', username: 'davidadmin', role: 'admin', school_code: null,
+    assigned_class: null, assigned_subject_ids: [], can_manage_all_schools: true,
+  };
+  const missing = resolveStudentRosterScope(admin, {});
+  assert.equal('status' in missing && missing.status === 400, true);
+  const primary = resolveStudentRosterScope(admin, { school_code: 'primary' });
+  assert.deepEqual(primary, { schoolCode: 'primary', className: null });
+  const secondary = resolveStudentRosterScope(admin, { school_code: 'secondary' });
+  assert.deepEqual(secondary, { schoolCode: 'secondary', className: null });
 });
