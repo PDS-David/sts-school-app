@@ -31,7 +31,6 @@ export const permissions: Record<Role, string[]> = {
     'grades.read', 'grades.write', 'grades.export',
     'attendance.read', 'attendance.write',
     'classRecord.read', 'classRecord.write',
-    'weeklyEfforts.read', 'weeklyEfforts.write', 'weeklyEfforts.feedback',
   ],
   admin: ['*'],   // full access — including questions.*, assessments.*,
                   // aiResults.read, and aiGrading.override, none of which
