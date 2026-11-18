@@ -192,6 +192,13 @@ router.get('/report-roster/removed', requireRole('admin'), async (req, res) => {
 router.get('/:id', requirePerm('students.read'), async (req, res) => {
   const user = req.user!;
   let teacherReportClassName: string | null = null;
+  // Administrators can inspect physical-class records even before roster
+  // enrollment is complete, but online-only learning profiles stay out of
+  // the physical student-report endpoint.
+  if (user.role === 'admin') {
+    const { rows: targetRows } = await query('SELECT class_name FROM students WHERE id=$1', [req.params.id]);
+    if (!targetRows[0] || !targetRows[0].class_name) return res.status(404).json({ error: 'Student not found' });
+  }
   if (user.role === 'teacher') {
     const allowedClasses = user.assigned_class ? [user.assigned_class] : (user.assigned_class_names ?? []);
     if (!user.school_code || !allowedClasses.length) {
