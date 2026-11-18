@@ -453,10 +453,10 @@ export default function StudentDetailScreen({ route, navigation }: any) {
       {term && (
         <Card>
           <SectionHeader title={`${term.name} — ${term.academic_year}`} />
-          <RowItem label="Days Opened"   value={att?.days_opened ?? 0} />
-          <RowItem label="Days Present"  value={att?.days_present ?? 0} />
-          <RowItem label="Total Score"   value={summary?.total_score ?? 0} />
-          <RowItem label="Average"       value={`${summary?.average ?? 0}%`} />
+          <RowItem label="Days Opened"   value={Number(att?.days_opened) > 0 ? att.days_opened : '—'} />
+          <RowItem label="Days Present"  value={att?.days_present ?? '—'} />
+          <RowItem label="Total Score"   value={summary?.total_score ?? 'Not entered'} />
+          <RowItem label="Average"       value={summary?.average == null ? 'Not entered' : `${summary.average}%`} />
           <RowItem label="Subjects"      value={summary?.subject_count ?? 0} />
         </Card>
       )}

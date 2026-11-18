@@ -165,11 +165,11 @@ export default function MyResultsScreen({ route, navigation }: any) {
       <Card>
         <SectionHeader title={term?.name ?? ''} />
         <RowItem label="Academic Year"  value={term?.academic_year ?? '—'} />
-        <RowItem label="Days Opened"    value={attendance?.days_opened ?? 0} />
-        <RowItem label="Days Present"   value={attendance?.days_present ?? 0} />
+        <RowItem label="Days Opened"    value={Number(attendance?.days_opened) > 0 ? attendance.days_opened : '—'} />
+        <RowItem label="Days Present"   value={attendance?.days_present ?? '—'} />
         <RowItem label="Subjects Taken" value={summary.subject_count} />
-        <RowItem label="Total Score"    value={summary.total_score} />
-        <RowItem label="Average"        value={`${summary.average}%`} />
+        <RowItem label="Total Score"    value={summary.total_score ?? 'Not entered'} />
+        <RowItem label="Average"        value={summary.average == null ? 'Not entered' : `${summary.average}%`} />
       </Card>
 
       {/* Session collation — 1st + 2nd + 3rd term totalled together */}

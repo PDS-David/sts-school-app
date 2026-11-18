@@ -15,8 +15,9 @@ function display(value: unknown, fallback = '—'): string {
 }
 
 function formatNumber(value: unknown, digits = 1): string {
+  if (value === undefined || value === null || value === '') return '—';
   const number = Number(value);
-  if (!Number.isFinite(number)) return '0';
+  if (!Number.isFinite(number)) return '—';
   return number.toFixed(digits);
 }
 
@@ -67,14 +68,18 @@ export function renderTermReportHtml(
     : { ca1: 15, ca2: 15, exam: 70 };
 
   const daysOpened = Math.max(0, Number(attendance.days_opened) || 0);
-  const daysPresent = Math.max(0, Number(attendance.days_present) || 0);
-  const daysAbsent = Math.max(0, daysOpened - daysPresent);
-  const attendanceRate = daysOpened > 0
-    ? (daysPresent / daysOpened) * 100
-    : 0;
-  const attendanceRateLabel = Number.isInteger(attendanceRate)
-    ? String(attendanceRate)
-    : attendanceRate.toFixed(1);
+  const hasAttendance = attendance.days_present !== undefined
+    && attendance.days_present !== null && attendance.days_present !== '';
+  const daysPresent = hasAttendance ? Math.max(0, Number(attendance.days_present) || 0) : null;
+  const daysAbsent = hasAttendance && daysOpened > 0
+    ? Math.max(0, daysOpened - (daysPresent ?? 0))
+    : null;
+  const attendanceRate = hasAttendance && daysOpened > 0
+    ? ((daysPresent ?? 0) / daysOpened) * 100
+    : null;
+  const attendanceRateLabel = attendanceRate === null
+    ? '—'
+    : Number.isInteger(attendanceRate) ? String(attendanceRate) : attendanceRate.toFixed(1);
 
   const rows = scores.map((score: any) => `
     <tr>
@@ -188,10 +193,10 @@ export function renderTermReportHtml(
   </section>
 
   <section class="attendance">
-    <div><span class="label">DAYS SCHOOL OPENED</span><span class="value">${daysOpened}</span></div>
-    <div><span class="label">DAYS PRESENT</span><span class="value">${daysPresent}</span></div>
-    <div><span class="label">DAYS ABSENT</span><span class="value">${daysAbsent}</span></div>
-    <div><span class="label">ATTENDANCE RATE</span><span class="value">${attendanceRateLabel}%</span></div>
+    <div><span class="label">DAYS SCHOOL OPENED</span><span class="value">${daysOpened > 0 ? daysOpened : "—"}</span></div>
+    <div><span class="label">DAYS PRESENT</span><span class="value">${display(daysPresent)}</span></div>
+    <div><span class="label">DAYS ABSENT</span><span class="value">${display(daysAbsent)}</span></div>
+    <div><span class="label">ATTENDANCE RATE</span><span class="value">${attendanceRateLabel}${attendanceRate === null ? "" : "%"}</span></div>
   </section>
 
   <table class="subjects">

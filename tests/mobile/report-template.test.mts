@@ -137,3 +137,19 @@ test('missing remarks are explicitly represented without fabricating content', (
 
   assert.equal((html.match(/No remark entered/g) ?? []).length, 2);
 });
+
+
+test('empty term reports distinguish unentered marks and attendance from genuine zeroes', () => {
+  const data = report('primary');
+  data.scores = [];
+  data.summary = { total_score: null, average: null, subject_count: 0 };
+  data.attendance = { days_opened: 0, days_present: null };
+  const html = renderTermReportHtml(data, primaryBrand, '');
+
+  assert.ok(html.includes('No scores entered yet for this term.'));
+  assert.ok(html.includes('TOTAL SCORE'));
+  assert.ok(html.includes('AVERAGE'));
+  assert.ok(html.includes('<span class="value">—</span>'));
+  assert.ok(!html.includes('0.0%'), 'an unentered attendance record must not be rendered as 0%');
+  assert.ok(!html.includes('>0.0</span>'), 'an empty report must not fabricate a zero average');
+});

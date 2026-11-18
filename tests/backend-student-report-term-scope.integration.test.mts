@@ -89,6 +89,14 @@ test('individual student score and class-record reports reject a term from anoth
       { headers },
     );
     assert.equal(scoreValid.status, 200);
+    const emptyReport = await scoreValid.json() as {
+      summary: { total_score: number | null; average: number | null; subject_count: number };
+      attendance: { days_present: number | null; days_opened: number };
+    };
+    assert.equal(emptyReport.summary.total_score, null, 'no score rows must not be represented as a zero total');
+    assert.equal(emptyReport.summary.average, null, 'no score rows must not be represented as a zero average');
+    assert.equal(emptyReport.summary.subject_count, 0);
+    assert.equal(emptyReport.attendance.days_present, null, 'missing attendance must remain distinguishable from zero days present');
 
     const recordMismatch = await fetch(
       `http://127.0.0.1:${port}/attendance/class-records/${studentId}/${secondaryTermId}`,
