@@ -69,33 +69,25 @@ router.get('/', requirePerm('students.read'), async (req, res) => {
   const effectiveSchool = scope.schoolCode;
   const effectiveClass = scope.className;
 
-  // Teachers browse only active physical report-roster memberships. Their
-  // online student-account class is deliberately not used as report-roster
-  // membership or as an authorization fallback.
-  const teacherRosterJoin = user.role === 'teacher'
-    ? ' JOIN report_roster_memberships rrm ON rrm.student_id=s.id AND rrm.status=\'active\''
-    : '';
+  // Reporting lists are always membership-based. Online-only learning
+  // profiles never appear in the physical student-report roster.
+  const reportRosterJoin = " JOIN report_roster_memberships rrm ON rrm.student_id=s.id AND rrm.status='active'";
   const teacherPersonalFields = user.role === 'teacher' ? '' : 's.gender,s.date_of_birth,';
   let sql = `SELECT s.id,s.admission_number,s.full_name,
-                    ${user.role === 'teacher' ? 'rrm.class_name' : 's.class_name'} AS class_name,
+                    rrm.class_name AS class_name,
                     ${teacherPersonalFields}s.school_code,s.created_at
-             FROM students s${teacherRosterJoin}
+             FROM students s${reportRosterJoin}
              WHERE s.deleted_at IS NULL`;
   const params: unknown[] = [];
 
   if (effectiveSchool) { params.push(effectiveSchool); sql += ` AND s.school_code=$${params.length}`; }
   if (effectiveClass) {
     params.push(effectiveClass);
-    sql += user.role === 'teacher'
-      ? ` AND rrm.class_name=$${params.length}`
-      : ` AND s.class_name=$${params.length}`;
+    sql += ` AND rrm.class_name=$${params.length}`;
   }
-  if (user.role === 'teacher') sql += ' AND rrm.status=\'active\'';
   if (search) { params.push(`%${search}%`); sql += ` AND s.full_name ILIKE $${params.length}`; }
 
-  sql += user.role === 'teacher'
-    ? ' ORDER BY rrm.class_name, s.full_name'
-    : ' ORDER BY s.class_name, s.full_name';
+  sql += ' ORDER BY rrm.class_name, s.full_name';
   const { rows } = await query(sql, params);
   return res.json({ students: rows });
 });
@@ -110,8 +102,9 @@ router.get('/wards', async (req, res) => {
     return res.status(403).json({ error: 'Only parent accounts have wards' });
   }
   const { rows } = await query(
-    `SELECT s.id, s.admission_number, s.full_name, s.class_name, s.school_code
+    `SELECT s.id, s.admission_number, s.full_name, rrm.class_name, s.school_code
      FROM students s
+     JOIN report_roster_memberships rrm ON rrm.student_id=s.id
      JOIN parent_wards pw ON pw.student_id = s.id
      WHERE pw.parent_id = $1 AND s.deleted_at IS NULL
      ORDER BY s.full_name`,
