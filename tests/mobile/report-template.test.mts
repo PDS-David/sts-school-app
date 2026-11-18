@@ -18,8 +18,8 @@ const secondaryBrand = {
   shortName: 'Model College',
   motto: 'We all shall be taught of God. John 6:45',
   logo: 1,
-  address: 'Olosan Road, Alakia',
-  phone: '08033269042',
+  address: 'Olosan Road, Alakia, Ibadan',
+  phone: '+2348107551000',
 };
 
 function report(schoolCode: 'primary' | 'secondary') {
