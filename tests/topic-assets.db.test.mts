@@ -79,29 +79,20 @@ if (!URL_) {
     await query('DELETE FROM assessments WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
     await query('DELETE FROM teacher_subjects WHERE user_id IN (SELECT id FROM users WHERE school_code = ANY($1) OR username LIKE $2)', [[TEST_SC, TEST_SC_B], 'zz_t2test_%']);
     await query('DELETE FROM subjects WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
-    // Disposable topic-assets fixtures only: schema replay may create
-    // append-only roster backfill events. Disable user triggers briefly so
-    // the isolated test database can remove its own synthetic rows.
-    await query('BEGIN');
-    try {
-      await query('ALTER TABLE report_roster_membership_events DISABLE TRIGGER USER');
-      await query(
-        `DELETE FROM report_roster_membership_events e
-         USING students s WHERE e.student_id=s.id AND s.school_code=ANY($1)`,
-        [[TEST_SC, TEST_SC_B]],
-      );
-      await query(
-        `DELETE FROM report_roster_memberships m
-         USING students s WHERE m.student_id=s.id AND s.school_code=ANY($1)`,
-        [[TEST_SC, TEST_SC_B]],
-      );
-      await query('DELETE FROM students WHERE school_code=ANY($1)', [[TEST_SC, TEST_SC_B]]);
-      await query('ALTER TABLE report_roster_membership_events ENABLE TRIGGER USER');
-      await query('COMMIT');
-    } catch (error) {
-      await query('ROLLBACK');
-      throw error;
-    }
+    // Preserve the synthetic students and append-only roster history. The
+    // test asserts that deleting unrelated learning content never erases it.
+    await query(
+      `DELETE FROM report_roster_memberships m
+       USING students s
+       WHERE m.student_id=s.id AND s.school_code=ANY($1)
+         AND NOT EXISTS (SELECT 1 FROM report_roster_membership_events e WHERE e.student_id=s.id)`,
+      [[TEST_SC, TEST_SC_B]],
+    );
+    await query(
+      `DELETE FROM students s WHERE s.school_code=ANY($1)
+       AND NOT EXISTS (SELECT 1 FROM report_roster_membership_events e WHERE e.student_id=s.id)`,
+      [[TEST_SC, TEST_SC_B]],
+    );
     await query('DELETE FROM users WHERE school_code = ANY($1) OR username LIKE $2', [[TEST_SC, TEST_SC_B], 'zz_t2test_%']);
     await query(
       `DELETE FROM schools sc WHERE sc.code=ANY($1)
