@@ -65,3 +65,17 @@ test('teacher without assigned physical class cannot browse a school-wide roster
   assert.deepEqual(resolveStudentRosterScope(teacher, {}), expected);
   assert.deepEqual(resolveStudentRosterScope(teacher, { class_name: 'Primary4' }), expected);
 });
+
+
+test('report ranking uses physical roster placement for legacy score rows and counts the whole class', async () => {
+  const { readFileSync } = await import('node:fs');
+  const { resolve } = await import('node:path');
+  const source = readFileSync(resolve(process.cwd(), 'backend/src/routes/scores.ts'), 'utf8');
+
+  assert.equal((source.match(/LEFT JOIN report_roster_memberships rrm2/g) ?? []).length, 3,
+    'class average, highest score and subject position must use the physical roster');
+  assert.match(source, /COALESCE\\(s2\\.class_name, rrm2\\.class_name, st2\\.class_name\\)/);
+  assert.match(source, /COALESCE\\(s3\\.class_name, rrm3\\.class_name, st3\\.class_name\\)/);
+  assert.match(source, /COUNT\\(\\*\\)::int AS class_size/);
+  assert.match(source, /most common score-class snapshot/);
+});
