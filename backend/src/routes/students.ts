@@ -484,7 +484,7 @@ router.post('/:id/promotion', requireRole('admin', 'teacher'), async (req, res) 
         `INSERT INTO report_roster_membership_events
            (student_id,event_type,to_class_name,actor_id,details)
          VALUES($1,'reinstated',$2,$3,$4::jsonb)`,
-        [membership.id, membership.report_class_name, user.id, JSON.stringify({ reason: 'administrator_decision' })],
+        [membership.id, membership.report_class_name, user.id, JSON.stringify({ reason: user.role === 'teacher' ? 'teacher_decision' : 'administrator_decision', actor_role: user.role })],
       );
       await auditInTransaction(client, user, 'reinstate_report_roster_membership', 'student', membership.id,
         'student reinstated in physical report roster',
@@ -553,7 +553,7 @@ router.post('/:id/promotion', requireRole('admin', 'teacher'), async (req, res) 
       `INSERT INTO report_roster_membership_events
          (student_id,event_type,from_class_name,to_class_name,actor_id,details)
        VALUES($1,'class_changed',$2,$3,$4,$5::jsonb)`,
-      [membership.id, fromClass, toClass, user.id, JSON.stringify({ action })],
+      [membership.id, fromClass, toClass, user.id, JSON.stringify({ action, actor_role: user.role })],
     );
     await auditInTransaction(client, user, action === 'promote' ? 'promote_report_roster_student' : 'demote_report_roster_student',
       'student', membership.id, 'physical report-roster class placement changed',
