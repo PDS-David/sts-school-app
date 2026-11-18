@@ -231,7 +231,9 @@ router.post('/users', async (req, res) => {
     ? classTeacherUsername(String(assigned_class))
     : String(username).trim().toLowerCase();
 
-  const exists = role === 'teacher'\n    ? await query('SELECT id FROM users WHERE role=\'teacher\' AND school_code=$1 AND lower(username)=lower($2)', [schoolCodeN, uname])\n    : await query('SELECT id FROM users WHERE lower(username)=lower($1)', [uname]);
+  const exists = role === 'teacher'
+    ? await query('SELECT id FROM users WHERE role=\'teacher\' AND school_code=$1 AND lower(username)=lower($2)', [schoolCodeN, uname])
+    : await query('SELECT id FROM users WHERE lower(username)=lower($1)', [uname]);
   if (exists.rows.length) {
     return res.status(409).json({
       error: isClassTeacher
@@ -251,8 +253,8 @@ router.post('/users', async (req, res) => {
   // 'teacher' only; every other role still goes through the Task C
   // activation-code flow below unchanged.
   if (role === 'teacher') {
-    if (!initial_password || String(initial_password).length < 8) {
-      return res.status(400).json({ error: 'initial_password is required for a teacher and must be at least 8 characters' });
+    if (typeof initial_password !== 'string' || !/^\d{4}$/.test(initial_password)) {
+      return res.status(400).json({ error: 'Teacher initial_password must be exactly four numeric digits.' });
     }
 
     let subjectIds: number[];
@@ -279,7 +281,11 @@ router.post('/users', async (req, res) => {
     let createdUser;
     try {
       createdUser = await withTransaction(async (client) => {
-        await validateTeacherAssignments(client, schoolCodeN, assignedClassN, subjectIds);\n        if (!assignedClassN && classNames.length) {\n          const { rows: classRows } = await client.query('SELECT name FROM classes WHERE school_code=$1 AND name=ANY($2::text[])', [schoolCodeN, classNames]);\n          if (classRows.length !== classNames.length) throw new TeacherAssignmentValidationError('Every subject-teacher class must belong to the selected school.');\n        }
+        await validateTeacherAssignments(client, schoolCodeN, assignedClassN, subjectIds);
+        if (!assignedClassN && classNames.length) {
+          const { rows: classRows } = await client.query('SELECT name FROM classes WHERE school_code=$1 AND name=ANY($2::text[])', [schoolCodeN, classNames]);
+          if (classRows.length !== classNames.length) throw new TeacherAssignmentValidationError('Every subject-teacher class must belong to the selected school.');
+        }
         const { rows } = await client.query(
           `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,assigned_class_names,
              phone,email,must_change_pw,access_expires_at,activation_code)
