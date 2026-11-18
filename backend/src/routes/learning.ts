@@ -22,7 +22,7 @@ import { resolveSs1LiteratureDelivery, retireStaleSs1LiteratureCache } from '../
 import { resolveSs1MathematicsDelivery, safeSs1MathematicsTopic, mathematicsAssetDeliverable, mathematicsAssetsForTopic, readMathematicsAsset, retireStaleSs1MathematicsCache } from '../utils/ss1MathematicsDeliveryCorrection.js';
 import { resolveAgriculturalScienceDelivery, resolveAgriculturalScienceSupplement, resolveAgriculturalScienceSourceProjection, safeAgriculturalScienceTopic, retireStaleAgriculturalScienceCache, retireStaleAgriculturalScienceSupplementCache, retireStaleAgriculturalScienceSourceCache, agriculturalScienceAssessmentDeliverable, agriculturalScienceWithdrawnAssessmentIds, agriculturalScienceAssetDeliverable } from '../utils/ss1AgriculturalScienceDeliveryCorrection.js';
 import { resolveEnglishDelivery, safeEnglishTopic, safeEnglishSupplementTopic, retireStaleEnglishCache, englishAssessmentDeliverable, englishWithdrawnAssessmentIds } from '../utils/ss1EnglishDeliveryCorrection.js';
-import { listStudentSs1Lessons, getStudentSs1Lesson, listStudentSs1Assets, readStudentSs1Asset, studentSs1LessonPreview } from '../db/ss1/studentDelivery.js';
+import { listStudentSs1Lessons, getStudentSs1Lesson, listStudentSs1Assets, readStudentSs1Asset, studentSs1LessonPreview, safeStudentSs1Lesson } from '../db/ss1/studentDelivery.js';
 import { listStudentSs23Units, listStudentSs23Subjects, getStudentSs23Unit, listStudentSs23Assets, readStudentSs23Asset, studentSs23UnitPreview, safeStudentSs23Unit, type Ss23ClassName } from '../db/ss23/studentDelivery.js';
 import { resolvePrimary4SourceDelivery, safePrimary4Topic, primary4WithdrawnAssessmentIds, primary4AssessmentDeliverable, retireStalePrimary4Cache } from '../utils/primary4Delivery.js';
 
@@ -229,7 +229,7 @@ router.get('/ss1/lessons', requirePerm('topics.read'), async (req, res) => {
     // practice questions/answers, source provenance or asset URLs.
     if (locked) return { ...studentSs1LessonPreview(lesson, true), assets: [] };
     return {
-      ...lesson,
+      ...safeStudentSs1Lesson(lesson),
       ...studentSs1LessonPreview(lesson, false),
       assets: listStudentSs1Assets(lesson.id).map(asset => ({
         id: asset.id,
@@ -254,7 +254,7 @@ router.get('/ss1/lessons/:lessonId', requirePerm('topics.read'), async (req, res
   }
   return res.json({
     lesson: {
-      ...lesson,
+      ...safeStudentSs1Lesson(lesson),
       assets: listStudentSs1Assets(lesson.id).map(asset => ({
         id: asset.id,
         alt: asset.alt,
