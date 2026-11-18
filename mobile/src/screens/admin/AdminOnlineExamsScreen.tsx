@@ -216,7 +216,9 @@ export default function AdminOnlineExamsScreen() {
               {responses.map((response,index)=>(
                 <View key={response.question_id} style={styles.response}>
                   <Text style={styles.questionText}>{index+1}. {response.stem}</Text>
-                  <Text style={styles.meta}>Candidate answer: {typeof response.response==='string'?response.response:JSON.stringify(response.response??'No response')}</Text>
+                  <Text style={styles.meta}>Candidate answer: {response.options?.find((option:any)=>option.key===(response.response?.key??response.response))?.text??(typeof response.response==='string'?response.response:JSON.stringify(response.response??'No response'))}</Text>
+                  {response.correct_answer?<Text style={styles.meta}>Expected answer: {typeof response.correct_answer==='string'?response.correct_answer:JSON.stringify(response.correct_answer)}</Text>:null}
+                  {(response.marking_rubric??[]).map((criterion:any)=><Text key={criterion.id} style={styles.meta}>Rubric — {criterion.description}: {criterion.max_marks} marks</Text>)}
                   <Text style={styles.meta}>Marking: {response.marking_status??'unanswered'} · Awarded: {response.awarded_marks??'—'} / {response.marks}</Text>
                   {response.feedback?<Text style={styles.meta}>Feedback: {response.feedback}</Text>:null}
                   {response.marking_confidence!=null?<Text style={styles.meta}>AI confidence: {Math.round(Number(response.marking_confidence)*100)}%</Text>:null}
