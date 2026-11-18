@@ -142,7 +142,8 @@ test('unlocked SS1 student lessons omit teacher answers, marking keys and source
   assert.deepEqual(delivered.objectives, lesson.objectives);
   assert.equal(delivered.body, lesson.body);
   assert.equal('practice' in delivered, false);
-  assert.equal('provenance' in delivered, false);
+  assert.deepEqual(delivered.provenance, lesson.provenance.map(source => ({ title: source.title, locator: source.locator, ...(source.url ? { url: source.url } : {}), rights: source.rights, attribution: source.attribution })));
+  assert.equal('state' in delivered.provenance[0], false);
   assert.equal('state' in delivered, false);
   assert.equal('body_sha256' in delivered, false);
   assert.equal('package_status' in delivered, false);
