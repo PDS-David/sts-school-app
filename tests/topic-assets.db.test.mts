@@ -30,6 +30,9 @@ if (!URL_) {
   assert.ok(['localhost', '127.0.0.1', '::1', '[::1]'].includes(host), `refusing non-local database host: ${host}`);
   process.env.DATABASE_URL = URL_;
   process.env.NODE_ENV = 'development';
+  // These cases explicitly exercise the restricted sequence policy.
+  process.env.FREE_LAUNCH_MODE = 'false';
+  process.env.CURRICULUM_SEQUENCE_ENFORCED = 'true';
   process.env.TERM_PIN_ENFORCED = 'false';
 
   const TEST_RUN = randomUUID().replaceAll('-', '').slice(0, 10);
