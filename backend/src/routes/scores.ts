@@ -258,12 +258,12 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
     params.push(user.school_code); sql += ` AND s.school_code=$${params.length}`;
     if (user.assigned_class) {
       params.push(user.assigned_class);
-      sql += ` AND rrm.class_name=${params.length} AND rrm.status='active'`;
+      sql += ` AND rrm.class_name=$${params.length} AND rrm.status='active'`;
     } else {
       const allowedClasses = user.assigned_class_names ?? [];
       if (!allowedClasses.length || !user.assigned_subject_ids.length) return res.json({ scores: [] });
       params.push(allowedClasses);
-      sql += ` AND rrm.class_name=ANY(${params.length}::text[]) AND rrm.status='active'`;
+      sql += ` AND rrm.class_name=ANY($${params.length}::text[]) AND rrm.status='active'`;
       params.push(user.assigned_subject_ids);
       sql += ` AND sc.subject_id=ANY(${params.length}::int[])`;
     }
