@@ -37,7 +37,7 @@ const loginAttemptLimiter = rateLimit({
 
 // ── POST /auth/login ──────────────────────────────────────────────────────────
 router.post('/login', loginAttemptLimiter, async (req, res) => {
-  const { username, password } = req.body as { username?: string; password?: string };
+  const { username, password, school_code } = req.body as { username?: string; password?: string; school_code?: string };
   if (typeof username !== 'string' || !username.trim() || username.length > 128 ||
       typeof password !== 'string' || !password) {
     return res.status(400).json({ error: 'A valid username (maximum 128 characters) and password are required' });
@@ -47,8 +47,8 @@ router.post('/login', loginAttemptLimiter, async (req, res) => {
     `SELECT id,username,password_hash,role,school_code,
             assigned_class,is_active,must_change_pw,access_expires_at,
             revocation_reason,must_set_security_question,pending_admin_review
-     FROM users WHERE username = $1`,
-    [username.trim().toLowerCase()],
+     FROM users WHERE lower(username) = lower($1)\n       AND (role <> 'teacher' OR school_code = $2)`,
+    [username.trim(), typeof school_code === 'string' ? school_code.trim() : null],
   );
 
   const user = rows[0];
