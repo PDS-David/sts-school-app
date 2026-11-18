@@ -20,6 +20,7 @@ Run from the repository root:
 8. The runner refuses to stamp an existing application database that has no migration baseline. Do not use `--fresh` on an existing production database as a shortcut. Existing databases require the owner-approved OPS-05 schema-drift review before explicit baseline adoption.
 9. `0007_curriculum_generated_lessons.sql` stores validated AI teaching lessons and practice separately from topic completion and formal assessments; keep `backend/schema.sql` in sync and never place practice answer keys in the formal assessment bank.
 10. `0008_learning_access_settings.sql` adds one global-admin-controlled access policy row. Defaults preserve free launch; it is not school-scoped. Existing databases must apply it through the normal reviewed migration process before the admin screen can change policy. Environment variables remain emergency overrides.
+11. `0009_student_curriculum_lesson_progress.sql` stores SS1/SS2/SS3 package-lesson completion by student and stable lesson key. It is separate from numeric canonical topic completion and physical-class reporting.
 7. `--status` is read-only. It does not create the ledger or alter schema.
 
 ## New database setup
