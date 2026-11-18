@@ -17,7 +17,7 @@ export default function OnlineExamResultScreen({route,navigation}:any){
   },[attemptId]);
   useEffect(()=>{load();},[load]);
   if(loading)return <Loader/>;
-  if(!data)return <View style={styles.container}><Text style={styles.error}>{error}</Text><Btn title="Retry" onPress={load}/></View>;
+  if(!data)return <View style={styles.container}><Text style={styles.error}>{error}</Text><Btn label="Retry" onPress={load}/></View>;
   const a=data.attempt;
   return <ScrollView style={styles.container} contentContainerStyle={{paddingBottom:Spacing.xl}}>
     <Card style={styles.summary}>
@@ -35,7 +35,7 @@ export default function OnlineExamResultScreen({route,navigation}:any){
       {r.feedback?<Text style={styles.feedback}>{r.feedback}</Text>:null}
       {r.marking_status==='pending_review'?<Text style={styles.notice}>Awaiting examiner review</Text>:null}
     </Card>)}
-    <Btn title="Back to examinations" onPress={()=>navigation.navigate('OnlineExams')}/>
+    <Btn label="Back to examinations" onPress={()=>navigation.navigate('OnlineExams')}/>
   </ScrollView>;
 }
 const styles=StyleSheet.create({
