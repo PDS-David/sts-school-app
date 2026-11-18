@@ -36,8 +36,9 @@ export const permissions: Record<Role, string[]> = {
   // Teachers use the school app only to generate reports for their
   // assigned physical class. Report data is returned by the scoped report
   // endpoints; no standalone grade, attendance, messaging, learning-content,
-  // AI, term-management or student-write permissions are granted.
-  teacher: ['students.read'],
+  // AI, term-management, grade-entry, attendance or student-write permissions are granted.
+  // classRecord.write is limited by the route to the class-teacher remark field.
+  teacher: ['students.read', 'classRecord.write'],
   admin: ['*'],   // full access — including questions.*, assessments.*,
                   // aiResults.read, and aiGrading.override, none of which
                   // are granted to any other role.
