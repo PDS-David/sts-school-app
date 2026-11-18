@@ -1,11 +1,23 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 
 const route = await readFile(new URL('../backend/src/routes/onlineExams.ts', import.meta.url), 'utf8');
 const migration = await readFile(new URL('../backend/migrations/0014_formal_online_examinations.sql', import.meta.url), 'utf8');
 const mobileList = await readFile(new URL('../mobile/src/screens/OnlineExamsScreen.tsx', import.meta.url), 'utf8');
 const mobileAttempt = await readFile(new URL('../mobile/src/screens/OnlineExamAttemptScreen.tsx', import.meta.url), 'utf8');
+
+
+test('numbered database migrations remain contiguous for the production migration runner', async () => {
+  const directory = new URL('../backend/migrations/', import.meta.url);
+  const files = (await readdir(directory)).filter(name => name.endsWith('.sql')).sort();
+  assert.ok(files.length > 0, 'migration directory must not be empty');
+  files.forEach((name, index) => {
+    assert.match(name, /^\\d{4}_[a-z0-9_-]+\\.sql$/);
+    assert.equal(name.slice(0, 4), String(index + 1).padStart(4, '0'),
+      `migration sequence gap at ${name}; expected ${String(index + 1).padStart(4, '0')}`);
+  });
+});
 
 test('formal online exam APIs enforce candidate ownership and class eligibility', () => {
   assert.match(route, /requireRole\('student'\)/);
