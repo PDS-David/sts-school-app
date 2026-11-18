@@ -1,8 +1,10 @@
 import { Router } from 'express';
-import { randomUUID } from 'node:crypto';
+import { randomUUID, createHash } from 'node:crypto';
 import { requireAuth, requireRole } from '../middleware/auth.js';
 import { query, withTransaction } from '../db/pool.js';
 import { generateJSON } from '../utils/ai.js';
+import { listStudentSs1Lessons } from '../db/ss1/studentDelivery.js';
+import { listStudentSs23Units } from '../db/ss23/studentDelivery.js';
 
 const router = Router();
 router.use(requireAuth);
@@ -19,6 +21,20 @@ function isoDate(value: unknown): Date | null {
   const d = new Date(value);
   return Number.isNaN(d.getTime()) ? null : d;
 }
+function ss1LessonKey(lesson:any):string {
+  const fingerprint=lesson.body_sha256??createHash('sha256').update(String(lesson.body??'')).digest('hex');
+  return 'ss1:'+createHash('sha256').update(['SS 1',lesson.canonical_subject,lesson.term,String(lesson.id),fingerprint,JSON.stringify(lesson.objectives??[])].join('\\0')).digest('hex');
+}
+function ss23LessonKey(unit:any):string {
+  const fingerprint=unit.body_sha256??createHash('sha256').update(String(unit.body??'')).digest('hex');
+  return 'ss23:'+createHash('sha256').update([unit.class_name,unit.subject,unit.term,String(unit.id),fingerprint,JSON.stringify(unit.objectives??[])].join('\\0')).digest('hex');
+}
+function parseLessonLocator(locator:unknown):any|null {
+  if(typeof locator!=='string') return null;
+  if(locator.startsWith('school-topic:')) return {kind:'school_topic',topic_id:Number(locator.slice('school-topic:'.length))};
+  try { const value=JSON.parse(locator); return value&&typeof value==='object'?value:null; } catch { return null; }
+}
+
 function publicQuestion(row: any) {
   const q = row.question_snapshot;
   return {
@@ -128,6 +144,97 @@ router.post('/admin/exams/generate-drafts',requireRole('admin'),async(req,res)=>
     console.error('[online-exams] question draft persistence failed',error);
     return res.status(500).json({error:'Could not save generated examination-question drafts.'});
   }
+});
+
+router.post('/admin/exams/generate-package-drafts',requireRole('admin'),async(req,res)=>{
+  const schoolCode=schoolForAdmin(req.user);
+  const body=req.body??{};
+  const lessonIds=body.lesson_ids;
+  if(!schoolCode) return res.status(400).json({error:'Select a school before generating examination questions.'});
+  if(!BOARDS.has(body.board)||!['SS 1','SS 2','SS 3'].includes(body.class_name)||
+     typeof body.subject_name!=='string'||!body.subject_name.trim()||
+     !Array.isArray(lessonIds)||lessonIds.length<1||lessonIds.length>12||
+     !lessonIds.every((id:any)=>typeof id==='string'&&id.length>0&&id.length<=200)||
+     new Set(lessonIds).size!==lessonIds.length){
+    return res.status(400).json({error:'Provide a supported SS1–SS3 class, board, subject and 1–12 unique package lesson IDs.'});
+  }
+  const lessons=body.class_name==='SS 1'
+    ? listStudentSs1Lessons(body.subject_name).filter((lesson:any)=>lessonIds.includes(lesson.id))
+    : listStudentSs23Units(body.class_name,body.subject_name).filter((lesson:any)=>lessonIds.includes(lesson.id));
+  if(lessons.length!==lessonIds.length) return res.status(409).json({error:'One or more lessons are not in an implemented, student-deliverable syllabus package for this class and subject.'});
+  const candidates=await query('SELECT id FROM students WHERE school_code=$1 AND class_name=$2 AND deleted_at IS NULL',[schoolCode,body.class_name]);
+  if(!candidates.rows.length) return res.status(409).json({error:'No active candidates are enrolled in this class.'});
+  const candidateIds=candidates.rows.map((r:any)=>r.id);
+  const lessonKeys=lessons.map((lesson:any)=>body.class_name==='SS 1'?ss1LessonKey(lesson):ss23LessonKey(lesson));
+  const {rows: progress}=await query(`
+    SELECT COUNT(DISTINCT (student_id,lesson_key))::int AS completed_pairs
+      FROM student_curriculum_lesson_progress
+     WHERE student_id=ANY($1::uuid[]) AND lesson_key=ANY($2::text[]) AND class_name=$3
+  `,[candidateIds,lessonKeys,body.class_name]);
+  if(Number(progress[0]?.completed_pairs)!==candidateIds.length*lessonKeys.length){
+    return res.status(409).json({error:'Every selected package lesson must be completed by every currently enrolled candidate before exam questions can be generated.'});
+  }
+  const {rows: sourceRows}=await query(`
+    SELECT id,source_name FROM question_bank_sources
+     WHERE board='GENERAL' AND access_method='original_generated'
+       AND rights_status='original_generated' AND is_active=true ORDER BY created_at LIMIT 1
+  `);
+  if(!sourceRows[0]) return res.status(409).json({error:'The registered original-generated question source is unavailable.'});
+  const drafts:any[]=[];
+  try{
+    for(let i=0;i<lessons.length;i++){
+      const lesson=lessons[i];
+      const contentText=String(lesson.body??'').trim();
+      const objectives=Array.isArray(lesson.objectives)?lesson.objectives:[];
+      if(contentText.length<80||!objectives.length) throw new Error('A selected syllabus lesson has insufficient approved teaching content or learning objectives.');
+      const prompt=`Create 3 original ${body.board} examination-standard multiple-choice questions for ${body.class_name} ${body.subject_name}. Use ONLY the approved lesson text and objectives below. Do not introduce other syllabus topics, general knowledge or copied past-paper wording. Four plausible options, one correct answer, age-appropriate and unambiguous.\nLesson: ${lesson.title}\nObjectives: ${JSON.stringify(objectives)}\nLesson text:\n${contentText.slice(0,14000)}\nReturn JSON {"questions":[{"stem":"...","options":[{"key":"A","text":"..."},{"key":"B","text":"..."},{"key":"C","text":"..."},{"key":"D","text":"..."}],"correct_key":"A","explanation":"...","marks":1}]}`;
+      const result:any=await generateJSON(prompt,'generate-questions',{userId:req.user!.id,role:req.user!.role});
+      if(!Array.isArray(result?.questions)||result.questions.length!==3) throw new Error('AI returned an incomplete question set.');
+      for(const q of result.questions){
+        if(!q||typeof q.stem!=='string'||q.stem.trim().length<12||
+           !Array.isArray(q.options)||q.options.length!==4||
+           !q.options.every((o:any)=>o&&typeof o.key==='string'&&typeof o.text==='string'&&o.text.trim())||
+           !q.options.some((o:any)=>o.key===q.correct_key)||
+           typeof q.explanation!=='string'||q.explanation.trim().length<10||
+           !Number.isFinite(Number(q.marks))||Number(q.marks)<=0||Number(q.marks)>10)
+          throw new Error('Generated question failed answer/options/marks validation.');
+        drafts.push({lesson,lessonKey:lessonKeys[i],q});
+      }
+    }
+  }catch(error:any){return res.status(502).json({error:error?.message??'Could not generate questions from the selected package lessons.'});}
+  try{
+    const saved=await withTransaction(async client=>{
+      const subjectName=body.subject_name.trim();
+      let {rows: subjects}=await client.query('SELECT id FROM question_bank_subjects WHERE name=$1',[subjectName]);
+      if(!subjects[0]){
+        const code=subjectName.toUpperCase().replace(/[^A-Z0-9]+/g,'_').replace(/^_|_$/g,'').slice(0,35)||'SUBJECT';
+        await client.query('INSERT INTO question_bank_subjects(code,name) VALUES($1,$2) ON CONFLICT(code) DO NOTHING',[code,subjectName]);
+        ({rows:subjects}=await client.query('SELECT id FROM question_bank_subjects WHERE name=$1',[subjectName]));
+        if(!subjects[0]) return {error:'Question-bank subject code collision requires admin taxonomy reconciliation.'};
+      }
+      const ids:string[]=[];
+      for(const item of drafts){
+        const lesson=item.lesson;
+        const slug=String(lesson.title).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,100)||'package-lesson';
+        let {rows: topics}=await client.query('SELECT id FROM question_bank_topics WHERE subject_id=$1 AND slug=$2',[subjects[0].id,slug]);
+        if(!topics[0]) ({rows:topics}=await client.query('INSERT INTO question_bank_topics(subject_id,slug,name,description) VALUES($1,$2,$3,$4) RETURNING id',
+          [subjects[0].id,slug,lesson.title,lesson.body.slice(0,1000)]));
+        const locator=JSON.stringify({kind:'package_lesson',class_name:body.class_name,lesson_key:item.lessonKey,lesson_id:lesson.id,
+          lesson_sources:lesson.provenance??[]});
+        const {rows: inserted}=await client.query(`
+          INSERT INTO question_bank_questions(board,exam_year,subject_id,paper,question_number,question_type,stem,options,correct_answer,explanation,marks,topic_id,source_id,source_locator,content_origin,rights_status,review_status,created_by)
+          VALUES($1,NULL,$2,'Original practice — not a past paper',$3,'mcq',$4,$5::jsonb,$6::jsonb,$7,$8,$9,$10,$11,'ai_generated','original_generated','draft',$12)
+          RETURNING id
+        `,[body.board,subjects[0].id,'AI-GEN-'+randomUUID().slice(0,8).toUpperCase(),item.q.stem.trim(),
+          JSON.stringify(item.q.options),JSON.stringify({key:item.q.correct_key}),item.q.explanation.trim(),Number(item.q.marks),
+          topics[0].id,sourceRows[0].id,locator,req.user!.id]);
+        ids.push(inserted[0].id);
+      }
+      return {draft_question_ids:ids,count:ids.length,review_status:'draft',source:sourceRows[0].source_name};
+    });
+    if('error' in saved) return res.status(409).json({error:saved.error});
+    return res.status(201).json({...saved,message:'Original questions are saved as drafts and must be subject-approved before use.'});
+  }catch(error:any){console.error('[online-exams] package question draft save failed',error);return res.status(500).json({error:'Could not save generated package examination drafts.'});}
 });
 
 router.post('/admin/exams', requireRole('admin'), async (req, res) => {
