@@ -92,6 +92,21 @@ A representative topic in each supported class pathway must demonstrate:
 - locked or out-of-scope content cannot be generated or retrieved;
 - existing assessment answer confidentiality remains intact.
 
+## Implementation update — 18 November 2026
+
+The first implementation pass has now been pushed directly to `master`:
+
+- `POST /learning/topics/:id/lesson` resolves the authenticated student's topic, school, class, subject, term, approved learning objectives and source-corrected teaching material. It generates and returns the full validated lesson and practice set without inserting a topic-completion record or creating formal assessment/question-bank rows.
+- `POST /learning/topics/:id/progress` records completion separately after the learner has studied the generated lesson. It repeats school/class and configured sequence checks.
+- The mobile `TopicDetailScreen` requests the AI lesson on topic open, renders the generated introduction, teaching sections, recap and practice questions, and exposes a separate “Mark topic complete” action.
+- SS1 package lessons and SS2/SS3 package units use the same generation service and shared cache. The SS3 route passes an explicit exam-preparation mode so it revises established learning rather than creating new instructional syllabus content.
+- The shared generator strictly validates lesson structure and practice answer keys. Brainee remains a separate tutor/chat experience.
+- `curriculum_generated_lessons` is an additive shared cache keyed by canonical topic/package identity and the SHA-256 fingerprint of the exact approved generation context. Changed objectives/source invalidate the cache. A missing cache table degrades to uncached generation.
+- Migration `0007_curriculum_generated_lessons.sql` and fresh-install `backend/schema.sql` are in sync. The migration has **not** been applied to production by this code change; until the approved production migration workflow applies it, generation works without persistent caching.
+- The old `POST /topics/:id/complete` route remains for backward compatibility with existing clients. The updated student topic screen no longer calls it.
+
+The implementation preserves school/class access, source correction and withholding checks, learner-safe projections, formal assessment separation, and configurable sequence/term gates. The physical teacher-reporting system remains outside this work.
+
 ## Current conclusion
 
-The code already has an AI model hub and a partial topic-based summary/practice workflow. It does **not** yet implement the full intended AI curriculum lesson-generation experience consistently across the student topic flow and SS1/SS2/SS3 package screens. This is an implementation gap, not a change to the product plan.
+The AI curriculum lesson-generation path is now connected to the canonical topic screen and the SS1/SS2/SS3 package screens. Remaining verification is to complete the new master CI runs, apply migration 0007 only through the approved production migration process, and exercise a representative live topic/package with the configured AI provider. This is an implementation of the original product plan, not a change to it.
