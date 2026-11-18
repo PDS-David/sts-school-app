@@ -67,6 +67,8 @@ export default function TeacherQuestionReviewScreen() {
               )):null}
               <Text style={styles.answer}>Expected answer: {typeof question.correct_answer==='string'?question.correct_answer:JSON.stringify(question.correct_answer)}</Text>
               <Text style={styles.meta}>Mark value: {question.marks} · Rights: {question.rights_status} · Source: {question.source_name}</Text>
+              {question.source_url?<Text style={styles.meta}>Source URL: {question.source_url}</Text>:null}
+              {question.rights_evidence?<Text style={styles.meta}>Reuse-rights evidence: {question.rights_evidence}</Text>:null}
               <Text style={styles.explanation}>Marking explanation: {question.explanation}</Text>
               {question.my_decision?<Text style={styles.previous}>Your previous decision: {question.my_decision}. {question.my_notes}</Text>:null}
               <TextInput
