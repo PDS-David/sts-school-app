@@ -21,6 +21,14 @@ test('PIN enforcement is explicitly opt-in, preserving free launch access', () =
   assert.match(s, /!termPinEnforced\(\) \|\| !!pinRows\[0\]/);
 });
 
+test('free launch defers student expiry/review gates but retains identity safeguards', () => {
+  const auth = read('backend/src/middleware/auth.ts');
+  assert.match(auth, /const freeLaunchMode = \(\) => process\.env\.FREE_LAUNCH_MODE !== 'false'/);
+  assert.match(auth, /!\(freeLaunchMode\(\) && dbUser\.role === 'student'\) && dbUser\.access_expires_at/);
+  assert.match(auth, /!\(freeLaunchMode\(\) && dbUser\.role === 'student'\) && dbUser\.pending_admin_review/);
+  assert.match(auth, /if \(dbUser\.student_deleted\)/);
+  assert.match(auth, /if \(!dbUser \|\| !dbUser\.is_active\)/);
+});
 test('AI curriculum lesson generation and progress completion are separate actions', () => {
   const s = read('mobile/src/screens/TopicDetailScreen.tsx');
   assert.match(s, /Generate AI Lesson/);
