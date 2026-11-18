@@ -80,6 +80,15 @@ export function safeStudentSs1Lesson(lesson: StudentSs1Lesson) {
     subject_slug: lesson.subject_slug,
     canonical_subject: lesson.canonical_subject,
     classroom_verification_pending: lesson.classroom_verification_pending,
+    // Keep the attribution required for student-facing licensed material,
+    // but omit internal approval state and package source-control metadata.
+    provenance: lesson.provenance.map(source => ({
+      title: source.title,
+      locator: source.locator,
+      ...(source.url ? { url: source.url } : {}),
+      rights: source.rights,
+      attribution: source.attribution,
+    })),
   };
 }
 
