@@ -43,7 +43,9 @@ const EXCLUDED_FILES = new Set([
   'PRY 3 HOME ECONS 2ND TERM.docx',
   'PRY 3 HOME ECONS 2ND TERM_1.docx',
   // Anonymous source overlaps the retained, clearly identified Primary 5 CCA
-  // First-Term source; do not let the anonymous copy duplicate its lesson.
+  // First-Term source and contains damaged/non-curriculum material. The supplied
+  // archive decodes its basename as this Unicode alias; exclude it explicitly.
+  'ⁿ.docx',
   'み.docx',
   'Γü┐.docx',
 ]);
@@ -79,7 +81,7 @@ export function isPrimarySourceExcluded(basename: string, sourceIdentity = ''): 
   // extracted source folder is an extraction/nested-archive artifact.
   const normalizedSource = sourceIdentity.replace(/\\/g, '/');
   if (
-    normalizedSource.includes('/BASIC FIVE/1st Term Basic 5/')
+    /(?:^|\/)BASIC FIVE\/1st Term Basic 5\//i.test(normalizedSource)
     && /\.docx?$/i.test(basename)
   ) {
     const verifiedPrimary5FirstTermFiles = new Set([
