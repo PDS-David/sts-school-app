@@ -81,3 +81,22 @@ test('SS1 student lesson endpoints use a safe projection instead of serializing 
   const projection = delivery.slice(start, end);
   assert.doesNotMatch(projection, /practice:|provenance:|state:|body_sha256:/);
 });
+
+test('global learning access policy is persisted, global-admin-only and audited', () => {
+  const admin = read('backend/src/routes/admin.ts');
+  const auth = read('backend/src/middleware/auth.ts');
+  const migration = read('backend/migrations/0008_learning_access_settings.sql');
+  const schema = read('backend/schema.sql');
+  assert.match(admin, /router\.get\('\/learning-access-settings', requireGlobalAdmin/);
+  assert.match(admin, /router\.put\('\/learning-access-settings', requireGlobalAdmin/);
+  assert.match(admin, /auditInTransaction\(/);
+  assert.match(admin, /Object\.keys\(body\)\.some\(key => !keys\.includes\(key\)\)/);
+  assert.match(auth, /FROM public\.learning_access_settings WHERE id=1/);
+  assert.match(auth, /error\?\.code === '42P01'/);
+  assert.match(migration, /free_launch_mode\s+BOOLEAN NOT NULL DEFAULT TRUE/);
+  assert.match(migration, /term_pin_enforced\s+BOOLEAN NOT NULL DEFAULT FALSE/);
+  assert.match(migration, /curriculum_sequence_enforced\s+BOOLEAN NOT NULL DEFAULT FALSE/);
+  assert.match(schema, /CREATE TABLE IF NOT EXISTS public\.learning_access_settings/);
+  assert.match(read('backend/src/routes/learning.ts'), /curriculumSequenceEnforced\(req\.learningAccessPolicy\)/);
+  assert.match(read('backend/src/routes/learning.ts'), /termPinEnforced\(req\.learningAccessPolicy\)/);
+});
