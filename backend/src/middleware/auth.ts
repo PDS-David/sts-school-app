@@ -4,9 +4,23 @@ import { hasPerm } from '../utils/rbac.js';
 import { query } from '../db/pool.js';
 import { hydrateAuthUser } from '../utils/authClaims.js';
 import type { Role } from '../types/index.js';
+import { resolveLearningAccessPolicy } from '../utils/learningAccessPolicy.js';
 
-// Free launch is the default: commercial expiry/review gates resume only when explicitly disabled.
-const freeLaunchMode = () => process.env.FREE_LAUNCH_MODE !== 'false';
+
+async function readLearningAccessPolicy() {
+  try {
+    const { rows } = await query(
+      `SELECT free_launch_mode, term_pin_enforced, curriculum_sequence_enforced
+         FROM public.learning_access_settings WHERE id=1`,
+    );
+    return resolveLearningAccessPolicy(rows[0] ?? null);
+  } catch (error: any) {
+    // Existing installations remain usable until the additive 0008 migration
+    // is applied. Environment flags/defaults preserve the prior behaviour.
+    if (error?.code === '42P01') return resolveLearningAccessPolicy(null);
+    throw error;
+  }
+}
 
 export async function requireAuth(req: Request, res: Response, next: NextFunction) {
   const header = req.headers.authorization;
@@ -40,6 +54,7 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
      FROM users u WHERE u.id=$1`, [user.id],
   );
   const dbUser = rows[0];
+  req.learningAccessPolicy = await readLearningAccessPolicy();
   if (!dbUser || !dbUser.is_active) {
     return res.status(401).json({
       error: dbUser?.revocation_reason
@@ -47,7 +62,7 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
         : 'Account is deactivated. Contact the school admin.',
     });
   }
-  if (!(freeLaunchMode() && dbUser.role === 'student') && dbUser.access_expires_at && new Date(dbUser.access_expires_at).getTime() <= Date.now()) {
+  if (!(req.learningAccessPolicy.freeLaunchMode && dbUser.role === 'student') && dbUser.access_expires_at && new Date(dbUser.access_expires_at).getTime() <= Date.now()) {
     return res.status(401).json({
       error: dbUser.revocation_reason
         ? `Your access period has ended: ${dbUser.revocation_reason}. Contact the school admin to reactivate your account.`
@@ -58,7 +73,7 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
   if (dbUser.student_deleted) {
     return res.status(401).json({ error: 'Your student record is no longer active. Contact the school admin.' });
   }
-  if (!(freeLaunchMode() && dbUser.role === 'student') && dbUser.pending_admin_review && req.baseUrl !== '/auth') {
+  if (!(req.learningAccessPolicy.freeLaunchMode && dbUser.role === 'student') && dbUser.pending_admin_review && req.baseUrl !== '/auth') {
     return res.status(403).json({ error: 'Your account is awaiting admin approval.', code: 'PENDING_APPROVAL' });
   }
 
