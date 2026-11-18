@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { z } from 'zod';
 import { query } from '../db/pool.js';
 import { saveAttendanceBulk } from '../utils/attendanceWrites.js';
 import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
@@ -153,7 +154,7 @@ router.get('/class-records/:student_id/:term_id', async (req, res) => {
 
   const { rows: stRows } = await query('SELECT * FROM students WHERE id=$1', [student_id]);
   const student = stRows[0];
-  if (!student) return res.status(404).json({ error: 'Student not found' });
+  if (!student || (user.role !== 'admin' && student.deleted_at)) return res.status(404).json({ error: 'Student not found' });
 
   if (user.role === 'student') {
     if (student.user_id !== user.id) return res.status(403).json({ error: 'Access denied' });
@@ -231,10 +232,16 @@ router.get('/class-records', requirePerm('classRecord.read'), async (req, res) =
 
 // ── PUT /class-records  (teacher/admin remarks) ───────────────────────────────
 router.put('/class-records', requirePerm('classRecord.write'), async (req, res) => {
-  const { student_id, term_id, class_teacher_remark, admin_remark } = req.body as {
-    student_id: string; term_id: number;
-    class_teacher_remark?: string; admin_remark?: string;
-  };
+  const schema = z.object({
+    student_id: z.string().uuid(),
+    term_id: z.number().int().positive(),
+    class_teacher_remark: z.string().max(3000).optional(),
+    admin_remark: z.string().max(3000).optional(),
+  }).refine(d => d.class_teacher_remark !== undefined || d.admin_remark !== undefined,
+    'At least one report remark must be supplied');
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
+  const { student_id, term_id, class_teacher_remark, admin_remark } = parsed.data;
   // The school owner authorizes teachers to edit every report remark field.
   const scopeViolation = await checkTeacherStudentScope(req.user!, student_id, term_id);
   if (scopeViolation) return res.status(scopeViolation.status).json({ error: scopeViolation.error });
