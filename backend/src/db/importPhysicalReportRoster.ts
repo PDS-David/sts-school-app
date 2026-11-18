@@ -60,13 +60,13 @@ async function main() {
       } else {
         const { rows: possibleDuplicates } = await client.query(
           `SELECT id FROM students
-            WHERE school_code=$1 AND class_name=$2
-              AND lower(regexp_replace(trim(full_name),'\s+',' ','g'))=$3
+            WHERE school_code=$1
+              AND lower(regexp_replace(trim(full_name),'\s+',' ','g'))=$2
             LIMIT 2`,
-          [entry.schoolCode, entry.className, normalizeName(entry.fullName)],
+          [entry.schoolCode, normalizeName(entry.fullName)],
         );
         if (possibleDuplicates.length) {
-          throw new Error(`Possible existing student-name match for roster identity ${entry.rosterIdentity}; reconcile the existing record rather than creating a duplicate`);
+          throw new Error(`Possible existing same-name student in this school for roster identity ${entry.rosterIdentity}; reconcile the existing record rather than creating a duplicate`);
         }
         if (apply) {
           await client.query(
