@@ -218,19 +218,19 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
   const user = req.user!;
 
   let sql = `SELECT sc.id, sc.ca1, sc.ca2, sc.exam, sc.total, sc.grade, sc.teacher_remark,
-                    s.id AS student_id, s.full_name, rrm.class_name AS class_name, s.admission_number,
+                    s.id AS student_id, s.full_name, COALESCE(rrm.class_name,s.class_name) AS class_name, s.admission_number,
                     sub.id AS subject_id, sub.name AS subject_name,
                     t.id AS term_id, t.name AS term_name
              FROM scores sc
              JOIN students s   ON s.id = sc.student_id
-             JOIN report_roster_memberships rrm ON rrm.student_id=s.id AND rrm.status='active'
+             LEFT JOIN report_roster_memberships rrm ON rrm.student_id=s.id AND rrm.status='active'
              JOIN subjects sub ON sub.id = sc.subject_id AND sub.school_code = s.school_code
              JOIN terms t      ON t.id  = sc.term_id AND t.school_code = s.school_code
              WHERE 1=1`;
   const params: unknown[] = [];
 
   if (term_id)    { params.push(term_id);    sql += ` AND sc.term_id=$${params.length}`; }
-  if (class_name) { params.push(class_name); sql += ` AND rrm.class_name=${params.length}`; }
+  if (class_name) { params.push(class_name); sql += ` AND COALESCE(rrm.class_name,s.class_name)=${params.length}`; }
   if (subject_id) { params.push(subject_id); sql += ` AND sc.subject_id=$${params.length}`; }
   if (student_id) { params.push(student_id); sql += ` AND sc.student_id=$${params.length}`; }
   // Teachers see only their school
