@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { ScrollView, Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import api from '../api/client';
-import { Card, Btn, Loader, Empty, SectionHeader, Badge } from '../components/UI';
-import { Colors, Spacing, Fonts, Radius } from '../theme';
+import api from '../../api/client';
+import { Card, Btn, Loader, Empty, SectionHeader, Badge } from '../../components/UI';
+import { Colors, Spacing, Fonts, Radius } from '../../theme';
 
 export default function ClassPracticeScreen({ route }: any) {
   const topic = route.params?.topic;
