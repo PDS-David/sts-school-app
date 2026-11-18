@@ -158,10 +158,27 @@ test('whole-class attendance and class-record reads enforce school and term owne
       body: JSON.stringify({
         student_id: studentIds[0], term_id: primaryTermId,
         class_teacher_remark: 'Excellent progress',
+      }),
+    });
+    assert.equal(saveRemarks.status, 200, 'assigned teachers can edit the class-teacher remark');
+    const teacherPrincipalRemark = await fetch(`${started.baseUrl}/class-records`, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${classTeacher.token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        student_id: studentIds[0], term_id: primaryTermId,
+        admin_remark: 'Teacher must not change the principal remark',
+      }),
+    });
+    assert.equal(teacherPrincipalRemark.status, 403, 'teachers cannot edit the principal / head teacher remark');
+    const adminPrincipalRemark = await fetch(`${started.baseUrl}/class-records`, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${admin.token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        student_id: studentIds[0], term_id: primaryTermId,
         admin_remark: 'Promoted to the next class',
       }),
     });
-    assert.equal(saveRemarks.status, 200, 'assigned teachers can edit both physical report remark fields');
+    assert.equal(adminPrincipalRemark.status, 200, 'administrators can edit the principal remark');
     const { rows: savedAttendance } = await query(
       'SELECT days_present FROM attendance WHERE student_id=$1 AND term_id=$2',
       [studentIds[0], primaryTermId],
