@@ -121,7 +121,7 @@ export async function checkTeacherStudentScope(
       const when = new Date(lock.locked_at).toLocaleDateString();
       return {
         status: 403,
-        error: `${student.class_name}'s records for this term were locked by ${who} on ${when}. Ask them or an admin to unlock before making changes.`,
+        error: `${reportClassName}'s records for this term were locked by ${who} on ${when}. Ask an admin to unlock before making changes.`,
       };
     }
   }
