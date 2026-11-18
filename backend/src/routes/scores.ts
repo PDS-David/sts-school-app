@@ -570,8 +570,12 @@ router.get('/report/:student_id', async (req, res) => {
     ? classTotals.filter((r) => Number(r.grand_total) > Number(myTotal)).length + 1
     : null;
 
+  const reportStudent = user.role === 'teacher'
+    ? { id: student.id, full_name: student.full_name, admission_number: student.admission_number, class_name: student.class_name, school_code: student.school_code }
+    : student;
+
   return res.json({
-    student,
+    student: reportStudent,
     term,
     scores: scoreRows,
     attendance: { days_present: attRows[0]?.days_present ?? 0, days_opened: term?.days_opened ?? 0 },
@@ -676,8 +680,11 @@ router.get('/session-report/:student_id', async (req, res) => {
     ? +(subjects.reduce((s, r) => s + r.session_average, 0) / subjects.length).toFixed(2)
     : 0;
 
+  const reportStudent = user.role === 'teacher'
+    ? { id: student.id, full_name: student.full_name, admission_number: student.admission_number, class_name: student.class_name, school_code: student.school_code }
+    : student;
   return res.json({
-    student,
+    student: reportStudent,
     academic_year: year,
     terms: terms.map(t => ({ id: t.id, name: t.name, is_current: t.is_current })),
     terms_present: terms.length,
