@@ -30,7 +30,7 @@ export default function OnlineExamsScreen({ navigation }: any) {
   };
   const render=({item}:any)=>{
     const status=item.attempt_status;
-    const closed=['submitted','under_review','expired'].includes(status);
+    const closed=['submitted','under_review'].includes(status);
     return <Card style={styles.card}>
       <View style={styles.top}>
         <View style={{flex:1}}>
@@ -44,7 +44,7 @@ export default function OnlineExamsScreen({ navigation }: any) {
       <Text style={styles.meta}>Opens: {new Date(item.starts_at).toLocaleString()}</Text>
       <Text style={styles.meta}>Closes: {new Date(item.ends_at).toLocaleString()}</Text>
       {status && <Text style={[styles.status,{color:closed?Colors.success:Colors.primary}]}>Attempt: {status.replace('_',' ')}</Text>}
-      <Btn title={status==='in_progress'?'Resume examination':closed?'Attempt closed':'View instructions and start'} onPress={()=>open(item)} disabled={closed}/>
+      <Btn title={status==='in_progress'?'Resume examination':status==='expired'?'Submit saved answers':closed?'Attempt closed':'View instructions and start'} onPress={()=>open(item)} disabled={closed}/>
     </Card>;
   };
   if(loading)return <Loader/>;
