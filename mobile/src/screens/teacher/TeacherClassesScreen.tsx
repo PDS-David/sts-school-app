@@ -12,7 +12,7 @@ const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string;
 export default function TeacherClassesScreen({ navigation }: any) {
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
-      <AppHeader title="Student Reports" onPressBell={() => openNotifications()} />
+      <AppHeader title="Student Reports" />
       <ScrollView contentContainerStyle={{ padding: Spacing.md }}>
         {ITEMS.map((it) => (
           <TouchableOpacity key={it.label} onPress={() => navigation.navigate(it.screen)} activeOpacity={0.8}>
