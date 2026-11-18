@@ -64,9 +64,9 @@ export function hasPerm(role: Role, perm: string): boolean {
 // needs DB lookups for subject teachers/admins/parents) lives in
 // routes/messages.ts → studentAllowedRecipients().
 //
-// Students may message: their class teacher, any subject teacher, any admin,
-// their own parent(s), and their classmates (same class, same school) —
-// NOT students in other classes/schools, and not unrelated staff.
+// Students may message their class/subject teachers, admins, parents and
+// classmates within the documented scope. Parents and admins retain their
+// existing messaging path. Teachers are report-only and cannot send messages.
 export function canMessage(
   senderRole: Role,
   senderUserId: string,
