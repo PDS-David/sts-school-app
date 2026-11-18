@@ -93,6 +93,25 @@ async function validateScoreWriteScope(
       }
     }
 
+    // A subject teacher may correct their own entry, but cannot replace a
+    // class-teacher or administrator decision. Class teachers deliberately
+    // retain override authority over every subject in their assigned class.
+    if (!user.assigned_class) {
+      const { rows: existingScores } = await client.query(
+        `SELECT sc.entered_by, author.role AS author_role, author.assigned_class AS author_class
+         FROM scores sc
+         LEFT JOIN users author ON author.id=sc.entered_by
+         WHERE sc.student_id=$1 AND sc.subject_id=$2 AND sc.term_id=$3
+         FOR UPDATE OF sc`,
+        [score.student_id, score.subject_id, score.term_id],
+      );
+      const existing = existingScores[0];
+      if (existing && existing.entered_by !== user.id &&
+          (existing.author_role === 'admin' || existing.author_class === physicalClassName)) {
+        return { status: 403, error: "A class teacher's or administrator's mark cannot be overwritten by a subject teacher." };
+      }
+    }
+
     const { rows: locks } = await client.query(
       'SELECT locked_at FROM class_locks WHERE school_code=$1 AND class_name=$2 AND term_id=$3 FOR SHARE',
       [student.school_code, physicalClassName, score.term_id],
