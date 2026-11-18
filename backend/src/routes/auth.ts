@@ -4,7 +4,7 @@ import { createHash } from 'node:crypto';
 import bcrypt from 'bcryptjs';
 import { query } from '../db/pool.js';
 import { signAccess, signRefresh, verifyRefresh } from '../utils/jwt.js';
-import { requireAuth } from '../middleware/auth.js';
+import { readLearningAccessPolicy, requireAuth } from '../middleware/auth.js';
 import { audit } from '../utils/audit.js';
 import { claimStudentAccount, listUnclaimedStudentRoster, registerSelfServiceAccount } from '../utils/selfRegistration.js';
 import { normalizeAnswer, usernameBaseFromName } from '../utils/password.js';
@@ -101,6 +101,7 @@ router.post('/login', loginAttemptLimiter, async (req, res) => {
   // Persist refresh token
   await query('UPDATE users SET refresh_token=$1 WHERE id=$2', [refreshToken, user.id]);
   await audit(payload, 'login', 'user', user.id);
+  const accessPolicy = await readLearningAccessPolicy();
 
   return res.json({
     access_token: accessToken,
@@ -130,7 +131,7 @@ router.post('/login', loginAttemptLimiter, async (req, res) => {
     // so it can offer "lock/unlock my class" only where it actually applies.
     // It was already being fetched and put into the JWT payload above, just
     // never actually returned to the client for the app to read directly.
-    user: { id: user.id, username: user.username, role: user.role, school_code: user.school_code, assigned_class: user.assigned_class, assigned_subject_ids: assignedSubjectIds, pending_admin_review: !!user.pending_admin_review },
+    user: { id: user.id, username: user.username, role: user.role, school_code: user.school_code, assigned_class: user.assigned_class, assigned_subject_ids: assignedSubjectIds, pending_admin_review: !!user.pending_admin_review && !(user.role === 'student' && accessPolicy.freeLaunchMode) },
   });
 });
 
@@ -182,7 +183,8 @@ router.post('/refresh', async (req, res) => {
 router.get('/me', requireAuth, async (req, res) => {
   const { rows } = await query('SELECT pending_admin_review FROM users WHERE id=$1', [req.user!.id]);
   if (!rows[0]) return res.status(404).json({ error: 'User not found' });
-  return res.json({ pending_admin_review: !!rows[0].pending_admin_review });
+  const accessPolicy = req.learningAccessPolicy!;
+  return res.json({ pending_admin_review: !!rows[0].pending_admin_review && !(req.user!.role === 'student' && accessPolicy.freeLaunchMode) });
 });
 
 router.post('/logout', requireAuth, async (req, res) => {
@@ -461,9 +463,9 @@ router.post('/self-claim', async (req, res) => {
 // section first — this is now the third time this specific tradeoff has
 // been discussed and decided.
 router.post('/self-register', async (req, res) => {
-  const { role, full_name, phone, school_code, username, password, admission_number, ward_admission_number } = req.body as {
+  const { role, full_name, phone, school_code, username, password, class_name, admission_number, ward_admission_number } = req.body as {
     role?: string; full_name?: string; phone?: string; school_code?: string;
-    username?: string; password?: string; admission_number?: string; ward_admission_number?: string;
+    username?: string; password?: string; class_name?: string; admission_number?: string; ward_admission_number?: string;
   };
 
   if (!role || !['student', 'parent', 'teacher'].includes(role)) {
@@ -475,8 +477,8 @@ router.post('/self-register', async (req, res) => {
   if (password.length < 8) {
     return res.status(400).json({ error: 'Password must be at least 8 characters' });
   }
-  if (role === 'student' && !admission_number?.trim()) {
-    return res.status(400).json({ error: 'admission_number is required for student self-registration' });
+  if (role === 'student' && !class_name?.trim() && !admission_number?.trim()) {
+    return res.status(400).json({ error: 'class_name is required for independent online student registration' });
   }
   if (role === 'parent') {
     if (!ward_admission_number?.trim()) {
@@ -501,8 +503,9 @@ router.post('/self-register', async (req, res) => {
     schoolCode: normalizedSchool,
     username: normalizedUsername,
     passwordHash,
-    admissionNumber: admission_number?.trim(),
-    wardAdmissionNumber: ward_admission_number?.trim(),
+    className: role === 'student' ? class_name?.trim() : undefined,
+    admissionNumber: role === 'student' ? admission_number?.trim() : undefined,
+    wardAdmissionNumber: role === 'parent' ? ward_admission_number?.trim() : undefined,
   });
 
   if (result.kind === 'username_taken') {
@@ -510,6 +513,9 @@ router.post('/self-register', async (req, res) => {
   }
   if (result.kind === 'school_not_found') {
     return res.status(404).json({ error: 'The selected school was not found.' });
+  }
+  if (result.kind === 'class_not_found') {
+    return res.status(404).json({ error: 'The selected learning class was not found for this school.' });
   }
   if (result.kind === 'student_not_found') {
     return res.status(404).json({
@@ -522,18 +528,13 @@ router.post('/self-register', async (req, res) => {
     return res.status(409).json({ error: 'An account already exists for this phone number. Use Forgot Password to recover it, or contact your school admin.' });
   }
 
-  return res.status(201).json({ username: result.username });
+  const accessPolicy = await readLearningAccessPolicy();
+  return res.status(201).json({
+    username: result.username,
+    approval_required: !!(role !== 'student' || !accessPolicy.freeLaunchMode),
+  });
 });
 
-// ── Staff account activation (Task C) ────────────────────────────────────────
-// Public (no login) — replaces admin generating and manually relaying a temp
-// password for new teacher/staff accounts (see POST /admin/users). Unlike
-// self-claim above, there's no anonymous roster search: admin already
-// created this exact account and knows exactly who it's for, so the
-// activation code alone (paired with the specific username server-side,
-// same practical tradeoff as term_access_pins/class_access_codes) is the
-// only check needed — identity was already established at account-creation
-// time, not at this step, so there's no second factor to verify here.
 router.post('/activate', async (req, res) => {
   const { username, activation_code, new_password } = req.body as {
     username?: string; activation_code?: string; new_password?: string;
