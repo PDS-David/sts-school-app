@@ -109,6 +109,11 @@ test('whole-class attendance and class-record reads enforce school and term owne
       [`BSEC18-D-${suffix}`],
     );
     studentIds.push(String(primaryStudents[0].id), String(secondaryStudents[0].id), String(deletedStudents[0].id));
+    await query(
+      `INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status)
+       VALUES($1,'Shared Class','Shared Class','active')`,
+      [studentIds[0]],
+    );
 
     await query(
       'INSERT INTO attendance(student_id,term_id,days_present) VALUES($1,$2,12),($3,$4,8),($5,$2,3)',
@@ -129,24 +134,28 @@ test('whole-class attendance and class-record reads enforce school and term owne
       `?class_name=Shared%20Class&term_id=${primaryTermId}`,
       classTeacher.token,
     );
-    assert.equal(primaryAttendance.status, 403, 'teachers obtain attendance through scoped reports, not standalone feeds');
+    assert.equal(primaryAttendance.status, 200, 'assigned teachers can read their physical-class attendance');
+    const primaryAttendanceBody = await primaryAttendance.json() as { attendance: Array<{ student_id: string; days_present: number }> };
+    assert.deepEqual(primaryAttendanceBody.attendance, [{ student_id: studentIds[0], days_present: 12 }]);
 
     const primaryRecords = await get(
       `/class-records?class_name=Shared%20Class&term_id=${primaryTermId}`,
       classTeacher.token,
     );
-    assert.equal(primaryRecords.status, 403, 'teachers obtain report remarks through scoped reports, not standalone feeds');
+    assert.equal(primaryRecords.status, 200, 'assigned teachers can read their physical-class report remarks');
+    const primaryRecordsBody = await primaryRecords.json() as { class_records: Array<{ student_id: string; class_teacher_remark: string }> };
+    assert.deepEqual(primaryRecordsBody.class_records.map(row => row.student_id), [studentIds[0]]);
 
     const foreignAttendanceTerm = await get(
       `?class_name=Shared%20Class&term_id=${secondaryTermId}`,
       classTeacher.token,
     );
-    assert.equal(foreignAttendanceTerm.status, 403);
+    assert.equal(foreignAttendanceTerm.status, 400, 'a teacher cannot read attendance for another school\'s term');
     const foreignClassRecordTerm = await get(
       `/class-records?class_name=Shared%20Class&term_id=${secondaryTermId}`,
       classTeacher.token,
     );
-    assert.equal(foreignClassRecordTerm.status, 403);
+    assert.equal(foreignClassRecordTerm.status, 400, 'a teacher cannot read report remarks for another school\'s term');
 
     assert.equal((await get(`?class_name=Shared%20Class&term_id=${primaryTermId}`, subjectTeacher.token)).status, 403);
     assert.equal((await get(`?term_id=${primaryTermId}`, subjectTeacher.token)).status, 403);
