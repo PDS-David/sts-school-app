@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { validateCurriculumLesson } from '../backend/src/services/curriculumLessonGenerator.ts';
+import { curriculumLessonContextHash } from '../backend/src/services/curriculumLessonCache.ts';
 
 const validLesson = {
   title: 'Fractions',
@@ -39,4 +40,25 @@ test('rejects practice questions without explanations', () => {
   const malformed = structuredClone(validLesson);
   delete malformed.practice_questions[0].explanation;
   assert.equal(validateCurriculumLesson(malformed), false);
+});
+
+test('lesson cache fingerprint is stable and invalidates when approved curriculum context changes', () => {
+  const input = {
+    className: 'Primary 4',
+    subject: 'Mathematics',
+    term: '1st Term',
+    topic: 'Fractions',
+    objectives: ['Identify a fraction', 'Compare simple fractions'],
+    sourceMaterial: 'Approved curriculum source text.',
+  };
+  const first = curriculumLessonContextHash(input);
+  assert.equal(curriculumLessonContextHash(input), first);
+  assert.notEqual(
+    curriculumLessonContextHash({ ...input, objectives: [...input.objectives, 'Add fractions'] }),
+    first,
+  );
+  assert.notEqual(
+    curriculumLessonContextHash({ ...input, sourceMaterial: 'Corrected approved source text.' }),
+    first,
+  );
 });
