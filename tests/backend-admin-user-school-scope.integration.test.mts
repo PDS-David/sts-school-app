@@ -85,6 +85,9 @@ test('school-bound administrators cannot manage accounts outside their school', 
     const get = (token: string, path: string) => fetch(`${started.baseUrl}${path}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
+    const getSelected = (token: string, path: string, schoolCode: string) => fetch(`${started.baseUrl}${path}`, {
+      headers: { Authorization: `Bearer ${token}`, 'x-school-code': schoolCode },
+    });
     const post = (token: string, path: string, body: Record<string, unknown>) => fetch(`${started.baseUrl}${path}`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
@@ -99,6 +102,21 @@ test('school-bound administrators cannot manage accounts outside their school', 
       method: 'DELETE',
       headers: { Authorization: `Bearer ${token}` },
     });
+
+    assert.equal((await get(multiSchoolAdmin.token, '/users')).status, 400,
+      'multi-school admin must select a school before loading school-scoped records');
+    const selectedPrimaryUsers = await getSelected(multiSchoolAdmin.token, '/users', 'primary');
+    assert.equal(selectedPrimaryUsers.status, 200);
+    const selectedPrimaryRows = (await selectedPrimaryUsers.json() as { users: Array<{ school_code: string }> }).users;
+    assert.ok(selectedPrimaryRows.length > 0);
+    assert.ok(selectedPrimaryRows.every(user => user.school_code === 'primary'));
+    const selectedSecondaryUsers = await getSelected(multiSchoolAdmin.token, '/users', 'secondary');
+    assert.equal(selectedSecondaryUsers.status, 200);
+    const selectedSecondaryRows = (await selectedSecondaryUsers.json() as { users: Array<{ school_code: string }> }).users;
+    assert.ok(selectedSecondaryRows.length > 0);
+    assert.ok(selectedSecondaryRows.every(user => user.school_code === 'secondary'));
+    assert.equal((await getSelected(multiSchoolAdmin.token, '/users', 'invalid')).status, 400);
+    assert.equal((await getSelected(multiSchoolAdmin.token, '/users?school_code=secondary', 'primary')).status, 403);
 
     const users = await get(primaryAdmin.token, '/users');
     assert.equal(users.status, 200);
