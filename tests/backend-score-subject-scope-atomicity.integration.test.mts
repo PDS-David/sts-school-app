@@ -316,6 +316,35 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
       { headers: { Authorization: `Bearer ${classTeacher.token}` } },
     );
     assert.equal(teacherReport.status, 200, 'teacher can generate a report for an active student in the assigned physical class');
+
+    await query(
+      'INSERT INTO attendance(student_id,term_id,days_present) VALUES($1,$2,12)',
+      [studentIds[0], termIds[0]],
+    );
+    await query(
+      'INSERT INTO class_records(student_id,term_id,class_teacher_remark,admin_remark) VALUES($1,$2,$3,$4)',
+      [studentIds[0], termIds[0], 'Class teacher remark', 'Principal remark'],
+    );
+    const subjectTeacherReport = await fetch(
+      `${started.baseUrl}/report/${studentIds[0]}?term_id=${termIds[0]}`,
+      { headers: { Authorization: `Bearer ${subjectTeacher.token}` } },
+    );
+    assert.equal(subjectTeacherReport.status, 200, 'subject teacher can read the report for an assigned student');
+    const subjectTeacherReportPayload = await subjectTeacherReport.json() as {
+      scores: Array<{ subject_id: number }>;
+      attendance: { days_present: number | null };
+      class_record: Record<string, unknown>;
+      summary: { overall_position: number | null; class_size: number | null };
+    };
+    assert.ok(subjectTeacherReportPayload.scores.length > 0);
+    assert.ok(subjectTeacherReportPayload.scores.every(row => row.subject_id === subjectIds[0]),
+      'subject teacher report must include only the assigned subject');
+    assert.equal(subjectTeacherReportPayload.attendance.days_present, null,
+      'subject teacher report must not expose attendance');
+    assert.deepEqual(subjectTeacherReportPayload.class_record, {},
+      'subject teacher report must not expose class-teacher or principal remarks');
+    assert.equal(subjectTeacherReportPayload.summary.overall_position, null);
+    assert.equal(subjectTeacherReportPayload.summary.class_size, null);
     const outOfClassReport = await fetch(
       `${started.baseUrl}/report/${studentIds[1]}?term_id=${termIds[0]}`,
       { headers: { Authorization: `Bearer ${classTeacher.token}` } },
