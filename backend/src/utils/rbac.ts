@@ -28,7 +28,7 @@ export const permissions: Record<Role, string[]> = {
   // manage school-wide terms/classes, message users, or make roster decisions.
   teacher: [
     'students.read', 'students.write',
-    'grades.read', 'grades.write', 'grades.export',
+    'grades.read', 'grades.write',
     'attendance.read', 'attendance.write',
     'classRecord.read', 'classRecord.write',
   ],
