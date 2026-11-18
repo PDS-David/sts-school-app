@@ -87,6 +87,28 @@ if (__DEV__) {
 
 const api = axios.create({ baseURL: BASE_URL, timeout: 15000 });
 
+// Keep offline GET entries isolated by both query parameters and the selected
+// school. A single admin account can switch tenants on one device; caching
+// only by URL would otherwise replay the previous school's data offline.
+function offlineCacheUrl(config: any): string {
+  const headers = config?.headers as any;
+  const defaultHeaders = api.defaults.headers.common as any;
+  const schoolCode =
+    headers?.get?.('x-school-code') ??
+    headers?.['x-school-code'] ??
+    headers?.['X-School-Code'] ??
+    defaultHeaders?.['x-school-code'] ??
+    'none';
+  const params = config?.params && typeof config.params === 'object' ? config.params : {};
+  const paramsPart = Object.keys(params).sort().map((key) =>
+    `${encodeURIComponent(key)}=${encodeURIComponent(JSON.stringify(params[key]) ?? '')}`,
+  ).join('&');
+  const scopePart = `__school_scope=${encodeURIComponent(String(schoolCode))}`;
+  const suffix = [paramsPart, scopePart].filter(Boolean).join('&');
+  const url = config?.url ?? '';
+  return `${url}${url.includes('?') ? '&' : '?'}${suffix}`;
+}
+
 // Render Free services can take about a minute to wake after idle. Probe the
 // public readiness endpoint before dispatching the user's request so the
 // normal 15-second API timeout does not misclassify a cold start as offline.
@@ -143,7 +165,7 @@ api.interceptors.response.use(
   async (res) => {
     const method = (res.config.method ?? 'get').toLowerCase();
     if (method === 'get') {
-      await cacheSet(res.config.url ?? '', res.data, (res.config as any)._cacheNamespace ?? getCacheNamespace());
+      await cacheSet(offlineCacheUrl(res.config), res.data, (res.config as any)._cacheNamespace ?? getCacheNamespace());
     } else {
       // Real, server-confirmed write — safe to drop stale cached reads for
       // this resource area. (Queued-offline writes never reach this branch;
@@ -225,7 +247,7 @@ api.interceptors.response.use(
     const isNetworkFailure = !error.response;
     if (isNetworkFailure && original) {
       if (method === 'get') {
-        const cached = await cacheGet(original.url ?? '', requestNamespace);
+        const cached = await cacheGet(offlineCacheUrl(original), requestNamespace);
         if (cached) {
           return { data: cached.data, status: 200, statusText: 'OK (cached)', headers: {}, config: original, fromCache: true };
         }
