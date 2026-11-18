@@ -206,15 +206,15 @@ test('weekly-effort feedback enforces class, teacher ownership, active ward and 
       },
     );
 
-    assert.equal((await getFeedback(fixture.efforts.classFourByOtherTeacher, fixture.users.classTeacher.token)).status, 200,
-      'class teacher may read any weekly effort for their assigned class');
+    assert.equal((await getFeedback(fixture.efforts.classFourByOtherTeacher, fixture.users.classTeacher.token)).status, 403,
+      'teachers cannot access weekly-effort feedback; their app role is report-only');
     assert.equal((await getFeedback(fixture.efforts.classFiveBySubjectTeacher, fixture.users.classTeacher.token)).status, 403,
       'class teacher may not read another class');
     assert.equal((await getFeedback(fixture.efforts.secondaryBySubjectTeacher, fixture.users.classTeacher.token)).status, 403,
       'class teacher may not read another school');
 
-    assert.equal((await getFeedback(fixture.efforts.classFiveBySubjectTeacher, fixture.users.subjectTeacher.token)).status, 200,
-      'subject-only teacher may read their own logged entry');
+    assert.equal((await getFeedback(fixture.efforts.classFiveBySubjectTeacher, fixture.users.subjectTeacher.token)).status, 403,
+      'subject-only teachers cannot access weekly-effort feedback');
     assert.equal((await getFeedback(fixture.efforts.classFourByOtherTeacher, fixture.users.subjectTeacher.token)).status, 403,
       'subject-only teacher may not read another teacher entry');
     assert.equal((await getFeedback(fixture.efforts.secondaryBySubjectTeacher, fixture.users.subjectTeacher.token)).status, 403,
@@ -232,8 +232,8 @@ test('weekly-effort feedback enforces class, teacher ownership, active ward and 
     assert.equal((await getFeedback(fixture.efforts.secondaryBySubjectTeacher, fixture.users.admin.token)).status, 200,
       'admin retains global feedback access');
 
-    assert.equal((await postFeedback(fixture.efforts.classFourByOtherTeacher, fixture.users.classTeacher.token)).status, 201,
-      'class teacher may reply within their assigned class');
+    assert.equal((await postFeedback(fixture.efforts.classFourByOtherTeacher, fixture.users.classTeacher.token)).status, 403,
+      'teachers cannot reply to weekly-effort feedback');
     assert.equal((await postFeedback(fixture.efforts.classFiveBySubjectTeacher, fixture.users.classTeacher.token)).status, 403,
       'class teacher may not reply to another class');
     assert.equal((await postFeedback(fixture.efforts.classFourByOtherTeacher, fixture.users.subjectTeacher.token)).status, 403,
@@ -253,11 +253,7 @@ test('weekly-effort feedback enforces class, teacher ownership, active ward and 
     const subjectTeacherFeed = await fetch(started.baseUrl, {
       headers: { Authorization: `Bearer ${fixture.users.subjectTeacher.token}` },
     });
-    const teacherPayload = await subjectTeacherFeed.json() as { weekly_efforts: Array<{ id: number }> };
-    assert.ok(teacherPayload.weekly_efforts.every(row =>
-      [fixture.efforts.classFiveBySubjectTeacher, fixture.efforts.classFourBySubjectTeacher]
-        .includes(row.id),
-    ), 'subject-only teacher feed must include only their own active entries');
+    assert.equal(subjectTeacherFeed.status, 403, 'teachers cannot access the weekly-effort feed');
   } finally {
     if (server) {
       server.closeAllConnections();
