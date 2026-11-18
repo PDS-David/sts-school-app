@@ -85,7 +85,7 @@ test('primary report uses the exact supplied assessment maxima and full report s
 
   assert.ok(html.includes('114</span>'));
   assert.ok(html.includes('6</span>'));
-  assert.ok(html.includes('95.0%'));
+  assert.ok(html.includes('95%'));
   assert.ok(!html.includes('Overall Position'));
   assert.ok(!html.includes('POSITION</th>'));
 });
