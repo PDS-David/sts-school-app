@@ -36,6 +36,10 @@ test('server deadlines, autosave, one-attempt constraint and idempotent submissi
 test('AI essay marking reuses the existing essay-mark contract', () => {
   assert.match(route, /generateJSON\(prompt,'essay-mark'/);
   assert.match(route, /pending_review/);
+  assert.match(route, /generate-package-drafts/);
+  assert.match(route, /listStudentSs1Lessons/);
+  assert.match(route, /listStudentSs23Units/);
+  assert.match(route, /student_curriculum_lesson_progress/);
 });
 
 test('exam schema and APIs remain isolated from physical teacher-report data', () => {
