@@ -50,11 +50,13 @@ async function lockWardMutationStudent(
   if (!user.school_code || student.school_code !== user.school_code) {
     return { ok: false, status: 403, error: "You can't manage parent links outside your school" };
   }
-  if (!user.assigned_class) {
-    return { ok: false, status: 403, error: 'Subject teachers cannot manage parent links.' };
-  }
-  if (student.class_name !== user.assigned_class) {
-    return { ok: false, status: 403, error: "You can't manage parent links outside your assigned class" };
+  if (user.role === 'teacher') {
+    if (!user.assigned_class) {
+      return { ok: false, status: 403, error: 'Subject teachers cannot manage parent links.' };
+    }
+    if (student.class_name !== user.assigned_class) {
+      return { ok: false, status: 403, error: "You can't manage parent links outside your assigned class" };
+    }
   }
   return { ok: true, schoolCode: student.school_code };
 }
