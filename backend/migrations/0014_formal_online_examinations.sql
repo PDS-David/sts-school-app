@@ -48,6 +48,54 @@ CREATE TABLE IF NOT EXISTS online_exam_questions (
 );
 CREATE INDEX IF NOT EXISTS online_exam_questions_exam_order_idx ON online_exam_questions(exam_id,section_id,position);
 
+CREATE OR REPLACE FUNCTION online_exam_question_rights_guard()
+RETURNS trigger LANGUAGE plpgsql AS $
+DECLARE
+  v_question RECORD;
+  v_exam RECORD;
+BEGIN
+  SELECT board,subject_id INTO v_exam
+    FROM online_exams WHERE id=NEW.exam_id;
+  IF NOT FOUND THEN
+    RAISE EXCEPTION 'Online examination does not exist';
+  END IF;
+
+  SELECT q.board,q.subject_id,q.exam_year,q.rights_status,q.content_origin,q.review_status,
+         s.board AS source_board,s.rights_status AS source_rights,
+         s.rights_evidence,s.is_active
+    INTO v_question
+    FROM question_bank_questions q
+    JOIN question_bank_sources s ON s.id=q.source_id
+   WHERE q.id=NEW.question_bank_question_id;
+  IF NOT FOUND THEN
+    RAISE EXCEPTION 'Question-bank item or its source does not exist';
+  END IF;
+  IF v_question.review_status NOT IN ('approved','published') THEN
+    RAISE EXCEPTION 'Only approved or published question-bank items may enter a formal examination';
+  END IF;
+  IF NOT v_question.is_active OR v_question.source_rights<>v_question.rights_status OR
+     length(trim(coalesce(v_question.rights_evidence,'')))<12 OR
+     v_question.source_board NOT IN ('GENERAL',v_exam.board) OR
+     v_question.board<>v_exam.board OR v_question.subject_id<>v_exam.subject_id THEN
+    RAISE EXCEPTION 'Question-bank source, board, subject or reuse-rights evidence is invalid';
+  END IF;
+  IF v_question.content_origin='past_question' THEN
+    IF v_question.rights_status NOT IN ('licensed','public_domain') OR v_question.exam_year IS NULL THEN
+      RAISE EXCEPTION 'Historical examination questions require documented reuse rights and an exam year';
+    END IF;
+  ELSIF v_question.rights_status<>'original_generated' OR v_question.exam_year IS NOT NULL THEN
+    RAISE EXCEPTION 'Original examination questions must be rights-cleared original content without a historical exam year';
+  END IF;
+  RETURN NEW;
+END;
+$;
+
+CREATE TRIGGER trg_online_exam_question_rights_guard
+BEFORE INSERT OR UPDATE OF exam_id,question_bank_question_id
+ON online_exam_questions
+FOR EACH ROW EXECUTE FUNCTION online_exam_question_rights_guard();
+
+
 CREATE TABLE IF NOT EXISTS online_exam_candidates (
   exam_id UUID NOT NULL REFERENCES online_exams(id) ON DELETE CASCADE,
   student_id UUID NOT NULL REFERENCES students(id) ON DELETE CASCADE,
