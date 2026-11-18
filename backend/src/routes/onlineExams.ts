@@ -15,7 +15,7 @@ const clean = (v: unknown) => String(v ?? '').trim().toLocaleLowerCase().replace
 
 type MarkingRubricCriterion = { id: string; description: string; max_marks: number };
 
-function validateMarkingRubric(value: unknown, maximum: number): MarkingRubricCriterion[] | null {
+export function validateMarkingRubric(value: unknown, maximum: number): MarkingRubricCriterion[] | null {
   if (!Array.isArray(value) || value.length < 1 || value.length > 20) return null;
   const criteria: MarkingRubricCriterion[] = [];
   const ids = new Set<string>();
@@ -32,7 +32,7 @@ function validateMarkingRubric(value: unknown, maximum: number): MarkingRubricCr
   return Math.abs(total - maximum) <= 0.01 ? criteria : null;
 }
 
-function validateAiRubricMark(value: any, rubric: MarkingRubricCriterion[], maximum: number) {
+export function validateAiRubricMark(value: any, rubric: MarkingRubricCriterion[], maximum: number) {
   if (!value || !Number.isFinite(Number(value.points)) || Number(value.points) < 0 ||
       Number(value.points) > maximum || !Number.isFinite(Number(value.confidence)) ||
       Number(value.confidence) < 0 || Number(value.confidence) > 1 ||
