@@ -341,13 +341,8 @@ router.put('/:id', requirePerm('grades.write'), async (req, res) => {
 });
 
 // ── POST /students/:id/promotion ──────────────────────────────────────────────
-// End-of-term/session class movement — per explicit school-owner decision:
-// this is the class teacher's call alone, with NO admin bypass (unlike every
-// other roster action in this file, which also lets admin through). Admin
-// can still change a student's class_name arbitrarily via the generic PUT
-// /:id above if ever genuinely needed — this route is just the guided,
-// one-tap Promote/Retain/Demote workflow for the one person whose job it
-// actually is.
+// Physical report-roster placement is an administrator responsibility.
+// Teacher accounts are report-generation-only and cannot change membership.
 //
 // "Next"/"previous" class is derived from the classes table's own row order
 // within the student's school (see backend/schema.sql's classes table and
