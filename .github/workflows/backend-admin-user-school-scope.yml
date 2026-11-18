@@ -7,6 +7,7 @@ on:
     branches: [master, 'agent/**']
     paths:
       - "backend/src/routes/admin.ts"
+      - "backend/migrations/**"
       - "tests/backend-admin-user-school-scope.integration.test.mts"
       - ".github/workflows/backend-admin-user-school-scope.yml"
 
@@ -51,6 +52,8 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Bootstrap disposable PostgreSQL schema
         run: npm run db:bootstrap --workspace=backend
+      - name: Apply numbered migrations against the fresh baseline
+        run: npm run db:migrate --workspace=backend
       - name: Run admin user school-scope regressions
         run: node --import tsx --test tests/backend-admin-user-school-scope.integration.test.mts
       - name: Typecheck backend
