@@ -12,8 +12,8 @@ import { Colors, Spacing, Fonts } from '../theme';
 // decision. Deliberately a single flat form, not a multi-step wizard like
 // StudentSelfClaimScreen.tsx — the project owner explicitly wanted this
 // path to be low-friction. The real safeguard isn't at signup, it's
-// afterward: the account can log in immediately but sees only
-// PendingApprovalScreen.tsx until an admin approves it.
+// afterward: students may start DIY learning immediately in free-launch mode;
+// parent and teacher accounts remain subject to the admin-review gate.
 type SelfRole = 'student' | 'parent' | 'teacher';
 
 export default function SelfRegisterScreen({ navigation }: any) {
@@ -25,7 +25,10 @@ export default function SelfRegisterScreen({ navigation }: any) {
 
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
-  const [admissionNumber, setAdmissionNumber] = useState('');       // student
+  const [className, setClassName] = useState('');
+  const [classes, setClasses] = useState<string[]>([]);
+  const [loadingClasses, setLoadingClasses] = useState(false);
+  const [classError, setClassError] = useState('');
   const [wardAdmissionNumber, setWardAdmissionNumber] = useState(''); // parent
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -33,7 +36,7 @@ export default function SelfRegisterScreen({ navigation }: any) {
 
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [done, setDone] = useState<{ username: string } | null>(null);
+  const [done, setDone] = useState<{ username: string; approvalRequired: boolean } | null>(null);
 
   // Reuses the existing, already-public self-claim schools endpoint rather
   // than adding a near-duplicate one.
@@ -53,12 +56,37 @@ export default function SelfRegisterScreen({ navigation }: any) {
 
   useEffect(() => { void loadSchools(); }, [loadSchools]);
 
+  // The selected class scopes online curriculum only. It does not create
+  // or claim a physical report-roster membership.
+  useEffect(() => {
+    let active = true;
+    setClasses([]);
+    setClassName('');
+    setClassError('');
+    if (role !== 'student' || !schoolCode) {
+      setLoadingClasses(false);
+      return () => { active = false; };
+    }
+    setLoadingClasses(true);
+    api.get('/auth/self-claim/classes', { params: { school_code: schoolCode } })
+      .then(({ data }) => {
+        if (!active) return;
+        const names = Array.isArray(data.classes) ? data.classes as string[] : [];
+        setClasses(names);
+        if (names.length === 1) setClassName(names[0]);
+        if (names.length === 0) setClassError('No learning classes are configured for this school yet.');
+      })
+      .catch(() => { if (active) setClassError('Could not load classes. Please reselect the school and try again.'); })
+      .finally(() => { if (active) setLoadingClasses(false); });
+    return () => { active = false; };
+  }, [role, schoolCode]);
+
   const handleSubmit = async () => {
     setError('');
     if (!schoolCode)             { setError('Select your school'); return; }
     if (!fullName.trim())        { setError('Full name is required'); return; }
     if (!phone.trim())           { setError('Phone number is required'); return; }
-    if (role === 'student' && !admissionNumber.trim()) { setError('Your admission number is required'); return; }
+    if (role === 'student' && !className) { setError('Select your learning class'); return; }
     if (role === 'parent' && !wardAdmissionNumber.trim()) { setError("Your ward's admission number is required"); return; }
     if (!username.trim())        { setError('Choose a username'); return; }
     if (!password)               { setError('Choose a password'); return; }
@@ -74,10 +102,10 @@ export default function SelfRegisterScreen({ navigation }: any) {
         school_code: schoolCode,
         username: username.trim(),
         password,
-        ...(role === 'student' ? { admission_number: admissionNumber.trim() } : {}),
+        ...(role === 'student' ? { class_name: className } : {}),
         ...(role === 'parent' ? { ward_admission_number: wardAdmissionNumber.trim() } : {}),
       });
-      setDone({ username: data.username });
+      setDone({ username: data.username, approvalRequired: Boolean(data.approval_required) });
     } catch (e: any) {
       setError(e?.response?.data?.error ?? (!e?.response ? 'No internet connection.' : 'Something went wrong. Try again.'));
     } finally {
@@ -93,9 +121,9 @@ export default function SelfRegisterScreen({ navigation }: any) {
           <Text style={styles.helper}>Your username is:</Text>
           <Text style={styles.username}>{done.username}</Text>
           <Text style={styles.helper}>
-            Write this down — you'll need it to sign in. A school admin still needs to
-            review and approve your account before you can use the app; you'll see a
-            waiting screen after signing in until then.
+            Write this down — you'll need it to sign in. {done.approvalRequired
+              ? 'A school admin must approve this account before class-related access is enabled.'
+              : 'Your online-learning account is ready. Sign in to start learning; no admission number, physical report record or teacher assignment is needed.'}
           </Text>
           <Btn label="Back to Sign In" onPress={() => navigation.replace('Login')} style={{ marginTop: Spacing.md }} />
         </Card>
@@ -109,8 +137,9 @@ export default function SelfRegisterScreen({ navigation }: any) {
         <Card>
           <Text style={styles.title}>Create Your Account</Text>
           <Text style={styles.helper}>
-            No activation code needed — just fill this in. Your account will need a quick
-            admin approval before you can access any class content.
+            {role === 'student'
+              ? 'Create an independent online-learning account. Choose your school and learning class; no admission number or physical report record is required.'
+              : 'No activation code needed. Parent and teacher accounts remain subject to school-admin review.'}
           </Text>
 
           <Text style={styles.label}>I am a…</Text>
@@ -141,7 +170,14 @@ export default function SelfRegisterScreen({ navigation }: any) {
           <Input label="Phone Number" value={phone} onChangeText={setPhone} placeholder="e.g. 08012345678" keyboardType="phone-pad" />
 
           {role === 'student' && (
-            <Input label="Your Admission Number" value={admissionNumber} onChangeText={setAdmissionNumber} placeholder="As given at enrollment" />
+            <>
+              <Text style={styles.label}>Learning Class</Text>
+              <Picker selectedValue={className} onValueChange={(value) => setClassName(String(value))} style={styles.picker} enabled={!loadingClasses && classes.length > 0}>
+                <Picker.Item label={loadingClasses ? 'Loading classes…' : 'Select your learning class'} value="" />
+                {classes.map((name) => <Picker.Item key={name} label={name} value={name} />)}
+              </Picker>
+              {classError ? <Text style={styles.error}>{classError}</Text> : null}
+            </>
           )}
           {role === 'parent' && (
             <Input label="Your Ward's Admission Number" value={wardAdmissionNumber} onChangeText={setWardAdmissionNumber} placeholder="Your child's admission number" />
@@ -152,7 +188,7 @@ export default function SelfRegisterScreen({ navigation }: any) {
           <Input label="Confirm Password" value={confirm} onChangeText={setConfirm} placeholder="Re-enter password" secureTextEntry />
 
           {error ? <Text style={styles.error}>{error}</Text> : null}
-          <Btn label="Create My Account" onPress={handleSubmit} loading={loading} disabled={loadingSchools || schools.length === 0 || !schoolCode} style={{ marginTop: Spacing.md }} />
+          <Btn label="Create My Account" onPress={handleSubmit} loading={loading} disabled={loadingSchools || loadingClasses || schools.length === 0 || !schoolCode || (role === 'student' && !className)} style={{ marginTop: Spacing.md }} />
         </Card>
 
         <Btn label="Back to Sign In" variant="outline" onPress={() => navigation.replace('Login')} style={{ marginTop: Spacing.md }} />
