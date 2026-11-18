@@ -81,15 +81,15 @@ router.get('/', requirePerm('students.read'), async (req, res) => {
              WHERE s.deleted_at IS NULL`;
   const params: unknown[] = [];
 
-  if (effectiveSchool) { params.push(effectiveSchool); sql += ` AND s.school_code=${params.length}`; }
+  if (effectiveSchool) { params.push(effectiveSchool); sql += ` AND s.school_code=$${params.length}`; }
   if (effectiveClass) {
     params.push(effectiveClass);
     sql += user.role === 'teacher'
-      ? ` AND rrm.class_name=${params.length}`
-      : ` AND s.class_name=${params.length}`;
+      ? ` AND rrm.class_name=$${params.length}`
+      : ` AND s.class_name=$${params.length}`;
   }
   if (user.role === 'teacher') sql += ' AND rrm.status=\'active\'';
-  if (search) { params.push(`%${search}%`); sql += ` AND s.full_name ILIKE ${params.length}`; }
+  if (search) { params.push(`%${search}%`); sql += ` AND s.full_name ILIKE $${params.length}`; }
 
   sql += user.role === 'teacher'
     ? ' ORDER BY rrm.class_name, s.full_name'
