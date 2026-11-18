@@ -41,7 +41,7 @@ test('teacher placement decisions mutate only physical report membership and app
   let server: Server | undefined;
 
   try {
-    for (const [index, admission] of ['PROMOTE', 'RETAIN', 'REMOVE', 'REINSTATE', 'RACE'].entries()) {
+    for (const [index, admission] of ['PROMOTE', 'RETAIN', 'REMOVE', 'REINSTATE', 'RACE', 'PROMOTE_RACE'].entries()) {
       const { rows } = await query(
         `INSERT INTO students(full_name,class_name,school_code,admission_number)
          VALUES($1,'Primary 4',$2,$3) RETURNING id`,
@@ -100,11 +100,21 @@ test('teacher placement decisions mutate only physical report membership and app
       'only one concurrent removal may commit; the other must refresh after the state changes',
     );
 
+    const concurrentPromotions = await Promise.all([
+      decide(studentIds[5], 'promote'),
+      decide(studentIds[5], 'promote'),
+    ]);
+    assert.deepEqual(
+      concurrentPromotions.map(response => response.status).sort((a, b) => a - b),
+      [200, 409],
+      'only one concurrent promotion may commit from the same original class',
+    );
+
     const { rows: students } = await query(
       'SELECT id,class_name,deleted_at FROM students WHERE id=ANY($1::uuid[]) ORDER BY id',
       [studentIds],
     );
-    assert.equal(students.length, 5);
+    assert.equal(students.length, 6);
     assert.ok(students.every(row => row.class_name === 'Primary 4'),
       'online student class must remain unchanged by every report-roster decision');
     assert.ok(students.every(row => row.deleted_at === null),
@@ -122,6 +132,8 @@ test('teacher placement decisions mutate only physical report membership and app
     assert.equal(byStudent.get(studentIds[2])?.status, 'removed');
     assert.equal(byStudent.get(studentIds[3])?.status, 'active');
     assert.equal(byStudent.get(studentIds[4])?.status, 'removed');
+    assert.equal(byStudent.get(studentIds[5])?.class_name, 'Primary 5');
+    assert.equal(byStudent.get(studentIds[5])?.status, 'active');
 
     const { rows: events } = await query(
       'SELECT student_id,event_type FROM report_roster_membership_events WHERE student_id=ANY($1::uuid[])',
@@ -135,6 +147,8 @@ test('teacher placement decisions mutate only physical report membership and app
     assert.ok(eventTypes(studentIds[3]).includes('reinstated'));
     assert.equal(eventTypes(studentIds[4]).filter(type => type === 'removed').length, 1,
       'concurrent teacher decisions must append exactly one removal event');
+    assert.equal(eventTypes(studentIds[5]).filter(type => type === 'class_changed').length, 1,
+      'concurrent promotions must append exactly one class-change event');
   } finally {
     if (server) {
       server.closeAllConnections();
