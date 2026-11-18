@@ -316,7 +316,7 @@ if (!URL_ || !CAP) {
       assert.equal(sha((await one('SELECT source_reference s FROM topics WHERE id=$1', [topic])).s), c.source_body_sha256, 'stored original row is immutable');
       prompts.length = 0; const done = await dapi('POST', `/topics/${topic}/complete`);
       assert.equal(done.status, 200); assert.equal(done.body.delivery_correction.status, 'corrected'); assert.ok(done.body.summary.startsWith(JSS3_CORRECTION_MARKER));
-      assert.ok(prompts.length >= 2, 'practice + assessment prompts'); for (const p of prompts) { assert.ok(p.includes(JSS3_CORRECTION_MARKER)); assert.ok(p.includes(lesson.title)); for (const mk of markers) assert.ok(!norm(p).includes(mk), 'original text reached AI grounding'); }
+      assert.ok(prompts.length >= 1, 'one structured lesson prompt generates teaching content and practice together'); for (const p of prompts) { assert.ok(p.includes(JSS3_CORRECTION_MARKER)); assert.ok(p.includes(lesson.title)); for (const mk of markers) assert.ok(!norm(p).includes(mk), 'original text reached AI grounding'); }
       const fp = resolveDelivery({ school_code: SD, class_name: 'JSS 3', subject_name: 'Basic Science', term_label: orig.termLabel, title, source_reference: orig.sourceReference })!.fingerprint;
       const link = await one(`SELECT a.status,a.content_fingerprint FROM topics t JOIN assessments a ON a.id=t.generated_assessment_id WHERE t.id=$1`, [topic]); assert.deepEqual({ ...link }, { status: 'open', content_fingerprint: fp });
     });
