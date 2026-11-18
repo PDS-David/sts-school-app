@@ -67,36 +67,32 @@ router.get('/', requirePerm('students.read'), async (req, res) => {
   const effectiveSchool = scope.schoolCode;
   const effectiveClass = scope.className;
 
-  // A teacher who is a class teacher (assigned_class set) is always pinned
-  // to their own class above, same as before — a hybrid teacher (also has
-  // an assigned_subject_id) does NOT get widened here; per product decision,
-  // "class teacher" access to student records stays class-scoped no matter
-  // what else that teacher is also assigned to teach. A teacher who is NOT
-  // a class teacher at all (pure subject specialist, or an edge-case
-  // account with neither) has no class of their own to fall back to, so
-  // effectiveClass above resolves to whatever `class_name` they passed —
-  // and if they passed none, it was silently falling through to "no class
-  // filter", i.e. the FULL roster of every class in the school (names,
-  // admission numbers, dates of birth) in one shot. checkTeacherContentScope
-  // already lets a subject teacher publish content for any class in their
-  // subject without needing to browse the whole school's students to do it,
-  // so there's no legitimate case that needs this default. A non-class
-  // teacher must now explicitly name the one class they want; nothing is
-  // returned until they do.
-  if (user.role === 'teacher' && !user.assigned_class && !effectiveClass) {
-    return res.json({ students: [] });
-  }
-
-  let sql = `SELECT s.id,s.admission_number,s.full_name,s.class_name,s.gender,s.date_of_birth,
-                    s.school_code,s.created_at
-             FROM students s WHERE s.deleted_at IS NULL`;
+  // Teachers browse only active physical report-roster memberships. Their
+  // online student-account class is deliberately not used as report-roster
+  // membership or as an authorization fallback.
+  const teacherRosterJoin = user.role === 'teacher'
+    ? ' JOIN report_roster_memberships rrm ON rrm.student_id=s.id AND rrm.status=\'active\''
+    : '';
+  let sql = `SELECT s.id,s.admission_number,s.full_name,
+                    ${user.role === 'teacher' ? 'rrm.class_name' : 's.class_name'} AS class_name,
+                    s.gender,s.date_of_birth,s.school_code,s.created_at
+             FROM students s${teacherRosterJoin}
+             WHERE s.deleted_at IS NULL`;
   const params: unknown[] = [];
 
-  if (effectiveSchool) { params.push(effectiveSchool); sql += ` AND s.school_code=$${params.length}`; }
-  if (effectiveClass)  { params.push(effectiveClass);  sql += ` AND s.class_name=$${params.length}`; }
-  if (search)          { params.push(`%${search}%`);   sql += ` AND s.full_name ILIKE $${params.length}`; }
+  if (effectiveSchool) { params.push(effectiveSchool); sql += ` AND s.school_code=${params.length}`; }
+  if (effectiveClass) {
+    params.push(effectiveClass);
+    sql += user.role === 'teacher'
+      ? ` AND rrm.class_name=${params.length}`
+      : ` AND s.class_name=${params.length}`;
+  }
+  if (user.role === 'teacher') sql += ' AND rrm.status=\'active\'';
+  if (search) { params.push(`%${search}%`); sql += ` AND s.full_name ILIKE ${params.length}`; }
 
-  sql += ' ORDER BY s.class_name, s.full_name';
+  sql += user.role === 'teacher'
+    ? ' ORDER BY rrm.class_name, s.full_name'
+    : ' ORDER BY s.class_name, s.full_name';
   const { rows } = await query(sql, params);
   return res.json({ students: rows });
 });
