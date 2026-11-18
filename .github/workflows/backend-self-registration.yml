@@ -1,6 +1,19 @@
 name: Backend public self-registration integrity
 
 on:
+  push:
+    branches: [master]
+    paths:
+      - "backend/src/routes/auth.ts"
+      - "backend/src/utils/selfRegistration.ts"
+      - "backend/src/middleware/auth.ts"
+      - "backend/src/routes/students.ts"
+      - "backend/src/routes/scores.ts"
+      - "backend/src/utils/scope.ts"
+      - "backend/src/db/importPhysicalReportRoster.ts"
+      - "mobile/src/screens/SelfRegisterScreen.tsx"
+      - "tests/backend-self-registration.integration.test.mts"
+      - ".github/workflows/backend-self-registration.yml"
   pull_request:
     branches: [master]
     paths:
@@ -23,7 +36,7 @@ jobs:
     timeout-minutes: 15
     services:
       postgres:
-        image: postgres:16
+        image: postgres:18
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
