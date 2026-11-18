@@ -28,3 +28,11 @@ test('submissions persist attempts, concept accuracy and remediation separately'
   assert.match(route,/INSERT INTO class_practice_remediation_recommendations/);
   assert.match(route,/accuracy < 0\.7/);
 });
+
+test('submission row lock and writes share one database transaction', async () => {
+  const route = await readFile(new URL('../backend/src/routes/classPractice.ts', import.meta.url),'utf8');
+  const submitHandler = route.slice(route.indexOf("router.post('/sets/:id/submit'"), route.indexOf("router.get('/progress'"));
+  assert.match(submitHandler,/withTransaction\(async client =>/);
+  assert.match(submitHandler,/client\.query\(\s*'SELECT \* FROM class_practice_sets WHERE id=\$1 AND student_id=\$2 FOR UPDATE'/);
+  assert.doesNotMatch(submitHandler,/await query\(\s*'SELECT \* FROM class_practice_sets WHERE id=\$1 AND student_id=\$2 FOR UPDATE'/);
+});
