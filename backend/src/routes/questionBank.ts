@@ -65,8 +65,6 @@ router.post('/questions/:id/review', requireAuth, requireRole('teacher'), async 
     await client.query(`
       INSERT INTO question_bank_question_reviews(question_id,subject_id,reviewer_user_id,decision,notes)
       VALUES($1,$2,$3,$4,$5)
-      ON CONFLICT(question_id,reviewer_user_id) DO UPDATE SET
-        decision=EXCLUDED.decision,notes=EXCLUDED.notes,reviewed_at=now()
     `,[question.id,question.subject_id,req.user!.id,decision,notes]);
     if(decision==='approved')
       await client.query("UPDATE question_bank_questions SET review_status='approved',updated_at=now() WHERE id=$1",[question.id]);
