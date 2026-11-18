@@ -46,14 +46,14 @@ export default function AdminOnlineExamsScreen() {
 
   const openCreate=async()=>{
     setMode('create');setError('');setNotice('');setSelectedQuestions({});
-    try{const {data}=await api.get('/question-bank/subjects');setSubjects(data.subjects??[]);setSubject(null);}
+    try{const {data}=await api.get('/online-exams/admin/question-bank/subjects');setSubjects(data.subjects??[]);setSubject(null);}
     catch(e:any){setError(e?.response?.data?.error??'Question-bank access is required to create a formal examination.');}
   };
   const loadQuestions=async(nextBoard:string,nextSubject:any)=>{
     if(!nextSubject)return;
     setLoading(true);setError('');setQuestions([]);setSelectedQuestions({});
     try{
-      const {data}=await api.get('/question-bank/questions',{params:{board:nextBoard,subject_code:nextSubject.code,review_status:'approved'}});
+      const {data}=await api.get('/online-exams/admin/question-bank/questions',{params:{board:nextBoard,subject_code:nextSubject.code,review_status:'approved'}});
       setQuestions((data.questions??[]).filter((q:any)=>q.question_type==='mcq'));
       if((data.questions??[]).some((q:any)=>q.question_type!=='mcq'))
         setNotice('Written-response questions are held back here until a criterion rubric is authored for them. Objective approved questions are available below.');
