@@ -660,7 +660,7 @@ CREATE TABLE IF NOT EXISTS report_roster_membership_events (
   student_id UUID NOT NULL
     REFERENCES students(id) ON DELETE RESTRICT,
   event_type TEXT NOT NULL
-    CHECK (event_type IN ('enrolled', 'class_changed', 'removed', 'reinstated')),
+    CHECK (event_type IN ('enrolled', 'class_changed', 'retained', 'removed', 'reinstated')),
   from_class_name TEXT,
   to_class_name TEXT,
   actor_id UUID REFERENCES users(id) ON DELETE SET NULL,
