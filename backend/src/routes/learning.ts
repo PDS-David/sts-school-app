@@ -1337,6 +1337,38 @@ router.post('/topics/:id/lesson', requirePerm('topics.read'), requireRole('stude
   });
 });
 
+router.post('/topics/:id/progress', requirePerm('topics.complete'), requireRole('student'), async (req, res) => {
+  const user = req.user!;
+  const { rows: students } = await query(
+    'SELECT id, school_code, class_name FROM students WHERE user_id=$1 AND deleted_at IS NULL LIMIT 1',
+    [user.id],
+  );
+  const student = students[0];
+  if (!student) return res.status(404).json({ error: 'No active student record for this user' });
+
+  const { rows: topics } = await query(
+    `SELECT id, school_code, class_name, subject_id, term_label, order_index,
+            (to_jsonb(t)->>'sequence_rank')::numeric AS sequence_rank
+       FROM topics t WHERE id=$1`,
+    [req.params.id],
+  );
+  const topic = topics[0];
+  if (!topic) return res.status(404).json({ error: 'Topic not found' });
+  if (topic.school_code !== student.school_code || (topic.class_name && topic.class_name !== student.class_name)) {
+    return res.status(403).json({ error: 'This topic is not available to you' });
+  }
+  if (await studentTopicSequenceLocked(user, topic)) {
+    return res.status(403).json({ error: 'This topic is locked. Complete the required preceding topic first.' });
+  }
+
+  await query(
+    `INSERT INTO topic_completions(topic_id, student_id) VALUES($1,$2)
+     ON CONFLICT (topic_id, student_id) DO NOTHING`,
+    [topic.id, student.id],
+  );
+  return res.json({ ok: true, completed: true });
+});
+
 router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, res) => {
   const user = req.user!;
   const { rows: stRows } = await query('SELECT id, school_code, class_name FROM students WHERE user_id=$1 LIMIT 1', [user.id]);
