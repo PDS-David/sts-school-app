@@ -484,17 +484,19 @@ router.get('/report/:student_id', async (req, res) => {
   // falls back to the live students.class_name, i.e. exactly the old
   // behaviour; so historic reports stay approximate, not certified. For each
   // score row the target class is COALESCE(sc.class_name, $1) and a peer
-  // counts when COALESCE(s2.class_name, st2.class_name) equals it.
+  // counts when COALESCE(s2.class_name, rrm2.class_name, st2.class_name) equals it.
   const { rows: scoreRows } = await query(
     `SELECT sc.*, sub.name AS subject_name,
             (SELECT ROUND(AVG(s2.total),2) FROM scores s2 JOIN students st2 ON st2.id=s2.student_id
+             LEFT JOIN report_roster_memberships rrm2 ON rrm2.student_id=st2.id AND rrm2.status='active'
              WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id
                AND st2.school_code=$4
-               AND COALESCE(s2.class_name, st2.class_name)=COALESCE(sc.class_name, $1)) AS class_average,
+               AND COALESCE(s2.class_name, rrm2.class_name, st2.class_name)=COALESCE(sc.class_name, $1)) AS class_average,
             (SELECT MAX(s2.total) FROM scores s2 JOIN students st2 ON st2.id=s2.student_id
+             LEFT JOIN report_roster_memberships rrm2 ON rrm2.student_id=st2.id AND rrm2.status='active'
              WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id
                AND st2.school_code=$4
-               AND COALESCE(s2.class_name, st2.class_name)=COALESCE(sc.class_name, $1)) AS class_highest,
+               AND COALESCE(s2.class_name, rrm2.class_name, st2.class_name)=COALESCE(sc.class_name, $1)) AS class_highest,
             -- Position within the class for THIS subject/term — standard
             -- competition ranking (ties share a position; the next distinct
             -- score skips ahead by the tie count, e.g. two students tied
@@ -503,9 +505,10 @@ router.get('/report/:student_id', async (req, res) => {
             -- uses (see reportPdf.ts) — added in the same pass that
             -- rebuilt the template to match it.
             (SELECT COUNT(*)+1 FROM scores s2 JOIN students st2 ON st2.id=s2.student_id
+             LEFT JOIN report_roster_memberships rrm2 ON rrm2.student_id=st2.id AND rrm2.status='active'
              WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id
                AND st2.school_code=$4
-               AND COALESCE(s2.class_name, st2.class_name)=COALESCE(sc.class_name, $1)
+               AND COALESCE(s2.class_name, rrm2.class_name, st2.class_name)=COALESCE(sc.class_name, $1)
                AND s2.total > sc.total) AS subject_position
      FROM scores sc
      JOIN subjects sub ON sub.id=sc.subject_id AND sub.school_code=$4
@@ -547,13 +550,42 @@ router.get('/report/:student_id', async (req, res) => {
   }
   const { rows: classTotals } = await query(
     `SELECT s3.student_id, SUM(s3.total) AS grand_total
-     FROM scores s3 JOIN students st3 ON st3.id = s3.student_id
-     WHERE COALESCE(s3.class_name, st3.class_name) = $1 AND s3.term_id = $2
+     FROM scores s3
+     JOIN students st3 ON st3.id = s3.student_id
+     LEFT JOIN report_roster_memberships rrm3
+       ON rrm3.student_id=st3.id AND rrm3.status='active'
+     WHERE COALESCE(s3.class_name, rrm3.class_name, st3.class_name) = $1 AND s3.term_id = $2
        AND st3.school_code=$3
      GROUP BY s3.student_id`,
     [termClass, resolvedTermId, student.school_code],
   );
-  const classSize = classTotals.length;
+  // Class size is the physical class roster, not only students who already
+  // have at least one score. For historical terms, prefer each student's
+  // most common score-class snapshot; fall back to active physical roster
+  // membership, and only then to the legacy student class.
+  const { rows: classSizeRows } = await query(
+    `SELECT COUNT(*)::int AS class_size
+       FROM students st
+       LEFT JOIN LATERAL (
+         SELECT sx.class_name
+           FROM scores sx
+          WHERE sx.student_id=st.id AND sx.term_id=$3 AND sx.class_name IS NOT NULL
+          GROUP BY sx.class_name
+          ORDER BY COUNT(*) DESC, sx.class_name
+          LIMIT 1
+       ) term_class ON TRUE
+       LEFT JOIN LATERAL (
+         SELECT rrm.class_name
+           FROM report_roster_memberships rrm
+          WHERE rrm.student_id=st.id AND rrm.status='active'
+          ORDER BY rrm.joined_at DESC
+          LIMIT 1
+       ) physical_roster ON TRUE
+      WHERE st.school_code=$2 AND st.deleted_at IS NULL
+        AND COALESCE(term_class.class_name, physical_roster.class_name, st.class_name)=$1`,
+    [termClass, student.school_code, resolvedTermId],
+  );
+  const classSize = Number(classSizeRows[0]?.class_size ?? 0);
   const myTotal = classTotals.find((r) => r.student_id === student.id)?.grand_total;
   const overallPosition = myTotal !== undefined
     ? classTotals.filter((r) => Number(r.grand_total) > Number(myTotal)).length + 1
