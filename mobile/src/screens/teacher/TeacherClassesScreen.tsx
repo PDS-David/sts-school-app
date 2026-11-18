@@ -11,6 +11,7 @@ const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string;
   { icon: 'create-outline', label: 'Enter / Edit Scores', sub: 'Record continuous assessment and examination scores', screen: 'ScoreEntry', color: '#C62828' },
   { icon: 'calendar-outline', label: 'Attendance', sub: 'Record and correct students’ attendance', screen: 'Attendance', color: '#E65100' },
   { icon: 'chatbox-ellipses-outline', label: 'Report Remarks', sub: 'Create and edit class-teacher and principal/head-teacher remarks', screen: 'ReportRemarks', color: '#6A1B9A' },
+  { icon: 'swap-vertical-outline', label: 'Promote / Retain / Remove', sub: 'Start- and end-of-session decision for each student in your class', screen: 'PromoteStudents', color: '#00695C' },
 ];
 
 export default function TeacherClassesScreen({ navigation }: any) {
