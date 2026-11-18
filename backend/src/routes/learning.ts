@@ -7,7 +7,7 @@ import { verifyTopicAssetPayload } from '../db/attachTopicAssets.js';
 import { requireAuth, requirePerm, requireRole, denyTeacherAccess } from '../middleware/auth.js';
 import { resolveViewerClassNames, checkTeacherContentScope } from '../utils/scope.js';
 import { generate, generateJSON } from '../utils/ai.js';
-import { generateCurriculumLesson } from '../services/curriculumLessonGenerator.js';
+import { getOrGenerateCurriculumLesson } from '../services/curriculumLessonCache.js';
 import { sendPushToClass } from '../utils/push.js';
 import type { AuthUser } from '../types/index.js';
 import { isSafeExternalMaterialUrl } from '../utils/materialUrl.js';
@@ -249,15 +249,19 @@ router.post('/ss1/lessons/:lessonId/generate', requirePerm('topics.read'), async
     return res.status(423).json({ error: 'Redeem the Term PIN to generate this lesson.' });
   }
   try {
-    const generated = await generateCurriculumLesson({
-      className: 'SS 1',
-      subject: lesson.canonical_subject,
-      term: lesson.term,
-      topic: lesson.title,
-      objectives: lesson.objectives,
-      sourceMaterial: lesson.body,
-    }, { userId: req.user!.id, role: req.user!.role });
-    return res.json({ ok: true, lesson: generated });
+    const result = await getOrGenerateCurriculumLesson({
+      cacheKey: `ss1:${lesson.id}`,
+      input: {
+        className: 'SS 1',
+        subject: lesson.canonical_subject,
+        term: lesson.term,
+        topic: lesson.title,
+        objectives: lesson.objectives,
+        sourceMaterial: lesson.body,
+      },
+      identity: { userId: req.user!.id, role: req.user!.role },
+    });
+    return res.json({ ok: true, lesson: result.lesson, cached: result.cached });
   } catch (error: any) {
     return res.status(error?.statusCode ?? 502).json({
       ok: false, error: error?.message ?? 'A complete lesson could not be generated. Please retry.',
@@ -405,15 +409,19 @@ router.post('/ss23/units/:unitId/generate', requirePerm('topics.read'), async (r
     ? `SS3 EXAMINATION PREPARATION: revise the approved topic and objectives only. Do not introduce new syllabus content or represent this as a new instructional unit.\n\n${unit.body}`
     : unit.body;
   try {
-    const generated = await generateCurriculumLesson({
-      className: unit.class_name,
-      subject: unit.subject,
-      term: unit.term,
-      topic: unit.title,
-      objectives: unit.objectives,
-      sourceMaterial,
-    }, { userId: req.user!.id, role: req.user!.role });
-    return res.json({ ok: true, lesson: generated });
+    const result = await getOrGenerateCurriculumLesson({
+      cacheKey: `ss23:${unit.id}`,
+      input: {
+        className: unit.class_name,
+        subject: unit.subject,
+        term: unit.term,
+        topic: unit.title,
+        objectives: unit.objectives,
+        sourceMaterial,
+      },
+      identity: { userId: req.user!.id, role: req.user!.role },
+    });
+    return res.json({ ok: true, lesson: result.lesson, cached: result.cached });
   } catch (error: any) {
     return res.status(error?.statusCode ?? 502).json({
       ok: false, error: error?.message ?? 'A complete lesson could not be generated. Please retry.',
@@ -1279,16 +1287,22 @@ router.post('/topics/:id/complete', requirePerm('topics.complete'), async (req, 
       ? (() => { try { const parsed = JSON.parse(rawObjectives); return Array.isArray(parsed) ? parsed.filter((value): value is string => typeof value === 'string' && value.trim().length > 0) : []; } catch { return []; } })()
       : [];
 
-  let generatedLesson: Awaited<ReturnType<typeof generateCurriculumLesson>>;
+  let generatedLesson: Awaited<ReturnType<typeof getOrGenerateCurriculumLesson>>['lesson'];
   try {
-    generatedLesson = await generateCurriculumLesson({
-      className: student.class_name,
-      subject: topic.subject_name || 'Subject not recorded',
-      term: topic.curriculum_term_label ? `${topic.curriculum_term_label}${topic.curriculum_academic_year ? ` (${topic.curriculum_academic_year})` : ''}` : 'Term not recorded',
-      topic: topic.title,
-      objectives,
-      sourceMaterial: groundingSource || topic.description || null,
-    }, { userId: user.id, role: user.role });
+    const generated = await getOrGenerateCurriculumLesson({
+      cacheKey: `topic:${topic.id}`,
+      topicId: Number(topic.id),
+      input: {
+        className: student.class_name,
+        subject: topic.subject_name || 'Subject not recorded',
+        term: topic.curriculum_term_label ? `${topic.curriculum_term_label}${topic.curriculum_academic_year ? ` (${topic.curriculum_academic_year})` : ''}` : 'Term not recorded',
+        topic: topic.title,
+        objectives,
+        sourceMaterial: groundingSource || topic.description || null,
+      },
+      identity: { userId: user.id, role: user.role },
+    });
+    generatedLesson = generated.lesson;
 
     summary = [
       generatedLesson.title,
