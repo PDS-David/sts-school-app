@@ -61,7 +61,7 @@ export default function PromoteStudentsScreen() {
       } else if (action === 'remove') {
         setInfo({
           title: 'Removed from report roster',
-          message: `${student.full_name} was removed from the active physical report roster. Their online account and academic history remain unchanged.`,
+          message: `${student.full_name} was removed from the active physical report roster. Their online account and academic history remain unchanged. Ask an administrator if this was a mistake; only an administrator can restore the student.`,
         });
       } else {
         setInfo({
