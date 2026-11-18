@@ -62,7 +62,7 @@ export default function Ss1PackageLessonScreen({ route }: any) {
           <>
             <Text style={styles.body}>{lesson.body}</Text>
             {generationError ? <Text style={styles.generationError}>{generationError}</Text> : null}
-            {generating ? <Text style={styles.note}>Brainee's separate tutor is not generating this lesson. The curriculum lesson engine is preparing your lesson…</Text> : null}
+            {generating ? <Text style={styles.note}>The curriculum lesson engine is preparing your lesson…</Text> : null}
             {!generating ? <Btn label="Generate AI lesson" onPress={generateLesson} loading={generating} /> : null}
           </>
         )}
@@ -102,7 +102,7 @@ export default function Ss1PackageLessonScreen({ route }: any) {
 
 const styles = StyleSheet.create({
   reviewPending: { borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.sm, padding: Spacing.sm, marginTop: Spacing.sm },
-  generationError: { color: Colors.danger, fontSize: Fonts.sizes.xs, marginTop: Spacing.sm },
+  generationError: { color: Colors.error, fontSize: Fonts.sizes.xs, marginTop: Spacing.sm },
   reviewPendingText: { color: Colors.textSub, fontSize: Fonts.sizes.xs, lineHeight: 18 },
   meta: { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginBottom: Spacing.xs },
   body: { color: Colors.text, fontSize: Fonts.sizes.sm, lineHeight: 22, marginTop: Spacing.sm },
