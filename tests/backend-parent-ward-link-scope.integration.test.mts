@@ -46,7 +46,15 @@ async function createStudent(label: string, schoolCode: string, className: strin
      VALUES($1,$2,$3,$4) RETURNING id`,
     [`BSEC21 ${label}`, className, schoolCode, `BSEC21-${label}-${suffix}`],
   );
-  return String(rows[0].id);
+  const studentId = String(rows[0].id);
+  // Reporting roster reads are membership-based; give each fixture student
+  // the same active physical-class membership a real enrolment receives.
+  await query(
+    `INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status)
+     VALUES($1,$2,$2,'active')`,
+    [studentId, className],
+  );
+  return studentId;
 }
 
 async function startServer(): Promise<{ server: Server; baseUrl: string }> {
