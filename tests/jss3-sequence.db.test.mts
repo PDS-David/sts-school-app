@@ -64,9 +64,26 @@ if (!URL_) {
     fetch(`${base}/learning/topics/${ids[school][label]}/complete`, { method: 'POST', headers: { Authorization: `Bearer ${tok[user]}`, 'Content-Type': 'application/json' }, body: '{}' });
   const cleanup = async () => {
     for (const sc of [SC, SC2]) {
-      await q('DELETE FROM topics WHERE school_code=$1', [sc]); await q('DELETE FROM subjects WHERE school_code=$1', [sc]);
-      await q('DELETE FROM report_roster_memberships WHERE student_id IN (SELECT id FROM students WHERE school_code=$1)', [sc]);
-      await q('DELETE FROM students WHERE school_code=$1', [sc]); await q('DELETE FROM users WHERE school_code=$1', [sc]); await q('DELETE FROM schools WHERE code=$1', [sc]);
+      await q('DELETE FROM topics WHERE school_code=$1', [sc]);
+      await q('DELETE FROM subjects WHERE school_code=$1', [sc]);
+      // schema.sql is intentionally replayed during this test, so its
+      // idempotent roster backfill may create append-only events for fixtures.
+      // This is a disposable jss3_test_* database only; disable user triggers
+      // solely for fixture cleanup, then restore them immediately.
+      await q('BEGIN');
+      try {
+        await q('ALTER TABLE report_roster_membership_events DISABLE TRIGGER USER');
+        await q('DELETE FROM report_roster_membership_events WHERE student_id IN (SELECT id FROM students WHERE school_code=$1)', [sc]);
+        await q('DELETE FROM report_roster_memberships WHERE student_id IN (SELECT id FROM students WHERE school_code=$1)', [sc]);
+        await q('DELETE FROM students WHERE school_code=$1', [sc]);
+        await q('ALTER TABLE report_roster_membership_events ENABLE TRIGGER USER');
+        await q('COMMIT');
+      } catch (error) {
+        await q('ROLLBACK');
+        throw error;
+      }
+      await q('DELETE FROM users WHERE school_code=$1', [sc]);
+      await q('DELETE FROM schools WHERE code=$1', [sc]);
     }
   };
 
