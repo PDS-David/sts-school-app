@@ -151,6 +151,21 @@ router.put('/terms/:id', requireRole('admin'), async (req, res) => {
   const { name, academic_year, is_current, start_date, end_date, days_opened, next_term_begins } = req.body ?? {};
   const user = req.user!;
 
+  if (name !== undefined && !isValidSessionTermName(name)) {
+    return res.status(400).json({
+      error: `Term name must be one of: ${SESSION_TERM_NAMES.join(', ')}`,
+    });
+  }
+  if (academic_year !== undefined &&
+      (typeof academic_year !== 'string' || !academic_year.trim() || academic_year.length > 20)) {
+    return res.status(400).json({ error: 'academic_year must be a non-empty string of at most 20 characters.' });
+  }
+  if (is_current !== undefined && typeof is_current !== 'boolean') {
+    return res.status(400).json({ error: 'is_current must be a boolean.' });
+  }
+  const daysOpenedError = validateDaysOpened(days_opened);
+  if (daysOpenedError) return res.status(400).json({ error: daysOpenedError });
+
   const result = await withTransaction(async (client) => {
     // school_code is immutable through this endpoint. Read it to select the
     // per-school advisory lock, then lock/re-read the row before authorizing
