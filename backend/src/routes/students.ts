@@ -387,8 +387,8 @@ router.put('/:id', requirePerm('grades.write'), async (req, res) => {
 });
 
 // ── POST /students/:id/promotion ──────────────────────────────────────────────
-// Physical report-roster placement is an administrator responsibility.
-// Teacher accounts are report-generation-only and cannot change membership.
+// Teachers may directly promote, retain, or remove students from their own
+// assigned physical class. Demotion and reinstatement remain administrator-only.
 //
 // "Next"/"previous" class is derived from the classes table's own row order
 // within the student's school (see backend/schema.sql's classes table and
@@ -403,7 +403,7 @@ router.put('/:id', requirePerm('grades.write'), async (req, res) => {
 // use scores.class_name, stamped when each score is recorded (routes/scores.ts),
 // and fall back to the live class only for rows with no stamp. Nothing is
 // written to scores from this route.
-router.post('/:id/promotion', requireRole('admin'), async (req, res) => {
+router.post('/:id/promotion', requireRole('admin', 'teacher'), async (req, res) => {
   const user = req.user!;
   const { action } = req.body as { action?: 'promote' | 'demote' | 'retain' | 'remove' | 'reinstate' };
   if (!action || !['promote', 'demote', 'retain', 'remove', 'reinstate'].includes(action)) {
@@ -420,6 +420,18 @@ router.post('/:id/promotion', requireRole('admin'), async (req, res) => {
   );
   const membership = membershipRows[0];
   if (!membership) return res.status(404).json({ error: 'Active report-roster membership not found' });
+
+  // Teachers may act only on active students in their own assigned class.
+  // Their authority is deliberately limited to the three owner-approved outcomes.
+  if (user.role === 'teacher') {
+    if (!user.school_code || !user.assigned_class || membership.school_code !== user.school_code ||
+        membership.report_class_name !== user.assigned_class) {
+      return res.status(404).json({ error: 'Student not found in your assigned physical class' });
+    }
+    if (!['promote', 'retain', 'remove'].includes(action)) {
+      return res.status(403).json({ error: 'Teachers may promote, retain, or remove students in their assigned physical class.' });
+    }
+  }
 
   // A school-bound administrator is restricted to their own school.
   // A global administrator may reconcile any school's physical report roster.
@@ -444,7 +456,7 @@ router.post('/:id/promotion', requireRole('admin'), async (req, res) => {
         `INSERT INTO report_roster_membership_events
            (student_id,event_type,from_class_name,actor_id,details)
          VALUES($1,'removed',$2,$3,$4::jsonb)`,
-        [membership.id, membership.report_class_name, user.id, JSON.stringify({ reason: 'administrator_decision' })],
+        [membership.id, membership.report_class_name, user.id, JSON.stringify({ reason: user.role === 'teacher' ? 'teacher_decision' : 'administrator_decision', actor_role: user.role })],
       );
       await auditInTransaction(client, user, 'remove_report_roster_membership', 'student', membership.id,
         'student removed from active physical report roster',
