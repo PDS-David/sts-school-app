@@ -212,6 +212,8 @@ test('whole-class attendance and class-record reads enforce school and term owne
       await new Promise<void>(resolve => server!.close(() => resolve()));
     }
     if (studentIds.length) {
+      await query('DELETE FROM report_roster_membership_events WHERE student_id=ANY($1::uuid[])', [studentIds]);
+      await query('DELETE FROM report_roster_memberships WHERE student_id=ANY($1::uuid[])', [studentIds]);
       await query('DELETE FROM attendance WHERE student_id=ANY($1::uuid[])', [studentIds]);
       await query('DELETE FROM class_records WHERE student_id=ANY($1::uuid[])', [studentIds]);
       await query('DELETE FROM students WHERE id=ANY($1::uuid[])', [studentIds]);
