@@ -54,7 +54,8 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
      FROM users u WHERE u.id=$1`, [user.id],
   );
   const dbUser = rows[0];
-  req.learningAccessPolicy = await readLearningAccessPolicy();
+  const accessPolicy = await readLearningAccessPolicy();
+  req.learningAccessPolicy = accessPolicy;
   if (!dbUser || !dbUser.is_active) {
     return res.status(401).json({
       error: dbUser?.revocation_reason
@@ -62,7 +63,7 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
         : 'Account is deactivated. Contact the school admin.',
     });
   }
-  if (!(req.learningAccessPolicy.freeLaunchMode && dbUser.role === 'student') && dbUser.access_expires_at && new Date(dbUser.access_expires_at).getTime() <= Date.now()) {
+  if (!(accessPolicy.freeLaunchMode && dbUser.role === 'student') && dbUser.access_expires_at && new Date(dbUser.access_expires_at).getTime() <= Date.now()) {
     return res.status(401).json({
       error: dbUser.revocation_reason
         ? `Your access period has ended: ${dbUser.revocation_reason}. Contact the school admin to reactivate your account.`
