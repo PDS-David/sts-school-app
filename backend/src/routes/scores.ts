@@ -50,6 +50,9 @@ async function validateScoreWriteScope(
     [score.student_id],
   );
   const physicalClassName = rosterRows[0]?.class_name ?? student.class_name;
+  if (user.role === 'teacher' && !rosterRows[0]) {
+    return { status: 403, error: 'Student is not in an active physical report roster.' };
+  }
 
   const { rows: subjectRows } = await client.query(
     'SELECT school_code FROM subjects WHERE id=$1 FOR SHARE',
@@ -220,13 +223,14 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
                     t.id AS term_id, t.name AS term_name
              FROM scores sc
              JOIN students s   ON s.id = sc.student_id
+             LEFT JOIN report_roster_memberships rrm ON rrm.student_id=s.id AND rrm.status='active'
              JOIN subjects sub ON sub.id = sc.subject_id AND sub.school_code = s.school_code
              JOIN terms t      ON t.id  = sc.term_id AND t.school_code = s.school_code
              WHERE 1=1`;
   const params: unknown[] = [];
 
   if (term_id)    { params.push(term_id);    sql += ` AND sc.term_id=$${params.length}`; }
-  if (class_name) { params.push(class_name); sql += ` AND s.class_name=$${params.length}`; }
+  if (class_name) { params.push(class_name); sql += ` AND COALESCE(rrm.class_name,s.class_name)=${params.length}`; }
   if (subject_id) { params.push(subject_id); sql += ` AND sc.subject_id=$${params.length}`; }
   if (student_id) { params.push(student_id); sql += ` AND sc.student_id=$${params.length}`; }
   // Teachers see only their school
@@ -234,7 +238,7 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
     if (!user.school_code) return res.status(403).json({ error: 'Your teacher account is not assigned to a school.' });
     params.push(user.school_code); sql += ` AND s.school_code=$${params.length}`;
     if (user.assigned_class) {
-      params.push(user.assigned_class); sql += ` AND s.class_name=$${params.length}`;
+      params.push(user.assigned_class); sql += ` AND rrm.class_name=${params.length} AND rrm.status='active'`;
     } else if (user.assigned_subject_ids && user.assigned_subject_ids.length > 0) {
       // Bug found by live-testing this route directly with a real
       // subject-only teacher account: the previous version only blocked a
@@ -256,8 +260,7 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
       // returns zero rows instead of leaking every subject's data.
       params.push(user.assigned_subject_ids); sql += ` AND sc.subject_id = ANY($${params.length})`;
     } else {
-      // Neither an assigned class nor an assigned subject — nothing in
-      // this school is legitimately scoped to this teacher at all.
+      // Physical report entry is limited to an assigned class and active roster.
       return res.json({ scores: [] });
     }
   } else if (user.role === 'admin' && school_code) {
