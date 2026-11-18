@@ -29,8 +29,8 @@ const scoreEntrySchema = z.object({
 
 /**
  * Validate and lock all three school-owned references for a score write.
- * Subject-only teachers may enter only their assigned subjects; class
- * teachers retain the class-wide subject access exposed by GET /scores.
+ * Teachers must have an assigned physical class and active report-roster
+ * membership; they may enter any report subject for that class.
  */
 async function validateScoreWriteScope(
   client: PoolClient,
