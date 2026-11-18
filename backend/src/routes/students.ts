@@ -165,7 +165,17 @@ router.get('/report-roster/removed', requireRole('admin'), async (req, res) => {
   let schoolClause = '';
   if (user.school_code) {
     params.push(user.school_code);
-    schoolClause = ` AND s.school_code=${params.length}`;
+    schoolClause = ' AND s.school_code=
+  }
+  const { rows } = await query(
+    `SELECT s.id,s.admission_number,s.full_name,m.class_name
+       FROM students s
+       JOIN report_roster_memberships m ON m.student_id=s.id
+      WHERE s.deleted_at IS NULL AND m.status='removed'${schoolClause}
+      ORDER BY s.school_code,m.class_name,s.full_name`,
+    params,
+  );
+  return res.json({ students: rows }); + params.length;
   }
   const { rows } = await query(
     `SELECT s.id,s.admission_number,s.full_name,m.class_name
