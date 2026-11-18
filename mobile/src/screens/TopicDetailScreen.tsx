@@ -308,6 +308,13 @@ export default function TopicDetailScreen({ route, navigation }: any) {
             style={{ marginTop: Spacing.sm }}
           />
         ) : null}
+        {completed ? (
+          <Btn
+            label="Adaptive AI Practice"
+            onPress={() => navigation.navigate('AssessmentsTab', { screen: 'ClassPractice', params: { topic: { id: topic.id, title: topic.title, subject_name: topic.subject_name, class_name: topic.class_name } } })}
+            style={{ marginTop: Spacing.sm }}
+          />
+        ) : null}
 
         {note && (
           <View style={styles.noteBox}>
