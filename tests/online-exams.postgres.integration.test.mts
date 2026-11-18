@@ -59,6 +59,19 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       const {rows: questionRows}=await client.query("SELECT id FROM question_bank_questions WHERE question_number='AI-GEN-001' AND board='WAEC'");
       assert.ok(subjectRows[0]);assert.ok(questionRows[0]);
       const questionId=questionRows[0].id;
+      const dbGuardExam=randomUUID(),dbGuardSection=randomUUID();
+      await client.query(`INSERT INTO online_exams(id,school_code,subject_id,subject_name,class_name,board,examination_type,title,instructions,duration_minutes,starts_at,ends_at,created_by)
+        VALUES($1,$2,$3,'Mathematics','SS 3','WAEC','Mock','Rights guard test','Test rights trigger.',30,now(),now()+interval '1 hour',$4)`,
+        [dbGuardExam,school,subjectRows[0].id,admin]);
+      await client.query('INSERT INTO online_exam_sections(id,exam_id,title,position) VALUES($1,$2,$3,0)',[dbGuardSection,dbGuardExam,'Section A']);
+      await assert.rejects(
+        client.query(`INSERT INTO online_exam_questions(exam_id,section_id,question_bank_question_id,position,marks,question_snapshot,provenance)
+          VALUES($1,$2,$3,0,1,'{"stem":"Not approved yet","question_type":"mcq"}','{}')`,
+          [dbGuardExam,dbGuardSection,questionId]),
+        (err:any)=>err.code==='P0001'
+      );
+      await client.query('DELETE FROM online_exams WHERE id=$1',[dbGuardExam]);
+
       const dbUrl=new URL(connectionString);
       dbUrl.searchParams.set('options','-c search_path='+schema);
       process.env.DATABASE_URL=dbUrl.toString();
