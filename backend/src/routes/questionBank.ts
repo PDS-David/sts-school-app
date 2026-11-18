@@ -13,7 +13,7 @@ const router = Router();
 router.use(requireAuth, requireRole('admin'), (req, res, next) => {
   // The question bank is a global online-learning resource, not a school-scoped
   // physical assessment tool. Only global administrators may manage its corpus.
-  if (req.user?.school_code || req.user?.can_manage_all_schools !== true) {
+  if (req.user?.role !== 'admin' || req.user?.can_manage_all_schools !== true) {
     return res.status(403).json({ error: 'Only a global administrator can manage the online question bank.' });
   }
   next();
