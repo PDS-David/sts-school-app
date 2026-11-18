@@ -78,7 +78,20 @@ if (!URL_) {
     await query('DELETE FROM assessments WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
     await query('DELETE FROM teacher_subjects WHERE user_id IN (SELECT id FROM users WHERE school_code = ANY($1) OR username LIKE $2)', [[TEST_SC, TEST_SC_B], 'zz_t2test_%']);
     await query('DELETE FROM subjects WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
-    await query('DELETE FROM students WHERE school_code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
+    // Keep append-only report-roster history intact; remove only memberships
+    // that have no event trail, then remove only students with no history.
+    await query(
+      `DELETE FROM report_roster_memberships m
+       USING students s
+       WHERE m.student_id=s.id AND s.school_code=ANY($1)
+         AND NOT EXISTS (SELECT 1 FROM report_roster_membership_events e WHERE e.student_id=s.id)`,
+      [[TEST_SC, TEST_SC_B]],
+    );
+    await query(
+      `DELETE FROM students s WHERE s.school_code=ANY($1)
+       AND NOT EXISTS (SELECT 1 FROM report_roster_membership_events e WHERE e.student_id=s.id)`,
+      [[TEST_SC, TEST_SC_B]],
+    );
     await query('DELETE FROM users WHERE school_code = ANY($1) OR username LIKE $2', [[TEST_SC, TEST_SC_B], 'zz_t2test_%']);
     await query('DELETE FROM schools WHERE code = ANY($1)', [[TEST_SC, TEST_SC_B]]);
   }
@@ -466,14 +479,20 @@ if (!URL_) {
     assert.equal((await del(`/learning/materials/${otherSchoolBody.material.id}`, tokenAdminGlobal)).status, 200);
   });
 
-  test('teacher material deletion is limited to the uploader within the same school', async () => {
-    const created = await postJson('/learning/materials', tokenTeacherA, {
+  test('report-only teachers cannot create or delete learning materials', async () => {
+    const teacherAttempt = await postJson('/learning/materials', tokenTeacherA, {
       subject_id: subjectA, class_name: 'JSS 3', title: 'Teacher-owned material',
+      type: 'doc', url: 'https://example.org/lesson.docx',
+    });
+    assert.equal(teacherAttempt.status, 403);
+
+    const created = await postJson('/learning/materials', tokenAdminA, {
+      subject_id: subjectA, class_name: 'JSS 3', title: 'Admin-owned material',
       type: 'doc', url: 'https://example.org/lesson.docx',
     });
     assert.equal(created.status, 201);
     const body: any = await created.json();
-    assert.equal((await del(`/learning/materials/${body.material.id}`, tokenTeacherB)).status, 404);
+    assert.equal((await del(`/learning/materials/${body.material.id}`, tokenTeacherA)).status, 403);
     assert.equal((await del(`/learning/materials/${body.material.id}`, tokenAdminA)).status, 200);
   });
 
