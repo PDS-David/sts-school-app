@@ -6,7 +6,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import api from '../api/client';
 import { useAuth } from '../api/AuthContext';
-import { Loader, Empty, Badge } from '../components/UI';
+import { Loader, Empty, Badge, Btn } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { useAdminSchool } from '../api/AdminSchoolContext';
 import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
@@ -26,6 +26,7 @@ export default function StudentsScreen({ navigation }: any) {
   const [loading,   setLoading]   = useState(true);
   const [refreshing,setRefreshing]= useState(false);
   const [search,    setSearch]    = useState('');
+  const [loadError, setLoadError] = useState('');
 
   // Compact switcher lives in the native header now, not as a full-width
   // block in the content area — see SchoolSwitcherBar.tsx's `compact` doc.
@@ -34,15 +35,18 @@ export default function StudentsScreen({ navigation }: any) {
   }, [navigation]);
 
   const fetch = async () => {
+    setLoadError('');
     if (user?.role === 'admin' && !selectedSchoolCode) { setStudents([]); setFiltered([]); setLoading(false); setRefreshing(false); return; }
     try {
       // Admin has no school of their own — pass whichever one is selected in
       // the switcher, so this always shows exactly one school's students
       // rather than every student across both schools blended together.
       const { data } = await api.get('/students', { params: { school_code: selectedSchoolCode ?? undefined } });
-      setStudents(data.students);
-      setFiltered(data.students);
-    } catch { } finally { setLoading(false); setRefreshing(false); }
+      setStudents(data.students ?? []);
+      setFiltered(data.students ?? []);
+    } catch (e: any) {
+      setLoadError(e?.response?.data?.error ?? 'Could not load the student roster. Check your connection and retry.');
+    } finally { setLoading(false); setRefreshing(false); }
   };
 
   useEffect(() => { fetch(); }, [selectedSchoolCode]);
@@ -72,7 +76,12 @@ export default function StudentsScreen({ navigation }: any) {
             placeholderTextColor={Colors.textSub}
           />
         </View>
-        <FlatList
+        {loadError ? (
+          <View style={{ padding: Spacing.md }}>
+            <Empty message={loadError} />
+            <Btn label="Retry student roster" variant="outline" onPress={() => { setLoading(true); fetch(); }} />
+          </View>
+        ) : <FlatList
           data={filtered}
           keyExtractor={s => s.id}
           refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); fetch(); }} />}
@@ -93,7 +102,7 @@ export default function StudentsScreen({ navigation }: any) {
               <Ionicons name="chevron-forward" size={18} color={Colors.textSub} />
             </TouchableOpacity>
           )}
-        />
+        />}
         </>}
       </PageContainer>
       {user?.role === 'admin' && <FAB actions={[{ icon: 'person-add', label: 'Enroll Student', onPress: () => navigation.navigate('AddStudent') }]} />}
