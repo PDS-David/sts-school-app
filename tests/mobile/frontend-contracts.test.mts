@@ -60,3 +60,18 @@ test('attendance and score fields identify the learner and component', () => {
   assert.ok(attendance.includes('accessibilityLabel=') && attendance.includes('days present'));
   assert.ok(scores.includes('accessibilityLabel=') && scores.includes(' score'));
 });
+
+
+test('teacher placement-decision screen is reachable and only offers teacher-permitted actions', () => {
+  const teacherTabs = read('mobile/src/navigation/TeacherTabs.tsx');
+  const classesMenu = read('mobile/src/screens/teacher/TeacherClassesScreen.tsx');
+  const screen = read('mobile/src/screens/PromoteStudentsScreen.tsx');
+  assert.ok(teacherTabs.includes("import PromoteStudentsScreen from '../screens/PromoteStudentsScreen'"));
+  assert.ok(teacherTabs.includes('ReportsStack.Screen name="PromoteStudents"'));
+  assert.ok(classesMenu.includes("screen: 'PromoteStudents'"));
+  assert.ok(screen.includes('/promotion'));
+  // Backend (POST /students/:id/promotion) lets teachers promote/retain/remove only;
+  // demote, reinstate and the removed list are administrator-only.
+  assert.ok(!/'demote'|'reinstate'|report-roster\\/removed/.test(screen),
+    'teacher screen must not call administrator-only roster actions');
+});
