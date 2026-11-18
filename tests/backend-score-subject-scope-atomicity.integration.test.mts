@@ -174,7 +174,7 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     assert.equal(subjectTeacherOutsideClass.status, 403, 'subject teachers cannot mark students outside their assigned classes');
     const classTeacherOverride = await post('/', { ...score(studentIds[0], subjectIds[0], termIds[0]), ca1: 15 }, classTeacher.token);
     assert.equal(classTeacherOverride.status, 200, 'class teachers can overwrite a subject teacher mark for their class');
-    const subjectTeacherCannotOverride = await post('/', score(studentIds[0], subjectIds[1], termIds[0]), subjectTeacher.token);
+    const subjectTeacherCannotOverride = await post('/', score(studentIds[0], subjectIds[0], termIds[0]), subjectTeacher.token);
     assert.equal(subjectTeacherCannotOverride.status, 403, 'subject teachers cannot overwrite a class-teacher mark');
     const { rows: calculatedScore } = await query(
       'SELECT total,grade,class_name FROM scores WHERE student_id=$1 AND subject_id=$2 AND term_id=$3',
