@@ -90,6 +90,12 @@ test('class-practice API enforces ownership and serializes concurrent submission
 
       const concurrent=await Promise.all([submit(first,one),submit(second,one)]);
       assert.deepEqual(concurrent.map(x=>x.status).sort(),[200,200]);
+      const recovered=await fetch(base+'/class-practice/sets/'+first,{headers:{Authorization:'Bearer '+one},signal:AbortSignal.timeout(15000)});
+      assert.equal(recovered.status,200);
+      const recoveredBody=await recovered.json();
+      assert.equal(recoveredBody.result.submitted,true);
+      assert.equal(recoveredBody.result.results.length,2);
+      assert.equal((await fetch(base+'/class-practice/sets/'+first,{headers:{Authorization:'Bearer '+two}})).status,404);
       const duplicates=await Promise.all([submit(duplicate,one),submit(duplicate,one)]);
       assert.deepEqual(duplicates.map(x=>x.status).sort(),[200,409]);
       assert.equal((await submit(first,two)).status,404);
