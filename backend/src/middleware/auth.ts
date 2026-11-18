@@ -92,7 +92,7 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
     can_manage_all_schools: dbUser.can_manage_all_schools === true,
     selected_school_code: dbUser.role === 'admin' && dbUser.can_manage_all_schools === true ? requestedSchool : null,
   });
-  if (req.user.role === 'admin' && req.user.can_manage_all_schools === true && !requestedSchool) {
+  if (req.user?.role === 'admin' && req.user?.can_manage_all_schools === true && !requestedSchool) {
     const pathname = req.originalUrl.split('?')[0];
     const isSchoolScoped =
       pathname === '/students' || pathname.startsWith('/students/') ||
