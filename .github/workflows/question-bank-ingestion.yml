@@ -4,6 +4,9 @@ on:
   pull_request:
     paths:
       - "backend/migrations/0012_online_question_bank.sql"
+      - "backend/migrations/0013_ai_class_practice.sql"
+      - "backend/src/routes/classPractice.ts"
+      - "tests/ai-class-practice.static.test.mts"
       - "backend/src/routes/questionBank.ts"
       - "backend/src/utils/questionBankValidation.ts"
       - "backend/package.json"
@@ -63,6 +66,35 @@ jobs:
       - name: Run question-bank validation tests
         working-directory: backend
         run: npm run test:question-bank
+
+      - name: Run adaptive class-practice regression tests
+        working-directory: backend
+        run: npm run test:class-practice
+
+      - name: Prepare isolated PostgreSQL class-practice schema
+        run: |
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 <<'SQL'
+          CREATE EXTENSION IF NOT EXISTS pgcrypto;
+          CREATE TABLE students (id UUID PRIMARY KEY);
+          CREATE TABLE topics (id INTEGER PRIMARY KEY);
+          SQL
+
+      - name: Apply adaptive class-practice migration to isolated PostgreSQL
+        run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f backend/migrations/0013_ai_class_practice.sql
+
+      - name: Verify adaptive class-practice schema
+        run: |
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 <<'SQL'
+          DO $
+          BEGIN
+            IF to_regclass('class_practice_sets') IS NULL
+              OR to_regclass('class_practice_attempts') IS NULL
+              OR to_regclass('class_practice_concept_performance') IS NULL
+              OR to_regclass('class_practice_remediation_recommendations') IS NULL THEN
+              RAISE EXCEPTION 'Adaptive class-practice migration did not create all four tables';
+            END IF;
+          END $;
+          SQL
 
       - name: Prepare isolated PostgreSQL test schema
         run: |
