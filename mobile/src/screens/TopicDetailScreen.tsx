@@ -155,9 +155,7 @@ export default function TopicDetailScreen({ route, navigation }: any) {
   const [generatedLesson, setGeneratedLesson] = useState<any | null>(null);
   const [completed, setCompleted] = useState(!!initialTopic.completed);
   const [revealed, setRevealed]     = useState<Record<number, boolean>>({});
-  const [assessmentStatus, setAssessmentStatus] = useState<string | null>(null);
   const [note, setNote]             = useState<string | undefined>(undefined);
-  const [summaryIsFallback, setSummaryIsFallback] = useState(false);
   const [assets, setAssets]         = useState<any[]>([]);
   const [attributions, setAttributions] = useState<any[]>([]);
   const [token, setToken]           = useState<string | null>(null);
@@ -205,7 +203,6 @@ export default function TopicDetailScreen({ route, navigation }: any) {
       setGeneratedLesson(data.lesson);
       setPractice(data.lesson.practice_questions ?? []);
       setRevealed({});
-      setSummaryIsFallback(false);
       setNote(data.note);
     } catch (e: any) {
       const msg = e?.response?.data?.error;
@@ -307,7 +304,7 @@ export default function TopicDetailScreen({ route, navigation }: any) {
             onPress={markComplete}
             loading={loading}
             disabled={completed || loading}
-            color={completed ? Colors.success : undefined}
+            variant={completed ? 'outline' : 'primary'}
             style={{ marginTop: Spacing.sm }}
           />
         ) : null}
@@ -322,7 +319,7 @@ export default function TopicDetailScreen({ route, navigation }: any) {
         )}
       </Card>
 
-      {(assessmentStatus === 'open' || topic.generated_assessment_id) && (
+      {topic.generated_assessment_id && (
         <Btn
           label="Take Topic Assessment"
           onPress={takeAssessment}
