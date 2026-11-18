@@ -728,10 +728,11 @@ router.get('/attempts/:attemptId/results',requireRole('student'),async(req,res)=
   if(!rows[0]) return res.status(404).json({error:'Result not found.'});
   const {rows: answers}=await query(`
     SELECT q.id,q.question_snapshot->>'stem' AS stem,r.response,r.awarded_marks,r.marking_status,r.feedback,q.marks
-      FROM online_exam_questions q LEFT JOIN online_exam_responses r
+      FROM online_exam_questions q
+      JOIN online_exam_sections s ON s.id=q.section_id
+      LEFT JOIN online_exam_responses r
         ON r.exam_question_id=q.id AND r.attempt_id=$1
      WHERE q.exam_id=(SELECT exam_id FROM online_exam_attempts WHERE id=$1)
-     JOIN online_exam_sections s ON s.id=q.section_id
      ORDER BY s.position,q.position
   `,[req.params.attemptId]);
   return res.json({attempt:rows[0],responses:answers});
