@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS online_exam_responses (
   response JSONB NOT NULL,
   saved_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   awarded_marks NUMERIC(7,2),
-  marking_status TEXT NOT NULL DEFAULT 'unmarked' CHECK (marking_status IN ('unmarked','auto_marked','ai_marked','pending_review')),
+  marking_status TEXT NOT NULL DEFAULT 'unmarked' CHECK (marking_status IN ('unmarked','auto_marked','ai_marked','manual_marked','pending_review')),
   feedback TEXT,
   PRIMARY KEY(attempt_id,exam_question_id)
 );
