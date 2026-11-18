@@ -39,8 +39,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-          cache-dependency-path: backend/package-lock.json
       - run: npm ci
       - run: npm run build
       - run: npm run test:online-exams
@@ -57,7 +55,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-          cache-dependency-path: mobile/package-lock.json
       - run: npm ci
       - run: npm run typecheck
