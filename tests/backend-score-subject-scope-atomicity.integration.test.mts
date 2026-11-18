@@ -141,22 +141,22 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     });
 
     const allowedSubject = await post('/', score(studentIds[0], subjectIds[0], termIds[0]), subjectTeacher.token);
-    assert.equal(allowedSubject.status, 403, 'teachers generate reports but do not enter scores');
+    assert.equal(allowedSubject.status, 200, 'assigned class teachers can enter scores for their physical roster');
 
     const deniedSubject = await post('/', score(studentIds[0], subjectIds[1], termIds[0]), subjectTeacher.token);
-    assert.equal(deniedSubject.status, 403, 'teacher score entry is denied at the role boundary');
+    assert.equal(deniedSubject.status, 403, 'subject-only teachers without an assigned physical class cannot enter report scores');
 
     const foreignSubject = await post('/', score(studentIds[0], subjectIds[2], termIds[0]), subjectTeacher.token);
-    assert.equal(foreignSubject.status, 403, 'teacher score entry is denied before subject inspection');
+    assert.equal(foreignSubject.status, 403, 'teachers cannot enter scores for another school subject');
 
     const foreignTerm = await post('/', score(studentIds[0], subjectIds[0], termIds[1]), subjectTeacher.token);
-    assert.equal(foreignTerm.status, 403, 'teacher score entry is denied before term inspection');
+    assert.equal(foreignTerm.status, 400, 'teacher score entry rejects a term owned by another school');
 
     const classTeacherSubject = await post('/', score(studentIds[0], subjectIds[1], termIds[0]), classTeacher.token);
-    assert.equal(classTeacherSubject.status, 403, 'class teachers generate reports but do not enter marks');
+    assert.equal(classTeacherSubject.status, 200, 'class teachers can enter marks for any report subject in their assigned class');
 
     const classTeacherWrongClass = await post('/', score(studentIds[1], subjectIds[0], termIds[0]), classTeacher.token);
-    assert.equal(classTeacherWrongClass.status, 403, 'teachers cannot enter marks for any class');
+    assert.equal(classTeacherWrongClass.status, 403, 'teachers cannot enter marks outside their assigned physical class');
 
     const adminForeignSubject = await post('/', score(studentIds[0], subjectIds[2], termIds[0]), admin.token);
     assert.equal(adminForeignSubject.status, 400, 'administrator writes must preserve student/subject school integrity');
@@ -261,7 +261,9 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
       `${started.baseUrl}?term_id=${termIds[0]}`,
       { headers: { Authorization: `Bearer ${classTeacher.token}` } },
     );
-    assert.equal(rawScores.status, 403, 'teachers access score data through the scoped report endpoint only');
+    assert.equal(rawScores.status, 200, 'teachers can read only score rows for their assigned active physical roster');
+    const rawScorePayload = await rawScores.json() as { scores: Array<{ student_id: string }> };
+    assert.ok(rawScorePayload.scores.every(row => row.student_id === studentIds[0]));
 
     const teacherReport = await fetch(
       `${started.baseUrl}/report/${studentIds[0]}?term_id=${termIds[0]}`,
