@@ -48,7 +48,6 @@ export default function TeacherDashboardHomeScreen({ navigation }: any) {
       <AppHeader
         title={`Hi, ${user?.username ?? ''}`}
         subtitle={[user?.assigned_class, term ? `${term.name} · ${term.academic_year}` : null].filter(Boolean).join(' · ') || undefined}
-        onPressBell={() => openNotifications()}
       />
       <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={async () => { setRefreshing(true); await load(); setRefreshing(false); }} />}>
         <PageContainer style={{ padding: Spacing.md }}>
