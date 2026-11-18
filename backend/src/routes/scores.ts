@@ -133,10 +133,11 @@ router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => 
     });
   }
 
-  const scopeParams = [schoolCode, className, subjectIds, term.id];
+  const scopeParams = [schoolCode, className, subjectIds, term.id, user.role === 'teacher'];
   const scopeWhere = `st.school_code=$1 AND su.school_code=$1 AND st.deleted_at IS NULL
-    AND ($2::text IS NULL OR st.class_name=$2)
-    AND ($3::int[] IS NULL OR su.id=ANY($3))`;
+    AND ($2::text IS NULL OR COALESCE(rrm.class_name,st.class_name)=$2)
+    AND ($3::int[] IS NULL OR su.id=ANY($3))
+    AND ($5::boolean = FALSE OR rrm.student_id IS NOT NULL)`;
 
   const { rows: aggregateRows } = await query(
     `SELECT COUNT(DISTINCT st.id)::int AS student_count,
@@ -148,6 +149,7 @@ router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => 
               ELSE ROUND(COUNT(sc.id) FILTER (WHERE sc.total >= 40) * 100.0 / COUNT(sc.id), 1)
             END AS pass_rate
        FROM students st
+       LEFT JOIN report_roster_memberships rrm ON rrm.student_id=st.id AND rrm.status='active'
        CROSS JOIN subjects su
        LEFT JOIN scores sc ON sc.student_id=st.id AND sc.subject_id=su.id AND sc.term_id=$4
       WHERE ${scopeWhere}`,
@@ -175,26 +177,30 @@ router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => 
   let attendanceRecords = 0;
   let weeklyEffortEntries = 0;
   if (user.role === 'admin' || className) {
-    const classParams = [schoolCode, className, term.id, term.days_opened];
+    const classParams = [schoolCode, className, term.id, term.days_opened, user.role === 'teacher'];
     const { rows: attendanceRows } = await query(
       `SELECT COUNT(a.id)::int AS attendance_records,
               ROUND(AVG(100.0 * a.days_present / NULLIF($4::numeric, 0)), 1) AS attendance_rate
          FROM attendance a
          JOIN students st ON st.id=a.student_id
+         LEFT JOIN report_roster_memberships rrm ON rrm.student_id=st.id AND rrm.status='active'
         WHERE st.school_code=$1 AND st.deleted_at IS NULL
-          AND ($2::text IS NULL OR st.class_name=$2) AND a.term_id=$3`,
+          AND ($2::text IS NULL OR COALESCE(rrm.class_name,st.class_name)=$2)
+          AND ($5::boolean = FALSE OR rrm.student_id IS NOT NULL) AND a.term_id=$3`,
       classParams,
     );
     attendanceRate = attendanceRows[0]?.attendance_rate == null ? null : Number(attendanceRows[0].attendance_rate);
     attendanceRecords = attendanceRows[0]?.attendance_records ?? 0;
-    const { rows: effortRows } = await query(
-      `SELECT COUNT(*)::int AS weekly_effort_entries
-         FROM weekly_efforts we JOIN students st ON st.id=we.student_id
-        WHERE st.school_code=$1 AND st.deleted_at IS NULL
-          AND ($2::text IS NULL OR st.class_name=$2) AND we.term_id=$3`,
-      classParams.slice(0, 3),
-    );
-    weeklyEffortEntries = effortRows[0]?.weekly_effort_entries ?? 0;
+    if (user.role === 'admin') {
+      const { rows: effortRows } = await query(
+        `SELECT COUNT(*)::int AS weekly_effort_entries
+           FROM weekly_efforts we JOIN students st ON st.id=we.student_id
+          WHERE st.school_code=$1 AND st.deleted_at IS NULL
+            AND ($2::text IS NULL OR st.class_name=$2) AND we.term_id=$3`,
+        classParams.slice(0, 3),
+      );
+      weeklyEffortEntries = effortRows[0]?.weekly_effort_entries ?? 0;
+    }
   }
 
   const summary = aggregateRows[0] ?? {};
