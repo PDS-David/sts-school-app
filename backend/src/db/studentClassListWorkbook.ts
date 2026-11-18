@@ -27,7 +27,7 @@ const EXPECTED_COUNTS: Record<string, number> = {
 };
 
 export function normalizeRosterName(value: string): string {
-  return value.normalize('NFKC').trim().replace(/\\s+/g, ' ').toLocaleLowerCase('en');
+  return value.normalize('NFKC').trim().replace(/\s+/g, ' ').toLocaleLowerCase('en');
 }
 
 export function parseStudentClassListWorkbook(buffer: Buffer): StudentClassListEntry[] {
@@ -50,7 +50,7 @@ export function parseStudentClassListWorkbook(buffer: Buffer): StudentClassListE
     if (!row.some(value => String(value ?? '').trim())) return;
     const rowNumber = index + 2;
     const serial = Number(row[col('S/N')]);
-    const fullName = String(row[col('Student Name')] ?? '').normalize('NFKC').trim().replace(/\\s+/g, ' ');
+    const fullName = String(row[col('Student Name')] ?? '').normalize('NFKC').trim().replace(/\s+/g, ' ');
     const sourceClass = String(row[col('Class')] ?? '').trim();
     const section = String(row[col('Section')] ?? '').trim();
     const mapping = CLASS_MAP[sourceClass];
