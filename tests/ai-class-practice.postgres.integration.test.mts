@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
+import { readFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 
 const require=createRequire(new URL('../backend/package.json',import.meta.url));
@@ -28,7 +29,7 @@ test('class-practice API enforces ownership and serializes concurrent submission
         pending_admin_review BOOLEAN DEFAULT false)`);
       await client.query('CREATE TABLE students(id UUID PRIMARY KEY,user_id UUID,school_code TEXT,class_name TEXT,deleted_at TIMESTAMPTZ)');
       await client.query('CREATE TABLE teacher_subjects(user_id UUID,subject_id INTEGER)');
-      await client.query('CREATE TABLE topics(id INTEGER PRIMARY KEY,title TEXT)');
+      await client.query('CREATE TABLE topics(id INTEGER PRIMARY KEY,title TEXT,subject_id INTEGER)');
       await client.query('CREATE TABLE subjects(id INTEGER PRIMARY KEY,name TEXT,school_code TEXT)');
       await client.query('CREATE TABLE terms(id INTEGER PRIMARY KEY,name TEXT,school_code TEXT)');
       await client.query('CREATE TABLE topic_completions(student_id UUID,topic_id INTEGER)');
@@ -38,15 +39,14 @@ test('class-practice API enforces ownership and serializes concurrent submission
       await client.query('INSERT INTO scores VALUES(1,72)');
       await client.query('INSERT INTO attendance VALUES(1,true)');
       await client.query("INSERT INTO report_remarks VALUES(1,'unchanged')");
-      await client.query('CREATE TABLE class_practice_sets(id UUID PRIMARY KEY DEFAULT gen_random_uuid(),student_id UUID REFERENCES students(id),topic_id INTEGER REFERENCES topics(id),class_name TEXT NOT NULL,subject_name TEXT NOT NULL,term_label TEXT NOT NULL,topic_title TEXT NOT NULL,questions JSONB NOT NULL,weak_concepts JSONB NOT NULL DEFAULT \'[]\',status TEXT NOT NULL DEFAULT \'open\',created_at TIMESTAMPTZ DEFAULT now(),completed_at TIMESTAMPTZ)');
-      await client.query('CREATE TABLE class_practice_attempts(id UUID PRIMARY KEY DEFAULT gen_random_uuid(),set_id UUID REFERENCES class_practice_sets(id),student_id UUID REFERENCES students(id),topic_id INTEGER REFERENCES topics(id),question_id TEXT,concept TEXT,answer JSONB,correct BOOLEAN,marks_awarded NUMERIC(6,2),marks_available NUMERIC(6,2),submitted_at TIMESTAMPTZ DEFAULT now(),UNIQUE(set_id,question_id))');
-      await client.query('CREATE TABLE class_practice_concept_performance(student_id UUID REFERENCES students(id),topic_id INTEGER REFERENCES topics(id),concept TEXT,attempts INTEGER DEFAULT 0,correct_attempts INTEGER DEFAULT 0,accuracy NUMERIC(5,4) DEFAULT 0,last_attempt_at TIMESTAMPTZ,updated_at TIMESTAMPTZ DEFAULT now(),PRIMARY KEY(student_id,topic_id,concept),CHECK(attempts>=0 AND correct_attempts>=0 AND correct_attempts<=attempts))');
-      await client.query("CREATE TABLE class_practice_remediation_recommendations(id UUID PRIMARY KEY DEFAULT gen_random_uuid(),student_id UUID REFERENCES students(id),topic_id INTEGER REFERENCES topics(id),concept TEXT,recommendation TEXT,status TEXT DEFAULT 'open',accuracy NUMERIC(5,4) DEFAULT 0,updated_at TIMESTAMPTZ DEFAULT now(),UNIQUE(student_id,topic_id,concept))");
+      const migration=await readFile(new URL('../backend/migrations/0013_ai_class_practice.sql',import.meta.url),'utf8');
+      await client.query(migration);
 
       const school='secondary',studentUser=randomUUID(),otherUser=randomUUID(),student=randomUUID(),otherStudent=randomUUID(),topic=501;
       await client.query("INSERT INTO users(id,username,role,school_code,is_active) VALUES($1,'student-one','student',$3,true),($2,'student-two','student',$3,true)",[studentUser,otherUser,school]);
       await client.query("INSERT INTO students(id,user_id,school_code,class_name) VALUES($1,$2,$3,'SS 1'),($4,$5,$3,'SS 1')",[student,studentUser,school,otherStudent,otherUser]);
-      await client.query("INSERT INTO topics(id,title) VALUES($1,'Linear and spatial reasoning')",[topic]);
+      await client.query("INSERT INTO subjects(id,name,school_code) VALUES(1,'Mathematics',$1)",[school]);
+      await client.query("INSERT INTO topics(id,title,subject_id) VALUES($1,'Linear and spatial reasoning',1)",[topic]);
 
       const questions=(order:string[])=>order.map((concept,index)=>({id:'q'+index,concept,question:'Test '+concept,options:[{key:'A',text:'Yes'},{key:'B',text:'No'},{key:'C',text:'Maybe'},{key:'D',text:'None'}],correct_answer:'A',explanation:'Because the lesson establishes this result.',marks:1}));
       const insertSet=async(order:string[])=>{
@@ -98,7 +98,7 @@ test('class-practice API enforces ownership and serializes concurrent submission
       assert.equal(attempts[0].n,6);
       const {rows:performance}=await client.query('SELECT concept,attempts,correct_attempts,accuracy FROM class_practice_concept_performance WHERE student_id=$1 ORDER BY concept',[student]);
       assert.deepEqual(performance.map((x:any)=>x.concept),['Algebra','Geometry']);
-      assert.ok(performance.every((x:any)=>Number(x.attempts)===3&&Number(x.correct_attempts)===0&&Number(x.accuracy)===0));
+      assert.deepEqual(performance.map((x:any)=>[Number(x.attempts),Number(x.correct_attempts),Number(x.accuracy)]),[[3,2,2/3],[3,1,1/3]].map(x=>[x[0],x[1],Number(x[2].toFixed(4))]));
       const {rows:recommendations}=await client.query("SELECT COUNT(*)::int AS n FROM class_practice_remediation_recommendations WHERE student_id=$1 AND status='open'",[student]);
       assert.equal(recommendations[0].n,2);
 
