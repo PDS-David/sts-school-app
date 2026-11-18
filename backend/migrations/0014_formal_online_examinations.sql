@@ -13,7 +13,6 @@ CREATE TABLE IF NOT EXISTS online_exams (
   duration_minutes INTEGER NOT NULL CHECK (duration_minutes BETWEEN 1 AND 600),
   starts_at TIMESTAMPTZ NOT NULL,
   ends_at TIMESTAMPTZ NOT NULL,
-  shuffle_questions BOOLEAN NOT NULL DEFAULT false,
   status TEXT NOT NULL DEFAULT 'draft' CHECK (status IN ('draft','published','closed')),
   created_by UUID NOT NULL REFERENCES users(id) ON DELETE RESTRICT,
   published_at TIMESTAMPTZ,
