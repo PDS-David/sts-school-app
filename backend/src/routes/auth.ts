@@ -47,7 +47,8 @@ router.post('/login', loginAttemptLimiter, async (req, res) => {
     `SELECT id,username,password_hash,role,school_code,
             assigned_class,is_active,must_change_pw,access_expires_at,
             revocation_reason,must_set_security_question,pending_admin_review
-     FROM users WHERE lower(username) = lower($1)\n       AND (role <> 'teacher' OR school_code = $2)`,
+     FROM users WHERE lower(username) = lower($1)
+       AND (role <> 'teacher' OR school_code = $2)`,
     [username.trim(), typeof school_code === 'string' ? school_code.trim() : null],
   );
 
