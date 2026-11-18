@@ -24,9 +24,6 @@ test('finance_admin cannot access message inbox, conversations or contacts', () 
     assert.equal(result.nextCalled, false);
     assert.deepEqual(result.body, { error: `Permission denied: ${endpoint}` });
   }
-  assert.equal(canMessage('teacher', 'teacher-id', 'student-id'), false);
-  const contacts = await getMessageableUsers({ id: 'teacher-id', role: 'teacher', school_code: 'primary' } as any);
-  assert.deepEqual(contacts, []);
 });
 
 test('roles with messages.read continue through the message read guard', () => {
@@ -37,11 +34,14 @@ test('roles with messages.read continue through the message read guard', () => {
   }
 });
 
-test('report-only teachers cannot access messaging', async () => {
+test('report-only teachers cannot access messaging or retrieve message contacts', async () => {
   for (const endpoint of ['messages.read', 'messages.write']) {
     const result = runPermission('teacher', endpoint);
     assert.equal(result.statusCode, 403);
     assert.equal(result.nextCalled, false);
     assert.deepEqual(result.body, { error: `Permission denied: ${endpoint}` });
   }
+  assert.equal(canMessage('teacher', 'teacher-id', 'student-id'), false);
+  const contacts = await getMessageableUsers({ id: 'teacher-id', role: 'teacher', school_code: 'primary' } as any);
+  assert.deepEqual(contacts, []);
 });
