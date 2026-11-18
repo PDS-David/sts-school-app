@@ -16,7 +16,6 @@ import StudentDetailScreen from '../screens/StudentDetailScreen';
 import MyResultsScreen from '../screens/MyResultsScreen';
 import SessionReportScreen from '../screens/SessionReportScreen';
 import ChangePasswordScreen from '../screens/ChangePasswordScreen';
-import PromoteStudentsScreen from '../screens/PromoteStudentsScreen';
 
 const Tab = createBottomTabNavigator();
 const DashStack = createNativeStackNavigator();
@@ -44,7 +43,6 @@ function ReportsStackNavigator() {
       <ReportsStack.Screen name="StudentDetail" component={StudentDetailScreen} options={{ headerShown: true, title: 'Student Report', ...opts }} />
       <ReportsStack.Screen name="MyResults" component={MyResultsScreen} options={{ headerShown: true, title: 'Term Report', ...opts }} />
       <ReportsStack.Screen name="SessionReport" component={SessionReportScreen} options={{ headerShown: true, title: 'Session Report', ...opts }} />
-      <ReportsStack.Screen name="PromoteStudents" component={PromoteStudentsScreen} options={{ headerShown: true, title: 'Report-Roster Decisions', ...opts }} />
     </ReportsStack.Navigator>
   );
 }
@@ -72,8 +70,6 @@ const QUICK_ACTIONS: SidebarAction[] = [
   },
   {
     icon: 'people-outline',
-    label: 'Roster Decisions',
-    onPress: () => navigationRef.isReady() && navigationRef.navigate('ReportsTab', { screen: 'PromoteStudents' }),
   },
 ];
 
