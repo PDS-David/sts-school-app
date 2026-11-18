@@ -45,3 +45,5 @@ jobs:
         run: npm run mobile:typecheck
       - name: Test Render cold-start readiness gate
         run: node --import tsx --test tests/mobile/backend-readiness.test.mts
+      - name: Test report template fidelity
+        run: node --import tsx --test tests/mobile/report-template.test.mts
