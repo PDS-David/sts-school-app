@@ -40,6 +40,7 @@ import MyResultsScreen from '../screens/MyResultsScreen';
 import SessionReportScreen from '../screens/SessionReportScreen';
 import MaterialsScreen from '../screens/MaterialsScreen';
 import AssessmentsScreen from '../screens/AssessmentsScreen';
+import AdminOnlineExamsScreen from '../screens/admin/AdminOnlineExamsScreen';
 import TakeAssessmentScreen from '../screens/TakeAssessmentScreen';
 import AssessmentResultsScreen from '../screens/AssessmentResultsScreen';
 import CreateAssessmentScreen from '../screens/CreateAssessmentScreen';
@@ -87,6 +88,7 @@ function AcademicsStackNavigator() {
       <AcademicsStack.Screen name="ScoreEntry" component={ScoreEntryScreen} options={{ headerShown: true, title: 'Enter Scores', ...opts }} />
       <AcademicsStack.Screen name="Attendance" component={AttendanceScreen} options={{ headerShown: true, title: 'Attendance', ...opts }} />
       <AcademicsStack.Screen name="Assessments" component={AssessmentsScreen} options={{ headerShown: true, title: 'Assessments', ...opts }} />
+      <AcademicsStack.Screen name="FormalOnlineExams" component={AdminOnlineExamsScreen} options={{ headerShown: false }} />
       <AcademicsStack.Screen name="TakeAssessment" component={TakeAssessmentScreen} options={{ headerShown: true, title: 'Take Assessment', ...opts }} />
       <AcademicsStack.Screen name="AssessmentResults" component={AssessmentResultsScreen} options={{ headerShown: true, title: 'Results', ...opts }} />
       <AcademicsStack.Screen name="CreateAssessment" component={CreateAssessmentScreen} options={{ headerShown: true, title: 'Create Assessment', ...opts }} />
