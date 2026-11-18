@@ -12,8 +12,8 @@ import { Colors, Spacing, Fonts, Radius } from '../theme';
 export default function StudentDetailScreen({ route, navigation }: any) {
   const { studentId } = route.params as { studentId: string };
   const { user } = useAuth();
-  const isAdmin   = user?.role === 'admin';
-  const isClassTeacher = user?.role === 'teacher';
+  const isAdmin = user?.role === 'admin';
+  const isClassTeacher = user?.role === 'teacher' && !!user?.assigned_class;
   const isTeacher = isClassTeacher || isAdmin;
 
   const [student,   setStudent]   = useState<any>(null);
