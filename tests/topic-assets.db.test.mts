@@ -523,7 +523,7 @@ if (!URL_) {
       type: 'doc', url: 'https://example.org/lesson.docx',
     });
     assert.equal(created.status, 403);
-    assert.deepEqual(await created.json(), { error: 'Permission denied: materials.write' });
+    assert.match((await created.json() as { error: string }).error, /Teacher accounts are limited to physical-class report workflows/);
     assert.equal(await count('SELECT count(*) n FROM materials WHERE title=$1', ['Teacher-owned material']), 0);
   });
 
