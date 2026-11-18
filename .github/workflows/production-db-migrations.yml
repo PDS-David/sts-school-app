@@ -175,9 +175,8 @@ jobs:
             echo '### Production migration verification'
             echo '- Migration ledger contains 0001-0005, including the physical report-roster migration.'
             echo '- school_events, rate_limit_counters and all nine audit columns exist.'
-            echo '- Audit append-only function and two triggers exist.'
+            echo '- Report-roster tables, three indexes, append-only function and two triggers exist.'
+            echo '- Every existing student has a separate physical report-roster membership.'
             echo '- No unvalidated constraints or invalid indexes.'
-            echo '- Existing table row counts are unchanged.
-            - Every existing student has a separate physical report-roster membership.
-            - Report-roster event history is append-only.'
+            echo '- Existing application table row counts are unchanged.'
           } >> "$GITHUB_STEP_SUMMARY"
