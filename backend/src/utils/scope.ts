@@ -300,7 +300,7 @@ export interface MessageableUser {
  * Found live in QA Pass 7: `GET /messages/contacts` (what the Chats/Messages
  * UI actually shows and lets the user tap) was properly scoped per role, but
  * `POST /messages` never checked `recipient_id` against that same scope for
- * anyone except `student` — `parent`, `teacher`, and `admin` sends only
+ * anyone except `student` — `parent` and `admin` sends only
  * checked `messages.write`, a permission every account of that role has
  * regardless of school. Live-verified: a `secondary`-school parent
  * (`secparent1`, whose own contacts list correctly showed only their ward's
@@ -308,7 +308,7 @@ export interface MessageableUser {
  * student they have no relationship to whatsoever, just by knowing/guessing
  * a user id — the exact "student/parent messaging someone they shouldn't"
  * case this pass's plan called out. A `secondary` teacher could do the same
- * to a `primary` parent. This helper is now the single source of truth for
+ * to a `primary` parent before the report-only teacher policy was enforced. This helper is now the single source of truth for
  * "who may X message", used to build the contacts list *and* to enforce
  * `POST /messages` — closing the gap without duplicating the scoping logic
  * (mirrors `resolveViewerClassNames` above).
@@ -338,12 +338,7 @@ export interface MessageableUser {
  *     independently-developed branches (student classmate messaging +
  *     parent subject-teacher/admin reach) were reconciled into a single
  *     build.
- *   - teacher → every other active user in their own school, PLUS every
- *     admin regardless of school (matches the pre-existing GET /contacts
- *     query, which was never actually staff-only despite its old comment —
- *     students and parents in-school were already includable; the
- *     cross-school admin gap was new to this file until the Pass 19 audit
- *     below, though the `RECIPIENT_ERROR.teacher` copy already implied it).
+ *   - teacher → no messaging contacts. Teacher accounts are report-generation-only.
  *   - admin   → every other active user, in every school. This is a genuine
  *     behaviour change: admin's `school_code` is `NULL`, so the old
  *     `WHERE school_code=$1` contacts query matched nothing and
