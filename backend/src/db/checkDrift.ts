@@ -129,7 +129,12 @@ async function main() {
     await client.query(`SET LOCAL search_path TO "${tempSchema}", public`);
 
     console.log('Applying schema.sql inside the rollback-only transaction…');
-    const schemaSql = readFileSync(path.resolve(__dirname, '../../schema.sql'), 'utf-8');
+    // schema.sql deliberately qualifies production objects as public.*.
+    // Replay it in the isolated throwaway schema by rewriting only those
+    // qualifiers; otherwise REFERENCES public.users would escape the
+    // temporary schema and fail (or risk touching public objects).
+    const schemaSql = readFileSync(path.resolve(__dirname, '../../schema.sql'), 'utf-8')
+      .replace(/\\bpublic\\./g, `"${tempSchema}".`);
     await client.query(schemaSql);
 
     console.log('Introspecting expected (throwaway) vs actual (public) schema…\n');
