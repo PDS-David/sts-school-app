@@ -487,23 +487,29 @@ router.put('/users/:id', async (req, res) => {
 });
 
 router.post('/users/:id/reset-password', async (req, res) => {
-  const pw = generateTempPassword();
-  const hash = await bcrypt.hash(pw, 10);
   const result = await withTransaction(async (client) => {
-    const { rows } = await client.query(
-      'UPDATE users SET password_hash=$1, must_change_pw=TRUE WHERE id=$2 AND ($3::text IS NULL OR school_code=$3) RETURNING id, school_code',
-      [hash, req.params.id, req.user!.school_code ?? null],
+    const { rows: existing } = await client.query(
+      'SELECT id, role, school_code FROM users WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) FOR UPDATE',
+      [req.params.id, req.user!.school_code ?? null],
     );
-    if (!rows[0]) return null;
+    if (!existing[0]) return null;
+    // Teacher credentials follow the agreed four-digit numeric PIN convention;
+    // other account types retain their existing temporary-password flow.
+    const pw = existing[0].role === 'teacher' ? generateNumericPin() : generateTempPassword();
+    const hash = await bcrypt.hash(pw, 10);
+    await client.query(
+      'UPDATE users SET password_hash=$1, must_change_pw=TRUE WHERE id=$2',
+      [hash, req.params.id],
+    );
     await auditInTransaction(
       client, req.user!, 'reset_password', 'user', req.params.id,
       'administrator reset user password; forced password change on next login',
-      auditContextFromRequest(req, { schoolCode: rows[0].school_code, metadata: { target_user_id: req.params.id, must_change_password: true } }),
+      auditContextFromRequest(req, { schoolCode: existing[0].school_code, metadata: { target_user_id: req.params.id, must_change_password: true } }),
     );
-    return rows[0];
+    return { password: pw };
   });
   if (!result) return res.status(404).json({ error: 'User not found' });
-  return res.json({ ok: true, temporary_password: pw });
+  return res.json({ ok: true, temporary_password: result.password });
 });
 
 // Clears the pending_admin_review flag set by POST /auth/self-register —
