@@ -29,8 +29,9 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
         is_active BOOLEAN DEFAULT true,access_expires_at TIMESTAMPTZ,revocation_reason TEXT,
         pending_admin_review BOOLEAN DEFAULT false)`);
       await client.query('CREATE TABLE students(id UUID PRIMARY KEY,user_id UUID,school_code TEXT,class_name TEXT,deleted_at TIMESTAMPTZ)');
-      await client.query('CREATE TABLE topics(id INTEGER PRIMARY KEY)');
-      await client.query('CREATE TABLE subjects(id INTEGER PRIMARY KEY,name TEXT)');
+      await client.query('CREATE TABLE topics(id INTEGER PRIMARY KEY,school_code TEXT,class_name TEXT,subject_id INTEGER,title TEXT,term_id INTEGER,order_index INTEGER,description TEXT,summary TEXT)');
+      await client.query('CREATE TABLE subjects(id INTEGER PRIMARY KEY,name TEXT,school_code TEXT)');
+      await client.query('CREATE TABLE topic_completions(student_id UUID,topic_id INTEGER)');
       await client.query('CREATE TABLE teacher_subjects(user_id UUID,subject_id INTEGER)');
       await client.query('CREATE TABLE scores(id BIGINT PRIMARY KEY,score NUMERIC)');
       await client.query('CREATE TABLE attendance(id BIGINT PRIMARY KEY,present BOOLEAN)');
@@ -65,10 +66,13 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
         ($1,'test-admin','admin',$3,true,true),($2,'test-student','student',$3,false,true)`,[admin,studentUser,school]);
       await client.query('INSERT INTO users(id,username,role,school_code,is_active) VALUES($1,$2,$3,$4,true),($5,$6,$7,$4,true)',[otherUser,'other-student','student',school,teacherUser,'math-teacher','teacher']);
       await client.query('INSERT INTO users(id,username,role,school_code,is_active) VALUES($1,$2,$3,$4,true)',[unassignedTeacher,'unassigned-teacher','teacher',school]);
-      await client.query("INSERT INTO subjects(id,name) VALUES(1,'Mathematics'),(2,'Biology')");
+      await client.query("INSERT INTO subjects(id,name,school_code) VALUES(1,'Mathematics',$1),(2,'Biology',$1)",[school]);
       await client.query('INSERT INTO teacher_subjects(user_id,subject_id) VALUES($1,1)',[teacherUser]);
       await client.query('INSERT INTO students(id,user_id,school_code,class_name) VALUES($1,$2,$3,$4),($5,$6,$3,$7)',
         [student,studentUser,school,'SS 3',otherStudent,otherUser,'JSS 3']);
+      const coveredTopicId=900;
+      await client.query("INSERT INTO topics(id,school_code,class_name,subject_id,title,term_id,order_index) VALUES($1,$2,'SS 3',1,'Linear Equations',1,1)",[coveredTopicId,school]);
+      await client.query('INSERT INTO topic_completions(student_id,topic_id) VALUES($1,$2)',[student,coveredTopicId]);
 
       const {rows: subjectRows}=await client.query("SELECT id FROM question_bank_subjects WHERE code='MATHEMATICS'");
       const {rows: questionRows}=await client.query("SELECT id FROM question_bank_questions WHERE question_number='AI-GEN-001' AND board='WAEC'");
@@ -153,11 +157,13 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       const rejectedAudit=await client.query('SELECT decision FROM question_bank_question_reviews WHERE question_id=$1',[rejectedQuestion.id]);
       assert.deepEqual(rejectedAudit.rows.map((row:any)=>row.decision),['rejected']);
 
+      const lessonTopics=await request('/online-exams/admin/lesson-topics?class_name=SS%203&subject_name=Mathematics','GET',adminToken,undefined,school);
+      assert.equal(lessonTopics.status,200);assert.ok(lessonTopics.data.topics.some((item:any)=>item.id===coveredTopicId&&item.eligible_for_all_candidates));
       const examDraft={
         board:'WAEC',subject_name:'Mathematics',class_name:'SS 3',examination_type:'Mock',
         title:'SS3 Mathematics Mock',instructions:'Read each question carefully.',duration_minutes:30,
         starts_at:new Date(Date.now()-60000).toISOString(),ends_at:new Date(Date.now()+2*60*60*1000).toISOString(),
-        sections:[{title:'Section A',instructions:'Answer the question.',questions:[{question_id:questionId,marks:2}]}]
+        sections:[{title:'Section A',instructions:'Answer the question.',questions:[{question_id:questionId,marks:2,covered_topic_id:coveredTopicId}]}]
       };
 
       assert.equal((await request('/online-exams/exams','GET','')).status,401);
