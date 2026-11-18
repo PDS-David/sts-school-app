@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import rateLimit from 'express-rate-limit';
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
 import type { PoolClient } from 'pg';
@@ -8,6 +9,7 @@ import { requireAuth, requirePerm, requireRole, denyTeacherAccess } from '../mid
 import { resolveViewerClassNames, checkTeacherContentScope } from '../utils/scope.js';
 import { generate, generateJSON } from '../utils/ai.js';
 import { getOrGenerateCurriculumLesson } from '../services/curriculumLessonCache.js';
+import { createRedisRateLimitStore } from '../utils/redisRateLimitStore.js';
 import { sendPushToClass } from '../utils/push.js';
 import type { AuthUser } from '../types/index.js';
 import { isSafeExternalMaterialUrl } from '../utils/materialUrl.js';
@@ -56,6 +58,19 @@ function verifyStudentDeliveryAsset(bytes: Buffer, mediaType: string, expectedSh
 
 const router = Router();
 router.use(requireAuth, denyTeacherAccess);
+
+// Curriculum lessons invoke the paid model directly from /learning (not /ai),
+// so they need the same shared per-account HTTP ceiling as Brainee requests.
+// The PostgreSQL-backed store keeps limits consistent across API instances.
+const curriculumLessonLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 20,
+  standardHeaders: true,
+  legacyHeaders: false,
+  keyGenerator: (req) => req.user!.id,
+  message: { error: 'Curriculum lesson generation limit exceeded. Try again in one minute.' },
+  store: createRedisRateLimitStore('curriculum-lesson-http'),
+});
 router.use((req, res, next) => {
   if (req.user?.role === 'teacher') {
     return res.status(403).json({ error: 'Teacher accounts are limited to physical-class report workflows.' });
@@ -251,7 +266,7 @@ router.get('/ss1/lessons/:lessonId', requirePerm('topics.read'), async (req, res
   });
 });
 
-router.post('/ss1/lessons/:lessonId/generate', requirePerm('topics.read'), async (req, res) => {
+router.post('/ss1/lessons/:lessonId/generate', curriculumLessonLimiter, requirePerm('topics.read'), async (req, res) => {
   const studentId = await ss1StudentId(req.user!);
   if (!studentId) return res.status(404).json({ error: 'Lesson not found' });
   const lesson = getStudentSs1Lesson(req.params.lessonId);
@@ -408,7 +423,7 @@ router.get('/ss23/units/:unitId', requirePerm('topics.read'), async (req, res) =
   });
 });
 
-router.post('/ss23/units/:unitId/generate', requirePerm('topics.read'), async (req, res) => {
+router.post('/ss23/units/:unitId/generate', curriculumLessonLimiter, requirePerm('topics.read'), async (req, res) => {
   const context = await ss23StudentContext(req.user!);
   if (!context) return res.status(404).json({ error: 'Unit not found' });
   const unit = getStudentSs23Unit(req.params.unitId, context.className);
@@ -1077,7 +1092,7 @@ router.delete('/topics/:id', requirePerm('topics.write'), async (req, res) => {
 // The validated practice questions may also seed the existing standard
 // topic assessment. Student access, term PINs and sequence gates are checked
 // before any generation or content delivery.
-router.post('/topics/:id/lesson', requirePerm('topics.read'), requireRole('student'), async (req, res) => {
+router.post('/topics/:id/lesson', curriculumLessonLimiter, requirePerm('topics.read'), requireRole('student'), async (req, res) => {
   const user = req.user!;
   const { rows: stRows } = await query('SELECT id, school_code, class_name FROM students WHERE user_id=$1 LIMIT 1', [user.id]);
   const student = stRows[0];
