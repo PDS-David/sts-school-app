@@ -65,7 +65,22 @@ if (!URL_) {
   const cleanup = async () => {
     for (const sc of [SC, SC2]) {
       await q('DELETE FROM topics WHERE school_code=$1', [sc]); await q('DELETE FROM subjects WHERE school_code=$1', [sc]);
-      await q('DELETE FROM students WHERE school_code=$1', [sc]); await q('DELETE FROM users WHERE school_code=$1', [sc]); await q('DELETE FROM schools WHERE code=$1', [sc]);
+      // schema.sql is intentionally replayed after the fixtures are inserted;
+  // its report-roster backfill is immutable history, so retain those student
+  // rows and their school once an event exists.
+  await q(
+    `DELETE FROM report_roster_memberships m USING students s
+     WHERE m.student_id=s.id AND s.school_code=$1
+       AND NOT EXISTS (SELECT 1 FROM report_roster_membership_events e WHERE e.student_id=s.id)`,
+    [sc],
+  );
+  await q(
+    `DELETE FROM students s WHERE s.school_code=$1
+     AND NOT EXISTS (SELECT 1 FROM report_roster_membership_events e WHERE e.student_id=s.id)`,
+    [sc],
+  );
+  await q('DELETE FROM users WHERE school_code=$1', [sc]);
+  await q('DELETE FROM schools sc WHERE sc.code=$1 AND NOT EXISTS (SELECT 1 FROM students s WHERE s.school_code=sc.code)', [sc]);
     }
   };
 
