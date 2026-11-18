@@ -327,8 +327,8 @@ router.get('/classes', async (req, res) => {
       sc = requested ?? null;
     }
   }
-  if (user.role === 'teacher' && !user.assigned_class) {
-    const names = user.assigned_class_names ?? [];
+  if (user.role === 'teacher') {
+    const names = user.assigned_class ? [user.assigned_class] : (user.assigned_class_names ?? []);
     if (!names.length) return res.json({ classes: [] });
     const { rows } = await query('SELECT * FROM classes WHERE school_code=$1 AND name=ANY($2::text[]) ORDER BY id', [sc, names]);
     return res.json({ classes: rows });
