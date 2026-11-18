@@ -165,7 +165,7 @@ router.get('/report-roster/removed', requireRole('admin'), async (req, res) => {
   let schoolClause = '';
   if (user.school_code) {
     params.push(user.school_code);
-    schoolClause = ' AND s.school_code=
+    schoolClause = ' AND s.school_code=$' + params.length;
   }
   const { rows } = await query(
     `SELECT s.id,s.admission_number,s.full_name,m.class_name
