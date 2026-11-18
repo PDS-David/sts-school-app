@@ -44,6 +44,7 @@ jobs:
       - name: Install backend dependencies
         run: npm install --prefix backend
       - name: Run Primary 1-6 source-resolution and inventory tests
-        run: node --import tsx --test tests/primary-subject-resolutions.test.mts tests/primary1-6-source-inventory.test.mts
+        working-directory: backend
+        run: node --import tsx --test ../tests/primary-subject-resolutions.test.mts ../tests/primary1-6-source-inventory.test.mts
       - name: Build backend
         run: npm run build --prefix backend
