@@ -54,6 +54,8 @@ async function startServer(): Promise<{ server: Server; baseUrl: string }> {
 test('school-bound administrators cannot manage accounts outside their school', async () => {
   const globalAdmin = await createUser('global-admin', 'admin', null, 'test-hash');
   const primaryAdmin = await createUser('primary-admin', 'admin', 'primary', 'test-hash');
+  const multiSchoolAdmin = await createUser('multi-school-admin', 'admin', 'secondary', 'test-hash');
+  await query('UPDATE users SET can_manage_all_schools=TRUE WHERE id=$1', [multiSchoolAdmin.id]);
   const primaryStudent = await createUser('primary-student', 'student', 'primary');
   const secondaryStudent = await createUser('secondary-student', 'student', 'secondary');
   const primaryParent = await createUser('primary-parent', 'parent', 'primary');
@@ -62,7 +64,7 @@ test('school-bound administrators cannot manage accounts outside their school', 
   const secondaryDeleteTarget = await createUser('secondary-delete', 'student', 'secondary');
   const studentIds: string[] = [];
   const userIds = [
-    globalAdmin.id, primaryAdmin.id, primaryStudent.id, secondaryStudent.id,
+    globalAdmin.id, primaryAdmin.id, multiSchoolAdmin.id, primaryStudent.id, secondaryStudent.id,
     primaryParent.id, secondaryParent.id, primaryDeleteTarget.id, secondaryDeleteTarget.id,
   ];
   let createdUserId: string | undefined;
@@ -130,6 +132,11 @@ test('school-bound administrators cannot manage accounts outside their school', 
     const globalRows = (await globalUsers.json() as { users: Array<{ school_code: string | null }> }).users;
     assert.ok(globalRows.some(user => user.school_code === 'primary'));
     assert.ok(globalRows.some(user => user.school_code === 'secondary'));
+
+    const demoteMultiSchoolAdmin = await put(globalAdmin.token, `/users/${multiSchoolAdmin.id}`, { role: 'finance_admin' });
+    assert.equal(demoteMultiSchoolAdmin.status, 200);
+    const { rows: demotedRows } = await query('SELECT can_manage_all_schools FROM users WHERE id=$1', [multiSchoolAdmin.id]);
+    assert.equal(demotedRows[0].can_manage_all_schools, false, 'removing admin role must revoke cross-school capability');
 
     const crossSchoolCreate = await post(primaryAdmin.token, '/users', {
       username: `bsec28-cross-${randomUUID()}`, full_name: 'Cross School Student',
