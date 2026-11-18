@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import api from '../api/client';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { Card, SectionHeader, Btn } from '../components/UI';
 import { getSecureItem } from '../api/secureTokenStorage';
@@ -9,6 +10,10 @@ export default function Ss23PackageLessonScreen({ route, navigation }: any) {
   const { lesson } = route.params as { lesson: any };
   const [token, setToken] = useState<string | null>(null);
   const [assetAttempt, setAssetAttempt] = useState(0);
+  const [generatedLesson, setGeneratedLesson] = useState<any | null>(null);
+  const [generating, setGenerating] = useState(false);
+  const [generationError, setGenerationError] = useState<string | null>(null);
+  const [revealed, setRevealed] = useState<Record<number, boolean>>({});
   const isExamPreparation = lesson.delivery_mode === 'EXAM_PREPARATION';
 
   useEffect(() => {
@@ -16,6 +21,23 @@ export default function Ss23PackageLessonScreen({ route, navigation }: any) {
     getSecureItem('access_token').then(value => { if (active) setToken(value); }).catch(() => {});
     return () => { active = false; };
   }, []);
+  const generateLesson = async () => {
+    if (lesson.locked || generating) return;
+    setGenerating(true);
+    setGenerationError(null);
+    try {
+      const { data } = await api.post(`/learning/ss23/units/${encodeURIComponent(lesson.id)}/generate`);
+      if (!data?.ok || !data.lesson) throw new Error(data?.error ?? 'The AI lesson could not be generated.');
+      setGeneratedLesson(data.lesson);
+    } catch (error: any) {
+      setGenerationError(error?.response?.data?.error ?? error?.message ?? 'The AI lesson could not be generated. Check your connection and retry.');
+    } finally {
+      setGenerating(false);
+    }
+  };
+  useEffect(() => {
+    if (!lesson.locked) void generateLesson();
+  }, [lesson.id, lesson.locked]);
 
   if (lesson.locked) {
     return (
@@ -45,7 +67,26 @@ export default function Ss23PackageLessonScreen({ route, navigation }: any) {
             <Text style={styles.examNoticeText}>SS3 examination preparation only. This activity revises established learning; it does not introduce a new instructional topic.</Text>
           </View>
         )}
-        <Text style={styles.body}>{lesson.body}</Text>
+        {generatedLesson ? (
+          <>
+            <Text style={styles.body}>{generatedLesson.introduction}</Text>
+            {generatedLesson.sections.map((section: any, index: number) => (
+              <View key={index} style={{ marginTop: Spacing.md }}>
+                <Text style={styles.heading}>{section.heading}</Text>
+                <Text style={styles.body}>{section.content}</Text>
+              </View>
+            ))}
+            <Text style={styles.heading}>Lesson recap</Text>
+            <Text style={styles.body}>{generatedLesson.summary}</Text>
+          </>
+        ) : (
+          <>
+            <Text style={styles.body}>{lesson.body}</Text>
+            {generationError ? <Text style={styles.generationError}>{generationError}</Text> : null}
+            {generating ? <Text style={styles.note}>The curriculum lesson engine is preparing your lesson…</Text> : null}
+            {!generating ? <Btn label="Generate AI lesson" onPress={generateLesson} loading={generating} /> : null}
+          </>
+        )}
         {lesson.assets?.length > 0 && token ? (
           <View style={{ marginTop: Spacing.md }}>
             {lesson.assets.map((asset: any) => (
@@ -57,14 +98,30 @@ export default function Ss23PackageLessonScreen({ route, navigation }: any) {
         {(lesson.objectives ?? []).map((objective: string, index: number) => (
           <Text key={index} style={styles.objective}>{index + 1}. {objective}</Text>
         ))}
-        <Text style={styles.heading}>{isExamPreparation ? 'Examination practice' : 'Practice questions'}</Text>
-        {(lesson.practice ?? []).map((question: any, index: number) => (
-          <View key={question.id} style={styles.question}>
-            <Text style={styles.questionText}>{index + 1}. {question.question}</Text>
-            <Text style={styles.marks}>{question.marks} mark(s)</Text>
+        <Text style={styles.heading}>{isExamPreparation ? 'AI-generated examination practice' : 'AI-generated practice questions'}</Text>
+        {generatedLesson ? generatedLesson.practice_questions.map((question: any, index: number) => (
+          <View key={index} style={styles.question}>
+            <Text style={styles.questionText}>{index + 1}. {question.stem}</Text>
+            {question.options.map((option: any) => <Text key={option.key} style={styles.option}>{option.key}. {option.text}</Text>)}
+            <TouchableOpacity onPress={() => setRevealed(current => ({ ...current, [index]: !current[index] }))} accessibilityRole="button">
+              <Text style={styles.reveal}>{revealed[index] ? 'Hide answer and explanation' : 'Reveal answer and explanation'}</Text>
+            </TouchableOpacity>
+            {revealed[index] && <View style={styles.answer}>
+              <Text style={styles.answerText}>Correct answer: {question.correct_keys.join(', ')}</Text>
+              <Text style={styles.answerText}>{question.explanation}</Text>
+            </View>}
           </View>
-        ))}
-        <Text style={styles.note}>Complete the questions in your exercise book or assigned assessment. Model answers and marking guidance are intentionally not displayed in the student lesson view.</Text>
+        )) : (
+          <>
+            {(lesson.practice ?? []).map((question: any, index: number) => (
+              <View key={question.id} style={styles.question}>
+                <Text style={styles.questionText}>{index + 1}. {question.question}</Text>
+                <Text style={styles.marks}>{question.marks} mark(s)</Text>
+              </View>
+            ))}
+            <Text style={styles.note}>AI-generated practice questions will appear with the generated lesson.</Text>
+          </>
+        )}
       </Card>
     </ScrollView>
   );
@@ -72,6 +129,11 @@ export default function Ss23PackageLessonScreen({ route, navigation }: any) {
 
 const styles = StyleSheet.create({
   meta: { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginBottom: Spacing.xs },
+  generationError: { color: Colors.error, fontSize: Fonts.sizes.xs, marginTop: Spacing.sm },
+  option: { color: Colors.text, fontSize: Fonts.sizes.sm, marginTop: 4, marginLeft: Spacing.sm },
+  reveal: { color: Colors.primary, fontSize: Fonts.sizes.xs, fontWeight: '700', marginTop: Spacing.sm },
+  answer: { backgroundColor: Colors.primary + '10', borderRadius: Radius.sm, padding: Spacing.sm, marginTop: Spacing.sm },
+  answerText: { color: Colors.text, fontSize: Fonts.sizes.sm, lineHeight: 19, marginBottom: 4 },
   body: { color: Colors.text, fontSize: Fonts.sizes.sm, lineHeight: 22, marginTop: Spacing.sm },
   heading: { color: Colors.primary, fontSize: Fonts.sizes.md, fontWeight: '700', marginTop: Spacing.lg, marginBottom: Spacing.xs },
   objective: { color: Colors.text, fontSize: Fonts.sizes.sm, lineHeight: 21, marginBottom: 4 },
