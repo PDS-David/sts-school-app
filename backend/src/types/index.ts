@@ -14,10 +14,23 @@ export interface AuthUser {
   assigned_subject_ids: number[];
 }
 
+export interface LearningAccessPolicyState {
+  freeLaunchMode: boolean;
+  termPinEnforced: boolean;
+  curriculumSequenceEnforced: boolean;
+  environmentOverrides: {
+    freeLaunchMode: boolean;
+    termPinEnforced: boolean;
+    curriculumSequenceEnforced: boolean;
+  };
+  source: 'database' | 'environment-default';
+}
+
 declare global {
   namespace Express {
     interface Request {
       user?: AuthUser;
+      learningAccessPolicy?: LearningAccessPolicyState;
     }
   }
 }
