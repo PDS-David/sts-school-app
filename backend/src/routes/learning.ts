@@ -352,6 +352,27 @@ router.post('/ss1/lessons/:lessonId/generate', curriculumLessonLimiter, requireP
   }
 });
 
+router.post('/ss1/lessons/:lessonId/progress', requireRole('student'), requirePerm('topics.complete'), async (req, res) => {
+  const studentId = await ss1StudentId(req.user!);
+  if (!studentId) return res.status(404).json({ error: 'Lesson not found' });
+  const lesson = getStudentSs1Lesson(req.params.lessonId);
+  if (!lesson) return res.status(404).json({ error: 'Lesson not found' });
+  const unlockedTerms = await redeemedSs1Terms(studentId, req.learningAccessPolicy);
+  if (!unlockedTerms.has(lesson.term)) {
+    return res.status(423).json({ error: 'Redeem the Term PIN before completing this lesson.' });
+  }
+  try {
+    const completedAt = await markPackageLessonCompleted(
+      studentId, ss1ProgressKey(lesson), 'SS 1',
+      lesson.canonical_subject, lesson.term, lesson.title,
+    );
+    return res.json({ completed: true, completed_at: completedAt });
+  } catch (error: any) {
+    if (error?.code === '42P01') return res.status(503).json({ error: 'Package progress storage is not installed. Apply migration 0009 first.' });
+    throw error;
+  }
+});
+
 router.get('/ss1/assets/:assetId', requirePerm('topics.read'), async (req, res) => {
   const studentId = await ss1StudentId(req.user!);
   if (!studentId) return res.status(404).json({ error: 'Asset not found' });
