@@ -670,12 +670,12 @@ CREATE TABLE IF NOT EXISTS report_roster_membership_events (
 CREATE INDEX IF NOT EXISTS idx_report_roster_events_student_time
   ON report_roster_membership_events(student_id, occurred_at DESC, id DESC);
 CREATE OR REPLACE FUNCTION report_roster_events_reject_mutation()
-RETURNS trigger LANGUAGE plpgsql AS $
+RETURNS trigger LANGUAGE plpgsql AS $roster$
 BEGIN
   RAISE EXCEPTION 'report_roster_membership_events is append-only; mutation rejected'
     USING ERRCODE = '42501';
 END;
-$;
+$roster$;
 DROP TRIGGER IF EXISTS report_roster_events_append_only_update_delete
   ON report_roster_membership_events;
 CREATE TRIGGER report_roster_events_append_only_update_delete
