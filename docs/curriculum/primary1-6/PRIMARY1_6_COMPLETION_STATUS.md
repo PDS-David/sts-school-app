@@ -78,7 +78,7 @@ The archive contains five cross-class byte-identical groups:
 
 The two unresolved duplicate groups are intentionally not auto-approved.
 
-The Primary 5 First-Term folder is governed by the existing nine-file allowlist. An anonymous extra `.docx` in that folder has a damaged embedded-media CRC and non-curriculum personal material; it is excluded by the allowlist. No personal text is reproduced in the inventory or report.
+The Primary 5 First-Term folder is governed by the nine-file allowlist. This branch fixes its path matcher: importer identities are root-relative (`BASIC FIVE/...`), so the previous leading-slash-only check did not match. The corrected rule excludes the two unapproved `_1` copies and the anonymous extra `.docx`; the latter also has a damaged embedded-media CRC and non-curriculum personal material. No personal text is reproduced in the inventory or report.
 
 ## Primary 4 status already in master
 
@@ -111,6 +111,7 @@ The Library file `primary-curriculum-audit-commit15.txt` records a historical 7 
 - `tests/primary1-6-source-inventory.test.mts` — structural integrity checks for the 6-class inventory and 198-cell coverage matrix.
 - `.github/workflows/primary1-6-source-audit.yml` — focused CI for the source-resolution and inventory tests.
 - `docs/curriculum/primary1-6/PRIMARY1_6_SOURCE_INVENTORY.json` — archive/member hashes, source dispositions, duplicate groups and evidence.
+- `docs/curriculum/primary1-6/PRIMARY1_6_SOURCE_HASHES.csv` — flat 267-member SHA-256 register.
 - `docs/curriculum/primary1-6/PRIMARY1_6_COVERAGE_BASELINE.csv` — 198-cell subject/term crosswalk.
 - `docs/curriculum/primary1-6/PRIMARY1_6_COMPLETION_STATUS.md` — this report.
 
