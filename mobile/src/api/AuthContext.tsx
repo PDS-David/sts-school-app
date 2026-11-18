@@ -18,6 +18,8 @@ export interface User {
   // Added for the class-lock feature — which class (if any) this user is
   // the class teacher for. Only meaningful when role === 'teacher'.
   assigned_class?: string | null;
+  assigned_subject_ids?: number[];
+  assigned_class_names?: string[];
   // Set on accounts created via POST /auth/self-register (student/parent/
   // teacher choosing their own username+password directly, no admin-issued
   // code). Persists across app restarts as part of the stored user object
@@ -44,7 +46,7 @@ interface AuthState {
   mustChangePw: boolean;
   mustSetSecurityQuestion: boolean;
   loading: boolean;
-  login: (username: string, password: string) => Promise<{ must_change_pw: boolean; must_set_security_question: boolean }>;
+  login: (username: string, password: string, school_code?: string) => Promise<{ must_change_pw: boolean; must_set_security_question: boolean }>;
   logout: () => Promise<void>;
   changePassword: (oldPw: string, newPw: string) => Promise<void>;
   setSecurityQuestion: (question: string, answer: string) => Promise<void>;
@@ -124,7 +126,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
-  const login = async (username: string, password: string) => {
+  const login = async (username: string, password: string, school_code?: string) => {
     // Longer timeout than api.ts's global 15s default specifically for
     // login: this is the one call most likely to be the very first hit on
     // a Render free-tier backend that's spun down from inactivity, which
@@ -134,7 +136,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // connection" message on a real, working connection (see
     // LoginScreen.tsx's error handling). Once logged in, every other
     // request hits an already-awake backend and keeps the normal 15s.
-    const { data } = await api.post('/auth/login', { username, password }, { timeout: 60000 });
+    const { data } = await api.post('/auth/login', { username, password, school_code }, { timeout: 60000 });
     // Tokens go into expo-secure-store (Keychain/Keystore), not AsyncStorage
     // — see secureTokenStorage.ts. `user` itself (id/username/role/school_code,
     // no credential) is fine in plain AsyncStorage as before.
