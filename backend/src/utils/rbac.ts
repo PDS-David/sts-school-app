@@ -76,6 +76,7 @@ export function canMessage(
   if (senderRole === 'student') {
     return !!senderAllowedRecipientIds && senderAllowedRecipientIds.includes(recipientId);
   }
-  // Parents, teachers, admin: can message anyone
-  return true;
+  // Teachers are report-only. Parents and admins retain their existing messaging path.
+  if (senderRole === 'teacher') return false;
+  return senderRole === 'parent' || senderRole === 'admin';
 }
