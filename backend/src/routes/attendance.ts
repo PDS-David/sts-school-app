@@ -70,9 +70,10 @@ router.get('/', requirePerm('attendance.read'), async (req, res) => {
   const { class_name, term_id, school_code: requestedSchoolCode } = req.query as Record<string, string>;
   const user = req.user!;
   const parsedTermId = Number(term_id);
-  const effectiveClass = user.role === 'teacher'
-    ? (user.assigned_class ?? class_name?.trim())
-    : class_name?.trim();
+  if (user.role === 'teacher' && !user.assigned_class) {
+    return res.status(403).json({ error: 'Attendance access requires an assigned physical class.' });
+  }
+  const effectiveClass = user.role === 'teacher' ? user.assigned_class : class_name?.trim();
   // Admins have no own school_code. Their selected school is explicit in
   // the screen's school switcher; requiring it prevents same-named classes
   // from different schools being mixed in the attendance editor.
@@ -192,9 +193,10 @@ router.get('/class-records', requirePerm('classRecord.read'), async (req, res) =
   const { class_name, term_id } = req.query as Record<string, string>;
   const user = req.user!;
   const parsedTermId = Number(term_id);
-  const effectiveClass = user.role === 'teacher'
-    ? (user.assigned_class ?? class_name?.trim())
-    : class_name?.trim();
+  if (user.role === 'teacher' && !user.assigned_class) {
+    return res.status(403).json({ error: 'Class-record access requires an assigned physical class.' });
+  }
+  const effectiveClass = user.role === 'teacher' ? user.assigned_class : class_name?.trim();
 
   if (!effectiveClass || !Number.isSafeInteger(parsedTermId) || parsedTermId <= 0 || parsedTermId > 2_147_483_647) {
     return res.status(400).json({ error: 'A valid class_name and positive integer term_id are required' });
