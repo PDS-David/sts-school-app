@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import api from '../api/client';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { Card, SectionHeader } from '../components/UI';
 import { getSecureItem } from '../api/secureTokenStorage';
@@ -10,11 +11,31 @@ export default function Ss1PackageLessonScreen({ route }: any) {
   const [revealed, setRevealed] = useState<Record<number, boolean>>({});
   const [token, setToken] = useState<string | null>(null);
   const [assetAttempt, setAssetAttempt] = useState(0);
+  const [generatedLesson, setGeneratedLesson] = useState<any | null>(null);
+  const [generating, setGenerating] = useState(false);
+  const [generationError, setGenerationError] = useState<string | null>(null);
   useEffect(() => {
     let active = true;
     getSecureItem('access_token').then(value => { if (active) setToken(value); }).catch(() => {});
     return () => { active = false; };
   }, []);
+  const generateLesson = async () => {
+    if (lesson.locked || generating) return;
+    setGenerating(true);
+    setGenerationError(null);
+    try {
+      const { data } = await api.post(`/learning/ss1/lessons/${encodeURIComponent(lesson.id)}/generate`);
+      if (!data?.ok || !data.lesson) throw new Error(data?.error ?? 'The AI lesson could not be generated.');
+      setGeneratedLesson(data.lesson);
+    } catch (error: any) {
+      setGenerationError(error?.response?.data?.error ?? error?.message ?? 'The AI lesson could not be generated. Check your connection and retry.');
+    } finally {
+      setGenerating(false);
+    }
+  };
+  useEffect(() => {
+    if (!lesson.locked) void generateLesson();
+  }, [lesson.id, lesson.locked]);
   return (
     <ScrollView style={{ flex: 1, backgroundColor: Colors.background }} contentContainerStyle={{ padding: Spacing.md }}>
       <Card>
@@ -25,7 +46,26 @@ export default function Ss1PackageLessonScreen({ route }: any) {
             <Text style={styles.reviewPendingText}>Teacher review pending. This lesson is approved and implemented, but classroom verification has not yet been recorded. Follow your teacher's guidance for practical or oral activities.</Text>
           </View>
         )}
-        <Text style={styles.body}>{lesson.body}</Text>
+        {generatedLesson ? (
+          <>
+            <Text style={styles.body}>{generatedLesson.introduction}</Text>
+            {generatedLesson.sections.map((section: any, index: number) => (
+              <View key={index} style={{ marginTop: Spacing.md }}>
+                <Text style={styles.heading}>{section.heading}</Text>
+                <Text style={styles.body}>{section.content}</Text>
+              </View>
+            ))}
+            <Text style={styles.heading}>Lesson recap</Text>
+            <Text style={styles.body}>{generatedLesson.summary}</Text>
+          </>
+        ) : (
+          <>
+            <Text style={styles.body}>{lesson.body}</Text>
+            {generationError ? <Text style={styles.generationError}>{generationError}</Text> : null}
+            {generating ? <Text style={styles.note}>Brainee's separate tutor is not generating this lesson. The curriculum lesson engine is preparing your lesson…</Text> : null}
+            {!generating ? <Btn label="Generate AI lesson" onPress={generateLesson} loading={generating} /> : null}
+          </>
+        )}
         {lesson.assets?.length > 0 && token ? (
           <View style={{ marginTop: Spacing.md }}>
             {lesson.assets.map((asset: any) => (
@@ -37,27 +77,20 @@ export default function Ss1PackageLessonScreen({ route }: any) {
         {lesson.objectives.map((objective: string, index: number) => (
           <Text key={index} style={styles.objective}>{index + 1}. {objective}</Text>
         ))}
-        <Text style={styles.heading}>Practice and marking guide</Text>
-        {lesson.practice.map((question: any, index: number) => (
-          <View key={question.id} style={styles.question}>
-            <Text style={styles.questionText}>{index + 1}. {question.question}</Text>
-            {question.options?.map((option: string, optionIndex: number) => (
-              <Text key={optionIndex} style={styles.option}>{option}</Text>
-            ))}
+        <Text style={styles.heading}>AI-generated practice questions</Text>
+        {generatedLesson ? generatedLesson.practice_questions.map((question: any, index: number) => (
+          <View key={index} style={styles.question}>
+            <Text style={styles.questionText}>{index + 1}. {question.stem}</Text>
+            {question.options.map((option: any) => <Text key={option.key} style={styles.option}>{option.key}. {option.text}</Text>)}
             <TouchableOpacity onPress={() => setRevealed(current => ({ ...current, [index]: !current[index] }))} accessibilityRole="button">
-              <Text style={styles.reveal}>{revealed[index] ? 'Hide answer and marking guide' : 'Reveal answer and marking guide'}</Text>
+              <Text style={styles.reveal}>{revealed[index] ? 'Hide answer and explanation' : 'Reveal answer and explanation'}</Text>
             </TouchableOpacity>
-            {revealed[index] && (
-              <View style={styles.answer}>
-                <Text style={styles.answerText}>Answer: {question.answer}</Text>
-                <Text style={styles.answerText}>Marks: {question.marks}</Text>
-                {question.marking.map((criterion: any, criterionIndex: number) => (
-                  <Text key={criterionIndex} style={styles.criterion}>• {criterion.marks} mark(s): {criterion.criterion}</Text>
-                ))}
-              </View>
-            )}
+            {revealed[index] && <View style={styles.answer}>
+              <Text style={styles.answerText}>Correct answer: {question.correct_keys.join(', ')}</Text>
+              <Text style={styles.answerText}>{question.explanation}</Text>
+            </View>}
           </View>
-        ))}
+        )) : <Text style={styles.note}>Practice questions will appear with the generated lesson.</Text>}
         <Text style={styles.sourceHeading}>Sources and attribution</Text>
         {lesson.provenance.map((source: any, index: number) => (
           <Text key={index} style={styles.source}>{source.title} — {source.locator}{source.url ? ` · ${source.url}` : ''}{'\n'}Rights: {source.rights}{'\n'}Attribution: {source.attribution}</Text>
@@ -69,6 +102,7 @@ export default function Ss1PackageLessonScreen({ route }: any) {
 
 const styles = StyleSheet.create({
   reviewPending: { borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.sm, padding: Spacing.sm, marginTop: Spacing.sm },
+  generationError: { color: Colors.danger, fontSize: Fonts.sizes.xs, marginTop: Spacing.sm },
   reviewPendingText: { color: Colors.textSub, fontSize: Fonts.sizes.xs, lineHeight: 18 },
   meta: { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginBottom: Spacing.xs },
   body: { color: Colors.text, fontSize: Fonts.sizes.sm, lineHeight: 22, marginTop: Spacing.sm },
