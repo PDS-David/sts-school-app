@@ -1,4 +1,5 @@
 name: Render PostgreSQL encrypted backup
+# A workflow-file push creates an immediate encrypted recovery point after production data changes.
 
 on:
   pull_request:
