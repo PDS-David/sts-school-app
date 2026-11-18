@@ -140,3 +140,11 @@ test('school admins browse only approved question-bank items through the exam AP
   assert.match(adminExamScreen, /api\.get\('\/online-exams\/admin\/question-bank\/subjects'/);
   assert.match(adminExamScreen, /api\.get\('\/online-exams\/admin\/question-bank\/questions'/);
 });
+
+test('formal exam authoring requires a valid school lesson topic mapping for every question', () => {
+  assert.match(route, /router\.get\('\/admin\/lesson-topics',requireRole\('admin'\)/);
+  assert.match(route, /Every formal-exam question must be mapped to a school lesson topic completed by the candidates/);
+  assert.match(route, /covered_topic_id:Number\(item\.covered_topic_id\)/);
+  assert.match(adminExamScreen, /api\.get\('\/online-exams\/admin\/lesson-topics'/);
+  assert.match(adminExamScreen, /covered_topic_id:Number\(selectedTopic\.id\)/);
+});
