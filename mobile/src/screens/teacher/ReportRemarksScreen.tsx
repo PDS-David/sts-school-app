@@ -18,6 +18,7 @@ export default function ReportRemarksScreen() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
+  const [setupRetry, setSetupRetry] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
@@ -35,7 +36,7 @@ export default function ReportRemarksScreen() {
       .catch((e: any) => { if (!cancelled) setError(e?.response?.data?.error ?? 'Could not load your class roster and terms.'); })
       .finally(() => { if (!cancelled) setLoading(false); });
     return () => { cancelled = true; };
-  }, []);
+  }, [setupRetry]);
 
   useEffect(() => {
     if (!studentId || !termId) return;
@@ -78,7 +79,12 @@ export default function ReportRemarksScreen() {
   };
 
   if (loading) return <Loader />;
-  if (error && !students.length) return <PageContainer style={{ padding: Spacing.md }}><Empty message={error} /></PageContainer>;
+  if (error && !students.length) return (
+    <PageContainer style={{ padding: Spacing.md }}>
+      <Empty message={error} />
+      <Btn label="Retry loading roster and terms" variant="outline" onPress={() => { setLoading(true); setSetupRetry(v => v + 1); }} />
+    </PageContainer>
+  );
 
   return (
     <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
