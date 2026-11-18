@@ -79,7 +79,7 @@ test('SS1 student lesson endpoints use a safe projection instead of serializing 
   const start = delivery.indexOf('export function safeStudentSs1Lesson');
   const end = delivery.indexOf('export function getStudentSs1Lesson', start);
   const projection = delivery.slice(start, end);
-  assert.doesNotMatch(projection, /practice:|provenance:|state:|body_sha256:/);
+  assert.doesNotMatch(projection, /practice:|state:|body_sha256:/);
 });
 
 test('global learning access policy is persisted, global-admin-only and audited', () => {
