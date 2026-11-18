@@ -114,7 +114,7 @@ async function main() {
       if (membership.status === 'active') {
         if (membership.class_name !== entry.className
             || membership.source_class_name !== entry.sourceClassName) {
-          throw new Error(`Active report-roster placement conflicts with workbook identity ${entry.rosterIdentity}; teacher decisions will not be overwritten`);
+          throw new Error(`Active report-roster placement conflicts with workbook identity ${entry.rosterIdentity}; administrator decisions will not be overwritten`);
         }
         unchangedMemberships++;
         continue;
