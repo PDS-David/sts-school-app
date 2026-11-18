@@ -114,3 +114,6 @@ Teacher subject review is exposed in the teacher app's More → Review Questions
 
 
 Admin experience: the Admin app's Assessments → Formal Online Exams screen lists school-scoped examinations, creates drafts from approved objective questions, publishes only after server-side candidate lesson-coverage checks, lists candidate attempts, displays per-question AI confidence/rubric evidence, and permits manual marks for `pending_review` responses. School administrators can browse only approved question-bank content through the exam API; global question-bank ingestion remains restricted to global administrators. Written-response question creation requires a criterion rubric; the current mobile draft creator selects objective MCQs, while the backend accepts written-response items with a validated rubric.
+
+
+Coverage enforcement: the school-admin authoring screen requires an explicit school/class/subject lesson topic for every question. The backend validates that topic belongs to the selected school, class and subject; publication then rechecks that every currently enrolled candidate has completed every mapped topic. Questions without a valid lesson mapping cannot be attached to a formal exam.
