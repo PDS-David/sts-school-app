@@ -76,7 +76,7 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
  */
 export function denyTeacherAccess(req: Request, res: Response, next: NextFunction) {
   if (req.user?.role === 'teacher') {
-    return res.status(403).json({ error: 'Teacher accounts are limited to physical reporting workflows.' });
+    return res.status(403).json({ error: 'Teacher accounts are limited to physical-class report workflows.' });
   }
   next();
 }
