@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { z } from 'zod';
 import { query, withTransaction } from '../db/pool.js';
 import type { PoolClient } from 'pg';
-import { requireAuth, requirePerm, denyTeacherWrites } from '../middleware/auth.js';
+import { requireAuth, requirePerm } from '../middleware/auth.js';
 import { getGrade } from '../utils/grades.js';
 import { audit } from '../utils/audit.js';
 import { termRank } from '../utils/terms.js';
@@ -11,7 +11,8 @@ import type { AuthUser } from '../types/index.js';
 import { sendPushToUser } from '../utils/push.js';
 
 const router = Router();
-router.use(requireAuth, denyTeacherWrites);
+// Teachers may enter and correct physical-class report scores. Every write
+// is scoped by validateScoreWriteScope before it reaches the database.
 
 // Shared by POST /scores and POST /scores/bulk — see Pass 10 fix note below
 // on why /bulk needs this too, not just type/shape validation.

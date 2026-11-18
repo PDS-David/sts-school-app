@@ -1,13 +1,14 @@
 import { Router } from 'express';
 import { query } from '../db/pool.js';
 import { saveAttendanceBulk } from '../utils/attendanceWrites.js';
-import { requireAuth, requirePerm, denyTeacherWrites } from '../middleware/auth.js';
+import { requireAuth, requirePerm } from '../middleware/auth.js';
 import { hasPerm } from '../utils/rbac.js';
 import { audit } from '../utils/audit.js';
 import { checkTeacherStudentScope, checkTermSchoolScope } from '../utils/scope.js';
 
 const router = Router();
-router.use(requireAuth, denyTeacherWrites);
+// Teachers may maintain attendance and class records for their physical roster;
+// checkTeacherStudentScope validates school, active roster membership and term.
 
 // Found live in Pass 10: neither PUT /attendance nor PUT /attendance/bulk
 // validated `days_present` at all — not even that it's a non-negative

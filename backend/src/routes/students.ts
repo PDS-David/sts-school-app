@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { z } from 'zod';
 import { createHash } from 'node:crypto';
 import { query, withTransaction } from '../db/pool.js';
-import { requireAuth, requirePerm, requireRole, denyTeacherWrites } from '../middleware/auth.js';
+import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
 import { auditContextFromRequest, auditInTransaction, auditStrict } from '../utils/audit.js';
 import { checkTeacherDeleteScope, checkTeacherRosterScope } from '../utils/scope.js';
 import { resolveStudentRosterScope } from '../utils/studentRosterScope.js';
@@ -11,7 +11,8 @@ import type { PoolClient } from 'pg';
 import type { AuthUser } from '../types/index.js';
 
 const router = Router();
-router.use(requireAuth, denyTeacherWrites);
+// Teachers work in the physical reporting system. Route-level permissions and
+// checkTeacherRosterScope/checkTeacherStudentScope enforce their own class roster.
 
 type WardMutationScope =
   | { ok: true; schoolCode: string }
@@ -310,6 +311,15 @@ router.put('/:id', requirePerm('grades.write'), async (req, res) => {
   if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
 
   const { full_name, class_name, gender, date_of_birth, admission_number } = req.body;
+  // A teacher may edit a physical student record but cannot move it outside
+  // the teacher's assigned physical class or school.
+  if (req.user!.role === 'teacher') {
+    const destinationScope = checkTeacherRosterScope(req.user!, {
+      school_code: req.user!.school_code ?? '',
+      class_name: class_name ?? req.user!.assigned_class ?? '',
+    });
+    if (destinationScope) return res.status(destinationScope.status).json({ error: destinationScope.error });
+  }
   const updated = await withTransaction(async (client) => {
     const { rows } = await client.query(
       `UPDATE students SET full_name=COALESCE($1,full_name), class_name=COALESCE($2,class_name),

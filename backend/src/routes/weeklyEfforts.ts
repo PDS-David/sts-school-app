@@ -1,12 +1,12 @@
 import { Router } from 'express';
 import { query } from '../db/pool.js';
-import { requireAuth, requirePerm, denyTeacherAccess } from '../middleware/auth.js';
+import { requireAuth, requirePerm } from '../middleware/auth.js';
 import { checkTeacherStudentScope } from '../utils/scope.js';
 import { audit } from '../utils/audit.js';
 import { generate } from '../utils/ai.js';
 
 const router = Router();
-router.use(requireAuth, denyTeacherAccess);
+router.use(requireAuth); // Teacher entries are physical-reporting records, scoped below.
 
 // ── POST /weekly-efforts ──────────────────────────────────────────────────────
 router.post('/', requirePerm('weeklyEfforts.write'), async (req, res) => {
