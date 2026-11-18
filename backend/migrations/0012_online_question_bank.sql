@@ -183,11 +183,11 @@ VALUES
 ON CONFLICT DO NOTHING;
 
 INSERT INTO question_bank_sources(board,source_name,source_url,access_method,rights_status,rights_evidence)
-SELECT 'GENERAL','STS original practice pilot — AI-assisted, human-verified',NULL,'original_generated','original_generated',
- 'Original practice items authored for this application; not transcribed from past papers. Answers and explanations independently checked before approval.'
+SELECT 'GENERAL','STS original practice pilot — AI-generated, answer-checked',NULL,'original_generated','original_generated',
+ 'Original practice items generated for this application; not transcribed from past papers. Answers and explanations checked during pilot curation; subject-expert approval remains required before publication.'
 WHERE NOT EXISTS (
  SELECT 1 FROM question_bank_sources
- WHERE source_name='STS original practice pilot — AI-assisted, human-verified'
+ WHERE source_name='STS original practice pilot — AI-generated, answer-checked'
 );
 
 INSERT INTO question_bank_source_gaps(board,subject_id,gap_type,gap_status,reason,next_action,source_id)
@@ -213,7 +213,7 @@ INSERT INTO question_bank_ingestion_batches(source_id,batch_key,payload_sha256,i
 SELECT id,'pilot-original-ai-2026-11-18',
        encode(digest('sts-original-practice-pilot-v1','sha256'),'hex'),6
 FROM question_bank_sources
-WHERE source_name='STS original practice pilot — AI-assisted, human-verified'
+WHERE source_name='STS original practice pilot — AI-generated, answer-checked'
 ON CONFLICT (batch_key) DO NOTHING;
 
 -- Six original, answer-checked pilot questions. The board denotes the exam
@@ -223,7 +223,7 @@ WITH src AS (
  SELECT s.id, b.id AS batch_id
  FROM question_bank_sources s
  JOIN question_bank_ingestion_batches b ON b.source_id=s.id
- WHERE s.source_name='STS original practice pilot — AI-assisted, human-verified'
+ WHERE s.source_name='STS original practice pilot — AI-generated, answer-checked'
    AND b.batch_key='pilot-original-ai-2026-11-18'
 ), pilot(board,subject_code,topic_slug,qno,kind,stem,options,answer,explanation,marks) AS (
  VALUES
@@ -261,7 +261,7 @@ WITH src AS (
 INSERT INTO question_bank_questions
  (board,exam_year,subject_id,paper,question_number,question_type,stem,options,correct_answer,explanation,marks,topic_id,source_id,batch_id,content_origin,rights_status,review_status)
 SELECT p.board,NULL,s.id,'Original practice — not a past paper',p.qno,p.kind,p.stem,p.options,p.answer,p.explanation,p.marks,t.id,src.id,src.batch_id,
-       'ai_generated','original_generated','approved'
+       'ai_generated','original_generated','reviewed'
 FROM pilot p
 JOIN question_bank_subjects s ON s.code=p.subject_code
 JOIN question_bank_topics t ON t.subject_id=s.id AND t.slug=p.topic_slug
