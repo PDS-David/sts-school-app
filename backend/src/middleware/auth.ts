@@ -43,6 +43,7 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
   // take effect on the very next authenticated request.
   const { rows } = await query(
     `SELECT u.username, u.role, u.school_code, u.assigned_class,
+            COALESCE(u.can_manage_all_schools, FALSE) AS can_manage_all_schools,
             COALESCE((
               SELECT array_agg(ts.subject_id ORDER BY ts.subject_id)
               FROM teacher_subjects ts WHERE ts.user_id=u.id
@@ -84,6 +85,7 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
     school_code: dbUser.school_code,
     assigned_class: dbUser.assigned_class,
     assigned_subject_ids: dbUser.assigned_subject_ids,
+    can_manage_all_schools: dbUser.can_manage_all_schools === true,
   });
   next();
 }
