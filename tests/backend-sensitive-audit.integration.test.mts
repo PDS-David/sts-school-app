@@ -70,6 +70,22 @@ test('strict audit writes redact sensitive metadata and preserve a verifiable sc
   assert.ok(integrity.checked >= 2);
 });
 
+test('integrity reports preserved legacy unhashed rows as partial coverage', async () => {
+  const marker = randomUUID();
+  await query(
+    `INSERT INTO audit_log(actor_name,action,entity,entity_id,school_code,detail,created_at)
+     VALUES('legacy snapshot','BSEC029_LEGACY_UNHASHED','security_test',$1,'primary',
+            'pre-hash historical record',now())`,
+    [marker],
+  );
+
+  const integrity = await verifyAuditLogIntegrity('primary');
+  assert.equal(integrity.valid, true, 'all hash-chained rows remain valid');
+  assert.equal(integrity.coverage, 'partial', 'legacy rows must not be represented as fully verified');
+  assert.ok(integrity.legacyUnhashed >= 1);
+  assert.ok(integrity.checked >= 2, 'existing hash-chained rows must still be checked');
+});
+
 test('audit log rejects UPDATE and DELETE mutations', async () => {
   const user = actor();
   const marker = randomUUID();
