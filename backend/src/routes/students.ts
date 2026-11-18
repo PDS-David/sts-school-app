@@ -192,13 +192,6 @@ router.get('/report-roster/removed', requireRole('admin'), async (req, res) => {
 router.get('/:id', requirePerm('students.read'), async (req, res) => {
   const user = req.user!;
   let teacherReportClassName: string | null = null;
-  if (user.role !== 'teacher') {
-    const { rows: reportMemberships } = await query(
-      'SELECT 1 FROM report_roster_memberships WHERE student_id=$1 LIMIT 1',
-      [req.params.id],
-    );
-    if (!reportMemberships[0]) return res.status(404).json({ error: 'Student not found' });
-  }
   if (user.role === 'teacher') {
     const allowedClasses = user.assigned_class ? [user.assigned_class] : (user.assigned_class_names ?? []);
     if (!user.school_code || !allowedClasses.length) {
