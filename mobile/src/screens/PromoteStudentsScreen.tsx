@@ -28,7 +28,7 @@ export default function PromoteStudentsScreen() {
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState('');
   const [busyId, setBusyId] = useState<string | null>(null);
-  const [confirm, setConfirm] = useState<{ student: StudentRow; action: 'promote' | 'demote' | 'retain' | 'remove'; toLabel: string } | null>(null);
+  const [confirm, setConfirm] = useState<{ student: StudentRow; action: 'promote' | 'demote' | 'retain' | 'remove' | 'reinstate'; toLabel: string } | null>(null);
   const [info, setInfo] = useState<{ title: string; message: string } | null>(null);
 
   const fetchRoster = useCallback(() => {
