@@ -147,7 +147,7 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     assert.equal(deniedSubject.status, 403, 'subject-only teachers without an assigned physical class cannot enter report scores');
 
     const foreignSubject = await post('/', score(studentIds[0], subjectIds[2], termIds[0]), subjectTeacher.token);
-    assert.equal(foreignSubject.status, 403, 'teachers cannot enter scores for another school subject');
+    assert.equal(foreignSubject.status, 400, 'student, subject and term must belong to the same school');
 
     const foreignTerm = await post('/', score(studentIds[0], subjectIds[0], termIds[1]), subjectTeacher.token);
     assert.equal(foreignTerm.status, 400, 'teacher score entry rejects a term owned by another school');
