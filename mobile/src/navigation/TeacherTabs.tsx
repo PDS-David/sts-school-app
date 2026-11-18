@@ -63,7 +63,7 @@ function MoreStackNavigator() {
   return (
     <MoreStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
       <MoreStack.Screen name="More" component={TeacherMoreScreen} />
-      <MoreStack.Screen name="TeacherQuestionReview" component={TeacherQuestionReviewScreen} options={{ headerShown: true, title: 'Subject Question Review', ...opts }} />
+      <MoreStack.Screen name="TeacherQuestionReview" component={TeacherQuestionReviewScreen} options={{ headerShown: false }} />
       <MoreStack.Screen name="ChangePassword" component={ChangePasswordScreen} options={{ headerShown: true, title: 'Change Password', ...opts }} />
     </MoreStack.Navigator>
   );
