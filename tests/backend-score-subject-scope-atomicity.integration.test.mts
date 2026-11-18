@@ -126,6 +126,13 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
       );
     }
 
+    const { rows: onlineOnlyRows } = await query(
+      `INSERT INTO students(full_name,class_name,school_code,admission_number)
+       VALUES('BSEC20 Online Only Learner','Primary 4','primary',$1) RETURNING id`,
+      [`BSEC20-ONLINE-${suffix}`],
+    );
+    const onlineOnlyStudentId = String(onlineOnlyRows[0].id);
+
     const started = await startServer();
     server = started.server;
     const headers = (token: string) => ({
@@ -172,6 +179,14 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
 
     const adminForeignSubject = await post('/', score(studentIds[0], subjectIds[2], termIds[0]), admin.token);
     assert.equal(adminForeignSubject.status, 400, 'administrator writes must preserve student/subject school integrity');
+
+    const onlineOnlyScore = await post('/', score(onlineOnlyStudentId, subjectIds[0], termIds[0]), admin.token);
+    assert.equal(onlineOnlyScore.status, 404, 'administrators cannot create physical report scores for online-only profiles');
+    const onlineOnlyReport = await fetch(
+      `${started.baseUrl}/report/${onlineOnlyStudentId}?term_id=${termIds[0]}`,
+      { headers: headers(admin.token) },
+    );
+    assert.equal(onlineOnlyReport.status, 404, 'online-only profiles cannot retrieve physical report cards');
 
     const { rows: scoresBeforeDeniedBatch } = await query(
       'SELECT id,student_id,subject_id,total FROM scores WHERE student_id=ANY($1::uuid[]) AND term_id=$2 ORDER BY id',
