@@ -6,8 +6,9 @@ CREATE TABLE IF NOT EXISTS question_bank_question_reviews (
   reviewer_user_id UUID NOT NULL REFERENCES users(id) ON DELETE RESTRICT,
   decision TEXT NOT NULL CHECK (decision IN ('approved','rejected')),
   notes TEXT NOT NULL CHECK (length(trim(notes)) BETWEEN 10 AND 2000),
-  reviewed_at TIMESTAMPTZ NOT NULL DEFAULT now(),
-  UNIQUE(question_id,reviewer_user_id)
+  reviewed_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 CREATE INDEX IF NOT EXISTS question_bank_question_reviews_recent_idx
   ON question_bank_question_reviews(question_id,reviewed_at DESC);
+CREATE INDEX IF NOT EXISTS question_bank_question_reviews_reviewer_idx
+  ON question_bank_question_reviews(question_id,reviewer_user_id,reviewed_at DESC);
