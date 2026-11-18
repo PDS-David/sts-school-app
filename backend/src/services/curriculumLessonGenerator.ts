@@ -43,7 +43,7 @@ export type CurriculumLessonInput = {
 };
 
 function validateInput(input: CurriculumLessonInput): void {
-  for ( (const [name, value] of Object.entries({
+  for (const [name, value] of Object.entries({
     className: input.className, subject: input.subject, term: input.term, topic: input.topic,
   })) {
     if (!value.trim() || value.length > 180) throw new Error(`Invalid curriculum ${name}.`);
