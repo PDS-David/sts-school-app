@@ -17,10 +17,14 @@ on:
     branches: [master]
     paths:
       - "backend/migrations/0012_online_question_bank.sql"
+      - "backend/migrations/0013_ai_class_practice.sql"
+      - "backend/src/routes/classPractice.ts"
       - "backend/src/routes/questionBank.ts"
       - "backend/src/utils/questionBankValidation.ts"
       - "backend/package.json"
       - "backend/package-lock.json"
+      - "tests/ai-class-practice.static.test.mts"
+      - "tests/ai-class-practice.postgres.integration.test.mts"
       - "tests/question-bank-ingestion.test.mts"
       - ".github/workflows/question-bank-ingestion.yml"
 
