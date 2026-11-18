@@ -22,6 +22,7 @@ export default function ReportRemarksScreen() {
 
   useEffect(() => {
     let cancelled = false;
+    setError('');
     Promise.all([api.get('/students'), api.get('/academic/terms')])
       .then(([s, t]) => {
         if (cancelled) return;
