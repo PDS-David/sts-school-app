@@ -117,13 +117,20 @@ router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => 
     : user.school_code;
   if (!schoolCode) return res.status(400).json({ error: 'school_code is required' });
 
+  const requestedClassName = typeof req.query.class_name === 'string' ? req.query.class_name : null;
+  const allowedClasses = user.assigned_class ? [user.assigned_class] : (user.assigned_class_names ?? []);
   const className = user.role === 'teacher'
-    ? user.assigned_class
-    : (typeof req.query.class_name === 'string' ? req.query.class_name : null);
-  const subjectIds = null;
+    ? (requestedClassName && allowedClasses.includes(requestedClassName) ? requestedClassName : (user.assigned_class ?? null))
+    : requestedClassName;
+  const subjectIds = user.role === 'teacher' && !user.assigned_class
+    ? user.assigned_subject_ids
+    : null;
 
-  if (user.role === 'teacher' && !className) {
-    return res.status(403).json({ error: 'Marking overview requires an assigned physical class.' });
+  if (user.role === 'teacher' && (!className || !allowedClasses.includes(className))) {
+    return res.status(403).json({ error: 'Choose one of your assigned classes to view its marking overview.' });
+  }
+  if (user.role === 'teacher' && !user.assigned_class && !subjectIds?.length) {
+    return res.status(403).json({ error: 'No subject assignments are configured for this account.' });
   }
 
   const { rows: terms } = await query(
