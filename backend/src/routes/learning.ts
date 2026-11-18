@@ -239,6 +239,33 @@ router.get('/ss1/lessons/:lessonId', requirePerm('topics.read'), async (req, res
   });
 });
 
+router.post('/ss1/lessons/:lessonId/generate', requirePerm('topics.read'), async (req, res) => {
+  const studentId = await ss1StudentId(req.user!);
+  if (!studentId) return res.status(404).json({ error: 'Lesson not found' });
+  const lesson = getStudentSs1Lesson(req.params.lessonId);
+  if (!lesson) return res.status(404).json({ error: 'Lesson not found' });
+  const unlockedTerms = await redeemedSs1Terms(studentId);
+  if (!unlockedTerms.has(lesson.term)) {
+    return res.status(423).json({ error: 'Redeem the Term PIN to generate this lesson.' });
+  }
+  try {
+    const generated = await generateCurriculumLesson({
+      className: 'SS 1',
+      subject: lesson.canonical_subject,
+      term: lesson.term,
+      topic: lesson.title,
+      objectives: lesson.objectives,
+      sourceMaterial: lesson.body,
+    }, { userId: req.user!.id, role: req.user!.role });
+    return res.json({ ok: true, lesson: generated });
+  } catch (error: any) {
+    return res.status(error?.statusCode ?? 502).json({
+      ok: false, error: error?.message ?? 'A complete lesson could not be generated. Please retry.',
+      code: 'CURRICULUM_LESSON_GENERATION_FAILED',
+    });
+  }
+});
+
 router.get('/ss1/assets/:assetId', requirePerm('topics.read'), async (req, res) => {
   const studentId = await ss1StudentId(req.user!);
   if (!studentId) return res.status(404).json({ error: 'Asset not found' });
@@ -363,6 +390,36 @@ router.get('/ss23/units/:unitId', requirePerm('topics.read'), async (req, res) =
       assets: studentSs23Assets(unit.id, context.className),
     },
   });
+});
+
+router.post('/ss23/units/:unitId/generate', requirePerm('topics.read'), async (req, res) => {
+  const context = await ss23StudentContext(req.user!);
+  if (!context) return res.status(404).json({ error: 'Unit not found' });
+  const unit = getStudentSs23Unit(req.params.unitId, context.className);
+  if (!unit) return res.status(404).json({ error: 'Unit not found' });
+  const unlockedTerms = await redeemedSs23Terms(context.studentId);
+  if (!unlockedTerms.has(unit.term)) {
+    return res.status(423).json({ error: 'Redeem the Term PIN to generate this lesson.' });
+  }
+  const sourceMaterial = unit.class_name === 'SS 3' && unit.delivery_mode === 'EXAM_PREPARATION'
+    ? `SS3 EXAMINATION PREPARATION: revise the approved topic and objectives only. Do not introduce new syllabus content or represent this as a new instructional unit.\n\n${unit.body}`
+    : unit.body;
+  try {
+    const generated = await generateCurriculumLesson({
+      className: unit.class_name,
+      subject: unit.subject,
+      term: unit.term,
+      topic: unit.title,
+      objectives: unit.objectives,
+      sourceMaterial,
+    }, { userId: req.user!.id, role: req.user!.role });
+    return res.json({ ok: true, lesson: generated });
+  } catch (error: any) {
+    return res.status(error?.statusCode ?? 502).json({
+      ok: false, error: error?.message ?? 'A complete lesson could not be generated. Please retry.',
+      code: 'CURRICULUM_LESSON_GENERATION_FAILED',
+    });
+  }
 });
 
 router.get('/ss23/assets/:assetId', requirePerm('topics.read'), async (req, res) => {
