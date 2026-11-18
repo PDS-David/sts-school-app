@@ -23,7 +23,6 @@
     "db:check-drift": "tsx src/db/checkDrift.ts",
     "db:backfill-score-class": "tsx src/db/backfillScoreClass.ts",
     "db:check-schools": "tsx src/db/checkSchools.ts",
-    "db:import-physical-roster": "node --import tsx src/db/importPhysicalReportRoster.ts",
     "db:ss1:validate-packages": "node --import tsx src/db/ss1/validateSubjectPackages.ts",
     "test:ss1:catering": "node --import tsx --test ../tests/ss1/catering-craft.package.test.mts ../tests/ss1/catering-craft.delivery.test.mts && node --import tsx src/db/ss1/validateSubjectPackages.ts catering-craft",
     "test:ss1:french": "node --import tsx --test ../tests/ss1/french.package.test.mts ../tests/ss1/french.delivery.test.mts ../tests/ss1/french.runtime.test.mts ../tests/ss1/french.audio.test.mts && node --import tsx src/db/ss1/validateSubjectPackages.ts french",
