@@ -196,10 +196,10 @@ router.post('/admin/exams', requireRole('admin'), async (req, res) => {
         }
       }
       const {rows: created}=await client.query(`
-        INSERT INTO online_exams(school_code,subject_id,subject_name,class_name,board,examination_type,exam_year,title,instructions,duration_minutes,starts_at,ends_at,shuffle_questions,created_by)
-        VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING id,title,status
+        INSERT INTO online_exams(school_code,subject_id,subject_name,class_name,board,examination_type,exam_year,title,instructions,duration_minutes,starts_at,ends_at,created_by)
+        VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13) RETURNING id,title,status
       `,[schoolCode,subjects[0].id,subjects[0].name,b.class_name,b.board,b.examination_type.trim(),b.exam_year??null,
-        b.title.trim(),b.instructions.trim(),b.duration_minutes,startsAt.toISOString(),endsAt.toISOString(),b.shuffle_questions===true,user.id]);
+        b.title.trim(),b.instructions.trim(),b.duration_minutes,startsAt.toISOString(),endsAt.toISOString(),user.id]);
       const exam=created[0];
       const sectionIds:string[]=[];
       for(let si=0;si<b.sections.length;si++){
@@ -216,7 +216,7 @@ router.post('/admin/exams', requireRole('admin'), async (req, res) => {
         total+=marks;
         const provenance={board:q.board,subject:b.subject_name,class_name:b.class_name,examination_type:b.examination_type,
           exam_year:q.exam_year,source_id:q.source_id,source_name:q.source_name,source_url:q.source_url,
-          source_locator:q.source_locator,covered_topic_id:typeof q.source_locator==='string'&&q.source_locator.startsWith('school-topic:')?Number(q.source_locator.slice('school-topic:'.length)):null,rights_status:q.rights_status,content_origin:q.content_origin,paper:q.paper,question_number:q.question_number};
+          source_locator:q.source_locator,session_exam_year:b.exam_year??null,covered_topic_id:typeof q.source_locator==='string'&&q.source_locator.startsWith('school-topic:')?Number(q.source_locator.slice('school-topic:'.length)):null,rights_status:q.rights_status,content_origin:q.content_origin,paper:q.paper,question_number:q.question_number};
         const snapshot={stem:q.stem,question_type:q.question_type,options:q.options,correct_answer:q.correct_answer,
           explanation:q.explanation,topic_id:q.topic_id,topic_name:q.topic_name??null};
         await client.query(`
