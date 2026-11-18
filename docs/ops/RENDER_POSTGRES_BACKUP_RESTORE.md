@@ -63,6 +63,39 @@ pg_restore --verbose --exit-on-error --single-transaction \
 
 5. Verify expected schemas, tables, constraints, indexes, migration ledger, audit history and representative row counts. Record the restore result and elapsed time.
 
+## Windows operator script: backup verification and initial roster import
+
+The repository includes `scripts/ops/restore-and-import-initial-roster.ps1`. It combines the safe local restore rehearsal and the approved initial physical-roster importer preflight.
+
+The verified recovery artifact created on 2026-11-18 is the GitHub Actions artifact from backup run `44274818217` (artifact ID `14412904587`). Its downloaded ZIP SHA-256 is:
+
+```text
+4e1d081a1cab969705bf225edfd366e55bda1390ae60683822f51121bb4d5724
+```
+
+The archive manifest records a PostgreSQL 18.6 production client dump and a successful restore into PostgreSQL 18.7. The disposable restore summary records 45 public tables, 6 migrations, 0 students, 0 report-roster memberships and 4 audit events. The artifact is retained by GitHub Actions for 90 days; download it to a protected local folder before its expiry.
+
+On the Windows operator computer:
+
+1. Download the backup artifact ZIP from the successful **Render PostgreSQL encrypted backup** workflow run.
+2. Download the exact owner-approved workbook `Student_Roster_Initial_Launch_Approved.xlsx` from the ChatGPT Library. Do not edit or resave it; the script checks its SHA-256.
+3. Ensure the matching age private identity is stored locally and the `age` CLI is installed. Never put the private identity in the repository or send it to anyone.
+4. Ensure PostgreSQL 18 client tools are installed at `C:\Program Files\PostgreSQL\18\bin`, and the local PostgreSQL 18 server accepts connections on `localhost:5433` as `postgres`.
+5. Clone/pull current `master`, open PowerShell at the repository root, then run a **dry-run first**:
+
+```powershell
+.\scripts\ops\restore-and-import-initial-roster.ps1 `
+  -WorkbookPath "C:\path\Student_Roster_Initial_Launch_Approved.xlsx" `
+  -BackupArtifactPath "C:\path\sts-school-db-20261118T091957Z.zip" `
+  -AgeIdentityPath "C:\secure\backup-identity.txt"
+```
+
+The script verifies the workbook and encrypted archive checksums, decrypts the archive locally, inspects it with `pg_restore --list`, and restores it into a **new, uniquely named** UTF-8/`template0` database. It never overwrites or drops an existing local database. It then clones current `master`, runs the workbook parser tests, and performs a read-only production importer dry-run. Database URLs and the age identity are entered locally; do not paste them into chat or commit them.
+
+Only after reviewing a successful dry-run and deciding to create the initial physical reporting roster, run the same command with `-Apply`. The script asks for the exact confirmation `IMPORT 104` before enabling the importer write flags. It expects 104 physical report-roster students and 104 memberships; it creates no admission numbers, online accounts or online-learning student records. If any precondition or count differs, it stops. The local restored database is intentionally left in place for inspection.
+
+**Important:** The script is pinned to the SHA-256 of this exact approved workbook and checks the restore evidence from this exact 2026-11-18 backup snapshot. For a later backup or a revised workbook, update and review the corresponding expected evidence before reusing it. Never use a stale backup as the only recovery point before a production write.
+
 ## Retention and next step
 
 - GitHub artifact retention is 90 days; it is not permanent storage. Download each required recovery point and copy it to the designated encrypted off-site vault. Keep the age private identity separate from the backup files.
