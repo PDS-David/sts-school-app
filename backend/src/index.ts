@@ -33,6 +33,11 @@ dotenv.config();
 await assertRateLimitPostgresConfigured();
 
 const app = express();
+// Render terminates the public connection at one reverse proxy. Trust that
+// single hop so express-rate-limit uses the originating client IP rather than
+// collapsing all requests onto the proxy address. Do not use `true`: the hop
+// count keeps client-supplied forwarded addresses outside the trusted chain.
+app.set('trust proxy', 1);
 
 app.use(cors());
 app.use(helmet());
