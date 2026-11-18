@@ -119,6 +119,6 @@ const styles = StyleSheet.create({
   label: { fontSize: Fonts.sizes.sm, color: Colors.text, fontWeight: '700', marginBottom: Spacing.xs, marginTop: Spacing.sm },
   picker: { borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.md, marginBottom: Spacing.sm, overflow: 'hidden' },
   textArea: { minHeight: 110, borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.md, padding: Spacing.sm, color: Colors.text, backgroundColor: Colors.white, marginBottom: Spacing.md },
-  success: { color: Colors.success ?? '#2E7D32', marginTop: Spacing.sm },
-  error: { color: Colors.danger ?? '#C62828', marginTop: Spacing.sm },
+  success: { color: '#2E7D32', marginTop: Spacing.sm },
+  error: { color: '#C62828', marginTop: Spacing.sm },
 });
