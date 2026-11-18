@@ -409,6 +409,7 @@ router.put('/users/:id', async (req, res) => {
 
       const { rows } = await client.query(
         `UPDATE users SET full_name=COALESCE($1,full_name), role=COALESCE($2,role),
+           can_manage_all_schools=CASE WHEN COALESCE($2,role)='admin' THEN can_manage_all_schools ELSE FALSE END,
            school_code=COALESCE($3,school_code),
            assigned_class=CASE WHEN COALESCE($2,role) IN ('admin','finance_admin') THEN NULL
                                ELSE COALESCE($4,assigned_class) END,
