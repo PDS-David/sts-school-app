@@ -4,7 +4,6 @@ import { Ionicons } from '@expo/vector-icons';
 import { Card } from '../../components/UI';
 import { Colors, Spacing, Fonts } from '../../theme';
 import { AppHeader } from '../../components/AppHeader';
-import { openNotifications } from '../../navigation/navigationRef';
 
 const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string; screen: string; color: string }[] = [
   { icon: 'people-outline', label: 'Student Reports', sub: 'Select a student in your assigned physical class and generate their report', screen: 'Students', color: '#1565C0' },
