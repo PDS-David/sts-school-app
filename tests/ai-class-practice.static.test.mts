@@ -37,3 +37,16 @@ test('submission row lock and writes share one database transaction', async () =
   assert.match(submitHandler,/client\.query\(\s*'SELECT \* FROM class_practice_sets WHERE id=\$1 AND student_id=\$2 FOR UPDATE'/);
   assert.doesNotMatch(submitHandler,/await query\(\s*'SELECT \* FROM class_practice_sets WHERE id=\$1 AND student_id=\$2 FOR UPDATE'/);
 });
+
+test('student adaptive practice UI is reachable only from a completed lesson and calls the owned practice API', async () => {
+  const screen = await readFile(new URL('../mobile/src/screens/student/ClassPracticeScreen.tsx', import.meta.url), 'utf8');
+  const topic = await readFile(new URL('../mobile/src/screens/TopicDetailScreen.tsx', import.meta.url), 'utf8');
+  const navigation = await readFile(new URL('../mobile/src/navigation/StudentTabs.tsx', import.meta.url), 'utf8');
+  assert.match(screen, /api\.post\('\/class-practice\/sets'/);
+  assert.match(screen, /api\.post\('\/class-practice\/sets\/'\+practiceSet\.id\+'\/submit'/);
+  assert.match(screen, /api\.get\('\/class-practice\/progress'/);
+  assert.match(screen, /api\.get\('\/class-practice\/sets\/'\+practiceSet\.id\)/);
+  assert.match(topic, /completed \? \(/);
+  assert.match(topic, /screen: 'ClassPractice'/);
+  assert.match(navigation, /name="ClassPractice" component=\{ClassPracticeScreen\}/);
+});
