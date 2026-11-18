@@ -70,3 +70,14 @@ test('all curriculum lesson generation endpoints enforce a shared per-account HT
   assert.match(route, /router\.post\('\/ss1\/lessons\/:lessonId\/generate', curriculumLessonLimiter,/);
   assert.match(route, /router\.post\('\/ss23\/units\/:unitId\/generate', curriculumLessonLimiter,/);
 });
+
+test('SS1 student lesson endpoints use a safe projection instead of serializing teacher answer keys', () => {
+  const route = read('backend/src/routes/learning.ts');
+  const delivery = read('backend/src/db/ss1/studentDelivery.ts');
+  assert.match(route, /safeStudentSs1Lesson\(lesson\)/);
+  assert.match(delivery, /export function safeStudentSs1Lesson/);
+  const start = delivery.indexOf('export function safeStudentSs1Lesson');
+  const end = delivery.indexOf('export function getStudentSs1Lesson', start);
+  const projection = delivery.slice(start, end);
+  assert.doesNotMatch(projection, /practice:|provenance:|state:|body_sha256:/);
+});
