@@ -137,3 +137,12 @@ test('SS1 and SS2/SS3 package lessons persist student completion separately from
   assert.match(ss1, /if \(lesson\.locked\)/);
   assert.match(ss1, /navigation\.navigate\('TermPinRedeem'\)/);
 });
+
+test('current student app uses separate lesson and progress routes; legacy combined route is retained only for compatibility', () => {
+  const route = read('backend/src/routes/learning.ts');
+  const screen = read('mobile/src/screens/TopicDetailScreen.tsx');
+  assert.match(route, /@deprecated Compatibility route for older installed mobile clients/);
+  assert.match(screen, /\/learning\/topics\/\$\{topic\.id\}\/lesson/);
+  assert.match(screen, /\/learning\/topics\/\$\{topic\.id\}\/progress/);
+  assert.doesNotMatch(screen, /\/learning\/topics\/\$\{topic\.id\}\/complete/);
+});
