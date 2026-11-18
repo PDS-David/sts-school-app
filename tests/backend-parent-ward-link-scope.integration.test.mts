@@ -112,6 +112,9 @@ test('parent ward links enforce teacher school/class scope and mutate atomically
     const duplicate = await link(primaryP4, parent.id, classTeacher.token);
     assert.equal(duplicate.status, 403, 'teachers cannot access parent-link administration');
 
+    const adminPrimaryLink = await link(primaryP4, parent.id, admin.token);
+    assert.equal(adminPrimaryLink.status, 200, 'administrators retain parent-link management');
+
     const wrongClass = await link(primaryP5, parent.id, classTeacher.token);
     assert.equal(wrongClass.status, 403, 'class teacher cannot link parents to another class');
     assert.equal(await isLinked(primaryP5, parent.id), false);
