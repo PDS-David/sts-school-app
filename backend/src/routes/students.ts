@@ -372,13 +372,15 @@ router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
     if (membership.status !== 'active') {
       return res.status(409).json({ error: 'Student is not currently active in the report roster' });
     }
-    await withTransaction(async (client) => {
-      await client.query(
+    const changed = await withTransaction(async (client) => {
+      const updated = await client.query(
         `UPDATE report_roster_memberships
          SET status='removed', removed_at=now(), changed_by=$1, updated_at=now()
-         WHERE student_id=$2 AND status='active'`,
+         WHERE student_id=$2 AND status='active'
+         RETURNING student_id`,
         [user.id, membership.id],
       );
+      if (!updated.rowCount) return false;
       await client.query(
         `INSERT INTO report_roster_membership_events
            (student_id,event_type,from_class_name,actor_id,details)
@@ -388,7 +390,9 @@ router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
       await auditInTransaction(client, user, 'remove_report_roster_membership', 'student', membership.id,
         'student removed from active physical report roster',
         auditContextFromRequest(req, { schoolCode: membership.school_code, metadata: { class_name: membership.report_class_name } }));
+      return true;
     });
+    if (!changed) return res.status(409).json({ error: 'Student roster membership changed; refresh and try again' });
     return res.json({ ok: true, action, class_name: membership.report_class_name, online_account_unchanged: true });
   }
 
@@ -396,13 +400,15 @@ router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
     if (membership.status !== 'removed') {
       return res.status(409).json({ error: 'Student is already active in the report roster' });
     }
-    await withTransaction(async (client) => {
-      await client.query(
+    const changed = await withTransaction(async (client) => {
+      const updated = await client.query(
         `UPDATE report_roster_memberships
          SET status='active', removed_at=NULL, changed_by=$1, updated_at=now()
-         WHERE student_id=$2 AND status='removed'`,
+         WHERE student_id=$2 AND status='removed'
+         RETURNING student_id`,
         [user.id, membership.id],
       );
+      if (!updated.rowCount) return false;
       await client.query(
         `INSERT INTO report_roster_membership_events
            (student_id,event_type,to_class_name,actor_id,details)
@@ -412,7 +418,9 @@ router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
       await auditInTransaction(client, user, 'reinstate_report_roster_membership', 'student', membership.id,
         'student reinstated in physical report roster',
         auditContextFromRequest(req, { schoolCode: membership.school_code, metadata: { class_name: membership.report_class_name } }));
+      return true;
     });
+    if (!changed) return res.status(409).json({ error: 'Student roster membership changed; refresh and try again' });
     return res.json({ ok: true, action, class_name: membership.report_class_name, online_account_unchanged: true });
   }
 
@@ -422,11 +430,12 @@ router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
 
   const fromClass = membership.report_class_name;
   if (action === 'retain') {
-    await withTransaction(async (client) => {
-      await client.query(
-        'UPDATE report_roster_memberships SET changed_by=$1, updated_at=now() WHERE student_id=$2 AND status=\'active\'',
+    const changed = await withTransaction(async (client) => {
+      const updated = await client.query(
+        'UPDATE report_roster_memberships SET changed_by=$1, updated_at=now() WHERE student_id=$2 AND status=\'active\' RETURNING student_id',
         [user.id, membership.id],
       );
+      if (!updated.rowCount) return false;
       await client.query(
         `INSERT INTO report_roster_membership_events
            (student_id,event_type,from_class_name,to_class_name,actor_id,details)
@@ -436,7 +445,9 @@ router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
       await auditInTransaction(client, user, 'retain_report_roster_student', 'student', membership.id,
         'student retained in physical report class',
         auditContextFromRequest(req, { schoolCode: membership.school_code, metadata: { class_name: fromClass } }));
+      return true;
     });
+    if (!changed) return res.status(409).json({ error: 'Student roster membership changed; refresh and try again' });
     return res.json({ ok: true, action, from_class: fromClass, to_class: fromClass, online_account_unchanged: true });
   }
 
@@ -458,13 +469,15 @@ router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
   }
   const toClass = names[targetIdx];
 
-  await withTransaction(async (client) => {
-    await client.query(
+  const changed = await withTransaction(async (client) => {
+    const updated = await client.query(
       `UPDATE report_roster_memberships
        SET class_name=$1, changed_by=$2, updated_at=now()
-       WHERE student_id=$3 AND status='active'`,
+       WHERE student_id=$3 AND status='active'
+       RETURNING student_id`,
       [toClass, user.id, membership.id],
     );
+    if (!updated.rowCount) return false;
     await client.query(
       `INSERT INTO report_roster_membership_events
          (student_id,event_type,from_class_name,to_class_name,actor_id,details)
@@ -474,7 +487,9 @@ router.post('/:id/promotion', requireRole('teacher'), async (req, res) => {
     await auditInTransaction(client, user, action === 'promote' ? 'promote_report_roster_student' : 'demote_report_roster_student',
       'student', membership.id, 'physical report-roster class placement changed',
       auditContextFromRequest(req, { schoolCode: membership.school_code, metadata: { from_class: fromClass, to_class: toClass } }));
+    return true;
   });
+  if (!changed) return res.status(409).json({ error: 'Student roster membership changed; refresh and try again' });
   return res.json({ ok: true, action, from_class: fromClass, to_class: toClass, online_account_unchanged: true });
 });
 
