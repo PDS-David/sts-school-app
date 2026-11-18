@@ -33,7 +33,7 @@ function resolveAdminSchoolScope(
   user: AuthUser,
   requested: unknown,
 ): AdminSchoolScope {
-  if (user.can_manage_all_schools === true && (requested === undefined || requested === null || requested === '')) return { ok: false, status: 400, error: 'Select a school before accessing school records.' };
+  if (user.can_manage_all_schools === true && !user.school_code && (requested === undefined || requested === null || requested === '')) return { ok: false, status: 400, error: 'Select a school before accessing school records.' };
   if (user.school_code) {
     if (requested !== undefined && requested !== null && requested !== '' &&
         (typeof requested !== 'string' || requested.trim() !== user.school_code)) {
