@@ -3,6 +3,7 @@ name: Android mobile readiness
 on:
   push:
     branches:
+      - master
       - "agent/mobile-android-readiness-*"
     paths:
       - "mobile/**"
@@ -34,7 +35,7 @@ jobs:
   mobile-checks:
     name: Mobile tests, types and Android bundle
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -55,10 +56,28 @@ jobs:
         env:
           CI: "1"
         run: npx expo export --platform android --output-dir ../artifacts/mobile-android
-      - name: Upload Android bundle
+      - name: Set up Java for Android build
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          packages: 'platform-tools platforms;android-36 build-tools;36.0.0'
+      - name: Generate Android native project
+        working-directory: mobile
+        run: npx expo prebuild --platform android --non-interactive
+      - name: Build installable Android debug APK
+        timeout-minutes: 25
+        working-directory: mobile/android
+        run: ./gradlew --no-daemon --console=plain assembleDebug
+      - name: Upload Android bundle and installable debug APK
         uses: actions/upload-artifact@v4
         with:
-          name: mobile-android-js-bundle
-          path: artifacts/mobile-android/
+          name: mobile-android-debug-build
+          path: |
+            artifacts/mobile-android/
+            mobile/android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
-          retention-days: 7
+          retention-days: 14
