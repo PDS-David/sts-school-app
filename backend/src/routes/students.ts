@@ -164,12 +164,13 @@ router.get('/deleted', requireRole('admin'), async (req, res) => {
 // doesn't confirm that the record exists at all.
 router.get('/:id', requirePerm('students.read'), async (req, res) => {
   const user = req.user!;
+  let teacherReportClassName: string | null = null;
   if (user.role === 'teacher') {
     if (!user.school_code || !user.assigned_class) {
       return res.status(403).json({ error: 'Report access requires an assigned physical class.' });
     }
     const { rows: memberships } = await query(
-      `SELECT 1
+      `SELECT m.class_name
        FROM report_roster_memberships m
        JOIN students s ON s.id=m.student_id
        WHERE m.student_id=$1 AND m.status='active'
@@ -177,6 +178,7 @@ router.get('/:id', requirePerm('students.read'), async (req, res) => {
       [req.params.id, user.assigned_class, user.school_code],
     );
     if (!memberships[0]) return res.status(404).json({ error: 'Student not found' });
+    teacherReportClassName = memberships[0].class_name;
   }
   const params: unknown[] = [req.params.id];
   let schoolClause = '';
@@ -201,6 +203,11 @@ router.get('/:id', requirePerm('students.read'), async (req, res) => {
     params,
   );
   if (!rows[0]) return res.status(404).json({ error: 'Student not found' });
+  if (teacherReportClassName) {
+    // The teacher-facing profile represents the physical report roster;
+    // leave students.class_name untouched for the independent online account.
+    rows[0].class_name = teacherReportClassName;
+  }
   return res.json({ student: rows[0] });
 });
 
