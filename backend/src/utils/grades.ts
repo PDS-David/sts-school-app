@@ -9,7 +9,7 @@ export function getGrade(total: number): string {
 
 export function getGradeRemark(grade: string): string {
   const map: Record<string, string> = {
-    A: 'Excellent', B: 'Very Good', C: 'Good', D: 'Fair', E: 'Pass', F: 'Fail',
+    A: 'Excellent', B: 'Very Good', C: 'Good', D: 'Fair', E: 'Poor', F: 'Fail',
   };
   return map[grade] ?? '';
 }
