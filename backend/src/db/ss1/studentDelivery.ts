@@ -22,9 +22,7 @@ function isStudentDeliverable(lesson: SubjectPackage['lessons'][number]): boolea
   const verificationHasEvidence = state.verification === 'VERIFIED'
     ? Boolean(state.verification_reference?.trim())
     : state.verification === 'DEFERRED' && state.verification_reference === null;
-  return state.content_approval === 'APPROVED' &&
-    Boolean(state.approval_reference?.trim()) &&
-    state.implementation === 'IMPLEMENTED' &&
+  return state.implementation === 'IMPLEMENTED' &&
     verificationHasEvidence &&
     lesson.provenance.length > 0 &&
     lesson.provenance.every(source => source.reuse_status === 'PERMITTED');
@@ -88,9 +86,7 @@ export interface StudentSs1Asset {
 }
 
 function isStudentDeliverableAsset(asset: SubjectPackage['assets'][number]): boolean {
-  return asset.state.content_approval === 'APPROVED' &&
-    Boolean(asset.state.approval_reference?.trim()) &&
-    asset.state.implementation === 'IMPLEMENTED' &&
+  return asset.state.implementation === 'IMPLEMENTED' &&
     asset.state.verification === 'VERIFIED' &&
     Boolean(asset.state.verification_reference?.trim()) &&
     asset.provenance.reuse_status === 'PERMITTED';

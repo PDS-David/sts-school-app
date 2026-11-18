@@ -122,3 +122,13 @@ test('unapproved Technical Drawing figures are hidden from student asset lists a
     assert.equal(readStudentSs1Asset(asset.id), null, `unapproved asset bytes leaked: ${asset.id}`);
   }
 });
+
+
+test('SS1 lesson delivery is independent of teacher approval metadata', () => {
+  const lesson = listStudentSs1Lessons()[0];
+  assert.ok(lesson, 'an implemented lesson fixture must exist');
+  const candidate = structuredClone(lesson);
+  candidate.state.content_approval = 'PENDING';
+  candidate.state.approval_reference = null;
+  assert.equal(isStudentDeliverableSs1Lesson(candidate), true, 'implemented lessons must not be gated by approval metadata');
+});
