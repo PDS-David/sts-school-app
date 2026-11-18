@@ -15,7 +15,7 @@ test('PIN enforcement is explicitly opt-in, preserving free launch access', () =
   const s = read('backend/src/routes/learning.ts');
   assert.match(s, /TERM_PIN_ENFORCED === 'true'/);
   // Task 05: read per request and shared by the list and the direct guard through resolveSequenceGroup(..., pinOk).
-  assert.match(s, /const termPinEnforced = \(\) => process\.env\.TERM_PIN_ENFORCED === 'true'/);
+  assert.match(s, /const freeLaunchMode = \\(\\) => process\\.env\\.FREE_LAUNCH_MODE !== 'false'/);\n  assert.match(s, /const termPinEnforced = \\(\\) => !freeLaunchMode\\(\\) && process\\.env\\.TERM_PIN_ENFORCED === 'true'/);\n  assert.match(s, /const curriculumSequenceEnforced = \\(\\) => !freeLaunchMode\\(\\) && process\\.env\\.CURRICULUM_SEQUENCE_ENFORCED === 'true'/);
   assert.match(s, /!termPinEnforced\(\) \|\| redeemedTermLabels\.has/);
   assert.match(s, /!termPinEnforced\(\) \|\| !!pinRows\[0\]/);
 });
