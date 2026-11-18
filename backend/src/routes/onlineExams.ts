@@ -504,7 +504,9 @@ router.get('/attempts/:attemptId',requireRole('student'),async(req,res)=>{
   `,[req.params.attemptId,student.id]);
   const attempt=rows[0];
   if(!attempt) return res.status(404).json({error:'Attempt not found.'});
-  if(!['in_progress','expired'].includes(attempt.status)) return res.status(409).json({error:'This attempt is no longer in progress.',status:attempt.status});
+  if(!['in_progress','expired','submitting'].includes(attempt.status)) return res.status(409).json({error:'This attempt is no longer in progress.',status:attempt.status});
+  if(attempt.status==='submitting' && attempt.submission_started_at && Date.now()-new Date(attempt.submission_started_at).getTime()<120000)
+    return res.status(409).json({error:'Submission is still being processed. Retry recovery shortly.',status:attempt.status});
   const {rows: qs}=await query(`
     SELECT q.*,s.title AS section_title FROM online_exam_questions q
     JOIN online_exam_sections s ON s.id=q.section_id WHERE q.exam_id=$1 ORDER BY s.position,q.position
