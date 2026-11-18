@@ -7,6 +7,7 @@ on:
       - 'backend/src/db/importPhysicalReportRoster.ts'
       - 'backend/package.json'
       - 'tests/physical-roster-workbook.test.mts'
+      - 'tests/physical-roster-import-readonly.integration.test.mts'
       - '.github/workflows/physical-roster-import.yml'
   push:
     branches:
@@ -31,6 +32,24 @@ jobs:
     name: Validate historical roster workbook parser and importer
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: sts_school_db_2
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d sts_school_db_2"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgres://postgres:postgres@127.0.0.1:5432/sts_school_db_2
+      DATABASE_SSL: "false"
+      NODE_ENV: test
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -43,5 +62,7 @@ jobs:
         run: npm ci
       - name: Test workbook parsing and class mapping
         run: node --import tsx --test tests/physical-roster-workbook.test.mts
+      - name: Exercise importer read-only dry-run, atomic apply and idempotence against disposable PostgreSQL 18
+        run: node --import tsx --test tests/physical-roster-import-readonly.integration.test.mts
       - name: Build backend TypeScript
         run: npm run build --workspace=backend
