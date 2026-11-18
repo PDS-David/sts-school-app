@@ -627,7 +627,7 @@ export default function AdminUsersScreen() {
                           ? f.assigned_class_names.filter(name => name !== c.name)
                           : [...f.assigned_class_names, c.name],
                       }))} style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 8 }}>
-                        <Ionicons name={selected ? 'checkbox' : 'square-outline'} size={20} color={selected ? Colors.primary : Colors.muted} />
+                        <Ionicons name={selected ? 'checkbox' : 'square-outline'} size={20} color={selected ? Colors.primary : Colors.textSub} />
                         <Text style={{ marginLeft: 10, color: Colors.text }}>{c.name}</Text>
                       </TouchableOpacity>
                     );
