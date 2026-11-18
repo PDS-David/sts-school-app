@@ -38,7 +38,7 @@ export const permissions: Record<Role, string[]> = {
   // endpoints; no standalone grade, attendance, messaging, learning-content,
   // AI, term-management, grade-entry, attendance or student-write permissions are granted.
   // classRecord.write is limited by the route to the class-teacher remark field.
-  teacher: ['students.read', 'classRecord.write'],
+  teacher: ['students.read'],
   admin: ['*'],   // full access — including questions.*, assessments.*,
                   // aiResults.read, and aiGrading.override, none of which
                   // are granted to any other role.
