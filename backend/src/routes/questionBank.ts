@@ -122,7 +122,9 @@ router.post('/ingest', async (req, res) => {
   const payload = parsed.data;
   const payloadHash = createHash('sha256').update(JSON.stringify(payload.questions)).digest('hex');
 
-  const result = await withTransaction(async client => {
+  let result;
+  try {
+    result = await withTransaction(async client => {
     const { rows: sourceRows } = await client.query(
       'SELECT id,board,rights_status,rights_evidence,is_active FROM question_bank_sources WHERE id=$1 FOR SHARE',
       [payload.source_id],
@@ -180,7 +182,13 @@ router.post('/ingest', async (req, res) => {
     }
     await client.query('UPDATE question_bank_ingestion_batches SET imported_count=$1 WHERE id=$2',[imported,batchId]);
     return { ok: true as const, batch_id: batchId, imported_count: imported, payload_sha256: payloadHash };
-  });
+    });
+  } catch (error: any) {
+    if (error?.status === 409 || error?.code === '23505') {
+      return res.status(409).json({ error: error.message ?? 'A question in this batch already exists.' });
+    }
+    throw error;
+  }
 
   if (!result.ok) return res.status(result.status).json({ error: result.error });
   return res.status(201).json(result);
