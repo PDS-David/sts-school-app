@@ -36,6 +36,9 @@ CREATE TABLE IF NOT EXISTS question_bank_sources (
   CHECK (source_url IS NULL OR source_url ~ '^https?://')
 );
 
+CREATE UNIQUE INDEX IF NOT EXISTS question_bank_sources_board_name_uq
+  ON question_bank_sources(board, source_name);
+
 CREATE TABLE IF NOT EXISTS question_bank_ingestion_batches (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   source_id UUID NOT NULL REFERENCES question_bank_sources(id) ON DELETE RESTRICT,
@@ -205,12 +208,23 @@ FROM (VALUES ('WAEC'),('NECO'),('JAMB')) b(board)
 CROSS JOIN question_bank_subjects s
 ON CONFLICT (board,subject_id,gap_type) DO NOTHING;
 
+-- Register the seed import as a traceable ingestion batch.
+INSERT INTO question_bank_ingestion_batches(source_id,batch_key,payload_sha256,imported_count)
+SELECT id,'pilot-original-ai-2026-11-18',
+       encode(digest('sts-original-practice-pilot-v1','sha256'),'hex'),6
+FROM question_bank_sources
+WHERE source_name='STS original practice pilot — AI-assisted, human-verified'
+ON CONFLICT (batch_key) DO NOTHING;
+
 -- Six original, answer-checked pilot questions. The board denotes the exam
 -- preparation track only: these are NOT represented as questions from a
 -- historical examination, and deliberately have no exam year.
 WITH src AS (
- SELECT id FROM question_bank_sources
- WHERE source_name='STS original practice pilot — AI-assisted, human-verified'
+ SELECT s.id, b.id AS batch_id
+ FROM question_bank_sources s
+ JOIN question_bank_ingestion_batches b ON b.source_id=s.id
+ WHERE s.source_name='STS original practice pilot — AI-assisted, human-verified'
+   AND b.batch_key='pilot-original-ai-2026-11-18'
 ), pilot(board,subject_code,topic_slug,qno,kind,stem,options,answer,explanation,marks) AS (
  VALUES
  ('WAEC','MATHEMATICS','linear-equations','AI-GEN-001','mcq',
@@ -245,8 +259,8 @@ WITH src AS (
   'The atomic number is defined as the number of protons in the nucleus. Therefore, an atom with atomic number 17 has 17 protons.',1)
 )
 INSERT INTO question_bank_questions
- (board,exam_year,subject_id,paper,question_number,question_type,stem,options,correct_answer,explanation,marks,topic_id,source_id,content_origin,rights_status,review_status)
-SELECT p.board,NULL,s.id,'Original practice — not a past paper',p.qno,p.kind,p.stem,p.options,p.answer,p.explanation,p.marks,t.id,src.id,
+ (board,exam_year,subject_id,paper,question_number,question_type,stem,options,correct_answer,explanation,marks,topic_id,source_id,batch_id,content_origin,rights_status,review_status)
+SELECT p.board,NULL,s.id,'Original practice — not a past paper',p.qno,p.kind,p.stem,p.options,p.answer,p.explanation,p.marks,t.id,src.id,src.batch_id,
        'ai_generated','original_generated','approved'
 FROM pilot p
 JOIN question_bank_subjects s ON s.code=p.subject_code
