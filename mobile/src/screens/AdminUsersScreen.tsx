@@ -55,12 +55,19 @@ function toDateString(d: Date): string {
   return `${y}-${m}-${day}`;
 }
 
-// Mirrors backend/src/routes/admin.ts's classTeacherUsername() exactly —
-// display-only here (the backend is the actual source of truth and
-// recomputes/enforces this itself), so the admin sees the real username
-// that will be created before hitting Save, not just after.
+// Login names are generated from the selected class/subject option.
 function classTeacherUsername(className: string): string {
-  return className.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const normalized = className.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const primaryMatch = normalized.match(/^(?:primary|pry)([1-6])$/);
+  return primaryMatch ? `pry${primaryMatch[1]}` : normalized;
+}
+
+function subjectTeacherUsername(subjectName: string): string {
+  return subjectName.toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+
+function isTeacherClass(className: string): boolean {
+  return /^(primary|pry) [1-6]$|^primary[1-6]$|^pry[1-6]$|^jss ?[1-3]$|^ss ?[1-3]$/i.test(className.trim());
 }
 
 export default function AdminUsersScreen() {
@@ -162,8 +169,14 @@ export default function AdminUsersScreen() {
     return () => { cancelled = true; };
   }, [schools, lookupRetry]);
 
-  const availableClasses = classesBySchool[form.school_code] ?? [];
+  const availableClasses = (classesBySchool[form.school_code] ?? []).filter(c => isTeacherClass(c.name));
   const availableSubjects = subjectsBySchool[form.school_code] ?? [];
+  const selectedTeacherClass = availableClasses.find(c => c.name === form.assigned_class);
+  const selectedTeacherSubject = availableSubjects.find(s => form.assigned_subject_ids.length === 1 && s.id === form.assigned_subject_ids[0]);
+  const selectedTeacherOption = selectedTeacherClass
+    ? `class:${selectedTeacherClass.id}`
+    : selectedTeacherSubject ? `subject:${selectedTeacherSubject.id}` : '';
+  const selectedTeacherDisplayName = selectedTeacherClass?.name ?? selectedTeacherSubject?.name ?? '';
 
   const filteredUsers = users.filter(u => {
     if (roleFilter !== 'all' && u.role !== roleFilter) return false;
@@ -172,12 +185,6 @@ export default function AdminUsersScreen() {
     return (u.full_name ?? '').toLowerCase().includes(q) || u.username.toLowerCase().includes(q);
   });
 
-  // A class teacher's username is hard-coded from their assigned class
-  // (see classTeacherUsername() above) — not admin-typed. Only applies to
-  // *new* teacher accounts with a class picked; a subject-only teacher
-  // (no assigned_class) still gets an admin-chosen username, same as
-  // every non-teacher role, and an existing account's username is never
-  // editable anyway (PUT /admin/users/:id doesn't accept one).
   const isNewClassTeacher = !editUser && form.role === 'teacher' && !!form.assigned_class;
 
   const openNew = () => {
@@ -209,7 +216,15 @@ export default function AdminUsersScreen() {
 
   const handleSave = async () => {
     if (saving) return;
-    if (!editUser && !isNewClassTeacher && !form.username.trim()) {
+    if (!editUser && form.role === 'teacher' && !form.username.trim()) {
+      setInfoDialog({ title: 'Teacher username required', message: 'Choose a class or subject from the teacher username dropdown.' });
+      return;
+    }
+    if (!editUser && form.role === 'teacher' && !/^\\d{4}$/.test(form.initial_password)) {
+      setInfoDialog({ title: 'Invalid teacher password', message: 'Enter exactly four numeric digits for the teacher password.' });
+      return;
+    }
+    if (!editUser && form.role !== 'teacher' && !form.username.trim()) {
       setInfoDialog({ title: 'Username required', message: 'Enter a username for this account.' });
       return;
     }
@@ -230,21 +245,12 @@ export default function AdminUsersScreen() {
     // means "no expiry" — for edits that has to be sent explicitly (clear_expiry)
     // since the backend otherwise leaves an existing expiry untouched.
     const showsExpiry = EXPIRY_ROLES.includes(form.role);
-    // Teacher creation only (not edit — this form doesn't reset an existing
-    // teacher's password): admin must supply the actual first-login
-    // password directly, same 8-character minimum the backend enforces.
-    if (!editUser && form.role === 'teacher' && form.initial_password.length < 8) {
-      setInfoDialog({ title: 'Password too short', message: 'Enter a first-login password of at least 8 characters for this teacher.' });
-      return;
-    }
-    // Full Name and Email fields were removed from this form — full_name
-    // mirrors username on both create and edit, except for a new class
-    // teacher, whose username is the hard-coded class slug (not a human
-    // name) — full_name uses the actual class label instead so the Users
-    // list stays readable (e.g. "JSS 1" rather than "jss1").
+    // The selected class/subject name is also the teacher's display name.
     const payload: any = {
       ...form,
-      full_name: isNewClassTeacher ? form.assigned_class : form.username,
+      full_name: form.role === 'teacher'
+        ? (selectedTeacherDisplayName || form.username)
+        : form.username,
     };
     // The form keeps these as strings, but an empty value means "none": send null
     // instead of '' so the server never stores an empty string for them.
@@ -274,7 +280,7 @@ export default function AdminUsersScreen() {
           // show blank/stale text instead of the real created username.
           setInfoDialog({
             title: 'Teacher Created',
-            message: `Username: ${data?.user?.username}\nPassword: ${form.initial_password}\n\nShare these with them directly. They'll be asked to change their password the first time they log in.`,
+            message: `Username: ${data?.user?.username}\nPassword: ${form.initial_password}\n\nShare these credentials securely with the teacher.`,
           });
         } else {
           // Task C: account creation no longer generates a temp password —
@@ -554,7 +560,59 @@ export default function AdminUsersScreen() {
           {!!schoolsError && <View style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{schoolsError}</Text><Btn label='Retry schools' variant='outline' onPress={() => setSchoolsRetry(v => v + 1)} /></View>}
           {!!lookupLoading && <Text style={styles.expiryHint}>Loading class and subject options…</Text>}
           {!!lookupError && <View style={{ marginBottom: Spacing.sm }}><Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm }}>{lookupError}</Text><Btn label='Retry class/subject options' variant='outline' onPress={() => setLookupRetry(v => v + 1)} /></View>}
-          {!editUser && !isNewClassTeacher && (
+          {!editUser && form.role === 'teacher' && (
+            <>
+              <Text style={styles.filterLabel}>Teacher Username</Text>
+              <View style={styles.pickerWrap}>
+                <Picker
+                  selectedValue={selectedTeacherOption}
+                  onValueChange={(value) => {
+                    if (value.startsWith('class:')) {
+                      const id = Number(value.slice(6));
+                      const selected = availableClasses.find(c => c.id === id);
+                      setForm(f => ({
+                        ...f,
+                        username: selected ? classTeacherUsername(selected.name) : '',
+                        assigned_class: selected?.name ?? '',
+                        assigned_subject_ids: [],
+                      }));
+                    } else if (value.startsWith('subject:')) {
+                      const id = Number(value.slice(8));
+                      const selected = availableSubjects.find(s => s.id === id);
+                      setForm(f => ({
+                        ...f,
+                        username: selected ? subjectTeacherUsername(selected.name) : '',
+                        assigned_class: '',
+                        assigned_subject_ids: selected ? [selected.id] : [],
+                      }));
+                    } else {
+                      setForm(f => ({ ...f, username: '', assigned_class: '', assigned_subject_ids: [] }));
+                    }
+                  }}
+                >
+                  <Picker.Item label="Select a class or subject..." value="" />
+                  <Picker.Item label="— CLASS TEACHERS —" value="__classes" enabled={false} />
+                  {availableClasses.map(c => (
+                    <Picker.Item
+                      key={`class-${c.id}`}
+                      label={`${c.name}  ·  ${classTeacherUsername(c.name)}`}
+                      value={`class:${c.id}`}
+                    />
+                  ))}
+                  <Picker.Item label="— SUBJECT TEACHERS —" value="__subjects" enabled={false} />
+                  {availableSubjects.map(s => (
+                    <Picker.Item
+                      key={`subject-${s.id}`}
+                      label={`${s.name}  ·  ${subjectTeacherUsername(s.name)}`}
+                      value={`subject:${s.id}`}
+                    />
+                  ))}
+                </Picker>
+              </View>
+              <Text style={styles.expiryHint}>Choose the class or subject name. Its matching username is filled in automatically.</Text>
+            </>
+          )}
+          {!editUser && form.role !== 'teacher' && (
             <Input label="Username" value={form.username} onChangeText={v => setForm(f => ({ ...f, username: v }))} autoCapitalize="none" />
           )}
           <Input label="Phone"          value={form.phone}          onChangeText={v => setForm(f => ({ ...f, phone: v }))}         keyboardType="phone-pad" />
@@ -573,9 +631,11 @@ export default function AdminUsersScreen() {
 
           {!editUser && form.role === 'teacher' && (
             <Input
-              label="First-Login Password"
+              label="Teacher Password (4 digits)"
               value={form.initial_password}
-              onChangeText={v => setForm(f => ({ ...f, initial_password: v }))}
+              onChangeText={v => setForm(f => ({ ...f, initial_password: v.replace(/\\D/g, '').slice(0, 4) }))}
+              keyboardType="number-pad"
+              maxLength={4}
               autoCapitalize="none"
               secureTextEntry
             />
@@ -583,19 +643,14 @@ export default function AdminUsersScreen() {
 
           {form.role === 'teacher' && (
             <>
-              <Text style={styles.filterLabel}>Assigned Class</Text>
-              <View style={styles.pickerWrap}>
-                <Picker selectedValue={form.assigned_class} onValueChange={v => setForm(f => ({ ...f, assigned_class: v }))}>
-                  <Picker.Item label="None" value="" />
-                  {availableClasses.map(c => <Picker.Item key={c.id} label={c.name} value={c.name} />)}
-                </Picker>
-              </View>
               {isNewClassTeacher && (
                 <Text style={styles.expiryHint}>
-                  Username will be "{classTeacherUsername(form.assigned_class)}" — hard-coded from the class, one class-teacher account per class. Leave "Assigned Class" as "None" instead if this is a subject-only teacher and you want to choose their username yourself.
+                  Class teacher account for {form.assigned_class}. The class username is fixed by the dropdown selection.
                 </Text>
               )}
 
+              {isNewClassTeacher && (
+              <>
               <Text style={styles.filterLabel}>Assigned Subjects</Text>
               <View style={styles.chipRow}>
                 {availableSubjects.length === 0 && (
@@ -619,6 +674,8 @@ export default function AdminUsersScreen() {
                   );
                 })}
               </View>
+              </>
+              )}
             </>
           )}
 
