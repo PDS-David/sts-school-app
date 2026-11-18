@@ -27,6 +27,7 @@ export default function AdminClassCodesScreen() {
   const [refreshing, setRefreshing] = useState(false);
 
   const loadClasses = useCallback(() => {
+    if (!selectedSchoolCode) { setClasses([]); return; }
     api.get('/academic/classes', { params: { school_code: selectedSchoolCode ?? undefined } })
       .then(({ data }) => {
         const names = (data.classes ?? []).map((c: any) => c.name);
@@ -37,6 +38,8 @@ export default function AdminClassCodesScreen() {
   }, [selectedSchoolCode]);
 
   const loadCodes = useCallback(async () => {
+    if (!selectedSchoolCode) { setCodes([]); setLoadingCodes(false); return; }
+    setLoadingCodes(true);
     try {
       const { data } = await api.get('/admin/class-codes', { params: { school_code: selectedSchoolCode ?? undefined } });
       setCodes(data.class_codes ?? []);
@@ -48,6 +51,7 @@ export default function AdminClassCodesScreen() {
   useEffect(() => { loadCodes(); }, [loadCodes]);
 
   const generate = async () => {
+    if (!selectedSchoolCode) { Alert.alert('Select a school first'); return; }
     if (!className) { Alert.alert('Select a class first'); return; }
     setGenerating(true);
     try {
@@ -63,6 +67,8 @@ export default function AdminClassCodesScreen() {
       setGenerating(false);
     }
   };
+
+  if (!selectedSchoolCode) return <View style={{ flex: 1, backgroundColor: Colors.background }}><AppHeader title="Class Codes" onPressBell={() => openNotifications()} rightExtra={<SchoolSwitcherBar compact />} /><View style={{ padding: Spacing.lg }}><Text style={styles.hint}>Select Primary or Secondary above before managing class codes.</Text></View></View>;
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
