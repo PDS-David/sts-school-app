@@ -2,7 +2,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { randomUUID } from 'node:crypto';
-import pg from 'pg';
+import { createRequire } from 'node:module';
+const require = createRequire(new URL('../backend/package.json', import.meta.url));
+const pg = require('pg');
 
 const connectionString=process.env.TEST_DATABASE_URL;
 test('PostgreSQL 18 formal-exam migration, attempt uniqueness, autosave and physical-data isolation',
