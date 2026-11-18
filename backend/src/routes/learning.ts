@@ -25,9 +25,10 @@ import { resolvePrimary4SourceDelivery, safePrimary4Topic, primary4WithdrawnAsse
 
 // Term PINs remain available, but enforcement starts only when explicitly enabled.
 // Read per request (value is constant in a running server) so tests can exercise PIN on and off in one process.
-const termPinEnforced = () => process.env.TERM_PIN_ENFORCED === 'true';
-// Free-launch default: topic sequence restrictions remain dormant until an administrator explicitly enables them.
-const curriculumSequenceEnforced = () => process.env.CURRICULUM_SEQUENCE_ENFORCED === 'true';
+// Free launch is the default. Access controls become active only after an administrator turns free launch off.
+const freeLaunchMode = () => process.env.FREE_LAUNCH_MODE !== 'false';
+const termPinEnforced = () => !freeLaunchMode() && process.env.TERM_PIN_ENFORCED === 'true';
+const curriculumSequenceEnforced = () => !freeLaunchMode() && process.env.CURRICULUM_SEQUENCE_ENFORCED === 'true';
 
 function verifyStudentDeliveryAsset(bytes: Buffer, mediaType: string, expectedSha256: string): boolean {
   if (!Buffer.isBuffer(bytes) || bytes.length === 0 || bytes.length > 10 * 1024 * 1024) return false;
