@@ -216,7 +216,7 @@ router.get('/:id', requirePerm('students.read'), async (req, res) => {
   if (teacherReportClassName) params.push(teacherReportClassName);
   const teacherClassSelect = teacherReportClassName ? '$' + params.length : 's.class_name';
   const teacherQuery = teacherReportClassName
-    ? 'SELECT s.id,s.admission_number,s.full_name,' + teacherClassSelect + ' AS class_name,s.school_code,s.created_at FROM students s WHERE s.id=$1' + schoolClause + deletedClause
+    ? 'SELECT s.id,s.admission_number,s.full_name,s.gender,s.date_of_birth,' + teacherClassSelect + ' AS class_name,s.school_code,s.created_at FROM students s WHERE s.id=$1' + schoolClause + deletedClause
     : `SELECT s.*,
               lu.username AS login_username,
               array_agg(json_build_object('parent_id',pw.parent_id,'name',pu.full_name,'phone',pu.phone))
@@ -343,13 +343,11 @@ router.post('/', requirePerm('grades.write'), async (req, res) => {
 // checkTeacherStudentScope) since editing an existing student's own-school/
 // own-class rule is identical to the one already enforced for deleting one.
 router.put('/:id', requirePerm('grades.write'), async (req, res) => {
-  if (req.user!.role === 'teacher' && req.body?.class_name !== undefined) {
-    return res.status(403).json({ error: 'Physical class placement is managed through the administrator-controlled report roster.' });
-  }
   const scopeError = await checkTeacherDeleteScope(req.user!, req.params.id);
   if (scopeError) return res.status(scopeError.status).json({ error: scopeError.error });
 
-  const { full_name, class_name, gender, date_of_birth, admission_number } = req.body;
+  const { full_name, gender, date_of_birth, admission_number } = req.body;
+  const class_name = req.user!.role === 'teacher' ? undefined : req.body?.class_name;
   // A teacher may edit a physical student record but cannot move it outside
   // the teacher's assigned physical class or school.
   if (req.user!.role === 'teacher') {
