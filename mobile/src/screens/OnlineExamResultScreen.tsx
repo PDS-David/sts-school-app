@@ -48,6 +48,6 @@ const styles=StyleSheet.create({
  question:{fontSize:Fonts.sizes.md,fontWeight:'700',color:Colors.text,marginVertical:Spacing.sm},
  answerText:{fontSize:Fonts.sizes.sm,color:Colors.text,lineHeight:21},
  feedback:{fontSize:Fonts.sizes.sm,color:Colors.primary,marginTop:Spacing.sm},
- notice:{fontSize:Fonts.sizes.sm,color:Colors.warning??Colors.primary,marginTop:Spacing.sm,textAlign:'center'},
+ notice:{fontSize:Fonts.sizes.sm,color:Colors.primary,marginTop:Spacing.sm,textAlign:'center'},
  error:{color:Colors.error}
 });
