@@ -131,21 +131,22 @@ test('attach script: dry-run default, hash check, idempotent insert, never write
   assert.ok(main.indexOf('prepareAssets(') >= 0 && main.indexOf('prepareAssets(') < main.indexOf('attachAssets('));
 });
 
-test('mobile: lesson text rendering is unchanged and pictures render below it', () => {
+test('mobile: generated curriculum lessons render before authenticated pictures and progress is separate', () => {
   const s = read('mobile/src/screens/TopicDetailScreen.tsx');
-  // The exact original text-rendering lines survive.
   assert.match(s, /\{topic\.description \? <Text style=\{styles\.desc\}>\{topic\.description\}<\/Text> : null\}/);
-  assert.match(s, /<Text style=\{styles\.summaryText\}>\{topic\.summary\}<\/Text>/);
-  assert.match(s, /Get Practice Questions/);
-  assert.match(s, /onPress=\{complete\}/);
-  // Pictures: whole (contain), authenticated, placed after the text blocks.
+  assert.match(s, /AI-generated curriculum lesson/);
+  assert.match(s, /generatedLesson\.introduction/);
+  assert.match(s, /generatedLesson\.sections\.map/);
+  assert.match(s, /generatedLesson\.practice_questions/);
+  assert.match(s, /api\.post\(\`\/learning\/topics\/\$\{topic\.id\}\/lesson\`\)/);
+  assert.match(s, /api\.post\(\`\/learning\/topics\/\$\{topic\.id\}\/progress\`\)/);
+  assert.doesNotMatch(s, /api\.post\(\`\/learning\/topics\/\$\{topic\.id\}\/complete\`\)/);
+  // Pictures remain authenticated, fully visible and below the generated lesson.
   assert.match(s, /resizeMode="contain"/);
-  assert.match(s, /Authorization: `Bearer \$\{token\}`/);
+  assert.match(s, /Authorization: \`Bearer \$\{token\}\`/);
   assert.match(s, /loadLessonAssets\(/);
   assert.match(read('mobile/src/api/lessonAssets.ts'), /\/learning\/topics\/\$\{topicId\}\/assets/);
-  assert.ok(s.indexOf('{topic.summary ? (') < s.indexOf('assets.map('));
-  // The Btn label expression is syntactically closed (it was not on master).
-  assert.match(s, /'Get Study Notes'\}\n/);
+  assert.ok(s.indexOf('generatedLesson.sections.map') < s.indexOf('assets.map('));
 });
 
 test('mobile: offline cache module is untouched by this change', () => {
