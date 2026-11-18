@@ -160,20 +160,29 @@ router.get('/deleted', requireRole('admin'), async (req, res) => {
   return res.json({ students: rows });
 });
 
-// ── GET /students/report-roster/removed (admin roster reconciliation) ──
-router.get('/report-roster/removed', requireRole('admin'), async (req, res) => {
+// ── GET /students/report-roster/removed ──────────────────────────────────────
+// Admins see removed memberships for their school (or every school, if global).
+// A class teacher sees only the removed memberships of their own assigned class,
+// so they can reinstate a student they removed by mistake.
+router.get('/report-roster/removed', requireRole('admin', 'teacher'), async (req, res) => {
   const user = req.user!;
   const params: unknown[] = [];
-  let schoolClause = '';
-  if (user.school_code) {
+  let scopeClause = '';
+  if (user.role === 'teacher') {
+    if (!user.school_code || !user.assigned_class) {
+      return res.status(403).json({ error: 'Report access requires a teacher account assigned to a physical class. Contact the school administrator.' });
+    }
+    params.push(user.school_code, user.assigned_class);
+    scopeClause = ' AND s.school_code=$1 AND m.class_name=$2';
+  } else if (user.school_code) {
     params.push(user.school_code);
-    schoolClause = ' AND s.school_code=$' + params.length;
+    scopeClause = ' AND s.school_code=$1';
   }
   const { rows } = await query(
     `SELECT s.id,s.admission_number,s.full_name,m.class_name
        FROM students s
        JOIN report_roster_memberships m ON m.student_id=s.id
-      WHERE s.deleted_at IS NULL AND m.status='removed'${schoolClause}
+      WHERE s.deleted_at IS NULL AND m.status='removed'${scopeClause}
       ORDER BY s.school_code,m.class_name,s.full_name`,
     params,
   );
@@ -387,8 +396,10 @@ router.put('/:id', requirePerm('grades.write'), async (req, res) => {
 });
 
 // ── POST /students/:id/promotion ──────────────────────────────────────────────
-// Physical report-roster placement is an administrator responsibility.
-// Teacher accounts are report-generation-only and cannot change membership.
+// Physical report-roster placement decisions (start and end of every session).
+// A class teacher may promote, retain, remove or reinstate students in their OWN
+// assigned class and school only. Demotion stays administrator-only. Administrators
+// may act on any student in their school (or any school, if global).
 //
 // "Next"/"previous" class is derived from the classes table's own row order
 // within the student's school (see backend/schema.sql's classes table and
@@ -403,7 +414,7 @@ router.put('/:id', requirePerm('grades.write'), async (req, res) => {
 // use scores.class_name, stamped when each score is recorded (routes/scores.ts),
 // and fall back to the live class only for rows with no stamp. Nothing is
 // written to scores from this route.
-router.post('/:id/promotion', requireRole('admin'), async (req, res) => {
+router.post('/:id/promotion', requireRole('admin', 'teacher'), async (req, res) => {
   const user = req.user!;
   const { action } = req.body as { action?: 'promote' | 'demote' | 'retain' | 'remove' | 'reinstate' };
   if (!action || !['promote', 'demote', 'retain', 'remove', 'reinstate'].includes(action)) {
@@ -420,6 +431,18 @@ router.post('/:id/promotion', requireRole('admin'), async (req, res) => {
   );
   const membership = membershipRows[0];
   if (!membership) return res.status(404).json({ error: 'Active report-roster membership not found' });
+
+  if (user.role === 'teacher') {
+    if (!['promote', 'retain', 'remove', 'reinstate'].includes(action)) {
+      return res.status(403).json({ error: 'Only an administrator can demote a student.' });
+    }
+    if (!user.school_code || !user.assigned_class) {
+      return res.status(403).json({ error: 'Placement decisions require a teacher account assigned to a physical class. Contact the school administrator.' });
+    }
+    if (membership.school_code !== user.school_code || membership.report_class_name !== user.assigned_class) {
+      return res.status(403).json({ error: 'You can only make placement decisions for students in your assigned class.' });
+    }
+  }
 
   // A school-bound administrator is restricted to their own school.
   // A global administrator may reconcile any school's physical report roster.

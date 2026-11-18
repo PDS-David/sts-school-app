@@ -9,17 +9,14 @@ import { ConfirmDialog } from '../components/ConfirmDialog';
 
 interface StudentRow { id: string; full_name: string; admission_number: string | null; class_name: string; }
 
-// Added at explicit school-owner request for the 2026/2027 session's 1st
-// Term: end-of-term/session class movement, one student at a time. Class
-// teacher only — deliberately no admin version of this screen (see
-// backend/src/routes/students.ts's POST /:id/promotion, which has no admin
-// bypass either). "Retain" is a no-op on class_name but still recorded for
-// the audit trail — see that route for why. Past terms' scores/report cards
-// are NOT snapshotted against the student's old class — a school-owner
-// decision, since those records "don't matter again" once a new term's
-// records are entered — so promoting/demoting here does change what a
-// promoted student's Term 1 report would show as their class if reprinted
-// later. That trade-off was made deliberately, not missed.
+// Start- and end-of-session class placement, one student at a time, done by the
+// class teacher for their own assigned class (backend: POST /students/:id/promotion,
+// teacher-scoped to assigned_class; demotion is admin-only and not offered here).
+// "Retain" leaves the class unchanged but is recorded in the roster history.
+// Promote/Remove move the student out of this roster; the Removed tab lets the
+// teacher reinstate a student removed by mistake. Past scores keep the class they
+// were recorded under (scores.class_name is stamped at entry time).
+
 export default function PromoteStudentsScreen() {
   const isWide = useIsWide();
   const { user } = useAuth();
@@ -97,7 +94,7 @@ export default function PromoteStudentsScreen() {
           <Text style={styles.explainer}>
             {showRemoved
               ? `These students were removed from ${user?.assigned_class ?? 'your class'}'s physical report roster. Reinstate a student to make them eligible for future reports again.`
-              : `For each student in ${user?.assigned_class ?? 'your class'}, choose whether they move up, stay, move down, or leave the active physical report roster. These decisions affect report-roster placement only; online classes, logins and academic history are unchanged.`}
+              : `For each student in ${user?.assigned_class ?? 'your class'}, choose whether they move up, stay, or leave the active physical report roster. These decisions affect report-roster placement only; online classes, logins and academic history are unchanged.`}
           </Text>
         </Card>
       </PageContainer>
@@ -131,14 +128,6 @@ export default function PromoteStudentsScreen() {
                     />
                   ) : (
                     <>
-                      <Btn
-                        label="Demote"
-                        variant="outline"
-                        loading={busyId === s.id}
-                        disabled={busyId !== null}
-                        onPress={() => setConfirm({ student: s, action: 'demote', toLabel: 'a lower class' })}
-                        style={styles.actionBtn}
-                      />
                       <Btn
                         label="Retain"
                         variant="ghost"

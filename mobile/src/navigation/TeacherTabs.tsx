@@ -19,6 +19,7 @@ import SessionReportScreen from '../screens/SessionReportScreen';
 import ScoreEntryScreen from '../screens/ScoreEntryScreen';
 import AttendanceScreen from '../screens/AttendanceScreen';
 import ReportRemarksScreen from '../screens/teacher/ReportRemarksScreen';
+import PromoteStudentsScreen from '../screens/PromoteStudentsScreen';
 import ChangePasswordScreen from '../screens/ChangePasswordScreen';
 
 const Tab = createBottomTabNavigator();
@@ -51,6 +52,7 @@ function ReportsStackNavigator() {
       <ReportsStack.Screen name="ScoreEntry" component={ScoreEntryScreen} options={{ headerShown: true, title: 'Enter / Edit Scores', ...opts }} />
       <ReportsStack.Screen name="Attendance" component={AttendanceScreen} options={{ headerShown: true, title: 'Attendance', ...opts }} />
       <ReportsStack.Screen name="ReportRemarks" component={ReportRemarksScreen} options={{ headerShown: true, title: 'Report Remarks', ...opts }} />
+      <ReportsStack.Screen name="PromoteStudents" component={PromoteStudentsScreen} options={{ headerShown: true, title: 'Promote / Retain / Remove', ...opts }} />
     </ReportsStack.Navigator>
   );
 }

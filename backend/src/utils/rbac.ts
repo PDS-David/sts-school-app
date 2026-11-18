@@ -25,7 +25,9 @@ export const permissions: Record<Role, string[]> = {
   ],
   // Teachers maintain academic records and reports for their assigned physical class.
   // They do not administer the independent student-learning/AI assessment system,
-  // manage school-wide terms/classes, message users, or make roster decisions.
+  // manage school-wide terms/classes or message users. They DO make start/end-of-session
+  // placement decisions (promote/retain/remove/reinstate) for their own assigned class,
+  // enforced in routes/students.ts POST /:id/promotion (role + class scope, not a permission).
   teacher: [
     'students.read', 'students.write',
     'grades.read', 'grades.write',

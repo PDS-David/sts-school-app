@@ -13,7 +13,7 @@ after(async () => {
   await pool.end();
 });
 
-test('administrator placement decisions mutate only physical report membership and append history', async () => {
+test('placement decisions (admin and class teacher) mutate only physical report membership and append history', async () => {
   const suffix = randomUUID();
   const schoolCode = `roster_${suffix.slice(0, 12)}`;
   await query('INSERT INTO schools(code,name) VALUES($1,$2)', [schoolCode, `Roster Lifecycle School ${suffix}`]);
@@ -113,14 +113,23 @@ test('administrator placement decisions mutate only physical report membership a
       assigned_subject_ids: [],
     });
     const teacherHeaders = { Authorization: `Bearer ${teacherToken}`, 'Content-Type': 'application/json' };
-    const teacherDecision = await fetch(`${baseUrl}/${studentIds[0]}/promotion`, {
-      method: 'POST', headers: teacherHeaders, body: JSON.stringify({ action: 'remove' }),
+    const teacherDecide = (studentId: string, action: string) => fetch(`${baseUrl}/${studentId}/promotion`, {
+      method: 'POST', headers: teacherHeaders, body: JSON.stringify({ action }),
     });
-    assert.equal(teacherDecision.status, 403, 'teachers must not change physical report-roster membership');
+    const outsideClass = await teacherDecide(studentIds[0], 'remove');
+    assert.equal(outsideClass.status, 403, 'a teacher cannot decide for a student who is not in their assigned class');
+    const teacherDemote = await teacherDecide(studentIds[1], 'demote');
+    assert.equal(teacherDemote.status, 403, 'demotion stays administrator-only');
+    const teacherRetain = await teacherDecide(studentIds[1], 'retain');
+    assert.equal(teacherRetain.status, 200, 'a class teacher can retain a student in their own class');
     const teacherRemoved = await fetch(`${baseUrl}/report-roster/removed`, {
       headers: { Authorization: `Bearer ${teacherToken}` },
     });
-    assert.equal(teacherRemoved.status, 403, 'teachers must not manage the removed physical-roster list');
+    assert.equal(teacherRemoved.status, 200, 'a class teacher can list their own class\'s removed students');
+    const teacherRemovedBody = await teacherRemoved.json() as { students: Array<{ id: string; class_name: string }> };
+    assert.ok(teacherRemovedBody.students.some(student => student.id === studentIds[2]));
+    assert.ok(teacherRemovedBody.students.every(student => student.class_name === 'Primary 4'),
+      'teacher removed list is limited to the assigned class');
 
     const teacherRoster = await fetch(baseUrl, { headers: { Authorization: `Bearer ${teacherToken}` } });
     assert.equal(teacherRoster.status, 200);
@@ -167,6 +176,17 @@ test('administrator placement decisions mutate only physical report membership a
     const removedAfterRestorePayload = await removedAfterRestore.json() as { students: Array<{ id: string }> };
     assert.ok(!removedAfterRestorePayload.students.some(student => student.id === studentIds[3]),
       'reinstated student no longer appears in the removed list');
+
+    // Class teacher full cycle on one student: remove -> reinstate -> promote.
+    assert.equal((await teacherDecide(studentIds[3], 'remove')).status, 200);
+    assert.equal((await teacherDecide(studentIds[3], 'reinstate')).status, 200);
+    const teacherPromote = await teacherDecide(studentIds[3], 'promote');
+    assert.equal(teacherPromote.status, 200);
+    const teacherPromoteBody = await teacherPromote.json() as { from_class: string; to_class: string };
+    assert.equal(teacherPromoteBody.from_class, 'Primary 4');
+    assert.equal(teacherPromoteBody.to_class, 'Primary 5');
+    assert.equal((await teacherDecide(studentIds[3], 'promote')).status, 403,
+      'once promoted, the student is no longer in this teacher\'s class, so a second promote is refused');
 
     const concurrentRemovals = await Promise.all([
       decide(studentIds[4], 'remove'),
