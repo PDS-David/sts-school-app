@@ -41,7 +41,6 @@ function publicQuestion(row: any) {
     id: row.id, section_id: row.section_id, section_title: row.section_title,
     position: Number(row.position), marks: Number(row.marks),
     question: { stem: q.stem, type: q.question_type, options: q.options ?? null },
-    provenance: row.provenance,
   };
 }
 
@@ -589,7 +588,7 @@ router.post('/attempts/:attemptId/submit',requireRole('student'),async(req,res)=
       feedback=awarded? 'Correct answer.':'Review this question and its explanation after the examination.';
     } else {
       try{
-        const prompt=`Mark this examination response using the question and marking guidance.\nQuestion: ${snapshot.stem}\nCandidate response: ${typeof saved.response==='string'?saved.response:JSON.stringify(saved.response)}\nMaximum marks: ${q.marks}\nReturn JSON: {"points":number,"feedback":"brief evidence-based feedback"}`;
+        const prompt=`Mark this examination response using the question, expected answer/rubric and marking guidance.\nQuestion: ${snapshot.stem}\nExpected answer or rubric: ${JSON.stringify(snapshot.correct_answer)}\nGuidance: ${snapshot.explanation}\nCandidate response: ${typeof saved.response==='string'?saved.response:JSON.stringify(saved.response)}\nMaximum marks: ${q.marks}\nReturn JSON: {"points":number,"feedback":"brief evidence-based feedback"}`;
         const marked:any=await generateJSON(prompt,'essay-mark',{userId:req.user!.id,role:req.user!.role});
         awarded=Math.max(0,Math.min(Number(q.marks),Number(marked?.points)||0));
         feedback=typeof marked?.feedback==='string'?marked.feedback:null;
@@ -636,7 +635,8 @@ router.get('/attempts/:attemptId/results',requireRole('student'),async(req,res)=
       FROM online_exam_questions q LEFT JOIN online_exam_responses r
         ON r.exam_question_id=q.id AND r.attempt_id=$1
      WHERE q.exam_id=(SELECT exam_id FROM online_exam_attempts WHERE id=$1)
-     ORDER BY q.position
+     JOIN online_exam_sections s ON s.id=q.section_id
+     ORDER BY s.position,q.position
   `,[req.params.attemptId]);
   return res.json({attempt:rows[0],responses:answers});
 });
