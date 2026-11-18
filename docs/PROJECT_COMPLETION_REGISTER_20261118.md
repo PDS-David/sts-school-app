@@ -37,7 +37,7 @@ At the previous application commit `d33f973` (before the current documentation-o
 - Backend score subject scope and batch atomicity
 - Backend physical report-roster isolation
 
-The current `master` documentation snapshot is `aae0b0b`; the canonical Render service has deployed it. No open PRs were found at this inspection. This is not a claim that every workflow in the repository is green; older commits show canceled runs when newer commits superseded them.
+The application and live database were inspected at application commit `aae0b0b`; this register refresh is committed separately. No open PRs were found at that inspection. This is not a claim that every workflow in the repository is green; older commits show canceled runs when newer commits superseded them.
 
 ## 2. Application modules
 
