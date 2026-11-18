@@ -15,6 +15,7 @@ export interface CurrentAuthClaims {
   assigned_class: string | null;
   assigned_subject_ids: number[];
   can_manage_all_schools?: boolean;
+  selected_school_code?: string | null;
 }
 
 /**
@@ -29,7 +30,7 @@ export function hydrateAuthUser(
     id: verifiedTokenUser.id,
     username: current.username,
     role: current.role,
-    school_code: current.role === 'admin' && current.can_manage_all_schools === true ? null : current.school_code,
+    school_code: current.role === 'admin' && current.can_manage_all_schools === true ? (current.selected_school_code ?? null) : current.school_code,
     assigned_school_code: current.school_code,
     can_manage_all_schools: current.role === 'admin' && current.can_manage_all_schools === true,
     assigned_class: current.assigned_class,
