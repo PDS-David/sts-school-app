@@ -110,3 +110,12 @@ The implementation preserves school/class access, source correction and withhold
 ## Current conclusion
 
 The AI curriculum lesson-generation path is now connected to the canonical topic screen and the SS1/SS2/SS3 package screens. Remaining verification is to complete the new master CI runs, apply migration 0007 only through the approved production migration process, and exercise a representative live topic/package with the configured AI provider. This is an implementation of the original product plan, not a change to it.
+
+
+## Follow-up hardening — 18 November 2026
+
+- The canonical topic lesson endpoint and both SS1/SS2/SS3 package-generation endpoints now share a per-account, PostgreSQL-backed HTTP rate limit (20 generation requests per minute). This closes the gap where lesson generation in `/learning` bypassed the limiter already applied to Brainee's `/ai` routes.
+- SS1 package GET endpoints now use an explicit student projection. They retain the approved lesson body/objectives needed for the lesson experience and AI grounding, but do not serialize teacher practice answers, marking criteria, source provenance, approval state or internal content hashes. The server retains the complete package object for generation and audit.
+- Regression coverage now asserts the three generation routes use the shared limiter and that SS1 student payloads use the safe projection.
+- GitHub Actions on master `2a9bf0433b0728060302a61c04055d3c9dc3662d`: **AI curriculum lesson generation passed**, including lesson contract, lesson-flow/free-launch regressions, corrected-topic generation/cache with PostgreSQL, fresh-install/incremental migration ledger checks, and backend/mobile typechecks. **SS1 package integrity passed**, including student-delivery eligibility, package validation, stored hashes and byte counts, and TypeScript. **SS2/SS3 package integrity passed**, including hashes, package validation, negative controls, and SS1 non-regression. These are CI results, not production or device acceptance.
+- Still not claimed complete: production application of migration 0007; an in-app admin interface for later access-policy changes (current controls remain environment configuration); package-specific progress/completion tracking; retirement of the legacy combined `/topics/:id/complete` route after a full client-compatibility audit; and real student-account/production smoke acceptance. No production migration or deployment was performed.
