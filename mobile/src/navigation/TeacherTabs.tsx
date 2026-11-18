@@ -1,4 +1,4 @@
-// Teacher navigation intentionally exposes report generation only.
+// Teacher navigation exposes physical-class record entry, editing and report generation.
 import React, { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack';
