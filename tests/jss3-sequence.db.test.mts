@@ -112,9 +112,6 @@ if (!URL_) {
     // Exercise sequence rules in restricted mode; free-launch defaults have dedicated policy coverage.
     process.env.FREE_LAUNCH_MODE = 'false';
     process.env.CURRICULUM_SEQUENCE_ENFORCED = 'true';
-    // Exercise sequence rules in restricted mode; free-launch defaults have dedicated policy coverage.
-    process.env.FREE_LAUNCH_MODE = 'false';
-    process.env.CURRICULUM_SEQUENCE_ENFORCED = 'true';
     process.env.TERM_PIN_ENFORCED = 'false';
   });
   after(async () => {
