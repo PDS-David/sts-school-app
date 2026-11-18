@@ -80,6 +80,47 @@ jobs:
                 > /backup/database-info.txt
             '
 
+          # Verify the custom-format archive with the native PostgreSQL 18 restore tools
+          # before encryption. This uses a disposable UTF-8/template0 database and never
+          # connects to or writes to the production database.
+          restore_container="sts-backup-restore-check"
+          cleanup_restore_check() {
+            docker rm --force "$restore_container" >/dev/null 2>&1 || true
+          }
+          trap cleanup_restore_check EXIT
+          docker run --detach --name "$restore_container" \
+            --env POSTGRES_PASSWORD=postgres postgres:18 >/dev/null
+          ready=0
+          for attempt in $(seq 1 30); do
+            if docker exec "$restore_container" pg_isready --username=postgres >/dev/null 2>&1; then
+              ready=1
+              break
+            fi
+            sleep 2
+          done
+          test "$ready" -eq 1
+          docker cp "$backup_dir/database.dump" "$restore_container:/tmp/database.dump"
+          docker exec "$restore_container" sh -ceu '
+            createdb --username=postgres --template=template0 --encoding=UTF8 sts_backup_restore_check
+            pg_restore --list /tmp/database.dump > /tmp/archive-list.txt
+            test -s /tmp/archive-list.txt
+            pg_restore --verbose --exit-on-error --single-transaction --no-owner --no-privileges \
+              --username=postgres --dbname=sts_backup_restore_check /tmp/database.dump
+            psql --username=postgres --dbname=sts_backup_restore_check --no-psqlrc \
+              --set=ON_ERROR_STOP=1 --tuples-only --no-align \
+              --command="SELECT concat_ws(chr(124), current_database(), current_setting($server_version$), (SELECT count(*)::text FROM information_schema.tables WHERE table_schema=$public$ AND table_type=$BASE TABLE$), (SELECT count(*)::text FROM schema_migrations), (SELECT count(*)::text FROM students), (SELECT count(*)::text FROM report_roster_memberships), (SELECT count(*)::text FROM audit_log))" \
+              > /tmp/restore-verification.txt
+            test -s /tmp/restore-verification.txt
+          '
+          docker cp "$restore_container:/tmp/restore-verification.txt" "$backup_dir/restore-verification.txt"
+          cleanup_restore_check
+          trap - EXIT
+          IFS='|' read -r restored_database restored_version restored_tables restored_migrations restored_students restored_memberships restored_audit < "$backup_dir/restore-verification.txt"
+          test "$restored_database" = "sts_backup_restore_check"
+          case "$restored_version" in 18.*) ;; *) echo "::error::Disposable restore did not use PostgreSQL 18"; exit 1 ;; esac
+          test "$restored_tables" -ge 40
+          test "$restored_migrations" -ge 6
+
           age --recipient "$BACKUP_AGE_RECIPIENT" --output "$encrypted_file" "$backup_dir/database.dump"
           rm -f "$backup_dir/database.dump"
           test -s "$encrypted_file"
@@ -91,6 +132,8 @@ jobs:
             echo "postgres_client_image=postgres:18"
             cat "$backup_dir/database-info.txt"
             echo "encrypted_file=$(basename "$encrypted_file")"
+            echo "disposable_restore=passed"
+            cat "$backup_dir/restore-verification.txt"
             cat "$encrypted_file.sha256"
           } > "$backup_dir/manifest.txt"
 
@@ -101,6 +144,8 @@ jobs:
             echo "- UTC timestamp: $timestamp"
             echo "- Encrypted archive: $(basename "$encrypted_file")"
             echo "- SHA-256: $(cut -d' ' -f1 "$encrypted_file.sha256")"
+            echo "- Disposable PostgreSQL 18 UTF-8/template0 restore: passed."
+            echo "- Restored database summary: $(cat "$backup_dir/restore-verification.txt")"
             echo "- Plaintext dump removed from the runner workspace."
           } >> "$GITHUB_STEP_SUMMARY"
 
@@ -112,5 +157,6 @@ jobs:
             ${{ steps.backup.outputs.artifact_dir }}/*.dump.age
             ${{ steps.backup.outputs.artifact_dir }}/*.dump.age.sha256
             ${{ steps.backup.outputs.artifact_dir }}/manifest.txt
+            ${{ steps.backup.outputs.artifact_dir }}/restore-verification.txt
           if-no-files-found: error
           retention-days: 90
