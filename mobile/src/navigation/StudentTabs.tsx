@@ -25,6 +25,7 @@ import FrenchListeningScreen from '../screens/FrenchListeningScreen';
 import TermPinRedeemScreen from '../screens/TermPinRedeemScreen';
 import StudyPlanScreen from '../screens/student/StudyPlanScreen';
 import AssessmentsScreen from '../screens/AssessmentsScreen';
+import ClassPracticeScreen from '../screens/student/ClassPracticeScreen';
 import TakeAssessmentScreen from '../screens/TakeAssessmentScreen';
 import MyResultsScreen from '../screens/MyResultsScreen';
 import SessionReportScreen from '../screens/SessionReportScreen';
@@ -73,6 +74,7 @@ function AssessmentsStackNavigator() {
     <AssessmentsStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
       <AssessmentsStack.Screen name="AssessmentsHome" component={StudentAssessmentsHomeScreen} />
       <AssessmentsStack.Screen name="Assessments" component={AssessmentsScreen} options={{ headerShown: true, title: 'Assessments', ...stackScreenOptions }} />
+      <AssessmentsStack.Screen name="ClassPractice" component={ClassPracticeScreen} options={{ headerShown: true, title: 'Adaptive AI Practice', ...stackScreenOptions }} />
       <AssessmentsStack.Screen name="TakeAssessment" component={TakeAssessmentScreen} options={{ headerShown: true, title: 'Take Assessment', ...stackScreenOptions }} />
       <AssessmentsStack.Screen name="MyResults" component={MyResultsScreen} options={{ headerShown: true, title: 'My Results', ...stackScreenOptions }} />
       <AssessmentsStack.Screen name="SessionReport" component={SessionReportScreen} options={{ headerShown: true, title: 'Session Report', ...stackScreenOptions }} />
