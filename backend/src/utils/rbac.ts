@@ -23,20 +23,16 @@ export const permissions: Record<Role, string[]> = {
     'weeklyEfforts.feedback',
     'finance.read',
   ],
-  // A teacher's role on this platform is limited to report generation for
-  // their assigned physical class. Roster placement decisions are a separate
-  // explicit workflow; teachers do not enter marks, attendance or remarks.
-  // Deliberately EXCLUDED, on purpose, not by omission: 'questions.*' and
-  // 'assessments.*' (no teacher builds a test/quiz/essay prompt — that is
-  // exclusively an admin or Brainee/AI responsibility), and the AI-results
-  // permissions 'aiResults.read' / 'aiGrading.override' used in
-  // routes/learning.ts — a teacher must never view or touch a grade Brainee
-  // gave a student. Do not add any of these back for 'teacher'.
-  // Teachers use the school app only to generate reports for their
-  // assigned physical class. Report data is returned by the scoped report
-  // endpoints; no standalone grade, attendance, messaging, learning-content,
-  // AI, term-management, grade-entry, attendance or student-write permissions are granted.
-  teacher: ['students.read'],
+  // Teachers maintain academic records and reports for their assigned physical class.
+  // They do not administer the independent student-learning/AI assessment system,
+  // manage school-wide terms/classes, message users, or make roster decisions.
+  teacher: [
+    'students.read', 'students.write',
+    'grades.read', 'grades.write', 'grades.export',
+    'attendance.read', 'attendance.write',
+    'classRecord.read', 'classRecord.write',
+    'weeklyEfforts.read', 'weeklyEfforts.write', 'weeklyEfforts.feedback',
+  ],
   admin: ['*'],   // full access — including questions.*, assessments.*,
                   // aiResults.read, and aiGrading.override, none of which
                   // are granted to any other role.
@@ -76,7 +72,7 @@ export function canMessage(
   if (senderRole === 'student') {
     return !!senderAllowedRecipientIds && senderAllowedRecipientIds.includes(recipientId);
   }
-  // Teachers are report-only. Parents and admins retain their existing messaging path.
+  // Teachers maintain physical-class records but do not send messages.
   if (senderRole === 'teacher') return false;
   return senderRole === 'parent' || senderRole === 'admin';
 }
