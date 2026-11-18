@@ -7,6 +7,9 @@ const migration = await readFile(new URL('../backend/migrations/0014_formal_onli
 const markingMigration = await readFile(new URL('../backend/migrations/0015_online_exam_marking_confidence.sql', import.meta.url), 'utf8');
 const reviewMigration = await readFile(new URL('../backend/migrations/0016_question_bank_subject_reviews.sql', import.meta.url), 'utf8');
 const questionBankRoute = await readFile(new URL('../backend/src/routes/questionBank.ts', import.meta.url), 'utf8');
+const teacherReviewScreen = await readFile(new URL('../mobile/src/screens/teacher/TeacherQuestionReviewScreen.tsx', import.meta.url), 'utf8');
+const teacherMore = await readFile(new URL('../mobile/src/screens/teacher/TeacherMoreScreen.tsx', import.meta.url), 'utf8');
+const teacherTabs = await readFile(new URL('../mobile/src/navigation/TeacherTabs.tsx', import.meta.url), 'utf8');
 const mobileList = await readFile(new URL('../mobile/src/screens/OnlineExamsScreen.tsx', import.meta.url), 'utf8');
 const mobileHome = await readFile(new URL('../mobile/src/screens/student/StudentAssessmentsHomeScreen.tsx', import.meta.url), 'utf8');
 const mobileAttempt = await readFile(new URL('../mobile/src/screens/OnlineExamAttemptScreen.tsx', import.meta.url), 'utf8');
@@ -101,10 +104,18 @@ test('student assessment home exposes the dedicated formal-exam flow and complet
 test('assigned subject teachers can approve or reject reviewed questions with append-only audit records', () => {
   assert.match(questionBankRoute, /router\.get\('\/review-queue', requireAuth, requireRole\('teacher'\)/);
   assert.match(questionBankRoute, /router\.post\('\/questions\/:id\/review', requireAuth, requireRole\('teacher'\)/);
-  assert.match(questionBankRoute, /assigned\.name\)\)=lower\(trim\(s\.name\)\)/);
+  assert.match(questionBankRoute, /lower\(trim\(assigned\.name\)\)=lower\(trim\(s\.name\)\)/);
   assert.match(questionBankRoute, /question_bank_question_reviews\(question_id,subject_id,reviewer_user_id,decision,notes\)/);
   assert.match(questionBankRoute, /review_status='approved'/);
   assert.match(reviewMigration, /question_bank_question_reviews/);
   assert.match(reviewMigration, /reviewed_at TIMESTAMPTZ NOT NULL DEFAULT now\(\)/);
   assert.doesNotMatch(reviewMigration, /UNIQUE\s*\(question_id,reviewer_user_id\)/i);
+});
+
+test('teacher UI exposes question review only through the teacher navigation and records review notes', () => {
+  assert.match(teacherReviewScreen, /api\.get\('\/question-bank\/review-queue'/);
+  assert.match(teacherReviewScreen, /api\.post\('\/question-bank\/questions\/'\+question\.id\+'\/review'/);
+  assert.match(teacherReviewScreen, /notes\.length<10/);
+  assert.match(teacherMore, /label: 'Review Questions'/);
+  assert.match(teacherTabs, /TeacherQuestionReviewScreen/);
 });
