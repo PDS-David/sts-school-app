@@ -65,6 +65,24 @@ export function studentSs1LessonPreview(lesson: StudentSs1Lesson, locked: boolea
   };
 }
 
+/** Public student projection. Teacher answer keys, marking criteria, source provenance,
+ * approval records and content hashes remain server-side for AI grounding/audit only.
+ */
+export function safeStudentSs1Lesson(lesson: StudentSs1Lesson) {
+  return {
+    id: lesson.id,
+    class_name: lesson.class_name,
+    term: lesson.term,
+    subject: lesson.subject,
+    title: lesson.title,
+    objectives: lesson.objectives,
+    body: lesson.body,
+    subject_slug: lesson.subject_slug,
+    canonical_subject: lesson.canonical_subject,
+    classroom_verification_pending: lesson.classroom_verification_pending,
+  };
+}
+
 export function getStudentSs1Lesson(lessonId: string): StudentSs1Lesson | null {
   return listStudentSs1Lessons().find(lesson => lesson.id === lessonId) ?? null;
 }
