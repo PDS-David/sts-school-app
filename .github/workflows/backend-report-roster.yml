@@ -62,6 +62,8 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Bootstrap disposable PostgreSQL 18 schema
         run: npm run db:bootstrap --workspace=backend
+      - name: Apply numbered migrations against the fresh baseline
+        run: npm run db:migrate --workspace=backend
       - name: Verify report-roster schema safeguards and teacher role policy
         run: node --import tsx --test tests/report-roster-schema.test.mts tests/backend-teacher-report-only-policy.test.mts
       - name: Verify class-lock, score, attendance, weekly-effort and term boundaries
