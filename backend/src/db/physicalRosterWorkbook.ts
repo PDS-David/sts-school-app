@@ -173,13 +173,16 @@ export function parsePhysicalRosterWorkbook(
     }
 
     let className: string | null = null;
+    let effectiveSchoolCode: 'primary' | 'secondary' = sourceMapping.schoolCode;
     if (enrolmentStatus === 'active') {
       const currentClass = requiredText(row['Current Class (verified)'], 'Current Class (verified)', rowNumber);
       const currentMapping = CURRENT_CLASS_MAP[currentClass];
       if (!currentMapping) throw new Error('Roster row ' + rowNumber + ': unsupported verified current class "' + currentClass + '"');
-      if (currentMapping.schoolCode !== sourceMapping.schoolCode) {
-        throw new Error('Roster row ' + rowNumber + ': verified current class belongs to a different school section');
+      if (currentMapping.schoolCode !== sourceMapping.schoolCode
+          && statusText.trim().toLocaleLowerCase('en') !== 'promoted') {
+        throw new Error('Roster row ' + rowNumber + ': only a promoted student may move between Primary and Secondary sections');
       }
+      effectiveSchoolCode = currentMapping.schoolCode;
       if ((statusText.trim().toLocaleLowerCase('en') === 'still enrolled - same class'
           || statusText.trim().toLocaleLowerCase('en') === 'retained')
           && currentMapping.className !== sourceMapping.className) {
@@ -209,7 +212,7 @@ export function parsePhysicalRosterWorkbook(
       internalStudentId,
       matchedProductionStudentId: matchedValue || null,
       fullName,
-      schoolCode: sourceMapping.schoolCode,
+      schoolCode: effectiveSchoolCode,
       sourceClassName,
       className,
       rosterIdentity,
