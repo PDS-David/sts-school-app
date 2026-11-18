@@ -262,10 +262,15 @@ router.post('/admin/exams/:examId/publish',requireRole('admin'),async(req,res)=>
     const coveredTopicIds=generatedTopics.map((row:any)=>Number(row.topic_id));
     if(coveredTopicIds.length){
       const {rows: coverage}=await client.query(`
-        SELECT COUNT(DISTINCT st.id)::int AS candidates,
-               COUNT(DISTINCT tc.student_id)::int AS completed
+        SELECT COUNT(*)::int AS candidates,
+               COUNT(*) FILTER (WHERE NOT EXISTS (
+                 SELECT 1 FROM unnest($3::int[]) AS required(topic_id)
+                  WHERE NOT EXISTS (
+                    SELECT 1 FROM topic_completions tc
+                     WHERE tc.student_id=st.id AND tc.topic_id=required.topic_id
+                  )
+               ))::int AS completed
           FROM students st
-          LEFT JOIN topic_completions tc ON tc.student_id=st.id AND tc.topic_id=ANY($3::int[])
          WHERE st.school_code=$1 AND st.class_name=$2 AND st.deleted_at IS NULL
       `,[exam.school_code,exam.class_name,coveredTopicIds]);
       if(Number(coverage[0]?.completed)!==Number(coverage[0]?.candidates)){
