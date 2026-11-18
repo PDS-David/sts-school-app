@@ -92,6 +92,28 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
     can_manage_all_schools: dbUser.can_manage_all_schools === true,
     selected_school_code: dbUser.role === 'admin' && dbUser.can_manage_all_schools === true ? requestedSchool : null,
   });
+  if (req.user.role === 'admin' && req.user.can_manage_all_schools === true && !requestedSchool) {
+    const pathname = req.originalUrl.split('?')[0];
+    const isSchoolScoped =
+      pathname === '/students' || pathname.startsWith('/students/') ||
+      pathname.startsWith('/academic/') && pathname !== '/academic/schools' ||
+      pathname.startsWith('/attendance') ||
+      pathname.startsWith('/scores') ||
+      pathname.startsWith('/weekly-efforts') ||
+      pathname.startsWith('/school-events') ||
+      pathname.startsWith('/announcements') ||
+      pathname === '/admin' || pathname.startsWith('/admin/');
+    const globalAdminPaths = new Set([
+      '/admin/backups/status',
+      '/admin/backups/run',
+      '/admin/learning-access-settings',
+      '/admin/roster/import/preview',
+      '/admin/roster/import/confirm',
+    ]);
+    if (isSchoolScoped && !globalAdminPaths.has(pathname)) {
+      return res.status(400).json({ error: 'Select Primary or Secondary before accessing school records.' });
+    }
+  }
   next();
 }
 
