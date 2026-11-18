@@ -332,7 +332,8 @@ export default function ScoreEntryScreen({ navigation }: any) {
                 {rows.map((r, i) => {
                   const total = (Number(r.ca1) || 0) + (Number(r.ca2) || 0) + (Number(r.exam) || 0);
                   return (
-                    <View key={r.student_id} style={[styles.gridRow, i % 2 === 0 && styles.gridRowAlt]}>
+                    <React.Fragment key={r.student_id}>
+                    <View style={[styles.gridRow, i % 2 === 0 && styles.gridRowAlt]}>
                       <Text style={[styles.gdCell, { flex: 2, textAlign: 'left' }]} numberOfLines={1}>{r.name}</Text>
                       {(['ca1','ca2','exam'] as const).map(f => (
                         <View key={f} style={styles.scoreCell}>
@@ -347,16 +348,17 @@ export default function ScoreEntryScreen({ navigation }: any) {
                         </View>
                       ))}
                       <Text style={[styles.gdCell, styles.totalCell]}>{total || '—'}</Text>
-                      <View style={{ position: 'absolute', left: 10, right: 10, top: '100%', paddingTop: 2, paddingBottom: 6 }}>
-                        <Input
-                          value={r.teacher_remark}
-                          onChangeText={v => updateRow(i, 'teacher_remark', v)}
-                          placeholder="Subject remark (optional)"
-                          accessibilityLabel={`${r.name} subject remark`}
-                          style={{ marginBottom: 0 }}
-                        />
-                      </View>
                     </View>
+                    <View style={{ paddingHorizontal: 10, paddingBottom: 8 }}>
+                      <Input
+                        value={r.teacher_remark}
+                        onChangeText={v => updateRow(i, 'teacher_remark', v)}
+                        placeholder="Subject remark (optional)"
+                        accessibilityLabel={`${r.name} subject remark`}
+                        style={{ marginBottom: 0 }}
+                      />
+                    </View>
+                  </React.Fragment>
                   );
                 })}
               </Card>
