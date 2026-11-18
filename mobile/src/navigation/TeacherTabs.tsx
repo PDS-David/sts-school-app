@@ -1,3 +1,4 @@
+// Teacher navigation intentionally exposes only report generation and physical-roster decisions.
 import React, { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack';
