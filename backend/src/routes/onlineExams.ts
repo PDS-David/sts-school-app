@@ -764,7 +764,6 @@ router.get('/admin/question-bank/questions',requireRole('admin'),async(req,res)=
       JOIN question_bank_subjects s ON s.id=q.subject_id
       JOIN question_bank_topics t ON t.id=q.topic_id AND t.subject_id=q.subject_id
      WHERE q.review_status IN ('approved','published')
-       AND q.question_type='mcq'
        AND ($1::text IS NULL OR q.board=$1)
        AND ($2::text IS NULL OR s.code=$2)
      ORDER BY q.board,s.name,t.name,q.created_at DESC
