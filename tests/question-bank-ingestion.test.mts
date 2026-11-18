@@ -27,8 +27,18 @@ test('question schema rejects generated content labelled as a historical paper',
   assert.equal(result.success, false);
 });
 
+test('question schema rejects past questions without an exact source locator', () => {
+  const result = ingestionQuestionSchema.safeParse({ ...base, content_origin: 'past_question', exam_year: 2022 });
+  assert.equal(result.success, false);
+});
+
 test('question schema rejects past questions without a year', () => {
   const result = ingestionQuestionSchema.safeParse({ ...base, content_origin: 'past_question' });
+  assert.equal(result.success, false);
+});
+
+test('question schema rejects an MCQ whose correct key is not one of its options', () => {
+  const result = ingestionQuestionSchema.safeParse({ ...base, correct_answer: { key: 'Z', value: 'No such option' } });
   assert.equal(result.success, false);
 });
 
