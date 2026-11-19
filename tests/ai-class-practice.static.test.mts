@@ -43,9 +43,11 @@ test('student adaptive practice UI is reachable only from a completed lesson and
   const topic = await readFile(new URL('../mobile/src/screens/TopicDetailScreen.tsx', import.meta.url), 'utf8');
   const navigation = await readFile(new URL('../mobile/src/navigation/StudentTabs.tsx', import.meta.url), 'utf8');
   assert.match(screen, /api\.post\('\/class-practice\/sets'/);
-  assert.match(screen, /api\.post\('\/class-practice\/sets\/'\+practiceSet\.id\+'\/submit'/);
+  assert.match(screen, /api\.post\('\/class-practice\/sets\/'\+submittedSetId\+'\/submit'/);
   assert.match(screen, /api\.get\('\/class-practice\/progress'/);
-  assert.match(screen, /api\.get\('\/class-practice\/sets\/'\+practiceSet\.id\)/);
+  assert.match(screen, /api\.get\('\/class-practice\/sets\/'\+submittedSetId\)/);
+  assert.match(screen, /topicIdRef/);
+  assert.match(screen, /queuedOffline/);
   assert.match(topic, /completed \? \(/);
   assert.match(topic, /screen: 'ClassPractice'/);
   assert.match(navigation, /name="ClassPractice" component=\{ClassPracticeScreen\}/);
