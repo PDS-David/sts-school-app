@@ -18,6 +18,7 @@ export default function ClassPracticeScreen({ route }: any) {
   const [error,setError]=useState('');
   const [progressError,setProgressError]=useState('');
   const topicIdRef=useRef(topic?.id);
+  topicIdRef.current=topic?.id;
 
   const loadProgress=async()=>{
     setLoadingProgress(true);setProgressError('');
