@@ -107,7 +107,7 @@ router.post('/admin/exams/generate-drafts',requireRole('admin'),async(req,res)=>
       JOIN subjects sub ON sub.id=t.subject_id AND sub.school_code=t.school_code
       JOIN students st ON st.school_code=t.school_code AND st.class_name=t.class_name
       JOIN report_roster_memberships rrm ON rrm.student_id=st.id AND rrm.class_name=st.class_name AND rrm.status='active'
-      JOIN users u ON u.id=st.user_id AND u.is_active=true AND COALESCE(u.pending_admin_review,false)=false AND u.revocation_reason IS NULL AND (u.access_expires_at IS NULL OR u.access_expires_at>now())
+      JOIN users u ON u.id=st.user_id AND u.role='student' AND u.school_code=st.school_code AND u.is_active=true AND COALESCE(u.pending_admin_review,false)=false AND u.revocation_reason IS NULL AND (u.access_expires_at IS NULL OR u.access_expires_at>now())
       LEFT JOIN topic_completions tc ON tc.topic_id=t.id AND tc.student_id=st.id
      WHERE t.id=ANY($1::int[]) AND t.school_code=$2 AND t.class_name=$3 AND sub.name=$4
      GROUP BY t.id,t.title,t.description,t.summary,sub.name
@@ -208,7 +208,7 @@ router.post('/admin/exams/generate-package-drafts',requireRole('admin'),async(re
   if(lessons.length!==lessonIds.length) return res.status(409).json({error:'One or more lessons are not in an implemented, student-deliverable syllabus package for this class and subject.'});
   const candidates=await query(`SELECT st.id FROM students st
     JOIN report_roster_memberships rrm ON rrm.student_id=st.id AND rrm.class_name=st.class_name AND rrm.status='active'
-    JOIN users u ON u.id=st.user_id AND u.is_active=true AND COALESCE(u.pending_admin_review,false)=false AND u.revocation_reason IS NULL AND (u.access_expires_at IS NULL OR u.access_expires_at>now())
+    JOIN users u ON u.id=st.user_id AND u.role='student' AND u.school_code=st.school_code AND u.is_active=true AND COALESCE(u.pending_admin_review,false)=false AND u.revocation_reason IS NULL AND (u.access_expires_at IS NULL OR u.access_expires_at>now())
     WHERE st.school_code=$1 AND st.class_name=$2`,[schoolCode,body.class_name]);
   if(!candidates.rows.length) return res.status(409).json({error:'No active candidates are enrolled in this class.'});
   const candidateIds=candidates.rows.map((r:any)=>r.id);
@@ -422,7 +422,7 @@ router.post('/admin/exams/:examId/publish',requireRole('admin'),async(req,res)=>
     const {rows: candidates}=await client.query(`
       SELECT st.id,st.class_name FROM students st
        JOIN report_roster_memberships rrm ON rrm.student_id=st.id AND rrm.class_name=st.class_name AND rrm.status='active'
-       JOIN users u ON u.id=st.user_id AND u.is_active=true AND COALESCE(u.pending_admin_review,false)=false AND u.revocation_reason IS NULL AND (u.access_expires_at IS NULL OR u.access_expires_at>now())
+       JOIN users u ON u.id=st.user_id AND u.role='student' AND u.school_code=st.school_code AND u.is_active=true AND COALESCE(u.pending_admin_review,false)=false AND u.revocation_reason IS NULL AND (u.access_expires_at IS NULL OR u.access_expires_at>now())
        WHERE st.school_code=$1 AND st.class_name=$2
     `,[exam.school_code,exam.class_name]);
     if(!candidates.length) return {status:409,error:'No active candidates are enrolled in this examination class.'};
@@ -445,7 +445,7 @@ router.post('/admin/exams/:examId/publish',requireRole('admin'),async(req,res)=>
                ))::int AS completed
           FROM students st
           JOIN report_roster_memberships rrm ON rrm.student_id=st.id AND rrm.class_name=st.class_name AND rrm.status='active'
-          JOIN users u ON u.id=st.user_id AND u.is_active=true AND COALESCE(u.pending_admin_review,false)=false AND u.revocation_reason IS NULL AND (u.access_expires_at IS NULL OR u.access_expires_at>now())
+          JOIN users u ON u.id=st.user_id AND u.role='student' AND u.school_code=st.school_code AND u.is_active=true AND COALESCE(u.pending_admin_review,false)=false AND u.revocation_reason IS NULL AND (u.access_expires_at IS NULL OR u.access_expires_at>now())
          WHERE st.school_code=$1 AND st.class_name=$2
       `,[exam.school_code,exam.class_name,coveredTopicIds]);
       if(Number(coverage[0]?.completed)!==Number(coverage[0]?.candidates)){
@@ -466,7 +466,7 @@ router.post('/admin/exams/:examId/publish',requireRole('admin'),async(req,res)=>
           JOIN student_curriculum_lesson_progress p
             ON p.student_id=st.id AND p.class_name=$2 AND p.lesson_key=$3
           JOIN report_roster_memberships rrm ON rrm.student_id=st.id AND rrm.class_name=st.class_name AND rrm.status='active'
-          JOIN users u ON u.id=st.user_id AND u.is_active=true AND COALESCE(u.pending_admin_review,false)=false AND u.revocation_reason IS NULL AND (u.access_expires_at IS NULL OR u.access_expires_at>now())
+          JOIN users u ON u.id=st.user_id AND u.role='student' AND u.school_code=st.school_code AND u.is_active=true AND COALESCE(u.pending_admin_review,false)=false AND u.revocation_reason IS NULL AND (u.access_expires_at IS NULL OR u.access_expires_at>now())
          WHERE st.school_code=$1 AND st.class_name=$2
       `,[exam.school_code,exam.class_name,ref.lesson_key]);
       if(Number(coverage[0]?.completed)!==candidates.length)
@@ -738,13 +738,13 @@ router.get('/admin/lesson-topics',requireRole('admin'),async(req,res)=>{
     return res.status(400).json({error:'Provide a valid examination class and subject.'});
   const {rows}=await query(`
     SELECT t.id,t.title,t.term_id,
-           COUNT(DISTINCT st.id)::int AS candidate_count,
-           COUNT(DISTINCT tc.student_id)::int AS completed_count
+           COUNT(DISTINCT CASE WHEN rrm.student_id IS NOT NULL AND u.id IS NOT NULL THEN st.id END)::int AS candidate_count,
+           COUNT(DISTINCT CASE WHEN rrm.student_id IS NOT NULL AND u.id IS NOT NULL THEN tc.student_id END)::int AS completed_count
       FROM topics t
       JOIN subjects sub ON sub.id=t.subject_id AND sub.school_code=t.school_code
       LEFT JOIN students st ON st.school_code=t.school_code AND st.class_name=t.class_name
       LEFT JOIN report_roster_memberships rrm ON rrm.student_id=st.id AND rrm.class_name=st.class_name AND rrm.status='active'
-      LEFT JOIN users u ON u.id=st.user_id AND u.is_active=true AND COALESCE(u.pending_admin_review,false)=false AND u.revocation_reason IS NULL AND (u.access_expires_at IS NULL OR u.access_expires_at>now())
+      LEFT JOIN users u ON u.id=st.user_id AND u.role='student' AND u.school_code=st.school_code AND u.is_active=true AND COALESCE(u.pending_admin_review,false)=false AND u.revocation_reason IS NULL AND (u.access_expires_at IS NULL OR u.access_expires_at>now())
       LEFT JOIN topic_completions tc ON tc.topic_id=t.id AND tc.student_id=st.id
      WHERE t.school_code=$1 AND t.class_name=$2 AND sub.name=$3
      GROUP BY t.id,t.title,t.term_id
