@@ -6,6 +6,7 @@ const route = await readFile(new URL('../backend/src/routes/onlineExams.ts', imp
 const migration = await readFile(new URL('../backend/migrations/0014_formal_online_examinations.sql', import.meta.url), 'utf8');
 const markingMigration = await readFile(new URL('../backend/migrations/0015_online_exam_marking_confidence.sql', import.meta.url), 'utf8');
 const reviewMigration = await readFile(new URL('../backend/migrations/0016_question_bank_subject_reviews.sql', import.meta.url), 'utf8');
+const claimMigration = await readFile(new URL('../backend/migrations/0018_online_exam_submission_claim_fence.sql', import.meta.url), 'utf8');
 const questionBankRoute = await readFile(new URL('../backend/src/routes/questionBank.ts', import.meta.url), 'utf8');
 const teacherReviewScreen = await readFile(new URL('../mobile/src/screens/teacher/TeacherQuestionReviewScreen.tsx', import.meta.url), 'utf8');
 const teacherMore = await readFile(new URL('../mobile/src/screens/teacher/TeacherMoreScreen.tsx', import.meta.url), 'utf8');
@@ -16,6 +17,8 @@ const adminAssessments = await readFile(new URL('../mobile/src/screens/Assessmen
 const mobileList = await readFile(new URL('../mobile/src/screens/OnlineExamsScreen.tsx', import.meta.url), 'utf8');
 const mobileHome = await readFile(new URL('../mobile/src/screens/student/StudentAssessmentsHomeScreen.tsx', import.meta.url), 'utf8');
 const mobileAttempt = await readFile(new URL('../mobile/src/screens/OnlineExamAttemptScreen.tsx', import.meta.url), 'utf8');
+const mobileApiClient = await readFile(new URL('../mobile/src/api/client.ts', import.meta.url), 'utf8');
+const classPracticeScreen = await readFile(new URL('../mobile/src/screens/student/ClassPracticeScreen.tsx', import.meta.url), 'utf8');
 const mobileResult = await readFile(new URL('../mobile/src/screens/OnlineExamResultScreen.tsx', import.meta.url), 'utf8');
 
 
@@ -55,6 +58,9 @@ test('server deadlines, autosave, one-attempt constraint and idempotent submissi
   assert.match(route, /ON CONFLICT\(attempt_id,exam_question_id\) DO UPDATE/);
   assert.match(route, /already_submitted/);
   assert.match(route, /submission_started_at/);
+  assert.match(route, /submission_claim_token=\$2/);
+  assert.match(route, /submission_claim_token=\$2 FOR UPDATE/);
+  assert.match(claimMigration, /submission_claim_token UUID/);
 });
 
 test('AI essay marking reuses the existing essay-mark contract', () => {
@@ -85,6 +91,12 @@ test('student flow caches unsent answers and derives the timer from the server d
   assert.match(mobileAttempt, /NetInfo/);
   assert.match(mobileAttempt, /deadline_at/);
   assert.match(mobileAttempt, /server_time/);
+  assert.match(mobileAttempt, /clock_offset_ms/);
+  assert.match(mobileAttempt, /while\\(Object\\.prototype\\.hasOwnProperty\\.call\\(pending\\.current,questionId\\)\\)/);
+  assert.match(mobileApiClient, /url\\.startsWith\\('\\/online-exams\\/'\\)/);
+  assert.match(classPracticeScreen, /response\\.queuedOffline/);
+  assert.match(classPracticeScreen, /topicIdRef/);
+  assert.match(classPracticeScreen, /Retry loading progress/);
   assert.match(mobileAttempt, /navigation\.replace\('OnlineExams'\)/);
   assert.match(mobileAttempt, /locally retained answers/);
   const submitIndex=mobileAttempt.indexOf("api.post('/online-exams/attempts/'+attemptId+'/submit'");
@@ -103,6 +115,11 @@ test('written responses require a complete criterion rubric and confidence-valid
   assert.match(route, /marking_rubric:item\.marking_rubric/);
   assert.match(route, /validateAiRubricMark\(raw,rubric,Number\(q\.marks\)\)/);
   assert.match(route, /marked\.confidence<0\.75/);
+  assert.match(route, /typeof value\.points !== 'number'/);
+  assert.match(route, /typeof item\.points !== 'number'/);
+  assert.match(route, /validGeneratedMcqOptions/);
+  assert.match(route, /sourceTopicId!==coveredTopicId/);
+  assert.match(route, /SUM\(awarded_marks\)/);
   assert.match(route, /marking='pending_review'/);
   assert.match(route, /marking_confidence=\$6/);
   assert.match(route, /marking_details=\$7::jsonb/);
@@ -141,7 +158,9 @@ test('admin app can create, publish, list and manually review formal examination
   assert.match(adminExamScreen, /api\.post\('\/online-exams\/admin\/exams'/);
   assert.match(adminExamScreen, /api\.post\('\/online-exams\/admin\/exams\/'\+exam\.id\+'\/publish'/);
   assert.match(adminExamScreen, /api\.get\('\/online-exams\/admin\/exams\/'\+exam\.id\+'\/attempts'/);
-  assert.match(adminExamScreen, /api\.put\('\/online-exams\/admin\/attempts\/'\+selectedAttempt\.attempt_id/);
+  assert.match(adminExamScreen, /api\\.put\\('\\/online-exams\\/admin\\/attempts\\/'\\+targetAttemptId/);
+  assert.match(adminExamScreen, /selectedAttemptIdRef/);
+  assert.match(adminExamScreen, /newSectionId/);
   assert.match(adminTabs, /name="FormalOnlineExams" component=\{AdminOnlineExamsScreen\}/);
   assert.match(adminAssessments, /navigate\('FormalOnlineExams'\)/);
   assert.match(adminExamScreen, /sectionsPayload/);
