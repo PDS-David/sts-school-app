@@ -62,6 +62,7 @@ export default function AdminOnlineExamsScreen() {
   const [busy,setBusy]=useState<string|null>(null);
   const [error,setError]=useState('');
   const [notice,setNotice]=useState('');
+  const selectedAttemptIdRef=useRef<string|null>(null);
   const lessonRequestRef=useRef(0);
   const lessonSelectionRef=useRef<{subjectId:any;className:string}>({subjectId:null,className:'SS 3'});
 
@@ -193,19 +194,21 @@ export default function AdminOnlineExamsScreen() {
   };
 
   const openAttempts=async(exam:any)=>{
+    selectedAttemptIdRef.current=null;
     setSelectedExam(exam);setAttempts([]);setResponses([]);setSelectedAttempt(null);setMarks({});setFeedback({});setMode('attempts');setLoading(true);setError('');
     try{const {data}=await api.get('/online-exams/admin/exams/'+exam.id+'/attempts');setAttempts(data.attempts??[]);}
     catch(e:any){setError(e?.response?.data?.error??'Could not load examination attempts.');}
     finally{setLoading(false);}
   };
   const openResponses=async(attempt:any)=>{
+    selectedAttemptIdRef.current=attempt.attempt_id;
     setSelectedAttempt(attempt);setResponses([]);setMarks({});setFeedback({});setMode('responses');setLoading(true);setError('');
     try{const {data}=await api.get('/online-exams/admin/attempts/'+attempt.attempt_id+'/responses');setResponses(data.responses??[]);}
     catch(e:any){setError(e?.response?.data?.error??'Could not load candidate responses.');}
     finally{setLoading(false);}
   };
   const markResponse=async(response:any)=>{
-    const targetAttemptId=selectedAttempt?.attempt_id;
+    const targetAttemptId=selectedAttemptIdRef.current;
     if(!targetAttemptId)return;
     const awarded=Number(marks[response.question_id]);
     if(!Number.isFinite(awarded)||awarded<0||awarded>Number(response.marks)){
@@ -217,7 +220,7 @@ export default function AdminOnlineExamsScreen() {
         awarded_marks:awarded,feedback:feedback[response.question_id]??'',
       });
       const {data}=await api.get('/online-exams/admin/attempts/'+targetAttemptId+'/responses');
-      if(selectedAttempt?.attempt_id===targetAttemptId){
+      if(selectedAttemptIdRef.current===targetAttemptId){
         setSelectedAttempt((current:any)=>current?.attempt_id===targetAttemptId?({...current,status:marked.attempt.status,score:marked.attempt.score,total_marks:marked.attempt.total_marks,percentage:marked.attempt.percentage}):current);
         setResponses(data.responses??[]);
         setNotice('Manual mark saved and the candidate total recalculated.');
