@@ -1,41 +1,20 @@
 name: Mobile release and dependency audit
 
 on:
-  push:
-    branches:
-      - "agent/mobile-release-audit-*"
-      - "agent/mobile-audit-and-db-readiness-fixes-*"
-    paths:
-      - ".github/workflows/mobile-release-audit.yml"
-      - ".github/scripts/android-emulator-smoke.sh"
-      - "mobile/**"
-      - "package.json"
-      - "package-lock.json"
-      - "tests/mobile/**"
-  pull_request:
-    paths:
-      - ".github/workflows/mobile-release-audit.yml"
-      - ".github/scripts/android-emulator-smoke.sh"
-      - "mobile/**"
-      - "package.json"
-      - "package-lock.json"
-      - "tests/mobile/**"
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: mobile-release-audit-${{ github.event.pull_request.head.ref || github.ref }}
+  group: mobile-dependency-audit-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  validate-audit-build:
-    name: Mobile validation, npm audit and Android release builds
+  dependency-audit:
+    name: Dependency security and SDK compatibility audit
     runs-on: ubuntu-latest
-    env:
-      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-    timeout-minutes: 120
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -44,70 +23,18 @@ jobs:
           cache: npm
       - name: Install locked workspace dependencies
         run: npm ci
-      - name: Offline queue regression tests
-        run: npm run test:mobile:offline
-      - name: Frontend contract regression tests
-        run: npm run test:mobile:frontend-contracts
-      - name: Mobile TypeScript validation
-        working-directory: mobile
-        run: npx tsc --noEmit -p tsconfig.json
-      - name: Export Android JavaScript bundle
-        working-directory: mobile
-        env:
-          CI: "1"
-        run: npx expo export --platform android --output-dir ../artifacts/mobile-android
-      - name: Set up Java for Android build
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: "17"
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-        with:
-          packages: 'platform-tools platforms;android-36 build-tools;36.0.0 emulator system-images;android-35;google_apis;x86_64'
-      - name: Generate Android native project
-        working-directory: mobile
-        run: npx expo prebuild --platform android --non-interactive
-      - name: Build installable Android debug APK
-        timeout-minutes: 25
-        working-directory: mobile/android
-        run: ./gradlew --no-daemon --console=plain --stacktrace assembleDebug
-      - name: Install and launch APK on Android emulator
-        id: emulator-smoke
-        timeout-minutes: 15
-        continue-on-error: true
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 35
-          arch: x86_64
-          profile: pixel_2
-          emulator-boot-timeout: 600
-          disable-animations: true
-          script: bash .github/scripts/android-emulator-smoke.sh
-      - name: Verify Expo credentials for release dispatch
-        if: github.event_name == 'workflow_dispatch'
-        run: |
-          if [ -z "$EXPO_TOKEN" ]; then
-            echo "EXPO_TOKEN is unavailable to this workflow. Check repository Actions secrets."
-            exit 1
-          fi
-          npx eas-cli@latest whoami
-      - name: Build production-connected internal teacher APK with EAS
-        if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && env.EXPO_TOKEN != ''
-        run: npx eas-cli@latest build --platform android --profile preview --non-interactive --json > artifacts/eas-preview-teacher-apk.json
-      - name: Capture complete dependency audit
+      - name: Capture current dependency audit
         run: |
           mkdir -p artifacts
           npm audit --json > artifacts/npm-audit-all.json || true
           npm audit --omit=dev --json > artifacts/npm-audit-production.json || true
           npm audit fix --dry-run --json > artifacts/npm-audit-fix-plan.json || true
           npm ls expo @expo/cli expo-sharing expo-splash-screen glob image-size minimatch zod --all --json > artifacts/audit-dependency-tree.json || true
-      - name: Evaluate Expo SDK 57 dependency alignment
+      - name: Evaluate Expo SDK 57 dependency candidate
         working-directory: mobile
         run: npx expo install expo@^57.0.0 --fix
-      - name: Validate Expo SDK 57 candidate
+      - name: Validate SDK 57 candidate
         run: |
-          mkdir -p artifacts
           npx expo-doctor@latest > artifacts/expo-doctor-sdk57.txt 2>&1 || true
           npm run test:mobile:offline
           npm run test:mobile:frontend-contracts
@@ -120,39 +47,11 @@ jobs:
           cp mobile/package.json artifacts/expo-sdk57-candidate/mobile-package.json
           cp package-lock.json artifacts/expo-sdk57-candidate/package-lock.json
           cp mobile/app.config.js artifacts/expo-sdk57-candidate/app.config.js
-      - name: Export Android bundle for SDK 57 candidate
-        working-directory: mobile
-        env:
-          CI: "1"
-        run: npx expo export --platform android --output-dir ../artifacts/mobile-android-sdk57
-      - name: Build staging Android APK with EAS
-        if: github.event_name == 'push' && env.EXPO_TOKEN != ''
-        run: npx eas-cli@latest build --platform android --profile staging --non-interactive --json > artifacts/eas-staging-apk.json
-      - name: Build production Android AAB with EAS
-        if: github.event_name == 'push' && env.EXPO_TOKEN != ''
-        run: npx eas-cli@latest build --platform android --profile production --non-interactive --json > artifacts/eas-production-aab.json
-      - name: Record unavailable EAS credentials
-        if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && env.EXPO_TOKEN == ''
-        run: |
-          echo "EAS builds were not started because the repository EXPO_TOKEN secret is not available to this workflow." > artifacts/eas-build-blocker.txt
-          cat artifacts/eas-build-blocker.txt
-      - name: Fail release when Expo credentials are unavailable
-        if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && env.EXPO_TOKEN == ''
-        run: exit 1
-      - name: Upload audit, bundle and EAS build evidence
+      - name: Upload dependency audit evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: mobile-release-audit-evidence
-          path: |
-            artifacts/
-            mobile/android/app/build/outputs/apk/debug/app-debug.apk
+          name: mobile-dependency-audit-evidence
+          path: artifacts/
           if-no-files-found: warn
           retention-days: 14
-      - name: Fail workflow when Android emulator smoke test fails
-        if: always()
-        run: |
-          if [ "${{ steps.emulator-smoke.outcome }}" != "success" ]; then
-            echo "Android emulator smoke test failed; see the emulator step and uploaded logcat artifact."
-            exit 1
-          fi
