@@ -497,7 +497,7 @@ router.post('/admin/exams/:examId/publish',requireRole('admin'),async(req,res)=>
       VALUES($1,$2,'exam_published',$3::jsonb)
     `,[exam.id,req.user!.id,JSON.stringify({eligible_candidates:candidates.length})]);
     return {status:200,exam_id:exam.id,eligible_candidates:candidates.length};
-  });  if('error' in result) return res.status(400).json({error:result.error});
+  });  if('error' in result) return res.status(result.status??400).json({error:result.error});
   return res.json(result);
 });
 
