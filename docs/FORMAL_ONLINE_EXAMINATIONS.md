@@ -1,6 +1,6 @@
 # Formal online examinations
 
-This is a separate online-examination subsystem. It does not use or write physical teacher-report scores, attendance, report cards, report remarks, report-roster memberships or enrollment history.
+This is a separate online-examination subsystem. It never writes physical teacher-report scores, attendance, report cards, report remarks, report-roster memberships or enrollment history. Active report-roster membership is read-only and is used solely to determine exam eligibility.
 
 ## Question preparation and rights
 
@@ -16,7 +16,7 @@ Question preparation reuses the existing rights-aware `question_bank_questions` 
 
 Admin endpoints use existing lesson content and the existing Gemini `generateJSON` service:
 
-- `POST /online-exams/admin/exams/generate-drafts`: canonical school topics for JSS3 and other supported canonical-topic classes. The topic must be completed by every active student currently enrolled in the target class.
+- `POST /online-exams/admin/exams/generate-drafts`: canonical school topics for JSS3 and other supported canonical-topic classes. The topic must be completed by every active report-roster member with a valid same-school student account in the target class.
 - `POST /online-exams/admin/exams/generate-package-drafts`: SS1–SS3 package lessons. Only implemented, student-deliverable package lessons with permitted source provenance are eligible. Every current active report-roster candidate with a valid same-school student account must have a matching package lesson completion record.
 
 Both endpoints create three original MCQs per selected lesson in the question bank with:
@@ -82,7 +82,7 @@ Example request shape:
 - Admin review: `GET /online-exams/admin/exams/:examId/attempts`, `GET /online-exams/admin/attempts/:attemptId/responses`, and `PUT /online-exams/admin/attempts/:attemptId/responses/:questionId/mark` provide school-scoped manual marking for answers left `pending_review`.
 - School-scoped examiner endpoints list candidate attempts and responses, and permit manual marks only for responses left `pending_review` by unavailable AI marking.
 
-The deadline is calculated on the server as the earlier of start time plus configured duration and the examination end time. Client clocks are display-only. Refresh/reconnect recovery loads server-saved answers; the mobile screen also retains unsent answers locally and retries when connected.
+The deadline is calculated on the server as the earlier of start time plus configured duration and the examination end time. Client clocks are display-only. Refresh/reconnect recovery loads server-saved answers; the mobile screen also retains unsent answers locally and retries when connected. A server rejection after the deadline never clears an unsynced local answer: the submission keeps the local copy and the result screen warns the student to contact the school administrator.
 
 MCQs are marked automatically and receive answer-specific explanations. Every short-answer/essay question must include an explicit criterion rubric whose maximum marks sum to the question marks. AI marking reuses the existing `generateJSON(..., 'essay-mark')` provider, but its output is accepted only when criterion scores reconcile to the total, each criterion is within its mark limit, feedback is present and confidence is at least 0.75. Confidence and criterion evidence are stored per response. Low-confidence, malformed or unavailable AI marking is sent to `pending_review`; it is not silently awarded zero. Examiners can then apply a manual mark.
 
@@ -99,7 +99,7 @@ Migration `0014_formal_online_examinations.sql` adds:
 
 Migration `0015_online_exam_marking_confidence.sql` adds validated AI confidence (0–1) and structured criterion-level marking evidence to each written response. Migration `0016_question_bank_subject_reviews.sql` records append-only subject-teacher approval/rejection decisions; teachers can review only question-bank subjects that match their assigned teaching subjects, and only approved/published questions can be attached to an examination.
 
-No physical-reporting tables are referenced by the migration or route.
+The migration adds only online-assessment tables. The route reads `report_roster_memberships` for candidate eligibility but performs no writes to physical-reporting tables.
 
 ## Deployment and verification
 
@@ -107,13 +107,13 @@ No physical-reporting tables are referenced by the migration or route.
 - Deploy the backend API and mobile app together to expose the student flow.
 - No destructive production operation or data backfill is required.
 - CI workflow `.github/workflows/online-exams.yml` runs the backend build, focused contract tests, PostgreSQL 18 endpoint integration tests applying migrations 0012 → 0013 → 0014 → 0015 → 0016 in order, the full production migration-runner test against a disposable database, and mobile TypeScript check. A contract test also rejects any numbered migration gap.
-- The PostgreSQL integration test requires a disposable `TEST_DATABASE_URL`; it creates and drops only a uniquely named test schema.
+- The PostgreSQL endpoint integration test requires a disposable `TEST_DATABASE_URL` and creates/drops a uniquely named schema. A separate migration-runner integration test creates/drops a uniquely named disposable database to exercise the actual production `--fresh` and `--all` commands.
 
 
 Teacher subject review is exposed in the teacher app's More → Review Questions screen. It is a content-governance exception only; teachers still cannot create or administer online student assessments, and online assessment data remains separate from physical school reports.
 
 
-Admin experience: the Admin app's Assessments → Formal Online Exams screen lists school-scoped examinations, creates drafts from approved objective questions, publishes only after server-side candidate lesson-coverage checks, lists candidate attempts, displays per-question AI confidence/rubric evidence, and permits manual marks for `pending_review` responses. School administrators can browse only approved question-bank content through the exam API; global question-bank ingestion remains restricted to global administrators. Written-response question creation requires a criterion rubric; the mobile draft creator accepts per-question rubric criteria in `id|description|max_marks` lines and the backend validates that their marks reconcile exactly to the question maximum.
+Admin experience: the Admin app's Assessments → Formal Online Exams screen lists school-scoped examinations, creates drafts from approved objective and written-response questions, configures multiple ordered sections, per-question order and marks, optional examination year, and displays the calculated total score. It publishes only after server-side candidate lesson-coverage checks, lists candidate attempts, displays per-question AI confidence/rubric evidence, and permits manual marks for `pending_review` responses. School administrators can browse only approved question-bank content through the exam API; global question-bank ingestion remains restricted to global administrators. Written-response question creation requires a criterion rubric; the mobile draft creator accepts per-question rubric criteria in `id|description|max_marks` lines and the backend validates that their marks reconcile exactly to the configured question maximum.
 
 
 Coverage enforcement: the school-admin authoring screen requires an explicit school/class/subject lesson topic for every question. The backend validates that topic belongs to the selected school, class and subject; publication then locks and rechecks active report-roster memberships, valid student accounts and each candidate's completion of every mapped topic immediately before publishing. Questions without a valid lesson mapping cannot be attached to a formal exam.
