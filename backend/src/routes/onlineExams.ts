@@ -413,6 +413,7 @@ router.post('/admin/exams/:examId/publish',requireRole('admin'),async(req,res)=>
   const schoolCode=schoolForAdmin(req.user);
   if(!schoolCode) return res.status(400).json({error:'Select a school before publishing.'});
   const result=await withTransaction(async client=>{
+    await client.query('SET TRANSACTION ISOLATION LEVEL SERIALIZABLE');
     const {rows}=await client.query('SELECT * FROM online_exams WHERE id=$1 AND school_code=$2 FOR UPDATE',[req.params.examId,schoolCode]);
     const exam=rows[0];
     if(!exam) return {status:404,error:'Examination not found.'};
@@ -427,6 +428,7 @@ router.post('/admin/exams/:examId/publish',requireRole('admin'),async(req,res)=>
        FOR SHARE OF st,rrm,u
     `,[exam.school_code,exam.class_name]);
     if(!candidates.length) return {status:409,error:'No active candidates are enrolled in this examination class.'};
+    const candidateIds=candidates.map((candidate:any)=>candidate.id);
     if(new Date(exam.ends_at).getTime()<=Date.now()) return {status:409,error:'An examination whose end time has passed cannot be published.'};
     const {rows: generatedTopics}=await client.query(`
       SELECT DISTINCT (provenance->>'covered_topic_id')::integer AS topic_id
@@ -435,7 +437,6 @@ router.post('/admin/exams/:examId/publish',requireRole('admin'),async(req,res)=>
     `,[exam.id]);
     const coveredTopicIds=generatedTopics.map((row:any)=>Number(row.topic_id));
     if(coveredTopicIds.length){
-      const candidateIds=candidates.map((candidate:any)=>candidate.id);
       await client.query(`
         SELECT student_id,topic_id FROM topic_completions
          WHERE student_id=ANY($1::uuid[]) AND topic_id=ANY($2::int[])
