@@ -87,8 +87,8 @@ export async function buildSessionReportHtml(report: any, brand: SchoolBrand | n
     <tr>
       <td>${escapeHtml(s.subject_name)}</td>
       ${(s.term_scores ?? []).map((ts: any) => `<td>${ts.total ?? '—'}</td>`).join('')}
-      <td><b>${escapeHtml(s.session_total)}</b></td>
-      <td>${escapeHtml(s.session_average)}</td>
+      <td><b>${escapeHtml(s.session_total ?? '—')}</b></td>
+      <td>${escapeHtml(s.session_average ?? '—')}</td>
       <td>${escapeHtml(s.session_grade ?? '—')}</td>
     </tr>`).join('');
 
@@ -108,7 +108,8 @@ export async function buildSessionReportHtml(report: any, brand: SchoolBrand | n
       <tr class="summary-row"><td class="summary-label">Terms Recorded</td><td class="summary-value">${terms_present} / 3</td></tr>
       <tr class="summary-row"><td class="summary-label">Days Opened (session)</td><td class="summary-value">${attendance?.days_opened ?? 0}</td></tr>
       <tr class="summary-row"><td class="summary-label">Days Present (session)</td><td class="summary-value">${attendance?.days_present ?? 0}</td></tr>
-      <tr class="summary-row"><td class="summary-label">Subjects</td><td class="summary-value">${summary.subject_count}</td></tr>
+      <tr class="summary-row"><td class="summary-label">Subjects with scores</td><td class="summary-value">${summary.subject_count}</td></tr>
+      <tr class="summary-row"><td class="summary-label">Subjects expected</td><td class="summary-value">${summary.expected_subject_count ?? summary.subject_count}</td></tr>
       <tr class="summary-row"><td class="summary-label">Session Grand Total</td><td class="summary-value">${summary.grand_total}</td></tr>
       <tr class="summary-row"><td class="summary-label">Session Average</td><td class="summary-value">${summary.grand_average}%</td></tr>
     </table>
