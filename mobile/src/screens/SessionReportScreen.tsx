@@ -160,6 +160,9 @@ export default function SessionReportScreen({ route }: any) {
 
       <Card>
         <SectionHeader title="Subject Collation (1st + 2nd + 3rd Term)" />
+        {summary.subject_count === 0 && (
+          <Text style={styles.pendingTxt}>No scores have been entered for this session yet. Missing subjects remain visible below.</Text>
+        )}
         <View style={styles.tableHeader}>
           {['Subject', ...terms.map((t: any) => shortTermLabel(t.name)), 'Total', 'Avg', 'Grade'].map((h, i) => (
             <Text key={i} style={[styles.thCell, i === 0 && { flex: 2 }]}>{h}</Text>
