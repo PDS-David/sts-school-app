@@ -59,20 +59,20 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.deepEqual(markingColumns.map((row:any)=>row.column_name).sort(),['marking_confidence','marking_details']);
 
       const school='primary',admin=randomUUID(),studentUser=randomUUID(),otherUser=randomUUID(),teacherUser=randomUUID(),unassignedTeacher=randomUUID();
-      const student=randomUUID(),otherStudent=randomUUID();
+      const student=randomUUID(),otherStudent=randomUUID(),unrosteredStudent=randomUUID(),unrosteredUser=randomUUID();
       await client.query('INSERT INTO schools(code) VALUES($1)',[school]);
       await client.query(`INSERT INTO users(id,username,role,school_code,can_manage_all_schools,is_active) VALUES
         ($1,'test-admin','admin',$3,true,true),($2,'test-student','student',$3,false,true)`,[admin,studentUser,school]);
-      await client.query('INSERT INTO users(id,username,role,school_code,is_active) VALUES($1,$2,$3,$4,true),($5,$6,$7,$4,true)',[otherUser,'other-student','student',school,teacherUser,'math-teacher','teacher']);
+      await client.query('INSERT INTO users(id,username,role,school_code,is_active) VALUES($1,$2,$3,$4,true),($5,$6,$7,$4,true),($8,$9,$10,$4,true)',[otherUser,'other-student','student',school,teacherUser,'math-teacher','teacher',unrosteredUser,'unrostered-student','student']);
       await client.query('INSERT INTO users(id,username,role,school_code,is_active) VALUES($1,$2,$3,$4,true)',[unassignedTeacher,'unassigned-teacher','teacher',school]);
       await client.query("INSERT INTO subjects(id,name,school_code) VALUES(1,'Mathematics',$1),(2,'Biology',$1)",[school]);
       await client.query('INSERT INTO teacher_subjects(user_id,subject_id) VALUES($1,1)',[teacherUser]);
-      await client.query('INSERT INTO students(id,user_id,school_code,class_name) VALUES($1,$2,$3,$4),($5,$6,$3,$7)',
-        [student,studentUser,school,'SS 3',otherStudent,otherUser,'JSS 3']);
+      await client.query('INSERT INTO students(id,user_id,school_code,class_name) VALUES($1,$2,$3,$4),($5,$6,$3,$7),($8,$9,$3,$4)',
+        [student,studentUser,school,'SS 3',otherStudent,otherUser,'JSS 3',unrosteredStudent,unrosteredUser]);
       await client.query("INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status) VALUES($1,'SS 3','SS 3','active')",[student]);
       const coveredTopicId=900;
       await client.query("INSERT INTO topics(id,school_code,class_name,subject_id,title,term_id,order_index) VALUES($1,$2,'SS 3',1,'Linear Equations',1,1)",[coveredTopicId,school]);
-      await client.query('INSERT INTO topic_completions(student_id,topic_id) VALUES($1,$2)',[student,coveredTopicId]);
+      await client.query('INSERT INTO topic_completions(student_id,topic_id) VALUES($1,$2),($3,$2)',[student,coveredTopicId,unrosteredStudent]);
 
       const {rows: subjectRows}=await client.query("SELECT id FROM question_bank_subjects WHERE code='MATHEMATICS'");
       const {rows: questionRows}=await client.query("SELECT id FROM question_bank_questions WHERE question_number='AI-GEN-001' AND board='WAEC'");
@@ -176,7 +176,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.deepEqual(rejectedAudit.rows.map((row:any)=>row.decision),['rejected']);
 
       const lessonTopics=await request('/online-exams/admin/lesson-topics?class_name=SS%203&subject_name=Mathematics','GET',adminToken,undefined,school);
-      assert.equal(lessonTopics.status,200);assert.ok(lessonTopics.data.topics.some((item:any)=>item.id===coveredTopicId&&item.eligible_for_all_candidates));
+      assert.equal(lessonTopics.status,200);const coveredLesson=lessonTopics.data.topics.find((item:any)=>item.id===coveredTopicId);assert.ok(coveredLesson?.eligible_for_all_candidates);assert.equal(Number(coveredLesson.candidate_count),1,'only active report-roster members with valid student accounts count as candidates');assert.equal(Number(coveredLesson.completed_count),1);
       const examDraft={
         board:'WAEC',subject_name:'Mathematics',class_name:'SS 3',examination_type:'Mock',
         title:'SS3 Mathematics Mock',instructions:'Read each question carefully.',duration_minutes:30,
