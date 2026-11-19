@@ -47,7 +47,6 @@ jobs:
           arch: x86_64
           profile: pixel_2
           emulator-boot-timeout: 600
-          disable-animations: true
           script: bash .github/scripts/android-emulator-smoke.sh
       - name: Upload APK and emulator diagnostics
         if: always()
