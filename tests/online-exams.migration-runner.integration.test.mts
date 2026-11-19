@@ -36,7 +36,7 @@ test('production migration runner applies the complete PostgreSQL 18 sequence th
     assert.match(incrementalOutput,/Applied 0014 0014_formal_online_examinations\.sql/);
     assert.match(incrementalOutput,/Applied 0015 0015_online_exam_marking_confidence\.sql/);
     assert.match(incrementalOutput,/Applied 0016 0016_question_bank_subject_reviews\.sql/);
-    assert.match(incrementalOutput,/Applied 0017 0017_pilot_question_provenance_locators\\.sql/);
+    assert.match(incrementalOutput,/Applied 0017 0017_pilot_question_provenance_locators\.sql/);
 
     verifier=new Client({connectionString:target.toString()});
     await verifier.connect();
