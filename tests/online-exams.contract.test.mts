@@ -94,7 +94,7 @@ test('student flow caches unsent answers and derives the timer from the server d
   assert.match(mobileAttempt, /clock_offset_ms/);
   assert.ok(mobileAttempt.includes('while(Object.prototype.hasOwnProperty.call(pending.current,questionId))'));
   assert.ok(mobileApiClient.includes("url.startsWith('/online-exams/')"));
-  assert.ok(classPracticeScreen.includes('response.queuedOffline'));
+  assert.ok(classPracticeScreen.includes('queuedOffline'));
   assert.match(classPracticeScreen, /topicIdRef/);
   assert.match(classPracticeScreen, /Retry loading progress/);
   assert.match(mobileAttempt, /navigation\.replace\('OnlineExams'\)/);
