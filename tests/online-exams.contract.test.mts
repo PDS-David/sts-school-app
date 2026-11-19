@@ -16,6 +16,7 @@ const adminAssessments = await readFile(new URL('../mobile/src/screens/Assessmen
 const mobileList = await readFile(new URL('../mobile/src/screens/OnlineExamsScreen.tsx', import.meta.url), 'utf8');
 const mobileHome = await readFile(new URL('../mobile/src/screens/student/StudentAssessmentsHomeScreen.tsx', import.meta.url), 'utf8');
 const mobileAttempt = await readFile(new URL('../mobile/src/screens/OnlineExamAttemptScreen.tsx', import.meta.url), 'utf8');
+const mobileResult = await readFile(new URL('../mobile/src/screens/OnlineExamResultScreen.tsx', import.meta.url), 'utf8');
 
 
 test('numbered database migrations remain contiguous for the production migration runner', async () => {
@@ -83,6 +84,12 @@ test('student flow caches unsent answers and derives the timer from the server d
   assert.match(mobileAttempt, /deadline_at/);
   assert.match(mobileAttempt, /server_time/);
   assert.match(mobileAttempt, /navigation\.replace\('OnlineExams'\)/);
+  assert.match(mobileAttempt, /locally retained answers/);
+  const submitIndex=mobileAttempt.indexOf("api.post('/online-exams/attempts/'+attemptId+'/submit'");
+  const clearIndex=mobileAttempt.indexOf("AsyncStorage.setItem(storageKey,JSON.stringify({}));",submitIndex);
+  assert.ok(submitIndex>=0&&clearIndex>submitIndex,'local answers must only be cleared after the server confirms submission');
+  assert.match(mobileResult, /online-exam-attempt:/);
+  assert.match(mobileResult, /local copy has been retained/);
   assert.match(mobileList, /\/online-exams\/exams/);
 });
 
@@ -132,6 +139,12 @@ test('admin app can create, publish, list and manually review formal examination
   assert.match(adminExamScreen, /api\.put\('\/online-exams\/admin\/attempts\/'\+selectedAttempt\.attempt_id/);
   assert.match(adminTabs, /name="FormalOnlineExams" component=\{AdminOnlineExamsScreen\}/);
   assert.match(adminAssessments, /navigate\('FormalOnlineExams'\)/);
+  assert.match(adminExamScreen, /sectionsPayload/);
+  assert.match(adminExamScreen, /moveSection/);
+  assert.match(adminExamScreen, /moveQuestion/);
+  assert.match(adminExamScreen, /marksInputs/);
+  assert.match(adminExamScreen, /selectedTotalMarks/);
+  assert.match(adminExamScreen, /exam_year:yearValue/);
 });
 
 test('school admins browse only approved question-bank items through the exam API', () => {
