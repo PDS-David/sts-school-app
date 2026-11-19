@@ -35,6 +35,33 @@ const loginAttemptLimiter = rateLimit({
   store: createPostgresRateLimitStore('auth-login'),
 });
 
+// ── GET /auth/teacher-logins — username choices for the teacher PIN login ──
+// Only active teacher usernames are returned, scoped to the selected school.
+// Password/PIN hashes, IDs, and personal data are never exposed.
+const teacherLoginListLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 30,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Too many requests. Please try again later.' },
+});
+
+router.get('/teacher-logins', teacherLoginListLimiter, async (req, res) => {
+  const schoolCode = typeof req.query.school_code === 'string' ? req.query.school_code.trim() : '';
+  if (!['primary', 'secondary'].includes(schoolCode)) {
+    return res.status(400).json({ error: 'A valid school_code is required.' });
+  }
+  const { rows } = await query(
+    `SELECT username FROM users
+      WHERE role='teacher' AND school_code=$1 AND is_active=TRUE
+        AND password_hash IS NOT NULL
+        AND (access_expires_at IS NULL OR access_expires_at > now())
+      ORDER BY username`,
+    [schoolCode],
+  );
+  return res.json({ usernames: rows.map((row: { username: string }) => row.username) });
+});
+
 // ── POST /auth/login ──────────────────────────────────────────────────────────
 router.post('/login', loginAttemptLimiter, async (req, res) => {
   const { username, password, school_code } = req.body as { username?: string; password?: string; school_code?: string };
