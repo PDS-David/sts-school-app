@@ -49,11 +49,13 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       const examSql=await readFile(new URL('../backend/migrations/0014_formal_online_examinations.sql',import.meta.url),'utf8');
       const markingSql=await readFile(new URL('../backend/migrations/0015_online_exam_marking_confidence.sql',import.meta.url),'utf8');
       const reviewSql=await readFile(new URL('../backend/migrations/0016_question_bank_subject_reviews.sql',import.meta.url),'utf8');
+      const provenanceSql=await readFile(new URL('../backend/migrations/0017_pilot_question_provenance_locators.sql',import.meta.url),'utf8');
       await client.query(questionBankSql);
       await client.query(classPracticeSql);
       await client.query(examSql);
       await client.query(markingSql);
       await client.query(reviewSql);
+      await client.query(provenanceSql);
       const {rows: reviewTable}=await client.query(`SELECT to_regclass('question_bank_question_reviews') AS table_name`);
       assert.ok(reviewTable[0].table_name);
       const {rows: markingColumns}=await client.query(`SELECT column_name FROM information_schema.columns WHERE table_schema=$1 AND table_name='online_exam_responses' AND column_name IN ('marking_confidence','marking_details')`,[schema]);
