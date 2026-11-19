@@ -785,7 +785,8 @@ router.get('/session-report/:student_id', async (req, res) => {
     is_complete_session: terms.length === 3 && subjects.length > 0 && subjects.every(s => s.terms_recorded === 3),
     subjects,
     attendance: user.role === 'teacher' && !user.assigned_class
-      ? { days_present: null, days_opened: null, terms_recorded: null, terms_expected: null }\n      : { days_present, days_opened, terms_recorded: attRows.length, terms_expected: terms.length },
+      ? { days_present: null, days_opened: null, terms_recorded: null, terms_expected: null }
+      : { days_present, days_opened, terms_recorded: attRows.length, terms_expected: terms.length },
     summary: {
       grand_total,
       grand_average,
