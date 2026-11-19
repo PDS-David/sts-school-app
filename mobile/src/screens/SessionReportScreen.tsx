@@ -150,12 +150,12 @@ export default function SessionReportScreen({ route }: any) {
       <Card>
         <SectionHeader title={`${academic_year} Session Summary`} right={is_complete_session ? <Badge label="Complete" color={Colors.success} /> : <Badge label="In progress" color="#F0B429" />} />
         <RowItem label="Terms Recorded" value={`${terms_present} / 3`} />
-        <RowItem label="Days Opened (session)"  value={attendance?.days_opened ?? 0} />
-        <RowItem label="Days Present (session)" value={attendance?.days_present ?? 0} />
+        <RowItem label="Days Opened (session)"  value={attendance?.days_opened ?? '—'} />
+        <RowItem label="Days Present (session)" value={attendance?.days_present ?? '—'} />
         <RowItem label="Subjects with scores" value={summary.subject_count} />
         <RowItem label="Subjects expected" value={summary.expected_subject_count ?? summary.subject_count} />
-        <RowItem label="Session Grand Total" value={summary.grand_total} />
-        <RowItem label="Session Average" value={`${summary.grand_average}%`} />
+        <RowItem label="Session Grand Total" value={summary.grand_total ?? '—'} />
+        <RowItem label="Session Average" value={summary.grand_average == null ? '—' : `${summary.grand_average}%`} />
       </Card>
 
       <Card>
