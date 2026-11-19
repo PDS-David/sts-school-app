@@ -81,6 +81,9 @@ jobs:
           arch: x86_64
           profile: pixel_2
           script: bash .github/scripts/android-emulator-smoke.sh
+      - name: Build production-connected internal teacher APK with EAS
+        if: github.event_name == 'push' && env.EXPO_TOKEN != ''
+        run: npx eas-cli@latest build --platform android --profile preview --non-interactive --json > artifacts/eas-preview-teacher-apk.json
       - name: Capture complete dependency audit
         run: |
           mkdir -p artifacts
