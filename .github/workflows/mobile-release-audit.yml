@@ -5,6 +5,7 @@ on:
     branches:
       - "agent/mobile-release-audit-*"
       - "agent/mobile-audit-and-db-readiness-fixes-*"
+      - "agent/mobile-teacher-release-*"
     paths:
       - ".github/workflows/mobile-release-audit.yml"
       - ".github/scripts/android-emulator-smoke.sh"
