@@ -249,3 +249,92 @@ export function renderTermReportHtml(
 </body>
 </html>`;
 }
+
+/**
+ * Pure session-report HTML renderer. Kept separate from Expo print/share
+ * modules so the actual PDF document content can be regression-tested in CI.
+ */
+export function renderSessionReportHtml(
+  report: any,
+  brand: SchoolBrand | null,
+  logoDataUri = '',
+): string {
+  const student = report?.student ?? {};
+  const summary = report?.summary ?? {};
+  const attendance = report?.attendance ?? {};
+  const terms = Array.isArray(report?.terms) ? report.terms : [];
+  const subjects = Array.isArray(report?.subjects) ? report.subjects : [];
+  const termsPresent = Number(report?.terms_present ?? 0);
+  const complete = report?.is_complete_session === true;
+  const termHeaders = terms.map((term: any) => {
+    const name = String(term?.name ?? '');
+    const match = name.match(/^(\\d)/);
+    return match ? `T${match[1]}` : name;
+  });
+  const rows = subjects.map((subject: any) => `
+    <tr>
+      <td>${display(subject?.subject_name)}</td>
+      ${terms.map((_term: any, index: number) => {
+        const score = subject?.term_scores?.[index];
+        return `<td>${display(score?.total)}</td>`;
+      }).join('')}
+      <td><b>${display(subject?.session_total)}</b></td>
+      <td>${display(subject?.session_average)}</td>
+      <td>${display(subject?.session_grade)}</td>
+    </tr>`).join('');
+  const subjectCount = summary?.subject_count ?? 0;
+  const expectedSubjectCount = summary?.expected_subject_count ?? subjectCount;
+  const noScores = Number(subjectCount) === 0;
+
+  return `<!DOCTYPE html>
+<html><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  @page { size: A4; margin: 12mm 10mm; }
+  body { font-family: Arial, Helvetica, sans-serif; color: #1a1a1a; padding: 10px 16px; }
+  .letterhead { text-align: center; margin-bottom: 12px; }
+  .letterhead img { width: 72px; height: 72px; object-fit: contain; }
+  .school-name { font-size: 19px; font-weight: 800; margin: 6px 0 0; }
+  .motto { font-size: 11px; font-style: italic; color: #555; margin: 2px 0; }
+  .doc-title { font-size: 12px; font-weight: 700; letter-spacing: 1px; margin-top: 8px; }
+  .student-bar { margin: 12px 0; padding: 8px; border: 1px solid #bbb; }
+  .student-name { font-size: 15px; font-weight: 700; }
+  .student-meta { font-size: 11px; color: #555; margin-top: 3px; }
+  .notice { font-size: 11px; color: #8a5a00; margin-bottom: 12px; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 12px; font-size: 11px; }
+  th, td { border: 1px solid #ddd; padding: 6px 4px; text-align: center; }
+  th { background: #eee; font-weight: 700; }
+  td:first-child, th:first-child { text-align: left; }
+  .summary-row td { border: 0; padding: 4px; }
+  .summary-label { color: #666; text-align: left; }
+  .summary-value { font-weight: 700; text-align: right; }
+  h3 { font-size: 13px; margin: 12px 0 6px; }
+  .footer-note { font-size: 10px; color: #888; text-align: center; margin-top: 12px; }
+</style></head><body>
+  <div class="letterhead">
+    ${logoDataUri ? `<img src="${escapeHtml(logoDataUri)}" alt="" />` : ''}
+    <div class="school-name">${escapeHtml(brand?.name ?? '')}</div>
+    <div class="motto">${escapeHtml(brand?.motto ?? '')}</div>
+    <div class="doc-title">SESSION REPORT — ${display(report?.academic_year, '')}</div>
+  </div>
+  <div class="student-bar">
+    <div class="student-name">${display(student.full_name, '')}</div>
+    <div class="student-meta">${display(student.class_name, '')} &middot; Adm: ${display(student.admission_number)}</div>
+  </div>
+  ${!complete ? `<div class="notice">Session in progress — ${termsPresent} of 3 terms recorded (${terms.map((term: any) => display(term?.name, '')).join(', ')}). Totals reflect only the terms entered so far.${noScores ? ' No scores have been entered yet.' : ''}</div>` : ''}
+  <table>
+    <tr class="summary-row"><td class="summary-label">Terms Recorded</td><td class="summary-value">${termsPresent} / 3</td></tr>
+    <tr class="summary-row"><td class="summary-label">Days Opened (session)</td><td class="summary-value">${display(attendance?.days_opened, '0')}</td></tr>
+    <tr class="summary-row"><td class="summary-label">Days Present (session)</td><td class="summary-value">${display(attendance?.days_present)}</td></tr>
+    <tr class="summary-row"><td class="summary-label">Subjects with scores</td><td class="summary-value">${display(subjectCount, '0')}</td></tr>
+    <tr class="summary-row"><td class="summary-label">Subjects expected</td><td class="summary-value">${display(expectedSubjectCount, '0')}</td></tr>
+    <tr class="summary-row"><td class="summary-label">Session Grand Total</td><td class="summary-value">${display(summary?.grand_total)}</td></tr>
+    <tr class="summary-row"><td class="summary-label">Session Average</td><td class="summary-value">${summary?.grand_average === null || summary?.grand_average === undefined ? '—' : `${escapeHtml(summary.grand_average)}%`}</td></tr>
+  </table>
+  <h3>Subject Collation (1st + 2nd + 3rd Term)</h3>
+  <table>
+    <tr><th>Subject</th>${termHeaders.map(header => `<th>${escapeHtml(header)}</th>`).join('')}<th>Total</th><th>Avg</th><th>Grade</th></tr>
+    ${rows || `<tr><td colspan="${3 + termHeaders.length}">No scores recorded for any term in this session yet.</td></tr>`}
+  </table>
+  <div class="footer-note">Generated via STS School App</div>
+</body></html>`;
+}
