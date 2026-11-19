@@ -785,12 +785,14 @@ router.get('/admin/question-bank/questions',requireRole('admin'),async(req,res)=
   const board=typeof req.query.board==='string'?req.query.board:null;
   const subjectCode=typeof req.query.subject_code==='string'?req.query.subject_code:null;
   const {rows}=await query(`
-    SELECT q.id,q.board,q.paper,q.question_number,q.question_type,q.stem,q.options,q.marks,
-           q.content_origin,q.rights_status,s.code AS subject_code,s.name AS subject,
-           t.slug AS topic_slug,t.name AS topic
+    SELECT q.id,q.board,q.exam_year,q.paper,q.question_number,q.question_type,q.stem,q.options,q.marks,
+           q.content_origin,q.rights_status,q.source_locator,s.code AS subject_code,s.name AS subject,
+           t.slug AS topic_slug,t.name AS topic,src.source_name,src.source_url,
+           src.rights_status AS source_rights,src.rights_evidence
       FROM question_bank_questions q
       JOIN question_bank_subjects s ON s.id=q.subject_id
       JOIN question_bank_topics t ON t.id=q.topic_id AND t.subject_id=q.subject_id
+      JOIN question_bank_sources src ON src.id=q.source_id AND src.is_active=true
      WHERE q.review_status IN ('approved','published')
        AND ($1::text IS NULL OR q.board=$1)
        AND ($2::text IS NULL OR s.code=$2)
