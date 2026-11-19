@@ -64,7 +64,7 @@ export default function ClassPracticeScreen({ route }: any) {
       const response=await api.post('/class-practice/sets/'+submittedSetId+'/submit',{
         answers:questions.map(q=>({question_id:q.id,answer:answers[q.id]})),
       });
-      if(response.queuedOffline)throw new Error('Your submission is queued offline and has not yet been confirmed. Reconnect before treating it as submitted.');
+      if((response as any).queuedOffline)throw new Error('Your submission is queued offline and has not yet been confirmed. Reconnect before treating it as submitted.');
       if(topicIdRef.current===submittedTopicId){setResult(response.data);await loadProgress();}
     }catch(e:any){
       // A timed-out response may still have committed on the server. Recover
