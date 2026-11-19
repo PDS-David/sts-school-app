@@ -38,10 +38,13 @@ export default function TeacherQuestionReviewScreen() {
     setBusy(question.id);setError('');setMessage('');
     try{
       const {data}=await api.post('/question-bank/questions/'+question.id+'/review',{decision,notes:note});
-      if(decision==='approved'||(decision==='rejected'&&!includeRejected))
-        setQuestions(current=>current.filter(item=>item.id!==question.id));
-      else setQuestions(current=>current.map(item=>item.id===question.id?{...item,my_decision:decision,my_notes:note}:item));
-      setMessage(decision==='approved'?'Question approved for use in online examinations.':'Question returned for revision; the rejection is recorded.');
+      if(decision==='approved'||(decision==='rejected'&&!includeRejected)){
+        setMessage(decision==='approved'?'Question approved for use in online examinations.':'Question returned for revision; the rejection is recorded.');
+        await load(0);
+      }else{
+        setQuestions(current=>current.map(item=>item.id===question.id?{...item,my_decision:decision,my_notes:note}:item));
+        setMessage('Rejection remains available in the audit/reconsideration view.');
+      }
     }catch(e:any){
       setError(e?.response?.data?.error??'The review decision could not be saved.');
     }finally{setBusy(null);}
