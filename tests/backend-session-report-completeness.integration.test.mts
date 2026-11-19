@@ -108,7 +108,7 @@ test('session report completeness includes subjects with no marks in any term', 
       terms_present: number;
       is_complete_session: boolean;
       subjects: Array<{ subject_name: string; terms_recorded: number; session_total: number | null }>;
-      summary: { subject_count: number; expected_subject_count: number };
+      summary: { subject_count: number; expected_subject_count: number; grand_total: number | null; grand_average: number | null };\n      attendance: { days_present: number | null; terms_recorded: number; terms_expected: number };
     };
     assert.equal(incomplete.terms_present, 3);
     assert.equal(incomplete.is_complete_session, false,
@@ -119,7 +119,7 @@ test('session report completeness includes subjects with no marks in any term', 
     assert.equal(missingMath?.terms_recorded, 0);
     assert.equal(missingMath?.session_total, null);
     assert.equal(incomplete.summary.subject_count, 1);
-    assert.equal(incomplete.summary.expected_subject_count, 2);
+    assert.equal(incomplete.summary.expected_subject_count, 2);\n    assert.equal(incomplete.summary.grand_total, 180, 'session grand total reflects only the marked subject');\n    assert.equal(incomplete.summary.grand_average, 60);\n    assert.equal(incomplete.attendance.days_present, null, 'unentered attendance must not be reported as zero days present');\n    assert.equal(incomplete.attendance.terms_recorded, 0);\n    assert.equal(incomplete.attendance.terms_expected, 3);
 
     for (const termId of termIds) {
       await query(
