@@ -200,7 +200,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.equal(packageProgressAccepted.status,502,'the SS1 package progress record must satisfy coverage before the intentionally unavailable AI provider is called');
 
       const examDraft={
-        board:'WAEC',subject_name:'Mathematics',class_name:'SS 3',examination_type:'Mock',
+        board:'WAEC',subject_name:'Mathematics',class_name:'SS 3',examination_type:'Mock',exam_year:2026,
         title:'SS3 Mathematics Mock',instructions:'Read each question carefully.',duration_minutes:30,
         starts_at:new Date(Date.now()-60000).toISOString(),ends_at:new Date(Date.now()+2*60*60*1000).toISOString(),
         sections:[{title:'Section A',instructions:'Answer all objective questions.',questions:[{question_id:questionId,marks:2,covered_topic_id:coveredTopicId}]},{title:'Section B',instructions:'Show your working.',questions:[{question_id:essayQuestionId,marks:5,covered_topic_id:coveredTopicId,marking_rubric:[{id:'method',description:'Shows the correct method',max_marks:3},{id:'result',description:'States the correct result',max_marks:2}]}]}]
@@ -220,6 +220,18 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.equal(created.status,201);
       assert.equal(Number(created.data.total_marks),7,'exam total must equal the sum of configured question marks');
       const examId=created.data.exam.id;
+      const provenanceRows=await client.query('SELECT provenance FROM online_exam_questions WHERE exam_id=$1 ORDER BY position',[examId]);
+      assert.equal(provenanceRows.rows.length,2);
+      const examProvenance=provenanceRows.rows[0].provenance;
+      assert.equal(examProvenance.board,'WAEC');
+      assert.equal(examProvenance.subject,'Mathematics');
+      assert.equal(examProvenance.class_name,'SS 3');
+      assert.equal(examProvenance.examination_type,'Mock');
+      assert.equal(examProvenance.session_exam_year,2026);
+      assert.equal(examProvenance.rights_status,'original_generated');
+      assert.ok(examProvenance.source_name);
+      assert.ok(examProvenance.rights_evidence);
+      assert.ok(examProvenance.source_locator);
       const adminExams=await request('/online-exams/admin/exams','GET',adminToken,undefined,school);
       assert.equal(adminExams.status,200);assert.equal(adminExams.data.exams.length,1);assert.equal(adminExams.data.exams[0].id,examId);
       await client.query('DELETE FROM report_roster_memberships WHERE student_id=$1',[student]);
