@@ -96,6 +96,6 @@ jobs:
       - name: Verify report-roster schema safeguards and teacher role policy
         run: node --import tsx --test tests/report-roster-schema.test.mts tests/backend-teacher-report-only-policy.test.mts
       - name: Verify class-lock, score, attendance, weekly-effort and term boundaries
-        run: node --import tsx --test tests/backend-report-roster-lifecycle.integration.test.mts tests/backend-class-lock-read-scope.integration.test.mts tests/backend-score-subject-scope-atomicity.integration.test.mts tests/backend-attendance-report-scope.integration.test.mts tests/backend-admin-report-school-scope.integration.test.mts tests/backend-session-report-completeness.integration.test.mts tests/backend-weekly-feedback-access-scope.integration.test.mts tests/backend-term-session-atomicity.integration.test.mts
+        run: node --import tsx --test tests/backend-report-roster-lifecycle.integration.test.mts tests/backend-class-lock-read-scope.integration.test.mts tests/backend-score-subject-scope-atomicity.integration.test.mts tests/backend-attendance-report-scope.integration.test.mts tests/backend-admin-report-school-scope.integration.test.mts tests/backend-session-report-completeness.integration.test.mts tests/backend-subject-teacher-report-scope.test.mts tests/backend-weekly-feedback-access-scope.integration.test.mts tests/backend-term-session-atomicity.integration.test.mts
       - name: Type-check backend
         run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
