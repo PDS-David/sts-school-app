@@ -36,6 +36,10 @@ export default function AdminOnlineExamsScreen() {
   const [selectedTopic,setSelectedTopic]=useState<any>(null);
   const [loadingTopics,setLoadingTopics]=useState(false);
   const [selectedQuestions,setSelectedQuestions]=useState<Record<string,boolean>>({});
+  const [questionOrder,setQuestionOrder]=useState<string[]>([]);
+  const [marksInputs,setMarksInputs]=useState<Record<string,string>>({});
+  const [sections,setSections]=useState<any[]>([{id:'section-1',title:'Section A',instructions:'Answer all questions in this section.'}]);
+  const [sectionByQuestion,setSectionByQuestion]=useState<Record<string,string>>({});
   const [rubricInputs,setRubricInputs]=useState<Record<string,string>>({});
   const [selectedExam,setSelectedExam]=useState<any>(null);
   const [selectedAttempt,setSelectedAttempt]=useState<any>(null);
@@ -48,6 +52,7 @@ export default function AdminOnlineExamsScreen() {
   const [subject,setSubject]=useState<any>(null);
   const [title,setTitle]=useState('');
   const [examType,setExamType]=useState('Mock');
+  const [examYear,setExamYear]=useState('');
   const [instructions,setInstructions]=useState('Read each question carefully. Answer all questions before submitting.');
   const [duration,setDuration]=useState('60');
   const [startsAt,setStartsAt]=useState(iso(24*60*60*1000));
@@ -66,7 +71,7 @@ export default function AdminOnlineExamsScreen() {
   useEffect(()=>{void loadExams();},[loadExams]);
 
   const openCreate=async()=>{
-    setMode('create');setError('');setNotice('');setSelectedQuestions({});
+    setMode('create');setError('');setNotice('');setSelectedQuestions({});setQuestionOrder([]);setMarksInputs({});setSectionByQuestion({});setSections([{id:'section-1',title:'Section A',instructions:'Answer all questions in this section.'}]);
     try{const {data}=await api.get('/online-exams/admin/question-bank/subjects');setSubjects(data.subjects??[]);setSubject(null);setLessonTopics([]);setSelectedTopic(null);}
     catch(e:any){setError(e?.response?.data?.error??'Question-bank access is required to create a formal examination.');}
   };
@@ -76,6 +81,8 @@ export default function AdminOnlineExamsScreen() {
     try{
       const {data}=await api.get('/online-exams/admin/question-bank/questions',{params:{board:nextBoard,subject_code:nextSubject.code,review_status:'approved'}});
       setQuestions(data.questions??[]);
+      setQuestionOrder((data.questions??[]).map((q:any)=>q.id));
+      setMarksInputs(Object.fromEntries((data.questions??[]).map((q:any)=>[q.id,String(q.marks??1)])));
       if((data.questions??[]).some((q:any)=>q.question_type!=='mcq'))
         setNotice('Written-response questions require a complete criterion rubric. Add one criterion per line using id|description|max_marks; the marks must sum to the question maximum.');
     }catch(e:any){setError(e?.response?.data?.error??'Could not load approved questions for this subject.');}
@@ -93,30 +100,73 @@ export default function AdminOnlineExamsScreen() {
   const chooseBoard=async(value:string)=>{setBoard(value);if(subject)await loadQuestions(value,subject);};
   const chooseClass=async(value:string)=>{setClassName(value);setSelectedTopic(null);if(subject)await loadLessonTopics(subject,value);};
   const chooseSubject=async(value:any)=>{setSubject(value);await Promise.all([loadQuestions(board,value),loadLessonTopics(value,className)]);};
-  const toggleQuestion=(id:string)=>setSelectedQuestions(current=>({...current,[id]:!current[id]}));
+  const toggleQuestion=(id:string)=>setSelectedQuestions(current=>{
+    const selecting=!current[id];
+    if(selecting){
+      setSectionByQuestion(previous=>({...previous,[id]:previous[id]??sections[0]?.id??'section-1'}));
+      const question=questions.find(item=>item.id===id);
+      setMarksInputs(previous=>({...previous,[id]:previous[id]??String(question?.marks??1)}));
+    }
+    return {...current,[id]:selecting};
+  });
+  const selectedQuestionList=questionOrder.map(id=>questions.find(item=>item.id===id)).filter((item:any)=>item&&selectedQuestions[item.id]);
+  const selectedTotalMarks=selectedQuestionList.reduce((sum:number,item:any)=>sum+(Number(marksInputs[item.id]??item.marks)||0),0);
+  const updateSection=(id:string,patch:any)=>setSections(current=>current.map(section=>section.id===id?{...section,...patch}:section));
+  const addSection=()=>setSections(current=>[...current,{id:'section-'+(current.length+1),title:'Section '+String.fromCharCode(65+current.length),instructions:'Answer all questions in this section.'}]);
+  const moveSection=(index:number,direction:number)=>{
+    setSections(current=>{const next=[...current];const target=index+direction;if(target<0||target>=next.length)return current;[next[index],next[target]]=[next[target],next[index]];return next;});
+  };
+  const removeSection=(id:string)=>{
+    if(sections.length<=1)return;
+    const fallback=sections.find(section=>section.id!==id)?.id;
+    setSections(current=>current.filter(section=>section.id!==id));
+    setSectionByQuestion(current=>Object.fromEntries(Object.entries(current).map(([questionId,sectionId])=>[questionId,sectionId===id?fallback:sectionId])));
+  };
+  const moveQuestion=(id:string,direction:number)=>{
+    const sectionId=sectionByQuestion[id]??sections[0]?.id;
+    const ids=questionOrder.filter(questionId=>selectedQuestions[questionId]&&(sectionByQuestion[questionId]??sections[0]?.id)===sectionId);
+    const index=ids.indexOf(id),target=index+direction;
+    if(index<0||target<0||target>=ids.length)return;
+    const reordered=[...ids];[reordered[index],reordered[target]]=[reordered[target],reordered[index]];
+    const positions=questionOrder.map((questionId,position)=>({questionId,position})).filter(item=>ids.includes(item.questionId)).map(item=>item.position);
+    const next=[...questionOrder];positions.forEach((position,i)=>{next[position]=reordered[i];});setQuestionOrder(next);
+  };
 
   const createExam=async()=>{
-    const selected=questions.filter(q=>selectedQuestions[q.id]);
+    const selected=selectedQuestionList;
     if(!subject||!selectedTopic||selected.length===0){setError('Select a subject, a lesson completed by every candidate and at least one approved question.');return;}
     if(!title.trim()||!instructions.trim()||!Number.isInteger(Number(duration))||Number(duration)<1||Number(duration)>600){
       setError('Enter a title, instructions and a duration from 1 to 600 minutes.');return;
     }
-    const examQuestions:any[]=[];
-    for(const question of selected){
-      const item:any={question_id:question.id,marks:Number(question.marks),covered_topic_id:Number(selectedTopic.id)};
-      if(question.question_type!=='mcq'){
-        const rubric=parseRubric(rubricInputs[question.id]??'',Number(question.marks));
-        if(!rubric){setError('Complete a valid criterion rubric for every selected written-response question.');return;}
-        item.marking_rubric=rubric;
-      }
-      examQuestions.push(item);
+    const yearValue=examYear.trim()?Number(examYear):null;
+    if(yearValue!==null&&(!Number.isInteger(yearValue)||yearValue<1900||yearValue>2100)){
+      setError('Enter a valid examination year between 1900 and 2100.');return;
     }
+    const sectionsPayload:any[]=[];
+    for(const section of sections){
+      if(!section.title.trim()){setError('Every examination section needs a title.');return;}
+      const sectionQuestions:any[]=[];
+      const sectionItems=selected.filter((question:any)=>(sectionByQuestion[question.id]??sections[0]?.id)===section.id);
+      for(const question of sectionItems){
+        const marks=Number(marksInputs[question.id]??question.marks);
+        if(!Number.isSafeInteger(marks)||marks<1||marks>100){setError('Every question mark must be a whole number from 1 to 100.');return;}
+        const item:any={question_id:question.id,marks,covered_topic_id:Number(selectedTopic.id)};
+        if(question.question_type!=='mcq'){
+          const rubric=parseRubric(rubricInputs[question.id]??'',marks);
+          if(!rubric){setError('Complete a valid criterion rubric for every selected written-response question. Rubric marks must sum to the configured question marks.');return;}
+          item.marking_rubric=rubric;
+        }
+        sectionQuestions.push(item);
+      }
+      if(sectionQuestions.length)sectionsPayload.push({title:section.title.trim(),instructions:section.instructions.trim(),questions:sectionQuestions});
+    }
+    if(!sectionsPayload.length){setError('Assign at least one question to an examination section.');return;}
     setBusy('create');setError('');setNotice('');
     try{
       await api.post('/online-exams/admin/exams',{
-        board,subject_name:subject.name,class_name:className,examination_type:examType,title:title.trim(),
-        instructions:instructions.trim(),duration_minutes:Number(duration),starts_at:startsAt,ends_at:endsAt,
-        sections:[{title:'Section A',instructions:'Answer all questions in this section.',questions:examQuestions}],
+        board,subject_name:subject.name,class_name:className,examination_type:examType,
+        exam_year:yearValue,title:title.trim(),instructions:instructions.trim(),
+        duration_minutes:Number(duration),starts_at:startsAt,ends_at:endsAt,sections:sectionsPayload,
       });
       setNotice('Examination draft created. Review its schedule and publish when candidate lesson coverage is complete.');
       setMode('list');await loadExams();
@@ -213,10 +263,25 @@ export default function AdminOnlineExamsScreen() {
               <View style={styles.chips}>{subjects.map(item=><TouchableOpacity key={item.id} onPress={()=>chooseSubject(item)} style={[styles.chip,subject?.id===item.id&&styles.chipActive]}><Text style={[styles.chipText,subject?.id===item.id&&styles.chipTextActive]}>{item.name}</Text></TouchableOpacity>)}</View>
               <Field label="Title" value={title} onChange={setTitle} placeholder="SS 3 Mathematics Mock Examination"/>
               <Field label="Examination type" value={examType} onChange={setExamType} placeholder="Mock / Terminal / BECE / WAEC"/>
+              <Field label="Examination year (optional)" value={examYear} onChange={setExamYear} keyboardType="numeric" placeholder="2026"/>
               <Field label="Instructions" value={instructions} onChange={setInstructions} multiline/>
               <Field label="Duration (minutes)" value={duration} onChange={setDuration} keyboardType="numeric"/>
               <Field label="Start time (ISO 8601)" value={startsAt} onChange={setStartsAt}/>
               <Field label="End time (ISO 8601)" value={endsAt} onChange={setEndsAt}/>
+              <Text style={styles.label}>Examination sections and order</Text>
+              {sections.map((section,index)=>(
+                <View key={section.id} style={styles.sectionConfig}>
+                  <View style={styles.row}>
+                    <Text style={styles.questionText}>Section {index+1}</Text>
+                    <TouchableOpacity onPress={()=>moveSection(index,-1)} disabled={index===0}><Ionicons name="arrow-up" size={18} color={index===0?Colors.textSub:Colors.primary}/></TouchableOpacity>
+                    <TouchableOpacity onPress={()=>moveSection(index,1)} disabled={index===sections.length-1}><Ionicons name="arrow-down" size={18} color={index===sections.length-1?Colors.textSub:Colors.primary}/></TouchableOpacity>
+                    {sections.length>1?<TouchableOpacity onPress={()=>removeSection(section.id)}><Ionicons name="trash-outline" size={18} color={Colors.error}/></TouchableOpacity>:null}
+                  </View>
+                  <Field label="Section title" value={section.title} onChange={(value:string)=>updateSection(section.id,{title:value})} placeholder="Section A"/>
+                  <Field label="Section instructions" value={section.instructions} onChange={(value:string)=>updateSection(section.id,{instructions:value})} multiline/>
+                </View>
+              ))}
+              <Btn label="Add section" variant="outline" onPress={addSection} style={{marginTop:Spacing.sm}}/>
               <Text style={styles.label}>Lesson coverage — candidates must have completed this topic</Text>
               {loadingTopics?<Text style={styles.meta}>Checking candidate lesson coverage…</Text>:null}
               {!loadingTopics&&subject&&lessonTopics.length===0?<Empty message="No lesson topics were found for this class and subject."/>:null}
@@ -227,22 +292,39 @@ export default function AdminOnlineExamsScreen() {
               {selectedTopic?<Text style={styles.notice}>Selected lesson: {selectedTopic.title}. The server rechecks every candidate before publication.</Text>:null}
               <Text style={styles.label}>Approved questions ({questions.length})</Text>
               {subject&&!questions.length?<Empty message="No approved MCQ questions are available for this board and subject. Ask an assigned subject teacher to review the question bank first."/>:null}
-              {questions.map(question=>(
-                <View key={question.id}>
-                  <TouchableOpacity onPress={()=>toggleQuestion(question.id)} style={[styles.question,selectedQuestions[question.id]&&styles.questionSelected]}>
-                    <Ionicons name={selectedQuestions[question.id]?'checkbox':'square-outline'} size={20} color={selectedQuestions[question.id]?Colors.primary:Colors.textSub}/>
+              <Text style={styles.notice}>Selected {selectedQuestionList.length} question(s) · Total {selectedTotalMarks} marks</Text>
+              {questionOrder.map((questionId,index)=>{
+                const question=questions.find(item=>item.id===questionId);
+                if(!question)return null;
+                const selected=!!selectedQuestions[question.id];
+                const sectionId=sectionByQuestion[question.id]??sections[0]?.id;
+                const sectionQuestionIds=questionOrder.filter(id=>selectedQuestions[id]&&(sectionByQuestion[id]??sections[0]?.id)===sectionId);
+                const sectionPosition=sectionQuestionIds.indexOf(question.id);
+                return <View key={question.id}>
+                  <TouchableOpacity onPress={()=>toggleQuestion(question.id)} style={[styles.question,selected&&styles.questionSelected]}>
+                    <Ionicons name={selected?'checkbox':'square-outline'} size={20} color={selected?Colors.primary:Colors.textSub}/>
                     <View style={{flex:1}}>
                       <Text style={styles.questionText}>{question.stem}</Text>
-                      <Text style={styles.meta}>{question.topic} · {question.question_type} · {question.marks} marks · {question.question_number}</Text>
+                      <Text style={styles.meta}>{question.topic} · {question.question_type} · Bank marks {question.marks} · {question.question_number}</Text>
                     </View>
                   </TouchableOpacity>
-                  {selectedQuestions[question.id]&&question.question_type!=='mcq'?(
+                  {selected?(
                     <View style={styles.rubricWrap}>
-                      <Field label={'Marking rubric for '+question.marks+' marks (id|description|max_marks per line)'} value={rubricInputs[question.id]??''} onChange={(value:string)=>setRubricInputs(current=>({...current,[question.id]:value}))} multiline placeholder={'method|Shows the correct method|3\nresult|States the correct result|2'}/>
+                      <Field label="Question marks" value={marksInputs[question.id]??String(question.marks)} onChange={(value:string)=>setMarksInputs(current=>({...current,[question.id]:value}))} keyboardType="numeric"/>
+                      <Text style={styles.label}>Place in section</Text>
+                      <View style={styles.chips}>{sections.map(section=><TouchableOpacity key={section.id} onPress={()=>setSectionByQuestion(current=>({...current,[question.id]:section.id}))} style={[styles.chip,sectionId===section.id&&styles.chipActive]}><Text style={[styles.chipText,sectionId===section.id&&styles.chipTextActive]}>{section.title||section.id}</Text></TouchableOpacity>)}</View>
+                      <View style={styles.row}>
+                        <Text style={styles.meta}>Question order: {sectionPosition+1}</Text>
+                        <TouchableOpacity onPress={()=>moveQuestion(question.id,-1)} disabled={sectionPosition<=0}><Ionicons name="arrow-up-circle-outline" size={22} color={sectionPosition<=0?Colors.textSub:Colors.primary}/></TouchableOpacity>
+                        <TouchableOpacity onPress={()=>moveQuestion(question.id,1)} disabled={sectionPosition<0||sectionPosition===sectionQuestionIds.length-1}><Ionicons name="arrow-down-circle-outline" size={22} color={sectionPosition<0||sectionPosition===sectionQuestionIds.length-1?Colors.textSub:Colors.primary}/></TouchableOpacity>
+                      </View>
+                      {question.question_type!=='mcq'?(
+                        <Field label={'Marking rubric (id|criterion|max_marks), total '+(marksInputs[question.id]??question.marks)+' marks'} value={rubricInputs[question.id]??''} onChange={(value:string)=>setRubricInputs(current=>({...current,[question.id]:value}))} multiline placeholder={'method|Shows the correct method|3\nresult|States the correct result|2'}/>
+                      ):null}
                     </View>
                   ):null}
-                </View>
-              ))}
+                </View>;
+              })}
               <Btn label={busy==='create'?'Creating…':'Create draft'} onPress={createExam} loading={busy==='create'} disabled={busy==='create'||!selectedTopic||!questions.some(q=>selectedQuestions[q.id])} style={{marginTop:Spacing.md}}/>
             </Card>
           )}
@@ -320,6 +402,7 @@ const styles=StyleSheet.create({
   input:{borderWidth:1,borderColor:Colors.border,borderRadius:Radius.md,padding:Spacing.sm,color:Colors.text,backgroundColor:Colors.white,minHeight:42},
   question:{flexDirection:'row',alignItems:'flex-start',gap:Spacing.sm,borderWidth:1,borderColor:Colors.border,borderRadius:Radius.md,padding:Spacing.sm,marginTop:Spacing.sm},
   questionSelected:{borderColor:Colors.primary,backgroundColor:Colors.primary+'08'},
+  sectionConfig:{borderWidth:1,borderColor:Colors.border,borderRadius:Radius.md,padding:Spacing.sm,marginTop:Spacing.sm},
   rubricWrap:{marginLeft:Spacing.lg,marginTop:Spacing.xs},
   topicChip:{borderWidth:1,borderColor:Colors.border,borderRadius:Radius.md,padding:Spacing.sm,marginTop:Spacing.xs,maxWidth:'100%'},
   topicChipDisabled:{opacity:0.45},
