@@ -300,7 +300,501 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
     if (school_code && school_code !== user.school_code) {
       return res.status(403).json({ error: "You can't view scores outside your selected school." });
     }
-    params.push(user.school_code); sql += ` AND s.school_code=${params.length}`;
+    params.push(user.school_code); sql += ' AND s.school_code=
+  }
+
+  if (user.role !== 'admin') sql += ' AND s.deleted_at IS NULL';
+  sql += ' ORDER BY COALESCE(rrm.class_name,s.class_name), s.full_name, sub.name';
+  const { rows } = await query(sql, params);
+  return res.json({ scores: rows });
+});
+
+// ── POST /scores  (upsert) ────────────────────────────────────────────────────
+router.post('/', requireRole('admin', 'teacher'), async (req, res) => {
+  const parsed = scoreEntrySchema.safeParse(req.body);
+  if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
+  const d = parsed.data;
+
+  const result = await withTransaction(async (client) => {
+    const scope = await validateScoreWriteScope(client, req.user!, d);
+    if ('error' in scope) return { ok: false as const, status: scope.status, error: scope.error };
+
+    const { rows: schRows } = await client.query(
+      'SELECT ca1_max, ca2_max, exam_max FROM schools WHERE code=$1 FOR SHARE',
+      [scope.schoolCode],
+    );
+    const cfg = schRows[0] ?? { ca1_max: 20, ca2_max: 20, exam_max: 60 };
+    if (d.ca1 > Number(cfg.ca1_max) || d.ca2 > Number(cfg.ca2_max) || d.exam > Number(cfg.exam_max)) {
+      return {
+        ok: false as const,
+        status: 400,
+        error: `Score exceeds maximum (CA1≤${cfg.ca1_max}, CA2≤${cfg.ca2_max}, Exam≤${cfg.exam_max})`,
+      };
+    }
+
+    const grade = getGrade(d.ca1 + d.ca2 + d.exam);
+    const { rows } = await client.query(
+      `INSERT INTO scores(student_id,subject_id,term_id,ca1,ca2,exam,grade,teacher_remark,entered_by,updated_at,class_name)
+       VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,now(),(SELECT COALESCE((SELECT class_name FROM report_roster_memberships WHERE student_id=$1 AND status='active' ORDER BY joined_at DESC LIMIT 1), class_name) FROM students WHERE id=$1))
+       ON CONFLICT(student_id,subject_id,term_id)
+       DO UPDATE SET ca1=$4,ca2=$5,exam=$6,grade=$7,teacher_remark=$8,entered_by=$9,updated_at=now(),
+                     class_name=COALESCE(scores.class_name, EXCLUDED.class_name)
+       RETURNING *`,
+      [d.student_id, d.subject_id, d.term_id, d.ca1, d.ca2, d.exam,
+       grade, d.teacher_remark ?? null, req.user!.id],
+    );
+    return { ok: true as const, score: rows[0] };
+  });
+
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  await audit(req.user!, 'save_score', 'score', String(result.score.id));
+  return res.json({ score: result.score });
+});
+
+// ── POST /scores/bulk  (batch entry for a whole class) ────────────────────────
+router.post('/bulk', requireRole('admin', 'teacher'), async (req, res) => {
+  const bodySchema = z.object({
+    scores: z.array(scoreEntrySchema).min(1).max(500)
+      .refine(items => new Set(items.map(s => `${s.student_id}:${s.subject_id}:${s.term_id}`)).size === items.length,
+        'A student/subject/term score may appear only once per batch'),
+  });
+  const parsed = bodySchema.safeParse(req.body);
+  if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
+  const { scores } = parsed.data;
+
+  // Validate and write the entire batch in one transaction. A failure on any
+  // row (scope, school maxima, FK, numeric precision, or a database trigger)
+  // rolls back every upsert rather than leaving a partially marked class.
+  const result = await withTransaction(async (client) => {
+    for (const score of scores) {
+      const scope = await validateScoreWriteScope(client, req.user!, score);
+      if ('error' in scope) {
+        return { ok: false as const, status: scope.status, error: scope.error };
+      }
+
+      const { rows: schRows } = await client.query(
+        'SELECT ca1_max, ca2_max, exam_max FROM schools WHERE code=$1 FOR SHARE',
+        [scope.schoolCode],
+      );
+      const cfg = schRows[0] ?? { ca1_max: 20, ca2_max: 20, exam_max: 60 };
+      if (score.ca1 > Number(cfg.ca1_max) || score.ca2 > Number(cfg.ca2_max) || score.exam > Number(cfg.exam_max)) {
+        return {
+          ok: false as const,
+          status: 400,
+          error: `Score exceeds maximum for one or more students (CA1≤${cfg.ca1_max}, CA2≤${cfg.ca2_max}, Exam≤${cfg.exam_max})`,
+        };
+      }
+    }
+
+    const saved = [];
+    for (const score of scores) {
+      const grade = getGrade(score.ca1 + score.ca2 + score.exam);
+      const { rows } = await client.query(
+        `INSERT INTO scores(student_id,subject_id,term_id,ca1,ca2,exam,grade,teacher_remark,entered_by,updated_at,class_name)
+         VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,now(),(SELECT COALESCE((SELECT class_name FROM report_roster_memberships WHERE student_id=$1 AND status='active' ORDER BY joined_at DESC LIMIT 1), class_name) FROM students WHERE id=$1))
+         ON CONFLICT(student_id,subject_id,term_id)
+         DO UPDATE SET ca1=$4,ca2=$5,exam=$6,grade=$7,teacher_remark=$8,entered_by=$9,updated_at=now(),
+                       class_name=COALESCE(scores.class_name, EXCLUDED.class_name)
+         RETURNING *`,
+        [score.student_id, score.subject_id, score.term_id, score.ca1, score.ca2, score.exam,
+         grade, score.teacher_remark ?? null, req.user!.id],
+      );
+      saved.push(rows[0]);
+    }
+    return { ok: true as const, saved };
+  });
+
+  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  const saved = result.saved;
+
+  const subjectIds = [...new Set(scores.map(s => s.subject_id))];
+  const termIds = [...new Set(scores.map(s => s.term_id))];
+  await audit(
+    req.user!, 'save_scores_bulk', 'score', undefined,
+    `${saved.length} score(s) saved — subject(s) ${subjectIds.join(',')}, term(s) ${termIds.join(',')}`,
+  );
+
+  const studentIds = [...new Set(saved.map(s => s.student_id))];
+  const { rows: studentUserRows } = await query(
+    `SELECT user_id FROM students WHERE id = ANY($1) AND user_id IS NOT NULL`, [studentIds],
+  );
+  Promise.all(studentUserRows.map(r => sendPushToUser(r.user_id, {
+    title: 'New score entered',
+    body: 'A new score has been recorded for you.',
+    data: { type: 'score' },
+  }))).catch(err => console.error('Push send failed (scores bulk):', err));
+
+  return res.json({ saved: saved.length });
+});
+
+// ── Report read authorisation (shared by /report and /session-report) ────────
+// Explicit allow-list: student (own record), parent (linked ward), teacher (own
+// school and, when an assigned class is set, that class), admin (all). Every
+// other role, including finance_admin, is refused. Soft-deleted students are
+// admin-only (see the end of this function).
+// Teacher scope reuses checkTeacherStudentScope. No termId is passed because
+// this is a read, so the helper's class-lock branch (which only applies when a
+// termId is given) is not triggered. Its error wording refers to writes; it is
+// returned unchanged on purpose.
+async function authoriseReportAccess(
+  user: AuthUser,
+  student: { id: string; user_id: string | null; class_name: string; school_code: string; deleted_at?: string | Date | null },
+): Promise<{ status: number; error: string } | null> {
+  const { rows: reportMemberships } = await query(
+    'SELECT class_name FROM report_roster_memberships WHERE student_id=$1 LIMIT 1',
+    [student.id],
+  );
+  if (!reportMemberships[0]) return { status: 404, error: 'Student is not in the physical report roster.' };
+  // Use the report roster class, not the independently selected online-learning class.
+  student.class_name = reportMemberships[0].class_name;
+
+  let denied: { status: number; error: string } | null;
+  switch (user.role) {
+    case 'student':
+      denied = student.user_id === user.id ? null : { status: 403, error: 'Access denied' };
+      break;
+    case 'parent': {
+      const { rows: pw } = await query(
+        'SELECT 1 FROM parent_wards WHERE parent_id=$1 AND student_id=$2', [user.id, student.id],
+      );
+      denied = pw.length ? null : { status: 403, error: 'Not your ward' };
+      break;
+    }
+    case 'teacher': {
+      const allowedClasses = user.assigned_class ? [user.assigned_class] : (user.assigned_class_names ?? []);
+      const isSubjectTeacher = !user.assigned_class;
+      if (!user.school_code || !allowedClasses.length || (isSubjectTeacher && !user.assigned_subject_ids?.length)) {
+        denied = { status: 403, error: 'Report access requires assigned physical classes and subjects.' };
+        break;
+      }
+      const { rows: memberships } = await query(
+        `SELECT rrm.class_name FROM report_roster_memberships rrm
+         JOIN students s ON s.id=rrm.student_id
+         WHERE rrm.student_id=$1 AND rrm.status='active'
+           AND rrm.class_name=ANY($2::text[]) AND s.school_code=$3 AND s.deleted_at IS NULL
+         ORDER BY rrm.joined_at DESC LIMIT 1`,
+        [student.id, allowedClasses, user.school_code],
+      );
+      if (!memberships[0]) {
+        denied = { status: 404, error: 'Student is not in your active physical report roster.' };
+      } else {
+        student.class_name = memberships[0].class_name;
+        denied = null;
+      }
+      break;
+    }
+    case 'admin':
+      // A school-bound administrator and a global administrator with a
+      // selected school are both restricted to the hydrated school scope.
+      denied = user.school_code && student.school_code !== user.school_code
+        ? { status: 404, error: 'Student not found' }
+        : null;
+      break;
+    default:
+      denied = { status: 403, error: 'Access denied' };
+  }
+  if (denied) return denied;
+  // A soft-deleted student's report is visible to admin only (history is kept
+  // for restore/records); every other role gets 404. Checked after the role
+  // allow-list so unauthorised callers still see 403.
+  if (student.deleted_at && user.role !== 'admin') return { status: 404, error: 'Student not found' };
+  return null;
+}
+
+// ── GET /scores/report/:student_id  (full term report) ───────────────────────
+router.get('/report/:student_id', async (req, res) => {
+  const { term_id } = req.query as { term_id?: string };
+  const user = req.user!;
+
+  // Fetch student
+  const { rows: stRows } = await query('SELECT * FROM students WHERE id=$1', [req.params.student_id]);
+  const student = stRows[0];
+  if (!student) return res.status(404).json({ error: 'Student not found' });
+
+  // Authorisation: student sees own, parent sees ward, teacher sees own class, admin sees all
+  const denied = await authoriseReportAccess(user, student);
+  if (denied) return res.status(denied.status).json({ error: denied.error });
+
+  // Resolve term
+  let resolvedTermId = term_id;
+  if (!resolvedTermId) {
+    const { rows: tc } = await query(
+      'SELECT id FROM terms WHERE school_code=$1 AND is_current=TRUE LIMIT 1', [student.school_code],
+    );
+    resolvedTermId = tc[0]?.id;
+  }
+  if (!resolvedTermId) return res.status(404).json({ error: 'No active term' });
+
+  const parsedTermId = Number(resolvedTermId);
+  const termScopeError = await checkTermSchoolScope(student.school_code, parsedTermId);
+  if (termScopeError) return res.status(termScopeError.status).json({ error: termScopeError.error });
+
+  const { rows: termRows } = await query(
+    'SELECT * FROM terms WHERE id=$1 AND school_code=$2',
+    [parsedTermId, student.school_code],
+  );
+  const term = termRows[0];
+
+  // DATA-03: class comparison uses the class recorded on each score row
+  // (scores.class_name, stamped when the score was written) so promoting a
+  // student does not move a past term's average/highest/position. Where a row
+  // has no snapshot (recorded before the column existed — not backfilled) it
+  // falls back to the live students.class_name, i.e. exactly the old
+  // behaviour; so historic reports stay approximate, not certified. For each
+  // score row the target class is COALESCE(sc.class_name, $1) and a peer
+  // counts when COALESCE(s2.class_name, rrm2.class_name, st2.class_name) equals it.
+  const { rows: scoreRows } = await query(
+    `SELECT sc.*, sub.name AS subject_name,
+            (SELECT ROUND(AVG(s2.total),2) FROM scores s2 JOIN students st2 ON st2.id=s2.student_id
+             LEFT JOIN report_roster_memberships rrm2 ON rrm2.student_id=st2.id AND rrm2.status='active'
+             WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id
+               AND st2.school_code=$4
+               AND COALESCE(s2.class_name, rrm2.class_name, st2.class_name)=COALESCE(sc.class_name, $1)) AS class_average,
+            (SELECT MAX(s2.total) FROM scores s2 JOIN students st2 ON st2.id=s2.student_id
+             LEFT JOIN report_roster_memberships rrm2 ON rrm2.student_id=st2.id AND rrm2.status='active'
+             WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id
+               AND st2.school_code=$4
+               AND COALESCE(s2.class_name, rrm2.class_name, st2.class_name)=COALESCE(sc.class_name, $1)) AS class_highest,
+            -- Position within the class for THIS subject/term — standard
+            -- competition ranking (ties share a position; the next distinct
+            -- score skips ahead by the tie count, e.g. two students tied
+            -- for 1st means the next student is 3rd, not 2nd). Matches the
+            -- "Position" column in the report format the school actually
+            -- uses (see reportPdf.ts) — added in the same pass that
+            -- rebuilt the template to match it.
+            (SELECT COUNT(*)+1 FROM scores s2 JOIN students st2 ON st2.id=s2.student_id
+             LEFT JOIN report_roster_memberships rrm2 ON rrm2.student_id=st2.id AND rrm2.status='active'
+             WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id
+               AND st2.school_code=$4
+               AND COALESCE(s2.class_name, rrm2.class_name, st2.class_name)=COALESCE(sc.class_name, $1)
+               AND s2.total > sc.total) AS subject_position
+     FROM scores sc
+     JOIN subjects sub ON sub.id=sc.subject_id AND sub.school_code=$4
+     WHERE sc.student_id=$2 AND sc.term_id=$3
+       AND ($5::int[] IS NULL OR sc.subject_id=ANY($5::int[]))
+     ORDER BY sub.name`,
+    [student.class_name, student.id, resolvedTermId, student.school_code,
+     user.role === 'teacher' && !user.assigned_class ? user.assigned_subject_ids : null],
+  );
+
+  const isSubjectTeacher = user.role === 'teacher' && !user.assigned_class;
+  const { rows: attRows } = isSubjectTeacher ? { rows: [] as Array<{ days_present: number | null }> } : await query(
+    'SELECT days_present FROM attendance WHERE student_id=$1 AND term_id=$2',
+    [student.id, resolvedTermId],
+  );
+  const { rows: recRows } = isSubjectTeacher ? { rows: [] as Array<Record<string, unknown>> } : await query(
+    'SELECT * FROM class_records WHERE student_id=$1 AND term_id=$2',
+    [student.id, resolvedTermId],
+  );
+
+  const totalScore = scoreRows.reduce((s, r) => s + Number(r.total), 0);
+  const n = scoreRows.length;
+
+  // Overall class position (rank by each student's own summed total across
+  // whatever subjects they have scores for this term) and class size — the
+  // "Overall Position X out of Y students" line in the report format.
+  // Deliberately a fresh query rather than reusing scoreRows/totalScore
+  // above: those are just this one student's rows, but ranking needs every
+  // student in the class summed the same way.
+  // DATA-03: rank within the class this student was recorded in for the term —
+  // the most common scores.class_name among their own rows (first seen wins a
+  // tie), or the live class when none of their rows carries a snapshot. Peers
+  // are matched on COALESCE(snapshot, live class) exactly as above.
+  const snapshotCounts = new Map<string, number>();
+  for (const r of scoreRows) {
+    if (r.class_name) snapshotCounts.set(r.class_name, (snapshotCounts.get(r.class_name) ?? 0) + 1);
+  }
+  let termClass: string = student.class_name;
+  let bestCount = 0;
+  for (const [cn, count] of snapshotCounts) {
+    if (count > bestCount) { termClass = cn; bestCount = count; }
+  }
+  const { rows: classTotals } = isSubjectTeacher ? { rows: [] as Array<{ student_id: string; grand_total: number }> } : await query(
+    `SELECT s3.student_id, SUM(s3.total) AS grand_total
+     FROM scores s3
+     JOIN students st3 ON st3.id = s3.student_id
+     LEFT JOIN report_roster_memberships rrm3
+       ON rrm3.student_id=st3.id AND rrm3.status='active'
+     WHERE COALESCE(s3.class_name, rrm3.class_name, st3.class_name) = $1 AND s3.term_id = $2
+       AND st3.school_code=$3
+     GROUP BY s3.student_id`,
+    [termClass, resolvedTermId, student.school_code],
+  );
+  // Class size is the physical report roster plus students whose score
+  // snapshots place them in this class for the requested historical term.
+  // This includes roster members who have not yet received a score, excludes
+  // unrostered online-only students, and keeps promoted students attached to
+  // the class in which their historical scores were recorded.
+  const { rows: classSizeRows } = isSubjectTeacher ? { rows: [] as Array<{ class_size: number }> } : await query(
+    `SELECT COUNT(*)::int AS class_size
+       FROM students st
+      WHERE st.school_code=$2 AND st.deleted_at IS NULL
+        AND (
+          EXISTS (
+            SELECT 1 FROM report_roster_memberships rrm
+             WHERE rrm.student_id=st.id AND rrm.status='active' AND rrm.class_name=$1
+          )
+          OR EXISTS (
+            SELECT 1 FROM scores sx
+             WHERE sx.student_id=st.id AND sx.term_id=$3 AND sx.class_name=$1
+          )
+        )`,
+    [termClass, student.school_code, resolvedTermId],
+  );
+  const classSize = isSubjectTeacher ? null : Number(classSizeRows[0]?.class_size ?? 0);
+  const myTotal = classTotals.find((r) => r.student_id === student.id)?.grand_total;
+  const overallPosition = myTotal !== undefined
+    ? classTotals.filter((r) => Number(r.grand_total) > Number(myTotal)).length + 1
+    : null;
+
+  const reportStudent = user.role === 'teacher'
+    ? { id: student.id, full_name: student.full_name, admission_number: student.admission_number, class_name: student.class_name }
+    : student;
+
+  return res.json({
+    student: reportStudent,
+    term,
+    scores: scoreRows,
+    attendance: { days_present: attRows[0]?.days_present ?? null, days_opened: term?.days_opened ?? 0 },
+    class_record: recRows[0] ?? {},
+    summary: {
+      total_score: n ? totalScore : null,
+      average: n ? +(totalScore / n).toFixed(2) : null,
+      subject_count: n,
+      overall_position: isSubjectTeacher ? null : overallPosition,
+      class_size: classSize,
+    },
+  });
+});
+
+// ── GET /scores/session-report/:student_id?academic_year=  ────────────────────
+// Collates whichever of the session's 3 terms (1st/2nd/3rd) have been entered
+// so far into a running session total per subject, plus a grand total/average.
+// Safe to call before the 3rd term exists yet — it reports on however many
+// terms are present and flags `is_complete_session` once all 3 are in.
+router.get('/session-report/:student_id', async (req, res) => {
+  const { academic_year } = req.query as { academic_year?: string };
+  const user = req.user!;
+
+  const { rows: stRows } = await query('SELECT * FROM students WHERE id=$1', [req.params.student_id]);
+  const student = stRows[0];
+  if (!student) return res.status(404).json({ error: 'Student not found' });
+
+  // Same authorisation as /scores/report/:student_id
+  const denied = await authoriseReportAccess(user, student);
+  if (denied) return res.status(denied.status).json({ error: denied.error });
+
+  // Resolve the session (academic_year): default to the year of the school's current term
+  let year = academic_year;
+  if (!year) {
+    const { rows: cur } = await query(
+      'SELECT academic_year FROM terms WHERE school_code=$1 AND is_current=TRUE LIMIT 1',
+      [student.school_code],
+    );
+    year = cur[0]?.academic_year;
+  }
+  if (!year) return res.status(404).json({ error: 'No academic year could be resolved for this session' });
+
+  const { rows: termRows } = await query(
+    'SELECT * FROM terms WHERE school_code=$1 AND academic_year=$2',
+    [student.school_code, year],
+  );
+  if (!termRows.length) return res.status(404).json({ error: `No terms found for ${year}` });
+
+  // A session is exactly 3 terms. POST/PUT /terms already enforce that cap at
+  // write time — this is a defensive re-check, not the only guard.
+  if (termRows.length > 3) {
+    return res.status(500).json({
+      error: `Data integrity issue: ${termRows.length} terms found for ${year} — a session must have exactly 3.`,
+    });
+  }
+  const terms = [...termRows].sort((a, b) => termRank(a.name) - termRank(b.name));
+  const termIds = terms.map(t => t.id);
+
+  const assignedSubjectIds = user.role === 'teacher' && !user.assigned_class
+    ? user.assigned_subject_ids
+    : null;
+  const { rows: expectedSubjectRows } = await query(
+    `SELECT id, name FROM subjects
+     WHERE school_code=$1 AND ($2::int[] IS NULL OR id=ANY($2::int[]))
+     ORDER BY name`,
+    [student.school_code, assignedSubjectIds],
+  );
+  const { rows: scoreRows } = await query(
+    `SELECT sc.*, sub.name AS subject_name
+     FROM scores sc JOIN subjects sub ON sub.id = sc.subject_id AND sub.school_code=$3
+     WHERE sc.student_id=$1 AND sc.term_id = ANY($2::int[])
+       AND ($4::int[] IS NULL OR sc.subject_id=ANY($4::int[]))
+     ORDER BY sub.name`,
+    [student.id, termIds, student.school_code, assignedSubjectIds],
+  );
+
+  // Build the report from the school's expected subject list, not only from
+  // subjects that already have a score row. Otherwise a subject with no marks
+  // in any term disappears and can make an incomplete session look complete.
+  const bySubject = new Map<number, Record<number, number>>();
+  for (const row of scoreRows) {
+    if (!bySubject.has(Number(row.subject_id))) bySubject.set(Number(row.subject_id), {});
+    bySubject.get(Number(row.subject_id))![Number(row.term_id)] = Number(row.total);
+  }
+
+  const subjects = expectedSubjectRows.map((subject) => {
+    const subjectTerms = bySubject.get(Number(subject.id)) ?? {};
+    const recorded = terms.map(t => subjectTerms[t.id]).filter((v): v is number => v !== undefined);
+    const session_total = recorded.length ? recorded.reduce((a, b) => a + b, 0) : null;
+    const session_average = recorded.length
+      ? +(recorded.reduce((a, b) => a + b, 0) / recorded.length).toFixed(2)
+      : null;
+    return {
+      subject_id: Number(subject.id),
+      subject_name: subject.name,
+      term_scores: terms.map(t => ({ term_id: t.id, term_name: t.name, total: subjectTerms[t.id] ?? null })),
+      terms_recorded: recorded.length,
+      session_total,
+      session_average,
+      session_grade: session_average === null ? null : getGrade(session_average),
+    };
+  });
+  const scoredSubjects = subjects.filter(subject => subject.terms_recorded > 0);
+  const termsPresent = new Set(scoreRows.map(row => Number(row.term_id))).size;
+
+  const { rows: attRows } = user.role === 'teacher' && !user.assigned_class ? { rows: [] as Array<{ days_present: number | null }> } : await query(
+    'SELECT days_present FROM attendance WHERE student_id=$1 AND term_id = ANY($2::int[])',
+    [student.id, termIds],
+  );
+  const days_present = attRows.reduce((s, r) => s + Number(r.days_present ?? 0), 0);
+  const days_opened  = terms.reduce((s, t) => s + Number(t.days_opened ?? 0), 0);
+
+  const grand_total   = scoredSubjects.reduce((sum, subject) => sum + Number(subject.session_total ?? 0), 0);
+  const grand_average = scoredSubjects.length
+    ? +(scoredSubjects.reduce((sum, subject) => sum + Number(subject.session_average ?? 0), 0) / scoredSubjects.length).toFixed(2)
+    : 0;
+
+  const reportStudent = user.role === 'teacher'
+    ? { id: student.id, full_name: student.full_name, admission_number: student.admission_number, class_name: student.class_name, school_code: student.school_code }
+    : student;
+  return res.json({
+    student: reportStudent,
+    academic_year: year,
+    terms: terms.map(t => ({ id: t.id, name: t.name, is_current: t.is_current })),
+    terms_present: termsPresent,
+    is_complete_session: terms.length === 3 && subjects.length > 0 && subjects.every(s => s.terms_recorded === 3),
+    subjects,
+    attendance: user.role === 'teacher' && !user.assigned_class ? { days_present: null, days_opened: null } : { days_present, days_opened },
+    summary: {
+      grand_total,
+      grand_average,
+      subject_count: scoredSubjects.length,
+      expected_subject_count: subjects.length,
+    },
+  });
+});
+
+export default router;
+
+
+
+ + params.length;
   }
 
   if (user.role !== 'admin') sql += ' AND s.deleted_at IS NULL';
