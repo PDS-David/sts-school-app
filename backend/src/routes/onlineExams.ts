@@ -56,7 +56,7 @@ export function validateAiRubricMark(value: any, rubric: MarkingRubricCriterion[
     criterion_scores: rubric.map(item => scores.get(item.id)!) };
 }
 
-function validGeneratedMcqOptions(options: any, correctKey: any): boolean {
+export function validGeneratedMcqOptions(options: any, correctKey: any): boolean {
   const keys = ['A','B','C','D'];
   return Array.isArray(options) && options.length === keys.length &&
     options.every((option:any,index:number)=>option && option.key===keys[index] &&
