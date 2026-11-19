@@ -424,6 +424,7 @@ router.post('/admin/exams/:examId/publish',requireRole('admin'),async(req,res)=>
        JOIN report_roster_memberships rrm ON rrm.student_id=st.id AND rrm.class_name=st.class_name AND rrm.status='active'
        JOIN users u ON u.id=st.user_id AND u.role='student' AND u.school_code=st.school_code AND u.is_active=true AND COALESCE(u.pending_admin_review,false)=false AND u.revocation_reason IS NULL AND (u.access_expires_at IS NULL OR u.access_expires_at>now())
        WHERE st.school_code=$1 AND st.class_name=$2
+       FOR SHARE OF st,rrm,u
     `,[exam.school_code,exam.class_name]);
     if(!candidates.length) return {status:409,error:'No active candidates are enrolled in this examination class.'};
     if(new Date(exam.ends_at).getTime()<=Date.now()) return {status:409,error:'An examination whose end time has passed cannot be published.'};
@@ -434,6 +435,12 @@ router.post('/admin/exams/:examId/publish',requireRole('admin'),async(req,res)=>
     `,[exam.id]);
     const coveredTopicIds=generatedTopics.map((row:any)=>Number(row.topic_id));
     if(coveredTopicIds.length){
+      const candidateIds=candidates.map((candidate:any)=>candidate.id);
+      await client.query(`
+        SELECT student_id,topic_id FROM topic_completions
+         WHERE student_id=ANY($1::uuid[]) AND topic_id=ANY($2::int[])
+         FOR SHARE
+      `,[candidateIds,coveredTopicIds]);
       const {rows: coverage}=await client.query(`
         SELECT COUNT(*)::int AS candidates,
                COUNT(*) FILTER (WHERE NOT EXISTS (
@@ -460,6 +467,11 @@ router.post('/admin/exams/:examId/publish',requireRole('admin'),async(req,res)=>
     `,[exam.id]);
     for(const ref of packageRefs){
       if(ref.lesson_class!==exam.class_name) return {status:409,error:'Generated package lesson class does not match the examination class.'};
+      await client.query(`
+        SELECT student_id,lesson_key FROM student_curriculum_lesson_progress
+         WHERE student_id=ANY($1::uuid[]) AND lesson_key=$2 AND class_name=$3
+         FOR SHARE
+      `,[candidateIds,ref.lesson_key,exam.class_name]);
       const {rows: coverage}=await client.query(`
         SELECT COUNT(DISTINCT st.id)::int AS completed
           FROM students st
