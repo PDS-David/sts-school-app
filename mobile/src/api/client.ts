@@ -297,6 +297,7 @@ api.interceptors.response.use(
           /^\/finance\/fee-items(?:\?|$)/.test(url) ||
           /^\/finance\/invoices(?:\?|$)/.test(url) ||
           /^\/finance\/invoices\/[^/]+\/status(?:\?|$)/.test(url) ||
+          url.startsWith('/online-exams/') ||
           url.startsWith('/learning/term-pins/redeem')
         ) {
           return Promise.reject(error);

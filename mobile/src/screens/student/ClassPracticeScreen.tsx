@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ScrollView, Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../api/client';
@@ -16,28 +16,39 @@ export default function ClassPracticeScreen({ route }: any) {
   const [submitting,setSubmitting]=useState(false);
   const [loadingProgress,setLoadingProgress]=useState(true);
   const [error,setError]=useState('');
+  const [progressError,setProgressError]=useState('');
+  const topicIdRef=useRef(topic?.id);
+  topicIdRef.current=topic?.id;
 
   const loadProgress=async()=>{
+    setLoadingProgress(true);setProgressError('');
     try{
       const {data}=await api.get('/class-practice/progress');
       setProgress(data??{concept_performance:[],remediation_recommendations:[]});
     }catch{
-      // Practice generation and submission remain available if progress history is offline.
+      setProgressError('Could not load your practice history. Check your connection and retry.');
     }finally{setLoadingProgress(false);}
   };
 
-  useEffect(()=>{void loadProgress();},[]);
+  useEffect(()=>{
+    topicIdRef.current=topic?.id;
+    setPracticeSet(null);setQuestions([]);setAnswers({});setResult(null);
+    setGenerating(false);setSubmitting(false);setError('');
+    void loadProgress();
+  },[topic?.id]);
 
   const generate=async()=>{
     if(!topic?.id||generating||submitting)return;
     setGenerating(true);setError('');setResult(null);setPracticeSet(null);setQuestions([]);setAnswers({});
+    const requestedTopicId=topic.id;
     try{
-      const {data}=await api.post('/class-practice/sets',{topic_id:Number(topic.id)});
+      const {data}=await api.post('/class-practice/sets',{topic_id:Number(requestedTopicId)});
+      if(topicIdRef.current!==requestedTopicId)return;
       if(!data.set?.id||!Array.isArray(data.questions)||data.questions.length<3) throw new Error('The practice set is incomplete. Please retry.');
       setPracticeSet(data.set);setQuestions(data.questions);
     }catch(e:any){
-      setError(e?.response?.data?.error??e?.message??'Could not generate practice for this completed lesson. Check your connection and retry.');
-    }finally{setGenerating(false);}
+      if(topicIdRef.current===requestedTopicId)setError(e?.response?.data?.error??e?.message??'Could not generate practice for this completed lesson. Check your connection and retry.');
+    }finally{if(topicIdRef.current===requestedTopicId)setGenerating(false);}
   };
 
   const submit=async()=>{
@@ -47,20 +58,23 @@ export default function ClassPracticeScreen({ route }: any) {
       return;
     }
     setSubmitting(true);setError('');
+    const submittedTopicId=topic.id;
+    const submittedSetId=practiceSet.id;
     try{
-      const {data}=await api.post('/class-practice/sets/'+practiceSet.id+'/submit',{
+      const response=await api.post('/class-practice/sets/'+submittedSetId+'/submit',{
         answers:questions.map(q=>({question_id:q.id,answer:answers[q.id]})),
       });
-      setResult(data);await loadProgress();
+      if((response as any).queuedOffline)throw new Error('Your submission is queued offline and has not yet been confirmed. Reconnect before treating it as submitted.');
+      if(topicIdRef.current===submittedTopicId){setResult(response.data);await loadProgress();}
     }catch(e:any){
       // A timed-out response may still have committed on the server. Recover
       // the owner's persisted result before asking the student to retry.
       try{
-        const {data}=await api.get('/class-practice/sets/'+practiceSet.id);
-        if(data?.result?.submitted){setResult(data.result);await loadProgress();return;}
+        const {data}=await api.get('/class-practice/sets/'+submittedSetId);
+        if(topicIdRef.current===submittedTopicId&&data?.result?.submitted){setResult(data.result);await loadProgress();return;}
       }catch{/* Keep the original submit error when the recovery request also fails. */}
-      setError(e?.response?.data?.error??'Your answers could not be confirmed. Reconnect and retry; completed results are recovered automatically.');
-    }finally{setSubmitting(false);}
+      if(topicIdRef.current===submittedTopicId)setError(e?.response?.data?.error??e?.message??'Your answers could not be confirmed. Reconnect and retry; completed results are recovered automatically.');
+    }finally{if(topicIdRef.current===submittedTopicId)setSubmitting(false);}
   };
 
   if(!topic?.id)return <Empty message="Open a completed lesson to start adaptive practice."/>;
@@ -120,8 +134,9 @@ export default function ClassPracticeScreen({ route }: any) {
       <Card style={{marginTop:Spacing.md}}>
         <SectionHeader title="Your concept progress"/>
         {loadingProgress?<Loader/>:null}
-        {!loadingProgress&&progress.concept_performance?.length===0?<Text style={styles.sub}>Complete a practice set to start building your concept history.</Text>:null}
-        {(progress.concept_performance??[]).slice(0,8).map((item:any)=>(
+        {!loadingProgress&&progressError?<View><Text style={styles.error}>{progressError}</Text><Btn label="Retry loading progress" variant="outline" onPress={loadProgress} style={{marginTop:Spacing.sm}}/></View>:null}
+        {!loadingProgress&&!progressError&&progress.concept_performance?.length===0?<Text style={styles.sub}>Complete a practice set to start building your concept history.</Text>:null}
+        {!progressError&&(progress.concept_performance??[]).slice(0,8).map((item:any)=>(
           <View key={item.topic_id+':'+item.concept} style={styles.progressItem}>
             <View style={{flex:1}}>
               <Text style={styles.progressTitle}>{item.concept}</Text>
@@ -130,7 +145,7 @@ export default function ClassPracticeScreen({ route }: any) {
             <Badge label={Math.round(Number(item.accuracy)*100)+'%'} color={Number(item.accuracy)>=0.7?Colors.success:Colors.warning}/>
           </View>
         ))}
-        {(progress.remediation_recommendations??[]).length>0?(
+        {!progressError&&(progress.remediation_recommendations??[]).length>0?(
           <View style={{marginTop:Spacing.md}}>
             <Text style={styles.sectionLabel}>Recommended revision</Text>
             {progress.remediation_recommendations.map((item:any)=>(

@@ -16,12 +16,17 @@ test('class-practice API enforces ownership and serializes concurrent submission
     const schema='class_practice_it_'+randomUUID().replace(/-/g,'');
     let server:any=null;
     let pool:any=null;
+    let ownsPublicSettingsFixture=false;
     try{
       await client.query('CREATE SCHEMA '+schema);
       await client.query('SET search_path TO '+schema);
       await client.query('CREATE EXTENSION IF NOT EXISTS pgcrypto');
-      await client.query('CREATE TABLE public.learning_access_settings(id INTEGER PRIMARY KEY,free_launch_mode BOOLEAN,term_pin_enforced BOOLEAN,curriculum_sequence_enforced BOOLEAN)');
-      await client.query('INSERT INTO public.learning_access_settings VALUES(1,true,false,false)');
+      const {rows:settingsFixture}=await client.query("SELECT to_regclass('public.learning_access_settings') AS existing");
+      if(!settingsFixture[0].existing){
+        await client.query('CREATE TABLE public.learning_access_settings(id INTEGER PRIMARY KEY,free_launch_mode BOOLEAN,term_pin_enforced BOOLEAN,curriculum_sequence_enforced BOOLEAN)');
+        await client.query('INSERT INTO public.learning_access_settings VALUES(1,true,false,false)');
+        ownsPublicSettingsFixture=true;
+      }
       await client.query(`CREATE TABLE users(
         id UUID PRIMARY KEY,username TEXT,role TEXT,school_code TEXT,assigned_class TEXT,
         assigned_class_names TEXT[] DEFAULT '{}',can_manage_all_schools BOOLEAN DEFAULT false,
@@ -117,6 +122,7 @@ test('class-practice API enforces ownership and serializes concurrent submission
       if(server) await new Promise<void>(resolve=>server.close(()=>resolve()));
       if(pool) await pool.end();
       await client.query('DROP SCHEMA IF EXISTS '+schema+' CASCADE');
+      if(ownsPublicSettingsFixture)await client.query('DROP TABLE IF EXISTS public.learning_access_settings');
       await client.end();
     }
   });
