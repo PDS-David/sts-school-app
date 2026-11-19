@@ -37,12 +37,11 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       await client.query('CREATE TABLE attendance(id BIGINT PRIMARY KEY,present BOOLEAN)');
       await client.query('CREATE TABLE report_remarks(id BIGINT PRIMARY KEY,remark TEXT)');
       await client.query('CREATE TABLE report_cards(id BIGINT PRIMARY KEY,payload TEXT)');
-      await client.query('CREATE TABLE report_roster_memberships(id BIGINT PRIMARY KEY,student_id UUID)');
+      await client.query("CREATE TABLE report_roster_memberships(student_id UUID PRIMARY KEY REFERENCES students(id) ON DELETE RESTRICT,class_name TEXT NOT NULL,source_class_name TEXT NOT NULL,status TEXT NOT NULL DEFAULT 'active' CHECK(status IN ('active','removed')),joined_at TIMESTAMPTZ NOT NULL DEFAULT now(),removed_at TIMESTAMPTZ,changed_by UUID REFERENCES users(id) ON DELETE SET NULL,updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),CHECK((status='active' AND removed_at IS NULL) OR (status='removed' AND removed_at IS NOT NULL)))");
       await client.query("INSERT INTO scores VALUES(1,72)");
       await client.query("INSERT INTO attendance VALUES(1,true)");
       await client.query("INSERT INTO report_remarks VALUES(1,'unchanged')");
       await client.query("INSERT INTO report_cards VALUES(1,'unchanged')");
-      await client.query("INSERT INTO report_roster_memberships VALUES(1,'00000000-0000-4000-8000-000000000001')");
 
       const questionBankSql=await readFile(new URL('../backend/migrations/0012_online_question_bank.sql',import.meta.url),'utf8');
       const classPracticeSql=await readFile(new URL('../backend/migrations/0013_ai_class_practice.sql',import.meta.url),'utf8');
@@ -70,6 +69,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       await client.query('INSERT INTO teacher_subjects(user_id,subject_id) VALUES($1,1)',[teacherUser]);
       await client.query('INSERT INTO students(id,user_id,school_code,class_name) VALUES($1,$2,$3,$4),($5,$6,$3,$7)',
         [student,studentUser,school,'SS 3',otherStudent,otherUser,'JSS 3']);
+      await client.query("INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status) VALUES($1,'SS 3','SS 3','active')",[student]);
       const coveredTopicId=900;
       await client.query("INSERT INTO topics(id,school_code,class_name,subject_id,title,term_id,order_index) VALUES($1,$2,'SS 3',1,'Linear Equations',1,1)",[coveredTopicId,school]);
       await client.query('INSERT INTO topic_completions(student_id,topic_id) VALUES($1,$2)',[student,coveredTopicId]);
