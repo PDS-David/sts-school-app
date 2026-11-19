@@ -234,6 +234,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.ok(examProvenance.source_locator);
       const adminExams=await request('/online-exams/admin/exams','GET',adminToken,undefined,school);
       assert.equal(adminExams.status,200);assert.equal(adminExams.data.exams.length,1);assert.equal(adminExams.data.exams[0].id,examId);
+      assert.equal(Number(adminExams.data.exams[0].total_marks),7);
       await client.query('DELETE FROM report_roster_memberships WHERE student_id=$1',[student]);
       assert.equal((await request('/online-exams/admin/exams/'+examId+'/publish','POST',adminToken,{},school)).status,409,'publication must recheck current active roster membership');
       await client.query("INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status) VALUES($1,'SS 3','SS 3','active')",[student]);
