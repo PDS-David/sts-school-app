@@ -1,0 +1,65 @@
+name: Mobile PR validation
+
+on:
+  push:
+    branches:
+      - "agent/mobile-teacher-release-*"
+    paths:
+      - ".github/workflows/mobile-pr-validation.yml"
+      - ".github/workflows/mobile-release-audit.yml"
+      - ".github/workflows/eas-android-release.yml"
+      - ".github/workflows/android-emulator-smoke.yml"
+      - ".github/workflows/retire-legacy-mobile-release-audit.yml"
+      - "mobile/**"
+      - "package.json"
+      - "package-lock.json"
+      - "tests/mobile/**"
+  pull_request:
+    paths:
+      - ".github/workflows/mobile-pr-validation.yml"
+      - ".github/workflows/mobile-release-audit.yml"
+      - "mobile/**"
+      - "package.json"
+      - "package-lock.json"
+      - "tests/mobile/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mobile-pr-validation-${{ github.event.pull_request.head.ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Mobile tests, typecheck and bundle export
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install locked workspace dependencies
+        run: npm ci
+      - name: Offline queue regression tests
+        run: npm run test:mobile:offline
+      - name: Frontend contract regression tests
+        run: npm run test:mobile:frontend-contracts
+      - name: Mobile TypeScript validation
+        working-directory: mobile
+        run: npx tsc --noEmit -p tsconfig.json
+      - name: Export Android JavaScript bundle
+        working-directory: mobile
+        env:
+          CI: "1"
+        run: npx expo export --platform android --output-dir ../artifacts/mobile-android
+      - name: Upload validation bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-pr-validation-bundle
+          path: artifacts/mobile-android/
+          if-no-files-found: warn
+          retention-days: 7

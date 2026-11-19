@@ -30,11 +30,11 @@ test('production prod host is read from app.json and is a real https URL', () =>
   assert.match(PROD, /^https:\/\//);
 });
 
-test('eas.json: preview and production profiles are untouched; staging extends preview and carries no URL', () => {
+test('eas.json: preview uses production for the teacher APK; staging explicitly overrides it', () => {
   assert.equal(eas.build.preview.env, undefined);
   assert.equal(eas.build.production.env, undefined);
-  // exact pre-D_PREP values: ordinary preview/production builds must not have changed
-  assert.deepEqual(eas.build.preview, { distribution: 'internal', android: { buildType: 'apk' } });
+  // Teacher preview is an internal APK but deliberately targets the production EAS environment.
+  assert.deepEqual(eas.build.preview, { distribution: 'internal', android: { buildType: 'apk' }, environment: 'production' });
   assert.deepEqual(eas.build.production, { android: { buildType: 'app-bundle' } });
   assert.deepEqual(eas.build.staging, { extends: 'preview', environment: 'preview', env: { STS_BUILD_TARGET: 'staging' } });
   assert.ok(!JSON.stringify(eas).includes('EXPO_PUBLIC_API_URL'), 'no invented URL / variable value in eas.json');
