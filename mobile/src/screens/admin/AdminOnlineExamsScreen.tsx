@@ -63,6 +63,9 @@ export default function AdminOnlineExamsScreen() {
   const [error,setError]=useState('');
   const [notice,setNotice]=useState('');
   const selectedAttemptIdRef=useRef<string|null>(null);
+  const attemptsRequestRef=useRef(0);
+  const selectedExamIdRef=useRef<string|null>(null);
+  const responsesRequestRef=useRef(0);
   const lessonRequestRef=useRef(0);
   const lessonSelectionRef=useRef<{subjectId:any;className:string}>({subjectId:null,className:'SS 3'});
 
@@ -194,18 +197,26 @@ export default function AdminOnlineExamsScreen() {
   };
 
   const openAttempts=async(exam:any)=>{
+    const request=++attemptsRequestRef.current;
+    selectedExamIdRef.current=exam.id;
     selectedAttemptIdRef.current=null;
+    ++responsesRequestRef.current;
     setSelectedExam(exam);setAttempts([]);setResponses([]);setSelectedAttempt(null);setMarks({});setFeedback({});setMode('attempts');setLoading(true);setError('');
-    try{const {data}=await api.get('/online-exams/admin/exams/'+exam.id+'/attempts');setAttempts(data.attempts??[]);}
-    catch(e:any){setError(e?.response?.data?.error??'Could not load examination attempts.');}
-    finally{setLoading(false);}
+    try{
+      const {data}=await api.get('/online-exams/admin/exams/'+exam.id+'/attempts');
+      if(request===attemptsRequestRef.current&&selectedExamIdRef.current===exam.id)setAttempts(data.attempts??[]);
+    }catch(e:any){if(request===attemptsRequestRef.current&&selectedExamIdRef.current===exam.id)setError(e?.response?.data?.error??'Could not load examination attempts.');}
+    finally{if(request===attemptsRequestRef.current&&selectedExamIdRef.current===exam.id)setLoading(false);}
   };
   const openResponses=async(attempt:any)=>{
+    const request=++responsesRequestRef.current;
     selectedAttemptIdRef.current=attempt.attempt_id;
     setSelectedAttempt(attempt);setResponses([]);setMarks({});setFeedback({});setMode('responses');setLoading(true);setError('');
-    try{const {data}=await api.get('/online-exams/admin/attempts/'+attempt.attempt_id+'/responses');setResponses(data.responses??[]);}
-    catch(e:any){setError(e?.response?.data?.error??'Could not load candidate responses.');}
-    finally{setLoading(false);}
+    try{
+      const {data}=await api.get('/online-exams/admin/attempts/'+attempt.attempt_id+'/responses');
+      if(request===responsesRequestRef.current&&selectedAttemptIdRef.current===attempt.attempt_id)setResponses(data.responses??[]);
+    }catch(e:any){if(request===responsesRequestRef.current&&selectedAttemptIdRef.current===attempt.attempt_id)setError(e?.response?.data?.error??'Could not load candidate responses.');}
+    finally{if(request===responsesRequestRef.current&&selectedAttemptIdRef.current===attempt.attempt_id)setLoading(false);}
   };
   const markResponse=async(response:any)=>{
     const targetAttemptId=selectedAttemptIdRef.current;
@@ -230,8 +241,9 @@ export default function AdminOnlineExamsScreen() {
   };
 
   const back=()=>{
-    if(mode==='responses'){setMode('attempts');return;}
-    if(mode==='attempts'||mode==='create'){setMode('list');return;}
+    if(mode==='responses'){++responsesRequestRef.current;selectedAttemptIdRef.current=null;setResponses([]);setMode('attempts');return;}
+    if(mode==='attempts'){++attemptsRequestRef.current;selectedExamIdRef.current=null;setAttempts([]);setMode('list');return;}
+    if(mode==='create'){setMode('list');return;}
     setMode('list');
   };
 
