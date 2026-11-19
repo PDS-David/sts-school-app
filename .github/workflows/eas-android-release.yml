@@ -1,6 +1,13 @@
 name: EAS teacher and production release
 
 on:
+  push:
+    branches:
+      - "agent/mobile-teacher-release-20261119"
+    paths:
+      - ".github/workflows/eas-android-release.yml"
+      - "mobile/app.config.js"
+      - "mobile/eas.json"
   workflow_dispatch:
     inputs:
       build_target:
@@ -16,7 +23,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: eas-android-release-${{ inputs.build_target }}
+  group: eas-android-release-${{ inputs.build_target || 'teacher-apk' }}
   cancel-in-progress: false
 
 jobs:
@@ -26,6 +33,7 @@ jobs:
     timeout-minutes: 30
     env:
       EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+      BUILD_TARGET: ${{ inputs.build_target || 'teacher-apk' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -44,18 +52,18 @@ jobs:
       - name: Prepare build receipt directory
         run: mkdir -p artifacts
       - name: Build production-connected internal teacher APK
-        if: inputs.build_target == 'teacher-apk'
+        if: env.BUILD_TARGET == 'teacher-apk'
         working-directory: mobile
         run: npx eas-cli@latest build --platform android --profile preview --non-interactive --wait --json > ../artifacts/eas-teacher-apk.json
       - name: Build production Android App Bundle
-        if: inputs.build_target == 'production-aab'
+        if: env.BUILD_TARGET == 'production-aab'
         working-directory: mobile
         run: npx eas-cli@latest build --platform android --profile production --non-interactive --wait --json > ../artifacts/eas-production-aab.json
       - name: Upload EAS build receipt
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: eas-${{ inputs.build_target }}-receipt
+          name: eas-${{ env.BUILD_TARGET }}-receipt
           path: artifacts/eas-*.json
           if-no-files-found: warn
           retention-days: 30
