@@ -126,7 +126,12 @@ export default function AdminOnlineExamsScreen() {
   const selectedQuestionList=questionOrder.map(id=>questions.find(item=>item.id===id)).filter((item:any)=>item&&selectedQuestions[item.id]);
   const selectedTotalMarks=selectedQuestionList.reduce((sum:number,item:any)=>sum+(Number(marksInputs[item.id]??item.marks)||0),0);
   const updateSection=(id:string,patch:any)=>setSections(current=>current.map(section=>section.id===id?{...section,...patch}:section));
-  const addSection=()=>setSections(current=>[...current,{id:newSectionId(),title:'Section '+String.fromCharCode(65+current.length),instructions:'Answer all questions in this section.'}]);
+  const addSection=()=>setSections(current=>{
+    const used=new Set(current.map(section=>section.title));
+    let index=0;
+    while(used.has('Section '+String.fromCharCode(65+index)))index++;
+    return [...current,{id:newSectionId(),title:'Section '+String.fromCharCode(65+index),instructions:'Answer all questions in this section.'}];
+  });
   const moveSection=(index:number,direction:number)=>{
     setSections(current=>{const next=[...current];const target=index+direction;if(target<0||target>=next.length)return current;[next[index],next[target]]=[next[target],next[index]];return next;});
   };
