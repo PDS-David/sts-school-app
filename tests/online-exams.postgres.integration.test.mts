@@ -131,6 +131,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
         {criterion_id:'result',points:1,rationale:'The result is partially correct.'}
       ]};
       assert.equal(validateAiRubricMark(validAiMark,rubric,5)?.points,4);
+      assert.equal(validateAiRubricMark({...validAiMark,confidence:0.42},rubric,5)?.confidence,0.42,'low confidence is valid evidence but must be routed to pending review');
       assert.equal(validateAiRubricMark({...validAiMark,points:5},rubric,5),null);
       assert.equal(validateAiRubricMark({...validAiMark,criterion_scores:[validAiMark.criterion_scores[0]]},rubric,5),null);
       pool=databasePool;
@@ -268,10 +269,12 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.equal(pendingEssay.marking_details.method,'manual_review_required');
       assert.equal(pendingEssay.marking_rubric.length,2);
       assert.equal((await request('/online-exams/admin/attempts/'+attemptId+'/responses/'+essayExamQuestionId+'/mark','PUT',foreignAdminToken,{awarded_marks:3,feedback:'Unauthorized cross-school mark.'},foreignSchool)).status,404,'manual marking must be isolated to the owning school');
+      assert.equal((await request('/online-exams/admin/attempts/'+attemptId+'/responses/'+essayExamQuestionId+'/mark','PUT',adminToken,{awarded_marks:6,feedback:'Exceeds the question maximum.'},school)).status,400,'examiner marks cannot exceed the written question maximum');
       const manualMark=await request('/online-exams/admin/attempts/'+attemptId+'/responses/'+essayExamQuestionId+'/mark','PUT',adminToken,{awarded_marks:3,feedback:'Correct method; final justification is incomplete.'},school);
       assert.equal(manualMark.status,200);
       assert.equal(manualMark.data.attempt.status,'submitted');
       assert.equal(Number(manualMark.data.attempt.score),5);
+      assert.equal((await request('/online-exams/admin/attempts/'+attemptId+'/responses/'+essayExamQuestionId+'/mark','PUT',adminToken,{awarded_marks:4,feedback:'Duplicate examiner mark.'},school)).status,409,'a manually marked response cannot be marked twice');
       const finalExamResponses=await request('/online-exams/admin/attempts/'+attemptId+'/responses','GET',adminToken,undefined,school);
       const manuallyMarked=finalExamResponses.data.responses.find((item:any)=>item.question_id===essayExamQuestionId);
       assert.equal(manuallyMarked.marking_status,'manual_marked');
@@ -293,6 +296,8 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.equal(physical.rows[0].remark,'unchanged');
       assert.equal(physical.rows[0].report_card,'unchanged');
       assert.equal(physical.rows[0].roster_count,1);
+      const rosterState=await client.query('SELECT class_name,status FROM report_roster_memberships WHERE student_id=$1',[student]);
+      assert.deepEqual(rosterState.rows[0],{class_name:'SS 3',status:'active'});
       const audit=await client.query('SELECT COUNT(*)::int AS n FROM online_exam_audit_events WHERE exam_id=$1',[examId]);
       assert.ok(audit.rows[0].n>=4);
     }finally{
