@@ -58,11 +58,11 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       const {rows: markingColumns}=await client.query(`SELECT column_name FROM information_schema.columns WHERE table_schema=$1 AND table_name='online_exam_responses' AND column_name IN ('marking_confidence','marking_details')`,[schema]);
       assert.deepEqual(markingColumns.map((row:any)=>row.column_name).sort(),['marking_confidence','marking_details']);
 
-      const school='primary',admin=randomUUID(),studentUser=randomUUID(),otherUser=randomUUID(),teacherUser=randomUUID(),unassignedTeacher=randomUUID();
+      const school='primary',foreignSchool='secondary',admin=randomUUID(),foreignAdmin=randomUUID(),studentUser=randomUUID(),otherUser=randomUUID(),teacherUser=randomUUID(),unassignedTeacher=randomUUID();
       const student=randomUUID(),otherStudent=randomUUID(),unrosteredStudent=randomUUID(),unrosteredUser=randomUUID();
-      await client.query('INSERT INTO schools(code) VALUES($1)',[school]);
+      await client.query('INSERT INTO schools(code) VALUES($1),($2)',[school,foreignSchool]);
       await client.query(`INSERT INTO users(id,username,role,school_code,can_manage_all_schools,is_active) VALUES
-        ($1,'test-admin','admin',$3,true,true),($2,'test-student','student',$3,false,true)`,[admin,studentUser,school]);
+        ($1,'test-admin','admin',$3,true,true),($2,'test-student','student',$3,false,true),($4,'secondary-admin','admin',$5,true,true)`,[admin,studentUser,school,foreignAdmin,foreignSchool]);
       await client.query('INSERT INTO users(id,username,role,school_code,is_active) VALUES($1,$2,$3,$4,true),($5,$6,$7,$4,true),($8,$9,$10,$4,true)',[otherUser,'other-student','student',school,teacherUser,'math-teacher','teacher',unrosteredUser,'unrostered-student','student']);
       await client.query('INSERT INTO users(id,username,role,school_code,is_active) VALUES($1,$2,$3,$4,true)',[unassignedTeacher,'unassigned-teacher','teacher',school]);
       await client.query("INSERT INTO subjects(id,name,school_code) VALUES(1,'Mathematics',$1),(2,'Biology',$1)",[school]);
@@ -140,6 +140,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       const studentToken=token(studentUser,'test-student');
       const otherToken=token(otherUser,'other-student');
       const adminToken=token(admin,'test-admin','admin');
+      const foreignAdminToken=signAccess({id:foreignAdmin,username:'secondary-admin',role:'admin',school_code:foreignSchool,assigned_class:null,assigned_class_names:[],can_manage_all_schools:true});
       const teacherToken=token(teacherUser,'math-teacher','teacher');
       const unassignedTeacherToken=token(unassignedTeacher,'unassigned-teacher','teacher');
       const request=async(path:string,method='GET',auth=studentToken,body?:any,schoolHeader?:string)=>{
@@ -201,6 +202,12 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       const examId=created.data.exam.id;
       const adminExams=await request('/online-exams/admin/exams','GET',adminToken,undefined,school);
       assert.equal(adminExams.status,200);assert.equal(adminExams.data.exams.length,1);assert.equal(adminExams.data.exams[0].id,examId);
+      await client.query('DELETE FROM report_roster_memberships WHERE student_id=$1',[student]);
+      assert.equal((await request('/online-exams/admin/exams/'+examId+'/publish','POST',adminToken,{},school)).status,409,'publication must recheck current active roster membership');
+      await client.query("INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status) VALUES($1,'SS 3','SS 3','active')",[student]);
+      await client.query('DELETE FROM topic_completions WHERE student_id=$1 AND topic_id=$2',[student,coveredTopicId]);
+      assert.equal((await request('/online-exams/admin/exams/'+examId+'/publish','POST',adminToken,{},school)).status,409,'publication must recheck completion for every current candidate');
+      await client.query('INSERT INTO topic_completions(student_id,topic_id) VALUES($1,$2)',[student,coveredTopicId]);
       const published=await request('/online-exams/admin/exams/'+examId+'/publish','POST',adminToken,{},school);
       assert.equal(published.status,200);assert.equal(published.data.eligible_candidates,1);
 
@@ -214,6 +221,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.equal(started.data.questions.length,2);
       assert.equal(JSON.stringify(started.data).includes('correct_answer'),false);
       const attemptId=started.data.attempt.id;
+      assert.equal((await request('/online-exams/admin/attempts/'+attemptId+'/responses','GET',foreignAdminToken,undefined,foreignSchool)).status,404,'examiner response access must be isolated to the owning school');
       const resumed=await request('/online-exams/exams/'+examId+'/start','POST');
       assert.equal(resumed.status,200);assert.equal(resumed.data.attempt.id,attemptId);
       const foreignRead=await request('/online-exams/attempts/'+attemptId,'GET',otherToken);
@@ -226,8 +234,9 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       const savedEssay=await request('/online-exams/attempts/'+attemptId+'/responses/'+essayExamQuestionId,'PUT',studentToken,{response:'I isolate the variable by applying inverse operations and then verify the result.'});
       assert.equal(savedEssay.status,200);assert.equal(savedEssay.data.saved,true);
       const recovered=await request('/online-exams/attempts/'+attemptId);
-      assert.equal(recovered.status,200);assert.equal(recovered.data.saved_responses.length,1);
-      assert.deepEqual(recovered.data.saved_responses[0].response,{key:'B'});
+      assert.equal(recovered.status,200);assert.equal(recovered.data.saved_responses.length,2);
+      assert.deepEqual(recovered.data.saved_responses.find((item:any)=>item.exam_question_id===onlineQuestionId).response,{key:'B'});
+      assert.equal(recovered.data.saved_responses.find((item:any)=>item.exam_question_id===essayExamQuestionId).response,'I isolate the variable by applying inverse operations and then verify the result.');
 
       await client.query('UPDATE online_exam_attempts SET deadline_at=now()-interval \'1 second\' WHERE id=$1',[attemptId]);
       const lateSave=await request('/online-exams/attempts/'+attemptId+'/responses/'+onlineQuestionId,'PUT',studentToken,{response:{key:'A'}});
@@ -244,6 +253,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.equal(pendingEssay.marking_confidence,null);
       assert.equal(pendingEssay.marking_details.method,'manual_review_required');
       assert.equal(pendingEssay.marking_rubric.length,2);
+      assert.equal((await request('/online-exams/admin/attempts/'+attemptId+'/responses/'+essayExamQuestionId+'/mark','PUT',foreignAdminToken,{awarded_marks:3,feedback:'Unauthorized cross-school mark.'},foreignSchool)).status,404,'manual marking must be isolated to the owning school');
       const manualMark=await request('/online-exams/admin/attempts/'+attemptId+'/responses/'+essayExamQuestionId+'/mark','PUT',adminToken,{awarded_marks:3,feedback:'Correct method; final justification is incomplete.'},school);
       assert.equal(manualMark.status,200);
       assert.equal(manualMark.data.attempt.status,'submitted');
