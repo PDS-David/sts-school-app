@@ -1,0 +1,23 @@
+name: Retire superseded mobile release audit runs
+
+on:
+  push:
+    branches:
+      - "agent/mobile-teacher-release-*"
+
+# Deliberately shares the former release-audit concurrency key. A newer run in
+# this group cancels any legacy combined build still running on this branch.
+concurrency:
+  group: mobile-release-audit-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  retire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Confirm legacy combined workflow is retired
+        run: echo "Legacy combined Android/EAS/dependency workflow superseded; use the isolated workflows."
