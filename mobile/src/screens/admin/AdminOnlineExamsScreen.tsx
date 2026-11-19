@@ -78,6 +78,7 @@ export default function AdminOnlineExamsScreen() {
   useEffect(()=>{void loadExams();},[loadExams]);
 
   const openCreate=async()=>{
+    ++lessonRequestRef.current;lessonSelectionRef.current={subjectId:null,className};setLoadingTopics(false);
     setMode('create');setError('');setNotice('');setSelectedQuestions({});setQuestionOrder([]);setMarksInputs({});setRubricInputs({});setSectionByQuestion({});setSections([{id:'section-1',title:'Section A',instructions:'Answer all questions in this section.'}]);setQuestions([]);setExamYear('');
     try{const {data}=await api.get('/online-exams/admin/question-bank/subjects');setSubjects(data.subjects??[]);setSubject(null);setLessonTopics([]);setTopicByQuestion({});}
     catch(e:any){setError(e?.response?.data?.error??'Question-bank access is required to create a formal examination.');}
