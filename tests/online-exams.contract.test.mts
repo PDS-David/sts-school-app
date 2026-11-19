@@ -92,9 +92,9 @@ test('student flow caches unsent answers and derives the timer from the server d
   assert.match(mobileAttempt, /deadline_at/);
   assert.match(mobileAttempt, /server_time/);
   assert.match(mobileAttempt, /clock_offset_ms/);
-  assert.match(mobileAttempt, /while\\(Object\\.prototype\\.hasOwnProperty\\.call\\(pending\\.current,questionId\\)\\)/);
-  assert.match(mobileApiClient, /url\\.startsWith\\('\\/online-exams\\/'\\)/);
-  assert.match(classPracticeScreen, /response\\.queuedOffline/);
+  assert.ok(mobileAttempt.includes('while(Object.prototype.hasOwnProperty.call(pending.current,questionId))'));
+  assert.ok(mobileApiClient.includes("url.startsWith('/online-exams/')"));
+  assert.ok(classPracticeScreen.includes('response.queuedOffline'));
   assert.match(classPracticeScreen, /topicIdRef/);
   assert.match(classPracticeScreen, /Retry loading progress/);
   assert.match(mobileAttempt, /navigation\.replace\('OnlineExams'\)/);
@@ -140,6 +140,11 @@ test('assigned subject teachers can approve or reject reviewed questions with ap
   assert.match(questionBankRoute, /lower\(trim\(assigned\.name\)\)=lower\(trim\(s\.name\)\)/);
   assert.match(questionBankRoute, /question_bank_question_reviews\(question_id,subject_id,reviewer_user_id,decision,notes\)/);
   assert.match(questionBankRoute, /review_status='approved'/);
+  assert.match(questionBankRoute, /include_rejected/);
+  assert.match(questionBankRoute, /LIMIT \$3 OFFSET \$4/);
+  assert.match(teacherReviewScreen, /Show rejected for audit \/ reconsideration/);
+  assert.match(teacherReviewScreen, /Previous/);
+  assert.match(teacherReviewScreen, /Next/);
   assert.match(reviewMigration, /question_bank_question_reviews/);
   assert.match(reviewMigration, /reviewed_at TIMESTAMPTZ NOT NULL DEFAULT now\(\)/);
   assert.doesNotMatch(reviewMigration, /UNIQUE\s*\(question_id,reviewer_user_id\)/i);
@@ -158,7 +163,7 @@ test('admin app can create, publish, list and manually review formal examination
   assert.match(adminExamScreen, /api\.post\('\/online-exams\/admin\/exams'/);
   assert.match(adminExamScreen, /api\.post\('\/online-exams\/admin\/exams\/'\+exam\.id\+'\/publish'/);
   assert.match(adminExamScreen, /api\.get\('\/online-exams\/admin\/exams\/'\+exam\.id\+'\/attempts'/);
-  assert.match(adminExamScreen, /api\\.put\\('\\/online-exams\\/admin\\/attempts\\/'\\+targetAttemptId/);
+  assert.ok(adminExamScreen.includes("api.put('/online-exams/admin/attempts/'+targetAttemptId"));
   assert.match(adminExamScreen, /selectedAttemptIdRef/);
   assert.match(adminExamScreen, /newSectionId/);
   assert.match(adminTabs, /name="FormalOnlineExams" component=\{AdminOnlineExamsScreen\}/);
