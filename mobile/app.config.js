@@ -16,7 +16,7 @@ module.exports = ({ config }) => {
 
   // A production EAS environment may define EXPO_PUBLIC_API_URL independently of app.json.
   // Refuse a stale override rather than silently shipping a binary pointed at the suspended backend.
-  if (process.env.EAS_BUILD_PROFILE === 'production') {
+  if (['production', 'preview'].includes(process.env.EAS_BUILD_PROFILE)) {
     assertProductionApiUrl(process.env.EXPO_PUBLIC_API_URL, config.extra && config.extra.apiUrl);
   }
 
