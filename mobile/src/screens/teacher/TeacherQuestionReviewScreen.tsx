@@ -18,7 +18,7 @@ export default function TeacherQuestionReviewScreen() {
   const [includeRejected,setIncludeRejected]=useState(false);
   const pageSize=50;
 
-  const load=useCallback(async(nextOffset=offset)=>{
+  const load=useCallback(async(nextOffset:number)=>{
     setLoading(true);setError('');
     try{
       const {data}=await api.get('/question-bank/review-queue',{params:{limit:pageSize,offset:nextOffset,include_rejected:includeRejected}});
@@ -28,9 +28,9 @@ export default function TeacherQuestionReviewScreen() {
     }catch(e:any){
       setError(e?.response?.data?.error??'Could not load questions assigned to your subjects.');
     }finally{setLoading(false);}
-  },[includeRejected,offset]);
+  },[includeRejected]);
 
-  useEffect(()=>{void load();},[load]);
+  useEffect(()=>{void load(0);},[load]);
 
   const review=async(question:any,decision:'approved'|'rejected')=>{
     const note=(notes[question.id]??'').trim();
