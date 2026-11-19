@@ -60,17 +60,18 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.deepEqual(markingColumns.map((row:any)=>row.column_name).sort(),['marking_confidence','marking_details']);
 
       const school='primary',foreignSchool='secondary',admin=randomUUID(),foreignAdmin=randomUUID(),studentUser=randomUUID(),otherUser=randomUUID(),teacherUser=randomUUID(),unassignedTeacher=randomUUID();
-      const student=randomUUID(),otherStudent=randomUUID(),unrosteredStudent=randomUUID(),unrosteredUser=randomUUID();
+      const student=randomUUID(),otherStudent=randomUUID(),unrosteredStudent=randomUUID(),unrosteredUser=randomUUID(),ss1Student=randomUUID(),ss1User=randomUUID();
       await client.query('INSERT INTO schools(code) VALUES($1),($2)',[school,foreignSchool]);
       await client.query(`INSERT INTO users(id,username,role,school_code,can_manage_all_schools,is_active) VALUES
         ($1,'test-admin','admin',$3,true,true),($2,'test-student','student',$3,false,true),($4,'secondary-admin','admin',$5,true,true)`,[admin,studentUser,school,foreignAdmin,foreignSchool]);
-      await client.query('INSERT INTO users(id,username,role,school_code,is_active) VALUES($1,$2,$3,$4,true),($5,$6,$7,$4,true),($8,$9,$10,$4,true)',[otherUser,'other-student','student',school,teacherUser,'math-teacher','teacher',unrosteredUser,'unrostered-student','student']);
+      await client.query('INSERT INTO users(id,username,role,school_code,is_active) VALUES($1,$2,$3,$4,true),($5,$6,$7,$4,true),($8,$9,$10,$4,true),($11,$12,$13,$4,true)',[otherUser,'other-student','student',school,teacherUser,'math-teacher','teacher',unrosteredUser,'unrostered-student','student',ss1User,'ss1-student','student']);
       await client.query('INSERT INTO users(id,username,role,school_code,is_active) VALUES($1,$2,$3,$4,true)',[unassignedTeacher,'unassigned-teacher','teacher',school]);
       await client.query("INSERT INTO subjects(id,name,school_code) VALUES(1,'Mathematics',$1),(2,'Biology',$1)",[school]);
       await client.query('INSERT INTO teacher_subjects(user_id,subject_id) VALUES($1,1)',[teacherUser]);
-      await client.query('INSERT INTO students(id,user_id,school_code,class_name) VALUES($1,$2,$3,$4),($5,$6,$3,$7),($8,$9,$3,$4)',
-        [student,studentUser,school,'SS 3',otherStudent,otherUser,'JSS 3',unrosteredStudent,unrosteredUser]);
+      await client.query('INSERT INTO students(id,user_id,school_code,class_name) VALUES($1,$2,$3,$4),($5,$6,$3,$7),($8,$9,$3,$4),($10,$11,$3,$12)',
+        [student,studentUser,school,'SS 3',otherStudent,otherUser,'JSS 3',unrosteredStudent,unrosteredUser,ss1Student,ss1User,'SS 1']);
       await client.query("INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status) VALUES($1,'SS 3','SS 3','active')",[student]);
+      await client.query("INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status) VALUES($1,'SS 1','SS 1','active')",[ss1Student]);
       const coveredTopicId=900;
       await client.query("INSERT INTO topics(id,school_code,class_name,subject_id,title,term_id,order_index) VALUES($1,$2,'SS 3',1,'Linear Equations',1,1)",[coveredTopicId,school]);
       await client.query('INSERT INTO topic_completions(student_id,topic_id) VALUES($1,$2),($3,$2)',[student,coveredTopicId,unrosteredStudent]);
@@ -116,12 +117,12 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       process.env.GEMINI_API_KEY='';
       process.env.AI_AGENT_SERVICE_URL='';
       const express=require('express');
-      const [{default:router,validateMarkingRubric,validateAiRubricMark},{default:questionBankRouter},{signAccess},{pool:databasePool},{listStudentSs23Units}]=await Promise.all([
+      const [{default:router,validateMarkingRubric,validateAiRubricMark},{default:questionBankRouter},{signAccess},{pool:databasePool},{listStudentSs1Lessons}]=await Promise.all([
         import('../backend/src/routes/onlineExams.ts'),
         import('../backend/src/routes/questionBank.ts'),
         import('../backend/src/utils/jwt.ts'),
         import('../backend/src/db/pool.ts'),
-        import('../backend/src/db/ss23/studentDelivery.ts')
+        import('../backend/src/db/ss1/studentDelivery.ts')
       ]);
       const rubric=[{id:'method',description:'Shows the correct method',max_marks:3},{id:'result',description:'States the correct result',max_marks:2}];
       assert.deepEqual(validateMarkingRubric(rubric,5),rubric);
@@ -183,17 +184,17 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
 
       const lessonTopics=await request('/online-exams/admin/lesson-topics?class_name=SS%203&subject_name=Mathematics','GET',adminToken,undefined,school);
       assert.equal(lessonTopics.status,200);const coveredLesson=lessonTopics.data.topics.find((item:any)=>item.id===coveredTopicId);assert.ok(coveredLesson?.eligible_for_all_candidates);assert.equal(Number(coveredLesson.candidate_count),1,'only active report-roster members with valid student accounts count as candidates');assert.equal(Number(coveredLesson.completed_count),1);
-      const packageLesson=listStudentSs23Units('SS 3')[0];
-      assert.ok(packageLesson,'the production SS3 student-delivery package must expose an implemented lesson');
-      const packageDraftRequest={board:'WAEC',class_name:'SS 3',subject_name:packageLesson.canonical_subject,lesson_ids:[packageLesson.id]};
+      const packageLesson=listStudentSs1Lessons()[0];
+      assert.ok(packageLesson,'the production SS1 student-delivery package must expose an implemented lesson');
+      const packageDraftRequest={board:'WAEC',class_name:'SS 1',subject_name:packageLesson.canonical_subject,lesson_ids:[packageLesson.id]};
       const missingPackageProgress=await request('/online-exams/admin/exams/generate-package-drafts','POST',adminToken,packageDraftRequest,school);
       assert.equal(missingPackageProgress.status,409,'package question generation must reject lessons not completed by every eligible roster candidate');
       const packageFingerprint=packageLesson.body_sha256??createHash('sha256').update(String(packageLesson.body??'')).digest('hex');
-      const packageLessonKey='ss23:'+createHash('sha256').update([packageLesson.class_name,packageLesson.subject,packageLesson.term,String(packageLesson.id),packageFingerprint,JSON.stringify(packageLesson.objectives??[])].join('\\0')).digest('hex');
+      const packageLessonKey='ss1:'+createHash('sha256').update(['SS 1',packageLesson.canonical_subject,packageLesson.term,String(packageLesson.id),packageFingerprint,JSON.stringify(packageLesson.objectives??[])].join('\\0')).digest('hex');
       await client.query('INSERT INTO student_curriculum_lesson_progress(student_id,lesson_key,class_name,subject_name,term_label,lesson_title) VALUES($1,$2,$3,$4,$5,$6)',
-        [student,packageLessonKey,'SS 3',packageLesson.subject,packageLesson.term,packageLesson.title]);
+        [ss1Student,packageLessonKey,'SS 1',packageLesson.subject,packageLesson.term,packageLesson.title]);
       const packageProgressAccepted=await request('/online-exams/admin/exams/generate-package-drafts','POST',adminToken,packageDraftRequest,school);
-      assert.equal(packageProgressAccepted.status,502,'the package progress record must satisfy coverage before the intentionally unavailable AI provider is called');
+      assert.equal(packageProgressAccepted.status,502,'the SS1 package progress record must satisfy coverage before the intentionally unavailable AI provider is called');
 
       const examDraft={
         board:'WAEC',subject_name:'Mathematics',class_name:'SS 3',examination_type:'Mock',
