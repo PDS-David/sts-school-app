@@ -139,8 +139,8 @@ export default function AdminOnlineExamsScreen() {
       setError('Enter a title, instructions and a duration from 1 to 600 minutes.');return;
     }
     const yearValue=examYear.trim()?Number(examYear):null;
-    if(yearValue!==null&&(!Number.isInteger(yearValue)||yearValue<1900||yearValue>2100)){
-      setError('Enter a valid examination year between 1900 and 2100.');return;
+    if(yearValue!==null&&(!Number.isInteger(yearValue)||yearValue<2020||yearValue>2100)){
+      setError('Enter a valid examination year between 2020 and 2100.');return;
     }
     const sectionsPayload:any[]=[];
     for(const section of sections){
@@ -304,6 +304,11 @@ export default function AdminOnlineExamsScreen() {
                     <View style={{flex:1}}>
                       <Text style={styles.questionText}>{question.stem}</Text>
                       <Text style={styles.meta}>{question.topic} · {question.question_type} · Bank marks {question.marks} · {question.question_number}</Text>
+                      <Text style={styles.meta}>Board: {question.board} · Subject: {question.subject} · Year: {question.exam_year??'Original'}</Text>
+                      <Text style={styles.meta}>Source: {question.source_name} · Rights: {question.rights_status} · Origin: {question.content_origin}</Text>
+                      <Text style={styles.meta}>Paper: {question.paper}</Text>
+                      {question.source_url?<Text style={styles.meta}>Source URL: {question.source_url}</Text>:null}
+                      {question.rights_evidence?<Text style={styles.meta}>Rights evidence: {String(question.rights_evidence).slice(0,220)}</Text>:null}
                     </View>
                   </TouchableOpacity>
                   {selected?(
