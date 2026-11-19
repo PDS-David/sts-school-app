@@ -33,17 +33,17 @@ export function validateMarkingRubric(value: unknown, maximum: number): MarkingR
 }
 
 export function validateAiRubricMark(value: any, rubric: MarkingRubricCriterion[], maximum: number) {
-  if (!value || !Number.isFinite(Number(value.points)) || Number(value.points) < 0 ||
-      Number(value.points) > maximum || !Number.isFinite(Number(value.confidence)) ||
-      Number(value.confidence) < 0 || Number(value.confidence) > 1 ||
+  if (!value || typeof value.points !== 'number' || !Number.isFinite(value.points) || value.points < 0 ||
+      value.points > maximum || typeof value.confidence !== 'number' || !Number.isFinite(value.confidence) ||
+      value.confidence < 0 || value.confidence > 1 ||
       typeof value.feedback !== 'string' || value.feedback.trim().length < 5 ||
       !Array.isArray(value.criterion_scores) || value.criterion_scores.length !== rubric.length) return null;
   const scores = new Map<string, { criterion_id: string; points: number; rationale: string }>();
   for (const item of value.criterion_scores) {
     if (!item || typeof item.criterion_id !== 'string' || scores.has(item.criterion_id) ||
-        !Number.isFinite(Number(item.points)) || typeof item.rationale !== 'string' ||
+        typeof item.points !== 'number' || !Number.isFinite(item.points) || typeof item.rationale !== 'string' ||
         item.rationale.trim().length < 3) return null;
-    scores.set(item.criterion_id, { criterion_id: item.criterion_id, points: Number(item.points), rationale: item.rationale.trim() });
+    scores.set(item.criterion_id, { criterion_id: item.criterion_id, points: item.points, rationale: item.rationale.trim() });
   }
   let sum = 0;
   for (const criterion of rubric) {
@@ -54,6 +54,15 @@ export function validateAiRubricMark(value: any, rubric: MarkingRubricCriterion[
   if (Math.abs(sum - Number(value.points)) > 0.01) return null;
   return { points: Number(value.points), confidence: Number(value.confidence), feedback: value.feedback.trim(),
     criterion_scores: rubric.map(item => scores.get(item.id)!) };
+}
+
+function validGeneratedMcqOptions(options: any, correctKey: any): boolean {
+  const keys = ['A','B','C','D'];
+  return Array.isArray(options) && options.length === keys.length &&
+    options.every((option:any,index:number)=>option && option.key===keys[index] &&
+      typeof option.text==='string' && option.text.trim().length>0) &&
+    typeof correctKey==='string' && keys.includes(correctKey) &&
+    options.filter((option:any)=>option.key===correctKey).length===1;
 }
 
 function schoolForAdmin(user: any): string | null {
@@ -135,9 +144,7 @@ router.post('/admin/exams/generate-drafts',requireRole('admin'),async(req,res)=>
       if(!Array.isArray(generated?.questions)||generated.questions.length!==3) throw new Error('Question generation returned an incomplete set.');
       for(const q of generated.questions){
         if(!q||typeof q.stem!=='string'||q.stem.trim().length<12||
-           !Array.isArray(q.options)||q.options.length!==4||
-           !q.options.every((o:any)=>o&&typeof o.key==='string'&&typeof o.text==='string'&&o.text.trim())||
-           !q.options.some((o:any)=>o.key===q.correct_key)||
+           !validGeneratedMcqOptions(q.options,q.correct_key)||
            typeof q.explanation!=='string'||q.explanation.trim().length<10||
            !Number.isFinite(Number(q.marks))||Number(q.marks)<=0||Number(q.marks)>10){
           throw new Error('Generated question failed answer/options/marks validation.');
@@ -239,9 +246,7 @@ router.post('/admin/exams/generate-package-drafts',requireRole('admin'),async(re
       if(!Array.isArray(result?.questions)||result.questions.length!==3) throw new Error('AI returned an incomplete question set.');
       for(const q of result.questions){
         if(!q||typeof q.stem!=='string'||q.stem.trim().length<12||
-           !Array.isArray(q.options)||q.options.length!==4||
-           !q.options.every((o:any)=>o&&typeof o.key==='string'&&typeof o.text==='string'&&o.text.trim())||
-           !q.options.some((o:any)=>o.key===q.correct_key)||
+           !validGeneratedMcqOptions(q.options,q.correct_key)||
            typeof q.explanation!=='string'||q.explanation.trim().length<10||
            !Number.isFinite(Number(q.marks))||Number(q.marks)<=0||Number(q.marks)>10)
           throw new Error('Generated question failed answer/options/marks validation.');
@@ -346,6 +351,12 @@ router.post('/admin/exams', requireRole('admin'), async (req, res) => {
         const coveredTopicId=Number(item.covered_topic_id);
         if(!Number.isSafeInteger(coveredTopicId)||coveredTopicId<=0)
           return {error:'Every formal-exam question must be mapped to a school lesson topic completed by the candidates.',status:400};
+        const sourceLesson=parseLessonLocator(q.source_locator);
+        if(sourceLesson?.kind==='school_topic'){
+          const sourceTopicId=Number(sourceLesson.topic_id);
+          if(!Number.isSafeInteger(sourceTopicId)||sourceTopicId!==coveredTopicId)
+            return {error:'A school-generated question must be mapped to the exact lesson used to generate it.',status:400};
+        }
         const {rows:coveredTopics}=await client.query(`
           SELECT t.id FROM topics t JOIN subjects sub ON sub.id=t.subject_id AND sub.school_code=t.school_code
            WHERE t.id=$1 AND t.school_code=$2 AND t.class_name=$3 AND sub.name=$4
@@ -640,6 +651,7 @@ router.put('/attempts/:attemptId/responses/:questionId',requireRole('student'),a
 router.post('/attempts/:attemptId/submit',requireRole('student'),async(req,res)=>{
   const student=await getStudent(req);
   if(!student) return res.status(404).json({error:'Student record not found.'});
+  const claimToken=randomUUID();
   const claimed:any=await withTransaction(async client=>{
     const {rows}=await client.query(
       'SELECT * FROM online_exam_attempts WHERE id=$1 AND student_id=$2 FOR UPDATE',[req.params.attemptId,student.id]);
@@ -651,18 +663,18 @@ router.post('/attempts/:attemptId/submit',requireRole('student'),async(req,res)=
     if(!['in_progress','submitting','expired'].includes(attempt.status)) return {status:409,error:'Attempt cannot be submitted.'};
     if(attempt.status==='in_progress' && new Date(attempt.deadline_at).getTime()>Date.now() && req.body?.confirm!==true)
       return {status:400,error:'Set confirm=true to submit the examination.'};
-    await client.query(`UPDATE online_exam_attempts SET status='submitting',submission_started_at=now() WHERE id=$1`,[attempt.id]);
+    await client.query(`UPDATE online_exam_attempts SET status='submitting',submission_started_at=now(),submission_claim_token=$2 WHERE id=$1`,[attempt.id,claimToken]);
     const {rows: qs}=await client.query(`
       SELECT q.*,s.title AS section_title FROM online_exam_questions q
       JOIN online_exam_sections s ON s.id=q.section_id WHERE q.exam_id=$1 ORDER BY s.position,q.position
     `,[attempt.exam_id]);
     const {rows: answers}=await client.query('SELECT * FROM online_exam_responses WHERE attempt_id=$1',[attempt.id]);
-    return {status:202,attempt,questions:qs,answers};
+    return {status:202,attempt,questions:qs,answers,claimToken};
   });
   if(claimed.status===200) return res.json({submitted:true,already_submitted:true,score:claimed.attempt.score,percentage:claimed.attempt.percentage,status:claimed.attempt.status});
   if(claimed.status!==202) return res.status(claimed.status).json({error:claimed.error});
   const answerMap=new Map(claimed.answers.map((a:any)=>[a.exam_question_id,a]));
-  let score=0, pending=false;
+  let pending=false;
   const graded:any[]=[];
   for(const q of claimed.questions){
     const saved:any=answerMap.get(q.id);
@@ -716,10 +728,13 @@ router.post('/attempts/:attemptId/submit',requireRole('student'),async(req,res)=
         details={method:'manual_review_required',criterion_scores:[]};
       }
     }
-    if(awarded!=null) score+=awarded;
     graded.push({id:q.id,awarded,marking,feedback,confidence,details});
   }
   const final=await withTransaction(async client=>{
+    const {rows: ownership}=await client.query(
+      "SELECT id FROM online_exam_attempts WHERE id=$1 AND status='submitting' AND submission_claim_token=$2 FOR UPDATE",
+      [claimed.attempt.id,claimed.claimToken]);
+    if(!ownership[0]) return null;
     for(const item of graded){
       await client.query(`
         UPDATE online_exam_responses SET awarded_marks=$3,marking_status=$4,feedback=$5,
@@ -727,17 +742,22 @@ router.post('/attempts/:attemptId/submit',requireRole('student'),async(req,res)=
          WHERE attempt_id=$1 AND exam_question_id=$2
       `,[claimed.attempt.id,item.id,item.awarded,item.marking,item.feedback,item.confidence,JSON.stringify(item.details??{})]);
     }
+    const {rows: totals}=await client.query(
+      'SELECT COALESCE(SUM(awarded_marks),0) AS score FROM online_exam_responses WHERE attempt_id=$1',
+      [claimed.attempt.id]);
+    const storedScore=Number(totals[0]?.score??0);
     const status=pending?'under_review':'submitted';
     const {rows}=await client.query(`
-      UPDATE online_exam_attempts SET status=$2,score=$3,percentage=$4,submitted_at=now()
+      UPDATE online_exam_attempts SET status=$2,score=$3,percentage=$4,submitted_at=now(),submission_claim_token=NULL
        WHERE id=$1 RETURNING id,status,score,total_marks,percentage,submitted_at
-    `,[claimed.attempt.id,status,score,pending?null:(Number(claimed.attempt.total_marks)?score/Number(claimed.attempt.total_marks)*100:0)]);
+    `,[claimed.attempt.id,status,storedScore,pending?null:(Number(claimed.attempt.total_marks)?storedScore/Number(claimed.attempt.total_marks)*100:0)]);
     await client.query(`
       INSERT INTO online_exam_audit_events(exam_id,attempt_id,actor_user_id,event_type,details)
       VALUES($1,$2,$3,'attempt_submitted',$4::jsonb)
     `,[claimed.attempt.exam_id,claimed.attempt.id,req.user!.id,JSON.stringify({status,answered:claimed.answers.length,question_count:claimed.questions.length})]);
     return rows[0];
   });
+  if(!final) return res.status(409).json({error:'Submission processing was reclaimed by a newer request. The current submission owner will complete marking.'});
   return res.json({submitted:true,...final});
 });
 
@@ -808,16 +828,24 @@ router.get('/admin/exams',requireRole('admin'),async(req,res)=>{
   const {rows}=await query(`
     SELECT e.id,e.title,e.subject_name,e.class_name,e.board,e.examination_type,e.exam_year,
            e.status,e.starts_at,e.ends_at,e.duration_minutes,e.published_at,
-           (SELECT COALESCE(SUM(eq.marks),0) FROM online_exam_questions eq WHERE eq.exam_id=e.id) AS total_marks,
-           COUNT(DISTINCT q.id)::int AS question_count,
-           COUNT(DISTINCT c.student_id)::int AS candidate_count,
-           COUNT(DISTINCT a.id)::int AS attempt_count
+           COALESCE(q.total_marks,0) AS total_marks,
+           COALESCE(q.question_count,0)::int AS question_count,
+           COALESCE(c.candidate_count,0)::int AS candidate_count,
+           COALESCE(a.attempt_count,0)::int AS attempt_count
       FROM online_exams e
-      LEFT JOIN online_exam_questions q ON q.exam_id=e.id
-      LEFT JOIN online_exam_candidates c ON c.exam_id=e.id
-      LEFT JOIN online_exam_attempts a ON a.exam_id=e.id
+      LEFT JOIN (
+        SELECT exam_id,COUNT(*)::int AS question_count,COALESCE(SUM(marks),0) AS total_marks
+          FROM online_exam_questions GROUP BY exam_id
+      ) q ON q.exam_id=e.id
+      LEFT JOIN (
+        SELECT exam_id,COUNT(*)::int AS candidate_count
+          FROM online_exam_candidates GROUP BY exam_id
+      ) c ON c.exam_id=e.id
+      LEFT JOIN (
+        SELECT exam_id,COUNT(*)::int AS attempt_count
+          FROM online_exam_attempts GROUP BY exam_id
+      ) a ON a.exam_id=e.id
      WHERE e.school_code=$1
-     GROUP BY e.id
      ORDER BY e.starts_at DESC,e.created_at DESC
      LIMIT 200
   `,[schoolCode]);
