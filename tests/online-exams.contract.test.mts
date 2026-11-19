@@ -160,12 +160,13 @@ test('formal exam authoring requires a valid school lesson topic mapping for eve
   assert.match(route, /Every formal-exam question must be mapped to a school lesson topic completed by the candidates/);
   assert.match(route, /covered_topic_id:Number\(item\.covered_topic_id\)/);
   assert.match(adminExamScreen, /api\.get\('\/online-exams\/admin\/lesson-topics'/);
-  assert.match(adminExamScreen, /covered_topic_id:Number\(selectedTopic\.id\)/);
+  assert.match(adminExamScreen, /covered_topic_id:Number\(topic\.id\)/);
+  assert.match(adminExamScreen, /topicByQuestion\[question\.id\]/);
 });
 
 test('admin exam creator captures structured rubric criteria for written responses', () => {
   assert.match(adminExamScreen, /function parseRubric/);
   assert.match(adminExamScreen, /item\.marking_rubric=rubric/);
   assert.match(adminExamScreen, /id\|description\|max_marks/);
-  assert.match(adminExamScreen, /covered_topic_id:Number\(selectedTopic\.id\)/);
+  assert.match(adminExamScreen, /covered_topic_id:Number\(topic\.id\)/);
 });
