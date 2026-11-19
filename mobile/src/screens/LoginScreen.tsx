@@ -37,7 +37,7 @@ export default function LoginScreen({ navigation }: any) {
   const handleLogin = async () => {
     setError('');
     if (!username.trim() || !password) { setError(teacherLogin ? 'Select your username and enter your four-digit PIN' : 'Enter username and password'); return; }
-    if (teacherLogin && !/^\\d{4}$/.test(password)) { setError('PIN must be exactly four digits'); return;}
+    if (teacherLogin && !/^\d{4}$/.test(password)) { setError('PIN must be exactly four digits'); return;}
     setLoading(true);
     try {
       // RootNavigator branches on AuthContext's mustChangePw/
@@ -132,9 +132,13 @@ export default function LoginScreen({ navigation }: any) {
             </>
           )}
 
-          <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')} style={styles.forgotLink} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
-            <Text style={styles.forgotLinkText}>Forgot password?</Text>
-          </TouchableOpacity>
+{teacherLogin ? (
+            <Text style={[styles.forgotLinkText, { alignSelf: 'flex-end', marginTop: Spacing.xs }]}>Forgot your PIN? Contact the school Admin.</Text>
+          ) : (
+            <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')} style={styles.forgotLink} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
+              <Text style={styles.forgotLinkText}>Forgot password?</Text>
+            </TouchableOpacity>
+          )}
 
           {error ? <Text style={styles.error}>{error}</Text> : null}
           <Btn label="Sign In" onPress={handleLogin} loading={loading} style={{ marginTop: Spacing.md, width: '100%' }} />
