@@ -26,20 +26,32 @@ export default function OnlineExamAttemptScreen({ route, navigation }:any) {
   const saveOne=useCallback(async(questionId:string,response:any)=>{
     pending.current[questionId]=response;
     await AsyncStorage.setItem(storageKey,JSON.stringify(pending.current));
-    const previous=saveQueue.current[questionId]??Promise.resolve();
-    const queued=previous.catch(()=>undefined).then(async()=>{
-      try{
-        await api.put('/online-exams/attempts/'+attemptId+'/responses/'+questionId,{response});
-        if(JSON.stringify(pending.current[questionId])===JSON.stringify(response)) delete pending.current[questionId];
-        await AsyncStorage.setItem(storageKey,JSON.stringify(pending.current));
-        setError('');
-      }catch(e:any){
-        setError(online?'Response is retained on this device and will retry when connected.':'Offline: response is stored locally until reconnection.');
-        throw e;
+    if(saveQueue.current[questionId]) return saveQueue.current[questionId];
+    const worker=(async()=>{
+      while(Object.prototype.hasOwnProperty.call(pending.current,questionId)){
+        const latest=pending.current[questionId];
+        try{
+          await api.put('/online-exams/attempts/'+attemptId+'/responses/'+questionId,{response:latest});
+          const cachedRaw=await AsyncStorage.getItem(storageKey+':session');
+          if(cachedRaw){
+            const cached=JSON.parse(cachedRaw);
+            const saved=(cached.saved_responses??[]).filter((item:any)=>item.exam_question_id!==questionId);
+            saved.push({exam_question_id:questionId,response:latest});
+            cached.saved_responses=saved;
+            await AsyncStorage.setItem(storageKey+':session',JSON.stringify(cached));
+          }
+          if(JSON.stringify(pending.current[questionId])===JSON.stringify(latest)) delete pending.current[questionId];
+          await AsyncStorage.setItem(storageKey,JSON.stringify(pending.current));
+          setError('');
+        }catch(e:any){
+          setError(online?'Response is retained on this device and will retry when connected.':'Offline: response is stored locally until reconnection.');
+          throw e;
+        }
       }
-    });
-    saveQueue.current[questionId]=queued;
-    try{await queued;}catch{/* retained locally for retry */}
+    })();
+    saveQueue.current[questionId]=worker;
+    try{return await worker;}
+    finally{if(saveQueue.current[questionId]===worker)delete saveQueue.current[questionId];}
   },[attemptId,online,storageKey]);
 
   const load=useCallback(async()=>{
@@ -51,8 +63,8 @@ export default function OnlineExamAttemptScreen({ route, navigation }:any) {
     try{
       const {data}=await api.get('/online-exams/attempts/'+attemptId);
       setSession(data);
-      await AsyncStorage.setItem(storageKey+':session',JSON.stringify(data));
       clockOffset.current=new Date(data.attempt.server_time).getTime()-Date.now();
+      await AsyncStorage.setItem(storageKey+':session',JSON.stringify({...data,clock_offset_ms:clockOffset.current}));
       const remote=Object.fromEntries((data.saved_responses??[]).map((x:any)=>[x.exam_question_id,x.response]));
       const local=cachedResponses;
       const merged={...remote,...local};
@@ -62,14 +74,21 @@ export default function OnlineExamAttemptScreen({ route, navigation }:any) {
     }catch(e:any){
       if(cachedSession?.questions){
         setSession(cachedSession);
-        setResponses(cachedResponses);
+        const confirmed=Object.fromEntries((cachedSession.saved_responses??[]).map((item:any)=>[item.exam_question_id,item.response]));
+        setResponses({...confirmed,...cachedResponses});
         pending.current=cachedResponses;
-        clockOffset.current=0;
+        clockOffset.current=Number.isFinite(Number(cachedSession.clock_offset_ms))?Number(cachedSession.clock_offset_ms):0;
         setError('Offline recovery: showing the last cached examination. Unsynced answers will upload when connection returns.');
       }else setError(e?.response?.data?.error??'Could not recover this examination attempt.');
     }finally{setLoading(false);}
   },[attemptId,saveOne,storageKey]);
-  useEffect(()=>{if(initialSession) AsyncStorage.setItem(storageKey+':session',JSON.stringify(initialSession));},[initialSession,storageKey]);
+  useEffect(()=>{
+    if(initialSession){
+      clockOffset.current=initialSession.attempt?.server_time
+        ?new Date(initialSession.attempt.server_time).getTime()-Date.now():0;
+      AsyncStorage.setItem(storageKey+':session',JSON.stringify({...initialSession,clock_offset_ms:clockOffset.current}));
+    }
+  },[initialSession,storageKey]);
   useEffect(()=>{load();},[load]);
   useEffect(()=>{
     const unsubscribe=NetInfo.addEventListener(state=>setOnline(!!state.isConnected));
@@ -90,13 +109,13 @@ export default function OnlineExamAttemptScreen({ route, navigation }:any) {
 
   useEffect(()=>{
     if(online && Object.keys(pending.current).length){
-      (async()=>{for(const [qid,value] of Object.entries(pending.current)) await saveOne(qid,value);})();
+      (async()=>{for(const [qid,value] of Object.entries(pending.current)) await saveOne(qid,value);})().catch(()=>undefined);
     }
   },[online,saveOne]);
 
   const change=(qid:string,value:any)=>{
     setResponses(old=>({...old,[qid]:value}));
-    saveOne(qid,value);
+    void saveOne(qid,value).catch(()=>undefined);
   };
   const submit=async(auto=false)=>{
     if(saving)return;
@@ -105,11 +124,8 @@ export default function OnlineExamAttemptScreen({ route, navigation }:any) {
       const net=await NetInfo.fetch();
       if(!net.isConnected)throw new Error('Connect to the internet before submitting. Your saved answers are retained on this device.');
       for(const [qid,value] of Object.entries(pending.current)){
-        await saveQueue.current[qid]?.catch(()=>undefined);
-        if(pending.current[qid]===undefined)continue;
         try{
-          await api.put('/online-exams/attempts/'+attemptId+'/responses/'+qid,{response:value});
-          if(JSON.stringify(pending.current[qid])===JSON.stringify(value))delete pending.current[qid];
+          await saveOne(qid,value);
         }catch(e:any){
           if(e?.response?.status!==409)throw e;
           // A 409 means the server deadline/status has closed autosave. Keep
