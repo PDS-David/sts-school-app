@@ -3,7 +3,7 @@ import * as Print from 'expo-print';
 import * as Sharing from 'expo-sharing';
 import { Asset } from 'expo-asset';
 import type { SchoolBrand } from '../schoolBranding';
-import { renderTermReportHtml } from './reportTemplate';
+import { renderSessionReportHtml, renderTermReportHtml } from './reportTemplate';
 
 // This module has no role check. MyResultsScreen and SessionReportScreen
 // expose print/export to admins, parents, and teachers. Teacher report access
@@ -22,104 +22,16 @@ async function logoDataUri(brand: SchoolBrand | null): Promise<string> {
   }
 }
 
-function escapeHtml(v: unknown): string {
-  return String(v ?? '').replace(/[&<>"']/g, (c) => (
-    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string
-  ));
-}
-
-function shortTermLabel(name: string): string {
-  const m = name.match(/^(\d)/);
-  return m ? `T${m[1]}` : name;
-}
-
-const baseStyles = `
-  @page { size: A4; margin: 12mm 10mm; }
-  body { font-family: -apple-system, Helvetica, Arial, sans-serif; color: #1a1a1a; padding: 10px 16px; }
-  .letterhead { text-align: center; margin-bottom: 8px; }
-  .letterhead img { width: 84px; height: 84px; border-radius: 42px; }
-  .school-name { font-size: 19px; font-weight: 800; color: #1565C0; margin: 6px 0 0; }
-  .doc-subtitle { font-size: 12px; color: #555; margin: 2px 0 4px; }
-  .contact-line { font-size: 10px; color: #666; margin: 0 0 8px; }
-  .header-rule { border: none; border-top: 3px solid #1565C0; margin: 0 0 12px; }
-  .motto { font-size: 11px; font-style: italic; color: #555; margin: 2px 0; }
-  .doc-title { font-size: 12px; font-weight: 700; letter-spacing: 1px; margin-top: 8px; }
-  .info-block { margin-bottom: 12px; }
-  .info-row { display: flex; margin-bottom: 4px; }
-  .info-item { flex: 1; font-size: 13px; }
-  .info-label { font-weight: 700; color: #1a1a1a; }
-  .info-value { color: #444; margin-left: 4px; }
-  table { width: 100%; border-collapse: collapse; margin-bottom: 12px; font-size: 11px; }
-  th, td { border-bottom: 1px solid #eee; padding: 6px 4px; text-align: center; }
-  th { background: #F2F6FC; color: #667; font-weight: 600; font-size: 10px; text-transform: uppercase; }
-  th small, td.subhead { display: block; font-size: 9px; font-weight: 400; color: #99a; text-transform: none; }
-  td:first-child, th:first-child { text-align: left; }
-  td.total-cell { font-weight: 700; }
-  .grade-A { color: #2E7D32; font-weight: 700; }
-  .grade-B { color: #1565C0; font-weight: 700; }
-  .grade-C { color: #B26A00; font-weight: 700; }
-  .grade-other { color: #555; font-weight: 700; }
-  .stats-row { display: flex; text-align: center; margin: 10px 0 4px; padding-top: 8px; border-top: 1px solid #eee; }
-  .stat { flex: 1; }
-  .stat-label { font-size: 11px; color: #777; margin-bottom: 2px; }
-  .stat-value { font-size: 15px; font-weight: 800; color: #1a1a1a; }
-  .summary-row td { padding: 3px 0; font-size: 12px; border-bottom: none; }
-  .summary-label { color: #666; text-align: left; }
-  .summary-value { font-weight: 700; text-align: right; }
-  h3 { font-size: 13px; color: #1565C0; margin: 12px 0 6px; }
-  .remark { font-size: 12px; margin: 4px 0; }
-  .notice { font-size: 11px; color: #B26A00; margin-bottom: 12px; }
-  .footer-note { font-size: 11px; color: #888; text-align: center; margin-top: 12px; }
-`;
-
 // ── Term report card — mirrors the supplied Nursery/Primary and Secondary sheets.
 export async function buildTermReportHtml(report: any, brand: SchoolBrand | null): Promise<string> {
   const logo = await logoDataUri(brand);
   return renderTermReportHtml(report, brand, logo);
 }
 
-// ── Session report (SessionReportScreen's `report` shape) ───────────────────
+// ── Session report uses the same pure, regression-tested renderer.
 export async function buildSessionReportHtml(report: any, brand: SchoolBrand | null): Promise<string> {
-  const { student, academic_year, terms, terms_present, is_complete_session, subjects, attendance, summary } = report;
   const logo = await logoDataUri(brand);
-  const termHeaders: string[] = (terms ?? []).map((t: any) => shortTermLabel(t.name));
-  const rows = (subjects ?? []).map((s: any) => `
-    <tr>
-      <td>${escapeHtml(s.subject_name)}</td>
-      ${(s.term_scores ?? []).map((ts: any) => `<td>${ts.total ?? '—'}</td>`).join('')}
-      <td><b>${escapeHtml(s.session_total ?? '—')}</b></td>
-      <td>${escapeHtml(s.session_average ?? '—')}</td>
-      <td>${escapeHtml(s.session_grade ?? '—')}</td>
-    </tr>`).join('');
-
-  return `<!DOCTYPE html><html><head><meta charset="utf-8" /><style>${baseStyles}</style></head><body>
-    <div class="letterhead">
-      ${logo ? `<img src="${logo}" />` : ''}
-      <div class="school-name">${escapeHtml(brand?.name ?? '')}</div>
-      <div class="motto">${escapeHtml(brand?.motto ?? '')}</div>
-      <div class="doc-title">SESSION REPORT — ${escapeHtml(academic_year ?? '')}</div>
-    </div>
-    <div class="student-bar">
-      <div class="student-name">${escapeHtml(student.full_name)}</div>
-      <div class="student-meta">${escapeHtml(student.class_name)} &middot; Adm: ${escapeHtml(student.admission_number ?? '—')}</div>
-    </div>
-    ${!is_complete_session ? `<div class="notice">Session in progress — ${terms_present} of 3 terms recorded (${(terms ?? []).map((t: any) => t.name).join(', ')}). Totals reflect only the terms entered so far.${Number(summary?.subject_count ?? 0) === 0 ? ' No scores have been entered yet.' : ''}</div>` : ''}
-    <table>
-      <tr class="summary-row"><td class="summary-label">Terms Recorded</td><td class="summary-value">${terms_present} / 3</td></tr>
-      <tr class="summary-row"><td class="summary-label">Days Opened (session)</td><td class="summary-value">${attendance?.days_opened ?? 0}</td></tr>
-      <tr class="summary-row"><td class="summary-label">Days Present (session)</td><td class="summary-value">${attendance?.days_present ?? 0}</td></tr>
-      <tr class="summary-row"><td class="summary-label">Subjects with scores</td><td class="summary-value">${summary.subject_count}</td></tr>
-      <tr class="summary-row"><td class="summary-label">Subjects expected</td><td class="summary-value">${summary.expected_subject_count ?? summary.subject_count}</td></tr>
-      <tr class="summary-row"><td class="summary-label">Session Grand Total</td><td class="summary-value">${summary.grand_total}</td></tr>
-      <tr class="summary-row"><td class="summary-label">Session Average</td><td class="summary-value">${summary.grand_average}%</td></tr>
-    </table>
-    <h3>Subject Collation (1st + 2nd + 3rd Term)</h3>
-    <table>
-      <tr><th>Subject</th>${termHeaders.map((h) => `<th>${h}</th>`).join('')}<th>Total</th><th>Avg</th><th>Grade</th></tr>
-      ${rows || `<tr><td colspan="${3 + termHeaders.length}">No scores recorded for any term in this session yet.</td></tr>`}
-    </table>
-    <div class="footer-note">Generated ${new Date().toLocaleString()} via STS School App</div>
-  </body></html>`;
+  return renderSessionReportHtml(report, brand, logo);
 }
 
 // ── Print (opens the OS/browser print dialog directly, no file produced) ────
