@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from '../api/client';
 import { Card, Btn, Loader } from '../components/UI';
 import { Colors, Spacing, Fonts } from '../theme';
@@ -9,6 +10,7 @@ export default function OnlineExamResultScreen({route,navigation}:any){
   const [data,setData]=useState<any>(null);
   const [loading,setLoading]=useState(true);
   const [error,setError]=useState('');
+  const [unsyncedCount,setUnsyncedCount]=useState(0);
   const load=useCallback(async()=>{
     setLoading(true);setError('');
     try{const response=await api.get('/online-exams/attempts/'+attemptId+'/results');setData(response.data);}
@@ -16,10 +18,19 @@ export default function OnlineExamResultScreen({route,navigation}:any){
     finally{setLoading(false);}
   },[attemptId]);
   useEffect(()=>{load();},[load]);
+  useEffect(()=>{
+    let active=true;
+    AsyncStorage.getItem('online-exam-attempt:'+attemptId).then(raw=>{
+      if(!active||!raw)return;
+      try{setUnsyncedCount(Object.keys(JSON.parse(raw)||{}).length);}catch{setUnsyncedCount(0);}
+    }).catch(()=>undefined);
+    return()=>{active=false;};
+  },[attemptId]);
   if(loading)return <Loader/>;
   if(!data)return <View style={styles.container}><Text style={styles.error}>{error}</Text><Btn label="Retry" onPress={load}/></View>;
   const a=data.attempt;
   return <ScrollView style={styles.container} contentContainerStyle={{paddingBottom:Spacing.xl}}>
+    {unsyncedCount>0?<Text style={styles.warning}>{unsyncedCount} answer(s) remain stored on this device because the server deadline closed before they could be saved. Contact your school administrator; this local copy has been retained.</Text>:null}
     <Card style={styles.summary}>
       <Text style={styles.title}>{a.title}</Text>
       <Text style={styles.meta}>{a.subject_name} · {a.board} · {a.examination_type}</Text>
@@ -49,5 +60,6 @@ const styles=StyleSheet.create({
  answerText:{fontSize:Fonts.sizes.sm,color:Colors.text,lineHeight:21},
  feedback:{fontSize:Fonts.sizes.sm,color:Colors.primary,marginTop:Spacing.sm},
  notice:{fontSize:Fonts.sizes.sm,color:Colors.primary,marginTop:Spacing.sm,textAlign:'center'},
+ warning:{fontSize:Fonts.sizes.sm,color:Colors.warning,marginBottom:Spacing.md,lineHeight:20},
  error:{color:Colors.error}
 });
