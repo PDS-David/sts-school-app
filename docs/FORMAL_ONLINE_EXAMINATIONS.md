@@ -17,7 +17,7 @@ Question preparation reuses the existing rights-aware `question_bank_questions` 
 Admin endpoints use existing lesson content and the existing Gemini `generateJSON` service:
 
 - `POST /online-exams/admin/exams/generate-drafts`: canonical school topics for JSS3 and other supported canonical-topic classes. The topic must be completed by every active student currently enrolled in the target class.
-- `POST /online-exams/admin/exams/generate-package-drafts`: SS1–SS3 package lessons. Only implemented, student-deliverable package lessons with permitted source provenance are eligible. Every current candidate must have a matching package lesson completion record.
+- `POST /online-exams/admin/exams/generate-package-drafts`: SS1–SS3 package lessons. Only implemented, student-deliverable package lessons with permitted source provenance are eligible. Every current active report-roster candidate with a valid same-school student account must have a matching package lesson completion record.
 
 Both endpoints create three original MCQs per selected lesson in the question bank with:
 - `paper = Original practice — not a past paper`
@@ -34,7 +34,7 @@ A subject reviewer must approve/publish the drafts in the existing question-bank
 2. Generate original question drafts from fully covered lesson topics/package lessons, or use existing approved rights-cleared question-bank questions.
 3. Subject-review and approve/publish every generated draft.
 4. Create a draft examination with board, subject, class (JSS3/SS1/SS2/SS3), examination type, optional year, instructions, duration, start/end times and ordered sections/questions.
-5. Publish the examination. The candidate list is snapshotted from active student records in that school and class. A class with no active candidates cannot be published.
+5. Publish the examination. The candidate list is snapshotted only from active physical report-roster memberships in that school and class, linked to valid active student accounts in the same school. A class with no active candidates cannot be published.
 
 Example request shape:
 
@@ -103,10 +103,10 @@ No physical-reporting tables are referenced by the migration or route.
 
 ## Deployment and verification
 
-- Migration order is 0012 (question bank), 0013 (adaptive class practice), 0014 (formal examinations) and 0015 (marking confidence/rubric evidence). This PR carries an identical copy of 0013 from PR #1033 solely to make the full sequence testable while both PRs are open. After #1033 is merged, remove the duplicate 0013 file from this branch and rebase/update against master before merging this PR. The repository migration-runner guard now has a regression test for contiguous numbering.
+- Migration order is 0012 (question bank), 0013 (adaptive class practice, merged from PR #1033), 0014 (formal examinations), 0015 (marking confidence/rubric evidence) and 0016 (subject-teacher question reviews). The 0013 file on this branch is byte-for-byte identical to the version now on master; it is part of the branch tree but is not a diff against master. Do not delete or renumber it. The migration-runner integration test creates a disposable PostgreSQL database, runs the actual `--fresh` and `--all` commands, and verifies the complete 0001–0016 ledger and resulting tables. The endpoint integration fixture also uses the production report-roster and SS1–SS3 curriculum-progress table structures.
 - Deploy the backend API and mobile app together to expose the student flow.
 - No destructive production operation or data backfill is required.
-- CI workflow `.github/workflows/online-exams.yml` runs the backend build, focused contract tests, PostgreSQL 18 integration tests applying migrations 0012 → 0013 → 0014 → 0015 in order, and mobile TypeScript check. A contract test also rejects any numbered migration gap.
+- CI workflow `.github/workflows/online-exams.yml` runs the backend build, focused contract tests, PostgreSQL 18 endpoint integration tests applying migrations 0012 → 0013 → 0014 → 0015 → 0016 in order, the full production migration-runner test against a disposable database, and mobile TypeScript check. A contract test also rejects any numbered migration gap.
 - The PostgreSQL integration test requires a disposable `TEST_DATABASE_URL`; it creates and drops only a uniquely named test schema.
 
 
@@ -116,4 +116,4 @@ Teacher subject review is exposed in the teacher app's More → Review Questions
 Admin experience: the Admin app's Assessments → Formal Online Exams screen lists school-scoped examinations, creates drafts from approved objective questions, publishes only after server-side candidate lesson-coverage checks, lists candidate attempts, displays per-question AI confidence/rubric evidence, and permits manual marks for `pending_review` responses. School administrators can browse only approved question-bank content through the exam API; global question-bank ingestion remains restricted to global administrators. Written-response question creation requires a criterion rubric; the mobile draft creator accepts per-question rubric criteria in `id|description|max_marks` lines and the backend validates that their marks reconcile exactly to the question maximum.
 
 
-Coverage enforcement: the school-admin authoring screen requires an explicit school/class/subject lesson topic for every question. The backend validates that topic belongs to the selected school, class and subject; publication then rechecks that every currently enrolled candidate has completed every mapped topic. Questions without a valid lesson mapping cannot be attached to a formal exam.
+Coverage enforcement: the school-admin authoring screen requires an explicit school/class/subject lesson topic for every question. The backend validates that topic belongs to the selected school, class and subject; publication then locks and rechecks active report-roster memberships, valid student accounts and each candidate's completion of every mapped topic immediately before publishing. Questions without a valid lesson mapping cannot be attached to a formal exam.
