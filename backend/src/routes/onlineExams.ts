@@ -174,16 +174,16 @@ router.post('/admin/exams/generate-drafts',requireRole('admin'),async(req,res)=>
         const qno='AI-GEN-'+randomUUID().slice(0,8).toUpperCase();
         const {rows: inserted}=await client.query(`
           INSERT INTO question_bank_questions(board,exam_year,subject_id,paper,question_number,question_type,stem,options,correct_answer,explanation,marks,topic_id,source_id,source_locator,content_origin,rights_status,review_status,created_by)
-          VALUES($1,NULL,$2,'Original practice — not a past paper',$3,'mcq',$4,$5::jsonb,$6::jsonb,$7,$8,$9,$10,$11,'ai_generated','original_generated','draft',$12)
+          VALUES($1,NULL,$2,'Original practice — not a past paper',$3,'mcq',$4,$5::jsonb,$6::jsonb,$7,$8,$9,$10,$11,'ai_generated','original_generated','reviewed',$12)
           RETURNING id
         `,[body.board,subjectId,qno,q.stem.trim(),JSON.stringify(q.options),JSON.stringify({key:q.correct_key}),
           q.explanation.trim(),Number(q.marks),topicRows[0].id,sourceResult.rows[0].id,'school-topic:'+lesson.id,req.user!.id]);
         ids.push(inserted[0].id);
       }
-      return {draft_question_ids:ids,review_status:'draft',count:ids.length,source:sourceResult.rows[0].source_name};
+      return {draft_question_ids:ids,review_status:'reviewed',review_queue_status:'pending_subject_review',count:ids.length,source:sourceResult.rows[0].source_name};
     });
     if('error' in saved) return res.status(409).json({error:saved.error});
-    return res.status(201).json({...saved,message:'Questions are saved as drafts. An authorised subject reviewer must approve them before they can be used in an examination.'});
+    return res.status(201).json({...saved,message:'Original questions are queued for subject review. An authorised subject reviewer must approve them before they can be used in an examination.'});
   }catch(error:any){
     console.error('[online-exams] question draft persistence failed',error);
     return res.status(500).json({error:'Could not save generated examination-question drafts.'});
@@ -269,17 +269,17 @@ router.post('/admin/exams/generate-package-drafts',requireRole('admin'),async(re
           lesson_sources:lesson.provenance??[]});
         const {rows: inserted}=await client.query(`
           INSERT INTO question_bank_questions(board,exam_year,subject_id,paper,question_number,question_type,stem,options,correct_answer,explanation,marks,topic_id,source_id,source_locator,content_origin,rights_status,review_status,created_by)
-          VALUES($1,NULL,$2,'Original practice — not a past paper',$3,'mcq',$4,$5::jsonb,$6::jsonb,$7,$8,$9,$10,$11,'ai_generated','original_generated','draft',$12)
+          VALUES($1,NULL,$2,'Original practice — not a past paper',$3,'mcq',$4,$5::jsonb,$6::jsonb,$7,$8,$9,$10,$11,'ai_generated','original_generated','reviewed',$12)
           RETURNING id
         `,[body.board,subjects[0].id,'AI-GEN-'+randomUUID().slice(0,8).toUpperCase(),item.q.stem.trim(),
           JSON.stringify(item.q.options),JSON.stringify({key:item.q.correct_key}),item.q.explanation.trim(),Number(item.q.marks),
           topics[0].id,sourceRows[0].id,locator,req.user!.id]);
         ids.push(inserted[0].id);
       }
-      return {draft_question_ids:ids,count:ids.length,review_status:'draft',source:sourceRows[0].source_name};
+      return {draft_question_ids:ids,count:ids.length,review_status:'reviewed',review_queue_status:'pending_subject_review',source:sourceRows[0].source_name};
     });
     if('error' in saved) return res.status(409).json({error:saved.error});
-    return res.status(201).json({...saved,message:'Original questions are saved as drafts and must be subject-approved before use.'});
+    return res.status(201).json({...saved,message:'Original questions are queued for subject review and must be approved before use.'});
   }catch(error:any){console.error('[online-exams] package question draft save failed',error);return res.status(500).json({error:'Could not save generated package examination drafts.'});}
 });
 
