@@ -225,8 +225,10 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       await client.query('DELETE FROM topic_completions WHERE student_id=$1 AND topic_id=$2',[student,coveredTopicId]);
       assert.equal((await request('/online-exams/admin/exams/'+examId+'/publish','POST',adminToken,{},school)).status,409,'publication must recheck completion for every current candidate');
       await client.query('INSERT INTO topic_completions(student_id,topic_id) VALUES($1,$2)',[student,coveredTopicId]);
+      const examAfterRechecks=await client.query('SELECT id,status,school_code FROM online_exams WHERE id=$1',[examId]);
+      assert.equal(examAfterRechecks.rows[0]?.status,'draft','failed publication checks must leave the exam draft and retryable');
       const published=await request('/online-exams/admin/exams/'+examId+'/publish','POST',adminToken,{},school);
-      assert.equal(published.status,200);assert.equal(published.data.eligible_candidates,1);
+      assert.equal(published.status,200,JSON.stringify(published.data));assert.equal(published.data.eligible_candidates,1);
 
       const otherList=await request('/online-exams/exams','GET',otherToken);
       assert.equal(otherList.status,200);assert.equal(otherList.data.exams.length,0);
