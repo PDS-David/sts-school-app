@@ -75,10 +75,13 @@ router.get('/', requirePerm('attendance.read'), async (req, res) => {
     return res.status(403).json({ error: 'Attendance access requires an assigned physical class.' });
   }
   const effectiveClass = user.role === 'teacher' ? user.assigned_class : class_name?.trim();
-  // Admins have no own school_code. Their selected school is explicit in
-  // the screen's school switcher; requiring it prevents same-named classes
-  // from different schools being mixed in the attendance editor.
-  const effectiveSchoolCode = user.role === 'admin' ? requestedSchoolCode : user.school_code;
+  // requireAuth hydrates school_code from the administrator's assigned
+  // school, or from the explicitly selected school for a global administrator.
+  // Never let a query parameter override that trusted authorization scope.
+  const effectiveSchoolCode = user.school_code;
+  if (user.role === 'admin' && requestedSchoolCode && requestedSchoolCode !== effectiveSchoolCode) {
+    return res.status(403).json({ error: "You can't read attendance outside your selected school." });
+  }
 
   if (!effectiveClass || !Number.isSafeInteger(parsedTermId) || parsedTermId <= 0 || parsedTermId > 2_147_483_647) {
     return res.status(400).json({ error: 'A valid class_name and positive integer term_id are required' });
@@ -155,6 +158,9 @@ router.get('/class-records/:student_id/:term_id', async (req, res) => {
   const { rows: stRows } = await query('SELECT * FROM students WHERE id=$1', [student_id]);
   const student = stRows[0];
   if (!student || (user.role !== 'admin' && student.deleted_at)) return res.status(404).json({ error: 'Student not found' });
+  if (user.role === 'admin' && user.school_code && student.school_code !== user.school_code) {
+    return res.status(404).json({ error: 'Student not found' });
+  }
 
   if (user.role === 'student') {
     if (student.user_id !== user.id) return res.status(403).json({ error: 'Access denied' });
