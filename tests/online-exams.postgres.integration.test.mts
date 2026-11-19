@@ -16,11 +16,16 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
     const schema='exam_it_'+randomUUID().replace(/-/g,'');
     let server:any=null;
     let pool:any=null;
+    let ownsPublicSettingsFixture=false;
     try{
       await client.query('CREATE SCHEMA '+schema);
       await client.query('SET search_path TO '+schema);
-      await client.query('CREATE TABLE public.learning_access_settings(id INTEGER PRIMARY KEY,free_launch_mode BOOLEAN,term_pin_enforced BOOLEAN,curriculum_sequence_enforced BOOLEAN)');
-      await client.query('INSERT INTO public.learning_access_settings VALUES(1,true,false,false)');
+      const {rows:settingsFixture}=await client.query("SELECT to_regclass('public.learning_access_settings') AS existing");
+      if(!settingsFixture[0].existing){
+        await client.query('CREATE TABLE public.learning_access_settings(id INTEGER PRIMARY KEY,free_launch_mode BOOLEAN,term_pin_enforced BOOLEAN,curriculum_sequence_enforced BOOLEAN)');
+        await client.query('INSERT INTO public.learning_access_settings VALUES(1,true,false,false)');
+        ownsPublicSettingsFixture=true;
+      }
       await client.query('CREATE EXTENSION IF NOT EXISTS pgcrypto');
       await client.query('CREATE TABLE schools(code TEXT PRIMARY KEY)');
       await client.query(`CREATE TABLE users(
@@ -50,12 +55,16 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       const markingSql=await readFile(new URL('../backend/migrations/0015_online_exam_marking_confidence.sql',import.meta.url),'utf8');
       const reviewSql=await readFile(new URL('../backend/migrations/0016_question_bank_subject_reviews.sql',import.meta.url),'utf8');
       const provenanceSql=await readFile(new URL('../backend/migrations/0017_pilot_question_provenance_locators.sql',import.meta.url),'utf8');
+      const claimSql=await readFile(new URL('../backend/migrations/0018_online_exam_submission_claim_fence.sql',import.meta.url),'utf8');
       await client.query(questionBankSql);
       await client.query(classPracticeSql);
       await client.query(examSql);
       await client.query(markingSql);
       await client.query(reviewSql);
       await client.query(provenanceSql);
+      await client.query(claimSql);
+      const {rows: claimColumn}=await client.query("SELECT column_name FROM information_schema.columns WHERE table_schema=$1 AND table_name='online_exam_attempts' AND column_name='submission_claim_token'",[schema]);
+      assert.deepEqual(claimColumn.map((row:any)=>row.column_name),['submission_claim_token']);
       const {rows: reviewTable}=await client.query(`SELECT to_regclass('question_bank_question_reviews') AS table_name`);
       assert.ok(reviewTable[0].table_name);
       const {rows: markingColumns}=await client.query(`SELECT column_name FROM information_schema.columns WHERE table_schema=$1 AND table_name='online_exam_responses' AND column_name IN ('marking_confidence','marking_details')`,[schema]);
@@ -332,7 +341,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       if(pool) await pool.end();
       await client.query('RESET search_path');
       await client.query('DROP SCHEMA IF EXISTS '+schema+' CASCADE');
-      await client.query('DROP TABLE IF EXISTS public.learning_access_settings');
+      if(ownsPublicSettingsFixture)await client.query('DROP TABLE IF EXISTS public.learning_access_settings');
       await client.end();
     }
   });
