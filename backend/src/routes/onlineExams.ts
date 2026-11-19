@@ -808,6 +808,7 @@ router.get('/admin/exams',requireRole('admin'),async(req,res)=>{
   const {rows}=await query(`
     SELECT e.id,e.title,e.subject_name,e.class_name,e.board,e.examination_type,e.exam_year,
            e.status,e.starts_at,e.ends_at,e.duration_minutes,e.published_at,
+           (SELECT COALESCE(SUM(eq.marks),0) FROM online_exam_questions eq WHERE eq.exam_id=e.id) AS total_marks,
            COUNT(DISTINCT q.id)::int AS question_count,
            COUNT(DISTINCT c.student_id)::int AS candidate_count,
            COUNT(DISTINCT a.id)::int AS attempt_count
