@@ -1,0 +1,61 @@
+name: Android emulator smoke test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-emulator-smoke-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  android-smoke:
+    name: Build, install and launch Android APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install locked workspace dependencies
+        run: npm ci
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          packages: 'platform-tools platforms;android-36 build-tools;36.0.0 emulator system-images;android-35;google_apis;x86_64'
+      - name: Generate Android native project
+        working-directory: mobile
+        run: npx expo prebuild --platform android --non-interactive
+      - name: Build debug APK
+        timeout-minutes: 25
+        working-directory: mobile/android
+        run: ./gradlew --no-daemon --console=plain --stacktrace assembleDebug
+      - name: Install and launch APK on Android emulator
+        timeout-minutes: 15
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          profile: pixel_2
+          emulator-boot-timeout: 600
+          disable-animations: true
+          script: bash .github/scripts/android-emulator-smoke.sh
+      - name: Upload APK and emulator diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-emulator-smoke-evidence
+          path: |
+            mobile/android/app/build/outputs/apk/debug/app-debug.apk
+            artifacts/android-emulator-*.txt
+          if-no-files-found: warn
+          retention-days: 7
