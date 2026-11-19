@@ -223,7 +223,7 @@ export default function AdminUsersScreen() {
       return;
     }
     if (!editUser && form.role === 'teacher' && !/^\d{4}$/.test(form.initial_password)) {
-      setInfoDialog({ title: 'Invalid teacher password', message: 'Enter exactly four numeric digits for the teacher password.' });
+      setInfoDialog({ title: 'Invalid teacher PIN', message: 'Enter exactly four numeric digits for the teacher PIN.' });
       return;
     }
     if (!editUser && form.role !== 'teacher' && !form.username.trim()) {
@@ -282,8 +282,8 @@ export default function AdminUsersScreen() {
           // the assigned class), so echoing the request's own value would
           // show blank/stale text instead of the real created username.
           setInfoDialog({
-            title: 'Teacher Created',
-            message: `Username: ${data?.user?.username}\nPassword: ${form.initial_password}\n\nShare these credentials securely with the teacher.`,
+            title: 'Teacher Account Created',
+            message: `Username: ${data?.user?.username}\nPIN: ${form.initial_password}\n\nGive these credentials directly to the teacher. They will be asked to change the PIN at first login.`,
           });
         } else {
           // Task C: account creation no longer generates a temp password —
@@ -656,7 +656,7 @@ export default function AdminUsersScreen() {
 
           {!editUser && form.role === 'teacher' && (
             <Input
-              label="Teacher Password (4 digits)"
+              label="Teacher PIN (4 digits)"
               value={form.initial_password}
               onChangeText={v => setForm(f => ({ ...f, initial_password: v.replace(/\D/g, '').slice(0, 4) }))}
               keyboardType="numeric"
