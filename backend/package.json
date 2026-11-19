@@ -33,7 +33,8 @@
     "db:migrate:status": "tsx src/db/migrate.ts --status",
     "db:migrate:fresh": "tsx src/db/migrate.ts --fresh",
     "test:messages-rbac": "node --import tsx --test ../tests/backend-messages-rbac.test.mts",
-    "test:question-bank": "node --import tsx --test ../tests/question-bank-ingestion.test.mts"
+    "test:question-bank": "node --import tsx --test ../tests/question-bank-ingestion.test.mts",
+    "test:class-practice": "node --import tsx --test ../tests/ai-class-practice.static.test.mts ../tests/ai-class-practice.postgres.integration.test.mts"
   },
   "dependencies": {
     "@google/genai": "^1.48.0",
