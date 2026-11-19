@@ -93,6 +93,9 @@ test('student flow caches unsent answers and derives the timer from the server d
   assert.match(mobileResult, /online-exam-attempt:/);
   assert.match(mobileResult, /local copy has been retained/);
   assert.match(mobileList, /\/online-exams\/exams/);
+  assert.match(mobileList, /beforeStart/);
+  assert.match(mobileList, /afterEnd/);
+  assert.match(mobileAttempt, /editable=\{remaining>0&&!saving\}/);
 });
 
 test('written responses require a complete criterion rubric and confidence-validated AI marks', () => {
