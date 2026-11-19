@@ -131,10 +131,15 @@ async function validateScoreWriteScope(
 // GET /scores and ScoreEntryScreen.
 router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => {
   const user = req.user!;
-  const schoolCode = user.role === 'admin'
-    ? (typeof req.query.school_code === 'string' ? req.query.school_code : null)
-    : user.school_code;
-  if (!schoolCode) return res.status(400).json({ error: 'school_code is required' });
+  // requireAuth hydrates school_code from the admin's assigned school, or
+  // from the school explicitly selected by a global administrator. Query
+  // parameters may narrow that scope, but must never widen or replace it.
+  const requestedSchoolCode = typeof req.query.school_code === 'string' ? req.query.school_code : null;
+  const schoolCode = user.school_code;
+  if (user.role === 'admin' && requestedSchoolCode && requestedSchoolCode !== schoolCode) {
+    return res.status(403).json({ error: "You can't view reporting data outside your selected school." });
+  }
+  if (!schoolCode) return res.status(400).json({ error: 'Select a school before viewing reporting data.' });
 
   const requestedClassName = typeof req.query.class_name === 'string' ? req.query.class_name : null;
   const allowedClasses = user.assigned_class ? [user.assigned_class] : (user.assigned_class_names ?? []);
@@ -286,17 +291,16 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
       params.push(user.assigned_subject_ids);
       sql += ` AND sc.subject_id=ANY($${params.length}::int[])`;
     }
-  } else if (user.role === 'admin' && school_code) {
-    // Found in a hardening pass: filtering by class_name alone (e.g. the
-    // admin Class Summary/ranking screen) had no school scoping at all for
-    // admin, unlike the teacher branch above. Since class names aren't
-    // unique across schools ("JSS 1" can exist in more than one school), an
-    // admin viewing one school's class ranking would silently pick up scores
-    // from every other school's same-named class too. Admin has no
-    // school_code of their own (by design — they oversee every school), so
-    // this can only be enforced when the caller passes one explicitly; the
-    // admin UI (ClassSummaryScreen) now always does.
-    params.push(school_code); sql += ` AND s.school_code=$${params.length}`;
+  } else if (user.role === 'admin') {
+    // Admin reporting is school-scoped by requireAuth. A caller-supplied
+    // school_code may only repeat that trusted selected/assigned school.
+    if (!user.school_code) {
+      return res.status(400).json({ error: 'Select a school before viewing scores.' });
+    }
+    if (school_code && school_code !== user.school_code) {
+      return res.status(403).json({ error: "You can't view scores outside your selected school." });
+    }
+    params.push(user.school_code); sql += ` AND s.school_code=${params.length}`;
   }
 
   if (user.role !== 'admin') sql += ' AND s.deleted_at IS NULL';
@@ -480,7 +484,11 @@ async function authoriseReportAccess(
       break;
     }
     case 'admin':
-      denied = null;
+      // A school-bound administrator and a global administrator with a
+      // selected school are both restricted to the hydrated school scope.
+      denied = user.school_code && student.school_code !== user.school_code
+        ? { status: 404, error: 'Student not found' }
+        : null;
       break;
     default:
       denied = { status: 403, error: 'Access denied' };
