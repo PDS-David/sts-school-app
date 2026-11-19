@@ -10,6 +10,69 @@ import {
 } from '../utils/questionBankValidation.js';
 
 const router = Router();
+
+// Subject-teacher review is intentionally separate from global question-bank
+// administration. Teachers can review only subjects assigned to their account;
+// they cannot ingest sources or change licensing metadata.
+router.get('/review-queue', requireAuth, requireRole('teacher'), async (req, res) => {
+  const { rows } = await query(`
+    SELECT q.id,q.board,q.exam_year,q.paper,q.question_number,q.question_type,
+           q.stem,q.options,q.correct_answer,q.explanation,q.marks,q.content_origin,
+           q.rights_status,q.review_status,s.code AS subject_code,s.name AS subject,
+           t.name AS topic,src.source_name,src.source_url,src.rights_evidence,
+           (SELECT r.decision FROM question_bank_question_reviews r
+             WHERE r.question_id=q.id AND r.reviewer_user_id=$1
+             ORDER BY r.reviewed_at DESC LIMIT 1) AS my_decision,
+           (SELECT r.notes FROM question_bank_question_reviews r
+             WHERE r.question_id=q.id AND r.reviewer_user_id=$1
+             ORDER BY r.reviewed_at DESC LIMIT 1) AS my_notes
+      FROM question_bank_questions q
+      JOIN question_bank_subjects s ON s.id=q.subject_id
+      JOIN question_bank_topics t ON t.id=q.topic_id AND t.subject_id=q.subject_id
+      JOIN question_bank_sources src ON src.id=q.source_id
+     WHERE q.review_status='reviewed'
+       AND EXISTS (
+         SELECT 1 FROM teacher_subjects ts
+         JOIN subjects assigned ON assigned.id=ts.subject_id
+         WHERE ts.user_id=$1
+           AND lower(trim(assigned.name))=lower(trim(s.name))
+       )
+     ORDER BY s.name,q.board,q.created_at
+     LIMIT 200
+  `, [req.user!.id]);
+  return res.json({ questions: rows });
+});
+
+router.post('/questions/:id/review', requireAuth, requireRole('teacher'), async (req, res) => {
+  const decision=req.body?.decision;
+  const notes=typeof req.body?.notes==='string'?req.body.notes.trim():'';
+  if(!['approved','rejected'].includes(decision)||notes.length<10||notes.length>2000)
+    return res.status(400).json({error:'Provide an approve/reject decision and 10–2,000 characters of subject-review notes.'});
+  const result=await withTransaction(async client=>{
+    const {rows}=await client.query(
+      'SELECT id,subject_id,review_status FROM question_bank_questions WHERE id=$1 FOR UPDATE',[req.params.id]);
+    const question=rows[0];
+    if(!question) return {status:404,error:'Question not found.'};
+    if(question.review_status!=='reviewed') return {status:409,error:'Only reviewed draft questions can enter subject-teacher approval.'};
+    const {rows:assigned}=await client.query(`
+      SELECT 1 FROM teacher_subjects ts
+      JOIN subjects assigned ON assigned.id=ts.subject_id
+      JOIN question_bank_subjects qb ON lower(trim(qb.name))=lower(trim(assigned.name))
+      WHERE ts.user_id=$1 AND qb.id=$2 LIMIT 1
+    `,[req.user!.id,question.subject_id]);
+    if(!assigned.length) return {status:403,error:'You are not assigned to this question-bank subject.'};
+    await client.query(`
+      INSERT INTO question_bank_question_reviews(question_id,subject_id,reviewer_user_id,decision,notes)
+      VALUES($1,$2,$3,$4,$5)
+    `,[question.id,question.subject_id,req.user!.id,decision,notes]);
+    if(decision==='approved')
+      await client.query("UPDATE question_bank_questions SET review_status='approved',updated_at=now() WHERE id=$1",[question.id]);
+    return {status:200,question_id:question.id,decision,review_status:decision==='approved'?'approved':'reviewed'};
+  });
+  if('error' in result) return res.status(result.status).json({error:result.error});
+  return res.json(result);
+});
+
 router.use(requireAuth, requireRole('admin'), (req, res, next) => {
   // The question bank is a global online-learning resource, not a school-scoped
   // physical assessment tool. Only global administrators may manage its corpus.

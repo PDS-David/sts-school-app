@@ -22,6 +22,7 @@ import schoolEventsRouter from './routes/schoolEvents.js';
 import healthRouter from './routes/health.js';
 import questionBankRouter from './routes/questionBank.js';
 import classPracticeRouter from './routes/classPractice.js';
+import onlineExamsRouter from './routes/onlineExams.js';
 import { startBackupScheduler } from './utils/backup.js';
 import { pool } from './db/pool.js';
 import { installFatalProcessHandlers } from './utils/fatalProcessHandlers.js';
@@ -56,6 +57,7 @@ app.use('/auth', rateLimit({
 app.use('/health', healthRouter);
 app.use('/question-bank', questionBankRouter);
 app.use('/class-practice', classPracticeRouter);
+app.use('/online-exams', onlineExamsRouter);
 
 app.get('/', (_req, res) => res.json({
   status: 'ok',
