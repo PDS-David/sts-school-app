@@ -35,7 +35,7 @@
     "test:messages-rbac": "node --import tsx --test ../tests/backend-messages-rbac.test.mts",
     "test:question-bank": "node --import tsx --test ../tests/question-bank-ingestion.test.mts",
     "test:class-practice": "node --import tsx --test ../tests/ai-class-practice.static.test.mts ../tests/ai-class-practice.postgres.integration.test.mts",
-    "test:online-exams": "node --import tsx --test ../tests/online-exams.contract.test.mts ../tests/online-exams.postgres.integration.test.mts ../tests/online-exams.migration-runner.integration.test.mts"
+    "test:online-exams": "node --import tsx --test --test-concurrency=1 ../tests/online-exams.contract.test.mts ../tests/online-exams.postgres.integration.test.mts ../tests/online-exams.migration-runner.integration.test.mts"
   },
   "dependencies": {
     "@google/genai": "^1.48.0",
