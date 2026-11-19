@@ -15,6 +15,9 @@ const router = Router();
 // administration. Teachers can review only subjects assigned to their account;
 // they cannot ingest sources or change licensing metadata.
 router.get('/review-queue', requireAuth, requireRole('teacher'), async (req, res) => {
+  const includeRejected=req.query.include_rejected==='true';
+  const pageSize=Math.min(100,Math.max(1,Number.parseInt(String(req.query.limit??'50'),10)||50));
+  const offset=Math.max(0,Number.parseInt(String(req.query.offset??'0'),10)||0);
   const { rows } = await query(`
     SELECT q.id,q.board,q.exam_year,q.paper,q.question_number,q.question_type,
            q.stem,q.options,q.correct_answer,q.explanation,q.marks,q.content_origin,
@@ -37,10 +40,21 @@ router.get('/review-queue', requireAuth, requireRole('teacher'), async (req, res
          WHERE ts.user_id=$1
            AND lower(trim(assigned.name))=lower(trim(s.name))
        )
+       AND ($2::boolean OR NOT EXISTS (
+         SELECT 1 FROM question_bank_question_reviews rejected
+          WHERE rejected.question_id=q.id AND rejected.reviewer_user_id=$1
+            AND rejected.decision='rejected'
+            AND rejected.reviewed_at=(
+              SELECT MAX(latest.reviewed_at) FROM question_bank_question_reviews latest
+               WHERE latest.question_id=q.id AND latest.reviewer_user_id=$1
+            )
+       ))
      ORDER BY s.name,q.board,q.created_at
-     LIMIT 200
-  `, [req.user!.id]);
-  return res.json({ questions: rows });
+     LIMIT $3 OFFSET $4
+  `, [req.user!.id,includeRejected,pageSize+1,offset]);
+  const hasMore=rows.length>pageSize;
+  return res.json({ questions: rows.slice(0,pageSize), pagination:{limit:pageSize,offset,has_more:hasMore,
+    next_offset:hasMore?offset+pageSize:null}, rejected_included:includeRejected });
 });
 
 router.post('/questions/:id/review', requireAuth, requireRole('teacher'), async (req, res) => {
