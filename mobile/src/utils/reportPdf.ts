@@ -103,7 +103,7 @@ export async function buildSessionReportHtml(report: any, brand: SchoolBrand | n
       <div class="student-name">${escapeHtml(student.full_name)}</div>
       <div class="student-meta">${escapeHtml(student.class_name)} &middot; Adm: ${escapeHtml(student.admission_number ?? '—')}</div>
     </div>
-    ${!is_complete_session ? `<div class="notice">Session in progress — ${terms_present} of 3 terms recorded (${(terms ?? []).map((t: any) => t.name).join(', ')}). Totals reflect only the terms entered so far.</div>` : ''}
+    ${!is_complete_session ? `<div class="notice">Session in progress — ${terms_present} of 3 terms recorded (${(terms ?? []).map((t: any) => t.name).join(', ')}). Totals reflect only the terms entered so far.${Number(summary?.subject_count ?? 0) === 0 ? ' No scores have been entered yet.' : ''}</div>` : ''}
     <table>
       <tr class="summary-row"><td class="summary-label">Terms Recorded</td><td class="summary-value">${terms_present} / 3</td></tr>
       <tr class="summary-row"><td class="summary-label">Days Opened (session)</td><td class="summary-value">${attendance?.days_opened ?? 0}</td></tr>
