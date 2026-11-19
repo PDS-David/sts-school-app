@@ -225,7 +225,8 @@ export default function AdminOnlineExamsScreen() {
     if(!Number.isFinite(awarded)||awarded<0||awarded>Number(response.marks)){
       setError('Enter a valid mark within the question maximum.');return;
     }
-    setBusy(response.question_id);setError('');
+    const busyKey=targetAttemptId+':'+response.question_id;
+    setBusy(busyKey);setError('');
     try{
       const {data:marked}=await api.put('/online-exams/admin/attempts/'+targetAttemptId+'/responses/'+response.question_id+'/mark',{
         awarded_marks:awarded,feedback:feedback[response.question_id]??'',
@@ -236,8 +237,8 @@ export default function AdminOnlineExamsScreen() {
         setResponses(data.responses??[]);
         setNotice('Manual mark saved and the candidate total recalculated.');
       }
-    }catch(e:any){setError(e?.response?.data?.error??'Could not save the manual mark.');}
-    finally{setBusy(null);}
+    }catch(e:any){if(selectedAttemptIdRef.current===targetAttemptId)setError(e?.response?.data?.error??'Could not save the manual mark.');}
+    finally{if(selectedAttemptIdRef.current===targetAttemptId)setBusy(null);}
   };
 
   const back=()=>{
@@ -402,7 +403,7 @@ export default function AdminOnlineExamsScreen() {
                     <View style={styles.manual}>
                       <Field label={'Manual mark (max '+response.marks+')'} value={marks[response.question_id]??''} onChange={(value:string)=>setMarks(current=>({...current,[response.question_id]:value}))} keyboardType="numeric"/>
                       <Field label="Examiner feedback" value={feedback[response.question_id]??''} onChange={(value:string)=>setFeedback(current=>({...current,[response.question_id]:value}))} multiline/>
-                      <Btn label={busy===response.question_id?'Saving…':'Save manual mark'} onPress={()=>markResponse(response)} loading={busy===response.question_id} disabled={busy===response.question_id}/>
+                      <Btn label={busy===selectedAttempt?.attempt_id+':'+response.question_id?'Saving…':'Save manual mark'} onPress={()=>markResponse(response)} loading={busy===selectedAttempt?.attempt_id+':'+response.question_id} disabled={busy===selectedAttempt?.attempt_id+':'+response.question_id}/>
                     </View>
                   ):null}
                 </View>
