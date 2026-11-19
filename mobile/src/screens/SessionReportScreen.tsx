@@ -152,7 +152,8 @@ export default function SessionReportScreen({ route }: any) {
         <RowItem label="Terms Recorded" value={`${terms_present} / 3`} />
         <RowItem label="Days Opened (session)"  value={attendance?.days_opened ?? 0} />
         <RowItem label="Days Present (session)" value={attendance?.days_present ?? 0} />
-        <RowItem label="Subjects" value={summary.subject_count} />
+        <RowItem label="Subjects with scores" value={summary.subject_count} />
+        <RowItem label="Subjects expected" value={summary.expected_subject_count ?? summary.subject_count} />
         <RowItem label="Session Grand Total" value={summary.grand_total} />
         <RowItem label="Session Average" value={`${summary.grand_average}%`} />
       </Card>
@@ -170,8 +171,8 @@ export default function SessionReportScreen({ route }: any) {
             {s.term_scores.map((ts: any) => (
               <Text key={ts.term_id} style={styles.tdCell}>{ts.total ?? '—'}</Text>
             ))}
-            <Text style={[styles.tdCell, { fontWeight: '700' }]}>{s.session_total}</Text>
-            <Text style={styles.tdCell}>{s.session_average}</Text>
+            <Text style={[styles.tdCell, { fontWeight: '700' }]}>{s.session_total ?? '—'}</Text>
+            <Text style={styles.tdCell}>{s.session_average ?? '—'}</Text>
             {s.session_grade ? <GradePill grade={s.session_grade} /> : <Text style={styles.tdCell}>—</Text>}
           </View>
         ))}
