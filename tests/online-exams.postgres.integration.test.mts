@@ -308,6 +308,8 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.equal(physical.rows[0].roster_count,3,'exam publication must not mutate any of the active roster memberships in the fixture');
       const rosterState=await client.query('SELECT class_name,status FROM report_roster_memberships WHERE student_id=$1',[student]);
       assert.deepEqual(rosterState.rows[0],{class_name:'SS 3',status:'active'});
+      const pendingRosterState=await client.query('SELECT class_name,status FROM report_roster_memberships WHERE student_id=$1',[pendingStudent]);
+      assert.deepEqual(pendingRosterState.rows[0],{class_name:'SS 3',status:'active'});
       const audit=await client.query('SELECT COUNT(*)::int AS n FROM online_exam_audit_events WHERE exam_id=$1',[examId]);
       assert.ok(audit.rows[0].n>=4);
     }finally{
