@@ -75,12 +75,15 @@ jobs:
         run: ./gradlew --no-daemon --console=plain --stacktrace assembleDebug
       - name: Install and launch APK on Android emulator
         id: emulator-smoke
+        timeout-minutes: 15
         continue-on-error: true
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 35
           arch: x86_64
           profile: pixel_2
+          emulator-boot-timeout: 600
+          disable-animations: true
           script: bash .github/scripts/android-emulator-smoke.sh
       - name: Verify Expo credentials for release dispatch
         if: github.event_name == 'workflow_dispatch'
