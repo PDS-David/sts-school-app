@@ -131,7 +131,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       process.env.GEMINI_API_KEY='';
       process.env.AI_AGENT_SERVICE_URL='';
       const express=require('express');
-      const [{default:router,validateMarkingRubric,validateAiRubricMark},{default:questionBankRouter},{signAccess},{pool:databasePool},{listStudentSs1Lessons}]=await Promise.all([
+      const [{default:router,validateMarkingRubric,validateAiRubricMark,validGeneratedMcqOptions},{default:questionBankRouter},{signAccess},{pool:databasePool},{listStudentSs1Lessons}]=await Promise.all([
         import('../backend/src/routes/onlineExams.ts'),
         import('../backend/src/routes/questionBank.ts'),
         import('../backend/src/utils/jwt.ts'),
@@ -149,6 +149,13 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.equal(validateAiRubricMark({...validAiMark,confidence:0.42},rubric,5)?.confidence,0.42,'low confidence is valid evidence but must be routed to pending review');
       assert.equal(validateAiRubricMark({...validAiMark,points:5},rubric,5),null);
       assert.equal(validateAiRubricMark({...validAiMark,criterion_scores:[validAiMark.criterion_scores[0]]},rubric,5),null);
+      assert.equal(validateAiRubricMark({...validAiMark,points:null},rubric,5),null,'nonnumeric totals must require examiner review');
+      assert.equal(validateAiRubricMark({...validAiMark,confidence:null},rubric,5),null,'nonnumeric confidence must require examiner review');
+      assert.equal(validateAiRubricMark({...validAiMark,criterion_scores:[{...validAiMark.criterion_scores[0],points:null},validAiMark.criterion_scores[1]]},rubric,5),null,'nonnumeric criterion marks must require examiner review');
+      const mcqOptions=[{key:'A',text:'One'},{key:'B',text:'Two'},{key:'C',text:'Three'},{key:'D',text:'Four'}];
+      assert.equal(validGeneratedMcqOptions(mcqOptions,'A'),true);
+      assert.equal(validGeneratedMcqOptions([{...mcqOptions[0]},{...mcqOptions[0]},mcqOptions[2],mcqOptions[3]],'A'),false);
+      assert.equal(validGeneratedMcqOptions(mcqOptions,'E'),false);
       pool=databasePool;
       const app=express();app.use(express.json());app.use('/online-exams',router);app.use('/question-bank',questionBankRouter);
       server=app.listen(0);
