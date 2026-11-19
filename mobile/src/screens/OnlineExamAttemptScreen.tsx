@@ -150,13 +150,13 @@ export default function OnlineExamAttemptScreen({ route, navigation }:any) {
           <Text style={styles.questionText}>{q.question.stem}</Text>
           {q.question.type==='mcq' && (q.question.options??[]).map((option:any)=>(
             <TouchableOpacity key={option.key} style={[styles.option,responses[q.id]?.key===option.key&&styles.optionSelected]}
-              onPress={()=>change(q.id,{key:option.key})}>
+              onPress={()=>change(q.id,{key:option.key})} disabled={remaining===0||saving}>
               <Ionicons name={responses[q.id]?.key===option.key?'radio-button-on':'radio-button-off'} size={20} color={Colors.primary}/>
               <Text style={styles.optionText}>{option.key}. {option.text}</Text>
             </TouchableOpacity>
           ))}
           {q.question.type!=='mcq' && <TextInput multiline value={typeof responses[q.id]==='string'?responses[q.id]:''}
-            onChangeText={v=>change(q.id,v)} placeholder="Type your answer here" placeholderTextColor={Colors.textSub}
+            onChangeText={v=>change(q.id,v)} editable={remaining>0&&!saving} placeholder="Type your answer here" placeholderTextColor={Colors.textSub}
             style={styles.answerInput}/>}
         </Card>
       ))}
