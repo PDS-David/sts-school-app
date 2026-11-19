@@ -18,7 +18,7 @@ export default function OnlineExamAttemptScreen({ route, navigation }:any) {
   const [online,setOnline]=useState(true);
   const [error,setError]=useState('');
   const pending=useRef<Record<string,any>>({});
-  const saveQueue=useRef<Record<string,Promise<any>>>({});
+  const saveQueue=useRef<Record<string,Promise<any>|undefined>>({});
   const autoSubmitAttempted=useRef(false);
   const clockOffset=useRef(0);
   const storageKey='online-exam-attempt:'+attemptId;
