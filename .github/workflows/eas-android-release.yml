@@ -1,13 +1,6 @@
 name: EAS teacher and production release
 
 on:
-  push:
-    branches:
-      - "agent/mobile-teacher-release-20261119"
-    paths:
-      - ".github/workflows/eas-android-release.yml"
-      - "mobile/app.config.js"
-      - "mobile/eas.json"
   workflow_dispatch:
     inputs:
       build_target:
@@ -47,6 +40,9 @@ jobs:
             exit 1
           fi
           npx eas-cli@latest whoami
+      - name: Verify access to the linked EAS project
+        working-directory: mobile
+        run: npx eas-cli@latest project:info
       - name: Install locked workspace dependencies
         run: npm ci
       - name: Prepare build receipt directory
