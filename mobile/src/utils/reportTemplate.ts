@@ -268,7 +268,7 @@ export function renderSessionReportHtml(
   const complete = report?.is_complete_session === true;
   const termHeaders = terms.map((term: any) => {
     const name = String(term?.name ?? '');
-    const match = name.match(/^(\\d)/);
+    const match = name.match(/^(\d)/);
     return match ? `T${match[1]}` : name;
   });
   const rows = subjects.map((subject: any) => `
