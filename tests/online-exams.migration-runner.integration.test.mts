@@ -37,11 +37,12 @@ test('production migration runner applies the complete PostgreSQL 18 sequence th
     assert.match(incrementalOutput,/Applied 0015 0015_online_exam_marking_confidence\.sql/);
     assert.match(incrementalOutput,/Applied 0016 0016_question_bank_subject_reviews\.sql/);
     assert.match(incrementalOutput,/Applied 0017 0017_pilot_question_provenance_locators\.sql/);
+    assert.match(incrementalOutput,/Applied 0018 0018_online_exam_submission_claim_fence\.sql/);
 
     verifier=new Client({connectionString:target.toString()});
     await verifier.connect();
     const {rows}=await verifier.query('SELECT version,name FROM public.schema_migrations ORDER BY version');
-    const expected=Array.from({length:17},(_,index)=>String(index+1).padStart(4,'0'));
+    const expected=Array.from({length:18},(_,index)=>String(index+1).padStart(4,'0'));
     assert.deepEqual(rows.map((row:any)=>row.version),expected);
     assert.equal(rows.find((row:any)=>row.version==='0013')?.name,'0013_ai_class_practice.sql');
     assert.equal(rows.find((row:any)=>row.version==='0014')?.name,'0014_formal_online_examinations.sql');
@@ -52,6 +53,12 @@ test('production migration runner applies the complete PostgreSQL 18 sequence th
              to_regclass('public.question_bank_question_reviews') AS reviews
     `);
     assert.ok(objects[0].practice&&objects[0].exams&&objects[0].responses&&objects[0].reviews);
+    const {rows:claimColumns}=await verifier.query(`
+      SELECT column_name FROM information_schema.columns
+       WHERE table_schema='public' AND table_name='online_exam_attempts'
+         AND column_name='submission_claim_token'
+    `);
+    assert.deepEqual(claimColumns.map((row:any)=>row.column_name),['submission_claim_token']);
     const {rows:columns}=await verifier.query(`
       SELECT column_name FROM information_schema.columns
        WHERE table_schema='public' AND table_name='online_exam_responses'
