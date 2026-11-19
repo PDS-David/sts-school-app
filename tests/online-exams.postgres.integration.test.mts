@@ -71,6 +71,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       await client.query('INSERT INTO students(id,user_id,school_code,class_name) VALUES($1,$2,$3,$4),($5,$6,$3,$7),($8,$9,$3,$4),($10,$11,$3,$12)',
         [student,studentUser,school,'SS 3',otherStudent,otherUser,'JSS 3',unrosteredStudent,unrosteredUser,ss1Student,ss1User,'SS 1']);
       await client.query("INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status) VALUES($1,'SS 3','SS 3','active')",[student]);
+      await client.query("INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status) VALUES($1,'JSS 3','JSS 3','active')",[otherStudent]);
       await client.query("INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status) VALUES($1,'SS 1','SS 1','active')",[ss1Student]);
       const coveredTopicId=900;
       await client.query("INSERT INTO topics(id,school_code,class_name,subject_id,title,term_id,order_index) VALUES($1,$2,'SS 3',1,'Linear Equations',1,1)",[coveredTopicId,school]);
