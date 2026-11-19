@@ -7,6 +7,9 @@ on:
     paths:
       - ".github/workflows/mobile-pr-validation.yml"
       - ".github/workflows/mobile-release-audit.yml"
+      - ".github/workflows/eas-android-release.yml"
+      - ".github/workflows/android-emulator-smoke.yml"
+      - ".github/workflows/retire-legacy-mobile-release-audit.yml"
       - "mobile/**"
       - "package.json"
       - "package-lock.json"
