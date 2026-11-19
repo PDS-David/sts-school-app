@@ -332,7 +332,7 @@ export function renderSessionReportHtml(
   </table>
   <h3>Subject Collation (1st + 2nd + 3rd Term)</h3>
   <table>
-    <tr><th>Subject</th>${termHeaders.map(header => `<th>${escapeHtml(header)}</th>`).join('')}<th>Total</th><th>Avg</th><th>Grade</th></tr>
+    <tr><th>Subject</th>${termHeaders.map((header: string) => `<th>${escapeHtml(header)}</th>`).join('')}<th>Total</th><th>Avg</th><th>Grade</th></tr>
     ${rows || `<tr><td colspan="${3 + termHeaders.length}">No scores recorded for any term in this session yet.</td></tr>`}
   </table>
   <div class="footer-note">Generated via STS School App</div>
