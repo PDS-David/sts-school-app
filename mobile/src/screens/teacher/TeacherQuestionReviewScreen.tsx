@@ -13,16 +13,22 @@ export default function TeacherQuestionReviewScreen() {
   const [busy,setBusy]=useState<string|null>(null);
   const [error,setError]=useState('');
   const [message,setMessage]=useState('');
+  const [offset,setOffset]=useState(0);
+  const [hasMore,setHasMore]=useState(false);
+  const [includeRejected,setIncludeRejected]=useState(false);
+  const pageSize=50;
 
-  const load=useCallback(async()=>{
+  const load=useCallback(async(nextOffset=offset)=>{
     setLoading(true);setError('');
     try{
-      const {data}=await api.get('/question-bank/review-queue');
+      const {data}=await api.get('/question-bank/review-queue',{params:{limit:pageSize,offset:nextOffset,include_rejected:includeRejected}});
       setQuestions(data.questions??[]);
+      setHasMore(!!data.pagination?.has_more);
+      setOffset(nextOffset);
     }catch(e:any){
       setError(e?.response?.data?.error??'Could not load questions assigned to your subjects.');
     }finally{setLoading(false);}
-  },[]);
+  },[includeRejected,offset]);
 
   useEffect(()=>{void load();},[load]);
 
@@ -32,8 +38,9 @@ export default function TeacherQuestionReviewScreen() {
     setBusy(question.id);setError('');setMessage('');
     try{
       const {data}=await api.post('/question-bank/questions/'+question.id+'/review',{decision,notes:note});
-      if(decision==='approved') setQuestions(current=>current.filter(item=>item.id!==question.id));
-      else setQuestions(current=>current.map(item=>item.id===question.id?{...item,my_decision:'rejected',my_notes:note}:item));
+      if(decision==='approved'||(decision==='rejected'&&!includeRejected))
+        setQuestions(current=>current.filter(item=>item.id!==question.id));
+      else setQuestions(current=>current.map(item=>item.id===question.id?{...item,my_decision:decision,my_notes:note}:item));
       setMessage(decision==='approved'?'Question approved for use in online examinations.':'Question returned for revision; the rejection is recorded.');
     }catch(e:any){
       setError(e?.response?.data?.error??'The review decision could not be saved.');
@@ -47,7 +54,9 @@ export default function TeacherQuestionReviewScreen() {
         <ScrollView contentContainerStyle={{padding:Spacing.md,paddingBottom:Spacing.xl}}>
           <Card>
             <Text style={styles.intro}>Review questions for subjects assigned to your teacher account. Approval makes a question eligible for formal online examinations; it does not change physical report marks or student records.</Text>
-            <Text style={styles.meta}>Questions awaiting subject review: {questions.length}</Text>
+            <Text style={styles.meta}>{includeRejected?'Pending and previously rejected questions':'Questions awaiting subject review'}: {questions.length}</Text>
+            <Btn label={includeRejected?'Hide rejected questions':'Show rejected for audit / reconsideration'} variant="outline"
+              onPress={()=>{setIncludeRejected(current=>!current);setOffset(0);}} style={{marginTop:Spacing.sm}}/>
             {error?<Text style={styles.error}>{error}</Text>:null}
             {message?<Text style={styles.success}>{message}</Text>:null}
             {questions.length===0?<Empty message="No questions are waiting for your assigned subjects."/>:null}
@@ -87,7 +96,12 @@ export default function TeacherQuestionReviewScreen() {
               </View>
             </Card>
           ))}
-          <TouchableOpacity onPress={load} style={styles.refresh}><Ionicons name="refresh" size={16} color={Colors.primary}/><Text style={styles.refreshText}>Refresh review queue</Text></TouchableOpacity>
+          <View style={styles.pagination}>
+            <Btn label="Previous" variant="outline" disabled={offset===0||loading} onPress={()=>void load(Math.max(0,offset-pageSize))}/>
+            <Text style={styles.meta}>Showing {offset+1}–{offset+questions.length}</Text>
+            <Btn label="Next" variant="outline" disabled={!hasMore||loading} onPress={()=>void load(offset+pageSize)}/>
+          </View>
+          <TouchableOpacity onPress={()=>void load(offset)} style={styles.refresh}><Ionicons name="refresh" size={16} color={Colors.primary}/><Text style={styles.refreshText}>Refresh review queue</Text></TouchableOpacity>
         </ScrollView>
       )}
     </View>
@@ -108,6 +122,7 @@ const styles=StyleSheet.create({
   actions:{flexDirection:'row',gap:Spacing.sm,marginTop:Spacing.sm},
   error:{color:Colors.error,fontSize:Fonts.sizes.sm,marginTop:Spacing.sm},
   success:{color:Colors.success,fontSize:Fonts.sizes.sm,marginTop:Spacing.sm},
+  pagination:{flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:Spacing.xs,marginTop:Spacing.md},
   refresh:{flexDirection:'row',alignItems:'center',justifyContent:'center',gap:Spacing.xs,padding:Spacing.md},
   refreshText:{color:Colors.primary,fontSize:Fonts.sizes.sm,fontWeight:'700'},
 });
