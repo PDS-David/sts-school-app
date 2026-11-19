@@ -33,6 +33,10 @@ jobs:
         with:
           node-version: "22"
           cache: npm
+      # Expo config plugins (for example expo-sharing) must be installed before
+      # EAS project:info loads the dynamic app configuration.
+      - name: Install locked workspace dependencies
+        run: npm ci
       - name: Verify existing Expo credentials
         run: |
           if [ -z "$EXPO_TOKEN" ]; then
@@ -43,8 +47,6 @@ jobs:
       - name: Verify access to the linked EAS project
         working-directory: mobile
         run: npx eas-cli@latest project:info
-      - name: Install locked workspace dependencies
-        run: npm ci
       - name: Prepare build receipt directory
         run: mkdir -p artifacts
       - name: Build production-connected internal teacher APK
