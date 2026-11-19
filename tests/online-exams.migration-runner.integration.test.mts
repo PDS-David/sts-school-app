@@ -36,11 +36,12 @@ test('production migration runner applies the complete PostgreSQL 18 sequence th
     assert.match(incrementalOutput,/Applied 0014 0014_formal_online_examinations\.sql/);
     assert.match(incrementalOutput,/Applied 0015 0015_online_exam_marking_confidence\.sql/);
     assert.match(incrementalOutput,/Applied 0016 0016_question_bank_subject_reviews\.sql/);
+    assert.match(incrementalOutput,/Applied 0017 0017_pilot_question_provenance_locators\\.sql/);
 
     verifier=new Client({connectionString:target.toString()});
     await verifier.connect();
     const {rows}=await verifier.query('SELECT version,name FROM public.schema_migrations ORDER BY version');
-    const expected=Array.from({length:16},(_,index)=>String(index+1).padStart(4,'0'));
+    const expected=Array.from({length:17},(_,index)=>String(index+1).padStart(4,'0'));
     assert.deepEqual(rows.map((row:any)=>row.version),expected);
     assert.equal(rows.find((row:any)=>row.version==='0013')?.name,'0013_ai_class_practice.sql');
     assert.equal(rows.find((row:any)=>row.version==='0014')?.name,'0014_formal_online_examinations.sql');
