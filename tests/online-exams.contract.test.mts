@@ -145,6 +145,11 @@ test('admin app can create, publish, list and manually review formal examination
   assert.match(adminExamScreen, /marksInputs/);
   assert.match(adminExamScreen, /selectedTotalMarks/);
   assert.match(adminExamScreen, /exam_year:yearValue/);
+  assert.match(route, /src\.source_name,src\.source_url/);
+  assert.match(route, /src\.rights_evidence/);
+  assert.match(route, /q\.exam_year/);
+  assert.match(adminExamScreen, /question\.source_name/);
+  assert.match(adminExamScreen, /question\.rights_status/);
 });
 
 test('school admins browse only approved question-bank items through the exam API', () => {
