@@ -711,41 +711,52 @@ router.get('/session-report/:student_id', async (req, res) => {
   const terms = [...termRows].sort((a, b) => termRank(a.name) - termRank(b.name));
   const termIds = terms.map(t => t.id);
 
+  const assignedSubjectIds = user.role === 'teacher' && !user.assigned_class
+    ? user.assigned_subject_ids
+    : null;
+  const { rows: expectedSubjectRows } = await query(
+    `SELECT id, name FROM subjects
+     WHERE school_code=$1 AND ($2::int[] IS NULL OR id=ANY($2::int[]))
+     ORDER BY name`,
+    [student.school_code, assignedSubjectIds],
+  );
   const { rows: scoreRows } = await query(
     `SELECT sc.*, sub.name AS subject_name
      FROM scores sc JOIN subjects sub ON sub.id = sc.subject_id AND sub.school_code=$3
      WHERE sc.student_id=$1 AND sc.term_id = ANY($2::int[])
        AND ($4::int[] IS NULL OR sc.subject_id=ANY($4::int[]))
      ORDER BY sub.name`,
-    [student.id, termIds, student.school_code,
-     user.role === 'teacher' && !user.assigned_class ? user.assigned_subject_ids : null],
+    [student.id, termIds, student.school_code, assignedSubjectIds],
   );
 
-  // Group each subject's per-term totals together
-  const bySubject = new Map<number, { subject_id: number; subject_name: string; terms: Record<number, number> }>();
+  // Build the report from the school's expected subject list, not only from
+  // subjects that already have a score row. Otherwise a subject with no marks
+  // in any term disappears and can make an incomplete session look complete.
+  const bySubject = new Map<number, Record<number, number>>();
   for (const row of scoreRows) {
-    if (!bySubject.has(row.subject_id)) {
-      bySubject.set(row.subject_id, { subject_id: row.subject_id, subject_name: row.subject_name, terms: {} });
-    }
-    bySubject.get(row.subject_id)!.terms[row.term_id] = Number(row.total);
+    if (!bySubject.has(Number(row.subject_id))) bySubject.set(Number(row.subject_id), {});
+    bySubject.get(Number(row.subject_id))![Number(row.term_id)] = Number(row.total);
   }
 
-  const subjects = [...bySubject.values()]
-    .map(s => {
-      const recorded = terms.map(t => s.terms[t.id]).filter((v): v is number => v !== undefined);
-      const session_total   = recorded.reduce((a, b) => a + b, 0);
-      const session_average = recorded.length ? +(session_total / recorded.length).toFixed(2) : 0;
-      return {
-        subject_id:      s.subject_id,
-        subject_name:    s.subject_name,
-        term_scores:     terms.map(t => ({ term_id: t.id, term_name: t.name, total: s.terms[t.id] ?? null })),
-        terms_recorded:  recorded.length,
-        session_total,
-        session_average,
-        session_grade:   recorded.length ? getGrade(session_average) : null,
-      };
-    })
-    .sort((a, b) => a.subject_name.localeCompare(b.subject_name));
+  const subjects = expectedSubjectRows.map((subject) => {
+    const subjectTerms = bySubject.get(Number(subject.id)) ?? {};
+    const recorded = terms.map(t => subjectTerms[t.id]).filter((v): v is number => v !== undefined);
+    const session_total = recorded.length ? recorded.reduce((a, b) => a + b, 0) : null;
+    const session_average = recorded.length
+      ? +(recorded.reduce((a, b) => a + b, 0) / recorded.length).toFixed(2)
+      : null;
+    return {
+      subject_id: Number(subject.id),
+      subject_name: subject.name,
+      term_scores: terms.map(t => ({ term_id: t.id, term_name: t.name, total: subjectTerms[t.id] ?? null })),
+      terms_recorded: recorded.length,
+      session_total,
+      session_average,
+      session_grade: session_average === null ? null : getGrade(session_average),
+    };
+  });
+  const scoredSubjects = subjects.filter(subject => subject.terms_recorded > 0);
+  const termsPresent = new Set(scoreRows.map(row => Number(row.term_id))).size;
 
   const { rows: attRows } = user.role === 'teacher' && !user.assigned_class ? { rows: [] as Array<{ days_present: number | null }> } : await query(
     'SELECT days_present FROM attendance WHERE student_id=$1 AND term_id = ANY($2::int[])',
@@ -754,9 +765,9 @@ router.get('/session-report/:student_id', async (req, res) => {
   const days_present = attRows.reduce((s, r) => s + Number(r.days_present ?? 0), 0);
   const days_opened  = terms.reduce((s, t) => s + Number(t.days_opened ?? 0), 0);
 
-  const grand_total   = subjects.reduce((s, r) => s + r.session_total, 0);
-  const grand_average = subjects.length
-    ? +(subjects.reduce((s, r) => s + r.session_average, 0) / subjects.length).toFixed(2)
+  const grand_total   = scoredSubjects.reduce((sum, subject) => sum + Number(subject.session_total ?? 0), 0);
+  const grand_average = scoredSubjects.length
+    ? +(scoredSubjects.reduce((sum, subject) => sum + Number(subject.session_average ?? 0), 0) / scoredSubjects.length).toFixed(2)
     : 0;
 
   const reportStudent = user.role === 'teacher'
@@ -766,11 +777,16 @@ router.get('/session-report/:student_id', async (req, res) => {
     student: reportStudent,
     academic_year: year,
     terms: terms.map(t => ({ id: t.id, name: t.name, is_current: t.is_current })),
-    terms_present: terms.length,
+    terms_present: termsPresent,
     is_complete_session: terms.length === 3 && subjects.length > 0 && subjects.every(s => s.terms_recorded === 3),
     subjects,
     attendance: user.role === 'teacher' && !user.assigned_class ? { days_present: null, days_opened: null } : { days_present, days_opened },
-    summary: { grand_total, grand_average, subject_count: subjects.length },
+    summary: {
+      grand_total,
+      grand_average,
+      subject_count: scoredSubjects.length,
+      expected_subject_count: subjects.length,
+    },
   });
 });
 
