@@ -201,14 +201,14 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
         board:'WAEC',subject_name:'Mathematics',class_name:'SS 3',examination_type:'Mock',
         title:'SS3 Mathematics Mock',instructions:'Read each question carefully.',duration_minutes:30,
         starts_at:new Date(Date.now()-60000).toISOString(),ends_at:new Date(Date.now()+2*60*60*1000).toISOString(),
-        sections:[{title:'Section A',instructions:'Answer all questions.',questions:[{question_id:questionId,marks:2,covered_topic_id:coveredTopicId},{question_id:essayQuestionId,marks:5,covered_topic_id:coveredTopicId,marking_rubric:[{id:'method',description:'Shows the correct method',max_marks:3},{id:'result',description:'States the correct result',max_marks:2}]}]}]
+        sections:[{title:'Section A',instructions:'Answer all objective questions.',questions:[{question_id:questionId,marks:2,covered_topic_id:coveredTopicId}]},{title:'Section B',instructions:'Show your working.',questions:[{question_id:essayQuestionId,marks:5,covered_topic_id:coveredTopicId,marking_rubric:[{id:'method',description:'Shows the correct method',max_marks:3},{id:'result',description:'States the correct result',max_marks:2}]}]}]
       };
 
       assert.equal((await request('/online-exams/exams','GET','')).status,401);
       const rejectedDraft=structuredClone(examDraft);rejectedDraft.sections[0].questions[0].question_id=rejectedQuestion.id;
       const rejectedPilot=await request('/online-exams/admin/exams','POST',adminToken,rejectedDraft,school);
       assert.equal(rejectedPilot.status,400);
-      const missingRubric=structuredClone(examDraft);delete missingRubric.sections[0].questions[1].marking_rubric;
+      const missingRubric=structuredClone(examDraft);delete missingRubric.sections[1].questions[0].marking_rubric;
       assert.equal((await request('/online-exams/admin/exams','POST',adminToken,missingRubric,school)).status,400);
       const missingCoverage=structuredClone(examDraft);delete missingCoverage.sections[0].questions[0].covered_topic_id;
       assert.equal((await request('/online-exams/admin/exams','POST',adminToken,missingCoverage,school)).status,400);
@@ -216,6 +216,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.equal((await request('/online-exams/admin/exams','POST',adminToken,wrongCoverage,school)).status,400);
       const created=await request('/online-exams/admin/exams','POST',adminToken,examDraft,school);
       assert.equal(created.status,201);
+      assert.equal(Number(created.data.total_marks),7,'exam total must equal the sum of configured question marks');
       const examId=created.data.exam.id;
       const adminExams=await request('/online-exams/admin/exams','GET',adminToken,undefined,school);
       assert.equal(adminExams.status,200);assert.equal(adminExams.data.exams.length,1);assert.equal(adminExams.data.exams[0].id,examId);
