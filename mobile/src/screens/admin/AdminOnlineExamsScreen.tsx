@@ -33,7 +33,7 @@ export default function AdminOnlineExamsScreen() {
   const [subjects,setSubjects]=useState<any[]>([]);
   const [questions,setQuestions]=useState<any[]>([]);
   const [lessonTopics,setLessonTopics]=useState<any[]>([]);
-  const [selectedTopic,setSelectedTopic]=useState<any>(null);
+  const [topicByQuestion,setTopicByQuestion]=useState<Record<string,number>>({});
   const [loadingTopics,setLoadingTopics]=useState(false);
   const [selectedQuestions,setSelectedQuestions]=useState<Record<string,boolean>>({});
   const [questionOrder,setQuestionOrder]=useState<string[]>([]);
@@ -72,7 +72,7 @@ export default function AdminOnlineExamsScreen() {
 
   const openCreate=async()=>{
     setMode('create');setError('');setNotice('');setSelectedQuestions({});setQuestionOrder([]);setMarksInputs({});setRubricInputs({});setSectionByQuestion({});setSections([{id:'section-1',title:'Section A',instructions:'Answer all questions in this section.'}]);setQuestions([]);setExamYear('');
-    try{const {data}=await api.get('/online-exams/admin/question-bank/subjects');setSubjects(data.subjects??[]);setSubject(null);setLessonTopics([]);setSelectedTopic(null);}
+    try{const {data}=await api.get('/online-exams/admin/question-bank/subjects');setSubjects(data.subjects??[]);setSubject(null);setLessonTopics([]);setTopicByQuestion({});}
     catch(e:any){setError(e?.response?.data?.error??'Question-bank access is required to create a formal examination.');}
   };
   const loadQuestions=async(nextBoard:string,nextSubject:any)=>{
@@ -90,7 +90,7 @@ export default function AdminOnlineExamsScreen() {
   };
   const loadLessonTopics=async(nextSubject:any,nextClass:string)=>{
     if(!nextSubject)return;
-    setLoadingTopics(true);setLessonTopics([]);setSelectedTopic(null);
+    setLoadingTopics(true);setLessonTopics([]);setTopicByQuestion({});
     try{
       const {data}=await api.get('/online-exams/admin/lesson-topics',{params:{class_name:nextClass,subject_name:nextSubject.name}});
       setLessonTopics(data.topics??[]);
@@ -98,7 +98,7 @@ export default function AdminOnlineExamsScreen() {
     finally{setLoadingTopics(false);}
   };
   const chooseBoard=async(value:string)=>{setBoard(value);if(subject)await loadQuestions(value,subject);};
-  const chooseClass=async(value:string)=>{setClassName(value);setSelectedTopic(null);if(subject)await loadLessonTopics(subject,value);};
+  const chooseClass=async(value:string)=>{setClassName(value);setTopicByQuestion({});if(subject)await loadLessonTopics(subject,value);};
   const chooseSubject=async(value:any)=>{setSubject(value);await Promise.all([loadQuestions(board,value),loadLessonTopics(value,className)]);};
   const toggleQuestion=(id:string)=>setSelectedQuestions(current=>{
     const selecting=!current[id];
@@ -134,7 +134,7 @@ export default function AdminOnlineExamsScreen() {
 
   const createExam=async()=>{
     const selected=selectedQuestionList;
-    if(!subject||!selectedTopic||selected.length===0){setError('Select a subject, a lesson completed by every candidate and at least one approved question.');return;}
+    if(!subject||selected.length===0){setError('Select a subject and at least one approved question.');return;}
     if(!title.trim()||!instructions.trim()||!Number.isInteger(Number(duration))||Number(duration)<1||Number(duration)>600){
       setError('Enter a title, instructions and a duration from 1 to 600 minutes.');return;
     }
@@ -150,7 +150,9 @@ export default function AdminOnlineExamsScreen() {
       for(const question of sectionItems){
         const marks=Number(marksInputs[question.id]??question.marks);
         if(!Number.isSafeInteger(marks)||marks<1||marks>100){setError('Every question mark must be a whole number from 1 to 100.');return;}
-        const item:any={question_id:question.id,marks,covered_topic_id:Number(selectedTopic.id)};
+        const topic=lessonTopics.find((candidate:any)=>candidate.id===Number(topicByQuestion[question.id])&&candidate.eligible_for_all_candidates);
+        if(!topic){setError('Map every selected question to a lesson completed by every eligible candidate.');return;}
+        const item:any={question_id:question.id,marks,covered_topic_id:Number(topic.id)};
         if(question.question_type!=='mcq'){
           const rubric=parseRubric(rubricInputs[question.id]??'',marks);
           if(!rubric){setError('Complete a valid criterion rubric for every selected written-response question. Rubric marks must sum to the configured question marks.');return;}
@@ -282,16 +284,12 @@ export default function AdminOnlineExamsScreen() {
                 </View>
               ))}
               <Btn label="Add section" variant="outline" onPress={addSection} style={{marginTop:Spacing.sm}}/>
-              <Text style={styles.label}>Lesson coverage — candidates must have completed this topic</Text>
+              <Text style={styles.label}>Lesson coverage</Text>
+              <Text style={styles.meta}>Each selected question must be mapped to its own lesson, completed by every eligible candidate. The server rechecks coverage before publication.</Text>
               {loadingTopics?<Text style={styles.meta}>Checking candidate lesson coverage…</Text>:null}
               {!loadingTopics&&subject&&lessonTopics.length===0?<Empty message="No lesson topics were found for this class and subject."/>:null}
-              <View style={styles.chips}>{lessonTopics.map(item=><TouchableOpacity key={item.id} disabled={!item.eligible_for_all_candidates} onPress={()=>setSelectedTopic(item)} style={[styles.topicChip,selectedTopic?.id===item.id&&styles.chipActive,!item.eligible_for_all_candidates&&styles.topicChipDisabled]}>
-                <Text style={[styles.chipText,selectedTopic?.id===item.id&&styles.chipTextActive]}>{item.title}</Text>
-                <Text style={styles.meta}>{item.completed_count}/{item.candidate_count} completed</Text>
-              </TouchableOpacity>)}</View>
-              {selectedTopic?<Text style={styles.notice}>Selected lesson: {selectedTopic.title}. The server rechecks every candidate before publication.</Text>:null}
               <Text style={styles.label}>Approved questions ({questions.length})</Text>
-              {subject&&!questions.length?<Empty message="No approved MCQ questions are available for this board and subject. Ask an assigned subject teacher to review the question bank first."/>:null}
+              {subject&&!questions.length?<Empty message="No approved questions are available for this board and subject. Ask an assigned subject teacher to review the question bank first."/>:null}
               <Text style={styles.notice}>Selected {selectedQuestionList.length} question(s) · Total {selectedTotalMarks} marks</Text>
               {questionOrder.map((questionId,index)=>{
                 const question=questions.find(item=>item.id===questionId);
@@ -311,6 +309,12 @@ export default function AdminOnlineExamsScreen() {
                   {selected?(
                     <View style={styles.rubricWrap}>
                       <Field label="Question marks" value={marksInputs[question.id]??String(question.marks)} onChange={(value:string)=>setMarksInputs(current=>({...current,[question.id]:value}))} keyboardType="numeric"/>
+                      <Text style={styles.label}>Lesson completed by every candidate</Text>
+                      <View style={styles.chips}>{lessonTopics.map((item:any)=><TouchableOpacity key={item.id} disabled={!item.eligible_for_all_candidates} onPress={()=>setTopicByQuestion(current=>({...current,[question.id]:item.id}))} style={[styles.topicChip,topicByQuestion[question.id]===item.id&&styles.chipActive,!item.eligible_for_all_candidates&&styles.topicChipDisabled]}>
+                        <Text style={[styles.chipText,topicByQuestion[question.id]===item.id&&styles.chipTextActive]}>{item.title}</Text>
+                        <Text style={styles.meta}>{item.completed_count}/{item.candidate_count} completed</Text>
+                      </TouchableOpacity>)}</View>
+
                       <Text style={styles.label}>Place in section</Text>
                       <View style={styles.chips}>{sections.map(section=><TouchableOpacity key={section.id} onPress={()=>setSectionByQuestion(current=>({...current,[question.id]:section.id}))} style={[styles.chip,sectionId===section.id&&styles.chipActive]}><Text style={[styles.chipText,sectionId===section.id&&styles.chipTextActive]}>{section.title||section.id}</Text></TouchableOpacity>)}</View>
                       <View style={styles.row}>
@@ -325,7 +329,7 @@ export default function AdminOnlineExamsScreen() {
                   ):null}
                 </View>;
               })}
-              <Btn label={busy==='create'?'Creating…':'Create draft'} onPress={createExam} loading={busy==='create'} disabled={busy==='create'||!selectedTopic||!questions.some(q=>selectedQuestions[q.id])} style={{marginTop:Spacing.md}}/>
+              <Btn label={busy==='create'?'Creating…':'Create draft'} onPress={createExam} loading={busy==='create'} disabled={busy==='create'||!selectedQuestionList.length||!selectedQuestionList.every((q:any)=>lessonTopics.some((topic:any)=>topic.id===topicByQuestion[q.id]&&topic.eligible_for_all_candidates))} style={{marginTop:Spacing.md}}/>
             </Card>
           )}
 
