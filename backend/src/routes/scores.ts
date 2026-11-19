@@ -762,13 +762,17 @@ router.get('/session-report/:student_id', async (req, res) => {
     'SELECT days_present FROM attendance WHERE student_id=$1 AND term_id = ANY($2::int[])',
     [student.id, termIds],
   );
-  const days_present = attRows.reduce((s, r) => s + Number(r.days_present ?? 0), 0);
-  const days_opened  = terms.reduce((s, t) => s + Number(t.days_opened ?? 0), 0);
+  const days_present = attRows.length
+    ? attRows.reduce((sum, row) => sum + Number(row.days_present ?? 0), 0)
+    : null;
+  const days_opened = terms.reduce((sum, term) => sum + Number(term.days_opened ?? 0), 0);
 
-  const grand_total   = scoredSubjects.reduce((sum, subject) => sum + Number(subject.session_total ?? 0), 0);
+  const grand_total = scoredSubjects.length
+    ? scoredSubjects.reduce((sum, subject) => sum + Number(subject.session_total ?? 0), 0)
+    : null;
   const grand_average = scoredSubjects.length
     ? +(scoredSubjects.reduce((sum, subject) => sum + Number(subject.session_average ?? 0), 0) / scoredSubjects.length).toFixed(2)
-    : 0;
+    : null;
 
   const reportStudent = user.role === 'teacher'
     ? { id: student.id, full_name: student.full_name, admission_number: student.admission_number, class_name: student.class_name, school_code: student.school_code }
@@ -780,7 +784,7 @@ router.get('/session-report/:student_id', async (req, res) => {
     terms_present: termsPresent,
     is_complete_session: terms.length === 3 && subjects.length > 0 && subjects.every(s => s.terms_recorded === 3),
     subjects,
-    attendance: user.role === 'teacher' && !user.assigned_class ? { days_present: null, days_opened: null } : { days_present, days_opened },
+    attendance: user.role === 'teacher' && !user.assigned_class\n      ? { days_present: null, days_opened: null, terms_recorded: null, terms_expected: null }\n      : { days_present, days_opened, terms_recorded: attRows.length, terms_expected: terms.length },
     summary: {
       grand_total,
       grand_average,
