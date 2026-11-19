@@ -112,6 +112,8 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       process.env.JWT_REFRESH_SECRET='online-exam-integration-refresh-secret';
       process.env.FREE_LAUNCH_MODE='true';
       process.env.NODE_ENV='test';
+      process.env.GEMINI_API_KEY='';
+      process.env.AI_AGENT_SERVICE_URL='';
       const express=require('express');
       const [{default:router,validateMarkingRubric,validateAiRubricMark},{default:questionBankRouter},{signAccess},{pool:databasePool}]=await Promise.all([
         import('../backend/src/routes/onlineExams.ts'),
@@ -220,6 +222,9 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       const onlineQuestionId=started.data.questions[0].id;
       const saved=await request('/online-exams/attempts/'+attemptId+'/responses/'+onlineQuestionId,'PUT',studentToken,{response:{key:'B'}});
       assert.equal(saved.status,200);assert.equal(saved.data.saved,true);
+      const essayExamQuestionId=started.data.questions[1].id;
+      const savedEssay=await request('/online-exams/attempts/'+attemptId+'/responses/'+essayExamQuestionId,'PUT',studentToken,{response:'I isolate the variable by applying inverse operations and then verify the result.'});
+      assert.equal(savedEssay.status,200);assert.equal(savedEssay.data.saved,true);
       const recovered=await request('/online-exams/attempts/'+attemptId);
       assert.equal(recovered.status,200);assert.equal(recovered.data.saved_responses.length,1);
       assert.deepEqual(recovered.data.saved_responses[0].response,{key:'B'});
@@ -228,24 +233,16 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       const lateSave=await request('/online-exams/attempts/'+attemptId+'/responses/'+onlineQuestionId,'PUT',studentToken,{response:{key:'A'}});
       assert.equal(lateSave.status,409);
       const submitted=await request('/online-exams/attempts/'+attemptId+'/submit','POST',studentToken,{confirm:true});
-      assert.equal(submitted.status,200);assert.equal(submitted.data.status,'submitted');
+      assert.equal(submitted.status,200);assert.equal(submitted.data.status,'under_review','unavailable AI marking must route the written response to examiner review');
       assert.equal(Number(submitted.data.score),2);
       const duplicate=await request('/online-exams/attempts/'+attemptId+'/submit','POST',studentToken,{confirm:true});
       assert.equal(duplicate.status,200);assert.equal(duplicate.data.already_submitted,true);
-      const essayExamQuestionId=started.data.questions[1].id;
-      await client.query("UPDATE online_exam_attempts SET status='under_review' WHERE id=$1",[attemptId]);
-      await client.query(`
-        INSERT INTO online_exam_responses(attempt_id,exam_question_id,response,awarded_marks,marking_status,feedback,marking_confidence,marking_details)
-        VALUES($1,$2,$3::jsonb,NULL,'pending_review','AI confidence below the review threshold.',0.42,'{"method":"ai_rubric","criterion_scores":[]}'::jsonb)
-        ON CONFLICT(attempt_id,exam_question_id) DO UPDATE SET
-          response=EXCLUDED.response,awarded_marks=NULL,marking_status='pending_review',
-          feedback=EXCLUDED.feedback,marking_confidence=EXCLUDED.marking_confidence,marking_details=EXCLUDED.marking_details
-      `,[attemptId,essayExamQuestionId,JSON.stringify('I isolate the variable by applying inverse operations.')]);
       const examinerResponses=await request('/online-exams/admin/attempts/'+attemptId+'/responses','GET',adminToken,undefined,school);
       assert.equal(examinerResponses.status,200);
       const pendingEssay=examinerResponses.data.responses.find((item:any)=>item.question_id===essayExamQuestionId);
       assert.equal(pendingEssay.marking_status,'pending_review');
-      assert.equal(Number(pendingEssay.marking_confidence),0.42);
+      assert.equal(pendingEssay.marking_confidence,null);
+      assert.equal(pendingEssay.marking_details.method,'manual_review_required');
       assert.equal(pendingEssay.marking_rubric.length,2);
       const manualMark=await request('/online-exams/admin/attempts/'+attemptId+'/responses/'+essayExamQuestionId+'/mark','PUT',adminToken,{awarded_marks:3,feedback:'Correct method; final justification is incomplete.'},school);
       assert.equal(manualMark.status,200);
