@@ -8,7 +8,7 @@ Question preparation reuses the existing rights-aware `question_bank_questions` 
 
 - Existing questions are eligible for an examination only when `review_status` is `approved` or `published`.
 - A past question must have a documented `licensed` or `public_domain` source; the question and source rights statuses must match. A PostgreSQL trigger repeats the approval, board, subject, source-evidence and rights checks when exam question snapshots are inserted or updated.
-- Original AI questions are stored as `draft` with `original_generated` rights and are never available for an examination until a subject reviewer approves or publishes them.
+- Original AI questions carry `original_generated` rights and enter the question bank's `reviewed` state, which is the pending subject-review queue. They are never available for an examination until an assigned subject reviewer approves or publishes them.
 - The six pilot questions seeded by migration 0012 are only `reviewed`, not approved/published, and are therefore rejected by exam creation.
 - Historical question year, paper, source locator, source name/URL, board and rights status are snapshotted into examination provenance.
 
@@ -24,9 +24,9 @@ Both endpoints create three original MCQs per selected lesson in the question ba
 - `exam_year = NULL`
 - `question_number = AI-GEN-...`
 - `rights_status = original_generated`
-- `review_status = draft`
+- `review_status = reviewed` (pending subject-review queue)
 
-A subject reviewer must approve/publish the drafts in the existing question-bank review workflow before they can be attached to an examination. The exam publish endpoint rechecks the generated lesson coverage against the current candidate list.
+A subject reviewer sees the generated questions in the existing More → Review Questions queue and must approve/publish them before they can be attached to an examination. The exam publish endpoint rechecks the generated lesson coverage against the current candidate list.
 
 ## Admin workflow
 
