@@ -305,7 +305,7 @@ export default function AdminOnlineExamsScreen() {
                       <Text style={styles.questionText}>{question.stem}</Text>
                       <Text style={styles.meta}>{question.topic} · {question.question_type} · Bank marks {question.marks} · {question.question_number}</Text>
                       <Text style={styles.meta}>Board: {question.board} · Subject: {question.subject} · Year: {question.exam_year??'Original'}</Text>
-                      <Text style={styles.meta}>Source: {question.source_name} · Rights: {question.rights_status} · Origin: {question.content_origin}</Text>
+                      <Text style={styles.meta}>Source: {question.source_name} · Rights: {question.rights_status}/{question.source_rights} · Origin: {question.content_origin}</Text>
                       <Text style={styles.meta}>Paper: {question.paper}</Text>
                       {question.source_url?<Text style={styles.meta}>Source URL: {question.source_url}</Text>:null}
                       {question.rights_evidence?<Text style={styles.meta}>Rights evidence: {String(question.rights_evidence).slice(0,220)}</Text>:null}
