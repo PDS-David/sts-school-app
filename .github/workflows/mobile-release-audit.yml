@@ -81,8 +81,16 @@ jobs:
           arch: x86_64
           profile: pixel_2
           script: bash .github/scripts/android-emulator-smoke.sh
+      - name: Verify Expo credentials for release dispatch
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          if [ -z "$EXPO_TOKEN" ]; then
+            echo "EXPO_TOKEN is unavailable to this workflow. Check repository Actions secrets."
+            exit 1
+          fi
+          npx eas-cli@latest whoami
       - name: Build production-connected internal teacher APK with EAS
-        if: github.event_name == 'push' && env.EXPO_TOKEN != ''
+        if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && env.EXPO_TOKEN != ''
         run: npx eas-cli@latest build --platform android --profile preview --non-interactive --json > artifacts/eas-preview-teacher-apk.json
       - name: Capture complete dependency audit
         run: |
@@ -121,8 +129,13 @@ jobs:
         if: github.event_name == 'push' && env.EXPO_TOKEN != ''
         run: npx eas-cli@latest build --platform android --profile production --non-interactive --json > artifacts/eas-production-aab.json
       - name: Record unavailable EAS credentials
-        if: github.event_name == 'push' && env.EXPO_TOKEN == ''
-        run: echo "EAS builds were not started because the repository EXPO_TOKEN secret is not configured." > artifacts/eas-build-blocker.txt
+        if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && env.EXPO_TOKEN == ''
+        run: |
+          echo "EAS builds were not started because the repository EXPO_TOKEN secret is not available to this workflow." > artifacts/eas-build-blocker.txt
+          cat artifacts/eas-build-blocker.txt
+      - name: Fail release when Expo credentials are unavailable
+        if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && env.EXPO_TOKEN == ''
+        run: exit 1
       - name: Upload audit, bundle and EAS build evidence
         if: always()
         uses: actions/upload-artifact@v4
