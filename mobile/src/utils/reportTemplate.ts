@@ -323,7 +323,7 @@ export function renderSessionReportHtml(
   ${!complete ? `<div class="notice">Session in progress — ${termsPresent} of 3 terms recorded (${terms.map((term: any) => display(term?.name, '')).join(', ')}). Totals reflect only the terms entered so far.${noScores ? ' No scores have been entered yet.' : ''}</div>` : ''}
   <table>
     <tr class="summary-row"><td class="summary-label">Terms Recorded</td><td class="summary-value">${termsPresent} / 3</td></tr>
-    <tr class="summary-row"><td class="summary-label">Days Opened (session)</td><td class="summary-value">${display(attendance?.days_opened, '0')}</td></tr>
+    <tr class="summary-row"><td class="summary-label">Days Opened (session)</td><td class="summary-value">${display(attendance?.days_opened)}</td></tr>
     <tr class="summary-row"><td class="summary-label">Days Present (session)</td><td class="summary-value">${display(attendance?.days_present)}</td></tr>
     <tr class="summary-row"><td class="summary-label">Subjects with scores</td><td class="summary-value">${display(subjectCount, '0')}</td></tr>
     <tr class="summary-row"><td class="summary-label">Subjects expected</td><td class="summary-value">${display(expectedSubjectCount, '0')}</td></tr>
