@@ -71,7 +71,7 @@ export default function AdminOnlineExamsScreen() {
   useEffect(()=>{void loadExams();},[loadExams]);
 
   const openCreate=async()=>{
-    setMode('create');setError('');setNotice('');setSelectedQuestions({});setQuestionOrder([]);setMarksInputs({});setSectionByQuestion({});setSections([{id:'section-1',title:'Section A',instructions:'Answer all questions in this section.'}]);
+    setMode('create');setError('');setNotice('');setSelectedQuestions({});setQuestionOrder([]);setMarksInputs({});setRubricInputs({});setSectionByQuestion({});setSections([{id:'section-1',title:'Section A',instructions:'Answer all questions in this section.'}]);setQuestions([]);setExamYear('');
     try{const {data}=await api.get('/online-exams/admin/question-bank/subjects');setSubjects(data.subjects??[]);setSubject(null);setLessonTopics([]);setSelectedTopic(null);}
     catch(e:any){setError(e?.response?.data?.error??'Question-bank access is required to create a formal examination.');}
   };
@@ -118,7 +118,7 @@ export default function AdminOnlineExamsScreen() {
   };
   const removeSection=(id:string)=>{
     if(sections.length<=1)return;
-    const fallback=sections.find(section=>section.id!==id)?.id;
+    const fallback=sections.find(section=>section.id!==id)?.id??sections[0]?.id??'section-1';
     setSections(current=>current.filter(section=>section.id!==id));
     setSectionByQuestion(current=>Object.fromEntries(Object.entries(current).map(([questionId,sectionId])=>[questionId,sectionId===id?fallback:sectionId])));
   };
