@@ -228,7 +228,7 @@ router.post('/change-password', requireAuth, async (req, res) => {
     return res.status(400).json({ error: 'old_password and new_password required' });
   }
   const isTeacher = req.user!.role === 'teacher';
-  if (isTeacher ? !/^\\d{4}$/.test(new_password) : new_password.length < 8) {
+  if (isTeacher ? !/^\u005cd{4}$/.test(new_password) : new_password.length < 8) {
     return res.status(400).json({ error: isTeacher ? 'Teacher PIN must be exactly four numeric digits' : 'New password must be at least 8 characters' });
   }
 
