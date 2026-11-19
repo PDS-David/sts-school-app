@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { randomUUID } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { createRequire } from 'node:module';
 
 const require=createRequire(new URL('../backend/package.json',import.meta.url));
@@ -32,6 +32,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       await client.query('CREATE TABLE topics(id INTEGER PRIMARY KEY,school_code TEXT,class_name TEXT,subject_id INTEGER,title TEXT,term_id INTEGER,order_index INTEGER,description TEXT,summary TEXT)');
       await client.query('CREATE TABLE subjects(id INTEGER PRIMARY KEY,name TEXT,school_code TEXT)');
       await client.query('CREATE TABLE topic_completions(student_id UUID,topic_id INTEGER)');
+      await client.query(`CREATE TABLE student_curriculum_lesson_progress(student_id UUID NOT NULL REFERENCES students(id) ON DELETE CASCADE,lesson_key TEXT NOT NULL CHECK(length(lesson_key) BETWEEN 1 AND 240),class_name TEXT NOT NULL CHECK(class_name IN ('SS 1','SS 2','SS 3')),subject_name TEXT NOT NULL,term_label TEXT NOT NULL,lesson_title TEXT NOT NULL,completed_at TIMESTAMPTZ NOT NULL DEFAULT now(),PRIMARY KEY(student_id,lesson_key))`);
       await client.query('CREATE TABLE teacher_subjects(user_id UUID,subject_id INTEGER)');
       await client.query('CREATE TABLE scores(id BIGINT PRIMARY KEY,score NUMERIC)');
       await client.query('CREATE TABLE attendance(id BIGINT PRIMARY KEY,present BOOLEAN)');
@@ -115,11 +116,12 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       process.env.GEMINI_API_KEY='';
       process.env.AI_AGENT_SERVICE_URL='';
       const express=require('express');
-      const [{default:router,validateMarkingRubric,validateAiRubricMark},{default:questionBankRouter},{signAccess},{pool:databasePool}]=await Promise.all([
+      const [{default:router,validateMarkingRubric,validateAiRubricMark},{default:questionBankRouter},{signAccess},{pool:databasePool},{listStudentSs23Units}]=await Promise.all([
         import('../backend/src/routes/onlineExams.ts'),
         import('../backend/src/routes/questionBank.ts'),
         import('../backend/src/utils/jwt.ts'),
-        import('../backend/src/db/pool.ts')
+        import('../backend/src/db/pool.ts'),
+        import('../backend/src/db/ss23/studentDelivery.ts')
       ]);
       const rubric=[{id:'method',description:'Shows the correct method',max_marks:3},{id:'result',description:'States the correct result',max_marks:2}];
       assert.deepEqual(validateMarkingRubric(rubric,5),rubric);
@@ -180,6 +182,18 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
 
       const lessonTopics=await request('/online-exams/admin/lesson-topics?class_name=SS%203&subject_name=Mathematics','GET',adminToken,undefined,school);
       assert.equal(lessonTopics.status,200);const coveredLesson=lessonTopics.data.topics.find((item:any)=>item.id===coveredTopicId);assert.ok(coveredLesson?.eligible_for_all_candidates);assert.equal(Number(coveredLesson.candidate_count),1,'only active report-roster members with valid student accounts count as candidates');assert.equal(Number(coveredLesson.completed_count),1);
+      const packageLesson=listStudentSs23Units('SS 3')[0];
+      assert.ok(packageLesson,'the production SS3 student-delivery package must expose an implemented lesson');
+      const packageDraftRequest={board:'WAEC',class_name:'SS 3',subject_name:packageLesson.canonical_subject,lesson_ids:[packageLesson.id]};
+      const missingPackageProgress=await request('/online-exams/admin/exams/generate-package-drafts','POST',adminToken,packageDraftRequest,school);
+      assert.equal(missingPackageProgress.status,409,'package question generation must reject lessons not completed by every eligible roster candidate');
+      const packageFingerprint=packageLesson.body_sha256??createHash('sha256').update(String(packageLesson.body??'')).digest('hex');
+      const packageLessonKey='ss23:'+createHash('sha256').update([packageLesson.class_name,packageLesson.subject,packageLesson.term,String(packageLesson.id),packageFingerprint,JSON.stringify(packageLesson.objectives??[])].join('\\0')).digest('hex');
+      await client.query('INSERT INTO student_curriculum_lesson_progress(student_id,lesson_key,class_name,subject_name,term_label,lesson_title) VALUES($1,$2,$3,$4,$5,$6)',
+        [student,packageLessonKey,'SS 3',packageLesson.subject,packageLesson.term,packageLesson.title]);
+      const packageProgressAccepted=await request('/online-exams/admin/exams/generate-package-drafts','POST',adminToken,packageDraftRequest,school);
+      assert.equal(packageProgressAccepted.status,502,'the package progress record must satisfy coverage before the intentionally unavailable AI provider is called');
+
       const examDraft={
         board:'WAEC',subject_name:'Mathematics',class_name:'SS 3',examination_type:'Mock',
         title:'SS3 Mathematics Mock',instructions:'Read each question carefully.',duration_minutes:30,
