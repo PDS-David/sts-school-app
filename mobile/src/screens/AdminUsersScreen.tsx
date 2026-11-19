@@ -315,8 +315,8 @@ export default function AdminUsersScreen() {
 
   const handleResetPw = (u: User) => {
     setConfirmDialog({
-      title: 'Reset Password',
-      message: `Reset password for ${u.username}? A new temporary password will be generated.`,
+      title: u.role === 'teacher' ? 'Reset Teacher PIN' : 'Reset Password',
+      message: u.role === 'teacher' ? `Reset the four-digit PIN for ${u.username}? A new PIN will be generated and shown to you.` : `Reset password for ${u.username}? A new temporary password will be generated.`,
       confirmLabel: 'Reset',
       destructive: true,
       onConfirm: async () => {
@@ -324,8 +324,8 @@ export default function AdminUsersScreen() {
         try {
           const { data } = await api.post(`/admin/users/${u.id}/reset-password`, {});
           setInfoDialog({
-            title: 'Password Reset',
-            message: `New password: ${data?.temporary_password}\n\nShare this with them. They'll be asked to set a new password on next login.`,
+            title: u.role === 'teacher' ? 'Teacher PIN Reset' : 'Password Reset',
+            message: u.role === 'teacher' ? `New four-digit PIN: ${data?.temporary_password}\n\nGive this PIN directly to the teacher. They will be asked to change it after signing in.` : `New password: ${data?.temporary_password}\n\nShare this with them. They'll be asked to set a new password on next login.`,
           });
         } catch (e: any) {
           setInfoDialog({ title: 'Error', message: e?.response?.data?.error ?? 'Could not reset password' });
@@ -537,7 +537,7 @@ export default function AdminUsersScreen() {
             >
               <Ionicons name={actionsUser?.pending_activation ? 'refresh-circle' : 'key'} size={20} color={Colors.accent} />
               <Text style={styles.sheetRowText}>
-                {actionsUser?.pending_activation ? 'Reissue Activation Code' : 'Reset Password'}
+                {actionsUser?.pending_activation ? 'Reissue Activation Code' : actionsUser?.role === 'teacher' ? 'Reset Teacher PIN' : 'Reset Password'}
               </Text>
             </TouchableOpacity>
 
