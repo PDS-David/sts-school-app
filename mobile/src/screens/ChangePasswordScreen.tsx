@@ -18,7 +18,7 @@ export default function ChangePasswordScreen({ route, navigation }: any) {
   const handleSubmit = async () => {
     setError('');
     if (!oldPw || !newPw || !conf) { setError('All fields required'); return; }
-    if (isTeacher && !/^\\d{4}$/.test(newPw)) { setError('Your new PIN must be exactly four numeric digits'); return; }
+    if (isTeacher && !/^\u005cd{4}$/.test(newPw)) { setError('Your new PIN must be exactly four numeric digits'); return; }
     if (!isTeacher && newPw.length < 8) { setError('New password must be at least 8 characters'); return; }
     if (newPw !== conf)            { setError('Passwords do not match'); return; }
     setLoading(true);
