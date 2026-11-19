@@ -31,6 +31,10 @@ export default function OnlineExamsScreen({ navigation }: any) {
   const render=({item}:any)=>{
     const status=item.attempt_status;
     const closed=['submitted','under_review'].includes(status);
+    const resumable=['in_progress','expired','submitting'].includes(status);
+    const beforeStart=Date.now()<new Date(item.starts_at).getTime();
+    const afterEnd=Date.now()>=new Date(item.ends_at).getTime();
+    const blocked=!resumable&&(beforeStart||afterEnd);
     return <Card style={styles.card}>
       <View style={styles.top}>
         <View style={{flex:1}}>
@@ -44,7 +48,7 @@ export default function OnlineExamsScreen({ navigation }: any) {
       <Text style={styles.meta}>Opens: {new Date(item.starts_at).toLocaleString()}</Text>
       <Text style={styles.meta}>Closes: {new Date(item.ends_at).toLocaleString()}</Text>
       {status && <Text style={[styles.status,{color:closed?Colors.success:Colors.primary}]}>Attempt: {status.replace('_',' ')}</Text>}
-      <Btn label={status==='in_progress'?'Resume examination':status==='expired'?'Submit saved answers':status==='submitting'?'Recover submission':closed?'Attempt closed':'View instructions and start'} onPress={()=>open(item)} disabled={closed}/>
+      <Btn label={status==='in_progress'?'Resume examination':status==='expired'?'Submit saved answers':status==='submitting'?'Recover submission':closed?'Attempt closed':beforeStart?'Opens '+new Date(item.starts_at).toLocaleString():afterEnd?'Examination closed':'View instructions and start'} onPress={()=>open(item)} disabled={closed||blocked}/>
       {closed && item.attempt_id ? <Btn label="View result" variant="outline" onPress={()=>navigation.navigate('OnlineExamResult',{attemptId:item.attempt_id})}/> : null}
     </Card>;
   };
