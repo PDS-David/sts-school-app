@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ScrollView, Text, TextInput, TouchableOpacity, View, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../api/client';
@@ -9,6 +9,7 @@ import { AppHeader } from '../../components/AppHeader';
 const BOARDS=['WAEC','NECO','JAMB'];
 const CLASSES=['JSS 3','SS 1','SS 2','SS 3'];
 const iso=(offset:number)=>new Date(Date.now()+offset).toISOString();
+const newSectionId=()=>`section-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,10)}`;
 
 function parseRubric(text:string,maximum:number){
   const lines=text.split(/\r?\n/).map(line=>line.trim()).filter(Boolean);
@@ -61,6 +62,8 @@ export default function AdminOnlineExamsScreen() {
   const [busy,setBusy]=useState<string|null>(null);
   const [error,setError]=useState('');
   const [notice,setNotice]=useState('');
+  const lessonRequestRef=useRef(0);
+  const lessonSelectionRef=useRef<{subjectId:any;className:string}>({subjectId:null,className:'SS 3'});
 
   const loadExams=useCallback(async()=>{
     setLoading(true);setError('');
@@ -90,12 +93,18 @@ export default function AdminOnlineExamsScreen() {
   };
   const loadLessonTopics=async(nextSubject:any,nextClass:string)=>{
     if(!nextSubject)return;
+    const request=++lessonRequestRef.current;
+    const selection={subjectId:nextSubject.id,className:nextClass};
+    lessonSelectionRef.current=selection;
+    const isCurrent=()=>request===lessonRequestRef.current &&
+      lessonSelectionRef.current.subjectId===selection.subjectId &&
+      lessonSelectionRef.current.className===selection.className;
     setLoadingTopics(true);setLessonTopics([]);setTopicByQuestion({});
     try{
       const {data}=await api.get('/online-exams/admin/lesson-topics',{params:{class_name:nextClass,subject_name:nextSubject.name}});
-      setLessonTopics(data.topics??[]);
-    }catch(e:any){setError(e?.response?.data?.error??'Could not load lesson coverage for this class and subject.');}
-    finally{setLoadingTopics(false);}
+      if(isCurrent())setLessonTopics(data.topics??[]);
+    }catch(e:any){if(isCurrent())setError(e?.response?.data?.error??'Could not load lesson coverage for this class and subject.');}
+    finally{if(isCurrent())setLoadingTopics(false);}
   };
   const chooseBoard=async(value:string)=>{setBoard(value);if(subject)await loadQuestions(value,subject);};
   const chooseClass=async(value:string)=>{setClassName(value);setTopicByQuestion({});if(subject)await loadLessonTopics(subject,value);};
@@ -112,7 +121,7 @@ export default function AdminOnlineExamsScreen() {
   const selectedQuestionList=questionOrder.map(id=>questions.find(item=>item.id===id)).filter((item:any)=>item&&selectedQuestions[item.id]);
   const selectedTotalMarks=selectedQuestionList.reduce((sum:number,item:any)=>sum+(Number(marksInputs[item.id]??item.marks)||0),0);
   const updateSection=(id:string,patch:any)=>setSections(current=>current.map(section=>section.id===id?{...section,...patch}:section));
-  const addSection=()=>setSections(current=>[...current,{id:'section-'+(current.length+1),title:'Section '+String.fromCharCode(65+current.length),instructions:'Answer all questions in this section.'}]);
+  const addSection=()=>setSections(current=>[...current,{id:newSectionId(),title:'Section '+String.fromCharCode(65+current.length),instructions:'Answer all questions in this section.'}]);
   const moveSection=(index:number,direction:number)=>{
     setSections(current=>{const next=[...current];const target=index+direction;if(target<0||target>=next.length)return current;[next[index],next[target]]=[next[target],next[index]];return next;});
   };
@@ -184,31 +193,35 @@ export default function AdminOnlineExamsScreen() {
   };
 
   const openAttempts=async(exam:any)=>{
-    setSelectedExam(exam);setMode('attempts');setLoading(true);setError('');
+    setSelectedExam(exam);setAttempts([]);setResponses([]);setSelectedAttempt(null);setMarks({});setFeedback({});setMode('attempts');setLoading(true);setError('');
     try{const {data}=await api.get('/online-exams/admin/exams/'+exam.id+'/attempts');setAttempts(data.attempts??[]);}
     catch(e:any){setError(e?.response?.data?.error??'Could not load examination attempts.');}
     finally{setLoading(false);}
   };
   const openResponses=async(attempt:any)=>{
-    setSelectedAttempt(attempt);setMode('responses');setLoading(true);setError('');
+    setSelectedAttempt(attempt);setResponses([]);setMarks({});setFeedback({});setMode('responses');setLoading(true);setError('');
     try{const {data}=await api.get('/online-exams/admin/attempts/'+attempt.attempt_id+'/responses');setResponses(data.responses??[]);}
     catch(e:any){setError(e?.response?.data?.error??'Could not load candidate responses.');}
     finally{setLoading(false);}
   };
   const markResponse=async(response:any)=>{
+    const targetAttemptId=selectedAttempt?.attempt_id;
+    if(!targetAttemptId)return;
     const awarded=Number(marks[response.question_id]);
     if(!Number.isFinite(awarded)||awarded<0||awarded>Number(response.marks)){
       setError('Enter a valid mark within the question maximum.');return;
     }
     setBusy(response.question_id);setError('');
     try{
-      const {data:marked}=await api.put('/online-exams/admin/attempts/'+selectedAttempt.attempt_id+'/responses/'+response.question_id+'/mark',{
+      const {data:marked}=await api.put('/online-exams/admin/attempts/'+targetAttemptId+'/responses/'+response.question_id+'/mark',{
         awarded_marks:awarded,feedback:feedback[response.question_id]??'',
       });
-      setSelectedAttempt((current:any)=>({...current,status:marked.attempt.status,score:marked.attempt.score,total_marks:marked.attempt.total_marks,percentage:marked.attempt.percentage}));
-      const {data}=await api.get('/online-exams/admin/attempts/'+selectedAttempt.attempt_id+'/responses');
-      setResponses(data.responses??[]);
-      setNotice('Manual mark saved and the candidate total recalculated.');
+      const {data}=await api.get('/online-exams/admin/attempts/'+targetAttemptId+'/responses');
+      if(selectedAttempt?.attempt_id===targetAttemptId){
+        setSelectedAttempt((current:any)=>current?.attempt_id===targetAttemptId?({...current,status:marked.attempt.status,score:marked.attempt.score,total_marks:marked.attempt.total_marks,percentage:marked.attempt.percentage}):current);
+        setResponses(data.responses??[]);
+        setNotice('Manual mark saved and the candidate total recalculated.');
+      }
     }catch(e:any){setError(e?.response?.data?.error??'Could not save the manual mark.');}
     finally{setBusy(null);}
   };
