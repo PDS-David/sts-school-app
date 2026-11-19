@@ -55,10 +55,11 @@ Example request shape:
       "title": "Section A",
       "instructions": "Answer all questions.",
       "questions": [
-        { "question_id": "question-bank-uuid", "marks": 2 },
+        { "question_id": "11111111-1111-4111-8111-111111111111", "marks": 2, "covered_topic_id": 123 },
         {
-          "question_id": "written-question-uuid",
+          "question_id": "22222222-2222-4222-8222-222222222222",
           "marks": 5,
+          "covered_topic_id": 124,
           "marking_rubric": [
             { "id": "definition", "description": "Defines the required concept accurately", "max_marks": 2 },
             { "id": "application", "description": "Applies the concept to the question", "max_marks": 2 },
