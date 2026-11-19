@@ -105,17 +105,29 @@ export default function OnlineExamAttemptScreen({ route, navigation }:any) {
       const net=await NetInfo.fetch();
       if(!net.isConnected)throw new Error('Connect to the internet before submitting. Your saved answers are retained on this device.');
       for(const [qid,value] of Object.entries(pending.current)){
+        await saveQueue.current[qid]?.catch(()=>undefined);
+        if(pending.current[qid]===undefined)continue;
         try{
           await api.put('/online-exams/attempts/'+attemptId+'/responses/'+qid,{response:value});
-          delete pending.current[qid];
+          if(JSON.stringify(pending.current[qid])===JSON.stringify(value))delete pending.current[qid];
         }catch(e:any){
-          if(e?.response?.status!==409) throw e;
+          if(e?.response?.status!==409)throw e;
+          // A 409 means the server deadline/status has closed autosave. Keep
+          // this answer locally; never discard a response the server refused.
         }
       }
-      await AsyncStorage.setItem(storageKey,JSON.stringify({}));
-      await AsyncStorage.removeItem(storageKey+':session');
       const {data}=await api.post('/online-exams/attempts/'+attemptId+'/submit',{confirm:true});
-      Alert.alert(auto?'Time is up':'Examination submitted',data.status==='under_review'?'Your answers were submitted. Some written responses are awaiting marking.':'Your examination has been submitted successfully.');
+      const unsyncedCount=Object.keys(pending.current).length;
+      if(unsyncedCount>0){
+        await AsyncStorage.setItem(storageKey,JSON.stringify(pending.current));
+        await AsyncStorage.setItem(storageKey+':session',JSON.stringify(session));
+        Alert.alert('Submitted with locally retained answers',
+          'The server accepted your submission, but '+unsyncedCount+' response(s) could not be saved before the deadline. A copy remains on this device. Contact your school administrator immediately and do not clear app storage.');
+      }else{
+        await AsyncStorage.setItem(storageKey,JSON.stringify({}));
+        await AsyncStorage.removeItem(storageKey+':session');
+        Alert.alert(auto?'Time is up':'Examination submitted',data.status==='under_review'?'Your answers were submitted. Some written responses are awaiting marking.':'Your examination has been submitted successfully.');
+      }
       navigation.replace('OnlineExams');
     }catch(e:any){setError(e?.response?.data?.error??e.message??'Submission failed. Please retry.');}
     finally{setSaving(false);}
