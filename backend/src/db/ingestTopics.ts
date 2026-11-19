@@ -359,7 +359,7 @@ async function extractText(filePath: string): Promise<string> {
 }
 
 // ── Topic block parsing ────────────────────────────────────────────────────
-// Splits on "WEEK N" / "Week N & M" / "WEEK9&10" / "WEEK: One" style markers
+// Splits on "WEEK N" / "Week N & M" / slash-separated ranges (e.g. 2/3) / "WEEK: One" style markers
 // — the one pattern common to all three content shapes found across this
 // school's documents (JSS/SSS scheme+prose, Nursery/Reception field-style,
 // Basic lesson-plan style). Some Basic-band files spell the week number out
@@ -368,7 +368,7 @@ async function extractText(filePath: string): Promise<string> {
 // table-vs-real-content limitation this implies.
 const WEEK_NUMBER_WORD = 'one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen';
 const WEEK_MARKER = new RegExp(
-  `^[ \\t]*week\\s*[:.\\-]*\\s*((?:\\d+(?:\\s*(?:&|and|,|-)\\s*\\d+)?)|(?:${WEEK_NUMBER_WORD})(?:\\s*(?:&|and|,|-)\\s*(?:${WEEK_NUMBER_WORD}))?)`,
+  `^[ \\t]*week\\s*[:.\\-]*\\s*((?:\\d+(?:\\s*(?:&|and|,|-|/)\\s*\\d+)?)|(?:${WEEK_NUMBER_WORD})(?:\\s*(?:&|and|,|-|/)\\s*(?:${WEEK_NUMBER_WORD}))?)`,
   'gim',
 );
 
@@ -386,7 +386,7 @@ export interface ParsedTopic {
 // can't match. This catches that shape specifically: a standalone line
 // containing ONLY a number 1-20 (optionally a range like "1&2"), and
 // nothing else on that line.
-const BARE_NUMBER_LINE = /^[ \t]*(\d{1,2}(?:\s*(?:&|and|,|-)\s*\d{1,2})?)[ \t]*$/gim;
+const BARE_NUMBER_LINE = /^[ \t]*(\d{1,2}(?:\s*(?:&|and|,|-|\/)\s*\d{1,2})?)[ \t]*$/gim;
 
 export function parseTopics(text: string): ParsedTopic[] {
   const rawMatches = [...text.matchAll(WEEK_MARKER)].filter(m => !isSchemeWorkWeekHeader(text, m.index!, m[0]));
@@ -647,7 +647,7 @@ Always run once WITHOUT --yes first to see the full breakdown.`);
 
       let text = await extractText(filePath);
       if (schoolCode === 'primary') {
-        text = applyPrimarySourceTextResolution(path.basename(filePath), text);
+        text = applyPrimarySourceTextResolution(path.basename(filePath), text, sourceHash);
       } else if (validClassNames.includes('JSS 1')) {
         text = applyJss1SourceTextResolution(path.basename(filePath), termLabel, text);
       } else if (validClassNames.includes('JSS 2')) {

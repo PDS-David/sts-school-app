@@ -1,0 +1,50 @@
+name: Primary 1-6 Source Audit Tests
+
+on:
+  push:
+    branches:
+      - curriculum/primary1-6-source-audit-20261118
+    paths:
+      - 'backend/src/db/ingestTopics.ts'
+      - 'backend/src/db/primaryCurriculumResolutions.ts'
+      - 'backend/src/db/primarySourceTextOverrides.ts'
+      - 'docs/curriculum/primary1-6/**'
+      - 'tests/primary-subject-resolutions.test.mts'
+      - 'tests/primary1-6-source-inventory.test.mts'
+      - '.github/workflows/primary1-6-source-audit.yml'
+  pull_request:
+    paths:
+      - 'backend/src/db/ingestTopics.ts'
+      - 'backend/src/db/primaryCurriculumResolutions.ts'
+      - 'backend/src/db/primarySourceTextOverrides.ts'
+      - 'docs/curriculum/primary1-6/**'
+      - 'tests/primary-subject-resolutions.test.mts'
+      - 'tests/primary1-6-source-inventory.test.mts'
+      - '.github/workflows/primary1-6-source-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  verify-primary1-6-source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install backend dependencies
+        run: npm install --prefix backend
+      - name: Run Primary 1-6 source-resolution and inventory tests
+        working-directory: backend
+        run: node --import tsx --test ../tests/primary-subject-resolutions.test.mts ../tests/primary1-6-source-inventory.test.mts
+      - name: Build backend
+        run: npm run build --prefix backend
