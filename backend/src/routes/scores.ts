@@ -300,7 +300,7 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
     if (school_code && school_code !== user.school_code) {
       return res.status(403).json({ error: "You can't view scores outside your selected school." });
     }
-    params.push(user.school_code); sql += ' AND s.school_code=
+    params.push(user.school_code); sql += ' AND s.school_code=' + String.fromCharCode(36) + String(params.length);
   }
 
   if (user.role !== 'admin') sql += ' AND s.deleted_at IS NULL';
