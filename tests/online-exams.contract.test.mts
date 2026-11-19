@@ -148,6 +148,7 @@ test('admin app can create, publish, list and manually review formal examination
   assert.match(route, /src\.source_name,src\.source_url/);
   assert.match(route, /src\.rights_evidence/);
   assert.match(route, /q\.exam_year/);
+  assert.match(route, /AS total_marks/);
   assert.match(adminExamScreen, /question\.source_name/);
   assert.match(adminExamScreen, /question\.rights_status/);
   assert.match(adminExamScreen, /question\.source_rights/);
