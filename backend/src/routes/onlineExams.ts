@@ -247,8 +247,7 @@ router.post('/admin/exams/generate-package-drafts',requireRole('admin'),async(re
           throw new Error('Generated question failed answer/options/marks validation.');
         drafts.push({lesson,lessonKey:lessonKeys[i],q});
       }
-    }
-  }catch(error:any){return res.status(502).json({error:error?.message??'Could not generate questions from the selected package lessons.'});}
+    }  }catch(error:any){return res.status(502).json({error:error?.message??'Could not generate questions from the selected package lessons.'});}
   try{
     const saved=await withTransaction(async client=>{
       const subjectName=body.subject_name.trim();
@@ -466,13 +465,14 @@ router.post('/admin/exams/:examId/publish',requireRole('admin'),async(req,res)=>
         FROM online_exam_questions
        WHERE exam_id=$1 AND provenance->>'covered_lesson_key' IS NOT NULL
     `,[exam.id]);
+    const packageCandidateIds=candidates.map((candidate:any)=>candidate.id);
     for(const ref of packageRefs){
       if(ref.lesson_class!==exam.class_name) return {status:409,error:'Generated package lesson class does not match the examination class.'};
       await client.query(`
         SELECT student_id,lesson_key FROM student_curriculum_lesson_progress
          WHERE student_id=ANY($1::uuid[]) AND lesson_key=$2 AND class_name=$3
          FOR SHARE
-      `,[candidateIds,ref.lesson_key,exam.class_name]);
+      `,[packageCandidateIds,ref.lesson_key,exam.class_name]);
       const {rows: coverage}=await client.query(`
         SELECT COUNT(DISTINCT st.id)::int AS completed
           FROM students st
@@ -497,8 +497,7 @@ router.post('/admin/exams/:examId/publish',requireRole('admin'),async(req,res)=>
       VALUES($1,$2,'exam_published',$3::jsonb)
     `,[exam.id,req.user!.id,JSON.stringify({eligible_candidates:candidates.length})]);
     return {status:200,exam_id:exam.id,eligible_candidates:candidates.length};
-  });
-  if('error' in result) return res.status(400).json({error:result.error});
+  });  if('error' in result) return res.status(400).json({error:result.error});
   return res.json(result);
 });
 
@@ -747,8 +746,7 @@ router.get('/admin/lesson-topics',requireRole('admin'),async(req,res)=>{
   const className=typeof req.query.class_name==='string'?req.query.class_name:'';
   const subjectName=typeof req.query.subject_name==='string'?req.query.subject_name.trim():'';
   if(!schoolCode) return res.status(400).json({error:'Select a school before loading examination lesson coverage.'});
-  if(!EXAM_CLASSES.has(className)||!subjectName)
-    return res.status(400).json({error:'Provide a valid examination class and subject.'});
+  if(!EXAM_CLASSES.has(className)||!subjectName)    return res.status(400).json({error:'Provide a valid examination class and subject.'});
   const {rows}=await query(`
     SELECT t.id,t.title,t.term_id,
            COUNT(DISTINCT CASE WHEN rrm.student_id IS NOT NULL AND u.id IS NOT NULL THEN st.id END)::int AS candidate_count,
