@@ -58,9 +58,9 @@ export default function ChangePasswordScreen({ route, navigation }: any) {
       )}
       <Card>
         <Text style={styles.title}>{isTeacher ? 'Change PIN' : 'Change Password'}</Text>
-        <Input label={isTeacher ? 'Current PIN' : 'Current Password'} value={oldPw} onChangeText={v => setOldPw(isTeacher ? v.replace(/\\D/g, '').slice(0, 4) : v)} secureTextEntry keyboardType={isTeacher ? 'numeric' : undefined} />
-        <Input label={isTeacher ? 'New 4-digit PIN' : 'New Password'} value={newPw} onChangeText={v => setNewPw(isTeacher ? v.replace(/\\D/g, '').slice(0, 4) : v)} secureTextEntry keyboardType={isTeacher ? 'numeric' : undefined} />
-        <Input label={isTeacher ? 'Confirm PIN' : 'Confirm Password'} value={conf} onChangeText={v => setConf(isTeacher ? v.replace(/\\D/g, '').slice(0, 4) : v)} secureTextEntry keyboardType={isTeacher ? 'numeric' : undefined} />
+        <Input label={isTeacher ? 'Current PIN' : 'Current Password'} value={oldPw} onChangeText={v => setOldPw(isTeacher ? v.replace(/\D/g, '').slice(0, 4) : v)} secureTextEntry keyboardType={isTeacher ? 'numeric' : undefined} />
+        <Input label={isTeacher ? 'New 4-digit PIN' : 'New Password'} value={newPw} onChangeText={v => setNewPw(isTeacher ? v.replace(/\D/g, '').slice(0, 4) : v)} secureTextEntry keyboardType={isTeacher ? 'numeric' : undefined} />
+        <Input label={isTeacher ? 'Confirm PIN' : 'Confirm Password'} value={conf} onChangeText={v => setConf(isTeacher ? v.replace(/\D/g, '').slice(0, 4) : v)} secureTextEntry keyboardType={isTeacher ? 'numeric' : undefined} />
         {error ? <Text style={styles.error}>{error}</Text>   : null}
         {ok    ? <Text style={styles.success}>Password changed!</Text> : null}
         <Btn label="Update Password" onPress={handleSubmit} loading={loading} style={{ marginTop: Spacing.md, width: '100%' }} />
