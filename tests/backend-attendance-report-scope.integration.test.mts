@@ -33,6 +33,27 @@ async function createUser(label: string, schoolCode: string | null, assignedClas
   };
 }
 
+async function createSchoolAdmin(schoolCode: string) {
+  const username = `bsec18-school-admin-${randomUUID()}`;
+  const { rows } = await query(
+    `INSERT INTO users(username,password_hash,role,full_name,school_code,is_active,pending_admin_review)
+     VALUES($1,'test-hash','admin','BSEC18 School Admin',$2,TRUE,FALSE) RETURNING id`,
+    [username, schoolCode],
+  );
+  const id = String(rows[0].id);
+  return {
+    id,
+    token: signAccess({
+      id,
+      username,
+      role: 'admin',
+      school_code: schoolCode,
+      assigned_class: null,
+      assigned_subject_ids: [],
+    }),
+  };
+}
+
 async function createAdmin() {
   const username = `bsec18-admin-${randomUUID()}`;
   const { rows } = await query(
@@ -74,6 +95,7 @@ test('whole-class attendance and class-record reads enforce school and term owne
   const subjectTeacher = await createUser('subject-teacher', 'primary', null);
   const unassignedTeacher = await createUser('unassigned-teacher', null, null);
   const admin = await createAdmin();
+  const schoolAdmin = await createSchoolAdmin('primary');
   let primaryTermId: number | undefined;
   let secondaryTermId: number | undefined;
   const studentIds: string[] = [];
@@ -191,6 +213,20 @@ test('whole-class attendance and class-record reads enforce school and term owne
     assert.equal(savedRemarks[0]?.class_teacher_remark, 'Excellent progress');
     assert.equal(savedRemarks[0]?.admin_remark, 'Promoted to the next class');
 
+    const schoolAdminForeignAttendance = await get(
+      `?class_name=Shared%20Class&term_id=${secondaryTermId}&school_code=secondary`,
+      schoolAdmin.token,
+    );
+    assert.equal(schoolAdminForeignAttendance.status, 403,
+      'school-bound administrators cannot override their assigned school with an attendance query parameter');
+
+    const schoolAdminForeignClassRecord = await get(
+      `/class-records/${studentIds[1]}/${secondaryTermId}`,
+      schoolAdmin.token,
+    );
+    assert.equal(schoolAdminForeignClassRecord.status, 404,
+      'school-bound administrators cannot read an individual class record from another school');
+
     const foreignAttendanceTerm = await get(
       `?class_name=Shared%20Class&term_id=${secondaryTermId}`,
       classTeacher.token,
@@ -237,6 +273,6 @@ test('whole-class attendance and class-record reads enforce school and term owne
     }
     if (primaryTermId) await query('DELETE FROM terms WHERE id=$1', [primaryTermId]);
     if (secondaryTermId) await query('DELETE FROM terms WHERE id=$1', [secondaryTermId]);
-    await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [[classTeacher.id, subjectTeacher.id, unassignedTeacher.id, admin.id]]);
+    await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [[classTeacher.id, subjectTeacher.id, unassignedTeacher.id, admin.id, schoolAdmin.id]]);
   }
 });
