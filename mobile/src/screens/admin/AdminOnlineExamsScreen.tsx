@@ -241,7 +241,7 @@ export default function AdminOnlineExamsScreen() {
                     </View>
                     <Badge label={exam.status} color={exam.status==='published'?Colors.success:Colors.warning}/>
                   </View>
-                  <Text style={styles.meta}>{exam.question_count} questions · {exam.candidate_count} eligible · {exam.attempt_count} attempts · {exam.duration_minutes} minutes</Text>
+                  <Text style={styles.meta}>{exam.question_count} questions · {exam.total_marks} total marks · {exam.candidate_count} eligible · {exam.attempt_count} attempts · {exam.duration_minutes} minutes</Text>
                   <Text style={styles.meta}>Opens {new Date(exam.starts_at).toLocaleString()} · Closes {new Date(exam.ends_at).toLocaleString()}</Text>
                   <View style={styles.actions}>
                     {exam.status==='draft'?<Btn label="Publish" onPress={()=>publish(exam)} loading={busy===exam.id} style={{flex:1}}/>:null}
