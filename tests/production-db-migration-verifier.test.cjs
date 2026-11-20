@@ -11,9 +11,9 @@ test('production migration verifier rejects provisional 0005 rows, not explicit 
   assert.match(workflow, /m\.status = 'active'/);
   assert.match(workflow, /latest\.event_type IS NULL/);
   assert.match(workflow, /latest\.event_type NOT IN \('enrolled','reinstated','retained','class_changed'\)/);
-  assert.match(workflow, /latest\.details->>'source' = '0005_report_roster_memberships_backfill'/);
+  assert.match(workflow, /latest\.event_type = 'enrolled'[\s\S]*?latest\.details->>'source' NOT IN \([\s\S]*?'student_class_list_bulk_import'[\s\S]*?'physical_reporting_student_create'[\s\S]*?'cross_section_promotion'[\s\S]*?'importPhysicalReportRoster'[\s\S]*?\)/);
   assert.doesNotMatch(workflow, /IF EXISTS \(SELECT 1 FROM public\.report_roster_memberships WHERE status='active'\)/);
-  assert.match(workflow, /Provisional 0005 backfill or unaudited memberships must not be active/);
+  assert.match(workflow, /Provisional 0005 backfill or unaudited enrolments must not be active/);
 });
 
 test('the 104-student physical class-list importer records a distinct auditable source and provenance', () => {
