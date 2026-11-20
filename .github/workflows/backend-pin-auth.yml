@@ -1,0 +1,71 @@
+name: Backend PIN authentication
+
+on:
+  push:
+    branches: [feature/prompt2-pin-auth]
+  pull_request:
+    branches: [master, 'agent/**']
+    paths:
+      - "backend/src/routes/auth.ts"
+      - "backend/src/routes/admin.ts"
+      - "backend/src/middleware/auth.ts"
+      - "backend/src/utils/pin.ts"
+      - "backend/src/utils/authSessions.ts"
+      - "backend/src/utils/loginThrottle.ts"
+      - "backend/src/utils/usernames.ts"
+      - "backend/migrations/**"
+      - "backend/schema.sql"
+      - "tests/backend-pin-auth.integration.test.mts"
+      - ".github/workflows/backend-pin-auth.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  pin-auth:
+    name: PostgreSQL PIN authentication, sessions and lockout
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: sts_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d sts_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/sts_test
+      NODE_ENV: test
+      # Test-only placeholder so administrator PIN resets can hash. Not a real secret.
+      PIN_PEPPER: ci-test-only-pepper-not-a-secret-0123456789abcdef
+      JWT_SECRET: ci-test-only-jwt-secret
+      JWT_REFRESH_SECRET: ci-test-only-jwt-refresh-secret
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install locked workspace dependencies
+        run: npm ci --ignore-scripts
+      - name: Bootstrap disposable PostgreSQL schema
+        run: npm run db:bootstrap --workspace=backend
+      - name: Apply numbered migrations against the fresh baseline
+        run: npm run db:migrate --workspace=backend
+      - name: Run PIN authentication regressions
+        run: node --import tsx --test --test-concurrency=1 tests/backend-pin-auth.integration.test.mts tests/backend-credential-attempts.integration.test.mts tests/backend-admin-user-school-scope.integration.test.mts
+      - name: Typecheck backend
+        run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
