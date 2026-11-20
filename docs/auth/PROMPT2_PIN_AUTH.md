@@ -5,9 +5,9 @@ Scope: backend only. Mobile is Prompt 2B. Operations Admin, Finance Admin permis
 ## Deploy steps (in order)
 1. Generate the pepper: `node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"`
 2. Render → Environment → add `PIN_PEPPER` (min 32 chars). Never commit it. Production refuses to start without it.
-3. Ship the mobile build (2B) first or together. Until then the old app cannot set a PIN, and flagged users are blocked by the server.
-4. Deploy backend. Migration `0019_pin_auth_sessions.sql` runs. It is additive and re-runnable.
-5. Do NOT run `docs/auth/held/0020_global_username_unique.sql.HELD` until the duplicate check is reviewed.
+3. Ship the mobile build (2B) first or together. The old app cannot set a PIN, so an account the server flags (see "PIN requirement" below) is blocked on it until it updates. Existing students, parents and teachers are not flagged.
+4. Deploy backend. Migrations `0019_pin_auth_sessions.sql` then `0020_pin_gate_only_for_admin_issued_credentials.sql` run. Both are additive/idempotent; 0020 clears the bulk PIN-setup flag 0019 sets, so no existing user is forced to change a PIN.
+5. Do NOT run `docs/auth/held/0021_global_username_unique.sql.HELD` until the duplicate check is reviewed (renumbered from 0020 because migration 0020 is now the PIN-gate correction; the runner requires gap-free numbering).
 
 ## Pepper recovery
 - Lost or changed pepper: every six-digit PIN stops verifying.
@@ -30,10 +30,16 @@ Scope: backend only. Mobile is Prompt 2B. Operations Admin, Finance Admin permis
 - Legacy JWT refresh tokens are exchanged once into a session, keeping their original expiry.
 - Production rejects access tokens without `sid` (clients refresh and continue). Override: `AUTH_REQUIRE_SESSION_ID=false`.
 
+## PIN requirement (`must_set_pin`)
+- Existing students, parents and teachers already hold six-digit PINs. They sign in and go straight to their dashboard (subject to approval status), on any device. Nothing forces a PIN change at first login after this update or on a new device.
+- `must_set_pin` is TRUE only for an administrator-issued temporary credential: an administrator PIN reset, an administrator-created teacher, an auto-provisioned parent, and a credential set through activation, self-registration or self-claim. Those users must set their own PIN once.
+- Changing a PIN voluntarily is always possible (`POST /auth/pin`, Settings → Change PIN in the app). Current PIN required; other sessions are revoked.
+- Legacy-format hashes (`pin_hash_version` NULL, plain bcrypt) of existing six-digit PINs keep verifying unchanged. They are not peppered until the user next sets a PIN.
+
 ## Reachable endpoints
 - Pending account: `GET /auth/me`, `POST /auth/logout`.
-- Before PIN setup: `GET /auth/me`, `POST /auth/logout`, `POST /auth/pin`.
-- Everything else: 403.
+- While `must_set_pin` is TRUE: `GET /auth/me`, `POST /auth/logout`, `POST /auth/pin`.
+- Everything else in that state: 403.
 
 ## Lockout thresholds
 | Layer | Rule |
@@ -61,7 +67,7 @@ Scope: backend only. Mobile is Prompt 2B. Operations Admin, Finance Admin permis
 2. Admin calls `POST /admin/users/:id/reset-password`.
 3. Response returns a temporary six-digit PIN once (`Cache-Control: no-store`, never logged or audited).
 4. All sessions revoked, lockout cleared, audit record `reset_pin` written.
-5. User signs in with it and must set a new PIN.
+5. User signs in with it and must set a new PIN (this compulsory replacement is kept).
 - Public security-question reset is disabled for these roles. Stored answers are kept.
 
 ## Tests

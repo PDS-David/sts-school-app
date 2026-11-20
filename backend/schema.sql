@@ -1161,14 +1161,10 @@ CREATE TRIGGER users_enforce_pin_state_trg
   BEFORE UPDATE OF password_hash ON users
   FOR EACH ROW EXECUTE FUNCTION users_enforce_pin_state();
 
--- ── Controlled credential migration (no one is locked out) ───────────────────
--- Existing users keep logging in with their current credential. After that
--- verification succeeds, the server requires a new six-digit PIN. Only flags.
-UPDATE users SET must_set_pin = TRUE
- WHERE role IN ('student','parent','teacher')
-   AND password_hash IS NOT NULL
-   AND pin_hash_version IS NULL
-   AND must_set_pin = FALSE;
+-- ── Existing credentials (no one is forced to change a PIN) ─────────────────
+-- Existing students, parents and teachers already hold six-digit PINs and are
+-- NOT flagged: they sign in and reach their dashboard directly. must_set_pin is
+-- set only for administrator-issued temporary credentials (see migration 0020).
 
 -- ── Server-side sessions (multi-device, rotation, revocation) ────────────────
 CREATE TABLE IF NOT EXISTS auth_sessions (

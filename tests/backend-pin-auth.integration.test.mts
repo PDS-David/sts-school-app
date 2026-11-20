@@ -4,6 +4,7 @@ process.env.JWT_REFRESH_SECRET ||= 'test-jwt-refresh-secret';
 
 import assert from 'node:assert/strict';
 import bcrypt from 'bcryptjs';
+import { readFileSync } from 'node:fs';
 import { randomInt, randomBytes } from 'node:crypto';
 import type { AddressInfo } from 'node:net';
 import type { Server } from 'node:http';
@@ -29,6 +30,7 @@ const uname = (label: string) => `pin-${label}-${sfx()}`;
 const device = () => randomBytes(12).toString('hex'); // 24 chars, valid device id
 const LEGACY = 'LegacyPassw0rd!';
 const GOOD_PIN = '482913';
+const EXISTING_PIN = '730518'; // an existing user's six-digit PIN, stored as a legacy (unpeppered) bcrypt hash
 
 after(async () => { await pool.end(); });
 
@@ -60,10 +62,11 @@ async function makeUser(name: string, o: MakeUser = {}): Promise<string> {
     [name, hash, role, o.school === undefined ? 'primary' : o.school, o.active ?? true, o.pending ?? false, o.pinVersion ?? null],
   );
   const id = String(rows[0].id);
-  // The migration/trigger only flags rows whose hash CHANGES; set the state the
-  // post-migration backfill would have produced explicitly.
+  // Existing students/parents/teachers already hold six-digit PINs and are NOT
+  // flagged (migration 0020). Only tests that model an administrator-issued
+  // temporary credential pass mustSetPin: true.
   await query('UPDATE users SET must_set_pin=$2, pin_hash_version=$3 WHERE id=$1', [
-    id, o.mustSetPin ?? (['student', 'parent', 'teacher'].includes(role) && o.pinVersion !== 1), o.pinVersion ?? null,
+    id, o.mustSetPin ?? false, o.pinVersion ?? null,
   ]);
   return id;
 }
@@ -277,41 +280,129 @@ test('UNCHANGED (Prompt 4 scope): while free-launch mode is on, a pending STUDEN
   } finally { await stop(server); }
 });
 
-// ── Mandatory PIN setup (existing-user migration) ────────────────────────────
+// ── Existing users: no first-login PIN gate ─────────────────────────────────
 
-test('existing student/parent/teacher: legacy credential works once, then PIN setup is forced centrally', async () => {
+test('existing student/parent/teacher with a six-digit PIN sign in straight to their dashboard, on any device', async () => {
   const { server, base } = await startServer();
   try {
     for (const role of ['student', 'parent', 'teacher']) {
-      const name = uname(`mig-${role}`);
-      const id = await makeUser(name, { role });
+      const name = uname(`ex-${role}`);
+      await makeUser(name, { role, secret: EXISTING_PIN }); // legacy-format hash, not flagged
+      const first = await login(base, name, EXISTING_PIN);
+      assert.equal(first.status, 200, role);
+      assert.equal(first.json.must_set_pin, false, role);
+      assert.equal(first.json.pending_admin_review, false);
+      assert.equal((await get(base, '/protected', first.json.access_token)).status, 200, `${role}: no PIN_SETUP_REQUIRED`);
+      assert.equal((await get(base, '/auth/me', first.json.access_token)).json.must_set_pin, false);
+      // A brand-new device is not a reason to change the PIN either.
+      const other = await login(base, name, EXISTING_PIN, {}, device());
+      assert.equal(other.status, 200);
+      assert.equal(other.json.must_set_pin, false);
+      assert.equal((await get(base, '/protected', other.json.access_token)).status, 200);
+      // Their stored credential is untouched by signing in.
+      const { rows } = await query('SELECT must_set_pin, pin_hash_version, pin_set_at FROM users WHERE username=$1', [name]);
+      assert.equal(rows[0].must_set_pin, false);
+      assert.equal(rows[0].pin_hash_version, null);
+      assert.equal(rows[0].pin_set_at, null);
+    }
+  } finally { await stop(server); }
+});
+
+test('an existing PIN user who is still pending approval stays on the pending screen, then reaches the dashboard once approved', async () => {
+  const { server, base } = await startServer();
+  try {
+    const name = uname('ex-pending');
+    const id = await makeUser(name, { role: 'parent', secret: EXISTING_PIN, pending: true });
+    const l = await login(base, name, EXISTING_PIN);
+    assert.equal(l.status, 200);
+    assert.equal(l.json.pending_admin_review, true);
+    assert.equal(l.json.must_set_pin, false);
+    assert.equal((await get(base, '/protected', l.json.access_token)).json.code, 'PENDING_APPROVAL');
+    await query('UPDATE users SET pending_admin_review=FALSE WHERE id=$1', [id]);
+    assert.equal((await get(base, '/protected', l.json.access_token)).status, 200);
+  } finally { await stop(server); }
+});
+
+test('migration 0020 clears only the bulk 0019 flag: existing users freed, administrator-issued credentials keep the requirement', async () => {
+  const sql = readFileSync(new URL('../backend/migrations/0020_pin_gate_only_for_admin_issued_credentials.sql', import.meta.url), 'utf8');
+  const flagged = async (name: string, role: string, o: { changePw?: boolean; pinVersion?: 1 | null } = {}) => {
+    const id = await makeUser(name, { role, secret: o.pinVersion === 1 ? GOOD_PIN : EXISTING_PIN, pinVersion: o.pinVersion ?? null, school: role === 'admin' ? null : 'primary' });
+    // The state migration 0019's bulk backfill produced.
+    await query('UPDATE users SET must_set_pin=TRUE, must_change_pw=$2, pin_set_at=$3 WHERE id=$1',
+      [id, o.changePw ?? false, o.pinVersion === 1 ? new Date() : null]);
+    return id;
+  };
+  const existing = await Promise.all(['student', 'parent', 'teacher'].map((r) => flagged(uname(`mg-${r}`), r)));
+  const tempPassword = await flagged(uname('mg-temp'), 'teacher', { changePw: true });
+  const adminReset = await flagged(uname('mg-reset'), 'student', { pinVersion: 1 });
+  const adminAccount = await flagged(uname('mg-admin'), 'admin');
+
+  await query(sql);
+  await query(sql); // idempotent
+
+  const { rows } = await query('SELECT id, must_set_pin FROM users WHERE id=ANY($1::uuid[])', [[...existing, tempPassword, adminReset, adminAccount]]);
+  const by = new Map(rows.map((r: any) => [String(r.id), r.must_set_pin]));
+  for (const id of existing) assert.equal(by.get(id), false, 'existing PIN user is freed');
+  assert.equal(by.get(tempPassword), true, 'account still on an administrator-issued temporary password keeps it');
+  assert.equal(by.get(adminReset), true, 'administrator PIN reset keeps it');
+  assert.equal(by.get(adminAccount), true, 'roles outside the public set are not touched by this migration');
+
+  // The freed users now go straight in.
+  const { server, base } = await startServer();
+  try {
+    const { rows: names } = await query('SELECT username FROM users WHERE id=$1', [existing[0]]);
+    const l = await login(base, names[0].username, EXISTING_PIN);
+    assert.equal(l.status, 200);
+    assert.equal(l.json.must_set_pin, false);
+    assert.equal((await get(base, '/protected', l.json.access_token)).status, 200);
+  } finally { await stop(server); }
+});
+
+test('voluntary PIN change: an unflagged user can change their PIN, other sessions end, the new PIN works', async () => {
+  const { server, base } = await startServer();
+  try {
+    const name = uname('ex-vol');
+    await makeUser(name, { role: 'student', secret: EXISTING_PIN });
+    const here = await login(base, name, EXISTING_PIN);
+    const elsewhere = await login(base, name, EXISTING_PIN);
+    assert.equal(here.json.must_set_pin, false);
+    const change = await post(base, '/auth/pin', { current_credential: EXISTING_PIN, new_pin: GOOD_PIN }, { authorization: `Bearer ${here.json.access_token}` });
+    assert.equal(change.status, 200, JSON.stringify(change.json));
+    assert.equal((await get(base, '/protected', here.json.access_token)).status, 200);
+    assert.equal((await get(base, '/protected', elsewhere.json.access_token)).status, 401);
+    assert.equal((await login(base, name, GOOD_PIN)).status, 200);
+    assert.equal((await login(base, name, EXISTING_PIN)).status, 401);
+    // A wrong current PIN cannot change it.
+    const bad = await post(base, '/auth/pin', { current_credential: '111222', new_pin: '350186' }, { authorization: `Bearer ${here.json.access_token}` });
+    assert.equal(bad.status, 401);
+  } finally { await stop(server); }
+});
+
+test('administrator-issued temporary credential still forces PIN setup before any dashboard access', async () => {
+  const { server, base } = await startServer();
+  try {
+    for (const role of ['student', 'parent', 'teacher']) {
+      const name = uname(`tmp-${role}`);
+      const id = await makeUser(name, { role, secret: LEGACY, mustSetPin: true });
+      await query('UPDATE users SET must_change_pw=TRUE WHERE id=$1', [id]);
       const l = await login(base, name, LEGACY);
       assert.equal(l.status, 200, role);
       assert.equal(l.json.must_set_pin, true, role);
       const auth = { authorization: `Bearer ${l.json.access_token}` };
-      const token = l.json.access_token;
-
-      // Explicit allowlist: nothing else is reachable, including other /auth/* routes.
-      assert.equal((await get(base, '/protected', token)).json.code, 'PIN_SETUP_REQUIRED');
+      assert.equal((await get(base, '/protected', l.json.access_token)).json.code, 'PIN_SETUP_REQUIRED');
       assert.equal((await post(base, '/auth/push-token', { token: 'x' }, auth)).json.code, 'PIN_SETUP_REQUIRED');
-      assert.equal((await post(base, '/auth/change-password', { old_password: LEGACY, new_password: 'Another-Pass-1' }, auth)).json.code, 'PIN_SETUP_REQUIRED');
-      assert.equal((await get(base, '/auth/me', token)).json.must_set_pin, true);
-
-      // Requirement survives a brand-new session (restart / other device).
+      assert.equal((await get(base, '/auth/me', l.json.access_token)).json.must_set_pin, true);
+      // Requirement survives a new session / device.
       const l2 = await login(base, name, LEGACY);
       assert.equal(l2.json.must_set_pin, true);
       assert.equal((await get(base, '/protected', l2.json.access_token)).status, 403);
-
-      // Setting a PIN lifts it and keeps the same account.
       const set = await post(base, '/auth/pin', { current_credential: LEGACY, new_pin: GOOD_PIN }, auth);
       assert.equal(set.status, 200, JSON.stringify(set.json));
-      assert.equal((await get(base, '/protected', token)).status, 200);
+      assert.equal((await get(base, '/protected', l.json.access_token)).status, 200);
       const { rows } = await query('SELECT id, must_set_pin, pin_hash_version, pin_set_at FROM users WHERE id=$1', [id]);
-      assert.equal(String(rows[0].id), id);
       assert.equal(rows[0].must_set_pin, false);
       assert.equal(rows[0].pin_hash_version, 1);
       assert.ok(rows[0].pin_set_at);
-      // And the new PIN, not the old credential, now works.
       assert.equal((await login(base, name, GOOD_PIN)).status, 200);
       assert.equal((await login(base, name, LEGACY)).status, 401);
     }
