@@ -10,6 +10,11 @@ export function sanitizePin(raw: string): string {
   return raw.replace(/\D/g, '').slice(0, PIN_LENGTH);
 }
 
+/** PINs are digits-only; administrator passwords must be preserved byte-for-byte. */
+export function normalizeLoginSecret(mode: CredentialMode, raw: string): string {
+  return mode === 'pin' ? sanitizePin(raw) : raw;
+}
+
 /**
  * Client-side shape check only. The server is the authority on PIN rules
  * (including trivial-PIN rejection) and on which role an account has.
