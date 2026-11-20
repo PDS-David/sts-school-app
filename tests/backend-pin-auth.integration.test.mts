@@ -1027,6 +1027,73 @@ test('rehash: the write is a compare-and-swap and cannot overwrite a concurrentl
   assert.equal(a2.must_set_pin, true, 'the administrator-issued requirement survives');
 });
 
+// Per-condition compare-and-swap tests. Each competing write changes EXACTLY ONE
+// thing the rehash UPDATE re-checks, so removing that single condition from the
+// UPDATE (and nothing else) must make exactly that test fail. A condition that is
+// merely implied by another one would not be caught by the combined test above.
+// Outcomes are asserted as 'superseded' (zero rows matched), never 'unavailable',
+// so a SQL error cannot masquerade as a passing compare-and-swap.
+const CAS_CASES: Array<{ label: string; condition: string; interfere: string; params?: (h: string) => unknown[]; check: (row: any, h: string) => void }> = [
+  {
+    label: 'password_hash',
+    condition: 'password_hash = $4',
+    // A different credential is written and pin_set_at moves (so the 0019 trigger does not
+    // intervene); version stays NULL, must_set_pin and must_change_pw stay FALSE, role unchanged.
+    interfere: 'UPDATE users SET password_hash=$1, pin_set_at=clock_timestamp() WHERE id=$2',
+    params: (h) => [h],
+    check: (row, h) => {
+      assert.equal(row.password_hash, h, "the other writer's hash is preserved");
+      assert.equal(row.pin_hash_version, null, 'only the hash moved; version is still NULL');
+      assert.equal(row.must_set_pin, false);
+      assert.equal(row.must_change_pw ?? false, false);
+    },
+  },
+  {
+    label: 'pin_hash_version IS NULL',
+    condition: 'pin_hash_version IS NULL',
+    interfere: 'UPDATE users SET pin_hash_version=1 WHERE id=$1',
+    check: (row, _h) => { assert.equal(row.pin_hash_version, 1); },
+  },
+  {
+    label: 'must_set_pin = FALSE',
+    condition: 'must_set_pin = FALSE',
+    interfere: 'UPDATE users SET must_set_pin=TRUE WHERE id=$1',
+    check: (row, _h) => { assert.equal(row.must_set_pin, true, 'the PIN-setup requirement survives'); assert.equal(row.pin_hash_version, null); },
+  },
+  {
+    label: 'COALESCE(must_change_pw, FALSE) = FALSE',
+    condition: 'COALESCE(must_change_pw, FALSE) = FALSE',
+    interfere: 'UPDATE users SET must_change_pw=TRUE WHERE id=$1',
+    check: (row, _h) => { assert.equal(row.must_change_pw, true, 'the temporary-credential requirement survives'); assert.equal(row.pin_hash_version, null); },
+  },
+  {
+    label: 'role = ANY($5)',
+    condition: 'role = ANY($5::text[])',
+    interfere: "UPDATE users SET role='admin' WHERE id=$1",
+    check: (row, _h) => { assert.equal(row.role, 'admin', 'an administrator row is never rehashed'); assert.equal(row.pin_hash_version, null); },
+  },
+];
+
+for (const c of CAS_CASES) {
+  test(`rehash CAS (${c.label}): a concurrent change to only this field leaves the row exactly as the other writer set it`, async () => {
+    const name = uname('rh-cas');
+    const id = await makeUser(name, { secret: EXISTING_PIN });
+    const stale = await credRow(name); // eligible when the login handler verified it
+    assert.equal(isRehashEligible(stale, EXISTING_PIN), true, 'precondition: the stale row is eligible');
+    const original = stale.password_hash;
+    const theirs = c.params ? await hashPin('582193') : null;
+    await query(c.interfere, c.params && theirs ? [...c.params(theirs), id] : [id]);
+
+    assert.equal(await rehashLegacyPinAfterLogin(stale, EXISTING_PIN), 'superseded');
+    const after = await credRow(name);
+    if (theirs) c.check(after, theirs);
+    else {
+      c.check(after, original);
+      assert.equal(after.password_hash, original, 'the legacy hash was not replaced');
+    }
+  });
+}
+
 test('rehash: two simultaneous sign-ins both succeed and exactly one rewrite lands', async () => {
   const { server, base } = await startServer();
   try {
