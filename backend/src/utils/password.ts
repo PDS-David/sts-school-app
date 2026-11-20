@@ -1,9 +1,11 @@
+import { randomInt } from 'node:crypto';
+
 const CHARSET = 'ABCDEFGHJKMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789';
 
 export function generateTempPassword(length = 8): string {
   let pw = '';
   for (let i = 0; i < length; i++) {
-    pw += CHARSET[Math.floor(Math.random() * CHARSET.length)];
+    pw += CHARSET[randomInt(0, CHARSET.length)];
   }
   return pw;
 }
@@ -20,7 +22,7 @@ export function generateTempPassword(length = 8): string {
 export function generateNumericPin(length = 6): string {
   let pin = '';
   for (let i = 0; i < length; i++) {
-    pin += Math.floor(Math.random() * 10).toString();
+    pin += randomInt(0, 10).toString();
   }
   return pin;
 }

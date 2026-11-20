@@ -61,12 +61,17 @@ async function createRecoveryUser(uname: string): Promise<string> {
     `INSERT INTO users(username,password_hash,role,full_name,school_code,security_question,
                         security_answer_hash,must_set_security_question,
                         security_answer_fail_count,security_answer_locked_until)
-     VALUES($1,'existing-password-hash','student','BSEC10 Recovery','primary','Favourite colour?',
+     VALUES($1,'existing-password-hash','admin','BSEC10 Recovery','primary','Favourite colour?',
             $2,FALSE,0,NULL)
      RETURNING id`,
     [uname, answerHash],
   );
   return String(rows[0].id);
+}
+
+// The per-IP failure limiter persists in Postgres and every test here shares 127.0.0.1.
+async function resetIpFailureLimiter(): Promise<void> {
+  await query(`DELETE FROM public.rate_limit_counters WHERE namespace = 'auth-login-ip'`);
 }
 
 async function cleanUser(uname: string, id: string): Promise<void> {
@@ -77,6 +82,7 @@ async function cleanUser(uname: string, id: string): Promise<void> {
 }
 
 test('failed login attempts are capped per normalized username with independent account quotas', async () => {
+  await resetIpFailureLimiter();
   const userA = username('login-a');
   const userB = username('login-b');
   let idA: string | undefined;
@@ -95,7 +101,8 @@ test('failed login attempts are capped per normalized username with independent 
       body: JSON.stringify({ username: uname, password }),
     });
 
-    for (let i = 0; i < 10; i++) {
+    // Layered throttle (Prompt 2): five free failures per account+device, then a lock.
+    for (let i = 0; i < 5; i++) {
       const response = await attempt(userA.toUpperCase(), 'WrongPassword123');
       assert.equal(response.status, 401, `failed attempt ${i + 1} should reach credential verification`);
     }
@@ -112,6 +119,7 @@ test('failed login attempts are capped per normalized username with independent 
 });
 
 test('successful login does not consume the failed-attempt quota', async () => {
+  await resetIpFailureLimiter();
   const uname = username('login-success');
   let userId: string | undefined;
   let server: Server | undefined;
@@ -127,12 +135,15 @@ test('successful login does not consume the failed-attempt quota', async () => {
       body: JSON.stringify({ username: uname, password }),
     });
 
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 4; i++) {
       assert.equal((await attempt('WrongPassword123')).status, 401);
     }
     assert.equal((await attempt('CorrectPassword123')).status, 200);
-    assert.equal((await attempt('WrongPassword123')).status, 401, 'the tenth failed attempt should still be allowed');
-    assert.equal((await attempt('WrongPassword123')).status, 429, 'the eleventh failed attempt should be blocked');
+    // A correct sign-in clears the lane, so a full fresh quota of five failures is available again.
+    for (let i = 0; i < 5; i++) {
+      assert.equal((await attempt('WrongPassword123')).status, 401, `failed attempt ${i + 1} after success should be allowed`);
+    }
+    assert.equal((await attempt('WrongPassword123')).status, 429, 'the sixth failed attempt after success should be blocked');
   } finally {
     if (server) await closeAuthServer(server);
     if (userId) await cleanUser(uname, userId);

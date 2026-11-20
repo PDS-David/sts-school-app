@@ -1,11 +1,19 @@
 import { Router } from 'express';
+import type { Request } from 'express';
 import rateLimit from 'express-rate-limit';
 import { createHash, randomInt, timingSafeEqual } from 'node:crypto';
 import bcrypt from 'bcryptjs';
 import { query, withTransaction } from '../db/pool.js';
-import { signAccess, signRefresh, verifyRefresh } from '../utils/jwt.js';
+import { signAccess, verifyRefresh } from '../utils/jwt.js';
 import { readLearningAccessPolicy, requireAuth } from '../middleware/auth.js';
 import { audit, auditInTransaction } from '../utils/audit.js';
+import { accountKeyFor, normalizeUsername } from '../utils/usernames.js';
+import { PIN_HASH_VERSION, PinConfigError, burnDummyVerification, checkPin, hashPin, verifyCredential } from '../utils/pin.js';
+import { recordLoginSuccess, reserveLoginAttempt, validDeviceId } from '../utils/loginThrottle.js';
+import {
+  REFRESH_PREFIX, createSession, findLegacySession, isKnownDevice, revokeSession, revokeUserSessions, rotateSession, sha256Hex,
+} from '../utils/authSessions.js';
+import { GENERIC_LOGIN_ERROR, PENDING_APPROVAL_MESSAGE } from '../utils/authMessages.js';
 import { claimStudentAccount, listUnclaimedStudentRoster, registerSelfServiceAccount } from '../utils/selfRegistration.js';
 import { normalizeAnswer, usernameBaseFromName } from '../utils/password.js';
 import { activateAccount, resetPasswordWithSecurityAnswer } from '../utils/credentialAttempts.js';
@@ -14,88 +22,145 @@ import { createPostgresRateLimitStore } from '../utils/postgresRateLimitStore.js
 
 const router = Router();
 
-// Login attempts are keyed by normalized account name as well as the
-// existing process-wide IP limiter. This prevents a distributed attacker
-// from trying unlimited passwords against one account, and prevents one
-// user's failed attempts from consuming another user's account quota.
-const loginAttemptLimiter = rateLimit({
+// ── Login throttling ─────────────────────────────────────────────────────────
+// Account/device/IP layering lives in utils/loginThrottle.ts (it replaces the
+// old per-username express limiter, which let anyone lock out any user by
+// failing 10 times against that username). What stays here is a per-IP limiter
+// across ALL accounts that counts failures only, so a school's shared Wi-Fi is
+// not throttled by successful sign-ins.
+const loginIpFailureLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 10,
+  max: 100,
   standardHeaders: true,
   legacyHeaders: false,
-  keyGenerator: (req) => {
-    const username = typeof req.body?.username === 'string'
-      ? req.body.username.trim().toLowerCase().slice(0, 128)
-      : '';
-    const digest = createHash('sha256').update(username).digest('hex');
-    return `login:${digest}`;
-  },
   skipSuccessfulRequests: true,
-  message: { error: 'Too many failed login attempts for this username. Try again in 15 minutes.' },
-  store: createPostgresRateLimitStore('auth-login'),
+  message: { error: 'Too many failed attempts from this network. Please wait a few minutes and try again.' },
+  store: createPostgresRateLimitStore('auth-login-ip'),
 });
 
-// ── GET /auth/teacher-logins — username choices for the teacher PIN login ──
-// Only active teacher usernames are returned, scoped to the selected school.
-// Password/PIN hashes, IDs, and personal data are never exposed.
-const teacherLoginListLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 30,
-  standardHeaders: true,
-  legacyHeaders: false,
-  message: { error: 'Too many requests. Please try again later.' },
-});
+const PIN_ROLES = new Set<string>(['student', 'parent', 'teacher']);
+const ADMIN_ROLES = new Set<string>(['admin', 'finance_admin']);
 
-router.get('/teacher-logins', teacherLoginListLimiter, async (req, res) => {
-  const schoolCode = typeof req.query.school_code === 'string' ? req.query.school_code.trim() : '';
-  if (!['primary', 'secondary'].includes(schoolCode)) {
-    return res.status(400).json({ error: 'A valid school_code is required.' });
+function humanWait(seconds: number): string {
+  if (seconds < 90) return `${Math.max(1, seconds)} second${seconds === 1 ? '' : 's'}`;
+  const minutes = Math.ceil(seconds / 60);
+  return `${minutes} minute${minutes === 1 ? '' : 's'}`;
+}
+
+function clientDeviceId(req: Request): string | null {
+  return validDeviceId(req.header('x-device-id') ?? (req.body as any)?.device_id);
+}
+
+function deviceLabel(raw: unknown): string | null {
+  return typeof raw === 'string' && raw.trim() ? raw.trim().slice(0, 80) : null;
+}
+
+const ACCOUNT_STATE_SQL = `SELECT id,username,role,school_code,assigned_class,
+       COALESCE(assigned_class_names, ARRAY[]::text[]) AS assigned_class_names,
+       is_active,access_expires_at,revocation_reason,pending_admin_review,must_set_pin
+  FROM users WHERE id=$1`;
+
+async function loadAuthUser(userId: string, sid: string) {
+  const { rows } = await query(ACCOUNT_STATE_SQL, [userId]);
+  const user = rows[0];
+  if (!user) return null;
+  const { rows: subjectRows } = await query('SELECT subject_id FROM teacher_subjects WHERE user_id=$1', [user.id]);
+  const authUser: AuthUser = {
+    id: user.id, username: user.username, role: user.role as Role,
+    school_code: user.school_code, assigned_class: user.assigned_class,
+    assigned_subject_ids: subjectRows.map((r: any) => r.subject_id),
+    assigned_class_names: user.assigned_class_names ?? [],
+    sid,
+  };
+  return { user, authUser };
+}
+
+function accessEnded(user: any, message: string | null = null) {
+  if (user.access_expires_at && new Date(user.access_expires_at).getTime() <= Date.now()) {
+    return message ?? (user.revocation_reason
+      ? `Your access period has ended: ${user.revocation_reason}. Contact the school admin to reactivate your account.`
+      : 'Your access period has ended. Contact the school admin to reactivate your account.');
   }
-  const { rows } = await query(
-    `SELECT username FROM users
-      WHERE role='teacher' AND school_code=$1 AND is_active=TRUE
-        AND password_hash IS NOT NULL
-        AND (access_expires_at IS NULL OR access_expires_at > now())
-      ORDER BY username`,
-    [schoolCode],
-  );
-  return res.json({ usernames: rows.map((row: { username: string }) => row.username) });
-});
+  return null;
+}
 
 // ── POST /auth/login ──────────────────────────────────────────────────────────
-router.post('/login', loginAttemptLimiter, async (req, res) => {
-  const { username, password, school_code } = req.body as { username?: string; password?: string; school_code?: string };
+// One username field and one secret field for every account. The client never
+// says what kind of account it is and the server never trusts it if it did:
+// the verified role comes only from the database row.
+//
+// Response discipline:
+//   * unknown username and wrong PIN return the SAME generic error, with the
+//     same timing (a dummy bcrypt runs when there is no account);
+//   * only AFTER the credential is proven correct does the server reveal
+//     account state (deactivated, expired, pending approval).
+router.post('/login', loginIpFailureLimiter, async (req, res) => {
+  const body = (req.body ?? {}) as Record<string, unknown>;
+  const username = body.username;
+  // `password` is accepted as an alias so older app builds that still send it
+  // reach the same code path; it is not documented API.
+  const secret = typeof body.pin === 'string' ? body.pin : body.password;
   if (typeof username !== 'string' || !username.trim() || username.length > 128 ||
-      typeof password !== 'string' || !password) {
-    return res.status(400).json({ error: 'A valid username (maximum 128 characters) and password are required' });
+      typeof secret !== 'string' || !secret || secret.length > 128) {
+    return res.status(400).json({ error: 'Enter your username and PIN.' });
   }
+  const rememberMe = body.remember_me === true;
+  const deviceId = clientDeviceId(req);
+  const ip = req.ip ?? 'unknown';
+  const accountKey = accountKeyFor(username);
 
-  const { rows } = await query(
-    `SELECT id,username,password_hash,role,school_code,
-            assigned_class,COALESCE(assigned_class_names, ARRAY[]::text[]) AS assigned_class_names,is_active,must_change_pw,access_expires_at,
-            revocation_reason,must_set_security_question,pending_admin_review
-     FROM users WHERE lower(username) = lower($1)
-       AND (role <> 'teacher' OR school_code = $2)`,
-    [username.trim(), typeof school_code === 'string' ? school_code.trim() : null],
+  const { rows: found } = await query(
+    `SELECT id,username,password_hash,pin_hash_version,role,school_code,assigned_class,
+            COALESCE(assigned_class_names, ARRAY[]::text[]) AS assigned_class_names,
+            is_active,must_change_pw,must_set_pin,access_expires_at,revocation_reason,
+            must_set_security_question,pending_admin_review
+       FROM users WHERE lower(btrim(username)) = $1`,
+    [normalizeUsername(username)],
   );
+  // Older builds sent a school; honour it only to disambiguate teachers who
+  // share a username. Newer clients never send it.
+  const legacySchool = typeof body.school_code === 'string' ? body.school_code.trim() : '';
+  const candidates = found.length > 1 && legacySchool
+    ? found.filter((u: any) => u.role !== 'teacher' || u.school_code === legacySchool)
+    : found;
 
-  const user = rows[0];
-  if (!user) {
-    return res.status(401).json({ error: 'Invalid username or password' });
+  const throttleInput = {
+    accountKey, deviceId, ip,
+    knownDevice: await isKnownDevice(candidates.map((u: any) => u.id), deviceId),
+  };
+  const gate = await reserveLoginAttempt(throttleInput);
+  if (!gate.allowed) {
+    res.set('Retry-After', String(gate.retryAfterSeconds));
+    return res.status(429).json({
+      error: `Too many attempts. Please wait ${humanWait(gate.retryAfterSeconds)} and try again.`,
+      retry_after_seconds: gate.retryAfterSeconds,
+    });
   }
-  // Task C: an account created via the new activation-code flow has no
-  // password_hash until the staff member sets one themselves (POST
-  // /auth/activate) — bcrypt.compare would throw on a null hash, so this
-  // has to be checked explicitly before it, not folded into the line above.
-  // Revealed distinctly from a wrong password on purpose, same precedent as
-  // the is_active/access_expires_at checks below already revealing account
-  // state rather than a generic failure.
-  if (!user.password_hash) {
-    return res.status(403).json({ error: 'This account has not been activated yet. Use the activation code you were given to set your password.' });
+
+  const matches: any[] = [];
+  try {
+    if (candidates.length === 0) await burnDummyVerification(secret);
+    for (const candidate of candidates) {
+      if (!candidate.password_hash) { await burnDummyVerification(secret); continue; }
+      if (await verifyCredential(secret, candidate.password_hash, candidate.pin_hash_version ?? null)) matches.push(candidate);
+    }
+  } catch (error) {
+    if (error instanceof PinConfigError) {
+      // Our configuration fault, not the user's: do not count it against them.
+      await recordLoginSuccess(throttleInput, gate.attemptId);
+      return res.status(503).json({ error: 'Sign-in is temporarily unavailable. Please contact the school administrator.' });
+    }
+    throw error;
   }
-  if (!await bcrypt.compare(password, user.password_hash)) {
-    return res.status(401).json({ error: 'Invalid username or password' });
+
+  if (matches.length !== 1) {
+    if (matches.length > 1) console.warn('[auth] ambiguous username: credential matched more than one account', { matches: matches.length });
+    return res.status(401).json({ error: GENERIC_LOGIN_ERROR });
   }
+  const user = matches[0];
+  await recordLoginSuccess(throttleInput, gate.attemptId);
+
+  // ── Credential proven. Account state may now be revealed. ──
   if (!user.is_active) {
     return res.status(403).json({
       error: user.revocation_reason
@@ -103,17 +168,18 @@ router.post('/login', loginAttemptLimiter, async (req, res) => {
         : 'Account is deactivated. Contact the school admin.',
     });
   }
-  if (user.access_expires_at && new Date(user.access_expires_at).getTime() <= Date.now()) {
-    return res.status(403).json({
-      error: user.revocation_reason
-        ? `Your access period has ended: ${user.revocation_reason}. Contact the school admin to reactivate your account.`
-        : 'Your access period has ended. Contact the school admin to reactivate your account.',
-    });
-  }
+  const ended = accessEnded(user);
+  if (ended) return res.status(403).json({ error: ended });
+
+  const accessPolicy = await readLearningAccessPolicy();
+  const pending = !!user.pending_admin_review && !(user.role === 'student' && accessPolicy.freeLaunchMode);
 
   const { rows: subjectRows } = await query('SELECT subject_id FROM teacher_subjects WHERE user_id=$1', [user.id]);
   const assignedSubjectIds = subjectRows.map((r: any) => r.subject_id);
 
+  const session = await createSession({
+    userId: user.id, rememberMe, deviceId, deviceLabel: deviceLabel(body.device_label), ip,
+  });
   const payload: AuthUser = {
     id: user.id,
     username: user.username,
@@ -122,114 +188,196 @@ router.post('/login', loginAttemptLimiter, async (req, res) => {
     assigned_class: user.assigned_class,
     assigned_subject_ids: assignedSubjectIds,
     assigned_class_names: user.assigned_class_names ?? [],
+    sid: session.sessionId,
   };
-
-  const accessToken  = signAccess(payload);
-  const refreshToken = signRefresh(user.id);
-
-  // Persist refresh token
-  await query('UPDATE users SET refresh_token=$1 WHERE id=$2', [refreshToken, user.id]);
   await audit(payload, 'login', 'user', user.id);
-  const accessPolicy = await readLearningAccessPolicy();
 
+  const isPinRole = PIN_ROLES.has(user.role);
   return res.json({
-    access_token: accessToken,
-    refresh_token: refreshToken,
-    must_change_pw: user.must_change_pw,
-    // Prompts the one-time (or retrofitted, for pre-existing accounts)
-    // security-question setup that self-service password recovery depends
-    // on — see POST /auth/security-question and the forgot-password routes
-    // below. Independent of must_change_pw: a user who already knows their
-    // password can still be missing this.
-    //
-    // Deliberately suppressed for 'teacher' specifically, per explicit
-    // school-owner policy: a teacher who forgets their password has admin
-    // reset it directly, so self-service recovery doesn't apply to this
-    // role and the forced setup step at fresh login is just friction with
-    // no purpose for them. The underlying `must_set_security_question`
-    // column/value on the row is untouched (still defaults TRUE, still set
-    // by the same schema/migration) — this only stops it being SURFACED to
-    // a teacher's login response, so RootNavigator never forces the phase
-    // for this role. If a teacher's row already has a security question
-    // set from before this change, it's simply unused going forward, not
-    // deleted. Other roles (student/parent/admin/finance_admin) are
-    // unaffected.
-    must_set_security_question: user.role === 'teacher' ? false : user.must_set_security_question,
-    // `assigned_class` added here for the class-lock feature: the mobile app
-    // needs to know which class (if any) a teacher is the class teacher for,
-    // so it can offer "lock/unlock my class" only where it actually applies.
-    // It was already being fetched and put into the JWT payload above, just
-    // never actually returned to the client for the app to read directly.
-    user: { id: user.id, username: user.username, role: user.role, school_code: user.school_code, assigned_class: user.assigned_class, assigned_subject_ids: assignedSubjectIds, assigned_class_names: user.assigned_class_names ?? [], pending_admin_review: !!user.pending_admin_review && !(user.role === 'student' && accessPolicy.freeLaunchMode) },
+    access_token: signAccess(payload),
+    refresh_token: session.refreshToken,
+    session_expires_at: session.expiresAt.toISOString(),
+    remember_me: rememberMe,
+    // The server enforces this on every request (requireAuth); the flag is only
+    // so the app can show the right screen.
+    must_set_pin: isPinRole && user.must_set_pin === true,
+    // For PIN roles the PIN requirement supersedes the old password change.
+    must_change_pw: isPinRole ? false : user.must_change_pw,
+    // Public roles recover through an administrator, so the forced
+    // security-question step no longer applies to them. Administrator
+    // accounts are unchanged.
+    must_set_security_question: (isPinRole || user.role === 'teacher') ? false : user.must_set_security_question,
+    pending_admin_review: pending,
+    ...(pending ? { message: PENDING_APPROVAL_MESSAGE } : {}),
+    user: {
+      id: user.id, username: user.username, role: user.role, school_code: user.school_code,
+      assigned_class: user.assigned_class, assigned_subject_ids: assignedSubjectIds,
+      assigned_class_names: user.assigned_class_names ?? [], pending_admin_review: pending,
+    },
   });
 });
 
 // ── POST /auth/refresh ────────────────────────────────────────────────────────
+// Opaque refresh tokens are rotated on every use. A pre-migration JWT refresh
+// token is exchanged once for a session, honouring its own original expiry, so
+// nobody is signed out by the rollout.
 router.post('/refresh', async (req, res) => {
-  const { refresh_token } = req.body as { refresh_token: string };
-  if (!refresh_token) return res.status(400).json({ error: 'refresh_token required' });
-
-  let payload: { sub: string };
-  try { payload = verifyRefresh(refresh_token); }
-  catch { return res.status(401).json({ error: 'Invalid or expired refresh token' }); }
-
-  const { rows } = await query(
-    `SELECT id,username,role,school_code,assigned_class,
-            is_active,refresh_token,access_expires_at,revocation_reason FROM users WHERE id=$1`,
-    [payload.sub],
-  );
-  const user = rows[0];
-  if (!user || user.refresh_token !== refresh_token || !user.is_active) {
-    return res.status(401).json({ error: 'Refresh token revoked' });
+  const { refresh_token } = (req.body ?? {}) as { refresh_token?: unknown };
+  if (typeof refresh_token !== 'string' || !refresh_token || refresh_token.length > 2048) {
+    return res.status(400).json({ error: 'refresh_token required' });
   }
-  if (user.access_expires_at && new Date(user.access_expires_at).getTime() <= Date.now()) {
-    return res.status(403).json({
-      error: user.revocation_reason
-        ? `Your access period has ended: ${user.revocation_reason}. Contact the school admin to reactivate your account.`
-        : 'Your access period has ended. Contact the school admin to reactivate your account.',
+  const revoked = () => res.status(401).json({ error: 'Invalid or expired refresh token' });
+
+  if (refresh_token.startsWith(REFRESH_PREFIX)) {
+    const rotated = await rotateSession(refresh_token);
+    if (rotated.kind !== 'ok') return revoked();
+    const loaded = await loadAuthUser(rotated.userId, rotated.sessionId);
+    if (!loaded || !loaded.user.is_active || accessEnded(loaded.user)) {
+      await revokeSession(rotated.sessionId, 'account_inactive');
+      return revoked();
+    }
+    return res.json({
+      access_token: signAccess(loaded.authUser),
+      refresh_token: rotated.refreshToken,
+      session_expires_at: rotated.expiresAt.toISOString(),
     });
   }
 
-  const { rows: subjectRows } = await query('SELECT subject_id FROM teacher_subjects WHERE user_id=$1', [user.id]);
-  const assignedSubjectIds = subjectRows.map((r: any) => r.subject_id);
+  // Legacy path.
+  let legacy: { sub: string; exp?: number };
+  try { legacy = verifyRefresh(refresh_token); } catch { return revoked(); }
+  const legacySha = sha256Hex(refresh_token);
+  const existing = await findLegacySession(legacySha);
+  if (existing) {
+    if (existing.revoked_at || new Date(existing.expires_at).getTime() <= Date.now()) return revoked();
+    const loaded = await loadAuthUser(existing.user_id, existing.id);
+    if (!loaded || !loaded.user.is_active || accessEnded(loaded.user)) return revoked();
+    // Older app builds keep sending the legacy token and only read access_token.
+    return res.json({ access_token: signAccess(loaded.authUser) });
+  }
+  const { rows } = await query('SELECT refresh_token FROM users WHERE id=$1', [legacy.sub]);
+  if (!rows[0] || rows[0].refresh_token !== refresh_token) return revoked();
+  const state = await query(ACCOUNT_STATE_SQL, [legacy.sub]);
+  if (!state.rows[0] || !state.rows[0].is_active || accessEnded(state.rows[0])) return revoked();
 
-  const authUser: AuthUser = {
-    id: user.id, username: user.username, role: user.role,
-    school_code: user.school_code,
-    assigned_class: user.assigned_class,
-    assigned_subject_ids: assignedSubjectIds,
-  };
-  return res.json({ access_token: signAccess(authUser) });
+  const session = await createSession({
+    userId: legacy.sub, rememberMe: true, deviceId: clientDeviceId(req), ip: req.ip ?? null,
+    legacyRefreshSha: legacySha,
+    expiresAt: legacy.exp ? new Date(legacy.exp * 1000) : new Date(Date.now() + 7 * 86_400_000),
+  });
+  const loaded = await loadAuthUser(legacy.sub, session.sessionId);
+  return res.json({
+    access_token: signAccess(loaded!.authUser),
+    refresh_token: session.refreshToken,
+    session_expires_at: session.expiresAt.toISOString(),
+  });
+});
+
+// ── GET /auth/me ──────────────────────────────────────────────────────────────
+// What the app needs to restore the right screen after a restart: approval
+// state and whether a PIN must still be set. The server enforces both
+// independently on every request.
+router.get('/me', requireAuth, async (req, res) => {
+  const { rows } = await query('SELECT role, pending_admin_review, must_set_pin FROM users WHERE id=$1', [req.user!.id]);
+  if (!rows[0]) return res.status(404).json({ error: 'User not found' });
+  const accessPolicy = req.learningAccessPolicy!;
+  const pending = !!rows[0].pending_admin_review && !(req.user!.role === 'student' && accessPolicy.freeLaunchMode);
+  return res.json({
+    pending_admin_review: pending,
+    must_set_pin: PIN_ROLES.has(rows[0].role) && rows[0].must_set_pin === true,
+    ...(pending ? { message: PENDING_APPROVAL_MESSAGE } : {}),
+  });
 });
 
 // ── POST /auth/logout ─────────────────────────────────────────────────────────
-// Small, role-agnostic "what's my own current status" check — built
-// specifically so PendingApprovalScreen.tsx can offer a real "Check Again"
-// button instead of asking someone to log out and back in repeatedly just
-// to see if an admin has approved their self-registered account yet. Kept
-// minimal on purpose; expand if another screen needs more of its own state
-// fetched this way later.
-router.get('/me', requireAuth, async (req, res) => {
-  const { rows } = await query('SELECT pending_admin_review FROM users WHERE id=$1', [req.user!.id]);
-  if (!rows[0]) return res.status(404).json({ error: 'User not found' });
-  const accessPolicy = req.learningAccessPolicy!;
-  return res.json({ pending_admin_review: !!rows[0].pending_admin_review && !(req.user!.role === 'student' && accessPolicy.freeLaunchMode) });
+// Ends THIS session only; other devices stay signed in. The access token stops
+// working immediately because requireAuth checks the session row.
+router.post('/logout', requireAuth, async (req, res) => {
+  if (req.user!.sid) await revokeSession(req.user!.sid, 'logout');
+  else await query('UPDATE users SET refresh_token=NULL WHERE id=$1', [req.user!.id]);
+  return res.json({ ok: true });
 });
 
-router.post('/logout', requireAuth, async (req, res) => {
-  await query('UPDATE users SET refresh_token=NULL WHERE id=$1', [req.user!.id]);
+// ── POST /auth/pin ────────────────────────────────────────────────────────────
+// Set or change the six-digit PIN (students, parents, teachers). The same route
+// serves the mandatory first-time setup and later voluntary changes, and is the
+// only route besides /auth/me and /auth/logout reachable before setup. The
+// current credential is required again, so a stolen session alone cannot
+// replace the PIN, and attempts count toward the same throttle as login.
+router.post('/pin', requireAuth, async (req, res) => {
+  const me = req.user!;
+  if (!PIN_ROLES.has(me.role)) {
+    return res.status(403).json({ error: 'Six-digit PINs apply to student, parent and teacher accounts.' });
+  }
+  const { current_credential, new_pin } = (req.body ?? {}) as { current_credential?: unknown; new_pin?: unknown };
+  if (typeof current_credential !== 'string' || !current_credential || current_credential.length > 128) {
+    return res.status(400).json({ error: 'Enter your current PIN or password.' });
+  }
+  const check = checkPin(new_pin);
+  if (!check.ok) return res.status(400).json({ error: check.message });
+  if (current_credential === new_pin) {
+    return res.status(400).json({ error: 'Choose a new PIN that is different from your current one.' });
+  }
+
+  const { rows } = await query('SELECT password_hash, pin_hash_version, must_set_pin FROM users WHERE id=$1', [me.id]);
+  const row = rows[0];
+  if (!row?.password_hash) return res.status(400).json({ error: 'This account cannot set a PIN yet.' });
+
+  const deviceId = clientDeviceId(req);
+  const throttleInput = {
+    accountKey: accountKeyFor(me.username), deviceId, ip: req.ip ?? 'unknown',
+    knownDevice: await isKnownDevice([me.id], deviceId),
+  };
+  const gate = await reserveLoginAttempt(throttleInput);
+  if (!gate.allowed) {
+    res.set('Retry-After', String(gate.retryAfterSeconds));
+    return res.status(429).json({ error: `Too many attempts. Please wait ${humanWait(gate.retryAfterSeconds)} and try again.`, retry_after_seconds: gate.retryAfterSeconds });
+  }
+
+  let newHash: string;
+  try {
+    const ok = await verifyCredential(current_credential, row.password_hash, row.pin_hash_version ?? null);
+    if (!ok) return res.status(401).json({ error: 'Your current PIN or password is incorrect.' });
+    newHash = await hashPin(check.ok ? String(new_pin) : '');
+  } catch (error) {
+    if (error instanceof PinConfigError) {
+      await recordLoginSuccess(throttleInput, gate.attemptId);
+      return res.status(503).json({ error: 'PIN changes are temporarily unavailable. Please contact the school administrator.' });
+    }
+    throw error;
+  }
+  await recordLoginSuccess(throttleInput, gate.attemptId);
+
+  await withTransaction(async (client) => {
+    await client.query(
+      `UPDATE users SET password_hash=$1, pin_hash_version=$2, pin_set_at=clock_timestamp(),
+              must_set_pin=FALSE, must_change_pw=FALSE
+        WHERE id=$3`,
+      [newHash, PIN_HASH_VERSION, me.id],
+    );
+    // Every other device is signed out; this one keeps its session.
+    await revokeUserSessions(me.id, 'pin_changed', { exceptSessionId: me.sid ?? null, client });
+    await auditInTransaction(
+      client, me, row.must_set_pin ? 'set_pin' : 'change_pin', 'user', me.id,
+      'six-digit PIN saved; other sessions revoked',
+    );
+  });
   return res.json({ ok: true });
 });
 
 // ── POST /auth/change-password ────────────────────────────────────────────────
+// Administrator and Finance Administrator accounts only; their credential
+// arrangement is unchanged. Student/parent/teacher accounts use POST /auth/pin.
 router.post('/change-password', requireAuth, async (req, res) => {
+  if (PIN_ROLES.has(req.user!.role)) {
+    return res.status(400).json({ error: 'Use the PIN screen to change your PIN.', code: 'USE_PIN_ENDPOINT' });
+  }
   const { old_password, new_password } = req.body as { old_password: string; new_password: string };
   if (!old_password || !new_password) {
     return res.status(400).json({ error: 'old_password and new_password required' });
   }
-  const isTeacher = req.user!.role === 'teacher';
-  if (isTeacher ? !/^\d{4}$/.test(new_password) : new_password.length < 8) {
-    return res.status(400).json({ error: isTeacher ? 'Teacher PIN must be exactly four numeric digits' : 'New password must be at least 8 characters' });
+  if (new_password.length < 8) {
+    return res.status(400).json({ error: 'New password must be at least 8 characters' });
   }
 
   const { rows } = await query('SELECT password_hash FROM users WHERE id=$1', [req.user!.id]);
@@ -238,7 +386,10 @@ router.post('/change-password', requireAuth, async (req, res) => {
   }
 
   const hash = await bcrypt.hash(new_password, 10);
-  await query('UPDATE users SET password_hash=$1, must_change_pw=FALSE WHERE id=$2', [hash, req.user!.id]);
+  await withTransaction(async (client) => {
+    await client.query('UPDATE users SET password_hash=$1, must_change_pw=FALSE WHERE id=$2', [hash, req.user!.id]);
+    await revokeUserSessions(req.user!.id, 'password_changed', { exceptSessionId: req.user!.sid ?? null, client });
+  });
   await audit(req.user!, 'change_password', 'user', req.user!.id);
   return res.json({ ok: true });
 });
@@ -303,60 +454,38 @@ router.post('/security-question', requireAuth, async (req, res) => {
   return res.json({ ok: true });
 });
 
-// ── GET /auth/forgot-password/question?username= ───────────────────────────
-// Public (no login) — the first step of self-service recovery. Deliberately
-// re-checks the exact same is_active/access_expires_at gate that login and
-// requireAuth already enforce: if an admin has revoked access or it's
-// lapsed, self-service recovery must not be usable as a side-door around
-// that, and the person is shown the same revocation_reason login would show.
-// Returning a question only when one exists means a "not available" result
-// doesn't distinguish "no such user" from "user has no question set" from
-// "wrong username" — all three look the same on purpose.
+// ── Public recovery ───────────────────────────────────────────────────────────
+// Students, parents and teachers recover through an administrator who verifies
+// the person and issues a temporary six-digit PIN (POST /admin/users/:id/
+// reset-password); a security question alone is not treated as proof of
+// identity for them, so these public endpoints never serve those roles.
+//
+// Administrator and Finance Administrator accounts keep the existing
+// security-question arrangement unchanged (explicitly out of scope here).
+//
+// Every "not available" outcome returns the SAME response, so these endpoints
+// do not reveal whether an account exists, is deactivated, or has no question.
+// (An administrator account that does have a question set still returns it:
+// that is the unchanged arrangement, noted as a known limitation.)
+const RECOVERY_UNAVAILABLE = 'Self-service recovery is not available for this account. Please see or call the E.O. to reset your PIN.';
+
 router.get('/forgot-password/question', async (req, res) => {
-  const username = String(req.query.username ?? '').trim().toLowerCase();
+  const username = normalizeUsername(String(req.query.username ?? ''));
   if (!username) return res.status(400).json({ error: 'username is required' });
 
   const { rows } = await query(
-    `SELECT is_active, access_expires_at, revocation_reason,
-            security_question, must_set_security_question
-     FROM users WHERE username=$1`,
+    `SELECT role, is_active, access_expires_at, security_question, must_set_security_question
+       FROM users WHERE lower(btrim(username))=$1`,
     [username],
   );
-  const user = rows[0];
-
-  const unavailable = (message: string) => res.json({ available: false, message });
-
-  if (!user) {
-    return unavailable('No recovery question found for this account. Contact your school admin.');
-  }
-  if (!user.is_active) {
-    return unavailable(
-      user.revocation_reason
-        ? `Your account was deactivated: ${user.revocation_reason}. Contact your school admin.`
-        : 'Your account is deactivated. Contact your school admin.',
-    );
-  }
-  if (user.access_expires_at && new Date(user.access_expires_at).getTime() <= Date.now()) {
-    return unavailable(
-      user.revocation_reason
-        ? `Your access period has ended: ${user.revocation_reason}. Contact your school admin.`
-        : 'Your access period has ended. Contact your school admin to reactivate your account.',
-    );
-  }
-  if (user.must_set_security_question || !user.security_question) {
-    return unavailable('No recovery question is set for this account yet. Contact your school admin to reset your password.');
-  }
+  const user = rows.length === 1 ? rows[0] : null;
+  const usable = !!user && ADMIN_ROLES.has(user.role) && user.is_active
+    && !(user.access_expires_at && new Date(user.access_expires_at).getTime() <= Date.now())
+    && !user.must_set_security_question && !!user.security_question;
+  if (!usable) return res.json({ available: false, message: RECOVERY_UNAVAILABLE });
   return res.json({ available: true, question: user.security_question });
 });
 
-// ── POST /auth/forgot-password/reset ────────────────────────────────────────
-// Public (no login) — the second step: answer the question, set a new
-// password directly. No separate reset-token/email round trip, since there's
-// no delivery channel to send one through; the answer check itself is the
-// verification step. Re-checks the same gate as the question lookup above
-// (an admin could revoke access in the window between the two requests).
-// Failed attempts are counted per-account and lock out for an hour after 5,
-// independent of the broader per-IP /auth rate limiter in index.ts.
 router.post('/forgot-password/reset', async (req, res) => {
   const { username, answer, new_password } = req.body as {
     username?: string; answer?: string; new_password?: string;
@@ -368,24 +497,15 @@ router.post('/forgot-password/reset', async (req, res) => {
     return res.status(400).json({ error: 'New password must be at least 8 characters' });
   }
 
-  const result = await resetPasswordWithSecurityAnswer(
-    username.trim().toLowerCase(),
-    answer,
-    new_password,
-  );
-
-  if (result.kind === 'inactive' || result.kind === 'expired') {
-    return res.status(403).json({ error: result.message });
-  }
+  const result = await resetPasswordWithSecurityAnswer(normalizeUsername(username), answer, new_password);
   if (result.kind === 'locked') {
     return res.status(429).json({
       error: `Too many incorrect attempts. Try again in about ${result.retryAfterMinutes} minute(s), or contact your school admin.`,
     });
   }
-  if (result.kind === 'invalid' || result.kind === 'ineligible') {
+  if (result.kind !== 'reset') {
     return res.status(401).json({ error: 'Incorrect answer, or this account is not eligible for self-service reset.' });
   }
-
   return res.json({ ok: true });
 });
 

@@ -89,14 +89,16 @@ export async function resetPasswordWithSecurityAnswer(
 ): Promise<PasswordResetResult> {
   return withTransaction(async (client) => {
     const { rows } = await client.query(
-      `SELECT id, is_active, access_expires_at, revocation_reason,
+      `SELECT id, role, is_active, access_expires_at, revocation_reason,
               security_answer_hash, must_set_security_question,
               security_answer_fail_count, security_answer_locked_until, school_code
-       FROM users WHERE username=$1 FOR UPDATE`,
+       FROM users WHERE lower(btrim(username))=$1 FOR UPDATE`,
       [username],
     );
-    const user = rows[0];
-    if (!user) return { kind: 'invalid' };
+    // Exactly one account, and only administrator roles: students, parents and
+    // teachers recover through an administrator-issued temporary PIN instead.
+    const user = rows.length === 1 ? rows[0] : null;
+    if (!user || (user.role !== 'admin' && user.role !== 'finance_admin')) return { kind: 'invalid' };
 
     if (!user.is_active) {
       return {

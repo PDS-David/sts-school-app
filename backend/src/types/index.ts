@@ -15,6 +15,8 @@ export interface AuthUser {
   assigned_class_names?: string[];
   can_manage_all_schools?: boolean;
   assigned_school_code?: string | null;
+  /** Server-side session id (auth_sessions.id). Present on every token issued after the PIN-auth rollout. */
+  sid?: string;
 }
 
 export interface LearningAccessPolicyState {

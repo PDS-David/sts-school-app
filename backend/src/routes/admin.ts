@@ -7,6 +7,10 @@ import { auditContextFromRequest, auditInTransaction, auditStrict, verifyAuditLo
 import { sendAdminLogEmail } from '../utils/email.js';
 import * as XLSX from 'xlsx';
 import { generateTempPassword, generateNumericPin } from '../utils/password.js';
+import { PIN_HASH_VERSION, PinConfigError, generateTemporaryPin, hashPin } from '../utils/pin.js';
+import { revokeUserSessions } from '../utils/authSessions.js';
+import { accountKeyFor } from '../utils/usernames.js';
+import { clearAccountThrottle } from '../utils/loginThrottle.js';
 import { getBackupStatus, runBackup, BackupConfigError } from '../utils/backup.js';
 import { normalizeTeacherSubjectIds, TeacherAssignmentValidationError, validateTeacherAssignments } from '../utils/teacherAssignments.js';
 import type { AuthUser } from '../types/index.js';
@@ -288,8 +292,8 @@ router.post('/users', async (req, res) => {
         }
         const { rows } = await client.query(
           `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,assigned_class_names,
-             phone,email,must_change_pw,access_expires_at,activation_code)
-           VALUES($1,$2,'teacher',$3,$4,$5,$6,$7,$8,TRUE,$9,NULL) RETURNING id,username,role,school_code,access_expires_at`,
+             phone,email,must_change_pw,must_set_pin,access_expires_at,activation_code)
+           VALUES($1,$2,'teacher',$3,$4,$5,$6,$7,$8,TRUE,TRUE,$9,NULL) RETURNING id,username,role,school_code,access_expires_at`,
           [uname, hash, full_name, schoolCodeN, assignedClassN, classNames, phoneN, emailN, expiresAt],
         );
         for (const sid of subjectIds) {
@@ -487,29 +491,65 @@ router.put('/users/:id', async (req, res) => {
 });
 
 router.post('/users/:id/reset-password', async (req, res) => {
-  const result = await withTransaction(async (client) => {
-    const { rows: existing } = await client.query(
-      'SELECT id, role, school_code FROM users WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) FOR UPDATE',
-      [req.params.id, req.user!.school_code ?? null],
-    );
-    if (!existing[0]) return null;
-    // Teacher credentials follow the agreed four-digit numeric PIN convention;
-    // other account types retain their existing temporary-password flow.
-    const pw = existing[0].role === 'teacher' ? generateNumericPin() : generateTempPassword();
-    const hash = await bcrypt.hash(pw, 10);
-    await client.query(
-      'UPDATE users SET password_hash=$1, must_change_pw=TRUE WHERE id=$2',
-      [hash, req.params.id],
-    );
-    await auditInTransaction(
-      client, req.user!, 'reset_password', 'user', req.params.id,
-      'administrator reset user password; forced password change on next login',
-      auditContextFromRequest(req, { schoolCode: existing[0].school_code, metadata: { target_user_id: req.params.id, must_change_password: true } }),
-    );
-    return { password: pw };
-  });
+  let result: { password: string; isPin: boolean } | null;
+  try {
+    result = await withTransaction(async (client) => {
+      const { rows: existing } = await client.query(
+        'SELECT id, username, role, school_code FROM users WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) FOR UPDATE',
+        [req.params.id, req.user!.school_code ?? null],
+      );
+      if (!existing[0]) return null;
+
+      // Students, parents and teachers: administrator-verified recovery. The
+      // administrator issues a secure random temporary six-digit PIN, shown
+      // once in this response only. The user must set their own PIN at next
+      // sign-in, every session is revoked, and any lockout is cleared.
+      if (['student', 'parent', 'teacher'].includes(existing[0].role)) {
+        const pin = generateTemporaryPin();
+        const hash = await hashPin(pin);
+        await client.query(
+          `UPDATE users SET password_hash=$1, pin_hash_version=$2, pin_set_at=clock_timestamp(),
+                  must_set_pin=TRUE, must_change_pw=FALSE
+            WHERE id=$3`,
+          [hash, PIN_HASH_VERSION, req.params.id],
+        );
+        await revokeUserSessions(req.params.id, 'admin_pin_reset', { client });
+        await clearAccountThrottle(accountKeyFor(existing[0].username), client);
+        await auditInTransaction(
+          client, req.user!, 'reset_pin', 'user', req.params.id,
+          'administrator issued a temporary six-digit PIN; all sessions revoked; PIN change required at next sign-in',
+          auditContextFromRequest(req, { schoolCode: existing[0].school_code, metadata: { target_user_id: req.params.id, must_set_pin: true, sessions_revoked: true } }),
+        );
+        return { password: pin, isPin: true };
+      }
+
+      // Administrator / Finance Administrator accounts: unchanged.
+      const pw = generateTempPassword();
+      const hash = await bcrypt.hash(pw, 10);
+      await client.query(
+        'UPDATE users SET password_hash=$1, must_change_pw=TRUE WHERE id=$2',
+        [hash, req.params.id],
+      );
+      await auditInTransaction(
+        client, req.user!, 'reset_password', 'user', req.params.id,
+        'administrator reset user password; forced password change on next login',
+        auditContextFromRequest(req, { schoolCode: existing[0].school_code, metadata: { target_user_id: req.params.id, must_change_password: true } }),
+      );
+      return { password: pw, isPin: false };
+    });
+  } catch (error) {
+    if (error instanceof PinConfigError) {
+      return res.status(503).json({ error: 'PIN service is not configured. Contact the system administrator.' });
+    }
+    throw error;
+  }
   if (!result) return res.status(404).json({ error: 'User not found' });
-  return res.json({ ok: true, temporary_password: result.password });
+  res.set('Cache-Control', 'no-store');
+  return res.json({
+    ok: true,
+    temporary_password: result.password,
+    ...(result.isPin ? { temporary_pin: result.password } : {}),
+  });
 });
 
 // Clears the pending_admin_review flag set by POST /auth/self-register —

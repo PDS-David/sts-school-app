@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import rateLimit from 'express-rate-limit';
 
 import authRouter        from './routes/auth.js';
+import { assertPinConfiguredAtStartup } from './utils/pin.js';
 import studentsRouter    from './routes/students.js';
 import scoresRouter      from './routes/scores.js';
 import attendanceRouter  from './routes/attendance.js';
@@ -33,6 +34,7 @@ import {
 } from './utils/postgresRateLimitStore.js';
 
 dotenv.config();
+assertPinConfiguredAtStartup(); // production refuses to start without a valid PIN_PEPPER
 await assertRateLimitPostgresConfigured();
 
 const app = express();
@@ -47,9 +49,13 @@ app.use(helmet());
 app.use(express.json({ limit: '5mb' }));
 
 // Rate limiting on auth routes
+// Counts failures only: successful sign-ins and token refreshes (several
+// devices, one school Wi-Fi) must not throttle each other. Per-account and
+// per-device protection lives in utils/loginThrottle.ts.
 app.use('/auth', rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 30,
+  max: 100,
+  skipSuccessfulRequests: true,
   store: createPostgresRateLimitStore('auth-ip'),
 }));
 

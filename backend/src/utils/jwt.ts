@@ -34,6 +34,7 @@ export function verifyAccess(token: string): AuthUser {
   return jwt.verify(token, JWT_SECRET) as AuthUser;
 }
 
-export function verifyRefresh(token: string): { sub: string } {
-  return jwt.verify(token, JWT_REFRESH_SECRET) as { sub: string };
+/** Legacy (pre-session) JWT refresh tokens only. New refresh tokens are opaque; see authSessions.ts. */
+export function verifyRefresh(token: string): { sub: string; exp?: number } {
+  return jwt.verify(token, JWT_REFRESH_SECRET) as { sub: string; exp?: number };
 }
