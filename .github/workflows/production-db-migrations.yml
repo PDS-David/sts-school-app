@@ -126,7 +126,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          row_count_sql="SELECT string_agg(format('%I=%s', table_name, (xpath('//c/text()', query_to_xml(format('SELECT count(*) AS c FROM public.%I', table_name), false, true, '')))[1]::text), E'\n' ORDER BY table_name) FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE' AND table_name NOT IN ('schema_migrations','school_events','rate_limit_counters','report_roster_memberships','report_roster_membership_events')"
+          row_count_sql="SELECT COALESCE(jsonb_object_agg(table_name, (xpath('//c/text()', query_to_xml(format('SELECT count(*) AS c FROM public.%I', table_name), false, true, '')))[1]::text), '{}'::jsonb)::text FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE' AND table_name NOT IN ('schema_migrations','school_events','rate_limit_counters','report_roster_memberships','report_roster_membership_events')"
           counts="$(docker run --rm --env DATABASE_URL --env ROW_COUNT_SQL="$row_count_sql" postgres:18 sh -ceu 'psql "$DATABASE_URL" -X -A -t -v ON_ERROR_STOP=1 -c "$ROW_COUNT_SQL"')"
           test -n "$counts"
           echo "counts_b64=$(printf '%s' "$counts" | base64 -w0)" >> "$GITHUB_OUTPUT"
@@ -154,14 +154,39 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          row_count_sql="SELECT string_agg(format('%I=%s', table_name, (xpath('//c/text()', query_to_xml(format('SELECT count(*) AS c FROM public.%I', table_name), false, true, '')))[1]::text), E'\n' ORDER BY table_name) FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE' AND table_name NOT IN ('schema_migrations','school_events','rate_limit_counters','report_roster_memberships','report_roster_membership_events')"
+          row_count_sql="SELECT COALESCE(jsonb_object_agg(table_name, (xpath('//c/text()', query_to_xml(format('SELECT count(*) AS c FROM public.%I', table_name), false, true, '')))[1]::text), '{}'::jsonb)::text FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE' AND table_name NOT IN ('schema_migrations','school_events','rate_limit_counters','report_roster_memberships','report_roster_membership_events')"
           after_counts="$(docker run --rm --env DATABASE_URL --env ROW_COUNT_SQL="$row_count_sql" postgres:18 sh -ceu 'psql "$DATABASE_URL" -X -A -t -v ON_ERROR_STOP=1 -c "$ROW_COUNT_SQL"')"
           before_counts="$(printf '%s' "$BEFORE_COUNTS_B64" | base64 -d)"
-          if [[ "$before_counts" != "$after_counts" ]]; then
-            echo "::error::Existing table row counts changed during migration."
-            diff -u <(printf '%s\n' "$before_counts") <(printf '%s\n' "$after_counts") || true
-            exit 1
-          fi
+          BEFORE_COUNTS_JSON="$before_counts" AFTER_COUNTS_JSON="$after_counts" python3 - <<'PY'
+          import json
+          import os
+          import sys
+
+          before = json.loads(os.environ["BEFORE_COUNTS_JSON"])
+          after = json.loads(os.environ["AFTER_COUNTS_JSON"])
+          if not isinstance(before, dict) or not isinstance(after, dict):
+              raise SystemExit("::error::Row-count snapshots are not JSON objects.")
+
+          missing = sorted(set(before) - set(after))
+          changed = sorted(
+              (table, before[table], after[table])
+              for table in set(before) & set(after)
+              if before[table] != after[table]
+          )
+          added = sorted(set(after) - set(before))
+
+          if missing or changed:
+              print("::error::A pre-existing table disappeared or its row count changed during migration.")
+              for table in missing:
+                  print(f"Missing pre-existing table: {table}")
+              for table, old_count, new_count in changed:
+                  print(f"Changed row count: {table}: {old_count} -> {new_count}")
+              sys.exit(1)
+
+          if added:
+              print("New tables created during migration (separately covered by schema/integrity checks): " + ", ".join(added))
+          print("All pre-existing application table row counts are unchanged.")
+          PY
           verification_sql="DO \$\$ BEGIN
             IF (SELECT count(*) FROM public.schema_migrations WHERE version IN ('0001','0002','0003','0004','0005','0006')) <> 6 THEN RAISE EXCEPTION 'Expected migrations 0001-0005'; END IF;
             IF to_regclass('public.school_events') IS NULL THEN RAISE EXCEPTION 'school_events missing'; END IF;
