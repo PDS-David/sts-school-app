@@ -30,15 +30,23 @@ test('server PIN state is read from /auth/me, and cached answers are never treat
 // ── The screen has no bypass and leaks nothing ──────────────────────────────
 test('the setup screen offers no skip, later or bypass option', () => {
   const visible = screen.replace(/\/\/.*$/gm, '');
-  for (const word of [/\bskip\b/i, /\blater\b/i, /\bnot now\b/i, /\bremind me\b/i, /\bmaybe\b/i, /navigation\.(navigate|replace|reset|goBack)/]) {
+  for (const word of [/\bskip\b/i, /\blater\b/i, /\bnot now\b/i, /\bremind me\b/i, /\bmaybe\b/i, /navigation\.(navigate|replace|reset)/]) {
     assert.ok(!word.test(visible), `unexpected ${word} in PinSetupScreen`);
   }
+  // The only navigation allowed is leaving the VOLUNTARY screen after success.
+  const back = visible.match(/navigation\.goBack\(\)/g) ?? [];
+  assert.equal(back.length, 1, 'exactly one goBack');
+  const at = visible.indexOf('navigation.goBack()');
+  assert.ok(/if \(voluntary\)/.test(visible.slice(Math.max(0, at - 200), at)), 'goBack only inside the voluntary branch');
 });
 
 test('the setup screen never logs, stores or navigates with a secret', () => {
   assert.ok(!/console\./.test(screen), 'no console output in PinSetupScreen');
   assert.ok(!/AsyncStorage|SecureStore|setSecureItem|localStorage/.test(screen), 'no storage in PinSetupScreen');
-  assert.ok(!/initialParams|route\.params|navigation\./.test(screen.replace(/\/\/.*$/gm, '')), 'no navigation params carry secrets');
+  const code = screen.replace(/\/\/.*$/gm, '');
+  assert.ok(!/initialParams/.test(code), 'no navigation params carry secrets');
+  // The one param read is the boolean mode flag, never a credential.
+  assert.deepEqual(code.match(/route\??\.params[^;]*/g), ['route?.params?.voluntary === true']);
   // show/hide controls exist for both the credential and the new PIN fields
   assert.ok(/Show current PIN or password/.test(screen) && /Show new PIN/.test(screen));
   assert.ok(/secureTextEntry=\{!showPins\}/.test(screen) && /secureTextEntry=\{!showCurrent\}/.test(screen));
@@ -110,4 +118,52 @@ test('the PIN request can never be queued in the offline outbox', () => {
 
 test('a wrong-credential 401 from /auth/pin is excluded from refresh-and-replay', () => {
   assert.ok(/!isPinCredentialRejection\(original\.url, error\.response\.status, error\.response\.data\)/.test(client));
+});
+
+// ── Revised Prompt 2B: no first-login gate, voluntary change preserved ─────
+const studentProfile = read('screens/student/StudentProfileScreen.tsx');
+const parentProfile = read('screens/parent/ParentProfileScreen.tsx');
+const teacherMore = read('screens/teacher/TeacherMoreScreen.tsx');
+
+test('the client never decides the PIN requirement itself: only the server flag opens the gate', () => {
+  // login() derives it solely from the server response; there is no
+  // "first login" / "new device" / "legacy credential" rule on the client.
+  assert.ok(/const pinRequired = isPinRole\(data\.user\?\.role\) && data\.must_set_pin === true;/.test(context));
+  const all = [context, read('api/authPhase.ts'), read('api/pinSetup.ts'), screen, navigator].join('\n');
+  const code = all.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '');
+  assert.ok(!/first[ -]?login|newDevice|new device|legacy/i.test(code), 'no client-side first-login/legacy rule');
+});
+
+test('a user the server does not flag goes straight to the app (phase)', async () => {
+  const { resolveAuthPhase } = await import('../../mobile/src/api/authPhase.ts');
+  const base = { loading: false, mustChangePw: false, mustSetSecurityQuestion: false };
+  assert.equal(resolveAuthPhase({ ...base, user: { pending_admin_review: false }, mustSetPin: false }), 'app');
+  assert.equal(resolveAuthPhase({ ...base, user: { pending_admin_review: true }, mustSetPin: false }), 'pending-review');
+  // administrator-issued temporary credential: still gated
+  assert.equal(resolveAuthPhase({ ...base, user: { pending_admin_review: false }, mustSetPin: true }), 'pin-setup');
+});
+
+test('a stale "must set PIN" hint is cleared by the server once it says false', () => {
+  assert.equal(mergePinRequirement(true, { reachable: true, mustSetPin: false }), false);
+});
+
+test('voluntary PIN change is a normal app screen with a back button, registered only for signed-in users in the app branch', () => {
+  const appBranch = navigator.slice(navigator.indexOf('<Stack.Screen name="App"'));
+  assert.ok(/name="ChangePin" component=\{PinSetupScreen\} initialParams=\{\{ voluntary: true \}\}/.test(appBranch));
+  assert.ok(/name="ChangePin"[^>]*headerShown: true/.test(appBranch));
+  const gate = navigator.slice(navigator.indexOf('mustSetPin && !user.pending_admin_review ? ('), navigator.indexOf(') : mustChangePw ? ('));
+  assert.ok(!gate.includes('ChangePin'), 'the gate branch still registers a single screen');
+});
+
+test('student, parent and teacher Settings open the PIN screen, not the password route the server rejects for them', () => {
+  for (const [name, src] of [['student', studentProfile], ['parent', parentProfile], ['teacher', teacherMore]] as const) {
+    assert.ok(/label: 'Change PIN'[^\n]*navigation\.navigate\('ChangePin'\)/.test(src), `${name} entry point`);
+    assert.ok(!/navigate\('ChangePassword'\)/.test(src), `${name} no longer routes to ChangePassword`);
+  }
+});
+
+test('voluntary mode: no sign-out link, no temporary-credential banner, current PIN only', () => {
+  assert.ok(/\{!voluntary && \(\s*<View style=\{styles\.banner\}>/.test(screen));
+  assert.ok(/\{!voluntary && \(\s*<TouchableOpacity\s+onPress=\{\(\) => \{ if \(!loading\) logout\(\)/.test(screen));
+  assert.ok(/confirmSetup: \(\) => \(voluntary \? Promise\.resolve\(true\) : depsRef\.current\.confirmPinSetup\(\)\)/.test(screen));
 });

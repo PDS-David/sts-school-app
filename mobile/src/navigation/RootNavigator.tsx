@@ -123,6 +123,10 @@ export default function RootNavigator() {
           <Stack.Screen name="Profile" component={RoleRouter} />
           <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} options={{ headerShown: true, title: 'Change Password', headerStyle: { backgroundColor: Colors.primary }, headerTintColor: Colors.white }} />
           <Stack.Screen name="SecurityQuestionSetup" component={SecurityQuestionSetupScreen} options={{ headerShown: true, title: 'Security Question', headerStyle: { backgroundColor: Colors.primary }, headerTintColor: Colors.white }} />
+          {/* Voluntary PIN change (students, parents, teachers). The server
+              rejects /auth/change-password for these roles; POST /auth/pin is
+              the only route. Same screen as the required setup, in voluntary mode. */}
+          <Stack.Screen name="ChangePin" component={PinSetupScreen} initialParams={{ voluntary: true }} options={{ headerShown: true, title: 'Change PIN', headerStyle: { backgroundColor: Colors.primary }, headerTintColor: Colors.white }} />
           <Stack.Screen name="Notifications" component={NotificationsScreen} options={modalOpts} />
           <Stack.Screen name="BraineeChat" component={BraineeChatScreen} options={modalOpts} />
           {user.role === 'student' ? <>

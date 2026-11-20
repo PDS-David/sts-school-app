@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import {
-  View, Text, StyleSheet, ScrollView, TouchableOpacity, KeyboardAvoidingView, Platform,
+  View, Text, StyleSheet, ScrollView, TouchableOpacity, KeyboardAvoidingView, Platform, Alert,
 } from 'react-native';
 import { useAuth } from '../api/AuthContext';
 import { Btn, Input, Card } from '../components/UI';
@@ -10,12 +10,17 @@ import {
   type PinSetupField, type PinSetupValues,
 } from '../api/pinSetup';
 
-// Mandatory first-time PIN setup for students, parents and teachers.
+// Six-digit PIN screen for students, parents and teachers. Two modes:
 //
-// RootNavigator renders this as the ONLY screen while the server says
-// must_set_pin (see resolveAuthPhase in api/authPhase.ts), so there is nothing
-// to navigate "back" to and no Skip/Later path. The one exit besides finishing
-// is Sign out, which grants no access.
+// 1. Required (default): after an administrator issued a temporary credential
+//    (PIN reset, new account). RootNavigator renders this as the ONLY screen
+//    while the server says must_set_pin (see resolveAuthPhase in
+//    api/authPhase.ts), so there is nothing to navigate "back" to and no
+//    Skip/Later path. The one exit besides finishing is Sign out, which grants
+//    no access. Existing users with a six-digit PIN are never sent here.
+// 2. Voluntary (route param `voluntary`): reached from Settings by a signed-in
+//    user who simply wants a new PIN. A normal screen with a back button; the
+//    server is not requiring anything, so success just returns to Settings.
 //
 // Rules, request shape and error text come from the Prompt 2A backend
 // (POST /auth/pin). All decisions live in api/pinSetup.ts and are unit-tested;
@@ -24,7 +29,8 @@ import {
 // Secrets: nothing typed here is logged, persisted or put in navigation params.
 // Values live only in component state and are cleared once the server accepts
 // the PIN.
-export default function PinSetupScreen() {
+export default function PinSetupScreen({ route, navigation }: any) {
+  const voluntary = route?.params?.voluntary === true;
   const { submitPin, confirmPinSetup, logout } = useAuth();
 
   const [current, setCurrent] = useState('');
@@ -44,7 +50,8 @@ export default function PinSetupScreen() {
   depsRef.current = { submitPin, confirmPinSetup };
   const submitter = useRef(createPinSetupSubmitter({
     postPin: (body) => depsRef.current.submitPin(body.current_credential, body.new_pin),
-    confirmSetup: () => depsRef.current.confirmPinSetup(),
+    // Voluntary change: no requirement to confirm, the PIN is simply changed.
+    confirmSetup: () => (voluntary ? Promise.resolve(true) : depsRef.current.confirmPinSetup()),
   })).current;
 
   const handleSubmit = async () => {
@@ -68,11 +75,15 @@ export default function PinSetupScreen() {
         break;
       case 'saved':
         if (result.confirmed) {
-          // AuthContext now holds must_set_pin=false, so RootNavigator is
-          // already replacing this screen with the role-based app. Wipe the
-          // secrets and stop touching state.
+          // Required mode: AuthContext now holds must_set_pin=false, so
+          // RootNavigator is already replacing this screen with the role-based
+          // app. Wipe the secrets and stop touching state.
           setCurrent(''); setPin(''); setConfirm('');
           setLoading(false);
+          if (voluntary) {
+            Alert.alert('PIN changed', 'Your new PIN is saved. Use it the next time you sign in.');
+            navigation.goBack();
+          }
           return;
         }
         setCurrent(''); setPin(''); setConfirm('');
@@ -89,11 +100,13 @@ export default function PinSetupScreen() {
   return (
     <KeyboardAvoidingView style={{ flex: 1, backgroundColor: Colors.background }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
       <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
-        <View style={styles.banner}>
-          <Text style={styles.bannerText}>Set your {PIN_LENGTH}-digit PIN before continuing. You will use it to sign in from now on.</Text>
-        </View>
+        {!voluntary && (
+          <View style={styles.banner}>
+            <Text style={styles.bannerText}>You signed in with a temporary credential from your school. Set your own {PIN_LENGTH}-digit PIN before continuing.</Text>
+          </View>
+        )}
         <Card>
-          <Text style={styles.title}>Create your PIN</Text>
+          <Text style={styles.title}>{voluntary ? 'Change your PIN' : 'Create your PIN'}</Text>
           <Text style={styles.helper}>
             Choose {PIN_LENGTH} numbers that only you know. Avoid repeated or sequential digits such as 123456 or 000000.
           </Text>
@@ -101,10 +114,10 @@ export default function PinSetupScreen() {
           {!awaitingConfirm && (
             <>
               <Input
-                label="Current PIN or password"
+                label={voluntary ? 'Current PIN' : 'Current PIN or password'}
                 value={current}
                 onChangeText={(v) => setCurrent(v.slice(0, CURRENT_CREDENTIAL_MAX_LENGTH))}
-                placeholder="What you just signed in with"
+                placeholder={voluntary ? 'Your current six digits' : 'What you just signed in with'}
                 secureTextEntry={!showCurrent}
                 autoCapitalize="none"
                 editable={!locked}
@@ -167,6 +180,7 @@ export default function PinSetupScreen() {
           {loading ? <Text style={styles.wait}>Saving… this can take a moment if the server is waking up.</Text> : null}
         </Card>
 
+        {!voluntary && (
         <TouchableOpacity
           onPress={() => { if (!loading) logout().catch(() => {}); }}
           accessibilityRole="button"
@@ -176,6 +190,7 @@ export default function PinSetupScreen() {
         >
           <Text style={styles.signOutText}>Not you? Sign out</Text>
         </TouchableOpacity>
+        )}
       </ScrollView>
     </KeyboardAvoidingView>
   );
