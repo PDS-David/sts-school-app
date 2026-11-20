@@ -75,7 +75,8 @@ export function validatePinSetupForm(v: PinSetupValues): PinSetupFormError | nul
     return { field: 'current', message: CURRENT_CREDENTIAL_REQUIRED_MESSAGE };
   }
   const check = checkPin(v.pin);
-  if (!check.ok) return { field: 'pin', message: check.message };
+  // Cast: without strictNullChecks, `!check.ok` does not narrow the union.
+  if (!check.ok) return { field: 'pin', message: (check as { ok: false; message: string }).message };
   if (v.confirm !== v.pin) return { field: 'confirm', message: PIN_MISMATCH_MESSAGE };
   if (v.current === v.pin) return { field: 'pin', message: PIN_SAME_AS_CURRENT_MESSAGE };
   return null;
