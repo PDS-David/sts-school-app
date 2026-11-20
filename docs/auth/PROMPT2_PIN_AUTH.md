@@ -96,3 +96,29 @@ Nobody is asked to change anything.
   rehashed accounts. 0020 runs once, before this code is deployed, so this only matters if it is re-run.
 - Deployment: `PIN_PEPPER` must be set on Render first. Until it is, sign-in still works and
   rehash is simply skipped.
+
+## Migration 0020: when it is and is not safe (verified in Prompt 2B increment B/C)
+
+0020 is **not** safe to run late, and it is **not** idempotent against live data, despite the
+"safe to re-run" note in its header. It clears `must_set_pin` for every public-role row where
+`must_set_pin = TRUE AND pin_hash_version IS NULL AND pin_set_at IS NULL AND must_change_pw = FALSE
+AND password_hash IS NOT NULL`. After 0019 is live, the application itself produces that exact row
+shape, so those rows cannot be told apart from the rows 0019's one-time backfill flagged:
+
+- self-registered users (`selfRegistration.ts`: inserted with must_set_pin TRUE, must_change_pw FALSE)
+- accounts activated with an activation code (`credentialAttempts.ts`: legacy write, trigger flags it)
+- forgot-password resets of public roles (`credentialAttempts.ts`: legacy write, must_change_pw FALSE)
+- a legacy-style password change by a public role (`auth.ts` change-password path)
+
+Not affected (verified): administrator PIN resets (stamp `pin_set_at`), administrator-created
+teachers and auto-provisioned parents (`must_change_pw = TRUE`), users who set a PIN or were
+transparently rehashed (`pin_hash_version = 1`, `pin_set_at` set), administrator roles.
+
+Safe sequence: apply 0019 and 0020 in the SAME migration run (`db:migrate -- --all`, which applies
+them in order) on a database that has not served this branch's code in between, ideally with the
+application stopped or in maintenance during the run. Do not apply 0020 on its own after 0019 has
+been live, and never re-run its SQL by hand. No corrective migration is possible: the data needed to
+tell backfill-flagged rows from application-flagged rows is not recorded anywhere.
+At the time of writing, `master` contains migrations only up to 0018 and the production migration
+workflow runs only from `master`, so neither 0019 nor 0020 can reach production by that path until
+this branch is merged; this is not a statement about what any environment has actually applied.
