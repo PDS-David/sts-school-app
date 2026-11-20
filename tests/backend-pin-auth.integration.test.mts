@@ -13,7 +13,7 @@ import test, { after } from 'node:test';
 import { pool, query } from '../backend/src/db/pool.js';
 import authRouter from '../backend/src/routes/auth.js';
 import adminRouter from '../backend/src/routes/admin.js';
-import { requireAuth, sessionIdRequired } from '../backend/src/middleware/auth.js';
+import { pinSetupOutstanding, requireAuth, sessionIdRequired } from '../backend/src/middleware/auth.js';
 import { signAccess, signRefresh } from '../backend/src/utils/jwt.js';
 import { PENDING_APPROVAL_MESSAGE } from '../backend/src/utils/authMessages.js';
 import {
@@ -1250,5 +1250,224 @@ test('rehash: existing sessions stay valid and role/permissions are unchanged', 
     assert.equal(b.json.user.role, 'teacher');
     const me = await credRow(name);
     assert.equal(me.role, 'teacher');
+  } finally { await stop(server); }
+});
+
+
+// ── must_change_pw enforcement (Prompt 2B increment D) ───────────────────────
+// A student, parent or teacher carrying EITHER flag must establish a new
+// six-digit PIN via POST /auth/pin before anything else. The flags are
+// independent; permanent PIN holders (both FALSE) are never gated.
+
+async function setFlags(id: string, f: { mustSetPin: boolean; mustChangePw: boolean }) {
+  // One UPDATE that does not touch the credential, so no trigger re-forces PIN setup.
+  await query('UPDATE users SET must_set_pin=$2, must_change_pw=$3 WHERE id=$1', [id, f.mustSetPin, f.mustChangePw]);
+}
+const FLAG_CASES = [
+  { label: 'neither flag (permanent PIN holder)', mustSetPin: false, mustChangePw: false },
+  { label: 'must_set_pin only', mustSetPin: true, mustChangePw: false },
+  { label: 'must_change_pw only', mustSetPin: false, mustChangePw: true },
+  { label: 'both flags', mustSetPin: true, mustChangePw: true },
+] as const;
+
+test('pinSetupOutstanding: either explicit TRUE gates PIN roles; FALSE/NULL never does; administrators are never gated', () => {
+  for (const role of ['student', 'parent', 'teacher']) {
+    assert.equal(pinSetupOutstanding({ role, must_set_pin: false, must_change_pw: false }), false, role);
+    assert.equal(pinSetupOutstanding({ role, must_set_pin: true, must_change_pw: false }), true, role);
+    assert.equal(pinSetupOutstanding({ role, must_set_pin: false, must_change_pw: true }), true, role);
+    assert.equal(pinSetupOutstanding({ role, must_set_pin: true, must_change_pw: true }), true, role);
+    assert.equal(pinSetupOutstanding({ role, must_set_pin: null, must_change_pw: null }), false, `${role}: NULL is not a requirement`);
+    assert.equal(pinSetupOutstanding({ role }), false, `${role}: absent flags`);
+  }
+  for (const role of ['admin', 'finance_admin', '', undefined, null]) {
+    assert.equal(pinSetupOutstanding({ role, must_set_pin: true, must_change_pw: true }), false, String(role));
+  }
+});
+
+test('must_change_pw / must_set_pin: each flag independently and together gate student, parent and teacher; both FALSE never does', async () => {
+  const { server, base } = await startServer();
+  try {
+    for (const role of ['student', 'parent', 'teacher']) {
+      for (const c of FLAG_CASES) {
+        const where = `${role}: ${c.label}`;
+        const gated = c.mustSetPin || c.mustChangePw;
+        const name = uname(`flag-${role}`);
+        const id = await makeUser(name, { role, secret: LEGACY });
+        await setFlags(id, c);
+
+        const l = await login(base, name, LEGACY);
+        assert.equal(l.status, 200, where);
+        // Flags are reported exactly as stored.
+        assert.equal(l.json.must_set_pin, c.mustSetPin, `${where}: login must_set_pin`);
+        assert.equal(l.json.must_change_pw, c.mustChangePw, `${where}: login must_change_pw`);
+        assert.equal(l.json.pin_setup_required, gated, `${where}: login pin_setup_required`);
+        const token = l.json.access_token as string;
+        const auth = { authorization: `Bearer ${token}` };
+
+        const me = await get(base, '/auth/me', token);
+        assert.equal(me.status, 200, where);
+        assert.equal(me.json.must_set_pin, c.mustSetPin, `${where}: /me must_set_pin`);
+        assert.equal(me.json.must_change_pw, c.mustChangePw, `${where}: /me must_change_pw`);
+        assert.equal(me.json.pin_setup_required, gated, `${where}: /me pin_setup_required`);
+
+        const protectedRes = await get(base, '/protected', token);
+        const pushRes = await post(base, '/auth/push-token', { token: 'x' }, auth);
+        if (gated) {
+          assert.equal(protectedRes.status, 403, where);
+          assert.equal(protectedRes.json.code, 'PIN_SETUP_REQUIRED', where);
+          assert.equal(pushRes.status, 403, `${where}: other /auth/* routes are refused too`);
+          assert.equal(pushRes.json.code, 'PIN_SETUP_REQUIRED', where);
+          // The requirement survives a fresh sign-in on another device.
+          const again = await login(base, name, LEGACY, {}, device());
+          assert.equal(again.json.pin_setup_required, true, where);
+          assert.equal((await get(base, '/protected', again.json.access_token)).status, 403, where);
+          // The only way out is POST /auth/pin, which clears BOTH flags.
+          const set = await post(base, '/auth/pin', { current_credential: LEGACY, new_pin: GOOD_PIN }, auth);
+          assert.equal(set.status, 200, `${where}: ${JSON.stringify(set.json)}`);
+          const { rows } = await query('SELECT must_set_pin, must_change_pw, pin_hash_version FROM users WHERE id=$1', [id]);
+          assert.equal(rows[0].must_set_pin, false, where);
+          assert.equal(rows[0].must_change_pw, false, where);
+          assert.equal(rows[0].pin_hash_version, 1, where);
+          assert.equal((await get(base, '/protected', token)).status, 200, `${where}: released after PIN setup`);
+          const meAfter = await get(base, '/auth/me', token);
+          assert.equal(meAfter.json.pin_setup_required, false, where);
+          assert.equal(meAfter.json.must_change_pw, false, where);
+          assert.equal((await login(base, name, GOOD_PIN)).json.pin_setup_required, false, where);
+        } else {
+          // Permanent PIN holder: never asked to change anything, on any device.
+          assert.equal(protectedRes.status, 200, where);
+          assert.equal(pushRes.status !== 403 || pushRes.json?.code !== 'PIN_SETUP_REQUIRED', true, where);
+          const other = await login(base, name, LEGACY, {}, device());
+          assert.equal(other.json.pin_setup_required, false, where);
+          assert.equal((await get(base, '/protected', other.json.access_token)).status, 200, where);
+          const { rows } = await query('SELECT must_set_pin, must_change_pw FROM users WHERE id=$1', [id]);
+          assert.equal(rows[0].must_set_pin, false, `${where}: sign-in never raises a requirement`);
+          assert.equal(rows[0].must_change_pw, false, `${where}: sign-in never raises a requirement`);
+        }
+      }
+    }
+  } finally { await stop(server); }
+});
+
+test('must_change_pw only: allowlisted routes work, everything else is refused until a PIN is set', async () => {
+  const { server, base } = await startServer();
+  try {
+    const name = uname('cpw-allow');
+    const id = await makeUser(name, { role: 'teacher', secret: LEGACY });
+    await setFlags(id, { mustSetPin: false, mustChangePw: true });
+    const l = await login(base, name, LEGACY);
+    const token = l.json.access_token as string;
+    const auth = { authorization: `Bearer ${token}` };
+    assert.equal((await get(base, '/auth/me', token)).status, 200);
+    // /auth/change-password remains the administrator-only route; it is not an escape for PIN roles.
+    const cp = await post(base, '/auth/change-password', { old_password: LEGACY, new_password: 'Another-Passw0rd!' }, auth);
+    assert.equal(cp.status, 403, 'refused by the gate before it can run');
+    assert.equal(cp.json.code, 'PIN_SETUP_REQUIRED');
+    assert.equal((await post(base, '/auth/security-question', { question: 'q', answer: 'a' }, auth)).json.code, 'PIN_SETUP_REQUIRED');
+    assert.equal((await post(base, '/auth/pin', { current_credential: LEGACY, new_pin: '123456' }, auth)).status, 400, 'weak PIN still rejected, not gated');
+    assert.equal((await post(base, '/auth/logout', {}, auth)).status, 200);
+  } finally { await stop(server); }
+});
+
+test('must_change_pw / must_set_pin survive a token refresh: a refreshed session is gated exactly like the original', async () => {
+  const { server, base } = await startServer();
+  try {
+    for (const c of FLAG_CASES) {
+      const name = uname('flag-refresh');
+      const id = await makeUser(name, { role: 'student', secret: LEGACY });
+      await setFlags(id, c);
+      const l = await login(base, name, LEGACY);
+      const r = await post(base, '/auth/refresh', { refresh_token: l.json.refresh_token });
+      assert.equal(r.status, 200, c.label);
+      const gated = c.mustSetPin || c.mustChangePw;
+      const res = await get(base, '/protected', r.json.access_token);
+      assert.equal(res.status, gated ? 403 : 200, c.label);
+      if (gated) assert.equal(res.json.code, 'PIN_SETUP_REQUIRED', c.label);
+    }
+  } finally { await stop(server); }
+});
+
+test('pending accounts: pending approval wins over every flag combination, and the PIN gate appears only once approved', async () => {
+  const { server, base } = await startServer();
+  try {
+    for (const role of ['parent', 'teacher']) {
+      for (const c of FLAG_CASES) {
+        const where = `${role} pending: ${c.label}`;
+        const gated = c.mustSetPin || c.mustChangePw;
+        const name = uname(`pend-${role}`);
+        const id = await makeUser(name, { role, secret: LEGACY, pending: true });
+        await setFlags(id, c);
+        const l = await login(base, name, LEGACY);
+        assert.equal(l.status, 200, where);
+        assert.equal(l.json.pending_admin_review, true, where);
+        assert.equal(l.json.must_set_pin, c.mustSetPin, where);
+        assert.equal(l.json.must_change_pw, c.mustChangePw, where);
+        const token = l.json.access_token as string;
+        const auth = { authorization: `Bearer ${token}` };
+
+        // Restricted session: approval status and logout only; PENDING_APPROVAL, never PIN_SETUP_REQUIRED.
+        const blocked = await get(base, '/protected', token);
+        assert.equal(blocked.status, 403, where);
+        assert.equal(blocked.json.code, 'PENDING_APPROVAL', where);
+        assert.equal((await post(base, '/auth/pin', { current_credential: LEGACY, new_pin: GOOD_PIN }, auth)).status, 403, `${where}: cannot set a PIN while pending`);
+        assert.equal((await post(base, '/auth/push-token', { token: 'x' }, auth)).json.code, 'PENDING_APPROVAL', where);
+        const me = await get(base, '/auth/me', token);
+        assert.equal(me.status, 200, where);
+        assert.equal(me.json.pending_admin_review, true, where);
+        assert.equal(me.json.pin_setup_required, gated, `${where}: /me still reports the outstanding requirement`);
+
+        // Once approved, the same token is gated by the flags (or free, for a permanent holder).
+        await query('UPDATE users SET pending_admin_review=FALSE WHERE id=$1', [id]);
+        const after = await get(base, '/protected', token);
+        assert.equal(after.status, gated ? 403 : 200, where);
+        if (gated) assert.equal(after.json.code, 'PIN_SETUP_REQUIRED', where);
+      }
+    }
+  } finally { await stop(server); }
+});
+
+test('administrator and finance administrator are untouched: must_change_pw is not turned into a PIN gate', async () => {
+  const { server, base } = await startServer();
+  try {
+    for (const role of ['admin', 'finance_admin']) {
+      for (const mustChangePw of [false, true]) {
+        const name = uname(`adm-${role}`);
+        const id = await makeUser(name, { role, school: role === 'admin' ? null : 'primary', secret: 'Long-Existing-Passw0rd!' });
+        await setFlags(id, { mustSetPin: false, mustChangePw });
+        const l = await login(base, name, 'Long-Existing-Passw0rd!');
+        assert.equal(l.status, 200, role);
+        assert.equal(l.json.must_change_pw, mustChangePw, `${role}: login reports the flag exactly as before`);
+        assert.equal(l.json.must_set_pin, false, role);
+        assert.equal(l.json.pin_setup_required, false, `${role}: never a PIN requirement`);
+        const auth = { authorization: `Bearer ${l.json.access_token}` };
+        // Same behaviour as before this change: no PIN_SETUP_REQUIRED, PIN route closed, password route open.
+        assert.equal((await get(base, '/protected', l.json.access_token)).status, 200, `${role}: not gated by the PIN rule`);
+        assert.equal((await post(base, '/auth/pin', { current_credential: 'Long-Existing-Passw0rd!', new_pin: GOOD_PIN }, auth)).status, 403, role);
+        const me = await get(base, '/auth/me', l.json.access_token);
+        assert.equal(me.json.pin_setup_required, false, role);
+        assert.equal(me.json.must_change_pw, false, `${role}: /auth/me does not newly report a flag for administrators`);
+        const cp = await post(base, '/auth/change-password', { old_password: 'Long-Existing-Passw0rd!', new_password: 'Even-Longer-Passw0rd!' }, auth);
+        assert.equal(cp.status, 200, `${role}: ${JSON.stringify(cp.json)}`);
+        const { rows } = await query('SELECT must_change_pw FROM users WHERE id=$1', [id]);
+        assert.equal(rows[0].must_change_pw, false, role);
+      }
+    }
+  } finally { await stop(server); }
+});
+
+test('an administrator-issued PIN reset still gates only via must_set_pin and releases on PIN setup', async () => {
+  const { server, base } = await startServer();
+  try {
+    const name = uname('reset-gate');
+    const id = await makeUser(name, { role: 'teacher', secret: LEGACY });
+    // The reset path writes must_set_pin=TRUE, must_change_pw=FALSE.
+    await setFlags(id, { mustSetPin: true, mustChangePw: false });
+    const l = await login(base, name, LEGACY);
+    assert.equal(l.json.pin_setup_required, true);
+    assert.equal(l.json.must_change_pw, false);
+    const auth = { authorization: `Bearer ${l.json.access_token}` };
+    assert.equal((await get(base, '/protected', l.json.access_token)).json.code, 'PIN_SETUP_REQUIRED');
+    assert.equal((await post(base, '/auth/pin', { current_credential: LEGACY, new_pin: GOOD_PIN }, auth)).status, 200);
+    assert.equal((await get(base, '/protected', l.json.access_token)).status, 200);
   } finally { await stop(server); }
 });

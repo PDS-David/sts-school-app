@@ -11,7 +11,7 @@ import { getDeviceId } from './deviceId';
 import type { CredentialMode } from './loginForm';
 import {
   PIN_GATE_STORAGE_KEY, serializePinGate, pinGateHintFor, mergePinRequirement,
-  isPinRole, serverPinStateFromMe, type ServerPinState,
+  isPinRole, serverPinStateFromMe, pinSetupRequiredFromFlags, type ServerPinState,
 } from './authPhase';
 
 export type Role = 'student' | 'parent' | 'teacher' | 'admin' | 'finance_admin';
@@ -263,21 +263,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setCacheNamespace(data.user.id);
     // Set before setUser so the very first authenticated render already knows
     // a PIN is required; RootNavigator then shows the setup screen, never a dashboard.
-    const pinRequired = isPinRole(data.user?.role) && data.must_set_pin === true;
+    const pinRequired = pinSetupRequiredFromFlags(data.user?.role, data);
     setMustSetPin(pinRequired);
     await persistPinGate(data.user.id, pinRequired);
     setUser(data.user);
     // Resume this account's pending work after a successful sign-in, even
     // when connectivity never emitted a new reconnect event.
     flushOutbox().catch(() => {});
-    setMustChangePw(!!data.must_change_pw);
+    // Students, parents and teachers never see the old password screen: for them
+    // must_change_pw is satisfied by setting a PIN, which the gate above handles.
+    const adminPwChangeRequired = !isPinRole(data.user?.role) && !!data.must_change_pw;
+    setMustChangePw(adminPwChangeRequired);
     setMustSetSecurityQuestion(!!data.must_set_security_question);
     // Best effort, never blocks login — a denied permission or offline
     // registration call just means no pushes until the next successful
     // login, not a broken sign-in flow.
     registerForPushNotifications().catch(() => {});
     return {
-      must_change_pw: !!data.must_change_pw,
+      must_change_pw: adminPwChangeRequired,
       must_set_security_question: !!data.must_set_security_question,
       must_set_pin: pinRequired,
     };

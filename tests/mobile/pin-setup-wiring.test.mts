@@ -1,7 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { isPinRole, serverPinStateFromMe, mergePinRequirement } from '../../mobile/src/api/authPhase.ts';
+import {
+  isPinRole, serverPinStateFromMe, mergePinRequirement, pinSetupRequiredFromFlags, resolveAuthPhase,
+} from '../../mobile/src/api/authPhase.ts';
 
 const read = (rel: string) => readFileSync(new URL(`../../mobile/src/${rel}`, import.meta.url), 'utf8');
 const screen = read('screens/PinSetupScreen.tsx');
@@ -95,7 +97,7 @@ test('the gate is set from the login response before the first authenticated ren
   const setPin = context.indexOf('setMustSetPin(pinRequired);');
   const setUserCall = context.indexOf('setUser(data.user);');
   assert.ok(setPin > 0 && setUserCall > setPin, 'setMustSetPin must come before setUser in login()');
-  assert.ok(/data\.must_set_pin === true/.test(context));
+  assert.ok(/pinSetupRequiredFromFlags\(data\.user\?\.role, data\)/.test(context), 'derived from the login response flags');
 });
 
 test('the persisted hint is cleared on logout and on a forced logout, and holds no secret', () => {
@@ -128,7 +130,7 @@ const teacherMore = read('screens/teacher/TeacherMoreScreen.tsx');
 test('the client never decides the PIN requirement itself: only the server flag opens the gate', () => {
   // login() derives it solely from the server response; there is no
   // "first login" / "new device" / "legacy credential" rule on the client.
-  assert.ok(/const pinRequired = isPinRole\(data\.user\?\.role\) && data\.must_set_pin === true;/.test(context));
+  assert.ok(/const pinRequired = pinSetupRequiredFromFlags\(data\.user\?\.role, data\);/.test(context));
   const all = [context, read('api/authPhase.ts'), read('api/pinSetup.ts'), screen, navigator].join('\n');
   const code = all.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '');
   assert.ok(!/first[ -]?login|newDevice|new device|legacy/i.test(code), 'no client-side first-login/legacy rule');
@@ -166,4 +168,64 @@ test('voluntary mode: no sign-out link, no temporary-credential banner, current 
   assert.ok(/\{!voluntary && \(\s*<View style=\{styles\.banner\}>/.test(screen));
   assert.ok(/\{!voluntary && \(\s*<TouchableOpacity\s+onPress=\{\(\) => \{ if \(!loading\) logout\(\)/.test(screen));
   assert.ok(/confirmSetup: \(\) => \(voluntary \? Promise\.resolve\(true\) : depsRef\.current\.confirmPinSetup\(\)\)/.test(screen));
+});
+
+
+// ── must_change_pw is a PIN requirement for student, parent and teacher ─────
+test('either flag, alone or together, requires PIN setup for PIN roles; both false never does', () => {
+  for (const role of ['student', 'parent', 'teacher']) {
+    assert.equal(pinSetupRequiredFromFlags(role, { must_set_pin: false, must_change_pw: false }), false, role);
+    assert.equal(pinSetupRequiredFromFlags(role, { must_set_pin: true, must_change_pw: false }), true, role);
+    assert.equal(pinSetupRequiredFromFlags(role, { must_set_pin: false, must_change_pw: true }), true, role);
+    assert.equal(pinSetupRequiredFromFlags(role, { must_set_pin: true, must_change_pw: true }), true, role);
+    assert.equal(pinSetupRequiredFromFlags(role, { must_set_pin: false, must_change_pw: false, pin_setup_required: true }), true, `${role}: server-derived flag honoured`);
+    assert.equal(pinSetupRequiredFromFlags(role, {}), false, `${role}: absent flags are not a requirement`);
+    assert.equal(pinSetupRequiredFromFlags(role, { must_change_pw: 'true' as any }), false, `${role}: only a real boolean counts`);
+  }
+  assert.equal(pinSetupRequiredFromFlags('student', null), false);
+});
+
+test('administrator roles are never sent to PIN setup, whatever flags they carry', () => {
+  for (const role of ['admin', 'finance_admin', undefined, null, '']) {
+    assert.equal(pinSetupRequiredFromFlags(role, { must_set_pin: true, must_change_pw: true, pin_setup_required: true }), false, String(role));
+  }
+});
+
+test('/auth/me: must_change_pw alone is enough to hold the gate after restart, token refresh or foreground', () => {
+  const me = (d: object) => serverPinStateFromMe({ data: d });
+  assert.deepEqual(me({ must_set_pin: false, must_change_pw: true }), { reachable: true, mustSetPin: true });
+  assert.deepEqual(me({ must_set_pin: true, must_change_pw: false }), { reachable: true, mustSetPin: true });
+  assert.deepEqual(me({ must_set_pin: true, must_change_pw: true }), { reachable: true, mustSetPin: true });
+  assert.deepEqual(me({ must_set_pin: false, must_change_pw: false }), { reachable: true, mustSetPin: false });
+  assert.deepEqual(me({ must_set_pin: false, must_change_pw: false, pin_setup_required: true }), { reachable: true, mustSetPin: true });
+  // A permanent PIN holder is released by the server's answer; a stale hint cannot keep them gated.
+  assert.equal(mergePinRequirement(true, me({ must_set_pin: false, must_change_pw: false })), false);
+  // A requirement the hint does not know about cannot be hidden by the server answering it.
+  assert.equal(mergePinRequirement(false, me({ must_set_pin: false, must_change_pw: true })), true);
+  // Cached /auth/me is never the server.
+  assert.deepEqual(serverPinStateFromMe({ data: { must_change_pw: true }, fromCache: true }), { reachable: false });
+  assert.deepEqual(serverPinStateFromMe({ data: { must_change_pw: true } }), { reachable: false }, 'no boolean answer, not treated as the server');
+});
+
+test('PIN roles reach PIN setup, never the old password screen; administrators keep their forced password change', () => {
+  const user = { pending_admin_review: false };
+  // After login the context derives mustSetPin from the flags and leaves mustChangePw false for PIN roles.
+  assert.equal(resolveAuthPhase({ loading: false, user, mustChangePw: false, mustSetSecurityQuestion: false, mustSetPin: true }), 'pin-setup');
+  assert.equal(resolveAuthPhase({ loading: false, user, mustChangePw: false, mustSetSecurityQuestion: false, mustSetPin: false }), 'app');
+  // Pending still wins over the PIN gate.
+  assert.equal(resolveAuthPhase({ loading: false, user: { pending_admin_review: true }, mustChangePw: false, mustSetSecurityQuestion: false, mustSetPin: true }), 'pending-review');
+  // Administrator accounts: unchanged.
+  assert.equal(resolveAuthPhase({ loading: false, user, mustChangePw: true, mustSetSecurityQuestion: false, mustSetPin: false }), 'change-pw');
+});
+
+test('AuthContext derives the gate from the flags and keeps PIN roles off the password-change screen', () => {
+  assert.match(context, /pinSetupRequiredFromFlags\(data\.user\?\.role, data\)/, 'login derives the PIN requirement from both flags');
+  assert.match(context, /const adminPwChangeRequired = !isPinRole\(data\.user\?\.role\) && !!data\.must_change_pw/, 'only non-PIN roles get the password-change screen');
+  assert.match(context, /setMustChangePw\(adminPwChangeRequired\)/);
+  assert.ok(!/setMustChangePw\(!!data\.must_change_pw\)/.test(context), 'the unconditional assignment is gone');
+  // Restart, foreground and refresh all go through /auth/me -> serverPinStateFromMe.
+  assert.match(context, /serverPinStateFromMe\(res as any\)/);
+  assert.match(context, /serverPinStateFromMe\(meRes\)/);
+  // A 403 PIN_SETUP_REQUIRED (e.g. after a token refresh) re-engages the gate.
+  assert.match(client, /isPinSetupRequiredResponse/);
 });

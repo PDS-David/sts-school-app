@@ -11,10 +11,25 @@ import { PENDING_APPROVAL_MESSAGE, PIN_SETUP_REQUIRED_MESSAGE, SESSION_ENDED_MES
 // Endpoints reachable while an account is pending approval (restricted
 // session): check approval status and sign out. Nothing else.
 const PENDING_ALLOWED = new Set(['GET /auth/me', 'POST /auth/logout']);
-// Explicit allowlist reachable before the mandatory PIN is set. Every other
+// Explicit allowlist reachable while a PIN must be established. Every other
 // route, including every other /auth/* route, is denied until it is.
 const PIN_SETUP_ALLOWED = new Set(['GET /auth/me', 'POST /auth/logout', 'POST /auth/pin']);
 const PIN_ROLES = new Set<string>(['student', 'parent', 'teacher']);
+
+/**
+ * True when a student, parent or teacher still owes a new six-digit PIN: either
+ * flag is enough, independently of the other. Only an explicit TRUE counts, so a
+ * permanent PIN holder (both flags FALSE) is never gated, and a NULL column is
+ * never treated as an outstanding requirement. Administrator and Finance
+ * Administrator accounts are never gated here; their arrangement is unchanged.
+ */
+export function pinSetupOutstanding(user: {
+  role?: string | null;
+  must_set_pin?: boolean | null;
+  must_change_pw?: boolean | null;
+}): boolean {
+  return PIN_ROLES.has(String(user.role)) && (user.must_set_pin === true || user.must_change_pw === true);
+}
 
 /**
  * Access tokens issued before the session rollout carry no `sid`. In
@@ -88,7 +103,7 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
               FROM teacher_subjects ts WHERE ts.user_id=u.id
             ), ARRAY[]::integer[]) AS assigned_subject_ids,
             u.is_active, u.access_expires_at, u.revocation_reason, u.pending_admin_review,
-            u.must_set_pin,
+            u.must_set_pin, u.must_change_pw,
             sess.id AS session_id, sess.revoked_at AS session_revoked_at, sess.expires_at AS session_expires_at,
             (u.role = 'student' AND EXISTS (
               SELECT 1 FROM students s WHERE s.user_id=u.id AND s.deleted_at IS NOT NULL
@@ -126,7 +141,7 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
   if (effectivelyPending && !PENDING_ALLOWED.has(key)) {
     return res.status(403).json({ error: PENDING_APPROVAL_MESSAGE, code: 'PENDING_APPROVAL' });
   }
-  if (!effectivelyPending && dbUser.must_set_pin === true && PIN_ROLES.has(dbUser.role) && !PIN_SETUP_ALLOWED.has(key)) {
+  if (!effectivelyPending && pinSetupOutstanding(dbUser) && !PIN_SETUP_ALLOWED.has(key)) {
     return res.status(403).json({ error: PIN_SETUP_REQUIRED_MESSAGE, code: 'PIN_SETUP_REQUIRED' });
   }
 

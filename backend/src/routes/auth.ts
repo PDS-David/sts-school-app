@@ -5,7 +5,7 @@ import { createHash, randomInt, timingSafeEqual } from 'node:crypto';
 import bcrypt from 'bcryptjs';
 import { query, withTransaction } from '../db/pool.js';
 import { signAccess, verifyRefresh } from '../utils/jwt.js';
-import { readLearningAccessPolicy, requireAuth } from '../middleware/auth.js';
+import { pinSetupOutstanding, readLearningAccessPolicy, requireAuth } from '../middleware/auth.js';
 import { audit, auditInTransaction } from '../utils/audit.js';
 import { accountKeyFor, normalizeUsername } from '../utils/usernames.js';
 import { PIN_HASH_VERSION, PinConfigError, burnDummyVerification, checkPin, hashPin, verifyCredential } from '../utils/pin.js';
@@ -206,11 +206,14 @@ router.post('/login', loginIpFailureLimiter, async (req, res) => {
     refresh_token: session.refreshToken,
     session_expires_at: session.expiresAt.toISOString(),
     remember_me: rememberMe,
-    // The server enforces this on every request (requireAuth); the flag is only
-    // so the app can show the right screen.
+    // The server enforces this on every request (requireAuth); the flags are only
+    // so the app can show the right screen. Both are reported as stored.
     must_set_pin: isPinRole && user.must_set_pin === true,
-    // For PIN roles the PIN requirement supersedes the old password change.
-    must_change_pw: isPinRole ? false : user.must_change_pw,
+    must_change_pw: isPinRole ? user.must_change_pw === true : user.must_change_pw,
+    // Derived: a student, parent or teacher carrying EITHER flag must establish
+    // a new six-digit PIN (POST /auth/pin) before anything else. False for
+    // permanent PIN holders and for administrator accounts.
+    pin_setup_required: pinSetupOutstanding(user),
     // Public roles recover through an administrator, so the forced
     // security-question step no longer applies to them. Administrator
     // accounts are unchanged.
@@ -286,13 +289,15 @@ router.post('/refresh', async (req, res) => {
 // state and whether a PIN must still be set. The server enforces both
 // independently on every request.
 router.get('/me', requireAuth, async (req, res) => {
-  const { rows } = await query('SELECT role, pending_admin_review, must_set_pin FROM users WHERE id=$1', [req.user!.id]);
+  const { rows } = await query('SELECT role, pending_admin_review, must_set_pin, must_change_pw FROM users WHERE id=$1', [req.user!.id]);
   if (!rows[0]) return res.status(404).json({ error: 'User not found' });
   const accessPolicy = req.learningAccessPolicy!;
   const pending = !!rows[0].pending_admin_review && !(req.user!.role === 'student' && accessPolicy.freeLaunchMode);
   return res.json({
     pending_admin_review: pending,
     must_set_pin: PIN_ROLES.has(rows[0].role) && rows[0].must_set_pin === true,
+    must_change_pw: PIN_ROLES.has(rows[0].role) && rows[0].must_change_pw === true,
+    pin_setup_required: pinSetupOutstanding(rows[0]),
     ...(pending ? { message: PENDING_APPROVAL_MESSAGE } : {}),
   });
 });

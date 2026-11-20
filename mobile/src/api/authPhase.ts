@@ -100,12 +100,34 @@ export function isPinRole(role: unknown): boolean {
 }
 
 /**
+ * Whether a student, parent or teacher owes a new six-digit PIN, from the
+ * flags the server reports (login response or GET /auth/me). Either flag is
+ * enough, independently of the other; only an explicit true counts, so a
+ * permanent PIN holder (both false) is never gated. The server's own derived
+ * `pin_setup_required` is honoured when present. Mirrors pinSetupOutstanding()
+ * in backend/src/middleware/auth.ts. Never true for administrator roles.
+ */
+export function pinSetupRequiredFromFlags(
+  role: unknown,
+  data: { must_set_pin?: unknown; must_change_pw?: unknown; pin_setup_required?: unknown } | null | undefined,
+): boolean {
+  if (!isPinRole(role) || !data) return false;
+  return data.pin_setup_required === true || data.must_set_pin === true || data.must_change_pw === true;
+}
+
+/**
  * Read the server's answer from a GET /auth/me response. A response served from
  * the offline cache (client.ts marks it `fromCache`) is NOT the server: treat it
  * as unreachable so stale cached state can never clear or set the requirement.
+ * /auth/me is only called for PIN roles here, and it reports the flags truthfully.
  */
 export function serverPinStateFromMe(res: { data?: any; fromCache?: boolean } | null | undefined): ServerPinState {
   if (!res || res.fromCache) return { reachable: false };
-  const v = res.data?.must_set_pin;
-  return typeof v === 'boolean' ? { reachable: true, mustSetPin: v } : { reachable: false };
+  const d = res.data;
+  const answered = typeof d?.must_set_pin === 'boolean' || typeof d?.pin_setup_required === 'boolean';
+  if (!answered) return { reachable: false };
+  return {
+    reachable: true,
+    mustSetPin: d.pin_setup_required === true || d.must_set_pin === true || d.must_change_pw === true,
+  };
 }
