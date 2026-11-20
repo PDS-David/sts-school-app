@@ -187,8 +187,18 @@ jobs:
               print("Tables absent from the initial snapshot (not included in the pre-existing-table row-count comparison): " + ", ".join(added))
           print("All pre-existing application table row counts are unchanged.")
           PY
+          migration_file_count="$(find backend/migrations -maxdepth 1 -type f -name '[0-9][0-9][0-9][0-9]_*.sql' | wc -l | tr -d ' ')"
+          [[ "$migration_file_count" =~ ^[1-9][0-9]*$ ]] || { echo "::error::Could not count numbered files in backend/migrations."; exit 1; }
           verification_sql="DO \$\$ BEGIN
-            IF (SELECT count(*) FROM public.schema_migrations WHERE version IN ('0001','0002','0003','0004','0005','0006')) <> 6 THEN RAISE EXCEPTION 'Expected migrations 0001-0005'; END IF;
+            IF (SELECT count(*) FROM public.schema_migrations WHERE version IN ('0001','0002','0003','0004','0005','0006')) <> 6 THEN RAISE EXCEPTION 'Expected migrations 0001-0006'; END IF;
+            IF (SELECT count(*) FROM public.schema_migrations WHERE version IN ('0019','0020')) <> 2 THEN RAISE EXCEPTION 'Expected migrations 0019 and 0020 in the ledger'; END IF;
+            IF (SELECT count(*) FROM public.schema_migrations) <> $migration_file_count THEN RAISE EXCEPTION 'Migration ledger row count does not match the number of migration files'; END IF;
+            IF (SELECT count(*) FROM information_schema.columns WHERE table_schema='public' AND table_name='users' AND column_name IN ('must_set_pin','pin_hash_version','pin_set_at')) <> 3 THEN RAISE EXCEPTION 'users PIN columns incomplete'; END IF;
+            IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conrelid='public.users'::regclass AND conname='users_pin_hash_version_check' AND convalidated) THEN RAISE EXCEPTION 'users_pin_hash_version_check missing or unvalidated'; END IF;
+            IF (SELECT count(*) FROM pg_trigger WHERE tgrelid='public.users'::regclass AND tgname='users_enforce_pin_state_trg' AND NOT tgisinternal) <> 1 THEN RAISE EXCEPTION 'users PIN-state trigger missing'; END IF;
+            IF NOT EXISTS (SELECT 1 FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname='public' AND p.proname='users_enforce_pin_state') THEN RAISE EXCEPTION 'users PIN-state function missing'; END IF;
+            IF to_regclass('public.auth_sessions') IS NULL OR to_regclass('public.auth_login_lanes') IS NULL OR to_regclass('public.auth_login_attempts') IS NULL THEN RAISE EXCEPTION 'Auth session or login-throttling table missing'; END IF;
+            IF (SELECT count(*) FROM pg_indexes WHERE schemaname='public' AND indexname IN ('auth_sessions_refresh_hash_uq','auth_sessions_legacy_sha_uq','auth_sessions_prev_hash_idx','auth_sessions_user_active_idx','auth_sessions_user_device_idx','auth_login_lanes_account_idx','auth_login_attempts_window_idx','users_username_norm_idx')) <> 8 THEN RAISE EXCEPTION 'Required PIN-auth indexes missing'; END IF;
             IF to_regclass('public.school_events') IS NULL THEN RAISE EXCEPTION 'school_events missing'; END IF;
             IF to_regclass('public.rate_limit_counters') IS NULL THEN RAISE EXCEPTION 'rate_limit_counters missing'; END IF;
             IF to_regclass('public.report_roster_memberships') IS NULL THEN RAISE EXCEPTION 'report_roster_memberships missing'; END IF;
@@ -211,6 +221,7 @@ jobs:
           {
             echo '### Production migration verification'
             echo '- Migration ledger contains 0001-0006, including the physical report-roster migration and explicit-enrolment safeguard.'
+            echo '- Migrations 0019 and 0020 are recorded, the ledger row count equals the number of numbered migration files, and the PIN-auth objects from 0019 exist.'
             echo '- school_events, rate_limit_counters and all nine audit columns exist.'
             echo '- Report-roster tables, three indexes, append-only function and two triggers exist; no unverified membership is active.'
             echo '- Existing student rows are preserved; provisional 0005 memberships are inactive until the physical source roster is reconciled.'
