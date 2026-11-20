@@ -75,6 +75,23 @@ export default function LoginScreen({ navigation }: any) {
         {/* Form */}
         <View style={styles.form}>
           <Text style={styles.title}>Sign In</Text>
+          <Text style={styles.modeHint}>Choose how you sign in</Text>
+          <View style={styles.modeSelector}>
+            <TouchableOpacity onPress={() => switchMode('pin')} disabled={loading}
+              style={[styles.modeButton, mode === 'pin' && styles.modeButtonActive]}
+              accessibilityRole="button" accessibilityLabel="Sign in with six-digit PIN"
+              accessibilityState={{ selected: mode === 'pin', disabled: loading }}>
+              <Text style={[styles.modeButtonText, mode === 'pin' && styles.modeButtonTextActive]}>PIN login</Text>
+              <Text style={[styles.modeButtonSubtext, mode === 'pin' && styles.modeButtonTextActive]}>Students, parents, teachers</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => switchMode('password')} disabled={loading}
+              style={[styles.modeButton, mode === 'password' && styles.modeButtonActive]}
+              accessibilityRole="button" accessibilityLabel="Sign in with administrator password"
+              accessibilityState={{ selected: mode === 'password', disabled: loading }}>
+              <Text style={[styles.modeButtonText, mode === 'password' && styles.modeButtonTextActive]}>Admin password</Text>
+              <Text style={[styles.modeButtonSubtext, mode === 'password' && styles.modeButtonTextActive]}>Administrators</Text>
+            </TouchableOpacity>
+          </View>
           <Text style={styles.passwordLabel}>School (optional)</Text>
           <View style={{ borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.md, marginBottom: Spacing.md }}>
             <Picker selectedValue={schoolCode} onValueChange={setSchoolCode} enabled={!loading}>
@@ -92,13 +109,15 @@ export default function LoginScreen({ navigation }: any) {
             editable={!loading}
           />
           <Input
-            label={mode === 'pin' ? `${PIN_LENGTH}-digit PIN` : 'Password'}
+            key={`credential-input-${mode}`}
+            label={mode === 'pin' ? `${PIN_LENGTH}-digit PIN` : 'Administrator password'}
             value={secret}
             onChangeText={v => setSecret(normalizeLoginSecret(mode, v))}
             placeholder={mode === 'pin' ? 'Enter your PIN' : 'Enter your password'}
             keyboardType={mode === 'pin' ? 'numeric' : 'default'}
             secureTextEntry={!showSecret}
             autoCapitalize="none"
+            autoCorrect={false}
             editable={!loading}
           />
           <View style={styles.optionsRow}>
@@ -119,7 +138,7 @@ export default function LoginScreen({ navigation }: any) {
             <TouchableOpacity
               onPress={() => setShowSecret(v => !v)}
               accessibilityRole="button"
-              accessibilityLabel={showSecret ? 'Hide PIN' : 'Show PIN'}
+              accessibilityLabel={showSecret ? (mode === 'pin' ? 'Hide PIN' : 'Hide password') : (mode === 'pin' ? 'Show PIN' : 'Show password')}
               hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
             >
               <Text style={styles.showToggle}>{showSecret ? 'Hide' : 'Show'}</Text>
@@ -129,18 +148,14 @@ export default function LoginScreen({ navigation }: any) {
           {mode === 'pin' ? (
             <>
               <Text style={[styles.forgotLinkText, { alignSelf: 'flex-end', marginTop: Spacing.xs }]}>Forgot your PIN? Contact the school Admin.</Text>
-              <TouchableOpacity onPress={() => switchMode('password')} style={styles.forgotLink} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
-                <Text style={styles.forgotLinkText}>Administrator or Finance Admin? Sign in with a password</Text>
-              </TouchableOpacity>
+
             </>
           ) : (
             <>
               <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')} style={styles.forgotLink} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
                 <Text style={styles.forgotLinkText}>Forgot password?</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => switchMode('pin')} style={styles.forgotLink} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
-                <Text style={styles.forgotLinkText}>Student, parent or teacher? Sign in with your PIN</Text>
-              </TouchableOpacity>
+
             </>
           )}
 
@@ -178,6 +193,13 @@ const styles = StyleSheet.create({
   form:       { backgroundColor: Colors.card, borderRadius: Radius.lg, padding: Spacing.lg, shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.08, shadowRadius: 8, elevation: 3 },
   title:      { fontSize: Fonts.sizes.xl, fontWeight: '700', color: Colors.text, marginBottom: Spacing.md },
   passwordLabelRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+  modeHint:         { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginBottom: Spacing.xs },
+  modeSelector:     { flexDirection: 'row', gap: Spacing.sm, marginBottom: Spacing.md },
+  modeButton:       { flex: 1, minHeight: 62, borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.md, padding: Spacing.sm, justifyContent: 'center' },
+  modeButtonActive: { backgroundColor: Colors.primary, borderColor: Colors.primary },
+  modeButtonText:   { fontSize: Fonts.sizes.sm, fontWeight: '700', color: Colors.text, textAlign: 'center' },
+  modeButtonSubtext:{ fontSize: 10, color: Colors.textSub, textAlign: 'center', marginTop: 3 },
+  modeButtonTextActive: { color: Colors.white },
   passwordLabel:    { fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.textSub },
   optionsRow:       { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Spacing.xs },
   checkRow:         { flexDirection: 'row', alignItems: 'center' },
