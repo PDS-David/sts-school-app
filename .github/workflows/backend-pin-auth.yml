@@ -17,6 +17,11 @@ on:
       - "backend/migrations/**"
       - "backend/schema.sql"
       - "tests/backend-pin-auth.integration.test.mts"
+      - "tests/backend-pin-startup-and-migrations.integration.test.mts"
+      - "backend/package.json"
+      - "backend/src/db/preflightStart.ts"
+      - "backend/src/db/migrate.ts"
+      - "backend/src/utils/startupPreflight.ts"
       - "tests/backend-teacher-reporting-session-compat.integration.test.mts"
       - "backend/src/routes/scores.ts"
       - "backend/src/routes/students.ts"
@@ -70,6 +75,6 @@ jobs:
       - name: Apply numbered migrations against the fresh baseline
         run: npm run db:migrate --workspace=backend
       - name: Run PIN authentication regressions
-        run: node --import tsx --test --test-concurrency=1 tests/backend-pin-auth.integration.test.mts tests/backend-credential-attempts.integration.test.mts tests/backend-admin-user-school-scope.integration.test.mts tests/backend-teacher-reporting-session-compat.integration.test.mts
+        run: node --import tsx --test --test-concurrency=1 tests/backend-pin-auth.integration.test.mts tests/backend-credential-attempts.integration.test.mts tests/backend-admin-user-school-scope.integration.test.mts tests/backend-teacher-reporting-session-compat.integration.test.mts tests/backend-pin-startup-and-migrations.integration.test.mts
       - name: Typecheck backend
         run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
