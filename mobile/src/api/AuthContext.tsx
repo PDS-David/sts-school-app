@@ -1,12 +1,18 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Alert } from 'react-native';
+import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
+import { Alert, AppState } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import api, { flushOutbox } from './client';
-import { onForcedLogout } from './authEvents';
+import { onForcedLogout, onPinSetupRequired } from './authEvents';
 import { isRestorableUser } from './authSession';
 import { setSecureItem, deleteSecureItems } from './secureTokenStorage';
 import { setCacheNamespace, outboxCount, isOnline } from '../offline';
 import { registerForPushNotifications, unregisterPushToken } from './pushRegistration';
+import { getDeviceId } from './deviceId';
+import type { CredentialMode } from './loginForm';
+import {
+  PIN_GATE_STORAGE_KEY, serializePinGate, pinGateHintFor, mergePinRequirement,
+  isPinRole, serverPinStateFromMe, pinSetupRequiredFromFlags, type ServerPinState,
+} from './authPhase';
 
 export type Role = 'student' | 'parent' | 'teacher' | 'admin' | 'finance_admin';
 
@@ -45,8 +51,22 @@ interface AuthState {
   // branching on state can't race itself.
   mustChangePw: boolean;
   mustSetSecurityQuestion: boolean;
+  // True while a student/parent/teacher still owes their six-digit PIN. The
+  // server is authoritative (login response, GET /auth/me, and a 403
+  // PIN_SETUP_REQUIRED on any request); a small per-account hint in
+  // AsyncStorage only keeps the gate closed across a restart when the server
+  // cannot be reached yet. RootNavigator branches on this declaratively, so no
+  // dashboard or protected screen exists in the tree while it is true.
+  mustSetPin: boolean;
   loading: boolean;
-  login: (username: string, password: string, school_code?: string) => Promise<{ must_change_pw: boolean; must_set_security_question: boolean }>;
+  // `mode` decides only which request field carries the secret: 'pin' sends
+  // `pin` (students/parents/teachers), 'password' sends `password` (admin and
+  // finance admin keep their existing credentials). The server decides the role.
+  login: (
+    username: string,
+    secret: string,
+    opts?: { mode?: CredentialMode; rememberMe?: boolean; school_code?: string },
+  ) => Promise<{ must_change_pw: boolean; must_set_security_question: boolean; must_set_pin: boolean }>;
   logout: () => Promise<void>;
   changePassword: (oldPw: string, newPw: string) => Promise<void>;
   setSecurityQuestion: (question: string, answer: string) => Promise<void>;
@@ -61,16 +81,62 @@ interface AuthState {
   // stored user object (context + AsyncStorage) if it's changed, without
   // requiring a full log-out/log-in cycle. Returns the fresh value.
   refreshApprovalStatus: () => Promise<boolean>;
+  // POST /auth/pin. Rejects with the axios error on any failure; the PIN is
+  // sent once over TLS and is never logged or stored.
+  submitPin: (currentCredential: string, newPin: string) => Promise<void>;
+  // Re-reads GET /auth/me and updates the gate. Resolves true ONLY when the
+  // server answered and says must_set_pin is false (never from cache).
+  confirmPinSetup: () => Promise<boolean>;
 }
 
 const AuthContext = createContext<AuthState>({} as AuthState);
 export const useAuth = () => useContext(AuthContext);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser]       = useState<User | null>(null);
+  const [user, setUserState] = useState<User | null>(null);
   const [mustChangePw, setMustChangePw] = useState(false);
   const [mustSetSecurityQuestion, setMustSetSecurityQuestion] = useState(false);
+  const [mustSetPin, setMustSetPin] = useState(false);
   const [loading, setLoading] = useState(true);
+  // Latest signed-in account for async callbacks, so a slow /auth/me answer for
+  // a previous account can never be applied to whoever is signed in now.
+  const userRef = useRef<User | null>(null);
+  // Every change of the signed-in user goes through here so the ref and the
+  // state can never disagree (an effect or render-time sync could briefly null
+  // the ref mid-restore and make a valid server answer look stale).
+  const setUser = (next: User | null) => { userRef.current = next; setUserState(next); };
+  const pinCheckInFlight = useRef(false);
+
+  const persistPinGate = async (userId: string, required: boolean) => {
+    try {
+      if (required) await AsyncStorage.setItem(PIN_GATE_STORAGE_KEY, serializePinGate(userId));
+      else await AsyncStorage.removeItem(PIN_GATE_STORAGE_KEY);
+    } catch { /* storage unavailable: the server still enforces the requirement */ }
+  };
+
+  const applyPinRequirement = (userId: string, required: boolean) => {
+    if (userRef.current?.id !== userId) return; // stale answer for another account
+    setMustSetPin(required);
+    persistPinGate(userId, required).catch(() => {});
+  };
+
+  // Ask the server (never the offline cache) whether this account still owes a PIN.
+  const fetchServerPinState = async (): Promise<ServerPinState> => {
+    try {
+      const res = await api.get('/auth/me');
+      return serverPinStateFromMe(res as any);
+    } catch {
+      return { reachable: false };
+    }
+  };
+
+  const refreshPinRequirement = async (): Promise<ServerPinState> => {
+    const u = userRef.current;
+    if (!u || !isPinRole(u.role)) return { reachable: false };
+    const state = await fetchServerPinState();
+    if (state.reachable) applyPinRequirement(u.id, state.mustSetPin);
+    return state;
+  };
 
   // Restore session on mount. Storage can reject (device storage/key-value
   // corruption, quota or native bridge failure), and JSON.parse can throw if
@@ -84,6 +150,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (raw) {
           const parsed: unknown = JSON.parse(raw);
           if (isRestorableUser(parsed)) {
+            userRef.current = parsed as User; // visible to applyPinRequirement before the first render
+            // Fail closed first: a known-outstanding PIN requirement keeps the
+            // gate shut from the very first render, so no dashboard flashes.
+            let hint = false;
+            try { hint = pinGateHintFor(await AsyncStorage.getItem(PIN_GATE_STORAGE_KEY), parsed.id); } catch { /* no hint */ }
+            if (isPinRole(parsed.role)) setMustSetPin(hint);
             setUser(parsed as User);
             setCacheNamespace(parsed.id);
             // Re-register an already-authorized device after reinstall/token
@@ -91,6 +163,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             // prompting for notification permission during app startup.
             registerForPushNotifications({ requestPermission: false }).catch(() => {});
             flushOutbox().catch(() => {});
+            // The server decides. Hold the startup spinner briefly so a stale
+            // "no PIN needed" cannot show dashboards before it answers; if the
+            // server is slow (cold start) or offline, fall back to the hint and
+            // let the late answer, or a 403 PIN_SETUP_REQUIRED, correct it.
+            if (isPinRole(parsed.role)) {
+              const answer = (async () => {
+                const state = await fetchServerPinState();
+                applyPinRequirement(parsed.id, mergePinRequirement(hint, state));
+              })();
+              await Promise.race([answer, new Promise<void>((resolve) => setTimeout(resolve, 8000))]);
+            }
           } else {
             await AsyncStorage.removeItem('user');
             setCacheNamespace(null);
@@ -121,22 +204,56 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setUser(null);
       setMustChangePw(false);
       setMustSetSecurityQuestion(false);
+      setMustSetPin(false);
+      AsyncStorage.removeItem(PIN_GATE_STORAGE_KEY).catch(() => {});
       setCacheNamespace(null);
       if (message) Alert.alert('Signed out', message);
     });
   }, []);
 
-  const login = async (username: string, password: string, school_code?: string) => {
+  // The server refused a request with 403 PIN_SETUP_REQUIRED: our state was
+  // stale (an administrator reset the PIN, or the app was closed meanwhile).
+  useEffect(() => {
+    return onPinSetupRequired(() => {
+      const u = userRef.current;
+      if (u && isPinRole(u.role)) applyPinRequirement(u.id, true);
+    });
+  }, []);
+
+  // Coming back to the foreground: re-check with the server rather than trust
+  // whatever was true when the app went to the background.
+  useEffect(() => {
+    const sub = AppState.addEventListener('change', (next) => {
+      if (next !== 'active' || pinCheckInFlight.current) return;
+      pinCheckInFlight.current = true;
+      refreshPinRequirement().catch(() => {}).finally(() => { pinCheckInFlight.current = false; });
+    });
+    return () => sub.remove();
+  }, []);
+
+  const login = async (
+    username: string,
+    secret: string,
+    opts: { mode?: CredentialMode; rememberMe?: boolean; school_code?: string } = {},
+  ) => {
     // Longer timeout than api.ts's global 15s default specifically for
     // login: this is the one call most likely to be the very first hit on
     // a Render free-tier backend that's spun down from inactivity, which
     // can take up to ~60s to wake — a 15s timeout expiring mid-cold-start
     // looks identical to a real network failure to axios (no `.response`
-    // at all), which is exactly what produced the misleading "No internet
-    // connection" message on a real, working connection (see
-    // LoginScreen.tsx's error handling). Once logged in, every other
-    // request hits an already-awake backend and keeps the normal 15s.
-    const { data } = await api.post('/auth/login', { username, password, school_code }, { timeout: 60000 });
+    // at all). Once logged in, every other request keeps the normal 15s.
+    const mode = opts.mode ?? 'pin';
+    const deviceId = await getDeviceId();
+    const { data } = await api.post(
+      '/auth/login',
+      {
+        username,
+        ...(mode === 'pin' ? { pin: secret } : { password: secret }),
+        remember_me: !!opts.rememberMe,
+        school_code: opts.school_code,
+      },
+      { timeout: 60000, headers: { 'x-device-id': deviceId } },
+    );
     // Tokens go into expo-secure-store (Keychain/Keystore), not AsyncStorage
     // — see secureTokenStorage.ts. `user` itself (id/username/role/school_code,
     // no credential) is fine in plain AsyncStorage as before.
@@ -144,17 +261,29 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await setSecureItem('refresh_token', data.refresh_token);
     await AsyncStorage.setItem('user', JSON.stringify(data.user));
     setCacheNamespace(data.user.id);
+    // Set before setUser so the very first authenticated render already knows
+    // a PIN is required; RootNavigator then shows the setup screen, never a dashboard.
+    const pinRequired = pinSetupRequiredFromFlags(data.user?.role, data);
+    setMustSetPin(pinRequired);
+    await persistPinGate(data.user.id, pinRequired);
     setUser(data.user);
     // Resume this account's pending work after a successful sign-in, even
     // when connectivity never emitted a new reconnect event.
     flushOutbox().catch(() => {});
-    setMustChangePw(!!data.must_change_pw);
+    // Students, parents and teachers never see the old password screen: for them
+    // must_change_pw is satisfied by setting a PIN, which the gate above handles.
+    const adminPwChangeRequired = !isPinRole(data.user?.role) && !!data.must_change_pw;
+    setMustChangePw(adminPwChangeRequired);
     setMustSetSecurityQuestion(!!data.must_set_security_question);
     // Best effort, never blocks login — a denied permission or offline
     // registration call just means no pushes until the next successful
     // login, not a broken sign-in flow.
     registerForPushNotifications().catch(() => {});
-    return { must_change_pw: data.must_change_pw, must_set_security_question: !!data.must_set_security_question };
+    return {
+      must_change_pw: adminPwChangeRequired,
+      must_set_security_question: !!data.must_set_security_question,
+      must_set_pin: pinRequired,
+    };
   };
 
   const logout = async () => {
@@ -205,10 +334,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await unregisterPushToken();
     await deleteSecureItems(['access_token', 'refresh_token']);
     await AsyncStorage.removeItem('user');
+    await AsyncStorage.removeItem(PIN_GATE_STORAGE_KEY).catch(() => {});
     setCacheNamespace(null);
     setUser(null);
     setMustChangePw(false);
     setMustSetSecurityQuestion(false);
+    setMustSetPin(false);
   };
 
   const changePassword = async (old_password: string, new_password: string) => {
@@ -230,7 +361,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const confirmSecurityQuestionSet = () => setMustSetSecurityQuestion(false);
 
   const refreshApprovalStatus = async (): Promise<boolean> => {
-    const { data } = await api.get('/auth/me');
+    const meRes: any = await api.get('/auth/me');
+    const data = meRes.data;
+    // Once approved, the server may now require the PIN: pick that up here so
+    // the setup screen appears instead of the app (never from the offline cache).
+    const pinState = serverPinStateFromMe(meRes);
+    if (user && pinState.reachable && isPinRole(user.role)) applyPinRequirement(user.id, pinState.mustSetPin);
     const stillPending = !!data.pending_admin_review;
     if (user && user.pending_admin_review !== stillPending) {
       const updated = { ...user, pending_admin_review: stillPending };
@@ -240,11 +376,33 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return stillPending;
   };
 
+  const submitPin = async (currentCredential: string, newPin: string) => {
+    const deviceId = await getDeviceId();
+    // Longer timeout than the 15s default: the server hashes the PIN with
+    // bcrypt and may be waking from a cold start. /auth/ requests are never
+    // queued offline (client.ts), so the PIN can never land in the outbox.
+    await api.post(
+      '/auth/pin',
+      { current_credential: currentCredential, new_pin: newPin },
+      { timeout: 60000, headers: { 'x-device-id': deviceId } },
+    );
+  };
+
+  const confirmPinSetup = async (): Promise<boolean> => {
+    const u = userRef.current;
+    if (!u) return false;
+    const state = await fetchServerPinState();
+    if (!state.reachable) return false;
+    applyPinRequirement(u.id, state.mustSetPin);
+    return state.mustSetPin === false;
+  };
+
   return (
     <AuthContext.Provider value={{
-      user, mustChangePw, mustSetSecurityQuestion, loading,
+      user, mustChangePw, mustSetSecurityQuestion, mustSetPin, loading,
       login, logout, changePassword, setSecurityQuestion,
       confirmPasswordChanged, confirmSecurityQuestionSet, refreshApprovalStatus,
+      submitPin, confirmPinSetup,
     }}>
       {children}
     </AuthContext.Provider>

@@ -12,6 +12,8 @@ import SelfRegisterScreen from '../screens/SelfRegisterScreen';
 import PendingApprovalScreen from '../screens/PendingApprovalScreen';
 import ChangePasswordScreen from '../screens/ChangePasswordScreen';
 import SecurityQuestionSetupScreen from '../screens/SecurityQuestionSetupScreen';
+import PinSetupScreen from '../screens/PinSetupScreen';
+import { resolveAuthPhase } from '../api/authPhase';
 import NotificationsScreen from '../screens/NotificationsScreen';
 import BraineeChatScreen from '../screens/BraineeChatScreen';
 import TextStudyScreen from '../screens/TextStudyScreen';
@@ -49,7 +51,7 @@ function RoleRouter() {
 }
 
 export default function RootNavigator() {
-  const { user, mustChangePw, mustSetSecurityQuestion, loading } = useAuth();
+  const { user, mustChangePw, mustSetSecurityQuestion, mustSetPin, loading } = useAuth();
 
   if (loading) {
     return (
@@ -72,12 +74,11 @@ export default function RootNavigator() {
   // work without this because ChangePassword-forced and
   // SecurityQuestionSetup-forced share no screen names, so the route
   // reset was accidental, not because the underlying pattern was safe.
-  const phase = !user
-    ? 'guest'
-    : mustChangePw ? 'change-pw'
-    : mustSetSecurityQuestion ? 'security-q'
-    : user.pending_admin_review ? 'pending-review'
-    : 'app';
+  //
+  // The ordering lives in resolveAuthPhase (api/authPhase.ts, unit-tested):
+  // while the server says a PIN is still owed, 'pin-setup' is the only screen
+  // set that can render, so no dashboard or protected feature exists in the tree.
+  const phase = resolveAuthPhase({ loading, user, mustChangePw, mustSetSecurityQuestion, mustSetPin });
 
   return (
     <Stack.Navigator id={undefined} key={phase} screenOptions={{ headerShown: false }}>
@@ -91,6 +92,13 @@ export default function RootNavigator() {
           <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} />
           <Stack.Screen name="SecurityQuestionSetup" component={SecurityQuestionSetupScreen} />
         </>
+      ) : mustSetPin && !user.pending_admin_review ? (
+        // Mandatory six-digit PIN (students, parents, teachers). Declarative for
+        // the same reason as the branches below: this branch IS the whole app
+        // while the server says a PIN is owed. No Skip/Later route exists, and
+        // the server independently refuses every other endpoint (403
+        // PIN_SETUP_REQUIRED). Must mirror resolveAuthPhase's 'pin-setup' case.
+        <Stack.Screen name="PinSetup" component={PinSetupScreen} options={{ gestureEnabled: false }} />
       ) : mustChangePw ? (
         // Declarative, not an imperative navigation.replace() fired from
         // LoginScreen right after login() — see the comment on
@@ -115,6 +123,10 @@ export default function RootNavigator() {
           <Stack.Screen name="Profile" component={RoleRouter} />
           <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} options={{ headerShown: true, title: 'Change Password', headerStyle: { backgroundColor: Colors.primary }, headerTintColor: Colors.white }} />
           <Stack.Screen name="SecurityQuestionSetup" component={SecurityQuestionSetupScreen} options={{ headerShown: true, title: 'Security Question', headerStyle: { backgroundColor: Colors.primary }, headerTintColor: Colors.white }} />
+          {/* Voluntary PIN change (students, parents, teachers). The server
+              rejects /auth/change-password for these roles; POST /auth/pin is
+              the only route. Same screen as the required setup, in voluntary mode. */}
+          <Stack.Screen name="ChangePin" component={PinSetupScreen} initialParams={{ voluntary: true }} options={{ headerShown: true, title: 'Change PIN', headerStyle: { backgroundColor: Colors.primary }, headerTintColor: Colors.white }} />
           <Stack.Screen name="Notifications" component={NotificationsScreen} options={modalOpts} />
           <Stack.Screen name="BraineeChat" component={BraineeChatScreen} options={modalOpts} />
           {user.role === 'student' ? <>

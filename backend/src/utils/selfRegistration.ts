@@ -131,8 +131,8 @@ export async function claimStudentAccount(input: SelfClaimInput): Promise<SelfCl
     }
 
     const { rows: users } = await client.query(
-      `INSERT INTO users(username,password_hash,role,full_name,school_code,must_change_pw)
-       VALUES($1,$2,'student',$3,$4,FALSE)
+      `INSERT INTO users(username,password_hash,role,full_name,school_code,must_change_pw,must_set_pin)
+       VALUES($1,$2,'student',$3,$4,FALSE,TRUE)
        RETURNING id,username`,
       [username, input.passwordHash, student.full_name, input.schoolCode],
     );
@@ -236,8 +236,8 @@ export async function registerSelfServiceAccount(
     }
 
     const { rows: users } = await client.query(
-      `INSERT INTO users(username,password_hash,role,full_name,phone,school_code,pending_admin_review,must_change_pw)
-       VALUES($1,$2,$3,$4,$5,$6,TRUE,FALSE)
+      `INSERT INTO users(username,password_hash,role,full_name,phone,school_code,pending_admin_review,must_change_pw,must_set_pin)
+       VALUES($1,$2,$3,$4,$5,$6,TRUE,FALSE,TRUE)
        RETURNING id,username`,
       [input.username, input.passwordHash, input.role, input.fullName, input.phone, input.schoolCode],
     );

@@ -1,69 +1,54 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { Picker } from '@react-native-picker/picker';
 import {
   View, Text, StyleSheet, ScrollView, TouchableOpacity,
   KeyboardAvoidingView, Platform, Image,
 } from 'react-native';
 import { useAuth } from '../api/AuthContext';
-import api from '../api/client';
 import { Btn, Input } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { SCHOOL_BRANDS } from '../schoolBranding';
+import {
+  CredentialMode, PIN_LENGTH, sanitizePin, validateLoginInput, loginErrorMessage,
+} from '../api/loginForm';
 
 export default function LoginScreen({ navigation }: any) {
   const { login } = useAuth();
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [secret, setSecret] = useState('');
+  // 'pin' = six-digit PIN (students, parents, teachers). 'password' keeps the
+  // existing administrator / finance admin credentials usable. This is only
+  // an input mode: the server decides the account's role.
+  const [mode, setMode] = useState<CredentialMode>('pin');
+  const [showSecret, setShowSecret] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
+  // Optional. Only used by the server to tell apart teachers who share a username across schools.
   const [schoolCode, setSchoolCode] = useState('');
-  const [teacherLogin, setTeacherLogin] = useState(true);
-  const [teacherUsernames, setTeacherUsernames] = useState<string[]>([]);
-  const [usernameLoading, setUsernameLoading] = useState(false);
-  const [usernameError, setUsernameError] = useState('');
   const [error,    setError]    = useState('');
   const [loading,  setLoading]  = useState(false);
+  // A ref (not state) so two taps in the same tick cannot both pass the guard.
+  const submitting = useRef(false);
 
-  useEffect(() => {
-    setUsername(''); setTeacherUsernames([]); setUsernameError('');
-    if (!teacherLogin || !schoolCode) return;
-    let cancelled = false;
-    setUsernameLoading(true);
-    api.get('/auth/teacher-logins', { params: { school_code: schoolCode } })
-      .then(({ data }) => { if (!cancelled) setTeacherUsernames(Array.isArray(data.usernames) ? data.usernames : []); })
-      .catch((e: any) => { if (!cancelled) setUsernameError(e?.response?.data?.error ?? 'Could not load teacher usernames. Retry.'); })
-      .finally(() => { if (!cancelled) setUsernameLoading(false); });
-    return () => { cancelled = true; };
-  }, [schoolCode, teacherLogin]);
+  const switchMode = (next: CredentialMode) => {
+    setMode(next); setSecret(''); setShowSecret(false); setError('');
+  };
 
   const handleLogin = async () => {
+    if (submitting.current) return;
     setError('');
-    if (!username.trim() || !password) { setError(teacherLogin ? 'Select your username and enter your four-digit PIN' : 'Enter username and password'); return; }
-    if (teacherLogin && !/^\d{4}$/.test(password)) { setError('PIN must be exactly four digits'); return;}
+    const invalid = validateLoginInput(mode, username, secret);
+    if (invalid) { setError(invalid); return; }
+    submitting.current = true;
     setLoading(true);
     try {
-      // RootNavigator branches on AuthContext's mustChangePw/
-      // mustSetSecurityQuestion state directly and handles the redirect —
-      // no imperative navigation call needed (or safe to make) here. This
-      // used to call navigation.replace('ChangePassword', ...) right after
-      // login(), racing the exact same-tick re-render login()'s setUser()
-      // triggers; losing that race silently skipped the forced flow
-      // entirely, which is how an account could reach the Dashboard while
-      // still on its temp/default password.
-      await login(username.trim(), password, schoolCode || undefined);
+      // RootNavigator branches on AuthContext state directly and handles any
+      // forced flow — no imperative navigation call here (it used to race the
+      // re-render login() triggers).
+      await login(username.trim(), secret, { mode, rememberMe, school_code: schoolCode || undefined });
     } catch (e: any) {
-      if (!e?.response) {
-        // axios sets `.response` only when a response actually came back —
-        // no `.response` covers "genuinely offline" AND "server
-        // unreachable" (down, or a Render free-tier cold start taking
-        // longer than the request's timeout) equally. Claiming "no
-        // internet" here was flatly wrong on a real, working connection
-        // whenever it was actually the latter — this wording covers both
-        // without asserting which one it is, while keeping the original's
-        // useful "why login specifically needs this" context.
-        setError('Could not reach the server — check your connection, or it may just be starting back up after a period of inactivity (can take up to a minute). The first login on a device needs this to succeed; once signed in, you can keep working offline.');
-      } else {
-        setError(e?.response?.data?.error ?? 'Login failed. Check your credentials.');
-      }
+      setError(loginErrorMessage(e));
     } finally {
+      submitting.current = false;
       setLoading(false);
     }
   };
@@ -90,54 +75,73 @@ export default function LoginScreen({ navigation }: any) {
         {/* Form */}
         <View style={styles.form}>
           <Text style={styles.title}>Sign In</Text>
-          <Text style={styles.passwordLabel}>Account type</Text>
+          <Text style={styles.passwordLabel}>School (optional)</Text>
           <View style={{ borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.md, marginBottom: Spacing.md }}>
-            <Picker selectedValue={teacherLogin ? 'teacher' : 'other'} onValueChange={v => setTeacherLogin(v === 'teacher')}>
-              <Picker.Item label="Teacher (PIN)" value="teacher" />
-              <Picker.Item label="Student / Parent / Admin" value="other" />
-            </Picker>
-          </View>
-          <Text style={styles.passwordLabel}>School</Text>
-          <View style={{ borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.md, marginBottom: Spacing.md }}>
-            <Picker selectedValue={schoolCode} onValueChange={setSchoolCode}>
+            <Picker selectedValue={schoolCode} onValueChange={setSchoolCode} enabled={!loading}>
               <Picker.Item label="Select school..." value="" />
               <Picker.Item label="Primary School" value="primary" />
               <Picker.Item label="Secondary School" value="secondary" />
             </Picker>
           </View>
-          {teacherLogin ? (
-            <>
-              <Text style={styles.passwordLabel}>Teacher Username</Text>
-              <View style={{ borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.md, marginBottom: Spacing.md }}>
-                <Picker selectedValue={username} onValueChange={setUsername} enabled={!usernameLoading && !!schoolCode}>
-                  <Picker.Item label={usernameLoading ? 'Loading usernames…' : 'Select your username'} value="" />
-                  {teacherUsernames.map(name => <Picker.Item key={name} label={name} value={name} />)}
-                </Picker>
+          <Input
+            label="Username"
+            value={username}
+            onChangeText={setUsername}
+            placeholder="Enter your username"
+            autoCapitalize="none"
+            editable={!loading}
+          />
+          <Input
+            label={mode === 'pin' ? `${PIN_LENGTH}-digit PIN` : 'Password'}
+            value={secret}
+            onChangeText={v => setSecret(mode === 'pin' ? sanitizePin(v) : v)}
+            placeholder={mode === 'pin' ? 'Enter your PIN' : 'Enter your password'}
+            keyboardType={mode === 'pin' ? 'numeric' : 'default'}
+            secureTextEntry={!showSecret}
+            autoCapitalize="none"
+            editable={!loading}
+          />
+          <View style={styles.optionsRow}>
+            <TouchableOpacity
+              onPress={() => setRememberMe(v => !v)}
+              disabled={loading}
+              style={styles.checkRow}
+              accessibilityRole="checkbox"
+              accessibilityLabel="Remember me"
+              accessibilityState={{ checked: rememberMe, disabled: loading }}
+              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+            >
+              <View style={[styles.checkBox, rememberMe && styles.checkBoxOn]}>
+                {rememberMe ? <Text style={styles.checkMark}>✓</Text> : null}
               </View>
-              {!!usernameError && <Text style={styles.error}>{usernameError}</Text>}
-              {!usernameLoading && schoolCode && !usernameError && teacherUsernames.length === 0 && <Text style={styles.error}>No active teacher accounts found.</Text>}
-              <Input
-                label="4-digit PIN"
-                value={password}
-                onChangeText={v => setPassword(v.replace(/\D/g, '').slice(0, 4))}
-                placeholder="Enter your PIN"
-                keyboardType="numeric"
-                secureTextEntry
-              />
+              <Text style={styles.checkLabel}>Remember me</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => setShowSecret(v => !v)}
+              accessibilityRole="button"
+              accessibilityLabel={showSecret ? 'Hide PIN' : 'Show PIN'}
+              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+            >
+              <Text style={styles.showToggle}>{showSecret ? 'Hide' : 'Show'}</Text>
+            </TouchableOpacity>
+          </View>
+
+          {mode === 'pin' ? (
+            <>
+              <Text style={[styles.forgotLinkText, { alignSelf: 'flex-end', marginTop: Spacing.xs }]}>Forgot your PIN? Contact the school Admin.</Text>
+              <TouchableOpacity onPress={() => switchMode('password')} style={styles.forgotLink} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
+                <Text style={styles.forgotLinkText}>Administrator or Finance Admin? Sign in with a password</Text>
+              </TouchableOpacity>
             </>
           ) : (
             <>
-              <Input label="Username" value={username} onChangeText={setUsername} placeholder="Enter your username" autoCapitalize="none" />
-              <Input label="Password" value={password} onChangeText={setPassword} placeholder="Enter your password" secureTextEntry />
+              <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')} style={styles.forgotLink} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
+                <Text style={styles.forgotLinkText}>Forgot password?</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => switchMode('pin')} style={styles.forgotLink} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
+                <Text style={styles.forgotLinkText}>Student, parent or teacher? Sign in with your PIN</Text>
+              </TouchableOpacity>
             </>
-          )}
-
-{teacherLogin ? (
-            <Text style={[styles.forgotLinkText, { alignSelf: 'flex-end', marginTop: Spacing.xs }]}>Forgot your PIN? Contact the school Admin.</Text>
-          ) : (
-            <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')} style={styles.forgotLink} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
-              <Text style={styles.forgotLinkText}>Forgot password?</Text>
-            </TouchableOpacity>
           )}
 
           {error ? <Text style={styles.error}>{error}</Text> : null}
@@ -175,6 +179,12 @@ const styles = StyleSheet.create({
   title:      { fontSize: Fonts.sizes.xl, fontWeight: '700', color: Colors.text, marginBottom: Spacing.md },
   passwordLabelRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   passwordLabel:    { fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.textSub },
+  optionsRow:       { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Spacing.xs },
+  checkRow:         { flexDirection: 'row', alignItems: 'center' },
+  checkBox:         { width: 20, height: 20, borderRadius: 4, borderWidth: 1.5, borderColor: Colors.primary, alignItems: 'center', justifyContent: 'center', marginRight: Spacing.sm },
+  checkBoxOn:       { backgroundColor: Colors.primary },
+  checkMark:        { color: Colors.white, fontSize: 13, fontWeight: '800', lineHeight: 16 },
+  checkLabel:       { fontSize: Fonts.sizes.sm, color: Colors.text },
   showToggle:       { fontSize: Fonts.sizes.xs, fontWeight: '700', color: Colors.primary },
   forgotLink:       { alignSelf: 'flex-end', marginTop: Spacing.xs },
   forgotLinkText:   { fontSize: Fonts.sizes.xs, fontWeight: '600', color: Colors.primary },

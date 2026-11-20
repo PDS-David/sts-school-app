@@ -1,0 +1,22 @@
+-- HELD — DO NOT MOVE INTO backend/migrations/ UNTIL THE OWNER APPROVES.
+--
+-- Global, case- and whitespace-insensitive username uniqueness.
+-- Prerequisite: the read-only production duplicate check returned zero rows,
+-- or every reported duplicate has been resolved by the owner.
+--
+--   PGOPTIONS='-c default_transaction_read_only=on' psql "$DATABASE_URL" -c "SELECT lower(btrim(username)) AS u, count(*), array_agg(role||':'||coalesce(school_code,'-')) FROM users GROUP BY 1 HAVING count(*)>1;"
+--
+-- The normalisation expression must stay identical everywhere:
+--   SQL index / duplicate check : lower(btrim(username))
+--   login lookup (backend)      : lower(btrim(username)) = normalizeUsername(input)
+--   normalizeUsername()         : strip leading/trailing spaces, then toLowerCase()
+--
+-- This file never renames an account. If duplicates exist, the CREATE below
+-- fails and rolls back, leaving the existing indexes in place.
+
+CREATE UNIQUE INDEX IF NOT EXISTS users_username_global_norm_uq
+  ON users (lower(btrim(username)));
+
+-- Only after the new index exists and is verified should the two older partial
+-- indexes (users_username_global_non_teacher_uq, users_teacher_school_username_uq)
+-- be considered for removal — as a separate, separately approved step.

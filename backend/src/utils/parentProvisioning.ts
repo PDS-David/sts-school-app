@@ -88,8 +88,8 @@ export async function findOrCreateParent(
   const temporary_password = generateTempPassword();
   const hash = await bcrypt.hash(temporary_password, 10);
   const { rows } = await client.query(
-    `INSERT INTO users(username,password_hash,role,full_name,school_code,phone,email,must_change_pw)
-     VALUES($1,$2,'parent',$3,$4,$5,$6,TRUE) RETURNING id,username`,
+    `INSERT INTO users(username,password_hash,role,full_name,school_code,phone,email,must_change_pw,must_set_pin)
+     VALUES($1,$2,'parent',$3,$4,$5,$6,TRUE,TRUE) RETURNING id,username`,
     [username, hash, params.parent_name ?? null, params.school_code, phone, params.parent_email ?? null],
   );
 

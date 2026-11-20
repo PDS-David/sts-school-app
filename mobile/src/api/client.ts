@@ -23,7 +23,9 @@ function resourcePrefix(url: string): string {
   return `/${parts[0]}`;
 }
 import { buildOfflineCacheUrl } from './offlineCacheScope';
-import { emitForcedLogout } from './authEvents';
+import { emitForcedLogout, emitPinSetupRequired } from './authEvents';
+import { isPinSetupRequiredResponse } from './authPhase';
+import { isPinCredentialRejection } from './pinSetup';
 import { getSecureItem, setSecureItem, deleteSecureItems, migrateLegacyTokens } from './secureTokenStorage';
 import { resolveApiBaseUrl } from '../../config/apiTarget';
 import { shouldEnqueueOfflineWrite, isAccountSwitchCancellation } from '../offline/replayPolicy';
@@ -166,14 +168,34 @@ api.interceptors.response.use(
     const requestNamespace = (original as any)?._cacheNamespace ?? getCacheNamespace();
     const method = (original?.method ?? 'get').toLowerCase();
 
+    // The server refuses every protected route until a student/parent/teacher
+    // has set their six-digit PIN. Tell AuthContext so the mandatory setup
+    // screen re-engages even if local state was stale; the error itself still
+    // propagates to the caller unchanged.
+    if (isPinSetupRequiredResponse(error.response?.status, error.response?.data)) {
+      emitPinSetupRequired();
+    }
+
     // ── Existing auth-refresh flow (server reachable, just expired token) ──────
-    if (error.response?.status === 401 && !original._retry) {
+    // A 401 from POST /auth/pin that names the CURRENT CREDENTIAL as wrong is
+    // not an expired token: refreshing and replaying it would count a second
+    // throttle attempt and rotate the session for nothing (see pinSetup.ts).
+    if (
+      error.response?.status === 401 && !original._retry &&
+      !isPinCredentialRejection(original.url, error.response.status, error.response.data)
+    ) {
       original._retry = true;
       try {
         const refresh = await getSecureItem('refresh_token');
         if (!refresh) throw { __noRefreshToken: true };
         const { data } = await axios.post(`${BASE_URL}/auth/refresh`, { refresh_token: refresh });
         await setSecureItem('access_token', data.access_token);
+        // Compatibility with Prompt 2A: session refresh tokens rotate on every
+        // use, so the new one must replace the stored one or the next refresh
+        // would present a spent token. Legacy responses carry none; keep the old.
+        if (typeof data.refresh_token === 'string' && data.refresh_token) {
+          await setSecureItem('refresh_token', data.refresh_token);
+        }
         original.headers.Authorization = `Bearer ${data.access_token}`;
         return api(original);
       } catch (refreshErr: any) {

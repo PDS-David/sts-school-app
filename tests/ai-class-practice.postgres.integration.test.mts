@@ -31,7 +31,8 @@ test('class-practice API enforces ownership and serializes concurrent submission
         id UUID PRIMARY KEY,username TEXT,role TEXT,school_code TEXT,assigned_class TEXT,
         assigned_class_names TEXT[] DEFAULT '{}',can_manage_all_schools BOOLEAN DEFAULT false,
         is_active BOOLEAN DEFAULT true,access_expires_at TIMESTAMPTZ,revocation_reason TEXT,
-        pending_admin_review BOOLEAN DEFAULT false)`);
+        pending_admin_review BOOLEAN DEFAULT false,must_set_pin BOOLEAN DEFAULT false,must_change_pw BOOLEAN DEFAULT false)`);
+      await client.query('CREATE TABLE auth_sessions(id UUID PRIMARY KEY,user_id UUID NOT NULL,revoked_at TIMESTAMPTZ,expires_at TIMESTAMPTZ)');
       await client.query('CREATE TABLE students(id UUID PRIMARY KEY,user_id UUID,school_code TEXT,class_name TEXT,deleted_at TIMESTAMPTZ)');
       await client.query('CREATE TABLE teacher_subjects(user_id UUID,subject_id INTEGER)');
       await client.query('CREATE TABLE topics(id INTEGER PRIMARY KEY,title TEXT,subject_id INTEGER)');

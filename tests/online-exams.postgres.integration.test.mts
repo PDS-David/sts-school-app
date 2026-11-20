@@ -32,7 +32,10 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
         id UUID PRIMARY KEY,username TEXT,role TEXT,school_code TEXT,assigned_class TEXT,
         assigned_class_names TEXT[] DEFAULT '{}',can_manage_all_schools BOOLEAN DEFAULT false,
         is_active BOOLEAN DEFAULT true,access_expires_at TIMESTAMPTZ,revocation_reason TEXT,
-        pending_admin_review BOOLEAN DEFAULT false)`);
+        pending_admin_review BOOLEAN DEFAULT false,
+        password_hash TEXT,must_change_pw BOOLEAN DEFAULT FALSE)`);
+      // password_hash and must_change_pw mirror the real baseline users table: migrations 0019/0020
+      // and requireAuth read them. must_set_pin, pin_hash_version and pin_set_at come from 0019 below.
       await client.query('CREATE TABLE students(id UUID PRIMARY KEY,user_id UUID,school_code TEXT,class_name TEXT,deleted_at TIMESTAMPTZ)');
       await client.query('CREATE TABLE topics(id INTEGER PRIMARY KEY,school_code TEXT,class_name TEXT,subject_id INTEGER,title TEXT,term_id INTEGER,order_index INTEGER,description TEXT,summary TEXT)');
       await client.query('CREATE TABLE subjects(id INTEGER PRIMARY KEY,name TEXT,school_code TEXT)');
@@ -56,6 +59,8 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       const reviewSql=await readFile(new URL('../backend/migrations/0016_question_bank_subject_reviews.sql',import.meta.url),'utf8');
       const provenanceSql=await readFile(new URL('../backend/migrations/0017_pilot_question_provenance_locators.sql',import.meta.url),'utf8');
       const claimSql=await readFile(new URL('../backend/migrations/0018_online_exam_submission_claim_fence.sql',import.meta.url),'utf8');
+      const pinAuthSql=await readFile(new URL('../backend/migrations/0019_pin_auth_sessions.sql',import.meta.url),'utf8');
+      const pinGateSql=await readFile(new URL('../backend/migrations/0020_pin_gate_only_for_admin_issued_credentials.sql',import.meta.url),'utf8');
       await client.query(questionBankSql);
       await client.query(classPracticeSql);
       await client.query(examSql);
@@ -63,6 +68,13 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       await client.query(reviewSql);
       await client.query(provenanceSql);
       await client.query(claimSql);
+      // requireAuth now reads must_set_pin/must_change_pw and joins auth_sessions on every request.
+      await client.query(pinAuthSql);
+      await client.query(pinGateSql);
+      const {rows: authTables}=await client.query(`SELECT to_regclass('auth_sessions') AS sessions,to_regclass('auth_login_lanes') AS lanes,to_regclass('auth_login_attempts') AS attempts`);
+      assert.ok(authTables[0].sessions&&authTables[0].lanes&&authTables[0].attempts,'0019 authentication tables exist in the fixture schema');
+      const {rows: pinUserColumns}=await client.query("SELECT column_name FROM information_schema.columns WHERE table_schema=$1 AND table_name='users' AND column_name IN ('must_set_pin','must_change_pw','pin_hash_version','pin_set_at')",[schema]);
+      assert.deepEqual(pinUserColumns.map((row:any)=>row.column_name).sort(),['must_change_pw','must_set_pin','pin_hash_version','pin_set_at']);
       const {rows: claimColumn}=await client.query("SELECT column_name FROM information_schema.columns WHERE table_schema=$1 AND table_name='online_exam_attempts' AND column_name='submission_claim_token'",[schema]);
       assert.deepEqual(claimColumn.map((row:any)=>row.column_name),['submission_claim_token']);
       const {rows: reviewTable}=await client.query(`SELECT to_regclass('question_bank_question_reviews') AS table_name`);

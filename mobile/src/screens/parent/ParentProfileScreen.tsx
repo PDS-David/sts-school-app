@@ -15,7 +15,7 @@ export default function ParentProfileScreen({ navigation }: any) {
   const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string; onPress?: () => void }[] = [
     { icon: 'people-outline', label: 'Children', sub: `${wards.length} linked to your account`, onPress: () => navigation.getParent()?.navigate('HomeTab') },
     { icon: 'card-outline', label: 'Payments', sub: 'Fees and invoices', onPress: () => navigation.navigate('Finance') },
-    { icon: 'settings-outline', label: 'Settings', sub: 'Change password and preferences', onPress: () => navigation.navigate('ChangePassword') },
+    { icon: 'settings-outline', label: 'Change PIN', sub: 'Change your six-digit PIN', onPress: () => navigation.navigate('ChangePin') },
     { icon: 'help-circle-outline', label: 'Security Question', sub: 'Used to reset your password if you forget it', onPress: () => navigation.navigate('SecurityQuestionSetup') },
   ];
 

@@ -27,7 +27,15 @@ test('free launch defers student expiry/review gates but retains identity safegu
   const auth = read('backend/src/middleware/auth.ts');
   assert.match(auth, /readLearningAccessPolicy\(\)/);
   assert.match(auth, /accessPolicy\.freeLaunchMode && dbUser\.role === 'student'\) && dbUser\.access_expires_at/);
-  assert.match(auth, /accessPolicy\.freeLaunchMode && dbUser\.role === 'student'\) && dbUser\.pending_admin_review/);
+  // Pending-approval gate. Prompt 2A moved this into `effectivelyPending`; assert the
+  // behaviour (free-launch students exempt, everyone else still blocked, and only the
+  // explicit allowlist reachable) rather than one spelling of the expression.
+  assert.match(
+    auth,
+    /const effectivelyPending = !\(accessPolicy\.freeLaunchMode && dbUser\.role === 'student'\) && !!dbUser\.pending_admin_review;/,
+  );
+  assert.match(auth, /if \(effectivelyPending && !PENDING_ALLOWED\.has\(key\)\) \{\s*return res\.status\(403\)\.json\(\{ error: PENDING_APPROVAL_MESSAGE, code: 'PENDING_APPROVAL' \}\);/);
+  assert.match(auth, /const PENDING_ALLOWED = new Set\(\['GET \/auth\/me', 'POST \/auth\/logout'\]\);/);
   assert.match(auth, /if \(dbUser\.student_deleted\)/);
   assert.match(auth, /if \(!dbUser \|\| !dbUser\.is_active\)/);
 });

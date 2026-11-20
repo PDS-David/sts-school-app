@@ -37,5 +37,6 @@ export function hydrateAuthUser(
     assigned_class: current.assigned_class,
     assigned_subject_ids: [...current.assigned_subject_ids],
     assigned_class_names: [...(current.assigned_class_names ?? [])],
+    ...(verifiedTokenUser.sid ? { sid: verifiedTokenUser.sid } : {}),
   };
 }

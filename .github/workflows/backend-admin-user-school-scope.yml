@@ -7,6 +7,7 @@ on:
     branches: [master, 'agent/**']
     paths:
       - "backend/src/routes/admin.ts"
+      - "backend/src/utils/pin.ts"
       - "backend/migrations/**"
       - "tests/backend-admin-user-school-scope.integration.test.mts"
       - ".github/workflows/backend-admin-user-school-scope.yml"
@@ -40,6 +41,8 @@ jobs:
     env:
       DATABASE_URL: postgres://postgres:postgres@localhost:5432/sts_test
       NODE_ENV: test
+      # Test-only placeholder so administrator PIN resets can hash. Not a real secret.
+      PIN_PEPPER: ci-test-only-pepper-not-a-secret-0123456789abcdef
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
