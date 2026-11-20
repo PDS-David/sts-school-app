@@ -184,7 +184,7 @@ jobs:
               sys.exit(1)
 
           if added:
-              print("New tables created during migration (not included in the pre-existing-table row-count comparison): " + ", ".join(added))
+              print("Tables absent from the initial snapshot (not included in the pre-existing-table row-count comparison): " + ", ".join(added))
           print("All pre-existing application table row counts are unchanged.")
           PY
           verification_sql="DO \$\$ BEGIN
