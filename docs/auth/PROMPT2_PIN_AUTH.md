@@ -73,3 +73,26 @@ Scope: backend only. Mobile is Prompt 2B. Operations Admin, Finance Admin permis
 ## Tests
 `node --import tsx --test --test-concurrency=1 tests/backend-pin-auth.integration.test.mts`
 Needs `DATABASE_URL`, `DATABASE_SSL=false`, `JWT_SECRET`, `JWT_REFRESH_SECRET`.
+
+## Transparent PIN rehash (existing users)
+
+Existing students, parents and teachers keep their six-digit PIN. It is stored as a
+legacy bcrypt hash (`pin_hash_version IS NULL`) and verifies as before. After a
+**successful** sign-in the server re-hashes that same PIN with the approved scheme
+(`bcrypt(HMAC-SHA256(PIN_PEPPER, "sts-pin:v1:"+pin))`, `pin_hash_version = 1`).
+Nobody is asked to change anything.
+
+- Implemented in `backend/src/utils/pinRehash.ts`, called from `POST /auth/login` only after the
+  credential is proven and the account is active.
+- Compare-and-swap `UPDATE` on the exact verified hash: a concurrent PIN change, activation or
+  administrator reset wins and nothing is overwritten.
+- Best effort and non-throwing: a missing `PIN_PEPPER` or a database error leaves the old hash in
+  place. No unpeppered fallback, no failed attempt recorded, no secrets logged.
+- Skipped for administrator-issued temporary credentials (`must_set_pin` / `must_change_pw`),
+  for `admin` and `finance_admin`, and for non-six-digit legacy passwords.
+- `pin_set_at` is written in the same statement. The `users_enforce_pin_state` trigger otherwise
+  treats a `password_hash` write as a legacy credential write and sets `must_set_pin = TRUE`.
+  Consequence: migration 0020's "never touched" test (`pin_set_at IS NULL`) no longer matches
+  rehashed accounts. 0020 runs once, before this code is deployed, so this only matters if it is re-run.
+- Deployment: `PIN_PEPPER` must be set on Render first. Until it is, sign-in still works and
+  rehash is simply skipped.

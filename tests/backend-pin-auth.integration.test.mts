@@ -299,11 +299,12 @@ test('existing student/parent/teacher with a six-digit PIN sign in straight to t
       assert.equal(other.status, 200);
       assert.equal(other.json.must_set_pin, false);
       assert.equal((await get(base, '/protected', other.json.access_token)).status, 200);
-      // Their stored credential is untouched by signing in.
-      const { rows } = await query('SELECT must_set_pin, pin_hash_version, pin_set_at FROM users WHERE username=$1', [name]);
+      // Signing in never asks them to change anything. The server transparently
+      // upgrades the stored hash to the peppered scheme; the PIN itself is the
+      // same and still works (see the dedicated rehash tests below).
+      const { rows } = await query('SELECT must_set_pin, pin_hash_version FROM users WHERE username=$1', [name]);
       assert.equal(rows[0].must_set_pin, false);
-      assert.equal(rows[0].pin_hash_version, null);
-      assert.equal(rows[0].pin_set_at, null);
+      assert.equal(rows[0].pin_hash_version, 1);
     }
   } finally { await stop(server); }
 });
@@ -909,5 +910,278 @@ test('invalid device ids are ignored (cannot be used to dodge the limiter)', asy
     const statuses: number[] = [];
     for (let i = 0; i < 6; i++) statuses.push((await post(base, '/auth/login', { username: name, pin: '999888' }, { 'x-device-id': `x${i}` })).status);
     assert.deepEqual(statuses, [401, 401, 401, 401, 401, 429], 'junk ids all fall into the same IP-derived lane');
+  } finally { await stop(server); }
+});
+
+// ── Transparent PIN rehash (legacy bcrypt → peppered) ────────────────────────
+// Existing users keep their PIN. A correct sign-in upgrades the stored hash; nothing
+// else about the account, its sessions or its permissions changes.
+
+import { isRehashEligible, rehashLegacyPinAfterLogin } from '../backend/src/utils/pinRehash.js';
+
+async function credRow(name: string) {
+  const { rows } = await query(
+    'SELECT id, password_hash, pin_hash_version, pin_set_at, must_set_pin, must_change_pw, role FROM users WHERE username=$1', [name],
+  );
+  return rows[0];
+}
+
+test('rehash: an existing PIN stored as a legacy bcrypt hash still verifies exactly as before', async () => {
+  const hash = await bcrypt.hash(EXISTING_PIN, 4);
+  assert.equal(await verifyCredential(EXISTING_PIN, hash, null), true);
+  assert.equal(await verifyCredential('730519', hash, null), false);
+  assert.equal(await bcrypt.compare(EXISTING_PIN, hash), true, 'legacy hash is plain bcrypt of the PIN');
+});
+
+test('rehash: successful sign-in upgrades the hash; PIN unchanged, no PIN change forced, not flagged', async () => {
+  const { server, base } = await startServer();
+  try {
+    for (const role of ['student', 'parent', 'teacher']) {
+      const name = uname(`rh-${role}`);
+      await makeUser(name, { role, secret: EXISTING_PIN });
+      const before = await credRow(name);
+      assert.equal(before.pin_hash_version, null);
+
+      const r = await login(base, name, EXISTING_PIN);
+      assert.equal(r.status, 200, role);
+      assert.equal(r.json.must_set_pin, false, `${role}: no forced PIN change`);
+      assert.equal((await get(base, '/protected', r.json.access_token)).status, 200);
+
+      const after = await credRow(name);
+      assert.equal(after.pin_hash_version, 1, `${role}: now the peppered scheme`);
+      assert.notEqual(after.password_hash, before.password_hash, `${role}: old hash replaced`);
+      assert.equal(after.must_set_pin, false, `${role}: the credential-write trigger must not flag a rehash`);
+      assert.ok(after.pin_set_at, 'pin_set_at moves with the hash');
+      assert.equal(await verifyCredential(EXISTING_PIN, after.password_hash, 1), true, 'same PIN verifies against the new hash');
+      assert.equal(await bcrypt.compare(EXISTING_PIN, after.password_hash), false, 'new hash is not plain bcrypt of the PIN');
+      assert.ok(!after.password_hash.includes(EXISTING_PIN));
+    }
+  } finally { await stop(server); }
+});
+
+test('rehash: repeated sign-ins after the upgrade keep working, on any device, and do not rewrite the hash again', async () => {
+  const { server, base } = await startServer();
+  try {
+    const name = uname('rh-repeat');
+    await makeUser(name, { secret: EXISTING_PIN });
+    assert.equal((await login(base, name, EXISTING_PIN)).status, 200);
+    const first = await credRow(name);
+    assert.equal(first.pin_hash_version, 1);
+    for (let i = 0; i < 3; i++) {
+      const r = await login(base, name, EXISTING_PIN, {}, device());
+      assert.equal(r.status, 200);
+      assert.equal(r.json.must_set_pin, false);
+      assert.equal((await get(base, '/protected', r.json.access_token)).status, 200);
+    }
+    const last = await credRow(name);
+    assert.equal(last.password_hash, first.password_hash, 'already peppered: nothing further is written');
+    assert.equal(String(last.pin_set_at), String(first.pin_set_at));
+    assert.equal(last.must_set_pin, false);
+  } finally { await stop(server); }
+});
+
+test('rehash: a failed authentication never rehashes (wrong PIN, wrong-format PIN, unknown user)', async () => {
+  const { server, base } = await startServer();
+  try {
+    const name = uname('rh-fail');
+    await makeUser(name, { secret: EXISTING_PIN });
+    const before = await credRow(name);
+    for (const bad of ['730519', '000000', '12345', EXISTING_PIN + '0', 'abcdef']) {
+      const r = await login(base, name, bad, {}, device());
+      assert.equal(r.status, 401, bad);
+    }
+    assert.equal((await login(base, uname('ghost'), EXISTING_PIN)).status, 401);
+    const after = await credRow(name);
+    assert.equal(after.password_hash, before.password_hash, 'hash untouched by failures');
+    assert.equal(after.pin_hash_version, null);
+    assert.equal(after.pin_set_at, null);
+    assert.equal(after.must_set_pin, false);
+  } finally { await stop(server); }
+});
+
+test('rehash: the write is a compare-and-swap and cannot overwrite a concurrently changed credential', async () => {
+  const name = uname('rh-race');
+  const id = await makeUser(name, { secret: EXISTING_PIN });
+  const stale = await credRow(name); // what the login handler verified against
+
+  // Another writer (e.g. the user changing their PIN, or an administrator reset)
+  // lands between verification and the rehash.
+  const theirs = await hashPin('582193');
+  await query('UPDATE users SET password_hash=$1, pin_hash_version=1, pin_set_at=clock_timestamp() WHERE id=$2', [theirs, id]);
+
+  assert.equal(await rehashLegacyPinAfterLogin(stale, EXISTING_PIN), 'superseded');
+  const after = await credRow(name);
+  assert.equal(after.password_hash, theirs, "the other writer's credential is untouched");
+  assert.equal(await verifyCredential('582193', after.password_hash, 1), true);
+  assert.equal(await verifyCredential(EXISTING_PIN, after.password_hash, 1), false, 'old PIN must not be resurrected');
+
+  // Same, for an administrator reset that re-flags the account for PIN setup.
+  const name2 = uname('rh-race-admin');
+  const id2 = await makeUser(name2, { secret: EXISTING_PIN });
+  const stale2 = await credRow(name2);
+  const temp = await hashPin(generateTemporaryPin());
+  await query('UPDATE users SET password_hash=$1, pin_hash_version=1, pin_set_at=clock_timestamp(), must_set_pin=TRUE WHERE id=$2', [temp, id2]);
+  assert.equal(await rehashLegacyPinAfterLogin(stale2, EXISTING_PIN), 'superseded');
+  const a2 = await credRow(name2);
+  assert.equal(a2.password_hash, temp);
+  assert.equal(a2.must_set_pin, true, 'the administrator-issued requirement survives');
+});
+
+test('rehash: two simultaneous sign-ins both succeed and exactly one rewrite lands', async () => {
+  const { server, base } = await startServer();
+  try {
+    const name = uname('rh-parallel');
+    await makeUser(name, { secret: EXISTING_PIN });
+    const [a, b] = await Promise.all([login(base, name, EXISTING_PIN, {}, device()), login(base, name, EXISTING_PIN, {}, device())]);
+    assert.equal(a.status, 200);
+    assert.equal(b.status, 200);
+    const row = await credRow(name);
+    assert.equal(row.pin_hash_version, 1);
+    assert.equal(row.must_set_pin, false);
+    assert.equal(await verifyCredential(EXISTING_PIN, row.password_hash, 1), true);
+    assert.equal((await login(base, name, EXISTING_PIN, {}, device())).status, 200);
+  } finally { await stop(server); }
+});
+
+test('rehash: missing PIN_PEPPER fails safe — sign-in still works, nothing is written, no unpeppered fallback, no lockout, no leak', async () => {
+  const { server, base } = await startServer();
+  const name = uname('rh-nopepper');
+  await makeUser(name, { secret: EXISTING_PIN });
+  const before = await credRow(name);
+  const saved = process.env.PIN_PEPPER;
+  const logged: string[] = [];
+  const realErr = console.error, realWarn = console.warn, realLog = console.log;
+  const sink = (...a: unknown[]) => { logged.push(a.map((x) => (typeof x === 'string' ? x : JSON.stringify(x))).join(' ')); };
+  try {
+    delete process.env.PIN_PEPPER;
+    console.error = sink; console.warn = sink; console.log = sink;
+    for (let i = 0; i < 3; i++) {
+      const r = await login(base, name, EXISTING_PIN, {}, device());
+      assert.equal(r.status, 200, 'an existing legacy PIN still signs in while the pepper is unavailable');
+      assert.equal(r.json.must_set_pin, false);
+      assert.ok(!JSON.stringify(r.json).includes('PEPPER'));
+    }
+  } finally {
+    console.error = realErr; console.warn = realWarn; console.log = realLog;
+    process.env.PIN_PEPPER = saved;
+    await stop(server);
+  }
+  const after = await credRow(name);
+  assert.equal(after.password_hash, before.password_hash, 'old hash left in place');
+  assert.equal(after.pin_hash_version, null);
+  assert.equal(after.must_set_pin, false);
+  const { rows } = await query('SELECT count(*)::int AS n FROM auth_login_attempts WHERE account_key=$1', [accountKeyFor(name)]);
+  assert.equal(rows[0].n, 0, 'a missing pepper is never counted against the user');
+  const text = logged.join('\n');
+  assert.ok(!text.includes(EXISTING_PIN), 'PIN must not be logged');
+  assert.ok(!text.includes(before.password_hash), 'hash must not be logged');
+  assert.ok(!text.includes(String(saved)), 'pepper must not be logged');
+
+  // Once the pepper is back the next sign-in upgrades the hash.
+  const s2 = await startServer();
+  try {
+    assert.equal((await login(s2.base, name, EXISTING_PIN)).status, 200);
+    assert.equal((await credRow(name)).pin_hash_version, 1);
+  } finally { await stop(s2.server); }
+});
+
+test('rehash: a database failure during the upgrade never fails the sign-in and writes nothing', async () => {
+  const name = uname('rh-dberr');
+  await makeUser(name, { secret: EXISTING_PIN });
+  const cand = await credRow(name);
+  const realErr = console.error;
+  const logged: string[] = [];
+  console.error = (...a: unknown[]) => { logged.push(a.map(String).join(' ')); };
+  try {
+    // A candidate whose id is not a valid uuid makes the UPDATE itself throw.
+    const outcome = await rehashLegacyPinAfterLogin({ ...cand, id: 'not-a-uuid' }, EXISTING_PIN);
+    assert.equal(outcome, 'unavailable');
+  } finally { console.error = realErr; }
+  assert.equal((await credRow(name)).password_hash, cand.password_hash);
+  assert.ok(!logged.join('\n').includes(EXISTING_PIN));
+});
+
+test('rehash: never applies to administrator-issued temporary credentials or to administrator roles', async () => {
+  const { server, base } = await startServer();
+  try {
+    // Temporary credential awaiting PIN setup (must_set_pin) — legacy format, six digits.
+    const tmp = uname('rh-tmp');
+    await makeUser(tmp, { secret: '615284', mustSetPin: true });
+    const t1 = await login(base, tmp, '615284');
+    assert.equal(t1.status, 200);
+    assert.equal(t1.json.must_set_pin, true, 'still must establish a permanent PIN');
+    assert.equal((await get(base, '/protected', t1.json.access_token)).status, 403, 'still blocked from the dashboard');
+    const r1 = await credRow(tmp);
+    assert.equal(r1.pin_hash_version, null, 'temporary credential left exactly as issued');
+    assert.equal(r1.must_set_pin, true);
+
+    // must_change_pw = TRUE keeps its requirement and is not rehashed.
+    const cpw = uname('rh-cpw');
+    const cid = await makeUser(cpw, { secret: '615284' });
+    await query('UPDATE users SET must_change_pw=TRUE, must_set_pin=TRUE, pin_set_at=clock_timestamp() WHERE id=$1', [cid]);
+    const beforeCpw = await credRow(cpw);
+    assert.equal((await login(base, cpw, '615284')).json.must_set_pin, true);
+    const afterCpw = await credRow(cpw);
+    assert.equal(afterCpw.password_hash, beforeCpw.password_hash);
+    assert.equal(afterCpw.pin_hash_version, null);
+
+    // Administrators: unchanged, even if their secret happens to be six digits.
+    for (const role of ['admin', 'finance_admin']) {
+      const a = uname(`rh-${role}`);
+      await makeUser(a, { role, secret: '615284', school: null });
+      const b = await credRow(a);
+      const r = await login(base, a, '615284');
+      assert.equal(r.status, 200, role);
+      const af = await credRow(a);
+      assert.equal(af.password_hash, b.password_hash, `${role} credential untouched`);
+      assert.equal(af.pin_hash_version, null, role);
+      assert.equal(af.must_set_pin, false, role);
+    }
+    assert.equal(isRehashEligible({ id: 'x', role: 'admin', password_hash: 'h', pin_hash_version: null }, '615284'), false);
+    assert.equal(isRehashEligible({ id: 'x', role: 'finance_admin', password_hash: 'h', pin_hash_version: null }, '615284'), false);
+  } finally { await stop(server); }
+});
+
+test('rehash: only a six-digit PIN is upgraded; any other legacy credential keeps working untouched', async () => {
+  const { server, base } = await startServer();
+  try {
+    const name = uname('rh-nonpin');
+    await makeUser(name, { secret: LEGACY }); // alphanumeric legacy password
+    const before = await credRow(name);
+    assert.equal((await login(base, name, LEGACY)).status, 200);
+    const after = await credRow(name);
+    assert.equal(after.password_hash, before.password_hash);
+    assert.equal(after.pin_hash_version, null);
+    assert.equal(isRehashEligible({ id: 'x', role: 'student', password_hash: 'h', pin_hash_version: 1 }, EXISTING_PIN), false, 'already peppered');
+    assert.equal(isRehashEligible({ id: 'x', role: 'student', password_hash: 'h', pin_hash_version: null }, EXISTING_PIN), true);
+  } finally { await stop(server); }
+});
+
+test('rehash: existing sessions stay valid and role/permissions are unchanged', async () => {
+  const { server, base } = await startServer();
+  try {
+    const name = uname('rh-session');
+    const id = await makeUser(name, { role: 'teacher', secret: EXISTING_PIN });
+    const saved = process.env.PIN_PEPPER;
+    let tokenA = '';
+    try {
+      delete process.env.PIN_PEPPER; // first sign-in cannot rehash; it just creates a session
+      const a = await login(base, name, EXISTING_PIN, {}, device());
+      assert.equal(a.status, 200);
+      tokenA = a.json.access_token;
+    } finally { process.env.PIN_PEPPER = saved; }
+    assert.equal((await credRow(name)).pin_hash_version, null);
+
+    const b = await login(base, name, EXISTING_PIN, {}, device()); // this one rehashes
+    assert.equal(b.status, 200);
+    assert.equal((await credRow(name)).pin_hash_version, 1);
+
+    assert.equal((await get(base, '/protected', tokenA)).status, 200, 'the earlier session survives the rehash');
+    assert.equal((await get(base, '/protected', b.json.access_token)).status, 200);
+    const { rows } = await query('SELECT count(*)::int AS n FROM auth_sessions WHERE user_id=$1 AND revoked_at IS NULL', [id]);
+    assert.equal(rows[0].n, 2, 'no session was revoked');
+    assert.equal(b.json.user.role, 'teacher');
+    const me = await credRow(name);
+    assert.equal(me.role, 'teacher');
   } finally { await stop(server); }
 });

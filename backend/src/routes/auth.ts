@@ -9,6 +9,7 @@ import { readLearningAccessPolicy, requireAuth } from '../middleware/auth.js';
 import { audit, auditInTransaction } from '../utils/audit.js';
 import { accountKeyFor, normalizeUsername } from '../utils/usernames.js';
 import { PIN_HASH_VERSION, PinConfigError, burnDummyVerification, checkPin, hashPin, verifyCredential } from '../utils/pin.js';
+import { rehashLegacyPinAfterLogin } from '../utils/pinRehash.js';
 import { recordLoginSuccess, reserveLoginAttempt, validDeviceId } from '../utils/loginThrottle.js';
 import {
   REFRESH_PREFIX, createSession, findLegacySession, isKnownDevice, revokeSession, revokeUserSessions, rotateSession, sha256Hex,
@@ -170,6 +171,13 @@ router.post('/login', loginIpFailureLimiter, async (req, res) => {
   }
   const ended = accessEnded(user);
   if (ended) return res.status(403).json({ error: ended });
+
+  // Transparent upgrade of an existing PIN from the legacy bcrypt hash to the
+  // peppered scheme. Runs only here, i.e. after the credential is proven, the
+  // account is unique, active and not expired. It never throws, never changes
+  // the PIN, never blocks or fails this sign-in, and skips temporary credentials
+  // and administrator roles (see utils/pinRehash.ts).
+  await rehashLegacyPinAfterLogin(user, secret);
 
   const accessPolicy = await readLearningAccessPolicy();
   const pending = !!user.pending_admin_review && !(user.role === 'student' && accessPolicy.freeLaunchMode);
