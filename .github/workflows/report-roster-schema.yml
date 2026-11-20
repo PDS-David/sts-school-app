@@ -11,6 +11,7 @@ on:
       - "tests/report-roster-schema.test.mts"
       - "tests/report-roster-backfill.integration.test.mts"
       - ".github/workflows/production-db-migrations.yml"
+      - "tests/production-db-migration-verifier.test.cjs"
       - ".github/workflows/report-roster-schema.yml"
 
 permissions:
@@ -52,6 +53,8 @@ jobs:
           cache: npm
       - name: Install locked workspace dependencies
         run: npm ci --ignore-scripts
+      - name: Test production migration roster-verifier provenance regression
+        run: node --test tests/production-db-migration-verifier.test.cjs
       - name: Bootstrap disposable PostgreSQL 18 schema
         run: npm run db:bootstrap --workspace=backend
       - name: Apply numbered migrations
