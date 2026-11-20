@@ -110,6 +110,17 @@ jobs:
       - name: Install repository dependencies
         run: npm ci --include=dev
 
+      # Same PIN_PEPPER rule the server and `npm start` enforce (backend/src/db/preflightStart.ts).
+      # Runs before the first database connection and before any baseline adoption or migration;
+      # a non-zero exit fails the job, so every later step is skipped. Opens no database connection.
+      # The secret is scoped to this step only and is never echoed; GitHub also masks it in logs.
+      - name: PIN_PEPPER startup preflight (must pass before any database change)
+        if: inputs.operation == 'apply'
+        env:
+          NODE_ENV: production
+          PIN_PEPPER: ${{ secrets.PIN_PEPPER }}
+        run: npm run start:preflight --workspace backend
+
       - name: Capture pre-migration row counts
         id: snapshot
         shell: bash
