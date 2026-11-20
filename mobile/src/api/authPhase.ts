@@ -93,3 +93,19 @@ export const PIN_SETUP_REQUIRED_CODE = 'PIN_SETUP_REQUIRED';
 export function isPinSetupRequiredResponse(status: number | undefined, data: unknown): boolean {
   return status === 403 && (data as any)?.code === PIN_SETUP_REQUIRED_CODE;
 }
+
+/** Roles that sign in with a six-digit PIN (mirrors PIN_ROLES in the backend). */
+export function isPinRole(role: unknown): boolean {
+  return role === 'student' || role === 'parent' || role === 'teacher';
+}
+
+/**
+ * Read the server's answer from a GET /auth/me response. A response served from
+ * the offline cache (client.ts marks it `fromCache`) is NOT the server: treat it
+ * as unreachable so stale cached state can never clear or set the requirement.
+ */
+export function serverPinStateFromMe(res: { data?: any; fromCache?: boolean } | null | undefined): ServerPinState {
+  if (!res || res.fromCache) return { reachable: false };
+  const v = res.data?.must_set_pin;
+  return typeof v === 'boolean' ? { reachable: true, mustSetPin: v } : { reachable: false };
+}

@@ -23,3 +23,22 @@ export function onForcedLogout(listener: Listener): () => void {
 export function emitForcedLogout(message?: string): void {
   for (const l of listeners) l(message);
 }
+
+// ── PIN setup required ───────────────────────────────────────────────────────
+// The server refuses every protected route with 403 { code: 'PIN_SETUP_REQUIRED' }
+// while a student/parent/teacher still owes a six-digit PIN. client.ts emits
+// this when it sees that refusal so AuthContext re-engages the mandatory setup
+// screen even if the local state was stale (restored session, token refresh,
+// an administrator forcing a reset while the app was closed).
+
+type PinListener = () => void;
+const pinListeners = new Set<PinListener>();
+
+export function onPinSetupRequired(listener: PinListener): () => void {
+  pinListeners.add(listener);
+  return () => pinListeners.delete(listener);
+}
+
+export function emitPinSetupRequired(): void {
+  for (const l of pinListeners) l();
+}
