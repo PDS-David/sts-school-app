@@ -174,6 +174,12 @@ api.interceptors.response.use(
         if (!refresh) throw { __noRefreshToken: true };
         const { data } = await axios.post(`${BASE_URL}/auth/refresh`, { refresh_token: refresh });
         await setSecureItem('access_token', data.access_token);
+        // Compatibility with Prompt 2A: session refresh tokens rotate on every
+        // use, so the new one must replace the stored one or the next refresh
+        // would present a spent token. Legacy responses carry none; keep the old.
+        if (typeof data.refresh_token === 'string' && data.refresh_token) {
+          await setSecureItem('refresh_token', data.refresh_token);
+        }
         original.headers.Authorization = `Bearer ${data.access_token}`;
         return api(original);
       } catch (refreshErr: any) {

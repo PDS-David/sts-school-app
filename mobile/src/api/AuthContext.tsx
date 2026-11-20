@@ -7,6 +7,8 @@ import { isRestorableUser } from './authSession';
 import { setSecureItem, deleteSecureItems } from './secureTokenStorage';
 import { setCacheNamespace, outboxCount, isOnline } from '../offline';
 import { registerForPushNotifications, unregisterPushToken } from './pushRegistration';
+import { getDeviceId } from './deviceId';
+import type { CredentialMode } from './loginForm';
 
 export type Role = 'student' | 'parent' | 'teacher' | 'admin' | 'finance_admin';
 
@@ -46,7 +48,14 @@ interface AuthState {
   mustChangePw: boolean;
   mustSetSecurityQuestion: boolean;
   loading: boolean;
-  login: (username: string, password: string, school_code?: string) => Promise<{ must_change_pw: boolean; must_set_security_question: boolean }>;
+  // `mode` decides only which request field carries the secret: 'pin' sends
+  // `pin` (students/parents/teachers), 'password' sends `password` (admin and
+  // finance admin keep their existing credentials). The server decides the role.
+  login: (
+    username: string,
+    secret: string,
+    opts?: { mode?: CredentialMode; rememberMe?: boolean; school_code?: string },
+  ) => Promise<{ must_change_pw: boolean; must_set_security_question: boolean; must_set_pin: boolean }>;
   logout: () => Promise<void>;
   changePassword: (oldPw: string, newPw: string) => Promise<void>;
   setSecurityQuestion: (question: string, answer: string) => Promise<void>;
@@ -126,17 +135,29 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
-  const login = async (username: string, password: string, school_code?: string) => {
+  const login = async (
+    username: string,
+    secret: string,
+    opts: { mode?: CredentialMode; rememberMe?: boolean; school_code?: string } = {},
+  ) => {
     // Longer timeout than api.ts's global 15s default specifically for
     // login: this is the one call most likely to be the very first hit on
     // a Render free-tier backend that's spun down from inactivity, which
     // can take up to ~60s to wake — a 15s timeout expiring mid-cold-start
     // looks identical to a real network failure to axios (no `.response`
-    // at all), which is exactly what produced the misleading "No internet
-    // connection" message on a real, working connection (see
-    // LoginScreen.tsx's error handling). Once logged in, every other
-    // request hits an already-awake backend and keeps the normal 15s.
-    const { data } = await api.post('/auth/login', { username, password, school_code }, { timeout: 60000 });
+    // at all). Once logged in, every other request keeps the normal 15s.
+    const mode = opts.mode ?? 'pin';
+    const deviceId = await getDeviceId();
+    const { data } = await api.post(
+      '/auth/login',
+      {
+        username,
+        ...(mode === 'pin' ? { pin: secret } : { password: secret }),
+        remember_me: !!opts.rememberMe,
+        school_code: opts.school_code,
+      },
+      { timeout: 60000, headers: { 'x-device-id': deviceId } },
+    );
     // Tokens go into expo-secure-store (Keychain/Keystore), not AsyncStorage
     // — see secureTokenStorage.ts. `user` itself (id/username/role/school_code,
     // no credential) is fine in plain AsyncStorage as before.
@@ -154,7 +175,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // registration call just means no pushes until the next successful
     // login, not a broken sign-in flow.
     registerForPushNotifications().catch(() => {});
-    return { must_change_pw: data.must_change_pw, must_set_security_question: !!data.must_set_security_question };
+    return {
+      must_change_pw: !!data.must_change_pw,
+      must_set_security_question: !!data.must_set_security_question,
+      must_set_pin: !!data.must_set_pin,
+    };
   };
 
   const logout = async () => {
