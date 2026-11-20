@@ -204,7 +204,23 @@ jobs:
             IF to_regclass('public.report_roster_memberships') IS NULL THEN RAISE EXCEPTION 'report_roster_memberships missing'; END IF;
             IF to_regclass('public.report_roster_membership_events') IS NULL THEN RAISE EXCEPTION 'report_roster_membership_events missing'; END IF;
             IF EXISTS (SELECT 1 FROM public.students s LEFT JOIN public.report_roster_memberships m ON m.student_id=s.id WHERE m.student_id IS NULL) THEN RAISE EXCEPTION 'Existing students are missing report-roster membership backfill'; END IF;
-            IF EXISTS (SELECT 1 FROM public.report_roster_memberships WHERE status='active') THEN RAISE EXCEPTION 'Unverified online student memberships must not be active report-roster members before physical roster reconciliation'; END IF;
+            IF EXISTS (
+              SELECT 1
+                FROM public.report_roster_memberships m
+                LEFT JOIN LATERAL (
+                  SELECT e.event_type, e.details
+                    FROM public.report_roster_membership_events e
+                   WHERE e.student_id = m.student_id
+                   ORDER BY e.occurred_at DESC, e.id DESC
+                   LIMIT 1
+                ) latest ON TRUE
+               WHERE m.status = 'active'
+                 AND (
+                   latest.event_type IS NULL
+                   OR latest.event_type NOT IN ('enrolled','reinstated','retained','class_changed')
+                   OR latest.details->>'source' = '0005_report_roster_memberships_backfill'
+                 )
+            ) THEN RAISE EXCEPTION 'Provisional 0005 backfill or unaudited memberships must not be active report-roster members'; END IF;
             IF (SELECT count(*) FROM pg_indexes WHERE schemaname='public' AND indexname IN ('idx_report_roster_class_active','idx_report_roster_status_updated','idx_report_roster_events_student_time')) <> 3 THEN RAISE EXCEPTION 'Required report-roster indexes missing'; END IF;
             IF (SELECT count(*) FROM pg_trigger WHERE tgrelid='public.report_roster_membership_events'::regclass AND NOT tgisinternal) <> 2 THEN RAISE EXCEPTION 'Report-roster append-only triggers missing'; END IF;
             IF NOT EXISTS (SELECT 1 FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname='public' AND p.proname='report_roster_events_reject_mutation') THEN RAISE EXCEPTION 'Report-roster append-only function missing'; END IF;
@@ -223,7 +239,7 @@ jobs:
             echo '- Migration ledger contains 0001-0006, including the physical report-roster migration and explicit-enrolment safeguard.'
             echo '- Migrations 0019 and 0020 are recorded, the ledger row count equals the number of numbered migration files, and the PIN-auth objects from 0019 exist.'
             echo '- school_events, rate_limit_counters and all nine audit columns exist.'
-            echo '- Report-roster tables, three indexes, append-only function and two triggers exist; no unverified membership is active.'
+            echo '- Report-roster tables, three indexes, append-only function and two triggers exist; no provisional 0005 backfill or unaudited membership is active, while explicitly sourced physical-roster memberships remain valid.'
             echo '- Existing student rows are preserved; provisional 0005 memberships are inactive until the physical source roster is reconciled.'
             echo '- No unvalidated constraints or invalid indexes.'
             echo '- Existing application table row counts are unchanged.'
