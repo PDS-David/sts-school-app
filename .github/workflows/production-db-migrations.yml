@@ -220,7 +220,7 @@ jobs:
                    OR latest.event_type NOT IN ('enrolled','reinstated','retained','class_changed')
                    OR (
                      latest.event_type = 'enrolled'
-                     AND latest.details->>'source' NOT IN (
+                     AND COALESCE(latest.details->>'source', '') NOT IN (
                        'student_class_list_bulk_import',
                        'physical_reporting_student_create',
                        'cross_section_promotion',
