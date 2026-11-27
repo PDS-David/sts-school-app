@@ -82,17 +82,19 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.deepEqual(markingColumns.map((row:any)=>row.column_name).sort(),['marking_confidence','marking_details']);
 
       const school='primary',foreignSchool='secondary',admin=randomUUID(),foreignAdmin=randomUUID(),studentUser=randomUUID(),otherUser=randomUUID(),teacherUser=randomUUID(),unassignedTeacher=randomUUID();
-      const student=randomUUID(),otherStudent=randomUUID(),unrosteredStudent=randomUUID(),unrosteredUser=randomUUID(),ss1Student=randomUUID(),ss1User=randomUUID(),pendingStudent=randomUUID(),pendingUser=randomUUID();
+      const student=randomUUID(),otherStudent=randomUUID(),unrosteredStudent=randomUUID(),unrosteredUser=randomUUID(),ss1Student=randomUUID(),ss1User=randomUUID(),pendingStudent=randomUUID(),pendingUser=randomUUID(),deletedStudent=randomUUID(),deletedUser=randomUUID();
       await client.query('INSERT INTO schools(code) VALUES($1),($2)',[school,foreignSchool]);
       await client.query(`INSERT INTO users(id,username,role,school_code,can_manage_all_schools,is_active) VALUES
         ($1,'test-admin','admin',$3,true,true),($2,'test-student','student',$3,false,true),($4,'secondary-admin','admin',$5,true,true)`,[admin,studentUser,school,foreignAdmin,foreignSchool]);
       await client.query('INSERT INTO users(id,username,role,school_code,is_active) VALUES($1,$2,$3,$4,true),($5,$6,$7,$4,true),($8,$9,$10,$4,true),($11,$12,$13,$4,true),($14,$15,$16,$4,true)',[otherUser,'other-student','student',school,teacherUser,'math-teacher','teacher',unrosteredUser,'unrostered-student','student',ss1User,'ss1-student','student',pendingUser,'pending-student','student']);
       await client.query('UPDATE users SET pending_admin_review=true WHERE id=$1',[pendingUser]);
+      await client.query("INSERT INTO users(id,username,role,school_code,is_active) VALUES($1,'deleted-student','student',$2,true)",[deletedUser,school]);
       await client.query('INSERT INTO users(id,username,role,school_code,is_active) VALUES($1,$2,$3,$4,true)',[unassignedTeacher,'unassigned-teacher','teacher',school]);
       await client.query("INSERT INTO subjects(id,name,school_code) VALUES(1,'Mathematics',$1),(2,'Biology',$1)",[school]);
       await client.query('INSERT INTO teacher_subjects(user_id,subject_id) VALUES($1,1)',[teacherUser]);
       await client.query('INSERT INTO students(id,user_id,school_code,class_name) VALUES($1,$2,$3,$4),($5,$6,$3,$7),($8,$9,$3,$4),($10,$11,$3,$12),($13,$14,$3,$4)',
         [student,studentUser,school,'SS 3',otherStudent,otherUser,'JSS 3',unrosteredStudent,unrosteredUser,ss1Student,ss1User,'SS 1',pendingStudent,pendingUser]);
+      await client.query("INSERT INTO students(id,user_id,school_code,class_name,deleted_at) VALUES($1,$2,$3,'SS 3',now())",[deletedStudent,deletedUser,school]);
       const coveredTopicId=900;
       await client.query("INSERT INTO topics(id,school_code,class_name,subject_id,title,term_id,order_index) VALUES($1,$2,'SS 3',1,'Linear Equations',1,1)",[coveredTopicId,school]);
       await client.query('INSERT INTO topic_completions(student_id,topic_id) VALUES($1,$2),($3,$2),($4,$2)',[student,coveredTopicId,unrosteredStudent,pendingStudent]);
@@ -273,6 +275,9 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.equal(unrosteredExams.data.exams.length,1,'online-only learner can see an exam without physical report-roster membership');
       const unrosteredStarted=await request('/online-exams/exams/'+examId+'/start','POST',unrosteredToken);
       assert.equal(unrosteredStarted.status,200,'online-only learner can start an eligible examination');
+      const deletedToken=token(deletedUser,'deleted-student');
+      assert.equal((await request('/online-exams/exams','GET',deletedToken)).status,404,'soft-deleted student records cannot list online examinations');
+      assert.equal((await request('/online-exams/exams/'+examId+'/start','POST',deletedToken)).status,404,'soft-deleted student records cannot start examinations');
 
       const pendingToken=token(pendingUser,'pending-student');
       assert.equal((await request('/online-exams/exams','GET',pendingToken)).data.exams.length,0,'pending-review student accounts must not be eligible candidates');
