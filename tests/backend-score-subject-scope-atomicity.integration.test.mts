@@ -88,8 +88,16 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
       termIds.push(Number(rows[0].id));
     }
 
-    await query("UPDATE users SET assigned_class_names=ARRAY['Primary 4']::text[] WHERE id=$1", [subjectTeacher.id]);
-    await query('INSERT INTO teacher_subjects(user_id,subject_id) VALUES($1,$2)', [subjectTeacher.id, subjectIds[0]]);
+    await query("UPDATE users SET assigned_class_names=ARRAY['Primary 4','Primary 5']::text[] WHERE id=$1", [subjectTeacher.id]);
+    await query('INSERT INTO teacher_subjects(user_id,subject_id) VALUES($1,$2),($1,$3)', [subjectTeacher.id, subjectIds[0], subjectIds[1]]);
+    await query(
+      `INSERT INTO teacher_class_subjects(user_id,class_id,subject_id)
+       SELECT $1,c.id,v.subject_id FROM classes c
+       JOIN (VALUES ('Primary 4',$2::int),('Primary 5',$3::int)) AS v(class_name,subject_id)
+         ON v.class_name=c.name
+       WHERE c.school_code='primary'`,
+      [subjectTeacher.id, subjectIds[0], subjectIds[1]],
+    );
 
     const studentRows = await Promise.all([
       query(
@@ -183,8 +191,10 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     const multiClassTeacherScorePayload = await multiClassTeacherScores.json() as { scores: Array<{ student_id: string }> };
     assert.ok(multiClassTeacherScorePayload.scores.some(row => row.student_id === studentIds[1]),
       'a class teacher can read marks for an additional assigned class');
-    const subjectTeacherOutsideClass = await post('/', score(studentIds[1], subjectIds[0], termIds[0]), subjectTeacher.token);
-    assert.equal(subjectTeacherOutsideClass.status, 403, 'subject teachers cannot mark students outside their assigned classes');
+    const subjectTeacherWrongPair = await post('/', score(studentIds[1], subjectIds[0], termIds[0]), subjectTeacher.token);
+    assert.equal(subjectTeacherWrongPair.status, 403, 'a subject grant in Primary 4 does not grant the same subject in Primary 5');
+    const subjectTeacherCorrectPair = await post('/', score(studentIds[1], subjectIds[1], termIds[0]), subjectTeacher.token);
+    assert.equal(subjectTeacherCorrectPair.status, 200, 'the same teacher may have a different subject grant in Primary 5');
     const classTeacherOverride = await post('/', { ...score(studentIds[0], subjectIds[0], termIds[0]), ca1: 15 }, classTeacher.token);
     assert.equal(classTeacherOverride.status, 200, 'class teachers can overwrite a subject teacher mark for their class');
     const subjectTeacherCannotOverride = await post('/', score(studentIds[0], subjectIds[0], termIds[0]), subjectTeacher.token);
