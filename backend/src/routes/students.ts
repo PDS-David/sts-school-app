@@ -92,7 +92,7 @@ router.get('/', requirePerm('students.read'), async (req, res) => {
     const assignedClasses = assignedTeacherClasses(user);
     if (!assignedClasses.length) return res.status(403).json({ error: 'No physical classes are assigned to this teacher.' });
     params.push(assignedClasses);
-    sql += ` AND rrm.class_name=ANY(${params.length}::text[])`;
+    sql += ` AND rrm.class_name=ANY($${params.length}::text[])`;
   }
   if (search) { params.push(`%${search}%`); sql += ` AND s.full_name ILIKE $${params.length}`; }
 
