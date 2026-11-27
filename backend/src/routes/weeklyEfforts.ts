@@ -102,7 +102,7 @@ router.get('/', requirePerm('weeklyEfforts.read'), async (req, res) => {
     // fix; verified blocked after it.
     params.push(user.school_code); sql += ` AND s.school_code=$${params.length}`;
     if (user.assigned_class) {
-      params.push(assignedTeacherClasses(user)); sql += ` AND s.class_name=ANY(${params.length}::text[])`;
+      params.push(user.assigned_class); sql += ` AND s.class_name=$${params.length}`;
     } else {
       // Found in the Pass 20 thorough-check audit: even with the school
       // restriction above, a subject-only teacher had no CLASS restriction
@@ -139,7 +139,7 @@ router.get('/', requirePerm('weeklyEfforts.read'), async (req, res) => {
 
 // ── Shared: may this user see/reply to this weekly_effort's feedback thread? ──
 async function checkWeeklyEffortAccess(
-  user: { id: string; role: string; school_code: string | null; assigned_class?: string | null; assigned_class_names?: string[] },
+  user: { id: string; role: string; school_code: string | null; assigned_class?: string | null },
   weeklyEffortId: string,
 ) {
   const { rows } = await query(
@@ -163,9 +163,9 @@ async function checkWeeklyEffortAccess(
     // assigned class; a subject-only teacher (no assigned_class) sees only
     // records they personally logged. School membership alone is not enough.
     if (user.assigned_class) {
-      return assignedTeacherClasses(user).includes(rec.class_name)
+      return rec.class_name === user.assigned_class
         ? null
-        : { status: 403, error: 'Outside your assigned physical classes' };
+        : { status: 403, error: 'Outside your assigned class' };
     }
     return rec.teacher_id === user.id
       ? null
