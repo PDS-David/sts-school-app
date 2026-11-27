@@ -63,6 +63,7 @@ interface InputProps {
   style?: StyleProp<ViewStyle>;
   error?: string;
   autoCapitalize?: 'none' | 'sentences' | 'words';
+  autoCorrect?: boolean;
   accessibilityLabel?: string;
   accessibilityHint?: string;
 }

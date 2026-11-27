@@ -1,13 +1,19 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  sanitizePin, validateLoginInput, loginErrorMessage, generateDeviceId, isValidDeviceId,
+  sanitizePin, normalizeLoginSecret, validateLoginInput, loginErrorMessage, generateDeviceId, isValidDeviceId,
   GENERIC_LOGIN_FAILURE, NETWORK_FAILURE,
 } from '../../mobile/src/api/loginForm.ts';
 
 test('sanitizePin keeps digits only and caps at six', () => {
   assert.equal(sanitizePin('12a3-4 5678'), '123456');
   assert.equal(sanitizePin('abc'), '');
+});
+
+test('PIN input is sanitized but administrator password input is preserved exactly', () => {
+  assert.equal(normalizeLoginSecret('pin', '12a3-4 5678'), '123456');
+  assert.equal(normalizeLoginSecret('password', 'AbC!@#-09_xY'), 'AbC!@#-09_xY');
+  assert.equal(normalizeLoginSecret('password', '1234'), '1234');
 });
 
 test('PIN mode requires username and exactly six digits', () => {
