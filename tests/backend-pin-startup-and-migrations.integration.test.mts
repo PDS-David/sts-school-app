@@ -125,7 +125,7 @@ test('npm start chain: bad PIN_PEPPER stops before any migration; valid pepper t
 
 // ── 0019 + 0020 together, with legacy users present ──────────────────────────
 
-test('migrations 0019 and 0020 apply together in one run and leave existing users able to sign in', async () => {
+test('migrations 0019 through 0021 apply together in one run and leave existing users able to sign in', async () => {
   const db = await createDb();
   try {
     assert.equal(npm('db:bootstrap', db, { NODE_ENV: 'test' }).status, 0);
@@ -155,17 +155,17 @@ test('migrations 0019 and 0020 apply together in one run and leave existing user
     });
     const hashesBefore = await withDb(db, async c => (await c.query('SELECT username,password_hash FROM users ORDER BY username')).rows);
     const versionsBefore = await withDb(db, ledger);
-    assert.ok(!versionsBefore.includes('0019') && !versionsBefore.includes('0020'));
+    assert.ok(!versionsBefore.includes('0019') && !versionsBefore.includes('0020') && !versionsBefore.includes('0021'));
 
     const run = npm('db:migrate', db, { NODE_ENV: 'test' }); // = `db:migrate --all`
     assert.equal(run.status, 0, `${run.stdout}${run.stderr}`);
     const applied = [...run.stdout.matchAll(/Applied (\d{4})/g)].map(m => m[1]);
-    assert.deepEqual(applied, ['0019', '0020'], 'exactly 0019 then 0020, in one run');
+    assert.deepEqual(applied, ['0019', '0020', '0021'], 'the pending authentication and teacher-scope migrations apply in order');
 
     await withDb(db, async c => {
       const versions = await ledger(c);
-      assert.ok(versions.includes('0019') && versions.includes('0020'));
-      assert.ok(!versions.includes('0021'), '0021 is not applied');
+      assert.ok(versions.includes('0019') && versions.includes('0020') && versions.includes('0021'));
+      assert.equal((await c.query("SELECT to_regclass('teacher_class_subjects') AS table_name")).rows[0].table_name !== null, true, '0021 teacher subject grants table is installed');
       const flags = Object.fromEntries((await c.query(
         'SELECT username, must_set_pin, must_change_pw, pin_hash_version, pin_set_at FROM users')).rows.map(r => [r.username, r]));
       for (const u of ['seed-student', 'seed-parent', 'seed-teacher']) {
