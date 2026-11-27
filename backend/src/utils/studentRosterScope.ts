@@ -64,11 +64,11 @@ export function resolveStudentRosterScope(
 
 /** Return only the subjects explicitly granted to a subject teacher in one class. */
 export function assignedTeacherSubjectsForClass(
-  user: Pick<AuthUser, 'assigned_class_subjects'>,
+  user: Pick<AuthUser, 'assigned_class_subjects' | 'school_code'>,
   className: string,
 ): number[] {
   return [...new Set((user.assigned_class_subjects ?? [])
-    .filter(grant => grant.class_name === className)
+    .filter(grant => grant.class_name === className && grant.school_code === user.school_code)
     .map(grant => Number(grant.subject_id))
     .filter(id => Number.isSafeInteger(id) && id > 0))];
 }
