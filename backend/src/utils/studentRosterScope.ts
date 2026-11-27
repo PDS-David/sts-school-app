@@ -1,5 +1,14 @@
 import type { AuthUser } from '../types/index.js';
 
+/** Class-teacher accounts keep assigned_class as their username anchor and may
+ * carry additional class grants in assigned_class_names. Subject teachers
+ * continue to use assigned_class_names only, with assigned_class null. */
+export function assignedTeacherClasses(user: Pick<AuthUser, 'assigned_class' | 'assigned_class_names'>): string[] {
+  return [...new Set([user.assigned_class, ...(user.assigned_class_names ?? [])]
+    .filter((name): name is string => typeof name === 'string' && !!name.trim())
+    .map(name => name.trim()))];
+}
+
 export type StudentRosterScope =
   | { schoolCode: string | null; className: string | null }
   | { error: string; status: 400 | 403 };
@@ -9,16 +18,7 @@ function nonBlank(value: string | null | undefined): string | null {
   return normalized ? normalized : null;
 }
 
-/**
- * Resolve the school/class filters for GET /students.
- *
- * Global administrators (school_code NULL) may browse all schools or select
- * a campus. School-bound administrators are pinned to their own school.
- * Finance administrators may select either campus, but must select one explicitly.
- * Teachers are always pinned to their own school and, when assigned, class.
- * Missing teacher school assignment is a configuration error, never a reason
- * to fall back to an unfiltered cross-school roster.
- */
+/** Resolve the school/class filters for GET /students. */
 export function resolveStudentRosterScope(
   user: AuthUser,
   requested: { school_code?: string; class_name?: string },
@@ -31,51 +31,32 @@ export function resolveStudentRosterScope(
     if (requestedSchool && !['primary', 'secondary'].includes(requestedSchool)) return { status: 400, error: 'Invalid school_code.' };
     const ownSchool = nonBlank(user.school_code);
     if (ownSchool) {
-      if (requestedSchool && requestedSchool !== ownSchool) {
-        return {
-          status: 403,
-          error: "You can't browse student records outside your school.",
-        };
-      }
+      if (requestedSchool && requestedSchool !== ownSchool) return { status: 403, error: "You can't browse student records outside your school." };
       return { schoolCode: ownSchool, className: requestedClass };
     }
-    // Only an admin with school_code NULL is global and may choose a school
-    // filter or browse across both schools.
     return { schoolCode: requestedSchool, className: requestedClass };
   }
 
   if (user.role === 'finance_admin') {
     const schoolCode = requestedSchool ?? nonBlank(user.school_code);
-    if (!schoolCode) {
-      return {
-        status: 400,
-        error: 'school_code is required when a finance administrator searches student records.',
-      };
-    }
+    if (!schoolCode) return { status: 400, error: 'school_code is required when a finance administrator searches student records.' };
     return { schoolCode, className: requestedClass };
   }
 
   if (user.role === 'teacher') {
     const schoolCode = nonBlank(user.school_code);
-    const assignedClass = nonBlank(user.assigned_class);
-    const assignedClasses = assignedClass ? [assignedClass] : (user.assigned_class_names ?? []);
+    const assignedClasses = assignedTeacherClasses(user);
     if (!schoolCode || !assignedClasses.length) {
-      return {
-        status: 403,
-        error: 'Report access requires a teacher account assigned to a physical class. Contact the school administrator.',
-      };
+      return { status: 403, error: 'Report access requires a teacher account assigned to a physical class. Contact the school administrator.' };
     }
     if (requestedClass && !assignedClasses.includes(requestedClass)) {
-      return {
-        status: 403,
-        error: 'You can only browse students in your assigned physical class.',
-      };
+      return { status: 403, error: 'You can only browse students in your assigned physical classes.' };
     }
-    return { schoolCode, className: assignedClass ?? requestedClass ?? null };
+    // A multi-class teacher with no selected class receives the combined
+    // assigned roster; the UI can then show both class names.
+    const className = requestedClass ?? (assignedClasses.length === 1 ? assignedClasses[0] : null);
+    return { schoolCode, className };
   }
 
-  return {
-    status: 403,
-    error: 'Your account is not authorized to browse student rosters.',
-  };
+  return { status: 403, error: 'Your account is not authorized to browse student rosters.' };
 }
