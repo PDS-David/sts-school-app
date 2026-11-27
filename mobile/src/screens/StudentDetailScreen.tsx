@@ -320,7 +320,7 @@ export default function StudentDetailScreen({ route, navigation }: any) {
         )}
       </View>
 
-      {isClassTeacher && student.class_name === user?.assigned_class && (
+      {isClassTeacher && (student.class_name === user?.assigned_class || (user?.assigned_class_names ?? []).includes(student.class_name)) && (
         <Card style={{ margin: Spacing.md }}>
           <SectionHeader title="Student Placement Decision" />
           <Text style={styles.noLinkTxt}>
