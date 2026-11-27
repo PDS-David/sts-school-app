@@ -549,12 +549,12 @@ router.get('/report/:student_id', async (req, res) => {
             (SELECT ROUND(AVG(s2.total),2) FROM scores s2 JOIN students st2 ON st2.id=s2.student_id
              LEFT JOIN report_roster_memberships rrm2 ON rrm2.student_id=st2.id AND rrm2.status='active'
              WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id
-               AND st2.school_code=$4
+               AND st2.school_code=$4 AND st2.deleted_at IS NULL
                AND COALESCE(s2.class_name, rrm2.class_name, st2.class_name)=COALESCE(sc.class_name, $1)) AS class_average,
             (SELECT MAX(s2.total) FROM scores s2 JOIN students st2 ON st2.id=s2.student_id
              LEFT JOIN report_roster_memberships rrm2 ON rrm2.student_id=st2.id AND rrm2.status='active'
              WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id
-               AND st2.school_code=$4
+               AND st2.school_code=$4 AND st2.deleted_at IS NULL
                AND COALESCE(s2.class_name, rrm2.class_name, st2.class_name)=COALESCE(sc.class_name, $1)) AS class_highest,
             -- Position within the class for THIS subject/term — standard
             -- competition ranking (ties share a position; the next distinct
@@ -566,7 +566,7 @@ router.get('/report/:student_id', async (req, res) => {
             (SELECT COUNT(*)+1 FROM scores s2 JOIN students st2 ON st2.id=s2.student_id
              LEFT JOIN report_roster_memberships rrm2 ON rrm2.student_id=st2.id AND rrm2.status='active'
              WHERE s2.subject_id=sc.subject_id AND s2.term_id=sc.term_id
-               AND st2.school_code=$4
+               AND st2.school_code=$4 AND st2.deleted_at IS NULL
                AND COALESCE(s2.class_name, rrm2.class_name, st2.class_name)=COALESCE(sc.class_name, $1)
                AND s2.total > sc.total) AS subject_position
      FROM scores sc
@@ -617,7 +617,7 @@ router.get('/report/:student_id', async (req, res) => {
      LEFT JOIN report_roster_memberships rrm3
        ON rrm3.student_id=st3.id AND rrm3.status='active'
      WHERE COALESCE(s3.class_name, rrm3.class_name, st3.class_name) = $1 AND s3.term_id = $2
-       AND st3.school_code=$3
+       AND st3.school_code=$3 AND st3.deleted_at IS NULL
      GROUP BY s3.student_id`,
     [termClass, resolvedTermId, student.school_code],
   );
