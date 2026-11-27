@@ -4,7 +4,7 @@ import api from '../../api/client';
 import { useAuth } from '../../api/AuthContext';
 import { useAdminSchool } from '../../api/AdminSchoolContext';
 import { SchoolSwitcherBar } from '../../components/SchoolSwitcherBar';
-import { Card, Loader, Btn } from '../../components/UI';
+import { Card, Btn } from '../../components/UI';
 import { PageContainer } from '../../components/layout';
 import { Colors, Spacing, Fonts } from '../../theme';
 import { AppHeader } from '../../components/AppHeader';
@@ -34,13 +34,13 @@ type BackupStatus = {
   overdue: boolean; configured: boolean;
 };
 
-// Weekly encrypted database backup, emailed to the admin recipients. The server sends a reminder
-// (email + push) when one is more than 7 days overdue; this card shows the state and runs it on demand.
+// Backup controls are deliberately optional and collapsible. They never gate dashboard rendering.
 function BackupCard() {
   const [st, setSt] = useState<BackupStatus | null>(null);
   const [statusError, setStatusError] = useState('');
   const [busy, setBusy] = useState(false);
   const [confirming, setConfirming] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
 
   const refresh = useCallback(async () => {
@@ -48,56 +48,83 @@ function BackupCard() {
     try { setSt((await api.get('/admin/backups/status')).data); }
     catch (e: any) { setStatusError(e?.response?.data?.error ?? 'Could not load backup status. Retry when connected.'); }
   }, []);
-  useEffect(() => { refresh(); }, [refresh]);
+  useEffect(() => { void refresh(); }, [refresh]);
 
   const run = async () => {
-    setBusy(true); setMsg(null);
+    setBusy(true);
+    setMsg(null);
     try {
       const r = (await api.post('/admin/backups/run')).data;
       setMsg(r.emailed
         ? 'Backup emailed to the admin recipients.'
         : 'Backup was created but NOT emailed (too large or no recipient set). Ask your developer to run the backup export.');
-      setSt(r);
+      // The run endpoint returns attempt metadata, not the complete status object.
+      // Refresh instead of treating that response as BackupStatus.
+      await refresh();
     } catch (e: any) {
       setMsg(e?.response?.data?.error ?? 'Backup failed. Please try again.');
+    } finally {
+      setBusy(false);
     }
-    setBusy(false);
   };
-  const confirm = () => setConfirming(true);
 
-  if (!st) return (
-    <Card style={{ marginTop: Spacing.md }}>
-      <Text style={{ fontSize: Fonts.sizes.md, fontWeight: '600', color: Colors.text }}>Database backup</Text>
-      <Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm, marginTop: 4 }}>{statusError || 'Loading backup status…'}</Text>
-      {!!statusError && <Btn label='Retry backup status' variant='outline' onPress={() => refresh()} style={{ marginTop: Spacing.sm }} />}
-    </Card>
-  );
-  const last = st.last_backup_at ? new Date(st.last_backup_at).toLocaleDateString() : 'never';
-  const color = !st.configured || st.overdue ? Colors.warning : Colors.success;
+  const summary = !st
+    ? (statusError ? 'Backup status unavailable' : 'Checking backup status…')
+    : !st.configured
+      ? 'Backup setup required'
+      : st.overdue
+        ? 'Backup overdue'
+        : 'Backup up to date';
+  const summaryColor = !st || !st.configured || st.overdue ? Colors.warning : Colors.success;
+
   return (
     <Card style={{ marginTop: Spacing.md }}>
-      <Text style={{ fontSize: Fonts.sizes.md, fontWeight: '600', color: Colors.text }}>Database backup</Text>
-      <Text style={{ color, fontSize: Fonts.sizes.sm, marginTop: 4 }}>
-        {!st.configured
-          ? 'Not set up: the server needs BACKUP_PASSPHRASE.'
-          : st.overdue
-            ? (st.days_since === null ? 'No emailed backup yet - one is due.' : `Overdue: last emailed backup ${st.days_since} days ago.`)
-            : `Up to date: last emailed backup ${st.days_since === 0 ? 'today' : `${st.days_since} day(s) ago`}.`}
-      </Text>
-      <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm, marginTop: 2 }}>
-        Last attempt: {last}{st.last_status ? ` (${st.last_status})` : ''}
-      </Text>
-      {!!statusError && <Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm, marginTop: 6 }}>{statusError}</Text>}
-      {msg ? <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm, marginTop: 6 }}>{msg}</Text> : null}
-      {confirming ? (
-        <View style={{ marginTop: Spacing.sm, gap: Spacing.sm }}>
-          <Text style={{ color: Colors.text, fontSize: Fonts.sizes.sm }}>Send an encrypted copy of the whole database to the configured admin recipients?</Text>
-          <View style={{ flexDirection: 'row', gap: Spacing.sm }}>
-            <Btn label="Cancel" variant="outline" onPress={() => setConfirming(false)} style={{ flex: 1 }} disabled={busy} />
-            <Btn label="Confirm backup" onPress={() => { setConfirming(false); run(); }} style={{ flex: 1 }} loading={busy} disabled={busy} />
-          </View>
+      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: Spacing.sm }}>
+        <View style={{ flex: 1 }}>
+          <Text style={{ fontSize: Fonts.sizes.md, fontWeight: '600', color: Colors.text }}>Database backup</Text>
+          <Text style={{ color: summaryColor, fontSize: Fonts.sizes.sm, marginTop: 4 }}>{summary}</Text>
         </View>
-      ) : <Btn label="Back up now" onPress={confirm} loading={busy} disabled={busy || !st.configured} style={{ marginTop: Spacing.sm }} />}
+        <Btn label={expanded ? 'Hide details' : 'View details'} variant="outline" onPress={() => setExpanded(v => !v)} />
+      </View>
+
+      {expanded && (
+        <View style={{ marginTop: Spacing.sm }}>
+          {!st ? (
+            <>
+              <Text style={{ color: statusError ? Colors.error : Colors.textSub, fontSize: Fonts.sizes.sm }}>
+                {statusError || 'Checking backup status. The dashboard remains available while this check runs.'}
+              </Text>
+              {!!statusError && <Btn label="Retry backup status" variant="outline" onPress={() => { void refresh(); }} style={{ marginTop: Spacing.sm }} />}
+            </>
+          ) : (
+            <>
+              <Text style={{ color: summaryColor, fontSize: Fonts.sizes.sm }}>
+                {!st.configured
+                  ? 'Not set up: the server needs BACKUP_PASSPHRASE.'
+                  : st.overdue
+                    ? (st.days_since === null ? 'No emailed backup yet - one is due.' : `Overdue: last emailed backup ${st.days_since} days ago.`)
+                    : `Up to date: last emailed backup ${st.days_since === 0 ? 'today' : `${st.days_since} day(s) ago`}.`}
+              </Text>
+              <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm, marginTop: 2 }}>
+                Last attempt: {st.last_backup_at ? new Date(st.last_backup_at).toLocaleDateString() : 'never'}{st.last_status ? ` (${st.last_status})` : ''}
+              </Text>
+              {!!statusError && <Text style={{ color: Colors.error, fontSize: Fonts.sizes.sm, marginTop: 6 }}>{statusError}</Text>}
+              {msg ? <Text style={{ color: Colors.textSub, fontSize: Fonts.sizes.sm, marginTop: 6 }}>{msg}</Text> : null}
+              {confirming ? (
+                <View style={{ marginTop: Spacing.sm, gap: Spacing.sm }}>
+                  <Text style={{ color: Colors.text, fontSize: Fonts.sizes.sm }}>Send an encrypted copy of the whole database to the configured admin recipients?</Text>
+                  <View style={{ flexDirection: 'row', gap: Spacing.sm }}>
+                    <Btn label="Cancel" variant="outline" onPress={() => setConfirming(false)} style={{ flex: 1 }} disabled={busy} />
+                    <Btn label="Confirm backup" onPress={() => { setConfirming(false); void run(); }} style={{ flex: 1 }} loading={busy} disabled={busy} />
+                  </View>
+                </View>
+              ) : (
+                <Btn label="Back up now" onPress={() => setConfirming(true)} loading={busy} disabled={busy || !st.configured} style={{ marginTop: Spacing.sm }} />
+              )}
+            </>
+          )}
+        </View>
+      )}
     </Card>
   );
 }
@@ -107,7 +134,6 @@ export default function AdminDashboardHomeScreen() {
   const { selectedSchoolCode } = useAdminSchool();
   const [term, setTerm] = useState<any>(null);
   const [studentCount, setStudentCount] = useState<number | null>(null);
-  const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState('');
   const [refreshing, setRefreshing] = useState(false);
   const requestGenerationRef = useRef(0);
@@ -117,31 +143,35 @@ export default function AdminDashboardHomeScreen() {
     const isCurrentRequest = () => generation === requestGenerationRef.current;
     setLoadError('');
     const errors: string[] = [];
-    if (!selectedSchoolCode) { setTerm(null); setStudentCount(null); setLoading(false); return; }
+    if (!selectedSchoolCode) { setTerm(null); setStudentCount(null); return; }
     const sc = selectedSchoolCode;
-    try {
-      const { data } = await api.get('/students', { params: { school_code: sc } });
-      if (isCurrentRequest()) setStudentCount(data.students?.length ?? null);
-    } catch { if (isCurrentRequest()) errors.push('student count'); }
-    try {
-      const { data } = await api.get('/academic/terms/current', { params: { school_code: sc } });
-      if (isCurrentRequest()) setTerm(data.term);
-    } catch { if (isCurrentRequest()) errors.push('current term'); }
+    const [studentsResult, termResult] = await Promise.allSettled([
+      api.get('/students', { params: { school_code: sc } }),
+      api.get('/academic/terms/current', { params: { school_code: sc } }),
+    ]);
     if (!isCurrentRequest()) return;
+    if (studentsResult.status === 'fulfilled') {
+      setStudentCount(studentsResult.value.data.students?.length ?? null);
+    } else {
+      setStudentCount(null);
+      errors.push('student count');
+    }
+    if (termResult.status === 'fulfilled') {
+      setTerm(termResult.value.data.term ?? null);
+    } else {
+      setTerm(null);
+      errors.push('current term');
+    }
     if (errors.length) setLoadError(`Could not refresh ${errors.join(' and ')} for the selected school.`);
-    setLoading(false);
   }, [selectedSchoolCode]);
 
   useEffect(() => {
     setTerm(null);
     setStudentCount(null);
     setLoadError('');
-    setLoading(true);
     void load();
     return () => { requestGenerationRef.current += 1; };
   }, [load]);
-
-  if (loading) return <Loader />;
 
   const subtitleParts = [
     term ? `${term.name} · ${term.academic_year}` : null,
