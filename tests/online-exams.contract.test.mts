@@ -105,6 +105,11 @@ test('student flow caches unsent answers and derives the timer from the server d
   assert.ok(submitIndex>=0&&clearIndex>submitIndex,'local answers must only be cleared after the server confirms submission');
   assert.match(mobileResult, /online-exam-attempt:/);
   assert.match(mobileResult, /local copy has been retained/);
+  assert.match(mobileResult, /PROVISIONAL RESULT — REVIEW PENDING/);
+  assert.match(mobileResult, /FINAL RESULT/);
+  assert.match(mobileResult, /AI marking confidence/);
+  assert.match(mobileResult, /criterion_scores/);
+  assert.match(mobileResult, /No final mark has been assigned/);
   assert.match(mobileList, /\/online-exams\/exams/);
   assert.match(mobileList, /beforeStart/);
   assert.match(mobileList, /afterEnd/);
