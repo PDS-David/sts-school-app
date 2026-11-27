@@ -10,7 +10,7 @@ test('sanitizePin keeps digits only and caps at six', () => {
   assert.equal(sanitizePin('abc'), '');
 });
 
-test('PIN input is sanitized but administrator password input is preserved exactly', () => {
+test('PIN input is sanitized but temporary teacher credentials and administrator passwords are preserved exactly', () => {
   assert.equal(normalizeLoginSecret('pin', '12a3-4 5678'), '123456');
   assert.equal(normalizeLoginSecret('password', 'AbC!@#-09_xY'), 'AbC!@#-09_xY');
   assert.equal(normalizeLoginSecret('password', '1234'), '1234');
@@ -24,7 +24,7 @@ test('PIN mode requires username and exactly six digits', () => {
   assert.equal(validateLoginInput('pin', 'ada', '493021'), null);
 });
 
-test('password mode does not impose a PIN rule (admin / finance admin)', () => {
+test('password mode accepts teacher temporary codes and registration passwords without a PIN-length rule', () => {
   assert.equal(validateLoginInput('password', 'admin', 'Some-Existing#Password1'), null);
   assert.equal(validateLoginInput('password', 'admin', '1234'), null);
   assert.ok(validateLoginInput('password', 'admin', ''));
