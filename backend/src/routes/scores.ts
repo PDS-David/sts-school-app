@@ -9,7 +9,7 @@ import { termRank } from '../utils/terms.js';
 import { checkTeacherStudentScope, checkTermSchoolScope } from '../utils/scope.js';
 import type { AuthUser } from '../types/index.js';
 import { sendPushToUser } from '../utils/push.js';
-import { assignedTeacherClasses } from '../utils/studentRosterScope.js';
+import { assignedTeacherClasses, assignedTeacherSubjectsForClass } from '../utils/studentRosterScope.js';
 
 const router = Router();
 // Teachers may enter and correct physical-class report scores. Every write
@@ -90,7 +90,7 @@ async function validateScoreWriteScope(
       }
     } else {
       const allowedClasses = user.assigned_class_names ?? [];
-      if (!allowedClasses.includes(physicalClassName) || !user.assigned_subject_ids.includes(score.subject_id)) {
+      if (!allowedClasses.includes(physicalClassName) || !assignedTeacherSubjectsForClass(user, physicalClassName).includes(score.subject_id)) {
         return { status: 403, error: "You can only write scores for your assigned subject and assigned classes." };
       }
     }
@@ -149,8 +149,8 @@ router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => 
   const className = user.role === 'teacher'
     ? (requestedClassName && allowedClasses.includes(requestedClassName) ? requestedClassName : (user.assigned_class ?? null))
     : requestedClassName;
-  const subjectIds = user.role === 'teacher' && !user.assigned_class
-    ? user.assigned_subject_ids
+  const subjectIds = user.role === 'teacher' && !user.assigned_class && className
+    ? assignedTeacherSubjectsForClass(user, className)
     : null;
 
   if (user.role === 'teacher' && (!className || !allowedClasses.includes(className))) {
@@ -288,9 +288,13 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
     params.push(allowedClasses);
     sql += ` AND rrm.class_name=ANY($${params.length}::text[]) AND rrm.status='active'`;
     if (!user.assigned_class) {
-      if (!user.assigned_subject_ids.length) return res.json({ scores: [] });
-      params.push(user.assigned_subject_ids);
-      sql += ` AND sc.subject_id=ANY($${params.length}::int[])`;
+      params.push(user.id);
+      sql += ` AND EXISTS (
+        SELECT 1 FROM teacher_class_subjects tcs
+        JOIN classes tc ON tc.id=tcs.class_id
+        WHERE tcs.user_id=${params.length} AND tc.name=rrm.class_name
+          AND tcs.subject_id=sc.subject_id
+      )`;
     }
   } else if (user.role === 'admin') {
     // Admin reporting is school-scoped by requireAuth. A caller-supplied
@@ -575,7 +579,7 @@ router.get('/report/:student_id', async (req, res) => {
        AND ($5::int[] IS NULL OR sc.subject_id=ANY($5::int[]))
      ORDER BY sub.name`,
     [student.class_name, student.id, resolvedTermId, student.school_code,
-     user.role === 'teacher' && !user.assigned_class ? user.assigned_subject_ids : null],
+     user.role === 'teacher' && !user.assigned_class ? assignedTeacherSubjectsForClass(user, student.class_name) : null],
   );
 
   const isSubjectTeacher = user.role === 'teacher' && !user.assigned_class;
@@ -713,7 +717,7 @@ router.get('/session-report/:student_id', async (req, res) => {
   const termIds = terms.map(t => t.id);
 
   const assignedSubjectIds = user.role === 'teacher' && !user.assigned_class
-    ? user.assigned_subject_ids
+    ? assignedTeacherSubjectsForClass(user, student.class_name)
     : null;
   const { rows: expectedSubjectRows } = await query(
     `SELECT id, name FROM subjects
