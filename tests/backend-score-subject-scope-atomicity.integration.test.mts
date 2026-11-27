@@ -62,7 +62,7 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
   const year = `BSEC20/${suffix.slice(0, 8)}`;
   const subjectTeacher = await createUser('subject-teacher', 'teacher', 'primary');
   const classTeacher = await createUser('class-teacher', 'teacher', 'primary', 'Primary 4');
-  const multiClassTeacher = await createUser('multi-class-teacher', 'teacher', 'primary', 'Primary 4', ['Primary 5']);
+  const multiClassTeacher = await createUser('multi-class-teacher', 'teacher', 'primary', 'Primary 6', ['Primary 5']);
   const admin = await createUser('admin', 'admin', null);
   const studentUser = await createUser('student', 'student', 'primary');
   const subjectIds: number[] = [];
