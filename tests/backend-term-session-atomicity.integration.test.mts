@@ -131,9 +131,20 @@ test('term creation conflicts are deterministic and concurrent current-term swit
     assert.ok([termIds[1], termIds[2]].includes(currentId));
 
     const foreignUpdate = await putTerm(termIds[1], { days_opened: 20 }, foreignTeacher.token);
-    assert.equal(foreignUpdate.status, 404, 'teachers cannot update another school\'s term particulars');
+    assert.equal(foreignUpdate.status, 403, 'teachers cannot mutate term settings, even for another school');
     const teacherDaysOpened = await putTerm(termIds[1], { days_opened: 22 }, primaryTeacher.token);
-    assert.equal(teacherDaysOpened.status, 200, 'assigned teachers may update days opened for their own school report');
+    assert.equal(teacherDaysOpened.status, 403, 'class teachers cannot change school-wide days opened');
+    const teacherNextTermDate = await putTerm(termIds[1], { next_term_begins: '2027-01-05' }, primaryTeacher.token);
+    assert.equal(teacherNextTermDate.status, 403, 'class teachers cannot change the school-wide next-term date');
+    const { rows: unchangedTerm } = await query(
+      'SELECT days_opened,next_term_begins FROM terms WHERE id=$1', [termIds[1]],
+    );
+    assert.equal(Number(unchangedTerm[0].days_opened), 0, 'rejected teacher updates must not change days opened');
+    assert.equal(unchangedTerm[0].next_term_begins, null, 'rejected teacher updates must not change the next-term date');
+    const adminTermUpdate = await putTerm(termIds[1], {
+      days_opened: 22, next_term_begins: '2027-01-05',
+    });
+    assert.equal(adminTermUpdate.status, 200, 'administrators retain term settings control');
     const teacherCurrentTerm = await putTerm(termIds[1], { is_current: true }, primaryTeacher.token);
     assert.equal(teacherCurrentTerm.status, 403, 'teachers cannot change the school-wide current term');
     const invalidBoolean = await putTerm(termIds[1], { is_current: 'true' });

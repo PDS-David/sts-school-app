@@ -147,26 +147,13 @@ router.post('/terms', requireRole('admin'), async (req, res) => {
   return res.status(201).json({ term: result.term });
 });
 
-router.put('/terms/:id', requireRole('admin', 'teacher'), async (req, res) => {
+router.put('/terms/:id', requireRole('admin'), async (req, res) => {
   const termId = Number(req.params.id);
   if (!Number.isSafeInteger(termId) || termId <= 0 || termId > 2_147_483_647) {
     return res.status(404).json({ error: 'Term not found' });
   }
   const { name, academic_year, is_current, start_date, end_date, days_opened, next_term_begins } = req.body ?? {};
   const user = req.user!;
-  if (user.role === 'teacher') {
-    const forbiddenFields = Object.keys(req.body ?? {}).filter(
-      key => key !== 'days_opened' && key !== 'next_term_begins',
-    );
-    if (!user.school_code || !user.assigned_class || forbiddenFields.length) {
-      return res.status(403).json({ error: 'Teachers may update only days opened and next-term date for their own school.' });
-    }
-    if (next_term_begins !== undefined &&
-        (typeof next_term_begins !== 'string' || next_term_begins.length > 120)) {
-      return res.status(400).json({ error: 'next_term_begins must be text of at most 120 characters.' });
-    }
-  }
-
   if (name !== undefined && !isValidSessionTermName(name)) {
     return res.status(400).json({
       error: `Term name must be one of: ${SESSION_TERM_NAMES.join(', ')}`,
