@@ -594,6 +594,7 @@ export default function AdminUsersScreen() {
                         assigned_class: '',
                         assigned_subject_ids: selected ? [selected.id] : [],
                         assigned_class_names: [],
+                        assigned_class_subjects: [],
                       }));
                     } else {
                       setForm(f => ({ ...f, username: '', assigned_class: '', assigned_subject_ids: [], assigned_class_names: [], assigned_class_subjects: [] }));
