@@ -6,7 +6,7 @@ import test from 'node:test';
 const source = readFileSync(resolve(process.cwd(), 'backend/src/routes/scores.ts'), 'utf8');
 
 test('subject teachers can access only active report-roster students in assigned classes', () => {
-  assert.match(source, /const allowedClasses = user\.assigned_class \? \[user\.assigned_class\] : \(user\.assigned_class_names \?\? \[\]\)/);
+  assert.match(source, /const allowedClasses = assignedTeacherClasses(user)/);
   assert.match(source, /rrm\.class_name=ANY\(\$2::text\[\]\) AND s\.school_code=\$3 AND s\.deleted_at IS NULL/);
   assert.match(source, /isSubjectTeacher && !user\.assigned_subject_ids\?\.length/);
 });
