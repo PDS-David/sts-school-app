@@ -188,6 +188,7 @@ export default function AdminUsersScreen() {
   });
 
   const isNewClassTeacher = !editUser && form.role === 'teacher' && !!form.assigned_class;
+  const isClassTeacher = form.role === 'teacher' && !!form.assigned_class;
 
   const openNew = () => {
     setEditUser(null);
@@ -258,7 +259,7 @@ export default function AdminUsersScreen() {
     // instead of '' so the server never stores an empty string for them.
     payload.school_code = form.school_code || null;
     payload.assigned_class = form.assigned_class || null;
-    payload.assigned_class_names = form.assigned_class ? [] : form.assigned_class_names;
+    payload.assigned_class_names = form.assigned_class_names;
     if (!showsExpiry || !form.access_expires_at) {
       delete payload.access_expires_at;
       if (editUser && showsExpiry) payload.clear_expiry = true;
@@ -671,6 +672,27 @@ export default function AdminUsersScreen() {
                 <Text style={styles.expiryHint}>
                   Class teacher account for {form.assigned_class}. The class username is fixed by the dropdown selection.
                 </Text>
+              )}
+
+              {isClassTeacher && (
+                <View style={{ marginTop: Spacing.sm }}>
+                  <Text style={styles.filterLabel}>Additional classes for this class teacher</Text>
+                  {availableClasses.filter(c => c.name !== form.assigned_class).map(c => {
+                    const selected = form.assigned_class_names.includes(c.name);
+                    return (
+                      <TouchableOpacity key={c.id} onPress={() => setForm(f => ({
+                        ...f,
+                        assigned_class_names: selected
+                          ? f.assigned_class_names.filter(name => name !== c.name)
+                          : [...f.assigned_class_names, c.name],
+                      }))} style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 8 }}>
+                        <Ionicons name={selected ? 'checkbox' : 'square-outline'} size={20} color={selected ? Colors.primary : Colors.textSub} />
+                        <Text style={{ marginLeft: 10, color: Colors.text }}>{c.name}</Text>
+                      </TouchableOpacity>
+                    );
+                  })}
+                  <Text style={styles.expiryHint}>Select every other class this teacher is responsible for. The teacher will be able to manage each selected class.</Text>
+                </View>
               )}
 
               {isNewClassTeacher && (
