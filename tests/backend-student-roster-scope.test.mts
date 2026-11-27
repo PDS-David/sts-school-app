@@ -115,5 +115,5 @@ test('class teacher can be assigned and scoped to more than one physical class',
 
 test('multi-class roster SQL binds assigned class arrays as a PostgreSQL text array', () => {
   const source = readFileSync(resolve(process.cwd(), 'backend/src/routes/students.ts'), 'utf8');
-  assert.match(source, /rrm\\.class_name=ANY\\(\\$\\$\\{params\\.length\\}::text\\[\\]\\)/);
+  assert.ok(source.includes('rrm.class_name=ANY(${params.length}::text[])'));
 });
