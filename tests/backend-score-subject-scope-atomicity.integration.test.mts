@@ -218,6 +218,23 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     const multiClassTeacherScorePayload = await multiClassTeacherScores.json() as { scores: Array<{ student_id: string }> };
     assert.ok(multiClassTeacherScorePayload.scores.some(row => row.student_id === studentIds[1]),
       'a class teacher can read marks for an additional assigned class');
+
+    const subjectTeacherWrongRead = await fetch(
+      `${started.baseUrl}?class_name=Primary%205&subject_id=${subjectIds[0]}`,
+      { headers: headers(subjectTeacher.token) },
+    );
+    assert.equal(subjectTeacherWrongRead.status, 200);
+    const subjectTeacherWrongReadPayload = await subjectTeacherWrongRead.json() as { scores: Array<{ student_id: string }> };
+    assert.equal(subjectTeacherWrongReadPayload.scores.length, 0,
+      'subject teachers cannot read a subject in a class where it is not assigned');
+    const subjectTeacherAllowedRead = await fetch(
+      `${started.baseUrl}?class_name=Primary%205&subject_id=${subjectIds[1]}`,
+      { headers: headers(subjectTeacher.token) },
+    );
+    assert.equal(subjectTeacherAllowedRead.status, 200);
+    const subjectTeacherAllowedReadPayload = await subjectTeacherAllowedRead.json() as { scores: Array<{ student_id: string }> };
+    assert.ok(subjectTeacherAllowedReadPayload.scores.some(row => row.student_id === studentIds[1]),
+      'subject teachers can read the subject assigned to Primary 5');
     const classTeacherOverride = await post('/', { ...score(studentIds[0], subjectIds[0], termIds[0]), ca1: 15 }, classTeacher.token);
     assert.equal(classTeacherOverride.status, 200, 'class teachers can overwrite a subject teacher mark for their class');
     const subjectTeacherCannotOverride = await post('/', score(studentIds[0], subjectIds[0], termIds[0]), subjectTeacher.token);
