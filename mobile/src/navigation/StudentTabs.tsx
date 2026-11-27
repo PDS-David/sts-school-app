@@ -10,6 +10,7 @@ import { useIsWide } from '../components/layout';
 import StudentHomeScreen from '../screens/student/StudentHomeScreen';
 import StudentLearningScreen from '../screens/student/StudentLearningScreen';
 import StudentAssessmentsHomeScreen from '../screens/student/StudentAssessmentsHomeScreen';
+import StudentPracticeProgressScreen from '../screens/student/StudentPracticeProgressScreen';
 import StudentProfileScreen from '../screens/student/StudentProfileScreen';
 import StudentAchievementsScreen from '../screens/student/StudentAchievementsScreen';
 import SchoolCalendarScreen from '../screens/SchoolCalendarScreen';
@@ -60,8 +61,8 @@ function LearningStackNavigator() {
       <LearningStack.Screen name="SubjectTopics" component={SubjectTopicsScreen} options={({ route }: any) => ({ headerShown: true, title: route.params?.subjectName ?? 'Topics', ...stackScreenOptions })} />
       <LearningStack.Screen name="FrenchListening" component={FrenchListeningScreen} options={{ headerShown: true, title: "French Listening", ...stackScreenOptions }} />
       <LearningStack.Screen name="TopicDetail" component={TopicDetailScreen} options={({ route }: any) => ({ headerShown: true, title: route.params?.topic?.title ?? 'Topic', ...stackScreenOptions })} />
-      <LearningStack.Screen name="Ss1PackageLesson" component={Ss1PackageLessonScreen} options={({ route }: any) => ({ headerShown: true, title: route.params?.lesson?.title ?? 'SS1 Lesson', ...stackScreenOptions })} />
-      <LearningStack.Screen name="Ss23PackageLesson" component={Ss23PackageLessonScreen} options={({ route }: any) => ({ headerShown: true, title: route.params?.lesson?.title ?? 'SS2/SS3 Lesson', ...stackScreenOptions })} />
+      <LearningStack.Screen name="Ss1PackageLesson" component={Ss1PackageLessonScreen} options={({ route }: any) => ({ headerShown: true, title: route.params?.lesson?.title ?? 'SS1 Lesson', ...stackScreenOptions }} />
+      <LearningStack.Screen name="Ss23PackageLesson" component={Ss23PackageLessonScreen} options={({ route }: any) => ({ headerShown: true, title: route.params?.lesson?.title ?? 'SS2/SS3 Lesson', ...stackScreenOptions }} />
       <LearningStack.Screen name="TermPinRedeem" component={TermPinRedeemScreen} options={{ headerShown: true, title: 'Enter Term PIN', ...stackScreenOptions }} />
       <LearningStack.Screen name="StudyPlan" component={StudyPlanScreen} options={{ headerShown: true, title: 'My Study Timetable', ...stackScreenOptions }} />
       <LearningStack.Screen name="Materials" component={MaterialsScreen} options={{ headerShown: true, title: 'Materials', ...stackScreenOptions }} />
@@ -74,6 +75,7 @@ function AssessmentsStackNavigator() {
     <AssessmentsStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
       <AssessmentsStack.Screen name="AssessmentsHome" component={StudentAssessmentsHomeScreen} />
       <AssessmentsStack.Screen name="Assessments" component={AssessmentsScreen} options={{ headerShown: true, title: 'Assessments', ...stackScreenOptions }} />
+      <AssessmentsStack.Screen name="PracticeProgress" component={StudentPracticeProgressScreen} options={{ headerShown: true, title: 'My Practice Progress', ...stackScreenOptions }} />
       <AssessmentsStack.Screen name="ClassPractice" component={ClassPracticeScreen} options={{ headerShown: true, title: 'Adaptive AI Practice', ...stackScreenOptions }} />
       <AssessmentsStack.Screen name="TakeAssessment" component={TakeAssessmentScreen} options={{ headerShown: true, title: 'Take Assessment', ...stackScreenOptions }} />
       <AssessmentsStack.Screen name="MyResults" component={MyResultsScreen} options={{ headerShown: true, title: 'My Results', ...stackScreenOptions }} />
