@@ -136,7 +136,7 @@ router.get('/users', async (req, res) => {
                     (u.password_hash IS NULL) AS pending_activation,
                     u.pending_admin_review,
                     COALESCE(array_agg(DISTINCT ts.subject_id) FILTER (WHERE ts.subject_id IS NOT NULL), '{}') AS assigned_subject_ids,
-                    COALESCE(jsonb_agg(DISTINCT jsonb_build_object('class_name', tcs_class.name, 'subject_id', tcs.subject_id))
+                    COALESCE(jsonb_agg(DISTINCT jsonb_build_object('class_name', tcs_class.name, 'subject_id', tcs.subject_id, 'school_code', tcs_class.school_code))
                       FILTER (WHERE tcs.user_id IS NOT NULL), '[]'::jsonb) AS assigned_class_subjects
              FROM users u
              LEFT JOIN teacher_subjects ts ON ts.user_id = u.id
