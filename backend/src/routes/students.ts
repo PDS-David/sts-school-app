@@ -407,8 +407,9 @@ router.put('/:id', requirePerm('grades.write'), async (req, res) => {
 });
 
 // ── POST /students/:id/promotion ──────────────────────────────────────────────
-// Assigned physical-class teachers may promote, retain, or remove their own
-// students. Demotion and reinstatement remain administrator-only.
+// Physical report-roster promotion, retention, removal, demotion and
+// reinstatement are school-administration decisions. Teachers may maintain
+// student particulars and submit scores, but cannot change official placement.
 //
 // "Next"/"previous" class is derived from the classes table's own row order
 // within the student's school (see backend/schema.sql's classes table and
@@ -423,7 +424,7 @@ router.put('/:id', requirePerm('grades.write'), async (req, res) => {
 // use scores.class_name, stamped when each score is recorded (routes/scores.ts),
 // and fall back to the live class only for rows with no stamp. Nothing is
 // written to scores from this route.
-router.post('/:id/promotion', requireRole('admin', 'teacher'), async (req, res) => {
+router.post('/:id/promotion', requireRole('admin'), async (req, res) => {
   const user = req.user!;
   const { action } = req.body as { action?: 'promote' | 'demote' | 'retain' | 'remove' | 'reinstate' };
   if (!action || !['promote', 'demote', 'retain', 'remove', 'reinstate'].includes(action)) {
