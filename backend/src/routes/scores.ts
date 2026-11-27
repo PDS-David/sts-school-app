@@ -462,7 +462,7 @@ async function authoriseReportAccess(
       break;
     }
     case 'teacher': {
-      const allowedClasses = user.assigned_class ? [user.assigned_class] : (user.assigned_class_names ?? []);
+      const allowedClasses = assignedTeacherClasses(user);
       const isSubjectTeacher = !user.assigned_class;
       if (!user.school_code || !allowedClasses.length || (isSubjectTeacher && !user.assigned_subject_ids?.length)) {
         denied = { status: 403, error: 'Report access requires assigned physical classes and subjects.' };
