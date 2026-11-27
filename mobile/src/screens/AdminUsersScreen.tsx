@@ -655,6 +655,30 @@ export default function AdminUsersScreen() {
             </>
           )}
 
+          {editUser && form.role === 'teacher' && (
+            <>
+              <Text style={styles.filterLabel}>Primary class (class teacher only)</Text>
+              <View style={styles.pickerWrap}>
+                <Picker
+                  selectedValue={form.assigned_class}
+                  onValueChange={value => setForm(f => ({
+                    ...f,
+                    assigned_class: value,
+                    assigned_class_names: f.assigned_class_names.filter(name => name !== value),
+                  }))}
+                >
+                  <Picker.Item label="No primary class — subject-only teacher" value="" />
+                  {availableClasses.map(c => (
+                    <Picker.Item key={c.id} label={c.name} value={c.name} />
+                  ))}
+                </Picker>
+              </View>
+              <Text style={styles.expiryHint}>
+                Select the teacher's main class. Leave this blank for a subject-only teacher. Once a primary class is selected, you can add other classes below.
+              </Text>
+            </>
+          )}
+
           {!editUser && form.role === 'teacher' && (
             <Input
               label="Temporary sign-in code (4 digits)"
