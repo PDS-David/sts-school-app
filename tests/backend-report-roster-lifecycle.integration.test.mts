@@ -40,7 +40,6 @@ test('only administrators execute physical report-roster decisions and append hi
   const studentIds: string[] = [];
   let server: Server | undefined;
   let teacherId: string | null = null;
-  let crossSectionTeacherId: string | null = null;
   let crossSectionAdminId: string | null = null;
 
   try {
@@ -155,6 +154,12 @@ test('only administrators execute physical report-roster decisions and append hi
       'rejected teacher promotion must leave class placement unchanged');
     assert.equal(unchangedTeacherTargets.find(row => row.student_id === studentIds[7])?.status, 'active',
       'rejected teacher removal must leave roster status unchanged');
+    const adminPromoteAfterTeacherDenial = await decide(studentIds[6], 'promote');
+    assert.equal(adminPromoteAfterTeacherDenial.status, 200,
+      'administrator can promote after a teacher request was denied');
+    const adminRemoveAfterTeacherDenial = await decide(studentIds[7], 'remove');
+    assert.equal(adminRemoveAfterTeacherDenial.status, 200,
+      'administrator can remove after a teacher request was denied');
     const teacherRemoved = await fetch(`${baseUrl}/report-roster/removed`, {
       headers: { Authorization: `Bearer ${teacherToken}` },
     });
@@ -351,6 +356,6 @@ test('only administrators execute physical report-roster decisions and append hi
     // The append-only event log intentionally retains the test history. The
     // dedicated synthetic school and its rows are isolated from real schools;
     // the disposable PostgreSQL service is discarded at workflow end.
-    await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [[adminId, ...(teacherId ? [teacherId] : []), ...(crossSectionTeacherId ? [crossSectionTeacherId] : []), ...(crossSectionAdminId ? [crossSectionAdminId] : [])]]);
+    await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [[adminId, ...(teacherId ? [teacherId] : []), ...(crossSectionAdminId ? [crossSectionAdminId] : [])]]);
   }
 });
