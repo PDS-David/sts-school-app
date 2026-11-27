@@ -55,10 +55,9 @@ export default function StudentPracticeProgressScreen({ navigation }: any) {
 
   const concepts: ConceptPerformance[] = progress.concept_performance ?? [];
   const recommendations: Remediation[] = progress.remediation_recommendations ?? [];
-  const averageAccuracy = concepts.length
-    ? Math.round(concepts.reduce((sum, item) => sum + Number(item.accuracy || 0), 0) / concepts.length * 100)
-    : 0;
   const totalAttempts = concepts.reduce((sum, item) => sum + Number(item.attempts || 0), 0);
+  const totalCorrect = concepts.reduce((sum, item) => sum + Number(item.correct_attempts || 0), 0);
+  const averageAccuracy = totalAttempts ? Math.round(totalCorrect / totalAttempts * 100) : 0;
 
   if (loading) return <Loader />;
 
