@@ -33,7 +33,7 @@ export default function TeacherDashboardHomeScreen({ navigation }: any) {
     }
     if (errors.length) setLoadError(`Could not refresh ${errors.join(' and ')}. Pull down or retry.`);
     setLoading(false);
-  }, [user?.id, user?.school_code, user?.assigned_class]);
+  }, [user?.id, user?.school_code, user?.assigned_class, user?.assigned_class_names?.join('|')]);
 
   useEffect(() => {
     setTerm(null);
