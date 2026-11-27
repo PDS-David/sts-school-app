@@ -18,12 +18,13 @@ async function createUser(
   role: 'admin' | 'teacher' | 'student',
   schoolCode: string | null,
   assignedClass: string | null = null,
+  assignedClassNames: string[] = [],
 ) {
   const username = `bsec20-${label}-${randomUUID()}`;
   const { rows } = await query(
-    `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,is_active,pending_admin_review)
-     VALUES($1,'test-hash',$2,$3,$4,$5,TRUE,FALSE) RETURNING id`,
-    [username, role, `BSEC20 ${label}`, schoolCode, assignedClass],
+    `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,assigned_class_names,is_active,pending_admin_review)
+     VALUES($1,'test-hash',$2,$3,$4,$5,$6::text[],TRUE,FALSE) RETURNING id`,
+    [username, role, `BSEC20 ${label}`, schoolCode, assignedClass, assignedClassNames],
   );
   const id = String(rows[0].id);
   return {
@@ -34,6 +35,7 @@ async function createUser(
       role,
       school_code: schoolCode,
       assigned_class: assignedClass,
+      assigned_class_names: assignedClassNames,
       assigned_subject_ids: [],
     }),
   };
@@ -60,6 +62,7 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
   const year = `BSEC20/${suffix.slice(0, 8)}`;
   const subjectTeacher = await createUser('subject-teacher', 'teacher', 'primary');
   const classTeacher = await createUser('class-teacher', 'teacher', 'primary', 'Primary 4');
+  const multiClassTeacher = await createUser('multi-class-teacher', 'teacher', 'primary', 'Primary 4', ['Primary 5']);
   const admin = await createUser('admin', 'admin', null);
   const studentUser = await createUser('student', 'student', 'primary');
   const subjectIds: number[] = [];
@@ -170,6 +173,16 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
 
     const classTeacherSubject = await post('/', score(studentIds[0], subjectIds[1], termIds[0]), classTeacher.token);
     assert.equal(classTeacherSubject.status, 200, 'class teachers can enter marks for any report subject in their assigned class');
+    const multiClassTeacherSubject = await post('/', score(studentIds[1], subjectIds[1], termIds[0]), multiClassTeacher.token);
+    assert.equal(multiClassTeacherSubject.status, 200, 'a class teacher can enter marks in an additional assigned class');
+    const multiClassTeacherScores = await fetch(
+      `${started.baseUrl}?class_name=Primary%205`,
+      { headers: headers(multiClassTeacher.token) },
+    );
+    assert.equal(multiClassTeacherScores.status, 200);
+    const multiClassTeacherScorePayload = await multiClassTeacherScores.json() as { scores: Array<{ student_id: string }> };
+    assert.ok(multiClassTeacherScorePayload.scores.some(row => row.student_id === studentIds[1]),
+      'a class teacher can read marks for an additional assigned class');
     const subjectTeacherOutsideClass = await post('/', score(studentIds[1], subjectIds[0], termIds[0]), subjectTeacher.token);
     assert.equal(subjectTeacherOutsideClass.status, 403, 'subject teachers cannot mark students outside their assigned classes');
     const classTeacherOverride = await post('/', { ...score(studentIds[0], subjectIds[0], termIds[0]), ca1: 15 }, classTeacher.token);
@@ -368,7 +381,7 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
       await query('DELETE FROM report_roster_memberships WHERE student_id=ANY($1::uuid[])', [allStudentIds]);
       await query('DELETE FROM students WHERE id=ANY($1::uuid[])', [allStudentIds]);
     }
-    await query('DELETE FROM teacher_subjects WHERE user_id=ANY($1::uuid[])', [[subjectTeacher.id, classTeacher.id]]);
+    await query('DELETE FROM teacher_subjects WHERE user_id=ANY($1::uuid[])', [[subjectTeacher.id, classTeacher.id, multiClassTeacher.id]]);
     if (termIds.length) await query('DELETE FROM terms WHERE id=ANY($1::int[])', [termIds]);
     if (subjectIds.length) await query('DELETE FROM subjects WHERE id=ANY($1::int[])', [subjectIds]);
     await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [[subjectTeacher.id, classTeacher.id, admin.id, studentUser.id]]);
