@@ -35,6 +35,8 @@ test('class-practice API enforces ownership and serializes concurrent submission
       await client.query('CREATE TABLE auth_sessions(id UUID PRIMARY KEY,user_id UUID NOT NULL,revoked_at TIMESTAMPTZ,expires_at TIMESTAMPTZ)');
       await client.query('CREATE TABLE students(id UUID PRIMARY KEY,user_id UUID,school_code TEXT,class_name TEXT,deleted_at TIMESTAMPTZ)');
       await client.query('CREATE TABLE teacher_subjects(user_id UUID,subject_id INTEGER)');
+      await client.query('CREATE TABLE classes(id SERIAL PRIMARY KEY,school_code TEXT,name TEXT)');
+      await client.query('CREATE TABLE teacher_class_subjects(user_id UUID,class_id INTEGER,subject_id INTEGER)');
       await client.query('CREATE TABLE topics(id INTEGER PRIMARY KEY,title TEXT,subject_id INTEGER)');
       await client.query('CREATE TABLE subjects(id INTEGER PRIMARY KEY,name TEXT,school_code TEXT)');
       await client.query('CREATE TABLE terms(id INTEGER PRIMARY KEY,name TEXT,school_code TEXT)');
