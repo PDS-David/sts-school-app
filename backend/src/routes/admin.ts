@@ -299,7 +299,7 @@ router.post('/users', async (req, res) => {
           await client.query('SELECT id FROM classes WHERE school_code=$1 AND name=ANY($2::text[]) FOR UPDATE', [schoolCodeN, classesToAssign]);
           const { rows: conflicts } = await client.query(
             `SELECT assigned_class FROM users
-             WHERE role='teacher' AND school_code=$1
+             WHERE role='teacher' AND school_code=$1 AND assigned_class IS NOT NULL
                AND (assigned_class=ANY($2::text[]) OR assigned_class_names && $2::text[])
              LIMIT 1`,
             [schoolCodeN, classesToAssign],
@@ -458,7 +458,7 @@ router.put('/users/:id', async (req, res) => {
           await client.query('SELECT id FROM classes WHERE school_code=$1 AND name=ANY($2::text[]) FOR UPDATE', [nextSchool, classesToAssign]);
           const { rows: conflicts } = await client.query(
             `SELECT id, assigned_class FROM users
-             WHERE role='teacher' AND school_code=$1 AND id<>$3
+             WHERE role='teacher' AND school_code=$1 AND id<>$3 AND assigned_class IS NOT NULL
                AND (assigned_class=ANY($2::text[]) OR assigned_class_names && $2::text[])
              LIMIT 1`,
             [nextSchool, classesToAssign, req.params.id],
