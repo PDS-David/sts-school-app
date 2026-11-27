@@ -3,48 +3,10 @@ import { randomUUID } from 'node:crypto';
 import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
 import { query, withTransaction } from '../db/pool.js';
 import { generateJSON } from '../utils/ai.js';
+import { buildAdaptiveConceptTargets, validateGeneratedPracticeQuestions, type GeneratedPracticeQuestion } from '../utils/classPracticeAdaptive.js';
 
 const router = Router();
 router.use(requireAuth, requireRole('student'), requirePerm('topics.read'));
-
-type GeneratedQuestion = {
-  concept: string;
-  question: string;
-  options: Array<{ key: string; text: string }>;
-  correct_answer: string;
-  explanation: string;
-  marks: number;
-};
-
-const clean = (value: unknown) => String(value ?? '').trim().toLocaleLowerCase().replace(/\s+/g, ' ');
-
-function validateGeneratedQuestions(value: unknown, allowedConcepts: string[]): GeneratedQuestion[] {
-  if (!Array.isArray(value) || value.length < 3 || value.length > 10) {
-    throw new Error('The practice generator returned an invalid question count.');
-  }
-  const allowed = new Set(allowedConcepts.map(clean));
-  return value.map((raw: any) => {
-    if (!raw || typeof raw !== 'object' || !allowed.has(clean(raw.concept)) ||
-        typeof raw.question !== 'string' || raw.question.trim().length < 10 ||
-        !Array.isArray(raw.options) || raw.options.length !== 4 ||
-        !raw.options.every((o: any) => o && typeof o.key === 'string' && clean(o.key).length > 0 && typeof o.text === 'string' && o.text.trim().length > 0) ||
-        new Set(raw.options.map((o: any) => clean(o.key))).size !== 4 ||
-        typeof raw.correct_answer !== 'string' ||
-        !raw.options.some((o: any) => clean(o.key) === clean(raw.correct_answer)) ||
-        typeof raw.explanation !== 'string' || raw.explanation.trim().length < 10 ||
-        !Number.isFinite(Number(raw.marks)) || Number(raw.marks) <= 0 || Number(raw.marks) > 5) {
-      throw new Error('The practice generator returned a malformed or out-of-lesson question.');
-    }
-    return {
-      concept: allowedConcepts.find(c => clean(c) === clean(raw.concept))!,
-      question: raw.question.trim(),
-      options: raw.options.map((o: any) => ({ key: o.key.trim(), text: o.text.trim() })),
-      correct_answer: raw.correct_answer.trim(),
-      explanation: raw.explanation.trim(),
-      marks: Number(raw.marks),
-    };
-  });
-}
 
 router.post('/sets', async (req, res) => {
   const topicId = Number(req.body?.topic_id);
@@ -92,14 +54,23 @@ router.post('/sets', async (req, res) => {
      WHERE student_id=$1 AND topic_id=$2
      ORDER BY accuracy ASC, attempts DESC
   `, [student.id, topicId]);
-  const weakConcepts = history
-    .filter((r: any) => Number(r.attempts) >= 1 && Number(r.accuracy) < 0.7)
-    .map((r: any) => ({ concept: r.concept, accuracy: Number(r.accuracy), attempts: Number(r.attempts) }));
   const allowedConcepts = concepts;
+  // Ignore historical labels that are no longer part of this completed lesson.
+  const adaptiveTargets = buildAdaptiveConceptTargets(allowedConcepts, history);
+  const weakConcepts = adaptiveTargets
+    .filter(target => target.focus)
+    .map(({ concept, accuracy, attempts }) => ({ concept, accuracy, attempts }));
   const prompt = `
 Create 5 original multiple-choice class-practice questions for this student's already-completed lesson.
 STRICT GROUNDING: Use ONLY facts, skills and concepts explicitly present in the lesson text/objectives below. Do not introduce prerequisite topics, adjacent syllabus topics, general knowledge or unrelated examples. Every question must test one exact allowed concept. If evidence is insufficient, return fewer than 3 and the request will be rejected.
-Adaptation: prioritise the weak concepts listed below (about 70% of questions); use the remaining questions to reinforce other covered concepts. Do not mention student scores.
+Adaptation: use the per-concept targets below. At least 70% of generated questions must target concepts marked focus=true. Each question's difficulty MUST exactly match its concept target.
+Difficulty rules:
+- foundation: rebuild understanding with a direct, single-step question and clear wording for a concept the student is struggling with.
+- standard: assess the normal lesson-level skill with a familiar application.
+- challenge: use a more demanding, multi-step application only when the student has demonstrated sustained mastery (at least 3 attempts and 90% accuracy).
+Do not add concepts or facts beyond this completed lesson. Do not mention student scores.
+Per-concept adaptive targets:
+${JSON.stringify(adaptiveTargets)}
 Class: ${topic.class_name}; Subject: ${topic.subject_name}; Term: ${topic.term_label}; Lesson: ${topic.title}
 Lesson content:
 ${lessonText.slice(0, 14000)}
@@ -109,13 +80,13 @@ Allowed concept labels (use exact labels):
 ${JSON.stringify(allowedConcepts)}
 Weak concepts from this student's previous practice:
 ${JSON.stringify(weakConcepts)}
-Return JSON object: {"questions":[{"concept":"exact allowed label","question":"...","options":[{"key":"A","text":"..."},{"key":"B","text":"..."},{"key":"C","text":"..."},{"key":"D","text":"..."}],"correct_answer":"A","explanation":"...","marks":1}]}
+Return JSON object: {"questions":[{"concept":"exact allowed label","difficulty":"foundation|standard|challenge (must match the target)","question":"...","options":[{"key":"A","text":"..."},{"key":"B","text":"..."},{"key":"C","text":"..."},{"key":"D","text":"..."}],"correct_answer":"A","explanation":"...","marks":1}]}
 Answers must be unambiguous; distractors must be plausible but clearly wrong from the lesson.
 `;
-  let generated: GeneratedQuestion[];
+  let generated: GeneratedPracticeQuestion[];
   try {
     const result: any = await generateJSON(prompt, 'generate-questions', { userId: req.user!.id, role: req.user!.role });
-    generated = validateGeneratedQuestions(result?.questions, allowedConcepts);
+    generated = validateGeneratedPracticeQuestions(result?.questions, adaptiveTargets);
   } catch (error: any) {
     return res.status(502).json({ error: error?.message ?? 'Could not generate lesson-grounded practice. Please retry.' });
   }
@@ -159,7 +130,7 @@ router.get('/sets/:id', async (req, res) => {
   const byId=new Map(attempts.map((item:any)=>[item.question_id,item]));
   const results=questions.map((q:any)=>{
     const attempt:any=byId.get(q.id);
-    return {question_id:q.id,concept:q.concept,answer:attempt?.answer??null,correct:attempt?.correct??false,
+    return {question_id:q.id,concept:q.concept,difficulty:q.difficulty,answer:attempt?.answer??null,correct:attempt?.correct??false,
       marks_awarded:Number(attempt?.marks_awarded??0),marks_available:Number(attempt?.marks_available??q.marks),
       explanation:q.explanation};
   });
@@ -255,7 +226,7 @@ router.post('/sets/:id/submit', async (req, res) => {
       body: {
         submitted: true, score: awarded, total, percentage: total ? Math.round(awarded / total * 100) : 0,
         results: graded.map(({ q, answer, correct, marks }) => ({
-          question_id: q.id, concept: q.concept, answer, correct, marks_awarded: marks,
+          question_id: q.id, concept: q.concept, difficulty: q.difficulty, answer, correct, marks_awarded: marks,
           marks_available: q.marks, explanation: q.explanation,
         })),
       },
