@@ -9,6 +9,7 @@ import { termRank } from '../utils/terms.js';
 import { checkTeacherStudentScope, checkTermSchoolScope } from '../utils/scope.js';
 import type { AuthUser } from '../types/index.js';
 import { sendPushToUser } from '../utils/push.js';
+import { assignedTeacherClasses } from '../utils/studentRosterScope.js';
 
 const router = Router();
 // Teachers may enter and correct physical-class report scores. Every write
@@ -82,9 +83,10 @@ async function validateScoreWriteScope(
     // stored on their account. These checks run against freshly hydrated DB
     // claims, never client-supplied class or subject values.
     const isClassTeacher = !!user.assigned_class;
+    const allowedClasses = assignedTeacherClasses(user);
     if (isClassTeacher) {
-      if (physicalClassName !== user.assigned_class) {
-        return { status: 403, error: "You can only write scores for students in your assigned class." };
+      if (!allowedClasses.includes(physicalClassName)) {
+        return { status: 403, error: "You can only write scores for students in your assigned physical classes." };
       }
     } else {
       const allowedClasses = user.assigned_class_names ?? [];
@@ -98,7 +100,8 @@ async function validateScoreWriteScope(
     // retain override authority over every subject in their assigned class.
     if (!user.assigned_class) {
       const { rows: existingScores } = await client.query(
-        `SELECT sc.entered_by, author.role AS author_role, author.assigned_class AS author_class
+        `SELECT sc.entered_by, author.role AS author_role, author.assigned_class AS author_class,
+                COALESCE(author.assigned_class_names, ARRAY[]::text[]) AS author_class_names
          FROM scores sc
          LEFT JOIN users author ON author.id=sc.entered_by
          WHERE sc.student_id=$1 AND sc.subject_id=$2 AND sc.term_id=$3
@@ -107,7 +110,7 @@ async function validateScoreWriteScope(
       );
       const existing = existingScores[0];
       if (existing && existing.entered_by !== user.id &&
-          (existing.author_role === 'admin' || existing.author_class === physicalClassName)) {
+          (existing.author_role === 'admin' || existing.author_class === physicalClassName || (existing.author_class_names ?? []).includes(physicalClassName))) {
         return { status: 403, error: "A class teacher's or administrator's mark cannot be overwritten by a subject teacher." };
       }
     }
@@ -142,7 +145,7 @@ router.get('/teacher/overview', requirePerm('grades.read'), async (req, res) => 
   if (!schoolCode) return res.status(400).json({ error: 'Select a school before viewing reporting data.' });
 
   const requestedClassName = typeof req.query.class_name === 'string' ? req.query.class_name : null;
-  const allowedClasses = user.assigned_class ? [user.assigned_class] : (user.assigned_class_names ?? []);
+  const allowedClasses = assignedTeacherClasses(user);
   const className = user.role === 'teacher'
     ? (requestedClassName && allowedClasses.includes(requestedClassName) ? requestedClassName : (user.assigned_class ?? null))
     : requestedClassName;
@@ -280,16 +283,14 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
   if (user.role === 'teacher') {
     if (!user.school_code) return res.status(403).json({ error: 'Your teacher account is not assigned to a school.' });
     params.push(user.school_code); sql += ` AND s.school_code=$${params.length}`;
-    if (user.assigned_class) {
-      params.push(user.assigned_class);
-      sql += ` AND rrm.class_name=$${params.length} AND rrm.status='active'`;
-    } else {
-      const allowedClasses = user.assigned_class_names ?? [];
-      if (!allowedClasses.length || !user.assigned_subject_ids.length) return res.json({ scores: [] });
-      params.push(allowedClasses);
-      sql += ` AND rrm.class_name=ANY($${params.length}::text[]) AND rrm.status='active'`;
+    const allowedClasses = assignedTeacherClasses(user);
+    if (!allowedClasses.length) return res.json({ scores: [] });
+    params.push(allowedClasses);
+    sql += ` AND rrm.class_name=ANY(${params.length}::text[]) AND rrm.status='active'`;
+    if (!user.assigned_class) {
+      if (!user.assigned_subject_ids.length) return res.json({ scores: [] });
       params.push(user.assigned_subject_ids);
-      sql += ` AND sc.subject_id=ANY($${params.length}::int[])`;
+      sql += ` AND sc.subject_id=ANY(${params.length}::int[])`;
     }
   } else if (user.role === 'admin') {
     // Admin reporting is school-scoped by requireAuth. A caller-supplied
