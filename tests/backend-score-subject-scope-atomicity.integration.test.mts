@@ -7,6 +7,7 @@ import express from 'express';
 import test, { after } from 'node:test';
 import { pool, query } from '../backend/src/db/pool.js';
 import scoresRouter from '../backend/src/routes/scores.js';
+import academicRouter from '../backend/src/routes/academic.js';
 import { signAccess } from '../backend/src/utils/jwt.js';
 
 after(async () => {
@@ -45,6 +46,7 @@ async function startServer(): Promise<{ server: Server; baseUrl: string }> {
   const app = express();
   app.use(express.json());
   app.use('/scores', scoresRouter);
+  app.use('/academic', academicRouter);
   app.use((error: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
     res.status(500).json({ error: error instanceof Error ? error.message : 'Internal server error' });
   });
@@ -166,6 +168,26 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     const score = (studentId: string, subjectId: number, termId: number) => ({
       student_id: studentId, subject_id: subjectId, term_id: termId, ca1: 10, ca2: 10, exam: 30,
     });
+
+    const academicBase = started.baseUrl.replace('/scores','/academic');
+    const p4Subjects = await fetch(`${academicBase}/subjects?class_name=Primary%204`, {
+      headers: headers(subjectTeacher.token),
+    });
+    assert.equal(p4Subjects.status, 200);
+    const p4SubjectPayload = await p4Subjects.json() as { subjects: Array<{ id: number }> };
+    assert.deepEqual(p4SubjectPayload.subjects.map(item => Number(item.id)), [subjectIds[0]],
+      'subject teachers see only subjects granted to Primary 4');
+    const p5Subjects = await fetch(`${academicBase}/subjects?class_name=Primary%205`, {
+      headers: headers(subjectTeacher.token),
+    });
+    assert.equal(p5Subjects.status, 200);
+    const p5SubjectPayload = await p5Subjects.json() as { subjects: Array<{ id: number }> };
+    assert.deepEqual(p5SubjectPayload.subjects.map(item => Number(item.id)), [subjectIds[1]],
+      'subject teachers see only subjects granted to Primary 5');
+    const unassignedClassSubjects = await fetch(`${academicBase}/subjects?class_name=Primary%206`, {
+      headers: headers(subjectTeacher.token),
+    });
+    assert.equal(unassignedClassSubjects.status, 403, 'subject teachers cannot load subjects for an unassigned class');
 
     const allowedSubject = await post('/', score(studentIds[0], subjectIds[0], termIds[0]), subjectTeacher.token);
     assert.equal(allowedSubject.status, 200, 'subject teachers can enter marks for their assigned subject in an assigned class');
