@@ -655,6 +655,34 @@ export default function AdminUsersScreen() {
             </>
           )}
 
+          {editUser && form.role === 'teacher' && form.assigned_subject_ids.length === 0 && (
+            <View style={{ marginTop: Spacing.sm }}>
+              <Text style={styles.filterLabel}>Primary class for this class teacher</Text>
+              <View style={styles.pickerWrap}>
+                <Picker
+                  selectedValue={availableClasses.find(c => c.name === form.assigned_class)?.id.toString() ?? ''}
+                  onValueChange={value => {
+                    const selected = availableClasses.find(c => c.id === Number(value));
+                    if (!selected) return;
+                    setForm(f => ({
+                      ...f,
+                      assigned_class: selected.name,
+                      assigned_class_names: f.assigned_class_names.filter(name => name !== selected.name),
+                    }));
+                  }}
+                >
+                  <Picker.Item label="Choose the teacher's main class..." value="" />
+                  {availableClasses.map(c => (
+                    <Picker.Item key={c.id} label={c.name} value={String(c.id)} />
+                  ))}
+                </Picker>
+              </View>
+              <Text style={styles.expiryHint}>
+                Select the main class first. You can then select the teacher's other class or classes below.
+              </Text>
+            </View>
+          )}
+
           {!editUser && form.role === 'teacher' && (
             <Input
               label="Temporary sign-in code (4 digits)"
