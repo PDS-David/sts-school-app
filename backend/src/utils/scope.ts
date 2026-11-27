@@ -1,5 +1,6 @@
 import { query } from '../db/pool.js';
 import type { AuthUser } from '../types/index.js';
+import { assignedTeacherClasses } from './studentRosterScope.js';
 
 /**
  * Every teacher-write endpoint (scores, attendance, class-records,
@@ -105,11 +106,12 @@ export async function checkTeacherStudentScope(
   if (student.school_code !== user.school_code) {
     return { status: 403, error: "You can't write records for a student outside your school" };
   }
-  if (!user.assigned_class) {
+  const allowedClasses = assignedTeacherClasses(user);
+  if (!user.assigned_class || !allowedClasses.length) {
     return { status: 403, error: 'This action requires an assigned physical class.' };
   }
-  if (reportClassName !== user.assigned_class) {
-    return { status: 403, error: "You can't write report remarks outside your assigned physical class" };
+  if (!allowedClasses.includes(reportClassName)) {
+    return { status: 403, error: "You can't write report remarks outside your assigned physical classes" };
   }
 
   if (termId !== undefined) {
@@ -191,8 +193,8 @@ export function checkTeacherRosterScope(
   if (!user.assigned_class) {
     return { status: 403, error: 'Creating physical report-roster students requires an assigned class.' };
   }
-  if (target.class_name !== user.assigned_class) {
-    return { status: 403, error: "You can't create a student outside your assigned class" };
+  if (!assignedTeacherClasses(user).includes(target.class_name)) {
+    return { status: 403, error: "You can't create a student outside your assigned physical classes" };
   }
   return null;
 }
