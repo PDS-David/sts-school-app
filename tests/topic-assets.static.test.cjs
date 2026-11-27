@@ -108,7 +108,7 @@ test('routes: visibility helper mirrors GET /topics (teacher class/subject, view
   assert.match(helper, /teacher_class_subjects/);
   assert.match(helper, /tcs\.subject_id=t\.subject_id/);
   assert.match(helper, /resolveViewerClassNames\(user\)/);
-  assert.match(helper, /t\.class_name = ANY/);
+  assert.match(helper, /t\.class_name\s*=\s*ANY/);
 });
 
 test('routes: existing GET /topics response is untouched', () => {
