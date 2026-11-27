@@ -63,9 +63,10 @@ test('production migration runner applies the complete PostgreSQL 18 sequence th
       SELECT to_regclass('public.class_practice_sets') AS practice,
              to_regclass('public.online_exams') AS exams,
              to_regclass('public.online_exam_responses') AS responses,
-             to_regclass('public.question_bank_question_reviews') AS reviews
+             to_regclass('public.question_bank_question_reviews') AS reviews,
+             to_regclass('public.teacher_class_subjects') AS teacher_subject_grants
     `);
-    assert.ok(objects[0].practice&&objects[0].exams&&objects[0].responses&&objects[0].reviews);
+    assert.ok(objects[0].practice&&objects[0].exams&&objects[0].responses&&objects[0].reviews&&objects[0].teacher_subject_grants);
     const {rows:claimColumns}=await verifier.query(`
       SELECT column_name FROM information_schema.columns
        WHERE table_schema='public' AND table_name='online_exam_attempts'

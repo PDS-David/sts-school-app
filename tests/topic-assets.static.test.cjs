@@ -105,9 +105,10 @@ test('routes: visibility helper mirrors GET /topics (teacher class/subject, view
   const s = read('backend/src/routes/learning.ts');
   const helper = s.slice(s.indexOf('async function topicVisibilitySql'), s.indexOf("router.get('/topics/:id/assets'"));
   assert.match(helper, /assigned_class/);
-  assert.match(helper, /assigned_subject_ids/);
+  assert.match(helper, /teacher_class_subjects/);
+  assert.match(helper, /tcs\.subject_id=t\.subject_id/);
   assert.match(helper, /resolveViewerClassNames\(user\)/);
-  assert.match(helper, /t\.class_name = ANY/);
+  assert.match(helper, /t\.class_name\s*=\s*ANY/);
 });
 
 test('routes: existing GET /topics response is untouched', () => {

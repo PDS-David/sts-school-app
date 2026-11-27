@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { assignedTeacherSubjectsForClass } from '../utils/studentRosterScope.js';
 import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requireRole } from '../middleware/auth.js';
 import { SESSION_TERM_NAMES, isValidSessionTermName } from '../utils/terms.js';
@@ -249,7 +250,14 @@ router.get('/subjects', async (req, res) => {
     }
   }
   if (user.role === 'teacher' && !user.assigned_class) {
-    const ids = user.assigned_subject_ids ?? [];
+    const requestedClass = typeof req.query.class_name === 'string' ? req.query.class_name.trim() : '';
+    const allowedClasses = user.assigned_class_names ?? [];
+    if (requestedClass && !allowedClasses.includes(requestedClass)) {
+      return res.status(403).json({ error: 'You can only load subjects assigned to your classes.' });
+    }
+    const ids = requestedClass
+      ? assignedTeacherSubjectsForClass(user, requestedClass)
+      : [...new Set((user.assigned_class_subjects ?? []).map(grant => Number(grant.subject_id)))];
     if (!ids.length) return res.json({ subjects: [] });
     const { rows } = await query('SELECT * FROM subjects WHERE school_code=$1 AND id=ANY($2::int[]) ORDER BY name', [sc, ids]);
     return res.json({ subjects: rows });

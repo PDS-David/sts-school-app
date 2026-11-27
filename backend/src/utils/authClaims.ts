@@ -15,6 +15,7 @@ export interface CurrentAuthClaims {
   assigned_class: string | null;
   assigned_subject_ids: number[];
   assigned_class_names?: string[];
+  assigned_class_subjects?: Array<{ class_name: string; subject_id: number; school_code: string }>;
   can_manage_all_schools?: boolean;
   selected_school_code?: string | null;
 }
@@ -37,6 +38,7 @@ export function hydrateAuthUser(
     assigned_class: current.assigned_class,
     assigned_subject_ids: [...current.assigned_subject_ids],
     assigned_class_names: [...(current.assigned_class_names ?? [])],
+    assigned_class_subjects: [...(current.assigned_class_subjects ?? [])],
     ...(verifiedTokenUser.sid ? { sid: verifiedTokenUser.sid } : {}),
   };
 }

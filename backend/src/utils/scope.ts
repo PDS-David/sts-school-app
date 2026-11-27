@@ -1,6 +1,6 @@
 import { query } from '../db/pool.js';
 import type { AuthUser } from '../types/index.js';
-import { assignedTeacherClasses } from './studentRosterScope.js';
+import { assignedTeacherClasses, assignedTeacherSubjectsForClass } from './studentRosterScope.js';
 
 /**
  * Every teacher-write endpoint (scores, attendance, class-records,
@@ -207,18 +207,12 @@ export function checkTeacherRosterScope(
  * teacher in a school could publish a material or schedule an assessment for
  * any class, in any subject, whether or not they teach it.
  *
- * A teacher may write content when EITHER is true:
- *   - the target class_name matches their own assigned_class (a class
- *     teacher may publish for their class, in any subject — matches how
- *     class teachers already operate everywhere else in the app), OR
- *   - the target subject_id matches their own assigned_subject_id
- *     (a subject specialist may publish in their subject for ANY class in
- *     their school, "irrespective of class" — this is the case a pure
- *     class-name check would otherwise block).
- * class_name may legitimately be null (a school-wide resource, e.g. a
- * general notice) — that's fine as long as the subject matches.
- * A teacher with neither an assigned_class nor an assigned_subject_id has no
- * content scope at all and is refused outright (fail closed).
+ * A class teacher may publish for any subject in their assigned class(es).
+ * A subject-only teacher must have an explicit teacher_class_subjects grant
+ * for the exact target class and subject. A subject assignment in one class
+ * never grants access to the same subject in another class. Subject-only
+ * teachers cannot create classless subject content because no class-specific
+ * grant can authorise that target. Unassigned teachers fail closed.
  *
  * Deliberately kept separate from checkTeacherStudentScope() (and its
  * checkTeacherDeleteScope alias above) rather than merged into it: that
@@ -237,18 +231,15 @@ export async function checkTeacherContentScope(
   if (user.role !== 'teacher') {
     return { status: 403, error: 'Not authorized to create content for this class or subject' };
   }
-  if (!user.assigned_class && (!user.assigned_subject_ids || user.assigned_subject_ids.length === 0)) {
-    return { status: 403, error: 'Your account has no assigned class or subject to create content for' };
-  }
-
-  const classMatches   = !!target.class_name && !!user.assigned_class && assignedTeacherClasses(user).includes(target.class_name);
-  const subjectMatches = target.subject_id != null && (user.assigned_subject_ids ?? []).some(id => String(id) === String(target.subject_id));
+  const classMatches = !!target.class_name && !!user.assigned_class && assignedTeacherClasses(user).includes(target.class_name);
+  const subjectMatches = !!target.class_name && target.subject_id != null &&
+    assignedTeacherSubjectsForClass(user, target.class_name).some(id => String(id) === String(target.subject_id));
 
   if (classMatches || subjectMatches) return null;
 
   return {
     status: 403,
-    error: "You can only create content for your assigned class or your assigned subject",
+    error: "You can only create content for your assigned class, or a subject assigned to that exact class",
   };
 }
 

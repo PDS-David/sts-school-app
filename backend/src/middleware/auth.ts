@@ -102,6 +102,13 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
               SELECT array_agg(ts.subject_id ORDER BY ts.subject_id)
               FROM teacher_subjects ts WHERE ts.user_id=u.id
             ), ARRAY[]::integer[]) AS assigned_subject_ids,
+            COALESCE((
+              SELECT json_agg(json_build_object('class_name', c.name, 'subject_id', tcs.subject_id, 'school_code', c.school_code)
+                              ORDER BY c.name, tcs.subject_id)
+              FROM teacher_class_subjects tcs
+              JOIN classes c ON c.id=tcs.class_id
+              WHERE tcs.user_id=u.id
+            ), '[]'::json) AS assigned_class_subjects,
             u.is_active, u.access_expires_at, u.revocation_reason, u.pending_admin_review,
             u.must_set_pin, u.must_change_pw,
             sess.id AS session_id, sess.revoked_at AS session_revoked_at, sess.expires_at AS session_expires_at,
@@ -156,6 +163,7 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
     assigned_class: dbUser.assigned_class,
     assigned_subject_ids: dbUser.assigned_subject_ids,
     assigned_class_names: dbUser.assigned_class_names,
+    assigned_class_subjects: dbUser.assigned_class_subjects,
     can_manage_all_schools: dbUser.can_manage_all_schools === true,
     selected_school_code: dbUser.role === 'admin' && dbUser.can_manage_all_schools === true ? requestedSchool : null,
   });

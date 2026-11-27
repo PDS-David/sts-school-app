@@ -7,6 +7,7 @@ import express from 'express';
 import test, { after } from 'node:test';
 import { pool, query } from '../backend/src/db/pool.js';
 import scoresRouter from '../backend/src/routes/scores.js';
+import academicRouter from '../backend/src/routes/academic.js';
 import { signAccess } from '../backend/src/utils/jwt.js';
 
 after(async () => {
@@ -45,6 +46,7 @@ async function startServer(): Promise<{ server: Server; baseUrl: string }> {
   const app = express();
   app.use(express.json());
   app.use('/scores', scoresRouter);
+  app.use('/academic', academicRouter);
   app.use((error: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
     res.status(500).json({ error: error instanceof Error ? error.message : 'Internal server error' });
   });
@@ -88,8 +90,16 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
       termIds.push(Number(rows[0].id));
     }
 
-    await query("UPDATE users SET assigned_class_names=ARRAY['Primary 4']::text[] WHERE id=$1", [subjectTeacher.id]);
-    await query('INSERT INTO teacher_subjects(user_id,subject_id) VALUES($1,$2)', [subjectTeacher.id, subjectIds[0]]);
+    await query("UPDATE users SET assigned_class_names=ARRAY['Primary 4','Primary 5']::text[] WHERE id=$1", [subjectTeacher.id]);
+    await query('INSERT INTO teacher_subjects(user_id,subject_id) VALUES($1,$2),($1,$3)', [subjectTeacher.id, subjectIds[0], subjectIds[1]]);
+    await query(
+      `INSERT INTO teacher_class_subjects(user_id,class_id,subject_id)
+       SELECT $1,c.id,v.subject_id FROM classes c
+       JOIN (VALUES ('Primary 4',$2::int),('Primary 5',$3::int)) AS v(class_name,subject_id)
+         ON v.class_name=c.name
+       WHERE c.school_code='primary'`,
+      [subjectTeacher.id, subjectIds[0], subjectIds[1]],
+    );
 
     const studentRows = await Promise.all([
       query(
@@ -159,6 +169,26 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
       student_id: studentId, subject_id: subjectId, term_id: termId, ca1: 10, ca2: 10, exam: 30,
     });
 
+    const academicBase = started.baseUrl.replace('/scores','/academic');
+    const p4Subjects = await fetch(`${academicBase}/subjects?class_name=Primary%204`, {
+      headers: headers(subjectTeacher.token),
+    });
+    assert.equal(p4Subjects.status, 200);
+    const p4SubjectPayload = await p4Subjects.json() as { subjects: Array<{ id: number }> };
+    assert.deepEqual(p4SubjectPayload.subjects.map(item => Number(item.id)), [subjectIds[0]],
+      'subject teachers see only subjects granted to Primary 4');
+    const p5Subjects = await fetch(`${academicBase}/subjects?class_name=Primary%205`, {
+      headers: headers(subjectTeacher.token),
+    });
+    assert.equal(p5Subjects.status, 200);
+    const p5SubjectPayload = await p5Subjects.json() as { subjects: Array<{ id: number }> };
+    assert.deepEqual(p5SubjectPayload.subjects.map(item => Number(item.id)), [subjectIds[1]],
+      'subject teachers see only subjects granted to Primary 5');
+    const unassignedClassSubjects = await fetch(`${academicBase}/subjects?class_name=Primary%206`, {
+      headers: headers(subjectTeacher.token),
+    });
+    assert.equal(unassignedClassSubjects.status, 403, 'subject teachers cannot load subjects for an unassigned class');
+
     const allowedSubject = await post('/', score(studentIds[0], subjectIds[0], termIds[0]), subjectTeacher.token);
     assert.equal(allowedSubject.status, 200, 'subject teachers can enter marks for their assigned subject in an assigned class');
 
@@ -170,6 +200,11 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
 
     const foreignTerm = await post('/', score(studentIds[0], subjectIds[0], termIds[1]), subjectTeacher.token);
     assert.equal(foreignTerm.status, 400, 'teacher score entry rejects a term owned by another school');
+
+    const subjectTeacherWrongPair = await post('/', score(studentIds[1], subjectIds[0], termIds[0]), subjectTeacher.token);
+    assert.equal(subjectTeacherWrongPair.status, 403, 'a subject grant in Primary 4 does not grant the same subject in Primary 5');
+    const subjectTeacherCorrectPair = await post('/', score(studentIds[1], subjectIds[1], termIds[0]), subjectTeacher.token);
+    assert.equal(subjectTeacherCorrectPair.status, 200, 'the same teacher may have a different subject grant in Primary 5');
 
     const classTeacherSubject = await post('/', score(studentIds[0], subjectIds[1], termIds[0]), classTeacher.token);
     assert.equal(classTeacherSubject.status, 200, 'class teachers can enter marks for any report subject in their assigned class');
@@ -183,8 +218,23 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     const multiClassTeacherScorePayload = await multiClassTeacherScores.json() as { scores: Array<{ student_id: string }> };
     assert.ok(multiClassTeacherScorePayload.scores.some(row => row.student_id === studentIds[1]),
       'a class teacher can read marks for an additional assigned class');
-    const subjectTeacherOutsideClass = await post('/', score(studentIds[1], subjectIds[0], termIds[0]), subjectTeacher.token);
-    assert.equal(subjectTeacherOutsideClass.status, 403, 'subject teachers cannot mark students outside their assigned classes');
+
+    const subjectTeacherWrongRead = await fetch(
+      `${started.baseUrl}?class_name=Primary%205&subject_id=${subjectIds[0]}`,
+      { headers: headers(subjectTeacher.token) },
+    );
+    assert.equal(subjectTeacherWrongRead.status, 200);
+    const subjectTeacherWrongReadPayload = await subjectTeacherWrongRead.json() as { scores: Array<{ student_id: string }> };
+    assert.equal(subjectTeacherWrongReadPayload.scores.length, 0,
+      'subject teachers cannot read a subject in a class where it is not assigned');
+    const subjectTeacherAllowedRead = await fetch(
+      `${started.baseUrl}?class_name=Primary%205&subject_id=${subjectIds[1]}`,
+      { headers: headers(subjectTeacher.token) },
+    );
+    assert.equal(subjectTeacherAllowedRead.status, 200);
+    const subjectTeacherAllowedReadPayload = await subjectTeacherAllowedRead.json() as { scores: Array<{ student_id: string }> };
+    assert.ok(subjectTeacherAllowedReadPayload.scores.some(row => row.student_id === studentIds[1]),
+      'subject teachers can read the subject assigned to Primary 5');
     const classTeacherOverride = await post('/', { ...score(studentIds[0], subjectIds[0], termIds[0]), ca1: 15 }, classTeacher.token);
     assert.equal(classTeacherOverride.status, 200, 'class teachers can overwrite a subject teacher mark for their class');
     const subjectTeacherCannotOverride = await post('/', score(studentIds[0], subjectIds[0], termIds[0]), subjectTeacher.token);
@@ -223,10 +273,10 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     const invalidBatch = await post('/bulk', {
       scores: [
         score(studentIds[0], subjectIds[0], termIds[0]),
-        score(studentIds[1], subjectIds[1], termIds[0]),
+        score(studentIds[1], subjectIds[0], termIds[0]),
       ],
     }, subjectTeacher.token);
-    assert.equal(invalidBatch.status, 403, 'subject-only teachers without a physical class cannot enter scores in bulk');
+    assert.equal(invalidBatch.status, 403, 'a mixed batch with one unassigned class/subject pair is rejected');
     const { rows: scoresAfterDeniedBatch } = await query(
       'SELECT id,student_id,subject_id,total FROM scores WHERE student_id=ANY($1::uuid[]) AND term_id=$2 ORDER BY id',
       [[studentIds[0], studentIds[1]], termIds[0]],
