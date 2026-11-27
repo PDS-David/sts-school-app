@@ -1,6 +1,6 @@
 import { query } from '../db/pool.js';
 import type { AuthUser } from '../types/index.js';
-import { assignedTeacherClasses } from './studentRosterScope.js';
+import { assignedTeacherClasses, assignedTeacherSubjectsForClass } from './studentRosterScope.js';
 
 /**
  * Every teacher-write endpoint (scores, attendance, class-records,
@@ -237,18 +237,15 @@ export async function checkTeacherContentScope(
   if (user.role !== 'teacher') {
     return { status: 403, error: 'Not authorized to create content for this class or subject' };
   }
-  if (!user.assigned_class && (!user.assigned_subject_ids || user.assigned_subject_ids.length === 0)) {
-    return { status: 403, error: 'Your account has no assigned class or subject to create content for' };
-  }
-
-  const classMatches   = !!target.class_name && !!user.assigned_class && assignedTeacherClasses(user).includes(target.class_name);
-  const subjectMatches = target.subject_id != null && (user.assigned_subject_ids ?? []).some(id => String(id) === String(target.subject_id));
+  const classMatches = !!target.class_name && !!user.assigned_class && assignedTeacherClasses(user).includes(target.class_name);
+  const subjectMatches = !!target.class_name && target.subject_id != null &&
+    assignedTeacherSubjectsForClass(user, target.class_name).some(id => String(id) === String(target.subject_id));
 
   if (classMatches || subjectMatches) return null;
 
   return {
     status: 403,
-    error: "You can only create content for your assigned class or your assigned subject",
+    error: "You can only create content for your assigned class, or a subject assigned to that exact class",
   };
 }
 
