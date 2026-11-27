@@ -44,7 +44,7 @@ export default function PromoteStudentsScreen() {
         setLoadError(e?.response?.data?.error ?? 'Could not load your assigned-class rosters. Check your connection and retry.');
       })
       .finally(() => setLoading(false));
-  }, [user?.assigned_class]);
+  }, [user?.assigned_class, user?.assigned_class_names?.join('|')]);
 
   useEffect(() => { fetchRoster(); }, [fetchRoster]);
 
