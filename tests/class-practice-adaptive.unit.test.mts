@@ -24,6 +24,16 @@ test('difficulty adapts to concept-level accuracy without overreacting to sparse
   ]);
 });
 
+test('concept history matches labels case-insensitively and accepts PostgreSQL numeric strings', () => {
+  const targets = buildAdaptiveConceptTargets(
+    ['Linear equations'],
+    [{ concept: '  LINEAR   EQUATIONS ', attempts: '3', accuracy: '0.5000' }],
+  );
+  assert.deepEqual(targets, [{
+    concept: 'Linear equations', attempts: 3, accuracy: 0.5, difficulty: 'foundation', focus: true,
+  }]);
+});
+
 test('new concepts remain standard and stale history outside the completed lesson is ignored', () => {
   const targets = buildAdaptiveConceptTargets(
     ['Osmosis'],
