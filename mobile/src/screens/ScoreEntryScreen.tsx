@@ -83,9 +83,7 @@ export default function ScoreEntryScreen({ navigation }: any) {
       if (cancelled) return;
       setSubjects(sub.data.subjects);
       setTerms(t.data.terms);
-      const cls = (user?.role === 'teacher' && user?.assigned_class)
-        ? [user.assigned_class]
-        : [...new Set((c.data.classes as any[]).map((x: any) => x.name))].sort();
+      const cls = [...new Set((c.data.classes as any[]).map((x: any) => x.name))].sort();
       setClasses(cls);
       setSelClass(cls[0] ?? '');
       const cur = t.data.terms.find((x: Term & { is_current: boolean }) => x.is_current);
