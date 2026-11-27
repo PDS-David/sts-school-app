@@ -276,8 +276,8 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       const unrosteredStarted=await request('/online-exams/exams/'+examId+'/start','POST',unrosteredToken);
       assert.equal(unrosteredStarted.status,200,'online-only learner can start an eligible examination');
       const deletedToken=token(deletedUser,'deleted-student');
-      assert.equal((await request('/online-exams/exams','GET',deletedToken)).status,404,'soft-deleted student records cannot list online examinations');
-      assert.equal((await request('/online-exams/exams/'+examId+'/start','POST',deletedToken)).status,404,'soft-deleted student records cannot start examinations');
+      assert.equal((await request('/online-exams/exams','GET',deletedToken)).status,401,'authentication rejects soft-deleted student records before online exam access');
+      assert.equal((await request('/online-exams/exams/'+examId+'/start','POST',deletedToken)).status,401,'authentication rejects soft-deleted student records before they can start examinations');
 
       const pendingToken=token(pendingUser,'pending-student');
       assert.equal((await request('/online-exams/exams','GET',pendingToken)).data.exams.length,0,'pending-review student accounts must not be eligible candidates');
