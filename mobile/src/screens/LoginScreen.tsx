@@ -146,19 +146,14 @@ export default function LoginScreen({ navigation }: any) {
           </View>
 
           {mode === 'password' ? (
-            <Text style={[styles.forgotLinkText, { marginTop: Spacing.xs }]}>Teachers: enter your registration password or the four-digit temporary code from the school. After signing in, you will set your own six-digit PIN.</Text>
-          ) : (
             <>
-              <Text style={[styles.forgotLinkText, { alignSelf: 'flex-end', marginTop: Spacing.xs }]}>Forgot your PIN? Contact the school Admin.</Text>
-
-            </>
-          ) : (
-            <>
+              <Text style={[styles.forgotLinkText, { marginTop: Spacing.xs }]}>Teachers: enter your registration password or the four-digit temporary code from the school. After signing in, you will set your own six-digit PIN.</Text>
               <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')} style={styles.forgotLink} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
                 <Text style={styles.forgotLinkText}>Forgot password?</Text>
               </TouchableOpacity>
-
             </>
+          ) : (
+            <Text style={[styles.forgotLinkText, { alignSelf: 'flex-end', marginTop: Spacing.xs }]}>Forgot your PIN? Contact the school Admin.</Text>
           )}
 
           {error ? <Text style={styles.error}>{error}</Text> : null}
