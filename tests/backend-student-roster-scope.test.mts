@@ -1,4 +1,6 @@
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import test from 'node:test';
 import { assignedTeacherClasses, resolveStudentRosterScope } from '../backend/src/utils/studentRosterScope.ts';
 import type { AuthUser } from '../backend/src/types/index.js';
@@ -109,4 +111,9 @@ test('class teacher can be assigned and scoped to more than one physical class',
     status: 403,
     error: 'You can only browse students in your assigned physical classes.',
   });
+});
+
+test('multi-class roster SQL binds assigned class arrays as a PostgreSQL text array', () => {
+  const source = readFileSync(resolve(process.cwd(), 'backend/src/routes/students.ts'), 'utf8');
+  assert.match(source, /rrm\\.class_name=ANY\\(\\$\\$\\{params\\.length\\}::text\\[\\]\\)/);
 });
