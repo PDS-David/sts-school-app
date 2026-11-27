@@ -7,6 +7,7 @@ import { query, withTransaction } from '../db/pool.js';
 import { verifyTopicAssetPayload } from '../db/attachTopicAssets.js';
 import { requireAuth, requirePerm, requireRole, denyTeacherAccess } from '../middleware/auth.js';
 import { resolveViewerClassNames, checkTeacherContentScope } from '../utils/scope.js';
+import { assignedTeacherClasses } from '../utils/studentRosterScope.js';
 import { generate, generateJSON } from '../utils/ai.js';
 import { getOrGenerateCurriculumLesson } from '../services/curriculumLessonCache.js';
 import { createRedisRateLimitStore } from '../utils/redisRateLimitStore.js';
@@ -619,21 +620,18 @@ router.get('/materials', requirePerm('materials.read'), async (req, res) => {
   const params: unknown[] = [sc];
 
   if (user.role === 'teacher') {
-    // A subject teacher sees their subject across every class; a class
-    // teacher sees their own class across every subject; a teacher with
-    // both gets the union — same "own class OR own subject" scope the
-    // write side already enforces (see checkTeacherContentScope above).
-    // Previously this fell through to the unrestricted (null) branch below
-    // like admin, which meant any teacher could browse every class's
-    // materials school-wide regardless of assignment — tightened per
-    // school request.
-    const clauses: string[] = [];
-    if (user.assigned_class) { params.push(user.assigned_class); clauses.push(`m.class_name=$${params.length}`); }
-    if (user.assigned_subject_ids?.length) { params.push(user.assigned_subject_ids); clauses.push(`m.subject_id = ANY($${params.length})`); }
-    // A teacher with neither assignment can't create content either (see
-    // checkTeacherContentScope) — FALSE rather than showing everything
-    // keeps read and write scope consistent for that same unassigned state.
-    sql += clauses.length ? ` AND (${clauses.join(' OR ')})` : ' AND FALSE';
+    if (user.assigned_class) {
+      params.push(assignedTeacherClasses(user));
+      sql += ` AND m.class_name=ANY($${params.length}::text[])`;
+    } else {
+      params.push(user.id);
+      sql += ` AND EXISTS (
+        SELECT 1 FROM teacher_class_subjects tcs
+        JOIN classes tc ON tc.id=tcs.class_id
+        WHERE tcs.user_id=$${params.length}
+          AND tc.name=m.class_name AND tcs.subject_id=m.subject_id
+      )`;
+    }
   } else if (viewerClasses) {
     if (!viewerClasses.length) {
       // Student with no linked record, or parent with no wards — nothing to show.
@@ -838,12 +836,18 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
   const params: unknown[] = [sc];
 
   if (user.role === 'teacher') {
-    // Same class-OR-subject scope as GET /materials above — see the
-    // comment there for the full reasoning.
-    const clauses: string[] = [];
-    if (user.assigned_class) { params.push(user.assigned_class); clauses.push(`t.class_name=$${params.length}`); }
-    if (user.assigned_subject_ids?.length) { params.push(user.assigned_subject_ids); clauses.push(`t.subject_id = ANY($${params.length})`); }
-    sql += clauses.length ? ` AND (${clauses.join(' OR ')})` : ' AND FALSE';
+    if (user.assigned_class) {
+      params.push(assignedTeacherClasses(user));
+      sql += ` AND t.class_name=ANY($${params.length}::text[])`;
+    } else {
+      params.push(user.id);
+      sql += ` AND EXISTS (
+        SELECT 1 FROM teacher_class_subjects tcs
+        JOIN classes tc ON tc.id=tcs.class_id
+        WHERE tcs.user_id=$${params.length}
+          AND tc.name=t.class_name AND tcs.subject_id=t.subject_id
+      )`;
+    }
   } else if (viewerClasses) {
     if (!viewerClasses.length) return res.json({ topics: [] });
     params.push(viewerClasses);
@@ -970,10 +974,17 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
 // aliased `t`. Returns null when the viewer can see no topics at all.
 async function topicVisibilitySql(user: AuthUser, params: unknown[]): Promise<string | null> {
   if (user.role === 'teacher') {
-    const clauses: string[] = [];
-    if (user.assigned_class) { params.push(user.assigned_class); clauses.push(`t.class_name=$${params.length}`); }
-    if (user.assigned_subject_ids?.length) { params.push(user.assigned_subject_ids); clauses.push(`t.subject_id = ANY($${params.length})`); }
-    return clauses.length ? ` AND (${clauses.join(' OR ')})` : ' AND FALSE';
+    if (user.assigned_class) {
+      params.push(assignedTeacherClasses(user));
+      return ` AND t.class_name=ANY($${params.length}::text[])`;
+    }
+    params.push(user.id);
+    return ` AND EXISTS (
+      SELECT 1 FROM teacher_class_subjects tcs
+      JOIN classes tc ON tc.id=tcs.class_id
+      WHERE tcs.user_id=$${params.length}
+        AND tc.name=t.class_name AND tcs.subject_id=t.subject_id
+    )`;
   }
   const viewerClasses = await resolveViewerClassNames(user);
   if (viewerClasses) {
