@@ -430,7 +430,7 @@ export async function getMessageableUsers(user: AuthUser): Promise<MessageableUs
            OR (
              u.school_code = st.school_code
              AND (
-               (u.role = 'teacher' AND (u.assigned_class = st.class_name OR st.class_name=ANY(COALESCE(u.assigned_class_names, ARRAY[]::text[])) OR EXISTS (SELECT 1 FROM teacher_subjects ts WHERE ts.user_id = u.id)))
+               (u.role = 'teacher' AND (u.assigned_class = st.class_name OR (u.assigned_class IS NOT NULL AND st.class_name=ANY(COALESCE(u.assigned_class_names, ARRAY[]::text[]))) OR EXISTS (SELECT 1 FROM teacher_subjects ts WHERE ts.user_id = u.id)))
                OR (u.role = 'parent' AND u.id IN (
                      SELECT pw.parent_id FROM parent_wards pw WHERE pw.student_id = st.id
                    ))
