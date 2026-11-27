@@ -629,7 +629,7 @@ router.get('/materials', requirePerm('materials.read'), async (req, res) => {
         SELECT 1 FROM teacher_class_subjects tcs
         JOIN classes tc ON tc.id=tcs.class_id
         WHERE tcs.user_id=$${params.length}
-          AND tc.name=m.class_name AND tcs.subject_id=m.subject_id
+          AND tc.name=m.class_name AND tc.school_code=m.school_code AND tcs.subject_id=m.subject_id
       )`;
     }
   } else if (viewerClasses) {
@@ -845,7 +845,7 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
         SELECT 1 FROM teacher_class_subjects tcs
         JOIN classes tc ON tc.id=tcs.class_id
         WHERE tcs.user_id=$${params.length}
-          AND tc.name=t.class_name AND tcs.subject_id=t.subject_id
+          AND tc.name=t.class_name AND tc.school_code=t.school_code AND tcs.subject_id=t.subject_id
       )`;
     }
   } else if (viewerClasses) {
