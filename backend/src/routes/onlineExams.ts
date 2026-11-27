@@ -432,7 +432,7 @@ router.post('/admin/exams/:examId/publish',requireRole('admin'),async(req,res)=>
       SELECT st.id,st.class_name FROM students st
        JOIN users u ON u.id=st.user_id AND u.role='student' AND u.school_code=st.school_code AND u.is_active=true AND COALESCE(u.pending_admin_review,false)=false AND u.revocation_reason IS NULL AND (u.access_expires_at IS NULL OR u.access_expires_at>now()) AND st.deleted_at IS NULL
        WHERE st.school_code=$1 AND st.class_name=$2
-       FOR SHARE OF st,rrm,u
+       FOR SHARE OF st,u
     `,[exam.school_code,exam.class_name]);
     if(!candidates.length) return {status:409,error:'No active candidates are enrolled in this examination class.'};
     const candidateIds=candidates.map((candidate:any)=>candidate.id);
