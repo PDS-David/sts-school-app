@@ -15,7 +15,7 @@ export interface CurrentAuthClaims {
   assigned_class: string | null;
   assigned_subject_ids: number[];
   assigned_class_names?: string[];
-  assigned_class_subjects?: Array<{ class_name: string; subject_id: number }>;
+  assigned_class_subjects?: Array<{ class_name: string; subject_id: number; school_code: string }>;
   can_manage_all_schools?: boolean;
   selected_school_code?: string | null;
 }
