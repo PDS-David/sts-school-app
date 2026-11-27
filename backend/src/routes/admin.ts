@@ -135,9 +135,13 @@ router.get('/users', async (req, res) => {
                     u.phone,u.email,
                     (u.password_hash IS NULL) AS pending_activation,
                     u.pending_admin_review,
-                    COALESCE(array_agg(ts.subject_id) FILTER (WHERE ts.subject_id IS NOT NULL), '{}') AS assigned_subject_ids
+                    COALESCE(array_agg(DISTINCT ts.subject_id) FILTER (WHERE ts.subject_id IS NOT NULL), '{}') AS assigned_subject_ids,
+                    COALESCE(jsonb_agg(DISTINCT jsonb_build_object('class_name', tcs_class.name, 'subject_id', tcs.subject_id))
+                      FILTER (WHERE tcs.user_id IS NOT NULL), '[]'::jsonb) AS assigned_class_subjects
              FROM users u
              LEFT JOIN teacher_subjects ts ON ts.user_id = u.id
+             LEFT JOIN teacher_class_subjects tcs ON tcs.user_id = u.id
+             LEFT JOIN classes tcs_class ON tcs_class.id = tcs.class_id
              WHERE 1=1`;
   const params: unknown[] = [];
   if (scope.schoolCode) { params.push(scope.schoolCode); sql += ` AND u.school_code=$${params.length}`; }
@@ -215,7 +219,7 @@ function blankToNull<T>(v: T): T | null {
 }
 
 router.post('/users', async (req, res) => {
-  const { username, full_name, role, school_code, assigned_class, assigned_class_names, assigned_subject_ids, phone, email, access_expires_at, initial_password } = req.body ?? {};
+  const { username, full_name, role, school_code, assigned_class, assigned_class_names, assigned_subject_ids, assigned_class_subjects, phone, email, access_expires_at, initial_password } = req.body ?? {};
   const scope = resolveAdminSchoolScope(req.user!, school_code);
   if (!scope.ok) return res.status(scope.status).json({ error: scope.error });
   if (req.user!.school_code && role === 'finance_admin') {
@@ -281,7 +285,17 @@ router.post('/users', async (req, res) => {
       return res.status(400).json({ error: 'assigned_class_names must be an array of unique class names.' });
     }
     const classNames = rawClassNames.filter(name => name !== assignedClassN);
-    if (!assignedClassN && (!classNames.length || !subjectIds.length)) {
+    const classSubjectGrants = Array.isArray(assigned_class_subjects)
+      ? assigned_class_subjects
+      : classNames.flatMap((class_name: string) => subjectIds.map(subject_id => ({ class_name, subject_id })));
+    if (!Array.isArray(classSubjectGrants) || classSubjectGrants.some((grant: any) =>
+      !grant || typeof grant.class_name !== 'string' || !grant.class_name.trim() ||
+      !Number.isSafeInteger(grant.subject_id) || grant.subject_id <= 0 ||
+      !classNames.includes(grant.class_name.trim()) || !subjectIds.includes(grant.subject_id)) ||
+      new Set(classSubjectGrants.map((grant: any) => `${grant.class_name.trim()}:${grant.subject_id}`)).size !== classSubjectGrants.length) {
+      return res.status(400).json({ error: 'assigned_class_subjects must contain unique valid class/subject assignments within the selected classes and subjects.' });
+    }
+    if (!assignedClassN && (!classSubjectGrants.length || !subjectIds.length)) {
       return res.status(400).json({ error: 'A subject teacher must have at least one assigned class and one assigned subject.' });
     }
 
@@ -316,6 +330,14 @@ router.post('/users', async (req, res) => {
           await client.query(
             'INSERT INTO teacher_subjects(user_id, subject_id) VALUES($1,$2)',
             [rows[0].id, sid],
+          );
+        }
+        for (const grant of classSubjectGrants) {
+          await client.query(
+            `INSERT INTO teacher_class_subjects(user_id,class_id,subject_id,created_by)
+             SELECT $1,c.id,$3,$4 FROM classes c
+             WHERE c.school_code=$2 AND c.name=$5`,
+            [rows[0].id, schoolCodeN, grant.subject_id, req.user!.id, grant.class_name.trim()],
           );
         }
         await auditInTransaction(
@@ -396,7 +418,7 @@ router.post('/users/:id/reissue-activation-code', async (req, res) => {
 });
 
 router.put('/users/:id', async (req, res) => {
-  const { full_name, role, school_code, assigned_class, assigned_class_names, assigned_subject_ids, is_active, phone, email, access_expires_at, clear_expiry, revocation_reason } = req.body ?? {};
+  const { full_name, role, school_code, assigned_class, assigned_class_names, assigned_subject_ids, assigned_class_subjects, is_active, phone, email, access_expires_at, clear_expiry, revocation_reason } = req.body ?? {};
   const schoolCodeN = blankToNull(school_code);
   const assignedClassN = blankToNull(assigned_class);
   const phoneN = blankToNull(phone);
@@ -404,6 +426,7 @@ router.put('/users/:id', async (req, res) => {
   const reactivating = is_active === true;
   const hasSubjectIds = assigned_subject_ids !== undefined;
   const hasClassNames = assigned_class_names !== undefined;
+  const hasClassSubjectGrants = assigned_class_subjects !== undefined;
   if (req.user!.school_code && school_code != null && school_code !== '' &&
       (typeof school_code !== 'string' || school_code.trim() !== req.user!.school_code)) {
     return res.status(403).json({ error: "You can't move an account outside your school" });
