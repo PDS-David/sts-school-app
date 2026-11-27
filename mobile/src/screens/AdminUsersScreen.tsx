@@ -663,15 +663,16 @@ export default function AdminUsersScreen() {
                   selectedValue={availableClasses.find(c => c.name === form.assigned_class)?.id.toString() ?? ''}
                   onValueChange={value => {
                     const selected = availableClasses.find(c => c.id === Number(value));
-                    if (!selected) return;
                     setForm(f => ({
                       ...f,
-                      assigned_class: selected.name,
-                      assigned_class_names: f.assigned_class_names.filter(name => name !== selected.name),
+                      assigned_class: selected?.name ?? '',
+                      assigned_class_names: selected
+                        ? f.assigned_class_names.filter(name => name !== selected.name)
+                        : f.assigned_class_names,
                     }));
                   }}
                 >
-                  <Picker.Item label="Choose the teacher's main class..." value="" />
+                  <Picker.Item label="No primary class — unassigned" value="" />
                   {availableClasses.map(c => (
                     <Picker.Item key={c.id} label={c.name} value={String(c.id)} />
                   ))}
