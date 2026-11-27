@@ -175,12 +175,12 @@ router.post('/sets/:id/submit', async (req, res) => {
 
     const graded = answers.map((a: any) => {
       const q: any = byId.get(a.question_id);
-      const correct = clean(a.answer) === clean(q.correct_answer);
+      const correct = cleanPracticeLabel(a.answer) === cleanPracticeLabel(q.correct_answer);
       return { q, answer: a.answer, correct, marks: correct ? q.marks : 0 };
     });
     // All submissions acquire shared concept-performance rows in the same order.
     // Preserve `graded` itself for the student's original response ordering.
-    for (const item of [...graded].sort((a, b) => clean(a.q.concept).localeCompare(clean(b.q.concept)))) {
+    for (const item of [...graded].sort((a, b) => cleanPracticeLabel(a.q.concept).localeCompare(cleanPracticeLabel(b.q.concept)))) {
       await client.query(`
         INSERT INTO class_practice_attempts(set_id,student_id,topic_id,question_id,concept,answer,correct,marks_awarded,marks_available)
         VALUES($1,$2,$3,$4,$5,$6::jsonb,$7,$8,$9)
