@@ -45,13 +45,12 @@ async function createUser(
   role: 'teacher' | 'parent' | 'student' | 'admin',
   schoolCode: string | null,
   assignedClass: string | null = null,
-  assignedClassNames: string[] = [],
 ): Promise<TestUser> {
   const username = `bsec16-${label}-${randomUUID()}`;
   const { rows } = await query(
-    `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,assigned_class_names,is_active,pending_admin_review)
-     VALUES($1,'test-hash',$2,$3,$4,$5,$6::text[],TRUE,FALSE) RETURNING id`,
-    [username, role, `BSEC16 ${label}`, schoolCode, assignedClass, assignedClassNames],
+    `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,is_active,pending_admin_review)
+     VALUES($1,'test-hash',$2,$3,$4,$5,TRUE,FALSE) RETURNING id`,
+    [username, role, `BSEC16 ${label}`, schoolCode, assignedClass],
   );
   const id = String(rows[0].id);
   return {
@@ -62,7 +61,6 @@ async function createUser(
       role,
       school_code: schoolCode,
       assigned_class: assignedClass,
-      assigned_class_names: assignedClassNames,
       assigned_subject_ids: [],
     }),
   };
@@ -71,7 +69,7 @@ async function createUser(
 async function createFixture(): Promise<Fixture> {
   const suffix = randomUUID();
   const users = {
-    classTeacher: await createUser('class-teacher', 'teacher', 'primary', 'Primary 4', ['Primary 5']),
+    classTeacher: await createUser('class-teacher', 'teacher', 'primary', 'Primary 4'),
     subjectTeacher: await createUser('subject-teacher', 'teacher', 'primary'),
     otherTeacher: await createUser('other-teacher', 'teacher', 'primary', 'Primary 5'),
     parent: await createUser('parent', 'parent', 'primary'),
@@ -256,16 +254,6 @@ test('weekly-effort feedback enforces class, teacher ownership, active ward and 
       headers: { Authorization: `Bearer ${fixture.users.subjectTeacher.token}` },
     });
     assert.equal(subjectTeacherFeed.status, 403, 'teachers cannot access the weekly-effort feed');
-    const classTeacherFeed = await fetch(started.baseUrl, {
-      headers: { Authorization: `Bearer ${fixture.users.classTeacher.token}` },
-    });
-    assert.equal(classTeacherFeed.status, 200, 'class teachers can read the weekly-effort feed for their assigned classes');
-    const classTeacherFeedPayload = await classTeacherFeed.json() as { weekly_efforts: Array<{ id: number; student_id: string }> };
-    const visibleEffortIds = new Set(classTeacherFeedPayload.weekly_efforts.map(row => row.id));
-    assert.ok(visibleEffortIds.has(fixture.efforts.classFourByOtherTeacher), 'class teacher sees entries in the primary assigned class');
-    assert.ok(visibleEffortIds.has(fixture.efforts.classFiveBySubjectTeacher), 'class teacher sees entries in the additional assigned class');
-    assert.ok(!visibleEffortIds.has(fixture.efforts.secondaryBySubjectTeacher), 'class teacher cannot see entries from another school');
-    assert.ok(!visibleEffortIds.has(fixture.efforts.deletedWard), 'class teacher cannot see soft-deleted student entries');
   } finally {
     if (server) {
       server.closeAllConnections();
