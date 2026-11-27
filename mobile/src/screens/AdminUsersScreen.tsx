@@ -18,6 +18,7 @@ interface User {
   access_expires_at: string | null;
   assigned_subject_ids?: number[];
   assigned_class_names?: string[];
+  assigned_class_subjects?: Array<{ class_name: string; subject_id: number }>;
   // Now selected by GET /admin/users (Part 4 audit fix) — previously absent,
   // which made every Edit-User save silently blank the target's phone
   // number (see openEdit/handleSave below for the actual fix).
@@ -117,6 +118,7 @@ export default function AdminUsersScreen() {
     access_expires_at: '', // YYYY-MM-DD, blank = no expiry
     assigned_subject_ids: [] as number[],
     assigned_class_names: [] as string[],
+    assigned_class_subjects: [] as Array<{ class_name: string; subject_id: number }>,
     initial_password: '', // teacher only — admin sets a temporary four-digit sign-in code
   });
 
@@ -592,7 +594,7 @@ export default function AdminUsersScreen() {
                         assigned_class_names: [],
                       }));
                     } else {
-                      setForm(f => ({ ...f, username: '', assigned_class: '', assigned_subject_ids: [], assigned_class_names: [] }));
+                      setForm(f => ({ ...f, username: '', assigned_class: '', assigned_subject_ids: [], assigned_class_names: [], assigned_class_subjects: [] }));
                     }
                   }}
                 >
@@ -617,24 +619,7 @@ export default function AdminUsersScreen() {
               </View>
               <Text style={styles.expiryHint}>Choose the class or subject name. Its matching username is filled in automatically.</Text>
               {form.assigned_subject_ids.length > 0 && (
-                <View style={{ marginTop: Spacing.sm }}>
-                  <Text style={styles.filterLabel}>Classes this subject teacher can mark</Text>
-                  {availableClasses.map(c => {
-                    const selected = form.assigned_class_names.includes(c.name);
-                    return (
-                      <TouchableOpacity key={c.id} onPress={() => setForm(f => ({
-                        ...f,
-                        assigned_class_names: selected
-                          ? f.assigned_class_names.filter(name => name !== c.name)
-                          : [...f.assigned_class_names, c.name],
-                      }))} style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 8 }}>
-                        <Ionicons name={selected ? 'checkbox' : 'square-outline'} size={20} color={selected ? Colors.primary : Colors.textSub} />
-                        <Text style={{ marginLeft: 10, color: Colors.text }}>{c.name}</Text>
-                      </TouchableOpacity>
-                    );
-                  })}
-                  <Text style={styles.expiryHint}>Select every class assigned to this subject teacher.</Text>
-                </View>
+                <Text style={styles.expiryHint}>Choose the class/subject combinations this teacher is authorised to teach below.</Text>
               )}
             </>
           )}
@@ -723,6 +708,39 @@ export default function AdminUsersScreen() {
                   <Text style={styles.expiryHint}>Select every other class this teacher is responsible for. The teacher will be able to manage each selected class.</Text>
                 </View>
               )}
+              {!form.assigned_class && (
+                <View style={{ marginTop: Spacing.sm }}>
+                  <Text style={styles.filterLabel}>Subject permissions by class</Text>
+                  <Text style={styles.expiryHint}>Tick only the subjects this teacher is responsible for in each class. A subject selected in one class does not grant access in another.</Text>
+                  {availableClasses.map(c => (
+                    <View key={c.id} style={{ marginTop: Spacing.sm, padding: Spacing.sm, borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.md }}>
+                      <Text style={{ color: Colors.text, fontWeight: '700', marginBottom: 6 }}>{c.name}</Text>
+                      <View style={styles.chipRow}>
+                        {availableSubjects.map(sub => {
+                          const selected = form.assigned_class_subjects.some(g => g.class_name === c.name && g.subject_id === sub.id);
+                          return (
+                            <TouchableOpacity key={sub.id} onPress={() => setForm(f => {
+                              const exists = f.assigned_class_subjects.some(g => g.class_name === c.name && g.subject_id === sub.id);
+                              const grants = exists
+                                ? f.assigned_class_subjects.filter(g => !(g.class_name === c.name && g.subject_id === sub.id))
+                                : [...f.assigned_class_subjects, { class_name: c.name, subject_id: sub.id }];
+                              return {
+                                ...f,
+                                assigned_class_subjects: grants,
+                                assigned_class_names: [...new Set(grants.map(g => g.class_name))],
+                                assigned_subject_ids: [...new Set(grants.map(g => g.subject_id))],
+                              };
+                            })} style={[styles.chip, selected && styles.chipSelected]}>
+                              <Text style={[styles.chipText, selected && styles.chipTextSelected]}>{sub.name}</Text>
+                            </TouchableOpacity>
+                          );
+                        })}
+                      </View>
+                    </View>
+                  ))}
+                </View>
+              )}
+
 
               {isNewClassTeacher && (
               <>
