@@ -103,7 +103,7 @@ export async function requireAuth(req: Request, res: Response, next: NextFunctio
               FROM teacher_subjects ts WHERE ts.user_id=u.id
             ), ARRAY[]::integer[]) AS assigned_subject_ids,
             COALESCE((
-              SELECT json_agg(json_build_object('class_name', c.name, 'subject_id', tcs.subject_id)
+              SELECT json_agg(json_build_object('class_name', c.name, 'subject_id', tcs.subject_id, 'school_code', c.school_code)
                               ORDER BY c.name, tcs.subject_id)
               FROM teacher_class_subjects tcs
               JOIN classes c ON c.id=tcs.class_id
