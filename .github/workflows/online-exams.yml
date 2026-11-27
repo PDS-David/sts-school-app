@@ -5,6 +5,8 @@ on:
       - 'backend/**'
       - 'mobile/**'
       - 'tests/online-exams*'
+      - 'tests/ai-class-practice*'
+      - 'tests/class-practice*'
       - 'docs/FORMAL_ONLINE_EXAMINATIONS.md'
       - '.github/workflows/online-exams.yml'
   push:
@@ -44,6 +46,9 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: npm run test:online-exams
+        env:
+          TEST_DATABASE_URL: postgresql://postgres:postgres@localhost:5432/online_exam_test
+      - run: npm run test:class-practice
         env:
           TEST_DATABASE_URL: postgresql://postgres:postgres@localhost:5432/online_exam_test
 
