@@ -6,6 +6,7 @@ import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
 import { hasPerm } from '../utils/rbac.js';
 import { audit } from '../utils/audit.js';
 import { checkTeacherStudentScope, checkTermSchoolScope } from '../utils/scope.js';
+import { assignedTeacherClasses } from '../utils/studentRosterScope.js';
 
 const router = Router();
 // Teachers may maintain attendance and class records for their physical roster;
@@ -71,10 +72,16 @@ router.get('/', requirePerm('attendance.read'), async (req, res) => {
   const { class_name, term_id, school_code: requestedSchoolCode } = req.query as Record<string, string>;
   const user = req.user!;
   const parsedTermId = Number(term_id);
-  if (user.role === 'teacher' && !user.assigned_class) {
+  const allowedClasses = user.role === 'teacher' ? assignedTeacherClasses(user) : [];
+  if (user.role === 'teacher' && (!user.assigned_class || !allowedClasses.length)) {
     return res.status(403).json({ error: 'Attendance access requires an assigned physical class.' });
   }
-  const effectiveClass = user.role === 'teacher' ? user.assigned_class : class_name?.trim();
+  if (user.role === 'teacher' && class_name?.trim() && !allowedClasses.includes(class_name.trim())) {
+    return res.status(403).json({ error: 'You can only load attendance for your assigned physical classes.' });
+  }
+  const effectiveClass = user.role === 'teacher'
+    ? (class_name?.trim() && allowedClasses.includes(class_name.trim()) ? class_name.trim() : user.assigned_class)
+    : class_name?.trim();
   // requireAuth hydrates school_code from the administrator's assigned
   // school, or from the explicitly selected school for a global administrator.
   // Never let a query parameter override that trusted authorization scope.
@@ -171,13 +178,14 @@ router.get('/class-records/:student_id/:term_id', async (req, res) => {
     if (!pw.length) return res.status(403).json({ error: 'Not your ward' });
   } else if (user.role === 'teacher') {
     if (!hasPerm(user.role, 'classRecord.read')) return res.status(403).json({ error: 'Permission denied: classRecord.read' });
-    if (!user.school_code || !user.assigned_class || student.school_code !== user.school_code) {
+    const allowedClasses = assignedTeacherClasses(user);
+    if (!user.school_code || !allowedClasses.length || student.school_code !== user.school_code) {
       return res.status(404).json({ error: 'Class record not found' });
     }
     const { rows: membershipRows } = await query(
       `SELECT 1 FROM report_roster_memberships
-       WHERE student_id=$1 AND class_name=$2 AND status='active'`,
-      [student_id, user.assigned_class],
+       WHERE student_id=$1 AND class_name=ANY($2::text[]) AND status='active'`,
+      [student_id, allowedClasses],
     );
     if (!membershipRows[0]) return res.status(404).json({ error: 'Class record not found' });
   } else if (user.role !== 'admin') {
