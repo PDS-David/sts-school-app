@@ -66,3 +66,10 @@ test('teacher first sign-in explains registration passwords and four-digit tempo
   assert.match(source, /four-digit temporary code from the school/);
   assert.match(source, /After signing in, you will set your own six-digit PIN/);
 });
+
+test('admin can assign additional classes to an existing class teacher', () => {
+  const source = readFileSync(resolve(process.cwd(), 'mobile/src/screens/AdminUsersScreen.tsx'), 'utf8');
+  assert.ok(source.includes('Additional classes for this class teacher'));
+  assert.ok(source.includes('payload.assigned_class_names = form.assigned_class_names;'));
+  assert.ok(source.includes('assigned_class_names: selected'));
+});
