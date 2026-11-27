@@ -292,7 +292,7 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
       sql += ` AND EXISTS (
         SELECT 1 FROM teacher_class_subjects tcs
         JOIN classes tc ON tc.id=tcs.class_id
-        WHERE tcs.user_id=$${params.length} AND tc.name=rrm.class_name
+        WHERE tcs.user_id=$${params.length} AND tc.name=rrm.class_name AND tc.school_code=s.school_code
           AND tcs.subject_id=sc.subject_id
       )`;
     }
