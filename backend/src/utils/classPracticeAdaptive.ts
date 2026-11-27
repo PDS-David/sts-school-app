@@ -25,7 +25,7 @@ export type GeneratedPracticeQuestion = {
 };
 
 export const cleanPracticeLabel = (value: unknown) =>
-  String(value ?? '').trim().toLocaleLowerCase().replace(/\\s+/g, ' ');
+  String(value ?? '').trim().toLocaleLowerCase().replace(/\s+/g, ' ');
 
 /**
  * Weak concepts receive foundation-level questions. Concepts with a sustained
