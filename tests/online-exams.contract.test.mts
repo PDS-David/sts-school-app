@@ -79,8 +79,9 @@ test('AI essay marking reuses the existing essay-mark contract', () => {
 
 test('exam schema and APIs remain isolated from physical teacher-report data', () => {
   assert.doesNotMatch(migration, /\b(scores|attendance|report_cards|report_remarks|class_records|report_roster_memberships)\b/i);
-  assert.doesNotMatch(route, /\b(?:INSERT\s+INTO|UPDATE|DELETE\s+FROM|TRUNCATE(?:\s+TABLE)?|ALTER\s+TABLE|DROP\s+TABLE)\s+(?:public\.)?(?:scores|attendance|report_cards|report_remarks|class_records|report_roster_memberships)\b/i);
-  assert.match(route, /JOIN report_roster_memberships rrm[^\n]*status='active'/);
+  assert.doesNotMatch(route, /\b(?:INSERT\s+INTO|UPDATE|DELETE\s+FROM|TRUNCATE(?:\s+TABLE)?|ALTER\s+TABLE|DROP\s+TABLE)\s+(?:public\.)?(?:scores|attendance|report_cards|report_remarks|class_records)\b/i);
+  assert.doesNotMatch(route, /\breport_roster_memberships\b/i, 'online exam eligibility must not depend on physical report-roster membership');
+  assert.match(route, /st\.deleted_at IS NULL/, 'soft-deleted student records must not become online exam candidates');
   for (const table of ['online_exams','online_exam_sections','online_exam_questions','online_exam_candidates','online_exam_attempts','online_exam_responses','online_exam_audit_events']) {
     assert.match(migration, new RegExp('CREATE TABLE IF NOT EXISTS '+table));
   }
