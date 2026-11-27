@@ -286,11 +286,11 @@ router.get('/', requirePerm('grades.read'), async (req, res) => {
     const allowedClasses = assignedTeacherClasses(user);
     if (!allowedClasses.length) return res.json({ scores: [] });
     params.push(allowedClasses);
-    sql += ` AND rrm.class_name=ANY(${params.length}::text[]) AND rrm.status='active'`;
+    sql += ` AND rrm.class_name=ANY($${params.length}::text[]) AND rrm.status='active'`;
     if (!user.assigned_class) {
       if (!user.assigned_subject_ids.length) return res.json({ scores: [] });
       params.push(user.assigned_subject_ids);
-      sql += ` AND sc.subject_id=ANY(${params.length}::int[])`;
+      sql += ` AND sc.subject_id=ANY($${params.length}::int[])`;
     }
   } else if (user.role === 'admin') {
     // Admin reporting is school-scoped by requireAuth. A caller-supplied
