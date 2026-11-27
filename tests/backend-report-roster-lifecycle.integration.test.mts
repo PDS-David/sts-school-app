@@ -13,7 +13,7 @@ after(async () => {
   await pool.end();
 });
 
-test('administrators and assigned teachers execute scoped physical report-roster decisions and append history', async () => {
+test('only administrators execute physical report-roster decisions and append history', async () => {
   const suffix = randomUUID();
   const schoolCode = `roster_${suffix.slice(0, 12)}`;
   await query('INSERT INTO schools(code,name) VALUES($1,$2)', [schoolCode, `Roster Lifecycle School ${suffix}`]);
@@ -40,7 +40,7 @@ test('administrators and assigned teachers execute scoped physical report-roster
   const studentIds: string[] = [];
   let server: Server | undefined;
   let teacherId: string | null = null;
-  let crossSectionTeacherId: string | null = null;
+  let crossSectionAdminId: string | null = null;
 
   try {
     for (const [index, admission] of ['PROMOTE', 'RETAIN', 'REMOVE', 'REINSTATE', 'RACE', 'PROMOTE_RACE', 'TEACHER_PROMOTE', 'TEACHER_REMOVE'].entries()) {
@@ -130,30 +130,36 @@ test('administrators and assigned teachers execute scoped physical report-roster
       assigned_subject_ids: [],
     });
     const teacherHeaders = { Authorization: `Bearer ${teacherToken}`, 'Content-Type': 'application/json' };
-    const teacherRetain = await fetch(`${baseUrl}/${studentIds[1]}/promotion`, {
-      method: 'POST', headers: teacherHeaders, body: JSON.stringify({ action: 'retain' }),
-    });
-    assert.equal(teacherRetain.status, 200, 'assigned teacher can retain a student in their class');
-    const teacherPromote = await fetch(`${baseUrl}/${studentIds[6]}/promotion`, {
-      method: 'POST', headers: teacherHeaders, body: JSON.stringify({ action: 'promote' }),
-    });
-    assert.equal(teacherPromote.status, 200, 'assigned teacher can promote a student to the next class');
-    const teacherRemove = await fetch(`${baseUrl}/${studentIds[7]}/promotion`, {
-      method: 'POST', headers: teacherHeaders, body: JSON.stringify({ action: 'remove' }),
-    });
-    assert.equal(teacherRemove.status, 200, 'assigned teacher can remove a student from the physical report roster');
-    const teacherDemote = await fetch(`${baseUrl}/${studentIds[1]}/promotion`, {
-      method: 'POST', headers: teacherHeaders, body: JSON.stringify({ action: 'demote' }),
-    });
-    assert.equal(teacherDemote.status, 403, 'teachers cannot demote students');
-    const teacherReinstate = await fetch(`${baseUrl}/${studentIds[3]}/promotion`, {
-      method: 'POST', headers: teacherHeaders, body: JSON.stringify({ action: 'reinstate' }),
-    });
-    assert.equal(teacherReinstate.status, 403, 'teachers cannot reinstate removed students');
-    const teacherWrongClass = await fetch(`${baseUrl}/${studentIds[0]}/promotion`, {
-      method: 'POST', headers: teacherHeaders, body: JSON.stringify({ action: 'remove' }),
-    });
-    assert.equal(teacherWrongClass.status, 404, 'teachers cannot act on students outside their assigned class');
+    for (const [studentId, action] of [
+      [studentIds[1], 'retain'],
+      [studentIds[6], 'promote'],
+      [studentIds[7], 'remove'],
+      [studentIds[1], 'demote'],
+      [studentIds[3], 'reinstate'],
+      [studentIds[0], 'remove'],
+    ] as const) {
+      const teacherDecision = await fetch(`${baseUrl}/${studentId}/promotion`, {
+        method: 'POST', headers: teacherHeaders, body: JSON.stringify({ action }),
+      });
+      assert.equal(teacherDecision.status, 403,
+        `teachers cannot perform the ${action} physical-roster decision, even within an assigned class`);
+    }
+    const { rows: unchangedTeacherTargets } = await query(
+      'SELECT student_id,class_name,status FROM report_roster_memberships WHERE student_id=ANY($1::uuid[])',
+      [[studentIds[1], studentIds[6], studentIds[7]]],
+    );
+    assert.equal(unchangedTeacherTargets.find(row => row.student_id === studentIds[1])?.status, 'active',
+      'rejected teacher retention must leave roster status unchanged');
+    assert.equal(unchangedTeacherTargets.find(row => row.student_id === studentIds[6])?.class_name, 'Primary 4',
+      'rejected teacher promotion must leave class placement unchanged');
+    assert.equal(unchangedTeacherTargets.find(row => row.student_id === studentIds[7])?.status, 'active',
+      'rejected teacher removal must leave roster status unchanged');
+    const adminPromoteAfterTeacherDenial = await decide(studentIds[6], 'promote');
+    assert.equal(adminPromoteAfterTeacherDenial.status, 200,
+      'administrator can promote after a teacher request was denied');
+    const adminRemoveAfterTeacherDenial = await decide(studentIds[7], 'remove');
+    assert.equal(adminRemoveAfterTeacherDenial.status, 200,
+      'administrator can remove after a teacher request was denied');
     const teacherRemoved = await fetch(`${baseUrl}/report-roster/removed`, {
       headers: { Authorization: `Bearer ${teacherToken}` },
     });
@@ -279,18 +285,18 @@ test('administrators and assigned teachers execute scoped physical report-roster
     await query("INSERT INTO schools(code,name) VALUES('secondary','Secondary Test School') ON CONFLICT(code) DO NOTHING");
     await query("INSERT INTO classes(school_code,name) VALUES('primary','Primary 6') ON CONFLICT(school_code,name) DO NOTHING");
     await query("INSERT INTO classes(school_code,name) VALUES('secondary','JSS 1') ON CONFLICT(school_code,name) DO NOTHING");
-    const crossTeacherUsername = `roster-cross-section-teacher-${suffix}`;
-    const { rows: crossTeacherRows } = await query(
+    const crossAdminUsername = `roster-cross-section-admin-${suffix}`;
+    const { rows: crossAdminRows } = await query(
       `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,is_active,pending_admin_review)
-       VALUES($1,'test-hash','teacher','Primary 6 Teacher','primary','Primary 6',TRUE,FALSE)
+       VALUES($1,'test-hash','admin','Primary School Administrator','primary','Primary 6',TRUE,FALSE)
        RETURNING id`,
-      [crossTeacherUsername],
+      [crossAdminUsername],
     );
-    crossSectionTeacherId = String(crossTeacherRows[0].id);
-    const crossTeacherToken = signAccess({
-      id: crossSectionTeacherId,
-      username: crossTeacherUsername,
-      role: 'teacher',
+    crossSectionAdminId = String(crossAdminRows[0].id);
+    const crossAdminToken = signAccess({
+      id: crossSectionAdminId,
+      username: crossAdminUsername,
+      role: 'admin',
       school_code: 'primary',
       assigned_class: 'Primary 6',
       assigned_subject_ids: [],
@@ -308,10 +314,10 @@ test('administrators and assigned teachers execute scoped physical report-roster
     );
     const crossPromotion = await fetch(`${baseUrl}/${primaryStudentId}/promotion`, {
       method: 'POST',
-      headers: { Authorization: `Bearer ${crossTeacherToken}`, 'Content-Type': 'application/json' },
+      headers: { Authorization: `Bearer ${crossAdminToken}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({ action: 'promote' }),
     });
-    assert.equal(crossPromotion.status, 200, 'Primary 6 teacher can promote into Secondary JSS 1');
+    assert.equal(crossPromotion.status, 200, 'primary school administrator can promote into Secondary JSS 1');
     const crossPromotionBody = await crossPromotion.json() as {
       from_class: string; to_class: string; cross_section: boolean;
       destination_student_id: string; online_account_unchanged: boolean;
@@ -350,6 +356,6 @@ test('administrators and assigned teachers execute scoped physical report-roster
     // The append-only event log intentionally retains the test history. The
     // dedicated synthetic school and its rows are isolated from real schools;
     // the disposable PostgreSQL service is discarded at workflow end.
-    await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [[adminId, ...(teacherId ? [teacherId] : []), ...(crossSectionTeacherId ? [crossSectionTeacherId] : [])]]);
+    await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [[adminId, ...(teacherId ? [teacherId] : []), ...(crossSectionAdminId ? [crossSectionAdminId] : [])]]);
   }
 });
