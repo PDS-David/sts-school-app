@@ -196,7 +196,7 @@ export default function AdminUsersScreen() {
     setEditUser(null);
     setForm({
       username: '', role: 'teacher', school_code: '', assigned_class: '',
-      phone: '', access_expires_at: '', assigned_subject_ids: [], assigned_class_names: [], initial_password: '',
+      phone: '', access_expires_at: '', assigned_subject_ids: [], assigned_class_names: [], assigned_class_subjects: [], initial_password: '',
     });
     setModal(true);
   };
@@ -214,7 +214,8 @@ export default function AdminUsersScreen() {
       // actually meant to change. Now correctly seeded from the fetched value.
       school_code: u.school_code ?? '', assigned_class: u.assigned_class ?? '', phone: u.phone ?? '',
       access_expires_at: u.access_expires_at ? u.access_expires_at.slice(0, 10) : '',
-      assigned_subject_ids: u.assigned_subject_ids ?? [], assigned_class_names: u.assigned_class_names ?? [], initial_password: '',
+      assigned_subject_ids: u.assigned_subject_ids ?? [], assigned_class_names: u.assigned_class_names ?? [],
+      assigned_class_subjects: u.assigned_class_subjects ?? (u.assigned_class_names ?? []).flatMap(class_name => (u.assigned_subject_ids ?? []).map(subject_id => ({ class_name, subject_id }))), initial_password: '',
     });
     setModal(true);
   };
@@ -582,6 +583,7 @@ export default function AdminUsersScreen() {
                         assigned_class: selected?.name ?? '',
                         assigned_subject_ids: [],
                         assigned_class_names: [],
+                        assigned_class_subjects: [],
                       }));
                     } else if (value.startsWith('subject:')) {
                       const id = Number(value.slice(8));
