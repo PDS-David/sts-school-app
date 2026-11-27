@@ -8,12 +8,20 @@
 - The GitHub Actions workflow `.github/workflows/render-postgres-backup.yml` creates an encrypted custom-format dump daily at 02:20 UTC, on a workflow-file update to `master`, and on manual dispatch.
 - Encrypted GitHub artifacts are retained for 90 days. This is an immediate recovery bridge, not a substitute for long-term off-site object storage.
 
-## Required GitHub repository secrets
+## Required GitHub secrets
 
-Set these under **Settings → Secrets and variables → Actions → Repository secrets**:
+### `RENDER_POSTGRES_EXTERNAL_URL` (environment secrets)
 
-1. `RENDER_POSTGRES_EXTERNAL_URL`: the database's **External** connection URL, with `sslmode=require`. Never put the URL in source control or a workflow input.
-2. `BACKUP_AGE_RECIPIENT`: an age public recipient (starts with `age1`). Keep the corresponding private identity offline and outside GitHub.
+The database's **External** connection URL, with `sslmode=require`. Never put the URL in source control, a workflow input, a log or a chat. It is read from GitHub **Environments** (Settings → Environments), with one copy in each:
+
+- `database-backup`: used only by the backup workflow. Deployment branches are restricted to `master`, and no required reviewer is configured because the scheduled backup must run unattended.
+- `production`: used only by the manual migration workflow. Its existing protection rules are unchanged.
+
+Add the secret to each environment under **Environment secrets** (not Variables). The repository-level copy of this secret is left in place until both workflows have run successfully using their environment secrets.
+
+### `BACKUP_AGE_RECIPIENT` (repository secret)
+
+Set under **Settings → Secrets and variables → Actions → Repository secrets**: an age public recipient (starts with `age1`). Keep the corresponding private identity offline and outside GitHub.
 
 Generate an age identity on a trusted workstation:
 

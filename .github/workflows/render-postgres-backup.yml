@@ -33,6 +33,7 @@ jobs:
   backup:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
+    environment: database-backup
     timeout-minutes: 30
     env:
       RENDER_POSTGRES_EXTERNAL_URL: ${{ secrets.RENDER_POSTGRES_EXTERNAL_URL }}
@@ -42,7 +43,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test -n "$RENDER_POSTGRES_EXTERNAL_URL" || { echo "::error::Missing RENDER_POSTGRES_EXTERNAL_URL repository secret"; exit 1; }
+          test -n "$RENDER_POSTGRES_EXTERNAL_URL" || { echo "::error::Missing RENDER_POSTGRES_EXTERNAL_URL environment secret (database-backup environment)"; exit 1; }
           test -n "$BACKUP_AGE_RECIPIENT" || { echo "::error::Missing BACKUP_AGE_RECIPIENT repository secret"; exit 1; }
           case "$RENDER_POSTGRES_EXTERNAL_URL" in
             *sslmode=require*) ;;
