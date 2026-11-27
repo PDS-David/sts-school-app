@@ -384,6 +384,6 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     await query('DELETE FROM teacher_subjects WHERE user_id=ANY($1::uuid[])', [[subjectTeacher.id, classTeacher.id, multiClassTeacher.id]]);
     if (termIds.length) await query('DELETE FROM terms WHERE id=ANY($1::int[])', [termIds]);
     if (subjectIds.length) await query('DELETE FROM subjects WHERE id=ANY($1::int[])', [subjectIds]);
-    await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [[subjectTeacher.id, classTeacher.id, admin.id, studentUser.id]]);
+    await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [[subjectTeacher.id, classTeacher.id, multiClassTeacher.id, admin.id, studentUser.id]]);
   }
 });
