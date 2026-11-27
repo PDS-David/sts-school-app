@@ -296,7 +296,7 @@ router.post('/users', async (req, res) => {
         }
         if (isClassTeacher) {
           const classesToAssign = [assignedClassN!, ...classNames];
-          await client.query('SELECT id FROM classes WHERE school_code=$1 AND name=ANY($2::text[]) FOR UPDATE', [schoolCodeN, classesToAssign]);
+          await client.query('SELECT id FROM classes WHERE school_code=$1 AND name=ANY($2::text[]) ORDER BY name FOR UPDATE', [schoolCodeN, classesToAssign]);
           const { rows: conflicts } = await client.query(
             `SELECT assigned_class FROM users
              WHERE role='teacher' AND school_code=$1 AND assigned_class IS NOT NULL
