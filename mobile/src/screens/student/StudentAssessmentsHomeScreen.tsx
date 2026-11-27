@@ -9,6 +9,7 @@ import { openNotifications, openBraineeChat } from '../../navigation/navigationR
 const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string; color: string; nav: { screen: string; params?: any } | null; onPress?: () => void }[] = [
   { icon: 'create-outline',   label: 'Assignments', sub: 'Practice work set for your class',  color: '#1565C0', nav: { screen: 'Assessments' } },
   { icon: 'help-circle-outline', label: 'Adaptive Practice', sub: 'Practise completed lessons and strengthen weak concepts', color: '#00838F', nav: { screen: 'LearningTab' } },
+  { icon: 'trending-up-outline', label: 'My Practice Progress', sub: 'Review your accuracy, attempts and recommended revision', color: '#2E7D32', nav: { screen: 'PracticeProgress' } },
   { icon: 'school-outline',  label: 'Exams',        sub: 'Formal timed online examinations',     color: '#6A1B9A', nav: { screen: 'OnlineExams' } },
   { icon: 'bar-chart-outline', label: 'Results',    sub: 'Your scores and grades',                color: '#2E7D32', nav: { screen: 'MyResults' } },
   { icon: 'sparkles-outline', label: 'Ask Brainee', sub: 'Explanations, study notes, and hints',  color: '#E65100', nav: null, onPress: () => openBraineeChat() },

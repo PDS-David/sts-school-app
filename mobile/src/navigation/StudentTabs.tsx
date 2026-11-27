@@ -10,6 +10,7 @@ import { useIsWide } from '../components/layout';
 import StudentHomeScreen from '../screens/student/StudentHomeScreen';
 import StudentLearningScreen from '../screens/student/StudentLearningScreen';
 import StudentAssessmentsHomeScreen from '../screens/student/StudentAssessmentsHomeScreen';
+import StudentPracticeProgressScreen from '../screens/student/StudentPracticeProgressScreen';
 import StudentProfileScreen from '../screens/student/StudentProfileScreen';
 import StudentAchievementsScreen from '../screens/student/StudentAchievementsScreen';
 import SchoolCalendarScreen from '../screens/SchoolCalendarScreen';
@@ -74,6 +75,7 @@ function AssessmentsStackNavigator() {
     <AssessmentsStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
       <AssessmentsStack.Screen name="AssessmentsHome" component={StudentAssessmentsHomeScreen} />
       <AssessmentsStack.Screen name="Assessments" component={AssessmentsScreen} options={{ headerShown: true, title: 'Assessments', ...stackScreenOptions }} />
+      <AssessmentsStack.Screen name="PracticeProgress" component={StudentPracticeProgressScreen} options={{ headerShown: true, title: 'My Practice Progress', ...stackScreenOptions }} />
       <AssessmentsStack.Screen name="ClassPractice" component={ClassPracticeScreen} options={{ headerShown: true, title: 'Adaptive AI Practice', ...stackScreenOptions }} />
       <AssessmentsStack.Screen name="TakeAssessment" component={TakeAssessmentScreen} options={{ headerShown: true, title: 'Take Assessment', ...stackScreenOptions }} />
       <AssessmentsStack.Screen name="MyResults" component={MyResultsScreen} options={{ headerShown: true, title: 'My Results', ...stackScreenOptions }} />
@@ -106,9 +108,6 @@ function ProfileStackNavigator() {
   );
 }
 
-// Hides the bottom tab bar once you've pushed past a tab's landing screen
-// into a chat thread — same as WhatsApp, where the tab bar disappears inside
-// a conversation.
 function tabBarVisibleFor(routeNames: string[], isWide: boolean) {
   return ({ route }: { route: any }) => {
     const focused = getFocusedRouteNameFromRoute(route) ?? routeNames[0];
