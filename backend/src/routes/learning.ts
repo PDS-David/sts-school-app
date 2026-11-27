@@ -628,7 +628,7 @@ router.get('/materials', requirePerm('materials.read'), async (req, res) => {
     // materials school-wide regardless of assignment — tightened per
     // school request.
     const clauses: string[] = [];
-    if (user.assigned_class) { params.push(assignedTeacherClasses(user)); clauses.push(`m.class_name=ANY(${params.length}::text[])`); }
+    if (user.assigned_class) { params.push(user.assigned_class); clauses.push(`m.class_name=$${params.length}`); }
     if (user.assigned_subject_ids?.length) { params.push(user.assigned_subject_ids); clauses.push(`m.subject_id = ANY($${params.length})`); }
     // A teacher with neither assignment can't create content either (see
     // checkTeacherContentScope) — FALSE rather than showing everything
@@ -841,7 +841,7 @@ router.get('/topics', requirePerm('topics.read'), async (req, res) => {
     // Same class-OR-subject scope as GET /materials above — see the
     // comment there for the full reasoning.
     const clauses: string[] = [];
-    if (user.assigned_class) { params.push(assignedTeacherClasses(user)); clauses.push(`t.class_name=ANY(${params.length}::text[])`); }
+    if (user.assigned_class) { params.push(user.assigned_class); clauses.push(`t.class_name=$${params.length}`); }
     if (user.assigned_subject_ids?.length) { params.push(user.assigned_subject_ids); clauses.push(`t.subject_id = ANY($${params.length})`); }
     sql += clauses.length ? ` AND (${clauses.join(' OR ')})` : ' AND FALSE';
   } else if (viewerClasses) {
