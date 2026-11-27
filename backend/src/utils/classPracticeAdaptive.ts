@@ -2,8 +2,8 @@ export type PracticeDifficulty = 'foundation' | 'standard' | 'challenge';
 
 export type ConceptHistory = {
   concept: string;
-  attempts: number;
-  accuracy: number;
+  attempts: number | string;
+  accuracy: number | string;
 };
 
 export type AdaptiveConceptTarget = {
