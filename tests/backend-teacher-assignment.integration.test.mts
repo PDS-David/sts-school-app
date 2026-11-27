@@ -219,6 +219,84 @@ test('teacher update rolls back profile and assignment changes when a subject in
   }
 });
 
+test('subject-teacher assignments are stored and returned as exact class/subject pairs', async () => {
+  const suffix = unique();
+  const username = `bsec5-class-subject-${suffix}`;
+  const classA = `BSEC5 Subject Class A ${suffix}`;
+  const classB = `BSEC5 Subject Class B ${suffix}`;
+  const subjectA = await createSubject(`BSEC5 Subject A ${suffix}`, 'primary');
+  const subjectB = await createSubject(`BSEC5 Subject B ${suffix}`, 'primary');
+  let teacherId = '';
+  await query('INSERT INTO classes(school_code,name) VALUES($1,$2),($1,$3)', ['primary', classA, classB]);
+
+  try {
+    const created = await postUser({
+      username,
+      full_name: 'Class Scoped Subject Teacher',
+      role: 'teacher',
+      school_code: 'primary',
+      assigned_class_names: [classA, classB],
+      assigned_subject_ids: [subjectA, subjectB],
+      assigned_class_subjects: [
+        { class_name: classA, subject_id: subjectA },
+        { class_name: classB, subject_id: subjectB },
+      ],
+      initial_password: '1234',
+    });
+    assert.equal(created.status, 201);
+    const createdBody = await created.json() as { user: { id: string } };
+    teacherId = createdBody.user.id;
+
+    const readPairs = async () => {
+      const { rows } = await query(
+        `SELECT c.name AS class_name,tcs.subject_id
+         FROM teacher_class_subjects tcs JOIN classes c ON c.id=tcs.class_id
+         WHERE tcs.user_id=$1 ORDER BY c.name,tcs.subject_id`,
+        [teacherId],
+      );
+      return rows.map((row: any) => ({ class_name: row.class_name, subject_id: Number(row.subject_id) }));
+    };
+    assert.deepEqual(await readPairs(), [
+      { class_name: classA, subject_id: subjectA },
+      { class_name: classB, subject_id: subjectB },
+    ]);
+
+    const listed = await fetch(`${baseUrl}/admin/users?role=teacher`, {
+      headers: { authorization: `Bearer ${adminToken}` },
+    });
+    assert.equal(listed.status, 200);
+    const listedBody = await listed.json() as { users: Array<{ id: string; assigned_class_subjects: Array<{ class_name: string; subject_id: number }> }> };
+    const listedTeacher = listedBody.users.find(user => user.id === teacherId);
+    assert.ok(listedTeacher);
+    assert.deepEqual(
+      listedTeacher!.assigned_class_subjects.map(grant => ({ class_name: grant.class_name, subject_id: Number(grant.subject_id) }))
+        .sort((a, b) => a.class_name.localeCompare(b.class_name)),
+      [
+        { class_name: classA, subject_id: subjectA },
+        { class_name: classB, subject_id: subjectB },
+      ].sort((a, b) => a.class_name.localeCompare(b.class_name)),
+    );
+
+    const updated = await putUser(teacherId, {
+      assigned_class_names: [classA, classB],
+      assigned_subject_ids: [subjectA, subjectB],
+      assigned_class_subjects: [
+        { class_name: classA, subject_id: subjectB },
+        { class_name: classB, subject_id: subjectA },
+      ],
+    });
+    assert.equal(updated.status, 200);
+    assert.deepEqual(await readPairs(), [
+      { class_name: classA, subject_id: subjectB },
+      { class_name: classB, subject_id: subjectA },
+    ]);
+  } finally {
+    if (teacherId) await query('DELETE FROM users WHERE id=$1', [teacherId]);
+    await query('DELETE FROM subjects WHERE id=ANY($1::int[])', [[subjectA, subjectB]]);
+    await query('DELETE FROM classes WHERE school_code=$1 AND name=ANY($2::text[])', ['primary', [classA, classB]]);
+  }
+});
+
 test('one class teacher account can own multiple classes and overlapping class ownership is rejected', async () => {
   const suffix = unique();
   const classA = `BSEC5 Multi A ${suffix}`;
