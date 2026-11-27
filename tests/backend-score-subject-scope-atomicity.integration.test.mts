@@ -179,6 +179,11 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     const foreignTerm = await post('/', score(studentIds[0], subjectIds[0], termIds[1]), subjectTeacher.token);
     assert.equal(foreignTerm.status, 400, 'teacher score entry rejects a term owned by another school');
 
+    const subjectTeacherWrongPair = await post('/', score(studentIds[1], subjectIds[0], termIds[0]), subjectTeacher.token);
+    assert.equal(subjectTeacherWrongPair.status, 403, 'a subject grant in Primary 4 does not grant the same subject in Primary 5');
+    const subjectTeacherCorrectPair = await post('/', score(studentIds[1], subjectIds[1], termIds[0]), subjectTeacher.token);
+    assert.equal(subjectTeacherCorrectPair.status, 200, 'the same teacher may have a different subject grant in Primary 5');
+
     const classTeacherSubject = await post('/', score(studentIds[0], subjectIds[1], termIds[0]), classTeacher.token);
     assert.equal(classTeacherSubject.status, 200, 'class teachers can enter marks for any report subject in their assigned class');
     const multiClassTeacherSubject = await post('/', score(studentIds[1], subjectIds[1], termIds[0]), multiClassTeacher.token);
@@ -191,10 +196,6 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     const multiClassTeacherScorePayload = await multiClassTeacherScores.json() as { scores: Array<{ student_id: string }> };
     assert.ok(multiClassTeacherScorePayload.scores.some(row => row.student_id === studentIds[1]),
       'a class teacher can read marks for an additional assigned class');
-    const subjectTeacherWrongPair = await post('/', score(studentIds[1], subjectIds[0], termIds[0]), subjectTeacher.token);
-    assert.equal(subjectTeacherWrongPair.status, 403, 'a subject grant in Primary 4 does not grant the same subject in Primary 5');
-    const subjectTeacherCorrectPair = await post('/', score(studentIds[1], subjectIds[1], termIds[0]), subjectTeacher.token);
-    assert.equal(subjectTeacherCorrectPair.status, 200, 'the same teacher may have a different subject grant in Primary 5');
     const classTeacherOverride = await post('/', { ...score(studentIds[0], subjectIds[0], termIds[0]), ca1: 15 }, classTeacher.token);
     assert.equal(classTeacherOverride.status, 200, 'class teachers can overwrite a subject teacher mark for their class');
     const subjectTeacherCannotOverride = await post('/', score(studentIds[0], subjectIds[0], termIds[0]), subjectTeacher.token);
@@ -233,10 +234,10 @@ test('score writes enforce subject ownership and bulk upserts roll back atomical
     const invalidBatch = await post('/bulk', {
       scores: [
         score(studentIds[0], subjectIds[0], termIds[0]),
-        score(studentIds[1], subjectIds[1], termIds[0]),
+        score(studentIds[1], subjectIds[0], termIds[0]),
       ],
     }, subjectTeacher.token);
-    assert.equal(invalidBatch.status, 403, 'subject-only teachers without a physical class cannot enter scores in bulk');
+    assert.equal(invalidBatch.status, 403, 'a mixed batch with one unassigned class/subject pair is rejected');
     const { rows: scoresAfterDeniedBatch } = await query(
       'SELECT id,student_id,subject_id,total FROM scores WHERE student_id=ANY($1::uuid[]) AND term_id=$2 ORDER BY id',
       [[studentIds[0], studentIds[1]], termIds[0]],
