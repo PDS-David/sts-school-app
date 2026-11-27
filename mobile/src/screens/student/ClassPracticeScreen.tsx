@@ -93,7 +93,7 @@ export default function ClassPracticeScreen({ route }: any) {
             {questions.map((q,index)=>(
               <View key={q.id} style={styles.question}>
                 <Text style={styles.questionTitle}>{index+1}. {q.question}</Text>
-                <Text style={styles.concept}>Concept: {q.concept} · {q.marks} mark{Number(q.marks)===1?'':'s'}</Text>
+                <Text style={styles.concept}>Concept: {q.concept} · {q.difficulty==='foundation'?'Foundation':q.difficulty==='challenge'?'Challenge':'Standard'} difficulty · {q.marks} mark{Number(q.marks)===1?'':'s'}</Text>
                 {q.options.map((option:any)=>(
                   <TouchableOpacity key={option.key} onPress={()=>setAnswers(current=>({...current,[q.id]:option.key}))} style={[styles.option,answers[q.id]===option.key&&styles.optionSelected]} accessibilityRole="radio" accessibilityState={{checked:answers[q.id]===option.key}}>
                     <View style={[styles.radio,answers[q.id]===option.key&&styles.radioSelected]}>
@@ -121,7 +121,7 @@ export default function ClassPracticeScreen({ route }: any) {
                   <Text style={styles.resultTitle}>Question {index+1}</Text>
                   <Badge label={item.correct?'Correct':'Review'} color={item.correct?Colors.success:Colors.error}/>
                 </View>
-                <Text style={styles.concept}>{item.concept} · {item.marks_awarded}/{item.marks_available} marks</Text>
+                <Text style={styles.concept}>{item.concept} · {item.difficulty==='foundation'?'Foundation':item.difficulty==='challenge'?'Challenge':'Standard'} difficulty · {item.marks_awarded}/{item.marks_available} marks</Text>
                 <Text style={styles.feedback}>{item.correct?'Your answer is correct.':'Your answer needs review.'} {item.explanation}</Text>
               </View>
             ))}
