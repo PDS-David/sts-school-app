@@ -39,6 +39,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       await client.query('CREATE TABLE students(id UUID PRIMARY KEY,user_id UUID,school_code TEXT,class_name TEXT,deleted_at TIMESTAMPTZ)');
       await client.query('CREATE TABLE topics(id INTEGER PRIMARY KEY,school_code TEXT,class_name TEXT,subject_id INTEGER,title TEXT,term_id INTEGER,order_index INTEGER,description TEXT,summary TEXT)');
       await client.query('CREATE TABLE subjects(id INTEGER PRIMARY KEY,name TEXT,school_code TEXT)');
+      await client.query('CREATE TABLE classes(id SERIAL PRIMARY KEY,school_code TEXT,name TEXT)');
       await client.query('CREATE TABLE topic_completions(student_id UUID,topic_id INTEGER)');
       await client.query(`CREATE TABLE student_curriculum_lesson_progress(student_id UUID NOT NULL REFERENCES students(id) ON DELETE CASCADE,lesson_key TEXT NOT NULL CHECK(length(lesson_key) BETWEEN 1 AND 240),class_name TEXT NOT NULL CHECK(class_name IN ('SS 1','SS 2','SS 3')),subject_name TEXT NOT NULL,term_label TEXT NOT NULL,lesson_title TEXT NOT NULL,completed_at TIMESTAMPTZ NOT NULL DEFAULT now(),PRIMARY KEY(student_id,lesson_key))`);
       await client.query('CREATE TABLE teacher_subjects(user_id UUID,subject_id INTEGER)');
@@ -60,6 +61,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       const claimSql=await readFile(new URL('../backend/migrations/0018_online_exam_submission_claim_fence.sql',import.meta.url),'utf8');
       const pinAuthSql=await readFile(new URL('../backend/migrations/0019_pin_auth_sessions.sql',import.meta.url),'utf8');
       const pinGateSql=await readFile(new URL('../backend/migrations/0020_pin_gate_only_for_admin_issued_credentials.sql',import.meta.url),'utf8');
+      const teacherClassSubjectsSql=await readFile(new URL('../backend/migrations/0021_teacher_class_subjects.sql',import.meta.url),'utf8');
       await client.query(questionBankSql);
       await client.query(classPracticeSql);
       await client.query(examSql);
@@ -70,6 +72,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       // requireAuth now reads must_set_pin/must_change_pw and joins auth_sessions on every request.
       await client.query(pinAuthSql);
       await client.query(pinGateSql);
+      await client.query(teacherClassSubjectsSql);
       const {rows: authTables}=await client.query(`SELECT to_regclass('auth_sessions') AS sessions,to_regclass('auth_login_lanes') AS lanes,to_regclass('auth_login_attempts') AS attempts`);
       assert.ok(authTables[0].sessions&&authTables[0].lanes&&authTables[0].attempts,'0019 authentication tables exist in the fixture schema');
       const {rows: pinUserColumns}=await client.query("SELECT column_name FROM information_schema.columns WHERE table_schema=$1 AND table_name='users' AND column_name IN ('must_set_pin','must_change_pw','pin_hash_version','pin_set_at')",[schema]);
