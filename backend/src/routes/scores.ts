@@ -484,7 +484,9 @@ async function authoriseReportAccess(
         denied = { status: 404, error: 'Student is not in your active physical report roster.' };
       } else {
         student.class_name = memberships[0].class_name;
-        denied = null;
+        denied = isSubjectTeacher && !assignedTeacherSubjectsForClass(user, student.class_name).length
+          ? { status: 403, error: 'You have no subject assignment for this student\'s class.' }
+          : null;
       }
       break;
     }
