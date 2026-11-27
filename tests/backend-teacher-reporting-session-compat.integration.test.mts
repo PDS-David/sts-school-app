@@ -251,3 +251,90 @@ test('teacher reporting works end to end with real PIN sessions (sessions requir
     await query('DELETE FROM terms WHERE id=ANY($1::int[])', [termIds]).catch(() => undefined);
   }
 });
+
+
+test('soft-deleted students are excluded from report averages and rankings', async () => {
+  const suffix = randomUUID();
+  const year = `SOFT-DELETE-REPORT/${suffix.slice(0, 8)}`;
+  const studentIds: string[] = [];
+  const userIds: string[] = [];
+  let subjectId: number | undefined;
+  let termId: number | undefined;
+  let server: Server | undefined;
+
+  try {
+    const { rows: subjects } = await query(
+      'INSERT INTO subjects(school_code,name,code) VALUES($1,$2,$3) RETURNING id',
+      ['primary', `Soft Delete Report Subject ${suffix}`, `SDR-${suffix.slice(0, 8)}`],
+    );
+    subjectId = Number(subjects[0].id);
+    const { rows: terms } = await query(
+      `INSERT INTO terms(name,academic_year,school_code) VALUES('1st Term',$1,'primary') RETURNING id`,
+      [year],
+    );
+    termId = Number(terms[0].id);
+
+    const teacher = await makeTeacher('soft-delete-report', {
+      assignedClass: 'Primary 4', classNames: ['Primary 4'],
+    });
+    userIds.push(teacher.id);
+
+    const makePupil = async (label: string, deleted = false) => {
+      const { rows } = await query(
+        `INSERT INTO students(full_name,class_name,school_code,admission_number,deleted_at)
+         VALUES($1,'Primary 4','primary',$2,${deleted ? 'now()' : 'NULL'}) RETURNING id`,
+        [`SDR ${label} ${suffix}`, `SDR-${randomUUID()}`],
+      );
+      const id = String(rows[0].id);
+      studentIds.push(id);
+      await query(
+        `INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status)
+         VALUES($1,'Primary 4','Primary 4','active')`, [id],
+      );
+      return id;
+    };
+    const target = await makePupil('target');
+    const activePeer = await makePupil('active-peer');
+    const deletedPeer = await makePupil('deleted-peer', true);
+
+    for (const [studentId, ca1, ca2, exam] of [
+      [target, 10, 10, 50],
+      [activePeer, 20, 10, 50],
+      [deletedPeer, 20, 20, 60],
+    ] as const) {
+      await query(
+        `INSERT INTO scores(student_id,subject_id,term_id,ca1,ca2,exam,grade,entered_by,class_name)
+         VALUES($1,$2,$3,$4,$5,$6,'A',$7,'Primary 4')`,
+        [studentId, subjectId, termId, ca1, ca2, exam, teacher.id],
+      );
+    }
+
+    const started = await startServer();
+    server = started.server;
+    const session = await loginAs(started.base, teacher.username);
+    const report = await call(
+      started.base, 'GET', `/scores/report/${target}?term_id=${termId}`, session.access_token,
+    );
+    assert.equal(report.status, 200, JSON.stringify(report.json));
+    const subject = report.json.scores[0];
+    assert.equal(Number(subject.class_average), 75,
+      'class average must include the active target and active peer only');
+    assert.equal(Number(subject.class_highest), 80,
+      'class highest must ignore the deleted pupil\'s 100');
+    assert.equal(Number(subject.subject_position), 2,
+      'subject position must rank only active students');
+    assert.equal(report.json.summary.overall_position, 2,
+      'overall position must rank only active students');
+    assert.equal(report.json.summary.class_size, 2,
+      'class size and peer rankings must use the same active-student population');
+  } finally {
+    if (server) { server.closeAllConnections(); await new Promise<void>(r => server!.close(() => r())); }
+    await query('DELETE FROM scores WHERE student_id=ANY($1::uuid[])', [studentIds]).catch(() => undefined);
+    await query('DELETE FROM report_roster_memberships WHERE student_id=ANY($1::uuid[])', [studentIds]).catch(() => undefined);
+    await query('DELETE FROM students WHERE id=ANY($1::uuid[])', [studentIds]).catch(() => undefined);
+    await query('DELETE FROM auth_sessions WHERE user_id=ANY($1::uuid[])', [userIds]).catch(() => undefined);
+    await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [userIds]).catch(() => undefined);
+    if (subjectId) await query('DELETE FROM subjects WHERE id=$1', [subjectId]).catch(() => undefined);
+    if (termId) await query('DELETE FROM terms WHERE id=$1', [termId]).catch(() => undefined);
+  }
+});
