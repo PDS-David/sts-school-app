@@ -16,10 +16,25 @@ test('class practice is isolated from physical reporting tables', async () => {
 
 test('practice generator validates generated concepts against completed lesson objectives', async () => {
   const route = await readFile(new URL('../backend/src/routes/classPractice.ts', import.meta.url),'utf8');
+  const adaptive = await readFile(new URL('../backend/src/utils/classPracticeAdaptive.ts', import.meta.url),'utf8');
   assert.match(route,/allowedConcepts/);
-  assert.match(route,/allowed\.has\(clean\(raw\.concept\)\)/);
+  assert.match(adaptive,/targetByConcept\.get\(cleanPracticeLabel\(raw\.concept\)\)/);
   assert.match(route,/STRICT GROUNDING/);
   assert.match(route,/weakConcepts/);
+  assert.match(adaptive,/requiredWeakQuestionCount/);
+});
+
+test('practice difficulty adapts to concept mastery and is visible to students', async () => {
+  const adaptive = await readFile(new URL('../backend/src/utils/classPracticeAdaptive.ts', import.meta.url),'utf8');
+  const route = await readFile(new URL('../backend/src/routes/classPractice.ts', import.meta.url),'utf8');
+  const screen = await readFile(new URL('../mobile/src/screens/student/ClassPracticeScreen.tsx', import.meta.url),'utf8');
+  assert.match(adaptive,/accuracy < 0\.7/);
+  assert.match(adaptive,/attempts >= 3 && accuracy >= 0\.9/);
+  assert.match(route,/Per-concept adaptive targets/);
+  assert.match(route,/difficulty/);
+  assert.match(screen,/Foundation/);
+  assert.match(screen,/Challenge/);
+  assert.match(screen,/Standard/);
 });
 
 test('submissions persist attempts, concept accuracy and remediation separately', async () => {
