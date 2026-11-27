@@ -52,7 +52,7 @@ jobs:
         run: |
           set -euo pipefail
           test "$CONFIRM_DATABASE_NAME" = "sts_school_db_2" || { echo "::error::Database confirmation must be exactly sts_school_db_2"; exit 1; }
-          test -n "$DATABASE_URL" || { echo "::error::Missing RENDER_POSTGRES_EXTERNAL_URL repository secret"; exit 1; }
+          test -n "$DATABASE_URL" || { echo "::error::Missing RENDER_POSTGRES_EXTERNAL_URL environment secret (production environment)"; exit 1; }
           case "$DATABASE_URL" in *sslmode=require*) ;; *) echo "::error::External PostgreSQL URL must include sslmode=require"; exit 1 ;; esac
           [[ "$BACKUP_RUN_ID" =~ ^[0-9]+$ ]] || { echo "::error::backup_run_id must be a numeric GitHub Actions run ID"; exit 1; }
           if [[ "$OPERATION" == "apply" && "$BACKUP_DECRYPTION_VERIFIED" != "true" ]]; then

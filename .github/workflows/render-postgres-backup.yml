@@ -33,6 +33,7 @@ jobs:
   backup:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
+    environment: database-backup
     timeout-minutes: 30
     env:
       RENDER_POSTGRES_EXTERNAL_URL: ${{ secrets.RENDER_POSTGRES_EXTERNAL_URL }}
@@ -42,7 +43,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test -n "$RENDER_POSTGRES_EXTERNAL_URL" || { echo "::error::Missing RENDER_POSTGRES_EXTERNAL_URL repository secret"; exit 1; }
+          test -n "$RENDER_POSTGRES_EXTERNAL_URL" || { echo "::error::Missing RENDER_POSTGRES_EXTERNAL_URL environment secret (database-backup environment)"; exit 1; }
           test -n "$BACKUP_AGE_RECIPIENT" || { echo "::error::Missing BACKUP_AGE_RECIPIENT repository secret"; exit 1; }
           case "$RENDER_POSTGRES_EXTERNAL_URL" in
             *sslmode=require*) ;;
@@ -92,7 +93,7 @@ jobs:
           docker run --detach --name "$restore_container" \
             --env POSTGRES_PASSWORD=postgres postgres:18 >/dev/null
           ready=0
-          for attempt in $(seq 1 30); do
+          for _attempt in $(seq 1 30); do
             if docker exec "$restore_container" pg_isready --username=postgres >/dev/null 2>&1; then
               ready=1
               break
@@ -116,7 +117,7 @@ jobs:
           docker cp "$restore_container:/tmp/restore-verification.txt" "$backup_dir/restore-verification.txt"
           cleanup_restore_check
           trap - EXIT
-          IFS='|' read -r restored_database restored_version restored_tables restored_migrations restored_students restored_memberships restored_audit < "$backup_dir/restore-verification.txt"
+          IFS='|' read -r restored_database restored_version restored_tables restored_migrations _restored_students _restored_memberships _restored_audit < "$backup_dir/restore-verification.txt"
           test "$restored_database" = "sts_backup_restore_check"
           case "$restored_version" in *"PostgreSQL 18"*) ;; *) echo "::error::Disposable restore did not use PostgreSQL 18"; exit 1 ;; esac
           test "$restored_tables" -ge 40
