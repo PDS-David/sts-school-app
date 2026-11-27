@@ -46,7 +46,6 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       await client.query('CREATE TABLE attendance(id BIGINT PRIMARY KEY,present BOOLEAN)');
       await client.query('CREATE TABLE report_remarks(id BIGINT PRIMARY KEY,remark TEXT)');
       await client.query('CREATE TABLE report_cards(id BIGINT PRIMARY KEY,payload TEXT)');
-      await client.query("CREATE TABLE report_roster_memberships(student_id UUID PRIMARY KEY REFERENCES students(id) ON DELETE RESTRICT,class_name TEXT NOT NULL,source_class_name TEXT NOT NULL,status TEXT NOT NULL DEFAULT 'active' CHECK(status IN ('active','removed')),joined_at TIMESTAMPTZ NOT NULL DEFAULT now(),removed_at TIMESTAMPTZ,changed_by UUID REFERENCES users(id) ON DELETE SET NULL,updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),CHECK((status='active' AND removed_at IS NULL) OR (status='removed' AND removed_at IS NOT NULL)))");
       await client.query("INSERT INTO scores VALUES(1,72)");
       await client.query("INSERT INTO attendance VALUES(1,true)");
       await client.query("INSERT INTO report_remarks VALUES(1,'unchanged')");
@@ -83,21 +82,19 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.deepEqual(markingColumns.map((row:any)=>row.column_name).sort(),['marking_confidence','marking_details']);
 
       const school='primary',foreignSchool='secondary',admin=randomUUID(),foreignAdmin=randomUUID(),studentUser=randomUUID(),otherUser=randomUUID(),teacherUser=randomUUID(),unassignedTeacher=randomUUID();
-      const student=randomUUID(),otherStudent=randomUUID(),unrosteredStudent=randomUUID(),unrosteredUser=randomUUID(),ss1Student=randomUUID(),ss1User=randomUUID(),pendingStudent=randomUUID(),pendingUser=randomUUID();
+      const student=randomUUID(),otherStudent=randomUUID(),unrosteredStudent=randomUUID(),unrosteredUser=randomUUID(),ss1Student=randomUUID(),ss1User=randomUUID(),pendingStudent=randomUUID(),pendingUser=randomUUID(),deletedStudent=randomUUID(),deletedUser=randomUUID();
       await client.query('INSERT INTO schools(code) VALUES($1),($2)',[school,foreignSchool]);
       await client.query(`INSERT INTO users(id,username,role,school_code,can_manage_all_schools,is_active) VALUES
         ($1,'test-admin','admin',$3,true,true),($2,'test-student','student',$3,false,true),($4,'secondary-admin','admin',$5,true,true)`,[admin,studentUser,school,foreignAdmin,foreignSchool]);
       await client.query('INSERT INTO users(id,username,role,school_code,is_active) VALUES($1,$2,$3,$4,true),($5,$6,$7,$4,true),($8,$9,$10,$4,true),($11,$12,$13,$4,true),($14,$15,$16,$4,true)',[otherUser,'other-student','student',school,teacherUser,'math-teacher','teacher',unrosteredUser,'unrostered-student','student',ss1User,'ss1-student','student',pendingUser,'pending-student','student']);
       await client.query('UPDATE users SET pending_admin_review=true WHERE id=$1',[pendingUser]);
+      await client.query("INSERT INTO users(id,username,role,school_code,is_active) VALUES($1,'deleted-student','student',$2,true)",[deletedUser,school]);
       await client.query('INSERT INTO users(id,username,role,school_code,is_active) VALUES($1,$2,$3,$4,true)',[unassignedTeacher,'unassigned-teacher','teacher',school]);
       await client.query("INSERT INTO subjects(id,name,school_code) VALUES(1,'Mathematics',$1),(2,'Biology',$1)",[school]);
       await client.query('INSERT INTO teacher_subjects(user_id,subject_id) VALUES($1,1)',[teacherUser]);
       await client.query('INSERT INTO students(id,user_id,school_code,class_name) VALUES($1,$2,$3,$4),($5,$6,$3,$7),($8,$9,$3,$4),($10,$11,$3,$12),($13,$14,$3,$4)',
         [student,studentUser,school,'SS 3',otherStudent,otherUser,'JSS 3',unrosteredStudent,unrosteredUser,ss1Student,ss1User,'SS 1',pendingStudent,pendingUser]);
-      await client.query("INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status) VALUES($1,'SS 3','SS 3','active')",[student]);
-      await client.query("INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status) VALUES($1,'JSS 3','JSS 3','active')",[otherStudent]);
-      await client.query("INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status) VALUES($1,'SS 1','SS 1','active')",[ss1Student]);
-      await client.query("INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status) VALUES($1,'SS 3','SS 3','active')",[pendingStudent]);
+      await client.query("INSERT INTO students(id,user_id,school_code,class_name,deleted_at) VALUES($1,$2,$3,'SS 3',now())",[deletedStudent,deletedUser,school]);
       const coveredTopicId=900;
       await client.query("INSERT INTO topics(id,school_code,class_name,subject_id,title,term_id,order_index) VALUES($1,$2,'SS 3',1,'Linear Equations',1,1)",[coveredTopicId,school]);
       await client.query('INSERT INTO topic_completions(student_id,topic_id) VALUES($1,$2),($3,$2),($4,$2)',[student,coveredTopicId,unrosteredStudent,pendingStudent]);
@@ -216,7 +213,7 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       assert.deepEqual(rejectedAudit.rows.map((row:any)=>row.decision),['rejected']);
 
       const lessonTopics=await request('/online-exams/admin/lesson-topics?class_name=SS%203&subject_name=Mathematics','GET',adminToken,undefined,school);
-      assert.equal(lessonTopics.status,200);const coveredLesson=lessonTopics.data.topics.find((item:any)=>item.id===coveredTopicId);assert.ok(coveredLesson?.eligible_for_all_candidates);assert.equal(Number(coveredLesson.candidate_count),1,'only active report-roster members with valid student accounts count as candidates');assert.equal(Number(coveredLesson.completed_count),1);
+      assert.equal(lessonTopics.status,200);const coveredLesson=lessonTopics.data.topics.find((item:any)=>item.id===coveredTopicId);assert.ok(coveredLesson?.eligible_for_all_candidates);assert.equal(Number(coveredLesson.candidate_count),2,'all active online student accounts in the class count, whether or not they have physical report-roster membership');assert.equal(Number(coveredLesson.completed_count),2);
       const packageLesson=listStudentSs1Lessons()[0];
       assert.ok(packageLesson,'the production SS1 student-delivery package must expose an implemented lesson');
       const packageDraftRequest={board:'WAEC',class_name:'SS 1',subject_name:packageLesson.canonical_subject,lesson_ids:[packageLesson.id]};
@@ -265,16 +262,22 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       const adminExams=await request('/online-exams/admin/exams','GET',adminToken,undefined,school);
       assert.equal(adminExams.status,200);assert.equal(adminExams.data.exams.length,1);assert.equal(adminExams.data.exams[0].id,examId);
       assert.equal(Number(adminExams.data.exams[0].total_marks),7);
-      await client.query('DELETE FROM report_roster_memberships WHERE student_id=$1',[student]);
-      assert.equal((await request('/online-exams/admin/exams/'+examId+'/publish','POST',adminToken,{},school)).status,409,'publication must recheck current active roster membership');
-      await client.query("INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status) VALUES($1,'SS 3','SS 3','active')",[student]);
       await client.query('DELETE FROM topic_completions WHERE student_id=$1 AND topic_id=$2',[student,coveredTopicId]);
       assert.equal((await request('/online-exams/admin/exams/'+examId+'/publish','POST',adminToken,{},school)).status,409,'publication must recheck completion for every current candidate');
       await client.query('INSERT INTO topic_completions(student_id,topic_id) VALUES($1,$2)',[student,coveredTopicId]);
       const examAfterRechecks=await client.query('SELECT id,status,school_code FROM online_exams WHERE id=$1',[examId]);
       assert.equal(examAfterRechecks.rows[0]?.status,'draft','failed publication checks must leave the exam draft and retryable');
       const published=await request('/online-exams/admin/exams/'+examId+'/publish','POST',adminToken,{},school);
-      assert.equal(published.status,200,JSON.stringify(published.data));assert.equal(published.data.eligible_candidates,1);
+      assert.equal(published.status,200,JSON.stringify(published.data));assert.equal(published.data.eligible_candidates,2,'both active online learners are eligible even without physical report-roster rows');
+      const unrosteredToken=token(unrosteredUser,'unrostered-student');
+      const unrosteredExams=await request('/online-exams/exams','GET',unrosteredToken);
+      assert.equal(unrosteredExams.status,200);
+      assert.equal(unrosteredExams.data.exams.length,1,'online-only learner can see an exam without physical report-roster membership');
+      const unrosteredStarted=await request('/online-exams/exams/'+examId+'/start','POST',unrosteredToken);
+      assert.equal(unrosteredStarted.status,200,'online-only learner can start an eligible examination');
+      const deletedToken=token(deletedUser,'deleted-student');
+      assert.equal((await request('/online-exams/exams','GET',deletedToken)).status,401,'authentication rejects soft-deleted student records before online exam access');
+      assert.equal((await request('/online-exams/exams/'+examId+'/start','POST',deletedToken)).status,401,'authentication rejects soft-deleted student records before they can start examinations');
 
       const pendingToken=token(pendingUser,'pending-student');
       assert.equal((await request('/online-exams/exams','GET',pendingToken)).data.exams.length,0,'pending-review student accounts must not be eligible candidates');
@@ -342,17 +345,11 @@ test('PostgreSQL 18 migrations and live API: rights approval, eligibility, owner
       const physical=await client.query(`SELECT (SELECT score FROM scores WHERE id=1) AS score,
         (SELECT present FROM attendance WHERE id=1) AS present,
         (SELECT remark FROM report_remarks WHERE id=1) AS remark,
-        (SELECT payload FROM report_cards WHERE id=1) AS report_card,
-        (SELECT COUNT(*)::int FROM report_roster_memberships) AS roster_count`);
+        (SELECT payload FROM report_cards WHERE id=1) AS report_card`);
       assert.equal(Number(physical.rows[0].score),72);
       assert.equal(physical.rows[0].present,true);
       assert.equal(physical.rows[0].remark,'unchanged');
       assert.equal(physical.rows[0].report_card,'unchanged');
-      assert.equal(physical.rows[0].roster_count,4,'exam publication must not mutate any of the active roster memberships in the fixture');
-      const rosterState=await client.query('SELECT class_name,status FROM report_roster_memberships WHERE student_id=$1',[student]);
-      assert.deepEqual(rosterState.rows[0],{class_name:'SS 3',status:'active'});
-      const pendingRosterState=await client.query('SELECT class_name,status FROM report_roster_memberships WHERE student_id=$1',[pendingStudent]);
-      assert.deepEqual(pendingRosterState.rows[0],{class_name:'SS 3',status:'active'});
       const audit=await client.query('SELECT COUNT(*)::int AS n FROM online_exam_audit_events WHERE exam_id=$1',[examId]);
       assert.ok(audit.rows[0].n>=4);
     }finally{
