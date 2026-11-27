@@ -60,3 +60,15 @@ export function resolveStudentRosterScope(
 
   return { status: 403, error: 'Your account is not authorized to browse student rosters.' };
 }
+
+
+/** Return only the subjects explicitly granted to a subject teacher in one class. */
+export function assignedTeacherSubjectsForClass(
+  user: Pick<AuthUser, 'assigned_class_subjects'>,
+  className: string,
+): number[] {
+  return [...new Set((user.assigned_class_subjects ?? [])
+    .filter(grant => grant.class_name === className)
+    .map(grant => Number(grant.subject_id))
+    .filter(id => Number.isSafeInteger(id) && id > 0))];
+}
