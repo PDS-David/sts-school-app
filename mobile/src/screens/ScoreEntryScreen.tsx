@@ -21,6 +21,7 @@ interface ScoreRow { student_id: string; name: string; ca1: string; ca2: string;
 export default function ScoreEntryScreen({ navigation }: any) {
   const { user } = useAuth();
   const isAdmin = user?.role === 'admin';
+  const isSubjectTeacher = user?.role === 'teacher' && !user.assigned_class;
   const { selectedSchoolCode } = useAdminSchool();
   // Teachers already have their own school_code; admin has none of their own
   // and relies entirely on whichever one is picked in the switcher.
@@ -98,6 +99,31 @@ export default function ScoreEntryScreen({ navigation }: any) {
     }).finally(() => { if (!cancelled) setLoading(false); });
     return () => { cancelled = true; };
   }, [effectiveSchoolCode, setupRetry]);
+
+  // Subject specialists receive only the subjects granted to the selected
+  // class. Class teachers and administrators keep their existing school list.
+  useEffect(() => {
+    if (!isSubjectTeacher || !selClass) return;
+    let cancelled = false;
+    setSubjects([]);
+    setSelSub('');
+    setSetupError('');
+    api.get('/academic/subjects', {
+      params: { school_code: effectiveSchoolCode ?? undefined, class_name: selClass },
+    }).then(({ data }) => {
+      if (cancelled) return;
+      const classSubjects = data.subjects ?? [];
+      setSubjects(classSubjects);
+      setSelSub(classSubjects[0]?.id ?? '');
+    }).catch(() => {
+      if (!cancelled) {
+        setSubjects([]);
+        setSelSub('');
+        setSetupError('Could not load the subjects assigned to this class. Retry before entering scores.');
+      }
+    });
+    return () => { cancelled = true; };
+  }, [isSubjectTeacher, selClass, effectiveSchoolCode]);
 
   // Fetch just the selected class's roster — one class at a time, not the
   // whole school. GET /students now requires a non-class-teacher to name a
@@ -242,7 +268,7 @@ export default function ScoreEntryScreen({ navigation }: any) {
             <View style={isWide ? styles.filterCol : undefined}>
               <Text style={styles.filterLabel}>Class</Text>
               <View style={styles.pickerWrap}>
-                <Picker selectedValue={selClass} onValueChange={setSelClass} accessibilityLabel="Select score-entry class">
+                <Picker selectedValue={selClass} onValueChange={value => { setSelClass(value); if (isSubjectTeacher) { setSubjects([]); setSelSub(''); } }} accessibilityLabel="Select score-entry class">
                   {classes.map(c => <Picker.Item key={c} label={c} value={c} />)}
                 </Picker>
               </View>
