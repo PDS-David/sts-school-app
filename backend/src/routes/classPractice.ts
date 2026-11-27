@@ -3,7 +3,7 @@ import { randomUUID } from 'node:crypto';
 import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
 import { query, withTransaction } from '../db/pool.js';
 import { generateJSON } from '../utils/ai.js';
-import { buildAdaptiveConceptTargets, validateGeneratedPracticeQuestions, type GeneratedPracticeQuestion } from '../utils/classPracticeAdaptive.js';
+import { buildAdaptiveConceptTargets, cleanPracticeLabel, validateGeneratedPracticeQuestions, type GeneratedPracticeQuestion } from '../utils/classPracticeAdaptive.js';
 
 const router = Router();
 router.use(requireAuth, requireRole('student'), requirePerm('topics.read'));
