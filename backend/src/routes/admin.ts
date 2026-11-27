@@ -455,6 +455,7 @@ router.put('/users/:id', async (req, res) => {
 
       let nextSubjectIds: number[] = [];
       let nextClassNames: string[] = [];
+      let nextClassSubjectGrants: Array<{ class_name: string; subject_id: number }> = [];
       if (nextRole === 'teacher') {
         if (hasClassNames) {
           if (!Array.isArray(assigned_class_names) || assigned_class_names.some((v: unknown) => typeof v !== 'string' || !v.trim())) {
@@ -476,6 +477,25 @@ router.put('/users/:id', async (req, res) => {
           nextSubjectIds = existingSubjects.map((row) => Number(row.subject_id));
         }
         await validateTeacherAssignments(client, nextSchool, nextClass, nextSubjectIds);
+        if (hasClassSubjectGrants) {
+          if (!Array.isArray(assigned_class_subjects) || assigned_class_subjects.some((grant: any) =>
+            !grant || typeof grant.class_name !== 'string' || !grant.class_name.trim() ||
+            !Number.isSafeInteger(grant.subject_id) || grant.subject_id <= 0 ||
+            !nextClassNames.includes(grant.class_name.trim()) || !nextSubjectIds.includes(grant.subject_id)) ||
+            new Set(assigned_class_subjects.map((grant: any) => `${grant.class_name.trim()}:${grant.subject_id}`)).size !== assigned_class_subjects.length) {
+            throw new TeacherAssignmentValidationError('assigned_class_subjects must contain unique valid class/subject assignments within the selected classes and subjects.');
+          }
+          nextClassSubjectGrants = assigned_class_subjects.map((grant: any) => ({
+            class_name: grant.class_name.trim(),
+            subject_id: grant.subject_id,
+          }));
+        } else if (!nextClass) {
+          // Compatibility for older clients: preserve their former
+          // subject-by-class Cartesian assignment until they use the matrix UI.
+          nextClassSubjectGrants = nextClassNames.flatMap(class_name =>
+            nextSubjectIds.map(subject_id => ({ class_name, subject_id })),
+          );
+        }
         if (nextClass) {
           const classesToAssign = [nextClass, ...nextClassNames];
           await client.query('SELECT id FROM classes WHERE school_code=$1 AND name=ANY($2::text[]) FOR UPDATE', [nextSchool, classesToAssign]);
@@ -508,6 +528,18 @@ router.put('/users/:id', async (req, res) => {
          hasClassNames, nextClassNames],
       );
       if (!rows[0]) return { user: null };
+
+       if (nextRole !== 'teacher' || hasClassNames || hasSubjectIds || hasClassSubjectGrants || nextClass) {
+         await client.query('DELETE FROM teacher_class_subjects WHERE user_id=$1', [req.params.id]);
+         for (const grant of nextClassSubjectGrants) {
+           await client.query(
+             `INSERT INTO teacher_class_subjects(user_id,class_id,subject_id,created_by)
+              SELECT $1,c.id,$3,$4 FROM classes c
+              WHERE c.school_code=$2 AND c.name=$5`,
+             [req.params.id, nextSchool, grant.subject_id, req.user!.id, grant.class_name],
+           );
+         }
+       }
 
       // Replace assignments in the same transaction as the user update.
       // Changing away from teacher always removes now-irrelevant grants.
