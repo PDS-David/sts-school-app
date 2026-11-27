@@ -207,18 +207,12 @@ export function checkTeacherRosterScope(
  * teacher in a school could publish a material or schedule an assessment for
  * any class, in any subject, whether or not they teach it.
  *
- * A teacher may write content when EITHER is true:
- *   - the target class_name matches their own assigned_class (a class
- *     teacher may publish for their class, in any subject — matches how
- *     class teachers already operate everywhere else in the app), OR
- *   - the target subject_id matches their own assigned_subject_id
- *     (a subject specialist may publish in their subject for ANY class in
- *     their school, "irrespective of class" — this is the case a pure
- *     class-name check would otherwise block).
- * class_name may legitimately be null (a school-wide resource, e.g. a
- * general notice) — that's fine as long as the subject matches.
- * A teacher with neither an assigned_class nor an assigned_subject_id has no
- * content scope at all and is refused outright (fail closed).
+ * A class teacher may publish for any subject in their assigned class(es).
+ * A subject-only teacher must have an explicit teacher_class_subjects grant
+ * for the exact target class and subject. A subject assignment in one class
+ * never grants access to the same subject in another class. Subject-only
+ * teachers cannot create classless subject content because no class-specific
+ * grant can authorise that target. Unassigned teachers fail closed.
  *
  * Deliberately kept separate from checkTeacherStudentScope() (and its
  * checkTeacherDeleteScope alias above) rather than merged into it: that
