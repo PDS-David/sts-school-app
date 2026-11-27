@@ -1,5 +1,6 @@
 import { query } from '../db/pool.js';
 import type { AuthUser } from '../types/index.js';
+import { assignedTeacherClasses } from './studentRosterScope.js';
 
 /**
  * Every teacher-write endpoint (scores, attendance, class-records,
@@ -105,11 +106,12 @@ export async function checkTeacherStudentScope(
   if (student.school_code !== user.school_code) {
     return { status: 403, error: "You can't write records for a student outside your school" };
   }
-  if (!user.assigned_class) {
+  const allowedClasses = assignedTeacherClasses(user);
+  if (!user.assigned_class || !allowedClasses.length) {
     return { status: 403, error: 'This action requires an assigned physical class.' };
   }
-  if (reportClassName !== user.assigned_class) {
-    return { status: 403, error: "You can't write report remarks outside your assigned physical class" };
+  if (!allowedClasses.includes(reportClassName)) {
+    return { status: 403, error: "You can't write report remarks outside your assigned physical classes" };
   }
 
   if (termId !== undefined) {
@@ -191,8 +193,8 @@ export function checkTeacherRosterScope(
   if (!user.assigned_class) {
     return { status: 403, error: 'Creating physical report-roster students requires an assigned class.' };
   }
-  if (target.class_name !== user.assigned_class) {
-    return { status: 403, error: "You can't create a student outside your assigned class" };
+  if (!assignedTeacherClasses(user).includes(target.class_name)) {
+    return { status: 403, error: "You can't create a student outside your assigned physical classes" };
   }
   return null;
 }
@@ -239,7 +241,7 @@ export async function checkTeacherContentScope(
     return { status: 403, error: 'Your account has no assigned class or subject to create content for' };
   }
 
-  const classMatches   = !!target.class_name && !!user.assigned_class && target.class_name === user.assigned_class;
+  const classMatches   = !!target.class_name && !!user.assigned_class && assignedTeacherClasses(user).includes(target.class_name);
   const subjectMatches = target.subject_id != null && (user.assigned_subject_ids ?? []).some(id => String(id) === String(target.subject_id));
 
   if (classMatches || subjectMatches) return null;
@@ -428,7 +430,7 @@ export async function getMessageableUsers(user: AuthUser): Promise<MessageableUs
            OR (
              u.school_code = st.school_code
              AND (
-               (u.role = 'teacher' AND (u.assigned_class = st.class_name OR EXISTS (SELECT 1 FROM teacher_subjects ts WHERE ts.user_id = u.id)))
+               (u.role = 'teacher' AND (u.assigned_class = st.class_name OR (u.assigned_class IS NOT NULL AND st.class_name=ANY(COALESCE(u.assigned_class_names, ARRAY[]::text[]))) OR EXISTS (SELECT 1 FROM teacher_subjects ts WHERE ts.user_id = u.id)))
                OR (u.role = 'parent' AND u.id IN (
                      SELECT pw.parent_id FROM parent_wards pw WHERE pw.student_id = st.id
                    ))

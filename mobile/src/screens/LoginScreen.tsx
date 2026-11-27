@@ -16,9 +16,9 @@ export default function LoginScreen({ navigation }: any) {
   const { login } = useAuth();
   const [username, setUsername] = useState('');
   const [secret, setSecret] = useState('');
-  // 'pin' = six-digit PIN (students, parents, teachers). 'password' keeps the
-  // existing administrator / finance admin credentials usable. This is only
-  // an input mode: the server decides the account's role.
+  // 'pin' = permanent six-digit PIN. 'password' accepts a teacher's registration
+  // password / temporary four-digit code as well as existing admin passwords.
+  // This is only an input mode: the server verifies the credential and decides role.
   const [mode, setMode] = useState<CredentialMode>('pin');
   const [showSecret, setShowSecret] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
@@ -75,21 +75,21 @@ export default function LoginScreen({ navigation }: any) {
         {/* Form */}
         <View style={styles.form}>
           <Text style={styles.title}>Sign In</Text>
-          <Text style={styles.modeHint}>Choose how you sign in</Text>
+          <Text style={styles.modeHint}>Choose the credential you were given or have already set.</Text>
           <View style={styles.modeSelector}>
             <TouchableOpacity onPress={() => switchMode('pin')} disabled={loading}
               style={[styles.modeButton, mode === 'pin' && styles.modeButtonActive]}
               accessibilityRole="button" accessibilityLabel="Sign in with six-digit PIN"
               accessibilityState={{ selected: mode === 'pin', disabled: loading }}>
               <Text style={[styles.modeButtonText, mode === 'pin' && styles.modeButtonTextActive]}>PIN login</Text>
-              <Text style={[styles.modeButtonSubtext, mode === 'pin' && styles.modeButtonTextActive]}>Students, parents, teachers</Text>
+              <Text style={[styles.modeButtonSubtext, mode === 'pin' && styles.modeButtonTextActive]}>Your saved six-digit PIN</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => switchMode('password')} disabled={loading}
               style={[styles.modeButton, mode === 'password' && styles.modeButtonActive]}
-              accessibilityRole="button" accessibilityLabel="Sign in with administrator password"
+              accessibilityRole="button" accessibilityLabel="Sign in with password or temporary code"
               accessibilityState={{ selected: mode === 'password', disabled: loading }}>
-              <Text style={[styles.modeButtonText, mode === 'password' && styles.modeButtonTextActive]}>Admin password</Text>
-              <Text style={[styles.modeButtonSubtext, mode === 'password' && styles.modeButtonTextActive]}>Administrators</Text>
+              <Text style={[styles.modeButtonText, mode === 'password' && styles.modeButtonTextActive]}>Password / code</Text>
+              <Text style={[styles.modeButtonSubtext, mode === 'password' && styles.modeButtonTextActive]}>Teacher first sign-in or Admin</Text>
             </TouchableOpacity>
           </View>
           <Text style={styles.passwordLabel}>School (optional)</Text>
@@ -110,10 +110,10 @@ export default function LoginScreen({ navigation }: any) {
           />
           <Input
             key={`credential-input-${mode}`}
-            label={mode === 'pin' ? `${PIN_LENGTH}-digit PIN` : 'Administrator password'}
+            label={mode === 'pin' ? `${PIN_LENGTH}-digit PIN` : 'Registration password or temporary code'}
             value={secret}
             onChangeText={v => setSecret(normalizeLoginSecret(mode, v))}
-            placeholder={mode === 'pin' ? 'Enter your PIN' : 'Enter your password'}
+            placeholder={mode === 'pin' ? 'Enter your six-digit PIN' : 'Enter the password or code you were given'}
             keyboardType={mode === 'pin' ? 'numeric' : 'default'}
             secureTextEntry={!showSecret}
             autoCapitalize="none"
@@ -145,18 +145,15 @@ export default function LoginScreen({ navigation }: any) {
             </TouchableOpacity>
           </View>
 
-          {mode === 'pin' ? (
+          {mode === 'password' ? (
             <>
-              <Text style={[styles.forgotLinkText, { alignSelf: 'flex-end', marginTop: Spacing.xs }]}>Forgot your PIN? Contact the school Admin.</Text>
-
-            </>
-          ) : (
-            <>
+              <Text style={[styles.forgotLinkText, { marginTop: Spacing.xs }]}>Teachers: enter your registration password or the four-digit temporary code from the school. After signing in, you will set your own six-digit PIN.</Text>
               <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')} style={styles.forgotLink} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
                 <Text style={styles.forgotLinkText}>Forgot password?</Text>
               </TouchableOpacity>
-
             </>
+          ) : (
+            <Text style={[styles.forgotLinkText, { alignSelf: 'flex-end', marginTop: Spacing.xs }]}>Forgot your PIN? Contact the school Admin.</Text>
           )}
 
           {error ? <Text style={styles.error}>{error}</Text> : null}

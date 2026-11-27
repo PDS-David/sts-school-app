@@ -4,6 +4,7 @@ import { requireAuth, requireRole } from '../middleware/auth.js';
 import { SESSION_TERM_NAMES, isValidSessionTermName } from '../utils/terms.js';
 import { audit } from '../utils/audit.js';
 import { checkTermSchoolScope } from '../utils/scope.js';
+import { assignedTeacherClasses } from '../utils/studentRosterScope.js';
 
 const router = Router();
 router.use(requireAuth);
@@ -328,7 +329,7 @@ router.get('/classes', async (req, res) => {
     }
   }
   if (user.role === 'teacher') {
-    const names = user.assigned_class ? [user.assigned_class] : (user.assigned_class_names ?? []);
+    const names = assignedTeacherClasses(user);
     if (!names.length) return res.json({ classes: [] });
     const { rows } = await query('SELECT * FROM classes WHERE school_code=$1 AND name=ANY($2::text[]) ORDER BY id', [sc, names]);
     return res.json({ classes: rows });

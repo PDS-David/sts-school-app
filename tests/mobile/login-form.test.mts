@@ -1,5 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import {
   sanitizePin, normalizeLoginSecret, validateLoginInput, loginErrorMessage, generateDeviceId, isValidDeviceId,
   GENERIC_LOGIN_FAILURE, NETWORK_FAILURE,
@@ -10,7 +12,7 @@ test('sanitizePin keeps digits only and caps at six', () => {
   assert.equal(sanitizePin('abc'), '');
 });
 
-test('PIN input is sanitized but administrator password input is preserved exactly', () => {
+test('PIN input is sanitized but temporary teacher credentials and administrator passwords are preserved exactly', () => {
   assert.equal(normalizeLoginSecret('pin', '12a3-4 5678'), '123456');
   assert.equal(normalizeLoginSecret('password', 'AbC!@#-09_xY'), 'AbC!@#-09_xY');
   assert.equal(normalizeLoginSecret('password', '1234'), '1234');
@@ -24,7 +26,7 @@ test('PIN mode requires username and exactly six digits', () => {
   assert.equal(validateLoginInput('pin', 'ada', '493021'), null);
 });
 
-test('password mode does not impose a PIN rule (admin / finance admin)', () => {
+test('password mode accepts teacher temporary codes and registration passwords without a PIN-length rule', () => {
   assert.equal(validateLoginInput('password', 'admin', 'Some-Existing#Password1'), null);
   assert.equal(validateLoginInput('password', 'admin', '1234'), null);
   assert.ok(validateLoginInput('password', 'admin', ''));
@@ -55,4 +57,19 @@ test('generated device ids match the backend format and differ', () => {
   assert.ok(isValidDeviceId(generateDeviceId(() => 0.5)));
   assert.equal(isValidDeviceId('short'), false);
   assert.equal(isValidDeviceId('has spaces in it, not valid!!'), false);
+});
+
+test('teacher first sign-in explains registration passwords and four-digit temporary codes', () => {
+  const source = readFileSync(resolve(process.cwd(), 'mobile/src/screens/LoginScreen.tsx'), 'utf8');
+  assert.match(source, /Password \/ code/);
+  assert.match(source, /Registration password or temporary code/);
+  assert.match(source, /four-digit temporary code from the school/);
+  assert.match(source, /After signing in, you will set your own six-digit PIN/);
+});
+
+test('admin can assign additional classes to an existing class teacher', () => {
+  const source = readFileSync(resolve(process.cwd(), 'mobile/src/screens/AdminUsersScreen.tsx'), 'utf8');
+  assert.ok(source.includes('Additional classes for this class teacher'));
+  assert.ok(source.includes('payload.assigned_class_names = form.assigned_class_names;'));
+  assert.ok(source.includes('assigned_class_names: selected'));
 });

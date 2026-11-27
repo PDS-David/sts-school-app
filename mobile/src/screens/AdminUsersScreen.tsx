@@ -117,7 +117,7 @@ export default function AdminUsersScreen() {
     access_expires_at: '', // YYYY-MM-DD, blank = no expiry
     assigned_subject_ids: [] as number[],
     assigned_class_names: [] as string[],
-    initial_password: '', // teacher only — admin sets the actual first-login password directly (see handleSave)
+    initial_password: '', // teacher only — admin sets a temporary four-digit sign-in code
   });
 
   const fetchUsers = async () => {
@@ -188,6 +188,7 @@ export default function AdminUsersScreen() {
   });
 
   const isNewClassTeacher = !editUser && form.role === 'teacher' && !!form.assigned_class;
+  const isClassTeacher = form.role === 'teacher' && !!form.assigned_class;
 
   const openNew = () => {
     setEditUser(null);
@@ -223,7 +224,7 @@ export default function AdminUsersScreen() {
       return;
     }
     if (!editUser && form.role === 'teacher' && !/^\d{4}$/.test(form.initial_password)) {
-      setInfoDialog({ title: 'Invalid teacher PIN', message: 'Enter exactly four numeric digits for the teacher PIN.' });
+      setInfoDialog({ title: 'Invalid temporary code', message: 'Enter exactly four numeric digits for the teacher’s temporary sign-in code.' });
       return;
     }
     if (!editUser && form.role !== 'teacher' && !form.username.trim()) {
@@ -258,7 +259,7 @@ export default function AdminUsersScreen() {
     // instead of '' so the server never stores an empty string for them.
     payload.school_code = form.school_code || null;
     payload.assigned_class = form.assigned_class || null;
-    payload.assigned_class_names = form.assigned_class ? [] : form.assigned_class_names;
+    payload.assigned_class_names = form.assigned_class_names;
     if (!showsExpiry || !form.access_expires_at) {
       delete payload.access_expires_at;
       if (editUser && showsExpiry) payload.clear_expiry = true;
@@ -283,7 +284,7 @@ export default function AdminUsersScreen() {
           // show blank/stale text instead of the real created username.
           setInfoDialog({
             title: 'Teacher Account Created',
-            message: `Username: ${data?.user?.username}\nPIN: ${form.initial_password}\n\nGive these credentials directly to the teacher. They will be asked to change the PIN at first login.`,
+            message: `Username: ${data?.user?.username}\nTemporary sign-in code: ${form.initial_password}\n\nTell the teacher to choose “Password / code” on the sign-in screen and enter this code. They will then create their own six-digit PIN.`,
           });
         } else {
           // Task C: account creation no longer generates a temp password —
@@ -315,8 +316,8 @@ export default function AdminUsersScreen() {
 
   const handleResetPw = (u: User) => {
     setConfirmDialog({
-      title: u.role === 'teacher' ? 'Reset Teacher PIN' : 'Reset Password',
-      message: u.role === 'teacher' ? `Reset the four-digit PIN for ${u.username}? A new PIN will be generated and shown to you.` : `Reset password for ${u.username}? A new temporary password will be generated.`,
+      title: u.role === 'teacher' ? 'Reset Teacher Sign-in Code' : 'Reset Password',
+      message: u.role === 'teacher' ? `Reset the four-digit temporary sign-in code for ${u.username}? A new code will be generated and shown to you.` : `Reset password for ${u.username}? A new temporary password will be generated.`,
       confirmLabel: 'Reset',
       destructive: true,
       onConfirm: async () => {
@@ -324,8 +325,8 @@ export default function AdminUsersScreen() {
         try {
           const { data } = await api.post(`/admin/users/${u.id}/reset-password`, {});
           setInfoDialog({
-            title: u.role === 'teacher' ? 'Teacher PIN Reset' : 'Password Reset',
-            message: u.role === 'teacher' ? `New four-digit PIN: ${data?.temporary_password}\n\nGive this PIN directly to the teacher. They will be asked to change it after signing in.` : `New password: ${data?.temporary_password}\n\nShare this with them. They'll be asked to set a new password on next login.`,
+            title: u.role === 'teacher' ? 'Teacher Sign-in Code Reset' : 'Password Reset',
+            message: u.role === 'teacher' ? `New temporary sign-in code: ${data?.temporary_password}\n\nTell the teacher to choose “Password / code” at sign-in, enter this code, and then create a new six-digit PIN.` : `New password: ${data?.temporary_password}\n\nShare this with them. They'll be asked to set a new password on next login.`,
           });
         } catch (e: any) {
           setInfoDialog({ title: 'Error', message: e?.response?.data?.error ?? 'Could not reset password' });
@@ -537,7 +538,7 @@ export default function AdminUsersScreen() {
             >
               <Ionicons name={actionsUser?.pending_activation ? 'refresh-circle' : 'key'} size={20} color={Colors.accent} />
               <Text style={styles.sheetRowText}>
-                {actionsUser?.pending_activation ? 'Reissue Activation Code' : actionsUser?.role === 'teacher' ? 'Reset Teacher PIN' : 'Reset Password'}
+                {actionsUser?.pending_activation ? 'Reissue Activation Code' : actionsUser?.role === 'teacher' ? 'Reset Teacher Sign-in Code' : 'Reset Password'}
               </Text>
             </TouchableOpacity>
 
@@ -656,7 +657,7 @@ export default function AdminUsersScreen() {
 
           {!editUser && form.role === 'teacher' && (
             <Input
-              label="Teacher PIN (4 digits)"
+              label="Temporary sign-in code (4 digits)"
               value={form.initial_password}
               onChangeText={v => setForm(f => ({ ...f, initial_password: v.replace(/\D/g, '').slice(0, 4) }))}
               keyboardType="numeric"
@@ -671,6 +672,27 @@ export default function AdminUsersScreen() {
                 <Text style={styles.expiryHint}>
                   Class teacher account for {form.assigned_class}. The class username is fixed by the dropdown selection.
                 </Text>
+              )}
+
+              {isClassTeacher && (
+                <View style={{ marginTop: Spacing.sm }}>
+                  <Text style={styles.filterLabel}>Additional classes for this class teacher</Text>
+                  {availableClasses.filter(c => c.name !== form.assigned_class).map(c => {
+                    const selected = form.assigned_class_names.includes(c.name);
+                    return (
+                      <TouchableOpacity key={c.id} onPress={() => setForm(f => ({
+                        ...f,
+                        assigned_class_names: selected
+                          ? f.assigned_class_names.filter(name => name !== c.name)
+                          : [...f.assigned_class_names, c.name],
+                      }))} style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 8 }}>
+                        <Ionicons name={selected ? 'checkbox' : 'square-outline'} size={20} color={selected ? Colors.primary : Colors.textSub} />
+                        <Text style={{ marginLeft: 10, color: Colors.text }}>{c.name}</Text>
+                      </TouchableOpacity>
+                    );
+                  })}
+                  <Text style={styles.expiryHint}>Select every other class this teacher is responsible for. The teacher will be able to manage each selected class.</Text>
+                </View>
               )}
 
               {isNewClassTeacher && (

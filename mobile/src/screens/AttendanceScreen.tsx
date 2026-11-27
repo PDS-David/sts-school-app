@@ -71,9 +71,7 @@ export default function AttendanceScreen({ navigation }: any) {
     ])
       .then(([c, t]) => {
         if (cancelled) return;
-        const cls = (user?.role === 'teacher' && user?.assigned_class)
-          ? [user.assigned_class]
-          : [...new Set((c.data.classes as any[]).map((x: any) => x.name))].sort();
+        const cls = [...new Set((c.data.classes as any[]).map((x: any) => x.name))].sort();
         setClasses(cls);
         setSelClass(cls[0] ?? '');
         setTerms(t.data.terms);

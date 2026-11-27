@@ -41,10 +41,10 @@ export default function PromoteStudentsScreen() {
     api.get('/students')
       .then(({ data }) => setStudents(data.students ?? []))
       .catch((e: any) => {
-        setLoadError(e?.response?.data?.error ?? 'Could not load your assigned-class roster. Check your connection and retry.');
+        setLoadError(e?.response?.data?.error ?? 'Could not load your assigned-class rosters. Check your connection and retry.');
       })
       .finally(() => setLoading(false));
-  }, [user?.assigned_class]);
+  }, [user?.assigned_class, user?.assigned_class_names?.join('|')]);
 
   useEffect(() => { fetchRoster(); }, [fetchRoster]);
 
@@ -97,7 +97,7 @@ export default function PromoteStudentsScreen() {
       <PageContainer style={{ padding: Spacing.md, paddingBottom: 0 }}>
         <Card style={{ marginBottom: Spacing.sm }}>
           <Text style={styles.explainer}>
-            For each student in {user?.assigned_class ?? 'your assigned class'}, choose whether to promote them to the next class, retain them, or remove them from the active physical report roster. These decisions affect report-roster placement only; online accounts and academic history remain unchanged.
+            For each student in your assigned physical classes, choose whether to promote them to the next class, retain them, or remove them from the active physical report roster. These decisions affect report-roster placement only; online accounts and academic history remain unchanged.
           </Text>
         </Card>
       </PageContainer>

@@ -271,12 +271,16 @@ router.post('/users', async (req, res) => {
       throw error;
     }
 
-    const classNames: string[] = Array.isArray(assigned_class_names)
-      ? [...new Set(assigned_class_names.filter((v: unknown): v is string => typeof v === 'string').map((v: string) => v.trim()).filter(Boolean))]
+    const rawClassNames = Array.isArray(assigned_class_names)
+      ? assigned_class_names.map((v: unknown) => typeof v === 'string' ? v.trim() : '')
       : [];
-    if (assigned_class_names !== undefined && (!Array.isArray(assigned_class_names) || classNames.length !== assigned_class_names.length)) {
-      return res.status(400).json({ error: 'assigned_class_names must be an array of class names.' });
+    if (assigned_class_names !== undefined &&
+        (!Array.isArray(assigned_class_names) ||
+         rawClassNames.some(name => !name) ||
+         new Set(rawClassNames).size !== rawClassNames.length)) {
+      return res.status(400).json({ error: 'assigned_class_names must be an array of unique class names.' });
     }
+    const classNames = rawClassNames.filter(name => name !== assignedClassN);
     if (!assignedClassN && (!classNames.length || !subjectIds.length)) {
       return res.status(400).json({ error: 'A subject teacher must have at least one assigned class and one assigned subject.' });
     }
@@ -286,9 +290,21 @@ router.post('/users', async (req, res) => {
     try {
       createdUser = await withTransaction(async (client) => {
         await validateTeacherAssignments(client, schoolCodeN, assignedClassN, subjectIds);
-        if (!assignedClassN && classNames.length) {
+        if (classNames.length) {
           const { rows: classRows } = await client.query('SELECT name FROM classes WHERE school_code=$1 AND name=ANY($2::text[])', [schoolCodeN, classNames]);
-          if (classRows.length !== classNames.length) throw new TeacherAssignmentValidationError('Every subject-teacher class must belong to the selected school.');
+          if (classRows.length !== classNames.length) throw new TeacherAssignmentValidationError('Every additional or subject-teacher class must belong to the selected school.');
+        }
+        if (isClassTeacher) {
+          const classesToAssign = [assignedClassN!, ...classNames];
+          await client.query('SELECT id FROM classes WHERE school_code=$1 AND name=ANY($2::text[]) ORDER BY name FOR UPDATE', [schoolCodeN, classesToAssign]);
+          const { rows: conflicts } = await client.query(
+            `SELECT assigned_class FROM users
+             WHERE role='teacher' AND school_code=$1 AND assigned_class IS NOT NULL
+               AND (assigned_class=ANY($2::text[]) OR assigned_class_names && $2::text[])
+             LIMIT 1`,
+            [schoolCodeN, classesToAssign],
+          );
+          if (conflicts[0]) throw new TeacherAssignmentValidationError('One or more selected classes already have a class teacher. Edit the existing class teacher assignment instead.');
         }
         const { rows } = await client.query(
           `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,assigned_class_names,
@@ -397,7 +413,7 @@ router.put('/users/:id', async (req, res) => {
   try {
     result = await withTransaction(async (client) => {
       const { rows: currentRows } = await client.query(
-        'SELECT role,school_code,assigned_class FROM users WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) FOR UPDATE',
+        'SELECT role,school_code,assigned_class,assigned_class_names FROM users WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) FOR UPDATE',
         [req.params.id, req.user!.school_code ?? null],
       );
       if (!currentRows[0]) return { user: null };
@@ -421,12 +437,11 @@ router.put('/users/:id', async (req, res) => {
           if (!Array.isArray(assigned_class_names) || assigned_class_names.some((v: unknown) => typeof v !== 'string' || !v.trim())) {
             throw new TeacherAssignmentValidationError('assigned_class_names must be an array of class names.');
           }
-          nextClassNames = [...new Set(assigned_class_names.map((v: string) => v.trim()))];
+          nextClassNames = [...new Set(assigned_class_names.map((v: string) => v.trim()))].filter(name => name !== nextClass);
           const { rows: classRows } = await client.query('SELECT name FROM classes WHERE school_code=$1 AND name=ANY($2::text[])', [nextSchool, nextClassNames]);
-          if (classRows.length !== nextClassNames.length) throw new TeacherAssignmentValidationError('Every subject-teacher class must belong to the selected school.');
+          if (classRows.length !== nextClassNames.length) throw new TeacherAssignmentValidationError('Every additional or subject-teacher class must belong to the selected school.');
         } else {
-          const { rows: existingClasses } = await client.query('SELECT assigned_class_names FROM users WHERE id=$1', [req.params.id]);
-          nextClassNames = existingClasses[0]?.assigned_class_names ?? [];
+          nextClassNames = current.assigned_class_names ?? [];
         }
         if (hasSubjectIds) {
           nextSubjectIds = normalizeTeacherSubjectIds(assigned_subject_ids);
@@ -438,6 +453,18 @@ router.put('/users/:id', async (req, res) => {
           nextSubjectIds = existingSubjects.map((row) => Number(row.subject_id));
         }
         await validateTeacherAssignments(client, nextSchool, nextClass, nextSubjectIds);
+        if (nextClass) {
+          const classesToAssign = [nextClass, ...nextClassNames];
+          await client.query('SELECT id FROM classes WHERE school_code=$1 AND name=ANY($2::text[]) FOR UPDATE', [nextSchool, classesToAssign]);
+          const { rows: conflicts } = await client.query(
+            `SELECT id, assigned_class FROM users
+             WHERE role='teacher' AND school_code=$1 AND id<>$3 AND assigned_class IS NOT NULL
+               AND (assigned_class=ANY($2::text[]) OR assigned_class_names && $2::text[])
+             LIMIT 1`,
+            [nextSchool, classesToAssign, req.params.id],
+          );
+          if (conflicts[0]) throw new TeacherAssignmentValidationError('One or more selected classes already have a class teacher. Edit the existing class teacher assignment instead.');
+        }
       }
 
       const { rows } = await client.query(

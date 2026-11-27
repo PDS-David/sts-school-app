@@ -12,12 +12,12 @@ after(async () => {
   await pool.end();
 });
 
-async function createUser(label: string, schoolCode: string | null, assignedClass: string | null) {
+async function createUser(label: string, schoolCode: string | null, assignedClass: string | null, assignedClassNames: string[] = []) {
   const username = `bsec18-${label}-${randomUUID()}`;
   const { rows } = await query(
-    `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,is_active,pending_admin_review)
-     VALUES($1,'test-hash','teacher',$2,$3,$4,TRUE,FALSE) RETURNING id`,
-    [username, `BSEC18 ${label}`, schoolCode, assignedClass],
+    `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,assigned_class_names,is_active,pending_admin_review)
+     VALUES($1,'test-hash','teacher',$2,$3,$4,$5::text[],TRUE,FALSE) RETURNING id`,
+    [username, `BSEC18 ${label}`, schoolCode, assignedClass, assignedClassNames],
   );
   const id = String(rows[0].id);
   return {
@@ -28,6 +28,7 @@ async function createUser(label: string, schoolCode: string | null, assignedClas
       role: 'teacher',
       school_code: schoolCode,
       assigned_class: assignedClass,
+      assigned_class_names: assignedClassNames,
       assigned_subject_ids: [],
     }),
   };
@@ -91,7 +92,7 @@ async function startServer(): Promise<{ server: Server; baseUrl: string }> {
 test('whole-class attendance and class-record reads enforce school and term ownership', async () => {
   const suffix = randomUUID();
   const year = `BSEC18/${suffix}`;
-  const classTeacher = await createUser('class-teacher', 'primary', 'Shared Class');
+  const classTeacher = await createUser('class-teacher', 'primary', 'Shared Class', ['Second Class']);
   const subjectTeacher = await createUser('subject-teacher', 'primary', null);
   const unassignedTeacher = await createUser('unassigned-teacher', null, null);
   const admin = await createAdmin();
@@ -136,6 +137,17 @@ test('whole-class attendance and class-record reads enforce school and term owne
        VALUES($1,'Shared Class','Shared Class','active')`,
       [studentIds[0]],
     );
+    const { rows: secondClassStudents } = await query(
+      `INSERT INTO students(full_name,class_name,school_code,admission_number)
+       VALUES('BSEC18 Second Class','Second Class','primary',$1) RETURNING id`,
+      [`BSEC18-2C-${suffix}`],
+    );
+    studentIds.push(String(secondClassStudents[0].id));
+    await query(
+      `INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status)
+       VALUES($1,'Second Class','Second Class','active')`,
+      [studentIds[3]],
+    );
 
     await query(
       'INSERT INTO attendance(student_id,term_id,days_present) VALUES($1,$2,12),($3,$4,8),($5,$2,3)',
@@ -145,6 +157,15 @@ test('whole-class attendance and class-record reads enforce school and term owne
       `INSERT INTO class_records(student_id,term_id,class_teacher_remark)
        VALUES($1,$2,'Primary record'),($3,$4,'Secondary record'),($5,$2,'Deleted record')`,
       [studentIds[0], primaryTermId, studentIds[1], secondaryTermId, studentIds[2]],
+    );
+    await query(
+      'INSERT INTO attendance(student_id,term_id,days_present) VALUES($1,$2,11)',
+      [studentIds[3], primaryTermId],
+    );
+    await query(
+      `INSERT INTO class_records(student_id,term_id,class_teacher_remark)
+       VALUES($1,$2,'Second class record')`,
+      [studentIds[3], primaryTermId],
     );
 
     const started = await startServer();
@@ -159,6 +180,13 @@ test('whole-class attendance and class-record reads enforce school and term owne
     assert.equal(primaryAttendance.status, 200, 'assigned teachers can read their physical-class attendance');
     const primaryAttendanceBody = await primaryAttendance.json() as { attendance: Array<{ student_id: string; days_present: number }> };
     assert.deepEqual(primaryAttendanceBody.attendance, [{ student_id: studentIds[0], days_present: 12 }]);
+    const secondClassAttendance = await get(
+      `?class_name=Second%20Class&term_id=${primaryTermId}`,
+      classTeacher.token,
+    );
+    assert.equal(secondClassAttendance.status, 200, 'a class teacher can read attendance for an additional assigned class');
+    const secondClassAttendanceBody = await secondClassAttendance.json() as { attendance: Array<{ student_id: string; days_present: number }> };
+    assert.deepEqual(secondClassAttendanceBody.attendance, [{ student_id: studentIds[3], days_present: 11 }]);
 
     const primaryRecords = await get(
       `/class-records?class_name=Shared%20Class&term_id=${primaryTermId}`,
@@ -167,6 +195,13 @@ test('whole-class attendance and class-record reads enforce school and term owne
     assert.equal(primaryRecords.status, 200, 'assigned teachers can read their physical-class report remarks');
     const primaryRecordsBody = await primaryRecords.json() as { class_records: Array<{ student_id: string; class_teacher_remark: string }> };
     assert.deepEqual(primaryRecordsBody.class_records.map(row => row.student_id), [studentIds[0]]);
+    const secondClassRecords = await get(
+      `/class-records?class_name=Second%20Class&term_id=${primaryTermId}`,
+      classTeacher.token,
+    );
+    assert.equal(secondClassRecords.status, 200, 'a class teacher can read report remarks for an additional assigned class');
+    const secondClassRecordsBody = await secondClassRecords.json() as { class_records: Array<{ student_id: string }> };
+    assert.deepEqual(secondClassRecordsBody.class_records.map(row => row.student_id), [studentIds[3]]);
 
     const saveAttendance = await fetch(`${started.baseUrl}/bulk`, {
       method: 'PUT',
@@ -174,6 +209,12 @@ test('whole-class attendance and class-record reads enforce school and term owne
       body: JSON.stringify({ term_id: primaryTermId, entries: [{ student_id: studentIds[0], days_present: 15 }] }),
     });
     assert.equal(saveAttendance.status, 200, 'assigned teachers can enter and correct physical-class attendance');
+    const saveSecondClassAttendance = await fetch(`${started.baseUrl}/bulk`, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${classTeacher.token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ term_id: primaryTermId, entries: [{ student_id: studentIds[3], days_present: 16 }] }),
+    });
+    assert.equal(saveSecondClassAttendance.status, 200, 'a class teacher can enter attendance for an additional assigned class');
     const saveRemarks = await fetch(`${started.baseUrl}/class-records`, {
       method: 'PUT',
       headers: { Authorization: `Bearer ${classTeacher.token}`, 'Content-Type': 'application/json' },
@@ -183,6 +224,15 @@ test('whole-class attendance and class-record reads enforce school and term owne
       }),
     });
     assert.equal(saveRemarks.status, 200, 'assigned teachers can edit the class-teacher remark');
+    const saveSecondClassRemarks = await fetch(`${started.baseUrl}/class-records`, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${classTeacher.token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        student_id: studentIds[3], term_id: primaryTermId,
+        class_teacher_remark: 'Second class teacher remark',
+      }),
+    });
+    assert.equal(saveSecondClassRemarks.status, 200, 'a class teacher can edit remarks for an additional assigned class');
     const teacherPrincipalRemark = await fetch(`${started.baseUrl}/class-records`, {
       method: 'PUT',
       headers: { Authorization: `Bearer ${classTeacher.token}`, 'Content-Type': 'application/json' },

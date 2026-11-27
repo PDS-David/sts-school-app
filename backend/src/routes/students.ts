@@ -5,7 +5,7 @@ import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
 import { auditContextFromRequest, auditInTransaction, auditStrict } from '../utils/audit.js';
 import { checkTeacherDeleteScope, checkTeacherRosterScope } from '../utils/scope.js';
-import { resolveStudentRosterScope } from '../utils/studentRosterScope.js';
+import { assignedTeacherClasses, resolveStudentRosterScope } from '../utils/studentRosterScope.js';
 import { createStudentWithParent } from '../utils/parentProvisioning.js';
 import type { PoolClient } from 'pg';
 import type { AuthUser } from '../types/index.js';
@@ -54,8 +54,8 @@ async function lockWardMutationStudent(
     if (!user.assigned_class) {
       return { ok: false, status: 403, error: 'Subject teachers cannot manage parent links.' };
     }
-    if (student.class_name !== user.assigned_class) {
-      return { ok: false, status: 403, error: "You can't manage parent links outside your assigned class" };
+    if (!assignedTeacherClasses(user).includes(student.class_name)) {
+      return { ok: false, status: 403, error: "You can't manage parent links outside your assigned physical classes" };
     }
   }
   return { ok: true, schoolCode: student.school_code };
@@ -88,9 +88,9 @@ router.get('/', requirePerm('students.read'), async (req, res) => {
   if (effectiveClass) {
     params.push(effectiveClass);
     sql += ` AND rrm.class_name=$${params.length}`;
-  } else if (user.role === 'teacher' && !user.assigned_class) {
-    const assignedClasses = user.assigned_class_names ?? [];
-    if (!assignedClasses.length) return res.status(403).json({ error: 'No classes are assigned to this subject teacher.' });
+  } else if (user.role === 'teacher') {
+    const assignedClasses = assignedTeacherClasses(user);
+    if (!assignedClasses.length) return res.status(403).json({ error: 'No physical classes are assigned to this teacher.' });
     params.push(assignedClasses);
     sql += ` AND rrm.class_name=ANY($${params.length}::text[])`;
   }
@@ -202,7 +202,7 @@ router.get('/:id', requirePerm('students.read'), async (req, res) => {
     if (!reportMemberships[0]) return res.status(404).json({ error: 'Student not found' });
   }
   if (user.role === 'teacher') {
-    const allowedClasses = user.assigned_class ? [user.assigned_class] : (user.assigned_class_names ?? []);
+    const allowedClasses = assignedTeacherClasses(user);
     if (!user.school_code || !allowedClasses.length) {
       return res.status(403).json({ error: 'Report access requires assigned classes.' });
     }
@@ -444,9 +444,8 @@ router.post('/:id/promotion', requireRole('admin', 'teacher'), async (req, res) 
   // Teacher decisions are limited to the active physical class assigned to
   // that teacher. Do not let query/body values widen school or class scope.
   if (user.role === 'teacher') {
-    if (!user.school_code || !user.assigned_class ||
-        membership.school_code !== user.school_code ||
-        membership.report_class_name !== user.assigned_class) {
+    if (!user.school_code || !assignedTeacherClasses(user).includes(membership.report_class_name) ||
+        membership.school_code !== user.school_code) {
       return res.status(404).json({ error: 'Student not found in your assigned physical class' });
     }
     if (!['promote', 'retain', 'remove'].includes(action)) {

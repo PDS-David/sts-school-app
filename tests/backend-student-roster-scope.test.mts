@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import test from 'node:test';
-import { resolveStudentRosterScope } from '../backend/src/utils/studentRosterScope.ts';
+import { assignedTeacherClasses, resolveStudentRosterScope } from '../backend/src/utils/studentRosterScope.ts';
 import type { AuthUser } from '../backend/src/types/index.js';
 
 const financeAdmin: AuthUser = {
@@ -57,7 +59,7 @@ test('teacher-supplied school filters cannot widen the teacher current school or
   );
   assert.deepEqual(
     resolveStudentRosterScope(teacher, { school_code: 'secondary', class_name: 'JSS 1' }),
-    { status: 403, error: 'You can only browse students in your assigned physical class.' },
+    { status: 403, error: 'You can only browse students in your assigned physical classes.' },
   );
 });
 
@@ -89,4 +91,29 @@ test('teacher without a school assignment is denied rather than allowed to query
   const result = resolveStudentRosterScope(teacher, { class_name: 'Primary 1' });
   assert.equal('error' in result, true);
   if ('error' in result) assert.equal(result.status, 403);
+});
+
+test('class teacher can be assigned and scoped to more than one physical class', () => {
+  const teacher: AuthUser = {
+    ...financeAdmin,
+    id: 'multi-class-teacher',
+    username: 'pry4',
+    role: 'teacher',
+    school_code: 'primary',
+    assigned_class: 'Primary 4',
+    assigned_class_names: ['Primary 5'],
+  };
+  assert.deepEqual(assignedTeacherClasses(teacher), ['Primary 4', 'Primary 5']);
+  assert.deepEqual(resolveStudentRosterScope(teacher, {}), { schoolCode: 'primary', className: null });
+  assert.deepEqual(resolveStudentRosterScope(teacher, { class_name: 'Primary 4' }), { schoolCode: 'primary', className: 'Primary 4' });
+  assert.deepEqual(resolveStudentRosterScope(teacher, { class_name: 'Primary 5' }), { schoolCode: 'primary', className: 'Primary 5' });
+  assert.deepEqual(resolveStudentRosterScope(teacher, { class_name: 'Primary 6' }), {
+    status: 403,
+    error: 'You can only browse students in your assigned physical classes.',
+  });
+});
+
+test('multi-class roster SQL binds assigned class arrays as a PostgreSQL text array', () => {
+  const source = readFileSync(resolve(process.cwd(), 'backend/src/routes/students.ts'), 'utf8');
+  assert.ok(source.includes('rrm.class_name=ANY($' + '${params.length}::text[])'));
 });

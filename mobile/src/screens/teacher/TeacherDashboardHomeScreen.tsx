@@ -9,6 +9,7 @@ import { AppHeader } from '../../components/AppHeader';
 
 export default function TeacherDashboardHomeScreen({ navigation }: any) {
   const { user } = useAuth();
+  const teacherClasses = [...new Set([user?.assigned_class, ...(user?.assigned_class_names ?? [])].filter(Boolean))];
   const [term, setTerm] = useState<any>(null);
   const [studentCount, setStudentCount] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
@@ -32,7 +33,7 @@ export default function TeacherDashboardHomeScreen({ navigation }: any) {
     }
     if (errors.length) setLoadError(`Could not refresh ${errors.join(' and ')}. Pull down or retry.`);
     setLoading(false);
-  }, [user?.id, user?.school_code, user?.assigned_class]);
+  }, [user?.id, user?.school_code, user?.assigned_class, user?.assigned_class_names?.join('|')]);
 
   useEffect(() => {
     setTerm(null);
@@ -47,7 +48,7 @@ export default function TeacherDashboardHomeScreen({ navigation }: any) {
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
       <AppHeader
         title={`Hi, ${user?.username ?? ''}`}
-        subtitle={[user?.assigned_class, term ? `${term.name} · ${term.academic_year}` : null].filter(Boolean).join(' · ') || undefined}
+        subtitle={[teacherClasses.length ? teacherClasses.join(', ') : null, term ? `${term.name} · ${term.academic_year}` : null].filter(Boolean).join(' · ') || undefined}
       />
       <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={async () => { setRefreshing(true); await load(); setRefreshing(false); }} />}>
         <PageContainer style={{ padding: Spacing.md }}>
