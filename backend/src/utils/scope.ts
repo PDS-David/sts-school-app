@@ -241,7 +241,7 @@ export async function checkTeacherContentScope(
     return { status: 403, error: 'Your account has no assigned class or subject to create content for' };
   }
 
-  const classMatches   = !!target.class_name && !!user.assigned_class && target.class_name === user.assigned_class;
+  const classMatches   = !!target.class_name && !!user.assigned_class && assignedTeacherClasses(user).includes(target.class_name);
   const subjectMatches = target.subject_id != null && (user.assigned_subject_ids ?? []).some(id => String(id) === String(target.subject_id));
 
   if (classMatches || subjectMatches) return null;
@@ -430,7 +430,7 @@ export async function getMessageableUsers(user: AuthUser): Promise<MessageableUs
            OR (
              u.school_code = st.school_code
              AND (
-               (u.role = 'teacher' AND (u.assigned_class = st.class_name OR EXISTS (SELECT 1 FROM teacher_subjects ts WHERE ts.user_id = u.id)))
+               (u.role = 'teacher' AND (u.assigned_class = st.class_name OR st.class_name=ANY(COALESCE(u.assigned_class_names, ARRAY[]::text[])) OR EXISTS (SELECT 1 FROM teacher_subjects ts WHERE ts.user_id = u.id)))
                OR (u.role = 'parent' AND u.id IN (
                      SELECT pw.parent_id FROM parent_wards pw WHERE pw.student_id = st.id
                    ))
