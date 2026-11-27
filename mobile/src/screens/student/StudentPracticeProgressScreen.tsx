@@ -107,7 +107,7 @@ export default function StudentPracticeProgressScreen({ navigation }: any) {
                     <Text style={styles.conceptName}>{item.concept}</Text>
                     <Text style={styles.meta}>{item.topic_title} · {item.subject_name} · {item.attempts} attempts</Text>
                     <View style={styles.track}>
-                      <View style={[styles.fill, { width: accuracy + '%' }]} />
+                      <View style={[styles.fill, { width: `${accuracy}%` as `${number}%` }]} />
                     </View>
                   </View>
                   <Badge label={accuracy + '%'} color={accuracy >= 70 ? Colors.success : Colors.warning} />
