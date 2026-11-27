@@ -218,3 +218,57 @@ test('teacher update rolls back profile and assignment changes when a subject in
     await query('DELETE FROM subjects WHERE id=ANY($1::int[])', [[originalSubjectId, failingSubjectId]]);
   }
 });
+
+test('one class teacher account can own multiple classes and overlapping class ownership is rejected', async () => {
+  const suffix = unique();
+  const classA = `BSEC5 Multi A ${suffix}`;
+  const classB = `BSEC5 Multi B ${suffix}`;
+  const classC = `BSEC5 Multi C ${suffix}`;
+  let teacherId = '';
+  await query('INSERT INTO classes(school_code,name) VALUES($1,$2),($1,$3),($1,$4)', ['primary', classA, classB, classC]);
+
+  try {
+    const created = await postUser({
+      full_name: 'Multi Class Teacher',
+      role: 'teacher',
+      school_code: 'primary',
+      assigned_class: classA,
+      assigned_class_names: [classB],
+      assigned_subject_ids: [],
+      initial_password: '1234',
+    });
+    assert.equal(created.status, 201);
+    const createdBody = await created.json() as { user: { id: string } };
+    teacherId = createdBody.user.id;
+
+    let { rows } = await query(
+      'SELECT assigned_class, assigned_class_names FROM users WHERE id=$1',
+      [teacherId],
+    );
+    assert.equal(rows[0].assigned_class, classA);
+    assert.deepEqual(rows[0].assigned_class_names, [classB]);
+
+    const updated = await putUser(teacherId, { assigned_class_names: [classB, classC] });
+    assert.equal(updated.status, 200);
+    ({ rows } = await query(
+      'SELECT assigned_class, assigned_class_names FROM users WHERE id=$1',
+      [teacherId],
+    ));
+    assert.equal(rows[0].assigned_class, classA);
+    assert.deepEqual(rows[0].assigned_class_names, [classB, classC]);
+
+    const conflict = await postUser({
+      full_name: 'Duplicate Class Teacher',
+      role: 'teacher',
+      school_code: 'primary',
+      assigned_class: classC,
+      assigned_class_names: [],
+      assigned_subject_ids: [],
+      initial_password: '1234',
+    });
+    assert.equal(conflict.status, 400);
+  } finally {
+    if (teacherId) await query('DELETE FROM users WHERE id=$1', [teacherId]);
+    await query('DELETE FROM classes WHERE school_code=$1 AND name=ANY($2::text[])', ['primary', [classA, classB, classC]]);
+  }
+});
