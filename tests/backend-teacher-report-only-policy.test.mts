@@ -45,7 +45,7 @@ test('teacher roster is fixed to the assigned physical class', () => {
   });
   assert.deepEqual(resolveStudentRosterScope(teacher, { class_name: 'Primary5' }), {
     status: 403,
-    error: 'You can only browse students in your assigned physical class.',
+    error: 'You can only browse students in your assigned physical classes.',
   });
 });
 
@@ -79,4 +79,18 @@ test('report ranking uses physical roster placement for legacy score rows and co
   assert.match(source, /COUNT\(\*\)::int AS class_size/);
   assert.match(source, /COALESCE\(rrm\.class_name,s\.class_name\) AS class_name/);
   assert.match(source, /ORDER BY COALESCE\(rrm\.class_name,s\.class_name\), s\.full_name, sub\.name/);
+});
+
+test('class teacher can browse the combined roster for two assigned classes and select either one', () => {
+  const teacher = {
+    id: 'teacher-multi',
+    username: 'class-teacher-multi',
+    role: 'teacher' as const,
+    school_code: 'primary',
+    assigned_class: 'Primary4',
+    assigned_class_names: ['Primary5'],
+    assigned_subject_ids: [],
+  };
+  assert.deepEqual(resolveStudentRosterScope(teacher, {}), { schoolCode: 'primary', className: null });
+  assert.deepEqual(resolveStudentRosterScope(teacher, { class_name: 'Primary5' }), { schoolCode: 'primary', className: 'Primary5' });
 });
