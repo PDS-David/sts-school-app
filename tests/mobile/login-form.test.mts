@@ -1,5 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import {
   sanitizePin, normalizeLoginSecret, validateLoginInput, loginErrorMessage, generateDeviceId, isValidDeviceId,
   GENERIC_LOGIN_FAILURE, NETWORK_FAILURE,
@@ -55,4 +57,12 @@ test('generated device ids match the backend format and differ', () => {
   assert.ok(isValidDeviceId(generateDeviceId(() => 0.5)));
   assert.equal(isValidDeviceId('short'), false);
   assert.equal(isValidDeviceId('has spaces in it, not valid!!'), false);
+});
+
+test('teacher first sign-in explains registration passwords and four-digit temporary codes', () => {
+  const source = readFileSync(resolve(process.cwd(), 'mobile/src/screens/LoginScreen.tsx'), 'utf8');
+  assert.match(source, /Password \/ code/);
+  assert.match(source, /Registration password or temporary code/);
+  assert.match(source, /four-digit temporary code from the school/);
+  assert.match(source, /After signing in, you will set your own six-digit PIN/);
 });
