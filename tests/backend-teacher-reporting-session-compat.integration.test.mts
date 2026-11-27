@@ -73,6 +73,19 @@ async function makeTeacher(label: string, o: TeacherOpts = {}) {
   for (const sid of o.subjectIds ?? []) {
     await query('INSERT INTO teacher_subjects(user_id,subject_id) VALUES($1,$2)', [id, sid]);
   }
+  if (!o.assignedClass) {
+    for (const className of o.classNames ?? []) {
+      for (const sid of o.subjectIds ?? []) {
+        await query(
+          `INSERT INTO teacher_class_subjects(user_id,class_id,subject_id)
+           SELECT $1,c.id,$3 FROM classes c
+           WHERE c.school_code=$2 AND c.name=$4
+           ON CONFLICT DO NOTHING`,
+          [id, o.school ?? 'primary', sid, className],
+        );
+      }
+    }
+  }
   return { id, username };
 }
 
