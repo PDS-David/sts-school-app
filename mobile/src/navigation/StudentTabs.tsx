@@ -61,8 +61,8 @@ function LearningStackNavigator() {
       <LearningStack.Screen name="SubjectTopics" component={SubjectTopicsScreen} options={({ route }: any) => ({ headerShown: true, title: route.params?.subjectName ?? 'Topics', ...stackScreenOptions })} />
       <LearningStack.Screen name="FrenchListening" component={FrenchListeningScreen} options={{ headerShown: true, title: "French Listening", ...stackScreenOptions }} />
       <LearningStack.Screen name="TopicDetail" component={TopicDetailScreen} options={({ route }: any) => ({ headerShown: true, title: route.params?.topic?.title ?? 'Topic', ...stackScreenOptions })} />
-      <LearningStack.Screen name="Ss1PackageLesson" component={Ss1PackageLessonScreen} options={({ route }: any) => ({ headerShown: true, title: route.params?.lesson?.title ?? 'SS1 Lesson', ...stackScreenOptions }} />
-      <LearningStack.Screen name="Ss23PackageLesson" component={Ss23PackageLessonScreen} options={({ route }: any) => ({ headerShown: true, title: route.params?.lesson?.title ?? 'SS2/SS3 Lesson', ...stackScreenOptions }} />
+      <LearningStack.Screen name="Ss1PackageLesson" component={Ss1PackageLessonScreen} options={({ route }: any) => ({ headerShown: true, title: route.params?.lesson?.title ?? 'SS1 Lesson', ...stackScreenOptions })} />
+      <LearningStack.Screen name="Ss23PackageLesson" component={Ss23PackageLessonScreen} options={({ route }: any) => ({ headerShown: true, title: route.params?.lesson?.title ?? 'SS2/SS3 Lesson', ...stackScreenOptions })} />
       <LearningStack.Screen name="TermPinRedeem" component={TermPinRedeemScreen} options={{ headerShown: true, title: 'Enter Term PIN', ...stackScreenOptions }} />
       <LearningStack.Screen name="StudyPlan" component={StudyPlanScreen} options={{ headerShown: true, title: 'My Study Timetable', ...stackScreenOptions }} />
       <LearningStack.Screen name="Materials" component={MaterialsScreen} options={{ headerShown: true, title: 'Materials', ...stackScreenOptions }} />
@@ -108,9 +108,6 @@ function ProfileStackNavigator() {
   );
 }
 
-// Hides the bottom tab bar once you've pushed past a tab's landing screen
-// into a chat thread — same as WhatsApp, where the tab bar disappears inside
-// a conversation.
 function tabBarVisibleFor(routeNames: string[], isWide: boolean) {
   return ({ route }: { route: any }) => {
     const focused = getFocusedRouteNameFromRoute(route) ?? routeNames[0];
