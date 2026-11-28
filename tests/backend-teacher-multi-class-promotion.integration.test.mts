@@ -321,3 +321,103 @@ test('demotion and reinstatement stay administrator-only and history is preserve
     ['reinstated', 'admin'],
   ], 'the teacher removal stays in history alongside the later administrator reinstatement');
 });
+
+/** Completed report data and the online account link: none of it may change. */
+async function completedReportSnapshot(studentId: string) {
+  const student = (await query('SELECT * FROM students WHERE id=$1', [studentId])).rows[0];
+  const scores = (await query('SELECT * FROM scores WHERE student_id=$1 ORDER BY id', [studentId])).rows;
+  const attendance = (await query('SELECT * FROM attendance WHERE student_id=$1 ORDER BY id', [studentId])).rows;
+  const classRecords = (await query('SELECT * FROM class_records WHERE student_id=$1 ORDER BY id', [studentId])).rows;
+  const account = student?.user_id
+    ? (await query('SELECT id,username,role,school_code,is_active FROM users WHERE id=$1', [student.user_id])).rows[0]
+    : null;
+  return JSON.stringify({ student, scores, attendance, classRecords, account });
+}
+
+/** Every student, roster, history and audit row carrying this (unique) name. */
+async function recordFootprint(fullName: string) {
+  const count = async (sql: string) => (await query(sql, [fullName])).rows[0].n as number;
+  const sameName = `lower(trim(s.full_name))=lower(trim($1))`;
+  return {
+    students: await count(`SELECT count(*)::int AS n FROM students s WHERE ${sameName}`),
+    memberships: await count(`SELECT count(*)::int AS n FROM report_roster_memberships m JOIN students s ON s.id=m.student_id WHERE ${sameName}`),
+    events: await count(`SELECT count(*)::int AS n FROM report_roster_membership_events e JOIN students s ON s.id=e.student_id WHERE ${sameName}`),
+    audit: await count(`SELECT count(*)::int AS n FROM audit_log a JOIN students s ON s.id::text=a.entity_id WHERE a.entity='student' AND ${sameName}`),
+  };
+}
+
+test('every cross-school promotion is administrator-only and rejected requests create no records', async () => {
+  const suffix = randomUUID();
+  // The cross-school path is keyed on the real school codes.
+  await query("INSERT INTO schools(code,name) VALUES('primary','Primary Test School') ON CONFLICT(code) DO NOTHING");
+  await query("INSERT INTO schools(code,name) VALUES('secondary','Secondary Test School') ON CONFLICT(code) DO NOTHING");
+  await query("INSERT INTO classes(school_code,name) VALUES('primary','Primary 6') ON CONFLICT(school_code,name) DO NOTHING");
+  await query("INSERT INTO classes(school_code,name) VALUES('secondary','JSS 1') ON CONFLICT(school_code,name) DO NOTHING");
+
+  const classTeacher = await makeActor({ role: 'teacher', school: 'primary', label: 'xs-class', suffix, assignedClass: 'Primary 6' });
+  const multiClassTeacher = await makeActor({
+    role: 'teacher', school: 'primary', label: 'xs-multi', suffix,
+    assignedClass: 'Primary 5', classNames: ['Primary 5', 'Primary 6'],
+  });
+  const otherSchoolAdmin = await makeActor({ role: 'admin', school: 'secondary', label: 'xs-other-admin', suffix, assignedClass: null });
+  const admin = await makeActor({ role: 'admin', school: 'primary', label: 'xs-admin', suffix, assignedClass: null });
+
+  const fullName = `Cross School Guard ${suffix}`;
+  const sourceId = await makeStudent('primary', 'Primary 6', fullName);
+  await withHistory('primary', sourceId, suffix, true);
+  const { rows: scoreRows } = await query('SELECT term_id FROM scores WHERE student_id=$1', [sourceId]);
+  await query('INSERT INTO attendance(student_id,term_id,days_present) VALUES($1,$2,18)', [sourceId, scoreRows[0].term_id]);
+  await query(
+    `INSERT INTO class_records(student_id,term_id,class_teacher_remark,admin_remark) VALUES($1,$2,'Completed remark','Completed admin remark')`,
+    [sourceId, scoreRows[0].term_id],
+  );
+
+  const reportBefore = await completedReportSnapshot(sourceId);
+  const footprintBefore = await recordFootprint(fullName);
+  assert.deepEqual({ students: footprintBefore.students, memberships: footprintBefore.memberships, events: footprintBefore.events },
+    { students: 1, memberships: 1, events: 0 });
+
+  const rejected: Array<[string, Actor, Record<string, unknown>]> = [
+    ['class teacher of Primary 6', classTeacher, { action: 'promote', expected_class_name: 'Primary 6' }],
+    ['class teacher without an expected class', classTeacher, { action: 'promote' }],
+    ['multi-class teacher holding Primary 6 only by class grant', multiClassTeacher, { action: 'promote', expected_class_name: 'Primary 6' }],
+    ['administrator bound to another school', otherSchoolAdmin, { action: 'promote' }],
+  ];
+  for (const [who, actor, body] of rejected) {
+    const response = await decide(actor, sourceId, body);
+    assert.equal(response.status, 403, `${who} must not promote across the primary/secondary school boundary`);
+    assert.deepEqual(await recordFootprint(fullName), footprintBefore, `${who}: a rejected request creates no student, roster, history or audit record`);
+    assert.equal(await completedReportSnapshot(sourceId), reportBefore, `${who}: a rejected request changes no student, score, attendance, remark or account data`);
+    assert.deepEqual(await membership(sourceId), { class_name: 'Primary 6', status: 'active' }, `${who}: roster placement is unchanged`);
+    assert.deepEqual(await eventTypes(sourceId), [], `${who}: no history is appended`);
+  }
+
+  // Teachers keep their other decisions in the same class; only the school
+  // boundary is closed to them. Retain is non-destructive, so it is safe to prove here.
+  assert.equal((await decide(classTeacher, sourceId, { action: 'retain', expected_class_name: 'Primary 6' })).status, 200,
+    'the Primary 6 class teacher can still retain in their own class');
+  assert.deepEqual((await eventTypes(sourceId)).map(e => e.event_type), ['retained']);
+
+  // The administrator of the student's own school can cross the boundary.
+  const response = await decide(admin, sourceId, { action: 'promote', expected_class_name: 'Primary 6' });
+  assert.equal(response.status, 200, 'the primary school administrator can promote into JSS 1');
+  const promoted = await response.json() as { cross_section: boolean; to_class: string; destination_student_id: string; online_account_unchanged: boolean };
+  assert.equal(promoted.cross_section, true);
+  assert.equal(promoted.to_class, 'JSS 1');
+  assert.equal(promoted.online_account_unchanged, true);
+
+  const footprintAfter = await recordFootprint(fullName);
+  assert.equal(footprintAfter.students, 2, 'exactly one new secondary report identity');
+  assert.equal(footprintAfter.memberships, 2);
+  assert.ok(footprintAfter.audit > footprintBefore.audit, 'the accepted promotion is audited');
+  assert.equal(await completedReportSnapshot(sourceId), reportBefore,
+    'promotion preserves the original student, scores, attendance, remarks and online account');
+  assert.deepEqual(await membership(sourceId), { class_name: 'Primary 6', status: 'removed' }, 'old placement is kept as history, not deleted');
+  assert.deepEqual(await membership(promoted.destination_student_id), { class_name: 'JSS 1', status: 'active' });
+  const destination = (await query('SELECT school_code,user_id FROM students WHERE id=$1', [promoted.destination_student_id])).rows[0];
+  assert.deepEqual(destination, { school_code: 'secondary', user_id: null }, 'the new identity is report-only, with no online account');
+  assert.equal((await query('SELECT count(*)::int AS n FROM scores WHERE student_id=$1', [promoted.destination_student_id])).rows[0].n, 0,
+    'no scores are copied or moved to the new identity');
+  assert.deepEqual((await eventTypes(sourceId)).map(e => [e.event_type, e.details.actor_role]),
+    [['retained', 'teacher'], ['removed', 'admin']], 'teacher retention and administrator promotion both stay in history');
+});

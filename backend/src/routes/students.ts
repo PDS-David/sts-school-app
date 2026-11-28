@@ -478,8 +478,12 @@ router.post('/:id/promotion', requireRole('admin', 'teacher'), async (req, res) 
   // Moving Primary 6 into JSS 1 creates a new report identity in the
   // Secondary school code. That is a cross-school administrative action,
   // never a class-teacher decision, even when the teacher owns Primary 6.
-  if (user.role === 'teacher' && action === 'promote' &&
-      membership.school_code === 'primary' && membership.report_class_name === 'Primary 6') {
+  // This one flag decides both the teacher refusal below and the cross-school
+  // branch further down, so the two can never disagree about what counts as
+  // leaving the student's school.
+  const crossSchoolPromotion = action === 'promote' &&
+    membership.school_code === 'primary' && membership.report_class_name === 'Primary 6';
+  if (user.role === 'teacher' && crossSchoolPromotion) {
     return res.status(403).json({ error: 'Cross-school promotion from Primary 6 to JSS 1 is administrator-only.' });
   }
 
@@ -561,7 +565,12 @@ router.post('/:id/promotion', requireRole('admin', 'teacher'), async (req, res) 
   // Primary 6 -> JSS 1 crosses the primary/secondary school-code boundary.
   // Keep the original primary student and any online account/history intact;
   // create a separate report-only secondary identity for the promoted class.
-  if (action === 'promote' && membership.school_code === 'primary' && fromClass === 'Primary 6') {
+  if (crossSchoolPromotion) {
+    // Defense in depth: any promotion that leaves the student's school is
+    // administrator-only here too, independent of the earlier teacher refusal.
+    if (user.role !== 'admin') {
+      return res.status(403).json({ error: 'Cross-school promotion is administrator-only.' });
+    }
     const promoted = await withTransaction(async (client) => {
       await client.query(
         "SELECT pg_advisory_xact_lock(hashtext('physical-roster-cross-section'), hashtext($1))",

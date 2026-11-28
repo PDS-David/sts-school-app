@@ -300,6 +300,17 @@ test('administrators execute all physical report-roster decisions and teachers a
       assigned_class: 'Primary 6',
       assigned_subject_ids: [],
     });
+    const { rows: crossStudentRows } = await query(
+      `INSERT INTO students(full_name,class_name,school_code)
+       VALUES($1,'Primary 6','primary') RETURNING id`,
+      [`Cross Section Promotion ${suffix}`],
+    );
+    const primaryStudentId = String(crossStudentRows[0].id);
+    await query(
+      `INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status)
+       VALUES($1,'Primary 6','Primary 6','active')`,
+      [primaryStudentId],
+    );
     const crossTeacherPromotion = await fetch(`${baseUrl}/${primaryStudentId}/promotion`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${crossTeacherToken}`, 'Content-Type': 'application/json' },
@@ -338,17 +349,6 @@ test('administrators execute all physical report-roster decisions and teachers a
       assigned_class: 'Primary 6',
       assigned_subject_ids: [],
     });
-    const { rows: crossStudentRows } = await query(
-      `INSERT INTO students(full_name,class_name,school_code)
-       VALUES($1,'Primary 6','primary') RETURNING id`,
-      [`Cross Section Promotion ${suffix}`],
-    );
-    const primaryStudentId = String(crossStudentRows[0].id);
-    await query(
-      `INSERT INTO report_roster_memberships(student_id,class_name,source_class_name,status)
-       VALUES($1,'Primary 6','Primary 6','active')`,
-      [primaryStudentId],
-    );
     const crossPromotion = await fetch(`${baseUrl}/${primaryStudentId}/promotion`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${crossAdminToken}`, 'Content-Type': 'application/json' },
