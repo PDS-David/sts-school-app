@@ -106,7 +106,9 @@ test('student/teacher onboarding screens collect a six-digit PIN with the shared
   assert.match(act, /activationBody\(mode, username, code, newPw\)/);
   assert.match(act, /useState<ActivationMode>\('pin'\)/, 'PIN is the default');
   assert.match(act, /students\/parents\/teachers/, 'activation copy includes teachers as PIN users');
-  assert.match(act, /Only administrators should choose the admin password option/, 'admin password mode is clearly restricted');
+  assert.doesNotMatch(act, /Only administrators should choose|Admin password|Six-digit PIN.*variant=/, 'ordinary users are not shown a credential-mode selector');
+  assert.match(act, /onLongPress=\{\(\) => \{ setMode\('password'\)/, 'administrator password activation is available through the discreet title gesture');
+  assert.match(act, /delayLongPress=\{1800\}/, 'hidden activation requires a deliberate long press');
 });
 
 test('PIN setup copy matches the policy (no "avoid sequential" advice)', () => {
