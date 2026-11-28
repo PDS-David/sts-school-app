@@ -37,7 +37,8 @@ import authRouter from '../backend/src/routes/auth.js';
 import adminRouter from '../backend/src/routes/admin.js';
 import studentsRouter from '../backend/src/routes/students.js';
 import { requireAuth } from '../backend/src/middleware/auth.js';
-import { signAccess } from '../backend/src/utils/jwt.js';
+import { signAccess, signRefresh } from '../backend/src/utils/jwt.js';
+import { DEFAULT_ADMIN_PASSWORD, seedDefaultAdmin } from '../backend/src/db/seedAdmin.js';
 import { PIN_HASH_VERSION, hashPin, isTrivialPin } from '../backend/src/utils/pin.js';
 import { isLegacyPinFormat } from '../backend/src/routes/auth.js';
 import { auditStrict } from '../backend/src/utils/audit.js';
@@ -380,6 +381,35 @@ test('admin and finance-admin password reset: temporary password opens the dashb
   }
 });
 
+// ── Seeded administrator vs administrator-issued reset ───────────────────────
+
+test('seeded default admin must change the published password; an administrator-issued reset never forces a change', async () => {
+  const name = uname('seeded-admin');
+  await seedDefaultAdmin((sql, params) => query(sql, params), name, 4);
+  const { rows } = await query('SELECT id, must_change_pw FROM users WHERE username=$1', [name]);
+  const id = String(rows[0].id);
+  createdUserIds.push(id);
+  assert.equal(rows[0].must_change_pw, true, 'the seeded account carries the forced-change flag');
+
+  const first = await login(name, DEFAULT_ADMIN_PASSWORD, 'password');
+  assert.equal(first.status, 200, JSON.stringify(first.json));
+  assert.equal(first.json.must_change_pw, true, 'the published default must be replaced at first sign-in');
+
+  // Re-running the seed puts the published default back, so it puts the flag back.
+  await query('UPDATE users SET must_change_pw=FALSE WHERE id=$1', [id]);
+  await seedDefaultAdmin((sql, params) => query(sql, params), name, 4);
+  assert.equal((await query('SELECT must_change_pw FROM users WHERE id=$1', [id])).rows[0].must_change_pw, true, 're-seeding re-arms the flag');
+
+  // The distinction: a reset password issued by an administrator is a normal password.
+  const reset = await post(`/admin/users/${id}/reset-password`, {}, bearer(globalAdminToken));
+  assert.equal(reset.status, 200, JSON.stringify(reset.json));
+  assert.equal((await query('SELECT must_change_pw FROM users WHERE id=$1', [id])).rows[0].must_change_pw, false, 'reset does not force a change');
+  const afterReset = await login(name, reset.json.temporary_password, 'password');
+  assert.equal(afterReset.status, 200, JSON.stringify(afterReset.json));
+  assert.equal(afterReset.json.must_change_pw, false, 'no mandatory change after an administrator reset');
+  assert.equal((await login(name, DEFAULT_ADMIN_PASSWORD, 'password')).status, 401, 'the published default no longer works after the reset');
+});
+
 // ── Migration 0023 ───────────────────────────────────────────────────────────
 
 const OLD_RESET_DETAIL = 'administrator reset user password; forced password change on next login';
@@ -573,6 +603,126 @@ test('PIN-change/reset race: the old credential cannot overwrite a concurrent ad
   assert.equal(stillActive, 2, 'a failed update revokes no sessions');
   const events = await query(`SELECT 1 FROM audit_log WHERE entity_id=$1 AND action IN ('change_pin','set_pin')`, [acct.id]);
   assert.equal(events.rowCount, 0, 'no success audit event for the rejected change');
+});
+
+// No-flag-change variant of the login/reset race. The account holds a current
+// peppered six-digit PIN and signs in with it, so there is no flag to change and
+// no rehash: the compare-and-swap in syncLegacyPinRequirement never runs, and the
+// only statement left that depends on the verified credential is the session
+// insert. The reset here mirrors POST /admin/users/:id/reset-password: it takes
+// SELECT ... FOR UPDATE on the user row first, replaces the hash, revokes sessions,
+// and commits only after the sign-in is parked on that lock.
+async function startAdminResetHoldingLock(userId: string, newPin: string) {
+  const client = await pool.connect();
+  await client.query('BEGIN');
+  await client.query('SELECT 1 FROM users WHERE id=$1 FOR UPDATE', [userId]);
+  await client.query(
+    `UPDATE users SET password_hash=$1, pin_hash_version=$2, pin_set_at=clock_timestamp(),
+            must_set_pin=FALSE, must_change_pw=FALSE WHERE id=$3`,
+    [await hashPin(newPin), PIN_HASH_VERSION, userId],
+  );
+  await client.query(`UPDATE auth_sessions SET revoked_at=now(), revoked_reason='admin_pin_reset' WHERE user_id=$1 AND revoked_at IS NULL`, [userId]);
+  await client.query('UPDATE users SET refresh_token=NULL WHERE id=$1', [userId]);
+  const { rows } = await client.query('SELECT pg_backend_pid() AS pid');
+  return { client, pid: Number(rows[0].pid) };
+}
+/** Waits until some other backend is blocked by `holderPid`. Fails the test if none ever is. */
+async function waitForBackendBlockedBy(holderPid: number, request: Promise<{ status: number; json: any }>) {
+  let early: { status: number; json: any } | null = null;
+  void request.then((r) => { early = r; }, () => { /* surfaced by the caller's await */ });
+  const deadline = Date.now() + 15_000;
+  while (Date.now() < deadline) {
+    if (early) throw new Error(`the request finished before it was blocked by the reset: ${JSON.stringify(early)}`);
+    const { rowCount } = await query(
+      `SELECT 1 FROM pg_stat_activity
+        WHERE datname = current_database() AND pid <> pg_backend_pid() AND $1 = ANY(pg_blocking_pids(pid))`,
+      [holderPid],
+    );
+    if (rowCount) return;
+    await new Promise((r) => setTimeout(r, 20));
+  }
+  throw new Error('the sign-in never reached a statement blocked by the reset');
+}
+
+test('login/reset race without a flag change: a credential replaced after verification gets no session and no tokens', async () => {
+  const acct = await makeExistingAccount('teacher', 'unused');
+  await query(`UPDATE users SET password_hash=$1, pin_hash_version=$2, pin_set_at=clock_timestamp(), must_set_pin=FALSE, must_change_pw=FALSE WHERE id=$3`,
+    [await hashPin('604215'), PIN_HASH_VERSION, acct.id]);
+  const generic = (await login(acct.username, '00000000')).json.error;
+  assert.ok(generic);
+
+  const reset = await startAdminResetHoldingLock(acct.id, '826401');
+  let released = false;
+  try {
+    const pending = login(acct.username, '604215'); // verified against the old hash: no flag change, no rehash
+    await waitForBackendBlockedBy(reset.pid, pending); // verification is done; the sign-in is now at session creation
+    await reset.client.query('COMMIT');
+    released = true;
+    const res = await pending;
+    assert.equal(res.status, 401, JSON.stringify(res.json));
+    assert.equal(res.json.error, generic, 'same generic message as any wrong credential');
+    assert.equal(res.json.access_token, undefined);
+    assert.equal(res.json.refresh_token, undefined);
+  } finally {
+    if (!released) await reset.client.query('ROLLBACK');
+    reset.client.release();
+  }
+
+  const sessions = await query('SELECT revoked_at FROM auth_sessions WHERE user_id=$1', [acct.id]);
+  assert.equal(sessions.rowCount, 0, 'no session row exists for the replaced credential');
+  assert.equal((await login(acct.username, '604215')).status, 401, 'the old PIN is gone');
+  const fresh = await login(acct.username, '826401');
+  assert.equal(fresh.status, 200, 'the administrator-issued PIN works');
+  assert.equal(fresh.json.pin_setup_required, false);
+});
+
+test('login/reset race on a legacy-hash PIN: a rehash that loses to an administrator reset must not become a session', async () => {
+  // Legacy unpeppered six-digit hash: no flag change, but the transparent rehash runs and
+  // its compare-and-swap is what the reset blocks. 'superseded' cannot be read as success.
+  const acct = await makeExistingAccount('student', '604215');
+  const reset = await startAdminResetHoldingLock(acct.id, '826401');
+  let released = false;
+  try {
+    const pending = login(acct.username, '604215');
+    await waitForBackendBlockedBy(reset.pid, pending);
+    await reset.client.query('COMMIT');
+    released = true;
+    const res = await pending;
+    assert.equal(res.status, 401, JSON.stringify(res.json));
+    assert.equal(res.json.access_token, undefined);
+    assert.equal(res.json.refresh_token, undefined);
+  } finally {
+    if (!released) await reset.client.query('ROLLBACK');
+    reset.client.release();
+  }
+  assert.equal((await query('SELECT 1 FROM auth_sessions WHERE user_id=$1', [acct.id])).rowCount, 0, 'no session for the replaced credential');
+  assert.equal((await login(acct.username, '604215')).status, 401, 'the old PIN is gone');
+  assert.equal((await login(acct.username, '826401')).status, 200, 'the administrator-issued PIN works');
+});
+
+test('legacy refresh-token exchange racing an administrator reset creates no session', async () => {
+  const acct = await makeExistingAccount('student', 'unused');
+  await query(`UPDATE users SET password_hash=$1, pin_hash_version=$2, pin_set_at=clock_timestamp(), must_set_pin=FALSE, must_change_pw=FALSE WHERE id=$3`,
+    [await hashPin('604215'), PIN_HASH_VERSION, acct.id]);
+  const legacyRefresh = signRefresh(acct.id);
+  await query('UPDATE users SET refresh_token=$1 WHERE id=$2', [legacyRefresh, acct.id]);
+
+  const reset = await startAdminResetHoldingLock(acct.id, '826401');
+  let released = false;
+  try {
+    const pending = post('/auth/refresh', { refresh_token: legacyRefresh }, { 'x-device-id': device() });
+    await waitForBackendBlockedBy(reset.pid, pending);
+    await reset.client.query('COMMIT');
+    released = true;
+    const res = await pending;
+    assert.equal(res.status, 401, JSON.stringify(res.json));
+    assert.equal(res.json.access_token, undefined);
+    assert.equal(res.json.refresh_token, undefined);
+  } finally {
+    if (!released) await reset.client.query('ROLLBACK');
+    reset.client.release();
+  }
+  assert.equal((await query('SELECT 1 FROM auth_sessions WHERE user_id=$1', [acct.id])).rowCount, 0, 'no session for the revoked legacy token');
 });
 
 test('PIN change without a race still succeeds and revokes only the other sessions', async () => {

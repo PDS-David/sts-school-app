@@ -122,6 +122,34 @@ async function syncLegacyPinRequirement(user: any, typed: string): Promise<boole
   return true;
 }
 
+/**
+ * The transparent rehash found the stored hash already replaced. That is benign
+ * when it was another sign-in with the same PIN upgrading the hash, and fatal when
+ * it was an administrator reset or PIN change, and the hash alone cannot tell the
+ * two apart. Re-read the credential and prove the typed secret against it: if it
+ * still verifies, adopt that hash (and its flags) as "the credential that was
+ * proven", so the session-creation check compares against the right one; if not,
+ * the credential was replaced and the sign-in is refused.
+ */
+async function adoptCurrentCredential(user: any, typed: string): Promise<boolean> {
+  try {
+    const { rows } = await query(
+      'SELECT password_hash, pin_hash_version, must_set_pin, must_change_pw FROM users WHERE id=$1',
+      [user.id],
+    );
+    const current = rows[0];
+    if (!current?.password_hash) return false;
+    if (!await verifyCredential(typed, current.password_hash, current.pin_hash_version ?? null)) return false;
+    user.password_hash = current.password_hash;
+    user.pin_hash_version = current.pin_hash_version;
+    user.must_set_pin = current.must_set_pin;
+    user.must_change_pw = current.must_change_pw;
+    return true;
+  } catch {
+    return false; // refuse rather than guess; the generic failure is the safe answer
+  }
+}
+
 // ── POST /auth/login ──────────────────────────────────────────────────────────
 // One username field and one secret field for every account. The client never
 // says what kind of account it is and the server never trusts it if it did:
@@ -232,7 +260,9 @@ router.post('/login', loginIpFailureLimiter, async (req, res) => {
   // account is unique, active and not expired. It never throws, never changes
   // the PIN, never blocks or fails this sign-in, and skips temporary credentials
   // and administrator roles (see utils/pinRehash.ts).
-  await rehashLegacyPinAfterLogin(user, secret);
+  if (await rehashLegacyPinAfterLogin(user, secret) === 'superseded' && !await adoptCurrentCredential(user, secret)) {
+    return res.status(401).json({ error: GENERIC_LOGIN_ERROR });
+  }
 
   const accessPolicy = await readLearningAccessPolicy();
   const pending = !!user.pending_admin_review && !(user.role === 'student' && accessPolicy.freeLaunchMode);
@@ -240,9 +270,24 @@ router.post('/login', loginIpFailureLimiter, async (req, res) => {
   const { rows: subjectRows } = await query('SELECT subject_id FROM teacher_subjects WHERE user_id=$1', [user.id]);
   const assignedSubjectIds = subjectRows.map((r: any) => r.subject_id);
 
-  const session = await createSession({
-    userId: user.id, rememberMe, deviceId, deviceLabel: deviceLabel(body.device_label), ip,
+  // The session row is created in the same transaction that re-confirms, under a
+  // row lock, that the hash proven above is still the account's credential.
+  // Administrator reset and PIN change take the same row lock before replacing the
+  // hash and revoking sessions, so either they finish first (this check then finds
+  // a different hash and no session is created) or they wait for this transaction
+  // and revoke the session it created. A check made before the insert, outside the
+  // lock, could itself race. No session means no access or refresh token.
+  const session = await withTransaction(async (client) => {
+    const { rowCount } = await client.query(
+      'SELECT 1 FROM users WHERE id=$1 AND password_hash=$2 FOR NO KEY UPDATE',
+      [user.id, user.password_hash],
+    );
+    if (rowCount !== 1) return null;
+    return createSession({
+      userId: user.id, rememberMe, deviceId, deviceLabel: deviceLabel(body.device_label), ip,
+    }, client);
   });
+  if (!session) return res.status(401).json({ error: GENERIC_LOGIN_ERROR });
   const payload: AuthUser = {
     id: user.id,
     username: user.username,
@@ -326,11 +371,22 @@ router.post('/refresh', async (req, res) => {
   const state = await query(ACCOUNT_STATE_SQL, [legacy.sub]);
   if (!state.rows[0] || !state.rows[0].is_active || accessEnded(state.rows[0])) return revoked();
 
-  const session = await createSession({
-    userId: legacy.sub, rememberMe: true, deviceId: clientDeviceId(req), ip: req.ip ?? null,
-    legacyRefreshSha: legacySha,
-    expiresAt: legacy.exp ? new Date(legacy.exp * 1000) : new Date(Date.now() + 7 * 86_400_000),
+  // Same rule as sign-in: revoking sessions (administrator reset, PIN change)
+  // clears users.refresh_token, so confirm the presented token is still the
+  // stored one under the row lock, in the transaction that inserts the session.
+  const session = await withTransaction(async (client) => {
+    const { rowCount } = await client.query(
+      'SELECT 1 FROM users WHERE id=$1 AND refresh_token=$2 AND is_active=TRUE FOR NO KEY UPDATE',
+      [legacy.sub, refresh_token],
+    );
+    if (rowCount !== 1) return null;
+    return createSession({
+      userId: legacy.sub, rememberMe: true, deviceId: clientDeviceId(req), ip: req.ip ?? null,
+      legacyRefreshSha: legacySha,
+      expiresAt: legacy.exp ? new Date(legacy.exp * 1000) : new Date(Date.now() + 7 * 86_400_000),
+    }, client);
   });
+  if (!session) return revoked();
   const loaded = await loadAuthUser(legacy.sub, session.sessionId);
   return res.json({
     access_token: signAccess(loaded!.authUser),

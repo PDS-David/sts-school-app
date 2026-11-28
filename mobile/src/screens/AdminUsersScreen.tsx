@@ -332,7 +332,7 @@ export default function AdminUsersScreen() {
           const { data } = await api.post(`/admin/users/${u.id}/reset-password`, {});
           setInfoDialog({
             title: isPinRole(u.role) ? 'PIN Reset' : 'Password Reset',
-            message: isPinRole(u.role) ? `Temporary six-digit PIN: ${data?.temporary_pin ?? data?.temporary_password}\n\nShare this with them privately. They sign in with it on the PIN tab and can change it later from their profile.` : `New password: ${data?.temporary_password}\n\nShare this with them privately. They can sign in with it straight away and change it later from More → Change Password.`,
+            message: isPinRole(u.role) ? `Temporary six-digit PIN: ${data?.temporary_pin ?? data?.temporary_password}\n\nShare this with them privately. They sign in with it straight away. It works as a normal PIN, and they can change it any time from Change PIN (teachers: More; students and parents: Profile).` : `New password: ${data?.temporary_password}\n\nShare this with them privately. They can sign in with it straight away and change it later from More → Change Password.`,
           });
         } catch (e: any) {
           setInfoDialog({ title: 'Error', message: e?.response?.data?.error ?? 'Could not reset password' });
@@ -544,7 +544,7 @@ export default function AdminUsersScreen() {
             >
               <Ionicons name={actionsUser?.pending_activation ? 'refresh-circle' : 'key'} size={20} color={Colors.accent} />
               <Text style={styles.sheetRowText}>
-                {actionsUser?.pending_activation ? 'Reissue Activation Code' : actionsUser?.role === 'teacher' ? 'Reset Teacher Sign-in Code' : 'Reset Password'}
+                {actionsUser?.pending_activation ? 'Reissue Activation Code' : actionsUser?.role === 'teacher' ? 'Reset Teacher PIN' : 'Reset Password'}
               </Text>
             </TouchableOpacity>
 
