@@ -143,3 +143,28 @@ test('attendance saves send term metadata only when the teacher deliberately edi
   // Local state adopts the server's stored values, not the typed text.
   assert.ok(attendance.includes('serverTerm?.days_opened'));
 });
+
+test('admin teacher edit form sends an explicit clear and resets role-specific state when converting', () => {
+  const screen = read('mobile/src/screens/AdminUsersScreen.tsx');
+  // The empty primary class is sent as null (a present field clears; an omitted one does not).
+  assert.ok(screen.includes('payload.assigned_class = form.assigned_class || null;'));
+  // Any teacher can be edited into a class teacher: the picker is not hidden for subject teachers.
+  assert.ok(screen.includes("{editUser && form.role === 'teacher' && ("));
+  assert.ok(!screen.includes("form.role === 'teacher' && form.assigned_subject_ids.length === 0 && ("));
+  // Choosing a primary class drops subject-only grants and subject-teacher classes.
+  const picker = screen.slice(screen.indexOf('Primary class for this class teacher'));
+  const select = picker.slice(picker.indexOf('if (selected) {'), picker.indexOf('// Clearing the primary class'));
+  assert.ok(select.includes('assigned_subject_ids: []'));
+  assert.ok(select.includes('assigned_class_subjects: []'));
+  assert.ok(select.includes('wasClassTeacher'));
+  assert.ok(select.includes(': []'), 'a converted subject teacher must not inherit extra owned classes');
+  // Clearing the primary class drops the hidden extra classes of the class-teacher role.
+  const clear = picker.slice(picker.indexOf('// Clearing the primary class'));
+  assert.ok(/assigned_class: '',\s+assigned_class_names: wasClassTeacher \? \[\] : f\.assigned_class_names,/.test(clear));
+});
+
+test('admin teacher edit form keeps the existing display-name derivation', () => {
+  const screen = read('mobile/src/screens/AdminUsersScreen.tsx');
+  assert.ok(screen.includes('(selectedTeacherDisplayName || form.username)'));
+  assert.ok(screen.includes('const selectedTeacherDisplayName = selectedTeacherClass?.name ?? selectedTeacherSubject?.name ?? \'\';'));
+});

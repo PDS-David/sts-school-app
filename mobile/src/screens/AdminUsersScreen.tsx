@@ -264,6 +264,8 @@ export default function AdminUsersScreen() {
     // The form keeps these as strings, but an empty value means "none": send null
     // instead of '' so the server never stores an empty string for them.
     payload.school_code = form.school_code || null;
+    // An empty primary class is sent as an explicit null, which the server treats
+    // as "clear it" for teachers (an omitted field would leave it unchanged).
     payload.assigned_class = form.assigned_class || null;
     payload.assigned_class_names = form.assigned_class_names;
     if (!showsExpiry || !form.access_expires_at) {
@@ -646,7 +648,7 @@ export default function AdminUsersScreen() {
             </>
           )}
 
-          {editUser && form.role === 'teacher' && form.assigned_subject_ids.length === 0 && (
+          {editUser && form.role === 'teacher' && (
             <View style={{ marginTop: Spacing.sm }}>
               <Text style={styles.filterLabel}>Primary class for this class teacher</Text>
               <View style={styles.pickerWrap}>
@@ -654,13 +656,30 @@ export default function AdminUsersScreen() {
                   selectedValue={availableClasses.find(c => c.name === form.assigned_class)?.id.toString() ?? ''}
                   onValueChange={value => {
                     const selected = availableClasses.find(c => c.id === Number(value));
-                    setForm(f => ({
-                      ...f,
-                      assigned_class: selected?.name ?? '',
-                      assigned_class_names: selected
-                        ? f.assigned_class_names.filter(name => name !== selected.name)
-                        : f.assigned_class_names,
-                    }));
+                    setForm(f => {
+                      const wasClassTeacher = !!f.assigned_class;
+                      if (selected) {
+                        // Becoming (or staying) a class teacher: subject-only grants do not
+                        // apply, and classes that were only taught as a subject teacher are
+                        // not inherited as extra owned classes.
+                        return {
+                          ...f,
+                          assigned_class: selected.name,
+                          assigned_class_names: wasClassTeacher
+                            ? f.assigned_class_names.filter(name => name !== selected.name)
+                            : [],
+                          assigned_subject_ids: [],
+                          assigned_class_subjects: [],
+                        };
+                      }
+                      // Clearing the primary class: the extra classes belonged to the class
+                      // teacher role and are hidden once it is cleared, so do not send them.
+                      return {
+                        ...f,
+                        assigned_class: '',
+                        assigned_class_names: wasClassTeacher ? [] : f.assigned_class_names,
+                      };
+                    });
                   }}
                 >
                   <Picker.Item label="No primary class — unassigned" value="" />

@@ -458,6 +458,9 @@ router.put('/users/:id', async (req, res) => {
   const hasSubjectIds = assigned_subject_ids !== undefined;
   const hasClassNames = assigned_class_names !== undefined;
   const hasClassSubjectGrants = assigned_class_subjects !== undefined;
+  // A PRESENT assigned_class (null or '') is an explicit request to clear a
+  // teacher's primary class; an OMITTED one leaves it untouched.
+  const hasAssignedClass = assigned_class !== undefined;
   if (req.user!.school_code && school_code != null && school_code !== '' &&
       (typeof school_code !== 'string' || school_code.trim() !== req.user!.school_code)) {
     return res.status(403).json({ error: "You can't move an account outside your school" });
@@ -475,9 +478,16 @@ router.put('/users/:id', async (req, res) => {
       const current = currentRows[0];
       const nextRole = role ?? current.role;
       const nextSchool = schoolCodeN ?? current.school_code;
+      const teacherClassExplicit = nextRole === 'teacher' && hasAssignedClass;
       const nextClass = (nextRole === 'admin' || nextRole === 'finance_admin')
         ? null
-        : (assignedClassN ?? current.assigned_class);
+        : teacherClassExplicit
+          ? assignedClassN
+          : (assignedClassN ?? current.assigned_class);
+      // Class teacher <-> subject teacher. The two roles carry different
+      // authority, so nothing that belonged to the old role may be inherited.
+      const convertedType = current.role === 'teacher' && nextRole === 'teacher' &&
+        Boolean(current.assigned_class) !== Boolean(nextClass);
 
       if (req.user!.school_code &&
           (nextRole === 'finance_admin' || nextSchool !== req.user!.school_code)) {
@@ -496,10 +506,13 @@ router.put('/users/:id', async (req, res) => {
           const { rows: classRows } = await client.query('SELECT name FROM classes WHERE school_code=$1 AND name=ANY($2::text[])', [nextSchool, nextClassNames]);
           if (classRows.length !== nextClassNames.length) throw new TeacherAssignmentValidationError('Every additional or subject-teacher class must belong to the selected school.');
         } else {
-          nextClassNames = current.assigned_class_names ?? [];
+          // On conversion, classes owned in the previous role are not carried over.
+          nextClassNames = convertedType ? [] : (current.assigned_class_names ?? []);
         }
         if (hasSubjectIds) {
           nextSubjectIds = normalizeTeacherSubjectIds(assigned_subject_ids);
+        } else if (convertedType) {
+          nextSubjectIds = [];
         } else {
           const { rows: existingSubjects } = await client.query(
             'SELECT subject_id FROM teacher_subjects WHERE user_id=$1 ORDER BY subject_id',
@@ -546,6 +559,7 @@ router.put('/users/:id', async (req, res) => {
            can_manage_all_schools=CASE WHEN COALESCE($2,role)='admin' THEN can_manage_all_schools ELSE FALSE END,
            school_code=COALESCE($3,school_code),
            assigned_class=CASE WHEN COALESCE($2,role) IN ('admin','finance_admin') THEN NULL
+                               WHEN $15 THEN $4
                                ELSE COALESCE($4,assigned_class) END,
            assigned_class_names=CASE WHEN COALESCE($2,role) IN ('admin','finance_admin') THEN '{}'::text[]
                                      WHEN $13 THEN $14::text[] ELSE assigned_class_names END,
@@ -556,11 +570,11 @@ router.put('/users/:id', async (req, res) => {
          WHERE id=$10 RETURNING id,username,role,is_active,access_expires_at,revocation_reason`,
         [full_name, role, schoolCodeN, assignedClassN, is_active, phoneN, emailN,
          access_expires_at ?? null, !!clear_expiry, req.params.id, reactivating, revocation_reason ?? null,
-         hasClassNames, nextClassNames],
+         hasClassNames || convertedType, nextClassNames, teacherClassExplicit],
       );
       if (!rows[0]) return { user: null };
 
-       if (nextRole !== 'teacher' || hasClassNames || hasSubjectIds || hasClassSubjectGrants || nextClass) {
+       if (nextRole !== 'teacher' || hasClassNames || hasSubjectIds || hasClassSubjectGrants || nextClass || convertedType) {
          await client.query('DELETE FROM teacher_class_subjects WHERE user_id=$1', [req.params.id]);
          for (const grant of nextClassSubjectGrants) {
            await client.query(
@@ -574,7 +588,7 @@ router.put('/users/:id', async (req, res) => {
 
       // Replace assignments in the same transaction as the user update.
       // Changing away from teacher always removes now-irrelevant grants.
-      if (nextRole !== 'teacher' || hasSubjectIds) {
+      if (nextRole !== 'teacher' || hasSubjectIds || convertedType) {
         await client.query('DELETE FROM teacher_subjects WHERE user_id=$1', [req.params.id]);
         for (const sid of nextSubjectIds) {
           await client.query(
