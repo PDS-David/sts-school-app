@@ -6,7 +6,7 @@ import { Colors, Spacing, Fonts } from '../theme';
 import { ActivationMode, activationBody, sanitizePin, validateActivationSecret } from '../api/pinForms';
 
 // Public (no login) — Task C: an account owner sets their own credential on
-// first use (six-digit PIN for students/parents, password for administrators), using the one-time activation code admin gave
+// first use (six-digit PIN for students/parents/teachers, password for administrators), using the one-time activation code admin gave
 // them when creating the account (see POST /admin/users and POST
 // /auth/activate in backend/src/routes/auth.ts). Deliberately a single
 // step, not a multi-step wizard like StudentSelfClaimScreen.tsx: admin
@@ -19,7 +19,7 @@ export default function ActivateAccountScreen({ navigation }: any) {
   const [code, setCode] = useState('');
   const [newPw, setNewPw] = useState('');
   const [conf, setConf] = useState('');
-  // Students and parents choose a six-digit PIN; administrator accounts a password.
+  // Students, parents and teachers choose a six-digit PIN; administrator accounts use a password.
   const [mode, setMode] = useState<ActivationMode>('pin');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -58,7 +58,7 @@ export default function ActivateAccountScreen({ navigation }: any) {
       <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
         <Card>
           <Text style={styles.title}>Activate Your Account</Text>
-          <Text style={styles.helper}>Your school admin created your account and gave you a one-time activation code. Enter it here to set your own sign-in PIN (students and parents) or password (administrators).</Text>
+          <Text style={styles.helper}>Your school administrator created your account and gave you a one-time activation code. Enter it here to set your sign-in credential. Students, parents and teachers must choose a six-digit PIN. Only administrators should choose the admin password option.</Text>
 
           <View style={styles.modeRow}>
             <Btn label="Six-digit PIN" variant={mode === 'pin' ? 'primary' : 'outline'} onPress={() => { setMode('pin'); setNewPw(''); setConf(''); setError(''); }} style={styles.modeBtn} />
