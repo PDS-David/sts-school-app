@@ -59,11 +59,12 @@ jobs:
           # TEMPORARY DIAGNOSTIC (reverted before merge): same command, same exit code,
           # plus the spec report published as annotations.
           set +e
-          node --import tsx --test tests/backend-teacher-assignment.integration.test.mts > /tmp/ta.log 2>&1
+          node --import tsx --test --test-reporter=spec tests/backend-teacher-assignment.integration.test.mts > /tmp/ta.log 2>&1
           code=$?
           enc() { python3 -c 'import sys; print(sys.stdin.read().replace("%","%25").replace("\r","%0D").replace("\n","%0A"))'; }
-          grep -E '^\s*(✔|✖)|^ℹ (tests|pass|fail)' /tmp/ta.log | head -c 6000 | enc | sed 's/^/::notice title=TEST RESULTS::/'
-          sed -n '/failing tests:/,$p' /tmp/ta.log | head -c 14000 | enc | sed 's/^/::error title=FAILURE DETAILS::/'
+          echo "log bytes: $(wc -c < /tmp/ta.log), exit code: $code"
+          grep -aE '^\s*(✔|✖)|^ℹ (tests|pass|fail)' /tmp/ta.log | head -c 6000 | enc | sed 's/^/::notice title=TEST RESULTS::/'
+          tail -c 15000 /tmp/ta.log | enc | sed 's/^/::error title=RAW LOG TAIL::/'
           exit $code
       - name: Typecheck backend
         run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
