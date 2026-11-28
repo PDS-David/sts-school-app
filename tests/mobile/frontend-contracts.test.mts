@@ -110,3 +110,36 @@ test('teachers can read full announcements and page back to older ones', () => {
   assert.ok(screen.includes('numberOfLines={open ? undefined : 3}'), 'a tapped announcement shows its full text');
   assert.ok(notifications.includes('numberOfLines={expanded.has(n.id) ? undefined : 2}'), 'notification announcements expand to full text');
 });
+
+test('teacher attendance metadata follows the selected term instead of retaining another term values', () => {
+  const attendance = read('mobile/src/screens/AttendanceScreen.tsx');
+  assert.ok(attendance.includes('const selectedTerm = terms.find(term => term.id === selTerm)'));
+  assert.ok(attendance.includes('setDaysOpened(String(selectedTerm.days_opened ?? \'\'))'));
+  assert.ok(attendance.includes('setNextTermBegins(selectedTerm.next_term_begins ?? \'\')'));
+  assert.ok(attendance.includes('[selTerm, terms]'));
+  assert.ok(attendance.includes('setTerms(prev => prev.map(term => term.id === selTerm'));
+});
+
+test('attendance saves send term metadata only when the teacher deliberately edited it, and report each outcome', () => {
+  const attendance = read('mobile/src/screens/AttendanceScreen.tsx');
+  // Dirty tracking against the term as loaded/saved, not against whatever is typed.
+  assert.ok(attendance.includes('const daysChanged = isAdmin && daysOpened.trim() !== savedDaysText'));
+  assert.ok(attendance.includes('const nextTermChanged = nextTermBegins.trim() !== savedNextTerm'));
+  assert.ok(attendance.includes('if (daysChanged) {'));
+  assert.ok(attendance.includes('if (nextTermChanged) {'));
+  // days_opened is administrator-only: read-only for teachers and never sent by them.
+  assert.ok(attendance.includes('editable={isAdmin}'));
+  // The old unconditional prefilled-value payload must be gone.
+  assert.ok(!attendance.includes('days_opened: daysOpened.trim() ? Number(daysOpened) : undefined'));
+  assert.ok(!attendance.includes('next_term_begins: nextTermBegins.trim() || undefined'));
+  assert.ok(!attendance.includes('if (daysOpened.trim() || nextTermBegins.trim())'));
+  // Same validation rules as the server, and an explicit clear instead of an impossible one.
+  assert.ok(attendance.includes("from '../utils/termSettings'"));
+  assert.ok(attendance.includes('termUpdate.next_term_begins = normalized.value'));
+  // Term failure stops before attendance; attendance failure after a term save says so.
+  assert.ok(attendance.includes("title: 'Nothing was saved'"));
+  assert.ok(attendance.includes("'Term details saved, attendance NOT saved'"));
+  assert.ok(attendance.includes("'Term details and attendance saved'"));
+  // Local state adopts the server's stored values, not the typed text.
+  assert.ok(attendance.includes('serverTerm?.days_opened'));
+});

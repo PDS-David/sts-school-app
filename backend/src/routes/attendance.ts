@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { z } from 'zod';
 import { query } from '../db/pool.js';
-import { saveAttendanceBulk } from '../utils/attendanceWrites.js';
+import { AttendanceTermLimitError, saveAttendanceBulk, saveAttendanceOne } from '../utils/attendanceWrites.js';
 import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
 import { hasPerm } from '../utils/rbac.js';
 import { audit } from '../utils/audit.js';
@@ -52,15 +52,17 @@ router.put('/', requireRole('admin', 'teacher'), async (req, res) => {
   const validationError = validateDaysPresent(days_present, daysOpened);
   if (validationError) return res.status(400).json({ error: validationError });
 
-  const { rows } = await query(
-    `INSERT INTO attendance(student_id,term_id,days_present) VALUES($1,$2,$3)
-     ON CONFLICT(student_id,term_id) DO UPDATE SET days_present=$3 RETURNING *`,
-    [student_id, term_id, days_present],
-  );
+  let saved: Record<string, unknown>;
+  try {
+    saved = await saveAttendanceOne({ student_id, days_present }, term_id);
+  } catch (error) {
+    if (error instanceof AttendanceTermLimitError) return res.status(error.statusCode).json({ error: error.message });
+    throw error;
+  }
   // Wasn't audited at all before this pass — "who marked attendance" had no
   // record anywhere except whatever the number itself implies.
-  await audit(req.user!, 'save_attendance', 'attendance', String(rows[0].id));
-  return res.json({ attendance: rows[0] });
+  await audit(req.user!, 'save_attendance', 'attendance', String(saved.id));
+  return res.json({ attendance: saved });
 });
 
 // ── GET /attendance?class_name=&term_id=  (existing values, for editing) ─────
@@ -143,7 +145,12 @@ router.put('/bulk', requireRole('admin', 'teacher'), async (req, res) => {
     }
   }
 
-  await saveAttendanceBulk(entries, term_id);
+  try {
+    await saveAttendanceBulk(entries, term_id);
+  } catch (error) {
+    if (error instanceof AttendanceTermLimitError) return res.status(error.statusCode).json({ error: error.message });
+    throw error;
+  }
   // Wasn't audited at all before this pass, same gap as the single route
   // above — one summary entry per batch, not one per student.
   await audit(req.user!, 'save_attendance_bulk', 'attendance', undefined, `${entries.length} student(s), term ${term_id}`);
