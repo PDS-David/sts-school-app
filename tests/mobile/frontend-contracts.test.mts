@@ -90,3 +90,11 @@ test('teacher report remarks require an explicit class context for multi-class r
   assert.ok(screen.includes('classStudents.map(s =>'));
   assert.ok(screen.includes('classStudents.some(student => student.id === studentId)'));
 });
+
+
+test('multi-class teachers can enroll students into any of their assigned physical classes', () => {
+  const screen = read('mobile/src/screens/AddStudentScreen.tsx');
+  assert.ok(screen.includes('user?.assigned_class_names ?? []'));
+  assert.ok(screen.includes('teacherClasses.has(name)'));
+  assert.ok(screen.includes("user?.assigned_class_names?.join('|')"));
+});
