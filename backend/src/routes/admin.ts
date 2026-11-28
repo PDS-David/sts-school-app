@@ -7,7 +7,7 @@ import { auditContextFromRequest, auditInTransaction, auditStrict, verifyAuditLo
 import { sendAdminLogEmail } from '../utils/email.js';
 import * as XLSX from 'xlsx';
 import { generateTempPassword, generateNumericPin } from '../utils/password.js';
-import { PIN_HASH_VERSION, PinConfigError, generateTemporaryPin, hashPin } from '../utils/pin.js';
+import { PIN_HASH_VERSION, PinConfigError, checkPin, generateTemporaryPin, hashPin } from '../utils/pin.js';
 import { revokeUserSessions } from '../utils/authSessions.js';
 import { accountKeyFor } from '../utils/usernames.js';
 import { clearAccountThrottle } from '../utils/loginThrottle.js';
@@ -254,15 +254,19 @@ router.post('/users', async (req, res) => {
   // is handing out for a limited time. Admin accounts never expire this way.
   const expiresAt = (role === 'teacher' || role === 'parent') ? (access_expires_at ?? null) : null;
 
-  // Teacher accounts: admin sets the actual first-login password directly,
-  // per explicit school-owner request — teachers log in with the password
-  // the admin gave them and change it themselves afterward (must_change_pw),
+  // Teacher accounts: admin sets a temporary six-digit PIN directly,
+  // per explicit school-owner request — teachers sign in with the PIN
+  // the admin gave them and must replace it at first sign-in (must_set_pin),
   // rather than self-activating via a one-time code. Deliberately scoped to
   // 'teacher' only; every other role still goes through the Task C
   // activation-code flow below unchanged.
   if (role === 'teacher') {
-    if (typeof initial_password !== 'string' || !/^\d{4}$/.test(initial_password)) {
-      return res.status(400).json({ error: 'Teacher initial_password must be exactly four numeric digits.' });
+    // Administrator-issued TEMPORARY six-digit PIN (same rule as every
+    // student/parent/teacher PIN). The teacher must replace it with their own
+    // PIN at first sign-in (must_set_pin), so this is never a permanent PIN.
+    const initialPinCheck = checkPin(initial_password);
+    if (!initialPinCheck.ok) {
+      return res.status(400).json({ error: `Teacher temporary PIN: ${(initialPinCheck as { ok: false; message: string }).message}` });
     }
 
     let subjectIds: number[];
@@ -299,7 +303,15 @@ router.post('/users', async (req, res) => {
       return res.status(400).json({ error: 'A subject teacher must have at least one assigned class and one assigned subject.' });
     }
 
-    const hash = await bcrypt.hash(String(initial_password), 10);
+    let hash: string;
+    try {
+      hash = await hashPin(String(initial_password));
+    } catch (error) {
+      if (error instanceof PinConfigError) {
+        return res.status(503).json({ error: 'PIN service is not configured. Contact the system administrator.' });
+      }
+      throw error;
+    }
     let createdUser;
     try {
       createdUser = await withTransaction(async (client) => {
@@ -321,10 +333,10 @@ router.post('/users', async (req, res) => {
           if (conflicts[0]) throw new TeacherAssignmentValidationError('One or more selected classes already have a class teacher. Edit the existing class teacher assignment instead.');
         }
         const { rows } = await client.query(
-          `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,assigned_class_names,
+          `INSERT INTO users(username,password_hash,pin_hash_version,pin_set_at,role,full_name,school_code,assigned_class,assigned_class_names,
              phone,email,must_change_pw,must_set_pin,access_expires_at,activation_code)
-           VALUES($1,$2,'teacher',$3,$4,$5,$6,$7,$8,TRUE,TRUE,$9,NULL) RETURNING id,username,role,school_code,access_expires_at`,
-          [uname, hash, full_name, schoolCodeN, assignedClassN, classNames, phoneN, emailN, expiresAt],
+           VALUES($1,$2,$10,clock_timestamp(),'teacher',$3,$4,$5,$6,$7,$8,FALSE,TRUE,$9,NULL) RETURNING id,username,role,school_code,access_expires_at`,
+          [uname, hash, full_name, schoolCodeN, assignedClassN, classNames, phoneN, emailN, expiresAt, PIN_HASH_VERSION],
         );
         for (const sid of subjectIds) {
           await client.query(
@@ -342,7 +354,7 @@ router.post('/users', async (req, res) => {
         }
         await auditInTransaction(
           client, req.user!, 'add_user', 'user', rows[0].id,
-          'teacher account created with admin-set password',
+          'teacher account created with administrator-issued temporary six-digit PIN; PIN change required at first sign-in',
           auditContextFromRequest(req, { schoolCode: schoolCodeN, metadata: { target_user_id: rows[0].id, assigned_subject_count: subjectIds.length } }),
         );
         return rows[0];

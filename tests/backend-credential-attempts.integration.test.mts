@@ -1,3 +1,5 @@
+// Teacher/student activation hashes the chosen PIN with the pepper.
+process.env.PIN_PEPPER ??= 'test-pepper-0123456789-0123456789-0123456789-abcdef';
 import assert from 'node:assert/strict';
 import bcrypt from 'bcryptjs';
 import { randomInt } from 'node:crypto';
@@ -181,8 +183,9 @@ test('a one-time activation code can be consumed by only one concurrent request'
   try {
     userId = await createActivationUser(uname);
     const results = await Promise.all([
-      activateAccount(uname, 'correct-code', 'FirstPassword123'),
-      activateAccount(uname, 'correct-code', 'SecondPassword123'),
+      // A teacher account: the chosen credential is a six-digit PIN.
+      activateAccount(uname, 'correct-code', '482913'),
+      activateAccount(uname, 'correct-code', '730518'),
     ]);
 
     assert.equal(results.filter(result => result.kind === 'activated').length, 1);

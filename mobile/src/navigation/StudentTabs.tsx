@@ -31,7 +31,6 @@ import TakeAssessmentScreen from '../screens/TakeAssessmentScreen';
 import MyResultsScreen from '../screens/MyResultsScreen';
 import SessionReportScreen from '../screens/SessionReportScreen';
 import WeeklyEffortsScreen from '../screens/WeeklyEffortsScreen';
-import ChangePasswordScreen from '../screens/ChangePasswordScreen';
 import SecurityQuestionSetupScreen from '../screens/SecurityQuestionSetupScreen';
 
 const Tab = createBottomTabNavigator();
@@ -100,7 +99,6 @@ function ProfileStackNavigator() {
       <ProfileStack.Screen name="MyResults" component={MyResultsScreen} options={{ headerShown: true, title: 'My Results', ...stackScreenOptions }} />
       <ProfileStack.Screen name="SessionReport" component={SessionReportScreen} options={{ headerShown: true, title: 'Session Report', ...stackScreenOptions }} />
       <ProfileStack.Screen name="WeeklyEfforts" component={WeeklyEffortsScreen} options={{ headerShown: true, title: 'Weekly Efforts', ...stackScreenOptions }} />
-      <ProfileStack.Screen name="ChangePassword" component={ChangePasswordScreen} options={{ headerShown: true, title: 'Change Password', ...stackScreenOptions }} />
       <ProfileStack.Screen name="SecurityQuestionSetup" component={SecurityQuestionSetupScreen} options={{ headerShown: true, title: 'Security Question', ...stackScreenOptions }} />
       <ProfileStack.Screen name="SchoolCalendar" component={SchoolCalendarScreen} options={{ headerShown: false }} />
       <ProfileStack.Screen name="StudentAchievements" component={StudentAchievementsScreen} options={{ headerShown: false }} />

@@ -22,7 +22,6 @@ import ScoreEntryScreen from '../screens/ScoreEntryScreen';
 import AttendanceScreen from '../screens/AttendanceScreen';
 import ReportRemarksScreen from '../screens/teacher/ReportRemarksScreen';
 import PromoteStudentsScreen from '../screens/PromoteStudentsScreen';
-import ChangePasswordScreen from '../screens/ChangePasswordScreen';
 
 const Tab = createBottomTabNavigator();
 const DashStack = createNativeStackNavigator();
@@ -64,7 +63,6 @@ function MoreStackNavigator() {
     <MoreStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
       <MoreStack.Screen name="More" component={TeacherMoreScreen} />
       <MoreStack.Screen name="TeacherQuestionReview" component={TeacherQuestionReviewScreen} options={{ headerShown: false }} />
-      <MoreStack.Screen name="ChangePassword" component={ChangePasswordScreen} options={{ headerShown: true, title: 'Change Password', ...opts }} />
     </MoreStack.Navigator>
   );
 }

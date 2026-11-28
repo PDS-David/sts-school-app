@@ -41,6 +41,7 @@ const loginIpFailureLimiter = rateLimit({
 
 const PIN_ROLES = new Set<string>(['student', 'parent', 'teacher']);
 const ADMIN_ROLES = new Set<string>(['admin', 'finance_admin']);
+const PIN_UNAVAILABLE_ERROR = 'PIN setup is temporarily unavailable. Please contact the school administrator.';
 
 function humanWait(seconds: number): string {
   if (seconds < 90) return `${Math.max(1, seconds)} second${seconds === 1 ? '' : 's'}`;
@@ -575,17 +576,25 @@ router.post('/self-claim/roster', async (req, res) => {
 });
 
 router.post('/self-claim', async (req, res) => {
-  const { school_code, class_name, student_id, code, admission_number, new_password } = req.body as {
-    school_code?: string; class_name?: string; student_id?: string; code?: string; admission_number?: string; new_password?: string;
+  const { school_code, class_name, student_id, code, admission_number, new_pin, new_password } = req.body as {
+    school_code?: string; class_name?: string; student_id?: string; code?: string; admission_number?: string; new_pin?: string; new_password?: string;
   };
-  if (!school_code?.trim() || !class_name?.trim() || !student_id || !code || !admission_number?.trim() || !new_password) {
-    return res.status(400).json({ error: 'school_code, class_name, student_id, code, admission_number, and new_password are required' });
+  // `new_pin` is the field; `new_password` is accepted from older app builds.
+  const chosenPin = new_pin ?? new_password;
+  if (!school_code?.trim() || !class_name?.trim() || !student_id || !code || !admission_number?.trim() || !chosenPin) {
+    return res.status(400).json({ error: 'school_code, class_name, student_id, code, admission_number, and new_pin are required' });
   }
-  if (new_password.length < 8) {
-    return res.status(400).json({ error: 'New password must be at least 8 characters' });
-  }
+  // Students choose their permanent six-digit PIN here (same rule as POST /auth/pin).
+  const pinCheck = checkPin(chosenPin);
+  if (!pinCheck.ok) return res.status(400).json({ error: pinCheck.message });
 
-  const passwordHash = await bcrypt.hash(new_password, 10);
+  let passwordHash: string;
+  try {
+    passwordHash = await hashPin(String(chosenPin));
+  } catch (error) {
+    if (error instanceof PinConfigError) return res.status(503).json({ error: PIN_UNAVAILABLE_ERROR });
+    throw error;
+  }
   const result = await claimStudentAccount({
     schoolCode: school_code.trim(),
     className: class_name.trim(),
@@ -593,6 +602,7 @@ router.post('/self-claim', async (req, res) => {
     admissionNumber: admission_number,
     accessCode: code,
     passwordHash,
+    pinHashVersion: PIN_HASH_VERSION,
   });
 
   if (result.kind === 'locked') {
@@ -626,20 +636,22 @@ router.post('/self-claim', async (req, res) => {
 // section first — this is now the third time this specific tradeoff has
 // been discussed and decided.
 router.post('/self-register', async (req, res) => {
-  const { role, full_name, phone, school_code, username, password, class_name, admission_number, ward_admission_number } = req.body as {
+  const { role, full_name, phone, school_code, username, class_name, admission_number, ward_admission_number } = req.body as {
     role?: string; full_name?: string; phone?: string; school_code?: string;
-    username?: string; password?: string; class_name?: string; admission_number?: string; ward_admission_number?: string;
+    username?: string; pin?: string; password?: string; class_name?: string; admission_number?: string; ward_admission_number?: string;
   };
+  // Every self-registering role (student, parent, teacher) signs in with a
+  // six-digit PIN. `pin` is the field; `password` is accepted from older builds.
+  const password = (req.body as { pin?: string; password?: string }).pin ?? (req.body as { password?: string }).password;
 
   if (!role || !['student', 'parent', 'teacher'].includes(role)) {
     return res.status(400).json({ error: 'role must be student, parent, or teacher' });
   }
   if (!full_name?.trim() || !phone?.trim() || !school_code?.trim() || !username?.trim() || !password) {
-    return res.status(400).json({ error: 'full_name, phone, school_code, username, and password are required' });
+    return res.status(400).json({ error: 'full_name, phone, school_code, username, and pin are required' });
   }
-  if (password.length < 8) {
-    return res.status(400).json({ error: 'Password must be at least 8 characters' });
-  }
+  const pinCheck = checkPin(password);
+  if (!pinCheck.ok) return res.status(400).json({ error: pinCheck.message });
   if (role === 'student' && !class_name?.trim() && !admission_number?.trim()) {
     return res.status(400).json({ error: 'class_name is required for independent online student registration' });
   }
@@ -657,7 +669,13 @@ router.post('/self-register', async (req, res) => {
   const normalizedSchool = school_code.trim();
   const normalizedName = full_name.trim();
   const normalizedPhone = phone.trim();
-  const passwordHash = await bcrypt.hash(password, 10);
+  let passwordHash: string;
+  try {
+    passwordHash = await hashPin(String(password));
+  } catch (error) {
+    if (error instanceof PinConfigError) return res.status(503).json({ error: PIN_UNAVAILABLE_ERROR });
+    throw error;
+  }
 
   const result = await registerSelfServiceAccount({
     role: role as 'student' | 'parent' | 'teacher',
@@ -666,6 +684,7 @@ router.post('/self-register', async (req, res) => {
     schoolCode: normalizedSchool,
     username: normalizedUsername,
     passwordHash,
+    pinHashVersion: PIN_HASH_VERSION,
     className: role === 'student' ? class_name?.trim() : undefined,
     admissionNumber: role === 'student' ? admission_number?.trim() : undefined,
     wardAdmissionNumber: role === 'parent' ? ward_admission_number?.trim() : undefined,
@@ -699,21 +718,27 @@ router.post('/self-register', async (req, res) => {
 });
 
 router.post('/activate', async (req, res) => {
-  const { username, activation_code, new_password } = req.body as {
-    username?: string; activation_code?: string; new_password?: string;
+  const { username, activation_code, new_pin, new_password } = req.body as {
+    username?: string; activation_code?: string; new_pin?: string; new_password?: string;
   };
-  if (!username || !activation_code || !new_password) {
-    return res.status(400).json({ error: 'username, activation_code, and new_password are required' });
-  }
-  if (new_password.length < 8) {
-    return res.status(400).json({ error: 'New password must be at least 8 characters' });
+  // Students/parents/teachers send `new_pin` (six digits); administrator roles
+  // send `new_password` (8+ characters). The account's role decides which rule
+  // applies (utils/credentialAttempts.ts), so either field name is accepted.
+  const secret = new_pin ?? new_password;
+  if (!username || !activation_code || typeof secret !== 'string' || !secret || secret.length > 128) {
+    return res.status(400).json({ error: 'username, activation_code, and new_pin (or new_password) are required' });
   }
 
-  const result = await activateAccount(
-    username.trim().toLowerCase(),
-    activation_code,
-    new_password,
-  );
+  let result;
+  try {
+    result = await activateAccount(username.trim().toLowerCase(), activation_code, secret);
+  } catch (error) {
+    if (error instanceof PinConfigError) return res.status(503).json({ error: PIN_UNAVAILABLE_ERROR });
+    throw error;
+  }
+  if (result.kind === 'invalid_secret') {
+    return res.status(400).json({ error: result.message });
+  }
   if (result.kind === 'locked') {
     return res.status(429).json({
       error: `Too many incorrect attempts. Try again in about ${result.retryAfterMinutes} minute(s), or ask your school admin for a new code.`,

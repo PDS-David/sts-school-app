@@ -54,32 +54,27 @@ export function isPinConfigured(env: NodeJS.ProcessEnv = process.env): boolean {
 
 export type PinCheck = { ok: true } | { ok: false; reason: 'format' | 'trivial'; message: string };
 
-const EXPLICIT_WEAK = new Set(['159753', '147258', '258369', '147369', '123654', '135790', '246810', '112233', '998877', '102030', '010203']);
+// Owner policy (Nov 2026) for student, parent and teacher PINs — deliberately
+// simple for users who are not all technologically experienced:
+//   * exactly six ASCII digits;
+//   * NOT six identical digits (000000, 111111 … 999999);
+//   * everything else is accepted, including sequential PINs such as 123456.
+// Brute force is handled by login throttling/lockout and the peppered hash,
+// not by a long list of "weak" patterns. Administrator passwords are separate.
+export const PIN_FORMAT_MESSAGE = 'Your PIN must be exactly six digits (numbers only).';
+export const PIN_TRIVIAL_MESSAGE = 'Your PIN cannot be the same digit six times (for example 000000 or 111111).';
 
 export function isTrivialPin(pin: string): boolean {
   if (!/^\d{6}$/.test(pin)) return false;
-  const d = [...pin].map(Number);
-  // one repeated digit: 000000, 111111 …
-  if (d.every((x) => x === d[0])) return true;
-  // full ascending / descending run, wrapping through 9→0: 123456, 654321, 456789, 890123 …
-  const asc = d.every((x, i) => i === 0 || x === (d[i - 1] + 1) % 10);
-  const desc = d.every((x, i) => i === 0 || x === (d[i - 1] + 9) % 10);
-  if (asc || desc) return true;
-  // repeating blocks: 121212, 123123
-  if (pin.slice(0, 2).repeat(3) === pin || pin.slice(0, 3).repeat(2) === pin) return true;
-  // mirror: 123321
-  if (pin === [...pin].reverse().join('')) return true;
-  // doubled pairs: 112233
-  if (d[0] === d[1] && d[2] === d[3] && d[4] === d[5]) return true;
-  return EXPLICIT_WEAK.has(pin);
+  return /^(\d)\1{5}$/.test(pin);
 }
 
 export function checkPin(pin: unknown): PinCheck {
   if (typeof pin !== 'string' || !/^\d{6}$/.test(pin)) {
-    return { ok: false, reason: 'format', message: 'Your PIN must be exactly six digits (numbers only).' };
+    return { ok: false, reason: 'format', message: PIN_FORMAT_MESSAGE };
   }
   if (isTrivialPin(pin)) {
-    return { ok: false, reason: 'trivial', message: 'That PIN is too easy to guess. Avoid repeated or sequential digits such as 123456 or 000000.' };
+    return { ok: false, reason: 'trivial', message: PIN_TRIVIAL_MESSAGE };
   }
   return { ok: true };
 }

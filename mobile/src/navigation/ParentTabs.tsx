@@ -18,7 +18,6 @@ import MyResultsScreen from '../screens/MyResultsScreen';
 import SessionReportScreen from '../screens/SessionReportScreen';
 import WeeklyEffortsScreen from '../screens/WeeklyEffortsScreen';
 import FinanceScreen from '../screens/FinanceScreen';
-import ChangePasswordScreen from '../screens/ChangePasswordScreen';
 import SecurityQuestionSetupScreen from '../screens/SecurityQuestionSetupScreen';
 
 const Tab = createBottomTabNavigator();
@@ -73,7 +72,6 @@ function ProfileStackNavigator() {
     <ProfileStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
       <ProfileStack.Screen name="Profile" component={ParentProfileScreen} />
       <ProfileStack.Screen name="Finance" component={FinanceScreen} options={{ headerShown: true, title: 'Fees', ...opts }} />
-      <ProfileStack.Screen name="ChangePassword" component={ChangePasswordScreen} options={{ headerShown: true, title: 'Change Password', ...opts }} />
       <ProfileStack.Screen name="SecurityQuestionSetup" component={SecurityQuestionSetupScreen} options={{ headerShown: true, title: 'Security Question', ...opts }} />
     </ProfileStack.Navigator>
   );

@@ -6,6 +6,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import api from '../api/client';
+import { checkPin, sanitizePin } from '../api/pinSetup';
+import { isPinRole } from '../api/authPhase';
 import { Loader, Empty, Btn, Input, Badge, Card, SectionHeader } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { PageContainer, useIsWide } from '../components/layout';
@@ -119,7 +121,7 @@ export default function AdminUsersScreen() {
     assigned_subject_ids: [] as number[],
     assigned_class_names: [] as string[],
     assigned_class_subjects: [] as Array<{ class_name: string; subject_id: number }>,
-    initial_password: '', // teacher only — admin sets a temporary four-digit sign-in code
+    initial_password: '', // teacher only — admin sets a temporary six-digit PIN (replaced at first sign-in)
   });
 
   const fetchUsers = async () => {
@@ -226,8 +228,8 @@ export default function AdminUsersScreen() {
       setInfoDialog({ title: 'Teacher username required', message: 'Choose a class or subject from the teacher username dropdown.' });
       return;
     }
-    if (!editUser && form.role === 'teacher' && !/^\d{4}$/.test(form.initial_password)) {
-      setInfoDialog({ title: 'Invalid temporary code', message: 'Enter exactly four numeric digits for the teacher’s temporary sign-in code.' });
+    if (!editUser && form.role === 'teacher' && !checkPin(form.initial_password).ok) {
+      setInfoDialog({ title: 'Invalid temporary PIN', message: (checkPin(form.initial_password) as { ok: false; message: string }).message + ' This is the teacher’s temporary PIN; they will replace it with their own six-digit PIN at first sign-in.' });
       return;
     }
     if (!editUser && form.role !== 'teacher' && !form.username.trim()) {
@@ -287,7 +289,7 @@ export default function AdminUsersScreen() {
           // show blank/stale text instead of the real created username.
           setInfoDialog({
             title: 'Teacher Account Created',
-            message: `Username: ${data?.user?.username}\nTemporary sign-in code: ${form.initial_password}\n\nTell the teacher to choose “Password / code” on the sign-in screen and enter this code. They will then create their own six-digit PIN.`,
+            message: `Username: ${data?.user?.username}\nTemporary six-digit PIN: ${form.initial_password}\n\nTell the teacher to sign in with this PIN on the PIN tab. They will then be asked to create their own six-digit PIN.`,
           });
         } else {
           // Task C: account creation no longer generates a temp password —
@@ -319,8 +321,8 @@ export default function AdminUsersScreen() {
 
   const handleResetPw = (u: User) => {
     setConfirmDialog({
-      title: u.role === 'teacher' ? 'Reset Teacher Sign-in Code' : 'Reset Password',
-      message: u.role === 'teacher' ? `Reset the four-digit temporary sign-in code for ${u.username}? A new code will be generated and shown to you.` : `Reset password for ${u.username}? A new temporary password will be generated.`,
+      title: isPinRole(u.role) ? 'Reset PIN' : 'Reset Password',
+      message: isPinRole(u.role) ? `Reset the PIN for ${u.username}? A temporary six-digit PIN will be generated and shown to you once. Their current PIN stops working and they are signed out on every device.` : `Reset password for ${u.username}? A new temporary password will be generated.`,
       confirmLabel: 'Reset',
       destructive: true,
       onConfirm: async () => {
@@ -328,8 +330,8 @@ export default function AdminUsersScreen() {
         try {
           const { data } = await api.post(`/admin/users/${u.id}/reset-password`, {});
           setInfoDialog({
-            title: u.role === 'teacher' ? 'Teacher Sign-in Code Reset' : 'Password Reset',
-            message: u.role === 'teacher' ? `New temporary sign-in code: ${data?.temporary_password}\n\nTell the teacher to choose “Password / code” at sign-in, enter this code, and then create a new six-digit PIN.` : `New password: ${data?.temporary_password}\n\nShare this with them. They'll be asked to set a new password on next login.`,
+            title: isPinRole(u.role) ? 'PIN Reset' : 'Password Reset',
+            message: isPinRole(u.role) ? `Temporary six-digit PIN: ${data?.temporary_pin ?? data?.temporary_password}\n\nShare this with them privately. They sign in with it on the PIN tab and must then create their own six-digit PIN.` : `New password: ${data?.temporary_password}\n\nShare this with them. They'll be asked to set a new password on next login.`,
           });
         } catch (e: any) {
           setInfoDialog({ title: 'Error', message: e?.response?.data?.error ?? 'Could not reset password' });
@@ -674,9 +676,9 @@ export default function AdminUsersScreen() {
 
           {!editUser && form.role === 'teacher' && (
             <Input
-              label="Temporary sign-in code (4 digits)"
+              label="Temporary six-digit PIN"
               value={form.initial_password}
-              onChangeText={v => setForm(f => ({ ...f, initial_password: v.replace(/\D/g, '').slice(0, 4) }))}
+              onChangeText={v => setForm(f => ({ ...f, initial_password: sanitizePin(v) }))}
               keyboardType="numeric"
               autoCapitalize="none"
               secureTextEntry

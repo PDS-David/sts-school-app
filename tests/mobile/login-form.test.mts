@@ -59,12 +59,13 @@ test('generated device ids match the backend format and differ', () => {
   assert.equal(isValidDeviceId('has spaces in it, not valid!!'), false);
 });
 
-test('teacher first sign-in explains registration passwords and four-digit temporary codes', () => {
+test('sign-in copy has no four-digit teacher code; temporary PINs are six digits on the PIN tab', () => {
   const source = readFileSync(resolve(process.cwd(), 'mobile/src/screens/LoginScreen.tsx'), 'utf8');
-  assert.match(source, /Password \/ code/);
-  assert.match(source, /Registration password or temporary code/);
-  assert.match(source, /four-digit temporary code from the school/);
-  assert.match(source, /After signing in, you will set your own six-digit PIN/);
+  assert.doesNotMatch(source, /four-digit/i);
+  assert.match(source, /temporary six-digit PIN from the school/);
+  assert.match(source, /you will then set your own six-digit PIN/);
+  // The password tab still exists (administrators, and legacy credentials so nobody is locked out).
+  assert.match(source, /Administrators: enter your password/);
 });
 
 test('admin can assign additional classes to an existing class teacher', () => {

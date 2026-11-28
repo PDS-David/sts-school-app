@@ -1,3 +1,5 @@
+// Teacher creation hashes the administrator-issued temporary PIN with the pepper.
+process.env.PIN_PEPPER ??= 'test-pepper-0123456789-0123456789-0123456789-abcdef';
 import 'express-async-errors';
 import assert from 'node:assert/strict';
 import { randomInt } from 'node:crypto';
@@ -113,7 +115,7 @@ test('teacher creation rejects a subject from another school before creating the
       school_code: 'primary',
       assigned_subject_ids: [foreignSubjectId],
       assigned_class_names: ['Primary 1'],
-      initial_password: '1234',
+      initial_password: '482913',
     });
     assert.equal(response.status, 400);
     const { rows } = await query('SELECT id FROM users WHERE username=$1', [username]);
@@ -135,7 +137,7 @@ test('teacher creation rejects a class from another school', async () => {
       school_code: 'primary',
       assigned_class: 'JSS 1',
       assigned_subject_ids: [],
-      initial_password: '1234',
+      initial_password: '482913',
     });
     assert.equal(response.status, 400);
     const { rows } = await query('SELECT id FROM users WHERE username=$1', [username]);
@@ -159,7 +161,7 @@ test('teacher creation rolls back the user if subject insertion fails after the 
       school_code: 'primary',
       assigned_subject_ids: [subjectId],
       assigned_class_names: ['Primary 1'],
-      initial_password: '1234',
+      initial_password: '482913',
     });
     assert.equal(response.status, 500);
 
@@ -241,7 +243,7 @@ test('subject-teacher assignments are stored and returned as exact class/subject
         { class_name: classA, subject_id: subjectA },
         { class_name: classB, subject_id: subjectB },
       ],
-      initial_password: '1234',
+      initial_password: '482913',
     });
     assert.equal(created.status, 201);
     const createdBody = await created.json() as { user: { id: string } };
@@ -313,7 +315,7 @@ test('one class teacher account can own multiple classes and overlapping class o
       assigned_class: classA,
       assigned_class_names: [classB],
       assigned_subject_ids: [],
-      initial_password: '1234',
+      initial_password: '482913',
     });
     assert.equal(created.status, 201);
     const createdBody = await created.json() as { user: { id: string } };
@@ -342,7 +344,7 @@ test('one class teacher account can own multiple classes and overlapping class o
       assigned_class: classC,
       assigned_class_names: [],
       assigned_subject_ids: [],
-      initial_password: '1234',
+      initial_password: '482913',
     });
     assert.equal(conflict.status, 400);
   } finally {

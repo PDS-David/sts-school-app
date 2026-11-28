@@ -86,17 +86,24 @@ const login = (base: string, username: string, pin: string, extra: Record<string
 
 // ── PIN rules ────────────────────────────────────────────────────────────────
 
-test('PIN validation: exactly six digits, weak patterns rejected', () => {
-  for (const bad of ['12345', '1234567', 'abcdef', '12 456', '', '١٢٣٤٥٦', 123456 as unknown as string, null as unknown as string]) {
-    assert.equal(checkPin(bad).ok, false, String(bad));
+test('PIN validation (owner policy): exactly six digits; only six identical digits rejected', () => {
+  for (const bad of ['12345', '1234567', 'abcdef', '12a456', '12 456', '', '١٢٣٤٥٦', '１２３４５６', 123456 as unknown as string, null as unknown as string]) {
+    const r = checkPin(bad);
+    assert.equal(r.ok, false, String(bad));
+    if (!r.ok) assert.equal(r.reason, 'format', String(bad));
   }
-  for (const weak of ['123456', '000000', '111111', '654321', '234567', '012345', '567890', '121212', '123123', '123321', '112233', '159753']) {
-    assert.equal(isTrivialPin(weak), true, weak);
-    const r = checkPin(weak);
-    assert.equal(r.ok, false);
+  for (let d = 0; d <= 9; d++) {
+    const same = String(d).repeat(6);
+    assert.equal(isTrivialPin(same), true, same);
+    const r = checkPin(same);
+    assert.equal(r.ok, false, same);
     if (!r.ok) assert.equal(r.reason, 'trivial');
   }
-  for (const good of ['482913', '907265', '350186']) assert.equal(checkPin(good).ok, true, good);
+  // Sequential and other simple patterns are deliberately ACCEPTED (owner decision).
+  for (const good of ['123456', '234567', '654321', '012345', '567890', '121212', '123123', '123321', '112233', '159753', '000001', '482913', '907265']) {
+    assert.equal(isTrivialPin(good), false, good);
+    assert.equal(checkPin(good).ok, true, good);
+  }
 });
 
 test('temporary PIN generator yields six non-trivial digits', () => {
@@ -421,7 +428,7 @@ test('existing user without a usable credential keeps the activation flow (login
   } finally { await stop(server); }
 });
 
-test('PIN endpoint: format, weak PIN, wrong current credential, same-as-current', async () => {
+test('PIN endpoint: format, identical-digit PIN, wrong current credential, same-as-current', async () => {
   const { server, base } = await startServer();
   try {
     const name = uname('pinrules');
@@ -430,7 +437,9 @@ test('PIN endpoint: format, weak PIN, wrong current credential, same-as-current'
     const auth = { authorization: `Bearer ${l.json.access_token}` };
     assert.equal((await post(base, '/auth/pin', { current_credential: LEGACY, new_pin: '12345' }, auth)).status, 400);
     assert.equal((await post(base, '/auth/pin', { current_credential: LEGACY, new_pin: 'abcdef' }, auth)).status, 400);
-    assert.equal((await post(base, '/auth/pin', { current_credential: LEGACY, new_pin: '123456' }, auth)).status, 400);
+    assert.equal((await post(base, '/auth/pin', { current_credential: LEGACY, new_pin: '1234567' }, auth)).status, 400);
+    assert.equal((await post(base, '/auth/pin', { current_credential: LEGACY, new_pin: '12a456' }, auth)).status, 400);
+    assert.equal((await post(base, '/auth/pin', { current_credential: LEGACY, new_pin: '111111' }, auth)).status, 400);
     assert.equal((await post(base, '/auth/pin', { current_credential: LEGACY, new_pin: '000000' }, auth)).status, 400);
     assert.equal((await post(base, '/auth/pin', { current_credential: 'wrong', new_pin: GOOD_PIN }, auth)).status, 401);
     assert.equal((await post(base, '/auth/pin', { new_pin: GOOD_PIN }, auth)).status, 400);
@@ -1364,7 +1373,7 @@ test('must_change_pw only: allowlisted routes work, everything else is refused u
     assert.equal(cp.status, 403, 'refused by the gate before it can run');
     assert.equal(cp.json.code, 'PIN_SETUP_REQUIRED');
     assert.equal((await post(base, '/auth/security-question', { question: 'q', answer: 'a' }, auth)).json.code, 'PIN_SETUP_REQUIRED');
-    assert.equal((await post(base, '/auth/pin', { current_credential: LEGACY, new_pin: '123456' }, auth)).status, 400, 'weak PIN still rejected, not gated');
+    assert.equal((await post(base, '/auth/pin', { current_credential: LEGACY, new_pin: '999999' }, auth)).status, 400, 'identical-digit PIN still rejected, not gated');
     assert.equal((await post(base, '/auth/logout', {}, auth)).status, 200);
   } finally { await stop(server); }
 });

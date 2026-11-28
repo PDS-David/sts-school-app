@@ -16,7 +16,7 @@ Scope: backend only. Mobile is Prompt 2B. Operations Admin, Finance Admin permis
 - Never rotate the pepper without a planned mass reset.
 
 ## Rules
-- Public roles: exactly six digits; trivial PINs rejected (repeats, runs, mirrors, repeating blocks, common lists).
+- Public roles: exactly six digits; only six identical digits (000000 … 999999) are rejected. Sequential PINs such as 123456 are accepted by owner decision (Nov 2026, see tests/backend-six-digit-pin-policy.integration.test.mts). Admin-created teachers receive a temporary six-digit PIN (the old four-digit code is gone); activation, student self-claim and self-registration collect the permanent six-digit PIN directly.
 - Hash: bcrypt over HMAC-SHA256(pepper, PIN). Missing pepper → 503, never unpeppered.
 - Admin / Finance Admin: existing credential format, no PIN rule.
 - Username normalisation everywhere: `lower(btrim(username))`.
