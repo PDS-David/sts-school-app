@@ -31,6 +31,7 @@ export const permissions: Record<Role, string[]> = {
     'grades.read', 'grades.write',
     'attendance.read', 'attendance.write',
     'classRecord.read', 'classRecord.write',
+    'messages.read', 'messages.write',
   ],
   admin: ['*'],   // full access — including questions.*, assessments.*,
                   // aiResults.read, and aiGrading.override, none of which
@@ -71,7 +72,7 @@ export function canMessage(
   if (senderRole === 'student') {
     return !!senderAllowedRecipientIds && senderAllowedRecipientIds.includes(recipientId);
   }
-  // Teachers maintain physical-class records but do not send messages.
-  if (senderRole === 'teacher') return false;
+  // Teacher recipient scope is enforced by getMessageableUsers in the route.
+  if (senderRole === 'teacher') return !!senderAllowedRecipientIds && senderAllowedRecipientIds.includes(recipientId);
   return senderRole === 'parent' || senderRole === 'admin';
 }
