@@ -158,6 +158,16 @@ router.put('/terms/:id', requireRole('admin', 'teacher'), async (req, res) => {
   const { name, academic_year, is_current, start_date, end_date, days_opened, next_term_begins } = body;
   const user = req.user!;
 
+  // days_opened is a school-wide setting shared by every class's attendance
+  // percentage and report, so only administrators may change it. Teachers keep
+  // full access to recording attendance (PUT /attendance, /attendance/bulk);
+  // they just cannot move the school-wide denominator through this endpoint.
+  // This is checked first so a teacher gets the same 403 whatever value they
+  // send (including null or an invalid number) and nothing is applied.
+  if (user.role === 'teacher' && Object.prototype.hasOwnProperty.call(body, 'days_opened')) {
+    return res.status(403).json({ error: 'Only an administrator can change days_opened. Teachers can still record attendance for their classes.' });
+  }
+
   // Only fields that are PRESENT in the body are touched. A client that sends
   // just { days_opened } cannot overwrite next_term_begins with a stale value
   // and vice versa; clearing next_term_begins is an explicit null (or blank).
@@ -169,16 +179,15 @@ router.put('/terms/:id', requireRole('admin', 'teacher'), async (req, res) => {
   }
   const teacherClasses = user.role === 'teacher' ? assignedTeacherClasses(user) : [];
   if (user.role === 'teacher') {
-    const unsupportedFields = Object.keys(body).filter(field =>
-      field !== 'days_opened' && field !== 'next_term_begins');
+    const unsupportedFields = Object.keys(body).filter(field => field !== 'next_term_begins');
     if (!user.assigned_class || !user.school_code || !teacherClasses.length) {
       return res.status(403).json({ error: 'Only an assigned class teacher can update attendance term details.' });
     }
     if (unsupportedFields.length) {
-      return res.status(403).json({ error: 'Teachers may update only days_opened and next_term_begins.' });
+      return res.status(403).json({ error: 'Teachers may update only next_term_begins.' });
     }
-    if (days_opened === undefined && !nextTermProvided) {
-      return res.status(400).json({ error: 'Provide days_opened or next_term_begins.' });
+    if (!nextTermProvided) {
+      return res.status(400).json({ error: 'Provide next_term_begins.' });
     }
   }
   if (name !== undefined && !isValidSessionTermName(name)) {
@@ -225,11 +234,11 @@ router.put('/terms/:id', requireRole('admin', 'teacher'), async (req, res) => {
     }
 
     // Class locks: a locked class's records are frozen for the term, and
-    // days_opened/next_term_begins feed that class's attendance percentage and
-    // report. A teacher is refused while ANY of their assigned physical
-    // classes is locked for this term (the value is shared school-wide, so a
-    // partial-lock edit would still change a locked class's report). Admins
-    // keep the existing ability to write past a lock.
+    // next_term_begins feeds that class's report. A teacher is refused while
+    // ANY of their assigned physical classes is locked for this term (the
+    // value is shared school-wide, so a partial-lock edit would still change a
+    // locked class's report). Admins keep the existing ability to write past a
+    // lock. (Teachers can no longer send days_opened at all; see above.)
     if (user.role === 'teacher') {
       const { rows: lockRows } = await client.query(
         `SELECT cl.class_name, cl.locked_at

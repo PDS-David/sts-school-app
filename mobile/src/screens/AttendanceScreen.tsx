@@ -146,7 +146,10 @@ export default function AttendanceScreen({ navigation }: any) {
   const selectedTermRecord = terms.find(term => term.id === selTerm);
   const savedDaysText = String(selectedTermRecord?.days_opened ?? '').trim();
   const savedNextTerm = String(selectedTermRecord?.next_term_begins ?? '').trim();
-  const daysChanged = daysOpened.trim() !== savedDaysText;
+  // days_opened is a school-wide setting only administrators may change; for a
+  // teacher the field is read-only and is never sent, so the server's 403 can
+  // never block their attendance save.
+  const daysChanged = isAdmin && daysOpened.trim() !== savedDaysText;
   const nextTermChanged = nextTermBegins.trim() !== savedNextTerm;
 
   const handleSave = async () => {
@@ -279,11 +282,12 @@ export default function AttendanceScreen({ navigation }: any) {
             </View>
             <View style={isWide ? styles.filterCol : undefined}>
               <Input
-                label="Days School Opened (this term)"
+                label={isAdmin ? 'Days School Opened (this term)' : 'Days School Opened (set by an administrator)'}
                 value={daysOpened}
                 onChangeText={setDaysOpened}
                 keyboardType="numeric"
                 placeholder="e.g. 60"
+                editable={isAdmin}
               />
             </View>
             <View style={isWide ? styles.filterCol : undefined}>

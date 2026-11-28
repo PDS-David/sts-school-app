@@ -111,10 +111,12 @@ test('teacher attendance metadata follows the selected term instead of retaining
 test('attendance saves send term metadata only when the teacher deliberately edited it, and report each outcome', () => {
   const attendance = read('mobile/src/screens/AttendanceScreen.tsx');
   // Dirty tracking against the term as loaded/saved, not against whatever is typed.
-  assert.ok(attendance.includes('const daysChanged = daysOpened.trim() !== savedDaysText'));
+  assert.ok(attendance.includes('const daysChanged = isAdmin && daysOpened.trim() !== savedDaysText'));
   assert.ok(attendance.includes('const nextTermChanged = nextTermBegins.trim() !== savedNextTerm'));
   assert.ok(attendance.includes('if (daysChanged) {'));
   assert.ok(attendance.includes('if (nextTermChanged) {'));
+  // days_opened is administrator-only: read-only for teachers and never sent by them.
+  assert.ok(attendance.includes('editable={isAdmin}'));
   // The old unconditional prefilled-value payload must be gone.
   assert.ok(!attendance.includes('days_opened: daysOpened.trim() ? Number(daysOpened) : undefined'));
   assert.ok(!attendance.includes('next_term_begins: nextTermBegins.trim() || undefined'));

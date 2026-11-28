@@ -187,7 +187,7 @@ test('an ordinary attendance save never overwrites newer term settings with stal
 
 test('a term update changes only the fields it sends (no stale sibling overwrite)', async () => {
   await withFixture({ daysOpened: 60, nextTerm: 'Keep me' }, async c => {
-    const daysOnly = await c.put(c.termId, c.teacherA, { days_opened: 62 });
+    const daysOnly = await c.put(c.termId, c.schoolAdmin, { days_opened: 62 });
     assert.equal(daysOnly.status, 200);
     assert.deepEqual(
       { d: (await c.term()).days_opened, n: (await c.term()).next_term_begins }, { d: 62, n: 'Keep me' });
@@ -206,7 +206,7 @@ test('a term update changes only the fields it sends (no stale sibling overwrite
 test('class locks block teacher term-setting updates but not admins or unrelated classes', async () => {
   await withFixture({}, async c => {
     await c.lock(CLASS_A);
-    const lockedOwn = await c.put(c.termId, c.teacherA, { days_opened: 61 });
+    const lockedOwn = await c.put(c.termId, c.teacherA, { next_term_begins: 'Blocked by own lock' });
     assert.equal(lockedOwn.status, 403);
     assert.match(((await lockedOwn.json()) as { error: string }).error, /locked/i);
 
@@ -215,7 +215,7 @@ test('class locks block teacher term-setting updates but not admins or unrelated
     assert.equal(partialLock.status, 403);
 
     // A lock on a class this teacher does not teach is irrelevant to them.
-    const unrelated = await c.put(c.termId, c.teacherB, { days_opened: 61 });
+    const unrelated = await c.put(c.termId, c.teacherB, { next_term_begins: 'Unrelated class, allowed' });
     assert.equal(unrelated.status, 200);
 
     // Admins keep the ability to write past a class lock.
@@ -230,7 +230,7 @@ test('class locks block teacher term-setting updates but not admins or unrelated
       [c.termId]);
     const otherTermId = Number(other[0].id);
     try {
-      const otherTerm = await c.put(otherTermId, c.teacherA, { days_opened: 41 });
+      const otherTerm = await c.put(otherTermId, c.teacherA, { next_term_begins: 'Other term date' });
       assert.equal(otherTerm.status, 200, 'lock is per (class, term)');
     } finally { await query('DELETE FROM terms WHERE id=$1', [otherTermId]); }
 
@@ -242,11 +242,11 @@ test('class locks block teacher term-setting updates but not admins or unrelated
 test('term settings cannot be updated across schools', async () => {
   await withFixture({}, async c => {
     const before = await c.term(c.otherSchoolTermId);
-    for (const actor of [c.teacherA, c.schoolAdmin]) {
-      const res = await c.put(c.otherSchoolTermId, actor, { days_opened: 10 });
-      assert.equal(res.status, 404, 'other-school terms look not-found, not forbidden');
-    }
-    const secondaryAgainstPrimary = await c.put(c.termId, c.secondaryTeacher, { days_opened: 10 });
+    const teacherAgainstOther = await c.put(c.otherSchoolTermId, c.teacherA, { next_term_begins: 'Cross-school' });
+    assert.equal(teacherAgainstOther.status, 404, 'other-school terms look not-found, not forbidden');
+    const adminAgainstOther = await c.put(c.otherSchoolTermId, c.schoolAdmin, { days_opened: 10 });
+    assert.equal(adminAgainstOther.status, 404, 'other-school terms look not-found, not forbidden');
+    const secondaryAgainstPrimary = await c.put(c.termId, c.secondaryTeacher, { next_term_begins: 'Cross-school' });
     assert.equal(secondaryAgainstPrimary.status, 404);
     const otherAdminAgainstPrimary = await c.put(c.termId, c.otherSchoolAdmin, { days_opened: 10 });
     assert.equal(otherAdminAgainstPrimary.status, 404);
@@ -272,13 +272,15 @@ test('subject-only teachers cannot update term settings', async () => {
   });
 });
 
-test('teachers cannot change anything beyond days_opened and next_term_begins', async () => {
+test('teachers cannot change anything beyond next_term_begins', async () => {
   await withFixture({}, async c => {
-    for (const body of [{ is_current: true }, { name: '2nd Term' }, { academic_year: '2099/2100' }, { start_date: '2030-01-01' }, { days_opened: 61, end_date: '2030-02-02' }]) {
+    for (const body of [{ is_current: true }, { name: '2nd Term' }, { academic_year: '2099/2100' }, { start_date: '2030-01-01' }, { days_opened: 61, end_date: '2030-02-02' }, { next_term_begins: 'Mixed request', end_date: '2030-02-02' }]) {
       const res = await c.put(c.termId, c.teacherA, body);
       assert.equal(res.status, 403, JSON.stringify(body));
     }
-    assert.equal((await c.term()).days_opened, 60, 'a rejected mixed request must not apply its permitted half');
+    const after = await c.term();
+    assert.equal(after.days_opened, 60, 'a rejected mixed request must not apply any part of itself');
+    assert.equal(after.next_term_begins, 'Monday, 12th January', 'a rejected mixed request must not apply its permitted half');
   });
 });
 
@@ -287,22 +289,22 @@ test('days_opened cannot drop below attendance already recorded for ANY class in
   await withFixture({ daysOpened: 60 }, async c => {
     await c.setAttendance(c.studentA, 30);          // teacher A's own class
     await c.setAttendance(c.studentB, 55);          // a DIFFERENT class in the same school/term
-    const lowerBelowOtherClass = await c.put(c.termId, c.teacherA, { days_opened: 50 });
-    assert.equal(lowerBelowOtherClass.status, 409, 'teacher A cannot lower below class B recorded attendance');
+    const lowerBelowOtherClass = await c.put(c.termId, c.schoolAdmin, { days_opened: 50 });
+    assert.equal(lowerBelowOtherClass.status, 409, 'an admin cannot lower below class B recorded attendance');
     const body = await lowerBelowOtherClass.json() as { error: string; highest_days_present: number };
     assert.equal(body.highest_days_present, 55);
     assert.equal((await c.term()).days_opened, 60);
 
-    const adminLower = await c.put(c.termId, c.schoolAdmin, { days_opened: 40 });
-    assert.equal(adminLower.status, 409, 'admins are held to the same floor, so reports never exceed 100%');
+    const globalLower = await c.put(c.termId, c.globalAdmin, { days_opened: 40 });
+    assert.equal(globalLower.status, 409, 'global admins are held to the same floor, so reports never exceed 100%');
     assert.equal((await c.term()).days_opened, 60);
 
-    const exactlyAtFloor = await c.put(c.termId, c.teacherA, { days_opened: 55 });
+    const exactlyAtFloor = await c.put(c.termId, c.schoolAdmin, { days_opened: 55 });
     assert.equal(exactlyAtFloor.status, 200);
     assert.equal((await c.term()).days_opened, 55);
 
     // Raising is always fine.
-    assert.equal((await c.put(c.termId, c.teacherA, { days_opened: 58 })).status, 200);
+    assert.equal((await c.put(c.termId, c.schoolAdmin, { days_opened: 58 })).status, 200);
   });
 });
 
@@ -316,7 +318,7 @@ test('soft-deleted students still count toward the days_opened floor', async () 
 
 test('attendance saved after a days_opened change is validated against the new value', async () => {
   await withFixture({ daysOpened: 60 }, async c => {
-    assert.equal((await c.put(c.termId, c.teacherA, { days_opened: 40 })).status, 200);
+    assert.equal((await c.put(c.termId, c.schoolAdmin, { days_opened: 40 })).status, 200);
     const tooMany = await c.bulk(c.teacherA, { term_id: c.termId, entries: [{ student_id: c.studentA, days_present: 41 }] });
     assert.equal(tooMany.status, 400);
     const ok = await c.bulk(c.teacherA, { term_id: c.termId, entries: [{ student_id: c.studentA, days_present: 40 }] });
@@ -394,11 +396,11 @@ test('next_term_begins can be deliberately cleared with null or blank text', asy
 test('days_opened must be a whole, non-negative, in-range number and cannot be cleared', async () => {
   await withFixture({ daysOpened: 60 }, async c => {
     for (const value of [1.5, -1, '60', 2_147_483_648, Number.NaN, {}, [], null]) {
-      const res = await c.put(c.termId, c.teacherA, { days_opened: value as never });
+      const res = await c.put(c.termId, c.schoolAdmin, { days_opened: value as never });
       assert.equal(res.status, 400, `reject ${JSON.stringify(value)}`);
     }
     assert.equal((await c.term()).days_opened, 60);
-    assert.equal((await c.put(c.termId, c.teacherA, { days_opened: 0 })).status, 200);
+    assert.equal((await c.put(c.termId, c.schoolAdmin, { days_opened: 0 })).status, 200);
   });
 });
 
@@ -439,31 +441,33 @@ test('meaningful term-setting changes are audited atomically; no-ops and denials
   await withFixture({ daysOpened: 60, nextTerm: 'Old date' }, async c => {
     assert.equal((await auditRows(c.termId)).length, 0);
 
-    const change = await c.put(c.termId, c.teacherA, { days_opened: 65, next_term_begins: 'New date' });
+    const change = await c.put(c.termId, c.schoolAdmin, { days_opened: 65, next_term_begins: 'New date' });
     assert.equal(change.status, 200);
     let rows = await auditRows(c.termId);
     assert.equal(rows.length, 1);
     assert.equal(rows[0].action, 'update_term_settings');
     assert.equal(rows[0].school_code, 'primary');
-    assert.equal(rows[0].actor_role, 'teacher');
+    assert.equal(rows[0].actor_role, 'admin');
     assert.equal(rows[0].outcome, 'success');
     const changes = (rows[0].metadata as { changes: Record<string, { from: unknown; to: unknown }> }).changes;
     assert.deepEqual(changes.days_opened, { from: 60, to: 65 });
     assert.deepEqual(changes.next_term_begins, { from: 'Old date', to: 'New date' });
 
     // Same values again: nothing changed, nothing audited.
-    assert.equal((await c.put(c.termId, c.teacherA, { days_opened: 65, next_term_begins: 'New date' })).status, 200);
+    assert.equal((await c.put(c.termId, c.schoolAdmin, { days_opened: 65, next_term_begins: 'New date' })).status, 200);
     assert.equal((await auditRows(c.termId)).length, 1);
 
-    // Clearing the date is a meaningful change.
+    // Clearing the date is a meaningful change (a class teacher may still do this one).
     assert.equal((await c.put(c.termId, c.teacherA, { next_term_begins: null })).status, 200);
     rows = await auditRows(c.termId);
     assert.equal(rows.length, 2);
+    assert.equal(rows[1].actor_role, 'teacher');
     assert.deepEqual((rows[1].metadata as any).changes.next_term_begins, { from: 'New date', to: null });
 
     // Refused requests change nothing and add no change record.
+    assert.equal((await c.put(c.termId, c.teacherA, { days_opened: 10 })).status, 403, 'teachers cannot change days_opened');
     await c.lock(CLASS_A);
-    assert.equal((await c.put(c.termId, c.teacherA, { days_opened: 10 })).status, 403);
+    assert.equal((await c.put(c.termId, c.teacherA, { next_term_begins: 'Locked out' })).status, 403);
     await c.setAttendance(c.studentB, 64);
     assert.equal((await c.put(c.termId, c.schoolAdmin, { days_opened: 10 })).status, 409);
     assert.equal((await auditRows(c.termId)).length, 2);
@@ -473,5 +477,109 @@ test('meaningful term-setting changes are audited atomically; no-ops and denials
     rows = await auditRows(c.termId);
     assert.equal(rows.length, 3);
     assert.equal(rows[2].actor_role, 'admin');
+  });
+});
+
+// ── 9. Administrator-only days_opened policy ──────────────────────────────────
+test('administrators can update days_opened when the value is valid', async () => {
+  await withFixture({ daysOpened: 60 }, async c => {
+    for (const [actor, value] of [[c.schoolAdmin, 61], [c.globalAdmin, 62]] as const) {
+      const res = await c.put(c.termId, actor, { days_opened: value });
+      assert.equal(res.status, 200);
+      assert.equal(((await res.json()) as { term: { days_opened: number } }).term.days_opened, value);
+      assert.equal((await c.term()).days_opened, value);
+    }
+    const sameValue = await c.put(c.termId, c.schoolAdmin, { days_opened: 62 });
+    assert.equal(sameValue.status, 200, 'resubmitting the stored value is harmless');
+  });
+});
+
+test('teachers cannot change days_opened through the API, whoever they are and whatever they send', async () => {
+  await withFixture({ daysOpened: 60, nextTerm: 'Keep me' }, async c => {
+    const bodies: unknown[] = [
+      { days_opened: 70 },
+      { days_opened: 60 },                     // even the unchanged value: the field itself is admin-only
+      { days_opened: 0 },
+      { days_opened: null },
+      { days_opened: '70' },
+      { days_opened: -1 },
+      { days_opened: 70, next_term_begins: 'Mixed request' },   // the permitted half must not slip through
+    ];
+    const teachers = [c.teacherA, c.teacherAB, c.teacherB, c.subjectOnlyNoClass, c.subjectOnlyWithGrant];
+    for (const actor of teachers) {
+      for (const body of bodies) {
+        const res = await c.put(c.termId, actor, body);
+        assert.equal(res.status, 403, `${actor.id} ${JSON.stringify(body)}`);
+      }
+    }
+    // Another school's teacher is refused the same way, against their own and a foreign term.
+    for (const termId of [c.termId, c.otherSchoolTermId]) {
+      assert.equal((await c.put(termId, c.secondaryTeacher, { days_opened: 70 })).status, 403);
+    }
+    const after = await c.term();
+    assert.deepEqual({ d: after.days_opened, n: after.next_term_begins }, { d: 60, n: 'Keep me' });
+    assert.equal((await c.term(c.otherSchoolTermId)).days_opened, 60);
+    assert.equal((await auditRows(c.termId)).length, 0, 'refused teacher requests are not recorded as changes');
+
+    // A locked class does not change the answer, and creating terms stays admin-only.
+    await c.lock(CLASS_A);
+    assert.equal((await c.put(c.termId, c.teacherA, { days_opened: 70 })).status, 403);
+    const create = await c.post(c.teacherA, { name: '2nd Term', academic_year: `TSP/${randomUUID().slice(0, 8)}`, school_code: 'primary', days_opened: 10 });
+    assert.equal(create.status, 403);
+  });
+});
+
+test('teachers can record and manage attendance for their assigned class', async () => {
+  await withFixture({ daysOpened: 60 }, async c => {
+    const first = await c.bulk(c.teacherA, { term_id: c.termId, entries: [{ student_id: c.studentA, days_present: 50 }] });
+    assert.equal(first.status, 200);
+    const edit = await c.bulk(c.teacherA, { term_id: c.termId, entries: [{ student_id: c.studentA, days_present: 52 }] });
+    assert.equal(edit.status, 200);
+    const single = await fetch(`${c.baseUrl}/attendance`, {
+      method: 'PUT', headers: { authorization: `Bearer ${c.teacherA.token}`, 'content-type': 'application/json' },
+      body: JSON.stringify({ student_id: c.studentA, term_id: c.termId, days_present: 53 }),
+    });
+    assert.equal(single.status, 200);
+    const { rows } = await query('SELECT days_present FROM attendance WHERE student_id=$1 AND term_id=$2', [c.studentA, c.termId]);
+    assert.equal(rows.length, 1);
+    assert.equal(Number(rows[0].days_present), 53);
+    // A teacher of a different class cannot write this class's attendance.
+    const foreign = await c.bulk(c.teacherB, { term_id: c.termId, entries: [{ student_id: c.studentA, days_present: 10 }] });
+    assert.notEqual(foreign.status, 200, 'class scoping is unchanged');
+    assert.equal(Number((await query('SELECT days_present FROM attendance WHERE student_id=$1 AND term_id=$2', [c.studentA, c.termId])).rows[0].days_present), 53);
+  });
+});
+
+test('teacher attendance keeps working while days_opened is protected, and still respects it', async () => {
+  await withFixture({ daysOpened: 60, nextTerm: 'Keep me' }, async c => {
+    // The teacher is refused the school-wide setting...
+    assert.equal((await c.put(c.termId, c.teacherA, { days_opened: 90 })).status, 403);
+    // ...and attendance saves are unaffected by that refusal.
+    const ok = await c.bulk(c.teacherA, { term_id: c.termId, entries: [{ student_id: c.studentA, days_present: 60 }] });
+    assert.equal(ok.status, 200);
+    // They remain validated against the admin-controlled value.
+    const tooMany = await c.bulk(c.teacherA, { term_id: c.termId, entries: [{ student_id: c.studentA, days_present: 61 }] });
+    assert.equal(tooMany.status, 400);
+    // After an administrator raises it, the teacher can use the new headroom without ever touching the setting.
+    assert.equal((await c.put(c.termId, c.schoolAdmin, { days_opened: 70 })).status, 200);
+    const more = await c.bulk(c.teacherA, { term_id: c.termId, entries: [{ student_id: c.studentA, days_present: 65 }] });
+    assert.equal(more.status, 200);
+    // ...which in turn becomes the administrator's floor.
+    assert.equal((await c.put(c.termId, c.schoolAdmin, { days_opened: 64 })).status, 409);
+    const after = await c.term();
+    assert.deepEqual({ d: after.days_opened, n: after.next_term_begins }, { d: 70, n: 'Keep me' });
+  });
+});
+
+test('an administrator days_opened update leaves every other term setting untouched', async () => {
+  await withFixture({ daysOpened: 60, nextTerm: 'Keep me' }, async c => {
+    await query(`UPDATE terms SET start_date='2030-01-07', end_date='2030-04-01', is_current=TRUE WHERE id=$1`, [c.termId]);
+    const snapshot = async () => (await query(
+      `SELECT name, academic_year, school_code, is_current, start_date::text AS start_date, end_date::text AS end_date, next_term_begins
+       FROM terms WHERE id=$1`, [c.termId])).rows[0];
+    const before = await snapshot();
+    assert.equal((await c.put(c.termId, c.schoolAdmin, { days_opened: 66 })).status, 200);
+    assert.deepEqual(await snapshot(), before);
+    assert.equal((await c.term()).days_opened, 66);
   });
 });
