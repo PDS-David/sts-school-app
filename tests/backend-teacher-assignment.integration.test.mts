@@ -476,13 +476,13 @@ test('an explicit null or empty primary class clears the assignment; omitting th
       assert.ok(listedTeacher);
       assert.equal(listedTeacher!.assigned_class ?? null, null, 'the admin listing must show the cleared assignment');
 
-      // The freed class can be given to a different class teacher straight away.
-      const reuse = await postUser({
-        full_name: 'Replacement Class Teacher', role: 'teacher', school_code: 'primary',
-        assigned_class: f.classA, assigned_class_names: [], assigned_subject_ids: [], initial_password: '482913',
-      });
-      assert.equal(reuse.status, 201);
-      f.teachers.push(((await reuse.json()) as { user: { id: string } }).user.id);
+      // The released class has no class teacher left (checked directly: class-teacher
+      // usernames are derived from the class and stay with the original account).
+      const { rows: owners } = await query(
+        `SELECT id FROM users WHERE role='teacher' AND school_code='primary' AND assigned_class=$1`,
+        [f.classA],
+      );
+      assert.equal(owners.length, 0, 'the cleared class must have no class teacher');
     });
   }
 });
@@ -605,13 +605,12 @@ test('changing allocations replaces grants and leaves no obsolete permissions', 
     assert.equal(afterMove.assigned_class, f.classB);
     assert.deepEqual(afterMove.assigned_class_names, []);
 
-    // The old class is released: another class teacher can take it immediately.
-    const takeOver = await postUser({
-      full_name: 'Class A Replacement', role: 'teacher', school_code: 'primary',
-      assigned_class: f.classA, assigned_class_names: [], assigned_subject_ids: [], initial_password: '482913',
-    });
-    assert.equal(takeOver.status, 201);
-    f.teachers.push(((await takeOver.json()) as { user: { id: string } }).user.id);
+    // The old class is released: no teacher keeps it as a primary class.
+    const { rows: stillOwned } = await query(
+      `SELECT id FROM users WHERE role='teacher' AND school_code='primary' AND assigned_class=$1`,
+      [f.classA],
+    );
+    assert.equal(stillOwned.length, 0, 'class A must have no class teacher after the move');
   });
 });
 
