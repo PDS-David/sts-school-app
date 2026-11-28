@@ -463,11 +463,18 @@ test('an explicit null or empty primary class clears the assignment; omitting th
       assert.equal(state.assigned_class, f.classA, 'omitted assigned_class must not clear the class');
       assert.deepEqual(state.assigned_class_names, [f.classB]);
 
-      const cleared = await putUser(teacherId, { assigned_class: clearValue, assigned_class_names: [] });
+      // Clearing the primary class converts the teacher to a subject teacher, so
+      // the request must carry a valid subject-teacher allocation (audit D2).
+      const cleared = await putUser(teacherId, {
+        assigned_class: clearValue,
+        assigned_class_names: [f.classB],
+        assigned_subject_ids: [f.subject1],
+        assigned_class_subjects: [{ class_name: f.classB, subject_id: f.subject1 }],
+      });
       assert.equal(cleared.status, 200, `clearing with ${JSON.stringify(clearValue)} must succeed`);
       state = await readAssignment(teacherId);
       assert.equal(state.assigned_class, null, `assigned_class must be NULL after ${JSON.stringify(clearValue)}`);
-      assert.deepEqual(state.assigned_class_names, []);
+      assert.deepEqual(state.assigned_class_names, [f.classB]);
 
       const listed = await fetch(`${baseUrl}/admin/users?role=teacher`, { headers: { authorization: `Bearer ${adminToken}` } });
       assert.equal(listed.status, 200);
@@ -487,16 +494,33 @@ test('an explicit null or empty primary class clears the assignment; omitting th
   }
 });
 
-test('clearing the primary class without resending other fields drops inherited class-teacher ownership', async () => {
+test('clearing the primary class without a valid subject allocation is rejected; with one it drops inherited class-teacher ownership', async () => {
   await withAssignmentFixture(async (f) => {
     const teacherId = await createClassTeacher(f, f.classA, [f.classB]);
-    const response = await putUser(teacherId, { assigned_class: null });
-    assert.equal(response.status, 200);
+
+    // Bare clear would leave a subject teacher with nothing (audit D2): rejected, nothing changes.
+    const bare = await putUser(teacherId, { assigned_class: null });
+    assert.equal(bare.status, 400);
     assert.deepEqual(await readAssignment(teacherId), {
-      assigned_class: null,
-      assigned_class_names: [],
+      assigned_class: f.classA,
+      assigned_class_names: [f.classB],
       subject_ids: [],
       pairs: [],
+    });
+
+    // A valid allocation converts; the old extra class B is not inherited.
+    const converted = await putUser(teacherId, {
+      assigned_class: null,
+      assigned_class_names: [f.classC],
+      assigned_subject_ids: [f.subject2],
+      assigned_class_subjects: [{ class_name: f.classC, subject_id: f.subject2 }],
+    });
+    assert.equal(converted.status, 200);
+    assert.deepEqual(await readAssignment(teacherId), {
+      assigned_class: null,
+      assigned_class_names: [f.classC],
+      subject_ids: [f.subject2],
+      pairs: [{ class_name: f.classC, subject_id: f.subject2 }],
     }, 'extra owned classes would otherwise keep roster access with no assignment');
   });
 });
@@ -649,12 +673,318 @@ test('school-bound administrators can clear and convert in their school but not 
       assert.equal(foreignRows[0].assigned_class, foreignClass, 'the cross-school clear attempt must change nothing');
 
       const ownId = await createClassTeacher(f, f.classA);
-      const ownClear = await scopedPut(ownId, { assigned_class: null });
+      const ownClear = await scopedPut(ownId, {
+        assigned_class: null,
+        assigned_class_names: [f.classA],
+        assigned_subject_ids: [f.subject1],
+        assigned_class_subjects: [{ class_name: f.classA, subject_id: f.subject1 }],
+      });
       assert.equal(ownClear.status, 200);
       assert.equal((await readAssignment(ownId)).assigned_class, null);
     } finally {
       if (foreignTeacherId) await query('DELETE FROM users WHERE id=$1', [foreignTeacherId]);
       await query('DELETE FROM classes WHERE school_code=$1 AND name=$2', ['secondary', foreignClass]);
+      await query('DELETE FROM users WHERE id=$1', [scopedId]);
+    }
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Audit finding D2: PUT /admin/users/:id must enforce the same minimum
+// allocation as POST for a subject teacher (at least one class and one
+// subject, with at least one valid class/subject grant). Rejected requests
+// must change nothing.
+// ─────────────────────────────────────────────────────────────────────────────
+
+async function readUserRow(userId: string) {
+  const { rows } = await query('SELECT full_name,phone,role,is_active FROM users WHERE id=$1', [userId]);
+  return rows[0] as { full_name: string; phone: string | null; role: string; is_active: boolean };
+}
+
+test('D2: PUT cannot leave a subject teacher with no classes', async () => {
+  await withAssignmentFixture(async (f) => {
+    const grants: Pair[] = [{ class_name: f.classA, subject_id: f.subject1 }];
+    const teacherId = await createSubjectTeacher(f, grants);
+    const before = await readAssignment(teacherId);
+
+    const response = await putUser(teacherId, {
+      full_name: 'Must Not Be Saved',
+      assigned_class_names: [],
+      assigned_subject_ids: [f.subject1],
+      assigned_class_subjects: [],
+    });
+    assert.equal(response.status, 400);
+    assert.match(((await response.json()) as { error: string }).error, /at least one assigned class and one assigned subject/);
+    assert.deepEqual(await readAssignment(teacherId), before, 'a rejected update must leave assignments untouched');
+    assert.notEqual((await readUserRow(teacherId)).full_name, 'Must Not Be Saved', 'a rejected update must not save profile fields');
+
+    // Older clients that omit the grant matrix are held to the same rule.
+    const legacyShape = await putUser(teacherId, { assigned_class_names: [] });
+    assert.equal(legacyShape.status, 400);
+    assert.deepEqual(await readAssignment(teacherId), before);
+  });
+});
+
+test('D2: PUT cannot leave a subject teacher with no subjects', async () => {
+  await withAssignmentFixture(async (f) => {
+    const teacherId = await createSubjectTeacher(f, [{ class_name: f.classA, subject_id: f.subject1 }]);
+    const before = await readAssignment(teacherId);
+
+    const explicit = await putUser(teacherId, {
+      assigned_class_names: [f.classA],
+      assigned_subject_ids: [],
+      assigned_class_subjects: [],
+    });
+    assert.equal(explicit.status, 400);
+    assert.deepEqual(await readAssignment(teacherId), before);
+
+    const legacyShape = await putUser(teacherId, { assigned_subject_ids: [] });
+    assert.equal(legacyShape.status, 400);
+    assert.deepEqual(await readAssignment(teacherId), before);
+  });
+});
+
+test('D2: PUT rejects an empty class/subject grant matrix even when classes and subjects are listed', async () => {
+  await withAssignmentFixture(async (f) => {
+    const teacherId = await createSubjectTeacher(f, [{ class_name: f.classA, subject_id: f.subject1 }]);
+    const before = await readAssignment(teacherId);
+
+    const response = await putUser(teacherId, {
+      assigned_class_names: [f.classA, f.classB],
+      assigned_subject_ids: [f.subject1, f.subject2],
+      assigned_class_subjects: [],
+    });
+    assert.equal(response.status, 400);
+    assert.deepEqual(await readAssignment(teacherId), before, 'the existing grants must not be wiped');
+  });
+});
+
+test('D2: PUT rejects invalid or incomplete class/subject grants for a subject teacher', async () => {
+  await withAssignmentFixture(async (f) => {
+    const teacherId = await createSubjectTeacher(f, [{ class_name: f.classA, subject_id: f.subject1 }]);
+    const before = await readAssignment(teacherId);
+    const base = { assigned_class_names: [f.classA], assigned_subject_ids: [f.subject1] };
+
+    const badGrantSets: Array<[string, unknown]> = [
+      ['grant for a class that is not selected', [{ class_name: f.classB, subject_id: f.subject1 }]],
+      ['grant for a subject that is not selected', [{ class_name: f.classA, subject_id: f.subject2 }]],
+      ['duplicate grants', [{ class_name: f.classA, subject_id: f.subject1 }, { class_name: f.classA, subject_id: f.subject1 }]],
+      ['blank class name', [{ class_name: '  ', subject_id: f.subject1 }]],
+      ['non-integer subject id', [{ class_name: f.classA, subject_id: 'x' }]],
+      ['non-positive subject id', [{ class_name: f.classA, subject_id: 0 }]],
+      ['null grant entry', [null]],
+      ['grants that are not an array', { class_name: f.classA, subject_id: f.subject1 }],
+    ];
+    for (const [label, grants] of badGrantSets) {
+      const response = await putUser(teacherId, { ...base, assigned_class_subjects: grants });
+      assert.equal(response.status, 400, `${label} must be rejected`);
+      assert.deepEqual(await readAssignment(teacherId), before, `${label} must change nothing`);
+    }
+
+    // A subject or class from another school is rejected before anything is written.
+    const suffix = unique();
+    const foreignSubject = await createSubject(`BSEC5 D2 Foreign ${suffix}`, 'secondary');
+    try {
+      const foreign = await putUser(teacherId, {
+        assigned_class_names: [f.classA],
+        assigned_subject_ids: [foreignSubject],
+        assigned_class_subjects: [{ class_name: f.classA, subject_id: foreignSubject }],
+      });
+      assert.equal(foreign.status, 400);
+      assert.deepEqual(await readAssignment(teacherId), before);
+    } finally {
+      await query('DELETE FROM subjects WHERE id=$1', [foreignSubject]);
+    }
+    const foreignClassResponse = await putUser(teacherId, {
+      assigned_class_names: ['No Such Class'],
+      assigned_subject_ids: [f.subject1],
+      assigned_class_subjects: [{ class_name: 'No Such Class', subject_id: f.subject1 }],
+    });
+    assert.equal(foreignClassResponse.status, 400);
+    assert.deepEqual(await readAssignment(teacherId), before);
+  });
+});
+
+test('D2: converting a class teacher to a subject teacher requires a valid allocation', async () => {
+  await withAssignmentFixture(async (f) => {
+    const teacherId = await createClassTeacher(f, f.classA, [f.classB]);
+    const before = await readAssignment(teacherId);
+
+    const payloads: Array<[string, Record<string, unknown>]> = [
+      ['clear only', { assigned_class: null }],
+      ['clear with empty collections', { assigned_class: null, assigned_class_names: [], assigned_subject_ids: [], assigned_class_subjects: [] }],
+      ['clear with classes but no subjects', { assigned_class: null, assigned_class_names: [f.classA], assigned_subject_ids: [] }],
+      ['clear with subjects but no classes', { assigned_class: '', assigned_class_names: [], assigned_subject_ids: [f.subject1] }],
+      ['clear with an empty grant matrix', { assigned_class: null, assigned_class_names: [f.classA], assigned_subject_ids: [f.subject1], assigned_class_subjects: [] }],
+    ];
+    for (const [label, body] of payloads) {
+      const response = await putUser(teacherId, body);
+      assert.equal(response.status, 400, `${label} must be rejected`);
+      assert.deepEqual(await readAssignment(teacherId), before, `${label} must leave the class teacher intact`);
+    }
+
+    // The deliberate, valid conversion still works.
+    const converted = await putUser(teacherId, {
+      assigned_class: null,
+      assigned_class_names: [f.classA],
+      assigned_subject_ids: [f.subject1],
+      assigned_class_subjects: [{ class_name: f.classA, subject_id: f.subject1 }],
+    });
+    assert.equal(converted.status, 200);
+    assert.deepEqual(await readAssignment(teacherId), {
+      assigned_class: null,
+      assigned_class_names: [f.classA],
+      subject_ids: [f.subject1],
+      pairs: [{ class_name: f.classA, subject_id: f.subject1 }],
+    });
+  });
+});
+
+test('D2: promoting a non-teacher to a subject teacher requires a valid allocation', async () => {
+  await withAssignmentFixture(async (f) => {
+    const { rows } = await query(
+      `INSERT INTO users(username,password_hash,role,full_name,school_code,is_active)
+       VALUES($1,'test-hash','admin','BSEC5 D2 Promotee','primary',TRUE) RETURNING id`,
+      [`bsec5-d2-promotee-${unique()}`],
+    );
+    const userId = String(rows[0].id);
+    f.teachers.push(userId);
+
+    const bare = await putUser(userId, { role: 'teacher' });
+    assert.equal(bare.status, 400);
+    assert.equal((await readUserRow(userId)).role, 'admin', 'the rejected promotion must not change the role');
+
+    const valid = await putUser(userId, {
+      role: 'teacher',
+      assigned_class_names: [f.classA],
+      assigned_subject_ids: [f.subject1],
+      assigned_class_subjects: [{ class_name: f.classA, subject_id: f.subject1 }],
+    });
+    assert.equal(valid.status, 200);
+    assert.equal((await readUserRow(userId)).role, 'teacher');
+  });
+});
+
+test('D2: class teachers are not forced to have subject-teacher grants', async () => {
+  await withAssignmentFixture(async (f) => {
+    const teacherId = await createClassTeacher(f, f.classA);
+
+    const emptyAllocation = await putUser(teacherId, {
+      assigned_class: f.classA,
+      assigned_class_names: [],
+      assigned_subject_ids: [],
+      assigned_class_subjects: [],
+    });
+    assert.equal(emptyAllocation.status, 200, 'a class teacher needs no subject grants');
+
+    const addClass = await putUser(teacherId, { assigned_class_names: [f.classB] });
+    assert.equal(addClass.status, 200);
+    assert.deepEqual(await readAssignment(teacherId), {
+      assigned_class: f.classA,
+      assigned_class_names: [f.classB],
+      subject_ids: [],
+      pairs: [],
+    });
+
+    const moved = await putUser(teacherId, { assigned_class: f.classC, assigned_class_names: [] });
+    assert.equal(moved.status, 200);
+    assert.equal((await readAssignment(teacherId)).assigned_class, f.classC);
+  });
+});
+
+test('D2: a valid subject-teacher update is still saved and replaces grants', async () => {
+  await withAssignmentFixture(async (f) => {
+    const teacherId = await createSubjectTeacher(f, [{ class_name: f.classA, subject_id: f.subject1 }]);
+    const response = await putUser(teacherId, {
+      assigned_class_names: [f.classB],
+      assigned_subject_ids: [f.subject2],
+      assigned_class_subjects: [{ class_name: f.classB, subject_id: f.subject2 }],
+    });
+    assert.equal(response.status, 200);
+    assert.deepEqual(await readAssignment(teacherId), {
+      assigned_class: null,
+      assigned_class_names: [f.classB],
+      subject_ids: [f.subject2],
+      pairs: [{ class_name: f.classB, subject_id: f.subject2 }],
+    });
+
+    // Legacy clients that send classes and subjects but no matrix keep the Cartesian behaviour.
+    const legacy = await putUser(teacherId, {
+      assigned_class_names: [f.classA, f.classB],
+      assigned_subject_ids: [f.subject1],
+    });
+    assert.equal(legacy.status, 200);
+    assert.deepEqual((await readAssignment(teacherId)).pairs, [
+      { class_name: f.classA, subject_id: f.subject1 },
+      { class_name: f.classB, subject_id: f.subject1 },
+    ].sort((a, b) => a.class_name.localeCompare(b.class_name)));
+  });
+});
+
+test('D2: edits that do not touch allocations still work on a legacy subject teacher with none', async () => {
+  await withAssignmentFixture(async (f) => {
+    // A pre-existing invalid account (created before this rule) can still be
+    // renamed, contacted and deactivated; only allocation changes are validated.
+    const { rows } = await query(
+      `INSERT INTO users(username,password_hash,role,full_name,school_code,is_active)
+       VALUES($1,'test-hash','teacher','BSEC5 D2 Legacy','primary',TRUE) RETURNING id`,
+      [`bsec5-d2-legacy-${unique()}`],
+    );
+    const userId = String(rows[0].id);
+    f.teachers.push(userId);
+
+    const profile = await putUser(userId, { full_name: 'BSEC5 D2 Legacy Renamed', phone: '08033334444' });
+    assert.equal(profile.status, 200);
+    const deactivated = await putUser(userId, { is_active: false });
+    assert.equal(deactivated.status, 200);
+    const row = await readUserRow(userId);
+    assert.equal(row.full_name, 'BSEC5 D2 Legacy Renamed');
+    assert.equal(row.is_active, false);
+  });
+});
+
+test('D2: school-bound administrators are held to the allocation rule and keep their scope limits', async () => {
+  await withAssignmentFixture(async (f) => {
+    const scopedUsername = `bsec5-d2-scoped-${unique()}`;
+    const { rows: scopedRows } = await query(
+      `INSERT INTO users(username,password_hash,role,full_name,school_code,is_active,pending_admin_review)
+       VALUES($1,'test-hash','admin','BSEC5 D2 Scoped Admin','primary',TRUE,FALSE) RETURNING id`,
+      [scopedUsername],
+    );
+    const scopedId = String(scopedRows[0].id);
+    const scopedToken = signAccess({
+      id: scopedId, username: scopedUsername, role: 'admin', school_code: 'primary', assigned_class: null, assigned_subject_ids: [],
+    });
+    const scopedPut = (userId: string, body: Record<string, unknown>) => fetch(`${baseUrl}/admin/users/${userId}`, {
+      method: 'PUT',
+      headers: { authorization: `Bearer ${scopedToken}`, 'content-type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+
+    try {
+      const teacherId = await createSubjectTeacher(f, [{ class_name: f.classA, subject_id: f.subject1 }]);
+      const before = await readAssignment(teacherId);
+
+      const empty = await scopedPut(teacherId, { assigned_class_names: [], assigned_subject_ids: [], assigned_class_subjects: [] });
+      assert.equal(empty.status, 400);
+      assert.deepEqual(await readAssignment(teacherId), before);
+
+      const moveSchool = await scopedPut(teacherId, {
+        school_code: 'secondary',
+        assigned_class_names: [f.classA],
+        assigned_subject_ids: [f.subject1],
+        assigned_class_subjects: [{ class_name: f.classA, subject_id: f.subject1 }],
+      });
+      assert.equal(moveSchool.status, 403, 'moving a teacher outside the administrator\'s school stays forbidden');
+      assert.deepEqual(await readAssignment(teacherId), before);
+
+      const valid = await scopedPut(teacherId, {
+        assigned_class_names: [f.classB],
+        assigned_subject_ids: [f.subject2],
+        assigned_class_subjects: [{ class_name: f.classB, subject_id: f.subject2 }],
+      });
+      assert.equal(valid.status, 200);
+    } finally {
       await query('DELETE FROM users WHERE id=$1', [scopedId]);
     }
   });
