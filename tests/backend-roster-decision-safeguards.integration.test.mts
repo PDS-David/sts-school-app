@@ -256,43 +256,53 @@ test('retention is a durable decision that later class lists show', async () => 
 // ── 4. Primary 6 -> JSS 1 ─────────────────────────────────────────────────────
 test('Primary 6 promotion 403 is the administrator-only school boundary; everything else in Primary 6 works for the class teacher', async () => {
   const suffix = randomUUID();
-  const p6Teacher = await makeActor({ role: 'teacher', school: 'primary', label: 'p6-teacher', suffix, assignedClass: 'Primary 6' });
-  const p6Admin = await makeActor({ role: 'admin', school: 'primary', label: 'p6-admin', suffix, assignedClass: null });
-  const secondaryAdmin = await makeActor({ role: 'admin', school: 'secondary', label: 'p6-sec-admin', suffix, assignedClass: null });
-  const jss1Teacher = await makeActor({ role: 'teacher', school: 'secondary', label: 'p6-jss1', suffix, assignedClass: 'JSS 1' });
+  // This test must use the real, shared 'primary' and 'secondary' schools (the school
+  // boundary is keyed on those codes), so it removes every student it creates from the
+  // active rosters afterwards. Other files count students in those schools.
+  try {
+    const p6Teacher = await makeActor({ role: 'teacher', school: 'primary', label: 'p6-teacher', suffix, assignedClass: 'Primary 6' });
+    const p6Admin = await makeActor({ role: 'admin', school: 'primary', label: 'p6-admin', suffix, assignedClass: null });
+    const secondaryAdmin = await makeActor({ role: 'admin', school: 'secondary', label: 'p6-sec-admin', suffix, assignedClass: null });
+    const jss1Teacher = await makeActor({ role: 'teacher', school: 'secondary', label: 'p6-jss1', suffix, assignedClass: 'JSS 1' });
 
-  const crossing = await makeStudent('primary', 'Primary 6', `P6 Cross ${suffix}`);
-  const denied = await decide(p6Teacher, crossing, { action: 'promote', expected_class_name: 'Primary 6' });
-  assert.equal(denied.status, 403);
-  assert.match(((await denied.json()) as { error: string }).error, /administrator-only/i);
-  assert.deepEqual(await membership(crossing), { class_name: 'Primary 6', status: 'active' });
-  assert.equal((await events(crossing)).length, 0);
+    const crossing = await makeStudent('primary', 'Primary 6', `P6 Cross ${suffix}`);
+    const denied = await decide(p6Teacher, crossing, { action: 'promote', expected_class_name: 'Primary 6' });
+    assert.equal(denied.status, 403);
+    assert.match(((await denied.json()) as { error: string }).error, /administrator-only/i);
+    assert.deepEqual(await membership(crossing), { class_name: 'Primary 6', status: 'active' });
+    assert.equal((await events(crossing)).length, 0);
 
-  // The list tells the screen which promotions are administrator-only (server-driven).
-  const p6Rows = await listClass(p6Teacher, 'Primary 6');
-  assert.equal(p6Rows.find(r => r.id === crossing)?.admin_only_promotion, true);
-  const p5 = await makeStudent('primary', 'Primary 5', `P5 Flag ${suffix}`);
-  const p5Teacher = await makeActor({ role: 'teacher', school: 'primary', label: 'p5-teacher', suffix, assignedClass: 'Primary 5' });
-  assert.equal((await listClass(p5Teacher, 'Primary 5')).find(r => r.id === p5)?.admin_only_promotion, false);
+    // The list tells the screen which promotions are administrator-only (server-driven).
+    const p6Rows = await listClass(p6Teacher, 'Primary 6');
+    assert.equal(p6Rows.find(r => r.id === crossing)?.admin_only_promotion, true);
+    const p5 = await makeStudent('primary', 'Primary 5', `P5 Flag ${suffix}`);
+    const p5Teacher = await makeActor({ role: 'teacher', school: 'primary', label: 'p5-teacher', suffix, assignedClass: 'Primary 5' });
+    assert.equal((await listClass(p5Teacher, 'Primary 5')).find(r => r.id === p5)?.admin_only_promotion, false);
 
-  // The Primary 6 teacher's other decisions are not blocked.
-  const retained = await makeStudent('primary', 'Primary 6', `P6 Retain ${suffix}`);
-  const removed = await makeStudent('primary', 'Primary 6', `P6 Remove ${suffix}`);
-  assert.equal((await decide(p6Teacher, retained, { action: 'retain' })).status, 200);
-  assert.equal((await decide(p6Teacher, removed, { action: 'remove' })).status, 200);
+    // The Primary 6 teacher's other decisions are not blocked.
+    const retained = await makeStudent('primary', 'Primary 6', `P6 Retain ${suffix}`);
+    const removed = await makeStudent('primary', 'Primary 6', `P6 Remove ${suffix}`);
+    assert.equal((await decide(p6Teacher, retained, { action: 'retain' })).status, 200);
+    assert.equal((await decide(p6Teacher, removed, { action: 'remove' })).status, 200);
 
-  // A school-bound administrator of the wrong school is refused; the right one crosses.
-  assert.equal((await decide(secondaryAdmin, crossing, { action: 'promote' })).status, 403);
-  const ok = await decide(p6Admin, crossing, { action: 'promote' });
-  assert.equal(ok.status, 200);
-  const { destination_student_id: dest } = await ok.json() as { destination_student_id: string };
+    // A school-bound administrator of the wrong school is refused; the right one crosses.
+    assert.equal((await decide(secondaryAdmin, crossing, { action: 'promote' })).status, 403);
+    const ok = await decide(p6Admin, crossing, { action: 'promote' });
+    assert.equal(ok.status, 200);
+    const { destination_student_id: dest } = await ok.json() as { destination_student_id: string };
 
-  // The report identity created in JSS 1 counts as decided for the year: the JSS 1
-  // teacher cannot promote it on again, and the source cannot be undone by a teacher.
-  assert.equal((await decide(jss1Teacher, dest, { action: 'promote' })).status, 409);
-  assert.equal((await listClass(jss1Teacher, 'JSS 1')).find(r => r.id === dest)?.roster_decision, 'promoted_in');
-  assert.equal((await decide(p6Teacher, crossing, { action: 'undo_remove' })).status, 403, 'a cross-school promotion is not an undoable removal');
-  assert.equal((await decide(p6Admin, crossing, { action: 'promote' })).status, 409);
+    // The report identity created in JSS 1 counts as decided for the year: the JSS 1
+    // teacher cannot promote it on again, and the source cannot be undone by a teacher.
+    assert.equal((await decide(jss1Teacher, dest, { action: 'promote' })).status, 409);
+    assert.equal((await listClass(jss1Teacher, 'JSS 1')).find(r => r.id === dest)?.roster_decision, 'promoted_in');
+    assert.equal((await decide(p6Teacher, crossing, { action: 'undo_remove' })).status, 403, 'a cross-school promotion is not an undoable removal');
+    assert.equal((await decide(p6Admin, crossing, { action: 'promote' })).status, 409);
+  } finally {
+    const { rows } = await query(`SELECT id FROM students WHERE full_name LIKE $1`, [`%${suffix}`]);
+    const ids = rows.map((r: any) => String(r.id));
+    await query(`UPDATE report_roster_memberships SET status='removed', removed_at=COALESCE(removed_at, now()) WHERE student_id=ANY($1::uuid[])`, [ids]);
+    await query(`UPDATE students SET deleted_at=now() WHERE id=ANY($1::uuid[])`, [ids]);
+  }
 });
 
 // ── 5. Correcting an accidental removal ───────────────────────────────────────
