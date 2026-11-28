@@ -408,8 +408,12 @@ router.put('/:id', requirePerm('grades.write'), async (req, res) => {
 
 // ── POST /students/:id/promotion ──────────────────────────────────────────────
 // Physical report-roster promotion, retention, removal, demotion and
-// reinstatement are school-administration decisions. Teachers may maintain
-// student particulars and submit scores, but cannot change official placement.
+// reinstatement. Administrators may do all five. Class teachers (an
+// assigned_class anchor; subject-only teachers are refused) may promote,
+// retain or remove, and only for active students in their own assigned
+// physical classes within their own school; demotion and reinstatement stay
+// administrator-only. Only report_roster_memberships and its append-only event
+// history change - never the online student/account record or any scores.
 //
 // "Next"/"previous" class is derived from the classes table's own row order
 // within the student's school (see backend/schema.sql's classes table and
@@ -424,11 +428,30 @@ router.put('/:id', requirePerm('grades.write'), async (req, res) => {
 // use scores.class_name, stamped when each score is recorded (routes/scores.ts),
 // and fall back to the live class only for rows with no stamp. Nothing is
 // written to scores from this route.
-router.post('/:id/promotion', requireRole('admin'), async (req, res) => {
+router.post('/:id/promotion', requireRole('admin', 'teacher'), async (req, res) => {
   const user = req.user!;
-  const { action } = req.body as { action?: 'promote' | 'demote' | 'retain' | 'remove' | 'reinstate' };
+  const { action, expected_class_name: expectedClassName } = req.body as {
+    action?: 'promote' | 'demote' | 'retain' | 'remove' | 'reinstate';
+    expected_class_name?: unknown;
+  };
   if (!action || !['promote', 'demote', 'retain', 'remove', 'reinstate'].includes(action)) {
     return res.status(400).json({ error: "action must be 'promote', 'demote', 'retain', 'remove', or 'reinstate'" });
+  }
+  if (expectedClassName !== undefined && (typeof expectedClassName !== 'string' || !expectedClassName.trim())) {
+    return res.status(400).json({ error: 'expected_class_name must be a non-empty string when provided' });
+  }
+
+  // Teacher authority is deliberately narrower than administrator authority and
+  // is decided before any student lookup, so the response cannot be used to probe
+  // which students exist elsewhere: only class teachers (an assigned_class anchor,
+  // not subject-only grants), and only promote / retain / remove.
+  if (user.role === 'teacher') {
+    if (!user.school_code || !user.assigned_class?.trim()) {
+      return res.status(403).json({ error: 'Only a class teacher assigned to a physical class can make roster decisions.' });
+    }
+    if (!['promote', 'retain', 'remove'].includes(action)) {
+      return res.status(403).json({ error: 'Teachers may promote, retain, or remove students in their assigned physical classes. Demotion and reinstatement are administrator-only.' });
+    }
   }
 
   const { rows: membershipRows } = await query(
@@ -449,15 +472,19 @@ router.post('/:id/promotion', requireRole('admin'), async (req, res) => {
         membership.school_code !== user.school_code) {
       return res.status(404).json({ error: 'Student not found in your assigned physical class' });
     }
-    if (!['promote', 'retain', 'remove'].includes(action)) {
-      return res.status(403).json({ error: 'Teachers may promote, retain, or remove students in their assigned physical class.' });
-    }
   }
 
   // A school-bound administrator is restricted to their own school.
   // A global administrator may reconcile any school's physical report roster.
   if (user.school_code && membership.school_code !== user.school_code) {
     return res.status(403).json({ error: 'You can only manage report-roster placement in your own school' });
+  }
+
+  // The mobile screen names the class the person is looking at. If the student's
+  // placement has since changed (another device, an administrator), refuse rather
+  // than act on a student who is no longer in that class.
+  if (typeof expectedClassName === 'string' && expectedClassName.trim() !== membership.report_class_name) {
+    return res.status(409).json({ error: 'This student is no longer in the selected class; refresh the class roster and try again.' });
   }
 
   if (action === 'remove') {
@@ -643,7 +670,7 @@ router.post('/:id/promotion', requireRole('admin'), async (req, res) => {
         `INSERT INTO report_roster_membership_events
            (student_id,event_type,from_class_name,to_class_name,actor_id,details)
          VALUES($1,'retained',$2,$2,$3,$4::jsonb)`,
-        [membership.id, fromClass, user.id, JSON.stringify({ reason: 'teacher_decision', actor_role: user.role })],
+        [membership.id, fromClass, user.id, JSON.stringify({ reason: user.role === 'teacher' ? 'teacher_decision' : 'administrator_decision', actor_role: user.role })],
       );
       await auditInTransaction(client, user, 'retain_report_roster_student', 'student', membership.id,
         'student retained in physical report class',
