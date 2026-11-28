@@ -2,14 +2,14 @@ import { Router } from 'express';
 import rateLimit from 'express-rate-limit';
 import { z } from 'zod';
 import { query } from '../db/pool.js';
-import { requireAuth, requirePerm, denyTeacherAccess } from '../middleware/auth.js';
+import { requireAuth, requirePerm } from '../middleware/auth.js';
 import { hasPerm } from '../utils/rbac.js';
 import { getMessageableUsers } from '../utils/scope.js';
 import { sendPushToUser } from '../utils/push.js';
 import { createPostgresRateLimitStore } from '../utils/postgresRateLimitStore.js';
 
 const router = Router();
-router.use(requireAuth, denyTeacherAccess);
+router.use(requireAuth);
 
 // Direct messages are a user-generated write surface. Key the limiter by the
 // authenticated account (not client-supplied IP headers) so a sender cannot
@@ -32,9 +32,9 @@ const sendMessageSchema = z.object({
 });
 
 const RECIPIENT_ERROR: Record<string, string> = {
-  student: 'You may only message your teachers, admin, your parent(s), or a classmate',
-  parent: "You may only message your child's/children's class teacher(s), subject teacher(s), or admin",
-  teacher: 'Teacher accounts are limited to report generation and cannot send messages',
+  student: 'You may only message your class and subject teachers, your school admin, your parent(s), or a classmate',
+  parent: "You may only message your child's/children's current class teacher(s) or your school admin",
+  teacher: 'You may message administrators and fellow teachers in your school, students in your classes, and (class teachers only) parents of students on your active class rosters',
   admin: 'Recipient not found or inactive',
 };
 

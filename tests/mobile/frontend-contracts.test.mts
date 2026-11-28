@@ -16,10 +16,10 @@ test('message notification destinations match role navigation', () => {
   for (const tabs of [parentTabs, studentTabs]) {
     assert.ok(tabs.includes('ChatsStack.Screen name="ChatThread"'));
   }
-  assert.ok(!teacherTabs.includes('ChatThread'));
+  assert.ok(teacherTabs.includes('ChatsStack.Screen name="ChatThread"'));
   assert.ok(!financeTabs.includes('Screen name="Messages"'));
   assert.ok(!financeTabs.includes('Screen name="ChatThread"'));
-  assert.ok(notifications.includes("if (user.role !== 'finance_admin' && user.role !== 'teacher')"));
+  assert.ok(notifications.includes("if (user.role !== 'finance_admin')"));
   assert.ok(notifications.includes("screen: user.role === 'admin' ? 'Messages' : 'ChatThread'"));
   assert.ok(navigationRef.includes('navigationRef.navigate(screen, { contact })'));
 });
@@ -97,6 +97,18 @@ test('multi-class teachers can enroll students into any of their assigned physic
   assert.ok(screen.includes('user?.assigned_class_names ?? []'));
   assert.ok(screen.includes('teacherClasses.has(name)'));
   assert.ok(screen.includes("user?.assigned_class_names?.join('|')"));
+});
+
+test('teachers can read full announcements and page back to older ones', () => {
+  const teacherTabs = read('mobile/src/navigation/TeacherTabs.tsx');
+  const more = read('mobile/src/screens/teacher/TeacherMoreScreen.tsx');
+  const screen = read('mobile/src/screens/teacher/TeacherAnnouncementsScreen.tsx');
+  const notifications = read('mobile/src/screens/NotificationsScreen.tsx');
+  assert.ok(teacherTabs.includes('MoreStack.Screen name="TeacherAnnouncements"'));
+  assert.ok(more.includes("navigation.navigate('TeacherAnnouncements')"));
+  assert.ok(screen.includes("api.get('/announcements'") && screen.includes('next_cursor'), 'older pages load through the backend cursor');
+  assert.ok(screen.includes('numberOfLines={open ? undefined : 3}'), 'a tapped announcement shows its full text');
+  assert.ok(notifications.includes('numberOfLines={expanded.has(n.id) ? undefined : 2}'), 'notification announcements expand to full text');
 });
 
 test('teacher attendance metadata follows the selected term instead of retaining another term values', () => {
