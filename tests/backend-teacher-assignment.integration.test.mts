@@ -354,22 +354,6 @@ test('one class teacher account can own multiple classes and overlapping class o
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
-
-// TEMPORARY CI DIAGNOSTIC (reverted before merge): surfaces per-test results as
-// GitHub annotations because job logs are not retrievable from the sandbox.
-function diagTest(name: string, fn: () => Promise<void>) {
-  const esc = (v: string) => v.replace(/%/g, '%25').replace(/\r/g, '%0D').replace(/\n/g, '%0A').slice(0, 1200);
-  return test(name, async () => {
-    try {
-      await fn();
-      console.log(`::notice title=PASS::${esc(name)}`);
-    } catch (error) {
-      console.log(`::error title=FAIL ${esc(name)}::${esc(String((error as Error)?.message ?? error))}`);
-      throw error;
-    }
-  });
-}
-
 // Teacher assignment clearing and class/subject conversion regressions.
 //
 // Contract under test for PUT /admin/users/:id on a teacher:
@@ -467,7 +451,7 @@ async function readAssignment(teacherId: string) {
   };
 }
 
-diagTest('an explicit null or empty primary class clears the assignment; omitting the field does not', async () => {
+test('an explicit null or empty primary class clears the assignment; omitting the field does not', async () => {
   for (const clearValue of [null, '']) {
     await withAssignmentFixture(async (f) => {
       const teacherId = await createClassTeacher(f, f.classA, [f.classB]);
@@ -503,7 +487,7 @@ diagTest('an explicit null or empty primary class clears the assignment; omittin
   }
 });
 
-diagTest('clearing the primary class without resending other fields drops inherited class-teacher ownership', async () => {
+test('clearing the primary class without resending other fields drops inherited class-teacher ownership', async () => {
   await withAssignmentFixture(async (f) => {
     const teacherId = await createClassTeacher(f, f.classA, [f.classB]);
     const response = await putUser(teacherId, { assigned_class: null });
@@ -517,7 +501,7 @@ diagTest('clearing the primary class without resending other fields drops inheri
   });
 });
 
-diagTest('class teacher converts to subject teacher without keeping class-teacher authority', async () => {
+test('class teacher converts to subject teacher without keeping class-teacher authority', async () => {
   await withAssignmentFixture(async (f) => {
     const teacherId = await createClassTeacher(f, f.classA, [f.classB]);
     const response = await putUser(teacherId, {
@@ -546,7 +530,7 @@ diagTest('class teacher converts to subject teacher without keeping class-teache
   });
 });
 
-diagTest('subject teacher converts to class teacher without keeping subject-only grants', async () => {
+test('subject teacher converts to class teacher without keeping subject-only grants', async () => {
   await withAssignmentFixture(async (f) => {
     const grants: Pair[] = [
       { class_name: f.classA, subject_id: f.subject1 },
@@ -587,7 +571,7 @@ diagTest('subject teacher converts to class teacher without keeping subject-only
   });
 });
 
-diagTest('changing allocations replaces grants and leaves no obsolete permissions', async () => {
+test('changing allocations replaces grants and leaves no obsolete permissions', async () => {
   await withAssignmentFixture(async (f) => {
     // Subject teacher: shrink and move the class/subject matrix.
     const subjectTeacherId = await createSubjectTeacher(f, [
@@ -631,7 +615,7 @@ diagTest('changing allocations replaces grants and leaves no obsolete permission
   });
 });
 
-diagTest('school-bound administrators can clear and convert in their school but not across schools', async () => {
+test('school-bound administrators can clear and convert in their school but not across schools', async () => {
   await withAssignmentFixture(async (f) => {
     const scopedUsername = `bsec5-scoped-admin-${unique()}`;
     const { rows: scopedRows } = await query(
