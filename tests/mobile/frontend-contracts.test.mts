@@ -79,3 +79,13 @@ test('teacher placement-decision screen is reachable and only offers teacher-per
     'teacher screen must not call administrator-only roster actions'
   );
 });
+
+
+test('teacher attendance metadata follows the selected term instead of retaining another term values', () => {
+  const attendance = read('mobile/src/screens/AttendanceScreen.tsx');
+  assert.ok(attendance.includes('const selectedTerm = terms.find(term => term.id === selTerm)'));
+  assert.ok(attendance.includes('setDaysOpened(String(selectedTerm.days_opened ?? \'\'))'));
+  assert.ok(attendance.includes('setNextTermBegins(selectedTerm.next_term_begins ?? \'\')'));
+  assert.ok(attendance.includes('[selTerm, terms]'));
+  assert.ok(attendance.includes('setTerms(prev => prev.map(term => term.id === selTerm'));
+});
