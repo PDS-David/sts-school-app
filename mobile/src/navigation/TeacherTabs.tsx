@@ -13,6 +13,9 @@ import TeacherDashboardHomeScreen from '../screens/teacher/TeacherDashboardHomeS
 import TeacherClassesScreen from '../screens/teacher/TeacherClassesScreen';
 import TeacherMoreScreen from '../screens/teacher/TeacherMoreScreen';
 import TeacherQuestionReviewScreen from '../screens/teacher/TeacherQuestionReviewScreen';
+import TeacherAnnouncementsScreen from '../screens/teacher/TeacherAnnouncementsScreen';
+import ChatsScreen from '../screens/chats/ChatsScreen';
+import ChatThreadScreen from '../screens/chats/ChatThreadScreen';
 import StudentsScreen from '../screens/StudentsScreen';
 import AddStudentScreen from '../screens/AddStudentScreen';
 import StudentDetailScreen from '../screens/StudentDetailScreen';
@@ -28,6 +31,7 @@ const Tab = createBottomTabNavigator();
 const DashStack = createNativeStackNavigator();
 const ReportsStack = createNativeStackNavigator();
 const MoreStack = createNativeStackNavigator();
+const ChatsStack = createNativeStackNavigator();
 
 const opts: NativeStackNavigationOptions = {
   headerStyle: { backgroundColor: Colors.primary },
@@ -59,12 +63,22 @@ function ReportsStackNavigator({ subjectTeacher = false }: { subjectTeacher?: bo
   );
 }
 
+function ChatsStackNavigator() {
+  return (
+    <ChatsStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
+      <ChatsStack.Screen name="ChatsList" component={ChatsScreen} />
+      <ChatsStack.Screen name="ChatThread" component={ChatThreadScreen} />
+    </ChatsStack.Navigator>
+  );
+}
+
 function MoreStackNavigator() {
   return (
     <MoreStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
       <MoreStack.Screen name="More" component={TeacherMoreScreen} />
       <MoreStack.Screen name="TeacherQuestionReview" component={TeacherQuestionReviewScreen} options={{ headerShown: false }} />
       <MoreStack.Screen name="ChangePin" component={PinSetupScreen} options={{ headerShown: true, title: 'Change PIN', ...opts }} />
+      <MoreStack.Screen name="TeacherAnnouncements" component={TeacherAnnouncementsScreen} options={{ headerShown: false }} />
     </MoreStack.Navigator>
   );
 }
@@ -72,6 +86,7 @@ function MoreStackNavigator() {
 const SIDEBAR_ITEMS: SidebarItem[] = [
   { routeName: 'DashboardTab', label: 'Dashboard', icon: 'grid' },
   { routeName: 'ReportsTab', label: 'Student Reports', icon: 'document-text' },
+  { routeName: 'ChatsTab', label: 'Chats', icon: 'chatbubbles' },
   { routeName: 'MoreTab', label: 'More', icon: 'menu' },
 ];
 
@@ -104,6 +119,7 @@ export default function TeacherTabs() {
       >
         <Tab.Screen name="DashboardTab" component={DashStackNavigator} options={{ title: 'Dashboard', tabBarIcon: ({ color, size }) => <Ionicons name="grid" size={size} color={color} /> }} />
         <Tab.Screen name="ReportsTab" children={() => <ReportsStackNavigator subjectTeacher={subjectTeacher} />} options={{ title: 'Reports', tabBarIcon: ({ color, size }) => <Ionicons name="document-text" size={size} color={color} /> }} />
+        <Tab.Screen name="ChatsTab" component={ChatsStackNavigator} options={{ title: 'Chats', tabBarIcon: ({ color, size }) => <Ionicons name="chatbubbles" size={size} color={color} /> }} />
         <Tab.Screen name="MoreTab" component={MoreStackNavigator} options={{ title: 'More', tabBarIcon: ({ color, size }) => <Ionicons name="menu" size={size} color={color} /> }} />
       </Tab.Navigator>
     </SidebarLayout>

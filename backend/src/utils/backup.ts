@@ -17,6 +17,15 @@ export const MAGIC = Buffer.from('STSBKP01');
 export const MAX_EMAIL_ATTACHMENT_BYTES = 17 * 1024 * 1024;
 export const BACKUP_INTERVAL_DAYS = 7;
 
+/**
+ * The only tables a backup deliberately leaves out. Every other base table in
+ * `public` is captured and restored, including the append-only audit tables
+ * (audit_log, report_roster_membership_events,
+ * report_roster_progression_decisions). restoreBackup.ts shares this list so
+ * the exporter and the restorer can never disagree about what is in scope.
+ */
+export const BACKUP_EXCLUDED_TABLES = ['app_bootstrap', 'backup_log', 'schema_migrations'] as const;
+
 export interface BackupTable {
   name: string;
   columns: {
@@ -94,7 +103,7 @@ export async function collectPayload(): Promise<BackupPayload> {
       `SELECT table_name FROM information_schema.tables
         WHERE table_schema='public' AND table_type='BASE TABLE' ORDER BY table_name`);
     const tables: BackupTable[] = [];
-    const excludedTables = new Set(['app_bootstrap', 'backup_log', 'schema_migrations']);
+    const excludedTables = new Set<string>(BACKUP_EXCLUDED_TABLES);
     for (const { table_name } of tbls) {
       if (excludedTables.has(table_name)) continue;
       const { rows: cols } = await client.query(

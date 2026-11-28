@@ -31,6 +31,7 @@ export const permissions: Record<Role, string[]> = {
     'grades.read', 'grades.write',
     'attendance.read', 'attendance.write',
     'classRecord.read', 'classRecord.write',
+    'messages.read', 'messages.write',
   ],
   admin: ['*'],   // full access — including questions.*, assessments.*,
                   // aiResults.read, and aiGrading.override, none of which
@@ -55,23 +56,18 @@ export function hasPerm(role: Role, perm: string): boolean {
 }
 
 // ── Messaging rules ───────────────────────────────────────────────────────────
-// NOTE: this is a simplified reference version. The authoritative check (which
-// needs DB lookups for subject teachers/admins/parents) lives in
-// routes/messages.ts → studentAllowedRecipients().
-//
-// Students may message their class/subject teachers, admins, parents and
-// classmates within the documented scope. Parents and admins retain their
-// existing messaging path. Teachers are report-only and cannot send messages.
+// The route supplies the recipient IDs returned by getMessageableUsers(),
+// which applies the database-backed school and relationship scope for each role.
 export function canMessage(
   senderRole: Role,
   senderUserId: string,
   recipientId: string,
-  senderAllowedRecipientIds?: string[]   // for students: precomputed allowed recipient ids
+  senderAllowedRecipientIds?: string[]   // precomputed IDs from the role-scoped contact lookup
 ): boolean {
   if (senderRole === 'student') {
     return !!senderAllowedRecipientIds && senderAllowedRecipientIds.includes(recipientId);
   }
-  // Teachers maintain physical-class records but do not send messages.
-  if (senderRole === 'teacher') return false;
+  // Teacher recipient scope is enforced by getMessageableUsers in the route.
+  if (senderRole === 'teacher') return !!senderAllowedRecipientIds && senderAllowedRecipientIds.includes(recipientId);
   return senderRole === 'parent' || senderRole === 'admin';
 }

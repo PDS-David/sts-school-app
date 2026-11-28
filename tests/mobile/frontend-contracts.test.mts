@@ -16,10 +16,10 @@ test('message notification destinations match role navigation', () => {
   for (const tabs of [parentTabs, studentTabs]) {
     assert.ok(tabs.includes('ChatsStack.Screen name="ChatThread"'));
   }
-  assert.ok(!teacherTabs.includes('ChatThread'));
+  assert.ok(teacherTabs.includes('ChatsStack.Screen name="ChatThread"'));
   assert.ok(!financeTabs.includes('Screen name="Messages"'));
   assert.ok(!financeTabs.includes('Screen name="ChatThread"'));
-  assert.ok(notifications.includes("if (user.role !== 'finance_admin' && user.role !== 'teacher')"));
+  assert.ok(notifications.includes("if (user.role !== 'finance_admin')"));
   assert.ok(notifications.includes("screen: user.role === 'admin' ? 'Messages' : 'ChatThread'"));
   assert.ok(navigationRef.includes('navigationRef.navigate(screen, { contact })'));
 });
@@ -97,4 +97,49 @@ test('multi-class teachers can enroll students into any of their assigned physic
   assert.ok(screen.includes('user?.assigned_class_names ?? []'));
   assert.ok(screen.includes('teacherClasses.has(name)'));
   assert.ok(screen.includes("user?.assigned_class_names?.join('|')"));
+});
+
+test('teachers can read full announcements and page back to older ones', () => {
+  const teacherTabs = read('mobile/src/navigation/TeacherTabs.tsx');
+  const more = read('mobile/src/screens/teacher/TeacherMoreScreen.tsx');
+  const screen = read('mobile/src/screens/teacher/TeacherAnnouncementsScreen.tsx');
+  const notifications = read('mobile/src/screens/NotificationsScreen.tsx');
+  assert.ok(teacherTabs.includes('MoreStack.Screen name="TeacherAnnouncements"'));
+  assert.ok(more.includes("navigation.navigate('TeacherAnnouncements')"));
+  assert.ok(screen.includes("api.get('/announcements'") && screen.includes('next_cursor'), 'older pages load through the backend cursor');
+  assert.ok(screen.includes('numberOfLines={open ? undefined : 3}'), 'a tapped announcement shows its full text');
+  assert.ok(notifications.includes('numberOfLines={expanded.has(n.id) ? undefined : 2}'), 'notification announcements expand to full text');
+});
+
+test('teacher attendance metadata follows the selected term instead of retaining another term values', () => {
+  const attendance = read('mobile/src/screens/AttendanceScreen.tsx');
+  assert.ok(attendance.includes('const selectedTerm = terms.find(term => term.id === selTerm)'));
+  assert.ok(attendance.includes('setDaysOpened(String(selectedTerm.days_opened ?? \'\'))'));
+  assert.ok(attendance.includes('setNextTermBegins(selectedTerm.next_term_begins ?? \'\')'));
+  assert.ok(attendance.includes('[selTerm, terms]'));
+  assert.ok(attendance.includes('setTerms(prev => prev.map(term => term.id === selTerm'));
+});
+
+test('attendance saves send term metadata only when the teacher deliberately edited it, and report each outcome', () => {
+  const attendance = read('mobile/src/screens/AttendanceScreen.tsx');
+  // Dirty tracking against the term as loaded/saved, not against whatever is typed.
+  assert.ok(attendance.includes('const daysChanged = isAdmin && daysOpened.trim() !== savedDaysText'));
+  assert.ok(attendance.includes('const nextTermChanged = nextTermBegins.trim() !== savedNextTerm'));
+  assert.ok(attendance.includes('if (daysChanged) {'));
+  assert.ok(attendance.includes('if (nextTermChanged) {'));
+  // days_opened is administrator-only: read-only for teachers and never sent by them.
+  assert.ok(attendance.includes('editable={isAdmin}'));
+  // The old unconditional prefilled-value payload must be gone.
+  assert.ok(!attendance.includes('days_opened: daysOpened.trim() ? Number(daysOpened) : undefined'));
+  assert.ok(!attendance.includes('next_term_begins: nextTermBegins.trim() || undefined'));
+  assert.ok(!attendance.includes('if (daysOpened.trim() || nextTermBegins.trim())'));
+  // Same validation rules as the server, and an explicit clear instead of an impossible one.
+  assert.ok(attendance.includes("from '../utils/termSettings'"));
+  assert.ok(attendance.includes('termUpdate.next_term_begins = normalized.value'));
+  // Term failure stops before attendance; attendance failure after a term save says so.
+  assert.ok(attendance.includes("title: 'Nothing was saved'"));
+  assert.ok(attendance.includes("'Term details saved, attendance NOT saved'"));
+  assert.ok(attendance.includes("'Term details and attendance saved'"));
+  // Local state adopts the server's stored values, not the typed text.
+  assert.ok(attendance.includes('serverTerm?.days_opened'));
 });
