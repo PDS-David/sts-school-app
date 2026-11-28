@@ -408,12 +408,13 @@ router.put('/:id', requirePerm('grades.write'), async (req, res) => {
 
 // ── POST /students/:id/promotion ──────────────────────────────────────────────
 // Physical report-roster promotion, retention, removal, demotion and
-// reinstatement. Administrators may do all five. Class teachers (an
-// assigned_class anchor; subject-only teachers are refused) may promote,
-// retain or remove, and only for active students in their own assigned
-// physical classes within their own school; demotion and reinstatement stay
-// administrator-only. Only report_roster_memberships and its append-only event
-// history change - never the online student/account record or any scores.
+// reinstatement. Administrators may do all five, including cross-school
+// Primary 6 -> JSS 1 transitions. Class teachers (an assigned_class anchor;
+// subject-only teachers are refused) may promote, retain or remove only within
+// their assigned physical classes in their own school. Cross-school transitions
+// and demotion/reinstatement are administrator-only. Only report_roster_memberships
+// and its append-only event history change - never online student/account records
+// or scores.
 //
 // "Next"/"previous" class is derived from the classes table's own row order
 // within the student's school (see backend/schema.sql's classes table and
@@ -472,6 +473,14 @@ router.post('/:id/promotion', requireRole('admin', 'teacher'), async (req, res) 
         membership.school_code !== user.school_code) {
       return res.status(404).json({ error: 'Student not found in your assigned physical class' });
     }
+  }
+
+  // Moving Primary 6 into JSS 1 creates a new report identity in the
+  // Secondary school code. That is a cross-school administrative action,
+  // never a class-teacher decision, even when the teacher owns Primary 6.
+  if (user.role === 'teacher' && action === 'promote' &&
+      membership.school_code === 'primary' && membership.report_class_name === 'Primary 6') {
+    return res.status(403).json({ error: 'Cross-school promotion from Primary 6 to JSS 1 is administrator-only.' });
   }
 
   // A school-bound administrator is restricted to their own school.
