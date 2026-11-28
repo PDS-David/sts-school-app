@@ -203,36 +203,46 @@ test('a decision belongs to its academic year: the next year starts clean', asyn
 });
 
 // ── 2. Class locks ────────────────────────────────────────────────────────────
-test('teachers are refused promote, retain and remove in a class locked for the current term; administrators are not', async () => {
+test('class locks never block authorized class teachers or administrators from promote, retain or remove', async () => {
   const f = await fixture('lock');
   await lockClass(f.school, 'Primary 3', f.termId, f.multi);
-  const ids = { promote: await makeStudent(f.school, 'Primary 3', `Lock promote ${f.suffix}`), retain: await makeStudent(f.school, 'Primary 3', `Lock retain ${f.suffix}`), remove: await makeStudent(f.school, 'Primary 3', `Lock remove ${f.suffix}`) };
-  for (const [action, id] of Object.entries(ids)) {
-    const res = await decide(f.multi, id, { action });
-    assert.equal(res.status, 403, `teacher ${action}`);
-    assert.match(((await res.json()) as { error: string }).error, /locked/i);
-    assert.deepEqual(await membership(id), { class_name: 'Primary 3', status: 'active' });
-    assert.equal((await events(id)).length, 0, `${action}: nothing recorded`);
-  }
-  // The lock is per class: the same teacher's other class is unaffected.
-  const other = await makeStudent(f.school, 'Primary 4', `Lock other ${f.suffix}`);
-  assert.equal((await decide(f.multi, other, { action: 'retain' })).status, 200);
-  // Moving a student INTO a locked class is refused as well.
+  const mk = (label: string) => makeStudent(f.school, 'Primary 3', `Lock ${label} ${f.suffix}`);
+  // The class teacher acts in a class that is locked for the current term.
+  const [promote, retain, remove] = [await mk('promote'), await mk('retain'), await mk('remove')];
+  assert.equal((await decide(f.multi, promote, { action: 'promote' })).status, 200, 'teacher promote');
+  assert.equal((await membership(promote)).class_name, 'Primary 4');
+  assert.equal((await decide(f.multi, retain, { action: 'retain' })).status, 200, 'teacher retain');
+  assert.equal((await decide(f.multi, remove, { action: 'remove' })).status, 200, 'teacher remove');
+  assert.equal((await membership(remove)).status, 'removed');
+  // Moving a student INTO a locked class is not blocked either.
+  await lockClass(f.school, 'Primary 2', f.termId, f.admin);
   const into = await makeStudent(f.school, 'Primary 2', `Lock into ${f.suffix}`);
   const p2Teacher = await makeActor({ role: 'teacher', school: f.school, label: 'lock-p2', suffix: f.suffix, assignedClass: 'Primary 2' });
-  assert.equal((await decide(p2Teacher, into, { action: 'promote' })).status, 403, 'destination class is locked');
-  assert.equal((await membership(into)).class_name, 'Primary 2');
-  // Administrators write past a lock, as everywhere else.
-  assert.equal((await decide(f.admin, ids.retain, { action: 'retain' })).status, 200);
-  assert.equal((await decide(f.admin, ids.promote, { action: 'promote' })).status, 200);
-  // A lock on some other term does not block the current term.
-  await query('DELETE FROM class_locks WHERE school_code=$1', [f.school]);
-  const oldTerm = Number((await query(`INSERT INTO terms(name,academic_year,school_code,is_current) VALUES('3rd Term','OLD-${f.suffix.slice(0, 6)}',$1,FALSE) RETURNING id`, [f.school])).rows[0].id);
-  await lockClass(f.school, 'Primary 3', oldTerm, f.admin);
-  assert.equal((await decide(f.multi, ids.remove, { action: 'remove' })).status, 200);
+  assert.equal((await decide(p2Teacher, into, { action: 'promote' })).status, 200, 'destination class is locked');
+  assert.equal((await membership(into)).class_name, 'Primary 3');
+  // Decisions made under a lock are fully recorded: one event, academic year, audit entry.
+  const evs = await events(promote);
+  assert.equal(evs.length, 1);
+  assert.equal(evs[0].details.decision, 'promote');
+  assert.ok(evs[0].details.academic_year);
+  assert.ok((await auditActions(promote)).length >= 1);
+  // Duplicate-decision protection still applies under a lock.
+  assert.equal((await decide(f.multi, promote, { action: 'retain' })).status, 409);
+  assert.equal((await decide(f.multi, retain, { action: 'promote' })).status, 409);
+  // Administrators are unrestricted by the lock as well.
+  const adminOwn = await mk('admin');
+  assert.equal((await decide(f.admin, adminOwn, { action: 'promote' })).status, 200);
+  assert.equal((await decide(f.admin, remove, { action: 'reinstate' })).status, 200, 'admin reinstate under a lock');
+  // Subject-only teachers stay unauthorized, locked or not.
+  const subjectOnly = await makeActor({ role: 'teacher', school: f.school, label: 'lock-subject', suffix: f.suffix, assignedClass: null });
+  const target = await mk('subject');
+  assert.equal((await decide(subjectOnly, target, { action: 'remove' })).status, 403);
+  assert.deepEqual(await membership(target), { class_name: 'Primary 3', status: 'active' });
+  // Teachers still cannot demote or reinstate, with or without a lock.
+  assert.equal((await decide(f.multi, adminOwn, { action: 'demote' })).status, 403);
+  assert.equal((await decide(f.multi, remove, { action: 'reinstate' })).status, 403);
 });
 
-// ── 3. Durable retention ──────────────────────────────────────────────────────
 test('retention is a durable decision that later class lists show', async () => {
   const f = await fixture('retain');
   const s = await makeStudent(f.school, 'Primary 3', `Retention ${f.suffix}`);
@@ -338,7 +348,7 @@ test('a teacher can undo their own removal, and nothing wider', async () => {
   assert.equal((await decide(f.multi, s, { action: 'retain' })).status, 200, 'the student can be decided again');
 });
 
-test('a teacher cannot undo an administrator removal, an old-year removal or a removal in a locked class', async () => {
+test('a teacher cannot undo an administrator removal or an old-year removal, but can undo their own removal in a locked class', async () => {
   const f = await fixture('undo2');
   const byAdmin = await makeStudent(f.school, 'Primary 3', `Admin removed ${f.suffix}`);
   assert.equal((await decide(f.admin, byAdmin, { action: 'remove' })).status, 200);
@@ -349,9 +359,8 @@ test('a teacher cannot undo an administrator removal, an old-year removal or a r
   const locked = await makeStudent(f.school, 'Primary 3', `Locked removal ${f.suffix}`);
   assert.equal((await decide(f.multi, locked, { action: 'remove' })).status, 200);
   await lockClass(f.school, 'Primary 3', f.termId, f.admin);
-  assert.equal((await decide(f.multi, locked, { action: 'undo_remove' })).status, 403);
-  assert.equal((await membership(locked)).status, 'removed');
-  assert.equal((await decide(f.admin, locked, { action: 'reinstate' })).status, 200, 'the administrator can still restore it');
+  assert.equal((await decide(f.multi, locked, { action: 'undo_remove' })).status, 200, 'a class lock does not block undoing your own removal');
+  assert.equal((await membership(locked)).status, 'active');
   await query('DELETE FROM class_locks WHERE school_code=$1', [f.school]);
 
   const old = await makeStudent(f.school, 'Primary 3', `Old removal ${f.suffix}`);

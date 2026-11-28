@@ -6,7 +6,7 @@ import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
 import { auditContextFromRequest, auditInTransaction, auditStrict } from '../utils/audit.js';
 import { checkTeacherDeleteScope, checkTeacherRosterScope } from '../utils/scope.js';
 import { assignedTeacherClasses, crossSchoolPromotionFrom, resolveStudentRosterScope } from '../utils/studentRosterScope.js';
-import { activeDecision, currentRosterCycle, DECISION_LABEL, lockedClassAmong, NO_CURRENT_YEAR, type RosterDecision } from '../utils/rosterDecisions.js';
+import { activeDecision, currentRosterCycle, DECISION_LABEL, NO_CURRENT_YEAR, type RosterDecision } from '../utils/rosterDecisions.js';
 import { createStudentWithParent } from '../utils/parentProvisioning.js';
 import type { PoolClient } from 'pg';
 import type { AuthUser } from '../types/index.js';
@@ -569,13 +569,16 @@ router.post('/:id/promotion', requireRole('admin', 'teacher'), async (req, res) 
 
   // Shared gate, run INSIDE each action's transaction. It (1) takes the
   // membership row FOR UPDATE so concurrent requests for one student are
-  // serialised and re-validates what was read above, (2) refuses teachers while
-  // an involved class is locked for the school's current term (administrators
-  // are unrestricted, as for every other class-lock check), and (3) for a
+  // serialised and re-validates what was read above, and (2) for a
   // promote/retain/remove, refuses a second decision for the same academic year
   // (corrections are demote/reinstate by an administrator or undo_remove by the
   // teacher who removed the student; each voids the standing decision).
-  const gate = async (client: PoolClient, kind: 'decide' | 'correct', destinationClass?: string) => {
+  //
+  // Class locks are deliberately NOT consulted here. A class lock protects
+  // attendance, marks and other academic activity; it never stops an
+  // authorized class teacher or administrator from promoting, retaining or
+  // removing a student, or a class teacher from undoing their own removal.
+  const gate = async (client: PoolClient, kind: 'decide' | 'correct') => {
     const { rows } = await client.query(
       'SELECT class_name, status FROM report_roster_memberships WHERE student_id=$1 FOR UPDATE',
       [membership.id],
@@ -584,13 +587,6 @@ router.post('/:id/promotion', requireRole('admin', 'teacher'), async (req, res) 
       return { ok: false as const, status: 409, error: 'Student roster membership changed; refresh and try again' };
     }
     const cycle = await currentRosterCycle(client, membership.school_code);
-    if (user.role === 'teacher') {
-      const locked = await lockedClassAmong(client, membership.school_code,
-        [membership.report_class_name, ...(destinationClass ? [destinationClass] : [])], cycle.termId);
-      if (locked) {
-        return { ok: false as const, status: 403, error: `${locked} is locked for the current term. Ask an administrator to unlock it before changing the class roster.` };
-      }
-    }
     const existing = await activeDecision(client, membership.id, cycle.academicYear);
     // A retain changes nothing and has no inverse, so an administrator may supersede
     // a standing retain with a different decision. Every other standing decision is
@@ -636,8 +632,8 @@ router.post('/:id/promotion', requireRole('admin', 'teacher'), async (req, res) 
 
   if (action === 'undo_remove') {
     // A teacher's way to correct an accidental removal. Deliberately narrow: only
-    // the teacher who made the removal, in the same academic year, while the class
-    // is unlocked and the removal is still the standing decision. It cannot undo an
+    // the teacher who made the removal, in the same academic year, while the
+    // removal is still the standing decision (a class lock does not matter). It cannot undo an
     // administrator's removal or a cross-school promotion, cannot change class, and
     // is not a reinstatement or demotion.
     if (membership.status !== 'removed') {
@@ -875,7 +871,7 @@ router.post('/:id/promotion', requireRole('admin', 'teacher'), async (req, res) 
   const toClass = names[targetIdx];
 
   const changed = await withTransaction(async (client) => {
-    const gated = await gate(client, action === 'promote' ? 'decide' : 'correct', toClass);
+    const gated = await gate(client, action === 'promote' ? 'decide' : 'correct');
     if (!gated.ok) return gated;
     const updated = await client.query(
       `UPDATE report_roster_memberships

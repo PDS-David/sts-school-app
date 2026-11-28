@@ -77,23 +77,6 @@ export async function activeDecision(
   };
 }
 
-/** True when any of the classes is locked for the term. Admins ignore locks; teachers do not. */
-export async function lockedClassAmong(
-  client: PoolClient,
-  schoolCode: string,
-  classNames: string[],
-  termId: number | null,
-): Promise<string | null> {
-  if (termId === null) return null;
-  const { rows } = await client.query(
-    `SELECT class_name FROM class_locks
-      WHERE school_code=$1 AND term_id=$2 AND class_name=ANY($3::text[])
-      ORDER BY class_name LIMIT 1 FOR SHARE`,
-    [schoolCode, termId, classNames],
-  );
-  return rows[0] ? String(rows[0].class_name) : null;
-}
-
 export const DECISION_LABEL: Record<RosterDecision, string> = {
   promote: 'promoted',
   retain: 'retained',
