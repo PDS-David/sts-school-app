@@ -10,12 +10,16 @@ after(async () => {
   await pool.end();
 });
 
-async function currentPrimaryTerm(): Promise<number> {
+// saveAttendanceBulk now re-validates days_present against the term's current
+// days_opened under a row lock (the HTTP route already enforced the same rule).
+// The bootstrap term has days_opened=0, so these atomicity tests use their own
+// disposable term with a realistic days_opened instead of mutating shared data.
+async function createDisposableTerm(): Promise<number> {
   const { rows } = await query(
-    `SELECT id FROM terms
-     WHERE school_code='primary' AND academic_year='2026/2027' AND name='1st Term'`,
+    `INSERT INTO terms(name,academic_year,school_code,days_opened)
+     VALUES('1st Term',$1,'primary',100) RETURNING id`,
+    [`BULK/${unique()}`.slice(0, 20)],
   );
-  assert.equal(rows.length, 1, 'bootstrap must create the primary first term');
   return rows[0].id;
 }
 
@@ -29,7 +33,7 @@ async function createStudent(admissionNumber: string): Promise<string> {
 }
 
 test('a valid bulk attendance batch upserts every requested student', async () => {
-  const termId = await currentPrimaryTerm();
+  const termId = await createDisposableTerm();
   const admissions = [`BSEC4-A-${unique()}`, `BSEC4-B-${unique()}`];
   const studentIds: string[] = [];
 
@@ -53,11 +57,12 @@ test('a valid bulk attendance batch upserts every requested student', async () =
     );
   } finally {
     await query('DELETE FROM students WHERE admission_number=ANY($1::text[])', [admissions]);
+    await query('DELETE FROM terms WHERE id=$1', [termId]);
   }
 });
 
 test('a later foreign-key failure rolls back earlier attendance writes in the batch', async () => {
-  const termId = await currentPrimaryTerm();
+  const termId = await createDisposableTerm();
   const admission = `BSEC4-ROLLBACK-${unique()}`;
   let studentId: string | undefined;
 
@@ -79,5 +84,6 @@ test('a later foreign-key failure rolls back earlier attendance writes in the ba
     assert.equal(rows.length, 0, 'the first row must be rolled back with the failed second row');
   } finally {
     await query('DELETE FROM students WHERE admission_number=$1', [admission]);
+    await query('DELETE FROM terms WHERE id=$1', [termId]);
   }
 });

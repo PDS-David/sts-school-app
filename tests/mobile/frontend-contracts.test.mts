@@ -107,3 +107,25 @@ test('teacher attendance metadata follows the selected term instead of retaining
   assert.ok(attendance.includes('[selTerm, terms]'));
   assert.ok(attendance.includes('setTerms(prev => prev.map(term => term.id === selTerm'));
 });
+
+test('attendance saves send term metadata only when the teacher deliberately edited it, and report each outcome', () => {
+  const attendance = read('mobile/src/screens/AttendanceScreen.tsx');
+  // Dirty tracking against the term as loaded/saved, not against whatever is typed.
+  assert.ok(attendance.includes('const daysChanged = daysOpened.trim() !== savedDaysText'));
+  assert.ok(attendance.includes('const nextTermChanged = nextTermBegins.trim() !== savedNextTerm'));
+  assert.ok(attendance.includes('if (daysChanged) {'));
+  assert.ok(attendance.includes('if (nextTermChanged) {'));
+  // The old unconditional prefilled-value payload must be gone.
+  assert.ok(!attendance.includes('days_opened: daysOpened.trim() ? Number(daysOpened) : undefined'));
+  assert.ok(!attendance.includes('next_term_begins: nextTermBegins.trim() || undefined'));
+  assert.ok(!attendance.includes('if (daysOpened.trim() || nextTermBegins.trim())'));
+  // Same validation rules as the server, and an explicit clear instead of an impossible one.
+  assert.ok(attendance.includes("from '../utils/termSettings'"));
+  assert.ok(attendance.includes('termUpdate.next_term_begins = normalized.value'));
+  // Term failure stops before attendance; attendance failure after a term save says so.
+  assert.ok(attendance.includes("title: 'Nothing was saved'"));
+  assert.ok(attendance.includes("'Term details saved, attendance NOT saved'"));
+  assert.ok(attendance.includes("'Term details and attendance saved'"));
+  // Local state adopts the server's stored values, not the typed text.
+  assert.ok(attendance.includes('serverTerm?.days_opened'));
+});

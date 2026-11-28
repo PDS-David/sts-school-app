@@ -9,6 +9,7 @@ import { useAdminSchool } from '../api/AdminSchoolContext';
 import { SchoolSwitcherBar } from '../components/SchoolSwitcherBar';
 import { ConfirmDialog } from '../components/ConfirmDialog';
 import { PageContainer, useIsWide } from '../components/layout';
+import { normalizeNextTermBegins, parseDaysOpenedInput } from '../utils/termSettings';
 
 interface Student { id: string; full_name: string; class_name: string; }
 
@@ -138,13 +139,35 @@ export default function AttendanceScreen({ navigation }: any) {
     return () => { cancelled = true; };
   }, [selClass, selTerm, students, rosterLoading, rosterError, attendanceRetry]);
 
+  // Term metadata is only ever sent when the teacher deliberately edited the
+  // field. The form is prefilled from the term as it was when this screen
+  // loaded; if another user has since changed the term, an ordinary attendance
+  // save must NOT push those prefilled (stale) values back over the newer ones.
+  const selectedTermRecord = terms.find(term => term.id === selTerm);
+  const savedDaysText = String(selectedTermRecord?.days_opened ?? '').trim();
+  const savedNextTerm = String(selectedTermRecord?.next_term_begins ?? '').trim();
+  const daysChanged = daysOpened.trim() !== savedDaysText;
+  const nextTermChanged = nextTermBegins.trim() !== savedNextTerm;
+
   const handleSave = async () => {
     if (saving) return;
     if (!selTerm) { setInfoDialog({ title: 'Select a term', message: 'Choose a term before saving attendance.' }); return; }
-    if (daysOpened.trim() && (!Number.isInteger(Number(daysOpened)) || Number(daysOpened) < 0)) {
-      setInfoDialog({ title: 'Invalid school days', message: 'Days school opened must be a non-negative whole number.' }); return;
+
+    const termUpdate: { days_opened?: number; next_term_begins?: string | null } = {};
+    if (daysChanged) {
+      const parsed = parseDaysOpenedInput(daysOpened);
+      if (parsed.ok === false) { setInfoDialog({ title: 'Invalid school days', message: parsed.error }); return; }
+      termUpdate.days_opened = parsed.value;
     }
-    const targetDays = daysOpened.trim() ? Number(daysOpened) : Number(terms.find(t => t.id === selTerm)?.days_opened ?? 0);
+    if (nextTermChanged) {
+      // Blank means "clear the date"; anything else must be a sensible label.
+      const normalized = normalizeNextTermBegins(nextTermBegins);
+      if (normalized.ok === false) { setInfoDialog({ title: 'Invalid next-term date', message: normalized.error }); return; }
+      termUpdate.next_term_begins = normalized.value;
+    }
+    const termUpdateRequested = Object.keys(termUpdate).length > 0;
+
+    const targetDays = termUpdate.days_opened ?? Number(selectedTermRecord?.days_opened ?? 0);
     const invalid = Object.entries(entries).find(([studentId, value]) => {
       if (value.trim() === '') return false;
       const n = Number(value);
@@ -159,25 +182,55 @@ export default function AttendanceScreen({ navigation }: any) {
       .filter(([, v]) => v.trim() !== '')
       .map(([student_id, days_present]) => ({ student_id, days_present: Number(days_present) }));
     if (!payload.length) { setInfoDialog({ title: 'No attendance entered', message: 'Enter at least one student attendance value before saving.' }); return; }
+
     setSaving(true);
+    const errorText = (e: any, fallback: string) => e?.response?.data?.error ?? fallback;
+    let termSaved = false;
     try {
-      // Update the term limit first so the server validates the attendance
-      // batch against the new days-opened value when both are changed together.
-      if (daysOpened.trim() || nextTermBegins.trim()) {
-        await api.put(`/academic/terms/${selTerm}`, {
-          days_opened: daysOpened.trim() ? Number(daysOpened) : undefined,
-          next_term_begins: nextTermBegins.trim() || undefined,
-        });
-        setTerms(prev => prev.map(term => term.id === selTerm ? {
-          ...term,
-          days_opened: daysOpened.trim() ? Number(daysOpened) : term.days_opened,
-          next_term_begins: nextTermBegins.trim() || term.next_term_begins,
-        } : term));
+      // Step 1 (only if deliberately edited): term details. These are a
+      // separate request from the attendance batch, so the outcome of each is
+      // reported separately below. If this step fails, attendance is NOT
+      // attempted, so a failure never leaves a half-applied save.
+      if (termUpdateRequested) {
+        try {
+          const response = await api.put(`/academic/terms/${selTerm}`, termUpdate);
+          termSaved = true;
+          const serverTerm = response?.data?.term;
+          // Adopt the server's stored values (not the typed text) and let the
+          // selected-term effect reset the form, so a retry cannot resend them.
+          setTerms(prev => prev.map(term => term.id === selTerm ? {
+            ...term,
+            days_opened: serverTerm?.days_opened ?? termUpdate.days_opened ?? term.days_opened,
+            next_term_begins: serverTerm
+              ? serverTerm.next_term_begins
+              : ('next_term_begins' in termUpdate ? termUpdate.next_term_begins : term.next_term_begins),
+          } : term));
+        } catch (e: any) {
+          setInfoDialog({
+            title: 'Nothing was saved',
+            message: `Term details could not be saved, so attendance was not saved either. ${errorText(e, 'Check your connection and try again.')}`,
+          });
+          return;
+        }
       }
-      await api.put('/attendance/bulk', { term_id: Number(selTerm), entries: payload });
-      setInfoDialog({ title: 'Attendance saved', message: `Attendance for ${payload.length} student(s) was saved successfully.` });
-    } catch (e: any) {
-      setInfoDialog({ title: 'Could not save attendance', message: e?.response?.data?.error ?? 'Save failed. Check your connection and try again.' });
+      // Step 2: the attendance batch (atomic on the server).
+      try {
+        await api.put('/attendance/bulk', { term_id: Number(selTerm), entries: payload });
+      } catch (e: any) {
+        setInfoDialog({
+          title: termSaved ? 'Term details saved, attendance NOT saved' : 'Could not save attendance',
+          message: termSaved
+            ? `Your term details were saved, but attendance for ${payload.length} student(s) was NOT saved. ${errorText(e, 'Check your connection')} Fix the problem and press Save again; the term details will not be resent.`
+            : errorText(e, 'Save failed. Check your connection and try again.'),
+        });
+        return;
+      }
+      setInfoDialog({
+        title: termSaved ? 'Term details and attendance saved' : 'Attendance saved',
+        message: termSaved
+          ? `Term details were updated and attendance for ${payload.length} student(s) was saved successfully.`
+          : `Attendance for ${payload.length} student(s) was saved successfully.`,
+      });
     } finally { setSaving(false); }
   };
 
