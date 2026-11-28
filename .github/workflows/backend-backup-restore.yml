@@ -2,7 +2,7 @@ name: Backend backup restore schema safeguards
 
 on:
   pull_request:
-    branches: [master]
+    branches: [master, fix/teacher-multi-class-promotion]
     paths:
       - "backend/src/db/restoreBackup.ts"
       - "backend/src/db/resetAcademicData.ts"
