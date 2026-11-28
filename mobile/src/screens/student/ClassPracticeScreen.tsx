@@ -63,7 +63,7 @@ export default function ClassPracticeScreen({ route }: any) {
           if(data?.result?.submitted){
             setPracticeSet(data.set??draft.set);setQuestions([]);setAnswers({});setResult(data.result);setResumeNotice('');
             await draftWriteQueue.current.catch(()=>undefined);
-        await AsyncStorage.removeItem(draftStorageKey);
+            await AsyncStorage.removeItem(draftStorageKey);
           }else if(data?.set?.status==='open'&&Array.isArray(data.questions)){
             setPracticeSet(data.set);setQuestions(data.questions);setAnswers(savedAnswers);
             await persistDraft({set:data.set,questions:data.questions,answers:savedAnswers});
@@ -123,6 +123,7 @@ export default function ClassPracticeScreen({ route }: any) {
       if((response as any).queuedOffline)throw new Error('Your submission is queued offline and has not yet been confirmed. Reconnect before treating it as submitted.');
       if(topicIdRef.current===submittedTopicId){
         setResult(response.data);setResumeNotice('');
+        await draftWriteQueue.current.catch(()=>undefined);
         await AsyncStorage.removeItem(draftStorageKey);
         await loadProgress();
       }
