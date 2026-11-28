@@ -2,7 +2,6 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { requirePerm } from '../backend/src/middleware/auth.js';
 import { canMessage } from '../backend/src/utils/rbac.js';
-import { getMessageableUsers } from '../backend/src/utils/scope.js';
 
 function runPermission(role: string, permission: string) {
   const req = { user: { role } } as any;
