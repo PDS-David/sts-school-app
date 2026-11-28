@@ -79,3 +79,14 @@ test('teacher placement-decision screen is reachable and only offers teacher-per
     'teacher screen must not call administrator-only roster actions'
   );
 });
+
+
+test('teacher report remarks require an explicit class context for multi-class rosters', () => {
+  const screen = read('mobile/src/screens/teacher/ReportRemarksScreen.tsx');
+  assert.ok(screen.includes('const [selectedClass, setSelectedClass] = useState'));
+  assert.ok(screen.includes('Select class for report remarks'));
+  assert.ok(screen.includes('student.class_name === selectedClass'));
+  assert.ok(screen.includes('students.find(student => student.class_name === String(value))'));
+  assert.ok(screen.includes('classStudents.map(s =>'));
+  assert.ok(screen.includes('classStudents.some(student => student.id === studentId)'));
+});
