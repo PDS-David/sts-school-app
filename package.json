@@ -10,7 +10,7 @@
     "mobile:start": "cd mobile && npm start",
     "mobile:android": "cd mobile && npm run android",
     "test:mobile:offline": "node --import tsx --test tests/mobile/offline-replay.test.mts",
-    "test:mobile:frontend-contracts": "node --import tsx --test tests/mobile/frontend-contracts.test.mts",
+    "test:mobile:frontend-contracts": "node --import tsx --test tests/mobile/frontend-contracts.test.mts tests/mobile/promotion-classes.test.mts",
     "test:mobile:auth": "node --import tsx --test tests/mobile/login-form.test.mts tests/mobile/pin-setup.test.mts tests/mobile/pin-setup-wiring.test.mts",
     "install:all": "cd backend && npm install && cd ../mobile && npm install",
     "test:ss1:english": "node --import tsx --test tests/ss1/english.package.test.mts",

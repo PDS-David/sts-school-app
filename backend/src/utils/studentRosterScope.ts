@@ -9,6 +9,33 @@ export function assignedTeacherClasses(user: Pick<AuthUser, 'assigned_class' | '
     .map(name => name.trim()))];
 }
 
+export interface CrossSchoolPromotion {
+  fromSchool: string;
+  fromClass: string;
+  toSchool: string;
+  toClass: string;
+}
+
+/**
+ * Every promotion that moves a student into a DIFFERENT school code. This is
+ * the single declaration of the application's school boundaries: the seeded
+ * schools are `primary` (Pre-Nursery ... Primary 6) and `secondary`
+ * (JSS 1 ... SS 3), so Primary 6 -> JSS 1 is the only crossing. Any promotion
+ * not listed here stays inside the student's own school (the route looks the
+ * next class up in the student's own school's class list). Crossing a school
+ * boundary is administrator-only; adding an entry here extends that rule and
+ * the tests that iterate this table automatically.
+ */
+export const CROSS_SCHOOL_PROMOTIONS: readonly CrossSchoolPromotion[] = [
+  { fromSchool: 'primary', fromClass: 'Primary 6', toSchool: 'secondary', toClass: 'JSS 1' },
+];
+
+/** The declared cross-school promotion out of this placement, or null when promoting stays in the same school. */
+export function crossSchoolPromotionFrom(schoolCode: string, className: string): CrossSchoolPromotion | null {
+  return CROSS_SCHOOL_PROMOTIONS.find(p =>
+    p.fromSchool === schoolCode && p.fromClass === className && p.toSchool !== p.fromSchool) ?? null;
+}
+
 export type StudentRosterScope =
   | { schoolCode: string | null; className: string | null }
   | { error: string; status: 400 | 403 };
