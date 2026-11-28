@@ -49,3 +49,14 @@ test('teachers receive message permissions and the scoped messaging route is no 
   assert.match(scope, /if \(user\.role === 'teacher'\)/);
   assert.match(scope, /st\.class_name = ANY\(\$3::text\[\]\)/);
 });
+
+
+test('teachers can read school-wide and assigned-class announcements', async () => {
+  const { readFileSync } = await import('node:fs');
+  const { resolve } = await import('node:path');
+  const route = readFileSync(resolve(process.cwd(), 'backend/src/routes/announcements.ts'), 'utf8');
+  assert.doesNotMatch(route, /Teacher accounts are limited/);
+  assert.match(route, /user\.role === 'teacher'/);
+  assert.match(route, /assigned_class_names/);
+  assert.match(route, /requireRole\('admin'\)/, 'announcement publishing remains admin-only');
+});
