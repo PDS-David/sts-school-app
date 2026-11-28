@@ -160,7 +160,8 @@ test('migrations 0019 through 0021 apply together in one run and leave existing 
     const run = npm('db:migrate', db, { NODE_ENV: 'test' }); // = `db:migrate --all`
     assert.equal(run.status, 0, `${run.stdout}${run.stderr}`);
     const applied = [...run.stdout.matchAll(/Applied (\d{4})/g)].map(m => m[1]);
-    assert.deepEqual(applied, ['0019', '0020', '0021'], 'the pending authentication and teacher-scope migrations apply in order');
+    // The ledger is rewound to before 0019, so every later migration is pending too (0022 re-applies idempotently).
+    assert.deepEqual(applied, ['0019', '0020', '0021', '0022'], 'the pending authentication, teacher-scope and progression-decision migrations apply in order');
 
     await withDb(db, async c => {
       const versions = await ledger(c);

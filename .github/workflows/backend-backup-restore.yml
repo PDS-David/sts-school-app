@@ -2,11 +2,16 @@ name: Backend backup restore schema safeguards
 
 on:
   pull_request:
-    branches: [master]
+    branches: [master, fix/teacher-multi-class-promotion]
     paths:
       - "backend/src/db/restoreBackup.ts"
+      - "backend/src/db/resetAcademicData.ts"
       - "backend/src/utils/backup.ts"
+      - "backend/schema.sql"
+      - "backend/migrations/0022_report_roster_progression_decisions.sql"
       - "tests/backup-restore.integration.test.mts"
+      - "tests/backup-restore-progression.integration.test.mts"
+      - "tests/academic-reset-progression.integration.test.mts"
       - "tests/backup.test.mts"
       - ".github/workflows/backend-backup-restore.yml"
 
@@ -51,9 +56,15 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Bootstrap disposable PostgreSQL schema
         run: npm run db:bootstrap --workspace=backend
+      # Run the database test files one at a time: each restores into the same
+      # disposable database, so they must not overlap.
       - name: Run backup format and restore safety tests
         run: |
           node --import tsx --test tests/backup.test.mts
           node --import tsx --test tests/backup-restore.integration.test.mts
+      - name: Run progression-decision backup and restore tests
+        run: node --import tsx --test tests/backup-restore-progression.integration.test.mts
+      - name: Run academic-data reset progression safeguards
+        run: node --import tsx --test tests/academic-reset-progression.integration.test.mts
       - name: Typecheck backend
         run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
