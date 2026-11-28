@@ -4,11 +4,9 @@ import { Picker } from '@react-native-picker/picker';
 import api from '../../api/client';
 import { Card, Btn, Loader, Empty } from '../../components/UI';
 import { PageContainer } from '../../components/layout';
-import { useAuth } from '../../api/AuthContext';
 import { Colors, Spacing, Fonts, Radius } from '../../theme';
 
 export default function ReportRemarksScreen() {
-  const { user } = useAuth();
   const [students, setStudents] = useState<any[]>([]);
   const [terms, setTerms] = useState<any[]>([]);
   const [selectedClass, setSelectedClass] = useState('');
