@@ -7,6 +7,7 @@ import { useAuth } from '../api/AuthContext';
 import { useWards } from '../api/WardContext';
 import { getSchoolBrand } from '../schoolBranding';
 import { buildSessionReportHtml, printReportHtml, exportReportHtml } from '../utils/reportPdf';
+import { canPrintOrExportReports } from '../utils/reportAccess';
 import { ConfirmDialog } from '../components/ConfirmDialog';
 
 // A session is fixed at exactly 3 terms (1st, 2nd, 3rd). This screen collates
@@ -78,14 +79,16 @@ export default function SessionReportScreen({ route }: any) {
   const { student, academic_year, terms, terms_present, is_complete_session, subjects, attendance, summary } = report;
   const brand = getSchoolBrand(student.school_code);
 
-  // Teachers generate and export reports only for active students in
-  // their assigned physical class.
-  const canPrintExport = user?.role === 'admin' || user?.role === 'parent' || user?.role === 'teacher';
+  // Policy (utils/reportAccess): admins, finance admins and parents may print
+  // and export. Teachers and students view only. Handlers re-check this and
+  // reportPdf enforces it again.
+  const canPrintExport = canPrintOrExportReports(user?.role);
   const handlePrint = async () => {
+    if (!canPrintExport) return;
     setPdfBusy('print');
     try {
       const html = await buildSessionReportHtml(report, brand);
-      await printReportHtml(html);
+      await printReportHtml(html, user?.role);
     } catch (e: any) {
       setInfoDialog({ title: 'Could not print report', message: e?.message ?? 'Something went wrong. Please try again.' });
     } finally {
@@ -94,10 +97,11 @@ export default function SessionReportScreen({ route }: any) {
   };
 
   const handleExport = async () => {
+    if (!canPrintExport) return;
     setPdfBusy('export');
     try {
       const html = await buildSessionReportHtml(report, brand);
-      await exportReportHtml(html, `${student.full_name}-Session-${academic_year}`.replace(/\s+/g, '_'));
+      await exportReportHtml(html, `${student.full_name}-Session-${academic_year}`.replace(/\s+/g, '_'), user?.role);
     } catch (e: any) {
       setInfoDialog({ title: 'Could not export report', message: e?.message ?? 'Something went wrong. Please try again.' });
     } finally {
