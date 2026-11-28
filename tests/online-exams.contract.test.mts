@@ -133,6 +133,16 @@ test('written responses require a complete criterion rubric and confidence-valid
   assert.match(markingMigration, /online_exam_responses_marking_details_object/);
 });
 
+test('adaptive practice drafts are scoped to the signed-in student and restored after interruption', () => {
+  assert.match(classPracticeScreen, /AsyncStorage/);
+  assert.match(classPracticeScreen, /getCacheNamespace\(\)/);
+  assert.match(classPracticeScreen, /class-practice-draft:/);
+  assert.match(classPracticeScreen, /api\.get\('\/class-practice\/sets\/'\+draft\.set\.id\)/);
+  assert.match(classPracticeScreen, /answers:savedAnswers/);
+  assert.match(classPracticeScreen, /AsyncStorage\.removeItem\(draftStorageKey\)/);
+  assert.match(classPracticeScreen, /restored on this device/);
+});
+
 test('student assessment home exposes the dedicated formal-exam flow and completed-lesson practice route', () => {
   assert.match(mobileHome, /label: 'Adaptive Practice'/);
   assert.match(mobileHome, /screen: 'LearningTab'/);

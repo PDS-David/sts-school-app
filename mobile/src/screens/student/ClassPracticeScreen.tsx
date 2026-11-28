@@ -1,12 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ScrollView, Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../api/client';
+import { getCacheNamespace } from '../../offline/storage';
 import { Card, Btn, Loader, Empty, SectionHeader, Badge } from '../../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../../theme';
 
 export default function ClassPracticeScreen({ route }: any) {
   const topic = route.params?.topic;
+  const draftStorageKey = `class-practice-draft:${getCacheNamespace()}:${topic?.id ?? 'none'}`;
   const [practiceSet,setPracticeSet]=useState<any>(null);
   const [questions,setQuestions]=useState<any[]>([]);
   const [answers,setAnswers]=useState<Record<string,string>>({});
@@ -17,7 +20,14 @@ export default function ClassPracticeScreen({ route }: any) {
   const [loadingProgress,setLoadingProgress]=useState(true);
   const [error,setError]=useState('');
   const [progressError,setProgressError]=useState('');
+  const [resumeNotice,setResumeNotice]=useState('');
+  const [restoring,setRestoring]=useState(false);
   const topicIdRef=useRef(topic?.id);
+  const draftWriteQueue=useRef<Promise<void>>(Promise.resolve());
+  const persistDraft=(draft:any)=>{
+    draftWriteQueue.current=draftWriteQueue.current.catch(()=>undefined).then(()=>AsyncStorage.setItem(draftStorageKey,JSON.stringify(draft)));
+    return draftWriteQueue.current;
+  };
   topicIdRef.current=topic?.id;
 
   const loadProgress=async()=>{
@@ -33,22 +43,68 @@ export default function ClassPracticeScreen({ route }: any) {
   useEffect(()=>{
     topicIdRef.current=topic?.id;
     setPracticeSet(null);setQuestions([]);setAnswers({});setResult(null);
-    setGenerating(false);setSubmitting(false);setError('');
+    setGenerating(false);setSubmitting(false);setError('');setResumeNotice('');setRestoring(true);
+    let active=true;
+    const restoreDraft=async()=>{
+      try{
+        const raw=await AsyncStorage.getItem(draftStorageKey);
+        if(!raw||!active)return;
+        const draft=JSON.parse(raw);
+        if(!draft?.set?.id||!Array.isArray(draft.questions))return;
+        if(topicIdRef.current!==topic?.id)return;
+        const savedAnswers=draft.answers&&typeof draft.answers==='object'?draft.answers:{};
+        // Restore the local snapshot first, so an interrupted practice remains
+        // visible even when the student has no connection.
+        setPracticeSet(draft.set);setQuestions(draft.questions);setAnswers(savedAnswers);
+        setResumeNotice('Your unfinished practice has been restored on this device.');
+        try{
+          const {data}=await api.get('/class-practice/sets/'+draft.set.id);
+          if(!active||topicIdRef.current!==topic?.id)return;
+          if(data?.result?.submitted){
+            setPracticeSet(data.set??draft.set);setQuestions([]);setAnswers({});setResult(data.result);setResumeNotice('');
+            await draftWriteQueue.current.catch(()=>undefined);
+            await AsyncStorage.removeItem(draftStorageKey);
+          }else if(data?.set?.status==='open'&&Array.isArray(data.questions)){
+            setPracticeSet(data.set);setQuestions(data.questions);setAnswers(savedAnswers);
+            await persistDraft({set:data.set,questions:data.questions,answers:savedAnswers});
+          }
+        }catch{
+          if(active)setResumeNotice('Your saved practice is available on this device. Reconnect to confirm or submit it.');
+        }
+      }catch{
+        if(active)setError('A saved practice could not be restored. You can generate a new practice set.');
+      }finally{
+        if(active)setRestoring(false);
+      }
+    };
+    void restoreDraft();
     void loadProgress();
-  },[topic?.id]);
+    return()=>{active=false;};
+  },[topic?.id,draftStorageKey]);
 
   const generate=async()=>{
-    if(!topic?.id||generating||submitting)return;
+    if(!topic?.id||generating||submitting||restoring)return;
     setGenerating(true);setError('');setResult(null);setPracticeSet(null);setQuestions([]);setAnswers({});
     const requestedTopicId=topic.id;
     try{
       const {data}=await api.post('/class-practice/sets',{topic_id:Number(requestedTopicId)});
       if(topicIdRef.current!==requestedTopicId)return;
       if(!data.set?.id||!Array.isArray(data.questions)||data.questions.length<3) throw new Error('The practice set is incomplete. Please retry.');
-      setPracticeSet(data.set);setQuestions(data.questions);
+      setPracticeSet(data.set);setQuestions(data.questions);setAnswers({});
+      setResumeNotice('Your answers are saved on this device while you practise.');
+      await persistDraft({set:data.set,questions:data.questions,answers:{}});
     }catch(e:any){
       if(topicIdRef.current===requestedTopicId)setError(e?.response?.data?.error??e?.message??'Could not generate practice for this completed lesson. Check your connection and retry.');
     }finally{if(topicIdRef.current===requestedTopicId)setGenerating(false);}
+  };
+
+  const chooseAnswer=(questionId:string,answer:string)=>{
+    const nextAnswers={...answers,[questionId]:answer};
+    setAnswers(nextAnswers);
+    if(practiceSet?.id){
+      void persistDraft({set:practiceSet,questions,answers:nextAnswers})
+        .catch(()=>setError('Your answer is selected, but could not be saved locally. Keep the app open until submission is confirmed.'));
+    }
   };
 
   const submit=async()=>{
@@ -65,13 +121,23 @@ export default function ClassPracticeScreen({ route }: any) {
         answers:questions.map(q=>({question_id:q.id,answer:answers[q.id]})),
       });
       if((response as any).queuedOffline)throw new Error('Your submission is queued offline and has not yet been confirmed. Reconnect before treating it as submitted.');
-      if(topicIdRef.current===submittedTopicId){setResult(response.data);await loadProgress();}
+      if(topicIdRef.current===submittedTopicId){
+        setResult(response.data);setResumeNotice('');
+        await draftWriteQueue.current.catch(()=>undefined);
+        await AsyncStorage.removeItem(draftStorageKey);
+        await loadProgress();
+      }
     }catch(e:any){
       // A timed-out response may still have committed on the server. Recover
       // the owner's persisted result before asking the student to retry.
       try{
         const {data}=await api.get('/class-practice/sets/'+submittedSetId);
-        if(topicIdRef.current===submittedTopicId&&data?.result?.submitted){setResult(data.result);await loadProgress();return;}
+        if(topicIdRef.current===submittedTopicId&&data?.result?.submitted){
+          setResult(data.result);setResumeNotice('');
+          await draftWriteQueue.current.catch(()=>undefined);
+          await AsyncStorage.removeItem(draftStorageKey);
+          await loadProgress();return;
+        }
       }catch{/* Keep the original submit error when the recovery request also fails. */}
       if(topicIdRef.current===submittedTopicId)setError(e?.response?.data?.error??e?.message??'Your answers could not be confirmed. Reconnect and retry; completed results are recovered automatically.');
     }finally{if(topicIdRef.current===submittedTopicId)setSubmitting(false);}
@@ -86,7 +152,8 @@ export default function ClassPracticeScreen({ route }: any) {
         <Text style={styles.topic}>{topic.title}</Text>
         <Text style={styles.sub}>{topic.subject_name??'Subject'} · {topic.class_name??'Your class'}</Text>
         <Text style={styles.copy}>Questions are generated only from this completed lesson. Your previous concept performance guides the next practice set.</Text>
-        {!practiceSet&&!result&&<Btn label={generating?'Generating practice…':'Generate practice questions'} onPress={generate} loading={generating} style={{marginTop:Spacing.md}}/>}
+        {resumeNotice?<Text style={styles.resumeNotice}>{resumeNotice}</Text>:null}
+        {!practiceSet&&!result&&<Btn label={restoring?'Checking saved practice…':generating?'Generating practice…':'Generate practice questions'} onPress={generate} loading={generating||restoring} disabled={restoring||generating} style={{marginTop:Spacing.md}}/>}
         {practiceSet&&!result&&(
           <View style={{marginTop:Spacing.md}}>
             <Badge label="Lesson-grounded practice" color={Colors.success}/>
@@ -95,7 +162,7 @@ export default function ClassPracticeScreen({ route }: any) {
                 <Text style={styles.questionTitle}>{index+1}. {q.question}</Text>
                 <Text style={styles.concept}>Concept: {q.concept} · {q.difficulty==='foundation'?'Foundation':q.difficulty==='challenge'?'Challenge':'Standard'} difficulty · {q.marks} mark{Number(q.marks)===1?'':'s'}</Text>
                 {q.options.map((option:any)=>(
-                  <TouchableOpacity key={option.key} onPress={()=>setAnswers(current=>({...current,[q.id]:option.key}))} style={[styles.option,answers[q.id]===option.key&&styles.optionSelected]} accessibilityRole="radio" accessibilityState={{checked:answers[q.id]===option.key}}>
+                  <TouchableOpacity key={option.key} onPress={()=>chooseAnswer(q.id,option.key)} style={[styles.option,answers[q.id]===option.key&&styles.optionSelected]} accessibilityRole="radio" accessibilityState={{checked:answers[q.id]===option.key}}>
                     <View style={[styles.radio,answers[q.id]===option.key&&styles.radioSelected]}>
                       {answers[q.id]===option.key?<View style={styles.radioDot}/>:null}
                     </View>
@@ -168,6 +235,7 @@ const styles=StyleSheet.create({
   topic:{fontSize:Fonts.sizes.md,fontWeight:'700',color:Colors.text},
   sub:{fontSize:Fonts.sizes.xs,color:Colors.textSub,marginTop:3},
   copy:{fontSize:Fonts.sizes.sm,color:Colors.text,marginTop:Spacing.sm,lineHeight:21},
+  resumeNotice:{fontSize:Fonts.sizes.xs,color:Colors.success,marginTop:Spacing.sm,lineHeight:18,fontWeight:'600'},
   question:{borderTopWidth:1,borderTopColor:Colors.border,marginTop:Spacing.md,paddingTop:Spacing.md},
   questionTitle:{fontSize:Fonts.sizes.md,fontWeight:'700',color:Colors.text,lineHeight:23},
   concept:{fontSize:Fonts.sizes.xs,color:Colors.textSub,marginTop:4,marginBottom:Spacing.xs},
