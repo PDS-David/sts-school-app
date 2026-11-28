@@ -5,7 +5,7 @@ import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requirePerm, requireRole } from '../middleware/auth.js';
 import { auditContextFromRequest, auditInTransaction, auditStrict } from '../utils/audit.js';
 import { checkTeacherDeleteScope, checkTeacherRosterScope } from '../utils/scope.js';
-import { assignedTeacherClasses, resolveStudentRosterScope } from '../utils/studentRosterScope.js';
+import { assignedTeacherClasses, crossSchoolPromotionFrom, resolveStudentRosterScope } from '../utils/studentRosterScope.js';
 import { createStudentWithParent } from '../utils/parentProvisioning.js';
 import type { PoolClient } from 'pg';
 import type { AuthUser } from '../types/index.js';
@@ -475,16 +475,23 @@ router.post('/:id/promotion', requireRole('admin', 'teacher'), async (req, res) 
     }
   }
 
-  // Moving Primary 6 into JSS 1 creates a new report identity in the
-  // Secondary school code. That is a cross-school administrative action,
-  // never a class-teacher decision, even when the teacher owns Primary 6.
-  // This one flag decides both the teacher refusal below and the cross-school
-  // branch further down, so the two can never disagree about what counts as
-  // leaving the student's school.
-  const crossSchoolPromotion = action === 'promote' &&
-    membership.school_code === 'primary' && membership.report_class_name === 'Primary 6';
-  if (user.role === 'teacher' && crossSchoolPromotion) {
-    return res.status(403).json({ error: 'Cross-school promotion from Primary 6 to JSS 1 is administrator-only.' });
+  // A promotion that would place the student in a different school code than
+  // the one they are in is a cross-school administrative action, never a
+  // class-teacher decision, even when the teacher owns the source class (for
+  // Primary 6 -> JSS 1 it creates a new report identity in the Secondary
+  // school). The destination school is derived once from the declared
+  // CROSS_SCHOOL_PROMOTIONS table and compared with the source school, so this
+  // refusal and the cross-school branch below can never disagree about what
+  // counts as leaving the student's school. Everything else promotes inside
+  // membership.school_code.
+  const crossSchoolTarget = action === 'promote'
+    ? crossSchoolPromotionFrom(membership.school_code, membership.report_class_name)
+    : null;
+  const destinationSchoolCode = crossSchoolTarget?.toSchool ?? membership.school_code;
+  if (destinationSchoolCode !== membership.school_code && user.role !== 'admin') {
+    return res.status(403).json({
+      error: `Cross-school promotion from ${membership.report_class_name} to ${crossSchoolTarget!.toClass} is administrator-only.`,
+    });
   }
 
   // A school-bound administrator is restricted to their own school.
@@ -562,15 +569,17 @@ router.post('/:id/promotion', requireRole('admin', 'teacher'), async (req, res) 
 
   const fromClass = membership.report_class_name;
 
-  // Primary 6 -> JSS 1 crosses the primary/secondary school-code boundary.
-  // Keep the original primary student and any online account/history intact;
-  // create a separate report-only secondary identity for the promoted class.
-  if (crossSchoolPromotion) {
+  // A declared cross-school promotion (today only Primary 6 -> JSS 1, crossing
+  // the primary/secondary school-code boundary). Keep the original student and
+  // any online account/history intact; create a separate report-only identity
+  // in the destination school for the promoted class.
+  if (crossSchoolTarget) {
     // Defense in depth: any promotion that leaves the student's school is
-    // administrator-only here too, independent of the earlier teacher refusal.
-    if (user.role !== 'admin') {
+    // administrator-only here too, independent of the earlier refusal.
+    if (destinationSchoolCode !== membership.school_code && user.role !== 'admin') {
       return res.status(403).json({ error: 'Cross-school promotion is administrator-only.' });
     }
+    const schoolLabel = (code: string) => code.charAt(0).toUpperCase() + code.slice(1);
     const promoted = await withTransaction(async (client) => {
       await client.query(
         "SELECT pg_advisory_xact_lock(hashtext('physical-roster-cross-section'), hashtext($1))",
@@ -585,49 +594,51 @@ router.post('/:id/promotion', requireRole('admin', 'teacher'), async (req, res) 
         [membership.id],
       );
       const locked = lockedRows[0];
-      if (!locked || locked.status !== 'active' || locked.school_code !== 'primary' || locked.class_name !== 'Primary 6') {
+      if (!locked || locked.status !== 'active' ||
+          locked.school_code !== crossSchoolTarget.fromSchool || locked.class_name !== crossSchoolTarget.fromClass) {
         return { ok: false as const, status: 409, error: 'Student placement changed; refresh the class roster and try again.' };
       }
       const { rows: duplicateRows } = await client.query(
         `SELECT s.id FROM students s
           JOIN report_roster_memberships rrm ON rrm.student_id=s.id
-          WHERE s.school_code='secondary' AND s.deleted_at IS NULL
+          WHERE s.school_code=$2 AND s.deleted_at IS NULL
             AND lower(regexp_replace(trim(s.full_name),'[[:space:]]+',' ','g')) =
                 lower(regexp_replace(trim($1),'[[:space:]]+',' ','g'))
           LIMIT 1`,
-        [locked.full_name],
+        [locked.full_name, crossSchoolTarget.toSchool],
       );
       if (duplicateRows.length) {
-        return { ok: false as const, status: 409, error: 'A student with this name already exists in Secondary. Ask an administrator to reconcile the identity before promotion.' };
+        return { ok: false as const, status: 409, error: `A student with this name already exists in ${schoolLabel(crossSchoolTarget.toSchool)}. Ask an administrator to reconcile the identity before promotion.` };
       }
       const { rows: targetClasses } = await client.query(
-        "SELECT name FROM classes WHERE school_code='secondary' AND name='JSS 1' LIMIT 1",
+        'SELECT name FROM classes WHERE school_code=$1 AND name=$2 LIMIT 1',
+        [crossSchoolTarget.toSchool, crossSchoolTarget.toClass],
       );
       if (!targetClasses[0]) {
-        return { ok: false as const, status: 409, error: 'Secondary JSS 1 is not configured. Ask an administrator to configure the class before promotion.' };
+        return { ok: false as const, status: 409, error: `${schoolLabel(crossSchoolTarget.toSchool)} ${crossSchoolTarget.toClass} is not configured. Ask an administrator to configure the class before promotion.` };
       }
       const toClass = targetClasses[0].name as string;
       const { rows: newStudents } = await client.query(
         `INSERT INTO students(full_name, class_name, school_code)
-         VALUES($1,$2,'secondary') RETURNING id`,
-        [locked.full_name, toClass],
+         VALUES($1,$2,$3) RETURNING id`,
+        [locked.full_name, toClass, crossSchoolTarget.toSchool],
       );
       const newStudentId = String(newStudents[0].id);
       const { rows: removedRows } = await client.query(
         `UPDATE report_roster_memberships
             SET status='removed', removed_at=now(), changed_by=$1, updated_at=now()
-          WHERE student_id=$2 AND status='active' AND class_name='Primary 6'
+          WHERE student_id=$2 AND status='active' AND class_name=$3
           RETURNING student_id`,
-        [user.id, membership.id],
+        [user.id, membership.id, crossSchoolTarget.fromClass],
       );
-      if (!removedRows[0]) throw new Error('Primary report-roster membership changed during cross-section promotion');
+      if (!removedRows[0]) throw new Error('Source report-roster membership changed during cross-school promotion');
       await client.query(
         `INSERT INTO report_roster_membership_events
            (student_id,event_type,from_class_name,actor_id,details)
          VALUES($1,'removed',$2,$3,$4::jsonb)`,
         [membership.id, fromClass, user.id, JSON.stringify({
-          reason: 'promoted_to_secondary',
-          to_school_code: 'secondary',
+          reason: `promoted_to_${crossSchoolTarget.toSchool}`,
+          to_school_code: crossSchoolTarget.toSchool,
           to_class_name: toClass,
           destination_student_id: newStudentId,
           actor_role: user.role,
@@ -646,23 +657,23 @@ router.post('/:id/promotion', requireRole('admin', 'teacher'), async (req, res) 
         [newStudentId, toClass, user.id, JSON.stringify({
           source: 'cross_section_promotion',
           source_student_id: membership.id,
-          from_school_code: 'primary',
+          from_school_code: crossSchoolTarget.fromSchool,
           from_class_name: fromClass,
           actor_role: user.role,
         })],
       );
       await auditInTransaction(
         client, user, 'promote_report_roster_student', 'student', membership.id,
-        'physical report-roster student promoted from Primary to Secondary',
-        auditContextFromRequest(req, { schoolCode: 'primary', metadata: {
-          from_class: fromClass, to_class: toClass, to_school_code: 'secondary',
+        `physical report-roster student promoted from ${schoolLabel(crossSchoolTarget.fromSchool)} to ${schoolLabel(crossSchoolTarget.toSchool)}`,
+        auditContextFromRequest(req, { schoolCode: crossSchoolTarget.fromSchool, metadata: {
+          from_class: fromClass, to_class: toClass, to_school_code: crossSchoolTarget.toSchool,
           destination_student_id: newStudentId, actor_role: user.role,
         } }),
       );
       await auditInTransaction(
         client, user, 'enrol_promoted_report_student', 'student', newStudentId,
-        'new Secondary physical report identity created after promotion',
-        auditContextFromRequest(req, { schoolCode: 'secondary', metadata: {
+        `new ${schoolLabel(crossSchoolTarget.toSchool)} physical report identity created after promotion`,
+        auditContextFromRequest(req, { schoolCode: crossSchoolTarget.toSchool, metadata: {
           source_student_id: membership.id, class_name: toClass, actor_role: user.role,
           online_account_created: false,
         } }),
