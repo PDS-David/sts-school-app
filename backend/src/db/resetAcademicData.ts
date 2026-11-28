@@ -43,8 +43,88 @@
 //
 // Every mode requires --yes to actually execute; without it, this only
 // reports what it found.
+//
+// ── Progression-decision history (report_roster_progression_decisions) ────
+// Progression decisions (promoted / retained / removed) are a permanent,
+// append-only audit record. They reference students, schools and terms with
+// ON DELETE RESTRICT, so:
+//   --term and --session  never delete term or student rows, so they cannot
+//                          touch progression history and are unaffected.
+//   --new-session          deletes term rows. If ANY progression decision
+//                          references those terms it is REFUSED, before
+//                          anything is deleted (dry runs report it too).
+//   --include-students     deletes student rows. If ANY progression decision
+//                          belongs to those students it is REFUSED the same way.
+// There is intentionally no flag to delete or bypass this history. The
+// destructive part of --new-session runs in a single transaction and repeats
+// the check inside it, so a decision recorded while the reset is running, or
+// any other foreign key that blocks a delete, rolls the whole reset back
+// instead of leaving it half-applied.
 
-import { query, pool } from './pool.js';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { query, pool, withTransaction } from './pool.js';
+
+const PROGRESSION_TABLE = 'report_roster_progression_decisions';
+
+/** The reset would damage, or cannot safely get past, protected history. Nothing was changed. */
+export class AcademicResetRefusal extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'AcademicResetRefusal';
+  }
+}
+
+type Db = { query(text: string, params?: unknown[]): Promise<{ rows: any[] }> };
+
+export interface ProgressionBlockers {
+  byTerm: { decisions: number; students: number };
+  byStudent: { decisions: number; students: number };
+}
+
+/**
+ * Returns what progression history stands in the way of deleting the given
+ * terms (and, with includeStudents, the school's students), or null when
+ * nothing does. A database that predates the progression table has no history
+ * to protect.
+ */
+export async function findProgressionHistoryBlockers(
+  db: Db, schoolCode: string, termIds: number[], includeStudents: boolean,
+): Promise<ProgressionBlockers | null> {
+  const { rows: present } = await db.query('SELECT to_regclass($1) IS NOT NULL AS present', [`public.${PROGRESSION_TABLE}`]);
+  if (!present[0].present) return null;
+  const none = { decisions: 0, students: 0 };
+  const byTerm = termIds.length
+    ? (await db.query(
+        `SELECT count(*)::int AS decisions, count(DISTINCT student_id)::int AS students
+           FROM public.${PROGRESSION_TABLE} WHERE term_id = ANY($1)`, [termIds])).rows[0]
+    : none;
+  const byStudent = includeStudents
+    ? (await db.query(
+        `SELECT count(*)::int AS decisions, count(DISTINCT d.student_id)::int AS students
+           FROM public.${PROGRESSION_TABLE} d JOIN students s ON s.id = d.student_id
+          WHERE s.school_code = $1`, [schoolCode])).rows[0]
+    : none;
+  return byTerm.decisions || byStudent.decisions ? { byTerm, byStudent } : null;
+}
+
+function progressionRefusalMessage(schoolCode: string, oldYear: string, b: ProgressionBlockers): string {
+  const reasons: string[] = [];
+  if (b.byTerm.decisions) {
+    reasons.push(`${b.byTerm.decisions} progression decision(s) for ${b.byTerm.students} student(s) are recorded against the term(s) of ${schoolCode} ${oldYear}`);
+  }
+  if (b.byStudent.decisions) {
+    reasons.push(`${b.byStudent.decisions} progression decision(s) belong to ${b.byStudent.students} student(s) of ${schoolCode} that --include-students would delete`);
+  }
+  return [
+    `Refusing --new-session for ${schoolCode} ${oldYear}: ${reasons.join('; ')}.`,
+    `Progression decisions are a permanent, append-only audit record (${PROGRESSION_TABLE}). Deleting the terms or students they reference is blocked by RESTRICT foreign keys, and this script has no option to delete or bypass that history.`,
+    'NOTHING WAS CHANGED.',
+    `Instead, use "--session ${schoolCode} ${oldYear}" to clear scores, attendance and class records while keeping the term rows` +
+      (b.byStudent.decisions ? ', and do not pass --include-students (promotion edits a student, it does not require deleting one)' : '') +
+      ', then create the new academic year\'s terms alongside the old ones.',
+  ].join('\n');
+}
 
 function parseArgs(argv: string[]) {
   const yes = argv.includes('--yes');
@@ -70,7 +150,7 @@ async function clearDataForTermIds(termIds: number[]) {
   await query('DELETE FROM class_records WHERE term_id = ANY($1)', [termIds]);
 }
 
-async function runTermMode(termIdStr: string, yes: boolean) {
+export async function runTermMode(termIdStr: string, yes: boolean) {
   const termId = Number(termIdStr);
   if (!Number.isInteger(termId)) throw new Error(`--term needs a numeric term id, got "${termIdStr}"`);
   const { rows } = await query('SELECT id,name,academic_year,school_code FROM terms WHERE id=$1', [termId]);
@@ -85,7 +165,7 @@ async function runTermMode(termIdStr: string, yes: boolean) {
   console.log('\n✓ Cleared.');
 }
 
-async function runSessionMode(schoolCode: string, academicYear: string, yes: boolean) {
+export async function runSessionMode(schoolCode: string, academicYear: string, yes: boolean) {
   const { rows } = await query(
     'SELECT id,name FROM terms WHERE school_code=$1 AND academic_year=$2', [schoolCode, academicYear],
   );
@@ -99,11 +179,17 @@ async function runSessionMode(schoolCode: string, academicYear: string, yes: boo
   console.log('\n✓ Cleared.');
 }
 
-async function runNewSessionMode(schoolCode: string, oldYear: string, includeStudents: boolean, yes: boolean) {
+export async function runNewSessionMode(schoolCode: string, oldYear: string, includeStudents: boolean, yes: boolean) {
   const { rows: termRows } = await query(
     'SELECT id,name FROM terms WHERE school_code=$1 AND academic_year=$2', [schoolCode, oldYear],
   );
   const termIds = termRows.map(r => r.id);
+
+  // Refuse up front, before reporting or deleting anything, if progression
+  // history references what this mode deletes (see the header comment).
+  const blocked = await findProgressionHistoryBlockers(pool, schoolCode, termIds, includeStudents);
+  if (blocked) throw new AcademicResetRefusal(progressionRefusalMessage(schoolCode, oldYear, blocked));
+
   const counts = await countForTermIds(termIds);
 
   // Bug found in a live test run of this exact mode: scores/attendance/
@@ -142,13 +228,32 @@ async function runNewSessionMode(schoolCode: string, oldYear: string, includeStu
   // before the term rows only in the sense that they're scoped by term_id,
   // not because of any FK ordering requirement — CASCADE handles the
   // scores/attendance/class_records side regardless of order.
-  await query('DELETE FROM materials WHERE term_id = ANY($1)', [termIds]);
-  await query('DELETE FROM questions WHERE term_id = ANY($1)', [termIds]);
-  await query('DELETE FROM assessments WHERE term_id = ANY($1)', [termIds]);
-  await query('DELETE FROM invoices WHERE term_id = ANY($1)', [termIds]);
-  await query('DELETE FROM terms WHERE id = ANY($1)', [termIds]); // cascades scores/attendance/class_records per schema.sql
-  if (includeStudents) {
-    await query('DELETE FROM students WHERE school_code=$1', [schoolCode]); // cascades scores/attendance/class_records/etc for any stragglers
+  // One transaction: if anything below is blocked (history recorded since the
+  // check above, or any other protective foreign key) the whole reset rolls
+  // back, rather than leaving materials/questions/assessments/invoices already
+  // deleted while the term rows remain.
+  try {
+    await withTransaction(async (client) => {
+      const again = await findProgressionHistoryBlockers(client, schoolCode, termIds, includeStudents);
+      if (again) throw new AcademicResetRefusal(progressionRefusalMessage(schoolCode, oldYear, again));
+      await client.query('DELETE FROM materials WHERE term_id = ANY($1)', [termIds]);
+      await client.query('DELETE FROM questions WHERE term_id = ANY($1)', [termIds]);
+      await client.query('DELETE FROM assessments WHERE term_id = ANY($1)', [termIds]);
+      await client.query('DELETE FROM invoices WHERE term_id = ANY($1)', [termIds]);
+      await client.query('DELETE FROM terms WHERE id = ANY($1)', [termIds]); // cascades scores/attendance/class_records per schema.sql
+      if (includeStudents) {
+        await client.query('DELETE FROM students WHERE school_code=$1', [schoolCode]); // cascades scores/attendance/class_records/etc for any stragglers
+      }
+    });
+  } catch (e: any) {
+    if (e?.code === '23503') {
+      throw new AcademicResetRefusal(
+        `Reset aborted and fully rolled back - NOTHING WAS CHANGED. A foreign key protects data this reset would have deleted ` +
+        `(constraint "${e.constraint ?? 'unknown'}" on table "${e.table ?? 'unknown'}"${e.detail ? `: ${e.detail}` : ''}). ` +
+        'This script has no option to delete or bypass protected history.',
+      );
+    }
+    throw e;
   }
   console.log('\n✓ Cleared. Create the new session\'s 1st Term via Admin > Terms (or a fresh import script) to continue.');
 }
@@ -173,4 +278,11 @@ Always run once WITHOUT --yes first to see exactly what would be deleted.`);
   await pool.end();
 }
 
-main().catch((e) => { console.error(e); process.exit(1); });
+// Only run when executed directly, so the modes above can be imported and tested.
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch((e) => {
+    if (e instanceof AcademicResetRefusal) console.error(`\nRESET REFUSED\n${e.message}`);
+    else console.error(e);
+    process.exit(1);
+  });
+}
