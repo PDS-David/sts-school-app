@@ -11,7 +11,7 @@ export default function TeacherMoreScreen({ navigation }: any) {
 
   const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string; onPress?: () => void }[] = [
     { icon: 'document-text-outline', label: 'Review Questions', sub: 'Approve or reject questions for your assigned subjects', onPress: () => navigation.navigate('TeacherQuestionReview') },
-    { icon: 'settings-outline', label: 'Change PIN', sub: 'Change your six-digit PIN', onPress: () => navigation.navigate('ChangePin') },
+    { icon: 'settings-outline', label: 'Change PIN', sub: 'Change your six-digit PIN', onPress: () => navigation.navigate('ChangePin', { voluntary: true }) },
   ];
 
   return (
