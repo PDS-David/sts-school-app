@@ -13,7 +13,7 @@ after(async () => {
   await pool.end();
 });
 
-test('only administrators execute physical report-roster decisions and append history', async () => {
+test('administrators execute all physical report-roster decisions and teachers a permitted subset, with append-only history', async () => {
   const suffix = randomUUID();
   const schoolCode = `roster_${suffix.slice(0, 12)}`;
   await query('INSERT INTO schools(code,name) VALUES($1,$2)', [schoolCode, `Roster Lifecycle School ${suffix}`]);
@@ -130,36 +130,34 @@ test('only administrators execute physical report-roster decisions and append hi
       assigned_subject_ids: [],
     });
     const teacherHeaders = { Authorization: `Bearer ${teacherToken}`, 'Content-Type': 'application/json' };
-    for (const [studentId, action] of [
-      [studentIds[1], 'retain'],
-      [studentIds[6], 'promote'],
-      [studentIds[7], 'remove'],
-      [studentIds[1], 'demote'],
-      [studentIds[3], 'reinstate'],
-      [studentIds[0], 'remove'],
+    const teacherDecide = (studentId: string, action: string) => fetch(`${baseUrl}/${studentId}/promotion`, {
+      method: 'POST', headers: teacherHeaders, body: JSON.stringify({ action }),
+    });
+    // Teachers may promote, retain or remove within their assigned class...
+    assert.equal((await teacherDecide(studentIds[1], 'retain')).status, 200, 'teacher can retain in the assigned class');
+    assert.equal((await teacherDecide(studentIds[6], 'promote')).status, 200, 'teacher can promote in the assigned class');
+    assert.equal((await teacherDecide(studentIds[7], 'remove')).status, 200, 'teacher can remove in the assigned class');
+    // ...but demotion and reinstatement stay administrator-only, and a student
+    // already moved out of the teacher's class (studentIds[0] is now Primary 5) is out of scope.
+    for (const [studentId, action, expected] of [
+      [studentIds[1], 'demote', 403],
+      [studentIds[3], 'reinstate', 403],
+      [studentIds[0], 'remove', 404],
     ] as const) {
-      const teacherDecision = await fetch(`${baseUrl}/${studentId}/promotion`, {
-        method: 'POST', headers: teacherHeaders, body: JSON.stringify({ action }),
-      });
-      assert.equal(teacherDecision.status, 403,
-        `teachers cannot perform the ${action} physical-roster decision, even within an assigned class`);
+      const teacherDecision = await teacherDecide(studentId, action);
+      assert.equal(teacherDecision.status, expected, `teacher ${action} must be rejected`);
     }
-    const { rows: unchangedTeacherTargets } = await query(
+    const { rows: teacherTargets } = await query(
       'SELECT student_id,class_name,status FROM report_roster_memberships WHERE student_id=ANY($1::uuid[])',
-      [[studentIds[1], studentIds[6], studentIds[7]]],
+      [[studentIds[0], studentIds[1], studentIds[3], studentIds[6], studentIds[7]]],
     );
-    assert.equal(unchangedTeacherTargets.find(row => row.student_id === studentIds[1])?.status, 'active',
-      'rejected teacher retention must leave roster status unchanged');
-    assert.equal(unchangedTeacherTargets.find(row => row.student_id === studentIds[6])?.class_name, 'Primary 4',
-      'rejected teacher promotion must leave class placement unchanged');
-    assert.equal(unchangedTeacherTargets.find(row => row.student_id === studentIds[7])?.status, 'active',
-      'rejected teacher removal must leave roster status unchanged');
-    const adminPromoteAfterTeacherDenial = await decide(studentIds[6], 'promote');
-    assert.equal(adminPromoteAfterTeacherDenial.status, 200,
-      'administrator can promote after a teacher request was denied');
-    const adminRemoveAfterTeacherDenial = await decide(studentIds[7], 'remove');
-    assert.equal(adminRemoveAfterTeacherDenial.status, 200,
-      'administrator can remove after a teacher request was denied');
+    const target = (id: string) => teacherTargets.find(row => row.student_id === id);
+    assert.equal(target(studentIds[0])?.class_name, 'Primary 5', 'a rejected out-of-class removal leaves placement unchanged');
+    assert.equal(target(studentIds[0])?.status, 'active');
+    assert.equal(target(studentIds[1])?.class_name, 'Primary 4', 'a rejected demotion leaves placement unchanged');
+    assert.equal(target(studentIds[3])?.status, 'active', 'a rejected reinstatement leaves status unchanged');
+    assert.equal(target(studentIds[6])?.class_name, 'Primary 5', 'teacher promotion moved the student');
+    assert.equal(target(studentIds[7])?.status, 'removed', 'teacher removal changed the roster status');
     const teacherRemoved = await fetch(`${baseUrl}/report-roster/removed`, {
       headers: { Authorization: `Bearer ${teacherToken}` },
     });

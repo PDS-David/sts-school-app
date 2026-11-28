@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import api from '../api/client';
 import { Card, Btn, Loader, Empty } from '../components/UI';
@@ -6,6 +6,7 @@ import { Colors, Spacing, Fonts } from '../theme';
 import { useAuth } from '../api/AuthContext';
 import { PageContainer, useIsWide } from '../components/layout';
 import { ConfirmDialog } from '../components/ConfirmDialog';
+import { promotionClassOptions, resolveSelectedClass, studentsInClass } from '../utils/promotionClasses';
 
 interface StudentRow {
   id: string;
@@ -17,41 +18,67 @@ interface StudentRow {
 type PlacementAction = 'promote' | 'retain' | 'remove';
 
 // Start- and end-of-session physical report-roster decisions for the teacher's
-// own assigned class. Teachers may promote, retain or remove; demotion and
-// reinstatement remain administrator-only. These actions never change the
-// independent online-learning identity or historical academic records.
+// own assigned classes. A teacher with several classes picks one class at a time;
+// only that class's students are listed and every decision names that class so
+// the server can refuse it if the student has since moved. Teachers may promote,
+// retain or remove; demotion and reinstatement remain administrator-only. These
+// actions never change the independent online-learning identity or historical
+// academic records.
 export default function PromoteStudentsScreen() {
   const isWide = useIsWide();
   const { user } = useAuth();
+  const classOptions = promotionClassOptions(user);
+  const classKey = classOptions.join('|');
+  const [pickedClass, setPickedClass] = useState<string | null>(null);
+  const selectedClass = resolveSelectedClass(classOptions, pickedClass);
   const [students, setStudents] = useState<StudentRow[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [loadError, setLoadError] = useState('');
   const [busyId, setBusyId] = useState<string | null>(null);
   const [confirm, setConfirm] = useState<{ student: StudentRow; action: PlacementAction } | null>(null);
   const [info, setInfo] = useState<{ title: string; message: string } | null>(null);
+  const requestSeq = useRef(0);
+
+  const chooseClass = (className: string) => {
+    if (busyId !== null || className === selectedClass) return;
+    // Never carry a pending decision, message or roster across classes.
+    requestSeq.current += 1;
+    setConfirm(null);
+    setInfo(null);
+    setStudents([]);
+    setLoadError('');
+    setPickedClass(className);
+  };
 
   const fetchRoster = useCallback(() => {
-    if (!user?.assigned_class) {
-      setStudents([]);
+    const seq = ++requestSeq.current;
+    setStudents([]);
+    setConfirm(null);
+    if (!selectedClass) {
       setLoading(false);
+      setLoadError('');
       return;
     }
     setLoading(true);
     setLoadError('');
-    api.get('/students')
-      .then(({ data }) => setStudents(data.students ?? []))
-      .catch((e: any) => {
-        setLoadError(e?.response?.data?.error ?? 'Could not load your assigned-class rosters. Check your connection and retry.');
+    api.get('/students', { params: { class_name: selectedClass } })
+      .then(({ data }) => {
+        if (seq !== requestSeq.current) return; // a newer class selection superseded this response
+        setStudents(studentsInClass<StudentRow>(data.students ?? [], selectedClass));
       })
-      .finally(() => setLoading(false));
-  }, [user?.assigned_class, user?.assigned_class_names?.join('|')]);
+      .catch((e: any) => {
+        if (seq !== requestSeq.current) return;
+        setLoadError(e?.response?.data?.error ?? 'Could not load the class roster. Check your connection and retry.');
+      })
+      .finally(() => { if (seq === requestSeq.current) setLoading(false); });
+  }, [selectedClass, classKey]);
 
   useEffect(() => { fetchRoster(); }, [fetchRoster]);
 
   const runAction = async (student: StudentRow, action: PlacementAction) => {
     setBusyId(student.id);
     try {
-      const { data } = await api.post(`/students/${student.id}/promotion`, { action });
+      const { data } = await api.post(`/students/${student.id}/promotion`, { action, expected_class_name: selectedClass });
       setStudents(prev => prev.filter(s => s.id !== student.id));
       if (action === 'retain') {
         setInfo({
@@ -74,23 +101,14 @@ export default function PromoteStudentsScreen() {
         title: 'Could not do that',
         message: e?.response?.data?.error ?? 'Check your connection and try again.',
       });
+      if (e?.response?.status === 409) fetchRoster(); // placement changed elsewhere; reload this class
     } finally {
       setBusyId(null);
       setConfirm(null);
     }
   };
 
-  if (loading) return <Loader />;
-  if (loadError) {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', padding: Spacing.md, backgroundColor: Colors.background }}>
-        <Empty message={loadError} />
-        <Btn label='Retry class roster' variant='outline' onPress={() => fetchRoster()} />
-      </View>
-    );
-  }
-
-  const noClassAssigned = !user?.assigned_class;
+  const noClassAssigned = classOptions.length === 0;
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
@@ -109,51 +127,88 @@ export default function PromoteStudentsScreen() {
           </Card>
         </PageContainer>
       ) : (
-        <FlatList
-          data={students}
-          keyExtractor={student => student.id}
-          removeClippedSubviews={false}
-          ListEmptyComponent={<Empty message='No active students left to decide on' />}
-          contentContainerStyle={{
-            padding: Spacing.md,
-            paddingTop: Spacing.sm,
-            ...(isWide ? { alignItems: 'center' as const } : null),
-          }}
-          renderItem={({ item: student }) => (
-            <PageContainer style={{ width: '100%' }}>
-              <Card style={styles.row}>
-                <Text style={styles.name}>{student.full_name}</Text>
-                {!!student.admission_number && <Text style={styles.sub}>{student.admission_number}</Text>}
-                <View style={styles.actions}>
+        <>
+          {classOptions.length > 1 && (
+            <PageContainer style={{ paddingHorizontal: Spacing.md }}>
+              <Text style={styles.selectorLabel}>Select a class</Text>
+              <View style={styles.selectorRow}>
+                {classOptions.map(className => (
                   <Btn
-                    label='Retain'
-                    variant='ghost'
-                    loading={busyId === student.id}
+                    key={className}
+                    label={className}
+                    variant={className === selectedClass ? 'primary' : 'outline'}
                     disabled={busyId !== null}
-                    onPress={() => setConfirm({ student, action: 'retain' })}
-                    style={styles.actionBtn}
+                    onPress={() => chooseClass(className)}
+                    accessibilityLabel={`${className}${className === selectedClass ? ', selected' : ''}`}
+                    style={styles.selectorBtn}
                   />
-                  <Btn
-                    label='Promote'
-                    variant='primary'
-                    loading={busyId === student.id}
-                    disabled={busyId !== null}
-                    onPress={() => setConfirm({ student, action: 'promote' })}
-                    style={styles.actionBtn}
-                  />
-                  <Btn
-                    label='Remove'
-                    variant='outline'
-                    loading={busyId === student.id}
-                    disabled={busyId !== null}
-                    onPress={() => setConfirm({ student, action: 'remove' })}
-                    style={styles.actionBtn}
-                  />
-                </View>
-              </Card>
+                ))}
+              </View>
             </PageContainer>
           )}
-        />
+          {!selectedClass ? (
+            <PageContainer style={{ padding: Spacing.md }}>
+              <Card>
+                <Text style={styles.explainer}>Choose one of your classes above to see its students.</Text>
+              </Card>
+            </PageContainer>
+          ) : loading ? (
+            <Loader />
+          ) : loadError ? (
+            <View style={{ flex: 1, justifyContent: 'center', padding: Spacing.md }}>
+              <Empty message={loadError} />
+              <Btn label='Retry class roster' variant='outline' onPress={() => fetchRoster()} />
+            </View>
+          ) : (
+            <FlatList
+              key={selectedClass}
+              data={students}
+              keyExtractor={student => student.id}
+              removeClippedSubviews={false}
+              ListHeaderComponent={classOptions.length > 1 ? <Text style={styles.classHeading}>{selectedClass}</Text> : null}
+              ListEmptyComponent={<Empty message={`No active students left to decide on in ${selectedClass}`} />}
+              contentContainerStyle={{
+                padding: Spacing.md,
+                paddingTop: Spacing.sm,
+                ...(isWide ? { alignItems: 'center' as const } : null),
+              }}
+              renderItem={({ item: student }) => (
+                <PageContainer style={{ width: '100%' }}>
+                  <Card style={styles.row}>
+                    <Text style={styles.name}>{student.full_name}</Text>
+                    {!!student.admission_number && <Text style={styles.sub}>{student.admission_number}</Text>}
+                    <View style={styles.actions}>
+                      <Btn
+                        label='Retain'
+                        variant='ghost'
+                        loading={busyId === student.id}
+                        disabled={busyId !== null}
+                        onPress={() => setConfirm({ student, action: 'retain' })}
+                        style={styles.actionBtn}
+                      />
+                      <Btn
+                        label='Promote'
+                        variant='primary'
+                        loading={busyId === student.id}
+                        disabled={busyId !== null}
+                        onPress={() => setConfirm({ student, action: 'promote' })}
+                        style={styles.actionBtn}
+                      />
+                      <Btn
+                        label='Remove'
+                        variant='outline'
+                        loading={busyId === student.id}
+                        disabled={busyId !== null}
+                        onPress={() => setConfirm({ student, action: 'remove' })}
+                        style={styles.actionBtn}
+                      />
+                    </View>
+                  </Card>
+                </PageContainer>
+              )}
+            />
+          )}
+        </>
       )}
 
       {confirm && (
@@ -191,6 +246,10 @@ const styles = StyleSheet.create({
   row: { marginBottom: Spacing.sm, width: '100%' },
   name: { fontSize: Fonts.sizes.md, fontWeight: '700', color: Colors.text },
   sub: { fontSize: Fonts.sizes.xs, color: Colors.textSub, marginTop: 2 },
+  selectorLabel: { fontSize: Fonts.sizes.sm, fontWeight: '700', color: Colors.text, marginBottom: Spacing.xs },
+  selectorRow: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.sm, marginBottom: Spacing.sm },
+  selectorBtn: { paddingVertical: 8, paddingHorizontal: Spacing.md },
+  classHeading: { fontSize: Fonts.sizes.md, fontWeight: '700', color: Colors.text, marginBottom: Spacing.sm },
   actions: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.sm, marginTop: Spacing.sm },
   actionBtn: { flex: 1, minWidth: '30%', paddingVertical: 8 },
 });
