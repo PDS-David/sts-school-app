@@ -989,3 +989,256 @@ test('D2: school-bound administrators are held to the allocation rule and keep t
     }
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Audit finding D3: POST /admin/users/:id/approve must not clear
+// pending_admin_review on a teacher whose allocation is missing or invalid.
+//   * class teacher: needs a valid primary class in the teacher's school;
+//   * subject teacher: needs >=1 valid class, >=1 subject and >=1 valid
+//     class/subject grant (the same minimum as POST and, since #1069, PUT);
+//   * a rejected approval is HTTP 400 and changes nothing;
+//   * students, parents and finance administrators are not affected.
+// ─────────────────────────────────────────────────────────────────────────────
+
+async function approveUser(userId: string, token = adminToken) {
+  return fetch(`${baseUrl}/admin/users/${userId}/approve`, {
+    method: 'POST',
+    headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' },
+    body: '{}',
+  });
+}
+
+async function createPendingUser(
+  f: AssignmentFixture,
+  role: 'teacher' | 'student' | 'parent' | 'finance_admin',
+  opts: { school?: string; assignedClass?: string | null; classNames?: string[] } = {},
+): Promise<string> {
+  const { rows } = await query(
+    `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,assigned_class_names,is_active,pending_admin_review)
+     VALUES($1,'test-hash',$2,$3,$4,$5,$6::text[],TRUE,TRUE) RETURNING id`,
+    [`bsec5-d3-${role}-${unique()}`, role, `BSEC5 D3 ${role}`, opts.school ?? 'primary', opts.assignedClass ?? null, opts.classNames ?? []],
+  );
+  const id = String(rows[0].id);
+  f.teachers.push(id);
+  return id;
+}
+
+async function addSubjectRows(userId: string, subjectIds: number[]) {
+  for (const sid of subjectIds) await query('INSERT INTO teacher_subjects(user_id,subject_id) VALUES($1,$2)', [userId, sid]);
+}
+
+async function addGrantRow(userId: string, schoolCode: string, className: string, subjectId: number) {
+  await query(
+    `INSERT INTO teacher_class_subjects(user_id,class_id,subject_id,created_by)
+     SELECT $1,c.id,$3,$4 FROM classes c WHERE c.school_code=$2 AND c.name=$5`,
+    [userId, schoolCode, subjectId, adminId, className],
+  );
+}
+
+async function approvalSnapshot(userId: string) {
+  const { rows } = await query(
+    `SELECT role,is_active,school_code,assigned_class,assigned_class_names,can_manage_all_schools,
+            pending_admin_review,access_expires_at,must_change_pw,must_set_pin
+     FROM users WHERE id=$1`,
+    [userId],
+  );
+  const { rows: audit } = await query(
+    `SELECT count(*)::int AS n FROM audit_log WHERE action='approve_self_registered_user' AND entity_id=$1`,
+    [userId],
+  );
+  return { user: rows[0], assignment: await readAssignment(userId), approvalAuditRows: audit[0].n as number };
+}
+
+async function expectRejectedAndUnchanged(userId: string, label: string, token = adminToken) {
+  const before = await approvalSnapshot(userId);
+  assert.equal(before.user.pending_admin_review, true, `${label}: fixture must start pending`);
+  const response = await approveUser(userId, token);
+  assert.equal(response.status, 400, `${label}: approval must be rejected with 400`);
+  assert.ok(((await response.json()) as { error: string }).error, `${label}: a reason must be returned`);
+  assert.deepEqual(await approvalSnapshot(userId), before, `${label}: a rejected approval must change nothing and stay pending`);
+}
+
+test('D3: a pending teacher with no allocation at all cannot be approved', async () => {
+  await withAssignmentFixture(async (f) => {
+    const teacherId = await createPendingUser(f, 'teacher');
+    await expectRejectedAndUnchanged(teacherId, 'no allocation');
+  });
+});
+
+test('D3: a pending subject teacher missing classes, subjects or grants cannot be approved', async () => {
+  await withAssignmentFixture(async (f) => {
+    // Subjects but no classes.
+    const noClasses = await createPendingUser(f, 'teacher');
+    await addSubjectRows(noClasses, [f.subject1]);
+    await expectRejectedAndUnchanged(noClasses, 'subjects but no classes');
+
+    // Classes but no subjects.
+    const noSubjects = await createPendingUser(f, 'teacher', { classNames: [f.classA] });
+    await expectRejectedAndUnchanged(noSubjects, 'classes but no subjects');
+
+    // Classes and subjects but no class/subject grant.
+    const noGrants = await createPendingUser(f, 'teacher', { classNames: [f.classA] });
+    await addSubjectRows(noGrants, [f.subject1]);
+    await expectRejectedAndUnchanged(noGrants, 'classes and subjects but no grant');
+  });
+});
+
+test('D3: a pending subject teacher with only invalid grants or references cannot be approved', async () => {
+  await withAssignmentFixture(async (f) => {
+    const suffix = unique();
+    const foreignClass = `BSEC5 D3 Foreign Class ${suffix}`;
+    const foreignSubject = await createSubject(`BSEC5 D3 Foreign Subject ${suffix}`, 'secondary');
+    await query('INSERT INTO classes(school_code,name) VALUES($1,$2)', ['secondary', foreignClass]);
+    try {
+      // Grant for a class the teacher is not assigned to.
+      const wrongClass = await createPendingUser(f, 'teacher', { classNames: [f.classA] });
+      await addSubjectRows(wrongClass, [f.subject1]);
+      await addGrantRow(wrongClass, 'primary', f.classB, f.subject1);
+      await expectRejectedAndUnchanged(wrongClass, 'grant for an unassigned class');
+
+      // Grant for a subject the teacher is not assigned to.
+      const wrongSubject = await createPendingUser(f, 'teacher', { classNames: [f.classA] });
+      await addSubjectRows(wrongSubject, [f.subject1]);
+      await addGrantRow(wrongSubject, 'primary', f.classA, f.subject2);
+      await expectRejectedAndUnchanged(wrongSubject, 'grant for an unassigned subject');
+
+      // Assigned class that does not exist in the teacher's school.
+      const missingClass = await createPendingUser(f, 'teacher', { classNames: ['No Such Class'] });
+      await addSubjectRows(missingClass, [f.subject1]);
+      await expectRejectedAndUnchanged(missingClass, 'assigned class not in the school');
+
+      // Class belonging to another school.
+      const otherSchoolClass = await createPendingUser(f, 'teacher', { classNames: [foreignClass] });
+      await addSubjectRows(otherSchoolClass, [f.subject1]);
+      await expectRejectedAndUnchanged(otherSchoolClass, 'class from another school');
+
+      // Subject belonging to another school.
+      const otherSchoolSubject = await createPendingUser(f, 'teacher', { classNames: [f.classA] });
+      await addSubjectRows(otherSchoolSubject, [foreignSubject]);
+      await expectRejectedAndUnchanged(otherSchoolSubject, 'subject from another school');
+    } finally {
+      await query('DELETE FROM users WHERE username LIKE $1', ['bsec5-d3-%']);
+      await query('DELETE FROM subjects WHERE id=$1', [foreignSubject]);
+      await query('DELETE FROM classes WHERE school_code=$1 AND name=$2', ['secondary', foreignClass]);
+    }
+  });
+});
+
+test('D3: a pending class teacher needs a valid primary class but no subject grants', async () => {
+  await withAssignmentFixture(async (f) => {
+    const missing = await createPendingUser(f, 'teacher', { assignedClass: 'No Such Class' });
+    await expectRejectedAndUnchanged(missing, 'primary class not in the school');
+
+    const valid = await createPendingUser(f, 'teacher', { assignedClass: f.classA });
+    const before = await approvalSnapshot(valid);
+    assert.equal(before.assignment.subject_ids.length, 0);
+    const response = await approveUser(valid);
+    assert.equal(response.status, 200, 'a class teacher must not be forced to have subject grants');
+    const after = await approvalSnapshot(valid);
+    assert.equal(after.user.pending_admin_review, false);
+    assert.equal(after.user.assigned_class, f.classA);
+    assert.deepEqual(after.assignment, before.assignment);
+    assert.equal(after.approvalAuditRows, 1);
+  });
+});
+
+test('D3: a properly allocated subject teacher is approved, and a rejected one can be approved once fixed', async () => {
+  await withAssignmentFixture(async (f) => {
+    const teacherId = await createPendingUser(f, 'teacher');
+    await expectRejectedAndUnchanged(teacherId, 'unallocated');
+
+    // The administrator completes the allocation through the existing edit route.
+    const edit = await putUser(teacherId, {
+      assigned_class_names: [f.classA, f.classB],
+      assigned_subject_ids: [f.subject1],
+      assigned_class_subjects: [{ class_name: f.classA, subject_id: f.subject1 }],
+    });
+    assert.equal(edit.status, 200);
+    assert.equal((await approvalSnapshot(teacherId)).user.pending_admin_review, true, 'editing allocations must not approve');
+    const before = await approvalSnapshot(teacherId);
+
+    const response = await approveUser(teacherId);
+    assert.equal(response.status, 200);
+    const after = await approvalSnapshot(teacherId);
+    assert.equal(after.user.pending_admin_review, false);
+    assert.deepEqual(after.assignment, before.assignment, 'approval must not alter allocations');
+    assert.equal(after.approvalAuditRows, 1);
+  });
+});
+
+test('D3: student, parent and finance administrator approvals are unchanged', async () => {
+  await withAssignmentFixture(async (f) => {
+    for (const role of ['student', 'parent'] as const) {
+      const id = await createPendingUser(f, role);
+      const response = await approveUser(id);
+      assert.equal(response.status, 200, `${role} approval must not require teacher allocations`);
+      assert.equal((await approvalSnapshot(id)).user.pending_admin_review, false);
+    }
+
+    const financeId = await createPendingUser(f, 'finance_admin');
+    const before = await approvalSnapshot(financeId);
+    const response = await approveUser(financeId);
+    assert.equal(response.status, 200, 'finance administrator approval must not require teacher allocations');
+    const after = await approvalSnapshot(financeId);
+    assert.equal(after.user.pending_admin_review, false);
+    assert.equal(after.user.role, 'finance_admin', 'approval must not change the role');
+    assert.deepEqual({ ...after.user, pending_admin_review: null }, { ...before.user, pending_admin_review: null },
+      'approval must not change any finance administrator permission field');
+    assert.deepEqual(after.assignment, before.assignment);
+  });
+});
+
+test('D3: a rejected teacher approval does not touch other pending accounts', async () => {
+  await withAssignmentFixture(async (f) => {
+    const teacherId = await createPendingUser(f, 'teacher');
+    const financeId = await createPendingUser(f, 'finance_admin');
+    const financeBefore = await approvalSnapshot(financeId);
+    await expectRejectedAndUnchanged(teacherId, 'teacher beside finance admin');
+    assert.deepEqual(await approvalSnapshot(financeId), financeBefore);
+    assert.equal(financeBefore.user.pending_admin_review, true);
+  });
+});
+
+test('D3: school-scope checks on approval are preserved', async () => {
+  await withAssignmentFixture(async (f) => {
+    const scopedUsername = `bsec5-d3-scoped-${unique()}`;
+    const { rows: scopedRows } = await query(
+      `INSERT INTO users(username,password_hash,role,full_name,school_code,is_active,pending_admin_review)
+       VALUES($1,'test-hash','admin','BSEC5 D3 Scoped Admin','primary',TRUE,FALSE) RETURNING id`,
+      [scopedUsername],
+    );
+    const scopedId = String(scopedRows[0].id);
+    const scopedToken = signAccess({
+      id: scopedId, username: scopedUsername, role: 'admin', school_code: 'primary', assigned_class: null, assigned_subject_ids: [],
+    });
+    const suffix = unique();
+    const foreignClass = `BSEC5 D3 Scope Class ${suffix}`;
+    const foreignSubject = await createSubject(`BSEC5 D3 Scope Subject ${suffix}`, 'secondary');
+    await query('INSERT INTO classes(school_code,name) VALUES($1,$2)', ['secondary', foreignClass]);
+    try {
+      // A fully allocated secondary-school teacher is invisible to a primary-school administrator.
+      const foreignTeacher = await createPendingUser(f, 'teacher', { school: 'secondary', classNames: [foreignClass] });
+      await addSubjectRows(foreignTeacher, [foreignSubject]);
+      await addGrantRow(foreignTeacher, 'secondary', foreignClass, foreignSubject);
+      const before = await approvalSnapshot(foreignTeacher);
+      assert.equal((await approveUser(foreignTeacher, scopedToken)).status, 404);
+      assert.deepEqual(await approvalSnapshot(foreignTeacher), before);
+
+      // Within the administrator's own school the allocation rule applies.
+      const ownInvalid = await createPendingUser(f, 'teacher');
+      await expectRejectedAndUnchanged(ownInvalid, 'own-school unallocated teacher', scopedToken);
+      const ownValid = await createPendingUser(f, 'teacher', { classNames: [f.classA] });
+      await addSubjectRows(ownValid, [f.subject1]);
+      await addGrantRow(ownValid, 'primary', f.classA, f.subject1);
+      assert.equal((await approveUser(ownValid, scopedToken)).status, 200);
+
+      // A global administrator can approve the secondary-school teacher.
+      assert.equal((await approveUser(foreignTeacher)).status, 200);
+    } finally {
+      await query('DELETE FROM users WHERE id=$1', [scopedId]);
+      await query('DELETE FROM users WHERE username LIKE $1', ['bsec5-d3-%']);
+      await query('DELETE FROM subjects WHERE id=$1', [foreignSubject]);
+      await query('DELETE FROM classes WHERE school_code=$1 AND name=$2', ['secondary', foreignClass]);
+    }
+  });
+});
