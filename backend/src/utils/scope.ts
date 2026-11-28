@@ -291,7 +291,8 @@ export async function resolveViewerClassNames(user: AuthUser): Promise<string[] 
 
 export interface MessageableUser {
   id: string;
-  username: string;
+  /** Null for administrator contacts shown to non-admin viewers: an admin's login name is not needed to message them. */
+  username: string | null;
   full_name: string;
   role: string;
 }
@@ -397,71 +398,104 @@ export interface MessageableUser {
  *     ward-linked teacher lookup now lives in a subquery that only
  *     contributes teacher rows and can never gate the admin branch.
  */
+/**
+ * Contact policy (PR #1063 follow-up). One relation drives BOTH directions, so
+ * "A may message B" is true exactly when "B may message A", and every message
+ * a user can legitimately receive comes from someone they can also reply to.
+ * Sending (POST /messages) and the chat list (GET /messages/contacts) both use
+ * this function, so they cannot drift apart.
+ *
+ * "Class" below always means the student's ACTIVE physical roster class
+ * (report_roster_memberships.status='active'), never students.class_name,
+ * which goes stale after promotion, retention or removal. A student with no
+ * active roster row (online-only learner, removed student) has no teacher or
+ * classmate contacts: the policy fails closed.
+ *
+ *   class teacher (users.assigned_class set; classes = assigned_class plus
+ *     assigned_class_names)  <-> students AND parents on those rosters
+ *   subject-only teacher (no assigned_class; classes via assigned_class_names
+ *     or a teacher_class_subjects grant) <-> students on those rosters,
+ *     NEVER parents
+ *   teacher <-> any teacher of the same school
+ *   teacher/student/parent <-> admins of the same school, plus unscoped admins
+ *     (school_code NULL: global / legacy accounts that administer every school).
+ *     Admins bound to ANOTHER school are never contacts.
+ *   student <-> classmates on the same active roster; student <-> own parents
+ */
+const ACTIVE_ROSTER_CLASS = (studentAlias: string) =>
+  `(SELECT rm.class_name FROM report_roster_memberships rm WHERE rm.student_id = ${studentAlias}.id AND rm.status = 'active')`;
+
+/** SQL predicate: admin account `a` administers school `schoolExpr`. */
+const adminOfSchool = (a: string, schoolExpr: string) =>
+  `(${a}.role = 'admin' AND (${a}.school_code = ${schoolExpr} OR ${a}.school_code IS NULL))`;
+
+/** SQL predicate: teacher account `t` teaches roster class `classExpr` at school `schoolExpr` (class teacher or subject grant). */
+const teacherOfClass = (t: string, classExpr: string, schoolExpr: string) =>
+  `(${t}.role = 'teacher' AND ${t}.school_code = ${schoolExpr} AND (
+      ${classExpr} = ${t}.assigned_class
+      OR ${classExpr} = ANY(COALESCE(${t}.assigned_class_names, ARRAY[]::text[]))
+      OR EXISTS (SELECT 1 FROM teacher_class_subjects tcs JOIN classes c ON c.id = tcs.class_id
+                  WHERE tcs.user_id = ${t}.id AND c.name = ${classExpr} AND c.school_code = ${schoolExpr})
+    ))`;
+
+/** SQL predicate: class teacher `t` (assigned_class set) owns roster class `classExpr`. Subject-only teachers never match. */
+const classTeacherOfClass = (t: string, classExpr: string, schoolExpr: string) =>
+  `(${t}.role = 'teacher' AND ${t}.school_code = ${schoolExpr} AND ${t}.assigned_class IS NOT NULL AND (
+      ${classExpr} = ${t}.assigned_class
+      OR ${classExpr} = ANY(COALESCE(${t}.assigned_class_names, ARRAY[]::text[]))
+    ))`;
+
+/** Admin login names are not needed to message an admin, so they are only returned to admins themselves. */
+const CONTACT_COLUMNS = (viewerRole: string) =>
+  `u.id, ${viewerRole === 'admin' ? 'u.username' : "CASE WHEN u.role = 'admin' THEN NULL ELSE u.username END"} AS username, u.full_name, u.role`;
+
 export async function getMessageableUsers(user: AuthUser): Promise<MessageableUser[]> {
   if (user.role === 'teacher') {
-    // Teachers may message administrators, fellow teachers in their own
-    // school, and parents/guardians of students in their assigned classes.
-    // Students and unrelated parents are deliberately not exposed.
     if (!user.school_code) return [];
-    const teacherClasses = assignedTeacherClasses(user);
+    const classes = assignedTeacherClasses(user);
+    const grantClasses = (user.assigned_class_subjects ?? [])
+      .filter(g => g.school_code === user.school_code).map(g => g.class_name);
+    const studentClasses = [...new Set([...classes, ...grantClasses])];
+    // Parents are reachable only by class teachers, and only for rosters they own.
+    const parentClasses = user.assigned_class ? classes : [];
     const { rows } = await query(
-      `SELECT DISTINCT u.id, u.username, u.full_name, u.role
+      `SELECT DISTINCT ${CONTACT_COLUMNS('teacher')}
        FROM users u
-       WHERE u.is_active = TRUE
+       WHERE u.is_active = TRUE AND u.id <> $2
          AND (
-           u.role = 'admin'
-           OR (u.role = 'teacher' AND u.school_code = $1 AND u.id <> $2)
+           ${adminOfSchool('u', '$1')}
+           OR (u.role = 'teacher' AND u.school_code = $1)
+           OR (u.role = 'student' AND EXISTS (
+             SELECT 1 FROM students st
+             WHERE st.user_id = u.id AND st.deleted_at IS NULL AND st.school_code = $1
+               AND ${ACTIVE_ROSTER_CLASS('st')} = ANY($3::text[])
+           ))
            OR (u.role = 'parent' AND EXISTS (
-             SELECT 1 FROM parent_wards pw
-             JOIN students st ON st.id = pw.student_id
-             WHERE pw.parent_id = u.id AND st.deleted_at IS NULL
-               AND st.school_code = $1 AND st.class_name = ANY($3::text[])
+             SELECT 1 FROM parent_wards pw JOIN students st ON st.id = pw.student_id
+             WHERE pw.parent_id = u.id AND st.deleted_at IS NULL AND st.school_code = $1
+               AND ${ACTIVE_ROSTER_CLASS('st')} = ANY($4::text[])
            ))
          )
        ORDER BY u.full_name`,
-      [user.school_code, user.id, teacherClasses],
+      [user.school_code, user.id, studentClasses, parentClasses],
     );
     return rows;
   }
+
   if (user.role === 'student') {
     const { rows } = await query(
-      `SELECT DISTINCT u.id, u.username, u.full_name, u.role
+      `SELECT DISTINCT ${CONTACT_COLUMNS('student')}
        FROM students st
-       JOIN users u ON u.is_active = TRUE
+       JOIN users u ON u.is_active = TRUE AND u.id <> st.user_id
          AND (
-           -- Admin is always reachable, in any school — checked first and
-           -- OUTSIDE the school_code match below on purpose. Found while
-           -- auditing this function (Pass 19): admin accounts have
-           -- school_code = NULL (see the admin-branch note further down),
-           -- so a join condition of the form 'u.school_code = st.school_code
-           -- AND (... OR u.role = admin)' never actually matches an admin
-           -- row — NULL = anything is never true in SQL. That meant no
-           -- student (or, before Pass 18, any parent either) could ever
-           -- actually see an admin in their contacts, despite the docs
-           -- above and the UI both promising "any school admin" reach.
-           u.role = 'admin'
-           OR (
-             u.school_code = st.school_code
-             AND (
-               (u.role = 'teacher' AND (u.assigned_class = st.class_name OR (u.assigned_class IS NOT NULL AND st.class_name=ANY(COALESCE(u.assigned_class_names, ARRAY[]::text[]))) OR EXISTS (SELECT 1 FROM teacher_subjects ts WHERE ts.user_id = u.id)))
-               OR (u.role = 'parent' AND u.id IN (
-                     SELECT pw.parent_id FROM parent_wards pw WHERE pw.student_id = st.id
-                   ))
-               OR (
-                 -- classmates: other students (with a login) in the same
-                 -- class, same school. u.id <> st.user_id excludes the
-                 -- caller themself. st2.deleted_at IS NULL added alongside
-                 -- the admin fix above so a soft-deleted classmate's login
-                 -- (not itself deactivated by a student soft-delete) stops
-                 -- showing up as a contact.
-                 u.role = 'student' AND u.id <> st.user_id
-                 AND EXISTS (
-                   SELECT 1 FROM students st2
-                   WHERE st2.user_id = u.id AND st2.class_name = st.class_name AND st2.deleted_at IS NULL
-                 )
-               )
-             )
-           )
+           ${adminOfSchool('u', 'st.school_code')}
+           OR ${teacherOfClass('u', ACTIVE_ROSTER_CLASS('st'), 'st.school_code')}
+           OR (u.role = 'parent' AND u.id IN (SELECT pw.parent_id FROM parent_wards pw WHERE pw.student_id = st.id))
+           OR (u.role = 'student' AND EXISTS (
+             SELECT 1 FROM students st2
+             WHERE st2.user_id = u.id AND st2.deleted_at IS NULL AND st2.school_code = st.school_code
+               AND ${ACTIVE_ROSTER_CLASS('st2')} = ${ACTIVE_ROSTER_CLASS('st')}
+           ))
          )
        WHERE st.user_id = $1 AND st.deleted_at IS NULL
        ORDER BY u.full_name`,
@@ -471,33 +505,19 @@ export async function getMessageableUsers(user: AuthUser): Promise<MessageableUs
   }
 
   if (user.role === 'parent') {
-    // Widened deliberately (post-Pass 21): a parent used to only reach
-    // admin plus their own ward's specific class/subject teachers — every
-    // other teacher at the school, even ones with no direct relationship
-    // to their ward, was unreachable. That's now the same "everyone at my
-    // ward's school(s)" breadth a teacher already gets to their own
-    // school's staff (see the teacher branch below) — any active teacher
-    // or admin at any school where this parent has a (non-deleted) ward,
-    // not just the ones currently assigned to that ward's class/subject.
-    // Deliberately still NOT extended to other parents or students —
-    // parent-to-parent or parent-to-unrelated-student messaging is a
-    // separate product decision, not implied by "reach every teacher/admin".
+    // Parents reach admins of their wards' schools and the CLASS teacher(s) of
+    // the roster their ward is currently on. Not subject-only teachers, not
+    // every teacher in the school, and not teachers of a former class.
     const { rows } = await query(
-      `SELECT DISTINCT u.id, u.username, u.full_name, u.role
-       FROM users u
-       WHERE u.is_active = TRUE
+      `SELECT DISTINCT ${CONTACT_COLUMNS('parent')}
+       FROM parent_wards pw
+       JOIN students st ON st.id = pw.student_id AND st.deleted_at IS NULL
+       JOIN users u ON u.is_active = TRUE
          AND (
-           u.role = 'admin'
-           OR (
-             u.role = 'teacher'
-             AND u.school_code IN (
-               SELECT DISTINCT st.school_code
-               FROM students st
-               JOIN parent_wards pw ON pw.student_id = st.id AND pw.parent_id = $1
-               WHERE st.deleted_at IS NULL
-             )
-           )
+           ${adminOfSchool('u', 'st.school_code')}
+           OR ${classTeacherOfClass('u', ACTIVE_ROSTER_CLASS('st'), 'st.school_code')}
          )
+       WHERE pw.parent_id = $1
        ORDER BY u.full_name`,
       [user.id],
     );
@@ -505,23 +525,33 @@ export async function getMessageableUsers(user: AuthUser): Promise<MessageableUs
   }
 
   if (user.role === 'admin') {
-    // admin — same deleted_at fix as the teacher branch above.
+    // An admin acts within one school: their own, or for a global admin
+    // (can_manage_all_schools) the school they selected via x-school-code,
+    // which the auth middleware exposes as user.school_code. Scoping the list
+    // to it mirrors the checks above, so an admin cannot start a thread the
+    // recipient could not answer. Only an admin with no effective school
+    // (not reachable through /messages, which requires a selection) is global.
+    const global = !user.school_code;
     const { rows } = await query(
-      `SELECT DISTINCT u.id, u.username, u.full_name, u.role
+      `SELECT DISTINCT ${CONTACT_COLUMNS('admin')}
        FROM users u
        LEFT JOIN students s ON s.user_id = u.id
        WHERE u.is_active = TRUE AND u.id <> $1
          AND (u.role <> 'student' OR s.deleted_at IS NULL)
+         AND (
+           $2::boolean
+           OR (u.role = 'admin' AND (u.school_code = $3 OR u.school_code IS NULL))
+           OR (u.role IN ('teacher','student') AND COALESCE(s.school_code, u.school_code) = $3)
+           OR (u.role = 'parent' AND EXISTS (
+                 SELECT 1 FROM parent_wards pw JOIN students ws ON ws.id = pw.student_id
+                 WHERE pw.parent_id = u.id AND ws.deleted_at IS NULL AND ws.school_code = $3))
+         )
        ORDER BY u.full_name`,
-      [user.id],
+      [user.id, global, user.school_code ?? null],
     );
     return rows;
   }
 
-  // Fail closed (SEC-02): any role without an explicit branch above —
-  // finance_admin today, or a role added in future — gets no contacts rather
-  // than falling into the admin directory. finance_admin has no messages.*
-  // permission (rbac.ts), so this is defence in depth alongside the
-  // permission check in routes/messages.ts.
+  // Fail closed (SEC-02): finance_admin or any future role gets no contacts.
   return [];
 }

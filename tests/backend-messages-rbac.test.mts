@@ -33,7 +33,7 @@ test('roles with messages.read continue through the message read guard', () => {
   }
 });
 
-test('teachers receive message permissions and the scoped messaging route is no longer globally blocked', async () => {
+test('teachers receive messages.read and messages.write permissions', () => {
   for (const endpoint of ['messages.read', 'messages.write']) {
     const result = runPermission('teacher', endpoint);
     assert.equal(result.statusCode, 200);
@@ -41,22 +41,7 @@ test('teachers receive message permissions and the scoped messaging route is no 
   }
   assert.equal(canMessage('teacher', 'teacher-id', 'parent-id', ['parent-id']), true);
   assert.equal(canMessage('teacher', 'teacher-id', 'unrelated-id', ['parent-id']), false);
-  const { readFileSync } = await import('node:fs');
-  const { resolve } = await import('node:path');
-  const route = readFileSync(resolve(process.cwd(), 'src/routes/messages.ts'), 'utf8');
-  assert.doesNotMatch(route, /denyTeacherAccess/);
-  const scope = readFileSync(resolve(process.cwd(), 'src/utils/scope.ts'), 'utf8');
-  assert.match(scope, /if \(user\.role === 'teacher'\)/);
-  assert.match(scope, /st\.class_name = ANY\(\$3::text\[\]\)/);
 });
 
-
-test('teachers can read school-wide and assigned-class announcements', async () => {
-  const { readFileSync } = await import('node:fs');
-  const { resolve } = await import('node:path');
-  const route = readFileSync(resolve(process.cwd(), 'src/routes/announcements.ts'), 'utf8');
-  assert.doesNotMatch(route, /Teacher accounts are limited/);
-  assert.match(route, /user\.role === 'teacher'/);
-  assert.match(route, /assigned_class_names/);
-  assert.match(route, /requireRole\('admin'\)/, 'announcement publishing remains admin-only');
-});
+// Contact scope, reply symmetry and announcement visibility are covered against a real
+// database in tests/backend-teacher-messaging-roster-scope.integration.test.mts.

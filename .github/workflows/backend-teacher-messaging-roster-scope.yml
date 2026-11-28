@@ -1,0 +1,81 @@
+name: Backend teacher messaging roster scope
+
+# Runs on pull requests to ANY base branch (not only master) so stacked PRs
+# such as the follow-ups to the teacher messaging feature are exercised too.
+on:
+  pull_request:
+    paths:
+      - "backend/src/utils/scope.ts"
+      - "backend/src/utils/studentRosterScope.ts"
+      - "backend/src/routes/messages.ts"
+      - "backend/src/routes/announcements.ts"
+      - "backend/src/middleware/auth.ts"
+      - "backend/src/utils/rbac.ts"
+      - "backend/src/utils/jwt.ts"
+      - "backend/src/utils/postgresRateLimitStore.ts"
+      - "backend/src/db/migrate.ts"
+      - "backend/schema.sql"
+      - "backend/migrations/**"
+      - "backend/package.json"
+      - "tests/backend-teacher-messaging-roster-scope.integration.test.mts"
+      - "tests/backend-messages-rbac.test.mts"
+      - ".github/workflows/backend-teacher-messaging-roster-scope.yml"
+  push:
+    branches: [master]
+    paths:
+      - "backend/src/utils/scope.ts"
+      - "backend/src/routes/messages.ts"
+      - "backend/src/routes/announcements.ts"
+      - "tests/backend-teacher-messaging-roster-scope.integration.test.mts"
+      - ".github/workflows/backend-teacher-messaging-roster-scope.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  roster-scope:
+    name: PostgreSQL roster-based messaging contacts and announcement visibility
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: sts_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d sts_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/sts_test
+      NODE_ENV: test
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install locked workspace dependencies
+        run: npm ci --ignore-scripts
+      - name: Bootstrap disposable PostgreSQL schema
+        run: npm run db:bootstrap --workspace=backend
+      - name: Apply numbered migrations to disposable PostgreSQL schema
+        run: npm run db:migrate --workspace=backend -- --all
+      - name: Run roster-scope messaging and announcement regressions
+        run: node --import tsx --test tests/backend-teacher-messaging-roster-scope.integration.test.mts
+      - name: Run messaging RBAC permission tests
+        run: node --import tsx --test tests/backend-messages-rbac.test.mts
+      - name: Typecheck backend
+        run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
