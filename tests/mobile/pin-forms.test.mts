@@ -105,6 +105,8 @@ test('student/teacher onboarding screens collect a six-digit PIN with the shared
   assert.match(act, /validateActivationSecret\(mode, newPw, conf\)/);
   assert.match(act, /activationBody\(mode, username, code, newPw\)/);
   assert.match(act, /useState<ActivationMode>\('pin'\)/, 'PIN is the default');
+  assert.match(act, /students\/parents\/teachers/, 'activation copy includes teachers as PIN users');
+  assert.match(act, /Only administrators should choose the admin password option/, 'admin password mode is clearly restricted');
 });
 
 test('PIN setup copy matches the policy (no "avoid sequential" advice)', () => {
