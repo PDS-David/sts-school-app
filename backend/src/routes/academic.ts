@@ -3,9 +3,10 @@ import { assignedTeacherSubjectsForClass } from '../utils/studentRosterScope.js'
 import { query, withTransaction } from '../db/pool.js';
 import { requireAuth, requireRole } from '../middleware/auth.js';
 import { SESSION_TERM_NAMES, isValidSessionTermName } from '../utils/terms.js';
-import { audit } from '../utils/audit.js';
+import { audit, auditContextFromRequest, auditInTransaction } from '../utils/audit.js';
 import { checkTermSchoolScope } from '../utils/scope.js';
 import { assignedTeacherClasses } from '../utils/studentRosterScope.js';
+import { normalizeNextTermBegins, validateDaysOpenedValue } from '../utils/termSettings.js';
 
 const router = Router();
 router.use(requireAuth);
@@ -30,11 +31,7 @@ router.get('/schools', async (_req, res) => {
 // own regardless of that knock-on effect, so it's rejected here directly.
 function validateDaysOpened(days_opened: unknown): string | null {
   if (days_opened === undefined || days_opened === null) return null; // optional field
-  if (typeof days_opened !== 'number' || !Number.isFinite(days_opened) || !Number.isInteger(days_opened)) {
-    return 'days_opened must be a whole number';
-  }
-  if (days_opened < 0) return 'days_opened cannot be negative';
-  return null;
+  return validateDaysOpenedValue(days_opened);
 }
 router.get('/terms', async (req, res) => {
   const requested = typeof req.query.school_code === 'string' ? req.query.school_code.trim() : undefined;
@@ -97,6 +94,10 @@ router.post('/terms', requireRole('admin'), async (req, res) => {
   }
   const daysOpenedError = validateDaysOpened(days_opened);
   if (daysOpenedError) return res.status(400).json({ error: daysOpenedError });
+  const createNextTerm = next_term_begins === undefined
+    ? { ok: true as const, value: null }
+    : normalizeNextTermBegins(next_term_begins);
+  if (!createNextTerm.ok) return res.status(400).json({ error: createNextTerm.error });
 
   const user = req.user!;
   const schoolCode = school_code.trim();
@@ -139,7 +140,7 @@ router.post('/terms', requireRole('admin'), async (req, res) => {
       `INSERT INTO terms(name,academic_year,school_code,start_date,end_date,days_opened,next_term_begins)
        VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *`,
       [name, academicYear, schoolCode, start_date ?? null, end_date ?? null,
-       days_opened ?? 0, next_term_begins ?? null],
+       days_opened ?? 0, createNextTerm.value],
     );
     return { ok: true as const, term: rows[0] };
   });
@@ -148,13 +149,47 @@ router.post('/terms', requireRole('admin'), async (req, res) => {
   return res.status(201).json({ term: result.term });
 });
 
-router.put('/terms/:id', requireRole('admin'), async (req, res) => {
+router.put('/terms/:id', requireRole('admin', 'teacher'), async (req, res) => {
   const termId = Number(req.params.id);
   if (!Number.isSafeInteger(termId) || termId <= 0 || termId > 2_147_483_647) {
     return res.status(404).json({ error: 'Term not found' });
   }
-  const { name, academic_year, is_current, start_date, end_date, days_opened, next_term_begins } = req.body ?? {};
+  const body = (req.body ?? {}) as Record<string, any>;
+  const { name, academic_year, is_current, start_date, end_date, days_opened, next_term_begins } = body;
   const user = req.user!;
+
+  // days_opened is a school-wide setting shared by every class's attendance
+  // percentage and report, so only administrators may change it. Teachers keep
+  // full access to recording attendance (PUT /attendance, /attendance/bulk);
+  // they just cannot move the school-wide denominator through this endpoint.
+  // This is checked first so a teacher gets the same 403 whatever value they
+  // send (including null or an invalid number) and nothing is applied.
+  if (user.role === 'teacher' && Object.prototype.hasOwnProperty.call(body, 'days_opened')) {
+    return res.status(403).json({ error: 'Only an administrator can change days_opened. Teachers can still record attendance for their classes.' });
+  }
+
+  // Only fields that are PRESENT in the body are touched. A client that sends
+  // just { days_opened } cannot overwrite next_term_begins with a stale value
+  // and vice versa; clearing next_term_begins is an explicit null (or blank).
+  const nextTermProvided = Object.prototype.hasOwnProperty.call(body, 'next_term_begins') && next_term_begins !== undefined;
+  const nextTerm = nextTermProvided ? normalizeNextTermBegins(next_term_begins) : null;
+  if (nextTerm && !nextTerm.ok) return res.status(400).json({ error: nextTerm.error });
+  if (days_opened === null) {
+    return res.status(400).json({ error: 'days_opened cannot be cleared; omit it to leave it unchanged.' });
+  }
+  const teacherClasses = user.role === 'teacher' ? assignedTeacherClasses(user) : [];
+  if (user.role === 'teacher') {
+    const unsupportedFields = Object.keys(body).filter(field => field !== 'next_term_begins');
+    if (!user.assigned_class || !user.school_code || !teacherClasses.length) {
+      return res.status(403).json({ error: 'Only an assigned class teacher can update attendance term details.' });
+    }
+    if (unsupportedFields.length) {
+      return res.status(403).json({ error: 'Teachers may update only next_term_begins.' });
+    }
+    if (!nextTermProvided) {
+      return res.status(400).json({ error: 'Provide next_term_begins.' });
+    }
+  }
   if (name !== undefined && !isValidSessionTermName(name)) {
     return res.status(400).json({
       error: `Term name must be one of: ${SESSION_TERM_NAMES.join(', ')}`,
@@ -198,6 +233,51 @@ router.put('/terms/:id', requireRole('admin'), async (req, res) => {
       return { ok: false as const, status: 404, error: 'Term not found' };
     }
 
+    // Class locks: a locked class's records are frozen for the term, and
+    // next_term_begins feeds that class's report. A teacher is refused while
+    // ANY of their assigned physical classes is locked for this term (the
+    // value is shared school-wide, so a partial-lock edit would still change a
+    // locked class's report). Admins keep the existing ability to write past a
+    // lock. (Teachers can no longer send days_opened at all; see above.)
+    if (user.role === 'teacher') {
+      const { rows: lockRows } = await client.query(
+        `SELECT cl.class_name, cl.locked_at
+         FROM class_locks cl
+         WHERE cl.school_code=$1 AND cl.term_id=$2 AND cl.class_name = ANY($3::text[])
+         ORDER BY cl.class_name`,
+        [term.school_code, termId, teacherClasses],
+      );
+      if (lockRows.length) {
+        const names = lockRows.map((row: any) => row.class_name).join(', ');
+        return {
+          ok: false as const, status: 403,
+          error: `${names}'s records for this term are locked. Ask an admin to unlock before changing term details.`,
+        };
+      }
+    }
+
+    // days_opened is ONE value per (school, term), shared by every class in
+    // the school. Refuse to drop it below any class's already-recorded
+    // days_present (all attendance rows for this term, including students who
+    // are soft-deleted and could be restored), otherwise reports would show
+    // attendance above 100%. Concurrent attendance saves take FOR SHARE on this
+    // row, so this read cannot miss a save that is committing.
+    if (days_opened !== undefined && days_opened !== term.days_opened) {
+      const { rows: maxRows } = await client.query(
+        'SELECT MAX(days_present) AS highest FROM attendance WHERE term_id=$1',
+        [termId],
+      );
+      const highest = maxRows[0]?.highest === null || maxRows[0]?.highest === undefined
+        ? null : Number(maxRows[0].highest);
+      if (highest !== null && days_opened < highest) {
+        return {
+          ok: false as const, status: 409,
+          error: `days_opened cannot be lowered to ${days_opened}: attendance of up to ${highest} day(s) is already recorded for this term. Correct those attendance entries first.`,
+          highest_days_present: highest,
+        };
+      }
+    }
+
     const targetYear = academic_year ?? term.academic_year;
     if (name !== undefined || academic_year !== undefined) {
       const { rows: clash } = await client.query(
@@ -216,19 +296,42 @@ router.put('/terms/:id', requireRole('admin'), async (req, res) => {
       );
     }
 
+    const nextTermValue = nextTerm && nextTerm.ok ? nextTerm.value : null;
     const { rows } = await client.query(
       `UPDATE terms SET name=COALESCE($1,name), academic_year=COALESCE($2,academic_year),
               is_current=COALESCE($3,is_current), start_date=COALESCE($4,start_date),
               end_date=COALESCE($5,end_date), days_opened=COALESCE($6,days_opened),
-              next_term_begins=COALESCE($7,next_term_begins)
+              next_term_begins=CASE WHEN $9::boolean THEN $7::text ELSE next_term_begins END
        WHERE id=$8 RETURNING *`,
-      [name, academic_year?.trim(), is_current, start_date, end_date, days_opened, next_term_begins, termId],
+      [name, academic_year?.trim(), is_current, start_date, end_date, days_opened, nextTermValue, termId, nextTermProvided],
     );
     if (!rows[0]) return { ok: false as const, status: 404, error: 'Term not found' };
-    return { ok: true as const, term: rows[0] };
+    const updated = rows[0];
+
+    // Audit every meaningful change in the same transaction, so a change can
+    // never be committed without its audit record (or vice versa).
+    const changes: Record<string, { from: unknown; to: unknown }> = {};
+    const track = (field: string) => {
+      const before = term[field] instanceof Date ? term[field].toISOString() : term[field];
+      const after = updated[field] instanceof Date ? updated[field].toISOString() : updated[field];
+      if (before !== after) changes[field] = { from: before ?? null, to: after ?? null };
+    };
+    ['name', 'academic_year', 'is_current', 'start_date', 'end_date', 'days_opened', 'next_term_begins'].forEach(track);
+    const changedFields = Object.keys(changes);
+    if (changedFields.length) {
+      await auditInTransaction(
+        client, user, 'update_term_settings', 'term', String(termId),
+        `${term.name} ${term.academic_year}: changed ${changedFields.join(', ')}`,
+        auditContextFromRequest(req, { schoolCode: term.school_code, metadata: { term_id: termId, changes } }),
+      );
+    }
+    return { ok: true as const, term: updated };
   });
 
-  if (!result.ok) return res.status(result.status).json({ error: result.error });
+  if (!result.ok) {
+    const extra = 'highest_days_present' in result ? { highest_days_present: result.highest_days_present } : {};
+    return res.status(result.status).json({ error: result.error, ...extra });
+  }
   return res.json({ term: result.term });
 });
 
