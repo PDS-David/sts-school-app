@@ -51,8 +51,12 @@ export default function AddStudentScreen({ navigation }: any) {
       .then(({ data }) => {
         if (cancelled) return;
         const names = (data.classes ?? []).map((c: any) => c.name);
-        const scopedNames = user?.role === 'teacher' && user.assigned_class
-          ? names.filter((name: string) => name === user.assigned_class)
+        const teacherClasses = new Set(
+          [user?.assigned_class, ...(user?.assigned_class_names ?? [])]
+            .filter((name): name is string => typeof name === 'string' && !!name.trim()),
+        );
+        const scopedNames = user?.role === 'teacher'
+          ? names.filter((name: string) => teacherClasses.has(name))
           : names;
         setClasses(scopedNames);
         if (scopedNames.length) setClassName(scopedNames[0]);
@@ -62,7 +66,7 @@ export default function AddStudentScreen({ navigation }: any) {
       })
       .finally(() => { if (!cancelled) setClassLoading(false); });
     return () => { cancelled = true; };
-  }, [effectiveSchoolCode, classRetry, user?.role, user?.assigned_class]);
+  }, [effectiveSchoolCode, classRetry, user?.role, user?.assigned_class, user?.assigned_class_names?.join('|')]);
 
   const validate = () => {
     const e: Record<string, string> = {};
