@@ -21,7 +21,13 @@ export default function ClassPracticeScreen({ route }: any) {
   const [error,setError]=useState('');
   const [progressError,setProgressError]=useState('');
   const [resumeNotice,setResumeNotice]=useState('');
+  const [restoring,setRestoring]=useState(false);
   const topicIdRef=useRef(topic?.id);
+  const draftWriteQueue=useRef<Promise<void>>(Promise.resolve());
+  const persistDraft=(draft:any)=>{
+    draftWriteQueue.current=draftWriteQueue.current.catch(()=>undefined).then(()=>AsyncStorage.setItem(draftStorageKey,JSON.stringify(draft)));
+    return draftWriteQueue.current;
+  };
   topicIdRef.current=topic?.id;
 
   const loadProgress=async()=>{
@@ -37,7 +43,7 @@ export default function ClassPracticeScreen({ route }: any) {
   useEffect(()=>{
     topicIdRef.current=topic?.id;
     setPracticeSet(null);setQuestions([]);setAnswers({});setResult(null);
-    setGenerating(false);setSubmitting(false);setError('');setResumeNotice('');
+    setGenerating(false);setSubmitting(false);setError('');setResumeNotice('');setRestoring(true);
     let active=true;
     const restoreDraft=async()=>{
       try{
@@ -56,16 +62,19 @@ export default function ClassPracticeScreen({ route }: any) {
           if(!active||topicIdRef.current!==topic?.id)return;
           if(data?.result?.submitted){
             setPracticeSet(data.set??draft.set);setQuestions([]);setAnswers({});setResult(data.result);setResumeNotice('');
-            await AsyncStorage.removeItem(draftStorageKey);
+            await draftWriteQueue.current.catch(()=>undefined);
+        await AsyncStorage.removeItem(draftStorageKey);
           }else if(data?.set?.status==='open'&&Array.isArray(data.questions)){
             setPracticeSet(data.set);setQuestions(data.questions);setAnswers(savedAnswers);
-            await AsyncStorage.setItem(draftStorageKey,JSON.stringify({set:data.set,questions:data.questions,answers:savedAnswers}));
+            await persistDraft({set:data.set,questions:data.questions,answers:savedAnswers});
           }
         }catch{
           if(active)setResumeNotice('Your saved practice is available on this device. Reconnect to confirm or submit it.');
         }
       }catch{
         if(active)setError('A saved practice could not be restored. You can generate a new practice set.');
+      }finally{
+        if(active)setRestoring(false);
       }
     };
     void restoreDraft();
@@ -74,7 +83,7 @@ export default function ClassPracticeScreen({ route }: any) {
   },[topic?.id,draftStorageKey]);
 
   const generate=async()=>{
-    if(!topic?.id||generating||submitting)return;
+    if(!topic?.id||generating||submitting||restoring)return;
     setGenerating(true);setError('');setResult(null);setPracticeSet(null);setQuestions([]);setAnswers({});
     const requestedTopicId=topic.id;
     try{
@@ -83,7 +92,7 @@ export default function ClassPracticeScreen({ route }: any) {
       if(!data.set?.id||!Array.isArray(data.questions)||data.questions.length<3) throw new Error('The practice set is incomplete. Please retry.');
       setPracticeSet(data.set);setQuestions(data.questions);setAnswers({});
       setResumeNotice('Your answers are saved on this device while you practise.');
-      await AsyncStorage.setItem(draftStorageKey,JSON.stringify({set:data.set,questions:data.questions,answers:{}}));
+      await persistDraft({set:data.set,questions:data.questions,answers:{}});
     }catch(e:any){
       if(topicIdRef.current===requestedTopicId)setError(e?.response?.data?.error??e?.message??'Could not generate practice for this completed lesson. Check your connection and retry.');
     }finally{if(topicIdRef.current===requestedTopicId)setGenerating(false);}
@@ -93,7 +102,7 @@ export default function ClassPracticeScreen({ route }: any) {
     const nextAnswers={...answers,[questionId]:answer};
     setAnswers(nextAnswers);
     if(practiceSet?.id){
-      void AsyncStorage.setItem(draftStorageKey,JSON.stringify({set:practiceSet,questions,answers:nextAnswers}))
+      void persistDraft({set:practiceSet,questions,answers:nextAnswers})
         .catch(()=>setError('Your answer is selected, but could not be saved locally. Keep the app open until submission is confirmed.'));
     }
   };
@@ -124,6 +133,7 @@ export default function ClassPracticeScreen({ route }: any) {
         const {data}=await api.get('/class-practice/sets/'+submittedSetId);
         if(topicIdRef.current===submittedTopicId&&data?.result?.submitted){
           setResult(data.result);setResumeNotice('');
+          await draftWriteQueue.current.catch(()=>undefined);
           await AsyncStorage.removeItem(draftStorageKey);
           await loadProgress();return;
         }
@@ -142,7 +152,7 @@ export default function ClassPracticeScreen({ route }: any) {
         <Text style={styles.sub}>{topic.subject_name??'Subject'} · {topic.class_name??'Your class'}</Text>
         <Text style={styles.copy}>Questions are generated only from this completed lesson. Your previous concept performance guides the next practice set.</Text>
         {resumeNotice?<Text style={styles.resumeNotice}>{resumeNotice}</Text>:null}
-        {!practiceSet&&!result&&<Btn label={generating?'Generating practice…':'Generate practice questions'} onPress={generate} loading={generating} style={{marginTop:Spacing.md}}/>}
+        {!practiceSet&&!result&&<Btn label={restoring?'Checking saved practice…':generating?'Generating practice…':'Generate practice questions'} onPress={generate} loading={generating||restoring} disabled={restoring||generating} style={{marginTop:Spacing.md}}/>}
         {practiceSet&&!result&&(
           <View style={{marginTop:Spacing.md}}>
             <Badge label="Lesson-grounded practice" color={Colors.success}/>
