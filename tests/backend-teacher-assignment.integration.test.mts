@@ -352,3 +352,311 @@ test('one class teacher account can own multiple classes and overlapping class o
     await query('DELETE FROM classes WHERE school_code=$1 AND name=ANY($2::text[])', ['primary', [classA, classB, classC]]);
   }
 });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Teacher assignment clearing and class/subject conversion regressions.
+//
+// Contract under test for PUT /admin/users/:id on a teacher:
+//   * an OMITTED assigned_class leaves the primary class alone;
+//   * an explicit null or '' clears it;
+//   * moving between class teacher and subject teacher never leaves the old
+//     role's authority behind (primary class, extra owned classes in
+//     assigned_class_names, teacher_subjects, teacher_class_subjects).
+// ─────────────────────────────────────────────────────────────────────────────
+
+type Pair = { class_name: string; subject_id: number };
+
+interface AssignmentFixture {
+  classA: string;
+  classB: string;
+  classC: string;
+  subject1: number;
+  subject2: number;
+  teachers: string[];
+}
+
+async function withAssignmentFixture(run: (f: AssignmentFixture) => Promise<void>): Promise<void> {
+  const suffix = unique();
+  const f: AssignmentFixture = {
+    classA: `BSEC5 Conv A ${suffix}`,
+    classB: `BSEC5 Conv B ${suffix}`,
+    classC: `BSEC5 Conv C ${suffix}`,
+    subject1: await createSubject(`BSEC5 Conv Subject 1 ${suffix}`, 'primary'),
+    subject2: await createSubject(`BSEC5 Conv Subject 2 ${suffix}`, 'primary'),
+    teachers: [],
+  };
+  await query('INSERT INTO classes(school_code,name) VALUES($1,$2),($1,$3),($1,$4)', ['primary', f.classA, f.classB, f.classC]);
+  try {
+    await run(f);
+  } finally {
+    if (f.teachers.length) await query('DELETE FROM users WHERE id=ANY($1::uuid[])', [f.teachers]);
+    await query('DELETE FROM subjects WHERE id=ANY($1::int[])', [[f.subject1, f.subject2]]);
+    await query('DELETE FROM classes WHERE school_code=$1 AND name=ANY($2::text[])', ['primary', [f.classA, f.classB, f.classC]]);
+  }
+}
+
+async function createClassTeacher(f: AssignmentFixture, assignedClass: string, extraClasses: string[] = []): Promise<string> {
+  const response = await postUser({
+    full_name: 'Conversion Class Teacher',
+    role: 'teacher',
+    school_code: 'primary',
+    assigned_class: assignedClass,
+    assigned_class_names: extraClasses,
+    assigned_subject_ids: [],
+    initial_password: '482913',
+  });
+  assert.equal(response.status, 201);
+  const id = ((await response.json()) as { user: { id: string } }).user.id;
+  f.teachers.push(id);
+  return id;
+}
+
+async function createSubjectTeacher(f: AssignmentFixture, grants: Pair[]): Promise<string> {
+  const response = await postUser({
+    username: `bsec5-conv-subject-${unique()}`,
+    full_name: 'Conversion Subject Teacher',
+    role: 'teacher',
+    school_code: 'primary',
+    assigned_class_names: [...new Set(grants.map(g => g.class_name))],
+    assigned_subject_ids: [...new Set(grants.map(g => g.subject_id))],
+    assigned_class_subjects: grants,
+    initial_password: '482913',
+  });
+  assert.equal(response.status, 201);
+  const id = ((await response.json()) as { user: { id: string } }).user.id;
+  f.teachers.push(id);
+  return id;
+}
+
+async function readAssignment(teacherId: string) {
+  const { rows: users } = await query(
+    'SELECT assigned_class, assigned_class_names FROM users WHERE id=$1',
+    [teacherId],
+  );
+  const { rows: subjects } = await query(
+    'SELECT subject_id FROM teacher_subjects WHERE user_id=$1 ORDER BY subject_id',
+    [teacherId],
+  );
+  const { rows: pairs } = await query(
+    `SELECT c.name AS class_name,tcs.subject_id
+     FROM teacher_class_subjects tcs JOIN classes c ON c.id=tcs.class_id
+     WHERE tcs.user_id=$1 ORDER BY c.name,tcs.subject_id`,
+    [teacherId],
+  );
+  return {
+    assigned_class: users[0].assigned_class as string | null,
+    assigned_class_names: [...(users[0].assigned_class_names ?? [])].sort() as string[],
+    subject_ids: subjects.map((row: any) => Number(row.subject_id)),
+    pairs: pairs.map((row: any) => ({ class_name: row.class_name, subject_id: Number(row.subject_id) })) as Pair[],
+  };
+}
+
+test('an explicit null or empty primary class clears the assignment; omitting the field does not', async () => {
+  for (const clearValue of [null, '']) {
+    await withAssignmentFixture(async (f) => {
+      const teacherId = await createClassTeacher(f, f.classA, [f.classB]);
+
+      // Unrelated edit that omits assigned_class must leave the class in place.
+      const unrelated = await putUser(teacherId, { phone: '08011112222' });
+      assert.equal(unrelated.status, 200);
+      let state = await readAssignment(teacherId);
+      assert.equal(state.assigned_class, f.classA, 'omitted assigned_class must not clear the class');
+      assert.deepEqual(state.assigned_class_names, [f.classB]);
+
+      const cleared = await putUser(teacherId, { assigned_class: clearValue, assigned_class_names: [] });
+      assert.equal(cleared.status, 200, `clearing with ${JSON.stringify(clearValue)} must succeed`);
+      state = await readAssignment(teacherId);
+      assert.equal(state.assigned_class, null, `assigned_class must be NULL after ${JSON.stringify(clearValue)}`);
+      assert.deepEqual(state.assigned_class_names, []);
+
+      const listed = await fetch(`${baseUrl}/admin/users?role=teacher`, { headers: { authorization: `Bearer ${adminToken}` } });
+      assert.equal(listed.status, 200);
+      const listedTeacher = ((await listed.json()) as { users: Array<{ id: string; assigned_class: string | null }> })
+        .users.find(user => user.id === teacherId);
+      assert.ok(listedTeacher);
+      assert.equal(listedTeacher!.assigned_class ?? null, null, 'the admin listing must show the cleared assignment');
+
+      // The freed class can be given to a different class teacher straight away.
+      const reuse = await postUser({
+        full_name: 'Replacement Class Teacher', role: 'teacher', school_code: 'primary',
+        assigned_class: f.classA, assigned_class_names: [], assigned_subject_ids: [], initial_password: '482913',
+      });
+      assert.equal(reuse.status, 201);
+      f.teachers.push(((await reuse.json()) as { user: { id: string } }).user.id);
+    });
+  }
+});
+
+test('clearing the primary class without resending other fields drops inherited class-teacher ownership', async () => {
+  await withAssignmentFixture(async (f) => {
+    const teacherId = await createClassTeacher(f, f.classA, [f.classB]);
+    const response = await putUser(teacherId, { assigned_class: null });
+    assert.equal(response.status, 200);
+    assert.deepEqual(await readAssignment(teacherId), {
+      assigned_class: null,
+      assigned_class_names: [],
+      subject_ids: [],
+      pairs: [],
+    }, 'extra owned classes would otherwise keep roster access with no assignment');
+  });
+});
+
+test('class teacher converts to subject teacher without keeping class-teacher authority', async () => {
+  await withAssignmentFixture(async (f) => {
+    const teacherId = await createClassTeacher(f, f.classA, [f.classB]);
+    const response = await putUser(teacherId, {
+      assigned_class: null,
+      assigned_class_names: [f.classA],
+      assigned_subject_ids: [f.subject1],
+      assigned_class_subjects: [{ class_name: f.classA, subject_id: f.subject1 }],
+    });
+    assert.equal(response.status, 200, 'the mobile conversion payload must be accepted');
+    assert.deepEqual(await readAssignment(teacherId), {
+      assigned_class: null,
+      assigned_class_names: [f.classA],
+      subject_ids: [f.subject1],
+      pairs: [{ class_name: f.classA, subject_id: f.subject1 }],
+    }, 'the former extra class B must be gone and only the explicit grant must remain');
+
+    const listed = await fetch(`${baseUrl}/admin/users?role=teacher`, { headers: { authorization: `Bearer ${adminToken}` } });
+    const listedTeacher = ((await listed.json()) as { users: Array<{ id: string; assigned_class: string | null; assigned_class_subjects: Pair[] }> })
+      .users.find(user => user.id === teacherId);
+    assert.ok(listedTeacher);
+    assert.equal(listedTeacher!.assigned_class ?? null, null);
+    assert.deepEqual(
+      listedTeacher!.assigned_class_subjects.map(g => ({ class_name: g.class_name, subject_id: Number(g.subject_id) })),
+      [{ class_name: f.classA, subject_id: f.subject1 }],
+    );
+  });
+});
+
+test('subject teacher converts to class teacher without keeping subject-only grants', async () => {
+  await withAssignmentFixture(async (f) => {
+    const grants: Pair[] = [
+      { class_name: f.classA, subject_id: f.subject1 },
+      { class_name: f.classB, subject_id: f.subject2 },
+    ];
+
+    // Minimal payload: an older client sends only the new class.
+    const minimalId = await createSubjectTeacher(f, grants);
+    const minimal = await putUser(minimalId, { assigned_class: f.classC });
+    assert.equal(minimal.status, 200);
+    assert.deepEqual(await readAssignment(minimalId), {
+      assigned_class: f.classC,
+      assigned_class_names: [],
+      subject_ids: [],
+      pairs: [],
+    }, 'obsolete subject grants and subject-teacher classes must not survive conversion');
+  });
+
+  await withAssignmentFixture(async (f) => {
+    // Full payload: the mobile form sends the cleared collections explicitly.
+    const explicitId = await createSubjectTeacher(f, [
+      { class_name: f.classA, subject_id: f.subject1 },
+      { class_name: f.classB, subject_id: f.subject2 },
+    ]);
+    const explicit = await putUser(explicitId, {
+      assigned_class: f.classC,
+      assigned_class_names: [],
+      assigned_subject_ids: [],
+      assigned_class_subjects: [],
+    });
+    assert.equal(explicit.status, 200);
+    assert.deepEqual(await readAssignment(explicitId), {
+      assigned_class: f.classC,
+      assigned_class_names: [],
+      subject_ids: [],
+      pairs: [],
+    });
+  });
+});
+
+test('changing allocations replaces grants and leaves no obsolete permissions', async () => {
+  await withAssignmentFixture(async (f) => {
+    // Subject teacher: shrink and move the class/subject matrix.
+    const subjectTeacherId = await createSubjectTeacher(f, [
+      { class_name: f.classA, subject_id: f.subject1 },
+      { class_name: f.classB, subject_id: f.subject2 },
+    ]);
+    const moved = await putUser(subjectTeacherId, {
+      assigned_class_names: [f.classB, f.classC],
+      assigned_subject_ids: [f.subject2],
+      assigned_class_subjects: [
+        { class_name: f.classB, subject_id: f.subject2 },
+        { class_name: f.classC, subject_id: f.subject2 },
+      ],
+    });
+    assert.equal(moved.status, 200);
+    assert.deepEqual(await readAssignment(subjectTeacherId), {
+      assigned_class: null,
+      assigned_class_names: [f.classB, f.classC].sort(),
+      subject_ids: [f.subject2],
+      pairs: [
+        { class_name: f.classB, subject_id: f.subject2 },
+        { class_name: f.classC, subject_id: f.subject2 },
+      ].sort((a, b) => a.class_name.localeCompare(b.class_name)),
+    }, 'class A / subject 1 must be gone');
+
+    // Class teacher: move to another primary class and release the old one.
+    const classTeacherId = await createClassTeacher(f, f.classA);
+    const changed = await putUser(classTeacherId, { assigned_class: f.classB, assigned_class_names: [] });
+    assert.equal(changed.status, 200, 'a subject teacher teaching class B does not own it, so a class teacher may move there');
+    const afterMove = await readAssignment(classTeacherId);
+    assert.equal(afterMove.assigned_class, f.classB);
+    assert.deepEqual(afterMove.assigned_class_names, []);
+
+    // The old class is released: another class teacher can take it immediately.
+    const takeOver = await postUser({
+      full_name: 'Class A Replacement', role: 'teacher', school_code: 'primary',
+      assigned_class: f.classA, assigned_class_names: [], assigned_subject_ids: [], initial_password: '482913',
+    });
+    assert.equal(takeOver.status, 201);
+    f.teachers.push(((await takeOver.json()) as { user: { id: string } }).user.id);
+  });
+});
+
+test('school-bound administrators can clear and convert in their school but not across schools', async () => {
+  await withAssignmentFixture(async (f) => {
+    const scopedUsername = `bsec5-scoped-admin-${unique()}`;
+    const { rows: scopedRows } = await query(
+      `INSERT INTO users(username,password_hash,role,full_name,school_code,is_active,pending_admin_review)
+       VALUES($1,'test-hash','admin','BSEC5 Scoped Admin','primary',TRUE,FALSE) RETURNING id`,
+      [scopedUsername],
+    );
+    const scopedId = String(scopedRows[0].id);
+    const scopedToken = signAccess({
+      id: scopedId, username: scopedUsername, role: 'admin', school_code: 'primary', assigned_class: null, assigned_subject_ids: [],
+    });
+    const scopedPut = (userId: string, body: Record<string, unknown>) => fetch(`${baseUrl}/admin/users/${userId}`, {
+      method: 'PUT',
+      headers: { authorization: `Bearer ${scopedToken}`, 'content-type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+
+    const foreignClass = `BSEC5 Foreign Class ${unique()}`;
+    await query('INSERT INTO classes(school_code,name) VALUES($1,$2)', ['secondary', foreignClass]);
+    let foreignTeacherId = '';
+    try {
+      const foreign = await postUser({
+        full_name: 'Secondary Class Teacher', role: 'teacher', school_code: 'secondary',
+        assigned_class: foreignClass, assigned_class_names: [], assigned_subject_ids: [], initial_password: '482913',
+      });
+      assert.equal(foreign.status, 201);
+      foreignTeacherId = ((await foreign.json()) as { user: { id: string } }).user.id;
+
+      const crossSchool = await scopedPut(foreignTeacherId, { assigned_class: null });
+      assert.equal(crossSchool.status, 404, 'a primary-school administrator must not see a secondary-school teacher');
+      const { rows: foreignRows } = await query('SELECT assigned_class FROM users WHERE id=$1', [foreignTeacherId]);
+      assert.equal(foreignRows[0].assigned_class, foreignClass, 'the cross-school clear attempt must change nothing');
+
+      const ownId = await createClassTeacher(f, f.classA);
+      const ownClear = await scopedPut(ownId, { assigned_class: null });
+      assert.equal(ownClear.status, 200);
+      assert.equal((await readAssignment(ownId)).assigned_class, null);
+    } finally {
+      if (foreignTeacherId) await query('DELETE FROM users WHERE id=$1', [foreignTeacherId]);
+      await query('DELETE FROM classes WHERE school_code=$1 AND name=$2', ['secondary', foreignClass]);
+      await query('DELETE FROM users WHERE id=$1', [scopedId]);
+    }
+  });
+});
