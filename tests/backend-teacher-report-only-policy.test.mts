@@ -9,6 +9,7 @@ test('teacher role can maintain assigned physical-class reports and execute appr
     'grades.read', 'grades.write',
     'attendance.read', 'attendance.write',
     'classRecord.read', 'classRecord.write',
+    'messages.read', 'messages.write',
   ]) {
     assert.equal(hasPerm('teacher', permission), true, `teacher must have ${permission}`);
   }
@@ -17,7 +18,6 @@ test('teacher role can maintain assigned physical-class reports and execute appr
     'materials.read', 'materials.write',
     'topics.read', 'topics.write',
     'weeklyEfforts.read', 'weeklyEfforts.write', 'weeklyEfforts.feedback',
-    'messages.read', 'messages.write',
     'questions.write', 'assessments.create',
     'aiResults.read', 'aiGrading.override',
     'terms.write', 'classLocks.write',
