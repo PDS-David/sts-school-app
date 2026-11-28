@@ -44,7 +44,7 @@ test('administrators execute all physical report-roster decisions and teachers a
   let crossSectionTeacherId: string | null = null;
 
   try {
-    for (const [index, admission] of ['PROMOTE', 'RETAIN', 'REMOVE', 'REINSTATE', 'RACE', 'PROMOTE_RACE', 'TEACHER_PROMOTE', 'TEACHER_REMOVE'].entries()) {
+    for (const [index, admission] of ['PROMOTE', 'RETAIN', 'REMOVE', 'REINSTATE', 'RACE', 'PROMOTE_RACE', 'TEACHER_PROMOTE', 'TEACHER_REMOVE', 'TEACHER_RETAIN'].entries()) {
       const { rows } = await query(
         `INSERT INTO students(full_name,class_name,school_code,admission_number)
          VALUES($1,'Primary 4',$2,$3) RETURNING id`,
@@ -135,7 +135,8 @@ test('administrators execute all physical report-roster decisions and teachers a
       method: 'POST', headers: teacherHeaders, body: JSON.stringify({ action }),
     });
     // Teachers may promote, retain or remove within their assigned class...
-    assert.equal((await teacherDecide(studentIds[1], 'retain')).status, 200, 'teacher can retain in the assigned class');
+    assert.equal((await teacherDecide(studentIds[8], 'retain')).status, 200, 'teacher can retain in the assigned class');
+    assert.equal((await teacherDecide(studentIds[1], 'retain')).status, 409, 'a student the administrator already retained this academic year cannot be decided again');
     assert.equal((await teacherDecide(studentIds[6], 'promote')).status, 200, 'teacher can promote in the assigned class');
     assert.equal((await teacherDecide(studentIds[7], 'remove')).status, 200, 'teacher can remove in the assigned class');
     // ...but demotion and reinstatement stay administrator-only, and a student
@@ -236,7 +237,7 @@ test('administrators execute all physical report-roster decisions and teachers a
       'SELECT id,class_name,deleted_at FROM students WHERE id=ANY($1::uuid[]) ORDER BY id',
       [studentIds],
     );
-    assert.equal(students.length, 8);
+    assert.equal(students.length, 9);
     assert.ok(students.every(row => row.class_name === 'Primary 4'),
       'online student class must remain unchanged by every report-roster decision');
     assert.ok(students.every(row => row.deleted_at === null),
