@@ -4,11 +4,14 @@ import { Picker } from '@react-native-picker/picker';
 import api from '../../api/client';
 import { Card, Btn, Loader, Empty } from '../../components/UI';
 import { PageContainer } from '../../components/layout';
+import { useAuth } from '../../api/AuthContext';
 import { Colors, Spacing, Fonts, Radius } from '../../theme';
 
 export default function ReportRemarksScreen() {
+  const { user } = useAuth();
   const [students, setStudents] = useState<any[]>([]);
   const [terms, setTerms] = useState<any[]>([]);
+  const [selectedClass, setSelectedClass] = useState('');
   const [studentId, setStudentId] = useState('');
   const [termId, setTermId] = useState<number | ''>('');
   const [classTeacherRemark, setClassTeacherRemark] = useState('');
@@ -29,8 +32,10 @@ export default function ReportRemarksScreen() {
         const roster = s.data.students ?? [];
         const availableTerms = t.data.terms ?? [];
         setStudents(roster);
+        const rosterClasses = [...new Set(roster.map((student: any) => student.class_name).filter(Boolean))].sort();
+        setSelectedClass(rosterClasses[0] ?? '');
+        setStudentId(roster.find((student: any) => student.class_name === rosterClasses[0])?.id ?? '');
         setTerms(availableTerms);
-        setStudentId(roster[0]?.id ?? '');
         const current = availableTerms.find((x: any) => x.is_current) ?? availableTerms[0];
         setTermId(current?.id ?? '');
       })
@@ -38,6 +43,8 @@ export default function ReportRemarksScreen() {
       .finally(() => { if (!cancelled) setLoading(false); });
     return () => { cancelled = true; };
   }, [setupRetry]);
+
+  const classStudents = students.filter(student => !selectedClass || student.class_name === selectedClass);
 
   useEffect(() => {
     if (!studentId || !termId) return;
@@ -91,10 +98,30 @@ export default function ReportRemarksScreen() {
     <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
       <PageContainer style={{ padding: Spacing.md }}>
         <Card>
+          {students.some(student => student.class_name) && (
+            <>
+              <Text style={styles.label}>Class</Text>
+              <View style={styles.picker}>
+                <Picker
+                  selectedValue={selectedClass}
+                  onValueChange={value => {
+                    setSelectedClass(String(value));
+                    const nextStudent = students.find(student => student.class_name === String(value));
+                    setStudentId(nextStudent?.id ?? '');
+                  }}
+                  accessibilityLabel="Select class for report remarks"
+                >
+                  {[...new Set(students.map(student => student.class_name).filter(Boolean))].sort().map(className => (
+                    <Picker.Item key={className} label={className} value={className} />
+                  ))}
+                </Picker>
+              </View>
+            </>
+          )}
           <Text style={styles.label}>Student</Text>
           <View style={styles.picker}>
             <Picker selectedValue={studentId} onValueChange={setStudentId}>
-              {students.map(s => <Picker.Item key={s.id} label={s.full_name} value={s.id} />)}
+              {classStudents.map(s => <Picker.Item key={s.id} label={s.full_name} value={s.id} />)}
             </Picker>
           </View>
           <Text style={styles.label}>Term</Text>
@@ -114,7 +141,7 @@ export default function ReportRemarksScreen() {
             <TextInput value={adminRemark} editable={false}
               multiline textAlignVertical="top" style={[styles.textArea, styles.readOnly]}
               placeholder="No principal's or head teacher's remark recorded yet" />
-            <Btn label={saving ? 'Saving…' : 'Save Report Remarks'} onPress={save} loading={saving} disabled={saving || recordLoading || !!error || !studentId || !termId} />
+            <Btn label={saving ? 'Saving…' : 'Save Report Remarks'} onPress={save} loading={saving} disabled={saving || recordLoading || !!error || !studentId || !termId || !classStudents.some(student => student.id === studentId)} />
             {!!notice && <Text style={styles.success}>{notice}</Text>}
             {!!error && <Text style={styles.error}>{error}</Text>}
           </Card>
