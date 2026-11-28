@@ -90,7 +90,7 @@ export default function LoginScreen({ navigation }: any) {
               accessibilityRole="button" accessibilityLabel="Sign in with password or temporary code"
               accessibilityState={{ selected: mode === 'password', disabled: loading }}>
               <Text style={[styles.modeButtonText, mode === 'password' && styles.modeButtonTextActive]}>Password</Text>
-              <Text style={[styles.modeButtonSubtext, mode === 'password' && styles.modeButtonTextActive]}>Teacher first sign-in or Admin</Text>
+              <Text style={[styles.modeButtonSubtext, mode === 'password' && styles.modeButtonTextActive]}>Older teacher code or Admin</Text>
             </TouchableOpacity>
           </View>
           <Text style={styles.passwordLabel}>School (optional)</Text>

@@ -121,7 +121,7 @@ export default function AdminUsersScreen() {
     assigned_subject_ids: [] as number[],
     assigned_class_names: [] as string[],
     assigned_class_subjects: [] as Array<{ class_name: string; subject_id: number }>,
-    initial_password: '', // teacher only — admin sets a temporary six-digit PIN (replaced at first sign-in)
+    initial_password: '', // teacher only — admin sets a temporary six-digit PIN (works as a normal PIN; the teacher may change it later)
   });
 
   const fetchUsers = async () => {
@@ -229,7 +229,7 @@ export default function AdminUsersScreen() {
       return;
     }
     if (!editUser && form.role === 'teacher' && !checkPin(form.initial_password).ok) {
-      setInfoDialog({ title: 'Invalid temporary PIN', message: (checkPin(form.initial_password) as { ok: false; message: string }).message + ' This is the teacher’s temporary PIN; they will replace it with their own six-digit PIN at first sign-in.' });
+      setInfoDialog({ title: 'Invalid temporary PIN', message: (checkPin(form.initial_password) as { ok: false; message: string }).message + ' This is the teacher’s temporary PIN; they can sign in with it straight away and change it later if they wish.' });
       return;
     }
     if (!editUser && form.role !== 'teacher' && !form.username.trim()) {
@@ -331,7 +331,7 @@ export default function AdminUsersScreen() {
           const { data } = await api.post(`/admin/users/${u.id}/reset-password`, {});
           setInfoDialog({
             title: isPinRole(u.role) ? 'PIN Reset' : 'Password Reset',
-            message: isPinRole(u.role) ? `Temporary six-digit PIN: ${data?.temporary_pin ?? data?.temporary_password}\n\nShare this with them privately. They sign in with it on the PIN tab and must then create their own six-digit PIN.` : `New password: ${data?.temporary_password}\n\nShare this with them. They'll be asked to set a new password on next login.`,
+            message: isPinRole(u.role) ? `Temporary six-digit PIN: ${data?.temporary_pin ?? data?.temporary_password}\n\nShare this with them privately. They sign in with it on the PIN tab and can change it later from their profile.` : `New password: ${data?.temporary_password}\n\nShare this with them privately. They can sign in with it straight away and change it later from More → Change Password.`,
           });
         } catch (e: any) {
           setInfoDialog({ title: 'Error', message: e?.response?.data?.error ?? 'Could not reset password' });

@@ -4,8 +4,11 @@
 //   * accept any six ASCII digits, including sequential PINs such as 123456;
 //   * reject six identical digits (000000, 111111 …) and anything that is not
 //     exactly six digits;
-//   * administrator-issued temporary credentials are six digits and must be
-//     replaced on first use; a reset revokes every session and the old PIN;
+//   * administrator-issued temporary credentials are six digits and work as
+//     normal PINs (no forced change; users may change them voluntarily); a
+//     reset revokes every session and the old PIN;
+//   * legacy credentials that are not six digits still sign in, then must be
+//     replaced by a six-digit PIN before the dashboard;
 //   * administrator passwords stay on their own, stronger route;
 //   * credential operations never touch academic records.
 //
@@ -99,7 +102,7 @@ const login = (username: string, pin: string, dev = device()) =>
   post('/auth/login', { username, pin }, { 'x-device-id': dev });
 
 /** A student/teacher who already holds a permanent PIN (peppered or legacy hash). */
-async function makePinUser(role: 'student' | 'teacher', pin: string, opts: { legacy?: boolean; mustSetPin?: boolean } = {}) {
+async function makePinUser(role: 'student' | 'teacher' | 'parent', pin: string, opts: { legacy?: boolean; mustSetPin?: boolean } = {}) {
   const username = uname(role);
   const hash = opts.legacy ? await bcrypt.hash(pin, 4) : await hashPin(pin);
   const { rows } = await query(
@@ -182,7 +185,7 @@ test('POST /auth/pin applies the policy for teachers and students', async () => 
   }
 });
 
-test('teacher first-time PIN setup: admin-created teacher with a temporary six-digit PIN must replace it', async () => {
+test('teacher first-time sign-in: admin-created teacher with a temporary six-digit PIN goes straight to the dashboard and may change it voluntarily', async () => {
   const className = `PIN6 Class ${sfx()}`;
   await query('INSERT INTO classes(school_code,name) VALUES($1,$2)', ['primary', className]);
   createdClasses.push(className);
@@ -206,17 +209,16 @@ test('teacher first-time PIN setup: admin-created teacher with a temporary six-d
 
   const { rows } = await query('SELECT pin_hash_version, must_set_pin, password_hash FROM users WHERE id=$1', [teacherId]);
   assert.equal(rows[0].pin_hash_version, PIN_HASH_VERSION, 'temporary PIN is stored with the peppered scheme');
-  assert.equal(rows[0].must_set_pin, true, 'temporary PIN must be replaced');
+  assert.equal(rows[0].must_set_pin, false, 'temporary PIN is not forced to change');
   assert.ok(!String(rows[0].password_hash).includes('246813'));
 
   const l = await login(username, '246813');
   assert.equal(l.status, 200);
-  assert.equal(l.json.pin_setup_required, true);
+  assert.equal(l.json.pin_setup_required, false, 'no mandatory first-login PIN change');
   assert.equal(l.json.must_change_pw, false, 'teachers are never sent to the administrator password-change flow');
   const auth = bearer(l.json.access_token);
-  const blocked = await get('/protected', l.json.access_token);
-  assert.equal(blocked.status, 403);
-  assert.equal(blocked.json.code, 'PIN_SETUP_REQUIRED');
+  assert.equal((await get('/protected', l.json.access_token)).status, 200, 'straight to the dashboard');
+  // Voluntary change still available.
   assert.equal((await post('/auth/pin', { current_credential: '246813', new_pin: '246813' }, auth)).status, 400, 'must differ from temporary PIN');
   assert.equal((await post('/auth/pin', { current_credential: '246813', new_pin: '345678' }, auth)).status, 200);
   const me = await get('/auth/me', l.json.access_token);
@@ -290,8 +292,8 @@ test('teacher and student PIN change revokes other sessions; this device stays s
   }
 });
 
-test('teacher and student reset: temporary six-digit PIN, every session revoked, old PIN invalid, new PIN forced', async () => {
-  for (const role of ['teacher', 'student'] as const) {
+test('teacher, student and parent reset: temporary six-digit PIN, every session revoked, old PIN invalid, dashboard open, voluntary change works', async () => {
+  for (const role of ['teacher', 'student', 'parent'] as const) {
     const u = await makePinUser(role, '564738');
     const studentRecord = await makeStudentRecord(role === 'student' ? u.id : null);
     const before = await academicSnapshot(studentRecord, role === 'teacher' ? u.id : undefined);
@@ -310,9 +312,9 @@ test('teacher and student reset: temporary six-digit PIN, every session revoked,
 
     const l = await login(u.username, temp);
     assert.equal(l.status, 200);
-    assert.equal(l.json.pin_setup_required, true, `${role}: must replace temporary PIN`);
+    assert.equal(l.json.pin_setup_required, false, `${role}: temporary PIN is not forced to change`);
     assert.equal(l.json.must_change_pw, false);
-    assert.equal((await get('/protected', l.json.access_token)).json.code, 'PIN_SETUP_REQUIRED');
+    assert.equal((await get('/protected', l.json.access_token)).status, 200, `${role}: straight to the dashboard`);
     assert.equal((await post('/auth/pin', { current_credential: temp, new_pin: '777777' }, bearer(l.json.access_token))).status, 400);
     assert.equal((await post('/auth/pin', { current_credential: temp, new_pin: '135792' }, bearer(l.json.access_token))).status, 200);
     assert.equal((await login(u.username, '135792')).json.pin_setup_required, false);

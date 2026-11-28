@@ -256,7 +256,8 @@ router.post('/users', async (req, res) => {
 
   // Teacher accounts: admin sets a temporary six-digit PIN directly,
   // per explicit school-owner request — teachers sign in with the PIN
-  // the admin gave them and must replace it at first sign-in (must_set_pin),
+  // the admin gave them and go straight to their dashboard (no forced
+  // first-sign-in change; they may change it voluntarily at any time),
   // rather than self-activating via a one-time code. Deliberately scoped to
   // 'teacher' only; every other role still goes through the Task C
   // activation-code flow below unchanged.
@@ -335,7 +336,7 @@ router.post('/users', async (req, res) => {
         const { rows } = await client.query(
           `INSERT INTO users(username,password_hash,pin_hash_version,pin_set_at,role,full_name,school_code,assigned_class,assigned_class_names,
              phone,email,must_change_pw,must_set_pin,access_expires_at,activation_code)
-           VALUES($1,$2,$10,clock_timestamp(),'teacher',$3,$4,$5,$6,$7,$8,FALSE,TRUE,$9,NULL) RETURNING id,username,role,school_code,access_expires_at`,
+           VALUES($1,$2,$10,clock_timestamp(),'teacher',$3,$4,$5,$6,$7,$8,FALSE,FALSE,$9,NULL) RETURNING id,username,role,school_code,access_expires_at`,
           [uname, hash, full_name, schoolCodeN, assignedClassN, classNames, phoneN, emailN, expiresAt, PIN_HASH_VERSION],
         );
         for (const sid of subjectIds) {
@@ -354,7 +355,7 @@ router.post('/users', async (req, res) => {
         }
         await auditInTransaction(
           client, req.user!, 'add_user', 'user', rows[0].id,
-          'teacher account created with administrator-issued temporary six-digit PIN; PIN change required at first sign-in',
+          'teacher account created with administrator-issued temporary six-digit PIN; no forced change at first sign-in',
           auditContextFromRequest(req, { schoolCode: schoolCodeN, metadata: { target_user_id: rows[0].id, assigned_subject_count: subjectIds.length } }),
         );
         return rows[0];
@@ -596,14 +597,16 @@ router.post('/users/:id/reset-password', async (req, res) => {
 
       // Students, parents and teachers: administrator-verified recovery. The
       // administrator issues a secure random temporary six-digit PIN, shown
-      // once in this response only. The user must set their own PIN at next
-      // sign-in, every session is revoked, and any lockout is cleared.
+      // once in this response only. It works as a normal PIN: no forced
+      // change at next sign-in (the user may change it voluntarily). Every
+      // session is revoked, so the old PIN and sessions stop working, and any
+      // lockout is cleared.
       if (['student', 'parent', 'teacher'].includes(existing[0].role)) {
         const pin = generateTemporaryPin();
         const hash = await hashPin(pin);
         await client.query(
           `UPDATE users SET password_hash=$1, pin_hash_version=$2, pin_set_at=clock_timestamp(),
-                  must_set_pin=TRUE, must_change_pw=FALSE
+                  must_set_pin=FALSE, must_change_pw=FALSE
             WHERE id=$3`,
           [hash, PIN_HASH_VERSION, req.params.id],
         );
@@ -611,23 +614,26 @@ router.post('/users/:id/reset-password', async (req, res) => {
         await clearAccountThrottle(accountKeyFor(existing[0].username), client);
         await auditInTransaction(
           client, req.user!, 'reset_pin', 'user', req.params.id,
-          'administrator issued a temporary six-digit PIN; all sessions revoked; PIN change required at next sign-in',
-          auditContextFromRequest(req, { schoolCode: existing[0].school_code, metadata: { target_user_id: req.params.id, must_set_pin: true, sessions_revoked: true } }),
+          'administrator issued a temporary six-digit PIN; all sessions revoked; no forced change at next sign-in',
+          auditContextFromRequest(req, { schoolCode: existing[0].school_code, metadata: { target_user_id: req.params.id, must_set_pin: false, sessions_revoked: true } }),
         );
         return { password: pin, isPin: true };
       }
 
-      // Administrator / Finance Administrator accounts: unchanged.
+      // Administrator / Finance Administrator accounts: a temporary password
+      // (separate from the six-digit PIN policy). It works as a normal
+      // password: no forced change at next sign-in; the account holder may
+      // change it voluntarily via POST /auth/change-password.
       const pw = generateTempPassword();
       const hash = await bcrypt.hash(pw, 10);
       await client.query(
-        'UPDATE users SET password_hash=$1, must_change_pw=TRUE WHERE id=$2',
+        'UPDATE users SET password_hash=$1, must_change_pw=FALSE WHERE id=$2',
         [hash, req.params.id],
       );
       await auditInTransaction(
         client, req.user!, 'reset_password', 'user', req.params.id,
-        'administrator reset user password; forced password change on next login',
-        auditContextFromRequest(req, { schoolCode: existing[0].school_code, metadata: { target_user_id: req.params.id, must_change_password: true } }),
+        'administrator reset user password; temporary password issued; no forced change on next login',
+        auditContextFromRequest(req, { schoolCode: existing[0].school_code, metadata: { target_user_id: req.params.id, must_change_password: false } }),
       );
       return { password: pw, isPin: false };
     });

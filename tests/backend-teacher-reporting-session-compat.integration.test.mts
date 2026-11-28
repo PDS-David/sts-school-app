@@ -57,11 +57,11 @@ async function call(base: string, method: string, path: string, token?: string, 
 
 interface TeacherOpts {
   school?: string; assignedClass?: string | null; classNames?: string[]; subjectIds?: number[];
-  pending?: boolean; mustSetPin?: boolean;
+  pending?: boolean; mustSetPin?: boolean; secret?: string;
 }
 async function makeTeacher(label: string, o: TeacherOpts = {}) {
   const username = `tcompat-${label}-${randomInt(100_000_000, 999_999_999)}`;
-  const hash = await bcrypt.hash(PIN, 4);
+  const hash = await bcrypt.hash(o.secret ?? PIN, 4);
   const { rows } = await query(
     `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,assigned_class_names,
                        is_active,pending_admin_review,must_set_pin,must_change_pw)
@@ -89,8 +89,8 @@ async function makeTeacher(label: string, o: TeacherOpts = {}) {
   return { id, username };
 }
 
-async function loginAs(base: string, username: string) {
-  const r = await call(base, 'POST', '/auth/login', undefined, { username, pin: PIN }, device());
+async function loginAs(base: string, username: string, secret = PIN) {
+  const r = await call(base, 'POST', '/auth/login', undefined, { username, pin: secret }, device());
   assert.equal(r.status, 200, `login should succeed for ${username}: ${JSON.stringify(r.json)}`);
   assert.ok(r.json.access_token && r.json.refresh_token, 'login returns an access token and a refresh token');
   return r.json as { access_token: string; refresh_token: string; pending_admin_review?: boolean };
@@ -145,7 +145,8 @@ test('teacher reporting works end to end with real PIN sessions (sessions requir
     // assignment must never widen record access across schools.
     const crossTeacher = await makeTeacher('cross', { classNames: ['Primary 4'], subjectIds: [subjectIds[0], subjectIds[2]] });
     const pendingTeacher = await makeTeacher('pending', { assignedClass: 'Primary 4', classNames: ['Primary 4'], pending: true });
-    const pinGated = await makeTeacher('pingated', { assignedClass: 'Primary 4', classNames: ['Primary 4'], mustSetPin: true });
+    // Still owes a six-digit PIN: holds a legacy four-digit code.
+    const pinGated = await makeTeacher('pingated', { assignedClass: 'Primary 4', classNames: ['Primary 4'], mustSetPin: true, secret: '4821' });
     userIds.push(classTeacher.id, subjTeacher.id, crossTeacher.id, pendingTeacher.id, pinGated.id);
 
     const started = await startServer();
@@ -224,8 +225,8 @@ test('teacher reporting works end to end with real PIN sessions (sessions requir
     await query('UPDATE users SET pending_admin_review=FALSE WHERE id=$1', [pendingTeacher.id]);
     assert.equal((await call(base, 'GET', '/students', pt.access_token)).status, 200, 'approval takes effect on the next request');
 
-    // ── Teacher still owing a PIN (administrator-issued credential) ──────────
-    const pg = await loginAs(base, pinGated.username);
+    // ── Teacher still owing a six-digit PIN (legacy four-digit code) ─────────
+    const pg = await loginAs(base, pinGated.username, '4821');
     const gated = await call(base, 'GET', '/students', pg.access_token);
     assert.equal(gated.status, 403);
     assert.equal(gated.json?.code, 'PIN_SETUP_REQUIRED');

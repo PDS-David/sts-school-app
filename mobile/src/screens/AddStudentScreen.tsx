@@ -109,10 +109,11 @@ export default function AddStudentScreen({ navigation }: any) {
         parent_email: parentEmail.trim() || undefined,
       });
 
-      if (data.parent?.temporary_password) {
+      const parentPin = data.parent?.temporary_pin ?? data.parent?.temporary_password;
+      if (parentPin) {
         setDialog({
           title: 'Student & parent account created',
-          message: `${fullName.trim()} has been enrolled.\n\nA new parent account was created:\nUsername: ${data.parent.username}\nTemporary password: ${data.parent.temporary_password}\n\nHand these to the parent — they’ll be asked to change the password on first login.`,
+          message: `${fullName.trim()} has been enrolled.\n\nA new parent account was created:\nUsername: ${data.parent.username}\nTemporary six-digit PIN: ${parentPin}\n\nHand these to the parent privately. They sign in with this PIN and can change it later from their profile.`,
           onDone: () => navigation.goBack(),
         });
       } else if (data.parent?.username) {

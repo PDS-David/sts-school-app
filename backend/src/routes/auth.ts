@@ -86,6 +86,36 @@ function accessEnded(user: any, message: string | null = null) {
   return null;
 }
 
+/** True when a proven public-role credential is not a six-digit PIN. */
+export function isLegacyPinFormat(typed: string): boolean {
+  return !/^\d{6}$/.test(typed);
+}
+
+/**
+ * Bring must_set_pin / must_change_pw in line with the credential just proven
+ * (see the call site in /login). Compare-and-swap on the verified hash, so a
+ * concurrent PIN change, reset or activation is never overwritten. Mutates
+ * `user` so the response and the rehash step see the stored state.
+ */
+async function syncLegacyPinRequirement(user: any, typed: string): Promise<void> {
+  if (!PIN_ROLES.has(user.role) || !user.password_hash) return;
+  const required = isLegacyPinFormat(typed);
+  const stale = required
+    ? user.must_set_pin !== true
+    : user.must_set_pin === true || user.must_change_pw === true;
+  if (!stale) return;
+  const { rowCount } = await query(
+    required
+      ? 'UPDATE users SET must_set_pin=TRUE WHERE id=$1 AND password_hash=$2'
+      : 'UPDATE users SET must_set_pin=FALSE, must_change_pw=FALSE WHERE id=$1 AND password_hash=$2',
+    [user.id, user.password_hash],
+  );
+  if (rowCount === 1) {
+    if (required) user.must_set_pin = true;
+    else { user.must_set_pin = false; user.must_change_pw = false; }
+  }
+}
+
 // ── POST /auth/login ──────────────────────────────────────────────────────────
 // One username field and one secret field for every account. The client never
 // says what kind of account it is and the server never trusts it if it did:
@@ -172,6 +202,18 @@ router.post('/login', loginIpFailureLimiter, async (req, res) => {
   }
   const ended = accessEnded(user);
   if (ended) return res.status(403).json({ error: ended });
+
+  // Legacy-credential migration (students, parents, teachers). Decided here,
+  // from the credential that was just proven, because a stored hash does not
+  // reveal how many digits it protects:
+  //   * not six digits (old four-digit teacher codes, eight-digit/character
+  //     temporary credentials, older 8+ character passwords) → the account
+  //     must establish a six-digit PIN before anything else;
+  //   * six digits (existing PIN holders, administrator-issued temporary
+  //     PINs) → straight to the dashboard; any stale forced-change flag is
+  //     cleared.
+  // Only the flags move; the account, its records and links are untouched.
+  await syncLegacyPinRequirement(user, secret);
 
   // Transparent upgrade of an existing PIN from the legacy bcrypt hash to the
   // peppered scheme. Runs only here, i.e. after the credential is proven, the

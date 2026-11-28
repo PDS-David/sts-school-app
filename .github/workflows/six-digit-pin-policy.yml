@@ -13,6 +13,8 @@ on:
       - "backend/src/utils/credentialAttempts.ts"
       - "backend/src/utils/selfRegistration.ts"
       - "backend/src/utils/authSessions.ts"
+      - "backend/src/utils/parentProvisioning.ts"
+      - "backend/src/routes/students.ts"
       - "backend/src/routes/auth.ts"
       - "backend/src/routes/admin.ts"
       - "backend/src/middleware/auth.ts"
@@ -31,6 +33,8 @@ on:
       - "mobile/src/screens/StudentSelfClaimScreen.tsx"
       - "mobile/src/navigation/**"
       - "tests/backend-six-digit-pin-policy.integration.test.mts"
+      - "tests/backend-legacy-pin-migration.integration.test.mts"
+      - "mobile/src/screens/AddStudentScreen.tsx"
       - "tests/mobile/pin-forms.test.mts"
       - "tests/mobile/pin-setup.test.mts"
       - "tests/mobile/pin-setup-wiring.test.mts"
@@ -84,8 +88,8 @@ jobs:
         run: npm run db:bootstrap --workspace=backend
       - name: Apply numbered migrations against the fresh baseline
         run: npm run db:migrate --workspace=backend
-      - name: Run six-digit PIN policy integration tests
-        run: node --import tsx --test --test-concurrency=1 tests/backend-six-digit-pin-policy.integration.test.mts tests/backend-credential-attempts.integration.test.mts tests/backend-teacher-assignment.integration.test.mts tests/backend-self-registration.integration.test.mts
+      - name: Run six-digit PIN policy and legacy-PIN migration integration tests
+        run: node --import tsx --test --test-concurrency=1 tests/backend-six-digit-pin-policy.integration.test.mts tests/backend-legacy-pin-migration.integration.test.mts tests/backend-parent-provisioning.integration.test.mts tests/backend-credential-attempts.integration.test.mts tests/backend-teacher-assignment.integration.test.mts tests/backend-self-registration.integration.test.mts
       - name: Run mobile PIN contract tests
         run: node --import tsx --test tests/mobile/pin-forms.test.mts tests/mobile/pin-setup.test.mts tests/mobile/pin-setup-wiring.test.mts tests/mobile/login-form.test.mts
       - name: Typecheck backend
