@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, KeyboardAvoidingView, Platform, Pressable } from 'react-native';
 import api from '../api/client';
 import { Btn, Input, Card } from '../components/UI';
 import { Colors, Spacing, Fonts } from '../theme';
@@ -57,13 +57,10 @@ export default function ActivateAccountScreen({ navigation }: any) {
     <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
       <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
         <Card>
-          <Text style={styles.title}>Activate Your Account</Text>
-          <Text style={styles.helper}>Your school administrator created your account and gave you a one-time activation code. Enter it here to set your sign-in credential. Students, parents and teachers must choose a six-digit PIN. Only administrators should choose the admin password option.</Text>
-
-          <View style={styles.modeRow}>
-            <Btn label="Six-digit PIN" variant={mode === 'pin' ? 'primary' : 'outline'} onPress={() => { setMode('pin'); setNewPw(''); setConf(''); setError(''); }} style={styles.modeBtn} />
-            <Btn label="Admin password" variant={mode === 'password' ? 'primary' : 'outline'} onPress={() => { setMode('password'); setNewPw(''); setConf(''); setError(''); }} style={styles.modeBtn} />
-          </View>
+          <Pressable onLongPress={() => { setMode('password'); setNewPw(''); setConf(''); setError(''); }} delayLongPress={1800}>
+            <Text style={styles.title}>Activate Your Account</Text>
+          </Pressable>
+          <Text style={styles.helper}>Your school administrator created your account and gave you a one-time activation code. Enter it here to set your sign-in credential.</Text>
 
           <Input label="Username" value={username} onChangeText={setUsername} placeholder="The username your admin gave you" autoCapitalize="none" />
           <Input label="Activation Code" value={code} onChangeText={setCode} placeholder="Enter the code your admin gave you" keyboardType="numeric" />
@@ -94,7 +91,5 @@ const styles = StyleSheet.create({
   container: { flexGrow: 1, backgroundColor: Colors.background, padding: Spacing.lg, justifyContent: 'center' },
   title:     { fontSize: Fonts.sizes.xl, fontWeight: '700', marginBottom: Spacing.sm, color: Colors.text },
   helper:    { fontSize: Fonts.sizes.sm, color: Colors.textSub, marginBottom: Spacing.md },
-  modeRow:   { flexDirection: 'row', gap: Spacing.sm, marginBottom: Spacing.md },
-  modeBtn:   { flex: 1 },
   error:     { color: Colors.error, fontSize: Fonts.sizes.sm, marginTop: Spacing.sm, marginBottom: Spacing.sm },
 });
