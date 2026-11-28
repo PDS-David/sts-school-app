@@ -9,12 +9,6 @@ import { audit } from '../utils/audit.js';
 // school; there is no school or class parameter on GET.
 const router = Router();
 router.use(requireAuth);
-router.use((req, res, next) => {
-  if (req.user?.role === 'teacher') {
-    return res.status(403).json({ error: 'Teacher accounts are limited to physical-class report workflows.' });
-  }
-  next();
-});
 
 const COLUMNS = 'a.id, a.school_code, a.title, a.body, a.audience_role, a.class_name, a.created_by, a.created_at, a.expires_at';
 const LIVE = '(a.expires_at IS NULL OR a.expires_at > now())';
@@ -60,9 +54,9 @@ router.get('/', async (req, res) => {
           WHERE ${LIVE}
             AND a.school_code = $1
             AND (a.audience_role IS NULL OR a.audience_role = 'teacher')
-            AND (a.class_name IS NULL OR a.class_name = $2::text)
+            AND (a.class_name IS NULL OR a.class_name = ANY(ARRAY[$2::text] || COALESCE($3::text[], ARRAY[]::text[])))
           ORDER BY a.created_at DESC LIMIT ${LIMIT}`,
-        [user.school_code, user.assigned_class ?? null],
+        [user.school_code, user.assigned_class ?? null, (user as any).assigned_class_names ?? []],
       ));
     }
   } else if (user.role === 'admin') {
