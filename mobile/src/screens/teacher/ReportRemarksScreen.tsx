@@ -30,7 +30,7 @@ export default function ReportRemarksScreen() {
         const roster = s.data.students ?? [];
         const availableTerms = t.data.terms ?? [];
         setStudents(roster);
-        const rosterClasses = [...new Set(roster.map((student: any) => student.class_name).filter(Boolean))].sort();
+        const rosterClasses: string[] = [...new Set<string>(roster.map((student: any) => String(student.class_name ?? '')).filter((className: string) => !!className))].sort();
         setSelectedClass(rosterClasses[0] ?? '');
         setStudentId(roster.find((student: any) => student.class_name === rosterClasses[0])?.id ?? '');
         setTerms(availableTerms);
