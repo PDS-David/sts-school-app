@@ -1,5 +1,23 @@
 # Changelog
 
+## [Unreleased] — 2026-11-28 — Teachers can no longer print or export reports
+
+Policy: Operations Admin, Finance Admin and parents may print and export
+reports; teachers and students may only view them. `MyResultsScreen` and
+`SessionReportScreen` previously included `teacher` in their `canPrintExport`
+check, so teachers saw Print and Export PDF.
+
+New `mobile/src/utils/reportAccess.ts` is the single source of truth
+(`canPrintOrExportReports`, `assertCanPrintOrExportReports`; unknown or missing
+roles are denied). Both screens use it for the button gate and re-check it in
+`handlePrint`/`handleExport`, and `printReportHtml`/`exportReportHtml` in
+`utils/reportPdf.ts` now take the caller's role and refuse a disallowed one
+before touching the print dialog, expo-print or the share sheet. Report viewing,
+calculations, marks, attendance, grading and backend permissions are unchanged
+(print/export is client-side only; the Excel export route is admin-only).
+Regression tests: `tests/mobile/report-print-export-policy.test.mts`, run by
+`npm run test:mobile:frontend-contracts`.
+
 ## [Unreleased] — 2026-09-06 — Persistent sidebar nav (all roles, wide/web screens)
 
 New `mobile/src/components/Sidebar.tsx` (`Sidebar` + `SidebarLayout`).

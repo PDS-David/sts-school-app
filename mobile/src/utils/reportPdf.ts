@@ -4,10 +4,14 @@ import * as Sharing from 'expo-sharing';
 import { Asset } from 'expo-asset';
 import type { SchoolBrand } from '../schoolBranding';
 import { renderSessionReportHtml, renderTermReportHtml } from './reportTemplate';
+import { assertCanPrintOrExportReports } from './reportAccess';
 
-// This module has no role check. MyResultsScreen and SessionReportScreen
-// expose print/export to admins, parents, and teachers. Teacher report access
-// is independently restricted by the backend to the teacher's assigned class.
+// Print and export are role-gated (see ./reportAccess): administrators, finance
+// administrators and parents only. Teachers and students may view reports but
+// never print or export them. printReportHtml and exportReportHtml re-check the
+// caller's role themselves, so a screen that forgets to hide its buttons still
+// cannot print or export for a disallowed role. Building the HTML for on-screen
+// viewing is not gated.
 
 async function logoDataUri(brand: SchoolBrand | null): Promise<string> {
   if (!brand) return '';
@@ -35,7 +39,8 @@ export async function buildSessionReportHtml(report: any, brand: SchoolBrand | n
 }
 
 // ── Print (opens the OS/browser print dialog directly, no file produced) ────
-export async function printReportHtml(html: string): Promise<void> {
+export async function printReportHtml(html: string, role: string | null | undefined): Promise<void> {
+  assertCanPrintOrExportReports(role);
   if (Platform.OS === 'web') {
     // expo-print's printToFileAsync isn't available on web, and printAsync's
     // web support varies by SDK version — the one thing every browser
@@ -60,13 +65,14 @@ export async function printReportHtml(html: string): Promise<void> {
 }
 
 // ── Export (produces an actual file to save/share — Drive, WhatsApp, etc.) ──
-export async function exportReportHtml(html: string, filenameBase: string): Promise<void> {
+export async function exportReportHtml(html: string, filenameBase: string, role: string | null | undefined): Promise<void> {
+  assertCanPrintOrExportReports(role);
   if (Platform.OS === 'web') {
     // No native filesystem/share sheet on web — the print dialog's own
     // "Save as PDF" destination is the export path there, same document the
     // user already sees for Print. Route Export to the same flow rather
     // than silently no-op-ing on web.
-    return printReportHtml(html);
+    return printReportHtml(html, role);
   }
   const { uri } = await Print.printToFileAsync({ html, base64: false });
   const canShare = await Sharing.isAvailableAsync();
