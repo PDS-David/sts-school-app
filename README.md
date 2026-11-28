@@ -210,6 +210,17 @@ npm run db:backup-restore -- --file sts.sts-backup --apply --confirm-database <e
 Restore replaces the contents of every table in one transaction (all or nothing) and resets sequences.
 Test a restore into a scratch database before you need it.
 
+The append-only audit tables (`audit_log`, `report_roster_membership_events` and
+`report_roster_progression_decisions`) are included in every backup. During a confirmed `--apply`
+restore, and only inside its single transaction, the restore switches off the specific triggers that
+would otherwise block replacing them (their `TRUNCATE` guards, and the progression table's insert
+validator, which cannot reload superseded or reversed decisions). Each trigger's previous state is
+recorded first, put back exactly (enabled, enabled-always or disabled all round-trip) and checked
+before `COMMIT`; the progression history is then re-validated (student/school, term, supersede chain).
+Any failure rolls back the data and the trigger changes together, and other sessions never see the
+protections lifted. A backup taken before migration `0022` cannot be restored into a database that
+has the progression table; the restore refuses it before changing anything.
+
 ### Development/demo seed only
 
 `npm run db:seed --workspace backend` remains a separate development utility.
@@ -304,6 +315,21 @@ npx tsx src/db/resetAcademicData.ts --new-session secondary 2025/2026 --include-
 After a `--new-session` reset, create the new academic year's 1st Term via
 Admin > Terms in the app (or a fresh import script, if there's another
 legacy batch to bring in).
+
+**Progression history is protected.** Promotion/retention/removal decisions
+(`report_roster_progression_decisions`) are a permanent, append-only audit
+record that references students, schools and terms with `ON DELETE RESTRICT`.
+`--term` and `--session` never delete term or student rows, so they never touch
+it. `--new-session` is **refused** (including as a dry run, before anything is
+deleted) if any progression decision references the terms it would delete, and
+`--include-students` is refused if any decision belongs to the students it
+would delete. The message states what blocks it and that nothing was changed;
+use `--session <school> <year>` instead, which keeps the term rows, and create
+the new year's terms alongside them. There is deliberately no flag to delete or
+bypass this history. The destructive part of `--new-session` runs in one
+transaction that repeats the check, so a decision recorded mid-run, or any other
+protective foreign key, rolls the whole reset back instead of leaving it
+half-applied.
 
 ---
 
