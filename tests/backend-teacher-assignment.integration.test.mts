@@ -463,11 +463,18 @@ test('an explicit null or empty primary class clears the assignment; omitting th
       assert.equal(state.assigned_class, f.classA, 'omitted assigned_class must not clear the class');
       assert.deepEqual(state.assigned_class_names, [f.classB]);
 
-      const cleared = await putUser(teacherId, { assigned_class: clearValue, assigned_class_names: [] });
+      // Clearing the primary class converts the teacher to a subject teacher, so
+      // the request must carry a valid subject-teacher allocation (audit D2).
+      const cleared = await putUser(teacherId, {
+        assigned_class: clearValue,
+        assigned_class_names: [f.classB],
+        assigned_subject_ids: [f.subject1],
+        assigned_class_subjects: [{ class_name: f.classB, subject_id: f.subject1 }],
+      });
       assert.equal(cleared.status, 200, `clearing with ${JSON.stringify(clearValue)} must succeed`);
       state = await readAssignment(teacherId);
       assert.equal(state.assigned_class, null, `assigned_class must be NULL after ${JSON.stringify(clearValue)}`);
-      assert.deepEqual(state.assigned_class_names, []);
+      assert.deepEqual(state.assigned_class_names, [f.classB]);
 
       const listed = await fetch(`${baseUrl}/admin/users?role=teacher`, { headers: { authorization: `Bearer ${adminToken}` } });
       assert.equal(listed.status, 200);
@@ -487,16 +494,33 @@ test('an explicit null or empty primary class clears the assignment; omitting th
   }
 });
 
-test('clearing the primary class without resending other fields drops inherited class-teacher ownership', async () => {
+test('clearing the primary class without a valid subject allocation is rejected; with one it drops inherited class-teacher ownership', async () => {
   await withAssignmentFixture(async (f) => {
     const teacherId = await createClassTeacher(f, f.classA, [f.classB]);
-    const response = await putUser(teacherId, { assigned_class: null });
-    assert.equal(response.status, 200);
+
+    // Bare clear would leave a subject teacher with nothing (audit D2): rejected, nothing changes.
+    const bare = await putUser(teacherId, { assigned_class: null });
+    assert.equal(bare.status, 400);
     assert.deepEqual(await readAssignment(teacherId), {
-      assigned_class: null,
-      assigned_class_names: [],
+      assigned_class: f.classA,
+      assigned_class_names: [f.classB],
       subject_ids: [],
       pairs: [],
+    });
+
+    // A valid allocation converts; the old extra class B is not inherited.
+    const converted = await putUser(teacherId, {
+      assigned_class: null,
+      assigned_class_names: [f.classC],
+      assigned_subject_ids: [f.subject2],
+      assigned_class_subjects: [{ class_name: f.classC, subject_id: f.subject2 }],
+    });
+    assert.equal(converted.status, 200);
+    assert.deepEqual(await readAssignment(teacherId), {
+      assigned_class: null,
+      assigned_class_names: [f.classC],
+      subject_ids: [f.subject2],
+      pairs: [{ class_name: f.classC, subject_id: f.subject2 }],
     }, 'extra owned classes would otherwise keep roster access with no assignment');
   });
 });
@@ -649,7 +673,12 @@ test('school-bound administrators can clear and convert in their school but not 
       assert.equal(foreignRows[0].assigned_class, foreignClass, 'the cross-school clear attempt must change nothing');
 
       const ownId = await createClassTeacher(f, f.classA);
-      const ownClear = await scopedPut(ownId, { assigned_class: null });
+      const ownClear = await scopedPut(ownId, {
+        assigned_class: null,
+        assigned_class_names: [f.classA],
+        assigned_subject_ids: [f.subject1],
+        assigned_class_subjects: [{ class_name: f.classA, subject_id: f.subject1 }],
+      });
       assert.equal(ownClear.status, 200);
       assert.equal((await readAssignment(ownId)).assigned_class, null);
     } finally {

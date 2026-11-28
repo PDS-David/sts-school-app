@@ -540,6 +540,16 @@ router.put('/users/:id', async (req, res) => {
             nextSubjectIds.map(subject_id => ({ class_name, subject_id })),
           );
         }
+        // Same minimum as POST: a subject teacher (no primary class) must end up
+        // with at least one class, one subject and one class/subject grant. Only
+        // enforced when this request rewrites allocations (or promotes a
+        // non-teacher), so profile/status-only edits to an account created
+        // before this rule are unaffected. Class teachers need no subject grants.
+        const allocationsRewritten = current.role !== 'teacher' || hasClassNames || hasSubjectIds ||
+          hasClassSubjectGrants || convertedType;
+        if (!nextClass && allocationsRewritten && (!nextClassSubjectGrants.length || !nextSubjectIds.length)) {
+          throw new TeacherAssignmentValidationError('A subject teacher must have at least one assigned class and one assigned subject.');
+        }
         if (nextClass) {
           const classesToAssign = [nextClass, ...nextClassNames];
           await client.query('SELECT id FROM classes WHERE school_code=$1 AND name=ANY($2::text[]) FOR UPDATE', [nextSchool, classesToAssign]);
