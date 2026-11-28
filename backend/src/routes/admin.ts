@@ -12,7 +12,7 @@ import { revokeUserSessions } from '../utils/authSessions.js';
 import { accountKeyFor } from '../utils/usernames.js';
 import { clearAccountThrottle } from '../utils/loginThrottle.js';
 import { getBackupStatus, runBackup, BackupConfigError } from '../utils/backup.js';
-import { normalizeTeacherSubjectIds, TeacherAssignmentValidationError, validateTeacherAssignments } from '../utils/teacherAssignments.js';
+import { assertTeacherReadyForApproval, normalizeTeacherSubjectIds, TeacherAssignmentValidationError, validateTeacherAssignments } from '../utils/teacherAssignments.js';
 import type { AuthUser } from '../types/index.js';
 import { resolveLearningAccessPolicy } from '../utils/learningAccessPolicy.js';
 
@@ -700,19 +700,42 @@ router.post('/users/:id/reset-password', async (req, res) => {
 // gate to lift. Admin should have already checked/edited the account's
 // class/subject assignment via the normal Edit Details flow before this.
 router.post('/users/:id/approve', async (req, res) => {
-  const result = await withTransaction(async (client) => {
-    const { rows } = await client.query(
-      'UPDATE users SET pending_admin_review=FALSE WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) RETURNING id, school_code',
-      [req.params.id, req.user!.school_code ?? null],
-    );
-    if (!rows[0]) return null;
-    await auditInTransaction(
-      client, req.user!, 'approve_self_registered_user', 'user', req.params.id,
-      'administrator approved self-registered account',
-      auditContextFromRequest(req, { schoolCode: rows[0].school_code, metadata: { target_user_id: req.params.id } }),
-    );
-    return rows[0];
-  });
+  let result;
+  try {
+    result = await withTransaction(async (client) => {
+      // Lock the row first so the allocation checked below is the allocation approved.
+      const { rows: targetRows } = await client.query(
+        `SELECT role,school_code,assigned_class,assigned_class_names,pending_admin_review
+         FROM users WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) FOR UPDATE`,
+        [req.params.id, req.user!.school_code ?? null],
+      );
+      const target = targetRows[0];
+      if (!target) return null;
+      // A pending teacher is only approved with a valid role-appropriate
+      // allocation. Other roles, and an already-approved account, are unchanged.
+      if (target.role === 'teacher' && target.pending_admin_review) {
+        await assertTeacherReadyForApproval(
+          client, req.params.id, target.school_code, target.assigned_class, target.assigned_class_names,
+        );
+      }
+      const { rows } = await client.query(
+        'UPDATE users SET pending_admin_review=FALSE WHERE id=$1 AND ($2::text IS NULL OR school_code=$2) RETURNING id, school_code',
+        [req.params.id, req.user!.school_code ?? null],
+      );
+      if (!rows[0]) return null;
+      await auditInTransaction(
+        client, req.user!, 'approve_self_registered_user', 'user', req.params.id,
+        'administrator approved self-registered account',
+        auditContextFromRequest(req, { schoolCode: rows[0].school_code, metadata: { target_user_id: req.params.id } }),
+      );
+      return rows[0];
+    });
+  } catch (error) {
+    if (error instanceof TeacherAssignmentValidationError) {
+      return res.status(400).json({ error: error.message });
+    }
+    throw error;
+  }
   if (!result) return res.status(404).json({ error: 'User not found' });
   return res.json({ ok: true });
 });
