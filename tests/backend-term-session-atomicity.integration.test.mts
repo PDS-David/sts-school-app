@@ -130,16 +130,17 @@ test('term creation conflicts are deterministic and concurrent current-term swit
     const currentId = Number(currentRows[0].id);
     assert.ok([termIds[1], termIds[2]].includes(currentId));
 
-    const foreignUpdate = await putTerm(termIds[1], { days_opened: 20 }, foreignTeacher.token);
+    const foreignUpdate = await putTerm(termIds[1], { next_term_begins: '2027-01-02' }, foreignTeacher.token);
     assert.equal(foreignUpdate.status, 404, 'a teacher cannot discover or update another school term');
+    const { rows: daysBefore } = await query('SELECT days_opened FROM terms WHERE id=$1', [termIds[1]]);
     const teacherDaysOpened = await putTerm(termIds[1], { days_opened: 22 }, primaryTeacher.token);
-    assert.equal(teacherDaysOpened.status, 200, 'an assigned class teacher may update attendance days opened');
+    assert.equal(teacherDaysOpened.status, 403, 'only administrators may change days opened');
     const teacherNextTermDate = await putTerm(termIds[1], { next_term_begins: '2027-01-05' }, primaryTeacher.token);
     assert.equal(teacherNextTermDate.status, 200, 'an assigned class teacher may update the next-term date');
     const { rows: teacherUpdatedTerm } = await query(
       'SELECT days_opened,next_term_begins FROM terms WHERE id=$1', [termIds[1]],
     );
-    assert.equal(Number(teacherUpdatedTerm[0].days_opened), 22);
+    assert.equal(Number(teacherUpdatedTerm[0].days_opened), Number(daysBefore[0].days_opened), 'the refused teacher request changed nothing');
     assert.equal(String(teacherUpdatedTerm[0].next_term_begins), '2027-01-05');
     const adminTermUpdate = await putTerm(termIds[1], {
       days_opened: 23, next_term_begins: '2027-01-12',

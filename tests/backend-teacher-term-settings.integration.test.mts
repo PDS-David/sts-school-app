@@ -27,7 +27,7 @@ async function makeUser(role: 'teacher' | 'admin', schoolCode: string | null, as
   };
 }
 
-test('class teachers can update attendance term details but cannot edit academic term administration fields', async () => {
+test('class teachers can update the next-term date but cannot edit days_opened or academic term administration fields', async () => {
   const suffix = randomUUID();
   const year = `TERM-TEACHER/${suffix}`;
   const { rows: primaryTerms } = await query(
@@ -54,18 +54,30 @@ test('class teachers can update attendance term details but cannot edit academic
       method:'PUT',headers:{authorization:`Bearer ${token}`,'content-type':'application/json'},body:JSON.stringify(body),
     });
 
-    const allowed = await put(primaryTermId,classTeacher.token,{days_opened:55,next_term_begins:'Monday, 12 January'});
+    const allowed = await put(primaryTermId,classTeacher.token,{next_term_begins:'Monday, 12 January'});
     assert.equal(allowed.status,200);
     const allowedBody = await allowed.json() as {term:{days_opened:number;next_term_begins:string}};
-    assert.equal(allowedBody.term.days_opened,55);
+    assert.equal(allowedBody.term.days_opened,40,'the school-wide days_opened is untouched');
     assert.equal(allowedBody.term.next_term_begins,'Monday, 12 January');
+
+    const daysDenied = await put(primaryTermId,classTeacher.token,{days_opened:55});
+    assert.equal(daysDenied.status,403,'only administrators may change days_opened');
+    const mixedDenied = await put(primaryTermId,classTeacher.token,{days_opened:55,next_term_begins:'Changed in a mixed request'});
+    assert.equal(mixedDenied.status,403,'a mixed request is refused whole');
+    const { rows: unchanged } = await query('SELECT days_opened,next_term_begins FROM terms WHERE id=$1',[primaryTermId]);
+    assert.equal(Number(unchanged[0].days_opened),40);
+    assert.equal(unchanged[0].next_term_begins,'Monday, 12 January');
 
     const forbiddenField = await put(primaryTermId,classTeacher.token,{is_current:true});
     assert.equal(forbiddenField.status,403,'teachers cannot change term activation or academic configuration');
-    const crossSchool = await put(secondaryTermId,classTeacher.token,{days_opened:60});
+    const crossSchool = await put(secondaryTermId,classTeacher.token,{next_term_begins:'Cross-school'});
     assert.equal(crossSchool.status,404,'teacher cannot update another school term');
-    const subjectTeacherDenied = await put(primaryTermId,subjectTeacher.token,{days_opened:60});
-    assert.equal(subjectTeacherDenied.status,403,'subject teachers cannot update class-teacher attendance settings');
+    const subjectTeacherDenied = await put(primaryTermId,subjectTeacher.token,{next_term_begins:'Subject teacher'});
+    assert.equal(subjectTeacherDenied.status,403,'subject teachers cannot update class-teacher term settings');
+
+    const adminDays = await put(primaryTermId,admin.token,{days_opened:60});
+    assert.equal(adminDays.status,200,'administrators can change days_opened');
+    assert.equal(((await adminDays.json()) as {term:{days_opened:number}}).term.days_opened,60);
 
     const adminUpdate = await put(primaryTermId,admin.token,{is_current:true,name:'2nd Term'});
     assert.equal(adminUpdate.status,200,'administrators retain existing term-management capability');
