@@ -10,6 +10,12 @@ type SelfClaimInput = {
   admissionNumber: string;
   accessCode: string;
   passwordHash: string;
+  /**
+   * Set when passwordHash is a peppered six-digit PIN the person chose
+   * themselves (utils/pin.ts hashPin). The account is then a permanent PIN
+   * holder (must_set_pin FALSE). Omitted: legacy behaviour, PIN still owed.
+   */
+  pinHashVersion?: number | null;
 };
 
 export type SelfClaimResult =
@@ -25,6 +31,8 @@ type SelfRegistrationInput = {
   schoolCode: string;
   username: string;
   passwordHash: string;
+  /** See SelfClaimInput.pinHashVersion. */
+  pinHashVersion?: number | null;
   admissionNumber?: string;
   className?: string;
   wardAdmissionNumber?: string;
@@ -131,10 +139,10 @@ export async function claimStudentAccount(input: SelfClaimInput): Promise<SelfCl
     }
 
     const { rows: users } = await client.query(
-      `INSERT INTO users(username,password_hash,role,full_name,school_code,must_change_pw,must_set_pin)
-       VALUES($1,$2,'student',$3,$4,FALSE,TRUE)
+      `INSERT INTO users(username,password_hash,role,full_name,school_code,must_change_pw,must_set_pin,pin_hash_version,pin_set_at)
+       VALUES($1,$2,'student',$3,$4,FALSE,$5::int IS NULL,$5::int,CASE WHEN $5::int IS NULL THEN NULL ELSE clock_timestamp() END)
        RETURNING id,username`,
-      [username, input.passwordHash, student.full_name, input.schoolCode],
+      [username, input.passwordHash, student.full_name, input.schoolCode, input.pinHashVersion ?? null],
     );
     const user = users[0];
 
@@ -236,10 +244,10 @@ export async function registerSelfServiceAccount(
     }
 
     const { rows: users } = await client.query(
-      `INSERT INTO users(username,password_hash,role,full_name,phone,school_code,pending_admin_review,must_change_pw,must_set_pin)
-       VALUES($1,$2,$3,$4,$5,$6,TRUE,FALSE,TRUE)
+      `INSERT INTO users(username,password_hash,role,full_name,phone,school_code,pending_admin_review,must_change_pw,must_set_pin,pin_hash_version,pin_set_at)
+       VALUES($1,$2,$3,$4,$5,$6,TRUE,FALSE,$7::int IS NULL,$7::int,CASE WHEN $7::int IS NULL THEN NULL ELSE clock_timestamp() END)
        RETURNING id,username`,
-      [input.username, input.passwordHash, input.role, input.fullName, input.phone, input.schoolCode],
+      [input.username, input.passwordHash, input.role, input.fullName, input.phone, input.schoolCode, input.pinHashVersion ?? null],
     );
     const user = users[0];
 

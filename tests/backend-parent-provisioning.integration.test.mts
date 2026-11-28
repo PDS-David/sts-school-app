@@ -1,8 +1,12 @@
+// New parent accounts get a peppered temporary six-digit PIN. Test-only placeholder.
+process.env.PIN_PEPPER ||= 'test-pepper-0123456789-0123456789-0123456789-abcdef';
+
 import assert from 'node:assert/strict';
 import { randomInt } from 'node:crypto';
 import test, { after } from 'node:test';
 import { pool, query } from '../backend/src/db/pool.js';
 import { createStudentWithParent } from '../backend/src/utils/parentProvisioning.ts';
+import { PIN_HASH_VERSION, isTrivialPin, verifyCredential } from '../backend/src/utils/pin.ts';
 
 const unique = () => randomInt(100_000_000, 999_999_999).toString();
 const makePhone = () => `080${unique().slice(0, 8)}`;
@@ -41,6 +45,20 @@ test('concurrent cross-school student creation reuses one parent account and lin
       [suffix],
     );
     assert.equal(parents.length, 1);
+
+    // Administrator-issued temporary credential: a six-digit PIN that works as
+    // a normal PIN (no forced first-sign-in change).
+    const created = primary.parent.created ? primary.parent : secondary.parent;
+    assert.match(created.temporary_pin ?? '', /^\d{6}$/);
+    assert.equal(isTrivialPin(created.temporary_pin!), false);
+    assert.equal(created.temporary_password, created.temporary_pin, 'older app builds read temporary_password');
+    const { rows: cred } = await query(
+      'SELECT password_hash, pin_hash_version, pin_set_at, must_set_pin, must_change_pw FROM users WHERE id=$1', [created.id]);
+    assert.equal(cred[0].pin_hash_version, PIN_HASH_VERSION);
+    assert.ok(cred[0].pin_set_at);
+    assert.equal(cred[0].must_set_pin, false);
+    assert.equal(cred[0].must_change_pw, false);
+    assert.equal(await verifyCredential(created.temporary_pin!, cred[0].password_hash, cred[0].pin_hash_version), true);
 
     const studentIds = [String(primary.student.id), String(secondary.student.id)];
     const { rows: links } = await query(

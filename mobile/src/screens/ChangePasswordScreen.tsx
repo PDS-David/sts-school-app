@@ -3,11 +3,26 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { useAuth } from '../api/AuthContext';
 import { Btn, Input, Card } from '../components/UI';
 import { Colors, Spacing, Fonts } from '../theme';
+import { isPinRole } from '../api/authPhase';
+import PinSetupScreen from './PinSetupScreen';
 
-export default function ChangePasswordScreen({ route, navigation }: any) {
+// Administrator / Finance Administrator password change ONLY. Students,
+// parents and teachers hold a six-digit PIN and are never sent through the
+// administrator password flow: if one reaches this screen (an old navigation
+// call, a stale build's route), it renders the shared PIN screen instead, which
+// posts to POST /auth/pin. The server also refuses /auth/change-password for
+// those roles (400 USE_PIN_ENDPOINT).
+export default function ChangePasswordScreen(props: any) {
+  const { user } = useAuth();
+  if (isPinRole(user?.role)) {
+    return <PinSetupScreen {...props} route={{ ...(props.route ?? {}), params: { ...(props.route?.params ?? {}), voluntary: true } }} />;
+  }
+  return <AdminChangePasswordForm {...props} />;
+}
+
+function AdminChangePasswordForm({ route, navigation }: any) {
   const forced = route?.params?.forced ?? false;
-  const { user, changePassword, confirmPasswordChanged } = useAuth();
-  const isTeacher = user?.role === 'teacher';
+  const { changePassword, confirmPasswordChanged } = useAuth();
   const [oldPw,  setOldPw]  = useState('');
   const [newPw,  setNewPw]  = useState('');
   const [conf,   setConf]   = useState('');
@@ -18,8 +33,7 @@ export default function ChangePasswordScreen({ route, navigation }: any) {
   const handleSubmit = async () => {
     setError('');
     if (!oldPw || !newPw || !conf) { setError('All fields required'); return; }
-    if (isTeacher && !/^\d{4}$/.test(newPw)) { setError('Your new PIN must be exactly four numeric digits'); return; }
-    if (!isTeacher && newPw.length < 8) { setError('New password must be at least 8 characters'); return; }
+    if (newPw.length < 8) { setError('New password must be at least 8 characters'); return; }
     if (newPw !== conf)            { setError('Passwords do not match'); return; }
     setLoading(true);
     try {
@@ -57,10 +71,10 @@ export default function ChangePasswordScreen({ route, navigation }: any) {
         </View>
       )}
       <Card>
-        <Text style={styles.title}>{isTeacher ? 'Change PIN' : 'Change Password'}</Text>
-        <Input label={isTeacher ? 'Current PIN' : 'Current Password'} value={oldPw} onChangeText={v => setOldPw(isTeacher ? v.replace(/\D/g, '').slice(0, 4) : v)} secureTextEntry keyboardType={isTeacher ? 'numeric' : undefined} />
-        <Input label={isTeacher ? 'New 4-digit PIN' : 'New Password'} value={newPw} onChangeText={v => setNewPw(isTeacher ? v.replace(/\D/g, '').slice(0, 4) : v)} secureTextEntry keyboardType={isTeacher ? 'numeric' : undefined} />
-        <Input label={isTeacher ? 'Confirm PIN' : 'Confirm Password'} value={conf} onChangeText={v => setConf(isTeacher ? v.replace(/\D/g, '').slice(0, 4) : v)} secureTextEntry keyboardType={isTeacher ? 'numeric' : undefined} />
+        <Text style={styles.title}>Change Password</Text>
+        <Input label="Current Password" value={oldPw} onChangeText={setOldPw} secureTextEntry />
+        <Input label="New Password" value={newPw} onChangeText={setNewPw} secureTextEntry />
+        <Input label="Confirm Password" value={conf} onChangeText={setConf} secureTextEntry />
         {error ? <Text style={styles.error}>{error}</Text>   : null}
         {ok    ? <Text style={styles.success}>Password changed!</Text> : null}
         <Btn label="Update Password" onPress={handleSubmit} loading={loading} style={{ marginTop: Spacing.md, width: '100%' }} />

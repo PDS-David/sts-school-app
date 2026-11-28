@@ -8,6 +8,7 @@ import { checkTeacherDeleteScope, checkTeacherRosterScope } from '../utils/scope
 import { assignedTeacherClasses, crossSchoolPromotionFrom, resolveStudentRosterScope } from '../utils/studentRosterScope.js';
 import { activeDecision, currentRosterCycle, DECISION_LABEL, NO_CURRENT_YEAR, type RosterDecision } from '../utils/rosterDecisions.js';
 import { createStudentWithParent } from '../utils/parentProvisioning.js';
+import { PinConfigError } from '../utils/pin.js';
 import type { PoolClient } from 'pg';
 import type { AuthUser } from '../types/index.js';
 
@@ -356,56 +357,66 @@ router.post('/', requirePerm('grades.write'), async (req, res) => {
     return res.status(409).json({ error: 'A student with this name already exists in this class. Check the existing physical roster before creating another record.' });
   }
 
-  const result = await createStudentWithParent(
-    {
-      full_name: d.full_name,
-      class_name: d.class_name,
-      school_code: d.school_code,
-      gender: d.gender ?? null,
-      date_of_birth: d.date_of_birth ?? null,
-      admission_number: d.admission_number ?? null,
-    },
-    d.parent_phone?.trim() ? {
-      school_code: d.school_code,
-      parent_name: d.parent_name ?? null,
-      parent_phone: d.parent_phone,
-      parent_email: d.parent_email ?? null,
-    } : undefined,
-    async (client, student, parentRecord) => {
-      // Every student created through this reporting-system route is also
-      // enrolled in the independent physical report roster. This is not an
-      // online-learning enrolment and creates no student login.
-      await client.query(
-        `INSERT INTO report_roster_memberships
-           (student_id,class_name,source_class_name,status,joined_at,changed_by)
-         VALUES($1,$2,$2,'active',now(),$3)`,
-        [student.id, d.class_name, req.user!.id],
-      );
-      await client.query(
-        `INSERT INTO report_roster_membership_events
-           (student_id,event_type,to_class_name,actor_id,details)
-         VALUES($1,'enrolled',$2,$3,$4::jsonb)`,
-        [student.id, d.class_name, req.user!.id, JSON.stringify({
-          source: 'physical_reporting_student_create',
-          school_code: d.school_code,
-          actor_role: req.user!.role,
-        })],
-      );
-      await auditInTransaction(
-        client, req.user!, 'add_student', 'student', String(student.id), 'physical reporting student record created',
-        auditContextFromRequest(req, { schoolCode: d.school_code, metadata: { class_name: d.class_name, parent_linked: !!parentRecord, report_roster_enrolled: true } }),
-      );
-      if (parentRecord?.created) {
-        await auditInTransaction(
-          client, req.user!, 'add_parent_auto', 'user', parentRecord.id, 'parent account auto-provisioned',
-          auditContextFromRequest(req, { schoolCode: d.school_code, metadata: { linked_student_id: String(student.id) } }),
+  let result: Awaited<ReturnType<typeof createStudentWithParent>>;
+  try {
+    result = await createStudentWithParent(
+      {
+        full_name: d.full_name,
+        class_name: d.class_name,
+        school_code: d.school_code,
+        gender: d.gender ?? null,
+        date_of_birth: d.date_of_birth ?? null,
+        admission_number: d.admission_number ?? null,
+      },
+      d.parent_phone?.trim() ? {
+        school_code: d.school_code,
+        parent_name: d.parent_name ?? null,
+        parent_phone: d.parent_phone,
+        parent_email: d.parent_email ?? null,
+      } : undefined,
+      async (client, student, parentRecord) => {
+        // Every student created through this reporting-system route is also
+        // enrolled in the independent physical report roster. This is not an
+        // online-learning enrolment and creates no student login.
+        await client.query(
+          `INSERT INTO report_roster_memberships
+             (student_id,class_name,source_class_name,status,joined_at,changed_by)
+           VALUES($1,$2,$2,'active',now(),$3)`,
+          [student.id, d.class_name, req.user!.id],
         );
-      }
-    },
-  );
+        await client.query(
+          `INSERT INTO report_roster_membership_events
+             (student_id,event_type,to_class_name,actor_id,details)
+           VALUES($1,'enrolled',$2,$3,$4::jsonb)`,
+          [student.id, d.class_name, req.user!.id, JSON.stringify({
+            source: 'physical_reporting_student_create',
+            school_code: d.school_code,
+            actor_role: req.user!.role,
+          })],
+        );
+        await auditInTransaction(
+          client, req.user!, 'add_student', 'student', String(student.id), 'physical reporting student record created',
+          auditContextFromRequest(req, { schoolCode: d.school_code, metadata: { class_name: d.class_name, parent_linked: !!parentRecord, report_roster_enrolled: true } }),
+        );
+        if (parentRecord?.created) {
+          await auditInTransaction(
+            client, req.user!, 'add_parent_auto', 'user', parentRecord.id, 'parent account auto-provisioned',
+            auditContextFromRequest(req, { schoolCode: d.school_code, metadata: { linked_student_id: String(student.id) } }),
+          );
+        }
+      },
+    );
+  } catch (error) {
+    // A new parent account gets a peppered temporary PIN. Without a usable
+    // pepper nothing is written (the enrolment rolls back) and we answer 503.
+    if (error instanceof PinConfigError) {
+      return res.status(503).json({ error: 'PIN service is not configured. Contact the system administrator.' });
+    }
+    throw error;
+  }
 
   const studentId = String(result.student.id);
-  let parent: { id: string; username: string; temporary_password?: string } | undefined;
+  let parent: { id: string; username: string; temporary_password?: string; temporary_pin?: string } | undefined;
   if (result.parent) {
     const { created, ...parentDetails } = result.parent;
     parent = parentDetails;

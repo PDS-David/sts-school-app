@@ -21,7 +21,7 @@ const axiosError = (status: number, data: unknown) => ({ response: { status, dat
 // client mirror, so the two cannot drift silently.
 function loadBackendPinRules() {
   const src = readFileSync(new URL('../../backend/src/utils/pin.ts', import.meta.url), 'utf8');
-  const start = src.indexOf('const EXPLICIT_WEAK');
+  const start = src.indexOf('// ── Validation');
   const end = src.indexOf('// ── Hashing');
   assert.ok(start > 0 && end > start, 'could not locate PIN rules in backend/src/utils/pin.ts');
   const require = createRequire(import.meta.url);
@@ -73,11 +73,18 @@ test('non-numeric input is rejected, and typing is filtered to digits', () => {
   assert.equal(sanitizePin('49a3-02 1999'), '493021');
 });
 
-test('weak or prohibited PINs are rejected with an explanation', () => {
-  for (const pin of ['000000', '111111', '123456', '654321', '890123', '121212', '123123', '123321', '112233', '159753', '010203']) {
+test('six identical digits are rejected with an explanation', () => {
+  for (let d = 0; d <= 9; d++) {
+    const pin = String(d).repeat(6);
     const err = validatePinSetupForm({ ...GOOD, pin, confirm: pin });
     assert.equal(err?.field, 'pin', pin);
     assert.equal(err?.message, PIN_TRIVIAL_MESSAGE, pin);
+  }
+});
+
+test('sequential and other simple six-digit PINs are accepted (owner policy)', () => {
+  for (const pin of ['123456', '234567', '654321', '890123', '121212', '123123', '123321', '112233', '159753', '010203']) {
+    assert.equal(validatePinSetupForm({ ...GOOD, pin, confirm: pin }), null, pin);
   }
 });
 
@@ -113,7 +120,7 @@ test('invalid input never reaches the network', async () => {
   let posts = 0;
   const s = createPinSetupSubmitter({ postPin: async () => { posts++; }, confirmSetup: async () => true });
   assert.equal((await s.submit({ ...GOOD, confirm: '000001' })).status, 'invalid');
-  assert.equal((await s.submit({ ...GOOD, pin: '123456', confirm: '123456' })).status, 'invalid');
+  assert.equal((await s.submit({ ...GOOD, pin: '111111', confirm: '111111' })).status, 'invalid');
   assert.equal(posts, 0);
 });
 

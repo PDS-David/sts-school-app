@@ -41,6 +41,7 @@ const loginIpFailureLimiter = rateLimit({
 
 const PIN_ROLES = new Set<string>(['student', 'parent', 'teacher']);
 const ADMIN_ROLES = new Set<string>(['admin', 'finance_admin']);
+const PIN_UNAVAILABLE_ERROR = 'PIN setup is temporarily unavailable. Please contact the school administrator.';
 
 function humanWait(seconds: number): string {
   if (seconds < 90) return `${Math.max(1, seconds)} second${seconds === 1 ? '' : 's'}`;
@@ -83,6 +84,70 @@ function accessEnded(user: any, message: string | null = null) {
       : 'Your access period has ended. Contact the school admin to reactivate your account.');
   }
   return null;
+}
+
+/** True when a proven public-role credential is not a six-digit PIN. */
+export function isLegacyPinFormat(typed: string): boolean {
+  return !/^\d{6}$/.test(typed);
+}
+
+/**
+ * Bring must_set_pin / must_change_pw in line with the credential just proven
+ * (see the call site in /login). Compare-and-swap on the verified hash, so a
+ * concurrent PIN change, reset or activation is never overwritten. Mutates
+ * `user` so the response and the rehash step see the stored state.
+ *
+ * Returns false when a flag change was needed but the compare-and-swap matched
+ * no row: the credential that was just verified has been replaced in the
+ * meantime (administrator reset, PIN change, activation). The caller must then
+ * refuse the sign-in; the proven credential is no longer the account's
+ * credential, so it must not be given a session.
+ */
+async function syncLegacyPinRequirement(user: any, typed: string): Promise<boolean> {
+  if (!PIN_ROLES.has(user.role) || !user.password_hash) return true;
+  const required = isLegacyPinFormat(typed);
+  const stale = required
+    ? user.must_set_pin !== true
+    : user.must_set_pin === true || user.must_change_pw === true;
+  if (!stale) return true;
+  const { rowCount } = await query(
+    required
+      ? 'UPDATE users SET must_set_pin=TRUE WHERE id=$1 AND password_hash=$2'
+      : 'UPDATE users SET must_set_pin=FALSE, must_change_pw=FALSE WHERE id=$1 AND password_hash=$2',
+    [user.id, user.password_hash],
+  );
+  if (rowCount !== 1) return false;
+  if (required) user.must_set_pin = true;
+  else { user.must_set_pin = false; user.must_change_pw = false; }
+  return true;
+}
+
+/**
+ * The transparent rehash found the stored hash already replaced. That is benign
+ * when it was another sign-in with the same PIN upgrading the hash, and fatal when
+ * it was an administrator reset or PIN change, and the hash alone cannot tell the
+ * two apart. Re-read the credential and prove the typed secret against it: if it
+ * still verifies, adopt that hash (and its flags) as "the credential that was
+ * proven", so the session-creation check compares against the right one; if not,
+ * the credential was replaced and the sign-in is refused.
+ */
+async function adoptCurrentCredential(user: any, typed: string): Promise<boolean> {
+  try {
+    const { rows } = await query(
+      'SELECT password_hash, pin_hash_version, must_set_pin, must_change_pw FROM users WHERE id=$1',
+      [user.id],
+    );
+    const current = rows[0];
+    if (!current?.password_hash) return false;
+    if (!await verifyCredential(typed, current.password_hash, current.pin_hash_version ?? null)) return false;
+    user.password_hash = current.password_hash;
+    user.pin_hash_version = current.pin_hash_version;
+    user.must_set_pin = current.must_set_pin;
+    user.must_change_pw = current.must_change_pw;
+    return true;
+  } catch {
+    return false; // refuse rather than guess; the generic failure is the safe answer
+  }
 }
 
 // ── POST /auth/login ──────────────────────────────────────────────────────────
@@ -172,12 +237,32 @@ router.post('/login', loginIpFailureLimiter, async (req, res) => {
   const ended = accessEnded(user);
   if (ended) return res.status(403).json({ error: ended });
 
+  // Legacy-credential migration (students, parents, teachers). Decided here,
+  // from the credential that was just proven, because a stored hash does not
+  // reveal how many digits it protects:
+  //   * not six digits (old four-digit teacher codes, eight-digit/character
+  //     temporary credentials, older 8+ character passwords) → the account
+  //     must establish a six-digit PIN before anything else;
+  //   * six digits (existing PIN holders, administrator-issued temporary
+  //     PINs) → straight to the dashboard; any stale forced-change flag is
+  //     cleared.
+  // Only the flags move; the account, its records and links are untouched.
+  // If the credential was replaced between verification and this step (for
+  // example an administrator reset), refuse: no session may be created for the
+  // replaced credential, and the response is the same generic failure as any
+  // other wrong credential.
+  if (!await syncLegacyPinRequirement(user, secret)) {
+    return res.status(401).json({ error: GENERIC_LOGIN_ERROR });
+  }
+
   // Transparent upgrade of an existing PIN from the legacy bcrypt hash to the
   // peppered scheme. Runs only here, i.e. after the credential is proven, the
   // account is unique, active and not expired. It never throws, never changes
   // the PIN, never blocks or fails this sign-in, and skips temporary credentials
   // and administrator roles (see utils/pinRehash.ts).
-  await rehashLegacyPinAfterLogin(user, secret);
+  if (await rehashLegacyPinAfterLogin(user, secret) === 'superseded' && !await adoptCurrentCredential(user, secret)) {
+    return res.status(401).json({ error: GENERIC_LOGIN_ERROR });
+  }
 
   const accessPolicy = await readLearningAccessPolicy();
   const pending = !!user.pending_admin_review && !(user.role === 'student' && accessPolicy.freeLaunchMode);
@@ -185,9 +270,24 @@ router.post('/login', loginIpFailureLimiter, async (req, res) => {
   const { rows: subjectRows } = await query('SELECT subject_id FROM teacher_subjects WHERE user_id=$1', [user.id]);
   const assignedSubjectIds = subjectRows.map((r: any) => r.subject_id);
 
-  const session = await createSession({
-    userId: user.id, rememberMe, deviceId, deviceLabel: deviceLabel(body.device_label), ip,
+  // The session row is created in the same transaction that re-confirms, under a
+  // row lock, that the hash proven above is still the account's credential.
+  // Administrator reset and PIN change take the same row lock before replacing the
+  // hash and revoking sessions, so either they finish first (this check then finds
+  // a different hash and no session is created) or they wait for this transaction
+  // and revoke the session it created. A check made before the insert, outside the
+  // lock, could itself race. No session means no access or refresh token.
+  const session = await withTransaction(async (client) => {
+    const { rowCount } = await client.query(
+      'SELECT 1 FROM users WHERE id=$1 AND password_hash=$2 FOR NO KEY UPDATE',
+      [user.id, user.password_hash],
+    );
+    if (rowCount !== 1) return null;
+    return createSession({
+      userId: user.id, rememberMe, deviceId, deviceLabel: deviceLabel(body.device_label), ip,
+    }, client);
   });
+  if (!session) return res.status(401).json({ error: GENERIC_LOGIN_ERROR });
   const payload: AuthUser = {
     id: user.id,
     username: user.username,
@@ -271,11 +371,22 @@ router.post('/refresh', async (req, res) => {
   const state = await query(ACCOUNT_STATE_SQL, [legacy.sub]);
   if (!state.rows[0] || !state.rows[0].is_active || accessEnded(state.rows[0])) return revoked();
 
-  const session = await createSession({
-    userId: legacy.sub, rememberMe: true, deviceId: clientDeviceId(req), ip: req.ip ?? null,
-    legacyRefreshSha: legacySha,
-    expiresAt: legacy.exp ? new Date(legacy.exp * 1000) : new Date(Date.now() + 7 * 86_400_000),
+  // Same rule as sign-in: revoking sessions (administrator reset, PIN change)
+  // clears users.refresh_token, so confirm the presented token is still the
+  // stored one under the row lock, in the transaction that inserts the session.
+  const session = await withTransaction(async (client) => {
+    const { rowCount } = await client.query(
+      'SELECT 1 FROM users WHERE id=$1 AND refresh_token=$2 AND is_active=TRUE FOR NO KEY UPDATE',
+      [legacy.sub, refresh_token],
+    );
+    if (rowCount !== 1) return null;
+    return createSession({
+      userId: legacy.sub, rememberMe: true, deviceId: clientDeviceId(req), ip: req.ip ?? null,
+      legacyRefreshSha: legacySha,
+      expiresAt: legacy.exp ? new Date(legacy.exp * 1000) : new Date(Date.now() + 7 * 86_400_000),
+    }, client);
   });
+  if (!session) return revoked();
   const loaded = await loadAuthUser(legacy.sub, session.sessionId);
   return res.json({
     access_token: signAccess(loaded!.authUser),
@@ -361,20 +472,33 @@ router.post('/pin', requireAuth, async (req, res) => {
   }
   await recordLoginSuccess(throttleInput, gate.attemptId);
 
-  await withTransaction(async (client) => {
-    await client.query(
+  // Compare-and-swap on the exact hash that was just verified. If an
+  // administrator reset (or another PIN change) replaced the credential in the
+  // meantime, nothing is written and no session is touched: the old credential
+  // must never overwrite the newer one. Sessions are revoked only after the
+  // update succeeded, inside the same transaction.
+  const saved = await withTransaction(async (client) => {
+    const { rowCount } = await client.query(
       `UPDATE users SET password_hash=$1, pin_hash_version=$2, pin_set_at=clock_timestamp(),
               must_set_pin=FALSE, must_change_pw=FALSE
-        WHERE id=$3`,
-      [newHash, PIN_HASH_VERSION, me.id],
+        WHERE id=$3 AND password_hash=$4`,
+      [newHash, PIN_HASH_VERSION, me.id, row.password_hash],
     );
+    if (rowCount !== 1) return false;
     // Every other device is signed out; this one keeps its session.
     await revokeUserSessions(me.id, 'pin_changed', { exceptSessionId: me.sid ?? null, client });
     await auditInTransaction(
       client, me, row.must_set_pin ? 'set_pin' : 'change_pin', 'user', me.id,
       'six-digit PIN saved; other sessions revoked',
     );
+    return true;
   });
+  if (!saved) {
+    return res.status(409).json({
+      error: 'Your PIN was changed or reset by an administrator while you were saving. Nothing was changed. Sign in again with your current PIN.',
+      code: 'CREDENTIAL_CHANGED',
+    });
+  }
   return res.json({ ok: true });
 });
 
@@ -575,17 +699,25 @@ router.post('/self-claim/roster', async (req, res) => {
 });
 
 router.post('/self-claim', async (req, res) => {
-  const { school_code, class_name, student_id, code, admission_number, new_password } = req.body as {
-    school_code?: string; class_name?: string; student_id?: string; code?: string; admission_number?: string; new_password?: string;
+  const { school_code, class_name, student_id, code, admission_number, new_pin, new_password } = req.body as {
+    school_code?: string; class_name?: string; student_id?: string; code?: string; admission_number?: string; new_pin?: string; new_password?: string;
   };
-  if (!school_code?.trim() || !class_name?.trim() || !student_id || !code || !admission_number?.trim() || !new_password) {
-    return res.status(400).json({ error: 'school_code, class_name, student_id, code, admission_number, and new_password are required' });
+  // `new_pin` is the field; `new_password` is accepted from older app builds.
+  const chosenPin = new_pin ?? new_password;
+  if (!school_code?.trim() || !class_name?.trim() || !student_id || !code || !admission_number?.trim() || !chosenPin) {
+    return res.status(400).json({ error: 'school_code, class_name, student_id, code, admission_number, and new_pin are required' });
   }
-  if (new_password.length < 8) {
-    return res.status(400).json({ error: 'New password must be at least 8 characters' });
-  }
+  // Students choose their permanent six-digit PIN here (same rule as POST /auth/pin).
+  const pinCheck = checkPin(chosenPin);
+  if (!pinCheck.ok) return res.status(400).json({ error: pinCheck.message });
 
-  const passwordHash = await bcrypt.hash(new_password, 10);
+  let passwordHash: string;
+  try {
+    passwordHash = await hashPin(String(chosenPin));
+  } catch (error) {
+    if (error instanceof PinConfigError) return res.status(503).json({ error: PIN_UNAVAILABLE_ERROR });
+    throw error;
+  }
   const result = await claimStudentAccount({
     schoolCode: school_code.trim(),
     className: class_name.trim(),
@@ -593,6 +725,7 @@ router.post('/self-claim', async (req, res) => {
     admissionNumber: admission_number,
     accessCode: code,
     passwordHash,
+    pinHashVersion: PIN_HASH_VERSION,
   });
 
   if (result.kind === 'locked') {
@@ -626,20 +759,22 @@ router.post('/self-claim', async (req, res) => {
 // section first — this is now the third time this specific tradeoff has
 // been discussed and decided.
 router.post('/self-register', async (req, res) => {
-  const { role, full_name, phone, school_code, username, password, class_name, admission_number, ward_admission_number } = req.body as {
+  const { role, full_name, phone, school_code, username, class_name, admission_number, ward_admission_number } = req.body as {
     role?: string; full_name?: string; phone?: string; school_code?: string;
-    username?: string; password?: string; class_name?: string; admission_number?: string; ward_admission_number?: string;
+    username?: string; pin?: string; password?: string; class_name?: string; admission_number?: string; ward_admission_number?: string;
   };
+  // Every self-registering role (student, parent, teacher) signs in with a
+  // six-digit PIN. `pin` is the field; `password` is accepted from older builds.
+  const password = (req.body as { pin?: string; password?: string }).pin ?? (req.body as { password?: string }).password;
 
   if (!role || !['student', 'parent', 'teacher'].includes(role)) {
     return res.status(400).json({ error: 'role must be student, parent, or teacher' });
   }
   if (!full_name?.trim() || !phone?.trim() || !school_code?.trim() || !username?.trim() || !password) {
-    return res.status(400).json({ error: 'full_name, phone, school_code, username, and password are required' });
+    return res.status(400).json({ error: 'full_name, phone, school_code, username, and pin are required' });
   }
-  if (password.length < 8) {
-    return res.status(400).json({ error: 'Password must be at least 8 characters' });
-  }
+  const pinCheck = checkPin(password);
+  if (!pinCheck.ok) return res.status(400).json({ error: pinCheck.message });
   if (role === 'student' && !class_name?.trim() && !admission_number?.trim()) {
     return res.status(400).json({ error: 'class_name is required for independent online student registration' });
   }
@@ -657,7 +792,13 @@ router.post('/self-register', async (req, res) => {
   const normalizedSchool = school_code.trim();
   const normalizedName = full_name.trim();
   const normalizedPhone = phone.trim();
-  const passwordHash = await bcrypt.hash(password, 10);
+  let passwordHash: string;
+  try {
+    passwordHash = await hashPin(String(password));
+  } catch (error) {
+    if (error instanceof PinConfigError) return res.status(503).json({ error: PIN_UNAVAILABLE_ERROR });
+    throw error;
+  }
 
   const result = await registerSelfServiceAccount({
     role: role as 'student' | 'parent' | 'teacher',
@@ -666,6 +807,7 @@ router.post('/self-register', async (req, res) => {
     schoolCode: normalizedSchool,
     username: normalizedUsername,
     passwordHash,
+    pinHashVersion: PIN_HASH_VERSION,
     className: role === 'student' ? class_name?.trim() : undefined,
     admissionNumber: role === 'student' ? admission_number?.trim() : undefined,
     wardAdmissionNumber: role === 'parent' ? ward_admission_number?.trim() : undefined,
@@ -699,21 +841,27 @@ router.post('/self-register', async (req, res) => {
 });
 
 router.post('/activate', async (req, res) => {
-  const { username, activation_code, new_password } = req.body as {
-    username?: string; activation_code?: string; new_password?: string;
+  const { username, activation_code, new_pin, new_password } = req.body as {
+    username?: string; activation_code?: string; new_pin?: string; new_password?: string;
   };
-  if (!username || !activation_code || !new_password) {
-    return res.status(400).json({ error: 'username, activation_code, and new_password are required' });
-  }
-  if (new_password.length < 8) {
-    return res.status(400).json({ error: 'New password must be at least 8 characters' });
+  // Students/parents/teachers send `new_pin` (six digits); administrator roles
+  // send `new_password` (8+ characters). The account's role decides which rule
+  // applies (utils/credentialAttempts.ts), so either field name is accepted.
+  const secret = new_pin ?? new_password;
+  if (!username || !activation_code || typeof secret !== 'string' || !secret || secret.length > 128) {
+    return res.status(400).json({ error: 'username, activation_code, and new_pin (or new_password) are required' });
   }
 
-  const result = await activateAccount(
-    username.trim().toLowerCase(),
-    activation_code,
-    new_password,
-  );
+  let result;
+  try {
+    result = await activateAccount(username.trim().toLowerCase(), activation_code, secret);
+  } catch (error) {
+    if (error instanceof PinConfigError) return res.status(503).json({ error: PIN_UNAVAILABLE_ERROR });
+    throw error;
+  }
+  if (result.kind === 'invalid_secret') {
+    return res.status(400).json({ error: result.message });
+  }
   if (result.kind === 'locked') {
     return res.status(429).json({
       error: `Too many incorrect attempts. Try again in about ${result.retryAfterMinutes} minute(s), or ask your school admin for a new code.`,

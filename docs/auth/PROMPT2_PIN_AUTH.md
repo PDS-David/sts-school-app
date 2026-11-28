@@ -16,7 +16,7 @@ Scope: backend only. Mobile is Prompt 2B. Operations Admin, Finance Admin permis
 - Never rotate the pepper without a planned mass reset.
 
 ## Rules
-- Public roles: exactly six digits; trivial PINs rejected (repeats, runs, mirrors, repeating blocks, common lists).
+- Public roles: exactly six digits; only six identical digits (000000 … 999999) are rejected. Sequential PINs such as 123456 are accepted by owner decision (Nov 2026, see tests/backend-six-digit-pin-policy.integration.test.mts). Admin-created teachers receive an administrator-issued six-digit PIN that works as a normal PIN (the old four-digit code is gone); activation, student self-claim and self-registration collect the permanent six-digit PIN directly.
 - Hash: bcrypt over HMAC-SHA256(pepper, PIN). Missing pepper → 503, never unpeppered.
 - Admin / Finance Admin: existing credential format, no PIN rule.
 - Username normalisation everywhere: `lower(btrim(username))`.
@@ -32,7 +32,7 @@ Scope: backend only. Mobile is Prompt 2B. Operations Admin, Finance Admin permis
 
 ## PIN requirement (`must_set_pin`)
 - Existing students, parents and teachers already hold six-digit PINs. They sign in and go straight to their dashboard (subject to approval status), on any device. Nothing forces a PIN change at first login after this update or on a new device.
-- `must_set_pin` is TRUE only for an administrator-issued temporary credential: an administrator PIN reset, an administrator-created teacher, an auto-provisioned parent, and a credential set through activation, self-registration or self-claim. Those users must set their own PIN once.
+- Administrator-issued six-digit PINs (administrator PIN reset, administrator-created teacher, auto-provisioned parent) work as normal PINs: `must_set_pin` and `must_change_pw` stay FALSE and the user goes straight to the dashboard. They can change the PIN later (teachers: More → Change PIN). Only a legacy-format credential (not exactly six digits) is gated: `POST /auth/login` sets `must_set_pin` from the credential just proven.
 - Changing a PIN voluntarily is always possible (`POST /auth/pin`, Settings → Change PIN in the app). Current PIN required; other sessions are revoked.
 - Legacy-format hashes (`pin_hash_version` NULL, plain bcrypt) of existing six-digit PINs keep verifying unchanged. They are not peppered until the user next sets a PIN.
 
@@ -122,3 +122,17 @@ tell backfill-flagged rows from application-flagged rows is not recorded anywher
 At the time of writing, `master` contains migrations only up to 0018 and the production migration
 workflow runs only from `master`, so neither 0019 nor 0020 can reach production by that path until
 this branch is merged; this is not a statement about what any environment has actually applied.
+
+## Teacher creation and older admin apps
+- `POST /admin/users` for a teacher requires `initial_password` to be exactly six digits (not six identical digits). A four-digit initial teacher PIN is never accepted and never stored as a permanent credential.
+- **Older admin app versions still send a four-digit code and must be upgraded before creating new teacher accounts.** Until then the server answers 400 with `code: TEACHER_PIN_SIX_DIGITS_REQUIRED` and a message telling the administrator to update the admin app and create the teacher again with a six-digit PIN. Nothing is created.
+- Existing teacher accounts are unaffected; teachers who still hold a legacy four-digit code are moved to a six-digit PIN at their next sign-in (see above).
+
+## Concurrency rules (credential replacement)
+- `POST /auth/login`: when a PIN gate or flag change is needed, the flag update compares against the exact verified `password_hash`. If it matches no row (credential replaced concurrently, e.g. an administrator reset), no session is created and the generic sign-in failure is returned.
+- `POST /auth/pin`: the update is `WHERE id=$ AND password_hash=<hash just verified>`. If it matches no row the route returns 409 `CREDENTIAL_CHANGED`, writes nothing and revokes no sessions; sessions are revoked only after the update succeeds.
+- Not covered here: a reset that commits between credential verification and session creation when no flag change was needed. The reset revokes all sessions at its own commit time; closing that window would need a hash check inside session creation.
+
+## Migration 0023 (administrator flags)
+- Public roles: unchanged behaviour (peppered six-digit PIN rows lose stale flags).
+- Administrator / Finance Administrator `must_change_pw` is cleared only when the latest `reset_password` audit event for that account is an old-style one (detail "administrator reset user password; forced password change on next login"; audit metadata is not usable because the writer redacts it). Flags with no such event (seeded/default or bootstrap accounts, hand-set flags, pre-audit accounts) are left untouched; these cannot be distinguished from a deliberate requirement.

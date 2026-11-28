@@ -4,6 +4,7 @@ import { Picker } from '@react-native-picker/picker';
 import api from '../api/client';
 import { Btn, Input, Card, Loader, Empty } from '../components/UI';
 import { Colors, Spacing, Fonts } from '../theme';
+import { sanitizePin, validateNewPinPair } from '../api/pinForms';
 
 // Student registration creates an independent online-learning identity.
 // Students who need access to an existing physical report record should use
@@ -92,9 +93,8 @@ export default function SelfRegisterScreen({ navigation }: any) {
     if (role === 'student' && !className) { setError('Select your learning class'); return; }
     if (role === 'parent' && !wardAdmissionNumber.trim()) { setError("Your ward's admission number is required"); return; }
     if (!username.trim())        { setError('Choose a username'); return; }
-    if (!password)               { setError('Choose a password'); return; }
-    if (password.length < 8)     { setError('Password must be at least 8 characters'); return; }
-    if (password !== confirm)    { setError('Passwords do not match'); return; }
+    const invalidPin = validateNewPinPair(password, confirm);
+    if (invalidPin)              { setError(invalidPin); return; }
 
     setLoading(true);
     try {
@@ -104,7 +104,7 @@ export default function SelfRegisterScreen({ navigation }: any) {
         phone: phone.trim(),
         school_code: schoolCode,
         username: username.trim(),
-        password,
+        pin: password,
         ...(role === 'student' ? { class_name: className } : {}),
         ...(role === 'parent' ? { ward_admission_number: wardAdmissionNumber.trim() } : {}),
       });
@@ -187,8 +187,9 @@ export default function SelfRegisterScreen({ navigation }: any) {
           )}
 
           <Input label="Choose a Username" value={username} onChangeText={setUsername} placeholder="e.g. your name, no spaces" autoCapitalize="none" />
-          <Input label="Choose a Password" value={password} onChangeText={setPassword} placeholder="At least 8 characters" secureTextEntry />
-          <Input label="Confirm Password" value={confirm} onChangeText={setConfirm} placeholder="Re-enter password" secureTextEntry />
+          <Input label="Choose a six-digit PIN" value={password} onChangeText={v => setPassword(sanitizePin(v))} placeholder="Six digits, e.g. 482913" keyboardType="numeric" secureTextEntry />
+          <Input label="Confirm PIN" value={confirm} onChangeText={v => setConfirm(sanitizePin(v))} placeholder="Re-enter the same six digits" keyboardType="numeric" secureTextEntry />
+          <Text style={styles.helper}>Any six digits except the same digit six times (such as 000000). You will sign in with this PIN.</Text>
 
           {error ? <Text style={styles.error}>{error}</Text> : null}
           <Btn label="Create My Account" onPress={handleSubmit} loading={loading} disabled={loadingSchools || loadingClasses || schools.length === 0 || !schoolCode || (role === 'student' && !className)} style={{ marginTop: Spacing.md }} />

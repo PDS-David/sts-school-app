@@ -4,6 +4,7 @@ import { Picker } from '@react-native-picker/picker';
 import api from '../api/client';
 import { Btn, Input, Card, Loader, Empty } from '../components/UI';
 import { Colors, Spacing, Fonts } from '../theme';
+import { sanitizePin, validateNewPinPair } from '../api/pinForms';
 
 // Public (no login) — Task B. The per-class code is verified before the
 // roster endpoint returns any names; the student's private admission number
@@ -105,13 +106,13 @@ export default function StudentSelfClaimScreen({ navigation }: any) {
   const handleClaim = async () => {
     setError('');
     if (!code.trim() || !admissionNumber.trim() || !newPw || !conf) { setError('All fields are required'); return; }
-    if (newPw.length < 8) { setError('New password must be at least 8 characters'); return; }
-    if (newPw !== conf)   { setError('Passwords do not match'); return; }
+    const invalidPin = validateNewPinPair(newPw, conf);
+    if (invalidPin) { setError(invalidPin); return; }
     setLoading(true);
     try {
       const { data } = await api.post('/auth/self-claim', {
         school_code: schoolCode, class_name: className, student_id: studentId,
-        code: code.trim(), admission_number: admissionNumber.trim(), new_password: newPw,
+        code: code.trim(), admission_number: admissionNumber.trim(), new_pin: newPw,
       });
       setDone({ username: data.username });
     } catch (e: any) {
@@ -128,7 +129,7 @@ export default function StudentSelfClaimScreen({ navigation }: any) {
           <Text style={styles.title}>Account created!</Text>
           <Text style={styles.helper}>Your username is:</Text>
           <Text style={styles.username}>{done.username}</Text>
-          <Text style={styles.helper}>Write this down — you'll need it to sign in from now on, along with the password you just set.</Text>
+          <Text style={styles.helper}>Write this down — you'll need it to sign in from now on, along with the six-digit PIN you just set.</Text>
           <Btn label="Back to Sign In" onPress={() => navigation.replace('Login')} style={{ marginTop: Spacing.md }} />
         </Card>
       </View>
@@ -212,8 +213,9 @@ export default function StudentSelfClaimScreen({ navigation }: any) {
             <>
               <Text style={styles.helper}>Confirm it's really you by entering your own admission number (not shared with your class).</Text>
               <Input label="Admission Number" value={admissionNumber} onChangeText={setAdmissionNumber} placeholder="Your admission number" />
-              <Input label="New Password" value={newPw} onChangeText={setNewPw} placeholder="At least 8 characters" secureTextEntry />
-              <Input label="Confirm New Password" value={conf} onChangeText={setConf} placeholder="Re-enter new password" secureTextEntry />
+              <Input label="Choose a six-digit PIN" value={newPw} onChangeText={v => setNewPw(sanitizePin(v))} placeholder="Six digits, e.g. 482913" keyboardType="numeric" secureTextEntry />
+              <Input label="Confirm PIN" value={conf} onChangeText={v => setConf(sanitizePin(v))} placeholder="Re-enter the same six digits" keyboardType="numeric" secureTextEntry />
+              <Text style={styles.helper}>Any six digits except the same digit six times (such as 000000). You will sign in with this PIN.</Text>
               {error ? <Text style={styles.error}>{error}</Text> : null}
               <Btn label="Create My Account" onPress={handleClaim} loading={loading} style={{ marginTop: Spacing.md }} />
             </>

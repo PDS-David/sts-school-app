@@ -16,33 +16,16 @@ import { PIN_LENGTH, sanitizePin } from './loginForm';
 export { PIN_LENGTH, sanitizePin };
 
 // ── Rules (mirror of backend/src/utils/pin.ts) ───────────────────────────────
-
-const EXPLICIT_WEAK = new Set([
-  '159753', '147258', '258369', '147369', '123654', '135790',
-  '246810', '112233', '998877', '102030', '010203',
-]);
+// Owner policy: exactly six digits, and not the same digit six times
+// (000000, 111111 …). Sequential PINs such as 123456 are accepted.
 
 export function isTrivialPin(pin: string): boolean {
   if (!/^\d{6}$/.test(pin)) return false;
-  const d = [...pin].map(Number);
-  // one repeated digit: 000000, 111111 …
-  if (d.every((x) => x === d[0])) return true;
-  // full ascending / descending run, wrapping through 9→0: 123456, 654321, 890123 …
-  const asc = d.every((x, i) => i === 0 || x === (d[i - 1] + 1) % 10);
-  const desc = d.every((x, i) => i === 0 || x === (d[i - 1] + 9) % 10);
-  if (asc || desc) return true;
-  // repeating blocks: 121212, 123123
-  if (pin.slice(0, 2).repeat(3) === pin || pin.slice(0, 3).repeat(2) === pin) return true;
-  // mirror: 123321
-  if (pin === [...pin].reverse().join('')) return true;
-  // doubled pairs: 112233
-  if (d[0] === d[1] && d[2] === d[3] && d[4] === d[5]) return true;
-  return EXPLICIT_WEAK.has(pin);
+  return /^(\d)\1{5}$/.test(pin);
 }
 
 export const PIN_FORMAT_MESSAGE = 'Your PIN must be exactly six digits (numbers only).';
-export const PIN_TRIVIAL_MESSAGE =
-  'That PIN is too easy to guess. Avoid repeated or sequential digits such as 123456 or 000000.';
+export const PIN_TRIVIAL_MESSAGE = 'Your PIN cannot be the same digit six times (for example 000000 or 111111).';
 
 export type PinCheck = { ok: true } | { ok: false; reason: 'format' | 'trivial'; message: string };
 

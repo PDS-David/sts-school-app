@@ -85,7 +85,13 @@ export async function rehashLegacyPinAfterLogin(
           AND role = ANY($5::text[])`,
       [newHash, PIN_HASH_VERSION, user.id, user.password_hash, [...REHASH_ROLES]],
     );
-    return result.rowCount === 1 ? 'rehashed' : 'superseded';
+    if (result.rowCount !== 1) return 'superseded';
+    // Our own write replaced the stored hash. Keep the caller's snapshot in step so
+    // a later compare-and-swap on "the hash I verified" (session creation at login)
+    // matches the row we just wrote and not the one we replaced.
+    user.password_hash = newHash;
+    user.pin_hash_version = PIN_HASH_VERSION;
+    return 'rehashed';
   } catch (error) {
     // Class/code only. Messages from the driver can embed query parameters.
     const e = error as { name?: string; code?: string };

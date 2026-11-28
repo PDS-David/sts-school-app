@@ -6,6 +6,7 @@
  */
 import bcrypt from 'bcryptjs';
 import { pool, query, withTransaction } from './pool.js';
+import { seedDefaultAdmin } from './seedAdmin.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -103,20 +104,13 @@ async function seed() {
   });
 
   console.log('Seeding admin user (admin / Admin@1234)…');
-  const hash = await bcrypt.hash('Admin@1234', 10);
-  await query(
-    `INSERT INTO users(username,password_hash,role,full_name,must_change_pw)
-     VALUES('admin',$1,'admin','System Administrator',TRUE)
-     ON CONFLICT(username) DO UPDATE SET password_hash=$1,
-       is_active=TRUE, revocation_reason=NULL, access_expires_at=NULL`,
-    [hash],
-  );
+  await seedDefaultAdmin(query);
 
   console.log('Seeding demo teacher…');
   const teacherHash = await bcrypt.hash('Teacher@1234', 10);
   await query(
     `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,must_change_pw)
-     VALUES('teacher1',$1,'teacher','Demo Class Teacher','secondary','JSS 1',TRUE)
+     VALUES('teacher1',$1,'teacher','Demo Class Teacher','secondary','JSS 1',FALSE)
      ON CONFLICT(username) DO UPDATE SET password_hash=$1,
        is_active=TRUE, revocation_reason=NULL, access_expires_at=NULL`,
     [teacherHash],
@@ -124,7 +118,7 @@ async function seed() {
 
   console.log('\n✅ Seed complete!');
   console.log('   admin    → admin / Admin@1234    (must change password on first login)');
-  console.log('   teacher  → teacher1 / Teacher@1234');
+  console.log('   teacher  → teacher1 / Teacher@1234  (legacy credential: sets a six-digit PIN at first sign-in)');
   await pool.end();
 }
 

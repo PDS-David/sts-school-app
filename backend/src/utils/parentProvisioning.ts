@@ -1,7 +1,6 @@
-import bcrypt from 'bcryptjs';
 import type { PoolClient } from 'pg';
 import { withTransaction } from '../db/pool.js';
-import { generateTempPassword } from './password.js';
+import { PIN_HASH_VERSION, generateTemporaryPin, hashPin } from './pin.js';
 
 // De-duplication is global across both campuses: a parent with children at
 // primary and secondary must keep one account so /students/wards can return
@@ -22,8 +21,13 @@ function usernameFromPhone(phone: string): string {
 export interface ProvisionedParent {
   id: string;
   username: string;
-  /** Only set when a new account was created. */
+  /**
+   * Only set when a new account was created: the administrator-issued
+   * temporary six-digit PIN. `temporary_password` carries the same value for
+   * older app builds that read that field.
+   */
   temporary_password?: string;
+  temporary_pin?: string;
   /** Internal result used for audit logging; strip before returning the API response. */
   created: boolean;
 }
@@ -85,18 +89,22 @@ export async function findOrCreateParent(
     username = `${baseUsername}${suffixNumber}`;
   }
 
-  const temporary_password = generateTempPassword();
-  const hash = await bcrypt.hash(temporary_password, 10);
+  // Administrator-issued temporary six-digit PIN (peppered; PinConfigError
+  // propagates and rolls back the whole enrolment). It works as a normal PIN:
+  // no forced change at first sign-in; the parent may change it voluntarily.
+  const temporaryPin = generateTemporaryPin();
+  const hash = await hashPin(temporaryPin);
   const { rows } = await client.query(
-    `INSERT INTO users(username,password_hash,role,full_name,school_code,phone,email,must_change_pw,must_set_pin)
-     VALUES($1,$2,'parent',$3,$4,$5,$6,TRUE,TRUE) RETURNING id,username`,
-    [username, hash, params.parent_name ?? null, params.school_code, phone, params.parent_email ?? null],
+    `INSERT INTO users(username,password_hash,pin_hash_version,pin_set_at,role,full_name,school_code,phone,email,must_change_pw,must_set_pin)
+     VALUES($1,$2,$7,clock_timestamp(),'parent',$3,$4,$5,$6,FALSE,FALSE) RETURNING id,username`,
+    [username, hash, params.parent_name ?? null, params.school_code, phone, params.parent_email ?? null, PIN_HASH_VERSION],
   );
 
   return {
     id: rows[0].id,
     username: rows[0].username,
-    temporary_password,
+    temporary_password: temporaryPin,
+    temporary_pin: temporaryPin,
     created: true,
   };
 }

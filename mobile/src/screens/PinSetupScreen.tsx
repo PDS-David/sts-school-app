@@ -108,7 +108,7 @@ export default function PinSetupScreen({ route, navigation }: any) {
         <Card>
           <Text style={styles.title}>{voluntary ? 'Change your PIN' : 'Create your PIN'}</Text>
           <Text style={styles.helper}>
-            Choose {PIN_LENGTH} numbers that only you know. Avoid repeated or sequential digits such as 123456 or 000000.
+            Choose {PIN_LENGTH} numbers that only you know. Any six digits are fine except the same digit six times (such as 000000 or 111111).
           </Text>
 
           {!awaitingConfirm && (
