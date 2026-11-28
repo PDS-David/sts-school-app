@@ -269,31 +269,6 @@ export async function checkTeacherContentScope(
 export async function resolveViewerClassNames(user: AuthUser): Promise<string[] | null> {
   if (user.role === 'admin' || user.role === 'teacher') return null;
 
-  if (user.role === 'teacher') {
-    // Teachers may message administrators, fellow teachers in their own
-    // school, and parents/guardians of students in their assigned classes.
-    // Students and unrelated parents are deliberately not exposed.
-    if (!user.school_code) return [];
-    const teacherClasses = [...new Set([user.assigned_class, ...((user as any).assigned_class_names ?? [])].filter((v): v is string => typeof v === 'string' && v.length > 0))];
-    const { rows } = await query(
-      `SELECT DISTINCT u.id, u.username, u.full_name, u.role
-       FROM users u
-       WHERE u.is_active = TRUE
-         AND (
-           u.role = 'admin'
-           OR (u.role = 'teacher' AND u.school_code = $1 AND u.id <> $2)
-           OR (u.role = 'parent' AND EXISTS (
-             SELECT 1 FROM parent_wards pw
-             JOIN students st ON st.id = pw.student_id
-             WHERE pw.parent_id = u.id AND st.deleted_at IS NULL
-               AND st.school_code = $1 AND st.class_name = ANY($3::text[])
-           ))
-         )
-       ORDER BY u.full_name`,
-      [user.school_code, user.id, teacherClasses],
-    );
-    return rows;
-  }
   if (user.role === 'student') {
     const { rows } = await query(
       'SELECT class_name FROM students WHERE user_id=$1 AND deleted_at IS NULL', [user.id],
@@ -423,6 +398,31 @@ export interface MessageableUser {
  *     contributes teacher rows and can never gate the admin branch.
  */
 export async function getMessageableUsers(user: AuthUser): Promise<MessageableUser[]> {
+  if (user.role === 'teacher') {
+    // Teachers may message administrators, fellow teachers in their own
+    // school, and parents/guardians of students in their assigned classes.
+    // Students and unrelated parents are deliberately not exposed.
+    if (!user.school_code) return [];
+    const teacherClasses = assignedTeacherClasses(user);
+    const { rows } = await query(
+      `SELECT DISTINCT u.id, u.username, u.full_name, u.role
+       FROM users u
+       WHERE u.is_active = TRUE
+         AND (
+           u.role = 'admin'
+           OR (u.role = 'teacher' AND u.school_code = $1 AND u.id <> $2)
+           OR (u.role = 'parent' AND EXISTS (
+             SELECT 1 FROM parent_wards pw
+             JOIN students st ON st.id = pw.student_id
+             WHERE pw.parent_id = u.id AND st.deleted_at IS NULL
+               AND st.school_code = $1 AND st.class_name = ANY($3::text[])
+           ))
+         )
+       ORDER BY u.full_name`,
+      [user.school_code, user.id, teacherClasses],
+    );
+    return rows;
+  }
   if (user.role === 'student') {
     const { rows } = await query(
       `SELECT DISTINCT u.id, u.username, u.full_name, u.role
