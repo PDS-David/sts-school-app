@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, RefreshControl } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
@@ -11,6 +11,9 @@ const KIND_ICON: Record<string, string> = {
 };
 
 export default function NotificationsScreen({ navigation }: any) {
+  // Announcements carry no navigation target; tapping one expands it so the full text can be read.
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const toggleExpanded = (id: string) => setExpanded(prev => { const next = new Set(prev); if (next.has(id)) next.delete(id); else next.add(id); return next; });
   const { notifications, markAllRead, markRead, unreadCount, loading, feedErrors, readIds, readStateReady, refresh } = useNotifications();
 
   const openNotification = (notification: (typeof notifications)[number]) => {
@@ -66,13 +69,17 @@ export default function NotificationsScreen({ navigation }: any) {
               </View>
               <View style={{ flex: 1 }}>
                 <Text style={styles.cardTitle}>{n.title}</Text>
-                <Text style={styles.cardBody} numberOfLines={2}>{n.body}</Text>
+                <Text style={styles.cardBody} numberOfLines={expanded.has(n.id) ? undefined : 2}>{n.body}</Text>
               </View>
               {!readIds.has(n.id) ? <View style={styles.unreadDot} /> : null}
             </View>
           );
           return n.target ? (
             <TouchableOpacity onPress={() => openNotification(n)} disabled={!readStateReady} activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={`Open ${n.title}`} accessibilityState={{ disabled: !readStateReady }}>
+              {card}
+            </TouchableOpacity>
+          ) : n.kind === 'announcement' ? (
+            <TouchableOpacity onPress={() => { toggleExpanded(n.id); markRead(n.id); }} activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={`${expanded.has(n.id) ? 'Collapse' : 'Read full'} announcement ${n.title}`}>
               {card}
             </TouchableOpacity>
           ) : card;

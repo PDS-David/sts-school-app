@@ -10,6 +10,7 @@ export default function TeacherMoreScreen({ navigation }: any) {
   const { user, logout } = useAuth();
 
   const ITEMS: { icon: keyof typeof Ionicons.glyphMap; label: string; sub: string; onPress?: () => void }[] = [
+    { icon: 'megaphone-outline', label: 'Announcements', sub: 'Read school and class notices in full, including older ones', onPress: () => navigation.navigate('TeacherAnnouncements') },
     { icon: 'document-text-outline', label: 'Review Questions', sub: 'Approve or reject questions for your assigned subjects', onPress: () => navigation.navigate('TeacherQuestionReview') },
     { icon: 'settings-outline', label: 'Change PIN', sub: 'Change your six-digit PIN', onPress: () => navigation.navigate('ChangePin') },
   ];

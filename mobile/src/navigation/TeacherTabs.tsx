@@ -13,6 +13,7 @@ import TeacherDashboardHomeScreen from '../screens/teacher/TeacherDashboardHomeS
 import TeacherClassesScreen from '../screens/teacher/TeacherClassesScreen';
 import TeacherMoreScreen from '../screens/teacher/TeacherMoreScreen';
 import TeacherQuestionReviewScreen from '../screens/teacher/TeacherQuestionReviewScreen';
+import TeacherAnnouncementsScreen from '../screens/teacher/TeacherAnnouncementsScreen';
 import ChatsScreen from '../screens/chats/ChatsScreen';
 import ChatThreadScreen from '../screens/chats/ChatThreadScreen';
 import StudentsScreen from '../screens/StudentsScreen';
@@ -76,6 +77,7 @@ function MoreStackNavigator() {
     <MoreStack.Navigator id={undefined} screenOptions={{ headerShown: false }}>
       <MoreStack.Screen name="More" component={TeacherMoreScreen} />
       <MoreStack.Screen name="TeacherQuestionReview" component={TeacherQuestionReviewScreen} options={{ headerShown: false }} />
+      <MoreStack.Screen name="TeacherAnnouncements" component={TeacherAnnouncementsScreen} options={{ headerShown: false }} />
       <MoreStack.Screen name="ChangePassword" component={ChangePasswordScreen} options={{ headerShown: true, title: 'Change Password', ...opts }} />
     </MoreStack.Navigator>
   );
