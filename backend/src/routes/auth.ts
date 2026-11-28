@@ -96,24 +96,30 @@ export function isLegacyPinFormat(typed: string): boolean {
  * (see the call site in /login). Compare-and-swap on the verified hash, so a
  * concurrent PIN change, reset or activation is never overwritten. Mutates
  * `user` so the response and the rehash step see the stored state.
+ *
+ * Returns false when a flag change was needed but the compare-and-swap matched
+ * no row: the credential that was just verified has been replaced in the
+ * meantime (administrator reset, PIN change, activation). The caller must then
+ * refuse the sign-in; the proven credential is no longer the account's
+ * credential, so it must not be given a session.
  */
-async function syncLegacyPinRequirement(user: any, typed: string): Promise<void> {
-  if (!PIN_ROLES.has(user.role) || !user.password_hash) return;
+async function syncLegacyPinRequirement(user: any, typed: string): Promise<boolean> {
+  if (!PIN_ROLES.has(user.role) || !user.password_hash) return true;
   const required = isLegacyPinFormat(typed);
   const stale = required
     ? user.must_set_pin !== true
     : user.must_set_pin === true || user.must_change_pw === true;
-  if (!stale) return;
+  if (!stale) return true;
   const { rowCount } = await query(
     required
       ? 'UPDATE users SET must_set_pin=TRUE WHERE id=$1 AND password_hash=$2'
       : 'UPDATE users SET must_set_pin=FALSE, must_change_pw=FALSE WHERE id=$1 AND password_hash=$2',
     [user.id, user.password_hash],
   );
-  if (rowCount === 1) {
-    if (required) user.must_set_pin = true;
-    else { user.must_set_pin = false; user.must_change_pw = false; }
-  }
+  if (rowCount !== 1) return false;
+  if (required) user.must_set_pin = true;
+  else { user.must_set_pin = false; user.must_change_pw = false; }
+  return true;
 }
 
 // ── POST /auth/login ──────────────────────────────────────────────────────────
@@ -213,7 +219,13 @@ router.post('/login', loginIpFailureLimiter, async (req, res) => {
   //     PINs) → straight to the dashboard; any stale forced-change flag is
   //     cleared.
   // Only the flags move; the account, its records and links are untouched.
-  await syncLegacyPinRequirement(user, secret);
+  // If the credential was replaced between verification and this step (for
+  // example an administrator reset), refuse: no session may be created for the
+  // replaced credential, and the response is the same generic failure as any
+  // other wrong credential.
+  if (!await syncLegacyPinRequirement(user, secret)) {
+    return res.status(401).json({ error: GENERIC_LOGIN_ERROR });
+  }
 
   // Transparent upgrade of an existing PIN from the legacy bcrypt hash to the
   // peppered scheme. Runs only here, i.e. after the credential is proven, the
@@ -404,20 +416,33 @@ router.post('/pin', requireAuth, async (req, res) => {
   }
   await recordLoginSuccess(throttleInput, gate.attemptId);
 
-  await withTransaction(async (client) => {
-    await client.query(
+  // Compare-and-swap on the exact hash that was just verified. If an
+  // administrator reset (or another PIN change) replaced the credential in the
+  // meantime, nothing is written and no session is touched: the old credential
+  // must never overwrite the newer one. Sessions are revoked only after the
+  // update succeeded, inside the same transaction.
+  const saved = await withTransaction(async (client) => {
+    const { rowCount } = await client.query(
       `UPDATE users SET password_hash=$1, pin_hash_version=$2, pin_set_at=clock_timestamp(),
               must_set_pin=FALSE, must_change_pw=FALSE
-        WHERE id=$3`,
-      [newHash, PIN_HASH_VERSION, me.id],
+        WHERE id=$3 AND password_hash=$4`,
+      [newHash, PIN_HASH_VERSION, me.id, row.password_hash],
     );
+    if (rowCount !== 1) return false;
     // Every other device is signed out; this one keeps its session.
     await revokeUserSessions(me.id, 'pin_changed', { exceptSessionId: me.sid ?? null, client });
     await auditInTransaction(
       client, me, row.must_set_pin ? 'set_pin' : 'change_pin', 'user', me.id,
       'six-digit PIN saved; other sessions revoked',
     );
+    return true;
   });
+  if (!saved) {
+    return res.status(409).json({
+      error: 'Your PIN was changed or reset by an administrator while you were saving. Nothing was changed. Sign in again with your current PIN.',
+      code: 'CREDENTIAL_CHANGED',
+    });
+  }
   return res.json({ ok: true });
 });
 

@@ -7,6 +7,7 @@ import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import api from '../api/client';
 import { checkPin, sanitizePin } from '../api/pinSetup';
+import { teacherAccountCreatedMessage } from '../api/pinForms';
 import { isPinRole } from '../api/authPhase';
 import { Loader, Empty, Btn, Input, Badge, Card, SectionHeader } from '../components/UI';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
@@ -229,7 +230,7 @@ export default function AdminUsersScreen() {
       return;
     }
     if (!editUser && form.role === 'teacher' && !checkPin(form.initial_password).ok) {
-      setInfoDialog({ title: 'Invalid temporary PIN', message: (checkPin(form.initial_password) as { ok: false; message: string }).message + ' This is the teacher’s temporary PIN; they can sign in with it straight away and change it later if they wish.' });
+      setInfoDialog({ title: 'Invalid PIN', message: (checkPin(form.initial_password) as { ok: false; message: string }).message + ' The teacher signs in with this PIN straight away and can change it later from More.' });
       return;
     }
     if (!editUser && form.role !== 'teacher' && !form.username.trim()) {
@@ -289,7 +290,7 @@ export default function AdminUsersScreen() {
           // show blank/stale text instead of the real created username.
           setInfoDialog({
             title: 'Teacher Account Created',
-            message: `Username: ${data?.user?.username}\nTemporary six-digit PIN: ${form.initial_password}\n\nTell the teacher to sign in with this PIN on the PIN tab. They will then be asked to create their own six-digit PIN.`,
+            message: teacherAccountCreatedMessage(data?.user?.username, form.initial_password),
           });
         } else {
           // Task C: account creation no longer generates a temp password —

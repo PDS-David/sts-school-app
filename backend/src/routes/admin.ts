@@ -218,6 +218,15 @@ function blankToNull<T>(v: T): T | null {
   return v;
 }
 
+/**
+ * Older admin app builds send the retired four-digit teacher code. It is
+ * rejected, never stored, so a four-digit code cannot become a permanent
+ * credential. The message tells the administrator exactly what to do.
+ */
+export const TEACHER_FOUR_DIGIT_PIN_MESSAGE =
+  'A four-digit teacher code is no longer accepted. Teachers now sign in with a six-digit PIN. ' +
+  'Update the admin app to the latest version, then create the teacher again with a six-digit PIN.';
+
 router.post('/users', async (req, res) => {
   const { username, full_name, role, school_code, assigned_class, assigned_class_names, assigned_subject_ids, assigned_class_subjects, phone, email, access_expires_at, initial_password } = req.body ?? {};
   const scope = resolveAdminSchoolScope(req.user!, school_code);
@@ -262,12 +271,21 @@ router.post('/users', async (req, res) => {
   // 'teacher' only; every other role still goes through the Task C
   // activation-code flow below unchanged.
   if (role === 'teacher') {
-    // Administrator-issued TEMPORARY six-digit PIN (same rule as every
-    // student/parent/teacher PIN). The teacher must replace it with their own
-    // PIN at first sign-in (must_set_pin), so this is never a permanent PIN.
+    // Administrator-issued six-digit PIN (same rule as every student/parent/
+    // teacher PIN). It is stored as a normal PIN: must_set_pin and
+    // must_change_pw are both FALSE, so the teacher signs in with it and goes
+    // straight to the dashboard. No PIN-setup screen is forced; the teacher may
+    // change it any time from More. A four-digit code is never accepted as an
+    // initial credential, so it cannot become a permanent one.
     const initialPinCheck = checkPin(initial_password);
     if (!initialPinCheck.ok) {
-      return res.status(400).json({ error: `Teacher temporary PIN: ${(initialPinCheck as { ok: false; message: string }).message}` });
+      if (typeof initial_password === 'string' && /^\d{4}$/.test(initial_password)) {
+        return res.status(400).json({
+          error: TEACHER_FOUR_DIGIT_PIN_MESSAGE,
+          code: 'TEACHER_PIN_SIX_DIGITS_REQUIRED',
+        });
+      }
+      return res.status(400).json({ error: `Teacher PIN: ${(initialPinCheck as { ok: false; message: string }).message}` });
     }
 
     let subjectIds: number[];

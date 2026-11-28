@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   validateNewPinPair, validateActivationSecret, activationBody, sanitizePin,
-  ADMIN_PASSWORD_LENGTH_MESSAGE, PASSWORD_MISMATCH_MESSAGE, PIN_ROLES,
+  ADMIN_PASSWORD_LENGTH_MESSAGE, PASSWORD_MISMATCH_MESSAGE, PIN_ROLES, teacherAccountCreatedMessage,
 } from '../../mobile/src/api/pinForms.ts';
 import { PIN_FORMAT_MESSAGE, PIN_TRIVIAL_MESSAGE, PIN_MISMATCH_MESSAGE, checkPin } from '../../mobile/src/api/pinSetup.ts';
 import { isPinRole } from '../../mobile/src/api/authPhase.ts';
@@ -118,4 +118,23 @@ test('PIN setup copy matches the policy (no "avoid sequential" advice)', () => {
   const s = src('screens/PinSetupScreen.tsx');
   assert.doesNotMatch(s, /sequential/i);
   assert.match(s, /except the same digit six times/);
+});
+
+// ── Teacher creation messaging (PR #1062 correction) ─────────────────────────
+
+test('teacher-created message: PIN works normally, change later from More, no forced setup promised', () => {
+  const msg = teacherAccountCreatedMessage('class-teacher-jss1', '482913');
+  assert.match(msg, /Username: class-teacher-jss1/);
+  assert.match(msg, /Six-digit PIN: 482913/);
+  assert.match(msg, /straight to their dashboard/);
+  assert.match(msg, /change it later from More/);
+  assert.doesNotMatch(msg, /asked to|will be asked|create their own|must (set|create|change)|first sign-in|forced/i);
+  assert.doesNotMatch(msg, /temporary/i);
+});
+
+test('AdminUsersScreen shows the shared teacher message and keeps no forced-setup wording', () => {
+  const screen = src('screens/AdminUsersScreen.tsx');
+  assert.match(screen, /teacherAccountCreatedMessage\(data\?\.user\?\.username, form\.initial_password\)/);
+  assert.doesNotMatch(screen, /asked to create their own/);
+  assert.match(screen, /can change it later from More/);
 });

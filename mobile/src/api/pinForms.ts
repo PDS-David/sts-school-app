@@ -48,3 +48,13 @@ export function activationBody(mode: ActivationMode, username: string, code: str
     ? { username: username.trim(), activation_code: code.trim(), new_pin: secret }
     : { username: username.trim(), activation_code: code.trim(), new_password: secret };
 }
+
+/**
+ * Success dialog after an administrator creates a teacher. The teacher account
+ * is created with a normal six-digit PIN (no forced PIN setup): they sign in
+ * with it and reach the dashboard, and may change it later from More. This text
+ * must never promise a forced setup screen (tests/mobile/pin-forms.test.mts).
+ */
+export function teacherAccountCreatedMessage(username: string | undefined, pin: string): string {
+  return `Username: ${username}\nSix-digit PIN: ${pin}\n\nShare this PIN with the teacher privately. They sign in with it on the PIN tab and go straight to their dashboard. They can change it later from More.`;
+}

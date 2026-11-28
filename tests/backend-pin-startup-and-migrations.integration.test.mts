@@ -152,7 +152,13 @@ test('migrations 0019 through 0021 apply together in one run and leave existing 
       await ins('seed-teacher', 'teacher');
       await ins('seed-admin', 'admin');
       await ins('seed-issued-teacher', 'teacher', 'TRUE'); // legacy (pre-PIN) administrator-issued temporary credential
-      await ins('seed-issued-admin', 'admin', 'TRUE'); // administrator-issued temporary password
+      await ins('seed-issued-admin', 'admin', 'TRUE'); // forced flag with NO audit record of an administrator reset (e.g. default/bootstrap account)
+      await ins('seed-reset-admin', 'admin', 'TRUE'); // forced flag caused by an old administrator-issued reset
+      await c.query(
+        `INSERT INTO audit_log(actor_name, action, entity, entity_id, detail, outcome)
+         SELECT 'seed-actor', 'reset_password', 'user', id::text,
+                'administrator reset user password; forced password change on next login', 'success'
+           FROM users WHERE username='seed-reset-admin'`);
     });
     const hashesBefore = await withDb(db, async c => (await c.query('SELECT username,password_hash FROM users ORDER BY username')).rows);
     const versionsBefore = await withDb(db, ledger);
@@ -179,7 +185,8 @@ test('migrations 0019 through 0021 apply together in one run and leave existing 
       // Legacy-format hash (unknown length): left as stored; the sign-in step
       // decides from the credential actually typed (see 0023 and /auth/login).
       assert.equal(flags['seed-issued-teacher'].must_change_pw, true, 'legacy temporary credential is not cleared by migration');
-      assert.equal(flags['seed-issued-admin'].must_change_pw, false, '0023: administrator temporary password no longer forces a change');
+      assert.equal(flags['seed-reset-admin'].must_change_pw, false, '0023: flag attributable to an old administrator reset is cleared');
+      assert.equal(flags['seed-issued-admin'].must_change_pw, true, '0023: an administrator flag with no reset event on record is left untouched');
       assert.equal((await c.query('SELECT 1 FROM auth_sessions')).rowCount, 0, 'no session created or invalidated');
       assert.equal((await c.query(`SELECT 1 FROM pg_trigger WHERE tgname='users_enforce_pin_state_trg'`)).rowCount, 1, 'PIN-state trigger present');
       const hashesAfter = (await c.query('SELECT username,password_hash FROM users ORDER BY username')).rows;
