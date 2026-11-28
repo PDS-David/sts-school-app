@@ -85,6 +85,9 @@ test('teacher, student and parent tab stacks no longer register the administrato
   for (const file of ['navigation/TeacherTabs.tsx', 'navigation/StudentTabs.tsx', 'navigation/ParentTabs.tsx']) {
     assert.doesNotMatch(src(file), /ChangePassword/, file);
   }
+  const teacherTabs = src('navigation/TeacherTabs.tsx');
+  assert.match(teacherTabs, /name="ChangePin" component=\{PinSetupScreen\}/, 'teacher PIN route is registered');
+  assert.match(src('screens/teacher/TeacherMoreScreen.tsx'), /navigate\('ChangePin', \{ voluntary: true \}\)/, 'teacher opens voluntary PIN change, not forced setup');
   for (const file of ['navigation/AdminTabs.tsx', 'navigation/FinanceAdminTabs.tsx']) {
     assert.match(src(file), /name="ChangePassword" component=\{ChangePasswordScreen\}/, `${file} keeps the admin password screen`);
   }
