@@ -14,7 +14,7 @@ async function makeUser(role: 'teacher' | 'admin', schoolCode: string | null, as
   const username = `term-settings-${role}-${randomUUID()}`;
   const { rows } = await query(
     `INSERT INTO users(username,password_hash,role,full_name,school_code,assigned_class,assigned_class_names,is_active,pending_admin_review)
-     VALUES($1,'test-hash,$2,$3,$4,$5,$6::text[],TRUE,FALSE) RETURNING id`,
+     VALUES($1,'test-hash',$2,$3,$4,$5,$6::text[],TRUE,FALSE) RETURNING id`,
     [username, role, `Term Settings ${role}`, schoolCode, assignedClass, classNames],
   );
   const id = String(rows[0].id);
