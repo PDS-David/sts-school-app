@@ -64,7 +64,18 @@ jobs:
           enc() { python3 -c 'import sys; print(sys.stdin.read().replace("%","%25").replace("\r","%0D").replace("\n","%0A"))'; }
           echo "log bytes: $(wc -c < /tmp/ta.log), exit code: $code"
           grep -aE '^\s*(✔|✖)|^ℹ (tests|pass|fail)' /tmp/ta.log | head -c 6000 | enc | sed 's/^/::notice title=TEST RESULTS::/'
-          tail -c 15000 /tmp/ta.log | enc | sed 's/^/::error title=RAW LOG TAIL::/'
+          python3 - <<'PY'
+          import re
+          t = open('/tmp/ta.log', encoding='utf-8', errors='replace').read()
+          t = t.split('failing tests:', 1)[-1]
+          blocks = re.split(r'\n(?=test at )', t)
+          drop = re.compile(r'^\s+at |generatedMessage|^\s+code:|^\s+operator:|^\s+diff:|^\s+actual: |^\s+expected: ')
+          for i, blk in enumerate(blocks):
+              lines = [l for l in blk.splitlines() if l.strip() and not drop.search(l)]
+              msg = '\n'.join(lines)[:3500]
+              msg = msg.replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+              print('::error title=FAILURE %d::%s' % (i, msg))
+          PY
           exit $code
       - name: Typecheck backend
         run: ./node_modules/.bin/tsc --noEmit -p backend/tsconfig.json
