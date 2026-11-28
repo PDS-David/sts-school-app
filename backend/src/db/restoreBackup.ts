@@ -15,10 +15,11 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
 import { pool } from './pool.js';
-import { BACKUP_EXCLUDED_TABLES, decryptPayload, type BackupPayload } from '../utils/backup.js';
+import { BACKUP_EXCLUDED_TABLES, decryptPayload, type BackupPayload, type BackupTable } from '../utils/backup.js';
 
 const ident = (s: string) => '"' + s.replace(/"/g, '""') + '"';
 const EXCLUDED_TABLES = new Set<string>(BACKUP_EXCLUDED_TABLES);
+const PROGRESSION_TABLE = 'report_roster_progression_decisions';
 
 /**
  * Append-only protections that a deliberate, explicitly confirmed
@@ -38,8 +39,96 @@ export interface RestoreTriggerBypass {
 export const RESTORE_TRIGGER_BYPASSES: readonly RestoreTriggerBypass[] = [
   { table: 'audit_log', trigger: 'audit_log_append_only_truncate', why: 'restore replaces the table with TRUNCATE' },
   { table: 'report_roster_membership_events', trigger: 'report_roster_events_append_only_truncate', why: 'restore replaces the table with TRUNCATE' },
-  { table: 'report_roster_progression_decisions', trigger: 'report_roster_progression_append_only_truncate', why: 'restore replaces the table with TRUNCATE' },
+  { table: PROGRESSION_TABLE, trigger: 'report_roster_progression_append_only_truncate', why: 'restore replaces the table with TRUNCATE' },
+  {
+    table: PROGRESSION_TABLE,
+    trigger: 'report_roster_progression_validate_insert',
+    why: 'it only accepts brand-new active rows in dependency order, so it cannot reload ended (superseded/reversed) history; ' +
+      'verifyProgressionHistory re-checks the same rules before COMMIT',
+  },
 ];
+
+/**
+ * Orders rows so every row comes after the row it references through a
+ * self-referencing foreign key (here supersedes_decision_id). Insertion order
+ * in a backup is not guaranteed to follow the reference direction, and the
+ * constraint is checked per row. Throws on duplicate ids or a reference cycle;
+ * a reference to a row that is not in the backup is left for the database's
+ * foreign-key check to reject.
+ */
+export function orderRowsParentsFirst(table: BackupTable, idColumn: string, parentColumn: string): unknown[][] {
+  const idIdx = table.columns.findIndex(c => c.name === idColumn);
+  const parentIdx = table.columns.findIndex(c => c.name === parentColumn);
+  if (idIdx < 0 || parentIdx < 0) {
+    throw new Error(`Backup table "${table.name}" lacks the ${idColumn}/${parentColumn} columns.`);
+  }
+  const byId = new Map<string, unknown[]>();
+  for (const row of table.rows) {
+    const id = String(row[idIdx]);
+    if (byId.has(id)) throw new Error(`Backup table "${table.name}" contains duplicate ${idColumn} ${id}.`);
+    byId.set(id, row);
+  }
+  const ordered: unknown[][] = [];
+  const done = new Set<string>();
+  const inProgress = new Set<string>();
+  const visit = (row: unknown[]): void => {
+    const id = String(row[idIdx]);
+    if (done.has(id)) return;
+    if (inProgress.has(id)) throw new Error(`Backup table "${table.name}" has circular ${parentColumn} references.`);
+    inProgress.add(id);
+    const parentId = row[parentIdx];
+    if (parentId !== null && parentId !== undefined) {
+      const parent = byId.get(String(parentId));
+      if (parent) visit(parent);
+    }
+    inProgress.delete(id);
+    done.add(id);
+    ordered.push(row);
+  };
+  for (const row of table.rows) visit(row);
+  return ordered;
+}
+
+/**
+ * The insert-time validator is lifted during restore (see
+ * RESTORE_TRIGGER_BYPASSES), so its cross-table rules are re-verified here on
+ * the data that was actually loaded. Any violation aborts and rolls back the
+ * whole restore. The successor rule (a superseded decision has a replacement, a
+ * reversed one does not) is enforced separately by the deferred constraint
+ * trigger, which stays enabled and is flushed with SET CONSTRAINTS ALL IMMEDIATE.
+ */
+async function verifyProgressionHistory(client: import('pg').PoolClient): Promise<void> {
+  const { rows } = await client.query(
+    `SELECT d.id, 'the student belongs to a different school than the decision' AS problem
+       FROM public.${PROGRESSION_TABLE} d
+       JOIN public.students s ON s.id = d.student_id
+      WHERE s.school_code IS DISTINCT FROM d.school_code
+     UNION ALL
+     SELECT d.id, 'the term does not match the decision school, academic year and term name'
+       FROM public.${PROGRESSION_TABLE} d
+       JOIN public.terms t ON t.id = d.term_id
+      WHERE t.school_code IS DISTINCT FROM d.school_code
+         OR t.academic_year IS DISTINCT FROM d.academic_year
+         OR t.name IS DISTINCT FROM d.term_name
+     UNION ALL
+     SELECT d.id, 'the replaced decision is for another student or year, or was not ended as superseded by the same administrator'
+       FROM public.${PROGRESSION_TABLE} d
+       JOIN public.${PROGRESSION_TABLE} p ON p.id = d.supersedes_decision_id
+      WHERE p.student_id <> d.student_id
+         OR p.school_code <> d.school_code
+         OR p.academic_year <> d.academic_year
+         OR p.status <> 'superseded'
+         OR p.ended_by IS DISTINCT FROM d.decided_by
+     ORDER BY 1
+     LIMIT 10`,
+  );
+  if (rows.length) {
+    throw new Error(
+      'Restored progression decisions failed integrity verification (restore rolled back): ' +
+      rows.map((r: any) => `decision ${r.id}: ${r.problem}`).join('; '),
+    );
+  }
+}
 
 interface SavedTriggerState extends RestoreTriggerBypass {
   /** pg_trigger.tgenabled before the restore touched it: O origin, A always, R replica, D disabled. */
@@ -265,7 +354,8 @@ export async function restore(p: BackupPayload, opts: { apply: boolean; confirmD
       if (!t.rows.length) continue;
       const cols = t.columns.map(c => ident(c.name)).join(',');
       const ph = t.columns.map((_, i) => `$${i + 1}`).join(',');
-      for (const row of t.rows) {
+      const rows = name === PROGRESSION_TABLE ? orderRowsParentsFirst(t, 'id', 'supersedes_decision_id') : t.rows;
+      for (const row of rows) {
         await client.query(`INSERT INTO public.${ident(name)}(${cols}) VALUES(${ph})`, row.map((v, i) => toParam(v, t.columns[i].type)));
       }
     }
@@ -276,6 +366,11 @@ export async function restore(p: BackupPayload, opts: { apply: boolean; confirmD
         if (seq[0]?.s) await client.query(`SELECT setval($1, COALESCE((SELECT max(${ident(c.name)}) FROM public.${ident(name)}), 1), (SELECT count(*) > 0 FROM public.${ident(name)}))`, [seq[0].s]);
       }
     }
+    // Flush deferred constraint triggers now: their failures then surface here
+    // with a clear message, and PostgreSQL refuses ALTER TABLE on a table that
+    // still has pending trigger events, which the re-enable below would hit.
+    await client.query('SET CONSTRAINTS ALL IMMEDIATE');
+    if (byName.has(PROGRESSION_TABLE)) await verifyProgressionHistory(client);
     await reinstateRestoreTriggers(client, savedTriggers);
     await client.query('COMMIT');
     return { mode: 'applied' as const, database, summary };
