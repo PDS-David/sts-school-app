@@ -16,10 +16,10 @@ test('message notification destinations match role navigation', () => {
   for (const tabs of [parentTabs, studentTabs]) {
     assert.ok(tabs.includes('ChatsStack.Screen name="ChatThread"'));
   }
-  assert.ok(!teacherTabs.includes('ChatThread'));
+  assert.ok(teacherTabs.includes('ChatsStack.Screen name="ChatThread"'));
   assert.ok(!financeTabs.includes('Screen name="Messages"'));
   assert.ok(!financeTabs.includes('Screen name="ChatThread"'));
-  assert.ok(notifications.includes("if (user.role !== 'finance_admin' && user.role !== 'teacher')"));
+  assert.ok(notifications.includes("if (user.role !== 'finance_admin')"));
   assert.ok(notifications.includes("screen: user.role === 'admin' ? 'Messages' : 'ChatThread'"));
   assert.ok(navigationRef.includes('navigationRef.navigate(screen, { contact })'));
 });
