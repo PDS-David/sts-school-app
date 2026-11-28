@@ -83,6 +83,17 @@ export default function AttendanceScreen({ navigation }: any) {
     return () => { cancelled = true; };
   }, [effectiveSchoolCode, setupRetry]);
 
+  // Keep the editable term metadata in sync with the selected term.
+  // Without this, switching terms leaves the previous term's days-opened and
+  // next-term date in the form, so the teacher can validate/save against the
+  // wrong term's values.
+  useEffect(() => {
+    const selectedTerm = terms.find(term => term.id === selTerm);
+    if (!selectedTerm) return;
+    setDaysOpened(String(selectedTerm.days_opened ?? ''));
+    setNextTermBegins(selectedTerm.next_term_begins ?? '');
+  }, [selTerm, terms]);
+
   // One class's roster at a time, fetched fresh whenever the selected class
   // changes — not the whole school in one shot.
   useEffect(() => {
@@ -157,6 +168,11 @@ export default function AttendanceScreen({ navigation }: any) {
           days_opened: daysOpened.trim() ? Number(daysOpened) : undefined,
           next_term_begins: nextTermBegins.trim() || undefined,
         });
+        setTerms(prev => prev.map(term => term.id === selTerm ? {
+          ...term,
+          days_opened: daysOpened.trim() ? Number(daysOpened) : term.days_opened,
+          next_term_begins: nextTermBegins.trim() || term.next_term_begins,
+        } : term));
       }
       await api.put('/attendance/bulk', { term_id: Number(selTerm), entries: payload });
       setInfoDialog({ title: 'Attendance saved', message: `Attendance for ${payload.length} student(s) was saved successfully.` });
