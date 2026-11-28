@@ -56,18 +56,13 @@ export function hasPerm(role: Role, perm: string): boolean {
 }
 
 // ── Messaging rules ───────────────────────────────────────────────────────────
-// NOTE: this is a simplified reference version. The authoritative check (which
-// needs DB lookups for subject teachers/admins/parents) lives in
-// routes/messages.ts → studentAllowedRecipients().
-//
-// Students may message their class/subject teachers, admins, parents and
-// classmates within the documented scope. Parents and admins retain their
-// existing messaging path. Teachers are report-only and cannot send messages.
+// The route supplies the recipient IDs returned by getMessageableUsers(),
+// which applies the database-backed school and relationship scope for each role.
 export function canMessage(
   senderRole: Role,
   senderUserId: string,
   recipientId: string,
-  senderAllowedRecipientIds?: string[]   // for students: precomputed allowed recipient ids
+  senderAllowedRecipientIds?: string[]   // precomputed IDs from the role-scoped contact lookup
 ): boolean {
   if (senderRole === 'student') {
     return !!senderAllowedRecipientIds && senderAllowedRecipientIds.includes(recipientId);
