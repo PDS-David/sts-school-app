@@ -159,7 +159,7 @@ test('voluntary PIN change is a normal app screen with a back button, registered
 
 test('student, parent and teacher Settings open the PIN screen, not the password route the server rejects for them', () => {
   for (const [name, src] of [['student', studentProfile], ['parent', parentProfile], ['teacher', teacherMore]] as const) {
-    assert.ok(/label: 'Change PIN'[^\n]*navigation\.navigate\('ChangePin'\)/.test(src), `${name} entry point`);
+    assert.ok(/label: 'Change PIN'[^\\n]*navigation\\.navigate\\('ChangePin'(?:, \\{ voluntary: true \\})?\\)/.test(src), `${name} entry point`);
     assert.ok(!/navigate\('ChangePassword'\)/.test(src), `${name} no longer routes to ChangePassword`);
   }
 });
