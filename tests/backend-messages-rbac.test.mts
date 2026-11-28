@@ -43,9 +43,9 @@ test('teachers receive message permissions and the scoped messaging route is no 
   assert.equal(canMessage('teacher', 'teacher-id', 'unrelated-id', ['parent-id']), false);
   const { readFileSync } = await import('node:fs');
   const { resolve } = await import('node:path');
-  const route = readFileSync(resolve(process.cwd(), 'backend/src/routes/messages.ts'), 'utf8');
+  const route = readFileSync(resolve(process.cwd(), 'src/routes/messages.ts'), 'utf8');
   assert.doesNotMatch(route, /denyTeacherAccess/);
-  const scope = readFileSync(resolve(process.cwd(), 'backend/src/utils/scope.ts'), 'utf8');
+  const scope = readFileSync(resolve(process.cwd(), 'src/utils/scope.ts'), 'utf8');
   assert.match(scope, /if \(user\.role === 'teacher'\)/);
   assert.match(scope, /st\.class_name = ANY\(\$3::text\[\]\)/);
 });
@@ -54,7 +54,7 @@ test('teachers receive message permissions and the scoped messaging route is no 
 test('teachers can read school-wide and assigned-class announcements', async () => {
   const { readFileSync } = await import('node:fs');
   const { resolve } = await import('node:path');
-  const route = readFileSync(resolve(process.cwd(), 'backend/src/routes/announcements.ts'), 'utf8');
+  const route = readFileSync(resolve(process.cwd(), 'src/routes/announcements.ts'), 'utf8');
   assert.doesNotMatch(route, /Teacher accounts are limited/);
   assert.match(route, /user\.role === 'teacher'/);
   assert.match(route, /assigned_class_names/);
